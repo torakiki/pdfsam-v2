@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pdfsam> 
+  <info> 
+    <name>PDF Split and Merge</name>  
+    <version>1.1.5 enanched</version>  
+    <build_date>27 Dec. 2006</build_date>  
+    <language>Java(TM) 2 SDK, Standard Edition, Version 1.4.2</language> 
+  </info>  
+  <settings> 
+    <lookAndfeel> 
+      <LAF>5</LAF>  
+      <theme>14</theme> 
+    </lookAndfeel>  
+    <i18n>en_GB</i18n>  
+    <plugs_absolute_dir>F:\workspace_pdfsame\pdfsam-maine\plugins</plugs_absolute_dir>  
+    <defaultjob></defaultjob>  
+    <loglevel>1</loglevel> 
+  </settings>  
+  <adata> 
+    <author> 
+      <aname>Andrea Vacondio</aname>  
+      <aemail>andrea.vacondio@gmail.com</aemail> 
+    </author> 
+  </adata>  
+  <available_languages> 
+    <language value="it_IT"/>  
+    <language value="en_GB"/>  
+    <language value="es_ES"/>  
+    <language value="fr_FR"/>  
+    <language value="ru_RU"/>  
+    <language value="pt_BR"/>  
+    <language value="de_DE"/>  
+    <language value="sv_SE"/> 
+  </available_languages> 
+</pdfsam>
