@@ -18,9 +18,10 @@ package it.pdfsam.console;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.interfaces.WorkDoneListener;
 import it.pdfsam.console.tools.CmdParser;
-import it.pdfsam.console.tools.PdfConcat;
-import it.pdfsam.console.tools.PdfEncrypt;
-import it.pdfsam.console.tools.PdfSplit;
+import it.pdfsam.console.tools.pdf.PdfAlternateMix;
+import it.pdfsam.console.tools.pdf.PdfConcat;
+import it.pdfsam.console.tools.pdf.PdfEncrypt;
+import it.pdfsam.console.tools.pdf.PdfSplit;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -47,10 +48,12 @@ import com.lowagie.text.Document;
  * 
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.CmdParser
- * @see it.pdfsam.console.tools.PdfConcat
- * @see it.pdfsam.console.tools.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfEncrypt
  * @see it.pdfsam.console.exception.ParseException
  * @see it.pdfsam.console.exception.SplitException
+ * @see it.pdfsam.console.exception.EncryptException
  */
 public class MainConsole{
 
@@ -59,7 +62,7 @@ public class MainConsole{
     /**
      * Console version
      */
-    public static final String VERSION = "0.6.2e"; 
+    public static final String VERSION = "0.6.7e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
@@ -140,6 +143,15 @@ public class MainConsole{
             }
             else{
                 out_msg = pdf_encrypt.getOutMessage();
+            }       	
+        }else if ((cmdp.getInputCommand()) == CmdParser.C_MIX){
+        	PdfAlternateMix pdf_mix = new PdfAlternateMix(cmdp.getOValue(), cmdp.getMF1Value(), cmdp.getMF2Value(), cmdp.MReverseFirst(), cmdp.MReverseSecond(), cmdp.MOverwrite(), this);
+        	pdf_mix.doAlternateMix();
+            if (html_output) {
+                out_msg = pdf_mix.getOutHTMLMessage();
+            }
+            else{
+                out_msg = pdf_mix.getOutMessage();
             }       	
         }
         	
