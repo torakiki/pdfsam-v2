@@ -112,15 +112,15 @@ public class WorkDoneEvent extends EventObject {
     public void dispatch(WorkDoneListener listener) {
         switch (event_type) {
 	        case PERCENTAGE_CHANGE:
-	            ((WorkDoneListener)listener).percentageOfWorkDoneChanged(this);
+	            listener.percentageOfWorkDoneChanged(this);
 	            break;
 
 			case WORK_DONE:
-	            ((WorkDoneListener)listener).workCompleted(this);
+	            listener.workCompleted(this);
 	            break;
 
 			case WORK_INDETERMINATE:
-	            ((WorkDoneListener)listener).workingIndeterminate(this);
+				listener.workingIndeterminate(this);
 	            break;
 	        }
         }
