@@ -38,9 +38,9 @@ import com.lowagie.text.pdf.PdfWriter;
  * and it parses input args. If everything is correct, the right command is executed; an exception is thrwon otherwise. 
  * 
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfSplit
- * @see it.pdfsam.console.tools.PdfConcat
- *
+ * @see it.pdfsam.console.tools.pdf.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfEncrypt
  */
 public class CmdParser {
  
@@ -104,6 +104,17 @@ public class CmdParser {
     //-etype value
     private String etype_value;
 	
+//  MIX
+    //-f1 value
+    private File mf1_value;
+    //-f2 value
+    private File mf2_value;
+    //-reversefirst value
+    private boolean mreverse1_value = false;
+    //-reversesecond value
+    private boolean mreverse2_value = false;
+    //-overwrite value
+    private boolean moverwrite_value = false;   
 //ANY    
     //-o value
     private File o_value;
@@ -123,9 +134,10 @@ public class CmdParser {
     final static public byte C_CONCAT = 0x01;
     final static public byte C_SPLIT = 0x02;    
     final static public byte C_ECRYPT = 0x03;  
+    final static public byte C_MIX = 0x04;  
     
     final static private String COMMAND = "java -jar pdfsam-console";
-    final static private String DESCRIPTION = "concat, split, encrypt pdf files";
+    final static private String DESCRIPTION = "concat, split, encrypt, mix pdf files";
     
     
     //concat options if concat command is given
@@ -169,7 +181,7 @@ public class CmdParser {
                    FileParam.REQUIRED, 
                    FileParam.SINGLE_VALUED),
             new StringParam("p",   
-                    "split: prefix for the output files name",
+                    "prefix for the output files name",
                             StringParam.OPTIONAL),                      
             new StringParam("s",   
                     "split type {["+CmdParser.S_BURST+"], ["+CmdParser.S_ODD+"], ["+CmdParser.S_EVEN+"], ["+CmdParser.S_SPLIT+"], ["+CmdParser.S_NSPLIT+"]}",
@@ -185,7 +197,7 @@ public class CmdParser {
                     FileParam.SINGLE_VALUED)                          
     };
     
-    //concat options if encrypt command is given
+    //encrypt options if encrypt command is given
     private final Parameter[] encrypt_opts = new Parameter[] {
             new FileParam("o",
                     "output directory",
@@ -222,6 +234,34 @@ public class CmdParser {
                            FileParam.OPTIONAL, 
                            FileParam.SINGLE_VALUED)
     };
+    
+    //mix options if mix command is given
+    private final Parameter[] mix_opts = new Parameter[] {
+            new FileParam("o",
+                    "pdf output file: if it doesn't exist it's created, if it exists it must be writeable",
+                    ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
+                    FileParam.REQUIRED, 
+                    FileParam.SINGLE_VALUED),
+            new FileParam("f1",
+                   "first input pdf file to split",
+                   FileParam.IS_FILE & FileParam.IS_READABLE,
+                   FileParam.REQUIRED, 
+                   FileParam.SINGLE_VALUED),
+            new FileParam("f2",
+                   "second input pdf file to split",
+                   FileParam.IS_FILE & FileParam.IS_READABLE,
+                   FileParam.REQUIRED, 
+                   FileParam.SINGLE_VALUED),
+            new BooleanParam("reversefirst", "reverse first input file"),
+            new BooleanParam("reversesecond", "reverse second input file"),
+            new FileParam("log",
+                    "text file to log output messages",
+                    ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
+                    FileParam.OPTIONAL,
+                    FileParam.SINGLE_VALUED),
+            new BooleanParam("overwrite", "overwrite existing output file")                          
+
+    };    
 
     /**
      * The arguments for split command
@@ -247,9 +287,19 @@ public class CmdParser {
      * The arguments for encrypt command
      */
     private final Parameter[] encrypt_arguments = new Parameter[] {
-            new StringParam("encrypt",   
-                    "encrypt to execute {[encrypt]}",
+            new StringParam("command",   
+                    "command to execute {[encrypt]}",
                     new String[] { "encrypt" },
+                    StringParam.REQUIRED),
+    };    
+
+    /**
+     * The arguments for mix command
+     */
+    private final Parameter[] mix_arguments = new Parameter[] {
+            new StringParam("command",   
+                    "command to execute {[mix]}",
+                    new String[] { "mix" },
                     StringParam.REQUIRED),
     };    
 
@@ -258,8 +308,8 @@ public class CmdParser {
      */
     private final Parameter[] arguments = new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[concat], [split], [encrypt]}",
-                    new String[] { "concat", "split", "encrypt" },
+                    "command to execute {[concat], [split], [encrypt], [mix]}",
+                    new String[] { "concat", "split", "encrypt", "mix" },
                     StringParam.REQUIRED),
 
     };
@@ -268,12 +318,13 @@ public class CmdParser {
      * The help text for this program
      */
     public static final String concat_helpText = "Concatenate pdf files. "+
-        "you specify the '-o /home/user/outfile.pdf' option to set the output file and the source:\n"+
-        "'-f /tmp/file1.pdf /tmp/file2.pdf -f /tmp/file3.pdf [...]' to specify a file list to concat.\n"+
+        "you must specify the '-o /home/user/outfile.pdf' option to set the output file and the source file list:\n"+
+        "'-f /tmp/file1.pdf /tmp/file2.pdf -f /tmp/file3.pdf [...]' to specify a file list or at least one file to concat.\n"+
         "'-l /tmp/list.csv' a csv file containing the list of files to concat, separated by a comma.\n"+
         "'-l /tmp/list.xml' a xml file containing the list of files to concat, <filelist><file value=\"filepath\" /></filelist>\n"+
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+
         "Note: You can use only one of these options not both in the same command line\n\n\n"+
+        "'-overwrite' to overwrite output file if already exists.\n"+
         "Example: java -jar pdfsam-console.jar -o /tmp/outfile.pdf -f /tmp/1.pdf -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console.jar -l c:\\docs\\list.csv concat";
     
@@ -283,21 +334,41 @@ public class CmdParser {
     public static final String split_helpText = "Split pdf file. "+ 
 	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split.\n" +
 	    "You must specify '-o /home/user' to set the output directory.\n"+
-	    "You must specify '-s split_type' to set the split type.\n"+
+	    "You must specify '-s split_type' to set the split type. Possible values: {["+CmdParser.S_BURST+"], ["+CmdParser.S_ODD+"], ["+CmdParser.S_EVEN+"], ["+CmdParser.S_SPLIT+"], ["+CmdParser.S_NSPLIT+"]}\n"+
 	    "'-p prefix_' to specify a prefix for output names of files.\n"+
-	    "'-n prefix_' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
+	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
     
     /**
      * The help text for this program
      */
-    public static final String encrypt_helpText = "Encrypt pdf files. ";
+    public static final String encrypt_helpText = "Encrypt pdf files. "+ 
+    "You must specify '-o /home/user' to set the output directory.\n"+
+    "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf -f /tmp/file3.pdf [...]' to specify a file list to encrypt.\n"+
+    "'-apwd password' to set the owner password.\n"+
+    "'-upwd password' to set the user password.\n"+
+    "'-allow permission' to set the permissions list. Possible values {["+CmdParser.E_PRINT+"], ["+CmdParser.E_ANNOTATION+"], ["+CmdParser.E_ASSEMBLY+"], ["+CmdParser.E_COPY+"], ["+CmdParser.E_DPRINT+"], ["+CmdParser.E_FILL+"], ["+CmdParser.E_MODIFY+"], ["+CmdParser.E_SCREEN+"]}\n\n\n"+
+    "'-p prefix_' to specify a prefix for output names of files.\n"+
+    "'-etype ' to set the encryption angorithm. If omitted it uses rc4_128. Possible values {["+CmdParser.E_AES_128+"], ["+CmdParser.E_RC4_128+"], ["+CmdParser.E_RC4_40+"]}\n\n\n"+
+    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -apwd hallo -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
     
     /**
      * The help text for this program
      */
-    public static final String helpText = "Run -h [command] for commands help. ";
+    public static final String mix_helpText = "Mix alternate two pdf files. "+
+    	"You must specify '-o /home/user/out.pdf' to set the output file.\n"+
+	    "You must specify '-f1 /home/user/infile1.pdf' option to set the first input file.\n" +
+	    "You must specify '-f2 /home/user/infile2.pdf' option to set the second input file.\n" +
+        "'-reversefirst' reverse the first input file.\n"+
+        "'-reversesecond' reverse the second input file.\n"+
+        "'-overwrite' to overwrite output file if already exists.\n"+
+        "Example: java -jar pdfsam-console.jar -o /tmp/outfile.pdf -f1 /tmp/1.pdf -f2 /tmp/2.pdf -reversesecond mix\n";
+
+    /**
+     * The help text for this program
+     */
+    public static final String helpText = CmdParser.COMMAND+" -h [command] for commands help. ";
     
     /**
      * Costructor
@@ -333,6 +404,10 @@ public class CmdParser {
                 input_command = CmdParser.C_ECRYPT;
                 //create a new handler specific for encrypt
                 command_line_handler = new VersionCmdLineHandler("pdfsam-console ver."+MainConsole.VERSION,new HelpCmdLineHandler(CmdParser.encrypt_helpText,CmdParser.COMMAND,CmdParser.DESCRIPTION,encrypt_opts,encrypt_arguments));
+            }else if (i_command.equals("mix")){
+                input_command = CmdParser.C_MIX;
+                //create a new handler specific for mix
+                command_line_handler = new VersionCmdLineHandler("pdfsam-console ver."+MainConsole.VERSION,new HelpCmdLineHandler(CmdParser.mix_helpText,CmdParser.COMMAND,CmdParser.DESCRIPTION,mix_opts,mix_arguments));
             }
 	        else{
 	            //create a new handler
@@ -347,6 +422,8 @@ public class CmdParser {
                 ParseSplitCommand();        		
         	}else if (i_command.equals("encrypt")){
         		ParseEncryptCommand();
+        	}else if (i_command.equals("mix")){
+        		ParseMixCommand();
         	}
         }else{
             throw new ParseException("ParseError: "+command_line_handler.getParseError());
@@ -638,7 +715,77 @@ public class CmdParser {
 //END_PARSE -allow            
             return true;
     }    
-  
+
+
+    /**
+     * Parser for the command line input with the "mix" argument. Input is validated and, if no exception is thrown,
+     * is processed. Files extension must be of the right type. 
+     * @return true if the command is parsed correctly, exception otherwise.
+     * @throws Exception
+     */
+    private boolean ParseMixCommand() throws Exception{
+//PARSE -o
+        FileParam o_opts = (FileParam) command_line_handler.getOption("o");
+            //no output option given
+            if (!(o_opts.isSet())){
+                throw new ParseException("OutputNotFound: missing or illegal -o option.");
+            }
+            //output is given
+            else{
+                File out_file;
+                out_file = o_opts.getFile();
+                //output is given but is not a pdf file
+                if (!(out_file.getPath().toLowerCase().endsWith(".pdf"))){
+        			throw new ParseException("ParseMixCommand: output file not a pdf format.");	
+        		}
+                else if(out_file.getName().toLowerCase().equals(".pdf")){
+                    throw new ParseException("ParseMixCommand: no output file name.");  
+                }
+                else{
+                    o_value = out_file;
+                }
+            }
+//END_PARSE -o
+//PARSE -f            
+    		FileParam f1_opts = (FileParam) command_line_handler.getOption("f1");           
+            if(f1_opts.isSet()){
+            	File input_file = f1_opts.getFile();
+                if (!(input_file.getPath().toLowerCase().endsWith(".pdf"))){
+                    throw new ParseException("ParseMixCommand: input file "+input_file.getName()+" is not a pdf format.");  
+                }
+                input_option = CmdParser.F_OPT;
+                mf1_value = f1_opts.getFile();
+            }else{
+            	throw new ParseException("ParseMixCommand: -f1 not set.");	
+            }
+            FileParam f2_opts = (FileParam) command_line_handler.getOption("f2");           
+            if(f2_opts.isSet()){
+            	File input_file = f2_opts.getFile();
+                if (!(input_file.getPath().toLowerCase().endsWith(".pdf"))){
+                    throw new ParseException("ParseMixCommand: input file "+input_file.getName()+" is not a pdf format.");  
+                }
+                input_option = CmdParser.F_OPT;
+                mf2_value = f2_opts.getFile();
+            }else{
+            	throw new ParseException("ParseMixCommand: -f2 not set.");	
+            }           
+//END_PARSE -f
+//PARSE -log
+            FileParam log_opts = (FileParam) command_line_handler.getOption("log");
+            if (log_opts.isSet()){
+                log_value = log_opts.getFile();
+            }
+//END_PARSE -log     
+//PARSE -reverse            
+            mreverse1_value = ((BooleanParam) command_line_handler.getOption("reversefirst")).isTrue();
+            mreverse2_value = ((BooleanParam) command_line_handler.getOption("reversesecond")).isTrue();
+//END PARSE -reverse            
+//PARSE -overwrite            
+            moverwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
+//END PARSE -overwrite
+            return true;
+    }
+    
     /**
      * @return Returns the -f option value in concat command.
      */
@@ -751,14 +898,55 @@ public class CmdParser {
 		return eallow_opts;
 	}
 
+	/**
+	 * @return -apdw value
+	 */
 	public String getEApwdValue() {
 		return eapwd_value;
 	}
 
+	/**
+	 * @return -updw value
+	 */
 	public String getEUpwdValue() {
 		return eupwd_value;
 	}
 	
+    /**
+     * @return Returns the mf1_value.
+     */
+    public File getMF1Value() {
+        return mf1_value;
+    }
+
+    /**
+     * @return Returns the mf2_value.
+     */
+    public File getMF2Value() {
+        return mf2_value;
+    }
+    
+    /**
+     * @return Returns the -reversefirst option value in concat command.
+     */
+    public boolean MReverseFirst() {
+        return mreverse1_value;
+    }
+    
+    /**
+     * @return Returns the -reversesecond option value in concat command.
+     */
+    public boolean MReverseSecond() {
+        return mreverse2_value;
+    }
+    
+    
+    /**
+     * @return Returns the -overwrite option value in concat command.
+     */
+    public boolean MOverwrite() {
+        return moverwrite_value;
+    }
 	/**
 	 * @param encAlg encryption algorithm
 	 * @return The permissiona map based on the chosen encryption

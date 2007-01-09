@@ -19,7 +19,7 @@ import java.io.File;
  * 
  * Class used to create a temporary file.
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfConcat
  * 
  */
 public class TmpFileNameGenerator {
