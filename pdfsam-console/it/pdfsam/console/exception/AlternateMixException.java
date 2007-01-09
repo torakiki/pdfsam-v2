@@ -1,5 +1,5 @@
 /*
- * Created on 28-Dec-2006
+ * Created on 09-Jan-2007
  * Copyright (C) 2006 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -14,23 +14,22 @@
  */
 package it.pdfsam.console.exception;
 /**
- * Exception thrown while encrypting pdf files
+ * Exception thrown while mixing pdf files
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.pdf.PdfEncrypt
+ * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  *
  */
+public class AlternateMixException extends Exception {
 
-public class EncryptException extends Exception {
-
-	private static final long serialVersionUID = 6742497449979418765L;
+	private static final long serialVersionUID = -8725252193302287138L;
 		private String error_msg; 
 
-	    public EncryptException() {
+	    public AlternateMixException() {
 	        super();
-	        error_msg = "GenericEncryptException";
+	        error_msg = "GenericAlternateMixException";
 	    }
 
-	    public EncryptException(String message) {
+	    public AlternateMixException(String message) {
 	        super(message);
 	        error_msg = message;
 	    }
@@ -39,4 +38,3 @@ public class EncryptException extends Exception {
 	        return error_msg;
 	    }
 }
-

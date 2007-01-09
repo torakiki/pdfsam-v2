@@ -16,7 +16,7 @@ package it.pdfsam.console.exception;
 /**
  * Exception thrown while splitting pdf files
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfSplit
  *
  */
 public class SplitException extends Exception {
