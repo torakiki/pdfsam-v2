@@ -120,7 +120,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Encrypt";
-    private final String PLUGIN_VERSION = "0.1.2e";
+    private final String PLUGIN_VERSION = "0.1.3e";
 	
 	private final static String RC4_40 = "RC4-40b";
 	private final static String RC4_128 = "RC4-128b";
@@ -577,7 +577,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, dest_folder_label, 0, SpringLayout.WEST, encrypt_options_panel);
         encrypt_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 320, SpringLayout.NORTH, this);
         encrypt_spring_layout.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, encrypt_options_panel);
-        encrypt_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 255, SpringLayout.NORTH, this);
+        encrypt_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 230, SpringLayout.NORTH, this);
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, encrypt_options_panel);
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, same_as_source_radio, 25, SpringLayout.NORTH, same_as_source_radio);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, same_as_source_radio, 1, SpringLayout.NORTH, destination_panel);
@@ -615,11 +615,11 @@ public class EncryptMainGUI extends AbstractPlugIn{
 
 //      RADIO_LAYOUT
         options_pane_layout.putConstraint(SpringLayout.SOUTH, owner_pwd_label, 20, SpringLayout.NORTH, owner_pwd_label);
-        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_label, 100, SpringLayout.WEST, owner_pwd_label);
+        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_label, 120, SpringLayout.WEST, owner_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.NORTH, owner_pwd_label, 10, SpringLayout.NORTH, encrypt_options_panel);
         options_pane_layout.putConstraint(SpringLayout.WEST, owner_pwd_label, 10, SpringLayout.WEST, encrypt_options_panel);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, owner_pwd_field, 0, SpringLayout.SOUTH, owner_pwd_label);
-        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_field, 100, SpringLayout.WEST, owner_pwd_field);
+        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_field, 120, SpringLayout.WEST, owner_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.NORTH, owner_pwd_field, 0, SpringLayout.NORTH, owner_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.WEST, owner_pwd_field, 5, SpringLayout.EAST, owner_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, user_pwd_label, 0, SpringLayout.SOUTH, owner_pwd_field);
@@ -627,7 +627,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
         options_pane_layout.putConstraint(SpringLayout.NORTH, user_pwd_label, 0, SpringLayout.NORTH, owner_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.WEST, user_pwd_label, 5, SpringLayout.EAST, owner_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, user_pwd_field, 0, SpringLayout.SOUTH, user_pwd_label);
-        options_pane_layout.putConstraint(SpringLayout.EAST, user_pwd_field, 100, SpringLayout.WEST, user_pwd_field);
+        options_pane_layout.putConstraint(SpringLayout.EAST, user_pwd_field, 120, SpringLayout.WEST, user_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.NORTH, user_pwd_field, 0, SpringLayout.NORTH, user_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.WEST, user_pwd_field, 5, SpringLayout.EAST, user_pwd_label);
 
@@ -641,26 +641,30 @@ public class EncryptMainGUI extends AbstractPlugIn{
         options_pane_layout.putConstraint(SpringLayout.WEST, encrypt_type, 5, SpringLayout.EAST, encrypt_type_label);
         
         options_pane_layout.putConstraint(SpringLayout.SOUTH, allowall_check, 20, SpringLayout.NORTH, allowall_check);
-        options_pane_layout.putConstraint(SpringLayout.EAST, allowall_check, 170, SpringLayout.WEST, allowall_check);
+        options_pane_layout.putConstraint(SpringLayout.EAST, allowall_check, 160, SpringLayout.WEST, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.NORTH, allowall_check, 5, SpringLayout.SOUTH, encrypt_type_label);
         options_pane_layout.putConstraint(SpringLayout.WEST, allowall_check, 0, SpringLayout.WEST, encrypt_type_label);
+        options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[3], 0, SpringLayout.SOUTH, allowall_check);
+        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[3], 220, SpringLayout.WEST, permissions_check[3]);
+        options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[3], 0, SpringLayout.NORTH, allowall_check);
+        options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[3], 5, SpringLayout.EAST, allowall_check);
+        options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[7], 0, SpringLayout.SOUTH, permissions_check[3]);
+        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[7], 220, SpringLayout.WEST, permissions_check[7]);
+        options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[7], 0, SpringLayout.NORTH, permissions_check[3]);
+        options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[7], 0, SpringLayout.EAST, permissions_check[3]);
         
         options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[0], 20, SpringLayout.NORTH, permissions_check[0]);
         options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[0], 0, SpringLayout.EAST, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[0], 0, SpringLayout.SOUTH, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[0], 0, SpringLayout.WEST, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[1], 0, SpringLayout.SOUTH, permissions_check[0]);
-        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[1], 170, SpringLayout.WEST, permissions_check[1]);
+        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[1], 0, SpringLayout.EAST, permissions_check[3]);
         options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[1], 0, SpringLayout.NORTH, permissions_check[0]);
         options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[1], 5, SpringLayout.EAST, permissions_check[0]);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[2], 0, SpringLayout.SOUTH, permissions_check[1]);
-        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[2], 170, SpringLayout.WEST, permissions_check[2]);
+        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[2], 0, SpringLayout.EAST, permissions_check[7]);
         options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[2], 0, SpringLayout.NORTH, permissions_check[1]);
         options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[2], 0, SpringLayout.EAST, permissions_check[1]);
-        options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[3], 0, SpringLayout.SOUTH, permissions_check[2]);
-        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[3], 170, SpringLayout.WEST, permissions_check[3]);
-        options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[3], 0, SpringLayout.NORTH, permissions_check[2]);
-        options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[3], 5, SpringLayout.EAST, permissions_check[2]);
         
         options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[4], 20, SpringLayout.NORTH, permissions_check[4]);
         options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[4], 0, SpringLayout.EAST, permissions_check[0]);
@@ -674,10 +678,6 @@ public class EncryptMainGUI extends AbstractPlugIn{
         options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[6], 0, SpringLayout.EAST, permissions_check[2]);
         options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[6], 0, SpringLayout.NORTH, permissions_check[4]);
         options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[6], 0, SpringLayout.WEST, permissions_check[2]);
-        options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[7], 0, SpringLayout.SOUTH, permissions_check[4]);
-        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[7], 0, SpringLayout.EAST, permissions_check[3]);
-        options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[7], 0, SpringLayout.NORTH, permissions_check[4]);
-        options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[7], 0, SpringLayout.WEST, permissions_check[3]);
 
     }
     
