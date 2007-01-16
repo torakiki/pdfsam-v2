@@ -128,6 +128,8 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private final EnterDoClickListener remove_enterkey_listener = new EnterDoClickListener(remove_file_button);
 	private final EnterDoClickListener run_enterkey_listener = new EnterDoClickListener(run_button);
 	private final EnterDoClickListener browse_enterkey_listener = new EnterDoClickListener(browse_button);
+	private final EnterDoClickListener browse_cover_enterkey_listener = new EnterDoClickListener(browse_cover_button);
+	private final EnterDoClickListener browse_footer_enterkey_listener = new EnterDoClickListener(browse_footer_button);
 	private final EnterDoClickListener clear_enterkey_listener = new EnterDoClickListener(clear_button);
 
 	private final ThreadGroup add_or_run_threads = new ThreadGroup("add and run threads");
@@ -143,7 +145,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_NAME = "Cover and Footer";
-	private static final String PLUGIN_VERSION = "0.1.2e";
+	private static final String PLUGIN_VERSION = "0.1.3e";
 
 	/**
 	 * Constructor
@@ -536,6 +538,8 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		run_button.addKeyListener(run_enterkey_listener);
 		clear_button.addKeyListener(clear_enterkey_listener);
 		browse_button.addKeyListener(browse_enterkey_listener);
+		browse_cover_button.addKeyListener(browse_cover_enterkey_listener);
+		browse_footer_button.addKeyListener(browse_footer_enterkey_listener);
 
 
 		destination_text_field.addKeyListener(run_enterkey_listener);
@@ -711,9 +715,9 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.WEST, destination_label, 0, SpringLayout.WEST, destination_panel);
 
 		destination_panel_layout.putConstraint(SpringLayout.SOUTH, browse_button, 25, SpringLayout.NORTH, browse_button);
-		destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_button, 0, SpringLayout.NORTH, destination_text_field);
-		destination_panel_layout.putConstraint(SpringLayout.WEST, browse_button, -115, SpringLayout.EAST, destination_panel);        
 		destination_panel_layout.putConstraint(SpringLayout.EAST, browse_button, -10, SpringLayout.EAST, destination_panel);
+		destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_button, 0, SpringLayout.NORTH, destination_text_field);
+		destination_panel_layout.putConstraint(SpringLayout.WEST, browse_button, -80, SpringLayout.EAST, browse_button);        
 
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.SOUTH, run_button, 25, SpringLayout.NORTH, run_button);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.EAST, run_button, 0, SpringLayout.EAST, clear_button);
@@ -829,7 +833,6 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		final Thread loadnode_thread = 
 			new Thread(add_or_run_threads, "load") {
 			private String wip_text;
-
 			public void run() {			
 				try{	
 					Node cover_node = (Node) arg0.selectSingleNode("cover/@value");
