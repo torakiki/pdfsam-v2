@@ -107,12 +107,12 @@ public class PdfEncrypt extends GenericPdfTool{
 					out_message += LogFormatter.formatMessage("File encrypted but not renamed: "+tmp_o_file+"-\n");
 				}
 				 f++;
-			}
-			workCompleted();
+			}			
 			out_message += LogFormatter.formatMessage("Pdf files encrypted -\n"+PdfEncryptor.getPermissionsVerbose(user_permissions));
     	}catch(Exception e){
-    		workCompleted();
     		throw new EncryptException(e.getMessage());
+    	}finally{
+    		workCompleted();
     	}
     }
 

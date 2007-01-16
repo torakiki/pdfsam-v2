@@ -73,91 +73,98 @@ public class PdfAlternateMix extends GenericPdfTool{
 	
 	 /**
      * Execute the mix command. On error an exception is thrown.
-     * @throws Exception
+     * @throws AlternateMixException
      */
-    public void doAlternateMix() throws Exception{
-    	workingIndeterminate();
-    	out_message = "";
-        Document pdf_document = null;
-        PdfCopy  pdf_writer = null;
-        File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_file.getParent());
-        PdfReader pdf_reader1;
-        PdfReader pdf_reader2;
-        
-        pdf_reader1 = new PdfReader(new RandomAccessFileOrArray(input_file1.getAbsolutePath()),null);
-        pdf_reader1.consolidateNamedDestinations();
-        limits1[1] = pdf_reader1.getNumberOfPages();
-                
-        pdf_reader2 = new PdfReader(new RandomAccessFileOrArray(input_file2.getAbsolutePath()),null);
-        pdf_reader2.consolidateNamedDestinations();
-        limits2[1] = pdf_reader2.getNumberOfPages();
+	public void doAlternateMix() throws AlternateMixException{
+		try{
+			workingIndeterminate();
+			out_message = "";
+			Document pdf_document = null;
+			PdfCopy  pdf_writer = null;
+			File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_file.getParent());
+			PdfReader pdf_reader1;
+			PdfReader pdf_reader2;
 
-        
-        pdf_document = new Document(pdf_reader1.getPageSizeWithRotation(1));
-        pdf_writer = new PdfCopy(pdf_document, new FileOutputStream(tmp_o_file));
-        out_message += LogFormatter.formatMessage("Temporary file created-\n");
-        MainConsole.setDocumentCreator(pdf_document);
-        pdf_document.open();
-        
-        PdfImportedPage page;
-        //importo
-        boolean finished1 = false;
-        boolean finished2 = false;
-        int current1 = (reverseFirst)? limits1[1] :limits1[0];
-        int current2 = (reverseSecond)? limits2[1] :limits2[0];
-        while(!finished1 || !finished2){
-        	if(!finished1){
-	        	if(current1>=limits1[0] && current1<=limits1[1]){
-	            	page = pdf_writer.getImportedPage(pdf_reader1, current1);
-	                pdf_writer.addPage(page);
-	                current1 = (reverseFirst)? (current1-1) :(current1+1);
-	        	}else{
-	        		out_message += LogFormatter.formatMessage("First file processed-\n");
-	        		finished1 = true;
-	        	}
-        	}
-        	if(!finished2){
-	        	if(current2>=limits2[0] && current2<=limits2[1] && !finished2){
-	            	page = pdf_writer.getImportedPage(pdf_reader2, current2);
-	                pdf_writer.addPage(page);
-	                current2 = (reverseSecond)? (current2-1) :(current2+1);
-	        	}else{
-	        		out_message += LogFormatter.formatMessage("Second file processed-\n");
-	        		finished2 = true;
-	        	}
-        	}
+			pdf_reader1 = new PdfReader(new RandomAccessFileOrArray(input_file1.getAbsolutePath()),null);
+			pdf_reader1.consolidateNamedDestinations();
+			limits1[1] = pdf_reader1.getNumberOfPages();
 
-        }
-        
-        pdf_reader1.close();
-        pdf_writer.freeReader(pdf_reader1);
-        pdf_reader2.close();
-        pdf_writer.freeReader(pdf_reader2);
-        
-        pdf_document.close();
-        // step 6: temporary buffer moved to output file
-        //out file already exist
-        if (o_file.exists()){
-            //check if overwrite is allowed
-            if (overwrite){
-                try{
-                    o_file.delete();
-                }
-                catch (Exception se){
-                    throw new AlternateMixException("IOError: Unable to delete existing output file "+o_file.getName()+", temporary file "+tmp_o_file.getName()+" created.");
-                }
-            }else{
-                throw new AlternateMixException("OverwriteNotAllowed: Cannot overwrite output file (-overwrite option not passed), a temporary file has been created ("+tmp_o_file.getName()+").");
-            }
-        }
-           try{
-               if(!tmp_o_file.renameTo(o_file)){
-                   throw new AlternateMixException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
-               }
-           }
-           catch (Exception se2){
-               throw new AlternateMixException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
-           }
-           workCompleted();
-    }
+			pdf_reader2 = new PdfReader(new RandomAccessFileOrArray(input_file2.getAbsolutePath()),null);
+			pdf_reader2.consolidateNamedDestinations();
+			limits2[1] = pdf_reader2.getNumberOfPages();
+
+
+			pdf_document = new Document(pdf_reader1.getPageSizeWithRotation(1));
+			pdf_writer = new PdfCopy(pdf_document, new FileOutputStream(tmp_o_file));
+			out_message += LogFormatter.formatMessage("Temporary file created-\n");
+			MainConsole.setDocumentCreator(pdf_document);
+			pdf_document.open();
+
+			PdfImportedPage page;
+			//importo
+			boolean finished1 = false;
+			boolean finished2 = false;
+			int current1 = (reverseFirst)? limits1[1] :limits1[0];
+			int current2 = (reverseSecond)? limits2[1] :limits2[0];
+			while(!finished1 || !finished2){
+				if(!finished1){
+					if(current1>=limits1[0] && current1<=limits1[1]){
+						page = pdf_writer.getImportedPage(pdf_reader1, current1);
+						pdf_writer.addPage(page);
+						current1 = (reverseFirst)? (current1-1) :(current1+1);
+					}else{
+						out_message += LogFormatter.formatMessage("First file processed-\n");
+						finished1 = true;
+					}
+				}
+				if(!finished2){
+					if(current2>=limits2[0] && current2<=limits2[1] && !finished2){
+						page = pdf_writer.getImportedPage(pdf_reader2, current2);
+						pdf_writer.addPage(page);
+						current2 = (reverseSecond)? (current2-1) :(current2+1);
+					}else{
+						out_message += LogFormatter.formatMessage("Second file processed-\n");
+						finished2 = true;
+					}
+				}
+
+			}
+
+			pdf_reader1.close();
+			pdf_writer.freeReader(pdf_reader1);
+			pdf_reader2.close();
+			pdf_writer.freeReader(pdf_reader2);
+
+			pdf_document.close();
+			// step 6: temporary buffer moved to output file
+			//out file already exist
+			if (o_file.exists()){
+				//check if overwrite is allowed
+				if (overwrite){
+					try{
+						o_file.delete();
+					}
+					catch (Exception se){
+						throw new AlternateMixException("IOError: Unable to delete existing output file "+o_file.getName()+", temporary file "+tmp_o_file.getName()+" created.");
+					}
+				}else{
+					throw new AlternateMixException("OverwriteNotAllowed: Cannot overwrite output file (-overwrite option not passed), a temporary file has been created ("+tmp_o_file.getName()+").");
+				}
+			}
+			try{
+				if(!tmp_o_file.renameTo(o_file)){
+					throw new AlternateMixException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
+				}
+			}
+			catch (Exception se2){
+				throw new AlternateMixException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
+			}
+			out_message += LogFormatter.formatMessage("Alternate mix completed-\n");
+
+		}catch(Exception e){    		
+			throw new AlternateMixException(e.getMessage());
+		}finally{
+			workCompleted();
+		}
+	}
 }

@@ -62,7 +62,7 @@ public class MainConsole{
     /**
      * Console version
      */
-    public static final String VERSION = "0.6.7e"; 
+    public static final String VERSION = "0.6.8e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
