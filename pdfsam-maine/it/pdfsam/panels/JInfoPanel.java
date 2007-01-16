@@ -15,6 +15,7 @@
  */
 package it.pdfsam.panels;
 
+import it.pdfsam.GUI.MainGUI;
 import it.pdfsam.abstracts.AbstractPlugIn;
 import it.pdfsam.configuration.Configuration;
 import it.pdfsam.exceptions.LoadJobException;
@@ -85,8 +86,8 @@ public class JInfoPanel extends AbstractPlugIn{
         i18n_messages = config.getI18nResourceBundle();
         xml_config_object = config.getXmlConfigObject();
     	 try{
-             author = xml_config_object.getXMLConfigValue("/pdfsam/adata/author/aname");
-             version = xml_config_object.getXMLConfigValue("/pdfsam/info/version");
+             author = MainGUI.AUTHOR;
+             version = MainGUI.APP_VERSION;
              app_name = xml_config_object.getXMLConfigValue("/pdfsam/info/name");
              language = xml_config_object.getXMLConfigValue("/pdfsam/info/language");
              build_date = xml_config_object.getXMLConfigValue("/pdfsam/info/build_date");

@@ -38,7 +38,11 @@ import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-
+/**
+ * Environment manipulation class
+ * @author a.vacondio
+ *
+ */
 public class EnvWorker {
 
 	private ResourceBundle i18n_messages;
@@ -118,12 +122,11 @@ public class EnvWorker {
 	 *            path to the xml file to load
 	 */
 	public void loadJobs() {
-		file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Load job"));
+		file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Load environment"));
 		int return_val = file_chooser.showOpenDialog((Component)parent);
-		File chosen_file = null;
 		if (return_val == JFileChooser.APPROVE_OPTION) {
-			chosen_file = file_chooser.getSelectedFile();
-			loadJobs(chosen_file);
+			final File chosen_file = file_chooser.getSelectedFile();
+			loadJobs(chosen_file); 
 		}
 	}
 

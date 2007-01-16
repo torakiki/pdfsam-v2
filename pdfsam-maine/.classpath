@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/jaxen-1.1-beta-11.jar"/>
 	<classpathentry kind="lib" path="lib/pdfsam-langpack.jar"/>
 	<classpathentry kind="lib" path="lib/looks-2.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/pdfsam-console-0.6.1e.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-1.1.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

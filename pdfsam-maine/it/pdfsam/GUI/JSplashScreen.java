@@ -40,7 +40,8 @@ public class JSplashScreen extends JFrame {
 	
 	private String initMessage;
 	
-	public JSplashScreen(String initMessage){
+	public JSplashScreen(String title, String initMessage){
+		this.setTitle(title);
 		this.initMessage = initMessage;
 		init();
 	}

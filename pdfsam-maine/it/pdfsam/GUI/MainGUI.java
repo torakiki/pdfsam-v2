@@ -20,6 +20,7 @@ import it.pdfsam.configuration.Configuration;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.interfaces.WorkDoneListener;
 import it.pdfsam.env.EnvWorker;
+import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.listeners.EnvActionListener;
 import it.pdfsam.listeners.ExitActionListener;
 import it.pdfsam.panels.ButtonsBar;
@@ -43,6 +44,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -82,22 +84,22 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     private LogPanel log_panel;
     private JScrollPane main_scroll_panel;
     private JSplashScreen screen;
+    private ResourceBundle i18n_messages;
     
-	private static final String AUTHOR = "Andrea Vacondio";
+    public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
-	private static final String UNIXNAME = "pdfsam";
-	private static final String APP_VERSION = "1.1.6e"; 
+	public static final String UNIXNAME = "pdfsam";
+	public static final String APP_VERSION = "1.1.7e"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
 	private final boolean IDE = true;
 
 	public MainGUI() {
-		
 		runSplash();
 		config = Configuration.getInstance();
 		config.getMainConsole().addWorkDoneListener(this);
-
+		
 		theme_sel = new ThemeSelector();
 		try {
 			//tryes to get config.xml path
@@ -138,24 +140,25 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 
 		//get bundle
 		config.setI18nResourceBundle(new LanguageLoader(language, "it.pdfsam.i18n.Messages").getBundle());
+		i18n_messages = config.getI18nResourceBundle();
 
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		center(this,800,600);
 		setIconImage(new ImageIcon(this.getClass().getResource("/images/pdf.png")).getImage());
         try{
-            setTitle(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/name")+" Ver. "+config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/version"));
+            setTitle(MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION);
             
         }catch(Exception ge){
             setTitle("pdfsam");
         }
-        setSplashStep("Building menus..");
+        setSplashStep(GettextResource.gettext(i18n_messages,"Building menus.."));
 		//menu
 		final MenuPanel menu_bar = new MenuPanel();
 		menu_bar.addPropertyChangeListener(this);
 		menu_bar.addExitActionListener(exitListener);
         setJMenuBar(menu_bar);
-        setSplashStep("Building buttons bar..");
+        setSplashStep(GettextResource.gettext(i18n_messages,"Building buttons bar.."));
         //buttons bar
         final ButtonsBar buttons_bar = new ButtonsBar(MainGUI.NAME + " ToolBar");
         getContentPane().add(buttons_bar,BorderLayout.PAGE_START);      
@@ -170,7 +173,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
         buttons_bar.addLogButtonsActionListener(log_panel);
         plugs_panel.setMinimumSize(new Dimension(400,300));
 //      SCANS_FOR_PLUGINS     
-        setSplashStep("Loading plugins..");
+        setSplashStep(GettextResource.gettext(i18n_messages,"Loading plugins.."));
         int i = 0;
         ArrayList p_table_data = new ArrayList();
         try   {
@@ -209,9 +212,9 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
         }
         catch (Exception lpi){
             lpi.printStackTrace();
-            log_panel.addLogText("Exception loading plugin: "+lpi.getMessage(), LogPanel.LOG_ERROR);
+             screen.setText("Exception loading plugin: "+lpi.getMessage());
         }
-        setSplashStep("Building tree..");
+        setSplashStep(GettextResource.gettext(i18n_messages,"Building tree.."));
         DefaultTreeModel treeModel = new DefaultTreeModel(rootNode);
         tree = new JTree(treeModel);
         tree.addTreeSelectionListener(this);
@@ -239,7 +242,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
         getContentPane().add(splitPane2,BorderLayout.CENTER);
                 
         //status bar
-        setSplashStep("Building status bar..");
+        setSplashStep(GettextResource.gettext(i18n_messages,"Building status bar.."));
         status_bar = new JStatusPanel(new ImageIcon(this.getClass().getResource("/images/pdf.png")),MainGUI.NAME);
         status_bar.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
         getContentPane().add(status_bar,BorderLayout.PAGE_END); 
@@ -359,7 +362,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
      * Run a splash screen
      */
     private void runSplash(){
-    		screen = new JSplashScreen("Initialization..");
+    		screen = new JSplashScreen("pdfsam loader", "Initialization..");
 			screen.setMaximumBarValue(7);
     		Runnable runner = new Runnable() {
     			public void run() {    				
