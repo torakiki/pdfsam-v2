@@ -509,7 +509,7 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_spring_layout.putConstraint(SpringLayout.SOUTH, browse_button, 25, SpringLayout.NORTH, browse_button);
         split_spring_layout.putConstraint(SpringLayout.NORTH, browse_button, 0, SpringLayout.NORTH, source_text_field);
         split_spring_layout.putConstraint(SpringLayout.EAST, browse_button, -20, SpringLayout.EAST, this);        
-        split_spring_layout.putConstraint(SpringLayout.WEST, browse_button, -80, SpringLayout.EAST, browse_button);
+        split_spring_layout.putConstraint(SpringLayout.WEST, browse_button, -88, SpringLayout.EAST, browse_button);
         split_spring_layout.putConstraint(SpringLayout.SOUTH, split_options_panel, 185, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, split_options_panel, -5, SpringLayout.EAST, this);
         split_spring_layout.putConstraint(SpringLayout.NORTH, split_options_panel, 70, SpringLayout.NORTH, this);
