@@ -137,7 +137,7 @@ public class MergeMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private static final String PLUGIN_NAME = "Merge";
-    private static final String PLUGIN_VERSION = "0.4.5e";
+    private static final String PLUGIN_VERSION = "0.4.6e";
     
     /**
      * Constructor

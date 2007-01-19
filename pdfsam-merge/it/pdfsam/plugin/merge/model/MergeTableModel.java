@@ -135,15 +135,19 @@ public class MergeTableModel extends AbstractTableModel {
         switch(column){
                 case FILENAME:
                     ((MergeItemType)data.get(row)).setFileName(value.toString());
+                    break;
         
                 case PATH:
                     ((MergeItemType)data.get(row)).setFilePath(value.toString());
+                    break;
                     
                 case PAGES:
                     ((MergeItemType)data.get(row)).setNumPages(value.toString());
+                    break;
         
                 case PAGESELECTION:
                     ((MergeItemType)data.get(row)).setPageSelection(value.toString());
+                    break;
         
         } 
    }
