@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="/pdfsam-main/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-main/lib/itext-1.4.7.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-main/lib/jaxen-1.1-beta-11.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-main/lib/pdfsam-console-0.6.1e.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/pdfsam-1.1.4e.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/pdfsam-1.1.8e.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-console-0.7.0e.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
