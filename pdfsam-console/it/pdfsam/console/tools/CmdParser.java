@@ -384,7 +384,7 @@ public class CmdParser {
      * and it parses in_args again. Executes concat or split of pdf files if everything is ok, an exception is thrown otherwise.
      * @return true if parsed correctly, false otherwise
      */
-    public void Parse() throws Exception{
+    public void parse() throws Exception{
     	String i_command  = "";
         if(in_args == null || in_args.length == 0){
             //create a new handler
@@ -601,7 +601,7 @@ public class CmdParser {
                 }
 */  
                         //i can use "," or " " or "-" as separator
-                        sn_value.replaceAll(",","-").replaceAll(" ","-");
+                    	sn_value = sn_value.replaceAll(",","-").replaceAll(" ","-");
                         Pattern p = Pattern.compile("([0-9]+)([-][0-9]+)*");
                         if (!(p.matcher(sn_value).matches())){
                             throw new ParseException("ParseSplitCommand: -n option must be a number or a sequence number-number-number...");
@@ -629,7 +629,6 @@ public class CmdParser {
      * @throws Exception
      */
     private boolean ParseEncryptCommand() throws Exception{
-			HashMap permissionMap = new HashMap();     
 //PARSE -o
 			FileParam o_opts = (FileParam) command_line_handler.getOption("o");
             //no output option given
@@ -699,7 +698,7 @@ public class CmdParser {
             StringParam allow_opts = (StringParam) command_line_handler.getOption("allow");
             if (allow_opts.isSet()){
 			    //To populate permissions HashMap based on enc type (40-128 bit)
-            	permissionMap = getPermissionMap(etype_value);
+            	HashMap permissionMap = getPermissionMap(etype_value);
 			    Collection permissions_list = allow_opts.getValues();
 			    Iterator it = permissions_list.iterator();
 			    int tmp_permissions = 0;

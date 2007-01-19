@@ -103,8 +103,12 @@ public class PdfConcat extends GenericPdfTool{
     			}
     			//validation
     			if (!(Pattern.compile("([0-9]*[-][0-9]*)|(all)", Pattern.CASE_INSENSITIVE).matcher(current_p_selection).matches())){
-    				try{tmp_o_file.delete();}
-    				catch(Exception e){}
+    				try{
+    					tmp_o_file.delete();
+    				}
+    				catch(Exception e){
+    					throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + ". Unable to delete temporary file.");
+    				}
     				throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + ".");
     			}                
     			file_name = f_list_itr.next().toString();
@@ -121,24 +125,40 @@ public class PdfConcat extends GenericPdfTool{
     					start = Integer.parseInt(limits[0])-1;
     					end_page = Integer.parseInt(limits[1]);                    
     				}catch(Exception ex){
-    					try{tmp_o_file.delete();}
-    					catch(Exception e){}
+    					try{
+    						tmp_o_file.delete();
+    					}
+    					catch(Exception e){
+    						throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + ". Unable to delete temporary file.");
+    					}
     					throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + ".");
     				}                    
     				//validation
     				if (start < 0){
-    					try{tmp_o_file.delete();}
-    					catch(Exception e){}
+    					try{
+    						tmp_o_file.delete();
+    					}
+    					catch(Exception e){
+    						throw new ConcatException("ValidationError: Syntax error. " + (start+1) + " must be positive in " + current_p_selection + ". Unable to delete temporary file.");
+    					}
     					throw new ConcatException("ValidationError: Syntax error. " + (start+1) + " must be positive in " + current_p_selection + ".");    
     				}
     				if (end_page > pdf_number_of_pages){
-    					try{tmp_o_file.delete();}
-    					catch(Exception e){}
+    					try{
+    						tmp_o_file.delete();
+    					}
+    					catch(Exception e){
+    						throw new ConcatException("ValidationError: Cannot merge at page " + end_page + ". No such page. Unable to delete temporary file");
+    					}
     					throw new ConcatException("ValidationError: Cannot merge at page " + end_page + ". No such page.");
     				}
     				if (start >= end_page){
-    					try{tmp_o_file.delete();}
-    					catch(Exception e){}
+    					try{
+    						tmp_o_file.delete();
+    					}
+    					catch(Exception e){
+    						throw new ConcatException("ValidationError: Syntax error. " + (start+1) + " is bigger than " + end_page + " in " + current_p_selection + ". Unable to delete temporary file.");
+    					}
     					throw new ConcatException("ValidationError: Syntax error. " + (start+1) + " is bigger than " + end_page + " in " + current_p_selection + ".");
     				}
 

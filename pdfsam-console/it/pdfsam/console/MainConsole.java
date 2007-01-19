@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -55,14 +56,16 @@ import com.lowagie.text.Document;
  * @see it.pdfsam.console.exception.SplitException
  * @see it.pdfsam.console.exception.EncryptException
  */
-public class MainConsole{
+public class MainConsole implements Serializable{
 
-    //list of listeners
+	private static final long serialVersionUID = -8692849576712411540L;
+
+	//list of listeners
     private EventListenerList listeners = new EventListenerList();
     /**
      * Console version
      */
-    public static final String VERSION = "0.6.8e"; 
+    public static final String VERSION = "0.7.0e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
@@ -88,7 +91,7 @@ public class MainConsole{
         //command parser creation
         CmdParser cmdp = new CmdParser(args);
         //parsing
-        cmdp.Parse();
+        cmdp.parse();
         //if it's a concat
         if ((cmdp.getInputCommand()) == CmdParser.C_CONCAT){
             //and it a -f option
@@ -165,7 +168,7 @@ public class MainConsole{
                 writer.close();
             }
         }catch (Exception e){
-            out_msg += "Unable to write on log output file-"; 
+            out_msg += "Unable to write on log output file: "+e.getMessage();
         }
         return out_msg;
     }

@@ -14,6 +14,7 @@
  */
 package it.pdfsam.console.tools;
 
+import java.io.Serializable;
 import java.util.Comparator;
 /**
  * 
@@ -22,9 +23,11 @@ import java.util.Comparator;
  * @see it.pdfsam.console.tools.pdf.PdfSplit#doSplit()
  * 
  */
-public class StrNumComparator implements Comparator {
-    
-    /**
+public class StrNumComparator implements Comparator, Serializable {
+
+	private static final long serialVersionUID = 3414191133281918424L;
+
+	/**
      * Constructor
      */
     public StrNumComparator(){
