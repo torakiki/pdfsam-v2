@@ -17,6 +17,7 @@ package it.pdfsam.configuration;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.util.XMLConfig;
 
+import java.io.Serializable;
 import java.util.ResourceBundle;
 
 /**
@@ -24,7 +25,10 @@ import java.util.ResourceBundle;
  * @author a.vacondio
  *
  */
-public class Configuration {
+public class Configuration  implements Serializable{
+	
+	private static final long serialVersionUID = -3590221973347278456L;
+
 	private static Configuration configObject;
 	private ResourceBundle i18n_messages;
 	private int logLevel;
@@ -46,11 +50,11 @@ public class Configuration {
 		this.i18n_messages = i18n_messages;
 	}
 
-	public ResourceBundle getI18nResourceBundle(){
+	public synchronized ResourceBundle getI18nResourceBundle(){
 		return i18n_messages;
 	}
 
-	public int getLogLevel() {
+	public synchronized int getLogLevel() {
 		return logLevel;
 	}
 
@@ -58,7 +62,7 @@ public class Configuration {
 		this.logLevel = logLevel;
 	}
 
-	public XMLConfig getXmlConfigObject() {
+	public synchronized XMLConfig getXmlConfigObject() {
 		return xmlConfigObject;
 	}
 

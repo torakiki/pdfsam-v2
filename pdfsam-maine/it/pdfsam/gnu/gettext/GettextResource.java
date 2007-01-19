@@ -66,7 +66,7 @@ import java.util.ResourceBundle;
  */
 public abstract class GettextResource extends ResourceBundle {
 
-  public static boolean verbose = false;
+  public static final boolean verbose = false;
 
   /**
    * Returns the translation of <VAR>msgid</VAR>.

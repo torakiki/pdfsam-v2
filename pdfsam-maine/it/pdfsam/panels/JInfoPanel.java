@@ -47,7 +47,6 @@ public class JInfoPanel extends AbstractPlugIn{
 
 	private static final long serialVersionUID = 1239951345347468850L;
 
-	private JTextPane thanks_to_text;
     private JTable table_plugins;
     private JTextPane text_info_area;
     private String author = "";
@@ -62,9 +61,9 @@ public class JInfoPanel extends AbstractPlugIn{
     
     private final InfoFocusPolicy info_focus_policy = new InfoFocusPolicy();
     
-    private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_NAME = "About";
-    private final String PLUGIN_VERSION = "0.0.3e";
+    private final static String PLUGIN_AUTHOR = "Andrea Vacondio";    
+    private final static String PLUGIN_NAME = "About";
+    private final static String PLUGIN_VERSION = "0.0.3e";
 
     
     /**
@@ -189,30 +188,30 @@ public class JInfoPanel extends AbstractPlugIn{
         }
         
         public Component getComponentAfter(Container CycleRootComp, Component aComponent){            
-            if (aComponent.equals(thanks_to_text)){
-                return thanks_to_text;
+            if (aComponent.equals(text_info_area)){
+                return text_info_area;
             }
-            return thanks_to_text;
+            return text_info_area;
         }
         
         public Component getComponentBefore(Container CycleRootComp, Component aComponent){
             
-            if (aComponent.equals(thanks_to_text)){
-                return thanks_to_text;
+            if (aComponent.equals(text_info_area)){
+                return text_info_area;
             }
-            return thanks_to_text;
+            return text_info_area;
         }
         
         public Component getDefaultComponent(Container CycleRootComp){
-            return thanks_to_text;
+            return text_info_area;
         }
 
         public Component getLastComponent(Container CycleRootComp){
-            return thanks_to_text;
+            return text_info_area;
         }
 
         public Component getFirstComponent(Container CycleRootComp){
-            return thanks_to_text;
+            return text_info_area;
         }
     }
 

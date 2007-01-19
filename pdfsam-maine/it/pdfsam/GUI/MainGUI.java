@@ -89,11 +89,11 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.1.7e"; 
+	public static final String APP_VERSION = "1.1.8e"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
-	private final boolean IDE = true;
+	private static final boolean IDE = true;
 
 	public MainGUI() {
 		runSplash();

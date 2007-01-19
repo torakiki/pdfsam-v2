@@ -1,18 +1,23 @@
-1.1.5 enanched
+1.1.8e alpha
 ===================================
 -Console: added xml input file -l option for merge
 -Console: rewrote commands handler
 -Console: added PdfEncrypt
+-Console: added PdfAlternateMix
 -Encrypt: added Encrypt plugin
+-AlternateMix: added AlternateMix plugin
 -Cover Footer: added Cover and Footer plugin
 -Merge: print style page selection (Es. 1,3-6,11,13)
 -Added save and load environment
 -Added Settings section
 -XMLParser and XMLConfig rebuilt using dom4j
--Completely rewrote Main GUI
+-Completely new MainGUI
+-Fixed log panel caret position (by Aniket Dutta)
+-Added configuration singleton
+-plugin interface and abstract class Rewritten
 -Added plugs panels icons
 -dom4j 1.6.1
--jaxen 1.1 beta 11
+-jaxen 1.1
 -iText 1.4.8
 -looks 2.1.1
 

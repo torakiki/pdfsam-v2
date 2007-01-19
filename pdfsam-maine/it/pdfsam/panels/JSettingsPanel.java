@@ -86,9 +86,9 @@ public class JSettingsPanel extends AbstractPlugIn{
     private final JLabel load_default_job_label = new JLabel();
     private Configuration config;
 
-    private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_NAME = "Settings";
-    private final String PLUGIN_VERSION = "0.0.4e";
+    private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
+    private static final String PLUGIN_NAME = "Settings";
+    private static final String PLUGIN_VERSION = "0.0.4e";
     
 /**
  * Constructor

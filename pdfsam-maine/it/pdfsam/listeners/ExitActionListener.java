@@ -16,12 +16,14 @@ package it.pdfsam.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 /**
  * Listener for the exit action
  * @author a.vacondio
  */
-public class ExitActionListener implements ActionListener {
-	
+public class ExitActionListener implements ActionListener, Serializable {
+
+	private static final long serialVersionUID = 5383151213336454085L;
 	public static final String EXIT_COMMAND = "exit";
 	
 	public void actionPerformed(ActionEvent arg0) {
