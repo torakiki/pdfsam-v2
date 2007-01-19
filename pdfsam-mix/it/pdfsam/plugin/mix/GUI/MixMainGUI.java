@@ -23,7 +23,6 @@ import it.pdfsam.exceptions.SaveJobException;
 import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.listeners.EnterDoClickListener;
 import it.pdfsam.panels.LogPanel;
-import it.pdfsam.util.DirFilter;
 import it.pdfsam.util.PdfFilter;
 
 import java.awt.Color;
@@ -74,7 +73,6 @@ public class MixMainGUI extends AbstractPlugIn{
 	private Configuration config;
 	private MainConsole mc;	
 	private JFileChooser browse_file_chooser;
-	private JFileChooser browse_dir_chooser;
 
 	private final MixFocusPolicy mix_focus_policy = new MixFocusPolicy();
 	//buttons
@@ -96,7 +94,7 @@ public class MixMainGUI extends AbstractPlugIn{
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_NAME = "Alternate Mix";
-	private static final String PLUGIN_VERSION = "0.0.5e";
+	private static final String PLUGIN_VERSION = "0.0.6e";
 	
 	/**
 	 * Constructor
@@ -123,13 +121,7 @@ public class MixMainGUI extends AbstractPlugIn{
 		browse_file_chooser = new JFileChooser();
 		browse_file_chooser.setFileFilter(new PdfFilter());
 		browse_file_chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-//		END_BROWSE_FILE_CHOOSER  
-//		BROWSE_DIR_CHOOSER        
-		browse_dir_chooser = new JFileChooser();
-		browse_dir_chooser.setFileFilter(new DirFilter());
-		browse_dir_chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-//		COVER_BROWSE_BUTTON        
+//		END_BROWSE_FILE_CHOOSER         
 		browse_first_button.setMargin(new Insets(2, 2, 2, 2));
 		browse_first_button.setToolTipText(GettextResource.gettext(i18n_messages,"Browse filesystem for the first file to mix"));
 		browse_first_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
@@ -184,7 +176,7 @@ public class MixMainGUI extends AbstractPlugIn{
 		add(browse_second_button);
 		
 
-		destination_label.setText(GettextResource.gettext(i18n_messages,"Destination output directory:"));
+		destination_label.setText(GettextResource.gettext(i18n_messages,"Destination output file:"));
 		add(destination_label);
 
 		first_label.setText(GettextResource.gettext(i18n_messages,"First pdf document:"));
@@ -230,10 +222,10 @@ public class MixMainGUI extends AbstractPlugIn{
 		browse_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
 		browse_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int return_val = browse_dir_chooser.showOpenDialog(browse_button.getParent());
+				int return_val = browse_file_chooser.showOpenDialog(browse_button.getParent());
 				File chosen_file = null;                
 				if (return_val == JFileChooser.APPROVE_OPTION){
-					chosen_file = browse_dir_chooser.getSelectedFile();
+					chosen_file = browse_file_chooser.getSelectedFile();
 				}
 				//write the destination in text field
 				if (chosen_file != null){
@@ -340,12 +332,12 @@ public class MixMainGUI extends AbstractPlugIn{
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, first_label, 5, SpringLayout.WEST, this);
 
 		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, first_text_field, 20, SpringLayout.NORTH, first_text_field);
-		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, first_text_field, -110, SpringLayout.EAST, this);
+		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, first_text_field, -112, SpringLayout.EAST, this);
 		spring_layout_mix_panel.putConstraint(SpringLayout.NORTH, first_text_field, 0, SpringLayout.SOUTH, first_label);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, first_text_field, 0, SpringLayout.WEST, first_label);
 
 		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, browse_first_button, 25, SpringLayout.NORTH, browse_first_button);
-		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, browse_first_button, -7, SpringLayout.EAST, this);
+		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, browse_first_button, -20, SpringLayout.EAST, this);
 		spring_layout_mix_panel.putConstraint(SpringLayout.NORTH, browse_first_button, 0, SpringLayout.NORTH, first_text_field);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, browse_first_button, -88, SpringLayout.EAST, browse_first_button);        
 
@@ -360,12 +352,12 @@ public class MixMainGUI extends AbstractPlugIn{
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, second_label, 0, SpringLayout.WEST, reverse_first_checkbox);
 
 		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, second_text_field, 20, SpringLayout.NORTH, second_text_field);
-		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, second_text_field, -110, SpringLayout.EAST, this);
+		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, second_text_field, -112, SpringLayout.EAST, this);
 		spring_layout_mix_panel.putConstraint(SpringLayout.NORTH, second_text_field, 0, SpringLayout.SOUTH, second_label);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, second_text_field, 0, SpringLayout.WEST, second_label);
 
 		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, browse_second_button, 25, SpringLayout.NORTH, browse_second_button);
-		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, browse_second_button, -7, SpringLayout.EAST, this);
+		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, browse_second_button, -20, SpringLayout.EAST, this);
 		spring_layout_mix_panel.putConstraint(SpringLayout.NORTH, browse_second_button, 0, SpringLayout.NORTH, second_text_field);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, browse_second_button, -88, SpringLayout.EAST, browse_second_button);        
 
@@ -462,44 +454,38 @@ public class MixMainGUI extends AbstractPlugIn{
 
 	public void loadJobNode(Node arg) throws LoadJobException {
 		final Node arg0 = arg;
-		final Thread loadnode_thread = 
-			new Thread(run_threads, "load") {
-
-			public void run() {			
-				try{	
-					Node first_node = (Node) arg0.selectSingleNode("first/@value");
-					if (first_node != null){
-						first_text_field.setText(first_node.getText());
-					}
-					Node second_node = (Node) arg0.selectSingleNode("second/@value");
-					if (second_node != null){
-						second_text_field.setText(second_node.getText());
-					}
-					Node file_destination = (Node) arg0.selectSingleNode("destination/@value");
-					if (file_destination != null){
-						destination_text_field.setText(file_destination.getText());
-					}
-					Node file_overwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-					if (file_overwrite != null){
-						overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
-					}
-					Node reverse_first = (Node) arg0.selectSingleNode("reverse_first/@value");
-					if (reverse_first != null){
-						reverse_first_checkbox.setSelected(reverse_first.getText().equals("true"));
-					}
-					Node reverse_second = (Node) arg0.selectSingleNode("reverse_second/@value");
-					if (reverse_second != null){
-						reverse_second_checkbox.setSelected(reverse_second.getText().equals("true"));
-					}
-
-					fireLogPropertyChanged(GettextResource.gettext(i18n_messages,"AlternateMix section loaded."), LogPanel.LOG_INFO);                     
-				}
-				catch (Exception ex){
-					fireLogPropertyChanged(GettextResource.gettext(i18n_messages,"Error: ")+ex.getMessage(), LogPanel.LOG_ERROR);                     
-				}
+		try{
+			Node first_node = (Node) arg0.selectSingleNode("first/@value");
+			if (first_node != null){
+				first_text_field.setText(first_node.getText());
 			}
-		};                
-		loadnode_thread.start(); 					
+			Node second_node = (Node) arg0.selectSingleNode("second/@value");
+			if (second_node != null){
+				second_text_field.setText(second_node.getText());
+			}
+			Node file_destination = (Node) arg0.selectSingleNode("destination/@value");
+			if (file_destination != null){
+				destination_text_field.setText(file_destination.getText());
+			}
+			Node file_overwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+			if (file_overwrite != null){
+				overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
+			}
+			Node reverse_first = (Node) arg0.selectSingleNode("reverse_first/@value");
+			if (reverse_first != null){
+				reverse_first_checkbox.setSelected(reverse_first.getText().equals("true"));
+			}
+			Node reverse_second = (Node) arg0.selectSingleNode("reverse_second/@value");
+			if (reverse_second != null){
+				reverse_second_checkbox.setSelected(reverse_second.getText().equals("true"));
+			}
+
+			fireLogPropertyChanged(GettextResource.gettext(i18n_messages,"AlternateMix section loaded."), LogPanel.LOG_INFO);                     
+		}
+		catch (Exception ex){
+			fireLogPropertyChanged(GettextResource.gettext(i18n_messages,"Error: ")+ex.getMessage(), LogPanel.LOG_ERROR);                     
+		}
+
 	}
 
 
