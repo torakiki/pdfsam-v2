@@ -137,7 +137,7 @@ public class MergeMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private static final String PLUGIN_NAME = "Merge";
-    private static final String PLUGIN_VERSION = "0.4.6e";
+    private static final String PLUGIN_VERSION = "0.4.7e";
     
     /**
      * Constructor
@@ -422,7 +422,7 @@ public class MergeMainGUI extends AbstractPlugIn{
                 //validation and permission check are demanded to the CmdParser object
                 try{
                     //if no extension given
-                    if (destination_text_field.getText().lastIndexOf('.') == -1){
+                    if ((destination_text_field.getText().length() > 0) && (destination_text_field.getText().lastIndexOf('.') == -1)){
                         destination_text_field.setText(destination_text_field.getText()+".pdf");
                     }
                     args.add(destination_text_field.getText());
