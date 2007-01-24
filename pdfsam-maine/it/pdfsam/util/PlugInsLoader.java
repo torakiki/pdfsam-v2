@@ -76,16 +76,21 @@ public class  PlugInsLoader{
         try{
             pi_dir = new File (pluginsdir);
         }catch (NullPointerException np_exception){
-            throw new PluginLoadException("Error getting working directory");
+            throw new PluginLoadException("Error getting working directory: "+np_exception);
         }
         ArrayList retval = new ArrayList();
         // Get all the files and directory under plugins diretcory
-        File[] strFilesDirs = pi_dir.listFiles();
-        for ( int i = 0 ; i < strFilesDirs.length ; i ++ ) {
-            if ( strFilesDirs[i].isDirectory ( ) ){
-           //     System.out.print(strFilesDirs[i]+"\n");
-               retval.add(strFilesDirs[i]);
-            }
+        //fix 22/01/07
+        try{
+        	File[] strFilesDirs = pi_dir.listFiles();
+	        for ( int i = 0 ; i < strFilesDirs.length ; i ++ ) {
+	            if ( strFilesDirs[i].isDirectory ( ) ){
+	           //     System.out.print(strFilesDirs[i]+"\n");
+	               retval.add(strFilesDirs[i]);
+	            }
+	        }
+        }catch (Exception exception){
+            throw new PluginLoadException("Error getting plugins list: "+exception.getMessage());
         }
         return retval;
     }

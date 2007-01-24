@@ -224,7 +224,7 @@ public class JSettingsPanel extends AbstractPlugIn{
         browse_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
         browse_button.setText(GettextResource.gettext(i18n_messages,"Browse"));
         browse_button.setMargin(new Insets(2, 2, 2, 2));
-        browse_button.setToolTipText(GettextResource.gettext(i18n_messages,"Browse for a default job file"));
+        browse_button.setToolTipText(GettextResource.gettext(i18n_messages,"Browse for a default environment file"));
         browse_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int return_val = browse_file_chooser.showOpenDialog(browse_button.getParent());

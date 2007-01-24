@@ -16,6 +16,8 @@
 -Added configuration singleton
 -plugin interface and abstract class Rewritten
 -Added plugs panels icons
+-Console: fix bug #1641683
+-Merge: fix when automatically extension in destination file is set
 -dom4j 1.6.1
 -jaxen 1.1
 -iText 1.4.8

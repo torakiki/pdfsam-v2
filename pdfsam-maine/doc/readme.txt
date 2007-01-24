@@ -7,7 +7,7 @@ Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 License: GPL
 
 Plugins included:
-	-pdfsam-merge-0.4.6e *
+	-pdfsam-merge-0.4.7e *
 	-pdfsam-split-0.2.9e *
 	-pdfsam-encrypt-0.1.3e *
 	-pdfsam-mix-0.0.6e *

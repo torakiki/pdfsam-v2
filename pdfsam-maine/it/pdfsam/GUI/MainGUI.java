@@ -89,11 +89,11 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.1.8e"; 
+	public static final String APP_VERSION = "1.1.8e alpha"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
-	private static final boolean IDE = true;
+	private static final boolean IDE = false;
 
 	public MainGUI() {
 		runSplash();
@@ -212,7 +212,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
         }
         catch (Exception lpi){
             lpi.printStackTrace();
-             screen.setText("Exception loading plugin: "+lpi.getMessage());
+            log_panel.addLogText("Exception loading plugin: "+lpi.getMessage(), LogPanel.LOG_ERROR);
         }
         setSplashStep(GettextResource.gettext(i18n_messages,"Building tree.."));
         DefaultTreeModel treeModel = new DefaultTreeModel(rootNode);
