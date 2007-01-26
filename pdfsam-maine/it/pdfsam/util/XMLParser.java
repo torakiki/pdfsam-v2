@@ -17,6 +17,7 @@ package it.pdfsam.util;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.net.URL;
 
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
@@ -31,13 +32,12 @@ import org.dom4j.io.XMLWriter;
  * @see it.pdfsam.util.XMLConfig
  */
 public class XMLParser {	
-/**
+
+ /**
  * Parse the xml file
- * 
- * @param validating If true it makes a validation against DTD
  * @return The DOM object
  */
-    public static Document parseXmlFile(String full_path, boolean validating) throws Exception{
+    public static Document parseXmlFile(String full_path) throws Exception{
         try{
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(new File(full_path));
@@ -46,6 +46,21 @@ public class XMLParser {
 			throw new Exception("Exception reading "+full_path+":"+e.getMessage(), e);
 		}  
     }
+    
+    /**
+     * Parse the url
+     * @return The DOM object
+     */
+        public static Document parseXmlFile(URL url) throws Exception{
+            try{
+    			SAXReader reader = new SAXReader();
+    			Document document = reader.read(url);
+    			return document;
+    		}catch(Exception e){
+    			throw new Exception("Exception reading "+url+":"+e.getMessage(), e);
+    		}  
+        }
+
 /**
  * Write the DOM to the xml file
  * 

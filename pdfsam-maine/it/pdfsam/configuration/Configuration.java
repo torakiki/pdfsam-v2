@@ -18,7 +18,9 @@ import it.pdfsam.console.MainConsole;
 import it.pdfsam.util.XMLConfig;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 /**
  * Configuration Singleton
@@ -34,6 +36,7 @@ public class Configuration  implements Serializable{
 	private int logLevel;
 	private XMLConfig xmlConfigObject;
 	private MainConsole mc;
+	private Vector langs;
 
 	private Configuration() {	
 		mc = new MainConsole();
@@ -46,26 +49,47 @@ public class Configuration  implements Serializable{
 		return configObject;
 	}
 
+	/**
+	 * Sets the language ResourceBundle
+	 * @param i18n_messages ResourceBundle
+	 */
 	public synchronized void setI18nResourceBundle(ResourceBundle i18n_messages){
 		this.i18n_messages = i18n_messages;
 	}
 
+	/**
+	 * @return the language ResourceBundle
+	 */
 	public synchronized ResourceBundle getI18nResourceBundle(){
 		return i18n_messages;
 	}
 
+	/**
+	 * @return the log level
+	 */
 	public synchronized int getLogLevel() {
 		return logLevel;
 	}
 
+	/**
+	 * sets the log level
+	 * @param logLevel log level
+	 */
 	public synchronized void setLogLevel(int logLevel) {
 		this.logLevel = logLevel;
 	}
 
+	/**
+	 * @return the XMLConfig
+	 */
 	public synchronized XMLConfig getXmlConfigObject() {
 		return xmlConfigObject;
 	}
 
+	/**
+	 * sets the XMLConfig
+	 * @param xmlConfigObject
+	 */
 	public synchronized void setXmlConfigObject(XMLConfig xmlConfigObject) {
 		this.xmlConfigObject = xmlConfigObject;
 	}
@@ -74,9 +98,29 @@ public class Configuration  implements Serializable{
 		throw new CloneNotSupportedException("Cannot clone configuration object.");
 	}
 
+	/**
+	 * @return the MainConsole
+	 */
 	public MainConsole getMainConsole() {
 		return mc;
 	}
 
-
+	 /**
+     * @return language list
+     */
+    public List getLanguagesList() throws Exception{        
+            return langs;
+    }
+    
+    /**
+	 * @param language lis
+	 */
+	public synchronized void setLanguageList(Vector languageList) {
+		try{
+			langs = new Vector(languageList.size(), 1);
+			langs.addAll(languageList);
+		}catch(Exception e){
+			langs.add("en_GB");
+		}
+	}
 }

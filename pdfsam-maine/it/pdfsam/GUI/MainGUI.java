@@ -34,6 +34,7 @@ import it.pdfsam.util.LanguageLoader;
 import it.pdfsam.util.PlugInsLoader;
 import it.pdfsam.util.ThemeSelector;
 import it.pdfsam.util.XMLConfig;
+import it.pdfsam.util.XMLParser;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -44,7 +45,9 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -61,6 +64,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
+
+import org.dom4j.Document;
+import org.dom4j.Node;
 /**
  * Main GUI
  * @author Andrea Vacondio
@@ -93,7 +99,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
-	private static final boolean IDE = false;
+	private static final boolean IDE = true;
 
 	public MainGUI() {
 		runSplash();
@@ -122,6 +128,14 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 			}else{
 				config.setLogLevel(LogPanel.LOG_INFO);
 			}
+			setSplashStep("Loading i18n..");
+			Vector langs = new Vector(10,5);
+			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/it/pdfsam/i18n/languages.xml"));
+			List nodeList = document.selectNodes("/languages/language");
+			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
+				langs.add(((Node) nodeList.get(i)).selectSingleNode("@value").getText());
+			}
+			config.setLanguageList(langs);
 
 		}catch (Exception e) {
 			System.out.print(e.getMessage());

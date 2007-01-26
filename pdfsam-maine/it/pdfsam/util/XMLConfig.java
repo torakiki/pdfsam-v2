@@ -42,7 +42,7 @@ public class XMLConfig{
     
     public XMLConfig() throws Exception{
 		XML_config_file = "config.xml";
-    	DOM_document = XMLParser.parseXmlFile(XML_config_file, false);
+    	DOM_document = XMLParser.parseXmlFile(XML_config_file);
     }
 
     public XMLConfig(String config_path) throws Exception{   
@@ -51,7 +51,7 @@ public class XMLConfig{
 		}else{
 			XML_config_file = config_path+"/config.xml";
     	}	
-        DOM_document = XMLParser.parseXmlFile(XML_config_file, false);
+        DOM_document = XMLParser.parseXmlFile(XML_config_file); 
     }
     
     /**

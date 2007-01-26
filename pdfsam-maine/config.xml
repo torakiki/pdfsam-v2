@@ -12,7 +12,7 @@
       <LAF>5</LAF>  
       <theme>14</theme> 
     </lookAndfeel>  
-    <i18n>it_IT</i18n>  
+    <i18n>fr_FR</i18n>  
     <plugs_absolute_dir>F:\workspace_pdfsame_enanched\pdfsam-maine\plugins</plugs_absolute_dir>  
     <defaultjob></defaultjob>  
     <loglevel>1</loglevel> 
@@ -22,15 +22,5 @@
       <aname>Andrea Vacondio</aname>  
       <aemail>andrea.vacondio@gmail.com</aemail> 
     </author> 
-  </adata>  
-  <available_languages> 
-    <language value="it_IT"/>  
-    <language value="en_GB"/>  
-    <language value="es_ES"/>  
-    <language value="fr_FR"/>  
-    <language value="ru_RU"/>  
-    <language value="pt_BR"/>  
-    <language value="de_DE"/>  
-    <language value="sv_SE"/> 
-  </available_languages> 
+  </adata> 
 </pdfsam>

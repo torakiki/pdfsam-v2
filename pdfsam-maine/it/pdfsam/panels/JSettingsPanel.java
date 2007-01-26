@@ -144,7 +144,7 @@ public class JSettingsPanel extends AbstractPlugIn{
 //END_FILE_CHOOSER
 //JCOMBO
         try{
-        	language_combo = new JComboBox(xml_config_object.getXMLLanguagesList().toArray());
+        	language_combo = new JComboBox(config.getLanguagesList().toArray());
         	language_combo.setSelectedItem(xml_config_object.getXMLConfigValue("/pdfsam/settings/i18n"));
         }catch (Exception e){
         	language_combo = new JComboBox();
