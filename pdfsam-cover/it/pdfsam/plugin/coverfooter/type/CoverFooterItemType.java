@@ -17,7 +17,7 @@ package it.pdfsam.plugin.coverfooter.type;
  * Item class for Merge table
  * @author  Andrea Vacondio
  * @see     javax.swing.table.AbstractTableModel
- * @see     it.pdfsam.plugin.merge.model.CoverFooterTableModel
+ * @see     it.pdfsam.plugin.merge.coverfooter.CoverFooterTableModel
  */
 public class CoverFooterItemType {
 

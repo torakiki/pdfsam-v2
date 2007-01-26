@@ -22,19 +22,18 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 
 /**
- * Class used to transfer MergeItem in drag and drop process.
+ * Class used to transfer CoverFooterItem in drag and drop process.
  * @author Andrea Vacondio
- * @see it.pdfsam.plugin.merge.type.TableTransferHandler
+ * @see it.pdfsam.plugin.coverfooter.type.TableTransferHandler
  * 
  */
 public class CoverFooterItemTransfer implements Transferable {
     
-    public static DataFlavor MERGEITEMFLAVOUR;
-    //public static DataFlavor FILELISTFLAVOUR = DataFlavor.javaFileListFlavor;
+    public static DataFlavor COVERFOOTERITEMFLAVOUR;
     
     static {
             try {
-                MERGEITEMFLAVOUR = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType);
+            	COVERFOOTERITEMFLAVOUR = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType);
             }
             catch (Exception ex) {
                 ex.printStackTrace();
@@ -63,14 +62,14 @@ public class CoverFooterItemTransfer implements Transferable {
      * @return true if flavour is supported 
      */
     public boolean isDataFlavorSupported(DataFlavor flavor) {
-        return (MERGEITEMFLAVOUR.equals(flavor));
+        return (COVERFOOTERITEMFLAVOUR.equals(flavor));
     }
     
     /**
      * @return DataFlavours of this transferable
      */
     public DataFlavor[] getTransferDataFlavors() {
-        return new DataFlavor[] { MERGEITEMFLAVOUR };
+        return new DataFlavor[] { COVERFOOTERITEMFLAVOUR };
     }
     
     /**

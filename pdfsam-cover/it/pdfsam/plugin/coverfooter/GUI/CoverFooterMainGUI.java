@@ -145,7 +145,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_NAME = "Cover and Footer";
-	private static final String PLUGIN_VERSION = "0.1.3e";
+	private static final String PLUGIN_VERSION = "0.1.4e";
 
 	/**
 	 * Constructor
@@ -280,7 +280,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		clear_button.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
 		clear_button.setMargin(new Insets(2, 2, 2, 2));
 		clear_button.setText(GettextResource.gettext(i18n_messages,"Clear"));
-		clear_button.setToolTipText(GettextResource.gettext(i18n_messages,"Remove every pdf file from the spring_layout_cover_footer_panel list"));
+		clear_button.setToolTipText(GettextResource.gettext(i18n_messages,"Remove every pdf file from the list"));
 		add(clear_button);
 //		END_BUTTON_CLEAR        
 		destination_text_field = new JTextField();

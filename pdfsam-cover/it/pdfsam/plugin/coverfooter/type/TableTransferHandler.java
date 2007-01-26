@@ -34,10 +34,10 @@ import com.lowagie.text.pdf.PdfReader;
 
 /**
  * 
- * Class used to manage drag and drop in merge table.
+ * Class used to manage drag and drop in cover footer table.
  * @author Andrea Vacondio
  * @see javax.swing.TransferHandler
- * @see it.pdfsam.plugin.merge.type.CoverFooterItemTransfer
+ * @see it.pdfsam.plugin.coverfooter.type.CoverFooterItemTransfer
  * 
  */
 
@@ -53,22 +53,21 @@ public class TableTransferHandler extends TransferHandler {
     /**
      * Export selected row
      * @param c component holding data
-     * @return MergeItem we are trying to move inside the MergeTable
+     * @return CoverFooterItem we are trying to move inside the CoverFooterTable
      */
-    protected ArrayList exportMergeItem(JComponent c) {
+    protected ArrayList exportCoverFooterItem(JComponent c) {
         ArrayList data = new ArrayList();
         if (!(c instanceof JCoverFooterTable)){
             return null;
         }
-        JCoverFooterTable merge_table = (JCoverFooterTable)c;
-        rows = merge_table.getSelectedRows();
+        JCoverFooterTable cover_table = (JCoverFooterTable)c;
+        rows = cover_table.getSelectedRows();
         if (rows != null){
             for (int i = 0; i < rows.length; i++) {
-                data.add(((CoverFooterTableModel)merge_table.getModel()).getRow(rows[i]));
+                data.add(((CoverFooterTableModel)cover_table.getModel()).getRow(rows[i]));
             }
         }
         return data;
-        //return (rows == -1)? null: ((MergeTableModel)merge_table.getModel()).getRow(rows);       
     }
 
     /**
@@ -76,13 +75,13 @@ public class TableTransferHandler extends TransferHandler {
      * @param c component to drop the item to
      * @param list_item items list to drop
      */
-    protected void importMergeItem(JComponent c, ArrayList list_item) {
+    protected void importCoverFooterItem(JComponent c, ArrayList list_item) {
         if (!(c instanceof JCoverFooterTable)){
             return;
         }
-        JCoverFooterTable target_merge_table = (JCoverFooterTable)c;
-        CoverFooterTableModel model = (CoverFooterTableModel)(target_merge_table.getModel());
-        int index = target_merge_table.getSelectedRow();
+        JCoverFooterTable target_cover_table = (JCoverFooterTable)c;
+        CoverFooterTableModel model = (CoverFooterTableModel)(target_cover_table.getModel());
+        int index = target_cover_table.getSelectedRow();
         
         //Prevent the user from dropping data back on itself.
         //For example, if the user is moving rows #4,#5,#6 and #7 and
@@ -120,7 +119,7 @@ public class TableTransferHandler extends TransferHandler {
                     addCount++;
                 }
             }
-            target_merge_table.setRowSelectionInterval(addIndex, index-1);
+            target_cover_table.setRowSelectionInterval(addIndex, index-1);
         }
         catch(IndexOutOfBoundsException ioobe){
             return;
@@ -157,9 +156,8 @@ public class TableTransferHandler extends TransferHandler {
      * @return Transferable object
      */
     protected Transferable createTransferable(JComponent c) {
-        ArrayList arr = exportMergeItem(c);
+        ArrayList arr = exportCoverFooterItem(c);
         return new CoverFooterItemTransfer(c, arr);
-        //return new StringSelection(exportMergeItem(c));
     }
     
     public int getSourceActions(JComponent c) {
@@ -167,18 +165,18 @@ public class TableTransferHandler extends TransferHandler {
     }
  
     /**
-     * Drop the MergeItem
+     * Drop the CoverFooterItem
      */
     public boolean importData(JComponent c, Transferable t) {
         if (!(c instanceof JCoverFooterTable)){return false;}        
         if (canImport(c, t.getTransferDataFlavors())) {
             try {                
-                if (hasMergeItemFlavor(t)) {
-                    Object obj = t.getTransferData(CoverFooterItemTransfer.MERGEITEMFLAVOUR);
+                if (hasCoverFooterItemFlavor(t)) {
+                    Object obj = t.getTransferData(CoverFooterItemTransfer.COVERFOOTERITEMFLAVOUR);
                     if (!(obj instanceof CoverFooterItemTransfer)) return false;
                     CoverFooterItemTransfer mit = (CoverFooterItemTransfer)obj;
-                    ArrayList merge_item_obj = mit.getData();
-                    importMergeItem(c, merge_item_obj);
+                    ArrayList cover_item_obj = mit.getData();
+                    importCoverFooterItem(c, cover_item_obj);
                     return true;
                 }else if (hasFileFlavor(t)){
                     List file_list = (List) t.getTransferData(DataFlavor.javaFileListFlavor);
@@ -197,10 +195,10 @@ public class TableTransferHandler extends TransferHandler {
                             num_pages = ex.getMessage();
                             
                         }
-                        CoverFooterItemType merge_item_obj = new CoverFooterItemType(file_item.getName(),file_item.getAbsolutePath(), num_pages,"All",encrypt);
-                        row_items.add(merge_item_obj);
+                        CoverFooterItemType cover_item_obj = new CoverFooterItemType(file_item.getName(),file_item.getAbsolutePath(), num_pages,"All",encrypt);
+                        row_items.add(cover_item_obj);
                     }
-                    importMergeItem(c, row_items);
+                    importCoverFooterItem(c, row_items);
                     return true;                    
                 }                
                 else{
@@ -224,11 +222,11 @@ public class TableTransferHandler extends TransferHandler {
         return false;
     }
     
-    private boolean hasMergeItemFlavor(Transferable t) {
+    private boolean hasCoverFooterItemFlavor(Transferable t) {
         DataFlavor[] flavors;
         flavors = t.getTransferDataFlavors();
         for (int i = 0; i < flavors.length; i++) {
-            if (flavors[i].equals(CoverFooterItemTransfer.MERGEITEMFLAVOUR)) {
+            if (flavors[i].equals(CoverFooterItemTransfer.COVERFOOTERITEMFLAVOUR)) {
                 return true;
             }
         }
@@ -246,7 +244,7 @@ public class TableTransferHandler extends TransferHandler {
      */    
     public boolean canImport(JComponent c, DataFlavor[] flavors) {
         for (int i = 0; i < flavors.length; i++) {
-            if (flavors[i].equals(CoverFooterItemTransfer.MERGEITEMFLAVOUR) || flavors[i].equals(DataFlavor.javaFileListFlavor)){
+            if (flavors[i].equals(CoverFooterItemTransfer.COVERFOOTERITEMFLAVOUR) || flavors[i].equals(DataFlavor.javaFileListFlavor)){
                 return true;
             }
         }

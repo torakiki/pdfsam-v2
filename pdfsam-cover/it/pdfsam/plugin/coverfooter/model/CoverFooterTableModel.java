@@ -124,8 +124,7 @@ public class CoverFooterTableModel extends AbstractTableModel {
     }
     
     /**
-     *  This empty implementation is provided so users don't have to implement
-     *  this method if their data model is not editable.
+     * Sets the cell value
      *
      *  @param  value   value to assign to cell
      *  @param  row   row of cell
@@ -135,15 +134,19 @@ public class CoverFooterTableModel extends AbstractTableModel {
         switch(column){
                 case FILENAME:
                     ((CoverFooterItemType)data.get(row)).setFileName(value.toString());
+                    break;
         
                 case PATH:
                     ((CoverFooterItemType)data.get(row)).setFilePath(value.toString());
+                    break;
                     
                 case PAGES:
                     ((CoverFooterItemType)data.get(row)).setNumPages(value.toString());
+                    break;
         
                 case PAGESELECTION:
                     ((CoverFooterItemType)data.get(row)).setPageSelection(value.toString());
+                    break;
         
         } 
    }
