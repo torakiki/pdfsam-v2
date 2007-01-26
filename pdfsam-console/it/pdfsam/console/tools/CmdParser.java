@@ -172,7 +172,7 @@ public class CmdParser {
     private final Parameter[] split_opts = new Parameter[] {
             new FileParam("o",
                     "output directory",
-                    ((FileParam.IS_DIR & FileParam.IS_WRITEABLE)),
+                    ((FileParam.IS_DIR & FileParam.EXISTS)),
                     FileParam.REQUIRED, 
                     FileParam.SINGLE_VALUED),
             new FileParam("f",
@@ -201,7 +201,7 @@ public class CmdParser {
     private final Parameter[] encrypt_opts = new Parameter[] {
             new FileParam("o",
                     "output directory",
-                    ((FileParam.IS_DIR & FileParam.IS_WRITEABLE)),
+                    ((FileParam.IS_DIR & FileParam.EXISTS)),
                     FileParam.REQUIRED, 
                     FileParam.SINGLE_VALUED),
             new FileParam("f",
