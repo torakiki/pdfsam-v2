@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 /**
  * Listener for the ToolBar
  * @author a.vacondio
- * @see it.pdfsam.panles.JButtonBar
+ * @see it.pdfsam.panels.ButtonsBar
  */
 public class EnvActionListener implements ActionListener {
 	

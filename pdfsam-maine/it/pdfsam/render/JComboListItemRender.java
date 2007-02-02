@@ -24,7 +24,7 @@ import javax.swing.ListCellRenderer;
 /**
  * Render for ListItem combo
  * @author Andrea Vacondio
- * @see it.pdfsam.type.ListItem
+ * @see it.pdfsam.types.ListItem
  */
 public class JComboListItemRender extends JLabel implements ListCellRenderer {
 		/**

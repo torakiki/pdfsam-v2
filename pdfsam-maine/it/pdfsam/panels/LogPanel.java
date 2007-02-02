@@ -137,8 +137,7 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
     }
     
     /**
-     * Sets the log level label
-     * @param logLevel
+     * Sets the log level label taken from the configuration
      */
     private void setLogLeveLabel(){
     	    	log_level.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"+" "+(String)logValuesDescrition.get(config.getLogLevel())));

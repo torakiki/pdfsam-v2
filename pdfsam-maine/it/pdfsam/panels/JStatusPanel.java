@@ -101,7 +101,7 @@ public class JStatusPanel extends JPanel {
 	
 	/**
 	 * Delegate to progressBar
-	 * @param value
+	 * @return true if the string is painted
 	 */
 	public boolean isBarStringPainted(){
 		return progressBar.isStringPainted();

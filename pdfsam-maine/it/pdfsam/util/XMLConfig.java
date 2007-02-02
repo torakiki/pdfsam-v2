@@ -73,9 +73,8 @@ public class XMLConfig{
     }
  
      /**
-     * It gives back a tag value
+     * It gives back the language tag value
      * 
-     * @param xpath 
      * @return tag value
      */
     public List getXMLLanguagesList() throws Exception{        
@@ -114,7 +113,7 @@ public class XMLConfig{
      * It saves any changes on the xml file
      * 
      * @throws Exception
-     * @see it.pdfsam.util.XMLParser#writeXmlFile(Document)
+     * @see it.pdfsam.util.XMLParser#writeXmlFile(Document, String)
      */
         public void saveXMLfile() throws Exception{
             XMLParser.writeXmlFile(DOM_document, XML_config_file);

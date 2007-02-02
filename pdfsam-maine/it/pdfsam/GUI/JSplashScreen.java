@@ -94,7 +94,6 @@ public class JSplashScreen extends JFrame {
     
 	/**
 	 * Delegate to progressBar
-	 * @param value
 	 */
 	public void addBarValue(){
 		if(progressBar != null){

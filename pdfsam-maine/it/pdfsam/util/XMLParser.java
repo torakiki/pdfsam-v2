@@ -64,7 +64,8 @@ public class XMLParser {
 /**
  * Write the DOM to the xml file
  * 
- * @param DOM_doc Document to write
+ * @param domDoc Document to write
+ * @param full_path Full path to the xml file to write
  * @throws Exception
  */    
     public static void writeXmlFile(Document domDoc, String full_path) throws Exception{           

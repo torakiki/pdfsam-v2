@@ -113,7 +113,7 @@ public class Configuration  implements Serializable{
     }
     
     /**
-	 * @param language lis
+	 * @param languageList languages list 
 	 */
 	public synchronized void setLanguageList(Vector languageList) {
 		try{

@@ -117,9 +117,6 @@ public class EnvWorker {
 
 	/**
 	 * loads environment
-	 * 
-	 * @param file_path
-	 *            path to the xml file to load
 	 */
 	public void loadJobs() {
 		file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Load environment"));
@@ -133,7 +130,7 @@ public class EnvWorker {
 	/**
 	 * loads environment
 	 * 
-	 * @param file_path
+	 * @param chosen_file
 	 *            path to the xml file to load
 	 */
 	private void loadJobs(File chosen_file) {

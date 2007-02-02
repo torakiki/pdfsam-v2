@@ -54,14 +54,13 @@ public interface PlugablePanel{
     public FocusTraversalPolicy getFocusPolicy();
     
 	/**
-	* @param Node to write to
+	* @param arg0 to write to
 	* @return Node modified with save job infos
 	*/
 	public Node getJobNode(Node arg0) throws SaveJobException ;
 
 	/**
-	*  @param Node to load job infos
-	* @return true if everything is ok
+	*  @param arg0 to load job infos
 	*/
 	public void loadJobNode(Node arg0) throws LoadJobException ;
     
