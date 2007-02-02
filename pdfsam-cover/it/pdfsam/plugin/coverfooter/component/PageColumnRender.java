@@ -30,7 +30,7 @@ import javax.swing.table.TableCellRenderer;
  * @author  Andrea Vacondio
  * @see     javax.swing.table.TableCellRenderer
  * @see     javax.swing.JLabel
- * @see     it.pdfsam.plugin.merge.model.CoverFooterTableModel
+ * @see     it.pdfsam.plugin.coverfooter.model.CoverFooterTableModel
  */
 public class PageColumnRender extends JLabel implements TableCellRenderer {
 

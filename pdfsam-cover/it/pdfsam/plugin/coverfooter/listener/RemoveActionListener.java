@@ -26,7 +26,7 @@ import java.awt.event.ActionListener;
  * Listener class used by remove_button
  * 
  * @author Andrea Vacondio
- * @see it.pdfsam.plugin.merge.GUI.CoverFooterMainGUI
+ * @see it.pdfsam.plugin.coverfooter.GUI.CoverFooterMainGUI
  */
 public class RemoveActionListener implements ActionListener{
     /**

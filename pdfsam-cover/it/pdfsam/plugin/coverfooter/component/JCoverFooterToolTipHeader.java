@@ -23,7 +23,7 @@ import javax.swing.table.TableColumnModel;
 /**
  * Used to show tooltip on Merge Table Header
  * @author  Andrea Vacondio
- * @see it.pdfsam.plugin.merge.component.JCoverFooterTable
+ * @see it.pdfsam.plugin.coverfooter.component.JCoverFooterTable
  */
 
 public class JCoverFooterToolTipHeader extends JTableHeader {
