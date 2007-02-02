@@ -382,7 +382,6 @@ public class CmdParser {
     /**
      * Parse the in_args to get the input command type. It creates the right command handler for split or concat command
      * and it parses in_args again. Executes concat or split of pdf files if everything is ok, an exception is thrown otherwise.
-     * @return true if parsed correctly, false otherwise
      */
     public void parse() throws Exception{
     	String i_command  = "";

@@ -33,8 +33,7 @@ public abstract class GenericPdfTool {
 	}
 	
 	   /**
-     * fire a work done event say it's finish is indeterminate
-     * @param percentage
+     * fire a work indeterminate event say it's finish is indeterminate
      */
 	protected void workingIndeterminate(){
         //source must not be null 
@@ -48,7 +47,6 @@ public abstract class GenericPdfTool {
     
     /**
      * fire a work done event
-     * @param percentage
      */
     protected void workCompleted(){
         //source must not be null 

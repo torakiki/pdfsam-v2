@@ -50,7 +50,7 @@ public class PdfAlternateMix extends GenericPdfTool{
     
     /**
      * Creates the object used to mix 2 pdf documents
-     * @param o_dir 
+     * @param o_file 
      * @param input_file1
      * @param input_file2
      * @param reverseFirst
