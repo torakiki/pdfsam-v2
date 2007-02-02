@@ -203,7 +203,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
 		encrypt_options_panel.add(owner_pwd_label);
 		
         owner_pwd_field = new JTextField();
-        owner_pwd_field.setToolTipText(GettextResource.gettext(i18n_messages,"Owner password 32 chars long"));
+        owner_pwd_field.setToolTipText(GettextResource.gettext(i18n_messages,"Owner password (Max 32 chars long)"));
         owner_pwd_field.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         encrypt_options_panel.add(owner_pwd_field);
 
@@ -211,7 +211,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
 		encrypt_options_panel.add(user_pwd_label);
 
         user_pwd_field = new JTextField();
-        user_pwd_field.setToolTipText(GettextResource.gettext(i18n_messages,"User password 32 chars long"));
+        user_pwd_field.setToolTipText(GettextResource.gettext(i18n_messages,"User password (Max 32 chars long)"));
         user_pwd_field.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         encrypt_options_panel.add(user_pwd_field);
 
