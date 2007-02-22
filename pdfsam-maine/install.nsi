@@ -8,7 +8,7 @@
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 !define TARGET_FILE "config.xml"
-!define PRODUCT_DATE "31/01/2007"
+!define PRODUCT_DATE "28/02/2007"
 !define LANGUAGE_TITLE "pdfsam language selection"
 SetCompressor lzma
 
@@ -103,6 +103,7 @@ Function WarnDirExists
   Delete "$SMPROGRAMS\$ICONS_GROUP\readme.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\tutorial.lnk"
   Delete "$STARTMENU.lnk"  
+  DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"  
 FunctionEnd
 
 Function ReplaceBetween

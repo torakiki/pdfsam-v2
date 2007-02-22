@@ -95,7 +95,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.1.8e alpha"; 
+	public static final String APP_VERSION = "1.2.0e alpha"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
@@ -251,7 +251,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
         JSplitPane splitPane2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
         		scrollPane, splitPane);
         splitPane2.setOneTouchExpandable(true);
-        splitPane2.setDividerLocation(150);
+        splitPane2.setDividerLocation(155);
         
         getContentPane().add(splitPane2,BorderLayout.CENTER);
                 

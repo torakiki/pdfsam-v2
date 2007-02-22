@@ -62,7 +62,7 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
 	public static final String SAVELOG_ACTION = "2";
 	public static final String SELECTALL_ACTION = "3";
 	
-	private static ArrayList logValuesDescrition = new ArrayList(4);
+	private static ArrayList logValuesDescrition = getStaticLogLevels();
 	private Configuration config;
 	private String log_text = "";
     private final JTextPane log_text_area = new JTextPane();
@@ -208,13 +208,16 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
 	public void mouseReleased(MouseEvent e){
 		if(e.isPopupTrigger()){
 			popupMenu.show(e.getComponent(), e.getX(), e.getY());
-		}
-		
+		}		
 	}
 	public void mouseClicked(MouseEvent arg0) {}
 	public void mouseEntered(MouseEvent arg0) {}
 	public void mouseExited(MouseEvent arg0) {}
-	public void mousePressed(MouseEvent arg0) {}
+	public void mousePressed(MouseEvent e) {
+		if(e.isPopupTrigger()){
+			popupMenu.show(e.getComponent(), e.getX(), e.getY());
+		}
+	}
 
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0 != null){
@@ -265,5 +268,18 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
 			addLogText(GettextResource.gettext(config.getI18nResourceBundle(), "Error:")
 					+ " Unable to save log. "+e.getMessage(), LogPanel.LOG_ERROR);
 		}
+	}
+	
+	/**
+	 * help method to get the log list
+	 * @return static arrayList
+	 */
+	private static ArrayList getStaticLogLevels() {
+		ArrayList staticList = new ArrayList(4);
+		staticList.add(LogPanel.LOG_ERROR, "Errors");
+		staticList.add(LogPanel.LOG_INFO, "Informations");
+		staticList.add(LogPanel.LOG_DETAILEDINFO, "Detailed informations");
+		staticList.add(LogPanel.LOG_DEBUG, "Debug");
+		return staticList;
 	}
 }
