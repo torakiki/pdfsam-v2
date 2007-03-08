@@ -18,8 +18,8 @@ SetCompressor lzma
   
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "G:\Documents\icons\install.ico"
-!define MUI_UNICON "G:\Documents\icons\uninstall.ico"
+!define MUI_ICON "F:\install.ico"
+!define MUI_UNICON "F:\uninstall.ico"
 !define MUI_LANGDLL_WINDOWTITLE "${LANGUAGE_TITLE}"
 
 ; Welcome page
@@ -265,7 +265,6 @@ endFileExist:
   File "lib\itext-1.4.8.jar"
   File "lib\pdfsam-langpack.jar"
   File "lib\dom4j-1.6.1.jar"
-  File "lib\jakarta-oro-2.0.8.jar"
   File "lib\jaxen-1.1.jar"    
   SetOverwrite ifnewer
   SetOutPath "$INSTDIR"
@@ -350,7 +349,6 @@ Section Uninstall
   Delete "$INSTDIR\lib\itext-1.4.8.jar"
   Delete "$INSTDIR\lib\pdfsam-langpack.jar"
   Delete "$INSTDIR\lib\dom4j-1.6.1.jar"
-  Delete "$INSTDIR\lib\jakarta-oro-2.0.8.jar"
   Delete "$INSTDIR\lib\jaxen-1.1.jar"
   Delete "$INSTDIR\config.xml"
 

@@ -163,7 +163,7 @@ public class JInfoPanel extends AbstractPlugIn{
 	}
 
     protected String getThanksText(){
-        String[] translators = new String[]{"Nicolas Le Novere (donor)", "Elisa Bortolotti (donor)", "Robin de Groot (donor)", "wonder (tester/developer)", "Aniket Dutta (contributor)"};
+        String[] translators = new String[]{"Nicolas Le Novere (donor)", "Elisa Bortolotti (donor/graphics)", "Robin de Groot (donor)", "wonder (tester/developer)", "Aniket Dutta (contributor)", "Lucien  (donor)", "pinyotae (donor)"};
         String log_text = GettextResource.gettext(i18n_messages,"Contributes: ");
         for (int i=0; i<translators.length; i++){
             log_text += translators[i]+" - ";

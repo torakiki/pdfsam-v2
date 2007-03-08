@@ -22,7 +22,8 @@ import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.panels.LogPanel;
 import it.pdfsam.util.XmlFilter;
 
-import java.awt.Component;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
@@ -43,21 +44,23 @@ import org.dom4j.io.XMLWriter;
  * @author a.vacondio
  *
  */
-public class EnvWorker {
+public class EnvWorker implements LogWriter{
 
 	private ResourceBundle i18n_messages;
 
 	private JFileChooser file_chooser;
 
-	private LogWriter parent;
-
 	private AbstractPlugIn[] pl_panel;
+	
+	private PropertyChangeSupport pcs;
+	
+	private String log_msg;
 
-	public EnvWorker(LogWriter parent, AbstractPlugIn[] pl_panel) {
-		this.parent = parent;
+	public EnvWorker(AbstractPlugIn[] pl_panel) {
 		this.pl_panel = pl_panel;		
 		this.i18n_messages = Configuration.getInstance().getI18nResourceBundle();
-
+		this.pcs = new PropertyChangeSupport(this);
+		
 		file_chooser = new JFileChooser();
 		file_chooser.setFileFilter(new XmlFilter());
 		file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Save job"));
@@ -71,7 +74,7 @@ public class EnvWorker {
 	public void saveJob() {
 		try{
 			file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Save job"));
-			int return_val = file_chooser.showOpenDialog((Component)parent);
+			int return_val = file_chooser.showOpenDialog(null);
 			File chosen_file = null;
 			if (return_val == JFileChooser.APPROVE_OPTION) {
 				chosen_file = file_chooser.getSelectedFile();
@@ -86,7 +89,7 @@ public class EnvWorker {
 							node.addAttribute("class", pl_panel[i].getClass().getName());
 							node.addAttribute("name", pl_panel[i].getPluginName());
 							pl_panel[i].getJobNode(node);
-							parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, pl_panel[i].getPluginName()+ " job node loaded."),
+							fireLogPropertyChanged(GettextResource.gettext(i18n_messages, pl_panel[i].getPluginName()+ " job node loaded."),
 									LogPanel.LOG_DEBUG);
 						}
 						FileWriter file_writer = new FileWriter(chosen_file);
@@ -95,10 +98,10 @@ public class EnvWorker {
 						xml_file_writer.write(document);
 						xml_file_writer.flush();
 						xml_file_writer.close();
-						parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Job saved."),
+						fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Job saved."),
 								LogPanel.LOG_INFO);
 					} catch (Exception ex) {
-						parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error: ") + ex.getMessage(),
+						fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error: ") + ex.getMessage(),
 								LogPanel.LOG_ERROR);
 
 					}
@@ -106,11 +109,11 @@ public class EnvWorker {
 			}
 		}
 		catch(RuntimeException re){
-			parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "RuntimeError:")
+			fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "RuntimeError:")
 					+ " Unable to load environment. "+re.getMessage(), LogPanel.LOG_ERROR);			
 		}
 		catch(Exception e){
-			parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error:")
+			fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error:")
 					+ " Unable to load environment. "+e.getMessage(), LogPanel.LOG_ERROR);
 		}
 	}
@@ -120,7 +123,7 @@ public class EnvWorker {
 	 */
 	public void loadJobs() {
 		file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Load environment"));
-		int return_val = file_chooser.showOpenDialog((Component)parent);
+		int return_val = file_chooser.showOpenDialog(null);
 		if (return_val == JFileChooser.APPROVE_OPTION) {
 			final File chosen_file = file_chooser.getSelectedFile();
 			loadJobs(chosen_file); 
@@ -145,16 +148,16 @@ public class EnvWorker {
 						pl_panel[i].loadJobNode(node);
 					}
 				} catch (Exception ex) {
-					parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error: ") + ex.getMessage(),
+					fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error: ") + ex.getMessage(),
 							LogPanel.LOG_ERROR);
 				}
 			} else {
-				parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error:")
+				fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error:")
 						+ " Unable to load environment", LogPanel.LOG_ERROR);
 			}
 		}
 		catch(Exception e){
-			parent.fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error:")
+			fireLogPropertyChanged(GettextResource.gettext(i18n_messages, "Error:")
 					+ " Unable to load environment", LogPanel.LOG_ERROR);
 		}
 	}
@@ -170,4 +173,43 @@ public class EnvWorker {
 		loadJobs(chosen_file);
 
 	}
+	
+	/**
+	 * delegated
+	 * @param listener
+	 */
+	public void addPropertyChangeListener(PropertyChangeListener listener){
+	    pcs.addPropertyChangeListener(listener);
+	}
+	/**
+	 * delegated
+	 * @param listener
+	 */	 
+	public void addPropertyChangeListener(String porpertyName, PropertyChangeListener listener){
+	    pcs.addPropertyChangeListener(porpertyName, listener);
+	}	
+	/**
+	 * delegated
+	 * @param listener
+	 */
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+    	pcs.removePropertyChangeListener(listener); 	
+    }
+	/**
+	 * delegated
+	 * @param listener
+	 */
+    public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+    	pcs.removePropertyChangeListener(propertyName, listener);    	
+    }
+
+	public void fireLogPropertyChanged(String log_msg, int log_level) {
+        this.log_msg = log_msg;
+        pcs.firePropertyChange("LOG", -1, log_level);		
+	}
+
+	public String getLogMsg() {
+		return this.log_msg;
+	}
+
 }

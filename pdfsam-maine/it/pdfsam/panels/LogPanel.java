@@ -62,7 +62,7 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
 	public static final String SAVELOG_ACTION = "2";
 	public static final String SELECTALL_ACTION = "3";
 	
-	private static ArrayList logValuesDescrition = getStaticLogLevels();
+	private static ArrayList logValuesDescription = getStaticLogLevels();
 	private Configuration config;
 	private String log_text = "";
     private final JTextPane log_text_area = new JTextPane();
@@ -74,10 +74,10 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
     public LogPanel(){
     	super();
     	config = Configuration.getInstance();
-    	logValuesDescrition.add(LogPanel.LOG_ERROR, "Errors");
-    	logValuesDescrition.add(LogPanel.LOG_INFO, "Informations");
-    	logValuesDescrition.add(LogPanel.LOG_DETAILEDINFO, "Detailed informations");
-    	logValuesDescrition.add(LogPanel.LOG_DEBUG, "Debug");
+    	logValuesDescription.add(LogPanel.LOG_ERROR, "Errors");
+    	logValuesDescription.add(LogPanel.LOG_INFO, "Informations");
+    	logValuesDescription.add(LogPanel.LOG_DETAILEDINFO, "Detailed informations");
+    	logValuesDescription.add(LogPanel.LOG_DEBUG, "Debug");
     	setLogLeveLabel();
     	init();
     }
@@ -140,7 +140,7 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
      * Sets the log level label taken from the configuration
      */
     private void setLogLeveLabel(){
-    	    	log_level.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"+" "+(String)logValuesDescrition.get(config.getLogLevel())));
+    	    	log_level.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"+" "+(String)logValuesDescription.get(config.getLogLevel())));
     }
     
 	/**
@@ -198,10 +198,10 @@ public class LogPanel extends JPanel implements MouseListener, ActionListener{
 	*/
 	public static LinkedList getLogList(){
 	    LinkedList retval = new LinkedList();
-	    retval.add(new ListItem(LogPanel.LOG_ERROR,(String)logValuesDescrition.get(LogPanel.LOG_ERROR)));
-	    retval.add(new ListItem(LogPanel.LOG_INFO,(String)logValuesDescrition.get(LogPanel.LOG_INFO)));
-	    retval.add(new ListItem(LogPanel.LOG_DETAILEDINFO,(String)logValuesDescrition.get(LogPanel.LOG_DETAILEDINFO)));
-	    retval.add(new ListItem(LogPanel.LOG_DEBUG,(String)logValuesDescrition.get(LogPanel.LOG_DEBUG)));
+	    retval.add(new ListItem(LogPanel.LOG_ERROR,(String)logValuesDescription.get(LogPanel.LOG_ERROR)));
+	    retval.add(new ListItem(LogPanel.LOG_INFO,(String)logValuesDescription.get(LogPanel.LOG_INFO)));
+	    retval.add(new ListItem(LogPanel.LOG_DETAILEDINFO,(String)logValuesDescription.get(LogPanel.LOG_DETAILEDINFO)));
+	    retval.add(new ListItem(LogPanel.LOG_DEBUG,(String)logValuesDescription.get(LogPanel.LOG_DEBUG)));
 	    return retval;	    
 	}
 	

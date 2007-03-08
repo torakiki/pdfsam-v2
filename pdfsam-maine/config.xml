@@ -13,9 +13,9 @@
       <theme>14</theme> 
     </lookAndfeel>  
     <i18n>it_IT</i18n>  
-    <plugs_absolute_dir>F:\workspace_pdfsame_enanched\pdfsam-maine\plugins</plugs_absolute_dir>  
+    <plugs_absolute_dir>/media/usbdisk/workspace_pdfsame_enanched/pdfsam-maine/plugins</plugs_absolute_dir>  
     <defaultjob></defaultjob>  
-    <loglevel>3</loglevel> 
+    <loglevel>1</loglevel> 
   </settings>  
   <adata> 
     <author> 

@@ -91,6 +91,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     private JScrollPane main_scroll_panel;
     private JSplashScreen screen;
     private ResourceBundle i18n_messages;
+    private EnvWorker envWorker;
     
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
@@ -228,6 +229,9 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
             lpi.printStackTrace();
             log_panel.addLogText("Exception loading plugin: "+lpi.getMessage(), LogPanel.LOG_ERROR);
         }
+        envWorker = new EnvWorker(pl_panel);
+        envWorker.addPropertyChangeListener(this);
+        
         setSplashStep(GettextResource.gettext(i18n_messages,"Building tree.."));
         DefaultTreeModel treeModel = new DefaultTreeModel(rootNode);
         tree = new JTree(treeModel);
@@ -267,9 +271,19 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
         	tree.setSelectionPath(new TreePath(rootNode.getChildAt(2)));
         }
         //after plugs have been loaded
-        buttons_bar.addEnvButtonsActionListener(new EnvActionListener(buttons_bar,new EnvWorker(buttons_bar, pl_panel)));
-		menu_bar.addEnvButtonsActionListener(new EnvActionListener(menu_bar,new EnvWorker(menu_bar, pl_panel)));
+        buttons_bar.addEnvButtonsActionListener(new EnvActionListener(buttons_bar,envWorker));
+		menu_bar.addEnvButtonsActionListener(new EnvActionListener(menu_bar,envWorker));
 
+		//check and load default env
+		try{
+			String defaultEnv = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/defaultjob");
+			if (defaultEnv != null && defaultEnv.length() > 0){
+				envWorker.loadJobs(defaultEnv);
+			}
+		}
+		catch (Exception dje){
+            log_panel.addLogText("Exception loading default environment: "+dje.getMessage(), LogPanel.LOG_ERROR);
+        }
 		closeSplash();
 	}
 

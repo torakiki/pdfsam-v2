@@ -18,7 +18,11 @@ import it.pdfsam.interfaces.PlugablePanel;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
+/**
+ * Abstract class for plugin
+ * @author a.vacondio
+ *
+ */
 public abstract class AbstractPlugIn extends AbstractLogWriter implements PlugablePanel{
 
     
