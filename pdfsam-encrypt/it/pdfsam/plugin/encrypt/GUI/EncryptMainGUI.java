@@ -615,11 +615,11 @@ public class EncryptMainGUI extends AbstractPlugIn{
 
 //      RADIO_LAYOUT
         options_pane_layout.putConstraint(SpringLayout.SOUTH, owner_pwd_label, 20, SpringLayout.NORTH, owner_pwd_label);
-        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_label, 120, SpringLayout.WEST, owner_pwd_label);
+        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_label, 140, SpringLayout.WEST, owner_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.NORTH, owner_pwd_label, 10, SpringLayout.NORTH, encrypt_options_panel);
         options_pane_layout.putConstraint(SpringLayout.WEST, owner_pwd_label, 10, SpringLayout.WEST, encrypt_options_panel);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, owner_pwd_field, 0, SpringLayout.SOUTH, owner_pwd_label);
-        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_field, 120, SpringLayout.WEST, owner_pwd_field);
+        options_pane_layout.putConstraint(SpringLayout.EAST, owner_pwd_field, 140, SpringLayout.WEST, owner_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.NORTH, owner_pwd_field, 0, SpringLayout.NORTH, owner_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.WEST, owner_pwd_field, 5, SpringLayout.EAST, owner_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, user_pwd_label, 0, SpringLayout.SOUTH, owner_pwd_field);
@@ -627,7 +627,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
         options_pane_layout.putConstraint(SpringLayout.NORTH, user_pwd_label, 0, SpringLayout.NORTH, owner_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.WEST, user_pwd_label, 5, SpringLayout.EAST, owner_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, user_pwd_field, 0, SpringLayout.SOUTH, user_pwd_label);
-        options_pane_layout.putConstraint(SpringLayout.EAST, user_pwd_field, 120, SpringLayout.WEST, user_pwd_field);
+        options_pane_layout.putConstraint(SpringLayout.EAST, user_pwd_field, 140, SpringLayout.WEST, user_pwd_field);
         options_pane_layout.putConstraint(SpringLayout.NORTH, user_pwd_field, 0, SpringLayout.NORTH, user_pwd_label);
         options_pane_layout.putConstraint(SpringLayout.WEST, user_pwd_field, 5, SpringLayout.EAST, user_pwd_label);
 
@@ -641,15 +641,15 @@ public class EncryptMainGUI extends AbstractPlugIn{
         options_pane_layout.putConstraint(SpringLayout.WEST, encrypt_type, 5, SpringLayout.EAST, encrypt_type_label);
         
         options_pane_layout.putConstraint(SpringLayout.SOUTH, allowall_check, 20, SpringLayout.NORTH, allowall_check);
-        options_pane_layout.putConstraint(SpringLayout.EAST, allowall_check, 160, SpringLayout.WEST, allowall_check);
+        options_pane_layout.putConstraint(SpringLayout.EAST, allowall_check, 170, SpringLayout.WEST, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.NORTH, allowall_check, 5, SpringLayout.SOUTH, encrypt_type_label);
         options_pane_layout.putConstraint(SpringLayout.WEST, allowall_check, 0, SpringLayout.WEST, encrypt_type_label);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[3], 0, SpringLayout.SOUTH, allowall_check);
-        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[3], 220, SpringLayout.WEST, permissions_check[3]);
+        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[3], 230, SpringLayout.WEST, permissions_check[3]);
         options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[3], 0, SpringLayout.NORTH, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[3], 5, SpringLayout.EAST, allowall_check);
         options_pane_layout.putConstraint(SpringLayout.SOUTH, permissions_check[7], 0, SpringLayout.SOUTH, permissions_check[3]);
-        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[7], 220, SpringLayout.WEST, permissions_check[7]);
+        options_pane_layout.putConstraint(SpringLayout.EAST, permissions_check[7], 230, SpringLayout.WEST, permissions_check[7]);
         options_pane_layout.putConstraint(SpringLayout.NORTH, permissions_check[7], 0, SpringLayout.NORTH, permissions_check[3]);
         options_pane_layout.putConstraint(SpringLayout.WEST, permissions_check[7], 0, SpringLayout.EAST, permissions_check[3]);
         
