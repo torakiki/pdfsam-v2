@@ -120,14 +120,14 @@ public class EncryptMainGUI extends AbstractPlugIn{
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Encrypt";
-    private final String PLUGIN_VERSION = "0.1.3e";
+    private final String PLUGIN_VERSION = "0.1.4e";
 	
 	private final static String RC4_40 = "RC4-40b";
 	private final static String RC4_128 = "RC4-128b";
 	private final static String AES_128 = "AES-128b";
 	
-	private final static int PRINT = 0;
-	private final static int DPRINT = 1;
+	private final static int DPRINT = 0;
+	private final static int PRINT = 1;
 	private final static int COPY = 2;
 	private final static int MODIFY = 3;
 	private final static int FILL = 4;
@@ -259,9 +259,21 @@ public class EncryptMainGUI extends AbstractPlugIn{
 						for(int i=0; i<permissions_check.length; i++){
 							permissions_check[i].setEnabled(false);
 						}
-					}else{
-						for(int i=0; i<permissions_check.length; i++){
-							permissions_check[i].setEnabled(true);
+					}else{					
+						String encType = (String)encrypt_type.getSelectedItem();
+	        			if(encType.equals(EncryptMainGUI.RC4_40)){
+	        		        permissions_check[EncryptMainGUI.PRINT].setEnabled(true);
+	        		        permissions_check[EncryptMainGUI.DPRINT].setEnabled(false);
+	        		        permissions_check[EncryptMainGUI.COPY].setEnabled(true);
+	        		        permissions_check[EncryptMainGUI.MODIFY].setEnabled(true);
+	        		        permissions_check[EncryptMainGUI.ANNOTATION].setEnabled(true);
+	        		        permissions_check[EncryptMainGUI.FILL].setEnabled(false);
+	        		        permissions_check[EncryptMainGUI.SCREEN].setEnabled(false);
+	        		        permissions_check[EncryptMainGUI.ASSEMBLY].setEnabled(false);
+	        			}else{
+							for(int i=0; i<permissions_check.length; i++){
+								permissions_check[i].setEnabled(true);
+							}
 						}
 					}
 			}
@@ -327,6 +339,29 @@ public class EncryptMainGUI extends AbstractPlugIn{
         
         output_options_label.setText(GettextResource.gettext(i18n_messages,"Output options:"));
         add(output_options_label);
+        
+        encrypt_type.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {	 
+        		if(!allowall_check.isSelected()){
+        			String encType = (String)encrypt_type.getSelectedItem();
+        			if(encType.equals(EncryptMainGUI.RC4_40)){
+        		        permissions_check[EncryptMainGUI.PRINT].setEnabled(true);
+        		        permissions_check[EncryptMainGUI.DPRINT].setEnabled(false);
+        		        permissions_check[EncryptMainGUI.COPY].setEnabled(true);
+        		        permissions_check[EncryptMainGUI.MODIFY].setEnabled(true);
+        		        permissions_check[EncryptMainGUI.ANNOTATION].setEnabled(true);
+        		        permissions_check[EncryptMainGUI.FILL].setEnabled(false);
+        		        permissions_check[EncryptMainGUI.SCREEN].setEnabled(false);
+        		        permissions_check[EncryptMainGUI.ASSEMBLY].setEnabled(false);
+        			}else{
+						for(int i=0; i<permissions_check.length; i++){
+							permissions_check[i].setEnabled(true);
+						}
+					}
+				}
+        	}
+        });
+        encrypt_type.setSelectedIndex(1);
 //S_PANEL
         output_options_panel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         e_panel_layout = new SpringLayout();
