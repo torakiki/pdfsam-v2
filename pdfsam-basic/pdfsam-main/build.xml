@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PDF SAM ALL" default="pdfsame_jars" basedir=".">
+	<property name="ECLIPSE_HOME" value="F:\eclipse\eclipse_w32"/>
+    <property name="USER_NAME" value="Andrea Vacondio"/>
+    <property name="SRC_DIR" value="F:\workspace_pdfsam_basic/pdfsam-src"/>
+    <property name="PDFSAME_PROJECT_DIR" value="F:\workspace_pdfsam_basic"/>
+    <property name="LAUNCHER_PROJECT_DIR" value="${PDFSAME_PROJECT_DIR}/pdfsam-launcher"/>
+		
+    <property name="PDFSAM_PROJECT_DIR" value="/pdfsam-main"/>
+    <property name="PDFSAM_DIR" value="${PDFSAME_PROJECT_DIR}/pdfsam-main"/>
+    <property name="PDFSAM_JAR_NAME" value="pdfsam"/>
+    <property name="PDFSAM_JAR_VER" value="0.6sr3"/>   
+ 	
+    <property name="CONSOLE_PROJECT_DIR" value="/pdfsam-console"/>
+    <property name="CONSOLE_DIR" value="${PDFSAM_DIR}/lib"/>
+    <property name="CONSOLE_JAR_NAME" value="pdfsam-console"/>
+    <property name="CONSOLE_JAR_VER" value="0.5.4"/>   
+	
+    <property name="MERGE_PROJECT_DIR" value="/pdfsam-merge"/>
+    <property name="MERGE_DIR" value="${PDFSAM_DIR}/plugins/merge"/>
+    <property name="MERGE_JAR_NAME" value="pdfsam-merge"/>
+    <property name="MERGE_JAR_VER" value="0.4.6"/>
+	
+    <property name="SPLIT_PROJECT_DIR" value="/pdfsam-split"/>
+    <property name="SPLIT_DIR" value="${PDFSAM_DIR}/plugins/split"/>
+    <property name="SPLIT_JAR_NAME" value="pdfsam-split"/>
+    <property name="SPLIT_JAR_VER" value="0.2.7"/>
+
+	<path id="project.classpath">
+        <pathelement location="."/>
+    </path>
+	<target name="pdfsam_jars" description="generate the jars file" >
+		<jar destfile="${PDFSAM_DIR}/${PDFSAM_JAR_NAME}-${PDFSAM_JAR_VER}.jar" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${PDFSAM_PROJECT_DIR}"
+	    	 excludesfile="standard-excludes.txt"
+	    	 excludes="doc/**,plugins/**,lib/**,.settings,.classpath,install.nsi,config.xml,build.xml,.project,src-standard-excludes.txt,pdfsam-starter.exe,standard-excludes.txt">
+	    	<manifest>
+			    <attribute name="Built-By" value="${USER_NAME}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-1.4.8.jar lib/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar"/>
+		    </manifest>
+	    </jar>
+	    <jar destfile="${CONSOLE_DIR}/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${CONSOLE_PROJECT_DIR}"
+	    	 excludesfile="standard-excludes.txt"
+	    	 excludes=".classpath,.settings,.project">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-1.4.8.jar"/>
+		    </manifest>
+	    </jar>	
+	    <jar destfile="${MERGE_DIR}/${MERGE_JAR_NAME}-${MERGE_JAR_VER}.jar" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${MERGE_PROJECT_DIR}"
+	    	 excludesfile="standard-excludes.txt"
+	    	 excludes=".classpath,.project">
+	    	<manifest>
+			    <attribute name="Built-By" value="${USER_NAME}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.merge.GUI.MergeMainGUI"/>
+		    </manifest>
+	    </jar>
+	    <jar destfile="${SPLIT_DIR}/${SPLIT_JAR_NAME}-${SPLIT_JAR_VER}.jar" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${SPLIT_PROJECT_DIR}"
+	    	 excludesfile="standard-excludes.txt"
+	    	 excludes=".classpath,.project">
+	    	<manifest>
+			    <attribute name="Built-By" value="${USER_NAME}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.split.GUI.SplitMainGUI"/>
+		    </manifest>
+	    </jar>
+	</target>
+	<target name="zip_sources" description="generate the zip sources file" >	
+		<zip destfile="${SRC_DIR}/${PDFSAM_JAR_NAME}-${PDFSAM_JAR_VER}-src.zip" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${PDFSAM_PROJECT_DIR}"
+	    	 excludesfile="src-standard-excludes.txt"
+	    	 excludes="doc/**,plugins/**,lib/**,gnu/**,.settings,.classpath,install.nsi,config.xml,build.xml,.project,src-standard-excludes.txt,standard-excludes.txt">
+	    </zip>		
+		<zip destfile="${SRC_DIR}/${SPLIT_JAR_NAME}-${SPLIT_JAR_VER}-src.zip" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${SPLIT_PROJECT_DIR}"
+	    	 excludesfile="src-standard-excludes.txt"
+	    	 excludes=".classpath,.project">
+	    </zip>		
+		<zip destfile="${SRC_DIR}/${MERGE_JAR_NAME}-${MERGE_JAR_VER}-src.zip" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${MERGE_PROJECT_DIR}"
+	    	 excludesfile="src-standard-excludes.txt"
+	    	 excludes=".classpath,.project">
+	    </zip>		
+		<zip destfile="${SRC_DIR}/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}-src.zip" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${CONSOLE_PROJECT_DIR}"
+	    	 excludesfile="src-standard-excludes.txt"
+	    	 excludes=".classpath,.project">
+	    </zip>		
+		<zip destfile="${SRC_DIR}/launcher-src.zip" 
+	    	 basedir="${LAUNCHER_PROJECT_DIR}">
+	    </zip>		
+		<zip destfile="${SRC_DIR}/install_nsi.zip" 
+	    	 basedir="${PDFSAME_PROJECT_DIR}${PDFSAM_PROJECT_DIR}"
+	    	 includes="*.nsi">
+	    </zip>		
+		<zip destfile="${SRC_DIR}/${PDFSAM_JAR_NAME}-${PDFSAM_JAR_VER}-out-src.zip" 
+	    	 basedir="${SRC_DIR}"
+	    	 includes="${MIX_JAR_NAME}-${MIX_JAR_VER}-src.zip,${ENCRYPT_JAR_NAME}-${ENCRYPT_JAR_VER}-src.zip,${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}-src.zip,${MERGE_JAR_NAME}-${MERGE_JAR_VER}-src.zip,${COVER_JAR_NAME}-${COVER_JAR_VER}-src.zip,${SPLIT_JAR_NAME}-${SPLIT_JAR_VER}-src.zip,launcher-src.zip,${PDFSAM_JAR_NAME}-${PDFSAM_JAR_VER}-src.zip,install_nsi.zip">
+	    </zip>		
+	  </target>
+</project>
