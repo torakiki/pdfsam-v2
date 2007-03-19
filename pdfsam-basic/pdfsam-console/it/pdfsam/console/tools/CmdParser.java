@@ -1,0 +1,492 @@
+/*
+ * Created on 10-Feb-2006
+ * Copyright (C) 2006 by Andrea Vacondio.
+ *
+ * This program is free software; you can redistribute it and/or modify it under the terms of the 
+ * GNU General Public License as published by the Free Software Foundation; 
+ * either version 2 of the License.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with this program; 
+ * if not, write to the Free Software Foundation, Inc., 
+ *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+package it.pdfsam.console.tools;
+
+import it.pdfsam.console.MainConsole;
+import it.pdfsam.console.exception.ParseException;
+
+import java.io.File;
+import java.util.Collection;
+import java.util.regex.Pattern;
+
+import jcmdline.BooleanParam;
+import jcmdline.CmdLineHandler;
+import jcmdline.FileParam;
+import jcmdline.HelpCmdLineHandler;
+import jcmdline.Parameter;
+import jcmdline.StringParam;
+import jcmdline.VersionCmdLineHandler;
+/**
+ * Parser and core for the console. It creates a command line handler and parses input args.
+ * If input command is correct (split or concat) it creates the right command line handler for the selected command
+ * and it parses input args. If everything is correct, the right command is executed; an exception is thrwon otherwise. 
+ * 
+ * @author Andrea Vacondio
+ * @see it.pdfsam.console.tools.PdfSplit
+ * @see it.pdfsam.console.tools.PdfConcat
+ *
+ */
+public class CmdParser {
+    //handler    
+    private CmdLineHandler command_line_handler;
+    //input arguments
+    private String[] in_args;
+//CONCAT
+    //-f value
+    private Collection cf_value;
+    //-l value
+    private File cl_value;
+    //-u value
+    private String cu_value;
+    //-overwrite value
+    private boolean coverwrite_value = false;
+    
+//SPLIT
+    //-p value
+    private String sp_value;
+    //-l value
+    private File sf_value;
+    //-s value
+    private String ss_value;
+    //number_page argument
+    private String sn_value;
+    
+//BOTH    
+    //-o value
+    private File o_value;
+    //-log value
+    private File log_value = null;
+    
+    //input command
+    private byte input_command = 0x00;
+    //input option
+    private byte input_option = 0x00;
+    
+    //constants
+    final static public byte F_OPT = 0x01;
+    final static public byte L_OPT = 0x02;
+
+    //constants
+    final static public byte C_CONCAT = 0x01;
+    final static public byte C_SPLIT = 0x02;    
+    
+    //concat options if concat command is given
+    private final Parameter[] concat_opts = new Parameter[] {
+            new FileParam("o",
+                          "pdf output file: if it doesn't exist it's created, if it exists it must be writeable",
+                          ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
+                          FileParam.REQUIRED, 
+                          FileParam.SINGLE_VALUED),
+            new FileParam("f",
+                          "pdf files to concat: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
+                          FileParam.IS_FILE & FileParam.IS_READABLE,
+                          FileParam.OPTIONAL, 
+                          FileParam.MULTI_VALUED),
+            new StringParam("u",   
+                          "page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
+                          StringParam.OPTIONAL),                                             
+            new FileParam("l",
+                          "csv file containing pdf files list to concat in comma separated value format",
+                          FileParam.IS_FILE & FileParam.IS_READABLE,
+                          FileParam.OPTIONAL,
+                          FileParam.SINGLE_VALUED),
+            new FileParam("log",
+                          "text file to log output messages",
+                          ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
+                          FileParam.OPTIONAL,
+                          FileParam.SINGLE_VALUED),
+            new BooleanParam("overwrite", "overwrite existing output file")                          
+            };
+            
+    //split options if slit command is given
+    private final Parameter[] split_opts = new Parameter[] {
+            new FileParam("o",
+                    "output directory",
+                    ((FileParam.IS_DIR & FileParam.EXISTS)),
+                    FileParam.REQUIRED, 
+                    FileParam.SINGLE_VALUED),
+            new FileParam("f",
+                   "input pdf file to split",
+                   FileParam.IS_FILE & FileParam.IS_READABLE,
+                   FileParam.REQUIRED, 
+                   FileParam.SINGLE_VALUED),
+            new StringParam("p",   
+                    "split: prefix for the output files name",
+                            StringParam.OPTIONAL),                      
+            new StringParam("s",   
+                    "REQUIRED IN SPLIT MODE\nsplit: split type {["+MainConsole.S_BURST+"], ["+MainConsole.S_ODD+"], ["+MainConsole.S_EVEN+"], ["+MainConsole.S_SPLIT+"], ["+MainConsole.S_NSPLIT+"]}",
+                    new String[] { MainConsole.S_BURST, MainConsole.S_ODD, MainConsole.S_EVEN, MainConsole.S_SPLIT, MainConsole.S_NSPLIT },
+                            StringParam.REQUIRED),
+            new StringParam("n",
+                    "split: page number to spli at if -s is "+MainConsole.S_SPLIT +" or " + MainConsole.S_NSPLIT ,             
+                    StringParam.OPTIONAL),
+            new FileParam("log",
+                    "text file to log output messages",
+                    ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
+                    FileParam.OPTIONAL,
+                    FileParam.SINGLE_VALUED)                          
+    };
+    /**
+     * The arguments for split command
+     */
+    private final Parameter[] split_arguments = new Parameter[] {
+            new StringParam("command",   
+                    "command to execute {[split]}",
+                    new String[] { "split" },
+                    StringParam.REQUIRED),
+              
+            /*new IntParam("number_page", 
+                    "split: page number to split if \"-s split\" is given or split every \"n\" pages if \"-s nsplit\" is given",
+                    IntParam.OPTIONAL,
+                    IntParam.SINGLE_VALUED)*/
+    };
+
+    /**
+     * The arguments for concat command
+     */
+    private final Parameter[] concat_arguments = new Parameter[] {
+            new StringParam("command",   
+                    "command to execute {[concat]}",
+                    new String[] { "concat" },
+                    StringParam.REQUIRED),
+    };    
+    /**
+     * Costructor
+     * @param version Console version
+     * @param help_text Help text to show
+     * @param command_name Command name
+     * @param command_desc Command description
+     * @param options Optional parameters
+     * @param args Arguments accepted
+     * @param input_args Arguments to parse
+     */
+    public CmdParser(String version, String help_text, String command_name, String command_desc, Parameter[] options, Parameter[] args, String[] input_args ){
+        //cmd handler creation
+        in_args = input_args;
+        command_line_handler = new VersionCmdLineHandler(version,new HelpCmdLineHandler(help_text,command_name,command_desc,options,args));
+        command_line_handler.setDieOnParseError(false);    
+    }
+    
+    /**
+     * Parse the in_args to get the input command type. It creates the right command handler for split or concat command
+     * and it parses in_args again. Executes concat or split of pdf files if everything is ok, an exception is thrown otherwise.
+     * @return true if parsed correctly, false otherwise
+     */
+    public boolean Parse() throws Exception{
+        if (command_line_handler.parse(in_args)){
+            String i_command = ((StringParam)command_line_handler.getArg("command")).getValue();
+            //parse command
+            if (i_command.equals("concat")){
+                input_command = CmdParser.C_CONCAT;
+                //create a new handler specific for concat
+                command_line_handler = new VersionCmdLineHandler(MainConsole.VERSION,new HelpCmdLineHandler(MainConsole.helpText,command_line_handler.getCmdName(),command_line_handler.getCmdDesc(),concat_opts,concat_arguments));
+                command_line_handler.setDieOnParseError(false);
+                command_line_handler.parse(in_args);
+                ParseConcatCommand();
+            }else if (i_command.equals("split")){
+                input_command = CmdParser.C_SPLIT;
+                //create a new handler specific for split
+                command_line_handler = new VersionCmdLineHandler(MainConsole.VERSION,new HelpCmdLineHandler(MainConsole.helpText,command_line_handler.getCmdName(),command_line_handler.getCmdDesc(),split_opts,split_arguments));
+                command_line_handler.setDieOnParseError(false);
+                command_line_handler.parse(in_args);
+                ParseSplitCommand();
+            }
+            else{
+                throw new ParseException("CommandNotFound: "+input_command+".");
+            }
+            return true;
+        }else{
+            throw new ParseException("ParseError: "+command_line_handler.getParseError());
+        }
+    }
+
+    /**
+     * Parser for the command line input with the "concat" argument. Input is validated and, if no exception is thrown,
+     * is processed. Files extension must be of the right type. Options -l and -f can't be together in the input line. 
+     * @return true if the command is parsed correctly, exception otherwise.
+     * @throws Exception
+     */
+    private boolean ParseConcatCommand() throws Exception{
+//PARSE -o
+        FileParam o_opts = (FileParam) command_line_handler.getOption("o");
+            //no output option given
+            if (!(o_opts.isSet())){
+                throw new ParseException("OutputNotFound: missing or illegal -o option.");
+            }
+            //output is given
+            else{
+                File out_file;
+                out_file = o_opts.getFile();
+                //output is given but is not a pdf file
+                if (!(out_file.getPath().toLowerCase().endsWith(".pdf"))){
+        			throw new ParseException("ParseConcatCommand: output file not a pdf format.");	
+        		}
+                else if(out_file.getName().toLowerCase().equals(".pdf")){
+                    throw new ParseException("ParseConcatCommand: no output file name.");  
+                }
+                else{
+                    o_value = out_file;
+                }
+            }
+//END_PARSE -o
+//PARSE -l -f            
+    		FileParam l_opts = (FileParam) command_line_handler.getOption("l");
+    		FileParam f_opts = (FileParam) command_line_handler.getOption("f");
+            //both not set, no input given
+            if ((!(l_opts.isSet())) && (!(f_opts.isSet()))){
+                throw new ParseException("InputNotFound: no -f or -l option given.");
+            }
+            //both are set
+            else if ((l_opts.isSet()) && (f_opts.isSet())){
+                throw new ParseException("TooManyInputSources: both -f and -l options given.");
+            }            //-l option error: no csv file given
+            else if ((!(f_opts.isSet())) && (!(l_opts.getFile().getPath().toLowerCase().endsWith(".csv")))){
+                throw new ParseException("ParseConcatCommand: input list file not a csv format.");
+            }
+            //only f_opts is set
+            else if ((f_opts.isSet()) && (!(l_opts.isSet()))){
+                File input_file = f_opts.getFile();
+                if (!(input_file.getPath().toLowerCase().endsWith(".pdf"))){
+                    throw new ParseException("ParseSplitCommand: input file "+input_file.getName()+" is not a pdf format.");  
+                }
+                else{
+                    sf_value = input_file;
+                }                
+                input_option = CmdParser.F_OPT;
+                cf_value = f_opts.getFiles();
+            }
+            //only l_opts is set
+            else if ((l_opts.isSet()) && (!(f_opts.isSet()))){
+                //-l option error: no csv file given
+                if (!(l_opts.getFile().getPath().toLowerCase().endsWith(".csv"))){
+                    throw new ParseException("ParseConcatCommand: input list file not a csv format.");
+                }else{
+                    input_option = CmdParser.L_OPT;
+                    cl_value = l_opts.getFile();
+                }
+            }
+//END_PARSE -l -f
+//PARSE -log
+            FileParam log_opts = (FileParam) command_line_handler.getOption("log");
+            if (log_opts.isSet()){
+                log_value = log_opts.getFile();
+            }
+//END_PARSE -log            
+//PARSE -u            
+            StringParam u_opts = (StringParam) command_line_handler.getOption("u");            
+            //if it's set we proceed with validation
+            if (u_opts.isSet()){
+                //regexp pattern
+                Pattern p = Pattern.compile("(([0-9]*[-][0-9]*[:])|(all:))*", Pattern.CASE_INSENSITIVE);
+                if (!(p.matcher(u_opts.getValue()).matches())){
+                    throw new ParseException("ParseConcatCommand: -u value parsing error. The string must be \"num\" or \"num1,num2-num3\" or \"num1-num2:\" or \"all:\" repeated for each pdf file in input.");
+                }
+                else{
+                    cu_value = u_opts.getValue();
+                }
+            }
+//END_PARSE -u
+//PARSE -overwrite            
+            coverwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
+//END PARSE -overwrite
+            return true;
+    }
+    
+    /**
+     * Parser for the command line input with the "split" argument. Input is validated and, if no exception is thrown,
+     * is processed. Files extension must be of the right type. 
+     * @return true if the command is parsed correctly, exception otherwise.
+     * @throws Exception
+     */
+    private boolean ParseSplitCommand() throws Exception{
+//PARSE -o
+        FileParam o_opts = (FileParam) command_line_handler.getOption("o");
+            //no output option given
+            if (!(o_opts.isSet())){
+                throw new ParseException("OutputNotFound: missing or illegal -o option.");
+            }
+            //output is given
+            else{
+                File out_file;
+                out_file = o_opts.getFile();
+                //output is given but is not a pdf file
+                if (!(out_file.isDirectory())){
+                    throw new ParseException("ParseSplitCommand: output is not a directory.");  
+                }
+                else{
+                    o_value = out_file;
+                }
+            }
+//END_PARSE -o
+//PARSE -log
+            FileParam log_opts = (FileParam) command_line_handler.getOption("log");
+            if (log_opts.isSet()){
+                log_value = log_opts.getFile();
+            }
+//END_PARSE -log            
+            StringParam p_opts = (StringParam) command_line_handler.getOption("p");
+            FileParam f_opts = (FileParam) command_line_handler.getOption("f");
+            StringParam s_opts = (StringParam) command_line_handler.getOption("s");
+            StringParam n_opts = (StringParam)command_line_handler.getOption("n");
+//PARSE -p            
+            if (p_opts.isSet()){
+                sp_value = p_opts.getValue();
+            }else{
+                sp_value = "";
+            }
+//END_PARSE -p
+//PARSE -f            
+            File input_file;
+            input_file = f_opts.getFile();
+            //input is given but is not a pdf file
+            if (!(input_file.getPath().toLowerCase().endsWith(".pdf"))){
+                throw new ParseException("ParseSplitCommand: input file not a pdf format.");  
+            }
+            else{
+                sf_value = input_file;
+            }
+//END_PARSE -f 
+//PARSE -s
+            if (!(s_opts.isSet())){
+                throw new ParseException("SplitTypeNotFound: not -s option given.");
+            }
+            else{
+                ss_value = s_opts.getValue();
+            }
+//END_PARSE -s
+//PARSE -n            
+            if((ss_value.equals( it.pdfsam.console.MainConsole.S_SPLIT)) || (ss_value.equals( it.pdfsam.console.MainConsole.S_NSPLIT))){   
+                if (n_opts.isSet()){
+                    sn_value = n_opts.getValue().trim();
+                    //if nsplit -n option must be a number
+                    if (ss_value.equals( it.pdfsam.console.MainConsole.S_NSPLIT)){
+                        try{
+                            Integer.parseInt(sn_value);
+                        }catch (NumberFormatException nfe){
+                            throw new ParseException("ParseSplitCommand: -n option not a numeric value.");
+                        }
+                    }
+                    //if split i must validate the sequence
+                    if (ss_value.equals( it.pdfsam.console.MainConsole.S_SPLIT)){
+                      /*                Pattern p = Pattern.compile("(([0-9]*[-][0-9]*[:])|(all:))*", Pattern.CASE_INSENSITIVE);
+                if (!(p.matcher(u_opts.getValue()).matches())){
+                    throw new ParseException("ParseConcatCommand: -u value parsing error. The string must be \"num1-num2:\" or \"all:\" repeated for each pdf file in input.");
+                }
+*/  
+                        //i can use "," or " " or "-" as separator
+                        sn_value.replaceAll(",","-").replaceAll(" ","-");
+                        Pattern p = Pattern.compile("([0-9]+)([-][0-9]+)*");
+                        if (!(p.matcher(sn_value).matches())){
+                            throw new ParseException("ParseSplitCommand: -n option must be a number or a sequence number-number-number...");
+                        }
+                    }
+                }else{
+                    throw new ParseException("ParseSplitCommand: unable to find required option -n for the selected split mode.");
+                }
+            }else{
+                if (n_opts.isSet()){
+                    throw new ParseException("ParseSplitCommand: unnecessary option -n for the selected split mode.");
+                }else{
+                    sn_value = "0";
+                }
+            }
+//END_PARSE -n
+            return true;
+    }    
+    
+    /**
+     * @return Returns the -f option value in concat command.
+     */
+    public Collection getCFValue() {
+        return cf_value;
+    }
+
+    /**
+     * @return Returns the -l option value in concat command.
+     */
+    public File getCLValue() {
+        return cl_value;
+    }
+    
+    /**
+     * @return Returns the -u option value in concat command.
+     */
+    public String getCUValue() {
+        return cu_value;
+    }
+    
+    /**
+     * @return Returns the -overwrite option value in concat command.
+     */
+    public boolean COverwrite() {
+        return coverwrite_value;
+    }
+    
+    /**
+     * @return Returns the -o option value. in concat command
+     */
+    public File getOValue() {
+        return o_value;
+    }
+
+    /**
+     * @return Returns the -o option value. in concat command
+     */
+    public File getLogValue() {
+        return log_value;
+    }
+    
+    /**
+     * @return Returns the input_option.
+     */
+    public byte getInputOption() {
+        return input_option;
+    }
+
+    /**
+     * @return Returns the input_command.
+     */
+    public byte getInputCommand() {
+        return input_command;
+    }
+
+    /**
+     * @return Returns the sf_value.
+     */
+    public File getSFValue() {
+        return sf_value;
+    }
+
+    /**
+     * @return Returns the snumber_pages_value.
+     */
+    public String getSNumberPageValue() {
+        return sn_value;
+    }
+
+    /**
+     * @return Returns the sp_value.
+     */
+    public String getSPValue() {
+        return sp_value;
+    }
+
+    /**
+     * @return Returns the ss_value.
+     */
+    public String getSSValue() {
+        return ss_value;
+    }     
+}
