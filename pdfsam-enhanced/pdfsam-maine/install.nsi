@@ -8,7 +8,7 @@
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 !define TARGET_FILE "config.xml"
-!define PRODUCT_DATE "28/02/2007"
+!define PRODUCT_DATE "10/03/2007"
 !define LANGUAGE_TITLE "pdfsam language selection"
 SetCompressor lzma
 
@@ -18,8 +18,8 @@ SetCompressor lzma
   
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "F:\install.ico"
-!define MUI_UNICON "F:\uninstall.ico"
+!define MUI_ICON "G:\install.ico"
+!define MUI_UNICON "G:\uninstall.ico"
 !define MUI_LANGDLL_WINDOWTITLE "${LANGUAGE_TITLE}"
 
 ; Welcome page

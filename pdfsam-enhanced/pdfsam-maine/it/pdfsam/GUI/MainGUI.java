@@ -100,7 +100,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
-	private static final boolean IDE = true;
+	private static final boolean IDE = false;
 
 	public MainGUI() {
 		runSplash();

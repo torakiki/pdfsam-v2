@@ -1,4 +1,9 @@
-1.1.8e alpha
+1.2.0e beta
+===================================
+-Console: fix split page numbers starting from 1 and code cleaning
+-Encrypt: permissions checks enabled/disabled based on the encrypt angorithm chosen
+
+1.2.0e alpha
 ===================================
 -Console: added xml input file -l option for merge
 -Console: rewrote commands handler
@@ -18,6 +23,7 @@
 -Added plugs panels icons
 -Console: fix bug #1641683
 -Merge: fix when automatically extension in destination file is set
+-New icons set
 -dom4j 1.6.1
 -jaxen 1.1
 -iText 1.4.8
