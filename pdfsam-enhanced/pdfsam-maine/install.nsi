@@ -2,13 +2,13 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "pdfsam"
-!define PRODUCT_VERSION "1.2.0e alpha"
+!define PRODUCT_VERSION "1.2.0e beta"
 !define PRODUCT_PUBLISHER "Andrea Vacondio"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 !define TARGET_FILE "config.xml"
-!define PRODUCT_DATE "10/03/2007"
+!define PRODUCT_DATE "30/03/2007"
 !define LANGUAGE_TITLE "pdfsam language selection"
 SetCompressor lzma
 
@@ -18,8 +18,8 @@ SetCompressor lzma
   
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "G:\install.ico"
-!define MUI_UNICON "G:\uninstall.ico"
+!define MUI_ICON "F:\install.ico"
+!define MUI_UNICON "F:\uninstall.ico"
 !define MUI_LANGDLL_WINDOWTITLE "${LANGUAGE_TITLE}"
 
 ; Welcome page
@@ -60,7 +60,7 @@ var ICONS_GROUP
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "pdfsam-win32inst-v1_2_0e-alpha.exe"
+OutFile "pdfsam-win32inst-v1_2_0e-beta.exe"
 InstallDir "$PROGRAMFILES\pdfsam"
 ShowInstDetails show
 ShowUnInstDetails show
@@ -93,6 +93,7 @@ Function WarnDirExists
   Delete "$INSTDIR\lib\looks-*.jar"
   Delete "$INSTDIR\lib\pdfsam-langpack.jar"
   Delete "$INSTDIR\lib\pdfsam-console-*.jar"
+  Delete "$INSTDIR\config.xml"
   Delete "$INSTDIR\pdfsam-*.jar"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\doc\pdfsam-*-tutorial.pdf"
@@ -259,7 +260,7 @@ endFileExist:
 
   SetOverwrite on
   SetOutPath "$INSTDIR\lib"
-  File "lib\pdfsam-console-0.7.0e.jar"
+  File "lib\pdfsam-console-0.7.1e.jar"
   File "lib\jcmdline-1.0.3.jar"
   File "lib\looks-2.1.1.jar"
   File "lib\itext-1.4.8.jar"
@@ -268,7 +269,7 @@ endFileExist:
   File "lib\jaxen-1.1.jar"    
   SetOverwrite ifnewer
   SetOutPath "$INSTDIR"
-  File "pdfsam-1.2.0e-alpha.jar"
+  File "pdfsam-1.2.0e-beta.jar"
   File "pdfsam-starter.exe"
   SetOutPath "$INSTDIR\doc"
   File "doc\readme.txt"
@@ -285,7 +286,7 @@ endFileExist:
   File "plugins\cover\pdfsam-cover-0.1.4e.jar"
   File "plugins\cover\config.xml"
   SetOutPath "$INSTDIR\plugins\encrypt"
-  File "plugins\encrypt\pdfsam-encrypt-0.1.3e.jar"
+  File "plugins\encrypt\pdfsam-encrypt-0.1.4e.jar"
   File "plugins\encrypt\config.xml"
   SetOutPath "$INSTDIR\plugins\mix"
   File "plugins\mix\pdfsam-mix-0.0.6e.jar"
@@ -331,19 +332,19 @@ Section Uninstall
   Delete "$INSTDIR\plugins\merge\config.xml"
   Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.4.7e.jar"
   Delete "$INSTDIR\plugins\merge\config.xml"
-  Delete "$INSTDIR\plugins\encrypt\pdfsam-encrypt-0.1.3e.jar"
+  Delete "$INSTDIR\plugins\encrypt\pdfsam-encrypt-0.1.4e.jar"
   Delete "$INSTDIR\plugins\encrypt\config.xml"
   Delete "$INSTDIR\plugins\mix\pdfsam-mix-0.0.6e.jar"
   Delete "$INSTDIR\plugins\mix\config.xml"
   Delete "$INSTDIR\plugins\cover\pdfsam-cover-0.1.4e.jar"
   Delete "$INSTDIR\plugins\cover\config.xml"
-  Delete "$INSTDIR\pdfsam-1.2.0e-alpha.jar"
+  Delete "$INSTDIR\pdfsam-1.2.0e-beta.jar"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\doc\readme.txt"
   Delete "$INSTDIR\doc\changelog.txt"
   Delete "$INSTDIR\doc\License.txt"
   Delete "$INSTDIR\doc\pdfsam-1.2.0e-alpha-tutorial.pdf"  
-  Delete "$INSTDIR\lib\pdfsam-console-0.7.0e.jar"
+  Delete "$INSTDIR\lib\pdfsam-console-0.7.1e.jar"
   Delete "$INSTDIR\lib\jcmdline-1.0.3.jar"
   Delete "$INSTDIR\lib\looks-2.1.1.jar"
   Delete "$INSTDIR\lib\itext-1.4.8.jar"
