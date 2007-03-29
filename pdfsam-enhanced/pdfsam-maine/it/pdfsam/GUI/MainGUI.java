@@ -96,7 +96,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.2.0e alpha"; 
+	public static final String APP_VERSION = "1.2.0e beta"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
@@ -186,7 +186,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 
         log_panel =  new LogPanel();        
         buttons_bar.addLogButtonsActionListener(log_panel);
-        plugs_panel.setMinimumSize(new Dimension(400,300));
+        plugs_panel.setPreferredSize(new Dimension(670,500));
 //      SCANS_FOR_PLUGINS     
         setSplashStep(GettextResource.gettext(i18n_messages,"Loading plugins.."));
         int i = 0;
@@ -197,7 +197,6 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
             for (i = 0 ; i < pl.getPNumber() ; i ++ ) {
                     //Load plugin
                     pl_panel[i] = (AbstractPlugIn) pl.loadPlugin(i);
-                    pl_panel[i].setMinimumSize(new Dimension(200,300));
                     String p_name = pl_panel[i].getPluginName();
                     plugs_panel.add(pl_panel[i],p_name);
                     plugsNode.add(new DefaultMutableTreeNode(new NodeInfo(p_name,i)));
