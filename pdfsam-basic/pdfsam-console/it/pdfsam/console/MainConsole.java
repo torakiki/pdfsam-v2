@@ -63,7 +63,7 @@ public class MainConsole{
     /**
      * Console version
      */
-    public static final String VERSION = "0.5.4"; 
+    public static final String VERSION = "0.5.5"; 
     /**
      * The options available for this program
      */

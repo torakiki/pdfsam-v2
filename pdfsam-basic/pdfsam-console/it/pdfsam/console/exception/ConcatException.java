@@ -19,25 +19,22 @@ package it.pdfsam.console.exception;
  * @see it.pdfsam.console.tools.PdfConcat
  *
  */
-public class ConcatException extends Exception {
+public class ConcatException extends ConsoleException {
     
     /**
      * 
      */
     private static final long serialVersionUID = -8242739056279169571L;
-    private String error_msg; 
 
     public ConcatException() {
-        super();
-        error_msg = "GenericConcatException";
+        super("GenericConcatException");
     }
 
     public ConcatException(String message) {
         super(message);
-        error_msg = message;
     }
 
     public String toString(){
-        return error_msg;
+        return super.toString();
     }
 }

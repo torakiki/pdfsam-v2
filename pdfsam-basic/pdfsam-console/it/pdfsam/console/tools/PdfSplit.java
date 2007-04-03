@@ -53,6 +53,7 @@ public class PdfSplit{
     private String out_message;
     private DecimalFormat file_number_formatter = new DecimalFormat();
     private MainConsole source;
+    private PrefixParser prefixParser;
     //total number pages
     private int n = 0;
 
@@ -95,7 +96,7 @@ public class PdfSplit{
     public void doSplit() throws Exception{
         out_message = "";
         PdfReader pdf_reader = new PdfReader(new RandomAccessFileOrArray(f_file.getCanonicalPath()),null);
-        String out_files_name = prefix_value+f_file.getName();
+        prefixParser = new PrefixParser(prefix_value, f_file.getName());
         //we retrieve the total number of pages
         n = pdf_reader.getNumberOfPages();
         //apply format for output files name with leading zero(s)
@@ -108,19 +109,19 @@ public class PdfSplit{
         out_message += LogFormatter.FormatMessage("There are "+n+" pages in this document\n");
         //-s ODD EVEN
         if(split_type.equals(it.pdfsam.console.MainConsole.S_ODD) || split_type.equals(it.pdfsam.console.MainConsole.S_EVEN)){          
-            doSplitOddEven(pdf_reader, out_files_name);
+            doSplitOddEven(pdf_reader);
         }else
         //-s BURST
         if(split_type.equals(it.pdfsam.console.MainConsole.S_BURST)){          
-            doSplitBurst(pdf_reader, out_files_name);
+            doSplitBurst(pdf_reader);
         }else
         //-s SPLIT
         if(split_type.equals( it.pdfsam.console.MainConsole.S_SPLIT)){
-           doSplitSplit(pdf_reader, out_files_name);
+           doSplitSplit(pdf_reader);
         }else
             //-s NSPLIT
             if(split_type.equals(it.pdfsam.console.MainConsole.S_NSPLIT)){                
-                doSplitNSplit(pdf_reader, out_files_name);
+                doSplitNSplit(pdf_reader);
             }
         pdf_reader.close();
            
@@ -225,7 +226,7 @@ public class PdfSplit{
      * @param out_files_name output file name
      * @throws Exception
      */
-    private void doSplitOddEven(PdfReader pdf_reader, String out_files_name) throws Exception{
+    private void doSplitOddEven(PdfReader pdf_reader) throws Exception{
         int current_page;
         Document current_document = new Document(pdf_reader.getPageSizeWithRotation(1));
         boolean time_to_close = false;
@@ -248,7 +249,7 @@ public class PdfSplit{
                 // step 1: creation of a document-object
                 current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
                 // step 2: we create a writer that listens to the document
-                pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,file_number_formatter.format(current_page)+"_"+out_files_name)));
+                pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,prefixParser.generateFileName(file_number_formatter.format(current_page)))));
                 MainConsole.setDocumentCreator(current_document);
                 // step 3: we open the document
                 current_document.open();
@@ -277,14 +278,14 @@ public class PdfSplit{
      * @param out_files_name output file name
      * @throws Exception
      */
-    private void doSplitBurst(PdfReader pdf_reader, String out_files_name) throws Exception{
+    private void doSplitBurst(PdfReader pdf_reader) throws Exception{
         int current_page;
         Document current_document;
         for (current_page = 1; current_page <= n; current_page++) {
             // step 1: creation of a document-object
             current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
             // step 2: we create a writer that listens to the document
-            PdfWriter pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,file_number_formatter.format(current_page)+"_"+out_files_name)));
+            PdfWriter pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,prefixParser.generateFileName(file_number_formatter.format(current_page)))));
             // step 3: we open the document
             MainConsole.setDocumentCreator(current_document);
             current_document.open();
@@ -309,7 +310,7 @@ public class PdfSplit{
      * @param out_files_name output file name
      * @throws Exception
      */
-    private void doSplitSplit(PdfReader pdf_reader, String out_files_name) throws Exception{
+    private void doSplitSplit(PdfReader pdf_reader) throws Exception{
         String[] limits = snumber_page.split("-");
         Arrays.sort(limits,new StrNumComparator());
         //limits list validation end clean
@@ -354,7 +355,7 @@ public class PdfSplit{
                  tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_file.getAbsolutePath());
                  //i save the first page number of this doc to get bookmarks
                  start_page = current_page;
-                 current_name = file_number_formatter.format(current_page)+"_"+out_files_name;
+                 current_name = prefixParser.generateFileName(file_number_formatter.format(current_page));
                  // step 1: creation of a document-object
                  current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
                  // step 2: we create a writer that listens to the document
@@ -408,7 +409,7 @@ public class PdfSplit{
      * @param out_files_name output file name
      * @throws Exception
      */
-    private void doSplitNSplit(PdfReader pdf_reader, String out_files_name) throws Exception{
+    private void doSplitNSplit(PdfReader pdf_reader) throws Exception{
         int number_page = Integer.parseInt(snumber_page);
         if (number_page < 1 || number_page > n) {
             throw new SplitException("PageNumberError: Cannot split this document at page " + number_page + ". No such page.");
@@ -417,6 +418,6 @@ public class PdfSplit{
         for (int i = (number_page*2); i < n; i+=number_page) {
             snumber_page = snumber_page + "-" + Integer.toString(i);
         }
-        doSplitSplit(pdf_reader, out_files_name);
+        doSplitSplit(pdf_reader);
     }
 }

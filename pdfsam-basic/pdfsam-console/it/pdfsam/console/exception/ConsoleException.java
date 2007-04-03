@@ -1,5 +1,5 @@
 /*
- * Created on 23-Feb-2006
+ * Created on 02-April-2007
  * Copyright (C) 2006 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -14,27 +14,27 @@
  */
 package it.pdfsam.console.exception;
 /**
- * Exception thrown while splitting pdf files
+ * Generic console Exception
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfSplit
- *
  */
-public class SplitException extends ConsoleException {
-    
-    /**
-     * 
-     */
-    private static final long serialVersionUID = -2125271375075332148L;
+public class ConsoleException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -302708377322354896L;
+    private String error_msg; 
 
-    public SplitException() {
-        super("GenericSplitException");
+    public ConsoleException() {
+        super();
+        error_msg = "GenericConsoleException";
     }
 
-    public SplitException(String message) {
+    public ConsoleException(String message) {
         super(message);
+        error_msg = message;
     }
 
     public String toString(){
-        return super.toString();
+        return error_msg;
     }
 }
