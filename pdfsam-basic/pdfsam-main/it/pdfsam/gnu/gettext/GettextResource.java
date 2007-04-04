@@ -17,10 +17,13 @@
  * USA.
  */
 
-package gnu.gettext;
+package it.pdfsam.gnu.gettext;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 /**
  * This class implements the main GNU libintl functions in Java.
@@ -63,7 +66,7 @@ import java.util.*;
  */
 public abstract class GettextResource extends ResourceBundle {
 
-  public static boolean verbose = false;
+  public static final boolean verbose = false;
 
   /**
    * Returns the translation of <VAR>msgid</VAR>.
@@ -97,7 +100,7 @@ public abstract class GettextResource extends ResourceBundle {
     // is that we want the generated ResourceBundles to be completely
     // standalone, so that migration from the Sun approach to the GNU gettext
     // approach (without use of plurals) is as straightforward as possible.
-    ResourceBundle origCatalog = catalog;
+    //ResourceBundle origCatalog = catalog;
     do {
       // Try catalog itself.
       if (verbose)

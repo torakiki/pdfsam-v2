@@ -21,7 +21,7 @@ import javax.swing.Icon;
 /**
  * Provides an interface to plugable panels
  * @author Andrea Vacondio
- * @see it.pdfsam.util.PlugInsLoader
+ * @see it.pdfsam.utils.PlugInsLoader
  */
 
 public interface PlugablePanel{
@@ -29,6 +29,7 @@ public interface PlugablePanel{
     /**
      * sets the language and init the panel
      * @param language_code language to set
+     * @deprecated
      */
     public void init(String language_code);
     /**

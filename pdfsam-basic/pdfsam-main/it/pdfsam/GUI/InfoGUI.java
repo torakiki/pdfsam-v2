@@ -15,9 +15,10 @@
  */
 package it.pdfsam.GUI;
 
-import gnu.gettext.GettextResource;
-import it.pdfsam.model.PluginsModel;
-import it.pdfsam.util.XMLConfig;
+import it.pdfsam.configuration.Configuration;
+import it.pdfsam.gnu.gettext.GettextResource;
+import it.pdfsam.models.PluginsModel;
+import it.pdfsam.utils.XMLConfig; 
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -54,11 +55,13 @@ public class InfoGUI {
     private XMLConfig xml_config_object;
     private ArrayList data;
     private ResourceBundle i18n_messages;
+    private Configuration config;
     
     /**
      * Constructor. It provides initialization.
      * @param xml_obj XML config object.
      * @param table_data Informations about loaded plugins
+     * @deprecated
      */
     public InfoGUI(XMLConfig xml_obj, ArrayList table_data, ResourceBundle i18n) {
         xml_config_object = xml_obj;
@@ -75,10 +78,28 @@ public class InfoGUI {
         }
         initialize();
     }
+    
+    public InfoGUI(ArrayList table_data) {
+        if(table_data != null){
+        	this.data = table_data;
+        }
+        initialize();
+    }
 
     private void initialize() {
+    	config = Configuration.getInstance();
+        i18n_messages = config.getI18nResourceBundle();
+        xml_config_object = config.getXmlConfigObject();
+    	 try{
+             author = MainGUI.AUTHOR;
+             version = MainGUI.APP_VERSION;
+             app_name = xml_config_object.getXMLConfigValue("/pdfsam/info/name");
+             language = xml_config_object.getXMLConfigValue("/pdfsam/info/language");
+             build_date = xml_config_object.getXMLConfigValue("/pdfsam/info/build_date");
+         }catch(Exception e){
+        	 System.out.print("Error: "+e.getMessage());  
+         }
         info_frame = new JFrame();
-        info_frame.setName("info_frame");
         springLayout = new SpringLayout();
         info_frame.getContentPane().setLayout(springLayout);
         info_frame.setIconImage(new ImageIcon(this.getClass().getResource("/images/pdfsam.png")).getImage());
@@ -94,7 +115,7 @@ public class InfoGUI {
         text_info_area = new JTextPane();
         text_info_area.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         text_info_area.setContentType("text/plain");        
-        text_info_area.setText(GettextResource.gettext(i18n_messages,"Application name: ")+app_name+"\n"+GettextResource.gettext(i18n_messages,"Application version: ")+version+"\n"+GettextResource.gettext(i18n_messages,"Language: ")+language+"\nAuthor: "+author+"\n"+GettextResource.gettext(i18n_messages,"Build date: ")+build_date+"\n"+GettextResource.gettext(i18n_messages,"Website: ")+"http://pdfsam.sourceforge.net");
+        text_info_area.setText(GettextResource.gettext(i18n_messages,"Application name: ")+app_name+"\n"+GettextResource.gettext(i18n_messages,"Application version: ")+version+"\n"+GettextResource.gettext(i18n_messages,"Language: ")+language+"\nAuthor: "+author+"\n"+GettextResource.gettext(i18n_messages,"Build date: ")+build_date+"\n"+GettextResource.gettext(i18n_messages,"Website: ")+"http://www.pdfsam.org");
         text_info_area.setEditable(false);
         info_frame.getContentPane().add(text_info_area);
 //END_TEXT_AREA

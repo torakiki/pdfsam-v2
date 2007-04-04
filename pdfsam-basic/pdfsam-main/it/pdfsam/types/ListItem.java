@@ -12,12 +12,12 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package it.pdfsam.type;
+package it.pdfsam.types;
 
 /**
  * Utility class used in theme selector
  * @author  Andrea Vacondio
- * @see     it.pdfsam.util.ThemeSelector
+ * @see     it.pdfsam.utils.ThemeSelector
  */
 
 public class ListItem {

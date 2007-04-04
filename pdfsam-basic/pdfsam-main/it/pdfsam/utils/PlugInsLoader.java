@@ -12,9 +12,9 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package it.pdfsam.util;
+package it.pdfsam.utils;
 
-import it.pdfsam.exception.PluginLoadException;
+import it.pdfsam.exceptions.PluginLoadException;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * Loader for plugins. This tryes to get the plugins directory if no plugs_dir is given.
  * The plugins directory list is loaded and than the MainGUI tryes to load plugins one by one.
  * @author Andrea Vacondio
- * @see it.pdfsam.exception.PluginLoadException
+ * @see it.pdfsam.exceptions.PluginLoadException
  * @see it.pdfsam.interfaces.PlugablePanel
  * @see it.pdfsam.GUI.MainGUI
  */
@@ -142,7 +142,7 @@ public class  PlugInsLoader{
             Class cls;
             try{
                 //get plugin class
-                cls = urlcl.loadClass(xml_plugin_object.getXMLConfigValue("data->classname"));
+                cls = urlcl.loadClass(xml_plugin_object.getXMLConfigValue("/plugin/data/classname"));
             }
             catch (ClassNotFoundException cnf_exception){
                 throw new PluginLoadException("Unable to load class, class not found");

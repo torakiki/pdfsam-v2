@@ -9,22 +9,22 @@
     <property name="PDFSAM_PROJECT_DIR" value="/pdfsam-main"/>
     <property name="PDFSAM_DIR" value="${PDFSAME_PROJECT_DIR}/pdfsam-main"/>
     <property name="PDFSAM_JAR_NAME" value="pdfsam"/>
-    <property name="PDFSAM_JAR_VER" value="0.6sr3"/>   
+    <property name="PDFSAM_JAR_VER" value="0.7b1"/>   
  	
     <property name="CONSOLE_PROJECT_DIR" value="/pdfsam-console"/>
     <property name="CONSOLE_DIR" value="${PDFSAM_DIR}/lib"/>
     <property name="CONSOLE_JAR_NAME" value="pdfsam-console"/>
-    <property name="CONSOLE_JAR_VER" value="0.5.4"/>   
+    <property name="CONSOLE_JAR_VER" value="0.5.5"/>   
 	
     <property name="MERGE_PROJECT_DIR" value="/pdfsam-merge"/>
     <property name="MERGE_DIR" value="${PDFSAM_DIR}/plugins/merge"/>
     <property name="MERGE_JAR_NAME" value="pdfsam-merge"/>
-    <property name="MERGE_JAR_VER" value="0.4.6"/>
+    <property name="MERGE_JAR_VER" value="0.4.7"/>
 	
     <property name="SPLIT_PROJECT_DIR" value="/pdfsam-split"/>
     <property name="SPLIT_DIR" value="${PDFSAM_DIR}/plugins/split"/>
     <property name="SPLIT_JAR_NAME" value="pdfsam-split"/>
-    <property name="SPLIT_JAR_VER" value="0.2.7"/>
+    <property name="SPLIT_JAR_VER" value="0.2.8"/>
 
 	<path id="project.classpath">
         <pathelement location="."/>
@@ -37,7 +37,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${USER_NAME}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
-		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-1.4.8.jar lib/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-1.4.8.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar"/>
 		    </manifest>
 	    </jar>
 	    <jar destfile="${CONSOLE_DIR}/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar" 
@@ -47,7 +47,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
-	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-1.4.8.jar"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-1.4.8.jar dom4j-1.6.1.jar jaxen-1.1.jar"/>
 		    </manifest>
 	    </jar>	
 	    <jar destfile="${MERGE_DIR}/${MERGE_JAR_NAME}-${MERGE_JAR_VER}.jar" 

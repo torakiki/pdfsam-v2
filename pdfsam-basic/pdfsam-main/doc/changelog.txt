@@ -1,3 +1,8 @@
+0.7 beta
+===================================
+-Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
+-Added configuration singleton
+
 0.6 stable release 3
 ===================================
 -Fix in PlugInsLoader.getPlugInsList

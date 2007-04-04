@@ -14,9 +14,9 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package it.pdfsam.util;
+package it.pdfsam.utils;
 
-import it.pdfsam.type.ListItem;
+import it.pdfsam.types.ListItem;
 
 import java.util.LinkedList;
 

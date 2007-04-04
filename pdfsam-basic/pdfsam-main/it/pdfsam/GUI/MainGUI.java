@@ -14,12 +14,15 @@
  */
 package it.pdfsam.GUI;
 
-import gnu.gettext.GettextResource;
+import it.pdfsam.configuration.Configuration;
+import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.interfaces.PlugablePanel;
-import it.pdfsam.util.LanguageLoader;
-import it.pdfsam.util.PlugInsLoader;
-import it.pdfsam.util.ThemeSelector;
-import it.pdfsam.util.XMLConfig;
+import it.pdfsam.panels.JSettingsPanel;
+import it.pdfsam.utils.LanguageLoader;
+import it.pdfsam.utils.PlugInsLoader;
+import it.pdfsam.utils.ThemeSelector;
+import it.pdfsam.utils.XMLConfig;
+import it.pdfsam.utils.XMLParser;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -32,7 +35,9 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -51,6 +56,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.dom4j.Document;
+import org.dom4j.Node;
+
 /**
  * Main GUI
  * @author Andrea Vacondio
@@ -66,18 +74,18 @@ public class MainGUI implements PropertyChangeListener {
     private String look_and_feel;
     private String log_text = "";
     private InfoGUI info_panel;
-    public XMLConfig xml_config_object;
     public String application_path;
     private String language;
     private JPanel[] pl_panel;
     private ResourceBundle i18n_messages;
+    private Configuration config;
    
     //consts
-    private static final String AUTHOR = "Andrea Vacondio";
-    private static final String NAME = "PDF Split and Merge";
-    private static final String APP_VERSION = "0.6 stable release 3"; 
+    public static final String AUTHOR = "Andrea Vacondio";
+    public static final String NAME = "PDF Split and Merge";
+    public static final String APP_VERSION = "0.7 beta 1"; 
     //i set this true while i'm developing.. false when releasing
-    private final boolean IDE = false;
+    private final boolean IDE = true;
     
     public static void main(String args[]) {
         MainGUI window = new MainGUI();        
@@ -118,7 +126,7 @@ public class MainGUI implements PropertyChangeListener {
  * Constructor
  */
     public MainGUI() {
-        
+		config = Configuration.getInstance();
         theme_sel = new ThemeSelector();
         try {
             //tryes to get config.xml path
@@ -128,12 +136,20 @@ public class MainGUI implements PropertyChangeListener {
                 File app_path = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
                 application_path = app_path.getParent();
             }
-            xml_config_object = new XMLConfig(application_path);
-            look_and_feel = theme_sel.getLAF(xml_config_object.getXMLConfigValue("settings->lookAndfeel->LAF"));            
-            if (ThemeSelector.isPlastic(xml_config_object.getXMLConfigValue("settings->lookAndfeel->LAF"))){            
-                theme_sel.setTheme(xml_config_object.getXMLConfigValue("settings->lookAndfeel->theme"));
-            }
+            config.setXmlConfigObject(new XMLConfig(application_path));
+
+            look_and_feel = theme_sel.getLAF(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"));            
+			if (ThemeSelector.isPlastic(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"))){            
+				theme_sel.setTheme(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/theme"));
+			}
             UIManager.setLookAndFeel(look_and_feel);
+            Vector langs = new Vector(10,5);
+			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/it/pdfsam/i18n/languages.xml"));
+			List nodeList = document.selectNodes("/languages/language");
+			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
+				langs.add(((Node) nodeList.get(i)).selectSingleNode("@value").getText());
+			}
+			config.setLanguageList(langs);
         }catch (Exception e) {
             System.out.print(e.getMessage());
             e.printStackTrace();
@@ -144,27 +160,23 @@ public class MainGUI implements PropertyChangeListener {
  * Provides GUI initialization
  */
     private void initialize() {
-       try{
-           language = xml_config_object.getXMLConfigValue("settings->i18n");
-       }catch(Exception ge){
-           language = LanguageLoader.DEFAULT_LANGUAGE;
-       }
+    	try{
+			language = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/i18n");
+		}catch(Exception ge){
+			language = LanguageLoader.DEFAULT_LANGUAGE;
+		}
+
+		//get bundle
+		config.setI18nResourceBundle(new LanguageLoader(language, "it.pdfsam.i18n.Messages").getBundle());
+		i18n_messages = config.getI18nResourceBundle();
 
         main_gui = new JFrame();
         springLayout = new SpringLayout();
-        //get bundle
-        LanguageLoader ll = new LanguageLoader(language, "it.pdfsam.i18n.Messages");
-        i18n_messages = ll.getBundle();
         
         //
         main_gui.getContentPane().setLayout(springLayout);
         main_gui.setIconImage(new ImageIcon(this.getClass().getResource("/images/pdfsam.png")).getImage());
-        try{
-            main_gui.setTitle(xml_config_object.getXMLConfigValue("info->name")+" Ver. "+xml_config_object.getXMLConfigValue("info->version"));
-            
-        }catch(Exception ge){
-            main_gui.setTitle("pdfsam");
-        }
+        main_gui.setTitle(MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION);        
         main_gui.setName("main_gui");
         main_gui.setBounds(100, 100, 560, 630);
         main_gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -205,10 +217,7 @@ public class MainGUI implements PropertyChangeListener {
         clear_log_item.addMouseListener(new MouseAdapter() {
            public void mousePressed(MouseEvent e) {
                log_text = "";
-               try{
-                   addLogText(xml_config_object.getXMLConfigValue("info->name")+" Ver. "+xml_config_object.getXMLConfigValue("info->version"));            
-               }catch (Exception exept){            
-               }
+               addLogText((MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION));            
            }
         });
 
@@ -243,10 +252,7 @@ public class MainGUI implements PropertyChangeListener {
         log_panel.setViewportView(log_text_area);
         log_text_area.setDragEnabled(true);
         log_text_area.setName("pdfsam_log");
-        try{
-            addLogText(xml_config_object.getXMLConfigValue("info->name")+" Ver. "+xml_config_object.getXMLConfigValue("info->version"));            
-        }catch (Exception exept){            
-        }
+        addLogText(MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION);            
 //END_LOG    
 //SPLIT_PANEL
         final JSplitPane pannello_split = new JSplitPane();
@@ -275,17 +281,15 @@ public class MainGUI implements PropertyChangeListener {
         springLayout.putConstraint(SpringLayout.WEST, pannello_split, 0, SpringLayout.WEST, main_gui.getContentPane());        
 //END_LAYOUT
 //SCANS_FOR_PLUGINS        
-        XMLConfig xml_info_gui = null;
+        int i = 0;
         ArrayList p_table_data = new ArrayList();
         try   {
-            xml_info_gui = new XMLConfig(application_path);
-            final PlugInsLoader pl = new PlugInsLoader(xml_config_object.getXMLConfigValue("settings->plugs_absolute_dir"));
-            pl_panel = new JPanel[pl.getPNumber()];
-            for ( int i = 0 ; i < pl.getPNumber() ; i ++ ) {
+            final PlugInsLoader pl = new PlugInsLoader(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/plugs_absolute_dir"));
+            pl_panel = new JPanel[pl.getPNumber()+1];
+            for (i = 0 ; i < pl.getPNumber() ; i ++ ) {
                     //Load plugin
                     pl_panel[i] = (JPanel) pl.loadPlugin(i);
                     String p_name = ((PlugablePanel)pl_panel[i]).getPluginName();
-                    ((PlugablePanel)pl_panel[i]).init(language);
                     //TODO if more than 9 plugs??
                     tabbed_main_panel.addTab(p_name, null, pl_panel[i], "ALT+"+Integer.toString(i+1));
                     tabbed_main_panel.setMnemonicAt(i, 0x30 + i +1);
@@ -301,8 +305,19 @@ public class MainGUI implements PropertyChangeListener {
                     row_data[1] = ((PlugablePanel)pl_panel[i]).getVersion();
                     row_data[2] = ((PlugablePanel)pl_panel[i]).getPluginAuthor();
                     p_table_data.add(row_data);
-                    info_panel = new InfoGUI(xml_info_gui, p_table_data, i18n_messages);
+                    info_panel = new InfoGUI(p_table_data);
             }
+            pl_panel[i] = new JSettingsPanel();
+            String p_name = ((PlugablePanel)pl_panel[i]).getPluginName();
+            tabbed_main_panel.addTab(p_name, null, pl_panel[i], "ALT+"+Integer.toString(i+1));
+            tabbed_main_panel.setMnemonicAt(i, 0x30 + i +1);
+            Icon panel_icon = ((PlugablePanel)pl_panel[i]).getIcon();
+            if (panel_icon != null){
+                tabbed_main_panel.setIconAt(i, (panel_icon));
+            }                    
+            pl_panel[i].addPropertyChangeListener(this);
+            pl_panel[i].setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+            
         }
         catch (Exception lpi){
             lpi.printStackTrace();

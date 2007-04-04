@@ -12,11 +12,11 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package it.pdfsam.exception;
+package it.pdfsam.exceptions;
 /**
  * Exception thrown while an error occurs loading a plugin
  * @author Andrea Vacondio
- * @see it.pdfsam.util.PlugInsLoader
+ * @see it.pdfsam.utils.PlugInsLoader
  *
  */
 public class PluginLoadException extends Exception {
