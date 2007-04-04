@@ -16,23 +16,23 @@
 
 package it.pdfsam.plugin.merge.GUI;
 
-import gnu.gettext.GettextResource;
+import it.pdfsam.configuration.Configuration;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.interfaces.WorkDoneListener;
 import it.pdfsam.console.tools.HtmlTags;
+import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.interfaces.PlugablePanel;
+import it.pdfsam.listeners.EnterDoClickListener;
 import it.pdfsam.plugin.merge.component.JMergeTable;
 import it.pdfsam.plugin.merge.component.JMergeToolTipHeader;
 import it.pdfsam.plugin.merge.component.PageColumnRender;
-import it.pdfsam.plugin.merge.listener.EnterDoClickListener;
 import it.pdfsam.plugin.merge.listener.MoveActionListener;
 import it.pdfsam.plugin.merge.listener.RemoveActionListener;
 import it.pdfsam.plugin.merge.model.MergeTableModel;
 import it.pdfsam.plugin.merge.type.MergeItemType;
 import it.pdfsam.plugin.merge.type.TableTransferHandler;
-import it.pdfsam.util.LanguageLoader;
-import it.pdfsam.util.PdfFilter;
+import it.pdfsam.utils.PdfFilter;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -109,7 +109,8 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     private JPanel destination_panel = new JPanel();
     private JCheckBox overwrite_checkbox = new JCheckBox();
     private ResourceBundle i18n_messages;
-    private String language;
+    private Configuration config;
+    private MainConsole mc;
 //Buttons
     private final JButton add_file_button = new JButton();
     private final JButton remove_file_button = new JButton();
@@ -139,25 +140,27 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private final String PLUGIN_NAME = "Merge";
-    private final String PLUGIN_VERSION = "0.4.6";
+    private final String PLUGIN_VERSION = "0.4.7";
     
     /**
      * Constructor
      */
     public MergeMainGUI() {
-        super();          setSize(500, 384);
-              
+        super();          
+        initialize();             
     }
     
     /**
      * Panel initialization   
      */
     private void initialize() {
-//      get bundle language
-        LanguageLoader ll = new LanguageLoader(language, "it.pdfsam.plugin.merge.i18n.MergeMessages");
-        i18n_messages = ll.getBundle(this.getClass().getClassLoader());
+    	config = Configuration.getInstance();
+        i18n_messages = config.getI18nResourceBundle();
+        mc = config.getMainConsole();
+        
         //set focus  policy
         setFocusable(false);
+        setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         spring_layout_merge_panel = new SpringLayout();
         setLayout(spring_layout_merge_panel);
 
@@ -171,7 +174,6 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
                         GettextResource.gettext(i18n_messages,"Pages"),
                                 GettextResource.gettext(i18n_messages,"Page Selection")};
         modello_merge_table.setColumnNames(i18n_column_names);
-        //aggiunge funzionalità di ordinamento
 //MERGE_TABLE
         merge_table = new JMergeTable();
         merge_table.setModel(modello_merge_table);
@@ -466,8 +468,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
                 //run concat in its own thread              
                 final Thread run_thread = new Thread(add_or_run_threads, "run") {
                      public void run() {
-                      try{
-                            MainConsole mc = new MainConsole();
+                      try{                           
                             mc.addWorkDoneListener((WorkDoneListener)MergeMainGUI.this);
                             MergeMainGUI.this.addWipText(GettextResource.gettext(i18n_messages,"Please wait while all files are processed.."));
                             String out_msg = mc.mainAction(myStringArray, true);
@@ -647,11 +648,12 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     
     /**
      * sets the language and init the panel
+     * @deprecated now language is taken by the configuration singleton
      */
     public void init(String language_code) {
-        language = language_code;
+        /*language = language_code;
         setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        initialize();
+        initialize();*/
     }
     
     
