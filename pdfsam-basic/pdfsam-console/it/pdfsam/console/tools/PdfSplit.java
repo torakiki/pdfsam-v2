@@ -30,6 +30,7 @@ import java.util.List;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
@@ -108,19 +109,19 @@ public class PdfSplit{
         }
         out_message += LogFormatter.FormatMessage("There are "+n+" pages in this document\n");
         //-s ODD EVEN
-        if(split_type.equals(it.pdfsam.console.MainConsole.S_ODD) || split_type.equals(it.pdfsam.console.MainConsole.S_EVEN)){          
+        if(split_type.equals(CmdParser.S_ODD) || split_type.equals(CmdParser.S_EVEN)){          
             doSplitOddEven(pdf_reader);
         }else
         //-s BURST
-        if(split_type.equals(it.pdfsam.console.MainConsole.S_BURST)){          
+        if(split_type.equals(CmdParser.S_BURST)){          
             doSplitBurst(pdf_reader);
         }else
         //-s SPLIT
-        if(split_type.equals( it.pdfsam.console.MainConsole.S_SPLIT)){
+        if(split_type.equals(CmdParser.S_SPLIT)){
            doSplitSplit(pdf_reader);
         }else
             //-s NSPLIT
-            if(split_type.equals(it.pdfsam.console.MainConsole.S_NSPLIT)){                
+            if(split_type.equals(CmdParser.S_NSPLIT)){                
                 doSplitNSplit(pdf_reader);
             }
         pdf_reader.close();
@@ -235,8 +236,8 @@ public class PdfSplit{
         PdfImportedPage imported_page;
         for (current_page = 1; current_page <= n; current_page++) {
             //check if i've to read one more page or to open a new doc
-            if ((current_page!=1) && ((split_type.equals(it.pdfsam.console.MainConsole.S_ODD) && ((current_page %2) == 1)) ||
-                    (split_type.equals(it.pdfsam.console.MainConsole.S_EVEN) && ((current_page %2) == 0)))){
+            if ((current_page!=1) && ((split_type.equals(CmdParser.S_ODD) && ((current_page %2) == 1)) ||
+                    (split_type.equals(CmdParser.S_EVEN) && ((current_page %2) == 0)))){
                 time_to_close = true;
             }else{
                 time_to_close = false;
@@ -264,7 +265,7 @@ public class PdfSplit{
                 content_byte.addTemplate(imported_page, 1f, 0, 0, 1f, 0, 0);
             }
             //if it's time to close the document
-            if ((time_to_close) || (current_page == n) || ((current_page==1) && (split_type.equals(it.pdfsam.console.MainConsole.S_ODD)))){
+            if ((time_to_close) || (current_page == n) || ((current_page==1) && (split_type.equals(CmdParser.S_ODD)))){
                 current_document.close();
             }
             percentageChanged(java.lang.Math.round((current_page*100)/n));
@@ -285,19 +286,12 @@ public class PdfSplit{
             // step 1: creation of a document-object
             current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
             // step 2: we create a writer that listens to the document
-            PdfWriter pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,prefixParser.generateFileName(file_number_formatter.format(current_page)))));
+            PdfCopy pdf_writer = new PdfCopy(current_document, new FileOutputStream(new File(o_file,prefixParser.generateFileName(file_number_formatter.format(current_page)))));
             // step 3: we open the document
             MainConsole.setDocumentCreator(current_document);
             current_document.open();
-            PdfContentByte content_byte = pdf_writer.getDirectContent();
             PdfImportedPage imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
-            int rotation = pdf_reader.getPageRotation(current_page);
-            if (rotation == 90 || rotation == 270) {
-                content_byte.addTemplate(imported_page, 0, -1f, 1f, 0, 0, pdf_reader.getPageSizeWithRotation(current_page).height());
-            }
-            else {
-                content_byte.addTemplate(imported_page, 1f, 0, 0, 1f, 0, 0);
-            }
+            pdf_writer.addPage(imported_page);
             current_document.close();
             percentageChanged(java.lang.Math.round((current_page*100)/n));
         }
