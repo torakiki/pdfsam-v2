@@ -28,19 +28,19 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
-import jcmdline.BooleanParam;
-import jcmdline.FileParam;
-import jcmdline.Parameter;
-import jcmdline.StringParam;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
 
 import com.lowagie.text.Document;
 /**
- * Console class.
+ * Console class. 
  * It takes input arguments, parse tham and execute the right operation on pdf files.
  * 
  * @author Andrea Vacondio
@@ -52,80 +52,14 @@ import com.lowagie.text.Document;
  */
 public class MainConsole{
  
-    //constants used to get the split mode
-    final static public String S_BURST = "BURST";
-    final static public String S_SPLIT = "SPLIT";    
-    final static public String S_NSPLIT = "NSPLIT";    
-    final static public String S_EVEN = "EVEN";    
-    final static public String S_ODD = "ODD";
     //list of listeners
     private EventListenerList listeners = new EventListenerList();
+    
     /**
      * Console version
      */
     public static final String VERSION = "0.5.5"; 
-    /**
-     * The options available for this program
-     */
-    private final Parameter[] opts = new Parameter[] {
-        new FileParam("o",
-                      "merge: pdf output file. if it doesn't exist it's created, if it exists it must be writeable\nsplit: output directory",
-                      ((FileParam.IS_DIR) | (FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
-                      FileParam.REQUIRED, 
-                      FileParam.SINGLE_VALUED),
-        new FileParam("f",
-                      "REQUIRED IN SPLIT MODE\nmerge: pdf files to concat. a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)\nsplit: input pdf file to split",
-                      FileParam.IS_FILE & FileParam.IS_READABLE,
-                      FileParam.OPTIONAL, 
-                      FileParam.MULTI_VALUED),
-        new StringParam("u",   
-                      "merge: page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
-                      StringParam.OPTIONAL),                      
-        new FileParam("l",
-                      "merge: csv file containing pdf files list to concat in comma separated value format",
-                      FileParam.IS_FILE & FileParam.IS_READABLE,
-                      FileParam.OPTIONAL,
-                      FileParam.SINGLE_VALUED),
-        new StringParam("p",   
-                        "split: prefix for the output files name",
-                        StringParam.OPTIONAL),                      
-        new StringParam("s",   
-                      "REQUIRED IN SPLIT MODE\nsplit: split type {["+MainConsole.S_BURST+"], ["+MainConsole.S_ODD+"], ["+MainConsole.S_EVEN+"], ["+MainConsole.S_SPLIT+"], ["+MainConsole.S_NSPLIT+"]}",
-                      new String[] { MainConsole.S_BURST, MainConsole.S_ODD, MainConsole.S_EVEN, MainConsole.S_SPLIT, MainConsole.S_NSPLIT },
-                      StringParam.OPTIONAL),
-        new StringParam("n",
-                      "split: page number to spli at if -s is "+MainConsole.S_SPLIT +" or " + MainConsole.S_NSPLIT ,             
-                      StringParam.OPTIONAL),
-        new FileParam("log",
-                      "text file to log output messages",
-                      ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
-                      FileParam.OPTIONAL,
-                      FileParam.SINGLE_VALUED),
-        new BooleanParam("overwrite", "merge: overwrite existing output file")
-    };
-  
-    /**
-     * The arguments this program takes
-     */
-    private final Parameter[] arguments = new Parameter[] {
-            new StringParam("command",   
-                    "command to execute {[concat], [split]}",
-                    new String[] { "concat", "split" },
-                    StringParam.REQUIRED),
 
-    };
-    
-    /**
-     * The help text for this program
-     */
-    public static final String helpText = "This tools can be used to concat or split pdf files. If the  'concat' command is given "+
-        "you must use the '-o /home/user/outfile.pdf' option to set the output file and you must specify the source:\n"+
-        "'-f /tmp/file1.pdf /tmp/file2.pdf -f /tmp/file3.pdf [...]' to specify a file list to concat.\n"+
-        "'-l /tmp/list.csv' a csv file containing the list of files to concat, separated by a comma.\n"+
-        "Note: You can use only one of these options not both in the same command line\n\n\n"+
-        "Example: Pdfsam -o /tmp/outfile.pdf -f /tmp/1.pdf -f /tmp/2.pdf concat\n"+
-        "Example: Pdfsam -o /tmp/outfile.pdf -l c:\\docs\\list.csv concat";
-       
     public static void main(String[] args){
         try{
             
@@ -145,14 +79,12 @@ public class MainConsole{
      * @return Output message.
      * @throws Exception If something goes wrong an exception is thrown.
      */
-    public String mainAction(String[] args, boolean html_output) throws Exception{
+    public synchronized String mainAction(String[] args, boolean html_output) throws Exception{
         String out_msg = "";
         //command parser creation
-        CmdParser cmdp = new CmdParser("Ver. "+MainConsole.VERSION, helpText, "Pdfsam", "Concat or split pdf files",
-                opts,
-                arguments, args);
+        CmdParser cmdp = new CmdParser(args);
         //parsing
-        cmdp.Parse();
+        cmdp.parse();
         //if it's a concat
         if ((cmdp.getInputCommand()) == CmdParser.C_CONCAT){
             //and it a -f option
@@ -167,10 +99,16 @@ public class MainConsole{
                 }
             }
             else if(cmdp.getInputOption() == CmdParser.L_OPT){
-                File csv = cmdp.getCLValue();
-                Collection file_list = parseCsvFile(csv);
+                File l_file = cmdp.getCLValue();
+                Collection file_list = null;
+				if (getExtension(l_file).equals("XML".toLowerCase())){
+					file_list = parseXmlFile(l_file);
+				}
+				if (getExtension(l_file).equals("CVS".toLowerCase())){
+					file_list = parseCsvFile(l_file);
+				}                
                 if (file_list == null){
-                    out_msg = "Error reading csv file-";
+                    out_msg = "Error reading csv or xml file-";
                 }else{
                     PdfConcat pdf_concatenator = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.COverwrite(), this);
                     pdf_concatenator.doConcat();
@@ -192,7 +130,8 @@ public class MainConsole{
             else{
                 out_msg = pdf_splitter.getOutMessage();
             }
-        }
+        }        
+        	
         //try to write on output file
         try{
             File log_out_file =cmdp.getLogValue(); 
@@ -203,7 +142,7 @@ public class MainConsole{
                 writer.close();
             }
         }catch (Exception e){
-            out_msg += "Unable to write on log output file-"; 
+            out_msg += "Unable to write on log output file: "+e.getMessage();
         }
         return out_msg;
     }
@@ -230,6 +169,28 @@ public class MainConsole{
        }
        //gives back the collection
        return Arrays.asList(cache_content.split(","));            
+   }
+   
+    /**
+     * Reads the input xml file and return a Collection of files
+     * @param xml_file XML input file 
+     * @return Collection of files absolute path
+     */
+    private Collection parseXmlFile(File xml_file){
+		List file_list = new ArrayList();
+        try {
+			SAXReader reader = new SAXReader();
+			org.dom4j.Document document = reader.read(xml_file);
+            List pdf_file_list = document.selectNodes("/filelist/file");
+			for (int i = 0; pdf_file_list != null && i < pdf_file_list.size(); i++) {
+				Node pdf_node = (Node) pdf_file_list.get(i);
+				file_list.add(pdf_node.selectSingleNode("@value").getText().trim());
+			}
+		return file_list;
+        }
+       catch (Exception e) {
+            return null;
+       }
    }
    
    /**
@@ -271,5 +232,21 @@ public class MainConsole{
                  //  ((WorkDoneListener)listeners_list[i]).percentageOfWorkDoneChanged(wde);
              }            
         }
+   }
+   
+   /**
+    * 
+    * @param f input file
+    * @return file extension
+    */
+   private String getExtension(File f) {
+       String ext = null;
+       String s = f.getName();
+       int i = s.lastIndexOf('.');
+
+       if (i > 0 &&  i < s.length() - 1) {
+           ext = s.substring(i+1).toLowerCase();
+       }
+       return ext;
    }
 }
