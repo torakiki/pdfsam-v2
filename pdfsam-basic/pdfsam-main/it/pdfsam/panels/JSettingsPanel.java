@@ -25,7 +25,6 @@ import it.pdfsam.types.ListItem;
 import it.pdfsam.utils.ThemeSelector;
 import it.pdfsam.utils.XMLConfig;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FocusTraversalPolicy;
@@ -42,7 +41,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
 
 /**
  * Plugable JPanel provides a GUI for split functions.
