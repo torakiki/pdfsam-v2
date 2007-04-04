@@ -14,18 +14,19 @@
  */
 package it.pdfsam.plugin.split.GUI;
 
-import gnu.gettext.GettextResource;
+import it.pdfsam.configuration.Configuration;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.interfaces.WorkDoneListener;
+import it.pdfsam.console.tools.CmdParser;
 import it.pdfsam.console.tools.HtmlTags;
+import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.interfaces.PlugablePanel;
+import it.pdfsam.listeners.EnterDoClickListener;
 import it.pdfsam.plugin.split.component.JSplitRadioButton;
-import it.pdfsam.plugin.split.listener.EnterDoClickListener;
 import it.pdfsam.plugin.split.listener.RadioListener;
-import it.pdfsam.util.DirFilter;
-import it.pdfsam.util.LanguageLoader;
-import it.pdfsam.util.PdfFilter;
+import it.pdfsam.utils.DirFilter;
+import it.pdfsam.utils.PdfFilter;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -77,7 +78,9 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     private String log_color;
     private String  split_type = "";
     private ResourceBundle i18n_messages;
-    private String language;
+    private Configuration config;
+    private MainConsole mc;
+    
 //file_chooser    
     private final JFileChooser browse_file_chooser = new JFileChooser();
     private final JFileChooser browse_dest_file_chooser = new JFileChooser();
@@ -92,11 +95,11 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     private final EnterDoClickListener run_enterkey_listener = new EnterDoClickListener(run_button);
     
 //split_radio
-    private final JSplitRadioButton burst_radio = new JSplitRadioButton(it.pdfsam.console.MainConsole.S_BURST);
-    private final JSplitRadioButton every_n_radio = new JSplitRadioButton(it.pdfsam.console.MainConsole.S_NSPLIT);        
-    private final JSplitRadioButton even_radio = new JSplitRadioButton(it.pdfsam.console.MainConsole.S_EVEN);
-    private final JSplitRadioButton odd_radio = new JSplitRadioButton(it.pdfsam.console.MainConsole.S_ODD);
-    private final JSplitRadioButton this_page_radio = new JSplitRadioButton(it.pdfsam.console.MainConsole.S_SPLIT);
+    private final JSplitRadioButton burst_radio = new JSplitRadioButton(CmdParser.S_BURST);
+    private final JSplitRadioButton every_n_radio = new JSplitRadioButton(CmdParser.S_NSPLIT);        
+    private final JSplitRadioButton even_radio = new JSplitRadioButton(CmdParser.S_EVEN);
+    private final JSplitRadioButton odd_radio = new JSplitRadioButton(CmdParser.S_ODD);
+    private final JSplitRadioButton this_page_radio = new JSplitRadioButton(CmdParser.S_SPLIT);
 //radio
     private final JRadioButton same_as_source_radio = new JRadioButton();
     private final JRadioButton choose_a_folder_radio = new JRadioButton();    
@@ -120,7 +123,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.2.7";
+    private final String PLUGIN_VERSION = "0.2.8";
     
 /**
  * Constructor
@@ -128,13 +131,14 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
  */    
     public SplitMainGUI() {
         super();
-
+        initialize();
     }
 
     private void initialize() {
-//      get bundle language
-        LanguageLoader ll = new LanguageLoader(language, "it.pdfsam.plugin.split.i18n.SplitMessages");
-        i18n_messages = ll.getBundle(this.getClass().getClassLoader());
+    	setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+    	config = Configuration.getInstance();
+        i18n_messages = config.getI18nResourceBundle();
+        mc = config.getMainConsole();
 //        
         split_spring_layout = new SpringLayout();
         setLayout(split_spring_layout);
@@ -320,11 +324,11 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
                     args.add("-s");
                     args.add(split_type);
                     //check if is needed page option
-                    if (split_type.equals(MainConsole.S_SPLIT)){
+                    if (split_type.equals(CmdParser.S_SPLIT)){
                         args.add("-n");
                         args.add(this_page_text_field.getText());                        
                     }else{
-                        if (split_type.equals(MainConsole.S_NSPLIT)){
+                        if (split_type.equals(CmdParser.S_NSPLIT)){
                             args.add("-n");
                             args.add(n_pages_text_field.getText());                        
                         }                        
@@ -355,7 +359,6 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
                     final Thread run_thread = new Thread(run_threads, "run") {
                          public void run() {
                           try{
-                              MainConsole mc = new MainConsole();
                               mc.addWorkDoneListener((WorkDoneListener)SplitMainGUI.this);
                               String out_msg = mc.mainAction(myStringArray, true);
                               fireLogActionPerformed("Command Line: "+args.toString()+"<br>"+ out_msg , "000000");
@@ -406,6 +409,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         
         setLayout();
     }
+    
     protected void fireLogActionPerformed(String log_msg, String log_color) {
         this.log_msg = log_msg;
         this.log_color = log_color;
@@ -536,11 +540,12 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     }
     /**
      * sets the language and init the panel
+     * @deprecated now language is taken by the configuration singleton
      */
     public void init(String language_code) {
-        language = language_code;
+        /*language = language_code;
         setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        initialize();
+        initialize();*/
     }
     
     /**
@@ -730,6 +735,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         if (wde.getType() == WorkDoneEvent.WORK_DONE){
         }
     } 
+    
     public Icon getIcon() {
         try{
             return new ImageIcon(this.getClass().getResource("/images/split.png"));
