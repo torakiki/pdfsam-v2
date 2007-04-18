@@ -57,8 +57,6 @@ public class CmdParser {
     private File cl_value;
     //-u value
     private String cu_value;
-    //-overwrite value
-    private boolean coverwrite_value = false;
     
 //SPLIT
     //-p value
@@ -75,7 +73,9 @@ public class CmdParser {
     private File o_value;
     //-log value
     private File log_value = null;
-    
+    //-overwrite value
+    private boolean overwrite_value = false;
+   
     //input command
     private byte input_command = 0x00;
     //input option
@@ -147,7 +147,8 @@ public class CmdParser {
                     "text file to log output messages",
                     ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                     FileParam.OPTIONAL,
-                    FileParam.SINGLE_VALUED)                          
+                    FileParam.SINGLE_VALUED),
+            new BooleanParam("overwrite", "overwrite existing output file")                          
     };    
 
     /**
@@ -204,6 +205,7 @@ public class CmdParser {
 	    "You must specify '-s split_type' to set the split type. Possible values: {["+CmdParser.S_BURST+"], ["+CmdParser.S_ODD+"], ["+CmdParser.S_EVEN+"], ["+CmdParser.S_SPLIT+"], ["+CmdParser.S_NSPLIT+"]}\n"+
 	    "'-p prefix_' to specify a prefix for output names of files.\n"+
 	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
+	    "'-overwrite' to overwrite output file if already exists.\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
     
@@ -342,7 +344,7 @@ public class CmdParser {
             }
 //END_PARSE -u
 //PARSE -overwrite            
-            coverwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
+            overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite
             return true;
     }
@@ -445,6 +447,9 @@ public class CmdParser {
                     sn_value = "0";
                 }
             }
+//PARSE -overwrite            
+            overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
+//END PARSE -overwrite            
 //END_PARSE -n
             return true;
     }    
@@ -473,9 +478,17 @@ public class CmdParser {
     
     /**
      * @return Returns the -overwrite option value in concat command.
+     * @deprecated use isOverwrite
      */
     public boolean COverwrite() {
-        return coverwrite_value;
+        return overwrite_value;
+    }
+    
+    /**
+     * @return Returns the -overwrite option value in concat command.
+     */
+    public boolean isOverwrite() {
+        return overwrite_value;
     }
     
     /**

@@ -89,7 +89,7 @@ public class MainConsole{
         if ((cmdp.getInputCommand()) == CmdParser.C_CONCAT){
             //and it a -f option
             if (cmdp.getInputOption() == CmdParser.F_OPT){
-                PdfConcat pdf_concatenator = new PdfConcat(cmdp.getCFValue(), cmdp.getOValue(), cmdp.getCUValue(), cmdp.COverwrite(), this);
+                PdfConcat pdf_concatenator = new PdfConcat(cmdp.getCFValue(), cmdp.getOValue(), cmdp.getCUValue(), cmdp.isOverwrite(), this);
                 pdf_concatenator.doConcat();
                 if (html_output) {
                     out_msg = pdf_concatenator.getOutHTMLMessage();
@@ -110,7 +110,7 @@ public class MainConsole{
                 if (file_list == null){
                     out_msg = "Error reading csv or xml file-";
                 }else{
-                    PdfConcat pdf_concatenator = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.COverwrite(), this);
+                    PdfConcat pdf_concatenator = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.isOverwrite(), this);
                     pdf_concatenator.doConcat();
                     if (html_output) {
                         out_msg = pdf_concatenator.getOutHTMLMessage();

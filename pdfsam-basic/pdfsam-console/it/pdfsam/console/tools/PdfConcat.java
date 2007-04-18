@@ -58,6 +58,8 @@ public class PdfConcat{
      * @param file_list List of pdf files to be concatenated
      * @param out_file Output pdf file
      * @param uopts_string String with page selection. (Ex: 10-13:all:12-19:all:all:) 
+     * @param overwrite Overwrite existing files
+     * @param source_console Parent console
      */
     public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean overwrite, MainConsole source_console) {
            f_list = file_list;
@@ -211,14 +213,14 @@ public class PdfConcat{
                 throw new ConcatException("OverwriteNotAllowed: Cannot overwrite output file (-overwrite option not passed), a temporary file has been created ("+tmp_o_file.getName()+").");
             }
         }
-           try{
-               if(!tmp_o_file.renameTo(o_file)){
-                   throw new ConcatException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
-               }
-           }
-           catch (Exception se2){
-               throw new ConcatException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
-           }
+        try{
+            if(!tmp_o_file.renameTo(o_file)){
+                throw new ConcatException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
+            }
+        }
+        catch (Exception se2){
+            throw new ConcatException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
+        }
     }
 
     /**

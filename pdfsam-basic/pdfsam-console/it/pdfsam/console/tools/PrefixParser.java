@@ -70,7 +70,7 @@ public class PrefixParser {
 	 * @return filename generated 
 	 */
 	public String generateFileName(String page_number){
-		String timestamp = new SimpleDateFormat("yyyyMMdd_HH:mm:ss:SS").format(new Date());
+		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
 		String retVal = "";
 		if(complexPrefix){
 			retVal = prefix;
