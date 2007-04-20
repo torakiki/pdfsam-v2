@@ -57,6 +57,8 @@ public class CmdParser {
     private File cl_value;
     //-u value
     private String cu_value;
+//  -copyfields value
+    private boolean copyfields_value = false;
     
 //SPLIT
     //-p value
@@ -118,7 +120,8 @@ public class CmdParser {
                           ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                           FileParam.OPTIONAL,
                           FileParam.SINGLE_VALUED),
-            new BooleanParam("overwrite", "overwrite existing output file")                          
+            new BooleanParam("overwrite", "overwrite existing output file"),
+            new BooleanParam("copyfields", "input pdf documents contain forms (high memory usage)")
             };
             
     //split options if slit command is given
@@ -193,6 +196,7 @@ public class CmdParser {
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+
         "Note: You can use only one of these options not both in the same command line\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-copyfields' to deal with forms. Use this if input documents contain forms. This option will lead to a high memory usage.\n"+        
         "Example: java -jar pdfsam-console.jar -o /tmp/outfile.pdf -f /tmp/1.pdf -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console.jar -l c:\\docs\\list.csv concat";
     
@@ -346,6 +350,10 @@ public class CmdParser {
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite
+//PARSE -copyfields            
+            copyfields_value = ((BooleanParam) command_line_handler.getOption("copyfields")).isTrue();
+//END PARSE -copyfields            
+            
             return true;
     }
     
@@ -449,8 +457,7 @@ public class CmdParser {
             }
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
-//END PARSE -overwrite            
-//END_PARSE -n
+//END PARSE -overwrite  
             return true;
     }    
       
@@ -485,7 +492,13 @@ public class CmdParser {
     }
     
     /**
-     * @return Returns the -overwrite option value in concat command.
+     * @return	Returns the -copyfields option value in concat command.
+     */
+    public boolean isCCopyFields(){
+    	return copyfields_value;
+    }
+    /**
+     * @return Returns the -overwrite option value.
      */
     public boolean isOverwrite() {
         return overwrite_value;

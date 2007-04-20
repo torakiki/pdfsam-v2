@@ -21,6 +21,9 @@ package it.pdfsam.console.tools;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.exception.ConcatException;
+import it.pdfsam.console.interfaces.PdfConcatenator;
+import it.pdfsam.console.tools.writers.PdfCopyFieldsConcatenator;
+import it.pdfsam.console.tools.writers.PdfSimpleConcatenator;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,8 +34,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfCopy;
-import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 import com.lowagie.text.pdf.SimpleBookmark;
@@ -49,6 +50,7 @@ public class PdfConcat{
     private File o_file;
     private String u_string;
     private boolean overwrite_boolean;
+    private boolean copyfields_boolean;
     private String out_message;
     private MainConsole source;
     
@@ -61,7 +63,7 @@ public class PdfConcat{
      * @param overwrite Overwrite existing files
      * @param source_console Parent console
      */
-    public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean overwrite, MainConsole source_console) {
+    public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean overwrite, boolean copyfields, MainConsole source_console) {
            f_list = file_list;
            o_file = out_file;
            //this prevent u_string to be null when using the console
@@ -71,6 +73,7 @@ public class PdfConcat{
                u_string = "";
            }
            overwrite_boolean = overwrite;
+           copyfields_boolean = copyfields;
            out_message = "";
            source = source_console;
     }
@@ -80,14 +83,13 @@ public class PdfConcat{
      * @throws Exception
      */
     public void doConcat() throws Exception{
-        
         out_message = "";
         String file_name;
         int pageOffset = 0;
         ArrayList master = new ArrayList();
         int f = 0;
         Document pdf_document = null;
-        PdfCopy  pdf_writer = null;
+        PdfConcatenator  pdf_writer = null;
         int total_processed_pages = 0;        
         String[] page_selection = u_string.split(":");
         File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_file.getParent());
@@ -103,10 +105,15 @@ public class PdfConcat{
             }
             //validation
             if (!(Pattern.compile("([0-9]*[-][0-9]*)|(all)", Pattern.CASE_INSENSITIVE).matcher(current_p_selection).matches())){
-                try{tmp_o_file.delete();}
-                catch(Exception e){}
-                throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + ".");
-            }                
+				String errorMsg = "";
+            	try{
+					tmp_o_file.delete();
+				}
+				catch(Exception e){
+					errorMsg = " Unable to delete temporary file.";
+				}
+				throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + "."+errorMsg);
+			}                
             file_name = f_list_itr.next().toString();
             //reader creation
             pdf_reader = new PdfReader(new RandomAccessFileOrArray(file_name),null);
@@ -116,32 +123,58 @@ public class PdfConcat{
             int start = 0;
             int end_page =  pdf_number_of_pages;           
             if (!(current_p_selection.equals("all"))){
+            	boolean valid = true;
+            	String exceptionMsg = "";
                 String[] limits = current_p_selection.split("-");
                 try{
                     start = Integer.parseInt(limits[0])-1;
                     end_page = Integer.parseInt(limits[1]);                    
                 }catch(Exception ex){
-                    try{tmp_o_file.delete();}
-                    catch(Exception e){}
-                    throw new ConcatException("ValidationError: Syntax error on " + current_p_selection + ".");
-                }                    
-                //validation
-                if (start < 0){
-                    try{tmp_o_file.delete();}
-                    catch(Exception e){}
-                    throw new ConcatException("ValidationError: Syntax error. " + (start+1) + " must be positive in " + current_p_selection + ".");    
+					valid = false;
+					exceptionMsg += "ValidationError: Syntax error on " + current_p_selection + ".";
+					try{
+						tmp_o_file.delete();
+					}
+					catch(Exception e){
+						exceptionMsg += " Unable to delete temporary file.";
+					}
                 }
-                if (end_page > pdf_number_of_pages){
-                    try{tmp_o_file.delete();}
-                    catch(Exception e){}
-                    throw new ConcatException("ValidationError: Cannot merge at page " + end_page + ". No such page.");
+                if(valid){
+	                //validation
+	                if (start < 0){
+						valid = false;
+						exceptionMsg = "ValidationError: Syntax error. " + (start+1) + " must be positive in " + current_p_selection + ".";
+						try{
+							tmp_o_file.delete();
+						}
+						catch(Exception e){
+							exceptionMsg += " Unable to delete temporary file.";
+						}
+	                }
+	                else if (end_page > pdf_number_of_pages){
+	                	valid = false;
+						exceptionMsg = "ValidationError: Cannot merge at page " + end_page + ". No such page.";
+						try{
+							tmp_o_file.delete();
+						}
+						catch(Exception e){
+							exceptionMsg += " Unable to delete temporary file.";
+						}
+	                }
+	                else if (start >= end_page){
+	                	valid = false;
+						exceptionMsg = "ValidationError: Syntax error. " + (start+1) + " is bigger than " + end_page + " in " + current_p_selection + ".";
+						try{
+							tmp_o_file.delete();
+						}
+						catch(Exception e){
+							exceptionMsg += " Unable to delete temporary file.";
+						}
+	                }
                 }
-                if (start >= end_page){
-                    try{tmp_o_file.delete();}
-                    catch(Exception e){}
-                    throw new ConcatException("ValidationError: Syntax error. " + (start+1) + " is bigger than " + end_page + " in " + current_p_selection + ".");
+                if(!valid){
+                	throw new ConcatException(exceptionMsg);
                 }
-
             }
             List bookmarks = SimpleBookmark.getBookmark(pdf_reader);
             if (bookmarks != null) {
@@ -163,23 +196,23 @@ public class PdfConcat{
             pageOffset += (end_page - start);
             out_message += LogFormatter.FormatMessage(file_name+ ": " + pdf_number_of_pages + " pages-\n");
             if (f == 0) {
-                // step 1: creation of a document-object
-                pdf_document = new Document(pdf_reader.getPageSizeWithRotation(1));
-                // step 2: we create a writer that listens to the document
-                pdf_writer = new PdfCopy(pdf_document, new FileOutputStream(tmp_o_file));
+                if(copyfields_boolean){
+                    // step 1: we create a writer 
+                	pdf_writer = new PdfCopyFieldsConcatenator(new FileOutputStream(tmp_o_file));
+                }else{
+                    // step 1: creation of a document-object
+                    pdf_document = new Document(pdf_reader.getPageSizeWithRotation(1));
+                    // step 2: we create a writer that listens to the document
+                	pdf_writer = new PdfSimpleConcatenator(pdf_document, new FileOutputStream(tmp_o_file));
+                    // step 3: we open the document
+                    MainConsole.setDocumentCreator(pdf_document);
+                    pdf_document.open();
+                }
                 out_message += LogFormatter.FormatMessage("Temporary file created-\n");
-                // step 3: we open the document
-                MainConsole.setDocumentCreator(pdf_document);
-                pdf_document.open();
             }
             // step 4: we add content
-            PdfImportedPage page;
-            int count;
-            for (count = start; count < end_page; ) {
-                ++count;
-                page = pdf_writer.getImportedPage(pdf_reader, count);
-                pdf_writer.addPage(page);                                
-            }
+            pdf_reader.selectPages(start+"-"+end_page);
+            pdf_writer.addDocument(pdf_reader);          
             //fix 03/07
             //pdf_reader = null;
             pdf_reader.close();
@@ -188,8 +221,9 @@ public class PdfConcat{
             out_message += LogFormatter.FormatMessage((end_page - start) + " pages processed correctly-\n");
             f++;
             try{
-                percentageChanged(java.lang.Math.round((f*100)/f_list.size()));
-            }catch (Exception exce){                
+            	percentageChanged(java.lang.Math.round((f*100)/f_list.size()));
+            }catch(RuntimeException re){
+                out_message += LogFormatter.FormatMessage("RuntimeException: "+re.getMessage()+"\n");            	
             }
         }
         if (master.size() > 0){
@@ -197,7 +231,10 @@ public class PdfConcat{
         }
         out_message += LogFormatter.FormatMessage("Total processed pages: " + total_processed_pages + "-\n");
         // step 5: we close the document
-        pdf_document.close();
+        if(pdf_document != null){
+            pdf_document.close();        	
+        }
+        pdf_writer.close();
         // step 6: temporary buffer moved to output file
         //out file already exist
         if (o_file.exists()){
