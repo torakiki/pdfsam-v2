@@ -15,6 +15,7 @@
 package it.pdfsam.console.tools;
 
 import java.io.File;
+import java.util.Random;
 /**
  * 
  * Class used to create a temporary file.
@@ -24,32 +25,48 @@ import java.io.File;
  */
 public class TmpFileNameGenerator {
 
-    /**
-     * Used to create the name for a temporary file
-     * @param number increment
-     * @return temporary buffer name
-     */
-    private static String generateTmpFileName(int number){
-        return "PDFsamTMPbuffer"+Integer.toString(number+1)+".pdf";
-    }
-
-    /**
-     * Generates a not existing temporary file
-     * @param file_path path where the temporary file is created
-     * @return a temporary file
-     */
-    static public File generateTmpFile(String file_path){
-        boolean already_exist = true;
-        int enthropy = 0;
-        String file_name = "";
-        while(already_exist){
-            enthropy++;
-            file_name = TmpFileNameGenerator.generateTmpFileName(enthropy);
-            File tmp_file = new File(file_path+File.separator+file_name);
-            already_exist = tmp_file.exists();
-            if (!already_exist) return tmp_file;
-        }
-        return null;
-    }
+	    /**
+	     * Generates a not existing temporary file
+	     * @param file_path path where the temporary file is created
+	     * @return a temporary file
+	     */
+	     public static File generateTmpFile(String file_path){
+	        File retVal = null;
+	    	boolean already_exist = true;
+	        int enthropy = 0;
+	        String file_name = "";
+	        // generates a random 4 char string
+	        StringBuffer randomString = new StringBuffer();
+	        Random random = new Random();
+	        for (int i = 0; i < 5; i++) {
+	        	char ascii = (char) ((random.nextInt(26)) + 'A');
+	        	randomString.append(ascii);
+	        }
+	       
+	        while(already_exist){
+	            file_name = "PDFsamTMPbuffer"+randomString+Integer.toString(++enthropy)+".pdf";
+	            File tmp_file = new File(file_path+File.separator+file_name);
+	            if (!(already_exist = tmp_file.exists())){
+	            	retVal = tmp_file;
+	            }
+	        }
+	        return retVal;
+	    }
+	    
+	     /**
+	      * @param filename Filename or Dirname
+	      * @return a random file generated in Dirname or in the containing directory of Filename
+	      */
+	    public static File generateTmpFile(File filename){
+	    	if(filename != null){
+		    	if(filename.isDirectory()){
+		    		return generateTmpFile(filename.getPath());
+		    	}else{
+		    		return generateTmpFile(filename.getParent());
+		    	}
+	    	}else{
+	    		return null;
+	    	}	
+	    }
     
 }

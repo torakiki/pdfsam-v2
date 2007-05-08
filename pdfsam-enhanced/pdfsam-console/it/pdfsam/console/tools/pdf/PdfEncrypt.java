@@ -22,6 +22,7 @@ import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.exception.EncryptException;
 import it.pdfsam.console.tools.CmdParser;
 import it.pdfsam.console.tools.LogFormatter;
+import it.pdfsam.console.tools.PrefixParser;
 import it.pdfsam.console.tools.TmpFileNameGenerator;
 
 import java.io.File;
@@ -38,8 +39,8 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  * 
  * Class used to manage concat section. It takes input args and execute the concat command.
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.pdf.PdfSplit
  * @see it.pdfsam.console.tools.pdf.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfSplit
  * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  */
 public class PdfEncrypt extends GenericPdfTool{
@@ -51,9 +52,22 @@ public class PdfEncrypt extends GenericPdfTool{
     private String a_pwd = "";
     private int etype;
 	private String prefix_value = "";
+    private boolean overwrite_boolean;
+    private PrefixParser prefixParser;
     
-    
-    public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, MainConsole source_console) {
+    /**
+     * creates the object used to encrypt pdf files
+     * @param o_dir output directory
+     * @param file_list files to encrypt
+     * @param user_permissions permissions
+     * @param u_pwd user password
+     * @param a_pwd admin password
+     * @param prefix output file prefix
+     * @param etype encryption algorithm
+     * @param overwrite overwrite output file if already exists
+     * @param source_console
+     */
+    public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, boolean overwrite, MainConsole source_console) {
            super(source_console);
     	   this.o_dir = o_dir;
 		   this.f_list = file_list;
@@ -78,58 +92,54 @@ public class PdfEncrypt extends GenericPdfTool{
 		        	this.etype = PdfWriter.ENCRYPTION_RC4_40;
 		        }		   
         	}
+	       overwrite_boolean = overwrite;
            out_message = "";
     }
     
     /**
-     * Execute the concat command. On error an exception is thrown.
+	 * Default behaviour overwrite set <code>true</code>
+	 */
+    public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, MainConsole source_console) {
+    	this(o_dir, file_list, user_permissions, u_pwd, a_pwd, prefix, etype, true, source_console);
+    }
+    
+    /**
+     * Execute the encrypt command. On error an exception is thrown.
      * @throws Exception
+     * @deprecated use <code>execute()</code> 
      */
-    public void doEncrypt() throws Exception{        
+    public void doEncrypt() throws Exception{
+    	execute();
+    }
+    
+    /**
+     * Execute the encrypt command. On error an exception is thrown.
+     * @throws EncryptException
+     */
+    public void execute() throws EncryptException{
     	try{
     		workingIndeterminate();
 	    	out_message = "";
 			int f = 0;
 			for (Iterator f_list_itr = f_list.iterator(); f_list_itr.hasNext(); ) {            
 				String file_name = f_list_itr.next().toString();
-				String out_file_name = prefix_value+(new File(file_name).getName());
+		    	prefixParser = new PrefixParser(prefix_value, new File(file_name).getName());
 		        File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_dir.getAbsolutePath());
 				out_message += LogFormatter.formatMessage("Temporary file created-\n");
-	
 				PdfReader pdf_reader = new PdfReader(new RandomAccessFileOrArray(file_name),null);							
 				HashMap meta = pdf_reader.getInfo();
 				meta.put("Creator", MainConsole.CREATOR);
 				PdfEncryptor.encrypt(pdf_reader,new FileOutputStream(tmp_o_file), etype, u_pwd, a_pwd,user_permissions, meta);
-				File out_file = new File(o_dir ,out_file_name);
-				if (renameTmpFile(tmp_o_file, out_file)){
-					out_message += LogFormatter.formatMessage("File encrypted: "+out_file+"-\n");
-				}else{
-					out_message += LogFormatter.formatMessage("File encrypted but not renamed: "+tmp_o_file+"-\n");
-				}
-				 f++;
+				File out_file = new File(o_dir ,prefixParser.generateFileName(Integer.toString(f)));
+				renameTemporaryFile(tmp_o_file, out_file, overwrite_boolean);				
+				f++;
 			}			
-			out_message += LogFormatter.formatMessage("Pdf files encrypted -\n"+PdfEncryptor.getPermissionsVerbose(user_permissions));
+			out_message += LogFormatter.formatMessage("Pdf files encrypted in "+o_dir.getAbsolutePath()+"-\n"+PdfEncryptor.getPermissionsVerbose(user_permissions));
     	}catch(Exception e){
-    		throw new EncryptException(e.getMessage());
+    		throw new EncryptException(e);
     	}finally{
     		workCompleted();
     	}
-    }
-
-
-    private boolean renameTmpFile(File tmp_o_file, File out_file){       
-            boolean retVal = true;
-    		try{
-                if (!(tmp_o_file.renameTo(out_file))){
-                	retVal = false;
-                    out_message += LogFormatter.formatMessage("IOError: Unable to rename temporary output file "+tmp_o_file.getName()+".\n");
-                }
-            }
-            catch (Exception se){
-            	retVal = false;
-                out_message += LogFormatter.formatMessage("IOError: Unable to rename temporary output file "+tmp_o_file.getName()+": "+se.getMessage()+"\n");
-            }
-            return retVal;
     }	
   
 }

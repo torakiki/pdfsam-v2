@@ -17,6 +17,11 @@ package it.pdfsam.console.tools.pdf;
 
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.events.WorkDoneEvent;
+import it.pdfsam.console.exception.ConsoleException;
+import it.pdfsam.console.tools.LogFormatter;
+
+import java.io.File;
+
 /**
  * 
  * Superclass used to create a pdf tool.
@@ -101,4 +106,39 @@ public abstract class GenericPdfTool {
     public String getOutHTMLMessage() {
         return out_message.replaceAll(">","&gt;").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
     }
+    
+    /**
+     * rename temporary file to output file
+     * @param tmp_o_file temporary file to rename
+     * @param o_file file to rename to
+     * @param overwrite_boolean overwrite exsisting file
+     */
+    protected void renameTemporaryFile(File tmp_o_file, File o_file, boolean overwrite_boolean){
+    	if(tmp_o_file != null && o_file != null){
+	    	try{
+			       if (o_file.exists()){
+			          //check if overwrite is allowed
+			          if (overwrite_boolean){
+			                 o_file.delete();
+			          }else{
+			        	  out_message += LogFormatter.formatMessage("OverwriteNotAllowed: Cannot overwrite output file (-overwrite option not passed), a temporary file has been created ("+tmp_o_file.getName()+").\n");
+			          }		                
+			       }
+		    	   if(!tmp_o_file.renameTo(o_file)){
+		    		   out_message += LogFormatter.formatMessage("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".\n");
+			       }
+	         }
+	         catch(Exception e){
+	         	out_message += LogFormatter.formatMessage("Exception renaming "+tmp_o_file.getName()+" to "+o_file.getName()+": "+e.getMessage()+".\n");
+	         }
+         }else{
+        	 out_message += LogFormatter.formatMessage("Exception renaming temporary file, source or destination are null.\n");
+         }
+    }
+    
+    /**
+     * Execute the tool command. On error an exception is thrown.
+     * @throws ConsoleException
+     */
+    public abstract void execute() throws ConsoleException;
 }

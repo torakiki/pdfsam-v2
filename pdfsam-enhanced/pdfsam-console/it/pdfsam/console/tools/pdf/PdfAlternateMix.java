@@ -34,6 +34,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  * 
  * Class used to manage alternate mix section. It takes input args and execute the mix command.
  * @author Andrea Vacondio
+ * @see it.pdfsam.console.tools.pdf.PdfConcat
  * @see it.pdfsam.console.tools.pdf.PdfSplit
  * @see it.pdfsam.console.tools.pdf.PdfEncrypt
  */
@@ -44,7 +45,7 @@ public class PdfAlternateMix extends GenericPdfTool{
 	private File input_file2;
     private boolean reverseFirst;
     private boolean reverseSecond;
-    private boolean overwrite;
+    private boolean overwrite_boolean;
     private int[] limits1 = {1,1};
     private int[] limits2 = {1,1};
     
@@ -67,15 +68,31 @@ public class PdfAlternateMix extends GenericPdfTool{
 		 
 		 this.reverseFirst = reverseFirst;
 		 this.reverseSecond = reverseSecond;
-		 this.overwrite = overwrite;
+		 this.overwrite_boolean = overwrite;
          out_message = "";
-  }
+	}
+	
+	/**
+	 * Default behaviour overwrite set <code>true</code>
+	 */
+	public PdfAlternateMix(File o_file, File input_file1, File input_file2, boolean reverseFirst, boolean reverseSecond, MainConsole source_console) {
+		this(o_file, input_file1, input_file2, reverseFirst, reverseSecond, true, source_console);
+	}
 	
 	 /**
      * Execute the mix command. On error an exception is thrown.
      * @throws AlternateMixException
+     * @deprecated use <code>execute()</code> 
      */
 	public void doAlternateMix() throws AlternateMixException{
+		execute();
+    }
+    
+	/**
+     * Execute the mix command. On error an exception is thrown.
+     * @throws AlternateMixException
+     */
+    public void execute() throws AlternateMixException{
 		try{
 			workingIndeterminate();
 			out_message = "";
@@ -137,32 +154,11 @@ public class PdfAlternateMix extends GenericPdfTool{
 
 			pdf_document.close();
 			// step 6: temporary buffer moved to output file
-			//out file already exist
-			if (o_file.exists()){
-				//check if overwrite is allowed
-				if (overwrite){
-					try{
-						o_file.delete();
-					}
-					catch (Exception se){
-						throw new AlternateMixException("IOError: Unable to delete existing output file "+o_file.getName()+", temporary file "+tmp_o_file.getName()+" created.");
-					}
-				}else{
-					throw new AlternateMixException("OverwriteNotAllowed: Cannot overwrite output file (-overwrite option not passed), a temporary file has been created ("+tmp_o_file.getName()+").");
-				}
-			}
-			try{
-				if(!tmp_o_file.renameTo(o_file)){
-					throw new AlternateMixException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
-				}
-			}
-			catch (Exception se2){
-				throw new AlternateMixException("IOError: Unable to rename temporary file "+tmp_o_file.getName()+" to "+o_file.getName()+".");
-			}
+			renameTemporaryFile(tmp_o_file, o_file, overwrite_boolean);
 			out_message += LogFormatter.formatMessage("Alternate mix completed-\n");
 
 		}catch(Exception e){    		
-			throw new AlternateMixException(e.getMessage());
+			throw new AlternateMixException(e);
 		}finally{
 			workCompleted();
 		}

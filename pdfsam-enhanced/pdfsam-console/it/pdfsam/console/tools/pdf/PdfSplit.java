@@ -19,6 +19,7 @@ import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.exception.SplitException;
 import it.pdfsam.console.tools.CmdParser;
 import it.pdfsam.console.tools.LogFormatter;
+import it.pdfsam.console.tools.PrefixParser;
 import it.pdfsam.console.tools.StrNumComparator;
 import it.pdfsam.console.tools.TmpFileNameGenerator;
 
@@ -32,11 +33,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 import com.lowagie.text.pdf.SimpleBookmark;
 
@@ -47,21 +46,20 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * 
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.pdf.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfEncrypt
+ * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  * 
  */
 public class PdfSplit extends GenericPdfTool {
 
-	private File o_file;
-
+	private File o_dir;
 	private File f_file;
-
 	private String prefix_value;
-
 	private String split_type;
-
 	private String snumber_page;
-
 	private DecimalFormat file_number_formatter = new DecimalFormat();
+	private PrefixParser prefixParser;
+	private boolean overwrite_boolean;
 
 	// total number pages
 	private int n = 0;
@@ -69,21 +67,18 @@ public class PdfSplit extends GenericPdfTool {
 	/**
 	 * Create the object used to split pdf files
 	 * 
-	 * @param out_dir
-	 *            Output path for the pdf files
-	 * @param input_file
-	 *            Input file to be splitted
-	 * @param prefix
-	 *            Optional prefix for output files name
-	 * @param splittype
-	 *            Type of split
-	 * @param n_page
-	 *            Optional. Required if type is "split" or "nsplit"
+	 * @param out_dir Output path for the pdf files
+	 * @param input_file Input file to be splitted
+	 * @param prefix Optional prefix for output files name
+	 * @param splittype Type of split
+	 * @param n_page Optional. Required if type is "split" or "nsplit"
+	 * @param source_console Console
+	 * @param overwrite overwrite output file
 	 */
-	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page,
+	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page, boolean overwrite,
 			MainConsole source_console) {
 		super(source_console);
-		o_file = out_dir;
+		o_dir = out_dir;
 		f_file = input_file;
 		split_type = splittype;
 
@@ -100,54 +95,76 @@ public class PdfSplit extends GenericPdfTool {
 		} else {
 			snumber_page = "";
 		}
+		overwrite_boolean = overwrite;
+	}
+
+	/**
+	 * Default behaviour overwrite set <code>true</code>
+	 */
+	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page, MainConsole source_console) {
+		this(out_dir, input_file, prefix, splittype, n_page, true, source_console);
 	}
 
 	/**
 	 * Execute the right split command. On error an exception is thrown.
 	 * 
 	 * @throws Exception
+	 * @deprecated use <code>execute()</code>
 	 */
 	public void doSplit() throws Exception {
-		percentageChanged(0);
-		out_message = "";
-		PdfReader pdf_reader = new PdfReader(new RandomAccessFileOrArray(f_file.getCanonicalPath()), null);
-		String out_files_name = prefix_value + f_file.getName();
-		// we retrieve the total number of pages
-		n = pdf_reader.getNumberOfPages();
-		// apply format for output files name with leading zero(s)
+		execute();
+	}
+
+	/**
+	 * Execute the split command. On error an exception is thrown.
+	 * 
+	 * @throws SplitException
+	 */
+	public void execute() throws SplitException {
 		try {
-			file_number_formatter.applyPattern(Integer.toString(n).replaceAll("\\d", "0"));
-		} catch (Exception fe) {
-			file_number_formatter.applyPattern("00000");
+			percentageChanged(0);
+			out_message = "";
+	        PdfReader pdf_reader = new PdfReader(new RandomAccessFileOrArray(f_file.getCanonicalPath()),null);
+	        prefixParser = new PrefixParser(prefix_value, f_file.getName());
+	        //we retrieve the total number of pages
+	        n = pdf_reader.getNumberOfPages();
+			// apply format for output files name with leading zero(s)
+			try {
+				file_number_formatter.applyPattern(Integer.toString(n).replaceAll("\\d", "0"));
+			} catch (Exception fe) {
+				file_number_formatter.applyPattern("00000");
+			}
+			out_message += LogFormatter.formatMessage("There are " + n + " pages in this document\n");
+			// -s ODD EVEN
+			if (split_type.equals(CmdParser.S_ODD) || split_type.equals(CmdParser.S_EVEN)) {
+				doSplitOddEven(pdf_reader);
+			} else
+			// -s BURST
+			if (split_type.equals(CmdParser.S_BURST)) {
+				doSplitBurst(pdf_reader);
+			} else
+			// -s SPLIT
+			if (split_type.equals(CmdParser.S_SPLIT)) {
+				doSplitSplit(pdf_reader);
+			} else
+			// -s NSPLIT
+			if (split_type.equals(CmdParser.S_NSPLIT)) {
+				doSplitNSplit(pdf_reader);
+			}
+			pdf_reader.close();
+		} catch (Exception e) {
+			throw new SplitException(e);
+		} finally {
+			workCompleted();
 		}
-		out_message += LogFormatter.formatMessage("There are " + n + " pages in this document\n");
-		// -s ODD EVEN
-		if (split_type.equals(CmdParser.S_ODD) || split_type.equals(CmdParser.S_EVEN)) {
-			doSplitOddEven(pdf_reader, out_files_name);
-		} else
-		// -s BURST
-		if (split_type.equals(CmdParser.S_BURST)) {
-			doSplitBurst(pdf_reader, out_files_name);
-		} else
-		// -s SPLIT
-		if (split_type.equals(CmdParser.S_SPLIT)) {
-			doSplitSplit(pdf_reader, out_files_name);
-		} else
-		// -s NSPLIT
-		if (split_type.equals(CmdParser.S_NSPLIT)) {
-			doSplitNSplit(pdf_reader, out_files_name);
-		}
-		pdf_reader.close();
 
 	}
 
 	/**
 	 * Validate the limit list in "split after these pages"
 	 * 
-	 * @param limits
-	 *            limits array containig page numbers
-	 * @param upper_limit
-	 *            max page number
+	 * @param limits limits array containig page numbers
+	 * @param upper_limit max page number
 	 * @return epurated list
 	 */
 	private LinkedList validateSplitLimits(String[] limits, int upper_limit) {
@@ -176,150 +193,87 @@ public class PdfSplit extends GenericPdfTool {
 		return limits_list;
 	}
 
-	/**
-	 * it creates a pdf file adding bookmarks
-	 * 
-	 * @param master
-	 *            bookmarks to add
-	 * @param tmp_o_file
-	 *            pdf file without bookmarks
-	 * @param out_file
-	 *            output file obtained merging bookmarks and pdf file
-	 * @throws Exception
-	 */
-	private void addBookmarks(ArrayList master, File tmp_o_file, File out_file) throws Exception {
-		if (master.size() > 0) {
-			PdfReader tmp_pdf_reader = new PdfReader(new RandomAccessFileOrArray(tmp_o_file.getCanonicalPath()), null);
-			PdfStamper stamp = new PdfStamper(tmp_pdf_reader, new FileOutputStream(out_file));
-			// adding bookmarks
-			stamp.setOutlines(master);
-			tmp_pdf_reader.close();
-			stamp.close();
-			try {
-				tmp_o_file.delete();
-			} catch (Exception se) {
-				throw new SplitException("IOError: Unable to delete temporary output file " + tmp_o_file.getName()
-						+ ".");
-			}
-		}
-		// i've no bookmarks, just to rename temporary file
-		else {
-			try {
-				if (!(tmp_o_file.renameTo(out_file))) {
-					out_message += LogFormatter.formatMessage("IOError: Unable to rename temporary output file "
-							+ tmp_o_file.getName() + ".\n");
-					return;
-				}
-			} catch (Exception se) {
-				throw new SplitException("IOError: Unable to rename temporary output file " + tmp_o_file.getName()
-						+ ".");
-			}
-		}
-		out_message += LogFormatter.formatMessage("Document " + out_file.getName() + " created.\n");
-	}
-
-	/**
-	 * Execute the split of a pdf document when split type is S_ODD or S_EVEN
-	 * 
-	 * @param pdf_reader
-	 *            pdfreader of the original pdf document
-	 * @param out_files_name
-	 *            output file name
-	 * @throws Exception
-	 */
-	private void doSplitOddEven(PdfReader pdf_reader, String out_files_name) throws Exception {
-		int current_page;
-		Document current_document = new Document(pdf_reader.getPageSizeWithRotation(1));
-		boolean time_to_close = false;
-		PdfWriter pdf_writer = null;
-		PdfContentByte content_byte = null;
-		PdfImportedPage imported_page;
-		for (current_page = 1; current_page <= n; current_page++) {
-			// check if i've to read one more page or to open a new doc
-			if ((current_page != 1)
-					&& ((split_type.equals(CmdParser.S_ODD) && ((current_page % 2) != 0)) || (split_type
-							.equals(CmdParser.S_EVEN) && ((current_page % 2) == 0)))) {
-				time_to_close = true;
-			} else {
-				time_to_close = false;
-			}
-			if (time_to_close) {
-				current_document.setPageSize(pdf_reader.getPageSizeWithRotation(current_page));
-				current_document.newPage();
-			} else {
-				// step 1: creation of a document-object
-				current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
-				// step 2: we create a writer that listens to the document
-				pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,
-						file_number_formatter.format(current_page) + "_" + out_files_name)));
-				MainConsole.setDocumentCreator(current_document);
-				// step 3: we open the document
-				current_document.open();
-				content_byte = pdf_writer.getDirectContent();
-			}
-			imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
-			int rotation = pdf_reader.getPageRotation(current_page);
-			if (rotation == 90 || rotation == 270) {
-				content_byte.addTemplate(imported_page, 0, -1f, 1f, 0, 0, pdf_reader.getPageSizeWithRotation(
-						current_page).height());
-			} else {
-				content_byte.addTemplate(imported_page, 1f, 0, 0, 1f, 0, 0);
-			}
-			// if it's time to close the document
-			if ((time_to_close) || (current_page == n) || ((current_page == 1) && (split_type.equals(CmdParser.S_ODD)))) {
-				current_document.close();
-			}
-			percentageChanged((current_page * 100) / n);
-		}
-		out_message += LogFormatter.formatMessage("Split " + split_type + " done.\n");
-	}
-
-	/**
-	 * Execute the split of a pdf document when split type is S_BURST
-	 * 
-	 * @param pdf_reader
-	 *            pdfreader of the original pdf document
-	 * @param out_files_name
-	 *            output file name
-	 * @throws Exception
-	 */
-	private void doSplitBurst(PdfReader pdf_reader, String out_files_name) throws Exception {
-		int current_page;
-		Document current_document;
-		for (current_page = 1; current_page <= n; current_page++) {
-			// step 1: creation of a document-object
-			current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
-			// step 2: we create a writer that listens to the document
-			PdfWriter pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(new File(o_file,
-					file_number_formatter.format(current_page) + "_" + out_files_name)));
-			// step 3: we open the document
-			MainConsole.setDocumentCreator(current_document);
-			current_document.open();
-			PdfContentByte content_byte = pdf_writer.getDirectContent();
-			PdfImportedPage imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
-			int rotation = pdf_reader.getPageRotation(current_page);
-			if (rotation == 90 || rotation == 270) {
-				content_byte.addTemplate(imported_page, 0, -1f, 1f, 0, 0, pdf_reader.getPageSizeWithRotation(
-						current_page).height());
-			} else {
-				content_byte.addTemplate(imported_page, 1f, 0, 0, 1f, 0, 0);
-			}
-			current_document.close();
-			percentageChanged((current_page * 100) / n);
-		}
-		out_message += LogFormatter.formatMessage("Burst done.\n");
-	}
+	   /**
+     * Execute the split of a pdf document when split type is S_ODD or S_EVEN
+     * @param pdf_reader pdfreader of the original pdf document
+     * @throws Exception
+     */
+    private void doSplitOddEven(PdfReader pdf_reader) throws Exception{
+        int current_page;
+        Document current_document = new Document(pdf_reader.getPageSizeWithRotation(1));
+        boolean time_to_close = false;
+        PdfCopy pdf_writer = null;
+        PdfImportedPage imported_page;
+        File tmp_o_file = null;
+        File o_file = null;
+        for (current_page = 1; current_page <= n; current_page++) {
+            //check if i've to read one more page or to open a new doc
+            if ((current_page!=1) && ((split_type.equals(CmdParser.S_ODD) && ((current_page %2) == 1)) ||
+                    (split_type.equals(CmdParser.S_EVEN) && ((current_page %2) == 0)))){
+                time_to_close = true;
+            }else{
+                time_to_close = false;
+            }
+            if (!time_to_close){
+            	tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_dir);
+            	o_file = new File(o_dir,prefixParser.generateFileName(file_number_formatter.format(current_page)));
+                // step 1: creation of a document-object
+            	current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
+                // step 2: we create a writer that listens to the document
+                pdf_writer = new PdfCopy(current_document, new FileOutputStream(tmp_o_file));
+                MainConsole.setDocumentCreator(current_document);
+                // step 3: we open the document
+                current_document.open();
+            }
+            imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
+            pdf_writer.addPage(imported_page);
+            //if it's time to close the document
+            if ((time_to_close) || (current_page == n) || ((current_page==1) && (split_type.equals(CmdParser.S_ODD)))){
+                current_document.close();
+                renameTemporaryFile(tmp_o_file, o_file, overwrite_boolean);
+            }
+            percentageChanged(java.lang.Math.round((current_page*100)/n));
+        }
+        out_message += LogFormatter.formatMessage("Split "+split_type+" done.\n");
+    }
+	
+	   /**
+     * Execute the split of a pdf document when split type is S_BURST
+     * @param pdf_reader pdfreader of the original pdf document
+     * @throws Exception
+     */
+    private void doSplitBurst(PdfReader pdf_reader) throws Exception{
+        int current_page;
+        Document current_document;
+        for (current_page = 1; current_page <= n; current_page++) {
+        	File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_dir);
+        	File o_file = new File(o_dir,prefixParser.generateFileName(file_number_formatter.format(current_page)));
+            // step 1: creation of a document-object
+            current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
+            // step 2: we create a writer that listens to the document
+            PdfCopy pdf_writer = new PdfCopy(current_document, new FileOutputStream(tmp_o_file));
+            // step 3: we open the document
+            MainConsole.setDocumentCreator(current_document);
+            current_document.open();
+            PdfImportedPage imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
+            pdf_writer.addPage(imported_page);
+            current_document.close();
+            renameTemporaryFile(tmp_o_file, o_file, overwrite_boolean);
+            percentageChanged(java.lang.Math.round((current_page*100)/n));
+        }
+        out_message += LogFormatter.formatMessage("Burst done.\n");
+    }
 
 	/**
 	 * Execute the split of a pdf document when split type is S_SPLIT
 	 * 
 	 * @param pdf_reader
-	 *            pdfreader of the original pdf document
+	 *                pdfreader of the original pdf document
 	 * @param out_files_name
-	 *            output file name
+	 *                output file name
 	 * @throws Exception
 	 */
-	private void doSplitSplit(PdfReader pdf_reader, String out_files_name) throws Exception {
+	private void doSplitSplit(PdfReader pdf_reader) throws Exception {
 		String[] limits = snumber_page.split("-");
 		Arrays.sort(limits, new StrNumComparator());
 		// limits list validation end clean
@@ -338,74 +292,50 @@ public class PdfSplit extends GenericPdfTool {
 		int end_page = n;
 		int start_page = 1;
 		Document current_document = new Document(pdf_reader.getPageSizeWithRotation(1));
-		boolean go_on = false;
-		PdfWriter pdf_writer = null;
-		PdfContentByte content_byte = null;
-		PdfImportedPage imported_page;
-		String current_name = "";
-		File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_file.getAbsolutePath());
-		if (itr.hasNext()) {
-			end_page = Integer.parseInt((String) itr.next());
-		}
+		PdfCopy pdf_writer = null;
+	    PdfImportedPage imported_page;
+	    File tmp_o_file = null;
+	    File o_file = null;
+	    if (itr.hasNext()){
+	        end_page = Integer.parseInt((String)itr.next());
+	    }
 		for (current_page = 1; current_page <= n; current_page++) {
 			relative_current_page++;
-			// check if i've to read one more page or to open a new doc
-			if (relative_current_page == 1) {
-				go_on = false;
-			} else {
-				go_on = true;
-			}
-			if (go_on) {
-				current_document.setPageSize(pdf_reader.getPageSizeWithRotation(current_page));
-				current_document.newPage();
-			}
-			// opening a new temporary pdf
-			else {
-				tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_file.getAbsolutePath());
-				// i save the first page number of this doc to get bookmarks
-				start_page = current_page;
-				current_name = file_number_formatter.format(current_page) + "_" + out_files_name;
-				// step 1: creation of a document-object
-				current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
-				// step 2: we create a writer that listens to the document
-				pdf_writer = PdfWriter.getInstance(current_document, new FileOutputStream(tmp_o_file));
-				// step 3: we open the document
-				MainConsole.setDocumentCreator(current_document);
-				current_document.open();
-				content_byte = pdf_writer.getDirectContent();
-			}
-			imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
-			int rotation = pdf_reader.getPageRotation(current_page);
-			if (rotation == 90 || rotation == 270) {
-				content_byte.addTemplate(imported_page, 0, -1f, 1f, 0, 0, pdf_reader.getPageSizeWithRotation(
-						current_page).height());
-			} else {
-				content_byte.addTemplate(imported_page, 1f, 0, 0, 1f, 0, 0);
-			}
+            //check if i've to read one more page or to open a new doc
+            if (relative_current_page == 1){            	
+           	 	tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_dir);
+            	o_file = new File(o_dir,prefixParser.generateFileName(file_number_formatter.format(current_page)));
+            	start_page = current_page;
+                // step 1: creation of a document-object
+            	current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
+                // step 2: we create a writer that listens to the document
+                pdf_writer = new PdfCopy(current_document, new FileOutputStream(tmp_o_file));
+                MainConsole.setDocumentCreator(current_document);
+                // step 3: we open the document
+                current_document.open();            	 
+            }
+            imported_page = pdf_writer.getImportedPage(pdf_reader, current_page);
+            pdf_writer.addPage(imported_page);
 			// if it's time to close the document
 			if (current_page == end_page) {
-				relative_current_page = 0;
-				current_document.close();
-				out_message += LogFormatter.formatMessage("Temporary document " + tmp_o_file.getName()
-						+ " done, now adding bookmarks...\n");
-				// manage bookmarks
-				ArrayList master = new ArrayList();
-				List this_book = SimpleBookmark.getBookmark(pdf_reader);
-				if (this_book != null) {
-					// ArrayList this_book = new ArrayList(bookmarks);
-					SimpleBookmark.eliminatePages(this_book, new int[] { end_page + 1, n });
-					if (start_page > 1) {
-						SimpleBookmark.eliminatePages(this_book, new int[] { 1, start_page - 1 });
-						SimpleBookmark.shiftPageNumbers(this_book, -(start_page - 1), null);
-					}
-					master.addAll(this_book);
-				}
-				addBookmarks(master, tmp_o_file, new File(o_file, current_name));
-				if (itr.hasNext()) {
-					end_page = Integer.parseInt((String) itr.next());
-				} else {
-					end_page = n;
-				}
+                out_message += LogFormatter.formatMessage("Temporary document "+tmp_o_file.getName()+" done, now adding bookmarks...\n");
+                //manage bookmarks
+                ArrayList master = new ArrayList();
+                List this_book = SimpleBookmark.getBookmark(pdf_reader);
+                if (this_book != null) {
+                   //ArrayList this_book = new ArrayList(bookmarks);
+                   SimpleBookmark.eliminatePages(this_book, new int[]{end_page+1, n});
+                   if (start_page > 1){
+                       SimpleBookmark.eliminatePages(this_book, new int[]{1,start_page-1});
+                       SimpleBookmark.shiftPageNumbers(this_book, -(start_page-1), null);
+                   }
+                   master.addAll(this_book);
+                   pdf_writer.setOutlines(master);
+                }
+                relative_current_page = 0;                    
+                current_document.close();
+                renameTemporaryFile(tmp_o_file, o_file, overwrite_boolean);
+                end_page = (itr.hasNext())? Integer.parseInt((String)itr.next()): n;
 			}
 			percentageChanged((current_page * 100) / n);
 		}
@@ -415,23 +345,19 @@ public class PdfSplit extends GenericPdfTool {
 	/**
 	 * Execute the split of a pdf document when split type is S_NSPLIT
 	 * 
-	 * @param pdf_reader
-	 *            pdfreader of the original pdf document
-	 * @param out_files_name
-	 *            output file name
+	 * @param pdf_reader pdfreader of the original pdf document
+	 * @param out_files_name output file name
 	 * @throws Exception
 	 */
-	private void doSplitNSplit(PdfReader pdf_reader, String out_files_name) throws Exception {
+	private void doSplitNSplit(PdfReader pdf_reader) throws Exception {
 		int number_page = Integer.parseInt(snumber_page);
 		if (number_page < 1 || number_page > n) {
-			throw new SplitException("PageNumberError: Cannot split this document at page " + number_page
-					+ ". No such page.");
+			throw new SplitException("PageNumberError: Cannot split this document at page " + number_page+ ". No such page.");
 		}
-		// snumber_page has already the first number thus i start from the
-		// second
+		// snumber_page has already the first number thus i start from the second
 		for (int i = (number_page * 2); i < n; i += number_page) {
 			snumber_page = snumber_page + "-" + Integer.toString(i);
 		}
-		doSplitSplit(pdf_reader, out_files_name);
+		doSplitSplit(pdf_reader);
 	}
 }

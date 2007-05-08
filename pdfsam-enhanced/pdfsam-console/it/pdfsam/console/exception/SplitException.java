@@ -19,25 +19,27 @@ package it.pdfsam.console.exception;
  * @see it.pdfsam.console.tools.pdf.PdfSplit
  *
  */
-public class SplitException extends Exception {
+public class SplitException extends ConsoleException {
     
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -2125271375075332148L;
-	private String error_msg; 
+     * 
+     */
+    private static final long serialVersionUID = -2125271375075332148L;
 
     public SplitException() {
-        super();
-        error_msg = "GenericSplitException";
+        super("GenericSplitException");
     }
 
     public SplitException(String message) {
         super(message);
-        error_msg = message;
+    }
+    
+    public SplitException(Exception e) {
+        super(e);
     }
 
     public String toString(){
-        return error_msg;
+        return super.toString();
     }
 }
+

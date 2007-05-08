@@ -19,26 +19,27 @@ package it.pdfsam.console.exception;
  * @see it.pdfsam.console.tools.CmdParser
  *
  */
-public class ParseException extends Exception {
+public class ParseException extends ConsoleException {
     
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -3982153307443637295L;
-	private String error_msg; 
+     * 
+     */
+    private static final long serialVersionUID = -3982153307443637295L;
 
     public ParseException() {
-        super();
-        error_msg = "GenericParseException";
+        super("GenericParseException");
     }
 
     public ParseException(String message) {
         super(message);
-        error_msg = message;
     }
-
+    
+    public ParseException(Exception e) {
+        super(e);
+    }
+    
     public String toString(){
-        return error_msg;
+        return super.toString();
     }
 
 }

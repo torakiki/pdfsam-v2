@@ -18,6 +18,7 @@ package it.pdfsam.console;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.interfaces.WorkDoneListener;
 import it.pdfsam.console.tools.CmdParser;
+import it.pdfsam.console.tools.pdf.GenericPdfTool;
 import it.pdfsam.console.tools.pdf.PdfAlternateMix;
 import it.pdfsam.console.tools.pdf.PdfConcat;
 import it.pdfsam.console.tools.pdf.PdfEncrypt;
@@ -52,9 +53,11 @@ import com.lowagie.text.Document;
  * @see it.pdfsam.console.tools.pdf.PdfConcat
  * @see it.pdfsam.console.tools.pdf.PdfSplit
  * @see it.pdfsam.console.tools.pdf.PdfEncrypt
+ * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  * @see it.pdfsam.console.exception.ParseException
  * @see it.pdfsam.console.exception.SplitException
  * @see it.pdfsam.console.exception.EncryptException
+ * @see it.pdfsam.console.exception.AlternateMixException
  */
 public class MainConsole implements Serializable{
 
@@ -65,7 +68,7 @@ public class MainConsole implements Serializable{
     /**
      * Console version
      */
-    public static final String VERSION = "0.7.1e"; 
+    public static final String VERSION = "0.8.0e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
@@ -92,72 +95,46 @@ public class MainConsole implements Serializable{
         CmdParser cmdp = new CmdParser(args);
         //parsing
         cmdp.parse();
+        //pdf tool
+        GenericPdfTool pdfTool = null;
         //if it's a concat
         if ((cmdp.getInputCommand()) == CmdParser.C_CONCAT){
+            Collection file_list = null;
             //and it a -f option
             if (cmdp.getInputOption() == CmdParser.F_OPT){
-                PdfConcat pdf_concatenator = new PdfConcat(cmdp.getCFValue(), cmdp.getOValue(), cmdp.getCUValue(), cmdp.COverwrite(), this);
-                pdf_concatenator.doConcat();
-                if (html_output) {
-                    out_msg = pdf_concatenator.getOutHTMLMessage();
-                }
-                else{
-                    out_msg = pdf_concatenator.getOutMessage();
-                }
+            	file_list = cmdp.getCFValue();
             }
             else if(cmdp.getInputOption() == CmdParser.L_OPT){
                 File l_file = cmdp.getCLValue();
-                Collection file_list = null;
 				if (getExtension(l_file).equals("XML".toLowerCase())){
 					file_list = parseXmlFile(l_file);
 				}
 				if (getExtension(l_file).equals("CVS".toLowerCase())){
 					file_list = parseCsvFile(l_file);
-				}                
-                if (file_list == null){
-                    out_msg = "Error reading csv or xml file-";
-                }else{
-                    PdfConcat pdf_concatenator = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.COverwrite(), this);
-                    pdf_concatenator.doConcat();
-                    if (html_output) {
-                        out_msg = pdf_concatenator.getOutHTMLMessage();
-                    }
-                    else{
-                        out_msg = pdf_concatenator.getOutMessage();
-                    }
-                }
+				}                                
+            }
+            //i found a file list
+            if (file_list == null){
+                out_msg = "Error reading csv or xml file-";
+            }else{
+            	pdfTool = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.isOverwrite(), cmdp.isCCopyFields(), this);
             }
         }
         else if ((cmdp.getInputCommand()) == CmdParser.C_SPLIT){
-            PdfSplit pdf_splitter = new PdfSplit(cmdp.getOValue(), cmdp.getSFValue(), cmdp.getSPValue(), cmdp.getSSValue(), cmdp.getSNumberPageValue(), this);
-            pdf_splitter.doSplit();
-            if (html_output) {
-                out_msg = pdf_splitter.getOutHTMLMessage();
-            }
-            else{
-                out_msg = pdf_splitter.getOutMessage();
-            }
-        }
-        else if ((cmdp.getInputCommand()) == CmdParser.C_ECRYPT){
-        	PdfEncrypt pdf_encrypt = new PdfEncrypt(cmdp.getOValue(), cmdp.getEFValue(), cmdp.getEAllowValue(), cmdp.getEUpwdValue(), cmdp.getEApwdValue(), cmdp.getEPValue(), cmdp.getETypeValue(), this);
-        	pdf_encrypt.doEncrypt();
-            if (html_output) {
-                out_msg = pdf_encrypt.getOutHTMLMessage();
-            }
-            else{
-                out_msg = pdf_encrypt.getOutMessage();
-            }       	
+        	pdfTool = new PdfSplit(cmdp.getOValue(), cmdp.getSFValue(), cmdp.getSPValue(), cmdp.getSSValue(), cmdp.getSNumberPageValue(), cmdp.isOverwrite(), this);        	
+        }else if ((cmdp.getInputCommand()) == CmdParser.C_ECRYPT){
+        	pdfTool = new PdfEncrypt(cmdp.getOValue(), cmdp.getEFValue(), cmdp.getEAllowValue(), cmdp.getEUpwdValue(), cmdp.getEApwdValue(), cmdp.getEPValue(), cmdp.getETypeValue(), cmdp.isOverwrite(), this);        	       	
         }else if ((cmdp.getInputCommand()) == CmdParser.C_MIX){
-        	PdfAlternateMix pdf_mix = new PdfAlternateMix(cmdp.getOValue(), cmdp.getMF1Value(), cmdp.getMF2Value(), cmdp.MReverseFirst(), cmdp.MReverseSecond(), cmdp.MOverwrite(), this);
-        	pdf_mix.doAlternateMix();
-            if (html_output) {
-                out_msg = pdf_mix.getOutHTMLMessage();
-            }
-            else{
-                out_msg = pdf_mix.getOutMessage();
-            }       	
+        	pdfTool = new PdfAlternateMix(cmdp.getOValue(), cmdp.getMF1Value(), cmdp.getMF2Value(), cmdp.MReverseFirst(), cmdp.MReverseSecond(), cmdp.isOverwrite(), this);        	       	
         }
-        	
+        //everythig is ok, i created pdfTool
+        if(pdfTool != null){
+	        pdfTool.execute();
+	        out_msg = (html_output)? pdfTool.getOutHTMLMessage():pdfTool.getOutMessage(); 
+        }else{
+//        	an error occured creating the pdfTool
+        	out_msg += "Unable to create a pdfTool to execute.";
+        }
         //try to write on output file
         try{
             File log_out_file =cmdp.getLogValue(); 

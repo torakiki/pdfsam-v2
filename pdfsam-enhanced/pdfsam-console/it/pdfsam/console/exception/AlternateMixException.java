@@ -19,22 +19,26 @@ package it.pdfsam.console.exception;
  * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  *
  */
-public class AlternateMixException extends Exception {
+public class AlternateMixException extends ConsoleException {
 
-	private static final long serialVersionUID = -8725252193302287138L;
-		private String error_msg; 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5737099010337020252L;
 
-	    public AlternateMixException() {
-	        super();
-	        error_msg = "GenericAlternateMixException";
-	    }
+	public AlternateMixException() {
+        super("GenericAlternateMixException");
+    }
 
-	    public AlternateMixException(String message) {
-	        super(message);
-	        error_msg = message;
-	    }
-
-	    public String toString(){
-	        return error_msg;
-	    }
+    public AlternateMixException(String message) {
+        super(message);
+    }
+    
+    public AlternateMixException(Exception e) {
+        super(e);
+    }
+    
+    public String toString(){
+        return super.toString();
+    }
 }

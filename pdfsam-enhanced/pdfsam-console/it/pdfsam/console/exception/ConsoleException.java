@@ -1,5 +1,5 @@
 /*
- * Created on 28-Dec-2006
+ * Created on 02-April-2007
  * Copyright (C) 2006 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -14,30 +14,32 @@
  */
 package it.pdfsam.console.exception;
 /**
- * Exception thrown while encrypting pdf files
+ * Generic console Exception
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.pdf.PdfEncrypt
- *
  */
+public class ConsoleException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -302708377322354896L;
+    private String error_msg; 
 
-public class EncryptException extends ConsoleException {
+    public ConsoleException() {
+        super();
+        error_msg = "GenericConsoleException";
+    }
 
-	private static final long serialVersionUID = 6742497449979418765L;
+    public ConsoleException(String message) {
+        super(message);
+        error_msg = message;
+    }
+    
+    public ConsoleException(Exception e) {
+        super(e);
+        error_msg = e.getMessage();
+    }
 
-		public EncryptException() {
-	        super("GenericEncryptException");
-	    }
-
-	    public EncryptException(String message) {
-	        super(message);
-	    }
-
-	    public EncryptException(Exception e) {
-	        super(e);
-	    }
-
-	    public String toString(){
-	        return super.toString();
-	    }
+    public String toString(){
+        return error_msg;
+    }
 }
-
