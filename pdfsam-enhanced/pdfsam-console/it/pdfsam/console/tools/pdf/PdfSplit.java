@@ -208,7 +208,7 @@ public class PdfSplit extends GenericPdfTool {
         File o_file = null;
         for (current_page = 1; current_page <= n; current_page++) {
             //check if i've to read one more page or to open a new doc
-            if ((current_page!=1) && ((split_type.equals(CmdParser.S_ODD) && ((current_page %2) == 1)) ||
+            if ((current_page!=1) && ((split_type.equals(CmdParser.S_ODD) && ((current_page %2) != 0)) ||
                     (split_type.equals(CmdParser.S_EVEN) && ((current_page %2) == 0)))){
                 time_to_close = true;
             }else{

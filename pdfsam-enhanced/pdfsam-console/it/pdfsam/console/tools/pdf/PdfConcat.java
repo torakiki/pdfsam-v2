@@ -123,7 +123,7 @@ public class PdfConcat extends GenericPdfTool{
     				current_p_selection = "all";
     			}
     			//validation
-    			if (!(Pattern.compile("([0-9]*[-][0-9]*)|(all)", Pattern.CASE_INSENSITIVE).matcher(current_p_selection).matches())){
+    			if (!(Pattern.compile("([0-9]+[-][0-9]+)|(all)", Pattern.CASE_INSENSITIVE).matcher(current_p_selection).matches())){
     				String errorMsg = "";
 	            	try{
 						tmp_o_file.delete();
@@ -146,7 +146,7 @@ public class PdfConcat extends GenericPdfTool{
 	            	String exceptionMsg = "";
 	                String[] limits = current_p_selection.split("-");
 	                try{
-	                    start = Integer.parseInt(limits[0])-1;
+	                    start = Integer.parseInt(limits[0]);
 	                    end_page = Integer.parseInt(limits[1]);                    
 	                }catch(Exception ex){
 						valid = false;
@@ -162,7 +162,7 @@ public class PdfConcat extends GenericPdfTool{
 		                //validation
 		                if (start < 0){
 							valid = false;
-							exceptionMsg = "ValidationError: Syntax error. " + (start+1) + " must be positive in " + current_p_selection + ".";
+							exceptionMsg = "ValidationError: Syntax error. " + (start) + " must be positive in " + current_p_selection + ".";
 							try{
 								tmp_o_file.delete();
 							}
@@ -180,9 +180,9 @@ public class PdfConcat extends GenericPdfTool{
 								exceptionMsg += " Unable to delete temporary file.";
 							}
 		                }
-		                else if (start >= end_page){
+		                else if (start > end_page){
 		                	valid = false;
-							exceptionMsg = "ValidationError: Syntax error. " + (start+1) + " is bigger than " + end_page + " in " + current_p_selection + ".";
+							exceptionMsg = "ValidationError: Syntax error. " + (start) + " is bigger than " + end_page + " in " + current_p_selection + ".";
 							try{
 								tmp_o_file.delete();
 							}
@@ -238,7 +238,7 @@ public class PdfConcat extends GenericPdfTool{
     			//pdf_reader = null;
     			pdf_reader.close();
     			pdf_writer.freeReader(pdf_reader);
-    			total_processed_pages += end_page - start;
+    			total_processed_pages += end_page - start +1;
     			out_message += LogFormatter.formatMessage((end_page - start) + " pages processed correctly-\n");
     			f++;
     			try{	
