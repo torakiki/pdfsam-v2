@@ -6,6 +6,6 @@
 	<classpathentry kind="lib" path="lib/pdfsam-langpack.jar"/>
 	<classpathentry kind="lib" path="lib/looks-2.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jaxen-1.1.jar"/>
-	<classpathentry kind="lib" path="lib/pdfsam-console-0.7.0e.jar"/>
+	<classpathentry kind="lib" path="lib/pdfsam-console-0.7.1e.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

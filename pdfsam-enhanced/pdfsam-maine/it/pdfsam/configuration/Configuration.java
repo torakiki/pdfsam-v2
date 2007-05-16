@@ -120,6 +120,7 @@ public class Configuration  implements Serializable{
 			langs = new Vector(languageList.size(), 1);
 			langs.addAll(languageList);
 		}catch(Exception e){
+			langs = new Vector(1, 1);
 			langs.add("en_GB");
 		}
 	}

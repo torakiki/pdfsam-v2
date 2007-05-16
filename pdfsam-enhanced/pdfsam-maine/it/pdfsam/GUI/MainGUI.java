@@ -96,11 +96,11 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.2.0e beta"; 
+	public static final String APP_VERSION = "1.3.0e beta"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
-	private static final boolean IDE = false;
+	private static final boolean IDE = true;
 
 	public MainGUI() {
 		runSplash();
@@ -161,12 +161,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		center(this,800,600);
 		setIconImage(new ImageIcon(this.getClass().getResource("/images/pdf.png")).getImage());
-        try{
-            setTitle(MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION);
-            
-        }catch(Exception ge){
-            setTitle("pdfsam");
-        }
+        setTitle(MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION);
         setSplashStep(GettextResource.gettext(i18n_messages,"Building menus.."));
 		//menu
 		final MenuPanel menu_bar = new MenuPanel();
