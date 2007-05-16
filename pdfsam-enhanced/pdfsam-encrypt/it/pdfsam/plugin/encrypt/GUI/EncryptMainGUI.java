@@ -74,7 +74,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
     private SpringLayout encrypt_spring_layout;
     private ResourceBundle i18n_messages;
     private JTextField user_pwd_field;
-	private JTextField owner_pwd_field;
+	private JTextField owner_pwd_field; 
 	private JComboBox encrypt_type;
 	private Configuration config;
 	private MainConsole mc;
@@ -95,6 +95,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
 //encrypt_check
 	private final JCheckBox[] permissions_check = new JCheckBox[8];
     private final JCheckBox allowall_check = new JCheckBox();
+    private final JCheckBox overwrite_checkbox = new JCheckBox();
 //radio
     private final JRadioButton same_as_source_radio = new JRadioButton();
     private final JRadioButton choose_a_folder_radio = new JRadioButton();
@@ -120,7 +121,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Encrypt";
-    private final String PLUGIN_VERSION = "0.1.4e";
+    private final String PLUGIN_VERSION = "0.1.5e";
 	
 	private final static String RC4_40 = "RC4-40b";
 	private final static String RC4_128 = "RC4-128b";
@@ -298,10 +299,6 @@ public class EncryptMainGUI extends AbstractPlugIn{
         destination_panel.add(choose_a_folder_radio);
 //END_DESTINATION_RADIOS        
 //CHECKGROUP
-/*        encrypt_options_check_group = new ButtonGroup();
-		for(int i=0; i<permissions_check.length; i++){
-			encrypt_options_check_group.add(permissions_check[i]);
-		}*/
         final ButtonGroup output_radio_group = new ButtonGroup();
         output_radio_group.add(same_as_source_radio);
         output_radio_group.add(choose_a_folder_radio);  
@@ -311,6 +308,11 @@ public class EncryptMainGUI extends AbstractPlugIn{
         dest_folder_text.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destination_panel.add(dest_folder_text);
 
+//CHECK_BOX
+        overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
+        overwrite_checkbox.setSelected(true);
+        destination_panel.add(overwrite_checkbox);
+//END_CHECK_BOX  
         browse_dest_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int return_val = browse_dest_file_chooser.showOpenDialog(browse_dest_button.getParent());
@@ -408,6 +410,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
                     }else{
                         args.add(dest_folder_text.getText());
                     }
+                    if (overwrite_checkbox.isSelected()) args.add("-overwrite");
                     args.add("encrypt"); 
                 }catch(Exception any_ex){    
                     fireLogPropertyChanged("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), LogPanel.LOG_ERROR);
@@ -520,7 +523,10 @@ public class EncryptMainGUI extends AbstractPlugIn{
 				file_destination.addAttribute("value", dest_folder_text.getText());			
 				
 				Element file_prefix = ((Element)arg0).addElement("prefix");
-				file_prefix.addAttribute("value", out_prefix_text.getText());			
+				file_prefix.addAttribute("value", out_prefix_text.getText());
+				
+				Element file_overwrite = ((Element)arg0).addElement("overwrite");
+				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
 			}
 			return arg0;
 		}
@@ -574,6 +580,11 @@ public class EncryptMainGUI extends AbstractPlugIn{
 					same_as_source_radio.doClick();
 				}
 				
+				Node file_overwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+				if (file_overwrite != null){
+					overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
+				}
+
 				Node file_prefix = (Node) arg0.selectSingleNode("prefix/@value");
 				if (file_prefix != null){
 					out_prefix_text.setText(file_prefix.getText());
@@ -624,6 +635,9 @@ public class EncryptMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.NORTH, dest_folder_text, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, dest_folder_text);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);        
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, browse_dest_button, 0, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.EAST, browse_dest_button, -10, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_dest_button, -25, SpringLayout.SOUTH, dest_folder_text);
@@ -870,6 +884,9 @@ public class EncryptMainGUI extends AbstractPlugIn{
                 return browse_dest_button;
             }
             else if (aComponent.equals(browse_dest_button)){
+                return overwrite_checkbox;
+            }
+            else if (aComponent.equals(overwrite_checkbox)){
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
@@ -890,6 +907,9 @@ public class EncryptMainGUI extends AbstractPlugIn{
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
+                return overwrite_checkbox;
+            }
+            else if (aComponent.equals(overwrite_checkbox)){
             	if (same_as_source_radio.isSelected()){
                     return choose_a_folder_radio;
                 }else{
