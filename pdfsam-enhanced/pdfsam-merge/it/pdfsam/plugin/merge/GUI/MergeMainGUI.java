@@ -33,6 +33,8 @@ import it.pdfsam.plugin.merge.listener.RemoveActionListener;
 import it.pdfsam.plugin.merge.model.MergeTableModel;
 import it.pdfsam.plugin.merge.type.MergeItemType;
 import it.pdfsam.plugin.merge.type.TableTransferHandler;
+import it.pdfsam.render.JComboListItemRender;
+import it.pdfsam.types.ListItem;
 import it.pdfsam.util.PdfFilter;
 
 import java.awt.Color;
@@ -65,6 +67,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -105,10 +108,15 @@ public class MergeMainGUI extends AbstractPlugIn{
     private JFileChooser browse_file_chooser;
     private SpringLayout destination_panel_layout;
     private JPanel destination_panel = new JPanel();
+    private SpringLayout option_panel_layout;
+    private JPanel option_panel = new JPanel();
     private JCheckBox overwrite_checkbox = new JCheckBox();
     private ResourceBundle i18n_messages;
     private Configuration config;
     private MainConsole mc;
+    private JComboBox merge_type_combo;
+    private final JLabel option_label = new JLabel();
+    private final JLabel merge_type_label = new JLabel();    
 //Buttons
     private final JButton add_file_button = new JButton();
     private final JButton remove_file_button = new JButton();
@@ -133,11 +141,14 @@ public class MergeMainGUI extends AbstractPlugIn{
     private final JScrollPane merge_table_scroll_panel = new JScrollPane();
     private final JLabel destination_label = new JLabel();
     private final DefaultListModel list_model = new DefaultListModel();
+
+    private final String PDFSTANDARD = "0x00";
+    private final String PDFWITHFORMS = "0x01";
     
 	private static final String ALL_STRING = "All";
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private static final String PLUGIN_NAME = "Merge";
-    private static final String PLUGIN_VERSION = "0.4.7e";
+    private static final String PLUGIN_VERSION = "0.4.8e";
     
     /**
      * Constructor
@@ -368,6 +379,24 @@ public class MergeMainGUI extends AbstractPlugIn{
             }
         });
 //END_LISTENER_POPUP
+//      OPTION_PANEL
+        option_panel_layout = new SpringLayout();
+        option_panel.setLayout(option_panel_layout);
+        option_panel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        add(option_panel);
+        
+//END_OPTION_PANEL 
+        option_label.setText(GettextResource.gettext(i18n_messages,"Merge options:"));
+        add(option_label);
+
+        
+        merge_type_label.setText(GettextResource.gettext(i18n_messages,"Merge type:"));
+        option_panel.add(merge_type_label);
+        
+        merge_type_combo = new JComboBox(new ListItem[] {new ListItem(PDFSTANDARD,GettextResource.gettext(i18n_messages,"PDF standard")),new ListItem(PDFWITHFORMS, GettextResource.gettext(i18n_messages,"PDF with forms"))});
+        merge_type_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+        merge_type_combo.setRenderer(new JComboListItemRender());
+        option_panel.add(merge_type_combo);        
 //DESTINATION_PANEL
         destination_panel_layout = new SpringLayout();
         destination_panel.setLayout(destination_panel_layout);
@@ -452,6 +481,9 @@ public class MergeMainGUI extends AbstractPlugIn{
                     args.add("-u");
                     args.add(page_sel_string);
                     if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+                    if(((ListItem)merge_type_combo.getSelectedItem()).getId().equals(PDFWITHFORMS)){
+                    	args.add("-copyfields");
+                    }
                     args.add ("concat");
                 }catch(Exception any_ex){    
                     fireLogPropertyChanged("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), LogPanel.LOG_ERROR);
@@ -473,7 +505,7 @@ public class MergeMainGUI extends AbstractPlugIn{
                             fireLogPropertyChanged("Command Line: "+args.toString(), LogPanel.LOG_DETAILEDINFO);
                             fireLogPropertyChanged(out_msg , LogPanel.LOG_INFO);
                      }catch(Exception any_ex){
-                             MergeMainGUI.this.removeWipTextAll();
+                            MergeMainGUI.this.removeWipTextAll();
                             fireLogPropertyChanged("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), LogPanel.LOG_ERROR);
                      }
                     }
@@ -636,10 +668,28 @@ public class MergeMainGUI extends AbstractPlugIn{
         spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, clear_button, 5, SpringLayout.SOUTH, move_down_button);
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, clear_button, 0, SpringLayout.EAST, move_down_button);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, clear_button, 0, SpringLayout.WEST, move_down_button);
+        
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, option_panel, 250, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.EAST, option_panel, 0, SpringLayout.EAST, add_file_button);
+        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, option_panel, 215, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_panel, 0, SpringLayout.WEST, merge_table_scroll_panel);
 
-        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 285, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, option_label, 0, SpringLayout.NORTH, option_panel);
+        spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_label, 0, SpringLayout.WEST, option_panel);
+
+        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_label, 30, SpringLayout.NORTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_label, 130, SpringLayout.WEST, this);
+        option_panel_layout.putConstraint(SpringLayout.NORTH, merge_type_label, 5, SpringLayout.NORTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.WEST, merge_type_label, 5, SpringLayout.WEST, option_panel);
+
+        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_combo, 0, SpringLayout.SOUTH, merge_type_label);
+        option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_combo, 130, SpringLayout.WEST, merge_type_combo);
+        option_panel_layout.putConstraint(SpringLayout.NORTH, merge_type_combo, 0, SpringLayout.NORTH, merge_type_label);
+        option_panel_layout.putConstraint(SpringLayout.WEST, merge_type_combo, 5, SpringLayout.EAST, merge_type_label);
+        
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 345, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, add_file_button);
-        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 215, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 275, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, merge_table_scroll_panel);
 
         destination_panel_layout.putConstraint(SpringLayout.EAST, destination_text_field, -105, SpringLayout.EAST, destination_panel);
@@ -753,6 +803,10 @@ public class MergeMainGUI extends AbstractPlugIn{
 				
 				Element file_overwrite = ((Element)arg0).addElement("overwrite");
 				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
+
+				Element merge_type = ((Element)arg0).addElement("merge_type");
+				merge_type.addAttribute("value", ((ListItem)merge_type_combo.getSelectedItem()).getId());
+
 			}
 			return arg0;
 		}
@@ -773,10 +827,23 @@ public class MergeMainGUI extends AbstractPlugIn{
 						if (file_destination != null){
 							destination_text_field.setText(file_destination.getText());
 						}
+						
 						Node file_overwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 						if (file_overwrite != null){
 							overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
 						}
+						
+						Node merge_type = (Node) arg0.selectSingleNode("merge_type/@value");
+						if (merge_type != null){
+							int size = merge_type_combo.getItemCount();
+							for (int i=0; i<size; i++){
+								if (((ListItem)(merge_type_combo.getItemAt(i))).getId().equals(merge_type.getText())){
+									merge_type_combo.setSelectedIndex(i);
+									break;
+								}
+							}
+						}
+
 						modello_merge_table.clearData();
 						List file_list = arg0.selectNodes("filelist/file");
                         wip_text = GettextResource.gettext(i18n_messages,"Please wait while reading ")+" ...";
