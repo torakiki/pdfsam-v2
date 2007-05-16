@@ -43,6 +43,7 @@ import java.util.ResourceBundle;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -101,6 +102,8 @@ public class SplitMainGUI extends AbstractPlugIn{
     private final JRadioButton same_as_source_radio = new JRadioButton();
     private final JRadioButton choose_a_folder_radio = new JRadioButton();
     private ButtonGroup split_options_radio_group;
+//checks
+    private final JCheckBox overwrite_checkbox = new JCheckBox();
 //focus policy 
     private final SplitFocusPolicy split_focus_policy = new SplitFocusPolicy();
 
@@ -110,17 +113,17 @@ public class SplitMainGUI extends AbstractPlugIn{
     private final JPanel output_options_panel = new JPanel();
 
 //labels    
-    final JLabel source_file_label = new JLabel();
-    final JLabel split_options_label = new JLabel();
-    final JLabel dest_folder_label = new JLabel();
-    final JLabel output_options_label = new JLabel();
-    final JLabel out_prefix_label = new JLabel();
+    private final JLabel source_file_label = new JLabel();
+    private final JLabel split_options_label = new JLabel();
+    private final JLabel dest_folder_label = new JLabel();
+    private final JLabel output_options_label = new JLabel();
+    private final JLabel out_prefix_label = new JLabel();
     
     private final ThreadGroup run_threads = new ThreadGroup("run threads");
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.2.9e";
+    private final String PLUGIN_VERSION = "0.3.0e";
     
 /**
  * Constructor
@@ -260,7 +263,11 @@ public class SplitMainGUI extends AbstractPlugIn{
         dest_folder_text = new JTextField();
         dest_folder_text.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destination_panel.add(dest_folder_text);
-
+//CHECK_BOX
+        overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
+        overwrite_checkbox.setSelected(true);
+        destination_panel.add(overwrite_checkbox);
+//END_CHECK_BOX 
         browse_dest_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int return_val = browse_dest_file_chooser.showOpenDialog(browse_dest_button.getParent());
@@ -339,7 +346,7 @@ public class SplitMainGUI extends AbstractPlugIn{
                     }else{
                         args.add(dest_folder_text.getText());
                     }
-                   // args.add("-overwrite=true");                    
+                    if (overwrite_checkbox.isSelected()) args.add("-overwrite");                   
                     args.add("split"); 
                 }catch(Exception any_ex){    
                     fireLogPropertyChanged("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), LogPanel.LOG_ERROR);
@@ -441,7 +448,10 @@ public class SplitMainGUI extends AbstractPlugIn{
 				file_destination.addAttribute("value", dest_folder_text.getText());			
 				
 				Element file_prefix = ((Element)arg0).addElement("prefix");
-				file_prefix.addAttribute("value", out_prefix_text.getText());			
+				file_prefix.addAttribute("value", out_prefix_text.getText());	
+				
+				Element file_overwrite = ((Element)arg0).addElement("overwrite");
+				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
 			}
 			return arg0;
 		}
@@ -482,7 +492,12 @@ public class SplitMainGUI extends AbstractPlugIn{
 				}else{
 					same_as_source_radio.doClick();
 				}
-				
+
+				Node file_overwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+				if (file_overwrite != null){
+					overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
+				}
+
 				Node file_prefix = (Node) arg0.selectSingleNode("prefix/@value");
 				if (file_prefix != null){
 					out_prefix_text.setText(file_prefix.getText());
@@ -519,7 +534,7 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_spring_layout.putConstraint(SpringLayout.WEST, split_options_label, 0, SpringLayout.WEST, source_text_field);
         split_spring_layout.putConstraint(SpringLayout.NORTH, dest_folder_label, 5, SpringLayout.SOUTH, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, dest_folder_label, 0, SpringLayout.WEST, split_options_panel);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 270, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 295, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 205, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, split_options_panel);
@@ -533,6 +548,9 @@ public class SplitMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.NORTH, dest_folder_text, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, dest_folder_text);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, browse_dest_button, 0, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.EAST, browse_dest_button, -10, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_dest_button, -25, SpringLayout.SOUTH, dest_folder_text);
@@ -541,7 +559,7 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_label, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_label, 0, SpringLayout.WEST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_label, 5, SpringLayout.SOUTH, destination_panel);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 320, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 345, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_panel, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_panel, 0, SpringLayout.SOUTH, output_options_label);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_panel, 0, SpringLayout.WEST, output_options_label);
@@ -552,10 +570,10 @@ public class SplitMainGUI extends AbstractPlugIn{
         s_panel_layout.putConstraint(SpringLayout.SOUTH, out_prefix_text, 0, SpringLayout.SOUTH, out_prefix_label);
         s_panel_layout.putConstraint(SpringLayout.NORTH, out_prefix_text, 0, SpringLayout.NORTH, out_prefix_label);
         s_panel_layout.putConstraint(SpringLayout.WEST, out_prefix_text, 15, SpringLayout.EAST, out_prefix_label);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 355, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 380, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, run_button, 0, SpringLayout.EAST, output_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, run_button, 0, SpringLayout.WEST, browse_button);
-        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 330, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 355, SpringLayout.NORTH, this);
 
 //      RADIO_LAYOUT
         options_pane_layout.putConstraint(SpringLayout.NORTH, burst_radio, 10, SpringLayout.NORTH, split_options_panel);
@@ -654,6 +672,9 @@ public class SplitMainGUI extends AbstractPlugIn{
                 return browse_dest_button;
             }
             else if (aComponent.equals(browse_dest_button)){
+                return overwrite_checkbox;
+            }
+            else if (aComponent.equals(overwrite_checkbox)){
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
@@ -674,6 +695,9 @@ public class SplitMainGUI extends AbstractPlugIn{
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
+                return overwrite_checkbox;
+            }
+            else if (aComponent.equals(overwrite_checkbox)){
                 if (browse_dest_button.isEnabled()){
                     return browse_dest_button;
                 }else{
