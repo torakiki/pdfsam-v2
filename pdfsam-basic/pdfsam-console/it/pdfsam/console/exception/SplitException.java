@@ -16,7 +16,7 @@ package it.pdfsam.console.exception;
 /**
  * Exception thrown while splitting pdf files
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfSplit
  *
  */
 public class SplitException extends ConsoleException {
@@ -33,8 +33,13 @@ public class SplitException extends ConsoleException {
     public SplitException(String message) {
         super(message);
     }
+    
+    public SplitException(Exception e) {
+        super(e);
+    }
 
     public String toString(){
         return super.toString();
     }
 }
+

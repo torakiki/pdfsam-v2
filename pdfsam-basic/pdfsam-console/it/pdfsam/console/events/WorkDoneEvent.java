@@ -24,12 +24,13 @@ import java.util.EventObject;
  */
 public class WorkDoneEvent extends EventObject {
     
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1006299604590401518L;
-    public static final int PERCENTAGE_CHANGE = 0x01;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3203481861654979492L;
+	public static final int PERCENTAGE_CHANGE = 0x01;
     public static final int WORK_DONE = 0x02;
+    public static final int WORK_INDETERMINATE = 0x03;
     
     /**
      * Message of the event
@@ -40,26 +41,39 @@ public class WorkDoneEvent extends EventObject {
      */
     private int percentage_done;
     /**
+     * Percentage of work done
+     */
+    private int pages_done;
+    /**
      * Event type
      */
     private int event_type;
 
     public WorkDoneEvent(Object source, int event_type) {
-        this(source, event_type, "", 0);
+        this(source, event_type, "", 0, 0);
     }
 
-    public WorkDoneEvent(Object source, int event_type,String message) {
-        this(source, event_type, message, 0);
+    public WorkDoneEvent(Object source, int event_type, String message) {
+        this(source, event_type, message, 0, 0);
     }
 
+    public WorkDoneEvent(Object source, int event_type, int percentage, int pages) {
+        this(source, event_type, "", percentage, pages);
+    }
+	
     public WorkDoneEvent(Object source, int event_type, int percentage) {
-        this(source, event_type, "", percentage);
-    }
+        this(source, event_type, "", percentage, 0);
+    }	
 
     public WorkDoneEvent(Object source, int event_type, String message, int percentage) {
+        this(source, event_type, message, percentage, 0);
+    }
+
+    public WorkDoneEvent(Object source, int event_type, String message, int percentage, int pages) {
         super(source);
-        event_message = message;
-        percentage_done = percentage;
+        this.event_message = message;
+        this.percentage_done = percentage;
+        this.pages_done = pages;
         this.event_type = event_type;
     }
 
@@ -78,6 +92,13 @@ public class WorkDoneEvent extends EventObject {
     }
 
     /**
+     * @return Returns the percentage_done.
+     */
+    public int getPagesDone() {
+        return pages_done;
+    }
+
+    /**
      * @return Returns the event_type.
      */
     public int getType() {
@@ -90,14 +111,18 @@ public class WorkDoneEvent extends EventObject {
      */
     public void dispatch(WorkDoneListener listener) {
         switch (event_type) {
-        case PERCENTAGE_CHANGE:
-            ((WorkDoneListener)listener).percentageOfWorkDoneChanged(this);
-            break;
+	        case PERCENTAGE_CHANGE:
+	            listener.percentageOfWorkDoneChanged(this);
+	            break;
 
-        case WORK_DONE:
-            ((WorkDoneListener)listener).workCompleted(this);
-            break;
-        }
+			case WORK_DONE:
+	            listener.workCompleted(this);
+	            break;
+
+			case WORK_INDETERMINATE:
+				listener.workingIndeterminate(this);
+	            break;
+	        }
         }
     
 }

@@ -24,7 +24,7 @@ public class LogFormatter {
      * @param message
      * @return formatted message
      */
-    public static String FormatMessage(String message){
+    public static String formatMessage(String message){
         return "["+DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM).format(new Date())+"] "+message;
     }
 }

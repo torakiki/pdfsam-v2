@@ -16,7 +16,7 @@ package it.pdfsam.console.exception;
 /**
  * Exception thrown while merging pdf files
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfConcat
  *
  */
 public class ConcatException extends ConsoleException {
@@ -32,6 +32,10 @@ public class ConcatException extends ConsoleException {
 
     public ConcatException(String message) {
         super(message);
+    }
+    
+    public ConcatException(Exception e) {
+        super(e);
     }
 
     public String toString(){

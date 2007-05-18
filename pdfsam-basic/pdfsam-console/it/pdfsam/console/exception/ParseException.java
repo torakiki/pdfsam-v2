@@ -33,7 +33,11 @@ public class ParseException extends ConsoleException {
     public ParseException(String message) {
         super(message);
     }
-
+    
+    public ParseException(Exception e) {
+        super(e);
+    }
+    
     public String toString(){
         return super.toString();
     }

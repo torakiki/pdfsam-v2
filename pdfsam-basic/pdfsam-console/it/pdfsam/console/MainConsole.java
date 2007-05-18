@@ -18,8 +18,9 @@ package it.pdfsam.console;
 import it.pdfsam.console.events.WorkDoneEvent;
 import it.pdfsam.console.interfaces.WorkDoneListener;
 import it.pdfsam.console.tools.CmdParser;
-import it.pdfsam.console.tools.PdfConcat;
-import it.pdfsam.console.tools.PdfSplit;
+import it.pdfsam.console.tools.pdf.GenericPdfTool;
+import it.pdfsam.console.tools.pdf.PdfConcat;
+import it.pdfsam.console.tools.pdf.PdfSplit;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -39,32 +41,38 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import com.lowagie.text.Document;
+
 /**
- * Console class. 
+ * Console class.
  * It takes input arguments, parse tham and execute the right operation on pdf files.
  * 
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.CmdParser
- * @see it.pdfsam.console.tools.PdfConcat
- * @see it.pdfsam.console.tools.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfSplit
+ * @see it.pdfsam.console.tools.pdf.PdfEncrypt
+ * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  * @see it.pdfsam.console.exception.ParseException
  * @see it.pdfsam.console.exception.SplitException
+ * @see it.pdfsam.console.exception.EncryptException
+ * @see it.pdfsam.console.exception.AlternateMixException
  */
-public class MainConsole{
- 
-    //list of listeners
+public class MainConsole implements Serializable{
+
+	private static final long serialVersionUID = -8692849576712411540L;
+
+	//list of listeners
     private EventListenerList listeners = new EventListenerList();
-    
     /**
      * Console version
      */
-    public static final String VERSION = "0.5.5"; 
-
+    public static final String VERSION = "0.7.0"; 
+    public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
+       
     public static void main(String[] args){
-        try{
-            
+        try{            
             MainConsole mc = new MainConsole();            
-            System.out.println(mc.mainAction(args, true));
+            System.out.println(mc.mainAction(args, false));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -85,53 +93,42 @@ public class MainConsole{
         CmdParser cmdp = new CmdParser(args);
         //parsing
         cmdp.parse();
+        //pdf tool
+        GenericPdfTool pdfTool = null;
         //if it's a concat
         if ((cmdp.getInputCommand()) == CmdParser.C_CONCAT){
+            Collection file_list = null;
             //and it a -f option
             if (cmdp.getInputOption() == CmdParser.F_OPT){
-                PdfConcat pdf_concatenator = new PdfConcat(cmdp.getCFValue(), cmdp.getOValue(), cmdp.getCUValue(), cmdp.isOverwrite(), cmdp.isCCopyFields(), this);
-                pdf_concatenator.doConcat();
-                if (html_output) {
-                    out_msg = pdf_concatenator.getOutHTMLMessage();
-                }
-                else{
-                    out_msg = pdf_concatenator.getOutMessage();
-                }
+            	file_list = cmdp.getCFValue();
             }
             else if(cmdp.getInputOption() == CmdParser.L_OPT){
                 File l_file = cmdp.getCLValue();
-                Collection file_list = null;
 				if (getExtension(l_file).equals("XML".toLowerCase())){
 					file_list = parseXmlFile(l_file);
 				}
 				if (getExtension(l_file).equals("CVS".toLowerCase())){
 					file_list = parseCsvFile(l_file);
-				}                
-                if (file_list == null){
-                    out_msg = "Error reading csv or xml file-";
-                }else{
-                    PdfConcat pdf_concatenator = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.isOverwrite(), cmdp.isCCopyFields(), this);
-                    pdf_concatenator.doConcat();
-                    if (html_output) {
-                        out_msg = pdf_concatenator.getOutHTMLMessage();
-                    }
-                    else{
-                        out_msg = pdf_concatenator.getOutMessage();
-                    }
-                }
+				}                                
+            }
+            //i found a file list
+            if (file_list == null){
+                out_msg = "Error reading csv or xml file-";
+            }else{
+            	pdfTool = new PdfConcat(file_list, cmdp.getOValue(), cmdp.getCUValue(), cmdp.isOverwrite(), cmdp.isCCopyFields(), this);
             }
         }
         else if ((cmdp.getInputCommand()) == CmdParser.C_SPLIT){
-            PdfSplit pdf_splitter = new PdfSplit(cmdp.getOValue(), cmdp.getSFValue(), cmdp.getSPValue(), cmdp.getSSValue(), cmdp.getSNumberPageValue(), this);
-            pdf_splitter.doSplit();
-            if (html_output) {
-                out_msg = pdf_splitter.getOutHTMLMessage();
-            }
-            else{
-                out_msg = pdf_splitter.getOutMessage();
-            }
-        }        
-        	
+        	pdfTool = new PdfSplit(cmdp.getOValue(), cmdp.getSFValue(), cmdp.getSPValue(), cmdp.getSSValue(), cmdp.getSNumberPageValue(), cmdp.isOverwrite(), this);        	
+        }
+        //everythig is ok, i created pdfTool
+        if(pdfTool != null){
+	        pdfTool.execute();
+	        out_msg = (html_output)? pdfTool.getOutHTMLMessage():pdfTool.getOutMessage(); 
+        }else{
+//        	an error occured creating the pdfTool
+        	out_msg += "Unable to create a pdfTool to execute.";
+        }
         //try to write on output file
         try{
             File log_out_file =cmdp.getLogValue(); 
@@ -193,12 +190,13 @@ public class MainConsole{
        }
    }
    
+   
    /**
     * Sets the Meta data "Creator" of the document
     * @param doc_to_set The document to set the creator
     */ 
    public static void setDocumentCreator(Document doc_to_set){
-       doc_to_set.addCreator("pdfsam-console (Ver. " +MainConsole.VERSION+ ")");
+       doc_to_set.addCreator(MainConsole.CREATOR);
    }
    
    /**
@@ -234,19 +232,14 @@ public class MainConsole{
         }
    }
    
-   /**
-    * 
-    * @param f input file
-    * @return file extension
-    */
-   private String getExtension(File f) {
-       String ext = null;
-       String s = f.getName();
-       int i = s.lastIndexOf('.');
+    private String getExtension(File f) {
+        String ext = null;
+        String s = f.getName();
+        int i = s.lastIndexOf('.');
 
-       if (i > 0 &&  i < s.length() - 1) {
-           ext = s.substring(i+1).toLowerCase();
-       }
-       return ext;
-   }
+        if (i > 0 &&  i < s.length() - 1) {
+            ext = s.substring(i+1).toLowerCase();
+        }
+        return ext;
+    }
 }

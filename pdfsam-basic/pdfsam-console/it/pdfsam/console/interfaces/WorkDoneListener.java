@@ -26,5 +26,6 @@ import java.util.EventListener;
 public interface WorkDoneListener extends EventListener {
     
     void percentageOfWorkDoneChanged(WorkDoneEvent wde);
+    void workingIndeterminate(WorkDoneEvent wde);
     void workCompleted(WorkDoneEvent wde);
 }

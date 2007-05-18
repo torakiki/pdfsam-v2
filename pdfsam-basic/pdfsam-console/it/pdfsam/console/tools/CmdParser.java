@@ -36,6 +36,8 @@ import jcmdline.VersionCmdLineHandler;
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.pdf.PdfSplit
  * @see it.pdfsam.console.tools.pdf.PdfConcat
+ * @see it.pdfsam.console.tools.pdf.PdfEncrypt
+ * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  */
 public class CmdParser {
  
@@ -45,7 +47,7 @@ public class CmdParser {
     final static public String S_NSPLIT = "NSPLIT";    
     final static public String S_EVEN = "EVEN";    
     final static public String S_ODD = "ODD";
-    
+	    
     //handler    
     private CmdLineHandler command_line_handler;
     //input arguments
@@ -57,7 +59,7 @@ public class CmdParser {
     private File cl_value;
     //-u value
     private String cu_value;
-//  -copyfields value
+    //-copyfields value
     private boolean copyfields_value = false;
     
 //SPLIT
@@ -69,7 +71,7 @@ public class CmdParser {
     private String ss_value;
     //number_page argument
     private String sn_value;
-   
+
 //ANY    
     //-o value
     private File o_value;
@@ -77,7 +79,7 @@ public class CmdParser {
     private File log_value = null;
     //-overwrite value
     private boolean overwrite_value = false;
-   
+    
     //input command
     private byte input_command = 0x00;
     //input option
@@ -90,6 +92,7 @@ public class CmdParser {
     //constants
     final static public byte C_CONCAT = 0x01;
     final static public byte C_SPLIT = 0x02;    
+ 
     
     final static private String COMMAND = "java -jar pdfsam-console";
     final static private String DESCRIPTION = "concat, split pdf files";
@@ -121,7 +124,7 @@ public class CmdParser {
                           FileParam.OPTIONAL,
                           FileParam.SINGLE_VALUED),
             new BooleanParam("overwrite", "overwrite existing output file"),
-            new BooleanParam("copyfields", "input pdf documents contain forms (high memory usage)")
+            new BooleanParam("copyfields", "input pdf documents contain forms (high memory usage)")                          
             };
             
     //split options if slit command is given
@@ -151,7 +154,7 @@ public class CmdParser {
                     ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                     FileParam.OPTIONAL,
                     FileParam.SINGLE_VALUED),
-            new BooleanParam("overwrite", "overwrite existing output file")                          
+            new BooleanParam("overwrite", "overwrite existing output file")                           
     };    
 
     /**
@@ -172,15 +175,15 @@ public class CmdParser {
                     "command to execute {[concat]}",
                     new String[] { "concat" },
                     StringParam.REQUIRED),
-    };      
-
+    };
+    
     /**
      * The arguments this program takes
      */
     private final Parameter[] arguments = new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[concat], [split]}",
-                    new String[] { "concat", "split" },
+                    "command to execute {[concat], [split], [encrypt], [mix]}",
+                    new String[] { "concat", "split", "encrypt", "mix" },
                     StringParam.REQUIRED),
 
     };
@@ -209,11 +212,12 @@ public class CmdParser {
 	    "You must specify '-s split_type' to set the split type. Possible values: {["+CmdParser.S_BURST+"], ["+CmdParser.S_ODD+"], ["+CmdParser.S_EVEN+"], ["+CmdParser.S_SPLIT+"], ["+CmdParser.S_NSPLIT+"]}\n"+
 	    "'-p prefix_' to specify a prefix for output names of files.\n"+
 	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
-	    "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-overwrite' to overwrite output file if already exists.\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
-    
-     /**
+  
+ 
+    /**
      * The help text for this program
      */
     public static final String helpText = CmdParser.COMMAND+" -h [command] for commands help. ";
@@ -247,7 +251,8 @@ public class CmdParser {
                 input_command = CmdParser.C_SPLIT;
                 //create a new handler specific for split
                 command_line_handler = new VersionCmdLineHandler("pdfsam-console ver."+MainConsole.VERSION,new HelpCmdLineHandler(CmdParser.split_helpText,CmdParser.COMMAND,CmdParser.DESCRIPTION,split_opts,split_arguments));
-            } else{
+            }
+	        else{
 	            //create a new handler
 	            command_line_handler = new VersionCmdLineHandler("pdfsam-console ver."+MainConsole.VERSION,new HelpCmdLineHandler(CmdParser.helpText,CmdParser.COMMAND,CmdParser.DESCRIPTION,null,arguments));
             }
@@ -352,8 +357,7 @@ public class CmdParser {
 //END PARSE -overwrite
 //PARSE -copyfields            
             copyfields_value = ((BooleanParam) command_line_handler.getOption("copyfields")).isTrue();
-//END PARSE -copyfields            
-            
+//END PARSE -copyfields  
             return true;
     }
     
@@ -455,9 +459,10 @@ public class CmdParser {
                     sn_value = "0";
                 }
             }
+//END_PARSE -n
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
-//END PARSE -overwrite  
+//END PARSE -overwrite            
             return true;
     }    
       
@@ -484,23 +489,17 @@ public class CmdParser {
     }
     
     /**
-     * @return Returns the -overwrite option value in concat command.
-     * @deprecated use isOverwrite
-     */
-    public boolean COverwrite() {
-        return overwrite_value;
-    }
-    
-    /**
      * @return	Returns the -copyfields option value in concat command.
      */
     public boolean isCCopyFields(){
     	return copyfields_value;
     }
+    
     /**
-     * @return Returns the -overwrite option value.
+     * @return Returns the -overwrite option value in concat command.
+     * @deprecated use <code>isOverwrite()</code>.
      */
-    public boolean isOverwrite() {
+    public boolean COverwrite() {
         return overwrite_value;
     }
     
@@ -558,5 +557,20 @@ public class CmdParser {
      */
     public String getSSValue() {
         return ss_value;
-    }	
+    }
+	
+    /**
+     * @return Returns the -overwrite option value.
+     */
+    public boolean isOverwrite() {
+        return overwrite_value;
+    }
+    
+    /**
+     * @return Returns the -overwrite option value in concat command.
+     * @deprecated use <code>isOverwrite()</code>. This method is no longer working
+     */
+    public boolean MOverwrite() {
+        return false;
+    }
 }

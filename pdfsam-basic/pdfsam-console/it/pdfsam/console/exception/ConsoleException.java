@@ -33,6 +33,11 @@ public class ConsoleException extends Exception {
         super(message);
         error_msg = message;
     }
+    
+    public ConsoleException(Exception e) {
+        super(e);
+        error_msg = e.getMessage();
+    }
 
     public String toString(){
         return error_msg;
