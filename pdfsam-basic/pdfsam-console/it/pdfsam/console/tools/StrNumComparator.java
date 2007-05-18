@@ -14,20 +14,23 @@
  */
 package it.pdfsam.console.tools;
 
+import java.io.Serializable;
 import java.util.Comparator;
 /**
  * 
  * Class used to compare page numbers when "split after these pages" option is selected
  * @author Andrea Vacondio
- * @see it.pdfsam.console.tools.PdfSplit#doSplit()
+ * @see it.pdfsam.console.tools.pdf.PdfSplit#doSplit()
  * 
  */
-public class StrNumComparator implements Comparator {
-    
-    /**
+public class StrNumComparator implements Comparator, Serializable {
+
+	private static final long serialVersionUID = 3414191133281918424L;
+
+	/**
      * Constructor
      */
-    StrNumComparator(){
+    public StrNumComparator(){
     }
 
     /**
