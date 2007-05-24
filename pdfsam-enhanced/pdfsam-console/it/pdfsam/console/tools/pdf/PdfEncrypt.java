@@ -130,7 +130,7 @@ public class PdfEncrypt extends GenericPdfTool{
 				HashMap meta = pdf_reader.getInfo();
 				meta.put("Creator", MainConsole.CREATOR);
 				PdfEncryptor.encrypt(pdf_reader,new FileOutputStream(tmp_o_file), etype, u_pwd, a_pwd,user_permissions, meta);
-				File out_file = new File(o_dir ,prefixParser.generateFileName(Integer.toString(f)));
+				File out_file = new File(o_dir ,prefixParser.generateFileName());
 				renameTemporaryFile(tmp_o_file, out_file, overwrite_boolean);				
 				f++;
 			}			

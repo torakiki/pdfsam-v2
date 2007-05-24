@@ -340,7 +340,8 @@ public class CmdParser {
 	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split.\n" +
 	    "You must specify '-o /home/user' to set the output directory.\n"+
 	    "You must specify '-s split_type' to set the split type. Possible values: {["+CmdParser.S_BURST+"], ["+CmdParser.S_ODD+"], ["+CmdParser.S_EVEN+"], ["+CmdParser.S_SPLIT+"], ["+CmdParser.S_NSPLIT+"]}\n"+
-	    "'-p prefix_' to specify a prefix for output names of files.\n"+
+	    "'-p prefix_' to specify a prefix for output names of files. If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[CURRENTPAGE] generates FileName_prefix_005.pdf)\n"+
+	    "Available prefix variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].\n"+
 	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
@@ -355,7 +356,8 @@ public class CmdParser {
     "'-apwd password' to set the owner password.\n"+
     "'-upwd password' to set the user password.\n"+
     "'-allow permission' to set the permissions list. Possible values {["+CmdParser.E_PRINT+"], ["+CmdParser.E_ANNOTATION+"], ["+CmdParser.E_ASSEMBLY+"], ["+CmdParser.E_COPY+"], ["+CmdParser.E_DPRINT+"], ["+CmdParser.E_FILL+"], ["+CmdParser.E_MODIFY+"], ["+CmdParser.E_SCREEN+"]}\n\n\n"+
-    "'-p prefix_' to specify a prefix for output names of files.\n"+
+	"'-p prefix_' to specify a prefix for output names of files. If it contains \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf)\n"+
+	"Available prefix variables: [TIMESTAMP], [BASENAME].\n"+
     "'-etype ' to set the encryption angorithm. If omitted it uses rc4_128. Possible values {["+CmdParser.E_AES_128+"], ["+CmdParser.E_RC4_128+"], ["+CmdParser.E_RC4_40+"]}\n\n\n"+
     "'-overwrite' to overwrite output file if already exists.\n"+
     "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -apwd hallo -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
