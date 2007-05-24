@@ -22,7 +22,7 @@ import java.util.Date;
 /**
  * Used to parse the prefix and generate the output filename.
  * If the prefix doesn't contain "[CURRENTPAGE]" or "[TIMESTAMP]" it generates oldstyle file name (Ex. 005_prefixFileName.pdf. 
- * If it contains "[CURRENTPAGE]" or "[TIMESTAMP]" it performs variable substitution. (Ex. $BASENAME_prefix_$CURRENTPAGE generates FileName_prefix_005.pdf)
+ * If it contains "[CURRENTPAGE]" or "[TIMESTAMP]" it performs variable substitution. (Ex. [BASENAME]_prefix_[CURRENTPAGE] generates FileName_prefix_005.pdf)
  * Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].
  * @author a.vacondio
  *
@@ -38,7 +38,6 @@ public class PrefixParser {
 
 	private String prefix = "";
 	private String fileName = "";
-	private boolean complexPrefix = false;
 	
 	/**
 	 * 
@@ -59,20 +58,18 @@ public class PrefixParser {
 			}
 		}else{
 			throw new ConsoleException("Filename length is 0.");
-		}
-		//it must contain [CURRENTPAGE] or [TIMESTAMP] to be a copmplex prefix
-		this.complexPrefix = ((this.prefix.indexOf(CURRENT_PAGE) > -1) || (this.prefix.indexOf(TIMESTAMP) > -1))? true: false;
+		}		
 	}
 	
 	/**
-	 * Generates the filename depending on the type of prefix
-	 * @param page_number
+	 * Generates the filename depending on the type of prefix. If it contains "[CURRENTPAGE]" or "[TIMESTAMP]" it performs variable substitution.
+	 * @param page_number The page number used in variable substitution or in simple prefix
 	 * @return filename generated 
 	 */
 	public String generateFileName(String page_number){
 		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
 		String retVal = "";
-		if(complexPrefix){
+		if(isComplexPrefix(true)){
 			retVal = prefix;
 			retVal = retVal.replaceAll(CURRENT_PAGE_REGX, page_number);
 			retVal = retVal.replaceAll(BASE_NAME_REGX, fileName);
@@ -83,12 +80,38 @@ public class PrefixParser {
 		}
 		return retVal;
 	}
+	
+	/**
+	 * Generates the filename depending on the type of prefix. If it contains "[TIMESTAMP]" it performs variable substitution.
+	 * @return filename generated 
+	 */
+	public String generateFileName(){
+		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
+		String retVal = "";
+		if(isComplexPrefix(false)){
+			retVal = prefix;
+			retVal = retVal.replaceAll(BASE_NAME_REGX, fileName);
+			retVal = retVal.replaceAll(TIMESTAMP_RGX, timestamp);
+			retVal += ".pdf";
+		}else{
+			retVal = prefix+fileName+".pdf";
+		}
+		return retVal;
+	}
 
 	/**
 	 * @return <code>true</code> if it's a complex prefix
 	 */
-	public boolean isComplexPrefix() {
-		return complexPrefix;
+	private boolean isComplexPrefix(boolean havePageNumber) {
+		boolean retVal = false;
+		if(havePageNumber){
+			//it must contain [CURRENTPAGE] or [TIMESTAMP] to be a copmplex prefix
+			retVal = ((this.prefix.indexOf(CURRENT_PAGE) > -1) || (this.prefix.indexOf(TIMESTAMP) > -1))? true: false;
+		}else{
+			//it must contain [TIMESTAMP] to be a copmplex prefix
+			retVal = (this.prefix.indexOf(TIMESTAMP) > -1)? true: false;			
+		}
+		return retVal;
 	}
 	
 	

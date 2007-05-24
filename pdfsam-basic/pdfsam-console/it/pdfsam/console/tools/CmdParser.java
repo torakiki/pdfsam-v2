@@ -210,7 +210,8 @@ public class CmdParser {
 	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split.\n" +
 	    "You must specify '-o /home/user' to set the output directory.\n"+
 	    "You must specify '-s split_type' to set the split type. Possible values: {["+CmdParser.S_BURST+"], ["+CmdParser.S_ODD+"], ["+CmdParser.S_EVEN+"], ["+CmdParser.S_SPLIT+"], ["+CmdParser.S_NSPLIT+"]}\n"+
-	    "'-p prefix_' to specify a prefix for output names of files.\n"+
+	    "'-p prefix_' to specify a prefix for output names of files. If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[CURRENTPAGE] generates FileName_prefix_005.pdf)\n"+
+	    "Available prefix variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].\n"+
 	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
