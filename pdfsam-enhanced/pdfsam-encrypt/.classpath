@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-console-0.7.1e.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/pdfsam-1.2.0e-beta.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-console-0.8.0e.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/pdfsam-1.3.0e-beta.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
