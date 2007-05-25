@@ -17,6 +17,7 @@
 package it.pdfsam.plugin.coverfooter.GUI;
 
 import it.pdfsam.abstracts.AbstractPlugIn;
+import it.pdfsam.components.JHelpLabel;
 import it.pdfsam.configuration.Configuration;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.tools.HtmlTags;
@@ -102,6 +103,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private JTextField destination_text_field;
 	private JTextField cover_text_field;
 	private JTextField footer_text_field;
+	private JHelpLabel destination_help_label; 
 	private CoverFooterTableModel modello_cover_table = new CoverFooterTableModel();
 	private JCoverFooterTable cover_table;
 	private SpringLayout spring_layout_cover_footer_panel;
@@ -145,7 +147,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_NAME = "Cover and Footer";
-	private static final String PLUGIN_VERSION = "0.1.4e";
+	private static final String PLUGIN_VERSION = "0.1.5e";
 
 	/**
 	 * Constructor
@@ -368,7 +370,6 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 //		END_DESTINATION_PANEL         
 //		BROWSE_BUTTON        
 		browse_button.setMargin(new Insets(2, 2, 2, 2));
-		browse_button.setToolTipText(GettextResource.gettext(i18n_messages,"Browse filesystem for a destination file"));
 		browse_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
 		browse_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -451,7 +452,16 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
 		overwrite_checkbox.setSelected(true);
 		destination_panel.add(overwrite_checkbox);
-//		END_CHECK_BOX        
+//		END_CHECK_BOX  
+//      HELP_LABEL_DESTINATION        
+        String helpTextDest = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output directory")+"</b>" +
+    		"<p>"+GettextResource.gettext(i18n_messages,"Browse or enter the full path to the destination output directory.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"</body></html>";
+	    destination_help_label = new JHelpLabel(helpTextDest, true);
+	    destination_panel.add(destination_help_label);
+//END_HELP_LABEL_DESTINATION 		
 //		RUN_BUTTON
 		run_button.addActionListener(new ActionListener() {            
 			public void actionPerformed(ActionEvent e) {
@@ -718,8 +728,11 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		destination_panel_layout.putConstraint(SpringLayout.EAST, browse_button, -10, SpringLayout.EAST, destination_panel);
 		destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_button, 0, SpringLayout.NORTH, destination_text_field);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, browse_button, -80, SpringLayout.EAST, browse_button);        
-
-		spring_layout_cover_footer_panel.putConstraint(SpringLayout.SOUTH, run_button, 25, SpringLayout.NORTH, run_button);
+		
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_help_label, -1, SpringLayout.SOUTH, destination_panel);
+        destination_panel_layout.putConstraint(SpringLayout.EAST, destination_help_label, -1, SpringLayout.EAST, destination_panel);
+		
+        spring_layout_cover_footer_panel.putConstraint(SpringLayout.SOUTH, run_button, 25, SpringLayout.NORTH, run_button);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.EAST, run_button, 0, SpringLayout.EAST, clear_button);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.WEST, run_button, 0, SpringLayout.WEST, clear_button);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.NORTH, run_button, 10, SpringLayout.SOUTH, destination_panel);
