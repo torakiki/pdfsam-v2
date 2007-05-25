@@ -17,6 +17,7 @@
 package it.pdfsam.panels;
 
 import it.pdfsam.abstracts.AbstractPlugIn;
+import it.pdfsam.components.JHelpLabel;
 import it.pdfsam.configuration.Configuration;
 import it.pdfsam.exceptions.LoadJobException;
 import it.pdfsam.exceptions.SaveJobException;
@@ -64,6 +65,7 @@ public class JSettingsPanel extends AbstractPlugIn{
     private JComboBox combo_log;	
     private JComboBox combo_laf;
     private JComboBox combo_theme;
+    private JHelpLabel env_help_label;
 	private JFileChooser browse_file_chooser = new JFileChooser();
     private ResourceBundle i18n_messages;
     private SpringLayout settings_spring_layout;
@@ -88,7 +90,7 @@ public class JSettingsPanel extends AbstractPlugIn{
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private static final String PLUGIN_NAME = "Settings";
-    private static final String PLUGIN_VERSION = "0.0.4e";
+    private static final String PLUGIN_VERSION = "0.0.5e";
     
 /**
  * Constructor
@@ -150,12 +152,10 @@ public class JSettingsPanel extends AbstractPlugIn{
         	language_combo = new JComboBox();
         	fireLogPropertyChanged("Error: "+e.getMessage(), LogPanel.LOG_ERROR); 
         }
-        language_combo.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         settings_options_panel.add(language_combo);
         
         combo_laf = new JComboBox(ThemeSelector.getLAFList().toArray());
-        combo_laf.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_laf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_laf.setRenderer(new JComboListItemRender());
         settings_options_panel.add(combo_laf);
@@ -171,7 +171,6 @@ public class JSettingsPanel extends AbstractPlugIn{
 	    }       
 	    
         combo_theme = new JComboBox(ThemeSelector.getThemeList().toArray());
-        combo_theme.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_theme.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_theme.setRenderer(new JComboListItemRender());
         settings_options_panel.add(combo_theme);
@@ -205,7 +204,6 @@ public class JSettingsPanel extends AbstractPlugIn{
         }); 
        
 	    combo_log = new JComboBox(LogPanel.getLogList().toArray());
-        combo_log.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_log.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_log.setRenderer(new JComboListItemRender());
         settings_options_panel.add(combo_log);
@@ -220,11 +218,20 @@ public class JSettingsPanel extends AbstractPlugIn{
 	    	fireLogPropertyChanged("Error: "+e.getMessage(), LogPanel.LOG_ERROR); 
 	    }          
 //END_JCOMBO
-
+//ENV_LABEL_PREFIX       
+        String helpTextEnv = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Settings ")+"</b><ul>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Language")+":</b> "+GettextResource.gettext(i18n_messages,"Set your preferred language (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Look and feel")+":</b> "+GettextResource.gettext(i18n_messages,"Set your preferred look and feel and your preferred theme (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Log level")+":</b> "+GettextResource.gettext(i18n_messages,"Set a log detail level (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Default env.")+":</b> "+GettextResource.gettext(i18n_messages,"Select a previously saved env. file that will be automatically loaded at startup")+".</li>" +
+    		"</ul></body></html>";
+	    env_help_label = new JHelpLabel(helpTextEnv, true);
+	    settings_options_panel.add(env_help_label);
+//ENV_LABEL_PREFIX 
         browse_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
         browse_button.setText(GettextResource.gettext(i18n_messages,"Browse"));
         browse_button.setMargin(new Insets(2, 2, 2, 2));
-        browse_button.setToolTipText(GettextResource.gettext(i18n_messages,"Browse for a default environment file"));
         browse_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int return_val = browse_file_chooser.showOpenDialog(browse_button.getParent());
@@ -353,14 +360,17 @@ public class JSettingsPanel extends AbstractPlugIn{
         s_panel_layout.putConstraint(SpringLayout.NORTH, load_default_job_label, 5, SpringLayout.SOUTH, log_label);
         s_panel_layout.putConstraint(SpringLayout.WEST, load_default_job_label, 0, SpringLayout.WEST, log_label);
         s_panel_layout.putConstraint(SpringLayout.SOUTH, load_default_job_text, 20, SpringLayout.NORTH, load_default_job_text);
-        s_panel_layout.putConstraint(SpringLayout.EAST, load_default_job_text, -5, SpringLayout.EAST, settings_options_panel);
+        s_panel_layout.putConstraint(SpringLayout.EAST, load_default_job_text, -100, SpringLayout.EAST, settings_options_panel);
         s_panel_layout.putConstraint(SpringLayout.NORTH, load_default_job_text, 5, SpringLayout.SOUTH, load_default_job_label);
         s_panel_layout.putConstraint(SpringLayout.WEST, load_default_job_text, 0, SpringLayout.WEST, load_default_job_label);
         
         s_panel_layout.putConstraint(SpringLayout.SOUTH, browse_button, 25, SpringLayout.NORTH, browse_button);
         s_panel_layout.putConstraint(SpringLayout.EAST, browse_button, -5, SpringLayout.EAST, settings_options_panel);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, browse_button, 5, SpringLayout.SOUTH, load_default_job_text);
+        s_panel_layout.putConstraint(SpringLayout.NORTH, browse_button, 0, SpringLayout.NORTH, load_default_job_text);
         s_panel_layout.putConstraint(SpringLayout.WEST, browse_button, -90, SpringLayout.EAST, settings_options_panel);        
+
+        s_panel_layout.putConstraint(SpringLayout.SOUTH, env_help_label, -1, SpringLayout.SOUTH, settings_options_panel);
+        s_panel_layout.putConstraint(SpringLayout.EAST, env_help_label, -1, SpringLayout.EAST, settings_options_panel);
 		
         settings_spring_layout.putConstraint(SpringLayout.SOUTH, save_button, 25, SpringLayout.NORTH, save_button);
         settings_spring_layout.putConstraint(SpringLayout.EAST, save_button, -10, SpringLayout.EAST, this);

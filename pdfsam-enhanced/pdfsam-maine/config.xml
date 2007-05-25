@@ -4,7 +4,7 @@
   <info> 
     <name>PDF Split and Merge enanched</name>  
     <version>1.3.0e beta</version>  
-    <build_date>16 May 2007</build_date>  
+    <build_date>25 May 2007</build_date>  
     <language>Java(TM) 2 SDK, Standard Edition, Version 1.4.2</language> 
   </info>  
   <settings> 
@@ -13,7 +13,7 @@
       <theme>14</theme> 
     </lookAndfeel>  
     <i18n>en_GB</i18n>  
-    <plugs_absolute_dir>F:\workspace_pdfsam_enhanced\pdfsam-maine\plugins</plugs_absolute_dir>  
+    <plugs_absolute_dir></plugs_absolute_dir>  
     <defaultjob></defaultjob>  
     <loglevel>2</loglevel> 
   </settings>  

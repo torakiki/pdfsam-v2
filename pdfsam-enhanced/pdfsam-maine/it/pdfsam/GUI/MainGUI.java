@@ -56,6 +56,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
+import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.TreeSelectionEvent;
@@ -100,7 +101,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
-	private static final boolean IDE = true;
+	private static final boolean IDE = false;
 
 	public MainGUI() {
 		runSplash();
@@ -142,6 +143,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 			System.out.print(e.getMessage());
 			e.printStackTrace();
 		}
+		ToolTipManager.sharedInstance().setDismissDelay (300000);
 		initialize();
 	}
 

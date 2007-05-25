@@ -8,7 +8,8 @@
 -Console: refactor of the pdfTools
 -Encrypt: added overwrite checkbox
 -Split: added overwrite checkbox
-_Merge: added merge type
+-Merge: check to use -copyfields console option 
+-Split, Merge, Encrypt, AlternateMix, Cover Footer: added JHelpLabel to have help tooltips 
 
 1.2.0e beta
 ===================================
