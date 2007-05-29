@@ -16,6 +16,7 @@
 
 package it.pdfsam.panels;
 
+import it.pdfsam.components.JHelpLabel;
 import it.pdfsam.configuration.Configuration;
 import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.interfaces.PlugablePanel;
@@ -25,6 +26,7 @@ import it.pdfsam.types.ListItem;
 import it.pdfsam.utils.ThemeSelector;
 import it.pdfsam.utils.XMLConfig;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FocusTraversalPolicy;
@@ -41,6 +43,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
 
 /**
  * Plugable JPanel provides a GUI for split functions.
@@ -50,17 +53,19 @@ import javax.swing.border.EtchedBorder;
  */
 public class JSettingsPanel extends JPanel implements PlugablePanel{        
 
-	private static final long serialVersionUID = 8184927067585928123L;
+
+	private static final long serialVersionUID = -5511002370888344748L;
 	private XMLConfig xml_config_object;
     private JComboBox language_combo;	
     private JComboBox combo_laf;
     private JComboBox combo_theme;
+    private JHelpLabel help_label;
     private ResourceBundle i18n_messages;
-    private SpringLayout settings_spring_layout;
     private SpringLayout s_panel_layout;
     private String log_msg;
     private String log_color;
-    
+    private SpringLayout set_panel_layout;
+    private JPanel set_panel = new JPanel();  
     private final JButton save_button = new JButton();
 
     private final EnterDoClickListener save_enterkey_listener = new EnterDoClickListener(save_button);
@@ -91,19 +96,25 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
     	config = Configuration.getInstance();
         i18n_messages = config.getI18nResourceBundle();
         xml_config_object = config.getXmlConfigObject();
-        settings_spring_layout = new SpringLayout();
 		
         s_panel_layout = new SpringLayout();
         setLayout(s_panel_layout);
 		
+//      SETTINGS_PANEL
+        set_panel_layout = new SpringLayout();
+        set_panel.setLayout(set_panel_layout);
+        set_panel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        add(set_panel);
+//SETTINGS_PANEL 
+        
 		theme_label.setText(GettextResource.gettext(i18n_messages,"Look and feel:"));
-        add(theme_label);
+		set_panel.add(theme_label);
 		
 		sub_theme_label.setText(GettextResource.gettext(i18n_messages,"Theme:"));
-        add(sub_theme_label);
+		set_panel.add(sub_theme_label);
 		
 		language_label.setText(GettextResource.gettext(i18n_messages,"Language:"));
-        add(language_label);
+		set_panel.add(language_label);
         
 
 //JCOMBO
@@ -116,13 +127,13 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
         }
         language_combo.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        add(language_combo);
+        set_panel.add(language_combo);
         
         combo_laf = new JComboBox(ThemeSelector.getLAFList().toArray());
         combo_laf.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_laf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_laf.setRenderer(new JComboListItemRender());
-        add(combo_laf);
+        set_panel.add(combo_laf);
         try{
 	 		for (int i=0; i<combo_laf.getItemCount(); i++){
 	   			if (((ListItem)combo_laf.getItemAt(i)).getId().equals(xml_config_object.getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"))){
@@ -138,7 +149,7 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
         combo_theme.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_theme.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_theme.setRenderer(new JComboListItemRender());
-        add(combo_theme);
+        set_panel.add(combo_theme);
         try{
         	for (int i=0; i<combo_theme.getItemCount(); i++){
 	            if (((ListItem)combo_theme.getItemAt(i)).getId().equals(xml_config_object.getXMLConfigValue("/pdfsam/settings/lookAndfeel/theme"))){
@@ -168,7 +179,15 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
             }
         }); 
        
-	        
+//LABEL_PREFIX       
+        String helpText = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Settings ")+"</b><ul>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Language")+":</b> "+GettextResource.gettext(i18n_messages,"Set your preferred language (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Look and feel")+":</b> "+GettextResource.gettext(i18n_messages,"Set your preferred look and feel and your preferred theme (restart needed)")+".</li>" +
+    		"</ul></body></html>";
+	    help_label = new JHelpLabel(helpText, true);
+	    set_panel.add(help_label);
+//LABEL_PREFIX 	        
 //END_JCOMBO
         save_button.setIcon(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
         save_button.setText(GettextResource.gettext(i18n_messages,"Save"));
@@ -225,36 +244,44 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
      *
      */
     private void setLayout(){
+    	s_panel_layout.putConstraint(SpringLayout.SOUTH, set_panel, 135, SpringLayout.NORTH, this);
+    	s_panel_layout.putConstraint(SpringLayout.EAST, set_panel, -5, SpringLayout.EAST, this);
+    	s_panel_layout.putConstraint(SpringLayout.NORTH, set_panel, 5, SpringLayout.NORTH, this);
+    	s_panel_layout.putConstraint(SpringLayout.WEST, set_panel, 5, SpringLayout.WEST, this);
+        
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, language_label, 40, SpringLayout.NORTH, this);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, language_label, 100, SpringLayout.WEST, this);
+    	set_panel_layout.putConstraint(SpringLayout.NORTH, language_label, 20, SpringLayout.NORTH, this);
+    	set_panel_layout.putConstraint(SpringLayout.WEST, language_label, 5, SpringLayout.WEST, this);
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, language_combo, 0, SpringLayout.SOUTH, language_label);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, language_combo, 120, SpringLayout.WEST, language_combo);
+    	set_panel_layout.putConstraint(SpringLayout.NORTH, language_combo, 0, SpringLayout.NORTH, language_label);
+    	set_panel_layout.putConstraint(SpringLayout.WEST, language_combo, 5, SpringLayout.EAST, language_label);
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, theme_label, 20, SpringLayout.NORTH, theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, theme_label, 0, SpringLayout.EAST, language_label);
+    	set_panel_layout.putConstraint(SpringLayout.NORTH, theme_label, 5, SpringLayout.SOUTH, language_label);
+    	set_panel_layout.putConstraint(SpringLayout.WEST, theme_label, 0, SpringLayout.WEST, language_label);
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, combo_laf, 0, SpringLayout.SOUTH, theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, combo_laf, 120, SpringLayout.WEST, combo_laf);
+    	set_panel_layout.putConstraint(SpringLayout.NORTH, combo_laf, 0, SpringLayout.NORTH, theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.WEST, combo_laf, 5, SpringLayout.EAST, theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, sub_theme_label, 0, SpringLayout.SOUTH, combo_laf);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, sub_theme_label, 90, SpringLayout.WEST, sub_theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.NORTH, sub_theme_label, 0, SpringLayout.NORTH, combo_laf);
+    	set_panel_layout.putConstraint(SpringLayout.WEST, sub_theme_label, 5, SpringLayout.EAST, combo_laf);
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, combo_theme, 0, SpringLayout.SOUTH, sub_theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, combo_theme, 120, SpringLayout.WEST, combo_theme);
+    	set_panel_layout.putConstraint(SpringLayout.NORTH, combo_theme, 0, SpringLayout.NORTH, sub_theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.WEST, combo_theme, 5, SpringLayout.EAST, sub_theme_label);
 
-        s_panel_layout.putConstraint(SpringLayout.SOUTH, language_label, 40, SpringLayout.NORTH, this);
-        s_panel_layout.putConstraint(SpringLayout.EAST, language_label, 100, SpringLayout.WEST, this);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, language_label, 20, SpringLayout.NORTH, this);
-        s_panel_layout.putConstraint(SpringLayout.WEST, language_label, 5, SpringLayout.WEST, this);
-        s_panel_layout.putConstraint(SpringLayout.SOUTH, language_combo, 0, SpringLayout.SOUTH, language_label);
-        s_panel_layout.putConstraint(SpringLayout.EAST, language_combo, 120, SpringLayout.WEST, language_combo);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, language_combo, 0, SpringLayout.NORTH, language_label);
-        s_panel_layout.putConstraint(SpringLayout.WEST, language_combo, 5, SpringLayout.EAST, language_label);
-        s_panel_layout.putConstraint(SpringLayout.SOUTH, theme_label, 20, SpringLayout.NORTH, theme_label);
-        s_panel_layout.putConstraint(SpringLayout.EAST, theme_label, 0, SpringLayout.EAST, language_label);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, theme_label, 5, SpringLayout.SOUTH, language_label);
-        s_panel_layout.putConstraint(SpringLayout.WEST, theme_label, 0, SpringLayout.WEST, language_label);
-        s_panel_layout.putConstraint(SpringLayout.SOUTH, combo_laf, 0, SpringLayout.SOUTH, theme_label);
-        s_panel_layout.putConstraint(SpringLayout.EAST, combo_laf, 120, SpringLayout.WEST, combo_laf);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, combo_laf, 0, SpringLayout.NORTH, theme_label);
-        s_panel_layout.putConstraint(SpringLayout.WEST, combo_laf, 5, SpringLayout.EAST, theme_label);
-        s_panel_layout.putConstraint(SpringLayout.SOUTH, sub_theme_label, 0, SpringLayout.SOUTH, combo_laf);
-        s_panel_layout.putConstraint(SpringLayout.EAST, sub_theme_label, 90, SpringLayout.WEST, sub_theme_label);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, sub_theme_label, 0, SpringLayout.NORTH, combo_laf);
-        s_panel_layout.putConstraint(SpringLayout.WEST, sub_theme_label, 5, SpringLayout.EAST, combo_laf);
-        s_panel_layout.putConstraint(SpringLayout.SOUTH, combo_theme, 0, SpringLayout.SOUTH, sub_theme_label);
-        s_panel_layout.putConstraint(SpringLayout.EAST, combo_theme, 120, SpringLayout.WEST, combo_theme);
-        s_panel_layout.putConstraint(SpringLayout.NORTH, combo_theme, 0, SpringLayout.NORTH, sub_theme_label);
-        s_panel_layout.putConstraint(SpringLayout.WEST, combo_theme, 5, SpringLayout.EAST, sub_theme_label);
+    	set_panel_layout.putConstraint(SpringLayout.SOUTH, help_label, -1, SpringLayout.SOUTH, set_panel);
+    	set_panel_layout.putConstraint(SpringLayout.EAST, help_label, -1, SpringLayout.EAST, set_panel);
+		
 	
-        settings_spring_layout.putConstraint(SpringLayout.SOUTH, save_button, 25, SpringLayout.NORTH, save_button);
-        settings_spring_layout.putConstraint(SpringLayout.EAST, save_button, -10, SpringLayout.EAST, this);
-        settings_spring_layout.putConstraint(SpringLayout.NORTH, save_button, 5, SpringLayout.SOUTH, this);
-        settings_spring_layout.putConstraint(SpringLayout.WEST, save_button, -95, SpringLayout.EAST, this);
+        s_panel_layout.putConstraint(SpringLayout.SOUTH, save_button, 25, SpringLayout.NORTH, save_button);
+        s_panel_layout.putConstraint(SpringLayout.EAST, save_button, 0, SpringLayout.EAST, set_panel);
+        s_panel_layout.putConstraint(SpringLayout.NORTH, save_button, 5, SpringLayout.SOUTH, set_panel);
+        s_panel_layout.putConstraint(SpringLayout.WEST, save_button, -95, SpringLayout.EAST, this);
 		           
     }    
     

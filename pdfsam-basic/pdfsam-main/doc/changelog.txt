@@ -1,7 +1,21 @@
-0.7 beta
+0.7 beta 1
 ===================================
 -Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
 -Added configuration singleton
+-Added Settings section
+-XMLParser and XMLConfig rebuilt using dom4j
+-Console: added xml input file -l option for merge
+-Console: rewritten commands handler
+-Console: rewritten helper class TmpFileNameGenerator
+-Console: rewritten PdfSplit to keep file annotations
+-Console: added -overwrite option to the split command
+-Console: new merge type using PdfCopyFields to deal with forms
+-Merge: check to use -copyfields console option 
+-Split, Merge: added JHelpLabel to have help tooltips 
+-New icons set
+-dom4j 1.6.1
+-jaxen 1.1
+-iText 2.0.2
 
 0.6 stable release 3
 ===================================

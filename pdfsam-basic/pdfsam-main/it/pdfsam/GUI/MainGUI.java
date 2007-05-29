@@ -51,6 +51,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextPane;
 import javax.swing.SpringLayout;
+import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
@@ -85,7 +86,7 @@ public class MainGUI implements PropertyChangeListener {
     public static final String NAME = "PDF Split and Merge";
     public static final String APP_VERSION = "0.7 beta 1"; 
     //i set this true while i'm developing.. false when releasing
-    private final boolean IDE = true;
+    private final boolean IDE = false;
     
     public static void main(String args[]) {
         MainGUI window = new MainGUI();        
@@ -154,6 +155,17 @@ public class MainGUI implements PropertyChangeListener {
             System.out.print(e.getMessage());
             e.printStackTrace();
         }
+        ToolTipManager.sharedInstance().setDismissDelay (300000);
+     /*   try {
+        	File file = new File("c:\\c.gif");
+			DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(file)));       
+	        byte[] buff = new byte[(int) file.length()];
+	        dis.readFully(buff);
+	        dis.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
         initialize();
     }
 /**
@@ -178,10 +190,10 @@ public class MainGUI implements PropertyChangeListener {
         main_gui.setIconImage(new ImageIcon(this.getClass().getResource("/images/pdfsam.png")).getImage());
         main_gui.setTitle(MainGUI.NAME+" Ver. "+MainGUI.APP_VERSION);        
         main_gui.setName("main_gui");
-        main_gui.setBounds(100, 100, 560, 630);
+        main_gui.setBounds(100, 100, 600, 650);
         main_gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main_gui.setFocusable(true);
-        center(main_gui, 560, 630);
+        center(main_gui, 600, 650);
 
         final JTabbedPane tabbed_main_panel = new JTabbedPane();
         tabbed_main_panel.setPreferredSize(new Dimension(0, 450));
@@ -248,7 +260,7 @@ public class MainGUI implements PropertyChangeListener {
         log_text_area = new JTextPane();      
         log_text_area.setContentType("text/html");
         log_text_area.setEditable(false);
-        log_text_area.setPreferredSize(new Dimension(0, 155));
+        log_text_area.setPreferredSize(new Dimension(0, 135));
         log_panel.setViewportView(log_text_area);
         log_text_area.setDragEnabled(true);
         log_text_area.setName("pdfsam_log");
@@ -261,7 +273,7 @@ public class MainGUI implements PropertyChangeListener {
         pannello_split.setOrientation(JSplitPane.VERTICAL_SPLIT);
         pannello_split.setOpaque(false);
         pannello_split.setOneTouchExpandable(true);
-        pannello_split.setResizeWeight(0.45);
+        pannello_split.setResizeWeight(0.55);
         main_gui.getContentPane().add(pannello_split);
 //END_SPLIT_PANEL       
 //LAYOUT
@@ -352,7 +364,7 @@ public class MainGUI implements PropertyChangeListener {
         Double centreX = new Double((screensize.getWidth() / 2) - (framedimension.getWidth()  / 2));
         Double centreY = new Double((screensize.getHeight() / 2) - (framedimension.getHeight()  / 2));
         
-        frame.setBounds(centreX.intValue(), centreY.intValue(), 550, 620);
+        frame.setBounds(centreX.intValue(), centreY.intValue(), 600, 650);
     }
     
     

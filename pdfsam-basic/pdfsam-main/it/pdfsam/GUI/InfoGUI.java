@@ -200,10 +200,10 @@ public class InfoGUI {
     }
 
     protected void setThanksText(){
-        String[] translators = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "David Vignoni", "Eclipse", "Xenoage Software", "Nicolas Le Novere (donor)", "Elisa Bortolotti (donor)", "Robin de Groot (donor)", "wonder (tester/developer)", "Aniket Dutta (contributor)", "Lucien  (donor)", "pinyotae (donor)"};
+        String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "David Vignoni", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "dom4j", "jaxen", "All the donors and contributors"};
         String log_text = "<font size=+1>Thanks to</font><br>";
-        for (int i=0; i<translators.length; i++){
-            log_text += translators[i]+"<br>";
+        for (int i=0; i<contributors.length; i++){
+            log_text += contributors[i]+"<br>";
         }
         thanks_to_text.setText("<html><head></head><body><center>"+log_text+"</center></body></html>");
     }

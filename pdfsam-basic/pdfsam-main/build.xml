@@ -37,7 +37,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${USER_NAME}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
-		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-1.4.8.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.2.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar"/>
 		    </manifest>
 	    </jar>
 	    <jar destfile="${CONSOLE_DIR}/${CONSOLE_JAR_NAME}-${CONSOLE_JAR_VER}.jar" 
@@ -47,7 +47,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
-	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-1.4.8.jar dom4j-1.6.1.jar jaxen-1.1.jar"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.2.jar dom4j-1.6.1.jar jaxen-1.1.jar"/>
 		    </manifest>
 	    </jar>	
 	    <jar destfile="${MERGE_DIR}/${MERGE_JAR_NAME}-${MERGE_JAR_VER}.jar" 
