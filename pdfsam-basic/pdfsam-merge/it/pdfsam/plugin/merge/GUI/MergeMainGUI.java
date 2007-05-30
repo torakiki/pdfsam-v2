@@ -16,6 +16,7 @@
 
 package it.pdfsam.plugin.merge.GUI;
 
+import it.pdfsam.components.JHelpLabel;
 import it.pdfsam.configuration.Configuration;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.events.WorkDoneEvent;
@@ -107,10 +108,20 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     private JFileChooser browse_file_chooser;
     private SpringLayout destination_panel_layout;
     private JPanel destination_panel = new JPanel();
+    private SpringLayout option_panel_layout;
+    private JPanel option_panel = new JPanel();
     private JCheckBox overwrite_checkbox = new JCheckBox();
     private ResourceBundle i18n_messages;
     private Configuration config;
     private MainConsole mc;
+    private JCheckBox merge_type_check = new JCheckBox();
+    private JHelpLabel mergetype_help_label;
+    private JHelpLabel destination_help_label;
+    private final JScrollPane merge_table_scroll_panel = new JScrollPane();
+    private final JLabel destination_label = new JLabel();
+    private final JLabel option_label = new JLabel();
+    private final DefaultListModel list_model = new DefaultListModel();  
+
 //Buttons
     private final JButton add_file_button = new JButton();
     private final JButton remove_file_button = new JButton();
@@ -134,13 +145,11 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
 
 //focus policy 
     private final MergeFocusPolicy merge_focus_policy = new MergeFocusPolicy();
-    private final JScrollPane merge_table_scroll_panel = new JScrollPane();
-    private final JLabel destination_label = new JLabel();
-    private final DefaultListModel list_model = new DefaultListModel();
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private final String PLUGIN_NAME = "Merge";
-    private final String PLUGIN_VERSION = "0.4.7";
+    private final String PLUGIN_VERSION = "0.4.9";
+    
     
     /**
      * Constructor
@@ -370,6 +379,28 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
             }
         });
 //END_LISTENER_POPUP
+//OPTION_PANEL
+        option_panel_layout = new SpringLayout();
+        option_panel.setLayout(option_panel_layout);
+        option_panel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        add(option_panel);
+        
+//END_OPTION_PANEL 
+        option_label.setText(GettextResource.gettext(i18n_messages,"Merge options:"));
+        add(option_label);
+        
+        merge_type_check.setText(GettextResource.gettext(i18n_messages,"PDF documents contain forms"));
+        merge_type_check.setSelected(false);
+        option_panel.add(merge_type_check);     
+        
+        String helpText = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Merge type")+"</b><ul>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Unchecked")+":</b> "+GettextResource.gettext(i18n_messages,"Use this merge type for standard pdf documents")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Checked")+":</b> "+GettextResource.gettext(i18n_messages,"Use this merge type for pdf documents containing forms")+"." +
+    		"<br><b>"+GettextResource.gettext(i18n_messages,"Note")+":</b> "+GettextResource.gettext(i18n_messages,"Setting this option the documents will be completely loaded in memory")+".</li>" +
+    		"</ul></body></html>";
+	    mergetype_help_label = new JHelpLabel(helpText, true);
+	    option_panel.add(mergetype_help_label);
 //DESTINATION_PANEL
         destination_panel_layout = new SpringLayout();
         destination_panel.setLayout(destination_panel_layout);
@@ -407,7 +438,16 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
         overwrite_checkbox.setSelected(true);
         destination_panel.add(overwrite_checkbox);
-//END_CHECK_BOX        
+//END_CHECK_BOX  
+//HELP_LABEL_DESTINATION        
+        String helpTextDest = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output file")+"</b>" +
+    		"<p>"+GettextResource.gettext(i18n_messages,"Browse or enter the full path to the destination output file.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output file if it already exists.")+"</p>"+
+    		"</body></html>";
+	    destination_help_label = new JHelpLabel(helpTextDest, true);
+	    destination_panel.add(destination_help_label);
+//END_HELP_LABEL_DESTINATION	    
 //RUN_BUTTON
         run_button.addActionListener(new ActionListener() {            
             public void actionPerformed(ActionEvent e) {
@@ -452,6 +492,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
                     args.add("-u");
                     args.add(page_sel_string);
                     if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+                    if (merge_type_check.isSelected()) args.add("-copyfields");
                     args.add("concat");
                 }catch(Exception any_ex){    
                     fireLogActionPerformed("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), "FF0000");
@@ -607,9 +648,25 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, clear_button, 0, SpringLayout.EAST, move_down_button);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, clear_button, 0, SpringLayout.WEST, move_down_button);
 
-        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 285, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, option_panel, 235, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.EAST, option_panel, 0, SpringLayout.EAST, add_file_button);
+        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, option_panel, 200, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_panel, 0, SpringLayout.WEST, merge_table_scroll_panel);
+
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, option_label, 0, SpringLayout.NORTH, option_panel);
+        spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_label, 0, SpringLayout.WEST, option_panel);
+
+        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_check, 30, SpringLayout.NORTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_check, -40, SpringLayout.EAST, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.NORTH, merge_type_check, 5, SpringLayout.NORTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.WEST, merge_type_check, 5, SpringLayout.WEST, option_panel);
+
+        option_panel_layout.putConstraint(SpringLayout.SOUTH, mergetype_help_label, -1, SpringLayout.SOUTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.EAST, mergetype_help_label, -1, SpringLayout.EAST, option_panel);
+
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 330, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, add_file_button);
-        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 215, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 260, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, merge_table_scroll_panel);
 
         destination_panel_layout.putConstraint(SpringLayout.EAST, destination_text_field, -105, SpringLayout.EAST, destination_panel);
@@ -620,6 +677,9 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, destination_text_field);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
+
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_help_label, -1, SpringLayout.SOUTH, destination_panel);
+        destination_panel_layout.putConstraint(SpringLayout.EAST, destination_help_label, -1, SpringLayout.EAST, destination_panel);
         
         spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_label, 0, SpringLayout.NORTH, destination_panel);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, destination_label, 0, SpringLayout.WEST, destination_panel);
@@ -641,7 +701,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         
         spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, progress_bar, 15, SpringLayout.NORTH, progress_bar);
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, progress_bar, 0, SpringLayout.EAST, run_button);
-        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, progress_bar, 15, SpringLayout.SOUTH, wip_list);
+        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, progress_bar, 0, SpringLayout.SOUTH, wip_list);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, progress_bar, 0, SpringLayout.WEST, wip_list);
 
     }
@@ -866,8 +926,17 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         }
     }
  
+    public void workingIndeterminate(WorkDoneEvent wde){
+    	if (wde.getType() == WorkDoneEvent.WORK_INDETERMINATE){
+    		progress_bar.setIndeterminate(true);
+        }
+    }
+    
     public void workCompleted(WorkDoneEvent wde) {
         if (wde.getType() == WorkDoneEvent.WORK_DONE){
+        	progress_bar.setIndeterminate(false);
+        	progress_bar.setValue(0);
+        	progress_bar.setString("");
         }
     }
 
