@@ -38,13 +38,19 @@ public class XMLParser {
  * @return The DOM object
  */
     public static Document parseXmlFile(String full_path) throws Exception{
-        try{
-			SAXReader reader = new SAXReader();
-			Document document = reader.read(new File(full_path));
-			return document;
+    	Document document = null;
+    	try{
+        	File inputFile = new File(full_path);
+        	if (inputFile.isFile()){
+    			SAXReader reader = new SAXReader();
+    			document = reader.read(inputFile);        		
+        	}else{
+        		throw new Exception("Unable to read "+full_path+".");
+        	}
 		}catch(Exception e){
-			throw new Exception("Exception reading "+full_path+":"+e.getMessage(), e);
+			throw new Exception("Exception creating Document.", e);
 		}  
+		return document;
     }
     
     /**
@@ -52,13 +58,14 @@ public class XMLParser {
      * @return The DOM object
      */
         public static Document parseXmlFile(URL url) throws Exception{
+        	Document document = null;
             try{
     			SAXReader reader = new SAXReader();
-    			Document document = reader.read(url);
-    			return document;
+    			document = reader.read(url);
     		}catch(Exception e){
     			throw new Exception("Exception reading "+url+":"+e.getMessage(), e);
     		}  
+    		return document;
         }
 
 /**

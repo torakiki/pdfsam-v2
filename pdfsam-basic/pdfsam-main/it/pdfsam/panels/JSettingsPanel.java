@@ -125,12 +125,10 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
         	language_combo = new JComboBox();
         	fireLogActionPerformed("Error: "+e.getMessage(), "FF0000"); 
         }
-        language_combo.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         set_panel.add(language_combo);
         
         combo_laf = new JComboBox(ThemeSelector.getLAFList().toArray());
-        combo_laf.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_laf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_laf.setRenderer(new JComboListItemRender());
         set_panel.add(combo_laf);
@@ -146,7 +144,6 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
 	    }       
 	    
         combo_theme = new JComboBox(ThemeSelector.getThemeList().toArray());
-        combo_theme.setToolTipText(GettextResource.gettext(i18n_messages,"Restart needed"));
         combo_theme.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         combo_theme.setRenderer(new JComboListItemRender());
         set_panel.add(combo_theme);

@@ -14,17 +14,17 @@
     <property name="CONSOLE_PROJECT_DIR" value="/pdfsam-console"/>
     <property name="CONSOLE_DIR" value="${PDFSAM_DIR}/lib"/>
     <property name="CONSOLE_JAR_NAME" value="pdfsam-console"/>
-    <property name="CONSOLE_JAR_VER" value="0.5.5"/>   
+    <property name="CONSOLE_JAR_VER" value="0.7.0"/>   
 	
     <property name="MERGE_PROJECT_DIR" value="/pdfsam-merge"/>
     <property name="MERGE_DIR" value="${PDFSAM_DIR}/plugins/merge"/>
     <property name="MERGE_JAR_NAME" value="pdfsam-merge"/>
-    <property name="MERGE_JAR_VER" value="0.4.7"/>
+    <property name="MERGE_JAR_VER" value="0.4.9"/>
 	
     <property name="SPLIT_PROJECT_DIR" value="/pdfsam-split"/>
     <property name="SPLIT_DIR" value="${PDFSAM_DIR}/plugins/split"/>
     <property name="SPLIT_JAR_NAME" value="pdfsam-split"/>
-    <property name="SPLIT_JAR_VER" value="0.2.8"/>
+    <property name="SPLIT_JAR_VER" value="0.3.0"/>
 
 	<path id="project.classpath">
         <pathelement location="."/>
