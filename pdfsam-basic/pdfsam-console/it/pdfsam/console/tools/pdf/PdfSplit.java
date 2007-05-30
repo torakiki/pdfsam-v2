@@ -46,8 +46,6 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * 
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.pdf.PdfConcat
- * @see it.pdfsam.console.tools.pdf.PdfEncrypt
- * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  * 
  */
 public class PdfSplit extends GenericPdfTool {

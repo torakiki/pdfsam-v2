@@ -36,8 +36,6 @@ import jcmdline.VersionCmdLineHandler;
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.pdf.PdfSplit
  * @see it.pdfsam.console.tools.pdf.PdfConcat
- * @see it.pdfsam.console.tools.pdf.PdfEncrypt
- * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  */
 public class CmdParser {
  

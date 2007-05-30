@@ -44,8 +44,6 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * Class used to manage concat section. It takes input args and execute the concat command.
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.pdf.PdfSplit
- * @see it.pdfsam.console.tools.pdf.PdfEncrypt
- * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  */
 public class PdfConcat extends GenericPdfTool{
 
