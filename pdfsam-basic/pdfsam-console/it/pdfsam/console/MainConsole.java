@@ -50,12 +50,8 @@ import com.lowagie.text.Document;
  * @see it.pdfsam.console.tools.CmdParser
  * @see it.pdfsam.console.tools.pdf.PdfConcat
  * @see it.pdfsam.console.tools.pdf.PdfSplit
- * @see it.pdfsam.console.tools.pdf.PdfEncrypt
- * @see it.pdfsam.console.tools.pdf.PdfAlternateMix
  * @see it.pdfsam.console.exception.ParseException
  * @see it.pdfsam.console.exception.SplitException
- * @see it.pdfsam.console.exception.EncryptException
- * @see it.pdfsam.console.exception.AlternateMixException
  */
 public class MainConsole implements Serializable{
 
