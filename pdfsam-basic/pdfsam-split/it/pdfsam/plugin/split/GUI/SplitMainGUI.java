@@ -14,6 +14,7 @@
  */
 package it.pdfsam.plugin.split.GUI;
 
+import it.pdfsam.components.JHelpLabel;
 import it.pdfsam.configuration.Configuration;
 import it.pdfsam.console.MainConsole;
 import it.pdfsam.console.events.WorkDoneEvent;
@@ -71,6 +72,9 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     private JTextField dest_folder_text;
     private JTextField this_page_text_field;
     private JTextField n_pages_text_field;
+    private JHelpLabel checks_help_label;
+    private JHelpLabel prefix_help_label;
+    private JHelpLabel destination_help_label; 
     private SpringLayout options_pane_layout;
     private JTextField source_text_field;
     private SpringLayout split_spring_layout;
@@ -123,7 +127,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.2.8";
+    private final String PLUGIN_VERSION = "0.3.0";
     
 /**
  * Constructor
@@ -194,7 +198,6 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         split_options_panel.add(every_n_radio);
         
         n_pages_text_field = new JTextField();
-        n_pages_text_field.setToolTipText(GettextResource.gettext(i18n_messages,"Split every ... pages"));
         n_pages_text_field.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         n_pages_text_field.setEnabled(false);
         split_options_panel.add(n_pages_text_field);        
@@ -209,10 +212,20 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         split_options_panel.add(this_page_radio);
         
         this_page_text_field = new JTextField();
-        this_page_text_field.setToolTipText(GettextResource.gettext(i18n_messages,"Page numbers you want to split after (num1-num2-num3..)"));
         this_page_text_field.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         this_page_text_field.setEnabled(false);
         split_options_panel.add(this_page_text_field);
+        
+        String helpText = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Split options")+"</b><ul>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Burst")+":</b> "+GettextResource.gettext(i18n_messages,"Explode the pdf document into single pages")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Split every \"n\" pages")+":</b> "+GettextResource.gettext(i18n_messages,"Split the document every \"n\" pages")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Split even pages")+":</b> "+GettextResource.gettext(i18n_messages,"Split the document every even page")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Split odd pages")+":</b> "+GettextResource.gettext(i18n_messages,"Split the document every odd page")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(i18n_messages,"Split after these pages")+":</b> "+GettextResource.gettext(i18n_messages,"Split the document after page numbers (num1-num2-num3..)")+".</li>" +
+    		"</ul></body></html>";
+        checks_help_label = new JHelpLabel(helpText, true);
+        split_options_panel.add(checks_help_label);
 //END_SPLIT_SECTION
         
         
@@ -286,8 +299,17 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         browse_dest_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
         browse_dest_button.setText(GettextResource.gettext(i18n_messages,"Browse"));
         browse_dest_button.setMargin(new Insets(2, 2, 2, 2));
-        browse_dest_button.setToolTipText(GettextResource.gettext(i18n_messages,"Select a destination folder"));        
         destination_panel.add(browse_dest_button);
+//      HELP_LABEL_DESTINATION        
+        String helpTextDest = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output directory")+"</b>" +
+    		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a folder.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"</body></html>";
+	    destination_help_label = new JHelpLabel(helpTextDest, true);
+	    destination_panel.add(destination_help_label);
+//END_HELP_LABEL_DESTINATION  
         
         output_options_label.setText(GettextResource.gettext(i18n_messages,"Output options:"));
         add(output_options_label);
@@ -301,10 +323,20 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         output_options_panel.add(out_prefix_label);
 
         out_prefix_text = new JTextField();
-        out_prefix_text.setToolTipText(GettextResource.gettext(i18n_messages,"Set a prefix for output files name"));
         out_prefix_text.setText("pdfsam_");
         out_prefix_text.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         output_options_panel.add(out_prefix_text);
+//      HELP_LABEL_PREFIX       
+        String helpTextPrefix = 
+    		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Output files prefix")+"</b>" +
+    		"<p> "+GettextResource.gettext(i18n_messages,"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution.")+"</p>"+
+    		"<p> "+GettextResource.gettext(i18n_messages,"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf.")+"</p>"+
+    		"<br><p> "+GettextResource.gettext(i18n_messages,"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates oldstyle output file names.")+"</p>"+
+    		"<br><p> "+GettextResource.gettext(i18n_messages,"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].")+"</p>"+
+    		"</body></html>";
+	    prefix_help_label = new JHelpLabel(helpTextPrefix, true);
+	    output_options_panel.add(prefix_help_label);
+//END_HELP_LABEL_PREFIX
 //END_S_PANEL
 //RUN_BUTTON
         //listener
@@ -469,7 +501,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         split_spring_layout.putConstraint(SpringLayout.WEST, split_options_label, 0, SpringLayout.WEST, source_text_field);
         split_spring_layout.putConstraint(SpringLayout.NORTH, dest_folder_label, 5, SpringLayout.SOUTH, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, dest_folder_label, 0, SpringLayout.WEST, split_options_panel);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 270, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 295, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 205, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, split_options_panel);
@@ -488,10 +520,14 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_dest_button, -25, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.WEST, browse_dest_button, -98, SpringLayout.EAST, destination_panel);
 
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_help_label, -1, SpringLayout.SOUTH, destination_panel);
+        destination_panel_layout.putConstraint(SpringLayout.EAST, destination_help_label, -1, SpringLayout.EAST, destination_panel);
+
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_label, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_label, 0, SpringLayout.WEST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_label, 5, SpringLayout.SOUTH, destination_panel);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 320, SpringLayout.NORTH, this);
+		
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 370, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_panel, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_panel, 0, SpringLayout.SOUTH, output_options_label);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_panel, 0, SpringLayout.WEST, output_options_label);
@@ -499,15 +535,19 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         s_panel_layout.putConstraint(SpringLayout.SOUTH, out_prefix_label, 25, SpringLayout.NORTH, output_options_panel);
         s_panel_layout.putConstraint(SpringLayout.NORTH, out_prefix_label, 5, SpringLayout.NORTH, output_options_panel);
         s_panel_layout.putConstraint(SpringLayout.WEST, out_prefix_label, 5, SpringLayout.WEST, output_options_panel);
+       
         s_panel_layout.putConstraint(SpringLayout.EAST, out_prefix_text, -10, SpringLayout.EAST, output_options_panel);
         s_panel_layout.putConstraint(SpringLayout.SOUTH, out_prefix_text, 0, SpringLayout.SOUTH, out_prefix_label);
         s_panel_layout.putConstraint(SpringLayout.NORTH, out_prefix_text, 0, SpringLayout.NORTH, out_prefix_label);
         s_panel_layout.putConstraint(SpringLayout.WEST, out_prefix_text, 15, SpringLayout.EAST, out_prefix_label);
+   
+        s_panel_layout.putConstraint(SpringLayout.SOUTH, prefix_help_label, -1, SpringLayout.SOUTH, output_options_panel);
+        s_panel_layout.putConstraint(SpringLayout.EAST, prefix_help_label, -1, SpringLayout.EAST, output_options_panel);
         
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 355, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 405, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, run_button, -5, SpringLayout.EAST, output_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, run_button, 0, SpringLayout.WEST, browse_button);
-        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 330, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 380, SpringLayout.NORTH, this);
 
         split_spring_layout.putConstraint(SpringLayout.SOUTH, progress_bar, 15, SpringLayout.NORTH, progress_bar);
         split_spring_layout.putConstraint(SpringLayout.EAST, progress_bar, 0, SpringLayout.EAST, output_options_panel);
@@ -536,6 +576,8 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         options_pane_layout.putConstraint(SpringLayout.EAST, this_page_text_field, 75, SpringLayout.EAST, this_page_radio);
         options_pane_layout.putConstraint(SpringLayout.NORTH, this_page_text_field, 0, SpringLayout.NORTH, this_page_radio);
         options_pane_layout.putConstraint(SpringLayout.WEST, this_page_text_field, 5, SpringLayout.EAST, this_page_radio);
+        options_pane_layout.putConstraint(SpringLayout.SOUTH, checks_help_label, -1, SpringLayout.SOUTH, split_options_panel);
+        options_pane_layout.putConstraint(SpringLayout.EAST, checks_help_label, -1, SpringLayout.EAST, split_options_panel);
           
     }
     /**
@@ -731,10 +773,19 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         }
     }
  
+    public void workingIndeterminate(WorkDoneEvent wde){
+    	if (wde.getType() == WorkDoneEvent.WORK_INDETERMINATE){
+    		progress_bar.setIndeterminate(true);
+        }
+    }
+    
     public void workCompleted(WorkDoneEvent wde) {
         if (wde.getType() == WorkDoneEvent.WORK_DONE){
+        	progress_bar.setIndeterminate(false);
+        	progress_bar.setValue(0);
+        	progress_bar.setString("");
         }
-    } 
+    }
     
     public Icon getIcon() {
         try{
