@@ -1,0 +1,89 @@
+<project name="openstreetmap" default="dist" basedir=".">
+	
+	        <property name="po" location="po" />
+	        <property name="bindir" location="./bin" />
+	        <property name="resources" location="it/pdfsam/i18n/resources" />
+	        <property name="pot" location="po/Messages.pot" />
+	        <property name="basiclib" location="F:\workspace_pdfsam_basic\pdfsam-main\lib" />
+	        <property name="enhancedlib" location="F:\workspace_pdfsam_enhanced\pdfsam-maine\lib" />
+ 
+ 	        <target name="clean" description="removes previously created files">
+			  <delete verbose="true">
+				<fileset dir="${resources}"/>
+			  </delete>
+ 	        </target>
+			
+			<!-- new pot -->
+ 	        <target name="genpot" description="generates pot files">
+				 <!-- new pot -->
+				 <exec executable="bin/xgettext">
+						 <arg line="-ktr -ktrn:1,2 -ktrc -kmarktr -Ljava -o${pot} -ffilelist.txt"/>
+				 </exec>
+ 	        </target>
+
+			<!-- update po files --> 	
+ 	        <target name="updatepo" description="updates po files">
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/fr/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/es/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/ru/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/sv/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
+				 </exec>
+ 	        </target>
+ 	
+			<!-- generete properties -->
+ 	        <target name="genproperties" depends="clean,genpot,updatepo">
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_de_DE.properties ${po}/de/Messages.po"/>
+				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_es_ES.properties ${po}/es/Messages.po"/>
+				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_fr_FR.properties ${po}/fr/Messages.po"/>
+				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_it_IT.properties ${po}/it/Messages.po"/>
+				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_pt_BR.properties ${po}/pt_BR/Messages.po"/>
+				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_ru_RU.properties ${po}/ru/Messages.po"/>
+				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_sv_SE.properties ${po}/sv/Messages.po"/>
+				 </exec>
+			 </target>
+			
+			<!-- creates jar -->
+			<target name="createjar" depends="genproperties">
+				<jar destfile="${enhancedlib}/pdfsam-langpack.jar" 
+					basedir="."
+					excludes=".classpath,.project,bin/**,po/**,filelist.txt,readme.txt,build.xml">
+						<manifest>
+							<attribute name="Built-By" value="${USER_NAME}"/>
+						</manifest>
+				</jar>
+				<copy todir="${basiclib}">
+					<fileset dir="${enhancedlib}">
+						<include name="**/pdfsam-langpack.jar"/>
+					</fileset>
+				</copy>
+			 </target>
+ 	</project>
