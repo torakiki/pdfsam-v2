@@ -1,0 +1,17 @@
+F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java
+F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java
+F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java
+F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java
+F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\JSplashScreen.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java
+F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java
+F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java
+F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java
+F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java
+F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java
+F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java
