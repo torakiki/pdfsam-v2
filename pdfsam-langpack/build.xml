@@ -44,10 +44,13 @@
 				 <exec executable="${bindir}/msgmerge">
 						 <arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
 				 </exec>
+				 <exec executable="${bindir}/msgmerge">
+						 <arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
+				 </exec>
  	        </target>
  	
 			<!-- generete properties -->
- 	        <target name="genproperties" depends="clean,genpot,updatepo">
+ 	        <target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
 				 <exec executable="${bindir}/msguniq">
 						 <arg line="-p -o ${resources}/Messages_de_DE.properties ${po}/de/Messages.po"/>
 				 </exec>
@@ -69,10 +72,13 @@
 				 <exec executable="${bindir}/msguniq">
 						 <arg line="-p -o ${resources}/Messages_sv_SE.properties ${po}/sv/Messages.po"/>
 				 </exec>
+				 <exec executable="${bindir}/msguniq">
+						 <arg line="-p -o ${resources}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
+				 </exec>
 			 </target>
 			
 			<!-- creates jar -->
-			<target name="createjar" depends="genproperties">
+			<target name="createjar" depends="genproperties" description="creates jar pack and put it in lib dir(basic and enhanced)">
 				<jar destfile="${enhancedlib}/pdfsam-langpack.jar" 
 					basedir="."
 					excludes=".classpath,.project,bin/**,po/**,filelist.txt,readme.txt,build.xml">
@@ -86,4 +92,13 @@
 					</fileset>
 				</copy>
 			 </target>
+	
+			<!-- crates tar to rosetta upload -->
+			<target name="tar_to_rosetta" description="generate the tar to upload on rosetta" >
+				<delete file="${po}/pdfsam-langpack.tar.gz" />	
+				<tar destfile="${po}/pdfsam-langpack.tar.gz" 
+					 basedir="${po}"
+					 excludes=".svn/**"
+					 compression="gzip" />	
+			</target>	
  	</project>
