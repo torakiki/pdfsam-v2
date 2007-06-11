@@ -32,7 +32,7 @@ public class LanguageLoader {
     /**
      * Creates a loader for the ResourceBundle
      * 
-     * @param language_code language code "en_GB", "it_IT", "pt_BZ"...
+     * @param language_code language code "en_GB", "it_IT", "pt_BR"...
      * @param bundle string rapresenting the bundle name
      */
     public LanguageLoader(String language_code, String bundle){

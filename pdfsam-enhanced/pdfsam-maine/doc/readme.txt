@@ -26,7 +26,7 @@ Note: This is a test version and many fixes have to be done. PDF Split and Merge
 see the file license.txt for details.
 
 Installation: Unzip the archive into a directory. Double click pdfsam-1.3.0e-beta.jar or open a console a type the command
-"java -jar /pathwhereyouunzipped/pdfsam-1.2.0e-beta.jar"
+"java -jar /pathwhereyouunzipped/pdfsam-1.3.0e-beta.jar"
 
 Prerequisites: A working Java Runtime Environment is needed. This software has been tested on 
 Java(TM) 2 Runtime Environment, Standard Edition Version 1.4.2. Please report any trouble or bug with this or other

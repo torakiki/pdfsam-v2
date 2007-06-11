@@ -97,7 +97,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.3.0e beta"; 
+	public static final String APP_VERSION = "1.3.0e beta 1"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
@@ -156,7 +156,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 		}
 
 		//get bundle
-		config.setI18nResourceBundle(new LanguageLoader(language, "it.pdfsam.i18n.Messages").getBundle());
+		config.setI18nResourceBundle(new LanguageLoader(language, "it.pdfsam.i18n.resources.Messages").getBundle());
 		i18n_messages = config.getI18nResourceBundle();
 
 		setExtendedState(JFrame.MAXIMIZED_BOTH);

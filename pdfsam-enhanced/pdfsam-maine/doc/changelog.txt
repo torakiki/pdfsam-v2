@@ -8,8 +8,10 @@
 -Console: refactor of the pdfTools
 -Encrypt: added overwrite checkbox
 -Split: added overwrite checkbox
+-Split, Encrypt: now can use complex prefix added to the Console
 -Merge: check to use -copyfields console option 
 -Split, Merge, Encrypt, AlternateMix, Cover Footer: added JHelpLabel to have help tooltips 
+-Unified basic/enhanced langpack
 
 1.2.0e beta
 ===================================
