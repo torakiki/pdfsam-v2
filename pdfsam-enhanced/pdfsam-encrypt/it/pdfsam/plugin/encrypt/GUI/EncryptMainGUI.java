@@ -343,7 +343,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
 //      HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output directory")+"</b>" +
-    		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a fodler.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
     		"</body></html>";
