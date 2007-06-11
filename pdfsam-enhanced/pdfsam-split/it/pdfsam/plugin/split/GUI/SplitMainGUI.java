@@ -199,7 +199,6 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_options_panel.add(every_n_radio);
         
         n_pages_text_field = new JTextField();
-        n_pages_text_field.setToolTipText(GettextResource.gettext(i18n_messages,"Split every ... pages"));
         n_pages_text_field.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         n_pages_text_field.setEnabled(false);
         split_options_panel.add(n_pages_text_field);        
@@ -214,7 +213,6 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_options_panel.add(this_page_radio);
         
         this_page_text_field = new JTextField();
-        this_page_text_field.setToolTipText(GettextResource.gettext(i18n_messages,"Page numbers you want to split after (num1-num2-num3..)"));
         this_page_text_field.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         this_page_text_field.setEnabled(false);
         split_options_panel.add(this_page_text_field);
@@ -309,7 +307,7 @@ public class SplitMainGUI extends AbstractPlugIn{
 //HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output directory")+"</b>" +
-    		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a fodler.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
     		"</body></html>";
@@ -595,6 +593,7 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_label, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_label, 0, SpringLayout.WEST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_label, 5, SpringLayout.SOUTH, destination_panel);
+		
         split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 370, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_panel, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_panel, 0, SpringLayout.SOUTH, output_options_label);
