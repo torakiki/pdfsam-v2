@@ -179,7 +179,7 @@ public class MainGUI implements PropertyChangeListener {
 		}
 
 		//get bundle
-		config.setI18nResourceBundle(new LanguageLoader(language, "it.pdfsam.i18n.Messages").getBundle());
+		config.setI18nResourceBundle(new LanguageLoader(language, "it.pdfsam.i18n.resources.Messages").getBundle());
 		i18n_messages = config.getI18nResourceBundle();
 
         main_gui = new JFrame();

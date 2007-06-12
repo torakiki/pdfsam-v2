@@ -12,6 +12,7 @@
 -Console: new merge type using PdfCopyFields to deal with forms
 -Merge: check to use -copyfields console option 
 -Split, Merge: added JHelpLabel to have help tooltips 
+-Unified basic/enhanced langpack
 -New icons set
 -dom4j 1.6.1
 -jaxen 1.1
