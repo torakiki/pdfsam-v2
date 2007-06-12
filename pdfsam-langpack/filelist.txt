@@ -10,8 +10,8 @@ F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java
 F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java
 F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java
 F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java
-F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java
-F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java
-F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java
-F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java
-F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java
+F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java
+F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java
+F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java
+F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java
+F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java
