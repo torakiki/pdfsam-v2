@@ -52,7 +52,7 @@ public class MergeTableModel extends AbstractTableModel {
     private String[] toolTips = {"",
                                  "",
                                  "Total pages of the document",
-                                 "Double click to set pages you want to merge (ex: All or 5-23)"
+                                 "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-7,12)"
                                 };
     //data array
     private ArrayList data = new ArrayList();
