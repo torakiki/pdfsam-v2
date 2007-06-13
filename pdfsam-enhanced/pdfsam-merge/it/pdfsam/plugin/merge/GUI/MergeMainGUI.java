@@ -685,7 +685,7 @@ public class MergeMainGUI extends AbstractPlugIn{
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_label, 0, SpringLayout.WEST, option_panel);
 
         option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_check, 30, SpringLayout.NORTH, option_panel);
-        option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_check, 180, SpringLayout.WEST, this);
+        option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_check, -40, SpringLayout.EAST, option_panel);
         option_panel_layout.putConstraint(SpringLayout.NORTH, merge_type_check, 5, SpringLayout.NORTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.WEST, merge_type_check, 5, SpringLayout.WEST, option_panel);
 
