@@ -12,6 +12,7 @@
 -Merge: check to use -copyfields console option 
 -Split, Merge, Encrypt, AlternateMix, Cover Footer: added JHelpLabel to have help tooltips 
 -Unified basic/enhanced langpack
+-iText 2.0.2
 
 1.2.0e beta
 ===================================
