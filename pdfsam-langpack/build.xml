@@ -3,8 +3,8 @@
 			<property name="po" location="po" />
 	        <property name="gettext.dir" value="gettext" />
 	        <property name="pot" value="po/Messages.pot" />
-	        <property name="basic.langpack.dir" location="F:/pdfsam\workspace-basic/pdfsam-main/lib" />
-	        <property name="enhanced.langpack.dir" location="F:/workspace_pdfsam_enhanced/pdfsam-maine\lib" />
+	        <property name="basic.langpack.dir" location="F:/pdfsam/workspace-basic/pdfsam-main/lib" />
+	        <property name="enhanced.langpack.dir" location="F:/pdfsam/workspace-enhanced/pdfsam-maine\lib" />
 		    <property name="src.dir" location="src" />
 		    <property name="resources.dir" location="${src.dir}/it/pdfsam/i18n/resources" />
 			<property name="user.name" value="Andrea Vacondio" />
@@ -25,6 +25,9 @@
 
 			<!-- update po files --> 	
  	        <target name="updatepo" description="updates po files">
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/en/Messages.po ${pot}"/>
+				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
 				 </exec>
@@ -49,10 +52,22 @@
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
 				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/nl/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/el/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/tr/Messages.po ${pot}"/>
+				 </exec>
  	        </target>
  	
 			<!-- generete properties -->
  	        <target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/Messages.po"/>
+				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_de_DE.properties ${po}/de/Messages.po"/>
 				 </exec>
@@ -76,6 +91,15 @@
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_el_EL.properties ${po}/el/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_nl_NL.properties ${po}/nl/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_tr_TR.properties ${po}/tr/Messages.po"/>
 				 </exec>
 			 </target>
 			

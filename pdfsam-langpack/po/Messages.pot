@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: pdfsam langpack\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-12 17:08+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2007-06-15 13:18+0100\n"
+"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"Language-Team: LANGUAGE <andrea.vacondio@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 #: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
@@ -187,9 +188,7 @@ msgstr ""
 #: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
 #: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
 #: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-msgid ""
-"Check the box if you want to overwrite the output files if they already "
-"exist."
+msgid "Check the box if you want to overwrite the output files if they already exist."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
@@ -328,9 +327,7 @@ msgstr ""
 #: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
 #: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
 #: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:307
-msgid ""
-"To choose a folder browse or enter the full path to the destination output "
-"directory."
+msgid "To choose a folder browse or enter the full path to the destination output directory."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
@@ -356,15 +353,11 @@ msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
-msgid ""
-"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
-"FileName_prefix_20070517_113423471.pdf."
+msgid "Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:397
-msgid ""
-"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
-"names."
+msgid "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file names."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:398
@@ -474,8 +467,7 @@ msgstr ""
 #: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
 #: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
 #: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
-msgid ""
-"Check the box if you want to overwrite the output file if it already exists."
+msgid "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
@@ -596,9 +588,7 @@ msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
 #: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+msgid "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
@@ -608,9 +598,7 @@ msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
 #: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+msgid "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates oldstyle output file names."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
@@ -730,8 +718,7 @@ msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
-msgid ""
-"Set your preferred look and feel and your preferred theme (restart needed)"
+msgid "Set your preferred look and feel and your preferred theme (restart needed)"
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
@@ -747,9 +734,7 @@ msgid "Default env."
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
-msgid ""
-"Select a previously saved env. file that will be automatically loaded at "
-"startup"
+msgid "Select a previously saved env. file that will be automatically loaded at startup"
 msgstr ""
 
 #: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
@@ -853,3 +838,4 @@ msgstr ""
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr ""
+
