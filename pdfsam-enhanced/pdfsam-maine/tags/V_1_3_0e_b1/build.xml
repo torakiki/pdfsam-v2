@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam" default="pdfsamJars" basedir=".">
+	
+    <property name="user.name" value="Andrea Vacondio"/>
+	<!-- main base dir -->
+    <property name="project.dir" value="G:/pdfsam/workspace-enhanced"/>
+	<!-- where source package is store-->
+	<property name="src.dir" value="G:/pdfsam/workspace-enhanced/pdfsam-src"/>
+    <property name="launcher.project.dir" value="${project.dir}/pdfsam-launcher"/>
+		
+    <property name="pdfsam.dir" value="${project.dir}/pdfsam-maine"/>
+    <property name="pdfsam.classes.dir" value="${pdfsam.dir}/bin"/>
+    <property name="pdfsam.src.dir" value="${pdfsam.dir}/src"/>
+    <property name="pdfsam.jar.name" value="pdfsam"/>
+    <property name="pdfsam.jar.version" value="1.3.0e-b1"/>   
+    <property name="pdfsam.jar.dir" value="${project.dir}/pdfsam-maine"/>   
+ 	
+    <property name="console.dir" value="${project.dir}/pdfsam-console"/>
+    <property name="console.classes.dir" value="${console.dir}/bin"/>
+    <property name="console.src.dir" value="${console.dir}/src"/>
+    <property name="console.jar.dir" value="${pdfsam.dir}/lib"/>
+    <property name="console.jar.name" value="pdfsam-console"/>
+    <property name="console.jar.version" value="0.8.0e"/>   
+	
+    <property name="merge.dir" value="${project.dir}/pdfsam-merge"/>
+    <property name="merge.classes.dir" value="${merge.dir}/bin"/>
+    <property name="merge.src.dir" value="${merge.dir}/src"/>
+    <property name="merge.jar.dir" value="${pdfsam.dir}/plugins/merge"/>
+    <property name="merge.jar.name" value="pdfsam-merge"/>
+    <property name="merge.jar.version" value="0.4.9e"/>
+	
+    <property name="cover.dir" value="${project.dir}/pdfsam-cover"/>
+    <property name="cover.classes.dir" value="${cover.dir}/bin"/>
+    <property name="cover.src.dir" value="${cover.dir}/src"/>
+    <property name="cover.jar.dir" value="${pdfsam.dir}/plugins/cover"/>
+    <property name="cover.jar.name" value="pdfsam-cover"/>
+    <property name="cover.jar.version" value="0.1.5e"/>
+
+    <property name="split.dir" value="${project.dir}/pdfsam-split"/>
+    <property name="split.classes.dir" value="${split.dir}/bin"/>
+    <property name="split.src.dir" value="${split.dir}/src"/>
+    <property name="split.jar.dir" value="${pdfsam.dir}/plugins/split"/>
+    <property name="split.jar.name" value="pdfsam-split"/>
+    <property name="split.jar.version" value="0.3.0e"/>
+
+    <property name="encrypt.dir" value="${project.dir}/pdfsam-encrypt"/>
+    <property name="encrypt.classes.dir" value="${encrypt.dir}/bin"/>
+    <property name="encrypt.src.dir" value="${encrypt.dir}/src"/>
+    <property name="encrypt.jar.dir" value="${pdfsam.dir}/plugins/encrypt"/>
+    <property name="encrypt.jar.name" value="pdfsam-encrypt"/>
+    <property name="encrypt.jar.version" value="0.1.5e"/>
+
+    <property name="mix.dir" value="${project.dir}/pdfsam-mix"/>
+    <property name="mix.classes.dir" value="${mix.dir}/bin"/>
+    <property name="mix.src.dir" value="${mix.dir}/src"/>
+    <property name="mix.jar.dir" value="${pdfsam.dir}/plugins/mix"/>
+    <property name="mix.jar.name" value="pdfsam-mix"/>
+    <property name="mix.jar.version" value="0.0.7e"/>
+	
+    <path id="project.classpath">
+        <pathelement location="."/>
+    </path>
+	
+	<!-- delete old pdfsam jar -->
+	<target name="deleteOld" description="delete old pdfsam jar" >
+		<delete file="${pdfsam.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}.jar" />
+	</target>
+	
+	
+	<target name="pdfsamJars" depends="deleteOld" description="generate jars file" >
+		<!-- pdfsam jar-->
+		<jar destfile="${pdfsam.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.2.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
+		    </manifest>
+			<fileset dir="${pdfsam.classes.dir}">
+				<include name="**/*.class"/>
+				<exclude name="**/images/**"/>
+			</fileset>	 
+		    <fileset dir="${pdfsam.dir}">
+			    <include name="**/images/*.png"/>
+	   	   </fileset> 
+	    </jar>
+		
+		<!-- console jar -->
+	    <jar destfile="${console.jar.dir}/${console.jar.name}-${console.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.2.jar dom4j-1.6.1.jar jaxen-1.1.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
+		    </manifest>
+			<fileset dir="${console.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+	    </jar>	
+		
+		<!-- merge jar -->
+	    <jar destfile="${merge.jar.dir}/${merge.jar.name}-${merge.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.merge.GUI.MergeMainGUI"/>
+		    </manifest>
+			<fileset dir="${merge.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="${merge.dir}">
+			    <include name="**/images/*.png"/>
+	   	   </fileset> 
+	    </jar>
+		
+		<!-- split jar -->
+	    <jar destfile="${split.jar.dir}/${split.jar.name}-${split.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.split.GUI.SplitMainGUI"/>
+		    </manifest>
+			<fileset dir="${split.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="${split.dir}">
+			    <include name="**/images/*.png"/>
+	   	   </fileset>
+	    </jar>
+
+		<!-- encrypt jar -->
+	    <jar destfile="${encrypt.jar.dir}/${encrypt.jar.name}-${encrypt.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.encrypt.GUI.EncryptMainGUI"/>
+		    </manifest>
+			<fileset dir="${encrypt.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="${encrypt.dir}">
+			    <include name="**/images/*.png"/>
+	   	   </fileset>
+	    </jar>
+
+		<!-- cover jar -->
+	    <jar destfile="${cover.jar.dir}/${cover.jar.name}-${cover.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.coverfooter.GUI.CoverFooterMainGUI"/>
+		    </manifest>
+			<fileset dir="${cover.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="${cover.dir}">
+			    <include name="**/images/*.png"/>
+	   	   </fileset>
+	    </jar>
+
+		<!-- mix jar -->
+	    <jar destfile="${mix.jar.dir}/${mix.jar.name}-${mix.jar.version}.jar">
+	    	<manifest>
+			    <attribute name="Built-By" value="${user.name}"/>
+		        <attribute name="Main-Class" value="it.pdfsam.plugin.mix.GUI.MixMainGUI"/>
+		    </manifest>
+			<fileset dir="${mix.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+			<fileset dir="${mix.dir}">
+			    <include name="**/images/*.png"/>
+	   	   </fileset>
+	    </jar>
+		
+	</target>
+	
+	<!-- zip projects into single archives -->
+	<target name="zipSources" description="generate zip sources packages" >
+		
+		<zip destfile="${src.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}-src.zip">
+			<fileset dir="${pdfsam.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/${split.jar.name}-${split.jar.version}-src.zip">
+			<fileset dir="${split.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/${merge.jar.name}-${merge.jar.version}-src.zip">
+			<fileset dir="${merge.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/${console.jar.name}-${console.jar.version}-src.zip">
+			<fileset dir="${console.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/${mix.jar.name}-${mix.jar.version}-src.zip">
+			<fileset dir="${mix.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/${cover.jar.name}-${cover.jar.version}-src.zip">
+			<fileset dir="${cover.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/${encrypt.jar.name}-${encrypt.jar.version}-src.zip">
+			<fileset dir="${encrypt.src.dir}">
+				    <include name="**/*.java"/>
+			</fileset>
+	    </zip>		
+		<zip destfile="${src.dir}/launcher-src.zip" 
+	    	 basedir="${launcher.project.dir}">
+	    </zip>		
+		<zip destfile="${src.dir}/nsi.zip" >
+			<fileset dir="${pdfsam.dir}">
+					<include name="**/*.nsi"/>
+			</fileset>
+	    </zip>				
+	  </target>
+	
+	<!-- creates a zip archive containing all the source packages -->
+	<target name="mainZipPackage" depends="zipSources" description="generate main sources zip package" >
+		<zip destfile="${src.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}-out-src.zip">
+			<fileset dir="${src.dir}">
+				<include name="**/${pdfsam.jar.name}-${pdfsam.jar.version}-src.zip"/>
+				<include name="**/${split.jar.name}-${split.jar.version}-src.zip"/>
+				<include name="**/${merge.jar.name}-${merge.jar.version}-src.zip"/>
+				<include name="**/${console.jar.name}-${console.jar.version}-src.zip"/>
+				<include name="**/${mix.jar.name}-${mix.jar.version}-src.zip"/>
+				<include name="**/${cover.jar.name}-${cover.jar.version}-src.zip"/>
+				<include name="**/${encrypt.jar.name}-${encrypt.jar.version}-src.zip"/>
+				<include name="**/launcher-src.zip"/>
+				<include name="**/nsi.zip"/>
+			</fileset>
+		</zip>		
+	</target>
+
+</project>
