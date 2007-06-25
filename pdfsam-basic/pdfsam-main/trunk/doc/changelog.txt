@@ -17,6 +17,8 @@
 -dom4j 1.6.1
 -jaxen 1.1
 -iText 2.0.2
+-bcmail 135
+-bcprov 135
 
 0.6 stable release 3
 ===================================

@@ -156,16 +156,6 @@ public class MainGUI implements PropertyChangeListener {
             e.printStackTrace();
         }
         ToolTipManager.sharedInstance().setDismissDelay (300000);
-     /*   try {
-        	File file = new File("c:\\c.gif");
-			DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(file)));       
-	        byte[] buff = new byte[(int) file.length()];
-	        dis.readFully(buff);
-	        dis.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
         initialize();
     }
 /**

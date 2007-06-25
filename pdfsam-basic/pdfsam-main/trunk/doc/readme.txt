@@ -16,6 +16,8 @@ Linked libraries:
 	-looks-2.1.1
 	-dom4j-1.6.1
 	-jaxen-1.1
+	-bcmail-jdk14-135.jar
+	-bcprov-jdk14-135.jar
 	-pdfsam-console-0.7.0 *
 	-pdfsam-langpack *
 	

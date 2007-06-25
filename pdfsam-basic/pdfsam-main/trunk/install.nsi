@@ -2,13 +2,13 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "pdfsam"
-!define PRODUCT_VERSION "0.6 sr 3"
+!define PRODUCT_VERSION "0.7b1"
 !define PRODUCT_PUBLISHER "Andrea Vacondio"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 !define TARGET_FILE "config.xml"
-!define PRODUCT_DATE "16/03/2007"
+!define PRODUCT_DATE "23/06/2007"
 !define LANGUAGE_TITLE "pdfsam language selection"
 SetCompressor lzma
 
@@ -18,8 +18,8 @@ SetCompressor lzma
   
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "F:\install.ico"
-!define MUI_UNICON "F:\uninstall.ico"
+!define MUI_ICON "G:\install.ico"
+!define MUI_UNICON "G:\uninstall.ico"
 !define MUI_LANGDLL_WINDOWTITLE "${LANGUAGE_TITLE}"
 
 ; Welcome page
@@ -51,8 +51,10 @@ var ICONS_GROUP
   !insertmacro MUI_LANGUAGE "Swedish"
   !insertmacro MUI_LANGUAGE "Spanish"
   !insertmacro MUI_LANGUAGE "Portuguese"
-  !insertmacro MUI_LANGUAGE "German"
+  !insertmacro MUI_LANGUAGE "Dutch"
   !insertmacro MUI_LANGUAGE "French"
+  !insertmacro MUI_LANGUAGE "Greek"
+  !insertmacro MUI_LANGUAGE "Turkish"
   
 ; Reserve files
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
@@ -60,7 +62,7 @@ var ICONS_GROUP
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "pdfsam-win32inst-v0_6_sr3.exe"
+OutFile "pdfsam-win32inst-v0_7_b1.exe"
 InstallDir "$PROGRAMFILES\pdfsam"
 ShowInstDetails show
 ShowUnInstDetails show
@@ -90,10 +92,15 @@ Function WarnDirExists
     DirExistsOK:
     
   Delete "$INSTDIR\lib\itext-*.jar"
+  Delete "$INSTDIR\lib\bcmail-jdk14-*.jar"
+  Delete "$INSTDIR\lib\bcprov-jdk14-*.jar"
+  Delete "$INSTDIR\lib\dom4j-*.jar"
+  Delete "$INSTDIR\lib\jaxen-*.jar"
   Delete "$INSTDIR\lib\looks-*.jar"
   Delete "$INSTDIR\pdfsam-*.jar"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\lib\pdfsam-console-*.jar"
+  Delete "$INSTDIR\lib\pdfsam-langpack.jar"
   Delete "$INSTDIR\doc\pdfsam-*-tutorial.pdf"
   Delete "$INSTDIR\plugins\merge\pdfsam-merge-*.jar"
   Delete "$INSTDIR\plugins\split\pdfsam-split-*.jar"
@@ -248,31 +255,48 @@ endFileExist:
       !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "sv_SE" "$INSTDIR\config.xml"
     GOTO languagedone
     noswedish:
+    StrCmp $LANGUAGE 1043 +1 nodutch
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "de_DE" "$INSTDIR\config.xml"
+    GOTO languagedone
+    nodutch:
+    StrCmp $LANGUAGE 1032 +1 nogreek
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "el_EL" "$INSTDIR\config.xml"
+    GOTO languagedone
+    nogreek:
+    StrCmp $LANGUAGE 1055 +1 noturkish
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "tr_TR" "$INSTDIR\config.xml"
+    GOTO languagedone
+     noturkish:
       !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "en_GB" "$INSTDIR\config.xml"
     QUIT
     languagedone:
 
+
   SetOverwrite on
   SetOutPath "$INSTDIR\lib"
-  File "lib\pdfsam-console-0.5.4.jar"
+  File "lib\pdfsam-console-0.7.0.jar"
   File "lib\jcmdline-1.0.3.jar"
   File "lib\looks-2.1.1.jar"
-  File "lib\itext-1.4.8.jar"
+  File "lib\itext-2.0.2.jar"
+  File "lib\dom4j-1.6.1.jar"
+  File "lib\jaxen-1.1.jar"
+  File "lib\bcmail-jdk14-135.jar"
+  File "lib\bcprov-jdk14-135.jar"
   File "lib\pdfsam-langpack.jar"  
   SetOverwrite ifnewer
   SetOutPath "$INSTDIR"
-  File "pdfsam-0.6sr3.jar"
+  File "pdfsam-0.7b1.jar"
   File "pdfsam-starter.exe"
   SetOutPath "$INSTDIR\doc"
   File "doc\readme.txt"
   File "doc\changelog.txt"
   File "doc\License.txt"
-  File "doc\pdfsam-0.6sr2-tutorial.pdf"
+  File "doc\pdfsam-0.7b1-tutorial.pdf"
   SetOutPath "$INSTDIR\plugins\merge"
-  File "plugins\merge\pdfsam-merge-0.4.6.jar"
+  File "plugins\merge\pdfsam-merge-0.4.9.jar"
   File "plugins\merge\config.xml"
   SetOutPath "$INSTDIR\plugins\split"
-  File "plugins\split\pdfsam-split-0.2.7.jar"
+  File "plugins\split\pdfsam-split-0.3.0.jar"
   File "plugins\split\config.xml"
   SetOutPath "$SMPROGRAMS\$ICONS_GROUP"
 SectionEnd
@@ -283,7 +307,7 @@ Section -AdditionalIcons
   CreateDirectory "$SMPROGRAMS\$ICONS_GROUP"
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\pdfsam.lnk" "$INSTDIR\pdfsam-starter.exe"
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Readme.lnk" "$INSTDIR\doc\readme.txt"
-  CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Tutorial.lnk" "$INSTDIR\doc\pdfsam-0.6sr2-tutorial.pdf"
+  CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Tutorial.lnk" "$INSTDIR\doc\pdfsam-0.7b1-tutorial.pdf"
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Uninstall.lnk" "$INSTDIR\uninst.exe"
   !insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
@@ -311,19 +335,23 @@ Section Uninstall
   !insertmacro MUI_STARTMENU_GETFOLDER "Application" $ICONS_GROUP
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\plugins\split\config.xml"
-  Delete "$INSTDIR\plugins\split\pdfsam-split-0.2.7.jar"
+  Delete "$INSTDIR\plugins\split\pdfsam-split-0.3.0.jar"
   Delete "$INSTDIR\plugins\merge\config.xml"
-  Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.4.6.jar"
-  Delete "$INSTDIR\pdfsam-0.6sr3.jar"
+  Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.4.9.jar"
+  Delete "$INSTDIR\pdfsam-0.7b1.jar"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\doc\readme.txt"
   Delete "$INSTDIR\doc\changelog.txt"
   Delete "$INSTDIR\doc\License.txt"
-  Delete "$INSTDIR\doc\pdfsam-0.6sr2-tutorial.pdf"  
-  Delete "$INSTDIR\lib\pdfsam-console-0.5.4.jar"
+  Delete "$INSTDIR\doc\pdfsam-0.7b1-tutorial.pdf"  
+  Delete "$INSTDIR\lib\pdfsam-console-0.7.0.jar"
   Delete "$INSTDIR\lib\jcmdline-1.0.3.jar"
   Delete "$INSTDIR\lib\looks-2.1.1.jar"
-  Delete "$INSTDIR\lib\itext-1.4.8.jar"
+  Delete "$INSTDIR\lib\itext-2.0.2.jar"
+  Delete "$INSTDIR\lib\dom4j-1.6.1.jar"
+  Delete "$INSTDIR\lib\jaxen-1.1.jar"
+  Delete "$INSTDIR\lib\bcmail-jdk14-135.jar"
+  Delete "$INSTDIR\lib\bcprov-jdk14-135.jar"
   Delete "$INSTDIR\lib\pdfsam-langpack.jar"
   Delete "$INSTDIR\config.xml"
 
