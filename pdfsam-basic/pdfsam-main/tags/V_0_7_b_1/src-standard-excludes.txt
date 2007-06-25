@@ -1,0 +1,14 @@
+**/*.jar
+**/*.class
+**/*.jj
+**/*.jjt
+**/*.orig
+**/*.bak
+**/*.rej
+**/*.form
+**/*.jar.MAKEME
+**/filesystem.attributes
+**/.nbattrs
+**/.#*
+**/package.html
+**/doc-files/
