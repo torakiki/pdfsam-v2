@@ -3,9 +3,9 @@
 	
     <property name="user.name" value="Andrea Vacondio"/>
 	<!-- main base dir -->
-    <property name="project.dir" value="F:/pdfsam/workspace-enhanced"/>
+    <property name="project.dir" value="G:/pdfsam/workspace-enhanced"/>
 	<!-- where source package is store-->
-	<property name="src.dir" value="F:/pdfsam/workspace-enhanced/pdfsam-src"/>
+	<property name="src.dir" value="G:/pdfsam/workspace-enhanced/pdfsam-src"/>
     <property name="launcher.project.dir" value="${project.dir}/pdfsam-launcher"/>
 		
     <property name="pdfsam.dir" value="${project.dir}/pdfsam-maine"/>
@@ -54,7 +54,7 @@
     <property name="mix.classes.dir" value="${mix.dir}/bin"/>
     <property name="mix.src.dir" value="${mix.dir}/src"/>
     <property name="mix.jar.dir" value="${pdfsam.dir}/plugins/mix"/>
-    <property name="mix.jar.name" value="pdfsam-split"/>
+    <property name="mix.jar.name" value="pdfsam-mix"/>
     <property name="mix.jar.version" value="0.0.7e"/>
 	
     <path id="project.classpath">
@@ -73,10 +73,11 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
-		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.2.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.2.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
 		    </manifest>
 			<fileset dir="${pdfsam.classes.dir}">
 				<include name="**/*.class"/>
+				<exclude name="**/images/**"/>
 			</fileset>	 
 		    <fileset dir="${pdfsam.dir}">
 			    <include name="**/images/*.png"/>
@@ -88,7 +89,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
-	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.2.jar dom4j-1.6.1.jar jaxen-1.1.jar"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.2.jar dom4j-1.6.1.jar jaxen-1.1.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
 		    </manifest>
 			<fileset dir="${console.classes.dir}">
 				<include name="**/*.class"/>

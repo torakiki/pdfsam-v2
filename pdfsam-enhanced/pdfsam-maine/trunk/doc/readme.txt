@@ -1,6 +1,6 @@
 Application: PDF Split and Merge enanched
 
-Version: 1.3.0e beta
+Version: 1.3.0e beta 1
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
@@ -19,14 +19,16 @@ Linked libraries:
 	-looks-2.1.1
 	-jaxen-1.1
 	-dom4j-1.6.1
+	-bcmail-jdk14-135.jar
+	-bcprov-jdk14-135.jar
 	-pdfsam-console-0.8.0e *
 	-pdfsam-langpack *
 	
 Note: This is a test version and many fixes have to be done. PDF Split and Merge comes with ABSOLUTELY NO WARRANTY;
 see the file license.txt for details.
 
-Installation: Unzip the archive into a directory. Double click pdfsam-1.3.0e-beta.jar or open a console a type the command
-"java -jar /pathwhereyouunzipped/pdfsam-1.3.0e-beta.jar"
+Installation: Unzip the archive into a directory. Double click pdfsam-1.3.0e-b1.jar or open a console a type the command
+"java -jar /pathwhereyouunzipped/pdfsam-1.3.0e-b1.jar"
 
 Prerequisites: A working Java Runtime Environment is needed. This software has been tested on 
 Java(TM) 2 Runtime Environment, Standard Edition Version 1.4.2. Please report any trouble or bug with this or other
