@@ -58,7 +58,8 @@ public class PdfSplit extends GenericPdfTool {
 	private DecimalFormat file_number_formatter = new DecimalFormat();
 	private PrefixParser prefixParser;
 	private boolean overwrite_boolean;
-
+	private boolean compressed_boolean;
+	
 	// total number pages
 	private int n = 0;
 
@@ -72,8 +73,9 @@ public class PdfSplit extends GenericPdfTool {
 	 * @param n_page Optional. Required if type is "split" or "nsplit"
 	 * @param source_console Console
 	 * @param overwrite overwrite output file
+	 * @param compressed compress output pdf file
 	 */
-	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page, boolean overwrite,
+	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page, boolean overwrite, boolean compressed,
 			MainConsole source_console) {
 		super(source_console);
 		o_dir = out_dir;
@@ -94,13 +96,22 @@ public class PdfSplit extends GenericPdfTool {
 			snumber_page = "";
 		}
 		overwrite_boolean = overwrite;
+		compressed_boolean = compressed;
 	}
 
 	/**
-	 * Default behaviour overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
+	 */
+	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page, boolean overwrite, MainConsole source_console) {
+		this(out_dir, input_file, prefix, splittype, n_page, overwrite, true, source_console);
+	}
+	
+	/**
+	 * Default value overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
 	 */
 	public PdfSplit(File out_dir, File input_file, String prefix, String splittype, String n_page, MainConsole source_console) {
-		this(out_dir, input_file, prefix, splittype, n_page, true, source_console);
+		this(out_dir, input_file, prefix, splittype, n_page, true, true, source_console);
 	}
 
 	/**
@@ -219,6 +230,9 @@ public class PdfSplit extends GenericPdfTool {
             	current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
                 // step 2: we create a writer that listens to the document
                 pdf_writer = new PdfCopy(current_document, new FileOutputStream(tmp_o_file));
+		        if(compressed_boolean){
+		        	pdf_writer.setFullCompression();
+		        }				
                 MainConsole.setDocumentCreator(current_document);
                 // step 3: we open the document
                 current_document.open();
@@ -250,6 +264,9 @@ public class PdfSplit extends GenericPdfTool {
             current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
             // step 2: we create a writer that listens to the document
             PdfCopy pdf_writer = new PdfCopy(current_document, new FileOutputStream(tmp_o_file));
+            if(compressed_boolean){
+            	pdf_writer.setFullCompression();
+            }
             // step 3: we open the document
             MainConsole.setDocumentCreator(current_document);
             current_document.open();
@@ -308,6 +325,9 @@ public class PdfSplit extends GenericPdfTool {
             	current_document = new Document(pdf_reader.getPageSizeWithRotation(current_page));
                 // step 2: we create a writer that listens to the document
                 pdf_writer = new PdfCopy(current_document, new FileOutputStream(tmp_o_file));
+                if(compressed_boolean){
+                	pdf_writer.setFullCompression();
+                }
                 MainConsole.setDocumentCreator(current_document);
                 // step 3: we open the document
                 current_document.open();            	 

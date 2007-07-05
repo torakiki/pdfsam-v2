@@ -77,6 +77,8 @@ public class CmdParser {
     private File log_value = null;
     //-overwrite value
     private boolean overwrite_value = false;
+    //-compressed value
+    private boolean compressed_value = false;
     
     //input command
     private byte input_command = 0x00;
@@ -122,6 +124,7 @@ public class CmdParser {
                           FileParam.OPTIONAL,
                           FileParam.SINGLE_VALUED),
             new BooleanParam("overwrite", "overwrite existing output file"),
+            new BooleanParam("compressed", "compress output file"),
             new BooleanParam("copyfields", "input pdf documents contain forms (high memory usage)")                          
             };
             
@@ -152,7 +155,8 @@ public class CmdParser {
                     ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                     FileParam.OPTIONAL,
                     FileParam.SINGLE_VALUED),
-            new BooleanParam("overwrite", "overwrite existing output file")                           
+            new BooleanParam("overwrite", "overwrite existing output file"),
+            new BooleanParam("compressed", "compress output file")
     };    
 
     /**
@@ -197,6 +201,7 @@ public class CmdParser {
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+
         "Note: You can use only one of these options not both in the same command line\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-compress' to compress output file.\n"+
         "'-copyfields' to deal with forms. Use this if input documents contain forms. This option will lead to a high memory usage.\n"+        
         "Example: java -jar pdfsam-console.jar -o /tmp/outfile.pdf -f /tmp/1.pdf -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console.jar -l c:\\docs\\list.csv concat";
@@ -212,6 +217,7 @@ public class CmdParser {
 	    "Available prefix variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].\n"+
 	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-compress' to compress output file.\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
   
@@ -324,7 +330,7 @@ public class CmdParser {
             else if ((l_opts.isSet()) && (!(f_opts.isSet()))){
                 //-l option error: no csv file given
                 if (!(l_opts.getFile().getPath().toLowerCase().endsWith(".csv"))&& !(l_opts.getFile().getPath().toLowerCase().endsWith(".xml"))){
-                    throw new ParseException("ParseConcatCommand: input list file not a csv format.");
+                    throw new ParseException("ParseConcatCommand: input list file not a csv or xml format.");
                 }else{
                     input_option = CmdParser.L_OPT;
                     cl_value = l_opts.getFile();
@@ -354,6 +360,9 @@ public class CmdParser {
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite
+//PARSE -compress            
+            compressed_value = ((BooleanParam) command_line_handler.getOption("compressed")).isTrue();
+//END PARSE -compress
 //PARSE -copyfields            
             copyfields_value = ((BooleanParam) command_line_handler.getOption("copyfields")).isTrue();
 //END PARSE -copyfields  
@@ -459,6 +468,9 @@ public class CmdParser {
                 }
             }
 //END_PARSE -n
+//PARSE -compress            
+            compressed_value = ((BooleanParam) command_line_handler.getOption("compressed")).isTrue();
+//END PARSE -compress            
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite            
@@ -563,6 +575,13 @@ public class CmdParser {
      */
     public boolean isOverwrite() {
         return overwrite_value;
+    }
+ 
+    /**
+     * @return Returns the -compress option value.
+     */
+    public boolean isCompressed() {
+        return compressed_value;
     }
     
     /**

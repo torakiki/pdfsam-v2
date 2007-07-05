@@ -37,6 +37,20 @@ public class PdfSimpleConcatenator implements PdfConcatenator {
 		writer = new PdfCopy(document, os);
 	}
 
+	/**
+	 * 
+	 * @param document
+	 * @param os
+	 * @param compressed If true creates a compressed pdf document
+	 * @throws DocumentException
+	 */
+	public PdfSimpleConcatenator(Document document, OutputStream os, boolean compressed) throws DocumentException{
+		this(document, os);
+		if(compressed){
+			writer.setFullCompression();
+		}
+	}
+
 	public void addDocument(PdfReader reader, String ranges) throws Exception {
 		if(reader != null){
 			reader.selectPages(ranges);

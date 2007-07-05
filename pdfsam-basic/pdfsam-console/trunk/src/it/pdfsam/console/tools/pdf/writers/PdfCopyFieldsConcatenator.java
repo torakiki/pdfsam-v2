@@ -35,6 +35,17 @@ public class PdfCopyFieldsConcatenator implements PdfConcatenator {
 		writer = new PdfCopyFields(os);
 	}
 	
+	/**
+	 * @param os
+	 * @param compressed If true creates a compressed pdf document
+	 * @throws DocumentException
+	 */
+	public PdfCopyFieldsConcatenator(OutputStream os, boolean compressed) throws DocumentException{
+		this(os);
+		if(compressed){
+			writer.setFullCompression();
+		}
+	}	
 	
 	public void addDocument(PdfReader reader, String ranges) throws Exception {
 		if(reader != null){

@@ -62,7 +62,7 @@ public class MainConsole implements Serializable{
     /**
      * Console version
      */
-    public static final String VERSION = "0.7.0"; 
+    public static final String VERSION = "0.7.1"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
@@ -75,7 +75,7 @@ public class MainConsole implements Serializable{
     }
 
     /**
-     * It takes input parameters, parse tham. If no exception is thrown it executes the right function (split, concat..)
+     * It takes input parameters, parse them. If no exception is thrown it executes the right function (split, concat..)
      * and return the output message.
      * 
      * @param args Arguments String array.
