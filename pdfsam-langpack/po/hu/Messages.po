@@ -1,50 +1,71 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hungarian translation for pdfsam
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the pdfsam package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
 #
-!=Project-Id-Version\: pdfsam\nReport-Msgid-Bugs-To\: \nPOT-Creation-Date\: 2007-06-12 17\:08+0200\nPO-Revision-Date\: 2007-06-20 19\:38+0000\nLast-Translator\: rainofchaos <rainofchaos@gmail.com>\nLanguage-Team\: shinzey <shinzey>\nMIME-Version\: 1.0\nContent-Type\: text/plain; charset\=UTF-8\nContent-Transfer-Encoding\: 8bit\nX-Poedit-Language\: Chinese\nX-Poedit-Country\: CHINA\nX-Rosetta-Export-Date\: 2007-07-02 12\:28\:08+0000\n
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pdfsam\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-06-12 17:08+0200\n"
+"PO-Revision-Date: 2007-07-01 06:31+0000\n"
+"Last-Translator: Srancsik <srancsik@apu.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Rosetta-Export-Date: 2007-07-02 12:28:07+0000\n"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-File\ name=\u6587\u4ef6\u540d
+msgid "File name"
+msgstr "Fájl"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
-Path=\u8def\u5f84
+msgid "Path"
+msgstr "Útvonal"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:182
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:180
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:183
-Pages=\u9875\u6570
+msgid "Pages"
+msgstr "Oldalak"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:183
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:184
-Page\ Selection=\u9875\u9762\u9009\u62e9
+msgid "Page Selection"
+msgstr "Oldalkijelölés"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:228
-Add\ a\ pdf\ to\ the\ list=\u5411\u5217\u8868\u6dfb\u52a0 PDF \u6587\u4ef6
+msgid "Add a pdf to the list"
+msgstr "PDF hozzáadása a listához"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-Please\ wait\ while\ reading\ =\u8bf7\u7a0d\u5019\u3002\u6b63\u5728\u8bfb\u53d6 
+msgid "Please wait while reading "
+msgstr "Várjon, amíg a beolvasás tart "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:264
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:257
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:260
-Add=\u6dfb\u52a0
+msgid "Add"
+msgstr "Hozzáadás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:269
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:262
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:265
-Remove\ a\ pdf\ from\ the\ list=\u4ece\u5217\u8868\u79fb\u9664 PDF \u6587\u4ef6
+msgid "Remove a pdf from the list"
+msgstr "PDF eltávolítása a listából"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
@@ -52,35 +73,43 @@ Remove\ a\ pdf\ from\ the\ list=\u4ece\u5217\u8868\u79fb\u9664 PDF \u6587\u4ef6
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:311
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:269
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:314
-Remove=\u79fb\u9664
+msgid "Remove"
+msgstr "Eltávolitás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:297
-Clear=\u6e05\u7a7a
+msgid "Clear"
+msgstr "Törlés"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
-Remove\ every\ pdf\ file\ from\ the\ list=\u4ece\u5217\u8868\u79fb\u9664\u6240\u6709\u7684 PDF \u6587\u4ef6
+msgid "Remove every pdf file from the list"
+msgstr "Minden PDF eltávolítása a listából"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
-Destination\ output\ directory\:=\u76ee\u6807\u8f93\u51fa\u76ee\u5f55\uff1a
+msgid "Destination output directory:"
+msgstr "A kimenő adatok könyvtára"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-Cover\ pdf\ file\:=\u5c01\u9762 PDF \u6587\u4ef6\uff1a
+msgid "Cover pdf file:"
+msgstr "Fedlap PDF fájl"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-Footer\ pdf\ file\:=\u5c01\u5e95 PDF \u6587\u4ef6\uff1a
+msgid "Footer pdf file:"
+msgstr "Lábléc PDF file"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-Set\ output\ file=\u8bbe\u7f6e\u8f93\u51fa\u6587\u4ef6
+msgid "Set output file"
+msgstr "Kimeneti fájl beállítása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:353
-Error\:\ Unable\ to\ get\ the\ file\ path.=\u9519\u8bef\uff1a\u65e0\u6cd5\u83b7\u53d6\u6587\u4ef6\u8def\u5f84\u3002
+msgid "Error: Unable to get the file path."
+msgstr "Hiba: A fájl helye (útvonala) nem meghatározható"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
@@ -106,7 +135,8 @@ Error\:\ Unable\ to\ get\ the\ file\ path.=\u9519\u8bef\uff1a\u65e0\u6cd5\u83b7\
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:427
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:599
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:907
-Error\:\ =\u9519\u8bef\uff1a 
+msgid "Error: "
+msgstr "Hiba: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:394
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:421
@@ -123,13 +153,16 @@ Error\:\ =\u9519\u8bef\uff1a
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:163
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:300
-Browse=\u6d4f\u89c8
+msgid "Browse"
+msgstr "Tallóz"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
-Browse\ filesystem\ for\ a\ cover\ file=\u6d4f\u89c8\u6587\u4ef6\u7cfb\u7edf\u4ee5\u67e5\u627e\u5c01\u9762\u6587\u4ef6
+msgid "Browse filesystem for a cover file"
+msgstr "Tallózás a fájlrendszerben a fedlapért"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
-Browse\ filesystem\ for\ a\ footer\ file=\u6d4f\u89c8\u6587\u4ef6\u7cfb\u7edf\u4ee5\u67e5\u627e\u5c01\u5e95\u6587\u4ef6
+msgid "Browse filesystem for a footer file"
+msgstr "Tallózás a fájlrendszerben a lábléc fájlért"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
@@ -137,22 +170,29 @@ Browse\ filesystem\ for\ a\ footer\ file=\u6d4f\u89c8\u6587\u4ef6\u7cfb\u7edf\u4
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:438
-Overwrite\ if\ already\ exists=\u5982\u679c\u5df2\u5b58\u5728\u5c31\u8986\u76d6
+msgid "Overwrite if already exists"
+msgstr "Felülír, amennyiben létezik"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-Destination\ output\ directory=\u76ee\u6807\u8f93\u51fa\u76ee\u5f55
+msgid "Destination output directory"
+msgstr "Kimeneti könyvtár"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
-Browse\ or\ enter\ the\ full\ path\ to\ the\ destination\ output\ directory.=\u6d4f\u89c8\u6216\u8f93\u5165\u76ee\u6807\u8f93\u51fa\u76ee\u5f55\u7684\u5b8c\u6574\u8def\u5f84\u3002
+msgid "Browse or enter the full path to the destination output directory."
+msgstr "Válassza ki, vagy írja be a kimeneti könyvtár elérési útvonalát"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-Check\ the\ box\ if\ you\ want\ to\ overwrite\ the\ output\ files\ if\ they\ already\ exist.=\u5982\u679c\u60f3\u8986\u76d6\u5df2\u5b58\u5728\u7684\u8f93\u51fa\u6587\u4ef6\uff0c\u5c31\u52fe\u9009\u6b64\u6846\u3002
+msgid ""
+"Check the box if you want to overwrite the output files if they already "
+"exist."
+msgstr ""
+"Jelölje meg a nyomógombot, amennyiben felül akarja írni a már létező fájlokat"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
@@ -164,10 +204,12 @@ Check\ the\ box\ if\ you\ want\ to\ overwrite\ the\ output\ files\ if\ they\ alr
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
-Please\ wait\ while\ all\ files\ are\ processed..=\u8bf7\u7b49\u5f85\u6240\u6709\u7684\u6587\u4ef6\u5904\u7406\u5b8c\u6bd5...
+msgid "Please wait while all files are processed.."
+msgstr "Kérem várjon, amíg minden fájl feldolgozásra kerül"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:540
-Execute\ pdf\ add\ cover\ footer=\u6267\u884c PDF \u6dfb\u52a0\u5c01\u9762\u548c\u5c01\u5e95
+msgid "Execute pdf add cover footer"
+msgstr "Llábjegyzeti pdf hzzáadása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
@@ -176,424 +218,578 @@ Execute\ pdf\ add\ cover\ footer=\u6267\u884c PDF \u6dfb\u52a0\u5c01\u9762\u548c
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:410
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:530
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:408
-Run=\u8fd0\u884c
+msgid "Run"
+msgstr "Futtatás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:596
-File\ selected\:\ =\u9009\u62e9\u7684\u6587\u4ef6\uff1a 
+msgid "File selected: "
+msgstr "Kiválasztott fájl: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
-CoverAndFooter\ section\ loaded.=\u5c01\u9762\u548c\u5c01\u5e95\u90e8\u5206\u5df2\u8f7d\u5165\u3002
+msgid "CoverAndFooter section loaded."
+msgstr "A fedlap és lábjegyzet rész betöltődött"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:159
-Source\ file\:=\u6e90\u6587\u4ef6\uff1a
+msgid "Source file:"
+msgstr "Forrásfájl"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
-Select\ a\ PDF\ file\ to\ encrypt=\u9009\u62e9\u8981\u52a0\u5bc6\u7684 PDF \u6587\u4ef6
+msgid "Select a PDF file to encrypt"
+msgstr "Válasszon ki egy PDF fájl-t a kódoláshoz"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
-Owner\ password\:=\u6240\u6709\u8005\u5bc6\u7801\uff1a
+msgid "Owner password:"
+msgstr "Tulajdonon Jelszava"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:210
-Owner\ password\ (Max\ 32\ chars\ long)=\u6240\u6709\u8005\u5bc6\u7801\uff08\u6700\u957f 32 \u5b57\u7b26\uff09
+msgid "Owner password (Max 32 chars long)"
+msgstr "Tulajdonos jelszava (Maximum 22 karakter hosszú)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
-User\ password\:=\u7528\u6237\u5bc6\u7801\uff1a
+msgid "User password:"
+msgstr "A felhasználó jelszava"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
-User\ password\ (Max\ 32\ chars\ long)=\u7528\u6237\u5bc6\u7801\uff08\u6700\u957f 32 \u5b57\u7b26\uff09
+msgid "User password (Max 32 chars long)"
+msgstr "A felhasználó jelszava (Maximum 22 karakter hosszú)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-Encryption\ angorithm\:=\u52a0\u5bc6\u7b97\u6cd5\uff1a
+#, fuzzy
+msgid "Encryption angorithm:"
+msgstr "Kódolási algoritmus"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
-Print=\u6253\u5370
+msgid "Print"
+msgstr "Nyomtatás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:232
-Low\ quality\ print=\u4f4e\u8d28\u91cf\u6253\u5370
+msgid "Low quality print"
+msgstr "Alacsony felbontású nyomtatás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:235
-Copy\ or\ extract=\u590d\u5236\u6216\u63d0\u53d6
+msgid "Copy or extract"
+msgstr "Másolás, vagy kiemelés"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
-Modify=\u4fee\u6539
+msgid "Modify"
+msgstr "Módosít"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
-Add\ or\ modify\ text\ annotations=\u6dfb\u52a0\u6216\u4fee\u6539\u6587\u672c\u6ce8\u91ca
+msgid "Add or modify text annotations"
+msgstr "Magyarázó szöveg hozzáadása, vagy módosítása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
-Fill\ form\ fields=\u586b\u5199\u8868\u5355\u5b57\u6bb5
+msgid "Fill form fields"
+msgstr "Formanyomtatvány mezőinek kitöltése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
-Extract\ for\ use\ by\ accessibility\ dev.=\u63d0\u53d6\u4ee5\u7528\u4e8e\u53ef\u8bbf\u95ee\u6027\u5f00\u53d1\u3002
+#, fuzzy
+msgid "Extract for use by accessibility dev."
+msgstr "Kinyerés a hozzáférhetőség javításáért"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
-Manipulate\ pages\ and\ add\ bookmarks=\u64cd\u4f5c\u9875\u9762\u548c\u6dfb\u52a0\u4e66\u7b7e
+msgid "Manipulate pages and add bookmarks"
+msgstr "Oldalak és könyvjelzők hozzáadása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
-Allow\ all=\u5168\u90e8\u5141\u8bb8
+msgid "Allow all"
+msgstr "Minden engedélyezése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-Encrypt\ options\:=\u52a0\u5bc6\u9009\u9879\uff1a
+msgid "Encrypt options:"
+msgstr "Kódolási lehetőségek"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-Destination\ folder\:=\u76ee\u6807\u6587\u4ef6\u5939\uff1a
+msgid "Destination folder:"
+msgstr "Kimeneti könyvtár"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
-Same\ as\ source=\u548c\u6e90\u76f8\u540c
+msgid "Same as source"
+msgstr "Ugyanaz, mint a forrás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:301
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
-Choose\ a\ folder=\u9009\u62e9\u6587\u4ef6\u5939
+msgid "Choose a folder"
+msgstr "Könyvtár választása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:346
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:310
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:306
-Use\ the\ same\ output\ folder\ as\ the\ input\ file\ or\ choose\ a\ folder.=\u4f7f\u7528\u548c\u8f93\u5165\u6587\u4ef6\u76f8\u540c\u7684\u8f93\u51fa\u6587\u4ef6\u5939\uff0c\u6216\u9009\u62e9\u4e00\u4e2a\u6587\u4ef6\u5939\u3002
+msgid "Use the same output folder as the input file or choose a folder."
+msgstr ""
+"Használja a kimeneti mappaként  ugyanazt a foldert mint amiben a bemeneti "
+"fájl van, vagy válasszon könyvtárat"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:307
-To\ choose\ a\ folder\ browse\ or\ enter\ the\ full\ path\ to\ the\ destination\ output\ directory.=\u8981\u9009\u62e9\u6587\u4ef6\u5939\uff0c\u6d4f\u89c8\u6216\u8f93\u5165\u76ee\u6807\u8f93\u51fa\u76ee\u5f55\u7684\u5b8c\u6574\u8def\u5f84\u3002
+msgid ""
+"To choose a folder browse or enter the full path to the destination output "
+"directory."
+msgstr ""
+"A mappa kiválasztásához tallózzon, vagy írja be a teljes elérési útvonalat, "
+"ahová a kimeneti fájlokat menteni szeretné"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-Output\ options\:=\u8f93\u51fa\u9009\u9879\uff1a
+msgid "Output options:"
+msgstr "Kimeneti lehetőségek"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:322
-Output\ file\ names\ prefix\:=\u8f93\u51fa\u6587\u4ef6\u540d\u524d\u7f00\uff1a
+msgid "Output file names prefix:"
+msgstr "Előtag a kimeneti fájlok nevében:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:394
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:336
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:331
-Output\ files\ prefix=\u8f93\u51fa\u6587\u4ef6\u540d\u524d\u7f00
+msgid "Output files prefix"
+msgstr "Előtag a kimeneti fájlok nevében:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
-If\ it\ contains\ "[TIMESTAMP]"\ it\ performs\ variable\ substitution.=\u5982\u679c\u5305\u542b "[TIMESTAMP]"\uff0c\u5c31\u4f1a\u8fdb\u884c\u53d8\u91cf\u66ff\u6362\u3002
+msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
+msgstr ""
+"Amennyiben időbélyeget tartalmaz, különböző helyettesítéseket hajt végre"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
-Ex.\ [BASENAME]_prefix_[TIMESTAMP]\ generates\ FileName_prefix_20070517_113423471.pdf.=\u4f8b\u5982\uff0c[BASENAME]_prefix_[TIMESTAMP] \u4ea7\u751f FileName_prefix_20070517_113423471.pdf\u3002
+msgid ""
+"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
+"FileName_prefix_20070517_113423471.pdf."
+msgstr ""
+"Például: Alapnév_Előtag_Időbélyeg a következőt hozza létre: "
+"Fájlnév_előtag_20070517_113423471.pdf"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:397
-If\ it\ doesn't\ contain\ "[TIMESTAMP]"\ it\ generates\ oldstyle\ output\ file\ names.=\u5982\u679c\u4e0d\u5305\u542b "[\u65f6\u95f4\u6233]"\uff0c\u5c31\u4ea7\u751f\u65e7\u683c\u5f0f\u7684\u8f93\u51fa\u6587\u4ef6\u540d\u3002
+msgid ""
+"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
+"names."
+msgstr ""
+"Amennyiben nem tartalmaz időbélyeget, akkor a hagyományos fájlneveket hoz "
+"létre"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:398
-Available\ variables\:\ [TIMESTAMP],\ [BASENAME].=\u53ef\u7528\u53d8\u91cf\uff1a[TIMESTAMP]\u3001[BASENAME]\u3002
+msgid "Available variables: [TIMESTAMP], [BASENAME]."
+msgstr "Elérhető változók: Időbélyeg, Alapnév"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-Encrypt\ selected\ file=\u52a0\u5bc6\u9009\u62e9\u7684\u6587\u4ef6
+msgid "Encrypt selected file"
+msgstr "A kiválasztott fájl kódolása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-Encrypt\ section\ loaded.=\u52a0\u5bc6\u90e8\u5206\u5df2\u8f7d\u5165\u3002
+msgid "Encrypt section loaded."
+msgstr "A kiválasztott kódolási rész betöltődött"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:276
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:323
-Move\ Up=\u4e0a\u79fb
+msgid "Move Up"
+msgstr "Mozgatás felfelé"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:277
-Move\ up\ selected\ pdf\ file=\u4e0a\u79fb\u9009\u62e9\u7684 PDF \u6587\u4ef6
+msgid "Move up selected pdf file"
+msgstr "A kiválasztott PDF fájl felfelé mozgatása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:285
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:332
-Move\ Down=\u4e0b\u79fb
+msgid "Move Down"
+msgstr "Mozgatás lefelé"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
-Move\ down\ selected\ pdf\ file=\u4e0b\u79fb\u9009\u62e9\u7684 PDF \u6587\u4ef6
+msgid "Move down selected pdf file"
+msgstr "A kiválasztott PDF fájl lefelé mozgatása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:298
-Remove\ every\ pdf\ file\ from\ the\ merge\ list=\u4ece\u5408\u5e76\u5217\u8868\u79fb\u9664\u5168\u90e8 PDF \u6587\u4ef6
+msgid "Remove every pdf file from the merge list"
+msgstr "Minden PDF fájl törlése az egyesítési listáról"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-Destination\ output\ file\:=\u76ee\u6807\u8f93\u51fa\u6587\u4ef6\uff1a
+msgid "Destination output file:"
+msgstr "Kimeneti fájl útvonala:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-Merge\ options\:=\u5408\u5e76\u9009\u9879\uff1a
+msgid "Merge options:"
+msgstr "Egyesítési beállítások"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
-PDF\ documents\ contain\ forms=PDF \u6587\u6863\u5305\u542b\u8868\u5355
+msgid "PDF documents contain forms"
+msgstr "A PDF dokumentumok tartalmaznak űrlapot"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:394
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-Merge\ type=\u5408\u5e76\u7c7b\u578b
+msgid "Merge type"
+msgstr "Egyesítési típus"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
-Unchecked=\u672a\u68c0\u67e5
+msgid "Unchecked"
+msgstr "Kijelöletlen"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
-Use\ this\ merge\ type\ for\ standard\ pdf\ documents=\u8fd9\u79cd\u5408\u5e76\u7c7b\u578b\u7528\u4e8e\u6807\u51c6 PDF \u6587\u6863
+msgid "Use this merge type for standard pdf documents"
+msgstr "Használja ezt az egyesítési típust a hagyományos pdf dokumentumokhoz"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-Checked=\u5df2\u68c0\u67e5
+msgid "Checked"
+msgstr "Kijelölve"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-Use\ this\ merge\ type\ for\ pdf\ documents\ containing\ forms=\u8fd9\u79cd\u5408\u5e76\u7c7b\u578b\u7528\u4e8e\u5305\u542b\u8868\u5355\u7684 PDF \u6587\u6863
+msgid "Use this merge type for pdf documents containing forms"
+msgstr ""
+"Hasznűéka ezt az egyesítési típust az űrlapokat tartalmazó pdf "
+"dokumentumokhoz"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
-Note=\u6ce8\u610f
+msgid "Note"
+msgstr "Jegyzet"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
-Setting\ this\ option\ the\ documents\ will\ be\ completely\ loaded\ in\ memory=\u8bbe\u7f6e\u6b64\u9009\u9879\uff0c\u6587\u6863\u5c31\u4f1a\u88ab\u5b8c\u5168\u8f7d\u5165\u5185\u5b58
+msgid "Setting this option the documents will be completely loaded in memory"
+msgstr ""
+"Ezt a lehetőséget kiválasztva a dokumentum teljesen a memóriába fog töltődni"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:444
-Destination\ output\ file=\u76ee\u6807\u8f93\u51fa\u6587\u4ef6
+msgid "Destination output file"
+msgstr "Kimeneti fájl helye:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:445
-Browse\ or\ enter\ the\ full\ path\ to\ the\ destination\ output\ file.=\u6d4f\u89c8\u6216\u8f93\u5165\u76ee\u6807\u8f93\u51fa\u6587\u4ef6\u7684\u5b8c\u6574\u8def\u5f84\u3002
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Tallózzon, vagy írja be a kimeneti fájl elérésének a helyét"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
-Check\ the\ box\ if\ you\ want\ to\ overwrite\ the\ output\ file\ if\ it\ already\ exists.=\u5982\u679c\u5411\u8986\u76d6\u5df2\u5b58\u5728\u7684\u8f93\u51fa\u6587\u4ef6\uff0c\u5c31\u52fe\u9009\u6b64\u6846\u3002
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr ""
+"Jelölje ki ezt a dobozt, amennyiben felül akarja írni a már létező fájlt"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
-Execute\ pdf\ merge=\u6267\u884c PDF \u5408\u5e76
+msgid "Execute pdf merge"
+msgstr "A pdf egyesítés végrehajtásas"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
-Merge\ section\ loaded.=\u5408\u5e76\u90e8\u5206\u5df2\u8f7d\u5165\u3002
+msgid "Merge section loaded."
+msgstr "A megnyitott részek egyesítése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
-Browse\ filesystem\ for\ the\ first\ file\ to\ mix=\u6d4f\u89c8\u6587\u4ef6\u7cfb\u7edf\u4ee5\u67e5\u627e\u8981\u6df7\u5408\u7684\u7b2c\u4e00\u4e2a\u6587\u4ef6
+msgid "Browse filesystem for the first file to mix"
+msgstr "Válassza ki az első fájt"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
-Browse\ filesystem\ for\ the\ second\ file\ to\ mix=\u6d4f\u89c8\u6587\u4ef6\u7cfb\u7edf\u4ee5\u67e5\u627e\u8981\u6df7\u5408\u7684\u7b2c\u4e00\u4e2a\u6587\u4ef6
+msgid "Browse filesystem for the second file to mix"
+msgstr "Válassza ki a második fájt"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-First\ pdf\ document\:=\u7b2c\u4e00\u4e2a PDF \u6587\u6863\uff1a
+msgid "First pdf document:"
+msgstr "Első pdf dokumentum"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-Second\ pdf\ document\:=\u7b2c\u4e8c\u4e2a PDF \u6587\u6863\uff1a
+msgid "Second pdf document:"
+msgstr "Második pdf dokumentum"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-Reverse\ this\ document=\u53cd\u8f6c\u6b64\u6587\u6863
+msgid "Reverse this document"
+msgstr "Fordítsa meg ezt a dokumentumot"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
-Execute\ pdf\ alternate\ mix=\u6267\u884c PDF \u4ea4\u66ff\u6df7\u5408
+#, fuzzy
+msgid "Execute pdf alternate mix"
+msgstr "Váltakozó Pdf mix végrehajtása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
-AlternateMix\ section\ loaded.=\u4ea4\u66ff\u6df7\u5408\u90e8\u5206\u5df2\u8f7d\u5165\u3002
+msgid "AlternateMix section loaded."
+msgstr "A váltakozó pdf rész betöltődött"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
-Select\ a\ PDF\ file\ to\ split=\u9009\u62e9\u8981\u62c6\u5206\u7684 PDF \u6587\u4ef6
+msgid "Select a PDF file to split"
+msgstr "Válassza ki a pdf fájlt, amit szét kell válaszani"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:195
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:194
-Burst\ (split\ into\ single\ pages)=\u5288\u5f00\uff08\u62c6\u5206\u6210\u5355\u9875\uff09
+msgid "Burst (split into single pages)"
+msgstr "Szétszakítás (szétválasztás oldalanként)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:198
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:197
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
-Split\ every\ "n"\ pages=\u62c6\u5206\u6bcf n \u9875
+msgid "Split every \"n\" pages"
+msgstr "Minden \"n\"-dik oldal szétválasztása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:206
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:205
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-Split\ even\ pages=\u62c6\u5206\u5076\u6570\u9875
+msgid "Split even pages"
+msgstr "Páros oldalak szétválasztása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:209
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:208
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-Split\ odd\ pages=\u62c6\u5206\u5947\u6570\u9875
+msgid "Split odd pages"
+msgstr "Páratlan oldalak szétválasztása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:211
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-Split\ after\ these\ pages=\u5728\u8fd9\u4e9b\u9875\u9762\u540e\u62c6\u5206
+msgid "Split after these pages"
+msgstr "Szétválasztás ezek az oldalak után"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-Split\ options=\u62c6\u5206\u9009\u9879
+msgid "Split options"
+msgstr "Szétválasztási lehetőségek"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
-Burst=\u5288\u5f00
+msgid "Burst"
+msgstr "Szétrobbanás"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
-Explode\ the\ pdf\ document\ into\ single\ pages=\u628a PDF \u6587\u6863\u7206\u7834\u6210\u5355\u9875
+msgid "Explode the pdf document into single pages"
+msgstr "A pdf dokumentum szétválasztása oldalanként"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
-Split\ the\ document\ every\ "n"\ pages=\u6bcf n \u9875\u5c31\u62c6\u5206\u4e00\u6b21\u6587\u6863
+msgid "Split the document every \"n\" pages"
+msgstr "A dokumentum szétválasztása minden \"n\"-dik oldalnál"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-Split\ the\ document\ every\ even\ page=\u6bcf\u9047\u5230\u5076\u6570\u9875\u5c31\u62c6\u5206\u6587\u6863
+msgid "Split the document every even page"
+msgstr "A dokumentum szétválasztása páros oldalanként"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-Split\ the\ document\ every\ odd\ page=\u6bcf\u9047\u5230\u5947\u6570\u9875\u5c31\u62c6\u5206\u6587\u6863
+msgid "Split the document every odd page"
+msgstr "A dokumentum szétválasztása páratlan oldalanként"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-Split\ the\ document\ after\ page\ numbers\ (num1-num2-num3..)=\u5728\u9875\u7801\uff08num1-num2-num3...\uff09\u4e4b\u540e\u62c6\u5206\u6587\u6863
+msgid "Split the document after page numbers (num1-num2-num3..)"
+msgstr ""
+"A dokumentum szétválasztása a következő oldalszámoknál (1. szám- 2. szám - "
+"3. szám...)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-Split\ options\:=\u62c6\u5206\u9009\u9879\uff1a
+msgid "Split options:"
+msgstr "Szétválasztási lehetőségek"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-If\ it\ contains\ "[CURRENTPAGE]"\ or\ "[TIMESTAMP]"\ it\ performs\ variable\ substitution.=\u5982\u679c\u5305\u542b\ufffd[CURRENTPAGE]\ufffd\u6216\ufffd[TIMESTAMP]\ufffd\uff0c\u5c31\u4f1a\u8fdb\u884c\u53d8\u91cf\u66ff\u6362\u3002
+#, fuzzy
+msgid ""
+"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
+"substitution."
+msgstr ""
+"Ha tartalmazza a [Jelenlegi odlal] \"[Időbélyeg]\"-t akkor különböző "
+"helyettesítéseket hajt végre"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
-Ex.\ prefix_[BASENAME]_[CURRENTPAGE]\ generates\ prefix_FileName_005.pdf.=\u4f8b\u5982\uff0cprefix_[BASENAME]_[CURRENTPAGE] \u4ea7\u751f prefix_FileName_005.pdf\u3002
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr ""
+"Például: Előtag_alapnév_jelenlegi oldal a következőt hozza létre: "
+"előtag_fájl neve_005.pdf"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-If\ it\ doesn't\ contain\ "[CURRENTPAGE]"\ or\ "[TIMESTAMP]"\ it\ generates\ oldstyle\ output\ file\ names.=\u5982\u679c\u4e0d\u5305\u542b\ufffd[CURRENTPAGE]\ufffd\u6216\ufffd[TIMESTAMP]\ufffd\uff0c\u5c31\u4ea7\u751f\u65e7\u683c\u5f0f\u7684\u8f93\u51fa\u6587\u4ef6\u540d\u3002
+msgid ""
+"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
+"oldstyle output file names."
+msgstr ""
+"Ha nem tartalmazza a [Jelenlegi odlal] \"[Időbélyeg]\"-t akkor hagyományos "
+"fájlneveket készít"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-Available\ variables\:\ [CURRENTPAGE],\ [TIMESTAMP],\ [BASENAME].=\u53ef\u7528\u53d8\u91cf\uff1a[CURRENTPAGE]\u3001[TIMESTAMP]\u3001[BASENAME]\u3002
+msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr "Rendelkezésre álló változók: [Jelenlegi oldal], [Időbélyeg], [Alapnév]"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
-Split\ selected\ file=\u62c6\u5206\u9009\u62e9\u7684\u6587\u4ef6
+msgid "Split selected file"
+msgstr "A kijelölt fájl szétválasztása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
-Split\ section\ loaded.=\u62c6\u5206\u90e8\u5206\u5df2\u8f7d\u5165\u3002
+msgid "Split section loaded."
+msgstr "A szétválasztptt rász megnyitva"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
-Building\ menus..=\u751f\u6210\u83dc\u5355...
+msgid "Building menus.."
+msgstr "Menü kialakítása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
-Building\ buttons\ bar..=\u6784\u5efa\u6309\u94ae\u680f...
+msgid "Building buttons bar.."
+msgstr "Nyomógombok kialakítása"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
-Loading\ plugins..=\u8f7d\u5165\u63d2\u4ef6...
+msgid "Loading plugins.."
+msgstr "Pluginek betöltése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
-Building\ tree..=\u6784\u5efa\u6811\u5f62\u56fe...
+msgid "Building tree.."
+msgstr "A fastruktúra kiépítése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
-Building\ status\ bar..=\u6784\u5efa\u72b6\u6001\u680f...
+#, fuzzy
+msgid "Building status bar.."
+msgstr "Status bar építése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-Version\:\ =\u7248\u672c\uff1a 
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-Language\:\ =\u8bed\u8a00\uff1a 
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-Build\ date\:\ =\u751f\u6210\u65e5\u671f\uff1a 
+msgid "Version: "
+msgstr "Verzió: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-Website\:\ =\u7f51\u7ad9\uff1a 
+msgid "Language: "
+msgstr "Nyelv: "
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
+msgid "Build date: "
+msgstr "Létrehozás időpontja: "
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
+msgid "Website: "
+msgstr "Weboldal: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
-Name=\u540d\u79f0
+msgid "Name"
+msgstr "Név"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
-Version=\u7248\u672c
+msgid "Version"
+msgstr "Verzió"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
-Author=\u4f5c\u8005
+msgid "Author"
+msgstr "A szerző"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:167
-Contributes\:\ =\u6350\u732e\uff1a 
+msgid "Contributes: "
+msgstr "Közreműködők "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:110
-Look\ and\ feel\:=\u5916\u89c2\u611f\u89c9\uff1a
+#, fuzzy
+msgid "Look and feel:"
+msgstr "Lásd és érezd:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:122
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:113
-Theme\:=\u4e3b\u9898\uff1a
+msgid "Theme:"
+msgstr "Téma:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:125
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:116
-Language\:=\u8bed\u8a00\uff1a
+msgid "Language:"
+msgstr "Nyelv:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:128
-Log\ level\:=\u65e5\u5fd7\u7ea7\u522b\uff1a
+msgid "Log level:"
+msgstr "Naplózási szint:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
-Load\ default\ environment\ at\ startup\:=\u542f\u52a8\u65f6\u8f7d\u5165\u9ed8\u8ba4\u73af\u5883\uff1a
+msgid "Load default environment at startup:"
+msgstr "Az alap környezet betöltése a megnyitáskor"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
-Settings\ =\u8bbe\u7f6e 
+msgid "Settings "
+msgstr "Beállítások: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
-Language=\u8bed\u8a00
+msgid "Language"
+msgstr "Nyelv:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
-Set\ your\ preferred\ language\ (restart\ needed)=\u8bbe\u7f6e\u9996\u9009\u8bed\u8a00\uff08\u9700\u8981\u91cd\u65b0\u542f\u52a8\uff09
+msgid "Set your preferred language (restart needed)"
+msgstr "Válassza ki a kívánt nyelvet (újraindítás szükséges)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
-Look\ and\ feel=\u5916\u89c2\u611f\u89c9
+msgid "Look and feel"
+msgstr "Lásd és érezd:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
-Set\ your\ preferred\ look\ and\ feel\ and\ your\ preferred\ theme\ (restart\ needed)=\u8bbe\u7f6e\u9996\u9009\u5916\u89c2\u611f\u89c9\u548c\u9996\u9009\u4e3b\u9898\uff08\u9700\u8981\u91cd\u65b0\u542f\u52a8\uff09
+msgid ""
+"Set your preferred look and feel and your preferred theme (restart needed)"
+msgstr ""
+"Válassza ki a megfelelő beállításokat és a kívánt témát (újraindítás "
+"szükséges)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
-Log\ level=\u65e5\u5fd7\u7ea7\u522b
+msgid "Log level"
+msgstr "Naplózási szint:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
-Set\ a\ log\ detail\ level\ (restart\ needed)=\u8bbe\u7f6e\u65e5\u671f\u8be6\u7ec6\u7ea7\u522b\uff08\u9700\u8981\u91cd\u65b0\u542f\u52a8\uff09
+msgid "Set a log detail level (restart needed)"
+msgstr "A naplózási szint részleteinek beállítása (úraindítás szükséges)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
-Default\ env.=\u9ed8\u8ba4\u73af\u5883\u3002
+msgid "Default env."
+msgstr "Alapértelmezett környezet"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
-Select\ a\ previously\ saved\ env.\ file\ that\ will\ be\ automatically\ loaded\ at\ startup=\u9009\u62e9\u5148\u524d\u4fdd\u5b58\u7684\u73af\u5883\u6587\u4ef6\uff0c\u7adf\u4f1a\u5728\u542f\u52a8\u65f6\u81ea\u52a8\u8f7d\u5165\u3002
+msgid ""
+"Select a previously saved env. file that will be automatically loaded at "
+"startup"
+msgstr ""
+"Korábban mentett környezet kiválasztása, amely a program indításakor "
+"automatikusan betöltődik"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:241
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:190
-Save=\u4fdd\u5b58
+msgid "Save"
+msgstr "Ment"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
@@ -601,71 +797,92 @@ Save=\u4fdd\u5b58
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-Error\:=\u9519\u8bef\uff1a
+msgid "Error:"
+msgstr "Hiba:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-Save\ environment=\u4fdd\u5b58\u73af\u5883
+msgid "Save environment"
+msgstr "Környezet elmentése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-Load\ environment=\u8f7d\u5165\u73af\u5883
+msgid "Load environment"
+msgstr "Környezet betöltése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:117
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:121
-Save\ log=\u4fdd\u5b58\u65e5\u5fd7
+msgid "Save log"
+msgstr "Napló mentése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:121
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:226
-Clear\ log=\u6e05\u7a7a\u65e5\u5fd7
+msgid "Clear log"
+msgstr "Napló törtlése"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:237
-Exit=\u9000\u51fa
+msgid "Exit"
+msgstr "Kilép"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:217
-File=\u6587\u4ef6
+msgid "File"
+msgstr "Fájl"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-Copy=\u590d\u5236
+msgid "Copy"
+msgstr "Másol"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
-Select\ all=\u5168\u9009
+msgid "Select all"
+msgstr "Mindet kijelöl"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:143
-Log\ level\:\ =\u65e5\u5fd7\u7ea7\u522b\uff1a 
+msgid "Log level: "
+msgstr "Naplózási szint "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
-Unknown\ action.=\u672a\u77e5\u64cd\u4f5c\u3002
+msgid "Unknown action."
+msgstr "Ismeretlen cselekmény"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
-Log\ saved.=\u65e5\u5fd7\u5df2\u4fdd\u5b58\u3002
+msgid "Log saved."
+msgstr "Napló mentve"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:264
-RuntimeError\:=\u8fd0\u884c\u65f6\u9519\u8bef\uff1a
+msgid "RuntimeError:"
+msgstr "Futási hiba:"
 
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-Browse\ filesystem\ for\ a\ destination\ file=\u6d4f\u89c8\u6587\u4ef6\u7cfb\u7edf\u5df2\u67e5\u627e\u76ee\u6807\u6587\u4ef6
+msgid "Browse filesystem for a destination file"
+msgstr "Tallózzon a fájl megtalálásához"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
-About=\u5173\u4e8e
+msgid "About"
+msgstr "A programról"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:248
-Info=\u4fe1\u606f
+msgid "Info"
+msgstr "Adatok"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:111
-Informations\:=\u4fe1\u606f\uff1a
+msgid "Informations:"
+msgstr "Adatok"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-Application\ name\:\ =\u7a0b\u5e8f\u540d\u79f0\uff1a 
+msgid "Application name: "
+msgstr "Alkalmazás neve: "
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-Application\ version\:\ =\u7a0b\u5e8f\u7248\u672c\uff1a 
+msgid "Application version: "
+msgstr "Alkalmazás verziószáma: "
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:140
-Installed\ plugins\:=\u5df2\u5b89\u88c5\u7684\u63d2\u4ef6\uff1a
+msgid "Installed plugins:"
+msgstr "Telepített pluginek:"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
-Close=\u5173\u95ed
+msgid "Close"
+msgstr "Bezárás"

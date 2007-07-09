@@ -61,6 +61,18 @@
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/tr/Messages.po ${pot}"/>
 				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/fi/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/da/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/hu/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/pl/Messages.po ${pot}"/>
+				 </exec>
  	        </target>
  	
 			<!-- generete properties -->
@@ -100,6 +112,18 @@
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_tr_TR.properties ${po}/tr/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_fi_FI.properties ${po}/fi/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_da_DA.properties ${po}/da/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_hu_HU.properties ${po}/hu/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_pl_PL.properties ${po}/pl/Messages.po"/>
 				 </exec>
 			 </target>
 			

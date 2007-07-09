@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <languages>
-    <language value="it_IT"/>  
-    <language value="en_GB"/>  
-    <language value="es_ES"/>  
-    <language value="fr_FR"/>  
-    <language value="ru_RU"/>  
-    <language value="pt_BR"/>  
-    <language value="sv_SE"/> 
-    <language value="el_EL"/> 
-    <language value="tr_TR"/> 
-    <language value="nl_NL"/>	
+    <language value="it_IT" description="Italian" />  
+    <language value="en_GB" description="English" />    
+    <language value="es_ES" description="Spanish" />    
+    <language value="fr_FR" description="French" />    
+    <language value="ru_RU" description="Russian" />    
+    <language value="pt_BR" description="Brazilian Portuguese" />    
+    <language value="sv_SE" description="Swedish" />   
+    <language value="el_EL" description="Greek" />   
+    <language value="tr_TR" description="Turkish" />   
+    <language value="nl_NL" description="Dutch" />  	
+    <language value="fi_FI" description="Finnish" />  	
+    <language value="zh_CN" description="Simplified Chinese" />  	
+    <language value="da_DA" description="Danish" />  	
+    <language value="pl_PL" description="Polish" />
 </languages>
