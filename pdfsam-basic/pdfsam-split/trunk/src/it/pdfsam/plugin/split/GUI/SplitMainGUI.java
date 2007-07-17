@@ -44,6 +44,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -114,7 +115,10 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     private final JPanel split_options_panel = new JPanel();
     private final JPanel destination_panel = new JPanel();
     private final JPanel output_options_panel = new JPanel();
-
+//checks
+    private final JCheckBox overwrite_checkbox = new JCheckBox();
+    private JCheckBox output_compressed_check = new JCheckBox();
+    
 //labels    
     final JLabel source_file_label = new JLabel();
     final JLabel split_options_label = new JLabel();
@@ -127,7 +131,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.3.0";
+    private final String PLUGIN_VERSION = "0.3.1";
     
 /**
  * Constructor
@@ -275,7 +279,15 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         dest_folder_text = new JTextField();
         dest_folder_text.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destination_panel.add(dest_folder_text);
-
+//CHECK_BOX
+        overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
+        overwrite_checkbox.setSelected(true);
+        destination_panel.add(overwrite_checkbox);
+        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);
+        
         browse_dest_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int return_val = browse_dest_file_chooser.showOpenDialog(browse_dest_button.getParent());
@@ -373,7 +385,8 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
                     }else{
                         args.add(dest_folder_text.getText());
                     }
-                   // args.add("-overwrite=true");                    
+                    if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+                    if (output_compressed_check.isSelected()) args.add("-compressed");                    
                     args.add("split"); 
                 }catch(Exception any_ex){    
                     fireLogActionPerformed("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), "FF0000");
@@ -501,7 +514,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         split_spring_layout.putConstraint(SpringLayout.WEST, split_options_label, 0, SpringLayout.WEST, source_text_field);
         split_spring_layout.putConstraint(SpringLayout.NORTH, dest_folder_label, 5, SpringLayout.SOUTH, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, dest_folder_label, 0, SpringLayout.WEST, split_options_panel);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 295, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 305, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 205, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, split_options_panel);
@@ -515,6 +528,15 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         destination_panel_layout.putConstraint(SpringLayout.NORTH, dest_folder_text, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
+        
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, dest_folder_text);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);
+        
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, dest_folder_text);
+
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, browse_dest_button, 0, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.EAST, browse_dest_button, -10, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_dest_button, -25, SpringLayout.SOUTH, dest_folder_text);
@@ -527,7 +549,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_label, 0, SpringLayout.WEST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_label, 5, SpringLayout.SOUTH, destination_panel);
 		
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 370, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 380, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_panel, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_panel, 0, SpringLayout.SOUTH, output_options_label);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_panel, 0, SpringLayout.WEST, output_options_label);
@@ -544,10 +566,10 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         s_panel_layout.putConstraint(SpringLayout.SOUTH, prefix_help_label, -1, SpringLayout.SOUTH, output_options_panel);
         s_panel_layout.putConstraint(SpringLayout.EAST, prefix_help_label, -1, SpringLayout.EAST, output_options_panel);
         
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 405, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 415, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, run_button, -5, SpringLayout.EAST, output_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, run_button, 0, SpringLayout.WEST, browse_button);
-        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 380, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 390, SpringLayout.NORTH, this);
 
         split_spring_layout.putConstraint(SpringLayout.SOUTH, progress_bar, 15, SpringLayout.NORTH, progress_bar);
         split_spring_layout.putConstraint(SpringLayout.EAST, progress_bar, 0, SpringLayout.EAST, output_options_panel);
