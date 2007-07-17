@@ -20,24 +20,21 @@ package it.pdfsam.types;
  * @see     it.pdfsam.utils.ThemeSelector
  */
 
-public class ListItem {
+public class ListItem implements Comparable{
 	private String value;
 	private String id;
 	
 	/**
-	 * Costruttore. 
-	 * Crea un'istanza di ListItem.
+	 * Constructor
 	 * */
 	public ListItem() {
 		this.value = "";
 		this.id = "";
 	}
 	/**
-	 * Costruttore. 
-	 * Crea un'istanza di ListItem.
-	 * 
-	 * @param id Id associato al valore
-	 * @param value Valore
+	 * Constructor. 
+	 * @param id
+	 * @param value
 	 * */	
 	public ListItem(String id, String value ) {
 		this.value = value;
@@ -45,11 +42,9 @@ public class ListItem {
 	}
 	
 	/**
-	 * Costruttore. 
-	 * Crea un'istanza di ListItem.
-	 * 
-	 * @param id Id associato al valore
-	 * @param value Valore
+	 * Constructor. 
+	 * @param id 
+	 * @param value
 	 * */	
 	public ListItem(int id, String value ) {
 		try{
@@ -63,35 +58,46 @@ public class ListItem {
 	}
 	
 	/**
-	 * 
-	 * @return Il valore del ListItem
+	 * @return value
 	 */
 	public String getValue() {
 		return value;
 	}
 	
 	/**
-	 * 
-	 * @return L'id associato al valore
+	 * @return id
 	 */	
 	public String getId() {
 		return id;
 	}
 
     /**
-     * Metodo utilizzato per settare il valore della propriet� <code>inputvalue</code>
-     * @param inputvalue Valore da settare.
+     * sets the <code>inputvalue</code> property
+     * @param inputvalue.
      */
 	public void setValue(String inputvalue) {
 		this.value = inputvalue;
 	}
 	
     /**
-     * Metodo utilizzato per settare il valore della propriet� <code>inputid</code>
-     * @param inputid ID da settare.
+     * sets the <code>inputid</code> property
+     * @param inputid
      */	
 	public void setId(String inputid) {
 		this.id = inputid;
+	}
+	
+	/**
+	 * Compare two objects
+	 */
+	public int compareTo(Object arg0) {
+		int retVal = 0;
+		if (!(arg0 instanceof ListItem)){
+	      throw new ClassCastException("ListItem object expected.");
+	    }else{
+	    	retVal = this.getValue().compareTo(((ListItem)arg0).getValue());
+	    }
+		return retVal;
 	}
 	
 }

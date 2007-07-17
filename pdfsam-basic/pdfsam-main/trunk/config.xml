@@ -10,9 +10,9 @@
   <settings> 
     <lookAndfeel> 
       <LAF>5</LAF>  
-      <theme>11</theme> 
+      <theme>1</theme> 
     </lookAndfeel>  
-    <i18n>zh_CN</i18n>  
+    <i18n>it_IT</i18n>  
     <plugs_absolute_dir/> 
   </settings>  
   <adata> 

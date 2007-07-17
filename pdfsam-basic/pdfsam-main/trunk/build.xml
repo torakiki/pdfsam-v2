@@ -3,16 +3,16 @@
 	
     <property name="user.name" value="Andrea Vacondio"/>
 	<!-- main base dir -->
-    <property name="project.dir" value="G:\pdfsam\workspace-basic"/>
+    <property name="project.dir" value="F:\pdfsam\workspace-basic"/>
 	<!-- where source package is store-->
-	<property name="src.dir" value="G:\pdfsam\workspace-basic/pdfsam-src"/>
+	<property name="src.dir" value="F:\pdfsam\workspace-basic/pdfsam-src"/>
     <property name="launcher.project.dir" value="${project.dir}/pdfsam-launcher"/>
 		
     <property name="pdfsam.dir" value="${project.dir}/pdfsam-main"/>
     <property name="pdfsam.classes.dir" value="${pdfsam.dir}/bin"/>
     <property name="pdfsam.src.dir" value="${pdfsam.dir}/src"/>
     <property name="pdfsam.jar.name" value="pdfsam"/>
-    <property name="pdfsam.jar.version" value="0.7b1"/>   
+    <property name="pdfsam.jar.version" value="0.7b2"/>   
     <property name="pdfsam.jar.dir" value="${project.dir}/pdfsam-main"/>   
  	
     <property name="console.dir" value="${project.dir}/pdfsam-console"/>
@@ -20,21 +20,21 @@
     <property name="console.src.dir" value="${console.dir}/src"/>
     <property name="console.jar.dir" value="${pdfsam.dir}/lib"/>
     <property name="console.jar.name" value="pdfsam-console"/>
-    <property name="console.jar.version" value="0.7.0"/>   
+    <property name="console.jar.version" value="0.7.1"/>   
 	
     <property name="merge.dir" value="${project.dir}/pdfsam-merge"/>
     <property name="merge.classes.dir" value="${merge.dir}/bin"/>
     <property name="merge.src.dir" value="${merge.dir}/src"/>
     <property name="merge.jar.dir" value="${pdfsam.dir}/plugins/merge"/>
     <property name="merge.jar.name" value="pdfsam-merge"/>
-    <property name="merge.jar.version" value="0.4.9"/>
+    <property name="merge.jar.version" value="0.5.0"/>
 	
     <property name="split.dir" value="${project.dir}/pdfsam-split"/>
     <property name="split.classes.dir" value="${split.dir}/bin"/>
     <property name="split.src.dir" value="${split.dir}/src"/>
     <property name="split.jar.dir" value="${pdfsam.dir}/plugins/split"/>
     <property name="split.jar.name" value="pdfsam-split"/>
-    <property name="split.jar.version" value="0.3.0"/>
+    <property name="split.jar.version" value="0.3.1"/>
 
 	<path id="project.classpath">
         <pathelement location="."/>
@@ -52,7 +52,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
-		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.1.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.2.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.4.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.4.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
 		    </manifest>
 			<fileset dir="${pdfsam.classes.dir}">
 				<include name="**/*.class"/>
@@ -68,7 +68,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
-	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.2.jar dom4j-1.6.1.jar jaxen-1.1.jar bcmail-jdk14-135.jar bcprov-jdk14-135.jar"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.4.jar dom4j-1.6.1.jar jaxen-1.1.jar bcmail-jdk14-135.jar bcprov-jdk14-135.jar"/>
 		    </manifest>
 			<fileset dir="${console.classes.dir}">
 				<include name="**/*.class"/>

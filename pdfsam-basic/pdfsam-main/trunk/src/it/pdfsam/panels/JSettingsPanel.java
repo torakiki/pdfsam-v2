@@ -118,15 +118,21 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
         
 
 //JCOMBO
+		language_combo = new JComboBox(config.getLanguagesList().toArray());
+    	language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+    	language_combo.setRenderer(new JComboListItemRender());
+    	set_panel.add(language_combo);
         try{
-        	language_combo = new JComboBox(config.getLanguagesList().toArray());
-        	language_combo.setSelectedItem(xml_config_object.getXMLConfigValue("/pdfsam/settings/i18n"));
+	 		for (int i=0; i<language_combo.getItemCount(); i++){
+	   			if (((ListItem)language_combo.getItemAt(i)).getId().equals(xml_config_object.getXMLConfigValue("/pdfsam/settings/i18n"))){
+	   				language_combo.setSelectedItem(language_combo.getItemAt(i));
+	             break;
+	   			}
+	 		}
+
         }catch (Exception e){
-        	language_combo = new JComboBox();
         	fireLogActionPerformed("Error: "+e.getMessage(), "FF0000"); 
         }
-        language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        set_panel.add(language_combo);
         
         combo_laf = new JComboBox(ThemeSelector.getLAFList().toArray());
         combo_laf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
@@ -192,7 +198,7 @@ public class JSettingsPanel extends JPanel implements PlugablePanel{
 		save_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 				try{
-					xml_config_object.setXMLConfigValue("/pdfsam/settings/i18n", (String)language_combo.getSelectedItem());
+					xml_config_object.setXMLConfigValue("/pdfsam/settings/i18n", ((ListItem)language_combo.getSelectedItem()).getId());
 					xml_config_object.setXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF", ((ListItem)combo_laf.getSelectedItem()).getId());
 					xml_config_object.setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((ListItem)combo_theme.getSelectedItem()).getId());
 					xml_config_object.saveXMLfile();

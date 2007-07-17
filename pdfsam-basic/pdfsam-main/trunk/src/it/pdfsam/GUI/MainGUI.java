@@ -18,6 +18,7 @@ import it.pdfsam.configuration.Configuration;
 import it.pdfsam.gnu.gettext.GettextResource;
 import it.pdfsam.interfaces.PlugablePanel;
 import it.pdfsam.panels.JSettingsPanel;
+import it.pdfsam.types.ListItem;
 import it.pdfsam.utils.LanguageLoader;
 import it.pdfsam.utils.PlugInsLoader;
 import it.pdfsam.utils.ThemeSelector;
@@ -84,9 +85,7 @@ public class MainGUI implements PropertyChangeListener {
     //consts
     public static final String AUTHOR = "Andrea Vacondio";
     public static final String NAME = "PDF Split and Merge";
-    public static final String APP_VERSION = "0.7 beta 1"; 
-    //i set this true while i'm developing.. false when releasing
-    private final boolean IDE = false;
+    public static final String APP_VERSION = "0.7 beta 2"; 
     
     public static void main(String args[]) {
         MainGUI window = new MainGUI();        
@@ -131,12 +130,8 @@ public class MainGUI implements PropertyChangeListener {
         theme_sel = new ThemeSelector();
         try {
             //tryes to get config.xml path
-            if (IDE){
-                application_path = URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8");                            
-            }else{
-                File app_path = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
-                application_path = app_path.getParent();
-            }
+            File app_path = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
+            application_path = app_path.getParent();
             config.setXmlConfigObject(new XMLConfig(application_path));
 
             look_and_feel = theme_sel.getLAF(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"));            
@@ -148,7 +143,10 @@ public class MainGUI implements PropertyChangeListener {
 			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/it/pdfsam/i18n/languages.xml"));
 			List nodeList = document.selectNodes("/languages/language");
 			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
-				langs.add(((Node) nodeList.get(i)).selectSingleNode("@value").getText());
+				Node langNode  =((Node) nodeList.get(i));
+				if (langNode != null){
+					langs.add(new ListItem(langNode.selectSingleNode("@value").getText(), langNode.selectSingleNode("@description").getText()));
+				}
 			}
 			config.setLanguageList(langs);
         }catch (Exception e) {
@@ -250,7 +248,7 @@ public class MainGUI implements PropertyChangeListener {
         log_text_area = new JTextPane();      
         log_text_area.setContentType("text/html");
         log_text_area.setEditable(false);
-        log_text_area.setPreferredSize(new Dimension(0, 135));
+        log_text_area.setPreferredSize(new Dimension(0, 85));
         log_panel.setViewportView(log_text_area);
         log_text_area.setDragEnabled(true);
         log_text_area.setName("pdfsam_log");
@@ -263,7 +261,7 @@ public class MainGUI implements PropertyChangeListener {
         pannello_split.setOrientation(JSplitPane.VERTICAL_SPLIT);
         pannello_split.setOpaque(false);
         pannello_split.setOneTouchExpandable(true);
-        pannello_split.setResizeWeight(0.55);
+        pannello_split.setResizeWeight(0.60);
         main_gui.getContentPane().add(pannello_split);
 //END_SPLIT_PANEL       
 //LAYOUT

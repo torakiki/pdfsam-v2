@@ -1,3 +1,13 @@
+0.7 beta 2
+===================================
+-Console: added -compressed option to compress output documents
+-Split, Merge: check to use -compressed option
+-Settings: language combo now shows language name 
+-Split: added overwrite checkbox
+-iText 2.0.4
+-looks 2.1.4
+-langpack
+
 0.7 beta 1
 ===================================
 -Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
