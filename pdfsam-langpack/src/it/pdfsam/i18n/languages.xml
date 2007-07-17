@@ -14,4 +14,6 @@
     <language value="zh_CN" description="Simplified Chinese" />  	
     <language value="da_DA" description="Danish" />  	
     <language value="pl_PL" description="Polish" />
+    <language value="hu_HU" description="Hungarian" />
+    <language value="zh_TW" description="Traditional Chinese" />
 </languages>

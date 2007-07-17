@@ -3,11 +3,20 @@ To change pdfsam language open the config.xml with a text editor like Notepad++ 
 Change the value of the "i18n" tag with one of the language supported.
 
 Languages supported
-en_GB
-it_IT
+it_IT 
+en_GB 
 es_ES
-pt_BR
-ru_RU
-sv_SE
-de_DE
+fr_FR  
+ru_RU 
+pt_BR 
+sv_SE 
+el_EL
+tr_TR
+nl_NL
+fi_FI	
+zh_CN	
+da_DA
+hu_HU
+zh_TW
+pl_PL
 

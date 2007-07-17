@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 17:08+0200\n"
+"POT-Creation-Date: 2007-07-17 10:40+0200\n"
 "PO-Revision-Date: 2007-07-06 18:25+0000\n"
 "Last-Translator: Jurand Nogiec <jurand@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -835,9 +835,12 @@ msgstr ""
 msgid "RuntimeError:"
 msgstr ""
 
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-msgid "Browse filesystem for a destination file"
-msgstr "Przeglądaj system aby zlokalizować plik docelowy"
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#, fuzzy
+msgid "Compress output file"
+msgstr "Ustaw plik wyjściowy"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -866,3 +869,7 @@ msgstr "Zainstalowane wtyczki:"
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr "Blisko"
+
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
+#~ msgid "Browse filesystem for a destination file"
+#~ msgstr "Przeglądaj system aby zlokalizować plik docelowy"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 17:08+0200\n"
+"POT-Creation-Date: 2007-07-17 10:40+0200\n"
 "PO-Revision-Date: 2007-07-01 06:31+0000\n"
 "Last-Translator: Srancsik <srancsik@apu.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -855,9 +855,12 @@ msgstr "Napló mentve"
 msgid "RuntimeError:"
 msgstr "Futási hiba:"
 
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-msgid "Browse filesystem for a destination file"
-msgstr "Tallózzon a fájl megtalálásához"
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#, fuzzy
+msgid "Compress output file"
+msgstr "Kimeneti fájl beállítása"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -886,3 +889,7 @@ msgstr "Telepített pluginek:"
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr "Bezárás"
+
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
+#~ msgid "Browse filesystem for a destination file"
+#~ msgstr "Tallózzon a fájl megtalálásához"

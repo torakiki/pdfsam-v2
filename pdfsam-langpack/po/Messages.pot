@@ -3,819 +3,836 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pdfsam langpack\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 17:08+0200\n"
-"PO-Revision-Date: 2007-06-15 13:18+0100\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
-"Language-Team: LANGUAGE <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2007-07-17 10:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED KINGDOM\n"
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
 msgid "File name"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:183
 msgid "Path"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:182
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:180
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:183
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:182
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:180
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:184
 msgid "Pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:183
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:184
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:183
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:185
 msgid "Page Selection"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:228
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:229
 msgid "Add a pdf to the list"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:249
 msgid "Please wait while reading "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:264
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:257
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:260
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:264
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:257
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:261
 msgid "Add"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:269
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:262
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:265
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:269
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:262
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
 msgid "Remove a pdf from the list"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:311
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:269
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:314
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:311
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:270
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:315
 msgid "Remove"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:297
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:105
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:298
 msgid "Clear"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
 msgid "Remove every pdf file from the list"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
 msgid "Destination output directory:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
 msgid "Cover pdf file:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
 msgid "Footer pdf file:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:342
 msgid "Set output file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:353
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:354
 msgid "Error: Unable to get the file path."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:441
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:599
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:619
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:649
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:879
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:983
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:616
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:423
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:588
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:608
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:638
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:861
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:977
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:143
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:170
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:237
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:498
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:539
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:256
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:427
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:599
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:907
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:441
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:599
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:619
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:649
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:879
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:983
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:616
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:423
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:588
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:608
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:638
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:861
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:977
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:143
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:170
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:237
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:498
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:539
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:256
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:432
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:605
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:917
 msgid "Error: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:394
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:421
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:448
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:175
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:340
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:430
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:150
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:177
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:244
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:164
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:304
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:233
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:163
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:300
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:394
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:421
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:448
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:175
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:340
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:430
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:150
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:177
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:244
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:164
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:304
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:239
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:439
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:167
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
 msgid "Browse"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
 msgid "Browse filesystem for a cover file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
 msgid "Browse filesystem for a footer file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:438
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:443
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:283
 msgid "Overwrite if already exists"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:317
 msgid "Destination output directory"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
 msgid "Browse or enter the full path to the destination output directory."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-msgid "Check the box if you want to overwrite the output files if they already exist."
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:320
+msgid ""
+"Check the box if you want to overwrite the output files if they already "
+"exist."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:460
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:520
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:522
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:358
 msgid "Please wait while all files are processed.."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:540
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:540
 msgid "Execute pdf add cover footer"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:526
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:320
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:410
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:530
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:408
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:526
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:320
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:410
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:536
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:421
 msgid "Run"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:596
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:602
 msgid "File selected: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
+#: F:\pdfsam\workspace-enhanced\pdfsam-cover\src\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
 msgid "CoverAndFooter section loaded."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:159
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:163
 msgid "Source file:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
 msgid "Select a PDF file to encrypt"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:210
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:210
 msgid "Owner password (Max 32 chars long)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
 msgid "User password:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
 msgid "User password (Max 32 chars long)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
 msgid "Encryption angorithm:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
 msgid "Print"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:232
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:232
 msgid "Low quality print"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:235
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:235
 msgid "Copy or extract"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
 msgid "Modify"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
 msgid "Add or modify text annotations"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
 msgid "Fill form fields"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
 msgid "Extract for use by accessibility dev."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
 msgid "Manipulate pages and add bookmarks"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
 msgid "Allow all"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
 msgid "Encrypt options:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:257
 msgid "Destination folder:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
 msgid "Same as source"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:301
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:301
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:264
 msgid "Choose a folder"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:346
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:310
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:306
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:346
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:310
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
 msgid "Use the same output folder as the input file or choose a folder."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:307
-msgid "To choose a folder browse or enter the full path to the destination output directory."
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:319
+msgid ""
+"To choose a folder browse or enter the full path to the destination output "
+"directory."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
 msgid "Output options:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:322
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
 msgid "Output file names prefix:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:394
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:336
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:331
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:394
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:336
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:343
 msgid "Output files prefix"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
-msgid "Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf."
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
+msgid ""
+"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
+"FileName_prefix_20070517_113423471.pdf."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:397
-msgid "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file names."
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:397
+msgid ""
+"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
+"names."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:398
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:398
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
 msgid "Encrypt selected file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
+#: F:\pdfsam\workspace-enhanced\pdfsam-encrypt\src\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
 msgid "Encrypt section loaded."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:276
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:323
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:277
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:324
 msgid "Move Up"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:277
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:278
 msgid "Move up selected pdf file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:285
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:332
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:333
 msgid "Move Down"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:287
 msgid "Move down selected pdf file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:298
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:299
 msgid "Remove every pdf file from the merge list"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:307
 msgid "Destination output file:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:390
 msgid "Merge options:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:393
 msgid "PDF documents contain forms"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:394
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:394
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
 msgid "Merge type"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
 msgid "Unchecked"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
 msgid "Use this merge type for standard pdf documents"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
 msgid "Checked"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
 msgid "Use this merge type for pdf documents containing forms"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:401
 msgid "Note"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:401
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:444
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:449
 msgid "Destination output file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:445
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:450
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
-msgid "Check the box if you want to overwrite the output file if it already exists."
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
-#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
+#: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:534
 msgid "Execute pdf merge"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
+#: F:\pdfsam\workspace-enhanced\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
 msgid "Merge section loaded."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
 msgid "Browse filesystem for the first file to mix"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
 msgid "Browse filesystem for the second file to mix"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
 msgid "First pdf document:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
 msgid "Second pdf document:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
 msgid "Reverse this document"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
+#: F:\pdfsam\workspace-enhanced\pdfsam-mix\src\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
 msgid "AlternateMix section loaded."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:169
 msgid "Select a PDF file to split"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:195
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:194
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:195
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:198
 msgid "Burst (split into single pages)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:198
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:197
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:198
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:201
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:226
 msgid "Split every \"n\" pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:206
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:205
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:206
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:209
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:227
 msgid "Split even pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:209
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:208
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:209
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:228
 msgid "Split odd pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:211
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:215
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:229
 msgid "Split after these pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
 msgid "Split options"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Burst"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Explode the pdf document into single pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:226
 msgid "Split the document every \"n\" pages"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:227
 msgid "Split the document every even page"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:228
 msgid "Split the document every odd page"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:229
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:236
 msgid "Split options:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-msgid "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution."
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:344
+msgid ""
+"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
+"substitution."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:345
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-msgid "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates oldstyle output file names."
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
+msgid ""
+"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
+"oldstyle output file names."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:347
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
-#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:422
 msgid "Split selected file"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
+#: F:\pdfsam\workspace-enhanced\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
 msgid "Split section loaded."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\GUI\MainGUI.java:171
 msgid "Building menus.."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\GUI\MainGUI.java:177
 msgid "Building buttons bar.."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\GUI\MainGUI.java:192
 msgid "Loading plugins.."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\GUI\MainGUI.java:235
 msgid "Building tree.."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\GUI\MainGUI.java:263
 msgid "Building status bar.."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:107
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
 msgid "Language: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:107
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
 msgid "Build date: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:107
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
 msgid "Website: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:118
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Name"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:118
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Version"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:118
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Author"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:167
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JInfoPanel.java:167
 msgid "Contributes: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:119
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:110
 msgid "Look and feel:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:122
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:122
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:113
 msgid "Theme:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:125
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:125
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:116
 msgid "Language:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:128
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:128
 msgid "Log level:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:229
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:187
 msgid "Settings "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:230
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:188
 msgid "Language"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:230
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:188
 msgid "Set your preferred language (restart needed)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:231
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:189
 msgid "Look and feel"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
-msgid "Set your preferred look and feel and your preferred theme (restart needed)"
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:231
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:189
+msgid ""
+"Set your preferred look and feel and your preferred theme (restart needed)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:232
 msgid "Log level"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:232
 msgid "Set a log detail level (restart needed)"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:233
 msgid "Default env."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
-msgid "Select a previously saved env. file that will be automatically loaded at startup"
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:233
+msgid ""
+"Select a previously saved env. file that will be automatically loaded at "
+"startup"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:241
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:190
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\JSettingsPanel.java:263
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:241
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:196
 msgid "Save"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:65
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:79
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:92
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\MenuPanel.java:91
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\MenuPanel.java:105
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:268
 msgid "Error:"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:109
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\MenuPanel.java:58
 msgid "Save environment"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:113
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\MenuPanel.java:64
 msgid "Load environment"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:117
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:121
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:117
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:121
 msgid "Save log"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:121
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:226
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:121
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:214
 msgid "Clear log"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:237
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\ButtonsBar.java:125
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\MenuPanel.java:70
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:225
 msgid "Exit"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:217
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\MenuPanel.java:55
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:205
 msgid "File"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:99
 msgid "Copy"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:143
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:143
 msgid "Log level: "
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:233
 msgid "Unknown action."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:253
 msgid "Log saved."
 msgstr ""
 
-#: F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:264
+#: F:\pdfsam\workspace-enhanced\pdfsam-maine\src\it\pdfsam\panels\LogPanel.java:264
 msgid "RuntimeError:"
 msgstr ""
 
 #: F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-msgid "Browse filesystem for a destination file"
+#: F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:287
+msgid "Compress output file"
 msgstr ""
 
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:210
 msgid "About"
 msgstr ""
 
-#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:248
+#: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:236
 msgid "Info"
 msgstr ""
 
@@ -838,4 +855,3 @@ msgstr ""
 #: F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr ""
-

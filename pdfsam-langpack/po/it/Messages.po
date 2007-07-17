@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.3.0e beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-31 16:35+0200\n"
-"PO-Revision-Date: 2007-05-31 17:03+0100\n"
+"POT-Creation-Date: 2007-07-17 10:40+0200\n"
+"PO-Revision-Date: 2007-07-17 10:42+0100\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -943,10 +943,12 @@ msgstr "Log salvato."
 msgid "RuntimeError:"
 msgstr "RuntimeError:"
 
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:398
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
-msgid "Browse filesystem for a destination file"
-msgstr "Sfoglia il filesystem per un filedi destinazione"
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:324
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:330
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+msgid "Compress output file"
+msgstr "Comprimi file di output"
 
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"

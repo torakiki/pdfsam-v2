@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 17:08+0200\n"
+"POT-Creation-Date: 2007-07-17 10:40+0200\n"
 "PO-Revision-Date: 2007-06-15 13:19+0100\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team:  <andrea.vacondio@gmail.com>\n"
@@ -819,7 +819,8 @@ msgid "RuntimeError:"
 msgstr ""
 
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-msgid "Browse filesystem for a destination file"
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:287
+msgid "Compress output file"
 msgstr ""
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222

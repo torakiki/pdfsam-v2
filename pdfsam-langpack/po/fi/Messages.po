@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 17:08+0200\n"
+"POT-Creation-Date: 2007-07-17 10:40+0200\n"
 "PO-Revision-Date: 2007-06-25 09:01+0300\n"
 "Last-Translator: Riku Leino <tsoots@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -835,9 +835,12 @@ msgstr "Loki tallennettu"
 msgid "RuntimeError:"
 msgstr "Ajonaikainen virhe:"
 
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-msgid "Browse filesystem for a destination file"
-msgstr "Hae kohdetiedosto selaamalla tiedostojärjestelmää"
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#, fuzzy
+msgid "Compress output file"
+msgstr "Aseta tallennustiedosto"
 
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -866,3 +869,7 @@ msgstr "Asennetut liitännäiset:"
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr "Sulje"
+
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
+#~ msgid "Browse filesystem for a destination file"
+#~ msgstr "Hae kohdetiedosto selaamalla tiedostojärjestelmää"

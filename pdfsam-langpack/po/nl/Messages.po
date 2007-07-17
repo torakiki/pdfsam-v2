@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-12 17:08+0200\n"
+"POT-Creation-Date: 2007-07-17 10:40+0200\n"
 "PO-Revision-Date: 2007-06-16 13:02+0000\n"
 "Last-Translator: bvdbos <bvdbos@chello.nl>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -845,9 +845,12 @@ msgstr "Log bewaard."
 msgid "RuntimeError:"
 msgstr "Uitvoerfout:"
 
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-msgid "Browse filesystem for a destination file"
-msgstr "Blader door het bestandssysteem voor een doelbestand"
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#, fuzzy
+msgid "Compress output file"
+msgstr "Doelbestand instellen"
 
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -876,3 +879,7 @@ msgstr "Geinstalleerde plugins:"
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr "Afsluiten"
+
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
+#~ msgid "Browse filesystem for a destination file"
+#~ msgstr "Blader door het bestandssysteem voor een doelbestand"

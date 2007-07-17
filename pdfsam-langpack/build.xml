@@ -73,6 +73,9 @@
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/pl/Messages.po ${pot}"/>
 				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/zh_TW/Messages.po ${pot}"/>
+				 </exec>
  	        </target>
  	
 			<!-- generete properties -->
@@ -124,6 +127,9 @@
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_pl_PL.properties ${po}/pl/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/Messages.po"/>
 				 </exec>
 			 </target>
 			
