@@ -127,7 +127,9 @@ public class PdfConcat extends GenericPdfTool{
     			//get page selection. If arrayoutofbounds default behaviour is "all" 
     			try{
     				current_p_selection= page_selection[f].toLowerCase();
-    				if (current_p_selection.equals("")) current_p_selection = "all";
+    				if (current_p_selection.equals("")) {
+    					current_p_selection = "all";
+    				}
     			}catch(Exception e){
     				current_p_selection = "all";
     			}

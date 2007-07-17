@@ -349,11 +349,10 @@ public class CmdParser {
             if (u_opts.isSet()){
                 //regexp pattern
                 Pattern p = Pattern.compile("(([0-9]*[-][0-9]*[:])|(all:))*", Pattern.CASE_INSENSITIVE);
-                if (!(p.matcher(u_opts.getValue()).matches())){
-                    throw new ParseException("ParseConcatCommand: -u value parsing error. The string must be \"num1-num2:\" or \"all:\" repeated for each pdf file in input.");
-                }
-                else{
+                if ((p.matcher(u_opts.getValue()).matches())) {
                     cu_value = u_opts.getValue();
+                } else {
+                    throw new ParseException("ParseConcatCommand: -u value parsing error. The string must be \"num1-num2:\" or \"all:\" repeated for each pdf file in input.");
                 }
             }
 //END_PARSE -u
@@ -379,11 +378,7 @@ public class CmdParser {
 //PARSE -o
         FileParam o_opts = (FileParam) command_line_handler.getOption("o");
             //no output option given
-            if (!(o_opts.isSet())){
-                throw new ParseException("OutputNotFound: missing or illegal -o option.");
-            }
-            //output is given
-            else{
+            if ((o_opts.isSet())) {
                 File out_file;
                 out_file = o_opts.getFile();
                 //output is given but is not a pdf file
@@ -393,6 +388,8 @@ public class CmdParser {
                 else{
                     o_value = out_file;
                 }
+            } else {
+                throw new ParseException("OutputNotFound: missing or illegal -o option.");
             }
 //END_PARSE -o
 //PARSE -log
@@ -416,19 +413,17 @@ public class CmdParser {
             File input_file;
             input_file = f_opts.getFile();
             //input is given but is not a pdf file
-            if (!(input_file.getPath().toLowerCase().endsWith(".pdf"))){
-                throw new ParseException("ParseSplitCommand: input file not a pdf format.");  
-            }
-            else{
+            if ((input_file.getPath().toLowerCase().endsWith(".pdf"))) {
                 sf_value = input_file;
+            } else {
+                throw new ParseException("ParseSplitCommand: input file not a pdf format.");  
             }
 //END_PARSE -f 
 //PARSE -s
-            if (!(s_opts.isSet())){
-                throw new ParseException("SplitTypeNotFound: not -s option given.");
-            }
-            else{
+            if ((s_opts.isSet())) {
                 ss_value = s_opts.getValue();
+            } else {
+                throw new ParseException("SplitTypeNotFound: not -s option given.");
             }
 //END_PARSE -s
 //PARSE -n            

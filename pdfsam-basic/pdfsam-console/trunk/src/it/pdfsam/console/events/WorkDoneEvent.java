@@ -122,7 +122,11 @@ public class WorkDoneEvent extends EventObject {
 			case WORK_INDETERMINATE:
 				listener.workingIndeterminate(this);
 	            break;
-	        }
+	            
+	        default:
+	        	listener.workCompleted(this);
+	        	break;
+        	}        	
         }
     
 }
