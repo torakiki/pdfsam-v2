@@ -115,6 +115,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     private Configuration config;
     private MainConsole mc;
     private JCheckBox merge_type_check = new JCheckBox();
+    private JCheckBox output_compressed_check = new JCheckBox();
     private JHelpLabel mergetype_help_label;
     private JHelpLabel destination_help_label;
     private final JScrollPane merge_table_scroll_panel = new JScrollPane();
@@ -148,7 +149,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private final String PLUGIN_NAME = "Merge";
-    private final String PLUGIN_VERSION = "0.4.9";
+    private final String PLUGIN_VERSION = "0.5.0";
     
     
     /**
@@ -392,7 +393,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         merge_type_check.setText(GettextResource.gettext(i18n_messages,"PDF documents contain forms"));
         merge_type_check.setSelected(false);
         option_panel.add(merge_type_check);     
-        
+
         String helpText = 
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Merge type")+"</b><ul>" +
     		"<li><b>"+GettextResource.gettext(i18n_messages,"Unchecked")+":</b> "+GettextResource.gettext(i18n_messages,"Use this merge type for standard pdf documents")+".</li>" +
@@ -406,10 +407,14 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         destination_panel.setLayout(destination_panel_layout);
         destination_panel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         add(destination_panel);
-//END_DESTINATION_PANEL         
+//END_DESTINATION_PANEL  
+//CHECK_COMPRESSION        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);
+        
 //BROWSE_BUTTON        
         browse_button.setMargin(new Insets(2, 2, 2, 2));
-        browse_button.setToolTipText(GettextResource.gettext(i18n_messages,"Browse filesystem for a destination file"));
         browse_button.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
         browse_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -493,6 +498,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
                     args.add(page_sel_string);
                     if (overwrite_checkbox.isSelected()) args.add("-overwrite");
                     if (merge_type_check.isSelected()) args.add("-copyfields");
+                    if (output_compressed_check.isSelected()) args.add("-compressed");
                     args.add("concat");
                 }catch(Exception any_ex){    
                     fireLogActionPerformed("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), "FF0000");
@@ -656,7 +662,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, option_label, 0, SpringLayout.NORTH, option_panel);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_label, 0, SpringLayout.WEST, option_panel);
 
-        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_check, 30, SpringLayout.NORTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_check, 20, SpringLayout.NORTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_check, -40, SpringLayout.EAST, option_panel);
         option_panel_layout.putConstraint(SpringLayout.NORTH, merge_type_check, 5, SpringLayout.NORTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.WEST, merge_type_check, 5, SpringLayout.WEST, option_panel);
@@ -664,9 +670,9 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         option_panel_layout.putConstraint(SpringLayout.SOUTH, mergetype_help_label, -1, SpringLayout.SOUTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.EAST, mergetype_help_label, -1, SpringLayout.EAST, option_panel);
 
-        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 330, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 335, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, add_file_button);
-        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 260, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 255, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, merge_table_scroll_panel);
 
         destination_panel_layout.putConstraint(SpringLayout.EAST, destination_text_field, -105, SpringLayout.EAST, destination_panel);
@@ -674,9 +680,13 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_text_field, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, destination_text_field, 5, SpringLayout.WEST, destination_panel);
 
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
-        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, destination_text_field);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, destination_text_field);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
+
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, overwrite_checkbox);
 
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_help_label, -1, SpringLayout.SOUTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.EAST, destination_help_label, -1, SpringLayout.EAST, destination_panel);
