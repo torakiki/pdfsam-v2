@@ -318,6 +318,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want compressed output files.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
