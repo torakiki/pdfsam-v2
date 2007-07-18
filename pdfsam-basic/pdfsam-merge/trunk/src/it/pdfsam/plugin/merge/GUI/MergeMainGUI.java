@@ -449,6 +449,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output file")+"</b>" +
     		"<p>"+GettextResource.gettext(i18n_messages,"Browse or enter the full path to the destination output file.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output file if it already exists.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want a compressed output file.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
