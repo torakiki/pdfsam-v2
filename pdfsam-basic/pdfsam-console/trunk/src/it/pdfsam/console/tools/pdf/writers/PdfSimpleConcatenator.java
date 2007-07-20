@@ -63,7 +63,7 @@ public class PdfSimpleConcatenator implements PdfConcatenator {
 	public void addDocument(PdfReader reader) throws Exception {
 		if(reader != null){
 			int numPages =  reader.getNumberOfPages();
-			for (int count = 0; count < numPages; count++) {
+			for (int count = 1; count <= numPages; count++) {
                 writer.addPage(writer.getImportedPage(reader, count));                                
             }
 		}else{
