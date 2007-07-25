@@ -73,7 +73,7 @@ public class ListItem implements Comparable{
 
     /**
      * sets the <code>inputvalue</code> property
-     * @param inputvalue.
+     * @param inputvalue
      */
 	public void setValue(String inputvalue) {
 		this.value = inputvalue;
