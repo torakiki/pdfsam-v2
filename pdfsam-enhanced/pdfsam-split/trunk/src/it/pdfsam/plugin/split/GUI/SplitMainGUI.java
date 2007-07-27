@@ -492,6 +492,9 @@ public class SplitMainGUI extends AbstractPlugIn{
 				
 				Element file_overwrite = ((Element)arg0).addElement("overwrite");
 				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
+
+				Element file_compress = ((Element)arg0).addElement("compressed");
+				file_compress.addAttribute("value", output_compressed_check.isSelected()?"true":"false");
 			}
 			return arg0;
 		}
@@ -538,6 +541,11 @@ public class SplitMainGUI extends AbstractPlugIn{
 					overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
 				}
 
+				Node file_compressed = (Node) arg0.selectSingleNode("compressed/@value");
+				if (file_compressed != null){
+					output_compressed_check.setSelected(file_compressed.getText().equals("true"));
+				}
+				
 				Node file_prefix = (Node) arg0.selectSingleNode("prefix/@value");
 				if (file_prefix != null){
 					out_prefix_text.setText(file_prefix.getText());
