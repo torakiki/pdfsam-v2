@@ -108,6 +108,8 @@ public class SplitMainGUI extends AbstractPlugIn{
     private ButtonGroup split_options_radio_group;
 //checks
     private final JCheckBox overwrite_checkbox = new JCheckBox();
+    private final JCheckBox output_compressed_check = new JCheckBox();
+    
 //focus policy 
     private final SplitFocusPolicy split_focus_policy = new SplitFocusPolicy();
 
@@ -279,6 +281,11 @@ public class SplitMainGUI extends AbstractPlugIn{
         overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
         overwrite_checkbox.setSelected(true);
         destination_panel.add(overwrite_checkbox);
+        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);
+        
 //END_CHECK_BOX 
         browse_dest_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -310,6 +317,7 @@ public class SplitMainGUI extends AbstractPlugIn{
     		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want compressed output files.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
@@ -377,7 +385,8 @@ public class SplitMainGUI extends AbstractPlugIn{
                     }else{
                         args.add(dest_folder_text.getText());
                     }
-                    if (overwrite_checkbox.isSelected()) args.add("-overwrite");                   
+                    if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+                    if (output_compressed_check.isSelected()) args.add("-compressed"); 
                     args.add("split"); 
                 }catch(Exception any_ex){    
                     fireLogPropertyChanged("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), LogPanel.LOG_ERROR);
@@ -389,7 +398,7 @@ public class SplitMainGUI extends AbstractPlugIn{
                     for (int i = 0; i < myStringArray.length; i++) {
                         myStringArray[i] = myObjectArray[i].toString();
                     }
-                    //run concat in its own thread              
+                    //run split in its own thread              
                     final Thread run_thread = new Thread(run_threads, "run") {
                          public void run() {
                           try{
@@ -565,7 +574,7 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_spring_layout.putConstraint(SpringLayout.WEST, split_options_label, 0, SpringLayout.WEST, source_text_field);
         split_spring_layout.putConstraint(SpringLayout.NORTH, dest_folder_label, 5, SpringLayout.SOUTH, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, dest_folder_label, 0, SpringLayout.WEST, split_options_panel);
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 295, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 305, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, split_options_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 205, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, split_options_panel);
@@ -579,9 +588,15 @@ public class SplitMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.NORTH, dest_folder_text, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
-        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, dest_folder_text);
+        
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);
+        
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, dest_folder_text);
+
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, browse_dest_button, 0, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.EAST, browse_dest_button, -10, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_dest_button, -25, SpringLayout.SOUTH, dest_folder_text);
@@ -594,7 +609,7 @@ public class SplitMainGUI extends AbstractPlugIn{
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_label, 0, SpringLayout.WEST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_label, 5, SpringLayout.SOUTH, destination_panel);
 		
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 370, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 390, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, output_options_panel, 0, SpringLayout.EAST, destination_panel);
         split_spring_layout.putConstraint(SpringLayout.NORTH, output_options_panel, 0, SpringLayout.SOUTH, output_options_label);
         split_spring_layout.putConstraint(SpringLayout.WEST, output_options_panel, 0, SpringLayout.WEST, output_options_label);
@@ -609,10 +624,10 @@ public class SplitMainGUI extends AbstractPlugIn{
         s_panel_layout.putConstraint(SpringLayout.SOUTH, prefix_help_label, -1, SpringLayout.SOUTH, output_options_panel);
         s_panel_layout.putConstraint(SpringLayout.EAST, prefix_help_label, -1, SpringLayout.EAST, output_options_panel);
         
-        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 405, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.SOUTH, run_button, 425, SpringLayout.NORTH, this);
         split_spring_layout.putConstraint(SpringLayout.EAST, run_button, 0, SpringLayout.EAST, output_options_panel);
         split_spring_layout.putConstraint(SpringLayout.WEST, run_button, 0, SpringLayout.WEST, browse_button);
-        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 380, SpringLayout.NORTH, this);
+        split_spring_layout.putConstraint(SpringLayout.NORTH, run_button, 400, SpringLayout.NORTH, this);
 
 //      RADIO_LAYOUT
         options_pane_layout.putConstraint(SpringLayout.NORTH, burst_radio, 10, SpringLayout.NORTH, split_options_panel);
