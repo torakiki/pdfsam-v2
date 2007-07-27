@@ -63,9 +63,10 @@ public class MixMainGUI extends AbstractPlugIn{
 	private static final long serialVersionUID = -21589235901766769L;
 	private SpringLayout destination_panel_layout;
 	private JPanel destination_panel = new JPanel();
-	private JCheckBox overwrite_checkbox = new JCheckBox();
-	private JCheckBox reverse_first_checkbox = new JCheckBox();
-	private JCheckBox reverse_second_checkbox = new JCheckBox();
+	private final JCheckBox overwrite_checkbox = new JCheckBox();
+    private final JCheckBox output_compressed_check = new JCheckBox();
+	private final JCheckBox reverse_first_checkbox = new JCheckBox();
+	private final JCheckBox reverse_second_checkbox = new JCheckBox();
 	private JTextField destination_text_field;
 	private JTextField first_text_field;
 	private JTextField second_text_field;
@@ -249,12 +250,18 @@ public class MixMainGUI extends AbstractPlugIn{
 		overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
 		overwrite_checkbox.setSelected(true);
 		destination_panel.add(overwrite_checkbox);
+        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);
+        
 //		END_CHECK_BOX 
 //      HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output file")+"</b>" +
     		"<p>"+GettextResource.gettext(i18n_messages,"Browse or enter the full path to the destination output file.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output file if it already exists.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want compressed output files.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
@@ -282,9 +289,8 @@ public class MixMainGUI extends AbstractPlugIn{
 					args.add(destination_text_field.getText());
 
 					if (overwrite_checkbox.isSelected()) args.add("-overwrite");
-
+                    if (output_compressed_check.isSelected()) args.add("-compressed"); 
 					if (reverse_first_checkbox.isSelected()) args.add("-reversefirst");
-
 					if (reverse_second_checkbox.isSelected()) args.add("-reversesecond");
 
 					args.add ("mix");
@@ -375,7 +381,7 @@ public class MixMainGUI extends AbstractPlugIn{
 		spring_layout_mix_panel.putConstraint(SpringLayout.NORTH, reverse_second_checkbox, 2, SpringLayout.SOUTH, second_text_field);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, reverse_second_checkbox, 0, SpringLayout.WEST, second_label);        
 
-		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 70, SpringLayout.NORTH, destination_panel);
+		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 90, SpringLayout.NORTH, destination_panel);
 		spring_layout_mix_panel.putConstraint(SpringLayout.EAST, destination_panel, -7, SpringLayout.EAST, this);
 		spring_layout_mix_panel.putConstraint(SpringLayout.NORTH, destination_panel, 35, SpringLayout.SOUTH, reverse_second_checkbox);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, reverse_second_checkbox);
@@ -385,9 +391,13 @@ public class MixMainGUI extends AbstractPlugIn{
 		destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_text_field, 30, SpringLayout.NORTH, destination_panel);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, destination_text_field, 5, SpringLayout.WEST, destination_panel);
 
-		destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
-		destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, destination_text_field);
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+		destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, destination_text_field);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
+
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, destination_text_field);
 
 		spring_layout_mix_panel.putConstraint(SpringLayout.SOUTH, destination_label, 0, SpringLayout.NORTH, destination_panel);
 		spring_layout_mix_panel.putConstraint(SpringLayout.WEST, destination_label, 0, SpringLayout.WEST, destination_panel);
@@ -456,6 +466,9 @@ public class MixMainGUI extends AbstractPlugIn{
 				
 				Element file_overwrite = ((Element)arg0).addElement("overwrite");
 				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
+
+				Element file_compress = ((Element)arg0).addElement("compressed");
+				file_compress.addAttribute("value", output_compressed_check.isSelected()?"true":"false");
 			}
 			return arg0;
 		}
@@ -490,6 +503,11 @@ public class MixMainGUI extends AbstractPlugIn{
 			Node reverse_second = (Node) arg0.selectSingleNode("reverse_second/@value");
 			if (reverse_second != null){
 				reverse_second_checkbox.setSelected(reverse_second.getText().equals("true"));
+			}
+			
+			Node file_compressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (file_compressed != null){
+				output_compressed_check.setSelected(file_compressed.getText().equals("true"));
 			}
 
 			fireLogPropertyChanged(GettextResource.gettext(i18n_messages,"AlternateMix section loaded."), LogPanel.LOG_INFO);                     
