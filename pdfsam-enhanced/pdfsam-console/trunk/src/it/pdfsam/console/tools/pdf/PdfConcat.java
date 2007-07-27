@@ -54,6 +54,7 @@ public class PdfConcat extends GenericPdfTool{
     private String u_string;
     private boolean overwrite_boolean;
     private boolean copyfields_boolean;
+    private boolean compressed_boolean;
     
     
     /**
@@ -63,9 +64,10 @@ public class PdfConcat extends GenericPdfTool{
      * @param uopts_string String with page selection. (Ex: 10-13:all:12-19:all:all:) 
      * @param overwrite if true overwrite existing file
      * @param copyfields if true use the copyField writer
+	 * @param compressed compress output pdf file
      * @param source_console console used to perform the action
      */
-    public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean overwrite, boolean copyfields, MainConsole source_console) {
+    public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean overwrite, boolean copyfields, boolean compressed, MainConsole source_console) {
            super(source_console);
            f_list = file_list;
            o_file = out_file;
@@ -77,14 +79,23 @@ public class PdfConcat extends GenericPdfTool{
            }
            overwrite_boolean = overwrite;
            copyfields_boolean = copyfields;
+           compressed_boolean = compressed;
            out_message = "";
     }
     
     /**
-	 * Default behaviour overwrite set <code>true</code>
+	 * Default value overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
 	 */
-    public PdfConcat(Collection file_list, File out_file, String uopts_string,boolean copyfields, MainConsole source_console) {
+    public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean copyfields, MainConsole source_console) {
     	this(file_list, out_file, uopts_string, true, copyfields, source_console);
+    }
+   
+    /**
+	 * Default value compressed set <code>true</code>
+	 */
+    public PdfConcat(Collection file_list, File out_file, String uopts_string, boolean overwrite, boolean copyfields, MainConsole source_console) {
+    	this(file_list, out_file, uopts_string, overwrite, copyfields, true, source_console);
     }
     	
     /**
@@ -217,14 +228,14 @@ public class PdfConcat extends GenericPdfTool{
     			if (f == 0) {
                     if(copyfields_boolean){
                         // step 1: we create a writer 
-                    	pdf_writer = new PdfCopyFieldsConcatenator(new FileOutputStream(tmp_o_file));
+                    	pdf_writer = new PdfCopyFieldsConcatenator(new FileOutputStream(tmp_o_file), compressed_boolean);
                     	HashMap meta = pdf_reader.getInfo();
         				meta.put("Creator", MainConsole.CREATOR);
                     }else{
                         // step 1: creation of a document-object
                         pdf_document = new Document(pdf_reader.getPageSizeWithRotation(1));
                         // step 2: we create a writer that listens to the document
-                    	pdf_writer = new PdfSimpleConcatenator(pdf_document, new FileOutputStream(tmp_o_file));
+                        pdf_writer = new PdfSimpleConcatenator(pdf_document, new FileOutputStream(tmp_o_file), compressed_boolean);
                         // step 3: we open the document
                         MainConsole.setDocumentCreator(pdf_document);
                         pdf_document.open();

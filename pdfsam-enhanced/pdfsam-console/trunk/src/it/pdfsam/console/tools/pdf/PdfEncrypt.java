@@ -33,6 +33,7 @@ import java.util.Iterator;
 
 import com.lowagie.text.pdf.PdfEncryptor;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 /**
@@ -53,6 +54,7 @@ public class PdfEncrypt extends GenericPdfTool{
     private int etype;
 	private String prefix_value = "";
     private boolean overwrite_boolean;
+    private boolean compressed_boolean;
     private PrefixParser prefixParser;
     
     /**
@@ -67,7 +69,7 @@ public class PdfEncrypt extends GenericPdfTool{
      * @param overwrite overwrite output file if already exists
      * @param source_console
      */
-    public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, boolean overwrite, MainConsole source_console) {
+    public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, boolean overwrite, boolean compressed, MainConsole source_console) {
            super(source_console);
     	   this.o_dir = o_dir;
 		   this.f_list = file_list;
@@ -93,16 +95,25 @@ public class PdfEncrypt extends GenericPdfTool{
 		        }		   
         	}
 	       overwrite_boolean = overwrite;
+	       compressed_boolean = compressed;
            out_message = "";
     }
     
     /**
-	 * Default behaviour overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
+	 */
+    public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, boolean overwrite, MainConsole source_console) {
+    	this(o_dir, file_list, user_permissions, u_pwd, a_pwd, prefix, etype, overwrite, true, source_console);
+    }
+    
+    /**
+	 * Default value overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
 	 */
     public PdfEncrypt(File o_dir, Collection file_list, int user_permissions, String u_pwd, String a_pwd, String prefix, String etype, MainConsole source_console) {
     	this(o_dir, file_list, user_permissions, u_pwd, a_pwd, prefix, etype, true, source_console);
     }
-    
+
     /**
      * Execute the encrypt command. On error an exception is thrown.
      * @throws Exception
@@ -126,10 +137,17 @@ public class PdfEncrypt extends GenericPdfTool{
 		    	prefixParser = new PrefixParser(prefix_value, new File(file_name).getName());
 		        File tmp_o_file = TmpFileNameGenerator.generateTmpFile(o_dir.getAbsolutePath());
 				out_message += LogFormatter.formatMessage("Temporary file created-\n");
-				PdfReader pdf_reader = new PdfReader(new RandomAccessFileOrArray(file_name),null);							
-				HashMap meta = pdf_reader.getInfo();
+				PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(file_name),null);					
+				HashMap meta = pdfReader.getInfo();
 				meta.put("Creator", MainConsole.CREATOR);
-				PdfEncryptor.encrypt(pdf_reader,new FileOutputStream(tmp_o_file), etype, u_pwd, a_pwd,user_permissions, meta);
+				PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmp_o_file));
+				if(compressed_boolean){
+					pdfStamper.setFullCompression();
+				}
+				pdfStamper.setMoreInfo(meta);
+				pdfStamper.setEncryption(etype, u_pwd, a_pwd, user_permissions);
+				pdfStamper.close();
+				/*PdfEncryptor.encrypt(pdf_reader,new FileOutputStream(tmp_o_file), etype, u_pwd, a_pwd,user_permissions, meta);*/
 				File out_file = new File(o_dir ,prefixParser.generateFileName());
 				renameTemporaryFile(tmp_o_file, out_file, overwrite_boolean);				
 				f++;

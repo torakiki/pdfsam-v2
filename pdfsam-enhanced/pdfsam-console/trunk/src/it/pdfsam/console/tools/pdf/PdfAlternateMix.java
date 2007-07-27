@@ -46,6 +46,7 @@ public class PdfAlternateMix extends GenericPdfTool{
     private boolean reverseFirst;
     private boolean reverseSecond;
     private boolean overwrite_boolean;
+    private boolean compressed_boolean;
     private int[] limits1 = {1,1};
     private int[] limits2 = {1,1};
     
@@ -57,9 +58,10 @@ public class PdfAlternateMix extends GenericPdfTool{
      * @param reverseFirst
      * @param reverseSecond
      * @param overwrite
+     * @param compressed
      * @param source_console
      */
-	public PdfAlternateMix(File o_file, File input_file1, File input_file2, boolean reverseFirst, boolean reverseSecond, boolean overwrite, MainConsole source_console) {
+	public PdfAlternateMix(File o_file, File input_file1, File input_file2, boolean reverseFirst, boolean reverseSecond, boolean overwrite, boolean compressed, MainConsole source_console) {
          super(source_console);
   	   	 this.o_file = o_file;
 		 
@@ -69,15 +71,24 @@ public class PdfAlternateMix extends GenericPdfTool{
 		 this.reverseFirst = reverseFirst;
 		 this.reverseSecond = reverseSecond;
 		 this.overwrite_boolean = overwrite;
+		 compressed_boolean = compressed;
          out_message = "";
 	}
 	
 	/**
-	 * Default behaviour overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
+	 */
+	public PdfAlternateMix(File o_file, File input_file1, File input_file2, boolean reverseFirst, boolean reverseSecond, boolean overwrite, MainConsole source_console) {
+		this(o_file, input_file1, input_file2, reverseFirst, reverseSecond, overwrite, true, source_console);
+	}
+	
+	/**
+	 * Default value overwrite set <code>true</code>
+	 * Default value compressed set <code>true</code>
 	 */
 	public PdfAlternateMix(File o_file, File input_file1, File input_file2, boolean reverseFirst, boolean reverseSecond, MainConsole source_console) {
 		this(o_file, input_file1, input_file2, reverseFirst, reverseSecond, true, source_console);
-	}
+	}	
 	
 	 /**
      * Execute the mix command. On error an exception is thrown.
@@ -113,6 +124,9 @@ public class PdfAlternateMix extends GenericPdfTool{
 
 			pdf_document = new Document(pdf_reader1.getPageSizeWithRotation(1));
 			pdf_writer = new PdfCopy(pdf_document, new FileOutputStream(tmp_o_file));
+	        if(compressed_boolean){
+	        	pdf_writer.setFullCompression();
+	        }				
 			out_message += LogFormatter.formatMessage("Temporary file created-\n");
 			MainConsole.setDocumentCreator(pdf_document);
 			pdf_document.open();

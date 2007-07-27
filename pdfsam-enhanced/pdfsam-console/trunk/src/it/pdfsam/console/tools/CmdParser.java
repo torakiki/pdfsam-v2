@@ -121,6 +121,8 @@ public class CmdParser {
     private File log_value = null;
     //-overwrite value
     private boolean overwrite_value = false;
+    //-compressed value
+    private boolean compressed_value = false;
     
     //input command
     private byte input_command = 0x00;
@@ -167,6 +169,7 @@ public class CmdParser {
                           FileParam.OPTIONAL,
                           FileParam.SINGLE_VALUED),
             new BooleanParam("overwrite", "overwrite existing output file"),
+            new BooleanParam("compressed", "compress output file"),            
             new BooleanParam("copyfields", "input pdf documents contain forms (high memory usage)")                          
             };
             
@@ -197,7 +200,8 @@ public class CmdParser {
                     ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                     FileParam.OPTIONAL,
                     FileParam.SINGLE_VALUED),
-            new BooleanParam("overwrite", "overwrite existing output file")                           
+            new BooleanParam("overwrite", "overwrite existing output file"),
+            new BooleanParam("compressed", "compress output file")
     };
     
     //encrypt options if encrypt command is given
@@ -236,7 +240,8 @@ public class CmdParser {
                            new String[] { CmdParser.E_RC4_40, CmdParser.E_RC4_128, CmdParser.E_AES_128},
                            FileParam.OPTIONAL, 
                            FileParam.SINGLE_VALUED),
-           new BooleanParam("overwrite", "overwrite existing output file") 
+           new BooleanParam("overwrite", "overwrite existing output file"),
+           new BooleanParam("compressed", "compress output file")
     };
     
     //mix options if mix command is given
@@ -263,8 +268,8 @@ public class CmdParser {
                     ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                     FileParam.OPTIONAL,
                     FileParam.SINGLE_VALUED),
-            new BooleanParam("overwrite", "overwrite existing output file")                          
-
+            new BooleanParam("overwrite", "overwrite existing output file"),
+            new BooleanParam("compressed", "compress output file")
     };    
 
     /**
@@ -329,6 +334,7 @@ public class CmdParser {
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+
         "Note: You can use only one of these options not both in the same command line\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-compress' to compress output file.\n"+
         "'-copyfields' to deal with forms. Use this if input documents contain forms. This option will lead to a high memory usage.\n"+        
         "Example: java -jar pdfsam-console.jar -o /tmp/outfile.pdf -f /tmp/1.pdf -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console.jar -l c:\\docs\\list.csv concat";
@@ -344,6 +350,7 @@ public class CmdParser {
 	    "Available prefix variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].\n"+
 	    "'-n number' to specify a page number to splip at if -s is SPLIT or NSPLIT.\n\n\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-compress' to compress output file.\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
 	    "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
     
@@ -360,6 +367,7 @@ public class CmdParser {
 	"Available prefix variables: [TIMESTAMP], [BASENAME].\n"+
     "'-etype ' to set the encryption angorithm. If omitted it uses rc4_128. Possible values {["+CmdParser.E_AES_128+"], ["+CmdParser.E_RC4_128+"], ["+CmdParser.E_RC4_40+"]}\n\n\n"+
     "'-overwrite' to overwrite output file if already exists.\n"+
+    "'-compress' to compress output file.\n"+
     "Example: java -jar pdfsam-console.jar -f /tmp/1.pdf -o /tmp -apwd hallo -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
     
     /**
@@ -372,7 +380,7 @@ public class CmdParser {
         "'-reversefirst' reverse the first input file.\n"+
         "'-reversesecond' reverse the second input file.\n"+
         "'-overwrite' to overwrite output file if already exists.\n"+
-        "'-overwrite' to overwrite output file if already exists.\n"+
+        "'-compress' to compress output file.\n"+
         "Example: java -jar pdfsam-console.jar -o /tmp/outfile.pdf -f1 /tmp/1.pdf -f2 /tmp/2.pdf -reversesecond mix\n";
 
     /**
@@ -525,6 +533,9 @@ public class CmdParser {
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite
+//PARSE -compress            
+            compressed_value = ((BooleanParam) command_line_handler.getOption("compressed")).isTrue();
+//END PARSE -compress
 //PARSE -copyfields            
             copyfields_value = ((BooleanParam) command_line_handler.getOption("copyfields")).isTrue();
 //END PARSE -copyfields  
@@ -630,6 +641,9 @@ public class CmdParser {
                 }
             }
 //END_PARSE -n
+//PARSE -compress            
+            compressed_value = ((BooleanParam) command_line_handler.getOption("compressed")).isTrue();
+//END PARSE -compress            
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite            
@@ -730,6 +744,9 @@ public class CmdParser {
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite            
+//PARSE -compress            
+            compressed_value = ((BooleanParam) command_line_handler.getOption("compressed")).isTrue();
+//END PARSE -compress
             return true;
     }    
 
@@ -800,7 +817,10 @@ public class CmdParser {
 //PARSE -overwrite            
             overwrite_value = ((BooleanParam) command_line_handler.getOption("overwrite")).isTrue();
 //END PARSE -overwrite
-            return true;
+//PARSE -compress            
+            compressed_value = ((BooleanParam) command_line_handler.getOption("compressed")).isTrue();
+//END PARSE -compress
+           return true;
     }
     
     /**
@@ -973,6 +993,13 @@ public class CmdParser {
     }
     
     /**
+     * @return Returns the -compress option value.
+     */
+    public boolean isCompressed() {
+        return compressed_value;
+    }   
+    
+    /**
      * @return Returns the -overwrite option value in concat command.
      * @deprecated use <code>isOverwrite()</code>. This method is no longer working
      */
@@ -981,7 +1008,7 @@ public class CmdParser {
     }
 	/**
 	 * @param encAlg encryption algorithm
-	 * @return The permissiona map based on the chosen encryption
+	 * @return The permissions map based on the chosen encryption
 	 */
 	private HashMap getPermissionMap(String encAlg){
 		HashMap retMap = new HashMap();

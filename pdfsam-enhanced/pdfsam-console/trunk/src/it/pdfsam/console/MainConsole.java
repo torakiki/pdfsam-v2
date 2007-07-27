@@ -46,7 +46,7 @@ import com.lowagie.text.Document;
 
 /**
  * Console class.
- * It takes input arguments, parse tham and execute the right operation on pdf files.
+ * It takes input arguments, parse them and execute the right operation on pdf files.
  * 
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.CmdParser
@@ -68,7 +68,7 @@ public class MainConsole implements Serializable{
     /**
      * Console version
      */
-    public static final String VERSION = "0.8.0e"; 
+    public static final String VERSION = "0.8.1e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
@@ -81,7 +81,7 @@ public class MainConsole implements Serializable{
     }
 
     /**
-     * It takes input parameters, parse tham. If no exception is thrown it executes the right function (split, concat..)
+     * It takes input parameters, parse them. If no exception is thrown it executes the right function (split, concat..)
      * and return the output message.
      * 
      * @param args Arguments String array.
@@ -127,7 +127,7 @@ public class MainConsole implements Serializable{
         }else if ((cmdp.getInputCommand()) == CmdParser.C_MIX){
         	pdfTool = new PdfAlternateMix(cmdp.getOValue(), cmdp.getMF1Value(), cmdp.getMF2Value(), cmdp.MReverseFirst(), cmdp.MReverseSecond(), cmdp.isOverwrite(), this);        	       	
         }
-        //everythig is ok, i created pdfTool
+        //everything is ok, i created pdfTool
         if(pdfTool != null){
 	        pdfTool.execute();
 	        out_msg = (html_output)? pdfTool.getOutHTMLMessage():pdfTool.getOutMessage(); 
