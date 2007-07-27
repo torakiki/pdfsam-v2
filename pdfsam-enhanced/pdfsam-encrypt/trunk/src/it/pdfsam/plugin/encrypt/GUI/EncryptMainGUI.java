@@ -99,6 +99,8 @@ public class EncryptMainGUI extends AbstractPlugIn{
 	private final JCheckBox[] permissions_check = new JCheckBox[8];
     private final JCheckBox allowall_check = new JCheckBox();
     private final JCheckBox overwrite_checkbox = new JCheckBox();
+    private final JCheckBox output_compressed_check = new JCheckBox();
+    
 //radio
     private final JRadioButton same_as_source_radio = new JRadioButton();
     private final JRadioButton choose_a_folder_radio = new JRadioButton();
@@ -315,6 +317,10 @@ public class EncryptMainGUI extends AbstractPlugIn{
         overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
         overwrite_checkbox.setSelected(true);
         destination_panel.add(overwrite_checkbox);
+        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);        
 //END_CHECK_BOX  
         browse_dest_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -346,6 +352,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
     		"<p>"+GettextResource.gettext(i18n_messages,"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want compressed output files.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
@@ -432,6 +439,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
                         args.add(dest_folder_text.getText());
                     }
                     if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+                    if (output_compressed_check.isSelected()) args.add("-compressed");
                     args.add("encrypt"); 
                 }catch(Exception any_ex){    
                     fireLogPropertyChanged("Command Line: "+args.toString()+"<br>Exception "+HtmlTags.disable(any_ex.toString()), LogPanel.LOG_ERROR);
@@ -548,6 +556,9 @@ public class EncryptMainGUI extends AbstractPlugIn{
 				
 				Element file_overwrite = ((Element)arg0).addElement("overwrite");
 				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
+
+				Element file_compress = ((Element)arg0).addElement("compressed");
+				file_compress.addAttribute("value", output_compressed_check.isSelected()?"true":"false");
 			}
 			return arg0;
 		}
@@ -606,6 +617,11 @@ public class EncryptMainGUI extends AbstractPlugIn{
 					overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
 				}
 
+				Node file_compressed = (Node) arg0.selectSingleNode("compressed/@value");
+				if (file_compressed != null){
+					output_compressed_check.setSelected(file_compressed.getText().equals("true"));
+				}
+				
 				Node file_prefix = (Node) arg0.selectSingleNode("prefix/@value");
 				if (file_prefix != null){
 					out_prefix_text.setText(file_prefix.getText());
@@ -642,7 +658,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, encrypt_options_label, 0, SpringLayout.WEST, source_text_field);
         encrypt_spring_layout.putConstraint(SpringLayout.NORTH, dest_folder_label, 5, SpringLayout.SOUTH, encrypt_options_panel);
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, dest_folder_label, 0, SpringLayout.WEST, encrypt_options_panel);
-        encrypt_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 320, SpringLayout.NORTH, this);
+        encrypt_spring_layout.putConstraint(SpringLayout.SOUTH, destination_panel, 330, SpringLayout.NORTH, this);
         encrypt_spring_layout.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, encrypt_options_panel);
         encrypt_spring_layout.putConstraint(SpringLayout.NORTH, destination_panel, 230, SpringLayout.NORTH, this);
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, encrypt_options_panel);
@@ -656,9 +672,15 @@ public class EncryptMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.NORTH, dest_folder_text, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
-        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, dest_folder_text);
-        destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);        
+
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, dest_folder_text);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);   
+        
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, dest_folder_text);
+
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, browse_dest_button, 0, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.EAST, browse_dest_button, -10, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, browse_dest_button, -25, SpringLayout.SOUTH, dest_folder_text);
@@ -670,7 +692,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
         encrypt_spring_layout.putConstraint(SpringLayout.EAST, output_options_label, 0, SpringLayout.EAST, destination_panel);
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, output_options_label, 0, SpringLayout.WEST, destination_panel);
         encrypt_spring_layout.putConstraint(SpringLayout.NORTH, output_options_label, 5, SpringLayout.SOUTH, destination_panel);
-        encrypt_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 390, SpringLayout.NORTH, this);
+        encrypt_spring_layout.putConstraint(SpringLayout.SOUTH, output_options_panel, 400, SpringLayout.NORTH, this);
         encrypt_spring_layout.putConstraint(SpringLayout.EAST, output_options_panel, 0, SpringLayout.EAST, destination_panel);
         encrypt_spring_layout.putConstraint(SpringLayout.NORTH, output_options_panel, 0, SpringLayout.SOUTH, output_options_label);
         encrypt_spring_layout.putConstraint(SpringLayout.WEST, output_options_panel, 0, SpringLayout.WEST, output_options_label);
