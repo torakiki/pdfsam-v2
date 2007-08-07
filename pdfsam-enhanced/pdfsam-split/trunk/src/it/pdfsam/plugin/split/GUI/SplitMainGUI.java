@@ -129,7 +129,7 @@ public class SplitMainGUI extends AbstractPlugIn{
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.3.0e";
+    private final String PLUGIN_VERSION = "0.3.1e";
     
 /**
  * Constructor
@@ -597,11 +597,11 @@ public class SplitMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
         
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);
         
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, dest_folder_text);
 
@@ -738,6 +738,9 @@ public class SplitMainGUI extends AbstractPlugIn{
                 return overwrite_checkbox;
             }
             else if (aComponent.equals(overwrite_checkbox)){
+                return output_compressed_check;
+            }
+            else if (aComponent.equals(output_compressed_check)){
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
@@ -758,6 +761,9 @@ public class SplitMainGUI extends AbstractPlugIn{
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
+                return output_compressed_check;
+            }
+            else if (aComponent.equals(output_compressed_check)){
                 return overwrite_checkbox;
             }
             else if (aComponent.equals(overwrite_checkbox)){

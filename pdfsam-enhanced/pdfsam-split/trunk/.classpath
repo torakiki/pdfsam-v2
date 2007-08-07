@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/dom4j-1.6.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-maine"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/itext-2.0.2.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-console"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
