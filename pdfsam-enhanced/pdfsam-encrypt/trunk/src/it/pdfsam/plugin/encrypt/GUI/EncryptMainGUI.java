@@ -126,7 +126,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Encrypt";
-    private final String PLUGIN_VERSION = "0.1.5e";
+    private final String PLUGIN_VERSION = "0.1.6e";
 	
 	private final static String RC4_40 = "RC4-40b";
 	private final static String RC4_128 = "RC4-128b";
@@ -673,11 +673,11 @@ public class EncryptMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
 
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);   
         
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, dest_folder_text);
 
@@ -858,7 +858,7 @@ public class EncryptMainGUI extends AbstractPlugIn{
 	}
     
     public FocusTraversalPolicy getFocusPolicy(){
-        return (FocusTraversalPolicy)encrypt_focus_policy;
+        return encrypt_focus_policy;
         
     }
     
@@ -893,50 +893,53 @@ public class EncryptMainGUI extends AbstractPlugIn{
                 if (allowall_check.isSelected()){
                     return same_as_source_radio;
                 }else{
-                    return permissions_check[0];
+                    return permissions_check[EncryptMainGUI.MODIFY];
                 }
             }        
-            else if (aComponent.equals(permissions_check[0])){
-                return permissions_check[1];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.MODIFY])){
+                return permissions_check[EncryptMainGUI.ANNOTATION];
             }
-            else if (aComponent.equals(permissions_check[1])){
-                return permissions_check[2];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.ANNOTATION])){
+                return permissions_check[EncryptMainGUI.DPRINT];
             }
-            else if (aComponent.equals(permissions_check[2])){
-                return permissions_check[3];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.DPRINT])){
+                return permissions_check[EncryptMainGUI.PRINT];
             }
-            else if (aComponent.equals(permissions_check[3])){
-                return permissions_check[4];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.PRINT])){
+                return permissions_check[EncryptMainGUI.COPY];
             }
-            else if (aComponent.equals(permissions_check[4])){
-                return permissions_check[5];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.COPY])){
+                return permissions_check[EncryptMainGUI.FILL];
             }
-            else if (aComponent.equals(permissions_check[5])){
-                return permissions_check[6];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.FILL])){
+                return permissions_check[EncryptMainGUI.SCREEN];
             }
-            else if (aComponent.equals(permissions_check[6])){
-                return permissions_check[7];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.SCREEN])){
+                return permissions_check[EncryptMainGUI.ASSEMBLY];
             }
-            else if (aComponent.equals(permissions_check[7])){
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.ASSEMBLY])){
                 return same_as_source_radio;
             }
             else if (aComponent.equals(same_as_source_radio)){
                 return choose_a_folder_radio;
             }
             else if (aComponent.equals(choose_a_folder_radio)){
-            	if (same_as_source_radio.isSelected()){
-                    return out_prefix_text;
+            	if (choose_a_folder_radio.isSelected()){
+                    return dest_folder_text;
                 }else{
-                    return source_text_field;
+                    return overwrite_checkbox;
                 } 
             }
-            else if (aComponent.equals(source_text_field)){
+            else if (aComponent.equals(dest_folder_text)){
                 return browse_dest_button;
             }
             else if (aComponent.equals(browse_dest_button)){
                 return overwrite_checkbox;
             }
             else if (aComponent.equals(overwrite_checkbox)){
+                return output_compressed_check;
+            }
+            else if (aComponent.equals(output_compressed_check)){
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
@@ -957,6 +960,9 @@ public class EncryptMainGUI extends AbstractPlugIn{
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
+                return output_compressed_check;
+            }
+            else if (aComponent.equals(output_compressed_check)){
                 return overwrite_checkbox;
             }
             else if (aComponent.equals(overwrite_checkbox)){
@@ -979,31 +985,31 @@ public class EncryptMainGUI extends AbstractPlugIn{
                 if (allowall_check.isSelected()){
                     return allowall_check;
                 }else{
-                    return permissions_check[7];
+                    return permissions_check[EncryptMainGUI.ASSEMBLY];
                 }
             }
-            else if (aComponent.equals(permissions_check[7])){
-                return permissions_check[6];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.ASSEMBLY])){
+                return permissions_check[EncryptMainGUI.SCREEN];
             }
-            else if (aComponent.equals(permissions_check[6])){
-                return permissions_check[5];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.SCREEN])){
+                return permissions_check[EncryptMainGUI.FILL];
             }
-            else if (aComponent.equals(permissions_check[5])){
-                return permissions_check[4];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.FILL])){
+                return permissions_check[EncryptMainGUI.COPY];
             }
-            else if (aComponent.equals(permissions_check[4])){
-                return permissions_check[3];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.COPY])){
+                return permissions_check[EncryptMainGUI.PRINT];
             }
-            else if (aComponent.equals(permissions_check[3])){
-                return permissions_check[2];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.PRINT])){
+                return permissions_check[EncryptMainGUI.DPRINT];
             }
-            else if (aComponent.equals(permissions_check[2])){
-                return permissions_check[1];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.DPRINT])){
+                return permissions_check[EncryptMainGUI.ANNOTATION];
             }
-            else if (aComponent.equals(permissions_check[1])){
-                return permissions_check[0];
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.ANNOTATION])){
+                return permissions_check[EncryptMainGUI.MODIFY];
             }
-            else if (aComponent.equals(permissions_check[0])){
+            else if (aComponent.equals(permissions_check[EncryptMainGUI.MODIFY])){
                 return allowall_check;
             }
             else if (aComponent.equals(allowall_check)){
