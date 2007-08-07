@@ -108,7 +108,8 @@ public class MergeMainGUI extends AbstractPlugIn{
     private JPanel destination_panel = new JPanel();
     private SpringLayout option_panel_layout;
     private JPanel option_panel = new JPanel();
-    private JCheckBox overwrite_checkbox = new JCheckBox();
+    private final JCheckBox overwrite_checkbox = new JCheckBox();
+    private final JCheckBox output_compressed_check = new JCheckBox();    
     private JHelpLabel mergetype_help_label;
     private JHelpLabel destination_help_label;
     private ResourceBundle i18n_messages;
@@ -145,7 +146,7 @@ public class MergeMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private static final String PLUGIN_NAME = "Merge";
-    private static final String PLUGIN_VERSION = "0.4.9e";
+    private static final String PLUGIN_VERSION = "0.5.0e";
     
     /**
      * Constructor
@@ -434,12 +435,18 @@ public class MergeMainGUI extends AbstractPlugIn{
         overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
         overwrite_checkbox.setSelected(true);
         destination_panel.add(overwrite_checkbox);
+        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);
+        
 //END_CHECK_BOX  
 //HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output file")+"</b>" +
     		"<p>"+GettextResource.gettext(i18n_messages,"Browse or enter the full path to the destination output file.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output file if it already exists.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want compressed output files.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
@@ -490,6 +497,7 @@ public class MergeMainGUI extends AbstractPlugIn{
                     args.add("-u");
                     args.add(page_sel_string);
                     if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+                    if (output_compressed_check.isSelected()) args.add("-compressed"); 
                     if (merge_type_check.isSelected()) args.add("-copyfields");
                     args.add ("concat");
                 }catch(Exception any_ex){    
@@ -692,7 +700,7 @@ public class MergeMainGUI extends AbstractPlugIn{
         option_panel_layout.putConstraint(SpringLayout.SOUTH, mergetype_help_label, -1, SpringLayout.SOUTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.EAST, mergetype_help_label, -1, SpringLayout.EAST, option_panel);
 
-        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 345, SpringLayout.NORTH, this);
+        spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 365, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, add_file_button);
         spring_layout_merge_panel.putConstraint(SpringLayout.NORTH, destination_panel, 275, SpringLayout.NORTH, this);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, merge_table_scroll_panel);
@@ -702,9 +710,13 @@ public class MergeMainGUI extends AbstractPlugIn{
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_text_field, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, destination_text_field, 5, SpringLayout.WEST, destination_panel);
 
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
-        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, destination_text_field);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, destination_text_field);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
+
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, destination_text_field);
 
         spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, destination_label, 0, SpringLayout.NORTH, destination_panel);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, destination_label, 0, SpringLayout.WEST, destination_panel);
@@ -815,6 +827,9 @@ public class MergeMainGUI extends AbstractPlugIn{
 				Element merge_type = ((Element)arg0).addElement("merge_type");
 				merge_type.addAttribute("value", merge_type_check.isSelected()?"true":"false");
 
+				Element file_compress = ((Element)arg0).addElement("compressed");
+				file_compress.addAttribute("value", output_compressed_check.isSelected()?"true":"false");
+
 			}
 			return arg0;
 		}
@@ -854,7 +869,13 @@ public class MergeMainGUI extends AbstractPlugIn{
 							Node file_node = (Node) file_list.get(i);
                             addTableRowsFromNode(file_node);
                         }
-                        removeWipText(wip_text);
+						
+						Node file_compressed = (Node) arg0.selectSingleNode("compressed/@value");
+						if (file_compressed != null){
+							output_compressed_check.setSelected(file_compressed.getText().equals("true"));
+						}
+						
+						removeWipText(wip_text);
 	                    fireLogPropertyChanged(GettextResource.gettext(i18n_messages,"Merge section loaded."), LogPanel.LOG_INFO);                     
                     }
 					catch (Exception ex){
@@ -890,6 +911,9 @@ public class MergeMainGUI extends AbstractPlugIn{
                 return clear_button;
             }        
             else if (aComponent.equals(clear_button)){
+                return merge_type_check;
+            }
+            else if (aComponent.equals(merge_type_check)){
                 return destination_text_field;
             }
             else if (aComponent.equals(destination_text_field)){
@@ -897,10 +921,13 @@ public class MergeMainGUI extends AbstractPlugIn{
             }
             else if (aComponent.equals(browse_button)){
                 return overwrite_checkbox;
-            }            
-            else if (aComponent.equals(overwrite_checkbox)){
-                return run_button;
-            }
+            }   
+			else if (aComponent.equals(overwrite_checkbox)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
+				return run_button;
+			}            
             else if (aComponent.equals(run_button)){
                 return add_file_button;
             }
@@ -909,9 +936,12 @@ public class MergeMainGUI extends AbstractPlugIn{
         
         public Component getComponentBefore(Container CycleRootComp, Component aComponent){
             
-            if (aComponent.equals(run_button)){
-                return overwrite_checkbox;
-            }
+			if (aComponent.equals(run_button)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
+				return overwrite_checkbox;
+			}
             else if (aComponent.equals(overwrite_checkbox)){
                 return browse_button;
             }
@@ -919,6 +949,9 @@ public class MergeMainGUI extends AbstractPlugIn{
                 return destination_text_field;
             }
             else if (aComponent.equals(destination_text_field)){
+                return merge_type_check;
+            }
+            else if (aComponent.equals(merge_type_check)){
                 return clear_button;
             }
             else if (aComponent.equals(clear_button)){
