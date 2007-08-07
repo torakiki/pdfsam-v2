@@ -1,3 +1,14 @@
+1.3.0e stable release 1
+===================================
+-Console: fix Bug #1764362
+-Fixed focus policy for every plugin
+-Console: added -compressed option to compress output documents
+-Split, Merge, Encrypt, AlternateMix, Cover Footer: check to use -compressed option
+-Settings: language combo now shows language name
+-iText 2.0.4
+-looks 2.1.4
+-langpack
+
 1.3.0e beta 1
 ===================================
 -Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
