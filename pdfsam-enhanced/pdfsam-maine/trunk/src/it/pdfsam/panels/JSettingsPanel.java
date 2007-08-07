@@ -145,15 +145,21 @@ public class JSettingsPanel extends AbstractPlugIn{
         browse_file_chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 //END_FILE_CHOOSER
 //JCOMBO
+    	language_combo = new JComboBox(config.getLanguagesList().toArray());
+    	language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+    	language_combo.setRenderer(new JComboListItemRender());
+        settings_options_panel.add(language_combo);
         try{
-        	language_combo = new JComboBox(config.getLanguagesList().toArray());
-        	language_combo.setSelectedItem(xml_config_object.getXMLConfigValue("/pdfsam/settings/i18n"));
+	 		for (int i=0; i<language_combo.getItemCount(); i++){
+	   			if (((ListItem)language_combo.getItemAt(i)).getId().equals(xml_config_object.getXMLConfigValue("/pdfsam/settings/i18n"))){
+	   				language_combo.setSelectedItem(language_combo.getItemAt(i));
+	             break;
+	   			}
+	 		}
+
         }catch (Exception e){
-        	language_combo = new JComboBox();
         	fireLogPropertyChanged("Error: "+e.getMessage(), LogPanel.LOG_ERROR); 
         }
-        language_combo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settings_options_panel.add(language_combo);
         
         combo_laf = new JComboBox(ThemeSelector.getLAFList().toArray());
         combo_laf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
@@ -259,7 +265,7 @@ public class JSettingsPanel extends AbstractPlugIn{
 		save_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 				try{
-					xml_config_object.setXMLConfigValue("/pdfsam/settings/i18n", (String)language_combo.getSelectedItem());
+					xml_config_object.setXMLConfigValue("/pdfsam/settings/i18n", ((ListItem)language_combo.getSelectedItem()).getId());
 					xml_config_object.setXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF", ((ListItem)combo_laf.getSelectedItem()).getId());
 					xml_config_object.setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((ListItem)combo_theme.getSelectedItem()).getId());
 					xml_config_object.setXMLConfigValue("/pdfsam/settings/loglevel", ((ListItem)combo_log.getSelectedItem()).getId());
@@ -404,6 +410,9 @@ public class JSettingsPanel extends AbstractPlugIn{
                 return combo_theme;
             }
             else if (aComponent.equals(combo_theme)){
+                return combo_log;
+            }
+            else if (aComponent.equals(combo_log)){
                 return load_default_job_text;
             }
             else if (aComponent.equals(load_default_job_text)){
@@ -424,6 +433,9 @@ public class JSettingsPanel extends AbstractPlugIn{
                 return load_default_job_text;
             }
             else if (aComponent.equals(load_default_job_text)){
+                return combo_log;
+            }
+            else if (aComponent.equals(combo_log)){
                 return combo_theme;
             }
             else if (aComponent.equals(combo_theme)){

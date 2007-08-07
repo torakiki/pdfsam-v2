@@ -37,6 +37,11 @@ public class PluginLoadException extends Exception {
         error_msg = message;
     }
 
+    public PluginLoadException(String message, Throwable t) {
+        super(message, t);
+        error_msg = message;
+    }
+    
     public String toString(){
         return error_msg;
     }

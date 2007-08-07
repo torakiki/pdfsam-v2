@@ -29,6 +29,7 @@ import it.pdfsam.panels.JSettingsPanel;
 import it.pdfsam.panels.JStatusPanel;
 import it.pdfsam.panels.LogPanel;
 import it.pdfsam.panels.MenuPanel;
+import it.pdfsam.types.ListItem;
 import it.pdfsam.types.NodeInfo;
 import it.pdfsam.util.LanguageLoader;
 import it.pdfsam.util.PlugInsLoader;
@@ -97,7 +98,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.3.0e beta 1"; 
+	public static final String APP_VERSION = "1.3.0e beta 2"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
 	//i set this true while i'm developing.. false when releasing
@@ -135,7 +136,10 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/it/pdfsam/i18n/languages.xml"));
 			List nodeList = document.selectNodes("/languages/language");
 			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
-				langs.add(((Node) nodeList.get(i)).selectSingleNode("@value").getText());
+				Node langNode  =((Node) nodeList.get(i));
+				if (langNode != null){
+					langs.add(new ListItem(langNode.selectSingleNode("@value").getText(), langNode.selectSingleNode("@description").getText()));
+				}
 			}
 			config.setLanguageList(langs);
 
@@ -292,7 +296,7 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 	    	status_bar.setIcon(pl_panel[selectedPlug.getIndex()].getIcon());
 	    	CardLayout cl = (CardLayout)(plugs_panel.getLayout());
 	        cl.show(plugs_panel, selectedPlug.getName());	   
-	    	
+	    	setFocusTraversalPolicy(pl_panel[selectedPlug.getIndex()].getFocusPolicy());
 	    } 
 	}
 	/**

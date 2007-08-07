@@ -51,9 +51,9 @@ public class  PlugInsLoader{
                     File plugs_path = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
                     pluginsdir = (plugs_path.getParent().endsWith("/") || plugs_path.getParent().endsWith("\\"))? plugs_path.getParent()+"plugins" :plugs_path.getParent()+"/plugins";
                 }catch (NullPointerException np_exception){
-                    throw new PluginLoadException("Error getting pdfsam.jar file path");
-                }catch (Exception np_exception){
-                    throw new PluginLoadException("Error creating PlugInsLoader object");
+                    throw new PluginLoadException("Error getting pdfsam.jar file path", np_exception);
+                }catch (Exception n_exception){
+                    throw new PluginLoadException("Error creating PlugInsLoader object", n_exception);
                 }
             }
             else {
@@ -113,7 +113,7 @@ public class  PlugInsLoader{
             //TODO find a good way
             xml_plugin_object = new XMLConfig(currdir.toString()+"/");            
         }catch (Exception xml_exception){
-            throw new PluginLoadException("Error getting plugin file config.xml");
+            throw new PluginLoadException("Error getting plugin file config.xml", xml_exception);
         }
         //scan dir
         // This is a directory. Attempt to find jar files in that directory.
@@ -135,7 +135,7 @@ public class  PlugInsLoader{
             try{   
                 file_url = new File(p_list.get(num)+"/"+jar_name).toURL();
             }catch (MalformedURLException url_exception){
-                throw new PluginLoadException("Error creating URL to the jar file");
+                throw new PluginLoadException("Error creating URL to the jar file", url_exception);
             }
             //create classloader
             urlcl = new URLClassLoader(new URL[]{file_url});
@@ -164,9 +164,9 @@ public class  PlugInsLoader{
                 try{
                     return cls.newInstance();
                 }catch (InstantiationException i_exception){
-                    throw new PluginLoadException("Unable to create class instance");
+                    throw new PluginLoadException("Unable to create class instance", i_exception);
                 }catch (IllegalAccessException ia_exception){
-                    throw new PluginLoadException("Unable access class file");
+                    throw new PluginLoadException("Unable access class file", ia_exception);
                 }
             }
             

@@ -15,9 +15,11 @@
 package it.pdfsam.configuration;
 
 import it.pdfsam.console.MainConsole;
+import it.pdfsam.types.ListItem;
 import it.pdfsam.util.XMLConfig;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -108,8 +110,9 @@ public class Configuration  implements Serializable{
 	 /**
      * @return language list
      */
-    public List getLanguagesList() throws Exception{        
-            return langs;
+    public List getLanguagesList(){   
+		Collections.sort(langs);	
+        return langs;
     }
     
     /**
@@ -121,7 +124,7 @@ public class Configuration  implements Serializable{
 			langs.addAll(languageList);
 		}catch(Exception e){
 			langs = new Vector(1, 1);
-			langs.add("en_GB");
+			langs.add(new ListItem("en_GB", "English"));
 		}
 	}
 }
