@@ -112,7 +112,8 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private JFileChooser browse_dir_chooser;
 	private SpringLayout destination_panel_layout;
 	private JPanel destination_panel = new JPanel();
-	private JCheckBox overwrite_checkbox = new JCheckBox();
+	private final JCheckBox overwrite_checkbox = new JCheckBox();
+    private final JCheckBox output_compressed_check = new JCheckBox();
 	private ResourceBundle i18n_messages;
 	private Configuration config;
 	private MainConsole mc;
@@ -147,7 +148,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 	private static final String ALL_STRING = "All";
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_NAME = "Cover and Footer";
-	private static final String PLUGIN_VERSION = "0.1.5e";
+	private static final String PLUGIN_VERSION = "0.1.6e";
 
 	/**
 	 * Constructor
@@ -452,12 +453,18 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		overwrite_checkbox.setText(GettextResource.gettext(i18n_messages,"Overwrite if already exists"));
 		overwrite_checkbox.setSelected(true);
 		destination_panel.add(overwrite_checkbox);
+        
+        output_compressed_check.setText(GettextResource.gettext(i18n_messages,"Compress output file"));
+        output_compressed_check.setSelected(true);
+        destination_panel.add(output_compressed_check);
 //		END_CHECK_BOX  
+		
 //      HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(i18n_messages,"Destination output directory")+"</b>" +
     		"<p>"+GettextResource.gettext(i18n_messages,"Browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"<p>"+GettextResource.gettext(i18n_messages,"Check the box if you want compressed output files.")+"</p>"+
     		"</body></html>";
 	    destination_help_label = new JHelpLabel(helpTextDest, true);
 	    destination_panel.add(destination_help_label);
@@ -478,6 +485,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 				final LinkedList args1 = new LinkedList();
 
 				if (overwrite_checkbox.isSelected()) args.add("-overwrite");
+				if (output_compressed_check.isSelected()) args.add("-compressed"); 
 				if (cover_table.getModel().getRowCount() > 0){
 					//validation and permission check are demanded to the CmdParser object
 					for (int i = 0; i < cover_table.getModel().getRowCount(); i++){
@@ -707,7 +715,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.EAST, clear_button, 0, SpringLayout.EAST, remove_file_button);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.WEST, clear_button, 0, SpringLayout.WEST, remove_file_button);
 
-		spring_layout_cover_footer_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 70, SpringLayout.NORTH, destination_panel);
+		spring_layout_cover_footer_panel.putConstraint(SpringLayout.SOUTH, destination_panel, 90, SpringLayout.NORTH, destination_panel);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.EAST, destination_panel, 0, SpringLayout.EAST, add_file_button);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.NORTH, destination_panel, 25, SpringLayout.SOUTH, cover_table_scroll_panel);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.WEST, destination_panel, 0, SpringLayout.WEST, cover_table_scroll_panel);
@@ -717,9 +725,13 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_text_field, 30, SpringLayout.NORTH, destination_panel);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, destination_text_field, 5, SpringLayout.WEST, destination_panel);
 
-		destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 30, SpringLayout.NORTH, overwrite_checkbox);
-		destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 1, SpringLayout.SOUTH, destination_text_field);
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
+		destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, destination_text_field);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
+
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, destination_text_field);
 
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.SOUTH, destination_label, 0, SpringLayout.NORTH, destination_panel);
 		spring_layout_cover_footer_panel.putConstraint(SpringLayout.WEST, destination_label, 0, SpringLayout.WEST, destination_panel);
@@ -833,6 +845,10 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 
 				Element file_overwrite = ((Element)arg0).addElement("overwrite");
 				file_overwrite.addAttribute("value", overwrite_checkbox.isSelected()?"true":"false");
+
+				Element file_compress = ((Element)arg0).addElement("compressed");
+				file_compress.addAttribute("value", output_compressed_check.isSelected()?"true":"false");
+				
 			}
 			return arg0;
 		}
@@ -864,6 +880,12 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 					if (file_overwrite != null){
 						overwrite_checkbox.setSelected(file_overwrite.getText().equals("true"));
 					}
+					
+					Node file_compressed = (Node) arg0.selectSingleNode("compressed/@value");
+					if (file_compressed != null){
+						output_compressed_check.setSelected(file_compressed.getText().equals("true"));
+					}
+					
 					modello_cover_table.clearData();
 					List file_list = arg0.selectNodes("filelist/file");
 					wip_text = GettextResource.gettext(i18n_messages,"Please wait while reading ")+" ...";
@@ -895,7 +917,19 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		}
 
 		public Component getComponentAfter(Container CycleRootComp, Component aComponent){            
-			if (aComponent.equals(add_file_button)){
+			if (aComponent.equals(cover_text_field)){
+				return browse_cover_button;
+			}
+			else if (aComponent.equals(browse_cover_button)){
+				return footer_text_field;
+			}
+			else if (aComponent.equals(footer_text_field)){
+				return browse_footer_button;
+			}
+			else if (aComponent.equals(browse_footer_button)){
+				return add_file_button;
+			}
+			else if (aComponent.equals(add_file_button)){
 				return remove_file_button;
 			}
 			else if (aComponent.equals(remove_file_button)){
@@ -911,19 +945,25 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 				return overwrite_checkbox;
 			}            
 			else if (aComponent.equals(overwrite_checkbox)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
 				return run_button;
 			}
 			else if (aComponent.equals(run_button)){
-				return add_file_button;
+				return cover_text_field;
 			}
-			return add_file_button;
+			return cover_text_field;
 		}
 
 		public Component getComponentBefore(Container CycleRootComp, Component aComponent){
 
 			if (aComponent.equals(run_button)){
-				return overwrite_checkbox;
+				return output_compressed_check;
 			}
+			else if (aComponent.equals(output_compressed_check)){
+				return overwrite_checkbox;
+			}			
 			else if (aComponent.equals(overwrite_checkbox)){
 				return browse_button;
 			}
@@ -940,13 +980,25 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 				return add_file_button;
 			}
 			else if (aComponent.equals(add_file_button)){
+				return browse_footer_button;
+			}
+			else if (aComponent.equals(browse_footer_button)){
+				return footer_text_field;
+			}
+			else if (aComponent.equals(footer_text_field)){
+				return browse_cover_button;
+			}
+			else if (aComponent.equals(browse_cover_button)){
+				return cover_text_field;
+			}
+			else if (aComponent.equals(cover_text_field)){
 				return run_button;
 			}
-			return add_file_button;
+			return cover_text_field;
 		}
 
 		public Component getDefaultComponent(Container CycleRootComp){
-			return add_file_button;
+			return cover_text_field;
 		}
 
 		public Component getLastComponent(Container CycleRootComp){
@@ -954,7 +1006,7 @@ public class CoverFooterMainGUI extends AbstractPlugIn{
 		}
 
 		public Component getFirstComponent(Container CycleRootComp){
-			return add_file_button;
+			return cover_text_field;
 		}
 	}
 
