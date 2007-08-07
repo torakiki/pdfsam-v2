@@ -97,7 +97,7 @@ public class MixMainGUI extends AbstractPlugIn{
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_NAME = "Alternate Mix";
-	private static final String PLUGIN_VERSION = "0.0.7e";
+	private static final String PLUGIN_VERSION = "0.0.8e";
 	
 	/**
 	 * Constructor
@@ -391,11 +391,11 @@ public class MixMainGUI extends AbstractPlugIn{
 		destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_text_field, 30, SpringLayout.NORTH, destination_panel);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, destination_text_field, 5, SpringLayout.WEST, destination_panel);
 
-		destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
 		destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, destination_text_field);
 		destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
 
-		destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+		destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, destination_text_field);
 
@@ -556,6 +556,9 @@ public class MixMainGUI extends AbstractPlugIn{
 				return overwrite_checkbox;
 			}            
 			else if (aComponent.equals(overwrite_checkbox)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
 				return run_button;
 			}
 			else if (aComponent.equals(run_button)){
@@ -567,6 +570,9 @@ public class MixMainGUI extends AbstractPlugIn{
 		public Component getComponentBefore(Container CycleRootComp, Component aComponent){
 
 			if (aComponent.equals(run_button)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
 				return overwrite_checkbox;
 			}
 			else if (aComponent.equals(overwrite_checkbox)){
