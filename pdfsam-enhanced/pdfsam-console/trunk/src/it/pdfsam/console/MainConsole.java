@@ -109,7 +109,7 @@ public class MainConsole implements Serializable{
 				if (getExtension(l_file).equals("XML".toLowerCase())){
 					file_list = parseXmlFile(l_file);
 				}
-				if (getExtension(l_file).equals("CVS".toLowerCase())){
+				if (getExtension(l_file).equals("CSV".toLowerCase())){
 					file_list = parseCsvFile(l_file);
 				}                                
             }

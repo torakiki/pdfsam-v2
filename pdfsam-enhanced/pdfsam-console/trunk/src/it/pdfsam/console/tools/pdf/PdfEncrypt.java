@@ -86,12 +86,12 @@ public class PdfEncrypt extends GenericPdfTool{
 	        }else{
 	            prefix_value = "";
 	        }
-        	this.etype = PdfWriter.ENCRYPTION_RC4_128;
+        	this.etype = PdfWriter.STANDARD_ENCRYPTION_128;
 	        if(etype != null){
 	        	if (etype.equals(CmdParser.E_AES_128)){
 		        	this.etype = PdfWriter.ENCRYPTION_AES_128;
 		        }else if (etype.equals(CmdParser.E_RC4_40)){
-		        	this.etype = PdfWriter.ENCRYPTION_RC4_40;
+		        	this.etype = PdfWriter.STANDARD_ENCRYPTION_40;
 		        }		   
         	}
 	       overwrite_boolean = overwrite;
