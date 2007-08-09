@@ -68,7 +68,7 @@ public class MainConsole implements Serializable{
     /**
      * Console version
      */
-    public static final String VERSION = "0.8.1e"; 
+    public static final String VERSION = "0.8.2e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
