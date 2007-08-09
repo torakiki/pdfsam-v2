@@ -5,7 +5,6 @@
 -Console: added -compressed option to compress output documents
 -Split, Merge, Encrypt, AlternateMix, Cover Footer: check to use -compressed option
 -Settings: language combo now shows language name
--iText 2.0.4
 -looks 2.1.4
 -langpack
 

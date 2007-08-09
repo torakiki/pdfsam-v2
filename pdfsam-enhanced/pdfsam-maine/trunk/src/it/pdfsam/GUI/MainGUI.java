@@ -98,11 +98,9 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
     public static final String AUTHOR = "Andrea Vacondio";
 	public static final String NAME = "PDF Split and Merge enhanced";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.3.0e beta 2"; 
+	public static final String APP_VERSION = "1.3.0e stable release 1"; 
 	
 	private final ExitActionListener exitListener = new ExitActionListener();
-	//i set this true while i'm developing.. false when releasing
-	private static final boolean IDE = false;
 
 	public MainGUI() {
 		runSplash();
@@ -111,15 +109,11 @@ public class MainGUI extends JFrame implements TreeSelectionListener, PropertyCh
 		
 		theme_sel = new ThemeSelector();
 		try {
-			//tryes to get config.xml path
-			if (IDE){
-				application_path = URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8");                            
-			}else{
-				File app_path = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
-				application_path = app_path.getParent();
-			}
+            File app_path = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
+            application_path = app_path.getParent();
 			setSplashStep("Loading configuration..");
 			config.setXmlConfigObject(new XMLConfig(application_path));
+
 			look_and_feel = theme_sel.getLAF(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"));            
 			if (ThemeSelector.isPlastic(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"))){            
 				theme_sel.setTheme(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/theme"));

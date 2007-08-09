@@ -2,13 +2,13 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "pdfsam"
-!define PRODUCT_VERSION "1.3.0e beta 1"
+!define PRODUCT_VERSION "1.3.0e sr 1"
 !define PRODUCT_PUBLISHER "Andrea Vacondio"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 !define TARGET_FILE "config.xml"
-!define PRODUCT_DATE "24/05/2007"
+!define PRODUCT_DATE "10/08/2007"
 !define LANGUAGE_TITLE "pdfsam language selection"
 SetCompressor lzma
 
@@ -18,8 +18,8 @@ SetCompressor lzma
   
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "G:\install.ico"
-!define MUI_UNICON "G:\uninstall.ico"
+!define MUI_ICON "F:\install.ico"
+!define MUI_UNICON "F:\uninstall.ico"
 !define MUI_LANGDLL_WINDOWTITLE "${LANGUAGE_TITLE}"
 
 ; Welcome page
@@ -55,6 +55,13 @@ var ICONS_GROUP
   !insertmacro MUI_LANGUAGE "French"
   !insertmacro MUI_LANGUAGE "Greek"
   !insertmacro MUI_LANGUAGE "Turkish"
+  !insertmacro MUI_LANGUAGE "German"
+  !insertmacro MUI_LANGUAGE "Polish"
+  !insertmacro MUI_LANGUAGE "Finnish"  
+  !insertmacro MUI_LANGUAGE "SimpChinese"
+  !insertmacro MUI_LANGUAGE "Hungarian"
+  !insertmacro MUI_LANGUAGE "Danish"
+  !insertmacro MUI_LANGUAGE "TradChinese"
   
 ; Reserve files
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
@@ -62,7 +69,7 @@ var ICONS_GROUP
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "pdfsam-win32inst-v1_3_0e-b1.exe"
+OutFile "pdfsam-win32inst-v1_3_0e-sr1.exe"
 InstallDir "$PROGRAMFILES\pdfsam"
 ShowInstDetails show
 ShowUnInstDetails show
@@ -262,7 +269,7 @@ endFileExist:
     GOTO languagedone
     noswedish:
     StrCmp $LANGUAGE 1043 +1 nodutch
-      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "de_DE" "$INSTDIR\config.xml"
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "nl_NL" "$INSTDIR\config.xml"
     GOTO languagedone
     nodutch:
     StrCmp $LANGUAGE 1032 +1 nogreek
@@ -273,15 +280,40 @@ endFileExist:
       !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "tr_TR" "$INSTDIR\config.xml"
     GOTO languagedone
      noturkish:
+    StrCmp $LANGUAGE 1035 +1 nofinnish
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "fi_FI" "$INSTDIR\config.xml"
+    GOTO languagedone
+     nofinnish:
+    StrCmp $LANGUAGE 1038 +1 nohungarian
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "hu_HU" "$INSTDIR\config.xml"
+    GOTO languagedone
+     nohungarian:
+    StrCmp $LANGUAGE 1030 +1 nodanish
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "da_DA" "$INSTDIR\config.xml"
+    GOTO languagedone
+     nodanish:
+    StrCmp $LANGUAGE 1045 +1 nopolish
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "pl_PL" "$INSTDIR\config.xml"
+    GOTO languagedone
+     nopolish:
+    StrCmp $LANGUAGE 2052 +1 nosimpchinese
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "zh_CN" "$INSTDIR\config.xml"
+    GOTO languagedone
+     nosimpchinese:
+    StrCmp $LANGUAGE 1028 +1 notradchinese
+      !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "zh_TW" "$INSTDIR\config.xml"
+    GOTO languagedone
+     notradchinese:
       !insertmacro ReplaceBetweenXMLTab "<i18n>" "</i18n>" "en_GB" "$INSTDIR\config.xml"
     QUIT
     languagedone:
 
+
   SetOverwrite on
   SetOutPath "$INSTDIR\lib"
-  File "lib\pdfsam-console-0.8.0e.jar"
+  File "lib\pdfsam-console-0.8.2e.jar"
   File "lib\jcmdline-1.0.3.jar"
-  File "lib\looks-2.1.1.jar"
+  File "lib\looks-2.1.4.jar"
   File "lib\itext-2.0.2.jar"
   File "lib\pdfsam-langpack.jar"
   File "lib\dom4j-1.6.1.jar"
@@ -290,7 +322,7 @@ endFileExist:
   File "lib\bcprov-jdk14-135.jar"    
   SetOverwrite ifnewer
   SetOutPath "$INSTDIR"
-  File "pdfsam-1.3.0e-b1.jar"
+  File "pdfsam-1.3.0e-sr1.jar"
   File "pdfsam-starter.exe"
   SetOutPath "$INSTDIR\doc"
   File "doc\readme.txt"
@@ -298,19 +330,19 @@ endFileExist:
   File "doc\License.txt"
   File "doc\pdfsam-1.3.0e-b1-tutorial.pdf"
   SetOutPath "$INSTDIR\plugins\merge"
-  File "plugins\merge\pdfsam-merge-0.4.9e.jar"
+  File "plugins\merge\pdfsam-merge-0.5.0e.jar"
   File "plugins\merge\config.xml"
   SetOutPath "$INSTDIR\plugins\split"
-  File "plugins\split\pdfsam-split-0.3.0e.jar"
+  File "plugins\split\pdfsam-split-0.3.1e.jar"
   File "plugins\split\config.xml"
   SetOutPath "$INSTDIR\plugins\cover"
-  File "plugins\cover\pdfsam-cover-0.1.5e.jar"
+  File "plugins\cover\pdfsam-cover-0.1.6e.jar"
   File "plugins\cover\config.xml"
   SetOutPath "$INSTDIR\plugins\encrypt"
-  File "plugins\encrypt\pdfsam-encrypt-0.1.5e.jar"
+  File "plugins\encrypt\pdfsam-encrypt-0.1.6e.jar"
   File "plugins\encrypt\config.xml"
   SetOutPath "$INSTDIR\plugins\mix"
-  File "plugins\mix\pdfsam-mix-0.0.7e.jar"
+  File "plugins\mix\pdfsam-mix-0.0.8e.jar"
   File "plugins\mix\config.xml"
   SetOutPath "$SMPROGRAMS\$ICONS_GROUP"
 SectionEnd
@@ -349,25 +381,25 @@ Section Uninstall
   !insertmacro MUI_STARTMENU_GETFOLDER "Application" $ICONS_GROUP
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\plugins\split\config.xml"
-  Delete "$INSTDIR\plugins\split\pdfsam-split-0.3.0e.jar"
+  Delete "$INSTDIR\plugins\split\pdfsam-split-0.3.1e.jar"
   Delete "$INSTDIR\plugins\merge\config.xml"
-  Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.4.9e.jar"
+  Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.5.0e.jar"
   Delete "$INSTDIR\plugins\merge\config.xml"
-  Delete "$INSTDIR\plugins\encrypt\pdfsam-encrypt-0.1.5e.jar"
+  Delete "$INSTDIR\plugins\encrypt\pdfsam-encrypt-0.1.6e.jar"
   Delete "$INSTDIR\plugins\encrypt\config.xml"
-  Delete "$INSTDIR\plugins\mix\pdfsam-mix-0.0.7e.jar"
+  Delete "$INSTDIR\plugins\mix\pdfsam-mix-0.0.8e.jar"
   Delete "$INSTDIR\plugins\mix\config.xml"
-  Delete "$INSTDIR\plugins\cover\pdfsam-cover-0.1.5e.jar"
+  Delete "$INSTDIR\plugins\cover\pdfsam-cover-0.1.6e.jar"
   Delete "$INSTDIR\plugins\cover\config.xml"
-  Delete "$INSTDIR\pdfsam-1.3.0e-b1.jar"
+  Delete "$INSTDIR\pdfsam-1.3.0e-sr1.jar"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\doc\readme.txt"
   Delete "$INSTDIR\doc\changelog.txt"
   Delete "$INSTDIR\doc\License.txt"
   Delete "$INSTDIR\doc\pdfsam-1.3.0e-b1-tutorial.pdf"  
-  Delete "$INSTDIR\lib\pdfsam-console-0.8.0e.jar"
+  Delete "$INSTDIR\lib\pdfsam-console-0.8.2e.jar"
   Delete "$INSTDIR\lib\jcmdline-1.0.3.jar"
-  Delete "$INSTDIR\lib\looks-2.1.1.jar"
+  Delete "$INSTDIR\lib\looks-2.1.4.jar"
   Delete "$INSTDIR\lib\itext-2.0.2.jar"
   Delete "$INSTDIR\lib\bcmail-jdk14-135.jar"
   Delete "$INSTDIR\lib\bcprov-jdk14-135.jar"  

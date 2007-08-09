@@ -20,7 +20,7 @@
     <property name="console.src.dir" value="${console.dir}/src"/>
     <property name="console.jar.dir" value="${pdfsam.dir}/lib"/>
     <property name="console.jar.name" value="pdfsam-console"/>
-    <property name="console.jar.version" value="0.8.1e"/>   
+    <property name="console.jar.version" value="0.8.2e"/>   
 	
     <property name="merge.dir" value="${project.dir}/pdfsam-merge"/>
     <property name="merge.classes.dir" value="${merge.dir}/bin"/>
@@ -73,7 +73,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.GUI.MainGUI"/>
-		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.4.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.4.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
+		        <attribute name="Class-Path" value="lib/pdfsam-langpack.jar lib/looks-2.1.4.jar lib/jcmdline-1.0.3.jar lib/itext-2.0.2.jar lib/dom4j-1.6.1.jar lib/jaxen-1.1.jar lib/${console.jar.name}-${console.jar.version}.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
 		    </manifest>
 			<fileset dir="${pdfsam.classes.dir}">
 				<include name="**/*.class"/>
@@ -89,7 +89,7 @@
 	    	<manifest>
 			    <attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Main-Class" value="it.pdfsam.console.MainConsole"/>
-	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.4.jar dom4j-1.6.1.jar jaxen-1.1.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
+	    		<attribute name="Class-Path" value="jcmdline-1.0.3.jar itext-2.0.2.jar dom4j-1.6.1.jar jaxen-1.1.jar lib/bcmail-jdk14-135.jar lib/bcprov-jdk14-135.jar"/>
 		    </manifest>
 			<fileset dir="${console.classes.dir}">
 				<include name="**/*.class"/>

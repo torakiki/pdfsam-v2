@@ -14,14 +14,14 @@ Plugins included:
 	-pdfsam-cover-0.1.6e *
 
 Linked libraries:
-	-itext-2.0.4
+	-itext-2.0.2
 	-jcmdline-1.0.3
 	-looks-2.1.4
 	-jaxen-1.1
 	-dom4j-1.6.1
 	-bcmail-jdk14-135.jar
 	-bcprov-jdk14-135.jar
-	-pdfsam-console-0.8.1e *
+	-pdfsam-console-0.8.2e *
 	-pdfsam-langpack *
 	
 Note: This is a test version and many fixes have to be done. PDF Split and Merge comes with ABSOLUTELY NO WARRANTY;
