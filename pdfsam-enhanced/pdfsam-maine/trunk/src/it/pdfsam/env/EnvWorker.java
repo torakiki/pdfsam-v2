@@ -24,8 +24,9 @@ import it.pdfsam.util.XmlFilter;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -75,10 +76,10 @@ public class EnvWorker implements LogWriter{
 		try{
 			file_chooser.setApproveButtonText(GettextResource.gettext(i18n_messages, "Save job"));
 			int return_val = file_chooser.showOpenDialog(null);
-			File chosen_file = null;
+			File chosenFile = null;
 			if (return_val == JFileChooser.APPROVE_OPTION) {
-				chosen_file = file_chooser.getSelectedFile();
-				if (chosen_file != null) {
+				chosenFile = file_chooser.getSelectedFile();
+				if (chosenFile != null) {
 					try {
 						Document document = DocumentHelper.createDocument();
 						Element root = document.addElement("pdfsam_saved_jobs");
@@ -92,9 +93,10 @@ public class EnvWorker implements LogWriter{
 							fireLogPropertyChanged(GettextResource.gettext(i18n_messages, pl_panel[i].getPluginName()+ " job node loaded."),
 									LogPanel.LOG_DEBUG);
 						}
-						FileWriter file_writer = new FileWriter(chosen_file);
+						BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(chosenFile));
 						OutputFormat format = OutputFormat.createPrettyPrint();
-						XMLWriter xml_file_writer = new XMLWriter(file_writer, format);
+						format.setEncoding("UTF-8");
+						XMLWriter xml_file_writer = new XMLWriter(bos, format);
 						xml_file_writer.write(document);
 						xml_file_writer.flush();
 						xml_file_writer.close();

@@ -17,7 +17,7 @@ package it.pdfsam.types;
 /**
  * Utility class used in theme selector
  * @author  Andrea Vacondio
- * @see     it.pdfsam.utils.ThemeSelector
+ * @see     it.pdfsam.util.ThemeSelector
  */
 
 public class ListItem implements Comparable{
@@ -73,7 +73,7 @@ public class ListItem implements Comparable{
 
     /**
      * sets the <code>inputvalue</code> property
-     * @param inputvalue.
+     * @param inputvalue 
      */
 	public void setValue(String inputvalue) {
 		this.value = inputvalue;
