@@ -184,8 +184,8 @@ public class CmdParser {
      */
     private final Parameter[] arguments = new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[concat], [split], [encrypt], [mix]}",
-                    new String[] { "concat", "split", "encrypt", "mix" },
+                    "command to execute {[concat], [split]}",
+                    new String[] { "concat", "split"},
                     StringParam.REQUIRED),
 
     };
