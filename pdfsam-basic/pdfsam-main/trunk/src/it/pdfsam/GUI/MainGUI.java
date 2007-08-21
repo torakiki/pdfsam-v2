@@ -85,7 +85,7 @@ public class MainGUI implements PropertyChangeListener {
     //consts
     public static final String AUTHOR = "Andrea Vacondio";
     public static final String NAME = "PDF Split and Merge";
-    public static final String APP_VERSION = "0.7 beta 2"; 
+    public static final String APP_VERSION = "0.7 stable release 1"; 
     
     public static void main(String args[]) {
         MainGUI window = new MainGUI();        

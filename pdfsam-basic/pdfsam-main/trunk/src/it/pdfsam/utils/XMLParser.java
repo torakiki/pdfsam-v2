@@ -15,8 +15,9 @@
  */
 package it.pdfsam.utils;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.net.URL;
 
 import org.dom4j.Document;
@@ -68,19 +69,19 @@ public class XMLParser {
     		return document;
         }
 
-/**
- * Write the DOM to the xml file
- * 
- * @param domDoc Document to write
- * @param full_path Full path to the xml file to write
- * @throws Exception
- */    
+    /**
+     * Write the DOM to the xml file
+     * @param domDoc Document to write
+     * @param full_path Full path to the xml file to write
+     * @throws Exception
+     */    
     public static void writeXmlFile(Document domDoc, String full_path) throws Exception{           
-		    FileWriter file_writer = new FileWriter(full_path);
-			OutputFormat format = OutputFormat.createPrettyPrint();
-			XMLWriter xml_file_writer = new XMLWriter(file_writer, format);
-			xml_file_writer.write(domDoc);
-			xml_file_writer.flush();
-			xml_file_writer.close();
-        }
+    	BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(full_path));
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		format.setEncoding("UTF-8");    
+		XMLWriter xml_file_writer = new XMLWriter(bos, format);
+		xml_file_writer.write(domDoc);
+		xml_file_writer.flush();
+		xml_file_writer.close();
+	}
 }    
