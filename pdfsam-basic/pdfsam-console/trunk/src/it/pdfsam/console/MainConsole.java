@@ -44,7 +44,7 @@ import com.lowagie.text.Document;
 
 /**
  * Console class.
- * It takes input arguments, parse tham and execute the right operation on pdf files.
+ * It takes input arguments, parse them and execute the right operation on pdf files.
  * 
  * @author Andrea Vacondio
  * @see it.pdfsam.console.tools.CmdParser
@@ -62,7 +62,7 @@ public class MainConsole implements Serializable{
     /**
      * Console version
      */
-    public static final String VERSION = "0.7.2"; 
+    public static final String VERSION = "0.7.3"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +MainConsole.VERSION+ ")";
        
     public static void main(String[] args){
@@ -129,7 +129,7 @@ public class MainConsole implements Serializable{
         try{
             File log_out_file =cmdp.getLogValue(); 
             if (log_out_file != null){
-                /*writer con encoding UTF-8*/
+                /*writer encoding UTF-8*/
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(log_out_file), "UTF8"));
                 writer.write(out_msg.replaceAll("<br>", "\n"));
                 writer.close();
