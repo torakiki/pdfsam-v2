@@ -117,7 +117,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
     private final JPanel output_options_panel = new JPanel();
 //checks
     private final JCheckBox overwrite_checkbox = new JCheckBox();
-    private JCheckBox output_compressed_check = new JCheckBox();
+    private final JCheckBox output_compressed_check = new JCheckBox();
     
 //labels    
     final JLabel source_file_label = new JLabel();
@@ -131,7 +131,7 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.3.1";
+    private final String PLUGIN_VERSION = "0.3.2";
     
 /**
  * Constructor
@@ -530,11 +530,11 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
         destination_panel_layout.putConstraint(SpringLayout.EAST, dest_folder_text, -105, SpringLayout.EAST, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, dest_folder_text, 5, SpringLayout.WEST, destination_panel);
         
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, dest_folder_text);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, dest_folder_text);
         
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, dest_folder_text);
 
@@ -693,6 +693,12 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
                 return browse_dest_button;
             }
             else if (aComponent.equals(browse_dest_button)){
+                return overwrite_checkbox;
+            }
+            else if (aComponent.equals(overwrite_checkbox)){
+                return output_compressed_check;
+            }
+            else if (aComponent.equals(output_compressed_check)){
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
@@ -713,6 +719,12 @@ public class SplitMainGUI extends JPanel implements WorkDoneListener, PlugablePa
                 return out_prefix_text;
             }
             else if (aComponent.equals(out_prefix_text)){
+                return output_compressed_check;
+            }
+            else if (aComponent.equals(output_compressed_check)){
+                return overwrite_checkbox;
+            }
+            else if (aComponent.equals(overwrite_checkbox)){
                 if (browse_dest_button.isEnabled()){
                     return browse_dest_button;
                 }else{
