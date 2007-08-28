@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pdfsam> 
+  <info> 
+    <name>PDF Split and Merge</name>  
+    <version>0.7 stable release 1</version>  
+    <build_date>28 Aug 2007</build_date>  
+    <language>Java(TM) 2 SDK, Standard Edition, Version 1.4.2</language> 
+  </info>  
+  <settings> 
+    <lookAndfeel> 
+      <LAF>5</LAF>  
+      <theme>1</theme> 
+    </lookAndfeel>  
+    <i18n>en_GB</i18n>  
+    <plugs_absolute_dir/> 
+  </settings>  
+  <adata> 
+    <author> 
+      <aname>Andrea Vacondio</aname>  
+      <aemail>andrea.vacondio@gmail.com</aemail> 
+    </author> 
+  </adata> 
+</pdfsam>

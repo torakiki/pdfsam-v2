@@ -1,0 +1,138 @@
+0.7 stable release 1
+===================================
+-Console: fix Bug #1764362
+-Split, Merge: fixed focus policy and layouts
+-langpack
+-iText 2.0.2 (untill a user password input field will be added)
+
+0.7 beta 2
+===================================
+-Console: added -compressed option to compress output documents
+-Split, Merge: check to use -compressed option
+-Settings: language combo now shows language name 
+-Split: added overwrite checkbox
+-iText 2.0.4
+-looks 2.1.4
+-langpack
+
+0.7 beta 1
+===================================
+-Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
+-Added configuration singleton
+-Added Settings section
+-XMLParser and XMLConfig rebuilt using dom4j
+-Console: added xml input file -l option for merge
+-Console: rewritten commands handler
+-Console: rewritten helper class TmpFileNameGenerator
+-Console: rewritten PdfSplit to keep file annotations
+-Console: added -overwrite option to the split command
+-Console: new merge type using PdfCopyFields to deal with forms
+-Merge: check to use -copyfields console option 
+-Split, Merge: added JHelpLabel to have help tooltips 
+-Unified basic/enhanced langpack
+-New icons set
+-dom4j 1.6.1
+-jaxen 1.1
+-iText 2.0.2
+-bcmail 135
+-bcprov 135
+
+0.6 stable release 3
+===================================
+-Fix in PlugInsLoader.getPlugInsList
+-Console: fix Bug #1641683
+-Console: fix split page numbers starting from 1 and code cleaning
+-Fixed log panel caret position (by Aniket Dutta)
+-Merge: fix when automatically extension in destination file is set
+-iText 1.4.8
+-looks 2.1.1
+
+0.6 stable release 2
+===================================
+-Merge: added page selection printer style (Ex. 2,6,12-19,5)
+-Added tabbed panels icons
+-Added French language
+-GUI fixes
+-New icon
+-Code cleaning
+-Added Win32 starter
+-iText 1.4.6
+-looks 2.0.4
+
+0.6 stable release
+===================================
+-Console: fixed a bug if no -u option given
+-Added German and Russian languages
+-iText 1.4.4
+
+0.6 beta 1
+===================================
+-Split: output files name now have leading zero(s) for better sorting
+-Split: modified "split at this page" in "split after these pages"
+-Split: now splitting a pdf file has its own thread. A progress bar shows the work done
+-Split&Merge: better format for log messages
+-Split&Merge: now bookmarks list is managed according with the merge action. Bug #1490115
+-Merge: minor fixes
+-Merge: now adding a pdf has its own thread and better user interface shows what pdfsam is doing
+-Merge: now merging pdf files has its own thread. A progress bar shows the work done
+-Merge: fix Bug #1529037 
+-Console: fixes to prevent OutOfMemory exception while creating PdfReader
+-Console: fixes in PdfSplit and PdfConcat constructors. Bug #1521679
+-GUI i18n support using langpack. (Console messages still in english)
+-Added "Clear log" function
+-iText 1.4.2
+
+0.5 beta 3
+===================================
+-Split: JTextField.requestFocus when "split at this page" or "every n pages" is selected
+-Merge: Multiple Drag&Drop change order enabled
+-Merge: Drop Multifile selection from OS enabled
+-Merge: Drop disabled in destination JText
+-Merge: addTableRow method added
+-Merge: Canc key (and not Alt+Canc) now removes items from merge_table
+-Merge: MultiSelection MoveUp, MoveDown, Canc
+-Console: Buffer file in doConcat Bug #1499436
+-Console: -overwrite parameter added
+-Merge: Overwrite checkbox.
+-iText 1.4.1
+
+0.5 beta 2
+===================================
+-jGoodies 2.0.1 and changes in ThemeSelector
+-Console: Fix in creator metadata
+-Console: Fixes in options descriptions
+-Merge: Fix in add button when clicking "cancel" in JFileChooser
+-Split&Merge: New FocusPolicy
+-Added getFocusPolicy() in PlugablePanel
+-Added KeyListener to every button, now "enter" does a click on buttons
+-Tabs Mnemonic
+-Merge: Table header not draggable anymore
+-Split: Fixes in GUI
+-Merge: New function with right click to set output destination file
+
+0.5 beta 1
+===================================
+-Merge: MultiSelectionEnabled(true)
+-Console: Parse fix on ParseConcatCommand -f option
+-Console: Added creator metadata
+-Console: Added -u option
+-Merge: Managed page selection (-u console option)
+-Merge: new TableRender for the page column
+-Merge: Column headers tooltip
+-Minor fixes
+
+0.4 beta
+===================================
+-Console: Added -log option to the console.
+-Console: Parse fix on concat -o value ".pdf"
+-Merge: Added Clear button in merge plugin.
+-pdfsam: Added Exit menu.
+-Merge: Fixed horizontal scroll bar in merge table
+-Merge: Enter key binded to run button
+-Merge: Auto pdf extension for no extension output file
+-Merge: Better JFileChooser management
+-Minor fixes
+
+0.3.3 pre alpha
+====================================
+-First working release.
