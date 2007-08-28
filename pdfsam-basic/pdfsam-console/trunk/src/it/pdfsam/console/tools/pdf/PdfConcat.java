@@ -249,7 +249,7 @@ public class PdfConcat extends GenericPdfTool{
     			//pdf_reader = null;
     			pdf_reader.close();
     			pdf_writer.freeReader(pdf_reader);
-    			total_processed_pages += end_page - start +1;
+    			total_processed_pages += end_page - start;
     			out_message += LogFormatter.formatMessage((end_page - start) + " pages processed correctly-\n");
     			f++;
     			try{	
