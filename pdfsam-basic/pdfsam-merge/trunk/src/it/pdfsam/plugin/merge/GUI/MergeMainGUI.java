@@ -149,7 +149,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private final String PLUGIN_NAME = "Merge";
-    private final String PLUGIN_VERSION = "0.5.0";
+    private final String PLUGIN_VERSION = "0.5.1";
     
     
     /**
@@ -663,7 +663,7 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         spring_layout_merge_panel.putConstraint(SpringLayout.SOUTH, option_label, 0, SpringLayout.NORTH, option_panel);
         spring_layout_merge_panel.putConstraint(SpringLayout.WEST, option_label, 0, SpringLayout.WEST, option_panel);
 
-        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_check, 20, SpringLayout.NORTH, option_panel);
+        option_panel_layout.putConstraint(SpringLayout.SOUTH, merge_type_check, 30, SpringLayout.NORTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.EAST, merge_type_check, -40, SpringLayout.EAST, option_panel);
         option_panel_layout.putConstraint(SpringLayout.NORTH, merge_type_check, 5, SpringLayout.NORTH, option_panel);
         option_panel_layout.putConstraint(SpringLayout.WEST, merge_type_check, 5, SpringLayout.WEST, option_panel);
@@ -681,11 +681,11 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         destination_panel_layout.putConstraint(SpringLayout.SOUTH, destination_text_field, 30, SpringLayout.NORTH, destination_panel);
         destination_panel_layout.putConstraint(SpringLayout.WEST, destination_text_field, 5, SpringLayout.WEST, destination_panel);
 
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 15, SpringLayout.NORTH, overwrite_checkbox);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, overwrite_checkbox, 17, SpringLayout.NORTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, overwrite_checkbox, 5, SpringLayout.SOUTH, destination_text_field);
         destination_panel_layout.putConstraint(SpringLayout.WEST, overwrite_checkbox, 0, SpringLayout.WEST, destination_text_field);
 
-        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 15, SpringLayout.NORTH, output_compressed_check);
+        destination_panel_layout.putConstraint(SpringLayout.SOUTH, output_compressed_check, 17, SpringLayout.NORTH, output_compressed_check);
         destination_panel_layout.putConstraint(SpringLayout.NORTH, output_compressed_check, 5, SpringLayout.SOUTH, overwrite_checkbox);
         destination_panel_layout.putConstraint(SpringLayout.WEST, output_compressed_check, 0, SpringLayout.WEST, overwrite_checkbox);
 
@@ -831,6 +831,9 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
                 return clear_button;
             }        
             else if (aComponent.equals(clear_button)){
+                return merge_type_check;
+            }
+            else if (aComponent.equals(merge_type_check)){
                 return destination_text_field;
             }
             else if (aComponent.equals(destination_text_field)){
@@ -838,10 +841,13 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
             }
             else if (aComponent.equals(browse_button)){
                 return overwrite_checkbox;
-            }            
-            else if (aComponent.equals(overwrite_checkbox)){
-                return run_button;
-            }
+            }   
+			else if (aComponent.equals(overwrite_checkbox)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
+				return run_button;
+			}            
             else if (aComponent.equals(run_button)){
                 return add_file_button;
             }
@@ -850,9 +856,12 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
         
         public Component getComponentBefore(Container CycleRootComp, Component aComponent){
             
-            if (aComponent.equals(run_button)){
-                return overwrite_checkbox;
-            }
+			if (aComponent.equals(run_button)){
+				return output_compressed_check;
+			}
+			else if (aComponent.equals(output_compressed_check)){
+				return overwrite_checkbox;
+			}
             else if (aComponent.equals(overwrite_checkbox)){
                 return browse_button;
             }
@@ -860,6 +869,9 @@ public class MergeMainGUI extends JPanel implements WorkDoneListener,PlugablePan
                 return destination_text_field;
             }
             else if (aComponent.equals(destination_text_field)){
+                return merge_type_check;
+            }
+            else if (aComponent.equals(merge_type_check)){
                 return clear_button;
             }
             else if (aComponent.equals(clear_button)){
