@@ -1,3 +1,10 @@
+0.7 stable release 1
+===================================
+-Console: fix Bug #1764362
+-Split, Merge: fixed focus policy and layouts
+-langpack
+-iText 2.0.2 (untill a user password input field will be added)
+
 0.7 beta 2
 ===================================
 -Console: added -compressed option to compress output documents

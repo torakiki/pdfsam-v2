@@ -2,13 +2,13 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "pdfsam"
-!define PRODUCT_VERSION "0.7b2"
+!define PRODUCT_VERSION "0.7sr1"
 !define PRODUCT_PUBLISHER "Andrea Vacondio"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 !define TARGET_FILE "config.xml"
-!define PRODUCT_DATE "19/07/2007"
+!define PRODUCT_DATE "28/08/2007"
 !define LANGUAGE_TITLE "pdfsam language selection"
 SetCompressor lzma
 
@@ -69,7 +69,7 @@ var ICONS_GROUP
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "pdfsam-win32inst-v0_7_b2.exe"
+OutFile "pdfsam-win32inst-v0_7_sr1.exe"
 InstallDir "$PROGRAMFILES\pdfsam"
 ShowInstDetails show
 ShowUnInstDetails show
@@ -305,7 +305,7 @@ endFileExist:
 
   SetOverwrite on
   SetOutPath "$INSTDIR\lib"
-  File "lib\pdfsam-console-0.7.1.jar"
+  File "lib\pdfsam-console-0.7.3.jar"
   File "lib\jcmdline-1.0.3.jar"
   File "lib\looks-2.1.4.jar"
   File "lib\itext-2.0.4.jar"
@@ -316,7 +316,7 @@ endFileExist:
   File "lib\pdfsam-langpack.jar"  
   SetOverwrite ifnewer
   SetOutPath "$INSTDIR"
-  File "pdfsam-0.7b2.jar"
+  File "pdfsam-0.7sr1.jar"
   File "pdfsam-starter.exe"
   SetOutPath "$INSTDIR\doc"
   File "doc\readme.txt"
@@ -324,10 +324,10 @@ endFileExist:
   File "doc\License.txt"
   File "doc\pdfsam-0.7b1-tutorial.pdf"
   SetOutPath "$INSTDIR\plugins\merge"
-  File "plugins\merge\pdfsam-merge-0.5.0.jar"
+  File "plugins\merge\pdfsam-merge-0.5.1.jar"
   File "plugins\merge\config.xml"
   SetOutPath "$INSTDIR\plugins\split"
-  File "plugins\split\pdfsam-split-0.3.1.jar"
+  File "plugins\split\pdfsam-split-0.3.2.jar"
   File "plugins\split\config.xml"
   SetOutPath "$SMPROGRAMS\$ICONS_GROUP"
 SectionEnd
@@ -366,16 +366,16 @@ Section Uninstall
   !insertmacro MUI_STARTMENU_GETFOLDER "Application" $ICONS_GROUP
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\plugins\split\config.xml"
-  Delete "$INSTDIR\plugins\split\pdfsam-split-0.3.1.jar"
+  Delete "$INSTDIR\plugins\split\pdfsam-split-0.3.2.jar"
   Delete "$INSTDIR\plugins\merge\config.xml"
-  Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.5.0.jar"
-  Delete "$INSTDIR\pdfsam-0.7b2.jar"
+  Delete "$INSTDIR\plugins\merge\pdfsam-merge-0.5.1.jar"
+  Delete "$INSTDIR\pdfsam-0.7sr1.jar"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\doc\readme.txt"
   Delete "$INSTDIR\doc\changelog.txt"
   Delete "$INSTDIR\doc\License.txt"
   Delete "$INSTDIR\doc\pdfsam-0.7b1-tutorial.pdf"  
-  Delete "$INSTDIR\lib\pdfsam-console-0.7.1.jar"
+  Delete "$INSTDIR\lib\pdfsam-console-0.7.3.jar"
   Delete "$INSTDIR\lib\jcmdline-1.0.3.jar"
   Delete "$INSTDIR\lib\looks-2.1.4.jar"
   Delete "$INSTDIR\lib\itext-2.0.4.jar"
