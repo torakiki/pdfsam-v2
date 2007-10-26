@@ -159,7 +159,7 @@ public class CmdParser {
                           "page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
                           StringParam.OPTIONAL),                                             
             new FileParam("l",
-						  "xml or csv file containing pdf files list to concat. If cvs file in comma separated value format; if xml file <filelist><file value=\"filepath\" /></filelist>",
+						  "xml or csv file containing pdf files list to concat. If csv file in comma separated value format; if xml file <filelist><file value=\"filepath\" /></filelist>",
                           FileParam.IS_FILE & FileParam.IS_READABLE,
                           FileParam.OPTIONAL,
                           FileParam.SINGLE_VALUED),
