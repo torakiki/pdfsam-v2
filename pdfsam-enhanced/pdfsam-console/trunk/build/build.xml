@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-console" default="dist" basedir="../">
+    <description>
+        Exception Message Provider For Java
+    </description>
+  <!-- Component Paths - Override if needed -->
+  <property name="jcmdline.location" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="jcmdline.jar.name" value="jcmdline-1.0.4"/>
+  <property name="itext.location" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="itext.jar.name" value="itext-2.0.2"/>
+  <property name="emp4j.location" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="emp4j.jar.name" value="emp4j-1.0.0"/>
+  <property name="log4j.location" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="log4j.jar.name" value="log4j-1.2.15"/>
+  <property name="dom4j.location" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="dom4j.jar.name" value="dom4j-1.6.1"/>
+  <property name="jaxen.location" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="jaxen.jar.name" value="jaxen-1.1"/>
+  
+  <!-- set global properties for this build -->
+  <property name="pdfsam-console.user.name" value="Andrea Vacondio"/>
+  <property name="pdfsam-console.src.dir" location="src/java"/>
+  <property name="pdfsam-console.etc.dir" location="etc"/>
+  <property name="build.dir" location="/media/LACIE/build/pdfsam-console"/>
+  <property name="pdfsam-console.build.dir" location="${build.dir}/build"/>
+  <property name="pdfsam-console.dist.dir"  location="${build.dir}/dist"/>
+  <property name="pdfsam-console.javadoc.dir"  location="${build.dir}/doc"/>
+ 
+  <property name="pdfsam-console.jar.name" value="pdfsam-console"/>
+  <property name="pdfsam-console.jar.version" value="1.0.0e"/>	
+  
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${pdfsam-console.build.dir}"/>
+    <mkdir dir="${pdfsam-console.javadoc.dir}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="pdfsam-console " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-console.classpath">
+      <fileset dir="${log4j.location}">
+        <include name="**/${log4j.jar.name}.jar"/>
+      </fileset>
+      <fileset dir="${dom4j.location}">
+        <include name="**/${dom4j.jar.name}.jar"/>
+      </fileset>
+      <fileset dir="${jaxen.location}">
+        <include name="**/${jaxen.jar.name}.jar"/>
+      </fileset> 
+      <fileset dir="${itext.location}">
+        <include name="**/${itext.jar.name}.jar"/>
+      </fileset> 
+      <fileset dir="${emp4j.location}">
+        <include name="**/${emp4j.jar.name}.jar"/>
+      </fileset> 
+      <fileset dir="${jcmdline.location}">
+        <include name="**/${jcmdline.jar.name}.jar"/>
+      </fileset> 
+      <pathelement path="${pdfsam-console.build.dir}"/>
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-console.src.dir}" destdir="${pdfsam-console.build.dir}">
+    <classpath refid="pdfsam-console.classpath"/>
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${pdfsam-console.dist.dir}"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${pdfsam-console.dist.dir}/${pdfsam-console.jar.name}-${pdfsam-console.jar.version}.jar" basedir="${pdfsam-console.build.dir}">
+    <manifest>
+	<attribute name="Built-By" value="${user.name}"/>
+	<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
+    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${jcmdline.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar"/>
+    </manifest>
+	<fileset dir="${pdfsam-console.etc.dir}">
+	    <include name="*.xml"/>
+	</fileset>		
+    </jar>
+    
+  </target>
+
+
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${dist} directory trees -->
+    <delete dir="${pdfsam-console.javadoc.dir}"/>
+    <delete dir="${pdfsam-console.dist.dir}"/>
+    <delete dir="${pdfsam-console.build.dir}"/>
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="init">
+    <javadoc
+      packagenames="org.pdfsam.console.*"
+      sourcepath="${pdfsam-console.src.dir}"
+      destdir="${pdfsam-console.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam console API"
+      doctitle="pdfsam console API" >
+    <classpath refid="pdfsam-console.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipPackage" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-console.dist.dir}/${pdfsam-console.jar.name}-${pdfsam-console.jar.version}-build-src.zip">
+	<fileset dir="${pdfsam-console.src.dir}">
+	    <include name="**/*"/>
+        </fileset>
+    </zip>
+  </target>
+
+</project>
+
