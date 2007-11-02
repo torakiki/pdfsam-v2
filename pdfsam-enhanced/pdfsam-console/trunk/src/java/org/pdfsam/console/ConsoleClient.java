@@ -30,16 +30,18 @@ public class ConsoleClient {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ConsoleServicesFacade serviceFacade = new ConsoleServicesFacade();
-		if (serviceFacade != null){
-			AbstractParsedCommand parsedCommand = serviceFacade.parseAndValidate(args);
-			if(parsedCommand != null){
-				serviceFacade.execute(parsedCommand);
+		try{
+			ConsoleServicesFacade serviceFacade = new ConsoleServicesFacade();
+			if (serviceFacade != null){
+				AbstractParsedCommand parsedCommand = serviceFacade.parseAndValidate(args);
+				if(parsedCommand != null){
+					serviceFacade.execute(parsedCommand);
+				}
 			}else{
-				log.error("Unable to execute command, parsed command is null.");
+				log.fatal("Unable to reach services, service facade is null.");
 			}
-		}else{
-			log.error("Unable to reach services, service facade is null.");
+		}catch(Exception e){
+			log.fatal(e);
 		}
 	}
 

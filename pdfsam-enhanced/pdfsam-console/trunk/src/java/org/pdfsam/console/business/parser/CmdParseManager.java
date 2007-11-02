@@ -107,7 +107,6 @@ public class CmdParseManager {
 			if(cmdLineHandler != null){
 				retVal = cmdLineHandler.parse(inputArguments);
 				if(!retVal){
-					log.error(cmdLineHandler.getParseError());
 					throw new ParseException(ParseException.ERR_PARSE, new String[]{cmdLineHandler.getParseError()});				
 				}
 			}else{

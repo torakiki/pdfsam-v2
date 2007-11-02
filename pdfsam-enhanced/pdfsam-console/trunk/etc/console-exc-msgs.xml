@@ -7,13 +7,13 @@
 		<exception errorcode="1" message="Filename length is 0." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
-		<exception errorcode="1" message="Parse error." />		
+		<exception errorcode="1" message="Parse error. {0}" />		
 		<exception errorcode="2" message="Output file not a pdf format." />		
 		<exception errorcode="3" message="No output file name." />		
 		<exception errorcode="4" message="No -f or -l option given." />		
 		<exception errorcode="5" message="Both -f and -l options given." />		
 		<exception errorcode="6" message="Input list file not a csv or xml format" />		
-		<exception errorcode="7" message="Input file {1} is not a pdf format." />		
+		<exception errorcode="7" message="Input file {0} is not a pdf format." />		
 		<exception errorcode="8" message="-u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />		
 		<exception errorcode="9" message="Output is not a directory." />		
 		<exception errorcode="10" message="Not -s option given." />		

@@ -3,8 +3,10 @@
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/jaxen-1.1.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/jcmdline-1.0.3.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/itext-2.0.2.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/jcmdline-1.0.4.jar" sourcepath="/jcmdline"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/emp4j-1.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
