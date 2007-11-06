@@ -14,6 +14,7 @@
  */
 package org.pdfsam.console.business.pdf.handlers;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
@@ -329,6 +330,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         PdfImportedPage importedPage;
         File tmpFile = null;
         File outFile = null;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         int startPage = 0;
         int relativeCurrentPage = 0;
 		for (currentPage = 1; currentPage <= n; currentPage++) {
@@ -340,8 +342,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 	        	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
 	        	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
-	        	pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
-	        	
+	        	baos = new ByteArrayOutputStream(); 
+	        	pdfWriter = new PdfCopy(currentDocument, baos);
 	        	//set creator
 	        	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 	            
@@ -361,11 +363,11 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			}
 			
 			importedPage = pdfWriter.getImportedPage(pdfReader, currentPage);
-            pdfWriter.addPage(importedPage);
-            pdfWriter.flush();
-            
+            pdfWriter.addPage(importedPage);            
             //if it's time to close the document
-			if ((currentPage == n) || ((relativeCurrentPage>1) && ((tmpFile.length()/relativeCurrentPage)*(1+relativeCurrentPage) > inputCommand.getSplitSize().longValue()))){
+			if ((currentPage == n) || ((relativeCurrentPage>1) && ((baos.size()/relativeCurrentPage)*(1+relativeCurrentPage) > inputCommand.getSplitSize().longValue()))){
+				log.debug("Current stream size: "+baos.size()+" bytes.");
+				baos.writeTo(new FileOutputStream(tmpFile));
                 log.info("Temporary document "+tmpFile.getName()+" done, now adding bookmarks...");
                 //manage bookmarks
                 ArrayList master = new ArrayList();
