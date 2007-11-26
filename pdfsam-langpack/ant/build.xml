@@ -1,20 +1,47 @@
-<project name="openstreetmap" default="genproperties" basedir=".">
+<project name="pdfsam-langpack" default="genproperties" basedir="../">
 	
 			<property name="po" location="po" />
 	        <property name="gettext.dir" value="gettext" />
 	        <property name="pot" value="po/Messages.pot" />
-	        <property name="basic.langpack.dir" location="F:/pdfsam/workspace-basic/pdfsam-main/lib" />
-	        <property name="enhanced.langpack.dir" location="F:/pdfsam/workspace-enhanced/pdfsam-maine\lib" />
-		    <property name="src.dir" location="src" />
-		    <property name="resources.dir" location="${src.dir}/it/pdfsam/i18n/resources" />
+	        <property name="basic.langpack.dir" location="/media/LACIE/pdfsam/workspace-basic/pdfsam-main/lib" />
+	        <property name="enhanced.langpack.dir" location="/media/LACIE//pdfsam/workspace-enhanced/new-pdfsam-maine\lib" />
+		    <property name="src.dir" location="src/java" />
+		    <property name="resources.dir" location="${src.dir}/org/pdfsam/i18n/resources" />
 			<property name="user.name" value="Andrea Vacondio" />
-	
+			<property name="build.dir" location="g:/build/pdfsam-langpack"/>
+	  		<property name="pdfsam-langpack.build.dir" location="${build.dir}/build"/>
+	  		<property name="pdfsam-langpack.dist.dir"  location="${build.dir}/dist"/>
+	  		<property name="pdfsam-langpack.javadoc.dir"  location="${build.dir}/doc"/>
+		  	<property name="pdfsam-langpack.jar.name"  value="pdfsam-langpack"/>
+	  			
+	  		<target name="init">
+	  		    <!-- Create the time stamp -->
+	  		    <tstamp/>
+	  		    <!-- Create the build directory structure used by compile -->
+	  		    <mkdir dir="${pdfsam-langpack.build.dir}"/>
+	  		    <mkdir dir="${pdfsam-langpack.javadoc.dir}"/>
+	  		</target>
+
+
+  		      <target name="compile" depends="init"
+  		            description="pdfsam-langpack " >
+	           	<path id="pdfsam-langpack.classpath">
+           	    </path>
+  		        <!-- Compile the java code from ${src} into ${build} -->
+  		        <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${src.dir}" destdir="${pdfsam-langpack.build.dir}">
+  		        	<classpath refid="pdfsam-langpack.classpath"/>
+  		        </javac>
+  		      </target>
+	  		      	
  	        <target name="clean" description="removes previously created files">
 			  <delete verbose="true">
 				<fileset dir="${resources.dir}"/>
 			  </delete>
+ 	        	 	<delete dir="${pdfsam-langpack.javadoc.dir}"/>
+					<delete dir="${pdfsam-langpack.dist.dir}"/>
+ 	        	 	<delete dir="${pdfsam-langpack.build.dir}"/>
  	        </target>
-			
+ 	        	
 			<!-- new pot -->
  	        <target name="genpot" description="generates pot files">
 				 <!-- new pot -->
@@ -133,21 +160,24 @@
 				 </exec>
 			 </target>
 			
-			<!-- creates jar -->
-			<target name="createjar" depends="genproperties" description="creates jar pack and put it in lib dir(basic and enhanced)">
-				<echo message="${basedir}" />
-				<jar destfile="${enhanced.langpack.dir}/pdfsam-langpack.jar">
-						<manifest>
-							<attribute name="Built-By" value="${user.name}"/>
-						</manifest>
-						<fileset dir="${src.dir}" />
-				</jar>
-				<copy todir="${basic.langpack.dir}">
-					<fileset dir="${enhanced.langpack.dir}">
-						<include name="**/pdfsam-langpack.jar"/>
-					</fileset>
-				</copy>
-			 </target>
+			  <target name="dist" depends="compile"
+			    description="generate the distribution" >
+					<!-- Create the distribution directory -->
+					<mkdir dir="${pdfsam-langpack.dist.dir}"/>
+					
+					<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+					<jar jarfile="${pdfsam-langpack.dist.dir}/${pdfsam-langpack.jar.name}.jar" basedir="${pdfsam-langpack.build.dir}">
+					<manifest>
+					<attribute name="Built-By" value="${user.name}"/>
+					</manifest>
+					<fileset dir="${src.dir}">
+					    <include name="**/*.xml"/>
+					    <include name="**/*.properties"/>
+					    <exclude name="**/*.java"/>
+					</fileset>		
+					</jar>
+					    
+			  </target>
 	
 			<!-- crates tar to rosetta upload -->
 			<target name="tar_to_rosetta" description="generate the tar to upload on rosetta" >
