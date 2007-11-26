@@ -22,6 +22,7 @@ import java.util.List;
 import jcmdline.BooleanParam;
 import jcmdline.FileParam;
 import jcmdline.Parameter;
+import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
@@ -43,16 +44,16 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	                    ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
 	                    FileParam.REQUIRED, 
 	                    FileParam.SINGLE_VALUED),
-	            new FileParam("f1",
+	            new PdfFileParam("f1",
 	                   "first input pdf file to split",
-	                   FileParam.IS_FILE & FileParam.IS_READABLE,
-	                   FileParam.REQUIRED, 
-	                   FileParam.SINGLE_VALUED),
-	            new FileParam("f2",
+	                   PdfFileParam.IS_READABLE,
+	                   PdfFileParam.REQUIRED, 
+	                   PdfFileParam.SINGLE_VALUED),
+	            new PdfFileParam("f2",
 	                   "second input pdf file to split",
-	                   FileParam.IS_FILE & FileParam.IS_READABLE,
-	                   FileParam.REQUIRED, 
-	                   FileParam.SINGLE_VALUED),
+	                   PdfFileParam.IS_READABLE,
+	                   PdfFileParam.REQUIRED, 
+	                   PdfFileParam.SINGLE_VALUED),
 	            new BooleanParam("reversefirst", "reverse first input file"),
 	            new BooleanParam("reversesecond", "reverse second input file")
 	    }));  

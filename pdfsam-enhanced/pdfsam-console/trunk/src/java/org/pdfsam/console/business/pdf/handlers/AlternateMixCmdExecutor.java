@@ -52,11 +52,11 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 			try{
 				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 
-				pdfReader1 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getFirstInputFile().getAbsolutePath()),null);
+				pdfReader1 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getFirstInputFile().getFile().getAbsolutePath()),inputCommand.getFirstInputFile().getPassword().getBytes());
 				pdfReader1.consolidateNamedDestinations();
 				limits1[1] = pdfReader1.getNumberOfPages();
 
-				pdfReader2 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getSecondInputFile().getAbsolutePath()),null);
+				pdfReader2 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getSecondInputFile().getFile().getAbsolutePath()),inputCommand.getFirstInputFile().getPassword().getBytes());
 				pdfReader2.consolidateNamedDestinations();
 				limits2[1] = pdfReader2.getNumberOfPages();
 

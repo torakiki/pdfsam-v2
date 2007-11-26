@@ -16,6 +16,8 @@ package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
 import java.io.Serializable;
+
+import jcmdline.dto.PdfFile;
 /**
  * Mix parsed command dto filled by parsing service and used by worker service
  * @author Andrea Vacondio
@@ -26,16 +28,16 @@ public class MixParsedCommand extends AbstractParsedCommand implements Serializa
 	private static final long serialVersionUID = -2646601665244663267L;
 	
 	private File outputFile;	
-	private File firstInputFile;	
-	private File secondInputFile;	
+	private PdfFile firstInputFile;	
+	private PdfFile secondInputFile;	
 	private boolean reverseFirst = false;
 	private boolean reverseSecond = false;
 	
 	public MixParsedCommand(){		
 	};
 	
-	public MixParsedCommand(File outputFile, File firstInputFile,
-			File secondInputFile, boolean reverseFirst, boolean reverseSecond) {
+	public MixParsedCommand(File outputFile, PdfFile firstInputFile,
+			PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond) {
 		super();
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
@@ -44,7 +46,7 @@ public class MixParsedCommand extends AbstractParsedCommand implements Serializa
 		this.reverseSecond = reverseSecond;
 	}
 
-	public MixParsedCommand(File outputFile, File firstInputFile,File secondInputFile, boolean reverseFirst, boolean reverseSecond, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
@@ -70,28 +72,28 @@ public class MixParsedCommand extends AbstractParsedCommand implements Serializa
 	/**
 	 * @return the firstInputFile
 	 */
-	public File getFirstInputFile() {
+	public PdfFile getFirstInputFile() {
 		return firstInputFile;
 	}
 
 	/**
 	 * @param firstInputFile the firstInputFile to set
 	 */
-	public void setFirstInputFile(File firstInputFile) {
+	public void setFirstInputFile(PdfFile firstInputFile) {
 		this.firstInputFile = firstInputFile;
 	}
 
 	/**
 	 * @return the secondInputFile
 	 */
-	public File getSecondInputFile() {
+	public PdfFile getSecondInputFile() {
 		return secondInputFile;
 	}
 
 	/**
 	 * @param secondInputFile the secondInputFile to set
 	 */
-	public void setSecondInputFile(File secondInputFile) {
+	public void setSecondInputFile(PdfFile secondInputFile) {
 		this.secondInputFile = secondInputFile;
 	}
 
@@ -130,8 +132,8 @@ public class MixParsedCommand extends AbstractParsedCommand implements Serializa
 	public String toString(){
 		StringBuffer retVal = new StringBuffer();
 		retVal.append(super.toString());
-		retVal.append((firstInputFile== null)?"":"[firstInputFile="+firstInputFile.getAbsolutePath()+"]");
-		retVal.append((secondInputFile== null)?"":"[secondInputFile="+secondInputFile.getAbsolutePath()+"]");
+		retVal.append((firstInputFile== null)?"":"[firstInputFile="+firstInputFile.getFile().getAbsolutePath()+"]");
+		retVal.append((secondInputFile== null)?"":"[secondInputFile="+secondInputFile.getFile().getAbsolutePath()+"]");
 		retVal.append("[reverseFirst="+reverseFirst+"]");
 		retVal.append("[reverseSecond="+reverseSecond+"]");
 		retVal.append("[command="+getCommand()+"]");

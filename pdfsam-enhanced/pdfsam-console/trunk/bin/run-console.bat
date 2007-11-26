@@ -21,7 +21,7 @@ goto SKIP_HOME_SET
 set JAVA=%JAVA_HOME%\bin\java
 
 :SKIP_HOME_SET
-set JAVA_OPTS= -Demp4j.configuration=console-emp4j.xml -Dlog4j.configuration=console-log4j.xml
+set JAVA_OPTS= -Dlog4j.configuration=console-log4j.xml
 
 set CONSOLE_CLASSPATH=%CONSOLEJAR%
 

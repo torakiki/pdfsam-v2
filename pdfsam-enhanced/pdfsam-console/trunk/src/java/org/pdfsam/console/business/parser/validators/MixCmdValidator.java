@@ -19,6 +19,8 @@ import java.io.File;
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
+import jcmdline.PdfFileParam;
+import jcmdline.dto.PdfFile;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
@@ -51,26 +53,26 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        }
 	        
 	        //-f1
-			FileParam f1Option = (FileParam) cmdLineHandler.getOption("f1");           
+			PdfFileParam f1Option = (PdfFileParam) cmdLineHandler.getOption("f1");           
 	        if(f1Option.isSet()){
-	        	File firstFile = f1Option.getFile();
-	            if ((firstFile.getPath().toLowerCase().endsWith(PDF_EXTENSION))){
+	        	PdfFile firstFile = f1Option.getPdfFile();
+	            if ((firstFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
 	            	parsedCommandDTO.setFirstInputFile(firstFile);                  
 	            }else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{firstFile.getName()});
+	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{firstFile.getFile().getName()});
 	            }
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F1);	
 	        }
 	        
 	        //-f2
-	        FileParam f2Option = (FileParam) cmdLineHandler.getOption("f2");           
+	        PdfFileParam f2Option = (PdfFileParam) cmdLineHandler.getOption("f2");           
 	        if(f2Option.isSet()){
-	        	File secondFile = f2Option.getFile();
-	            if ((secondFile.getPath().toLowerCase().endsWith(PDF_EXTENSION))){
+	        	PdfFile secondFile = f2Option.getPdfFile();
+	            if ((secondFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
 	            	parsedCommandDTO.setSecondInputFile(secondFile);
 	            }else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{secondFile.getName()});
+	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{secondFile.getFile().getName()});
 	            }
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F2);	

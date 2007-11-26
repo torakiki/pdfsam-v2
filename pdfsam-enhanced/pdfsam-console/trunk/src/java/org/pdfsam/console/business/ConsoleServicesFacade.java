@@ -47,7 +47,7 @@ public class ConsoleServicesFacade {
 		try {
 			cmdExecuteManager.execute(parsedCommand);
 		} catch (Exception e) {
-			log.error(e);
+			log.error("Error: ",e);
 		}
 	}
     

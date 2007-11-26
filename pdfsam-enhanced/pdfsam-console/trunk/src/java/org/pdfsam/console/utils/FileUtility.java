@@ -15,6 +15,11 @@
 package org.pdfsam.console.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -137,4 +142,33 @@ public class FileUtility {
     	}
     	return retVal;
     }
+    
+    /**
+     * copy source to dest
+     * @param source
+     * @param dest
+     * @throws IOException
+     */
+    public static void copyFile(File source, File dest) {
+        FileChannel in = null, out = null;
+        try {          
+             in = new FileInputStream(source).getChannel();
+             out = new FileOutputStream(dest).getChannel();
+    
+             long size = in.size();
+             MappedByteBuffer buf = in.map(FileChannel.MapMode.READ_ONLY, 0, size);
+    
+             out.write(buf);
+             
+             if (in != null){
+            	 in.close();
+             }
+             if (out != null){
+            	 out.close();
+             }
+    
+        } catch(Exception e){
+        	log.error("Unable to copy "+source+" to "+dest);
+        }
+   }
 }
