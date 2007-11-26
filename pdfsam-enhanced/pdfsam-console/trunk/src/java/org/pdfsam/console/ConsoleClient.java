@@ -26,12 +26,13 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 public class ConsoleClient {
 
 	private static final Logger log = Logger.getLogger(ConsoleClient.class.getPackage().getName());
+	private static ConsoleServicesFacade serviceFacade;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		try{
-			ConsoleServicesFacade serviceFacade = new ConsoleServicesFacade();
+			serviceFacade = new ConsoleServicesFacade();
 			if (serviceFacade != null){
 				AbstractParsedCommand parsedCommand = serviceFacade.parseAndValidate(args);
 				if(parsedCommand != null){
@@ -41,7 +42,7 @@ public class ConsoleClient {
 				log.fatal("Unable to reach services, service facade is null.");
 			}
 		}catch(Exception e){
-			log.fatal(e);
+			log.fatal("Error executing ConsoleClient", e);
 		}
 	}
 

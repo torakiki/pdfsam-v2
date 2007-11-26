@@ -56,7 +56,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				pdfReader1.consolidateNamedDestinations();
 				limits1[1] = pdfReader1.getNumberOfPages();
 
-				pdfReader2 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getSecondInputFile().getFile().getAbsolutePath()),inputCommand.getFirstInputFile().getPassword().getBytes());
+				pdfReader2 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getSecondInputFile().getFile().getAbsolutePath()),inputCommand.getSecondInputFile().getPassword().getBytes());
 				pdfReader2.consolidateNamedDestinations();
 				limits2[1] = pdfReader2.getNumberOfPages();
 

@@ -304,14 +304,7 @@ public class PdfFileParam extends AbstractParameter {
 	            throw new RuntimeException(Strings.get(
 	                    "PdfFileParam.valueNotSet", new Object[] { tag }));
 	        }
-	        String[] tokens = ((String)values.get(0)).split(".pdf:");
-	        if(tokens.length > 0){
-	        	if(tokens.length>1){
-	        		retVal =  new PdfFile(new File(tokens[0]+".pdf"),tokens[1]);	        		
-	        	}else{
-	        		retVal =  new PdfFile(new File(tokens[0]),"");
-	            }
-	        }
+	        retVal = getPdfFile((String)values.get(0));
 	        return retVal;
 	    }
 
@@ -325,14 +318,7 @@ public class PdfFileParam extends AbstractParameter {
 	    public Collection getPdfFiles() {
 	        ArrayList vals = new ArrayList(values.size());
 	        for (Iterator itr = values.iterator(); itr.hasNext(); ) {
-	        	String[] tokens = ((String)itr.next()).split(".pdf:");
-		        if(tokens.length > 0){
-		        	if(tokens.length>1){
-		        		vals.add(new PdfFile(new File(tokens[0]+".pdf"),tokens[1]));	        		
-		        	}else{
-		        		vals.add(new PdfFile(new File(tokens[0]),""));
-		            }
-		        }
+	        	vals.add(getPdfFile((String)itr.next()));
 	        }
 	        return vals;
 	    }
@@ -350,12 +336,7 @@ public class PdfFileParam extends AbstractParameter {
 	        super.validateValue(val);
 	        PdfFile f = null;
 	        try {
-	        	String[] tokens = (val).split("(?i).pdf:");
-	        	if(tokens.length>1){
-	        		f =  new PdfFile(new File(tokens[0]+".pdf"),tokens[1]);	        		
-	        	}else{
-	        		f =  new PdfFile(new File(tokens[0]),"");
-	            }
+	        	f = getPdfFile(val);
 	        } catch (Exception e) {
 	            throwIllegalValueException(val);
 	        }
@@ -464,6 +445,21 @@ public class PdfFileParam extends AbstractParameter {
 	        }
 	        throw new CmdLineException(Strings.get(
 	            "PdfFileParam.illegalValue",new Object[] { s2, s1, s3, val, tag }));
+	    }
+	    
+	    /**
+	     * @param value
+	     * @return the PdfFile
+	     */
+	    private PdfFile getPdfFile(String value){
+	    	PdfFile retVal = null;
+	    	int k = value.toLowerCase().lastIndexOf(".pdf:");
+	    	if (k < 0){
+	    		retVal =  new PdfFile(new File(value),"");
+	    	}else{
+	    		retVal =  new PdfFile(new File(value.substring(0, k+4)),value.substring(k+5, value.length()));
+	    	}
+	    	return retVal;
 	    }
 
 }

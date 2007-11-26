@@ -4,28 +4,28 @@
         Exception Message Provider For Java
     </description>
   <!-- Component Paths - Override if needed -->
-  <property name="itext.location" value="g:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="itext.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="itext.jar.name" value="itext-2.0.2"/>
-  <property name="emp4j.location" value="g:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="emp4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="emp4j.jar.name" value="emp4j-1.0.0"/>
-  <property name="log4j.location" value="g:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="log4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="log4j.jar.name" value="log4j-1.2.15"/>
-  <property name="dom4j.location" value="g:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="dom4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="dom4j.jar.name" value="dom4j-1.6.1"/>
-  <property name="jaxen.location" value="g:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="jaxen.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="jaxen.jar.name" value="jaxen-1.1"/>
   
   <!-- set global properties for this build -->
   <property name="pdfsam-console.user.name" value="Andrea Vacondio"/>
   <property name="pdfsam-console.src.dir" location="src/java"/>
   <property name="pdfsam-console.etc.dir" location="etc"/>
-  <property name="build.dir" location="g:/build/pdfsam-console"/>
+  <property name="build.dir" location="f:/build/pdfsam-console"/>
   <property name="pdfsam-console.build.dir" location="${build.dir}/build"/>
   <property name="pdfsam-console.dist.dir"  location="${build.dir}/dist"/>
   <property name="pdfsam-console.javadoc.dir"  location="${build.dir}/doc"/>
  
   <property name="pdfsam-console.jar.name" value="pdfsam-console"/>
-  <property name="pdfsam-console.jar.version" value="1.0.0e"/>	
+  <property name="pdfsam-console.jar.version" value="1.1.0e"/>	
   
   <target name="init">
     <!-- Create the time stamp -->
