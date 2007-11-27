@@ -5,7 +5,7 @@
     </description>
   <!-- Component Paths - Override if needed -->
   <property name="itext.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
-  <property name="itext.jar.name" value="itext-2.0.2"/>
+  <property name="itext.jar.name" value="itext-2.0.6"/>
   <property name="emp4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="emp4j.jar.name" value="emp4j-1.0.0"/>
   <property name="log4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>

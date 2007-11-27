@@ -101,7 +101,6 @@ public class TimeParam extends AbstractParameter {
     private static final long MILLIS_PER_SECOND = 1000;
     private static final long MILLIS_PER_MINUTE = MILLIS_PER_SECOND * 60;
     private static final long MILLIS_PER_HOUR = MILLIS_PER_MINUTE * 60;
-    private static final long MILLIS_PER_DAY = MILLIS_PER_HOUR * 24;
 
     /**
      * The seconds default to use if not specified by the user.

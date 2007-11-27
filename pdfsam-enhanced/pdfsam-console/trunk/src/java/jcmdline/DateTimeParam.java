@@ -401,7 +401,6 @@ public class DateTimeParam extends AbstractParameter {
     public Date[] getDates() {
         Collection sVals = getValues();
         Date[] dates = new Date[sVals.size()];
-        Date date = null;
         int i = 0;
         for (Iterator itr = sVals.iterator(); itr.hasNext(); ) {
             try {

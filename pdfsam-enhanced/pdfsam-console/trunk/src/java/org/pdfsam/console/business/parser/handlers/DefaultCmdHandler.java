@@ -27,6 +27,7 @@ import jcmdline.StringParam;
 import jcmdline.VersionCmdLineHandler;
 
 import org.pdfsam.console.business.ConsoleServicesFacade;
+import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.CmdHandler;
 /**
  * Default handler 
@@ -45,7 +46,7 @@ public class DefaultCmdHandler implements CmdHandler {
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
                     "command to execute {[concat], [split], [encrypt], [mix]}",
-                    new String[] { "concat", "split", "encrypt", "mix" },
+                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ECRYPT, AbstractParsedCommand.COMMAND_MIX },
                     StringParam.REQUIRED)
     }));
 	

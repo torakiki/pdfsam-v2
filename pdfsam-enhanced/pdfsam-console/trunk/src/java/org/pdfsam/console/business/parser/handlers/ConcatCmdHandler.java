@@ -24,6 +24,7 @@ import jcmdline.FileParam;
 import jcmdline.Parameter;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 
 /**
@@ -38,25 +39,25 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	 * options for the concat handler
 	 */
 	private final List concatOptions = new ArrayList(Arrays.asList(new Parameter[] {
-	            new FileParam("o",
+	            new FileParam(ConcatParsedCommand.O_ARG,
 	                          "pdf output file: if it doesn't exist it's created, if it exists it must be writeable",
 	                          ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
 	                          FileParam.REQUIRED, 
 	                          FileParam.SINGLE_VALUED),
-	            new FileParam("f",
+	            new FileParam(ConcatParsedCommand.F_ARG,
 	                          "pdf files to concat: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
 	                          FileParam.IS_FILE & FileParam.IS_READABLE,
 	                          FileParam.OPTIONAL, 
 	                          FileParam.MULTI_VALUED),
-	            new StringParam("u",   
+	            new StringParam(ConcatParsedCommand.U_ARG,   
 	                          "page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
 	                          StringParam.OPTIONAL),                                             
-	            new FileParam("l",
+	            new FileParam(ConcatParsedCommand.L_ARG,
 							  "xml or csv file containing pdf files list to concat. If csv file in comma separated value format; if xml file <filelist><file value=\"filepath\" /></filelist>",
 	                          FileParam.IS_FILE & FileParam.IS_READABLE,
 	                          FileParam.OPTIONAL,
 	                          FileParam.SINGLE_VALUED),            
-	            new BooleanParam("copyfields", "input pdf documents contain forms (high memory usage)")                          
+	            new BooleanParam(ConcatParsedCommand.COPYFIELDS_ARG, "input pdf documents contain forms (high memory usage)")                          
     })); 
 	
 	/**
@@ -65,7 +66,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
                     "command to execute {[concat]}",
-                    new String[] { "concat" },
+                    new String[] { ConcatParsedCommand.COMMAND_CONCAT },
                     StringParam.REQUIRED),
     }));
     

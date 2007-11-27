@@ -25,6 +25,15 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 
 	private static final long serialVersionUID = -4179486767271521110L;
 	
+	//arguments
+	public static final String F_ARG = "f";
+	public static final String UPWD_ARG = "upwd";
+	public static final String APWD_ARG = "apwd";
+	public static final String P_ARG = "p";
+	public static final String O_ARG = "o";
+	public static final String ALLOW_ARG = "allow";
+	public static final String ETYPE_ARG = "etype";
+	
 	//constants used to get the encrypt mode
     public static final String E_PRINT = "print";
     public static final String E_MODIFY = "modify";    

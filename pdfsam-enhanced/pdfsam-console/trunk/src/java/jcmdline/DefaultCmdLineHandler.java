@@ -32,7 +32,6 @@
 package jcmdline;
 
 import java.util.Collection;
-import java.util.ResourceBundle;
 
 /**
  * A Decorator class that implements command line options for the 
@@ -60,11 +59,6 @@ import java.util.ResourceBundle;
  */
 public class DefaultCmdLineHandler extends AbstractHandlerDecorator {
 
-    /**
-     * the resource bundle from which to obtain error messages
-     */
-    private static final ResourceBundle rb = 
-        ResourceBundle.getBundle("jcmdline.strings");
 
     /**
      * a parameter that will cause the usage to be displayed

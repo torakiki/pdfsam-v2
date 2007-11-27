@@ -21,6 +21,7 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
+import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.parser.handlers.ConcatCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
@@ -81,7 +82,7 @@ public class CmdParseManager {
 			cmdHandler = new ConcatCmdHandler();
 			cmdValidator = new ConcatCmdValidator();
 		}
-		else if(ConcatParsedCommand.COMMAND_SPLIT.equals(inputCommand)){
+		else if(SplitParsedCommand.COMMAND_SPLIT.equals(inputCommand)){
 			cmdHandler = new SplitCmdHandler();
 			cmdValidator = new SplitCmdValidator();
 		}

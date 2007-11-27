@@ -36,6 +36,11 @@ public abstract class AbstractParsedCommand implements Serializable {
     public static final char VERSION_1_5 = PdfWriter.VERSION_1_5;
     public static final char VERSION_1_6 = PdfWriter.VERSION_1_6;    
     public static final char VERSION_1_7 = PdfWriter.VERSION_1_7;
+    
+	public static final String PDFVERSION_ARG = "pdfversion";
+	public static final String OVERWRITE_ARG = "overwrite";
+	public static final String COMPRESSED_ARG = "compressed";
+	public static final String LOG_ARG = "log";
 	
 	/**
 	 * <code>true</code> if output file overwrite is enabled

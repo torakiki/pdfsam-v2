@@ -36,7 +36,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 /**
  * Used to format a command's usage.
@@ -47,11 +46,6 @@ import java.util.ResourceBundle;
  */
 public class TextUsageFormatter implements UsageFormatter {
 
-    /**
-     * the resource bundle from which to obtain error messages
-     */
-    private static final ResourceBundle rb = 
-        ResourceBundle.getBundle("jcmdline.strings");
 
     /**
      * the maximum line length to use for usage display - defaults to 80.
@@ -219,7 +213,6 @@ public class TextUsageFormatter implements UsageFormatter {
                                              boolean showHidden) {
         int maxExpectedStringLen = 240;
         StringBuffer sb2 = new StringBuffer(maxExpectedStringLen);
-        String argstr;
         Parameter p;
 
         int optIdx = 0;
@@ -249,7 +242,6 @@ public class TextUsageFormatter implements UsageFormatter {
         StringBuffer sb2 = new StringBuffer(maxExpectedStringLen);
         Parameter p;
 
-        String argstr;
         for (Iterator itr = args.iterator(); itr.hasNext(); ) {
             p = (Parameter) itr.next();
             if (p.isHidden() && !showHidden) {

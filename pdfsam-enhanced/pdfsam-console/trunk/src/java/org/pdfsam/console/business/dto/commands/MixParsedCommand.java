@@ -27,6 +27,12 @@ public class MixParsedCommand extends AbstractParsedCommand implements Serializa
 	
 	private static final long serialVersionUID = -2646601665244663267L;
 	
+	public static final String F1_ARG = "f1";
+	public static final String REVERSE_FIRST_ARG = "reversefirst";
+	public static final String F2_ARG = "f2";
+	public static final String REVERSE_SECOND_ARG = "reversesecond";
+	public static final String O_ARG = "o";
+	
 	private File outputFile;	
 	private PdfFile firstInputFile;	
 	private PdfFile secondInputFile;	

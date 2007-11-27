@@ -49,18 +49,18 @@ public abstract class AbstractCmdHandler implements CmdHandler{
 	 * options commonly used by any handler
 	 */
 	private final List commonOptions = new ArrayList(Arrays.asList(new Parameter[] {
-			new FileParam("log",
+			new FileParam(AbstractParsedCommand.LOG_ARG,
                     "text file to log output messages",
                     ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
                     FileParam.OPTIONAL,
                     FileParam.SINGLE_VALUED),
-            new StringParam("pdfversion",   
+            new StringParam(AbstractParsedCommand.PDFVERSION_ARG,   
                    "pdf version of the output document/s.",
                    new String[] { Character.toString(AbstractParsedCommand.VERSION_1_2), Character.toString(AbstractParsedCommand.VERSION_1_3), Character.toString(AbstractParsedCommand.VERSION_1_4), Character.toString(AbstractParsedCommand.VERSION_1_5), Character.toString(AbstractParsedCommand.VERSION_1_6), Character.toString(AbstractParsedCommand.VERSION_1_7)},
                    StringParam.OPTIONAL, 
                    StringParam.SINGLE_VALUED),
-            new BooleanParam("overwrite", "overwrite existing output file"),
-            new BooleanParam("compressed", "compress output file")
+            new BooleanParam(AbstractParsedCommand.OVERWRITE_ARG, "overwrite existing output file"),
+            new BooleanParam(AbstractParsedCommand.COMPRESSED_ARG, "compress output file")
 			}));
 	
 	private VersionCmdLineHandler commandLineHandler = null;

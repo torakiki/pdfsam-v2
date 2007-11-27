@@ -36,7 +36,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Used to define, parse, and validate the parameters associated with an 
@@ -145,11 +144,6 @@ import java.util.ResourceBundle;
  */
 public class BasicCmdLineHandler implements CmdLineHandler {
 
-    /**
-     * the resource bundle from which to obtain error messages
-     */
-    private static final ResourceBundle rb = 
-        ResourceBundle.getBundle("jcmdline.strings");
 
     /**
      * the name of the command whose command line is to be parsed

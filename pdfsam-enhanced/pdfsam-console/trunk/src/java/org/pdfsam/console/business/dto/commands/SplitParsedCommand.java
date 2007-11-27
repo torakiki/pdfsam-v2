@@ -32,6 +32,13 @@ public class SplitParsedCommand extends AbstractParsedCommand {
     public static final String S_ODD = "ODD";
     public static final String S_SIZE = "SIZE";
     
+	public static final String F_ARG = "f";
+	public static final String P_ARG = "p";
+	public static final String S_ARG = "s";
+	public static final String N_ARG = "n";
+	public static final String B_ARG = "b";
+	public static final String O_ARG = "o";
+    
     private File outputFile;
     private String outputFilesPrefix = "";
     private File inputFile;

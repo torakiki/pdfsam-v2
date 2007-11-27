@@ -25,6 +25,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 /**
  * Handler for the mix command
@@ -39,23 +40,23 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	 * Options for the mix handler
 	 */
 	private final List mixOptions = new ArrayList(Arrays.asList(new Parameter[] {
-	            new FileParam("o",
+	            new FileParam(MixParsedCommand.O_ARG,
 	                    "pdf output file: if it doesn't exist it's created, if it exists it must be writeable",
 	                    ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
 	                    FileParam.REQUIRED, 
 	                    FileParam.SINGLE_VALUED),
-	            new PdfFileParam("f1",
+	            new PdfFileParam(MixParsedCommand.F1_ARG,
 	                   "first input pdf file to split",
 	                   PdfFileParam.IS_READABLE,
 	                   PdfFileParam.REQUIRED, 
 	                   PdfFileParam.SINGLE_VALUED),
-	            new PdfFileParam("f2",
+	            new PdfFileParam(MixParsedCommand.F2_ARG,
 	                   "second input pdf file to split",
 	                   PdfFileParam.IS_READABLE,
 	                   PdfFileParam.REQUIRED, 
 	                   PdfFileParam.SINGLE_VALUED),
-	            new BooleanParam("reversefirst", "reverse first input file"),
-	            new BooleanParam("reversesecond", "reverse second input file")
+	            new BooleanParam(MixParsedCommand.REVERSE_FIRST_ARG, "reverse first input file"),
+	            new BooleanParam(MixParsedCommand.REVERSE_SECOND_ARG, "reverse second input file")
 	    }));  
 	
 	/**
@@ -79,7 +80,7 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	private final List mixArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
                     "command to execute {[mix]}",
-                    new String[] { "mix" },
+                    new String[] { MixParsedCommand.COMMAND_MIX },
                     StringParam.REQUIRED),
     }));
 	

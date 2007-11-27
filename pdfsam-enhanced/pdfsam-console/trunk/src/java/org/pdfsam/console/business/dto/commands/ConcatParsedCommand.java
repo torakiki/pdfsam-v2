@@ -25,7 +25,13 @@ import java.io.Serializable;
 public class ConcatParsedCommand extends AbstractParsedCommand implements Serializable {
 
 	private static final long serialVersionUID = 2204294454175542123L;
-
+	
+	public static final String F_ARG = "f";
+	public static final String COPYFIELDS_ARG = "copyfields";
+	public static final String L_ARG = "l";
+	public static final String U_ARG = "u";
+	public static final String O_ARG = "o";
+	
 	private File outputFile;
 	private File inputCvsOrXmlFile;
 	private File[] inputFileList;

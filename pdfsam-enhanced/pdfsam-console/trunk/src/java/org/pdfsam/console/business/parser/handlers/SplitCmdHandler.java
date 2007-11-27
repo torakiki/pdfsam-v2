@@ -39,27 +39,27 @@ public class SplitCmdHandler extends AbstractCmdHandler {
 	 * Options for the split handler
 	 */
 	private final List splitOptions = new ArrayList(Arrays.asList(new Parameter[] {
-            new FileParam("o",
+            new FileParam(SplitParsedCommand.O_ARG,
                     "output directory",
                     ((FileParam.IS_DIR & FileParam.EXISTS)),
                     FileParam.REQUIRED, 
                     FileParam.SINGLE_VALUED),
-            new FileParam("f",
+            new FileParam(SplitParsedCommand.F_ARG,
                    "input pdf file to split",
                    FileParam.IS_FILE & FileParam.IS_READABLE,
                    FileParam.REQUIRED, 
                    FileParam.SINGLE_VALUED),
-            new StringParam("p",   
+            new StringParam(SplitParsedCommand.P_ARG,   
                     "prefix for the output files name",
                             StringParam.OPTIONAL),                      
-            new StringParam("s",   
+            new StringParam(SplitParsedCommand.S_ARG,   
                     "split type {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"], ["+SplitParsedCommand.S_SIZE+"]}",
                     new String[] { SplitParsedCommand.S_BURST, SplitParsedCommand.S_ODD, SplitParsedCommand.S_EVEN, SplitParsedCommand.S_SPLIT, SplitParsedCommand.S_NSPLIT, SplitParsedCommand.S_SIZE },
                             StringParam.REQUIRED),
-            new StringParam("n",
+            new StringParam(SplitParsedCommand.N_ARG,
                     "page number to split at if -s is "+SplitParsedCommand.S_SPLIT +" or " + SplitParsedCommand.S_NSPLIT ,             
                     StringParam.OPTIONAL),
-            new LongParam("b",
+            new LongParam(SplitParsedCommand.B_ARG,
                     "size in bytes to split at if -s is "+SplitParsedCommand.S_SIZE ,             
                     LongParam.OPTIONAL)                    
 	}));
@@ -70,7 +70,7 @@ public class SplitCmdHandler extends AbstractCmdHandler {
 	private final List splitArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
                     "command to execute {[split]}",
-                    new String[] { "split" },
+                    new String[] { SplitParsedCommand.COMMAND_SPLIT },
                     StringParam.REQUIRED),              
 	}));
     

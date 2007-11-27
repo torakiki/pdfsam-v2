@@ -34,7 +34,6 @@ package jcmdline;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 /**
  * Used to parse the parameters associated with an executable's
@@ -92,11 +91,6 @@ import java.util.ResourceBundle;
  */
 public class PosixCmdLineParser implements CmdLineParser {
 
-    /**
-     * the resource bundle from which to obtain error messages
-     */
-    private static final ResourceBundle rb = 
-        ResourceBundle.getBundle("jcmdline.strings");
 
     /**
      * a usage formatter suitable for this CmdLineParser's format
@@ -275,8 +269,6 @@ public class PosixCmdLineParser implements CmdLineParser {
         String lctag = tag.toLowerCase();
         String fulltag = null;
         String tmptag;
-        Parameter p1;
-        Parameter p2;
         if (options.containsKey(lctag)) {
             return (Parameter) options.get(lctag);
         }

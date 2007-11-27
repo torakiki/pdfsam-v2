@@ -71,7 +71,9 @@ import java.text.MessageFormat;
  */
 public class CmdLineException extends Exception {
 
-    /**
+	private static final long serialVersionUID = 7450308469367315829L;
+
+	/**
      * constructor
      *
      * @param message       message associated with the exception

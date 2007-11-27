@@ -46,7 +46,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			
 			EncryptParsedCommand inputCommand = (EncryptParsedCommand) parsedCommand;
 			setWorkIndeterminate();
-			int encType = PdfWriter.ENCRYPTION_RC4_40;
+			int encType = PdfWriter.STANDARD_ENCRYPTION_40;
 			PrefixParser prefixParser;
 			PdfReader pdfReader;
 			PdfStamper pdfStamper;
@@ -57,7 +57,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 		        	if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())){
 			        	encType = PdfWriter.ENCRYPTION_AES_128;
 			        }else if (EncryptParsedCommand.E_RC4_128.equals(inputCommand.getEncryptionType())){
-			        	encType = PdfWriter.ENCRYPTION_RC4_128;
+			        	encType = PdfWriter.STANDARD_ENCRYPTION_128;
 			        }	
 		        	
 					prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getName());
