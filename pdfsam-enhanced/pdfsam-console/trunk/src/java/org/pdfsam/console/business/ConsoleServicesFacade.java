@@ -43,7 +43,7 @@ public class ConsoleServicesFacade {
      * esecute parsedCommand
      * @param parsedCommand
      */
-	public void execute(AbstractParsedCommand parsedCommand){
+	public synchronized void execute(AbstractParsedCommand parsedCommand){
 		try {
 			cmdExecuteManager.execute(parsedCommand);
 		} catch (Exception e) {
@@ -56,7 +56,7 @@ public class ConsoleServicesFacade {
 	 * @param inputArguments the parsedCommand dto
 	 * @return the parsed command
 	 */
-	public AbstractParsedCommand parseAndValidate(String[] inputArguments){
+	public synchronized AbstractParsedCommand parseAndValidate(String[] inputArguments){
 		AbstractParsedCommand retVal = null;
 		try {
 			if (cmdParserManager.parse(inputArguments)){

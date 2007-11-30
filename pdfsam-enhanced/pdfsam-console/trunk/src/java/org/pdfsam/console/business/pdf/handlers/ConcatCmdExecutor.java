@@ -87,7 +87,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			}
 	    			
 	    			//validation
-	    			if (!(Pattern.compile("([0-9]+[-][0-9]+)|("+ALL_STRING+")", Pattern.CASE_INSENSITIVE).matcher(currentPageSelection).matches())){
+	    			if (!(Pattern.compile("([0-9]+[-][0-9]*)|("+ALL_STRING+")", Pattern.CASE_INSENSITIVE).matcher(currentPageSelection).matches())){
 	    				FileUtility.deleteFile(tmpFile);
 						throw new ConcatException(ConcatException.ERR_SYNTAX, new String[]{""+currentPageSelection});
 					} 
@@ -104,7 +104,12 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		                String[] limits = currentPageSelection.split("-");
 		                try{
 		                    start = Integer.parseInt(limits[0]);
-		                    endPage = Integer.parseInt(limits[1]);                    
+		                    //if there's and end limit
+		                    if(limits.length > 1){
+		                    	endPage = Integer.parseInt(limits[1]);
+		                    }else{
+		                    	endPage = pdfNumberOfPages;
+		                    }
 		                }catch(NumberFormatException nfe){
 							valid = false;
 							FileUtility.deleteFile(tmpFile);

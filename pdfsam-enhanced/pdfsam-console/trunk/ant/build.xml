@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="pdfsam-console" default="dist" basedir="../">
     <description>
-        Exception Message Provider For Java
+        PDF Split And Merge Console
     </description>
   <!-- Component Paths - Override if needed -->
-  <property name="itext.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  <property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
   <property name="itext.jar.name" value="itext-2.0.6"/>
-  <property name="emp4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="emp4j.jar.name" value="emp4j-1.0.0"/>
-  <property name="log4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="log4j.jar.name" value="log4j-1.2.15"/>
-  <property name="dom4j.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="dom4j.jar.name" value="dom4j-1.6.1"/>
-  <property name="jaxen.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
   <property name="jaxen.jar.name" value="jaxen-1.1"/>
   
   <!-- set global properties for this build -->
@@ -39,21 +35,13 @@
         description="pdfsam-console " >
     <!-- Construct classpath -->
     <path id="pdfsam-console.classpath">
-      <fileset dir="${log4j.location}">
+      <fileset dir="${lib.location}">
         <include name="**/${log4j.jar.name}.jar"/>
-      </fileset>
-      <fileset dir="${dom4j.location}">
         <include name="**/${dom4j.jar.name}.jar"/>
-      </fileset>
-      <fileset dir="${jaxen.location}">
         <include name="**/${jaxen.jar.name}.jar"/>
-      </fileset> 
-      <fileset dir="${itext.location}">
         <include name="**/${itext.jar.name}.jar"/>
-      </fileset> 
-      <fileset dir="${emp4j.location}">
         <include name="**/${emp4j.jar.name}.jar"/>
-      </fileset> 
+      </fileset>
       <pathelement path="${pdfsam-console.build.dir}"/>
     </path>
 
