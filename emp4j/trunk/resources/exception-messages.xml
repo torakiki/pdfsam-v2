@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exception-types>
-	<type key="org.pdfsam.emp4j.BasicException" description="GEN">
+	<type key="org.pdfsam.console.exceptions.BasicException" description="GEN">
 		<exception errorcode="1" message="Unknown exception." />
 	</type>
-	<type key="org.pdfsam.emp4j.exceptions.ConsoleException" description="CLS">
+	<type key="org.pdfsam.console.exceptions.console.ConsoleException" description="CLS">
 		<exception errorcode="1" message="Filename length is 0." />		
 	</type>
-	<type key="org.pdfsam.emp4j.console.ParseException" description="PRS">
-		<exception errorcode="1" message="{0}: parse error." />		
-		<exception errorcode="2" message="{0}: output file not a pdf format." />		
-		<exception errorcode="3" message="{0}: no output file name." />		
-		<exception errorcode="4" message="{0}: no -f or -l option given." />		
-		<exception errorcode="5" message="{0}: both -f and -l options given." />		
-		<exception errorcode="6" message="{0}: input list file not a csv or xml format" />		
-		<exception errorcode="7" message="{0}: input file {1} is not a pdf format." />		
-		<exception errorcode="8" message="{0}: -u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />		
-		<exception errorcode="9" message="{0}: output is not a directory." />		
-		<exception errorcode="10" message="{0}: not -s option given." />		
-		<exception errorcode="11" message="{0}: -n option not a numeric value." />		
-		<exception errorcode="12" message="{0}: -n option must be a number or a sequence number-number-number..." />		
-		<exception errorcode="13" message="{0}: unable to find required option -n for the selected split mode." />		
-		<exception errorcode="14" message="{0}: unnecessary option -n for the selected split mode." />		
-		<exception errorcode="15" message="{0}: missing or illegal -o option." />		
+	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
+		<exception errorcode="1" message="Parse error." />		
+		<exception errorcode="2" message="Output file not a pdf format." />		
+		<exception errorcode="3" message="No output file name." />		
+		<exception errorcode="4" message="No -f or -l option given." />		
+		<exception errorcode="5" message="Both -f and -l options given." />		
+		<exception errorcode="6" message="Input list file not a csv or xml format" />		
+		<exception errorcode="7" message="Input file {1} is not a pdf format." />		
+		<exception errorcode="8" message="-u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />		
+		<exception errorcode="9" message="Output is not a directory." />		
+		<exception errorcode="10" message="Not -s option given." />		
+		<exception errorcode="11" message="-n option not a numeric value." />		
+		<exception errorcode="12" message="-n option must be a number or a sequence number-number-number..." />		
+		<exception errorcode="13" message="Unable to find required option -n for the selected split mode." />		
+		<exception errorcode="14" message="Unnecessary option -n for the selected split mode." />		
+		<exception errorcode="15" message="Missing or illegal -o option." />		
+		<exception errorcode="16" message="No -f1 option given." />		
+		<exception errorcode="17" message="No -f2 option given." />		
+		<exception errorcode="18" message="Unnecessary option -b for the selected split mode." />		
+		<exception errorcode="19" message="No -b option given." />		
+		<exception errorcode="20" message="No -f option given." />	
 	</type>
-	<type key="org.pdfsam.emp4j.console.SplitException" description="SPL">
-		<exception errorcode="1" message="{0}: Cannot find page limits, please check input value." />		
-		<exception errorcode="2" message="{0}: Cannot split this document at page {1}. No such page." />		
+	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
+		<exception errorcode="1" message="Cannot find page limits, please check input value." />		
+		<exception errorcode="2" message="Cannot split this document at page {1}. No such page." />		
 	</type>
-	<type key="org.pdfsam.emp4j.console.ConcatException" description="MRG">
-		<exception errorcode="1" message="{0}: Syntax error on {1}. {2}" />	
+	<type key="org.pdfsam.console.exceptions.console.ConcatException" description="MRG">
+		<exception errorcode="1" message="{0}: Syntax error on {1}." />	
 		<exception errorcode="2" message="{0}: Unable to delete temporary file." />	
 		<exception errorcode="3" message="{0}: Syntax error. {1} must be positive in {2}." />				
+		<exception errorcode="5" message="Cannot merge at page {0}. No such page." />				
+		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
 	</type>
 	<type key="5" description="ENC" />
 	<type key="6" description="MIX" />

@@ -4,12 +4,10 @@
         Exception Message Provider For Java
     </description>
   <!-- Component Paths - Override if needed -->
-  <property name="log4j.location" value="F:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
-  <property name="log4j.jar.name" value="log4j-1.2.15"/>
-  <property name="dom4j.location" value="F:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
-  <property name="dom4j.jar.name" value="dom4j-1.6.1"/>
-  <property name="jaxen.location" value="F:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
-  <property name="jaxen.jar.name" value="jaxen-1.1"/>
+	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>
+  	<property name="log4j.jar.name" value="log4j-1.2.15"/>
+	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
+	<property name="jaxen.jar.name" value="jaxen-1.1"/>
   
   <!-- set global properties for this build -->
   <property name="emp4j.user.name" value="Andrea Vacondio"/>
@@ -34,20 +32,17 @@
         description="emp4j " >
     <!-- Construct classpath -->
     <path id="emp4j.classpath">
-      <fileset dir="${log4j.location}">
-        <include name="**/${log4j.jar.name}.jar"/>
-      </fileset>
-      <fileset dir="${dom4j.location}">
-        <include name="**/${dom4j.jar.name}.jar"/>
-      </fileset>
-      <fileset dir="${jaxen.location}">
-        <include name="**/${jaxen.jar.name}.jar"/>
-      </fileset> 
-      <pathelement path="${emp4j.build.dir}"/>
+	 	<fileset dir="${lib.location}">
+	        <include name="**/${log4j.jar.name}.jar"/>
+	        <include name="**/${dom4j.jar.name}.jar"/>
+	        <include name="**/${jaxen.jar.name}.jar"/>
+	        <include name="**/${jcmdline.jar.name}.jar"/>
+	    </fileset>
+    	<pathelement path="${emp4j.build.dir}"/>
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${emp4j.src.dir}" destdir="${emp4j.build.dir}">
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${emp4j.src.dir}" destdir="${emp4j.build.dir}">
     <classpath refid="emp4j.classpath"/>
     </javac>
   </target>
@@ -62,7 +57,7 @@
     <manifest>
 	<attribute name="Built-By" value="${user.name}"/>
 	<attribute name="Main-Class" value=""/>
-    <!--<attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar"/>-->
+    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar"/>
     </manifest>
     </jar>
     
@@ -88,19 +83,22 @@
       version="true"
       use="true"
       windowtitle="emp4j API"
-      doctitle="emp4 API" >
+      doctitle="emp4j API" >
     <classpath refid="emp4j.classpath"/>
     </javadoc>
   </target>
 
 
   
-  <target name="buildZipPackage" description="generate build sources zip package" >
+  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${emp4j.dist.dir}/${emp4j.jar.name}-${emp4j.jar.version}-build-src.zip">
-	<fileset dir="${emp4j.src.dir}">
-	    <include name="**/*"/>
-        </fileset>
-    </zip>
+		<fileset dir=".">
+	    	<include name="src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="doc/**/*.*"/>
+    	</fileset>
+     </zip>
   </target>
 
 </project>
