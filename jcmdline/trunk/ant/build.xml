@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jcmdline" default="dist" basedir="../">
+    <description>
+    	jcmdline
+    </description>
+  
+  <!-- set global properties for this build -->
+  <property name="jcmdline.user.name" value="Andrea Vacondio"/>
+  <property name="jcmdline.src.dir" location="src/java"/>
+  <property name="jcmdline.etc.dir" location="etc"/>
+  <property name="build.dir" location="f:/build/jcmdline"/>
+  <property name="jcmdline.build.dir" location="${build.dir}/build"/>
+  <property name="jcmdline.dist.dir"  location="${build.dir}/dist"/>
+  <property name="jcmdline.javadoc.dir"  location="${build.dir}/doc"/>
+ 
+  <property name="jcmdline.jar.name" value="pdfsam-jcmdline"/>
+  <property name="jcmdline.jar.version" value="1.0.3"/>	
+  
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${jcmdline.build.dir}"/>
+    <mkdir dir="${jcmdline.javadoc.dir}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="jcmdline " >
+    <!-- Construct classpath -->
+    <path id="jcmdline.classpath">      
+      <pathelement path="${jcmdline.build.dir}"/>
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${jcmdline.src.dir}" destdir="${jcmdline.build.dir}">
+    <classpath refid="jcmdline.classpath"/>
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${jcmdline.dist.dir}"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${jcmdline.dist.dir}/${jcmdline.jar.name}-${jcmdline.jar.version}.jar" basedir="${jcmdline.build.dir}">
+    <manifest>
+	<attribute name="Built-By" value="${user.name}"/>
+	<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
+    </manifest>	
+	<fileset dir="${jcmdline.src.dir}">
+	    <include name="**/*.properties"/>
+	</fileset>    	
+    </jar>
+    
+  </target>
+
+
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${dist} directory trees -->
+    <delete dir="${jcmdline.javadoc.dir}"/>
+    <delete dir="${jcmdline.dist.dir}"/>
+    <delete dir="${jcmdline.build.dir}"/>
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="init">
+    <javadoc
+      packagenames="jcmdline.*"
+      sourcepath="${jcmdline.src.dir}"
+      destdir="${jcmdline.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam-jcmdline"
+      doctitle="pdfsam-jcmdline" >
+    <classpath refid="jcmdline.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${jcmdline.dist.dir}/${jcmdline.jar.name}-${jcmdline.jar.version}-build-src.zip">
+		<fileset dir=".">
+	    	<include name="src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="doc/**/*.*"/>
+    	</fileset>
+    </zip>
+  </target>
+
+</project>
+
