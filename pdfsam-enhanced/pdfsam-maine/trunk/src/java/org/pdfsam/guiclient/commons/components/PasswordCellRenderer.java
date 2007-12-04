@@ -18,6 +18,8 @@ import java.awt.Component;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
 /**
  * Renderer for the password cell, shows *****
@@ -31,13 +33,11 @@ public class PasswordCellRenderer extends JLabel implements TableCellRenderer {
 	public Component getTableCellRendererComponent(JTable table, Object value,
 	        boolean isSelected, boolean hasFocus, int row, int column) {
 	        setOpaque(true);
-	        if(isSelected)
-	        {
+	        if(isSelected){
 	          setForeground(table.getSelectionForeground());
 	          setBackground(table.getSelectionBackground());
 	        }
-	        else
-	        {
+	        else{
 	          setForeground(table.getForeground());
 	          setBackground(table.getBackground());
 	        }
@@ -46,6 +46,11 @@ public class PasswordCellRenderer extends JLabel implements TableCellRenderer {
 	        }else{
 	        	setText("");
 	        }
+	        if (hasFocus) {
+			    setBorder( UIManager.getBorder("Table.focusCellHighlightBorder") );
+			} else {
+			    setBorder(new EmptyBorder(1, 1, 1, 1));
+			}     
 	        return this;
 	    }
 

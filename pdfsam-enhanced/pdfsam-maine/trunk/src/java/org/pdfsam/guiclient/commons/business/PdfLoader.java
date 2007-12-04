@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
@@ -94,20 +95,40 @@ public class PdfLoader {
     
     
     /**
-     * adds a file
+     * adds a file or many files depending on the value of singleSelection
      */
-    public void showFileChooserAndAddFiles(){
-    	if(!(workQueue.getRunning()>0)){
-            File[] files = null;
-            if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
-                files = fileChooser.getSelectedFiles();
-            }
-            addFiles(files);                              		    
+    public void showFileChooserAndAddFiles(boolean singleSelection){
+    	if(panel.getMainTable().getModel().getRowCount() >= panel.getMaxSelectableFiles()){
+    		JOptionPane.showMessageDialog(panel,
+    				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selection table is full, please remove some pdf document."),
+    				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Table full"),
+    				JOptionPane.INFORMATION_MESSAGE);
     	}else{
-    		log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please wait while all files are processed.."));
+			if(singleSelection){
+				fileChooser.setMultiSelectionEnabled(false);
+			}else{
+				fileChooser.setMultiSelectionEnabled(true);
+			}
+			if(!(workQueue.getRunning()>0)){
+		        if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
+		            if(fileChooser.isMultiSelectionEnabled()){
+		            	addFiles(fileChooser.getSelectedFiles());
+		            }else{
+		            	addFile(fileChooser.getSelectedFile());
+		            }
+		        }
+			}else{
+				log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please wait while all files are processed.."));
+			}
     	}
     }
     
+    /**
+     * adds multiple selected files
+     */
+    public void showFileChooserAndAddFiles(){
+    	showFileChooserAndAddFiles(false);
+    }
     /**
      * add a file to the selectionTable
      * @param file
@@ -157,6 +178,14 @@ public class PdfLoader {
      */   
     public void addFiles(List files){
     	addFiles(files,false);
+    }
+    
+    /**
+     * number of running threads
+     * @return
+     */
+    public int getRunningThreadsNumber(){
+    	return workQueue.getRunning();
     }
     
     /**

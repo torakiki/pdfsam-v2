@@ -17,8 +17,11 @@ package org.pdfsam.guiclient.commons.components;
 import java.awt.Component;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableCellRenderer;
 
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
 /**
@@ -26,19 +29,40 @@ import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
  * @author Andrea Vacondio
  *
  */
-public class FilenameCellRenderer extends DefaultTableCellRenderer {
+public class FilenameCellRenderer extends JLabel implements TableCellRenderer{
 
 	private static final long serialVersionUID = -1276471348276524210L;
 
 	public Component getTableCellRendererComponent(JTable table, Object value,
 	        boolean isSelected, boolean hasFocus, int row, int column) {
-			super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			if (column == PdfSelectionTableModel.PAGES){
-		          if(((PdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
-		              setIcon(new ImageIcon(this.getClass().getResource("/images/encrypted.png")));
-		          }
-		    }
-	        return this;
-	    }
+		setOpaque(true);
+		setIcon(null);
+		setFont(table.getFont());
+		if(isSelected){
+          setForeground(table.getSelectionForeground());
+          setBackground(table.getSelectionBackground());
+        }
+        else{
+          setForeground(table.getForeground());
+          setBackground(table.getBackground());
+        }
+		if(value != null){
+			setText(value.toString()); 
+		}else{
+			setText("");
+		}		
+		if (column == PdfSelectionTableModel.FILENAME){
+			if(((PdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
+			   setIcon(new ImageIcon(this.getClass().getResource("/images/encrypted.png")));
+		   	}
+		}
+		if (hasFocus) {
+		    setBorder( UIManager.getBorder("Table.focusCellHighlightBorder") );
+		} else {
+		    setBorder(new EmptyBorder(1, 1, 1, 1));
+		}        
+
+        return this;
+    }
 
 }

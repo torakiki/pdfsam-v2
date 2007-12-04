@@ -44,7 +44,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.EtchedBorder;
 import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.Logger;
@@ -160,15 +159,14 @@ public class JPdfSelectionPanel extends JPanel {
 		mainTable.setModel(tableModel);
 		mainTable.setDragEnabled(true);
 		mainTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-		mainTable.setRowHeight(18);
+		mainTable.setRowHeight(20);
 		mainTable.setRowMargin(5);
 		mainTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-		mainTable.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		mainTable.setSelectionForeground(Color.BLACK);
 		mainTable.setSelectionBackground(new Color(211, 221, 222));
 		mainTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		mainTable.setGridColor(Color.LIGHT_GRAY);
-		mainTable.setIntercellSpacing(new Dimension(7, 2));
+		mainTable.setIntercellSpacing(new Dimension(3, 3));
 		mainTable.getTableHeader().setReorderingAllowed(false);		
 		
 		TableColumnModel mainTableColModel = mainTable.getColumnModel();
@@ -183,7 +181,7 @@ public class JPdfSelectionPanel extends JPanel {
 		
 	    tableScrollPane = new JScrollPane(mainTable);
 	    tableScrollPane.setPreferredSize(new Dimension(600,350));
-	    tableScrollPane.setMinimumSize(new Dimension(200,100));
+	    tableScrollPane.setMinimumSize(new Dimension(200,50));
 	    tableScrollPane.setMaximumSize(new Dimension(1500,800));
 		pdfSelectionTableListener = new PdfSelectionTableActionListener(this, loader);
 		
@@ -199,7 +197,11 @@ public class JPdfSelectionPanel extends JPanel {
 		addFileButton.setMargin(new Insets(2, 2, 2, 2));
 		addFileButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Add a pdf to the list"));
 		addFileButton.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
-		addFileButton.setActionCommand(PdfSelectionTableActionListener.ADD);
+		if(maxSelectableFiles>1){
+			addFileButton.setActionCommand(PdfSelectionTableActionListener.ADD);
+		}else{
+			addFileButton.setActionCommand(PdfSelectionTableActionListener.ADDSINGLE);
+		}
 		addFileButton.addActionListener(pdfSelectionTableListener);
 		addFileButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Add"));
 		addFileButton.addKeyListener(addEnterKeyListener);
@@ -283,6 +285,26 @@ public class JPdfSelectionPanel extends JPanel {
 			buttonPanel.add(clearButton);
 			addButtonToButtonPanel(clearButton);
 			
+			//set out file popup
+			final JMenuItem menuItemSetOutputPath = new JMenuItem();
+			menuItemSetOutputPath.setIcon(new ImageIcon(this.getClass().getResource("/images/set_outfile.png")));
+			menuItemSetOutputPath.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set output file"));
+			menuItemSetOutputPath.addMouseListener(new MouseAdapter() {
+	            public void mouseReleased(MouseEvent e) {
+	                if (mainTable.getSelectedRow() != -1){
+	                    try{
+	                    	String previousValue = defaultOutputPath;
+	                    	defaultOutputPath = ((PdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
+	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, previousValue, defaultOutputPath);
+	                    }
+	                    catch (Exception ex){
+	                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to get the file path."), ex); 
+	                    }
+	                }
+	              }
+	        });
+			popupMenu.add(menuItemSetOutputPath);
+			
 			//key listener
 			mainTable.addKeyListener(new KeyAdapter() {
 	            public void keyPressed(KeyEvent e) {
@@ -307,25 +329,7 @@ public class JPdfSelectionPanel extends JPanel {
 	            }
 	        });
 		}
-		
-		final JMenuItem menuItemSetOutputPath = new JMenuItem();
-		menuItemSetOutputPath.setIcon(new ImageIcon(this.getClass().getResource("/images/set_outfile.png")));
-		menuItemSetOutputPath.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set output file"));
-		menuItemSetOutputPath.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {
-                if (mainTable.getSelectedRow() != -1){
-                    try{
-                    	String previousValue = defaultOutputPath;
-                    	defaultOutputPath = ((PdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
-                    	firePropertyChange(OUTPUT_PATH_PROPERTY, previousValue, defaultOutputPath);
-                    }
-                    catch (Exception ex){
-                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to get the file path."), ex); 
-                    }
-                }
-              }
-        });
-		popupMenu.add(menuItemSetOutputPath);
+				
 		
 		mainTable.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -427,6 +431,12 @@ public class JPdfSelectionPanel extends JPanel {
     }
 
     /**
+     * @return true if some thread is loading a pdf document
+     */
+    public boolean isAdding(){
+    	return (loader.getRunningThreadsNumber()>0);
+    }
+    /**
      * adds a item to the table
      * @param item
      */
@@ -495,6 +505,20 @@ public class JPdfSelectionPanel extends JPanel {
 	 */
 	public JButton getClearButton() {
 		return clearButton;
+	}
+
+	/**
+	 * @return the tableDropTarget
+	 */
+	public DropTarget getTableDropTarget() {
+		return tableDropTarget;
+	}
+
+	/**
+	 * @return the scrollPanelDropTarget
+	 */
+	public DropTarget getScrollPanelDropTarget() {
+		return scrollPanelDropTarget;
 	}
     
     

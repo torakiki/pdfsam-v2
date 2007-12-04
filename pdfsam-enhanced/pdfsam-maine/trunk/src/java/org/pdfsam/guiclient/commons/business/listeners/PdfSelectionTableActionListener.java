@@ -25,6 +25,7 @@ public class PdfSelectionTableActionListener implements ActionListener{
 	private static final Logger log = Logger.getLogger(JStatusPanel.class.getPackage().getName());
     
 	public static final String ADD = "add";
+	public static final String ADDSINGLE = "addSingle";
     public static final String MOVE_UP = "moveUp";
     public static final String MOVE_DOWN = "moveDown";
     public static final String CLEAR = "clear";        
@@ -55,6 +56,8 @@ public class PdfSelectionTableActionListener implements ActionListener{
     				 ((PdfSelectionTableModel) mainTable.getModel()).clearData();
     			}else if (ADD.equals(e.getActionCommand())){
     				loader.showFileChooserAndAddFiles();
+    			}else if (ADDSINGLE.equals(e.getActionCommand())){
+    				loader.showFileChooserAndAddFiles(true);
     			}else{
     				int[] selectedRows = mainTable.getSelectedRows();
     				if (selectedRows.length > 0){

@@ -139,7 +139,7 @@ public class  PlugInsLoader{
     				AbstractPlugablePanel instance = (AbstractPlugablePanel) currentClass.newInstance();
     				PluginDataModel pluginDataModel = new PluginDataModel(instance.getPluginName(), instance.getVersion(), instance.getPluginAuthor());
     				retMap.put(pluginDataModel, instance);
-    				log.info(pluginDataModel.getName()+GettextResource.gettext(config.getI18nResourceBundle()," loaded."));
+    				log.info(pluginDataModel.getName()+GettextResource.gettext(config.getI18nResourceBundle()," plugin loaded."));
     			}else{
     				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to load a plugin that is not JPanel subclass."));
     			}

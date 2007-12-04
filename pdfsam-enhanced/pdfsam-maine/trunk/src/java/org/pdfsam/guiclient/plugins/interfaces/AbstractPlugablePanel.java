@@ -26,7 +26,7 @@ import org.pdfsam.guiclient.configuration.Configuration;
  *
  */
 public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
-
+	
     private String panelIcon = "";
     private Configuration config;
     
