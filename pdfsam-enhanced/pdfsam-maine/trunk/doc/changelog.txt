@@ -5,6 +5,8 @@
 -Console: added the SIZE split type to split documents by size
 -Console: now use log4j
 -Console: now use emp4j to have encoded exception messages
+-Console: -u argument of concat command not can take limits without end limit (Ex. -u 3-: ) this will merge the document starting form 
+page number 3 to the end of the document
 -Complete refactor
 -Use of JTextPaneAppender and log4j for the logging panel
 -Chance to use the config file ${user.home}/.pdfsam/config.xml 
