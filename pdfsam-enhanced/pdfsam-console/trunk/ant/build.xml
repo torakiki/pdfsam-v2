@@ -6,6 +6,7 @@
   <!-- Component Paths - Override if needed -->
   <property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
   <property name="itext.jar.name" value="itext-2.0.6"/>
+  <property name="jcmdline.jar.name" value="pdfsam-jcmdline-1.0.3"/>
   <property name="emp4j.jar.name" value="emp4j-1.0.0"/>
   <property name="log4j.jar.name" value="log4j-1.2.15"/>
   <property name="dom4j.jar.name" value="dom4j-1.6.1"/>
@@ -41,6 +42,7 @@
         <include name="**/${jaxen.jar.name}.jar"/>
         <include name="**/${itext.jar.name}.jar"/>
         <include name="**/${emp4j.jar.name}.jar"/>
+        <include name="**/${jcmdline.jar.name}.jar"/>
       </fileset>
       <pathelement path="${pdfsam-console.build.dir}"/>
     </path>
@@ -61,14 +63,11 @@
     <manifest>
 	<attribute name="Built-By" value="${user.name}"/>
 	<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
-    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar"/>
+    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar ${jcmdline.jar.name}.jar"/>
     </manifest>
 	<fileset dir="${pdfsam-console.etc.dir}">
 	    <include name="*.xml"/>
-	</fileset>
-	<fileset dir="${pdfsam-console.src.dir}">
-	    <include name="**/*.properties"/>
-	</fileset>    	
+	</fileset>	
     </jar>
     
   </target>
@@ -100,11 +99,14 @@
 
 
   
-  <target name="buildZipPackage" description="generate build sources zip package" >
+  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${pdfsam-console.dist.dir}/${pdfsam-console.jar.name}-${pdfsam-console.jar.version}-build-src.zip">
-	<fileset dir="${pdfsam-console.src.dir}">
-	    <include name="**/*"/>
-        </fileset>
+    	<fileset dir=".">
+	    	<include name="src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="doc/**/*.*"/>
+    	</fileset>
     </zip>
   </target>
 

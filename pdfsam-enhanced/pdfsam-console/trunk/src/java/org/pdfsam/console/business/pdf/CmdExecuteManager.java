@@ -54,7 +54,7 @@ public class CmdExecuteManager extends Observable implements Observer{
 			if(cmdExecutor != null){
 				cmdExecutor.addObserver(this);
 				cmdExecutor.execute(parsedCommand);
-				log.debug("Command '"+parsedCommand.getCommand()+"' executed in "+TimeUtility.format(System.currentTimeMillis()-start));
+				log.info("Command '"+parsedCommand.getCommand()+"' executed in "+TimeUtility.format(System.currentTimeMillis()-start));
 			}else{
 				throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[]{""+parsedCommand.getCommand()});
 			}

@@ -43,7 +43,7 @@ public abstract class AbstractCmdHandler implements CmdHandler{
 		"'-log' to set a log file.\n"+
     	"'-overwrite' to overwrite output file if already exists.\n"+
         "'-pdfversion version' to set the output document pdf version. Possible values {["+AbstractParsedCommand.VERSION_1_2+"], ["+AbstractParsedCommand.VERSION_1_3+"], ["+AbstractParsedCommand.VERSION_1_4+"], ["+AbstractParsedCommand.VERSION_1_5+"], ["+AbstractParsedCommand.VERSION_1_6+"], ["+AbstractParsedCommand.VERSION_1_7+"]}\n"+
-    	"'-compress' to compress output file.\n\n";
+    	"'-compress' to compress output file.\n\n";	
     
 	/**
 	 * options commonly used by any handler
@@ -106,7 +106,7 @@ public abstract class AbstractCmdHandler implements CmdHandler{
 				options.addAll(getOptions());
 			}
 			options.addAll(commonOptions); 
-			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+commonHelpText+getHelpExamples(),COMMAND,getCommandDescription(),options,getArguments()));
+			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+commonHelpText+getHelpExamples(),ConsoleServicesFacade.LICENSE,"",COMMAND,getCommandDescription(),options,getArguments()));
 			commandLineHandler.setDieOnParseError(false);
 		}
 		return commandLineHandler;
