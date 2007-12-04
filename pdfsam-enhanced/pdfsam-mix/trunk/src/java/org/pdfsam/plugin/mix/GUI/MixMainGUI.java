@@ -18,7 +18,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FocusTraversalPolicy;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -26,7 +25,6 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.LinkedList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -43,6 +41,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
@@ -72,8 +71,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private JPanel destinationPanel = new JPanel();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.DOUBLE_SELECTABLE_FILE, PdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
-	private final JCheckBox overwriteCheckbox = new JCheckBox();
-    private final JCheckBox outputCompressedCheck = new JCheckBox();
+	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
+    private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
 	private final JCheckBox reverseFirstCheckbox = new JCheckBox();
 	private final JCheckBox reverseSecondCheckbox = new JCheckBox();
 	private JTextField destinationTextField;
@@ -84,8 +83,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 	private final MixFocusPolicy mixFocusPolicy = new MixFocusPolicy();
 	//buttons
-	private final JButton runButton = new JButton();
-	private final JButton browseButton = new JButton();
+	private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
+	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
 	
 	private final JLabel destinationLabel = new JLabel();
 	private final JLabel outputVersionLabel = new JLabel();	
@@ -154,8 +153,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		destinationPanel.add(destinationTextField);
 		
 //		BROWSE_BUTTON        
-		browseButton.setMargin(new Insets(2, 2, 2, 2));
-		browseButton.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int return_val = browseFileChooser.showOpenDialog(browseButton.getParent());
@@ -170,23 +167,17 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 					}
 					catch (Exception ex){
 						log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-
 					}
 				}
 
 			}
 		});        
-		browseButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Browse"));
 		destinationPanel.add(browseButton);
 //		END_BROWSE_BUTTON
 		
 //		CHECK_BOX
-		overwriteCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Overwrite if already exists"));
-		overwriteCheckbox.setSelected(true);
 		destinationPanel.add(overwriteCheckbox);
         
-        outputCompressedCheck.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Compress output file"));
-        outputCompressedCheck.setSelected(true);
         destinationPanel.add(outputCompressedCheck);
         destinationPanel.add(versionCombo);
         
@@ -208,6 +199,10 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 //		RUN_BUTTON
 		runButton.addActionListener(new ActionListener() {            
 			public void actionPerformed(ActionEvent e) {
+				if (runThreads.activeCount() > 0 || selectionPanel.isAdding()){
+                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
+                    return;
+                }
 				final LinkedList args = new LinkedList(); 
 				try{
 					PdfSelectionTableItem[] items = selectionPanel.getTableRows();
@@ -271,10 +266,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 			}
 		});
 		
-		runButton.setMargin(new Insets(2, 2, 2, 2));
-		runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf alternate mix"));
-		runButton.setIcon(new ImageIcon(this.getClass().getResource("/images/run.png")));
-		runButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Run"));
 		add(runButton);
 //		END_RUN_BUTTON		
 		
@@ -389,26 +380,29 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 						secondFile  = items[1].getInputFile().getAbsolutePath();
 					}
 				}
-				Element first_node = ((Element)arg0).addElement("first");
-				first_node.addAttribute("value", firstFile);			
+				Element firstNode = ((Element)arg0).addElement("first");
+				firstNode.addAttribute("value", firstFile);			
 
-				Element second_node = ((Element)arg0).addElement("second");
-				second_node.addAttribute("value", secondFile);			
+				Element secondNode = ((Element)arg0).addElement("second");
+				secondNode.addAttribute("value", secondFile);			
 
-				Element file_destination = ((Element)arg0).addElement("destination");
-				file_destination.addAttribute("value", destinationTextField.getText());			
+				Element fileDestination = ((Element)arg0).addElement("destination");
+				fileDestination.addAttribute("value", destinationTextField.getText());			
 
-				Element reverse_first = ((Element)arg0).addElement("reverse_first");
-				reverse_first.addAttribute("value", reverseFirstCheckbox.isSelected()?"true":"false");
+				Element reverseFirst = ((Element)arg0).addElement("reverse_first");
+				reverseFirst.addAttribute("value", reverseFirstCheckbox.isSelected()?"true":"false");
 
-				Element reverse_second = ((Element)arg0).addElement("reverse_second");
-				reverse_second.addAttribute("value", reverseSecondCheckbox.isSelected()?"true":"false");
+				Element reverseSecond = ((Element)arg0).addElement("reverse_second");
+				reverseSecond.addAttribute("value", reverseSecondCheckbox.isSelected()?"true":"false");
 				
-				Element file_overwrite = ((Element)arg0).addElement("overwrite");
-				file_overwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
+				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
 
-				Element file_compress = ((Element)arg0).addElement("compressed");
-				file_compress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+				Element fileCompress = ((Element)arg0).addElement("compressed");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+
+				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
+				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
 			}
 			return arg0;
 		}
@@ -420,36 +414,45 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	public void loadJobNode(Node arg) throws LoadJobException {
 		final Node arg0 = arg;
 		try{
-			Node first_node = (Node) arg0.selectSingleNode("first/@value");
-			if (first_node != null){
-				selectionPanel.getLoader().addFile(new File(first_node.getText()));
+			Node firstNode = (Node) arg0.selectSingleNode("first/@value");
+			if (firstNode != null && firstNode.getText().length()>0){
+				selectionPanel.getLoader().addFile(new File(firstNode.getText()));
 			}
-			Node second_node = (Node) arg0.selectSingleNode("second/@value");
-			if (second_node != null){
-				selectionPanel.getLoader().addFile(new File(second_node.getText()));
+			Node secondNode = (Node) arg0.selectSingleNode("second/@value");
+			if (secondNode != null && secondNode.getText().length()>0){
+				selectionPanel.getLoader().addFile(new File(secondNode.getText()));
 			}
-			Node file_destination = (Node) arg0.selectSingleNode("destination/@value");
-			if (file_destination != null){
-				destinationTextField.setText(file_destination.getText());
+			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+			if (fileDestination != null){
+				destinationTextField.setText(fileDestination.getText());
 			}
-			Node file_overwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-			if (file_overwrite != null){
-				overwriteCheckbox.setSelected(file_overwrite.getText().equals("true"));
+			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+			if (fileOverwrite != null){
+				overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
 			}
-			Node reverse_first = (Node) arg0.selectSingleNode("reverse_first/@value");
-			if (reverse_first != null){
-				reverseFirstCheckbox.setSelected(reverse_first.getText().equals("true"));
+			Node reverseFirst = (Node) arg0.selectSingleNode("reverse_first/@value");
+			if (reverseFirst != null){
+				reverseFirstCheckbox.setSelected(reverseFirst.getText().equals("true"));
 			}
-			Node reverse_second = (Node) arg0.selectSingleNode("reverse_second/@value");
-			if (reverse_second != null){
-				reverseSecondCheckbox.setSelected(reverse_second.getText().equals("true"));
+			Node reverseSecond = (Node) arg0.selectSingleNode("reverse_second/@value");
+			if (reverseSecond != null){
+				reverseSecondCheckbox.setSelected(reverseSecond.getText().equals("true"));
 			}
 			
-			Node file_compressed = (Node) arg0.selectSingleNode("compressed/@value");
-			if (file_compressed != null){
-				outputCompressedCheck.setSelected(file_compressed.getText().equals("true"));
+			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (fileCompressed != null){
+				outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
 			}
 
+			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+			if (pdfVersion != null){
+				for (int i = 0; i<versionCombo.getItemCount(); i++){
+					if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+						versionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
 			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"AlternateMix section loaded."));                     
 		}
 		catch (Exception ex){
