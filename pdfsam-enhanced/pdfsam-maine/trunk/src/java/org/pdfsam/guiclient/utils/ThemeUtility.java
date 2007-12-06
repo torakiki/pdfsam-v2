@@ -46,7 +46,7 @@ public class ThemeUtility {
 
 	/**
 	 * @param lafNumber
-	 * @return
+	 * @return le LookAndFeel
 	 */
 	public static String getLAF(int lafNumber){
 		String ThemeSelected;
@@ -127,8 +127,7 @@ public class ThemeUtility {
     
     /**
      * Sets the theme
-     * @param theme_number Theme number
-     * @return true if no exception in threw
+     * @param themeNumber Theme number
      */
     public static void setTheme(int themeNumber){
             switch (themeNumber) {

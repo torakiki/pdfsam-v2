@@ -36,9 +36,10 @@ public class PdfSelectionTableActionListener implements ActionListener{
     private JPdfSelectionPanel panel;
     private PdfLoader loader;
 
+  
     /**
-     * Constructor
-     * @param mainTable
+     * @param panel Selection panel
+     * @param loader PdfLoader
      */
     public PdfSelectionTableActionListener(JPdfSelectionPanel panel, PdfLoader loader) {    	
          this.panel = panel;

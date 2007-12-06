@@ -50,7 +50,7 @@ public class JPdfSelectionToolTipHeader extends JTableHeader {
     }
     /**
      * Set the tool tip string
-     * @param toolTipsStrings
+     * @param toolTips
      */
     public void setToolTips(String[] toolTips) {
       this.toolTips = toolTips;

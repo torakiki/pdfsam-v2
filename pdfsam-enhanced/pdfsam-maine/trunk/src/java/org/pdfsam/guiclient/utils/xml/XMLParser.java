@@ -38,7 +38,7 @@ public class XMLParser {
 	/**
 	 * Parse the xml file converting the given path
 	 * @param fullPath
-	 * @return
+	 * @return parsed Document
 	 * @throws DocumentException
 	 */
     public static Document parseXmlFile(String fullPath) throws DocumentException{
@@ -48,7 +48,7 @@ public class XMLParser {
     /**
      * parse the xml input file
      * @param inputFile
-     * @return
+     * @return parsed Document
      * @throws DocumentException
      */
     public static Document parseXmlFile(File inputFile) throws DocumentException{
@@ -77,7 +77,7 @@ public class XMLParser {
 	 * Write the DOM to the xml file
 	 * 
 	 * @param domDoc Document to write
-	 * @param fullPath Full path to the xml file to write
+	 * @param outFile xml File to write
 	 * @throws Exception
 	 */    
 	 public static void writeXmlFile(Document domDoc, File outFile) throws Exception{           

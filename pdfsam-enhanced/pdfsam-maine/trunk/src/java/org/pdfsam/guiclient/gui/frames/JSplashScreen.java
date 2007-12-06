@@ -40,8 +40,6 @@ import org.pdfsam.guiclient.gui.panels.JBackgroundedPanel;
  * 
  * Splash screen.
  * @author Andrea Vacondio
- * @see it.pdfsam.GUI.MainGUI
- * 
  */
 public class JSplashScreen extends JFrame {
 

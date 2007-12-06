@@ -465,8 +465,7 @@ public class JPdfSelectionPanel extends JPanel {
     }
     
     /**
-     * the pdf loader
-     * @return
+     * @return the pdf loader
      */
     public PdfLoader getLoader(){
     	return loader;

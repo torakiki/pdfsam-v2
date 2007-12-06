@@ -181,8 +181,7 @@ public class PdfLoader {
     }
     
     /**
-     * number of running threads
-     * @return
+     * @return number of running threads
      */
     public int getRunningThreadsNumber(){
     	return workQueue.getRunning();

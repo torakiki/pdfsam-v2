@@ -71,7 +71,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
     
     /**
      * Constructor. It provides initialization.
-     * @param table_data Informations about loaded plugins
+     * @param plugins Informations about loaded plugins
      */
     public JInfoPanel(Hashtable plugins) {
         this.plugins = plugins;

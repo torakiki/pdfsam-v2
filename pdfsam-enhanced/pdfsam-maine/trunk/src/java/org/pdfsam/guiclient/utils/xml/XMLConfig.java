@@ -145,7 +145,7 @@ public class XMLConfig{
      * It saves any changes on the xml file
      * 
      * @throws Exception
-     * @see org.pdfsam.guiclient.utils.xml.XMLParser#writeXmlFile(Document, String)
+     * @see org.pdfsam.guiclient.utils.xml.XMLParser#writeXmlFile(Document, File)
      */
         public void saveXMLfile() throws Exception{
             XMLParser.writeXmlFile(document, xmlConfigFile);

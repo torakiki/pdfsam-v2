@@ -63,8 +63,8 @@ public class IntItem implements Serializable{
 	}
 	
     /**
-     * sets the <code>inputid</code> property
-     * @param inputid
+     * sets the <code>id</code> property
+     * @param id
      */	
 	public void setId(int id) {
 		this.id = id;

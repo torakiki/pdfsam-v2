@@ -23,7 +23,6 @@ import javax.swing.table.AbstractTableModel;
 /**
  * Table model for the info GUI table. It shows informations about loaded plugins
  * @author Andrea Vacondio
- * @see it.pdfsam.panels.JInfoPanel
  *
  */
 public class PluginsTableModel extends AbstractTableModel {

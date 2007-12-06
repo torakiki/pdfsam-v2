@@ -97,8 +97,8 @@ public class  PlugInsLoader{
     }
     
     /**
-     * load the plugins and return a map(k,value) where k is the pluginDataModel and value is the instance
-     * @return
+     * load the plugins and return 
+     * @return a map(k,value) where k is the pluginDataModel and value is the instance
      * @throws PluginException
      */
     public Hashtable loadPlugins() throws PluginException {
