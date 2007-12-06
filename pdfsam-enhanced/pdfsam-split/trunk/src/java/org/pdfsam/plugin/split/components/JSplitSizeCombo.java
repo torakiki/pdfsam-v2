@@ -51,8 +51,7 @@ public class JSplitSizeCombo extends JComboBox {
 	}
 	
 	/**
-	 * Bytes of the selected item
-	 * @return
+	 * @return Bytes of the selected item
 	 * @throws Exception
 	 */
 	public long getSelectedBytes() throws Exception{

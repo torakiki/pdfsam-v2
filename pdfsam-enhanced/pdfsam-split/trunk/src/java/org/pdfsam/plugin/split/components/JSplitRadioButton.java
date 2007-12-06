@@ -19,7 +19,6 @@ import javax.swing.JRadioButton;
 /**
  * This component is used to get the split type selected by the user
  * @author Andrea Vacondio
- * @see it.pdfsam.console.MainConsole
  *
  */
 public class JSplitRadioButton extends JRadioButton {
