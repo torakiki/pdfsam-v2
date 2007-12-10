@@ -86,7 +86,7 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 			StringParam uOption = (StringParam) cmdLineHandler.getOption("u");            
 	        //if it's set we proceed with validation
 	        if (uOption.isSet()){
-	            Pattern p = Pattern.compile("(([0-9]*[-][0-9]*[:])|(all:))*", Pattern.CASE_INSENSITIVE);
+	            Pattern p = Pattern.compile("(([0-9]*[-][0-9]*[:])|(all:))+", Pattern.CASE_INSENSITIVE);
 	            if ((p.matcher(uOption.getValue()).matches())){
 	            	parsedCommandDTO.setPageSelection(uOption.getValue());
 	            }

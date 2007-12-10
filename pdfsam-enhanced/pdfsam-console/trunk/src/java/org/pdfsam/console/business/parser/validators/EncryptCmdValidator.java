@@ -113,7 +113,7 @@ public class EncryptCmdValidator extends AbstractCmdValidator {
 		}
 		return parsedCommandDTO;	
 	}
-
+ 
 	/**
 	 * @param encryptionType encryption algorithm
 	 * @return The permissions map based on the chosen encryption
@@ -121,19 +121,19 @@ public class EncryptCmdValidator extends AbstractCmdValidator {
 	private Hashtable getPermissionsMap(String encryptionType){
 		Hashtable retMap = new Hashtable(12);
 		if(EncryptParsedCommand.E_RC4_40.equals(encryptionType)){
-			retMap.put(EncryptParsedCommand.E_PRINT,new Integer(PdfWriter.AllowPrinting));
-			retMap.put(EncryptParsedCommand.E_MODIFY,new Integer(PdfWriter.AllowModifyContents));
-			retMap.put(EncryptParsedCommand.E_COPY,new Integer(PdfWriter.AllowCopy));
-			retMap.put(EncryptParsedCommand.E_ANNOTATION,new Integer(PdfWriter.AllowModifyAnnotations));
+			retMap.put(EncryptParsedCommand.E_PRINT,new Integer(PdfWriter.ALLOW_PRINTING));
+			retMap.put(EncryptParsedCommand.E_MODIFY,new Integer(PdfWriter.ALLOW_MODIFY_CONTENTS));
+			retMap.put(EncryptParsedCommand.E_COPY,new Integer(PdfWriter.ALLOW_COPY));
+			retMap.put(EncryptParsedCommand.E_ANNOTATION,new Integer(PdfWriter.ALLOW_MODIFY_ANNOTATIONS));
 		}else{
-			retMap.put(EncryptParsedCommand.E_PRINT,new Integer(PdfWriter.AllowPrinting));
-			retMap.put(EncryptParsedCommand.E_MODIFY,new Integer(PdfWriter.AllowModifyContents));
-			retMap.put(EncryptParsedCommand.E_COPY,new Integer(PdfWriter.AllowCopy));
-			retMap.put(EncryptParsedCommand.E_ANNOTATION,new Integer(PdfWriter.AllowModifyAnnotations));
-			retMap.put(EncryptParsedCommand.E_FILL,new Integer(PdfWriter.AllowFillIn));
-			retMap.put(EncryptParsedCommand.E_SCREEN,new Integer(PdfWriter.AllowScreenReaders));
-			retMap.put(EncryptParsedCommand.E_ASSEMBLY,new Integer(PdfWriter.AllowAssembly));
-			retMap.put(EncryptParsedCommand.E_DPRINT,new Integer(PdfWriter.AllowDegradedPrinting));
+			retMap.put(EncryptParsedCommand.E_PRINT,new Integer(PdfWriter.ALLOW_PRINTING));
+			retMap.put(EncryptParsedCommand.E_MODIFY,new Integer(PdfWriter.ALLOW_MODIFY_CONTENTS));
+			retMap.put(EncryptParsedCommand.E_COPY,new Integer(PdfWriter.ALLOW_COPY));
+			retMap.put(EncryptParsedCommand.E_ANNOTATION,new Integer(PdfWriter.ALLOW_MODIFY_ANNOTATIONS));
+			retMap.put(EncryptParsedCommand.E_FILL,new Integer(PdfWriter.ALLOW_FILL_IN));
+			retMap.put(EncryptParsedCommand.E_SCREEN,new Integer(PdfWriter.ALLOW_SCREENREADERS));
+			retMap.put(EncryptParsedCommand.E_ASSEMBLY,new Integer(PdfWriter.ALLOW_ASSEMBLY));
+			retMap.put(EncryptParsedCommand.E_DPRINT,new Integer(PdfWriter.ALLOW_DEGRADED_PRINTING));
 		}
 		
 		return retMap;

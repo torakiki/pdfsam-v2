@@ -6,9 +6,9 @@
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/emp4j-1.0.0.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/itext-2.0.6.jar" sourcepath="F:/libs/itext-src-2.0.6"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/bcmail-jdk14-135.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/bcprov-jdk14-135.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jcmdline"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/bcmail-jdk14-138.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/bcprov-jdk14-138.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/iText-2.0.7.jar" sourcepath="F:/libs/itext-src-2.0.7"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

@@ -56,24 +56,34 @@ public class ConsoleServicesFacade {
     /**
      * esecute parsedCommand
      * @param parsedCommand
+     * @throws Exception. This way we don't have dependencies from emp4j client side
      */
-	public synchronized void execute(AbstractParsedCommand parsedCommand) throws ConsoleException{
-		cmdExecuteManager.execute(parsedCommand);
+	public synchronized void execute(AbstractParsedCommand parsedCommand) throws Exception{
+		try{
+			cmdExecuteManager.execute(parsedCommand);
+		}catch(ConsoleException ce){
+			throw new Exception(ce);
+		}
 	}
     
 	/**
 	 * parse and validate the input arguments 
 	 * @param inputArguments the parsedCommand dto
 	 * @return the parsed command
+     * @throws Exception. This way we don't have dependencies from emp4j client side
 	 */
-	public synchronized AbstractParsedCommand parseAndValidate(String[] inputArguments) throws ConsoleException{
-		AbstractParsedCommand retVal = null;
-		if (cmdParserManager.parse(inputArguments)){
-			retVal = cmdParserManager.validate();
-		}else{
-			log.error("Parse failed.");
+	public synchronized AbstractParsedCommand parseAndValidate(String[] inputArguments) throws Exception{
+		try{
+			AbstractParsedCommand retVal = null;
+			if (cmdParserManager.parse(inputArguments)){
+				retVal = cmdParserManager.validate();
+			}else{
+				log.error("Parse failed.");
+			}
+			return retVal;
+		}catch(ConsoleException ce){
+			throw new Exception(ce);
 		}
-		return retVal;
 	}
 	
 	/**
