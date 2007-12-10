@@ -40,14 +40,20 @@ public class PdfLoader {
 
 	private static final Logger log = Logger.getLogger(PdfLoader.class.getPackage().getName());
     //threshold to low priority addThread 
-    private static long LOW_PRIORITY_SIZE = 10*1024*1024; //10MB
+    private static long LOW_PRIORITY_SIZE = 5*1024*1024; //5MB
     
 	private JPdfSelectionPanel panel;
     private JFileChooser fileChooser;
-    private WorkQueue workQueue = new WorkQueue(10, 1);
+    private WorkQueue workQueue = null;
 	
 	public PdfLoader(JPdfSelectionPanel panel){
 		this.panel = panel;
+		//number of threads in workqueue based on the number of selectable documents
+		if(panel.getMaxSelectableFiles() <= 1){
+			workQueue = new WorkQueue(1, 1);
+		}else{
+			workQueue = new WorkQueue(10, 1);
+		}
         fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new PdfFilter());
         fileChooser.setMultiSelectionEnabled(true);
@@ -58,18 +64,19 @@ public class PdfLoader {
      * @param password password to open the file
      * @return the item to add to the table
      */
-    public PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd, String password){
+    public PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd, String password, String pageSelection){
     	PdfSelectionTableItem tableItem = null;
     	PdfReader pdfReader = null;
         if (fileToAdd != null){
         	tableItem = new PdfSelectionTableItem();
         	tableItem.setInputFile(fileToAdd);
         	tableItem.setPassword(password);
+        	tableItem.setPageSelection(pageSelection);
             try{
                 //fix 03/07 for memory usage
                 pdfReader = new PdfReader(new RandomAccessFileOrArray(new FileInputStream(fileToAdd)), (password != null)?password.getBytes():null);
                 tableItem.setEncrypted(pdfReader.isEncrypted());
-                tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
+                tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));                
             }
             catch (Exception e){
             	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
@@ -90,7 +97,7 @@ public class PdfLoader {
      * @return the item to add to the table
      */
     public PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd){
-    	return getPdfSelectionTableItem(fileToAdd, null);
+    	return getPdfSelectionTableItem(fileToAdd, null, null);
     }
     
     
@@ -131,19 +138,38 @@ public class PdfLoader {
     }
     /**
      * add a file to the selectionTable
-     * @param file
+     * @param file input file
+     * @param password password
+     * @param pageSelection page selection
      */
-    public synchronized void addFile(File file){
+    public synchronized void addFile(File file, String password, String pageSelection){
     	if (file != null){
-    		workQueue.execute(new AddThread(file), WorkQueue.SINGLE);
+    		workQueue.execute(new AddThread(file, password, pageSelection), WorkQueue.SINGLE);
     	}
     }
     
+    /**
+     * add a file to the selectionTable
+     * @param file input file
+     * @param password password
+     */
+    public void addFile(File file, String password){
+    	this.addFile(file, password, null);
+    }
+
+    /**
+     * add a file to the selectionTable
+     * @param file input file
+     */
+    public void addFile(File file){
+    	this.addFile(file, null, null);
+    }
     /**
      * adds files to the selectionTable
      * @param files
      * @param ordered files are added keeping order
      */
+    
     public synchronized void addFiles(File[] files, boolean ordered){
     	 if (files != null){
          	for (int i=0; i < files.length; i++){
@@ -195,9 +221,21 @@ public class PdfLoader {
     private class AddThread implements Runnable{
     	private String wipText;
     	private File inputFile;
+    	private String password;
+    	private String pageSelection;
     	
     	public AddThread(File inputFile){
+    		this(inputFile, null, null);
+    	}
+    	
+    	public AddThread(File inputFile, String password){
+    		this(inputFile, password, null);
+    	}
+    	
+    	public AddThread(File inputFile, String password, String pageSelection){
     		this.inputFile = inputFile;
+    		this.pageSelection = pageSelection;
+    		this.password = password;
     	}
     	
     	public void run() {					
@@ -206,7 +244,7 @@ public class PdfLoader {
 						if(new PdfFilter(false).accept(inputFile)){
 			    			wipText = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please wait while reading")+" "+inputFile.getName()+" ...";
 			                panel.addWipText(wipText);
-			                panel.addTableRow(getPdfSelectionTableItem(inputFile));
+			                panel.addTableRow(getPdfSelectionTableItem(inputFile, password, pageSelection));
 			                panel.removeWipText(wipText);
 						}else{
 							log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selected file is not a pdf document.")+" "+inputFile.getName());
@@ -328,18 +366,17 @@ public class PdfLoader {
                          r = (Runnable) highQueue.removeFirst();
                      }
 
-                    try {
-                    	 if(r != null){
+                    if(r != null){
+                    	try {                    	
                     		 incHighRunningCounter();
                     		 r.run();                         		
-                         }
-                   }catch (RuntimeException e) {
-                	   log.error(e);
-                   }
-                   finally{
-                	   deincHighRunningCounter();                	  
-                   }
-                         
+	                   }catch (RuntimeException e) {
+	                	   log.error(e);
+	                   }
+	                   finally{
+	                	   deincHighRunningCounter();                	  
+	                   }
+                    }                         
                 }
         	}
         }
@@ -370,17 +407,17 @@ public class PdfLoader {
                          r = (Runnable) lowQueue.removeFirst();
                      }
 
-                    try {
-                    	 if(r != null){
-                    		 incRunningCounter();
-                    		 r.run();                         		
-                         }
-                   }catch (RuntimeException e) {
-                	   log.error(e);
-                   }
-                   finally{
-                	   deincRunningCounter();
-                   }    
+                    if(r != null){
+                    	try {
+                    		incRunningCounter();
+                    		r.run();                         		
+                    	}catch (RuntimeException e) {
+                    		log.error(e);
+                    	}
+                    	finally{
+                    		deincRunningCounter();                	  
+                    	}
+               	 	} 
                 }
         	}
         }
@@ -406,18 +443,17 @@ public class PdfLoader {
                          r = (Runnable) singleQueue.removeFirst();
                      }
 
-                    try {
-                    	 if(r != null){
-                    		 incRunningCounter();
-                    		 r.run();                         		
-                         }
-                   }catch (RuntimeException e) {
-                	   log.error(e);
-                   }
-                   finally{
-                	   deincRunningCounter();                	  
-                   }
-                         
+                    if(r != null){
+                    	try {
+                    		incRunningCounter();
+                    		r.run();                         		
+                    	}catch (RuntimeException e) {
+                    		log.error(e);
+                    	}
+                    	finally{
+                    		deincRunningCounter();                	  
+                    	}
+               	 	}     
                 }
         	}
         }

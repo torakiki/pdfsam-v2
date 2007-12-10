@@ -81,7 +81,7 @@ public class PdfSelectionTableModel extends AbstractTableModel {
             GettextResource.gettext(config.getI18nResourceBundle(),""),
             GettextResource.gettext(config.getI18nResourceBundle(),"Total pages of the document"),
             GettextResource.gettext(config.getI18nResourceBundle(),"Password to open the document (if needed)"),
-            GettextResource.gettext(config.getI18nResourceBundle(),"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-7,12)")};
+            GettextResource.gettext(config.getI18nResourceBundle(),"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-7,12-)")};
 		toolTips = i18nToolTips;
 		
 		setShowedColumns(showedColumns);

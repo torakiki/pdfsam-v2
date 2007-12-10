@@ -139,7 +139,7 @@
 	    <manifest>
 		<attribute name="Built-By" value="${user.name}"/>
 		<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
-	    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar ${jcmdline.jar.name}.jar ${looks.jar.name}.jar ${console.jar.name}.jar ${bcmail.jar.name}.jar ${bcprov.jar.name}.jar ${langpack.jar.name}.jar"/>
+	    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${langpack.jar.name}.jar"/>
 	    </manifest>
 		<fileset dir="${pdfsam.etc.dir}">
 		    <include name="*.xml"/>
