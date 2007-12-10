@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="pdfsam-split" default="dist" basedir="../">
     <description>
-        Mix plugin for pdfsam 
+        Split plugin for pdfsam 
     </description>
   <!-- Component Paths - Override if needed -->
 	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
@@ -10,7 +10,6 @@
 	<property name="log4j.jar.name" value="log4j-1.2.15"/>
 	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
 	<property name="jaxen.jar.name" value="jaxen-1.1"/>
-	<property name="emp4j.jar.name" value="emp4j-1.0.0"/>	
   
   <!-- set global properties for this build -->
   	<property name="user.name" value="Andrea Vacondio"/>
@@ -19,7 +18,6 @@
   	<property name="build.dir" location="f:/build/pdfsam-split"/>
   	<property name="pdfsam-split.build.dir" location="${build.dir}/build"/>
   	<property name="pdfsam-split.dist.dir"  location="${build.dir}/dist"/>
-  	<property name="pdfsam-split.img.dir"  location="images"/>	
   	<property name="pdfsam-split.javadoc.dir"  location="${build.dir}/doc"/>
 	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0.jar"/>	
  
@@ -44,7 +42,6 @@
           <include name="**/${jaxen.jar.name}.jar"/>
           <include name="**/${console.jar.name}.jar"/>
           <include name="**/${langpack.jar.name}.jar"/>
-          <include name="**/${emp4j.jar.name}.jar"/>
         </fileset> 	
         <pathelement path="${pdfsam-split.build.dir}"/>
         <pathelement path="${main.lib}"/>    	
@@ -66,9 +63,9 @@
     <manifest>
 	<attribute name="Built-By" value="${user.name}"/>
     </manifest>
-	<fileset dir="${pdfsam-split.img.dir}">
-	    <include name="**/*.png"/>
-	</fileset>    	
+	<fileset dir=".">
+	    <include name="images/*.png"/>
+	</fileset>    	  	
     </jar>
     
   </target>
