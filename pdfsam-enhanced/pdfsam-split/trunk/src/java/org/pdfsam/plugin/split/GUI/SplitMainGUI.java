@@ -289,7 +289,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
-    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want compressed output files.")+"</p>"+
+    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want compressed output files.")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"PDF version 1.5 or above.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Set the pdf version of the ouput document.")+"</p>"+
     		"</body></html>";
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
@@ -584,15 +584,19 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         splitSpringLayout.putConstraint(SpringLayout.EAST, splitOptionsPanel, -5, SpringLayout.EAST, this);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsPanel, 0, SpringLayout.WEST, selectionPanel);
+        
         splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsLabel, 0, SpringLayout.NORTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsLabel, 5, SpringLayout.SOUTH, selectionPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsLabel, 0, SpringLayout.WEST, selectionPanel);
+        
         splitSpringLayout.putConstraint(SpringLayout.NORTH, destFolderLabel, 5, SpringLayout.SOUTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, destFolderLabel, 0, SpringLayout.WEST, splitOptionsPanel);
+        
         splitSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 130, SpringLayout.NORTH, destinationPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, splitOptionsPanel);
+        
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, sameAsSourceRadio, 25, SpringLayout.NORTH, sameAsSourceRadio);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, sameAsSourceRadio, 1, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, sameAsSourceRadio, 10, SpringLayout.WEST, destinationPanel);        
