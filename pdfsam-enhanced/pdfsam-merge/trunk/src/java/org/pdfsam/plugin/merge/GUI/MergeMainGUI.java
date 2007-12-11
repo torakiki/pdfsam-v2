@@ -43,7 +43,6 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
-import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
@@ -105,9 +104,10 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = new JLabel();	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_NAME = "Merge";
+    private static final String PLUGIN_NAME = "Merge/Exctract";
     private static final String PLUGIN_VERSION = "0.6.0e";
-    
+	private static final String ALL_STRING = "All";
+	
     /**
      * Constructor
      */
@@ -126,8 +126,9 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         
         layoutMergePanel = new SpringLayout();
         setLayout(layoutMergePanel);
-        add(selectionPanel);
         
+        add(selectionPanel);
+        selectionPanel.addPropertyChangeListener(this);
 
 //BROWSE_FILE_CHOOSER        
         browseDestFileChooser = new JFileChooser();
@@ -235,12 +236,12 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
                 	String pageSelectionString = "";
                 	for (int i = 0; i < items.length; i++){
-						item = items[0];
-						String page_selection = item.getPageSelection().trim();
-						if(page_selection.indexOf(",") != 0){
-                            String[] selections_array = page_selection.split(",");
-                            for(int j = 0; j<selections_array.length; j++){
-                                String tmpString = selections_array[j].trim();
+						item = items[i];
+						String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
+						if(pageSelection.trim().length()>0 && pageSelection.indexOf(",") != 0){
+                            String[] selectionsArray = pageSelection.split(",");
+                            for(int j = 0; j<selectionsArray.length; j++){
+                                String tmpString = selectionsArray[j].trim();
                                 if((tmpString != null)&&(!tmpString.equals(""))){
 	                                args.add("-"+ConcatParsedCommand.F_ARG);
 	                                String f = item.getInputFile().getAbsolutePath();
@@ -261,7 +262,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     							f +=":"+item.getPassword();
     						}
     						args.add(f);
-                            pageSelectionString += (page_selection.matches("[\\d]+"))? page_selection+"-"+page_selection+":" : page_selection+":";
+                            pageSelectionString += (pageSelection.matches("[\\d]+"))? pageSelection+"-"+pageSelection+":" : pageSelection+":";
                         }						
 					}
 					                    
@@ -272,32 +273,32 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                     if (outputCompressedCheck.isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
                     if (mergeTypeCheck.isSelected()) args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
 
-                    args.add("-"+MixParsedCommand.PDFVERSION_ARG);
+                    args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
 					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
 
 					args.add (AbstractParsedCommand.COMMAND_CONCAT);
+                
+	                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+		            //run concat in its own thread              
+		            final Thread runThread = new Thread(runThreads, "run") {
+		                 public void run() {
+		                	 try{
+								AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
+								if(cmd != null){
+									config.getConsoleServicesFacade().execute(cmd);							
+								}else{
+									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
+								}
+								log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
+							}catch(Exception ex){    
+								log.error("Command Line: "+args.toString(), ex);
+							}                            
+		                 }
+		            };
+		            runThread.start();               
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }    
-                
-                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-	            //run concat in its own thread              
-	            final Thread runThread = new Thread(runThreads, "run") {
-	                 public void run() {
-	                	 try{
-							AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
-							if(cmd != null){
-								config.getConsoleServicesFacade().execute(cmd);							
-							}else{
-								log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
-							}
-							log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
-						}catch(Exception ex){    
-							log.error("Command Line: "+args.toString(), ex);
-						}                            
-	                 }
-	            };
-	            runThread.start();               
             }
         });
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf merge"));
@@ -348,7 +349,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         layoutMergePanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
         
         layoutDestinationPanel.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
-        layoutDestinationPanel.putConstraint(SpringLayout.NORTH, destinationTextField, 5, SpringLayout.NORTH, destinationPanel);
+        layoutDestinationPanel.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
         layoutDestinationPanel.putConstraint(SpringLayout.SOUTH, destinationTextField, 30, SpringLayout.NORTH, destinationPanel);
         layoutDestinationPanel.putConstraint(SpringLayout.WEST, destinationTextField, 5, SpringLayout.WEST, destinationPanel);
 
@@ -397,7 +398,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
      * @return the Plugin name
      */    
     public String getPluginName(){
-        return PLUGIN_NAME;
+        return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
     }
  
     /**
@@ -423,7 +424,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 				for (int i = 0; i < items.length; i++){
 					Element fileNode = ((Element)filelist).addElement("file");
 					fileNode.addAttribute("name",items[i].getInputFile().getAbsolutePath());
-					fileNode.addAttribute("pageselection",items[i].getPageSelection());
+					fileNode.addAttribute("pageselection",(items[i].getPageSelection()!=null)?items[i].getPageSelection():ALL_STRING);
 				}
 				
 				Element fileDestination = ((Element)arg0).addElement("destination");

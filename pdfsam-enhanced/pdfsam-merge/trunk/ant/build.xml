@@ -13,7 +13,7 @@
   
   <!-- set global properties for this build -->
   	<property name="user.name" value="Andrea Vacondio"/>
-  	<property name="pdfsam-merge.src.dir" location="src"/>
+  	<property name="pdfsam-merge.src.dir" location="src/java"/>
   	<property name="pdfsam-merge.etc.dir" location="etc"/>
   	<property name="build.dir" location="f:/build/pdfsam-merge"/>
   	<property name="pdfsam-merge.build.dir" location="${build.dir}/build"/>
@@ -97,11 +97,14 @@
 
 
   
-  <target name="buildZipPackage" description="generate build sources zip package" >
+  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${pdfsam-merge.dist.dir}/${pdfsam-merge.jar.name}-${pdfsam-merge.jar.version}-build-src.zip">
-	<fileset dir="${pdfsam-merge.src.dir}">
-	    <include name="**/*"/>
-        </fileset>
+		<fileset dir=".">
+	    	<include name="src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="doc/**/*.*"/>
+    	</fileset>
     </zip>
   </target>
 
