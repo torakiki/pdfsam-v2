@@ -63,7 +63,7 @@ public class Environment {
 				synchronized(Environment.class){
 					Document document = DocumentHelper.createDocument();
 					Element root = document.addElement("pdfsam_saved_jobs");
-					root.addAttribute("version", GuiClient.NAME);
+					root.addAttribute("version", GuiClient.VERSION);
 					root.addAttribute("savedate", new SimpleDateFormat("dd-MMM-yyyy").format(new Date()));
 					for (Iterator plugsIterator = plugins.values().iterator();plugsIterator.hasNext();) {
 						AbstractPlugablePanel plugablePanel = (AbstractPlugablePanel) plugsIterator.next();

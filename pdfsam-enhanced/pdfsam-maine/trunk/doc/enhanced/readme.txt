@@ -4,7 +4,7 @@ Version: 1.3.0e stable release 1
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
-License: GPL
+License: GPL2
 
 Plugins included:
 	-pdfsam-merge-0.5.0e *

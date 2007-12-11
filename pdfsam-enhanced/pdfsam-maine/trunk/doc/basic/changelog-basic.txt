@@ -12,9 +12,12 @@ page number 3 to the end of the document
 -Chance to use the config file ${user.home}/.pdfsam/config.xml 
 -Created commons classes to help plugins
 -Included and modified jcmdline. Added PdfFileParam to manage pdf documents password
--Split: now uses JPdfSelectionPanel with documents password
--Split: chance to set pdf version for output documents
--Merge: chance to set pdf version for output documents
+-Split, Merge: now uses JPdfSelectionPanel with documents password for encrypted documents
+-Split, Merge: chance to set pdf version for output documents
+-iText 2.0.7
+-log4j 1.2.15
+-bcmail 138
+-bcprov 138
 
 0.7 stable release 1
 ===================================

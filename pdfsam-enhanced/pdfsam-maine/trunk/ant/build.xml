@@ -56,7 +56,7 @@
 	<target name="init">
 		<property file="ant/${current.version}.properties" />
 
-		<property name="pdfsam.jar.version" value="1.0.0"/>	
+		<property name="pdfsam.jar.version" value="1.0.0-alpha"/>	
 	    <property name="pdfsam.version" value="basic"/>
 
 		
@@ -176,7 +176,7 @@
 	      author="true"
 	      version="true"
 	      use="true"
-	      windowtitle="pdfsam API"
+	      windowtitle="pdfsam API ${pdfsam.version} ${pdfsam.jar.version}"
 	      doctitle="pdfsam API" >
 	    <classpath refid="pdfsam.classpath"/>
 	    </javadoc>
