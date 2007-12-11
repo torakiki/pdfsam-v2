@@ -104,7 +104,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = new JLabel();	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_NAME = "Merge/Exctract";
+    private static final String PLUGIN_NAME = "Merge/Extract";
     private static final String PLUGIN_VERSION = "0.6.0e";
 	private static final String ALL_STRING = "All";
 	
