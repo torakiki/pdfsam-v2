@@ -99,18 +99,24 @@
 
 	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
 	    <jar jarfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}.jar" basedir="${pdfsam.build.dir}">
-	    <manifest>
-		<attribute name="Built-By" value="${user.name}"/>
-		<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
-	    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${langpack.jar.name}.jar"/>
-	    </manifest>
-		<fileset dir="${pdfsam.etc.dir}">
-		    <include name="*.xml"/>
-		</fileset>
-		<fileset dir=".">
-		    <include name="images/**.png"/>
-		</fileset>		    	
+		    <manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
+			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${langpack.jar.name}.jar"/>
+		    </manifest>
+			<fileset dir="${pdfsam.etc.dir}">
+			    <include name="*.xml"/>
+			</fileset>
+			<fileset dir=".">
+			    <include name="images/**.png"/>
+			</fileset>		    	
 	    </jar>
+	  	
+	  	<copy todir="${pdfsam.release.jar.dir}">
+			<fileset dir="${pdfsam.dist.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
 
 	  	<!--emp4j-->
 	  	<ant antfile="${emp4j.dir}/ant/build.xml" dir="${emp4j.dir}" target="dist" inheritAll="false">
@@ -214,20 +220,26 @@
 
 	  	<antcall target="buildZipPackage-enhanced" />
 	  	
-	  	<zip destfile="${pdfsam.dist.dir}/launcher-src.zip" 
+	  	<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" 
 	    	 basedir="${launcher.dir}">
 	    </zip>			  		
 		
-		<zip destfile="${pdfsam.dist.dir}/nsi.zip" >
+		<zip destfile="${pdfsam.release.src.dir}/nsi.zip" >
 			<fileset dir=".">
 					<include name="ant/*.nsi"/>
 			</fileset>
 	    </zip>	
-						
+				
+	  	<copy todir="${pdfsam.release.src.dir}">
+			<fileset dir="${pdfsam.dist.dir}">
+				<include name="*.zip" />
+			</fileset>
+		</copy>
+	  	
 	  	<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}-out-src.zip">
 	    	<fileset dir="${pdfsam.release.src.dir}">
 		    	<include name="*.zip"/>
-	    	</fileset>
+	    	</fileset>  			  		
 	    </zip>	  	
 	  </target>
 	
