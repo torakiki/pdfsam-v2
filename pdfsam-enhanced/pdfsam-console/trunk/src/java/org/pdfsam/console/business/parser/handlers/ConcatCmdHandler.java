@@ -22,6 +22,7 @@ import java.util.List;
 import jcmdline.BooleanParam;
 import jcmdline.FileParam;
 import jcmdline.Parameter;
+import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
@@ -44,9 +45,9 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	                          ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
 	                          FileParam.REQUIRED, 
 	                          FileParam.SINGLE_VALUED),
-	            new FileParam(ConcatParsedCommand.F_ARG,
-	                          "pdf files to concat: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
-	                          FileParam.IS_FILE & FileParam.IS_READABLE,
+	            new PdfFileParam(ConcatParsedCommand.F_ARG,
+	                          "pdf files to concat: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf:password)",
+	                          FileParam.IS_READABLE,
 	                          FileParam.OPTIONAL, 
 	                          FileParam.MULTI_VALUED),
 	            new StringParam(ConcatParsedCommand.U_ARG,   
@@ -75,7 +76,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
      */
     private static final String concatHelpText = "Concatenate pdf files. "+
         "you must specify the '-o /home/user/outfile.pdf' option to set the output file and the source file list:\n"+
-        "'-f /tmp/file1.pdf /tmp/file2.pdf -f /tmp/file3.pdf [...]' to specify a file list or at least one file to concat.\n"+
+        "'-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list or at least one file to concat (use filename:password if the file is password protected).\n"+
         "'-l /tmp/list.csv' a csv file containing the list of files to concat, separated by a comma.\n"+
         "'-l /tmp/list.xml' a xml file containing the list of files to concat, <filelist><file value=\"filepath\" /></filelist>\n"+
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+
@@ -85,7 +86,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
      *  example text for the concat handler
      */
     private final String concatExample = 
-    	"Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f /tmp/1.pdf -f /tmp/2.pdf concat\n"+
+    	"Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f /tmp/1.pdf:password -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console-VERSION.jar -l c:\\docs\\list.csv concat";
     
 	public Collection getArguments() {

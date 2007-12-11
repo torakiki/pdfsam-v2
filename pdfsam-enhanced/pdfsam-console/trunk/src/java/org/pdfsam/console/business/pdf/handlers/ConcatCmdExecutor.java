@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import org.pdfsam.console.business.ConsoleServicesFacade;
+import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
@@ -58,7 +59,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 			ConcatParsedCommand inputCommand = (ConcatParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
 			//xml or csv parsing
-			File[] fileList = inputCommand.getInputFileList();
+			PdfFile[] fileList = inputCommand.getInputFileList();
 			if (fileList== null || !(fileList.length >0)){
 				File listFile = inputCommand.getInputCvsOrXmlFile();
 				if(listFile != null && listFile.exists()){
@@ -92,11 +93,11 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 						throw new ConcatException(ConcatException.ERR_SYNTAX, new String[]{""+currentPageSelection});
 					} 
 	    			
-	    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getAbsolutePath()),null);
+	    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
 					pdfReader.consolidateNamedDestinations();
 					int pdfNumberOfPages = pdfReader.getNumberOfPages();
 					//default behaviour
-	    			int start = 0;
+	    			int start = 1;
 	    			int endPage =  pdfNumberOfPages;
 	    			
 	    			if (!(ALL_STRING.equals(currentPageSelection))){
@@ -117,7 +118,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		                }
 		                if(valid){
 			                //validation
-			                if (start < 0){
+			                if (start <= 0){
 								valid = false;
 								FileUtility.deleteFile(tmpFile);
 								throw new ConcatException(ConcatException.ERR_NOT_POSITIVE, new String[]{""+start, ""+currentPageSelection});
@@ -142,19 +143,19 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    					SimpleBookmark.eliminatePages(bookmarks, new int[]{endPage+1, pdfNumberOfPages});
 	    				}
 	    				// if start page isn't the first page of the document, delete bookmarks before it
-	    				if (start > 0){
-	    					SimpleBookmark.eliminatePages(bookmarks, new int[]{1,start});
+	    				if (start > 1){
+	    					SimpleBookmark.eliminatePages(bookmarks, new int[]{1,start-1});
 	    					//bookmarks references must be taken back
-	    					SimpleBookmark.shiftPageNumbers(bookmarks, -start, null);
+	    					SimpleBookmark.shiftPageNumbers(bookmarks, -(start-1), null);
 	    				}
 	    				if (pageOffset != 0){
 	    					SimpleBookmark.shiftPageNumbers(bookmarks, pageOffset, null);
 	    				}
 	    				master.addAll(bookmarks);
 	    			}
-	    			
-	    			pageOffset += (endPage - start);
-	    			log.info(fileList[i].getAbsolutePath()+ ": " + (endPage - start) + " pages to be added.");
+	    			int relativeOffset = (endPage - start)+1;
+	    			pageOffset += relativeOffset;
+	    			log.info(fileList[i].getFile().getAbsolutePath()+ ": " + relativeOffset + " pages to be added.");
 	    			if (i == 0) {
 	                    if(inputCommand.isCopyFields()){
 	                        // step 1: we create a writer 
@@ -185,11 +186,11 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			pdfReader.selectPages(start+"-"+endPage);
 	    			pdfWriter.addDocument(pdfReader); 
 	    			//fix 03/07
-	    			//pdf_reader = null;
+	    			//pdfReader = null;
 	    	        pdfReader.close();
 	    	        pdfWriter.freeReader(pdfReader);
-	    	        totalProcessedPages += endPage - start;
-	    			log.info((endPage - start) + " pages processed correctly.");
+	    	        totalProcessedPages += relativeOffset;
+	    			log.info(relativeOffset + " pages processed correctly.");
     				setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);		    		
 				}
 				if (master.size() > 0){
@@ -218,9 +219,9 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	   /**
      * Reads the input cvs file and return a File[] of input files
      * @param inputFile CSV input file (separator ",")
-     * @return File[] of files 
+     * @return PdfFile[] of files 
      */
-    private File[] parseCsvFile(File inputFile)throws ConcatException{
+    private PdfFile[] parseCsvFile(File inputFile)throws ConcatException{
         ArrayList retVal = new ArrayList();
         try {
             BufferedReader bufferReader = new BufferedReader(new FileReader(inputFile));
@@ -230,7 +231,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
                 String[] tmpContent = temp.split(",");
                 for (int i = 0; i<tmpContent.length; i++){
                 	if(tmpContent[i].trim().length() > 0){
-                		retVal.add(new File(tmpContent[i]));
+                		retVal.add(new PdfFile(tmpContent[i], null));
                 	}
                 }
             }
@@ -239,15 +240,15 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
        catch (IOException e) {
             throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML,e);
        }
-       return (File[])retVal.toArray(new File[0]);            
+       return (PdfFile[])retVal.toArray(new PdfFile[0]);            
    }
    
     /**
      * Reads the input xml file and return a File[] of input files
      * @param inputFile XML input file 
-     * @return File[] of files
+     * @return PdfFile[] of files
      */
-    private File[] parseXmlFile(File inputFile)throws ConcatException{
+    private PdfFile[] parseXmlFile(File inputFile)throws ConcatException{
 		List fileList = new ArrayList();
         try {
 			SAXReader reader = new SAXReader();
@@ -255,12 +256,12 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
             List pdfFileList = document.selectNodes("/filelist/file");
 			for (int i = 0; pdfFileList != null && i < pdfFileList.size(); i++) {
 				Node pdf_node = (Node) pdfFileList.get(i);
-				fileList.add(pdf_node.selectSingleNode("@value").getText().trim());
+				fileList.add(new PdfFile(pdf_node.selectSingleNode("@value").getText().trim(), null));
 			}
         }catch (Exception e) {
         	throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML,e);
        }
-        return (File[])fileList.toArray(new File[0]);
+        return (PdfFile[])fileList.toArray(new PdfFile[0]);
    }
     
     /**
@@ -268,8 +269,8 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
      * @param inputFile XML or CSV input file 
      * @return File[] of files
      */
-    private File[] parseListFile(File listFile) throws ConcatException{
-    	File[] retVal = new File[0];
+    private PdfFile[] parseListFile(File listFile) throws ConcatException{
+    	PdfFile[] retVal = new PdfFile[0];
     	if(listFile != null && listFile.exists()){
     		if (getExtension(listFile).equals("xml")){
     			retVal = parseXmlFile(listFile);

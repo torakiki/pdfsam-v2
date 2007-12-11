@@ -26,6 +26,7 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
 import org.pdfsam.console.exceptions.console.ParseException;
+import org.pdfsam.console.utils.FileUtility;
 /**
  * CmdValidator for the mix command
  * @author Andrea Vacondio
@@ -57,7 +58,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        if(f1Option.isSet()){
 	        	PdfFile firstFile = f1Option.getPdfFile();
 	            if ((firstFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
-	            	parsedCommandDTO.setFirstInputFile(firstFile);                  
+	            	parsedCommandDTO.setFirstInputFile(FileUtility.getPdfFile(firstFile));                  
 	            }else{
 	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{firstFile.getFile().getName()});
 	            }
@@ -70,7 +71,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        if(f2Option.isSet()){
 	        	PdfFile secondFile = f2Option.getPdfFile();
 	            if ((secondFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
-	            	parsedCommandDTO.setSecondInputFile(secondFile);
+	            	parsedCommandDTO.setSecondInputFile(FileUtility.getPdfFile(secondFile));
 	            }else{
 	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{secondFile.getFile().getName()});
 	            }

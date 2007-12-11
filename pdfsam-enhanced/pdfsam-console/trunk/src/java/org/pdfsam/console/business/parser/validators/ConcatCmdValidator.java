@@ -21,13 +21,16 @@ import java.util.regex.Pattern;
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
+import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
+import jcmdline.dto.PdfFile;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
+import org.pdfsam.console.utils.FileUtility;
 /**
  * CmdValidator for the concat command
  * @author Andrea Vacondio
@@ -56,18 +59,18 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	
 			//-f -l
 			FileParam lOption = (FileParam) cmdLineHandler.getOption("l");
-			FileParam fOption = (FileParam) cmdLineHandler.getOption("f");
+			PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");
 			if(lOption.isSet() || fOption.isSet()){
 				if(!(lOption.isSet() && fOption.isSet())){
 					if(fOption.isSet()){
 						//validate file extensions
-						for(Iterator fIterator = fOption.getFiles().iterator(); fIterator.hasNext();){
-			        		File currentFile = (File) fIterator.next();
-			        		if (!((currentFile.getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile.getName().length()>PDF_EXTENSION.length()))){
-			        			throw new ParseException(ParseException.ERR_IN_NOT_PDF, new String[]{currentFile.getPath()});
+						for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
+							PdfFile currentFile = (PdfFile) fIterator.next();
+			        		if (!((currentFile.getFile().getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile.getFile().getName().length()>PDF_EXTENSION.length()))){
+			        			throw new ParseException(ParseException.ERR_IN_NOT_PDF, new String[]{currentFile.getFile().getPath()});
 			        		}
 			        	}
-						parsedCommandDTO.setInputFileList((File[]) fOption.getFiles().toArray(new File[0]));
+						parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
 					}else{
 						if(lOption.getFile().getPath().toLowerCase().endsWith(CSV_EXTENSION) || lOption.getFile().getPath().toLowerCase().endsWith(XML_EXTENSION)){
 							parsedCommandDTO.setInputCvsOrXmlFile(lOption.getFile());

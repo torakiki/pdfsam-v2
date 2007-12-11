@@ -21,6 +21,7 @@ import java.util.List;
 
 import jcmdline.FileParam;
 import jcmdline.Parameter;
+import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
@@ -42,9 +43,9 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 		                      ((FileParam.IS_DIR & FileParam.EXISTS)),
 		                      FileParam.REQUIRED, 
 		                      FileParam.SINGLE_VALUED),
-	            new FileParam(EncryptParsedCommand.F_ARG,
+	            new PdfFileParam(EncryptParsedCommand.F_ARG,
 	                          "pdf files to encrypt: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
-	                          FileParam.IS_FILE & FileParam.IS_READABLE,
+	                          FileParam.IS_READABLE,
 	                          FileParam.REQUIRED, 
 	                          FileParam.MULTI_VALUED),
 	            new StringParam(EncryptParsedCommand.P_ARG,   
@@ -83,7 +84,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	 */
 	private static final String encryptHelpText =  "Encrypt pdf files. "+ 
     "You must specify '-o /home/user' to set the output directory.\n"+
-    "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf -f /tmp/file3.pdf [...]' to specify a file list to encrypt.\n"+
+    "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to encrypt (use filename:password if the file is password protected).\n"+
     "'-apwd password' to set the owner password.\n"+
     "'-upwd password' to set the user password.\n"+
     "'-allow permission' to set the permissions list. Possible values {["+EncryptParsedCommand.E_PRINT+"], ["+EncryptParsedCommand.E_ANNOTATION+"], ["+EncryptParsedCommand.E_ASSEMBLY+"], ["+EncryptParsedCommand.E_COPY+"], ["+EncryptParsedCommand.E_DPRINT+"], ["+EncryptParsedCommand.E_FILL+"], ["+EncryptParsedCommand.E_MODIFY+"], ["+EncryptParsedCommand.E_SCREEN+"]}\n"+

@@ -16,6 +16,9 @@ package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
 
+import org.pdfsam.console.business.dto.PdfFile;
+
+
 /**
  * Encrypt parsed command dto filled by parsing service and used by worker service
  * @author Andrea Vacondio
@@ -55,7 +58,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 	private String userPwd = "";
     private int permissions;
     private String encryptionType = E_RC4_40;    
-    private File[] inputFileList;
+    private PdfFile[] inputFileList;
     
     
     public EncryptParsedCommand(){    	
@@ -63,7 +66,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
     
 	public EncryptParsedCommand(File outputFile, String outputFilesPrefix,
 			String ownerPwd, String userPwd, int permissions,
-			String encryptionType, File[] inputFileList) {
+			String encryptionType, PdfFile[] inputFileList) {
 		super();
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
@@ -76,7 +79,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 
 	public EncryptParsedCommand(File outputFile, String outputFilesPrefix,
 			String ownerPwd, String userPwd, int permissions,
-			String encryptionType, File[] inputFileList, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+			String encryptionType, PdfFile[] inputFileList, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
@@ -174,14 +177,14 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 	/**
 	 * @return the inputFileList
 	 */
-	public File[] getInputFileList() {
+	public PdfFile[] getInputFileList() {
 		return inputFileList;
 	}
 
 	/**
 	 * @param inputFileList the inputFileList to set
 	 */
-	public void setInputFileList(File[] inputFileList) {
+	public void setInputFileList(PdfFile[] inputFileList) {
 		this.inputFileList = inputFileList;
 	}
 
@@ -195,7 +198,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 		retVal.append((outputFile== null)?"":"[outputDir="+outputFile.getAbsolutePath()+"]");
 		if(inputFileList != null){
 			for(int i = 0; i<inputFileList.length; i++){
-				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getAbsolutePath()+"]");				
+				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getFile().getAbsolutePath()+"]");				
 			}
 		}
 		retVal.append("[pageSelection="+outputFilesPrefix+"]");

@@ -20,9 +20,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.console.business.dto.PdfFile;
 /**
  * Utility class for file handling
  * @author Andrea Vacondio
@@ -171,4 +174,35 @@ public class FileUtility {
         	log.error("Unable to copy "+source+" to "+dest);
         }
    }
+    
+    /**
+     * Mapping from jcmdline.dto.PdfFile to org.pdfsam.console.business.dto.PdfFile
+     * @param pdfFile
+     * @return a PdfFile
+     */
+    public static PdfFile getPdfFile(jcmdline.dto.PdfFile pdfFile){
+    	return new PdfFile(pdfFile.getFile(), pdfFile.getPassword());
+    }
+    
+    /**
+     * Mapping from an array of jcmdline.dto.PdfFile to an array of org.pdfsam.console.business.dto.PdfFile
+     * @param pdfFiles
+     * @return a PdfFile[]
+     */
+    public static PdfFile[] getPdfFiles(jcmdline.dto.PdfFile[] pdfFiles){
+    	ArrayList retVal = new ArrayList();
+    	for (int i = 0; i<pdfFiles.length; i++){
+    		retVal.add(new PdfFile(pdfFiles[i].getFile(), pdfFiles[i].getPassword()));
+    	}
+    	return (PdfFile[]) retVal.toArray(new PdfFile[pdfFiles.length]);
+    }
+    
+    /**
+     * Mapping from a Collection of jcmdline.dto.PdfFile to an array of org.pdfsam.console.business.dto.PdfFile
+     * @param pdfFiles
+     * @return a PdfFile[]
+     */
+    public static PdfFile[] getPdfFiles(Collection pdfFiles){
+    	return getPdfFiles((jcmdline.dto.PdfFile[])pdfFiles.toArray(new jcmdline.dto.PdfFile[pdfFiles.size()]));
+    }
 }

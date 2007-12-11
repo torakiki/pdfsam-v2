@@ -22,6 +22,7 @@ import java.util.List;
 import jcmdline.FileParam;
 import jcmdline.LongParam;
 import jcmdline.Parameter;
+import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
@@ -44,9 +45,9 @@ public class SplitCmdHandler extends AbstractCmdHandler {
                     ((FileParam.IS_DIR & FileParam.EXISTS)),
                     FileParam.REQUIRED, 
                     FileParam.SINGLE_VALUED),
-            new FileParam(SplitParsedCommand.F_ARG,
+            new PdfFileParam(SplitParsedCommand.F_ARG,
                    "input pdf file to split",
-                   FileParam.IS_FILE & FileParam.IS_READABLE,
+                   FileParam.IS_READABLE,
                    FileParam.REQUIRED, 
                    FileParam.SINGLE_VALUED),
             new StringParam(SplitParsedCommand.P_ARG,   

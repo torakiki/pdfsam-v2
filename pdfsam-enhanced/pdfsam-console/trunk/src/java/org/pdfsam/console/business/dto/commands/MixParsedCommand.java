@@ -17,7 +17,8 @@ package org.pdfsam.console.business.dto.commands;
 import java.io.File;
 import java.io.Serializable;
 
-import jcmdline.dto.PdfFile;
+import org.pdfsam.console.business.dto.PdfFile;
+
 /**
  * Mix parsed command dto filled by parsing service and used by worker service
  * @author Andrea Vacondio

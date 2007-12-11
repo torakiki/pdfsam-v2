@@ -17,6 +17,9 @@ package org.pdfsam.console.business.dto.commands;
 import java.io.File;
 import java.io.Serializable;
 
+import org.pdfsam.console.business.dto.PdfFile;
+
+
 /**
  * Concat parsed command dto filled by parsing service and used by worker service
  * @author Andrea Vacondio
@@ -34,7 +37,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand implements Serial
 	
 	private File outputFile;
 	private File inputCvsOrXmlFile;
-	private File[] inputFileList;
+	private PdfFile[] inputFileList;
 	private String pageSelection = "";
 	private boolean copyFields = false;
 
@@ -42,7 +45,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand implements Serial
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			File[] inputFileList, String pageSelection, boolean copyFields) {
+			PdfFile[] inputFileList, String pageSelection, boolean copyFields) {
 		super();
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
@@ -52,7 +55,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand implements Serial
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			File[] inputFileList, String pageSelection,  boolean copyFields, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 			super(overwrite, compress, logFile, outputPdfVersion);
 			this.outputFile = outputFile;
 			this.inputCvsOrXmlFile = inputCvsOrXmlFile;
@@ -96,7 +99,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand implements Serial
 	/**
 	 * @return the inputFileList
 	 */
-	public File[] getInputFileList() {
+	public PdfFile[] getInputFileList() {
 		return inputFileList;
 	}
 
@@ -104,7 +107,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand implements Serial
 	/**
 	 * @param inputFileList the inputFileList to set
 	 */
-	public void setInputFileList(File[] inputFileList) {
+	public void setInputFileList(PdfFile[] inputFileList) {
 		this.inputFileList = inputFileList;
 	}
 
@@ -148,7 +151,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand implements Serial
 		retVal.append((outputFile== null)?"":"[outputFile="+outputFile.getAbsolutePath()+"]");
 		if(inputFileList != null){
 			for(int i = 0; i<inputFileList.length; i++){
-				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getAbsolutePath()+"]");				
+				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getFile().getAbsolutePath()+"]");				
 			}
 		}
 		retVal.append((inputCvsOrXmlFile== null)?"":"[inputCvsOrXmlFile="+inputCvsOrXmlFile.getAbsolutePath()+"]");

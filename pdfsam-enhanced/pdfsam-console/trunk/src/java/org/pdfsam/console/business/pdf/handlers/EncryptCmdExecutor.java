@@ -20,6 +20,7 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
+import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
@@ -51,7 +52,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			PdfReader pdfReader;
 			PdfStamper pdfStamper;
 			try{
-				File[] fileList = inputCommand.getInputFileList();
+				PdfFile[] fileList = inputCommand.getInputFileList();
 				for(int i = 0; i<fileList.length; i++){
 					//set the encryption type
 		        	if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())){
@@ -60,9 +61,9 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			        	encType = PdfWriter.STANDARD_ENCRYPTION_128;
 			        }	
 		        	
-					prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getName());
+					prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
 					File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-					pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getCanonicalPath()),null);
+					pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
 					
 					//version
 					log.debug("Creating a new document.");

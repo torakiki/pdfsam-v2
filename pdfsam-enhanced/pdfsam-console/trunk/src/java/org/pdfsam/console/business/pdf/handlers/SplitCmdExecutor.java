@@ -54,7 +54,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			SplitParsedCommand inputCommand = (SplitParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
 			try{
-				prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), inputCommand.getInputFile().getName());
+				prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), inputCommand.getInputFile().getFile().getName());
 				if(SplitParsedCommand.S_BURST.equals(inputCommand.getSplitType())){
 					executeBurst(inputCommand);
 				}else if(SplitParsedCommand.S_NSPLIT.equals(inputCommand.getSplitType())){
@@ -87,7 +87,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
     private void executeBurst(SplitParsedCommand inputCommand) throws Exception{
         int currentPage;
         Document currentDocument;
-        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getCanonicalPath()),null);
+        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
         //we retrieve the total number of pages
         int n = pdfReader.getNumberOfPages();
         log.info("Found "+n+" pages in input pdf document.");
@@ -134,7 +134,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      * @throws Exception
      */
     private void executeSplitOddEven(SplitParsedCommand inputCommand) throws Exception{
-         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getCanonicalPath()),null);
+         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
          //we retrieve the total number of pages
          int n = pdfReader.getNumberOfPages();
          log.info("Found "+n+" pages in input pdf document.");
@@ -203,7 +203,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      * @throws Exception
      */
     private void executeSplit(SplitParsedCommand inputCommand) throws Exception{
-        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getCanonicalPath()),null);
+        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
         int n = pdfReader.getNumberOfPages();
         log.info("Found "+n+" pages in input pdf document.");
         DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);
@@ -298,7 +298,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	private void executeNSplit(SplitParsedCommand inputCommand) throws Exception {
 		Integer[] numberPages = inputCommand.getSplitPageNumbers();
 		if(numberPages != null && numberPages.length == 1){
-			PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getCanonicalPath()),null);
+			PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 	        int n = pdfReader.getNumberOfPages();
 			int numberPage = numberPages[0].intValue();
 			if (numberPage < 1 || numberPage > n) {
@@ -320,7 +320,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
    * @throws Exception
    */
 	private void executeSizeSplit(SplitParsedCommand inputCommand) throws Exception{
-        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getCanonicalPath()),null);
+        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
         int n = pdfReader.getNumberOfPages();
         log.info("Found "+n+" pages in input pdf document.");
         DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);

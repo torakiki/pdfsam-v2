@@ -16,6 +16,9 @@ package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
 
+import org.pdfsam.console.business.dto.PdfFile;
+
+
 /**
  * Split parsed command dto filled by parsing service and used by worker service
  * @author Andrea Vacondio
@@ -41,7 +44,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
     
     private File outputFile;
     private String outputFilesPrefix = "";
-    private File inputFile;
+    private PdfFile inputFile;
     private String splitType = "";
     private Integer[] splitPageNumbers = new Integer[0];
     private Long splitSize;
@@ -50,7 +53,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
     	
     }
     
-	public SplitParsedCommand(File outputFile, String outputFilesPrefix, File inputFile,
+	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
 			String splitType, Integer[] splitPageNumbers, Long splitSize) {
 		super();
 		this.outputFile = outputFile;
@@ -61,7 +64,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		this.splitSize = splitSize;
 	}
 	
-	public SplitParsedCommand(File outputFile, String outputFilesPrefix, File inputFile,
+	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
 			String splitType, Integer[] splitPageNumbers, Long splitSize, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
@@ -90,14 +93,14 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 	/**
 	 * @return the inputFile
 	 */
-	public File getInputFile() {
+	public PdfFile getInputFile() {
 		return inputFile;
 	}
 
 	/**
 	 * @param inputFile the inputFile to set
 	 */
-	public void setInputFile(File inputFile) {
+	public void setInputFile(PdfFile inputFile) {
 		this.inputFile = inputFile;
 	}
 
@@ -165,7 +168,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		StringBuffer retVal = new StringBuffer();
 		retVal.append(super.toString());
 		retVal.append((outputFile== null)?"":"[outputDir="+outputFile.getAbsolutePath()+"]");
-		retVal.append((inputFile== null)?"":"[inputFile="+inputFile.getAbsolutePath()+"]");
+		retVal.append((inputFile== null)?"":"[inputFile="+inputFile+"]");
 		retVal.append("[pageSelection="+outputFilesPrefix+"]");
 		retVal.append("[splitType="+splitType+"]");
 		retVal.append("[splitSize="+splitSize+"]");

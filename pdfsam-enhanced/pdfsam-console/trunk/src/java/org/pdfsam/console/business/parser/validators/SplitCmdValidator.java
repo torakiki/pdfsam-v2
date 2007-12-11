@@ -21,13 +21,16 @@ import java.util.regex.Pattern;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.LongParam;
+import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
+import jcmdline.dto.PdfFile;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
+import org.pdfsam.console.utils.FileUtility;
 /**
  * CmdValidator for the split command
  * @author Andrea Vacondio
@@ -61,13 +64,13 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	        }
 
 	        //-f
-	        FileParam fOption = (FileParam) cmdLineHandler.getOption("f");           
+	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");           
 	        if(fOption.isSet()){
-	        	File inputFile = fOption.getFile();
-	            if ((inputFile.getPath().toLowerCase().endsWith(PDF_EXTENSION))){
-	            	parsedCommandDTO.setInputFile(inputFile);                  
+	        	PdfFile inputFile = fOption.getPdfFile();
+	            if ((inputFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
+	            	parsedCommandDTO.setInputFile(FileUtility.getPdfFile(inputFile));                  
 	            }else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{inputFile.getName()});
+	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{inputFile.getFile().getName()});
 	            }
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F);	
