@@ -5,7 +5,7 @@
     </description>
   
   <!-- set global properties for this build -->
-  <property name="jcmdline.user.name" value="Andrea Vacondio"/>
+  <property name="user.name" value="Andrea Vacondio"/>
   <property name="jcmdline.src.dir" location="src/java"/>
   <property name="jcmdline.etc.dir" location="etc"/>
   <property name="build.dir" location="f:/build/jcmdline"/>
@@ -46,7 +46,6 @@
     <jar jarfile="${jcmdline.dist.dir}/${jcmdline.jar.name}-${jcmdline.jar.version}.jar" basedir="${jcmdline.build.dir}">
     <manifest>
 	<attribute name="Built-By" value="${user.name}"/>
-	<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
     </manifest>	
 	<fileset dir="${jcmdline.src.dir}">
 	    <include name="**/*.properties"/>

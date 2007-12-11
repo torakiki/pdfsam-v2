@@ -54,7 +54,15 @@ public class PdfFile implements Serializable{
 		this.password = password;
 	}
 
-
+	/**
+	 * @param filePath
+	 * @param password
+	 */
+	public PdfFile(String filePath, String password) {
+		this.file = new File(filePath);
+		this.password = password;
+	}
+	
 	/**
 	 * @return the file
 	 */
@@ -72,6 +80,12 @@ public class PdfFile implements Serializable{
 	 */
 	public String getPassword() {
 		return password;
+	}
+	/**
+	 * @return the password in bytes or null
+	 */
+	public byte[] getPasswordBytes() {
+		return (password!=null)? password.getBytes():null;
 	}
 	/**
 	 * @param password the password to set
@@ -118,6 +132,13 @@ public class PdfFile implements Serializable{
 		return true;
 	}
 	
-	
+
+	public String toString(){
+		StringBuffer retVal = new StringBuffer();
+		retVal.append(super.toString());
+		retVal.append((file== null)?"":"[file="+file.getAbsolutePath()+"]");
+		retVal.append("[password="+password+"]");
+		return retVal.toString();
+	}
 	
 }
