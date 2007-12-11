@@ -4,22 +4,24 @@
         Mix plugin for pdfsam 
     </description>
   <!-- Component Paths - Override if needed -->
-	  <property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
-	  <property name="langpack.jar.name" value="pdfsam-langpack"/>
-	  <property name="console.jar.name" value="pdfsam-console-1.1.0e"/>
-	  <property name="log4j.jar.name" value="log4j-1.2.15"/>
-	  <property name="dom4j.jar.name" value="dom4j-1.6.1"/>
-	  <property name="jaxen.jar.name" value="jaxen-1.1"/>
+	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
+	<property name="langpack.jar.name" value="pdfsam-langpack"/>
+	<property name="console.jar.name" value="pdfsam-console-1.1.0e"/>
+	<property name="log4j.jar.name" value="log4j-1.2.15"/>
+	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
+	<property name="jaxen.jar.name" value="jaxen-1.1"/>
+	<property name="emp4j.jar.name" value="emp4j-1.0.0"/>	
   
   <!-- set global properties for this build -->
-  <property name="pdfsam-mix.user.name" value="Andrea Vacondio"/>
-  <property name="pdfsam-mix.src.dir" location="src/java"/>
-  <property name="pdfsam-mix.etc.dir" location="etc"/>
-  <property name="build.dir" location="f:/build/pdfsam-mix"/>
-  <property name="pdfsam-mix.build.dir" location="${build.dir}/build"/>
-  <property name="pdfsam-mix.dist.dir"  location="${build.dir}/dist"/>
-  <property name="pdfsam-mix.img.dir"  location="images"/>	
-  <property name="pdfsam-mix.javadoc.dir"  location="${build.dir}/doc"/>
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-mix.src.dir" location="src/java"/>
+  	<property name="pdfsam-mix.etc.dir" location="etc"/>
+  	<property name="build.dir" location="f:/build/pdfsam-mix"/>
+  	<property name="pdfsam-mix.build.dir" location="${build.dir}/build"/>
+  	<property name="pdfsam-mix.dist.dir"  location="${build.dir}/dist"/>
+  	<property name="pdfsam-mix.img.dir"  location="images"/>	
+  	<property name="pdfsam-mix.javadoc.dir"  location="${build.dir}/doc"/>
+	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0.jar"/>	
  
   <property name="pdfsam-mix.jar.name" value="pdfsam-mix"/>
   <property name="pdfsam-mix.jar.version" value="0.1.0e"/>	
@@ -42,8 +44,10 @@
           <include name="**/${jaxen.jar.name}.jar"/>
           <include name="**/${console.jar.name}.jar"/>
           <include name="**/${langpack.jar.name}.jar"/>
-        </fileset>
+          <include name="**/${emp4j.jar.name}.jar"/>
+        </fileset> 	
         <pathelement path="${pdfsam-mix.build.dir}"/>
+        <pathelement path="${main.lib}"/>    	
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
@@ -61,7 +65,6 @@
     <jar jarfile="${pdfsam-mix.dist.dir}/${pdfsam-mix.jar.name}-${pdfsam-mix.jar.version}.jar" basedir="${pdfsam-mix.build.dir}">
     <manifest>
 	<attribute name="Built-By" value="${user.name}"/>
-	<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
     </manifest>
 	<fileset dir="${pdfsam-mix.img.dir}">
 	    <include name="**/*.png"/>
@@ -83,25 +86,28 @@
   <!-- Javadoc -->
   <target name="javadoc" depends="init">
     <javadoc
-      packagenames="org.pdfsam.plugin-mix.*"
+      packagenames="org.pdfsam.plugin.mix.*"
       sourcepath="${pdfsam-mix.src.dir}"
-      destdir="${pdfsam-console.javadoc.dir}"
+      destdir="${pdfsam-mix.javadoc.dir}"
       author="true"
       version="true"
       use="true"
-      windowtitle="pdfsam console API"
-      doctitle="pdfsam console API" >
+      windowtitle="pdfsam Mix Plugin API"
+      doctitle="pdfsam Mix Plugin API" >
     <classpath refid="pdfsam-mix.classpath"/>
     </javadoc>
   </target>
 
 
   
-  <target name="buildZipPackage" description="generate build sources zip package" >
+  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${pdfsam-mix.dist.dir}/${pdfsam-mix.jar.name}-${pdfsam-mix.jar.version}-build-src.zip">
-	<fileset dir="${pdfsam-mix.src.dir}">
-	    <include name="**/*"/>
-        </fileset>
+		<fileset dir=".">
+	    	<include name="src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="doc/**/*.*"/>
+    	</fileset>
     </zip>
   </target>
 

@@ -240,28 +240,30 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
 						
 						args.add (AbstractParsedCommand.COMMAND_MIX);
+		//				cast array
+						final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+						final Thread runThread = new Thread(runThreads, "run") {
+							public void run() {
+								try{
+									AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
+									if(cmd != null){
+										config.getConsoleServicesFacade().execute(cmd);							
+									}else{
+										log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
+									}
+									log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
+								}catch(Exception any_ex){    
+									log.error("Command Line: "+args.toString(), any_ex);
+								}                       
+							}
+						};
+						runThread.start();
+					}else{
+						log.warn(GettextResource.gettext(config.getI18nResourceBundle(),"Please select two pdf documents."));
 					}
 				}catch(Exception any_ex){   
 					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), any_ex);
 				} 
-//				cast array
-				final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-				final Thread runThread = new Thread(runThreads, "run") {
-					public void run() {
-						try{
-							AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
-							if(cmd != null){
-								config.getConsoleServicesFacade().execute(cmd);							
-							}else{
-								log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
-							}
-							log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
-						}catch(Exception any_ex){    
-							log.error("Command Line: "+args.toString(), any_ex);
-						}                       
-					}
-				};
-				runThread.start();
 
 			}
 		});
@@ -350,7 +352,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	 * @return the Plugin name
 	 */    
 	public String getPluginName(){
-		return PLUGIN_NAME;
+		return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
 	}
 
 	/**
