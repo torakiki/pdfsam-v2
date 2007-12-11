@@ -471,10 +471,10 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 				for (int i = 0; fileList != null && i < fileList.size(); i++) {
 					Node fileNode = (Node) fileList.get(i);
 					if(fileNode != null){
-						Node file_name = (Node) fileNode.selectSingleNode("@name");
-						if (file_name != null && file_name.getText().length()>0){
+						Node fileName = (Node) fileNode.selectSingleNode("@name");
+						if (fileName != null && fileName.getText().length()>0){
 							Node pageSelection = (Node) fileNode.selectSingleNode("@pageselection");
-							selectionPanel.getLoader().addFile(new File(fileNode.getText()), null, (pageSelection!=null)?pageSelection.getText():null);							
+							selectionPanel.getLoader().addFile(new File(fileName.getText()), null, (pageSelection!=null)?pageSelection.getText():null);							
 						}
 					}
                 }
