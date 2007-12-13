@@ -151,6 +151,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         setLayout(splitSpringLayout);
         add(selectionPanel);
         
+        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 //SPLIT_SECTION
         optionsPaneLayout = new SpringLayout();
         splitOptionsPanel.setLayout(optionsPaneLayout);
@@ -195,7 +196,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split even pages")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document every even page")+".</li>" +
         		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split odd pages")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document every odd page")+".</li>" +
         		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split after these pages")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document after page numbers (num1-num2-num3..)")+".</li>" +
-        		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document in documents of the given size.")+".</li>" +
+        		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document in files of the given size (roughly).")+".</li>" +
         		"</ul></body></html>";
         checksHelpLabel = new JHelpLabel(helpText, true);
         splitOptionsPanel.add(checksHelpLabel);        
@@ -265,13 +266,12 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 //END_CHECK_BOX 
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int retVal = browseDestFileChooser.showOpenDialog(browseDestButton.getParent());
                 File chosenFile = null;                
-                if (retVal == JFileChooser.APPROVE_OPTION){
+                if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
                 //write the destination in text field
-                if (chosenFile != null){
+                if (chosenFile != null && chosenFile.isDirectory()){
                     try{
                         destinationFolderText.setText(chosenFile.getAbsolutePath());
                     }
@@ -390,7 +390,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 								if(cmd != null){
 									config.getConsoleServicesFacade().execute(cmd);							
 								}else{
-									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
+									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
 								}
 								log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
 							}catch(Exception ex){    
@@ -444,7 +444,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
      * @return Returns the Plugin name.
      */
     public String getPluginName() {
-        return PLUGIN_NAME;
+        return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
     }
 
 	   /**
@@ -454,13 +454,16 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         return PLUGIN_VERSION;
     }
 	
-    public Node getJobNode(Node arg0) throws SaveJobException {
+    public Node getJobNode(Node arg0, boolean savePasswords) throws SaveJobException {
 		try{
 			if (arg0 != null){
 				Element fileSource = ((Element)arg0).addElement("source");
 				PdfSelectionTableItem[] items = selectionPanel.getTableRows();
 				if(items != null && items.length>0){
 					fileSource.addAttribute("value",items[0].getInputFile().getAbsolutePath());
+					if(savePasswords){
+						fileSource.addAttribute("password",items[0].getPassword());
+					}
 				}
 				
 				Element splitOption = ((Element)arg0).addElement("split_option");
@@ -499,11 +502,17 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         }
 	}
 
-    public void loadJobNode(Node arg0) throws LoadJobException {		
+    public void loadJobNode(Node arg0) throws LoadJobException {
+    	if(arg0!=null){
 			try{	
 				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
 				if (fileSource != null && fileSource.getText().length()>0){
-					selectionPanel.getLoader().addFile(new File(fileSource.getText()));
+					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
+					String password = null;
+					if (filePwd != null && filePwd.getText().length()>0){
+						password = filePwd.getText();
+					}
+					selectionPanel.getLoader().addFile(new File(fileSource.getText()), password);
 				}
 
 				Node splitOption = (Node) arg0.selectSingleNode("split_option/@value");
@@ -567,7 +576,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
             }
 			catch (Exception ex){
 				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
-			}			 				
+			}
+		}			 				
 	}
 	  
     /**
@@ -603,6 +613,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, chooseAFolderRadio, 0, SpringLayout.SOUTH, sameAsSourceRadio);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, chooseAFolderRadio, 0, SpringLayout.NORTH, sameAsSourceRadio);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, chooseAFolderRadio, 20, SpringLayout.EAST, sameAsSourceRadio);
+        
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationFolderText, 50, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationFolderText, 30, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationFolderText, -105, SpringLayout.EAST, destinationPanel);
