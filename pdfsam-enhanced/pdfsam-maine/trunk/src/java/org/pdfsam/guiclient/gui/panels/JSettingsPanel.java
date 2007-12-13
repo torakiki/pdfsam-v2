@@ -501,7 +501,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     }
 
 
-	public org.dom4j.Node getJobNode(org.dom4j.Node arg0) throws SaveJobException {
+	public org.dom4j.Node getJobNode(org.dom4j.Node arg0, boolean savePasswords) throws SaveJobException {
 		return arg0;
 	}
 

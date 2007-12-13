@@ -161,7 +161,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
         return PLUGIN_VERSION;
     } 
     
-    public org.dom4j.Node getJobNode(org.dom4j.Node arg0) throws SaveJobException {
+    public org.dom4j.Node getJobNode(org.dom4j.Node arg0, boolean savePasswords) throws SaveJobException {
 		return arg0;
 	}
 
@@ -170,7 +170,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
 	}
 
     protected String getThanksText(){
-        String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "David Vignoni", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "dom4j", "jaxen", "All the donors and contributors"};
+        String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "dom4j", "jaxen", "log4j", "BouncyCastle","All the donors and contributors"};
         String contributes = GettextResource.gettext(config.getI18nResourceBundle(),"Contributes: ");
         for (int i=0; i<contributors.length; i++){
         	contributes += contributors[i]+" - ";

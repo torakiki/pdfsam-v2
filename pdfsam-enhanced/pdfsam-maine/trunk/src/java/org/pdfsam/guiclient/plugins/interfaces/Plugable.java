@@ -49,9 +49,10 @@ public interface Plugable{
     
 	/**
 	* @param arg0 to write to
+	* @param savePasswords if true the plugin should return a Node containing passwords
 	* @return Node modified with save job infos
 	*/
-	public Node getJobNode(Node arg0) throws SaveJobException ;
+	public Node getJobNode(Node arg0, boolean savePasswords) throws SaveJobException ;
 
 	/**
 	*  @param arg0 to load job infos

@@ -20,6 +20,8 @@ import java.io.File;
 import java.util.ResourceBundle;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.Environment;
@@ -40,11 +42,13 @@ public class EnvironmentMediator implements ActionListener {
 	
 	private Environment environment;		
 	private ResourceBundle i18nMessages;
+	private JFrame parent;
 	private JFileChooser fileChooser;
 	
-	public EnvironmentMediator(Environment environment) {
+	public EnvironmentMediator(Environment environment, JFrame parent) {
 		super();
 		this.environment = environment;
+		this.parent = parent;
 		this.i18nMessages = Configuration.getInstance().getI18nResourceBundle();
 		fileChooser = new JFileChooser();
 		fileChooser.setFileFilter(new XmlFilter());
@@ -72,8 +76,16 @@ public class EnvironmentMediator implements ActionListener {
 		if(environment != null && e != null){
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();	
+				if(selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1){
+					selectedFile = new File(selectedFile.getParent(), selectedFile.getName()+".xml");
+				}
 				if(SAVE_ENV_ACTION.equals(e.getActionCommand())){
-					environment.saveEnvironment(selectedFile);
+					int savePwd = JOptionPane.showConfirmDialog(
+							parent,
+						    GettextResource.gettext(i18nMessages,"Save passwords information (they will be readable opening the output file)?"),
+						    GettextResource.gettext(i18nMessages,"Confirm password saving"),
+						    JOptionPane.YES_NO_OPTION);
+					environment.saveEnvironment(selectedFile, (savePwd == JOptionPane.YES_OPTION));
 				}else if(LOAD_ENV_ACTION.equals(e.getActionCommand())){
 					environment.loadJobs(selectedFile);
 				}else {

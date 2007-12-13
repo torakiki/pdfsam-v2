@@ -124,7 +124,7 @@ public class JMainFrame extends JFrame {
 	        //menu
 	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building menus.."));        
 	        //env mediator
-	        envMediator = new EnvironmentMediator(new Environment(pluginsMap));
+	        envMediator = new EnvironmentMediator(new Environment(pluginsMap), this);
 	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator));
 	        
 	        //buttons bar

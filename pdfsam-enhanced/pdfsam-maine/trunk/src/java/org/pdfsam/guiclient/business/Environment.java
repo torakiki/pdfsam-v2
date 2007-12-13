@@ -56,8 +56,9 @@ public class Environment {
 	/**
 	 * saves and environment to the output file
 	 * @param outFile
+	 * @param savePasswords true save passwords informations
 	 */
-	public void saveEnvironment(File outFile){
+	public void saveEnvironment(File outFile, boolean savePasswords){
 		try {
 			if (outFile != null){
 				synchronized(Environment.class){
@@ -70,7 +71,7 @@ public class Environment {
 						Element node = (Element) root.addElement("plugin");
 						node.addAttribute("class", plugablePanel.getClass().getName());
 						node.addAttribute("name", plugablePanel.getPluginName());
-						plugablePanel.getJobNode(node);
+						plugablePanel.getJobNode(node, savePasswords);
 						log.info(GettextResource.gettext(i18nMessages, plugablePanel.getPluginName()+ " node environment loaded."));
 					}
 					BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outFile));
@@ -91,6 +92,13 @@ public class Environment {
 	}
 	
 	/**
+	 * saves and environment to the output file without saving passwords
+	 * @param outFile
+	 */
+	public void saveEnvironment(File outFile){
+		saveEnvironment(outFile,false);
+	}	
+	/**
 	 * loads an environment from an input file
 	 * @param inputFile
 	 */
@@ -104,7 +112,9 @@ public class Environment {
 						AbstractPlugablePanel plugablePanel = (AbstractPlugablePanel) plugsIterator.next();
 						Node node = document.selectSingleNode("/pdfsam_saved_jobs/plugin[@class=\""
 								+ plugablePanel.getClass().getName() + "\"]");
-						plugablePanel.loadJobNode(node);
+						if(node != null){
+							plugablePanel.loadJobNode(node);
+						}
 					}
 					log.info(GettextResource.gettext(i18nMessages, "Environment loaded."));
 				}
