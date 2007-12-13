@@ -287,7 +287,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 								if(cmd != null){
 									config.getConsoleServicesFacade().execute(cmd);							
 								}else{
-									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
+									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
 								}
 								log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
 							}catch(Exception ex){    
@@ -416,7 +416,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         
     }
 
-    public Node getJobNode(Node arg0) throws SaveJobException {
+    public Node getJobNode(Node arg0, boolean savePasswords) throws SaveJobException {
 		try{
 			if (arg0 != null){
 				Element filelist = ((Element)arg0).addElement("filelist");
@@ -425,6 +425,9 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 					Element fileNode = ((Element)filelist).addElement("file");
 					fileNode.addAttribute("name",items[i].getInputFile().getAbsolutePath());
 					fileNode.addAttribute("pageselection",(items[i].getPageSelection()!=null)?items[i].getPageSelection():ALL_STRING);
+					if(savePasswords){
+						fileNode.addAttribute("password",items[i].getPassword());
+					}
 				}
 				
 				Element fileDestination = ((Element)arg0).addElement("destination");
@@ -450,6 +453,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	}
 
     public void loadJobNode(Node arg0) throws LoadJobException {
+    	if(arg0 != null){
 			try{	
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
 				if (fileDestination != null){
@@ -474,7 +478,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 						Node fileName = (Node) fileNode.selectSingleNode("@name");
 						if (fileName != null && fileName.getText().length()>0){
 							Node pageSelection = (Node) fileNode.selectSingleNode("@pageselection");
-							selectionPanel.getLoader().addFile(new File(fileName.getText()), null, (pageSelection!=null)?pageSelection.getText():null);							
+							Node filePwd = (Node) fileNode.selectSingleNode("@password");	
+							selectionPanel.getLoader().addFile(new File(fileName.getText()), (filePwd!=null)?filePwd.getText():null, (pageSelection!=null)?pageSelection.getText():null);							
 						}
 					}
                 }
@@ -498,7 +503,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 			catch (Exception ex){
 				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                             
 			}
-		} 				
+		} 	
+    }			
 	     
     /**
      * 
