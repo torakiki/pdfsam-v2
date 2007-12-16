@@ -104,8 +104,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = new JLabel();	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_NAME = "Merge/Extract";
-    private static final String PLUGIN_VERSION = "0.6.0e";
+    private static final String PLUGIN_VERSION = "0.6.0";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -168,6 +167,9 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         destinationTextField = new JTextField();
         destinationTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destinationPanel.add(destinationTextField);
+        
+        destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
+        add(destinationLabel);
 //BROWSE_BUTTON        
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -327,7 +329,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 		layoutMergePanel.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
 		layoutMergePanel.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
         
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, optionPanel, 250, SpringLayout.NORTH, this);
+        layoutMergePanel.putConstraint(SpringLayout.SOUTH, optionPanel, 50, SpringLayout.NORTH, optionPanel);
         layoutMergePanel.putConstraint(SpringLayout.EAST, optionPanel, -5, SpringLayout.EAST, this);
         layoutMergePanel.putConstraint(SpringLayout.NORTH, optionPanel, 20, SpringLayout.SOUTH, selectionPanel);
         layoutMergePanel.putConstraint(SpringLayout.WEST, optionPanel, 0, SpringLayout.WEST, selectionPanel);
@@ -343,7 +345,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         layoutOptionPanel.putConstraint(SpringLayout.SOUTH, mergeTypeHelpLabel, -1, SpringLayout.SOUTH, optionPanel);
         layoutOptionPanel.putConstraint(SpringLayout.EAST, mergeTypeHelpLabel, -1, SpringLayout.EAST, optionPanel);
 
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, destinationPanel, 130, SpringLayout.NORTH, destinationPanel);
+        layoutMergePanel.putConstraint(SpringLayout.SOUTH, destinationPanel, 120, SpringLayout.NORTH, destinationPanel);
         layoutMergePanel.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, optionPanel);
         layoutMergePanel.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, optionPanel);
         layoutMergePanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
@@ -398,7 +400,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
      * @return the Plugin name
      */    
     public String getPluginName(){
-        return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
+        return GettextResource.gettext(config.getI18nResourceBundle(),"Merge/Extract");
     }
  
     /**
@@ -546,6 +548,9 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 				return outputCompressedCheck;
 			}
 			else if (aComponent.equals(outputCompressedCheck)){
+				return versionCombo;
+			}            
+			else if (aComponent.equals(versionCombo)){
 				return runButton;
 			}            
             else if (aComponent.equals(runButton)){
@@ -557,7 +562,10 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         public Component getComponentBefore(Container CycleRootComp, Component aComponent){
             
 			if (aComponent.equals(runButton)){
-				return outputCompressedCheck;
+				return versionCombo;
+			}
+			else if (aComponent.equals(versionCombo)){
+				return overwriteCheckbox;
 			}
 			else if (aComponent.equals(outputCompressedCheck)){
 				return overwriteCheckbox;
