@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-1.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-console"/>
+	<classpathentry kind="lib" path="lib/pdfsam-langpack.jar"/>
+	<classpathentry kind="lib" path="lib/looks-2.1.4.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/pdfsam-console-1.1.0e.jar"/>
+	<classpathentry kind="lib" path="lib/pdfsam-jcmdline-1.0.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/j2sdk1.4.2_16"/>
+	<classpathentry kind="lib" path="lib/bcmail-jdk14-138.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk14-138.jar"/>
+	<classpathentry kind="lib" path="lib/iText-2.0.7.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
