@@ -678,21 +678,21 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, oddRadio, 2, SpringLayout.SOUTH, evenRadio);
         
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, thisPageRadio, 0, SpringLayout.NORTH, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageRadio, 0, SpringLayout.EAST, burstRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageRadio, 2, SpringLayout.EAST, burstRadio);
         optionsPaneLayout.putConstraint(SpringLayout.SOUTH, thisPageTextField, 17, SpringLayout.NORTH, thisPageTextField);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, thisPageTextField, 75, SpringLayout.EAST, thisPageRadio);
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, thisPageTextField, 0, SpringLayout.NORTH, thisPageRadio);
         optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageTextField, 5, SpringLayout.EAST, thisPageRadio);
         
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, everyNRadio, 2, SpringLayout.SOUTH, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, everyNRadio, 0, SpringLayout.WEST, thisPageRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, everyNRadio, 2, SpringLayout.EAST, evenRadio);
         
         optionsPaneLayout.putConstraint(SpringLayout.SOUTH, nPagesTextField, 17, SpringLayout.NORTH, everyNRadio);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, nPagesTextField, 45, SpringLayout.EAST, everyNRadio);
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, nPagesTextField, 0, SpringLayout.NORTH, everyNRadio);
         optionsPaneLayout.putConstraint(SpringLayout.WEST, nPagesTextField, 5, SpringLayout.EAST, everyNRadio);
 
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, sizeRadio, 0, SpringLayout.WEST, everyNRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, sizeRadio, 2, SpringLayout.EAST, oddRadio);
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, sizeRadio, 2, SpringLayout.SOUTH, everyNRadio);
         optionsPaneLayout.putConstraint(SpringLayout.SOUTH, splitSizeCombo, 17, SpringLayout.NORTH, splitSizeCombo);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, splitSizeCombo, 100, SpringLayout.EAST, sizeRadio);
