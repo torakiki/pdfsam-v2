@@ -22,7 +22,7 @@
 	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-alpha.jar"/>	
  
   <property name="pdfsam-merge.jar.name" value="pdfsam-merge"/>
-  <property name="pdfsam-merge.jar.version" value="0.6.0e"/>	
+  <property name="pdfsam-merge.jar.version" value="0.6.0"/>	
   
   <target name="init">
     <!-- Create the time stamp -->
