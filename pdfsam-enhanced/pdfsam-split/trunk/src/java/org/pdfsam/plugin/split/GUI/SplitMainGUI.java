@@ -131,8 +131,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private final ThreadGroup runThreads = new ThreadGroup("run threads");
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_NAME = "Split";
-    private final String PLUGIN_VERSION = "0.4.0e";
+    private final String PLUGIN_VERSION = "0.4.0";
     
 /**
  * Constructor
@@ -444,7 +443,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
      * @return Returns the Plugin name.
      */
     public String getPluginName() {
-        return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
+        return GettextResource.gettext(config.getI18nResourceBundle(),"Split");
     }
 
 	   /**
@@ -590,7 +589,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 		splitSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
 		splitSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
 //      LAYOUT
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 105, SpringLayout.NORTH, splitOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 103, SpringLayout.NORTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, splitOptionsPanel, -5, SpringLayout.EAST, this);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsPanel, 0, SpringLayout.WEST, selectionPanel);
@@ -647,7 +646,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         splitSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsLabel, 0, SpringLayout.WEST, destinationPanel);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsLabel, 5, SpringLayout.SOUTH, destinationPanel);
 		
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, outputOptionsPanel, 65, SpringLayout.NORTH, outputOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.SOUTH, outputOptionsPanel, 48, SpringLayout.NORTH, outputOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, outputOptionsPanel, 0, SpringLayout.EAST, destinationPanel);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsPanel, 0, SpringLayout.SOUTH, outputOptionsLabel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsPanel, 0, SpringLayout.WEST, outputOptionsLabel);
@@ -671,31 +670,35 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 //      RADIO_LAYOUT
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, burstRadio, 10, SpringLayout.NORTH, splitOptionsPanel);
         optionsPaneLayout.putConstraint(SpringLayout.WEST, burstRadio, 10, SpringLayout.WEST, splitOptionsPanel);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, everyNRadio, 0, SpringLayout.SOUTH, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, everyNRadio, 0, SpringLayout.WEST, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, nPagesTextField, 0, SpringLayout.SOUTH, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, nPagesTextField, 45, SpringLayout.EAST, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, nPagesTextField, 0, SpringLayout.NORTH, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, nPagesTextField, 5, SpringLayout.EAST, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, evenRadio, 0, SpringLayout.EAST, nPagesTextField);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, evenRadio, 0, SpringLayout.WEST, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, evenRadio, 0, SpringLayout.SOUTH, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, oddRadio, 0, SpringLayout.EAST, evenRadio);
+                
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, evenRadio, 0, SpringLayout.WEST, burstRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, evenRadio, 2, SpringLayout.SOUTH, burstRadio);
+        
         optionsPaneLayout.putConstraint(SpringLayout.WEST, oddRadio, 0, SpringLayout.WEST, evenRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, oddRadio, 0, SpringLayout.SOUTH, evenRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, thisPageRadio, 0, SpringLayout.NORTH, nPagesTextField);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageRadio, 20, SpringLayout.EAST, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, thisPageTextField, 0, SpringLayout.SOUTH, thisPageRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, oddRadio, 2, SpringLayout.SOUTH, evenRadio);
+        
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, thisPageRadio, 0, SpringLayout.NORTH, burstRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageRadio, 0, SpringLayout.EAST, burstRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, thisPageTextField, 17, SpringLayout.NORTH, thisPageTextField);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, thisPageTextField, 75, SpringLayout.EAST, thisPageRadio);
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, thisPageTextField, 0, SpringLayout.NORTH, thisPageRadio);
         optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageTextField, 5, SpringLayout.EAST, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, sizeRadio, 0, SpringLayout.EAST, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, sizeRadio, 0, SpringLayout.WEST, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, sizeRadio, 0, SpringLayout.SOUTH, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, splitSizeCombo, 0, SpringLayout.SOUTH, sizeRadio);
+        
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, everyNRadio, 2, SpringLayout.SOUTH, thisPageRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, everyNRadio, 0, SpringLayout.WEST, thisPageRadio);
+        
+        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, nPagesTextField, 17, SpringLayout.NORTH, everyNRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.EAST, nPagesTextField, 45, SpringLayout.EAST, everyNRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, nPagesTextField, 0, SpringLayout.NORTH, everyNRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, nPagesTextField, 5, SpringLayout.EAST, everyNRadio);
+
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, sizeRadio, 0, SpringLayout.WEST, everyNRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, sizeRadio, 2, SpringLayout.SOUTH, everyNRadio);
+        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, splitSizeCombo, 17, SpringLayout.NORTH, splitSizeCombo);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, splitSizeCombo, 100, SpringLayout.EAST, sizeRadio);
         optionsPaneLayout.putConstraint(SpringLayout.NORTH, splitSizeCombo, 0, SpringLayout.NORTH, sizeRadio);
         optionsPaneLayout.putConstraint(SpringLayout.WEST, splitSizeCombo, 5, SpringLayout.EAST, sizeRadio);
+        
         optionsPaneLayout.putConstraint(SpringLayout.SOUTH, checksHelpLabel, -1, SpringLayout.SOUTH, splitOptionsPanel);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, checksHelpLabel, -1, SpringLayout.EAST, splitOptionsPanel);         
     }
@@ -731,16 +734,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 				return burstRadio;
 			}                    
             else if (aComponent.equals(burstRadio)){
-                return everyNRadio;
-            }
-            else if (aComponent.equals(everyNRadio)){
-                if (nPagesTextField.isEnabled()){
-                    return nPagesTextField;
-                }else{
-                    return evenRadio;
-                }
-            }        
-            else if (aComponent.equals(nPagesTextField)){
                 return evenRadio;
             }
             else if (aComponent.equals(evenRadio)){
@@ -753,12 +746,22 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                 if (thisPageTextField.isEnabled()){
                     return thisPageTextField;
                 }else{
-                    return sizeRadio;
+                    return everyNRadio;
                 }
             }
             else if (aComponent.equals(thisPageTextField)){
-                return sizeRadio;
+                return everyNRadio;
             }
+            else if (aComponent.equals(everyNRadio)){
+                if (nPagesTextField.isEnabled()){
+                    return nPagesTextField;
+                }else{
+                    return sizeRadio;
+                }
+            }        
+            else if (aComponent.equals(nPagesTextField)){
+                return sizeRadio;
+            }        
             else if (aComponent.equals(sizeRadio)){
                 if (splitSizeCombo.isEnabled()){
                     return splitSizeCombo;
@@ -766,6 +769,9 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     return sameAsSourceRadio;
                 }
             }
+            else if (aComponent.equals(splitSizeCombo) || aComponent.equals(splitSizeCombo.getEditor())){
+                return sameAsSourceRadio;
+            }        
             else if (aComponent.equals(sameAsSourceRadio)){
                 return chooseAFolderRadio;
             }
@@ -773,7 +779,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                 if (destinationFolderText.isEnabled()){
                     return destinationFolderText;
                 }else{
-                    return outPrefixText;
+                    return overwriteCheckbox;
                 }                
             }
             else if (aComponent.equals(destinationFolderText)){
@@ -786,12 +792,12 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                 return outputCompressedCheck;
             }
             else if (aComponent.equals(outputCompressedCheck)){
-                return outPrefixText;
-            }
-            else if (aComponent.equals(outPrefixText)){
                 return versionCombo;
             }
             else if (aComponent.equals(versionCombo)){
+                return outPrefixText;
+            }
+            else if (aComponent.equals(outPrefixText)){
                 return runButton;
             }
             else if (aComponent.equals(runButton)){
@@ -840,23 +846,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     return sizeRadio;
                 }
             }
+            else if (aComponent.equals(splitSizeCombo) || aComponent.equals(splitSizeCombo.getEditor())){
+                return sizeRadio;
+            }
             else if (aComponent.equals(sizeRadio)){
-                if (thisPageTextField.isEnabled()){
-                    return thisPageTextField;
-                }else{
-                    return thisPageRadio;
-                }
-            }
-            else if (aComponent.equals(thisPageTextField)){
-                return thisPageRadio;
-            }
-            else if (aComponent.equals(thisPageRadio)){
-                return oddRadio;
-            }
-            else if (aComponent.equals(oddRadio)){
-                return evenRadio;
-            }
-            else if (aComponent.equals(evenRadio)){
                 if (nPagesTextField.isEnabled()){
                     return nPagesTextField;
                 }else{
@@ -867,6 +860,22 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                 return everyNRadio;
             }
             else if (aComponent.equals(everyNRadio)){
+                if (thisPageTextField.isEnabled()){
+                    return thisPageTextField;
+                }else{
+                    return thisPageRadio;
+                }
+            }            
+            else if (aComponent.equals(thisPageTextField)){
+                return thisPageRadio;
+            }
+            else if (aComponent.equals(thisPageRadio)){
+                return oddRadio;
+            }
+            else if (aComponent.equals(oddRadio)){
+                return evenRadio;
+            }           
+            else if (aComponent.equals(evenRadio)){
                 return burstRadio;
             }
             else if (aComponent.equals(burstRadio)){
