@@ -334,9 +334,7 @@ public class PdfSelectionTableModel extends AbstractTableModel {
      * */   
     public void deleteRows(int[] rows) throws IndexOutOfBoundsException{
         if (rows.length > 0 && rows.length <= data.size()){
-            for (int i=0; i<rows.length; i++){
-                data.remove(data.get(rows[i]));            
-            }
+        	data.subList(rows[0], rows[rows.length-1]+1).clear();           
             this.fireTableRowsDeleted(rows[0], rows[rows.length -1]);
         }
     }  

@@ -58,7 +58,7 @@
 
 		<property name="pdfsam.jar.version" value="1.0.0-alpha"/>	
 	    <property name="pdfsam.version" value="basic"/>
-
+		<property name="current.version" value="basic"/>
 		
 		<!-- Create the time stamp -->
 	    <tstamp/>
@@ -86,7 +86,7 @@
 	    </path>
 
 	    <!-- Compile the java code from ${src} into ${build} -->
-	    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam.src.dir}" destdir="${pdfsam.build.dir}">
+	    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam.src.dir}" destdir="${pdfsam.build.dir}" debug="true">
 	    <classpath refid="pdfsam.classpath"/>
 	    </javac>
 	  </target>
@@ -96,7 +96,10 @@
 	        description="generate the distribution" >
 	    <!-- Create the distribution directory -->
 	    <mkdir dir="${pdfsam.dist.dir}"/>
-
+	  	
+	  	<!--copy property file-->
+	  	<copy file="ant/${current.version}.properties" tofile="${pdfsam.build.dir}/pdfsam.properties" overwrite="true" />
+	  	
 	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
 	    <jar jarfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}.jar" basedir="${pdfsam.build.dir}">
 		    <manifest>

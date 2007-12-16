@@ -165,13 +165,19 @@ public class Configuration{
 		log.info(GettextResource.gettext(i18nMessages,"Setting logging level..."));
 		int logLevel;
 		try {
-			logLevel = Integer.parseInt(xmlConfigObject.getXMLConfigValue("/pdfsam/settings/loglevel"));
+			String logLev = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/loglevel");
+			if(logLev != null && logLev.length()>0){
+				logLevel = Integer.parseInt(logLev);
+			}else{
+				log.warn(GettextResource.gettext(i18nMessages,"Unable to find log level, setting to default level (DEBUG)."));
+				logLevel = Level.DEBUG_INT;
+			}
 			TextPaneAppender appender = (TextPaneAppender)Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
 			loggingLevel = Level.toLevel(logLevel,Level.DEBUG);
 			log.info(GettextResource.gettext(i18nMessages,"Logging level set to ")+loggingLevel);
 			appender.setThreshold(loggingLevel);
 		} catch (Exception e) {
-			log.warn("Unable to set logging level.", e);
+			log.warn(GettextResource.gettext(i18nMessages,"Unable to set logging level."), e);
 		}
 	}
 }

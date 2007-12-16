@@ -268,7 +268,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/i18n", ((StringItem)languageCombo.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF", ((StringItem)comboLaf.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((StringItem)comboTheme.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.NAME+" "+GuiClient.VERSION);
+					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
 					if (loadDefaultEnv != null){
 						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob", loadDefaultEnv.getText());
@@ -279,7 +279,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
 					}
                 catch (Exception ex){
-                    log.error(ex);                       
+                    log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "),ex);                       
                 }
 			}
         }); 

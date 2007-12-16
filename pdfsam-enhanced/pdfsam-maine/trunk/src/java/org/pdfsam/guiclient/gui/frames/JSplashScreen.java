@@ -74,7 +74,7 @@ public class JSplashScreen extends JFrame {
 		labelProgress.setPreferredSize(new Dimension(300, 15));
 		labelProgress.setText(initMessage);
 		labelProgress.setAlignmentX(Component.LEFT_ALIGNMENT);
-		labelVersion.setText("pdfsam "+GuiClient.VERSION);
+		labelVersion.setText("pdfsam "+GuiClient.getVersion());
 		labelVersion.setPreferredSize(new Dimension(300, 15));
 		labelVersion.setFont(new Font("SansSerif", Font.BOLD, 10));
 		labelVersion.setAlignmentY(JLabel.BOTTOM_ALIGNMENT);

@@ -19,7 +19,7 @@ package org.pdfsam.guiclient.gui.frames;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -64,6 +64,8 @@ public class JMainFrame extends JFrame {
 	private static final long serialVersionUID = -3858244069059677829L;
 
 	private static final Logger log = Logger.getLogger(JMainFrame.class.getPackage().getName());
+	private String DEFAULT_ICON = "/images/pdf.png";
+	private String DEFAULT_ICON_16 = "/images/pdf16.png";
 	
 	private Configuration config;
 	private JSplashScreen screen;
@@ -80,24 +82,33 @@ public class JMainFrame extends JFrame {
 	
 	public JMainFrame(){
 		long start = System.currentTimeMillis();
-		log.info("Starting "+GuiClient.NAME+" Ver. "+GuiClient.VERSION);
+		log.info("Starting "+GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion());
 		runSplash();
 		config = Configuration.getInstance();
 		ToolTipManager.sharedInstance().setDismissDelay (300000);
 		initialize();
 		closeSplash();
-		log.info(GuiClient.NAME+" Ver. "+GuiClient.VERSION+" "+GettextResource.gettext(config.getI18nResourceBundle(),"started in ")+TimeUtility.format(System.currentTimeMillis()-start));
+		log.info(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion()+" "+GettextResource.gettext(config.getI18nResourceBundle(),"started in ")+TimeUtility.format(System.currentTimeMillis()-start));
 	}
 	/**
 	 * initialization
 	 */
 	private void initialize() {
 		try{
+			setSize(640, 480);
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			center(this,800,600);
-			setIconImage(new ImageIcon(this.getClass().getResource("/images/pdf.png")).getImage());
-	        setTitle(GuiClient.NAME+" Ver. "+GuiClient.VERSION);
+			//center(this,800,600);
+			URL iconUrl = this.getClass().getResource("/images/pdf_"+GuiClient.getVersionType()+".png");
+			URL iconUrl16 = this.getClass().getResource("/images/pdf_"+GuiClient.getVersionType()+"16.png");
+			if(iconUrl == null){
+				iconUrl = this.getClass().getResource(DEFAULT_ICON);
+			}
+			if(iconUrl16 == null){
+				iconUrl16 = this.getClass().getResource(DEFAULT_ICON_16);
+			}
+			setIconImage(new ImageIcon(iconUrl).getImage());
+	        setTitle(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion());
 	        
 	        //load plugins
 	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Loading plugins.."));
@@ -134,13 +145,13 @@ public class JMainFrame extends JFrame {
 	        
 	        //status panel
 	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building status bar.."));
-	        statusPanel = new JStatusPanel(new ImageIcon(this.getClass().getResource("/images/pdf.png")),GuiClient.NAME,WorkDoneDataModel.MAX_PERGENTAGE);
+	        statusPanel = new JStatusPanel(new ImageIcon(iconUrl16),GuiClient.getApplicationName(),WorkDoneDataModel.MAX_PERGENTAGE);
 	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
 			config.getConsoleServicesFacade().addExecutionObserver(statusPanel);
 			
 	        //tree panel
 	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building tree.."));
-	        treePanel = new JTreePanel(new DefaultMutableTreeNode(GuiClient.UNIXNAME+" "+GuiClient.VERSION));
+	        treePanel = new JTreePanel(new DefaultMutableTreeNode(GuiClient.UNIXNAME+" "+GuiClient.getVersion()));
 	        for (Enumeration enumeration = pluginsMap.keys(); enumeration.hasMoreElements();) {
 	        	treePanel.addToPlugsNode((PluginDataModel)enumeration.nextElement());
 	        }
@@ -151,14 +162,7 @@ public class JMainFrame extends JFrame {
 	        
 	        //add info and settings to plugins map
 	        pluginsMap.put(settingsDataModel, settingsPanel);
-	        pluginsMap.put(infoDataModel, infoPanel);
-	        
-	        //setting log level
-	        String logLevel = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/loglevel");
-			if(logLevel != null && !logLevel.equals("")){
-				//TODO log settings
-			}else{
-			}
+	        pluginsMap.put(infoDataModel, infoPanel);	        	      
 	        
 	        //final set up
 	        mainScrollPanel = new JScrollPane(mainPanel);
@@ -189,7 +193,7 @@ public class JMainFrame extends JFrame {
      * @param width 
      * @param height
      */
-    private void center(JFrame frame, int width, int height){
+    /*private void center(JFrame frame, int width, int height){
         Dimension framedimension = new Dimension(width,height);        
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -197,7 +201,7 @@ public class JMainFrame extends JFrame {
         Double centreY = new Double((screensize.getHeight() / 2) - (framedimension.getHeight()  / 2));
         
         frame.setBounds(centreX.intValue(), centreY.intValue(), 640, 480);
-    }
+    }*/
     
 	 /**
      * Run a splash screen
@@ -262,8 +266,6 @@ public class JMainFrame extends JFrame {
 	 */
 	public JPanel getMainPanel() {
 		return mainPanel;
-	}
-    
-	
+	}    
     
 }

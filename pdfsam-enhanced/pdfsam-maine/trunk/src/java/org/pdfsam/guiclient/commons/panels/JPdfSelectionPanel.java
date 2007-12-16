@@ -89,7 +89,7 @@ public class JPdfSelectionPanel extends JPanel {
 	private PdfSelectionTableActionListener pdfSelectionTableListener;
 	private final JPanel buttonPanel = new JPanel();
 	private final JPopupMenu popupMenu = new JPopupMenu();
-	private final PdfLoader loader = new PdfLoader(this);
+	private PdfLoader loader = null;
 	private DropTarget tableDropTarget;
 	private DropTarget scrollPanelDropTarget;
 	
@@ -128,6 +128,7 @@ public class JPdfSelectionPanel extends JPanel {
 		this.maxSelectableFiles = maxSelectableFiles;
 		this.showedColums = showedColums;
 		this.showEveryButton = showEveryButton;
+		loader = new PdfLoader(this);
 		init();
 	}
 

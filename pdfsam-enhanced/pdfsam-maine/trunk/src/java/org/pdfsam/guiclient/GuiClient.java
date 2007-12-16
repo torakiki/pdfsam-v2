@@ -14,6 +14,9 @@
  */
 package org.pdfsam.guiclient;
 
+import java.io.InputStream;
+import java.util.Properties;
+
 import javax.swing.JFrame;
 
 import org.apache.log4j.Logger;
@@ -28,19 +31,27 @@ public class GuiClient extends JFrame {
 	private static final long serialVersionUID = -3608998690519362986L;
 
 	private static final Logger log = Logger.getLogger(GuiClient.class.getPackage().getName());	
-    
+	private static final String PROPERTY_FILE = "pdfsam.properties";
+	
     public static final String AUTHOR = "Andrea Vacondio";
-	public static final String NAME = "PDF Split and Merge";
 	public static final String UNIXNAME = "pdfsam";
-	public static final String VERSION = "1.0.0e alpha"; 
+
+	private static final String NAME = "PDF Split and Merge";
+	private static final String VERSION_TYPE_PROPERTY = "pdfsam.version";
+	private static final String VERSION_TYPE_DEFAULT = "basic";
+	
+	private static final String VERSION_DEFAULT = "1.0.0 alpha";	
+	private static final String VERSION_PROPERTY = "pdfsam.jar.version";
 	
 	private static JMainFrame clientGUI;
+	private static Properties defaultProps = new Properties();
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		try {			
+		try {
+			loadApplicationProperties();
 			clientGUI = new JMainFrame();
 			clientGUI.setVisible(true);
 		} catch (Exception e) {
@@ -48,4 +59,36 @@ public class GuiClient extends JFrame {
 		}
 	}
 
+	/**
+	 * load application properties
+	 */
+	private static void loadApplicationProperties(){
+		try{
+			InputStream is = GuiClient.class.getClassLoader().getResourceAsStream(PROPERTY_FILE);
+			defaultProps.load(is);
+		}catch(Exception e){
+			log.error("Unable to load pdfsam properties.", e);
+		}
+	}
+	
+	/**
+	 * @return application version
+	 */
+	public static String getVersion(){
+		return defaultProps.getProperty(VERSION_PROPERTY, VERSION_DEFAULT);
+	}
+	
+	/**
+	 * @return application name
+	 */
+	public static String getApplicationName(){
+		return NAME+" "+defaultProps.getProperty(VERSION_TYPE_PROPERTY, VERSION_TYPE_DEFAULT);
+	}
+	
+	/**
+	 * @return application version type (basic or enhanced)
+	 */
+	public static String getVersionType(){
+		return defaultProps.getProperty(VERSION_TYPE_PROPERTY, VERSION_TYPE_DEFAULT);
+	}
 }

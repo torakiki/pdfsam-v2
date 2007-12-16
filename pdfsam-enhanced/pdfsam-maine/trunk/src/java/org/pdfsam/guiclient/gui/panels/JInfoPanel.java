@@ -83,8 +83,8 @@ public class JInfoPanel extends AbstractPlugablePanel{
     	setPanelIcon("/images/info.png");
     	 try{
              author = GuiClient.AUTHOR;
-             version = GuiClient.VERSION;
-             applicationName = GuiClient.NAME;
+             version = GuiClient.getVersion();
+             applicationName = GuiClient.getApplicationName();
              language = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/language");
              buildDate = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/build_date");
              javaHome = System.getProperty("java.home");

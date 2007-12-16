@@ -100,8 +100,13 @@ public class XMLConfig{
      * @param xpath 
      * @return tag value
      */
-    public String getXMLConfigValue(String xpath) throws Exception{        
-            return document.selectSingleNode(xpath).getText().trim();
+    public String getXMLConfigValue(String xpath) throws Exception{
+    	String retVal = "";
+    	Node node = document.selectSingleNode(xpath);
+    	if(node != null){
+    		retVal = node.getText().trim();
+    	}
+    	return retVal;
     }
  
      /**
@@ -129,15 +134,15 @@ public class XMLConfig{
             boolean retvalue = false;
 			Node node = document.selectSingleNode(xpath);
 			if (node == null){
-				node = document.selectSingleNode(xpath.substring(0, xpath.lastIndexOf("//")-1));
+				node = document.selectSingleNode(xpath.substring(0, xpath.lastIndexOf("/")));
                 if (node != null){
-                     ((Element)node).addElement(xpath.substring(xpath.lastIndexOf("//")));
-                     retvalue = true;
+                     node = (Node) ((Element)node).addElement(xpath.substring(xpath.lastIndexOf("/")+1));
+                }else{
+                	log.warn("Unable to set "+value+" to "+xpath);
                 }
-			}else{
-				node.setText(value);
-				retvalue = true;
 			}
+			node.setText(value);
+			retvalue = true;			
 			return retvalue;
         }
 
