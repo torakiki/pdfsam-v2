@@ -122,7 +122,7 @@ public class CmdParseManager {
 	
 	/**
 	 * Perform command line parsing for the input arguments
-	 * @return true if parsed correctely
+	 * @return true if parsed correctly
 	 * @throws ConsoleException
 	 */
 	public boolean parse(String[] inputArguments) throws ConsoleException{
