@@ -27,7 +27,7 @@ public class ExitActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0 != null){
 			if(ExitActionListener.EXIT_COMMAND.equals(arg0.getActionCommand())){
-				System.exit(1);
+				System.exit(0);
 			}
 		}
 	}

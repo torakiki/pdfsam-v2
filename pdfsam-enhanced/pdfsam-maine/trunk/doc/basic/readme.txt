@@ -7,8 +7,8 @@ Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 License: GPL2
 
 Plugins included:
-	-pdfsam-merge-0.6.0e *
-	-pdfsam-split-0.4.0e *
+	-pdfsam-merge-0.6.0 *
+	-pdfsam-split-0.4.0 *
 
 Linked libraries:
 	-itext-2.0.7
