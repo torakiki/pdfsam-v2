@@ -76,7 +76,8 @@ public class PdfLoader {
                 //fix 03/07 for memory usage
                 pdfReader = new PdfReader(new RandomAccessFileOrArray(new FileInputStream(fileToAdd)), (password != null)?password.getBytes():null);
                 tableItem.setEncrypted(pdfReader.isEncrypted());
-                tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));                
+                tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
+                tableItem.setPdfVersion(pdfReader.getPdfVersion());
             }
             catch (Exception e){
             	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);

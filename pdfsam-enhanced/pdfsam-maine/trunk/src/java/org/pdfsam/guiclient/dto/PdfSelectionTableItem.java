@@ -33,6 +33,7 @@ public class PdfSelectionTableItem implements Serializable{
 	private String pageSelection;
 	private boolean encrypted;
 	private String password;
+	private char pdfVersion;
 	/**
 	 * 
 	 */
@@ -42,6 +43,7 @@ public class PdfSelectionTableItem implements Serializable{
 		pageSelection = "All";
 		encrypted = false;
 		password = null;
+		this.pdfVersion = 0;
 	}
 	
 	/**
@@ -141,6 +143,21 @@ public class PdfSelectionTableItem implements Serializable{
 		this.password = password;
 	}
 
+	
+	/**
+	 * @return the pdfVersion
+	 */
+	public char getPdfVersion() {
+		return pdfVersion;
+	}
+
+	/**
+	 * @param pdfVersion the pdfVersion to set
+	 */
+	public void setPdfVersion(char pdfVersion) {
+		this.pdfVersion = pdfVersion;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -148,14 +165,11 @@ public class PdfSelectionTableItem implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (encrypted ? 1231 : 1237);
-		result = prime * result
-				+ ((inputFile == null) ? 0 : inputFile.hashCode());
-		result = prime * result
-				+ ((pageSelection == null) ? 0 : pageSelection.hashCode());
-		result = prime * result
-				+ ((pagesNumber == null) ? 0 : pagesNumber.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((inputFile == null) ? 0 : inputFile.hashCode());
+		result = prime * result + ((pageSelection == null) ? 0 : pageSelection.hashCode());
+		result = prime * result + ((pagesNumber == null) ? 0 : pagesNumber.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + pdfVersion;
 		return result;
 	}
 
@@ -192,10 +206,10 @@ public class PdfSelectionTableItem implements Serializable{
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (pdfVersion != other.pdfVersion)
+			return false;
 		return true;
 	}
 
-	
-	
 	
 }

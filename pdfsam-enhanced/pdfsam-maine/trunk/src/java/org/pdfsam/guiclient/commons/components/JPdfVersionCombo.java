@@ -14,6 +14,9 @@
  */
 package org.pdfsam.guiclient.commons.components;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.JComboBox;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
@@ -27,9 +30,14 @@ import org.pdfsam.i18n.GettextResource;
 public class JPdfVersionCombo extends JComboBox {
 
 	private static final long serialVersionUID = -5004011941231451770L;
-	public static final String SAME_AS_SOURCE = "sameAsSource";
+	public static final String SAME_AS_SOURCE = "1000";
 	
 	private Configuration config;
+	private boolean addSameAsSourceItem = false;
+	/**
+	 * Size of the model when full
+	 */
+	private int fullSize = 0;
 	
 	public JPdfVersionCombo(){
 		this(false);
@@ -44,6 +52,7 @@ public class JPdfVersionCombo extends JComboBox {
 	 * Component initialization
 	 */
 	private void init(boolean addSameAsSourceItem){
+		this.addSameAsSourceItem = addSameAsSourceItem;
 		if(addSameAsSourceItem){
 			addItem(new StringItem(SAME_AS_SOURCE, GettextResource.gettext(config.getI18nResourceBundle(),"Same as input document")));			
 		}
@@ -54,8 +63,42 @@ public class JPdfVersionCombo extends JComboBox {
 		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_6), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.6 (Acrobat 7)")));
 		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_7), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.7 (Acrobat 8)")));
 		setSelectedIndex(getModel().getSize()-3);
+		this.fullSize = this.getModel().getSize();
+		this.setEnabled(true);
 	}
 	
-	public void disableLowerVersions(String version){
+	/**
+	 * removes items with lower version then <code>version</code>
+	 * @param version
+	 */
+	public void removeLowerVersionItems(int version){
+		ArrayList removeList = new ArrayList();
+		for(int i =0; i<this.getItemCount(); i++){
+			StringItem currentItem = (StringItem)getItemAt(i);
+			if(currentItem!=null && version > Integer.parseInt(currentItem.getId())){
+				removeList.add(getItemAt(i));
+			}
+		}
+		if(removeList.size()>0){
+			for(Iterator iter = removeList.iterator(); iter.hasNext();){
+				StringItem currentItem = (StringItem)iter.next();
+				this.removeItem(currentItem);
+			}	
+		}
+		//if it's empty i disable
+		if(this.getItemCount() == 0){
+			this.setEnabled(false);
+		}
 	}
+	
+	/**
+	 * Enables every item
+	 */
+	public void enableAll(){
+		if(this.getModel().getSize()<fullSize){
+			this.removeAllItems();
+			this.init(addSameAsSourceItem);			
+		}
+	}
+	
 }
