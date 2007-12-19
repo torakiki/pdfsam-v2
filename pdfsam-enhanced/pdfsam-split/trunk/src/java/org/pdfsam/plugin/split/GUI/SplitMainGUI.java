@@ -41,6 +41,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
+import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxActionListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
@@ -81,7 +82,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private JHelpLabel destinationHelpLabel; 
     private SpringLayout splitSpringLayout;
     private String  splitType = "";
-	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
+	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
     private Configuration config;
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.SINGLE_SELECTABLE_FILE, PdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
 	private JSplitSizeCombo splitSizeCombo = new JSplitSizeCombo();
@@ -131,7 +132,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private final ThreadGroup runThreads = new ThreadGroup("run threads");
    
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.0";
+    private final String PLUGIN_VERSION = "0.4.1";
     
 /**
  * Constructor
@@ -254,15 +255,16 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         destinationFolderText = new JTextField();
         destinationFolderText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destinationPanel.add(destinationFolderText);
-//CHECK_BOX
         destinationPanel.add(overwriteCheckbox);
         
-        destinationPanel.add(outputCompressedCheck);
+        destinationPanel.add(outputCompressedCheck); 
+		
+        outputCompressedCheck.addActionListener(new CompressCheckBoxActionListener(versionCombo));
+        
         destinationPanel.add(versionCombo);
         
         outputVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output document pdf version:"));
         destinationPanel.add(outputVersionLabel);
-//END_CHECK_BOX 
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 File chosenFile = null;                
@@ -343,6 +345,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 							f +=":"+item.getPassword();
 						}
 						args.add(f);
+					}else{
+						throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Select an input file"));
 					}
                     args.add("-"+SplitParsedCommand.P_ARG);
                     args.add(outPrefixText.getText());
@@ -376,8 +380,11 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     if (overwriteCheckbox.isSelected()) args.add("-"+SplitParsedCommand.OVERWRITE_ARG);
                     if (outputCompressedCheck.isSelected()) args.add("-"+SplitParsedCommand.COMPRESSED_ARG); 
                     args.add("-"+MixParsedCommand.PDFVERSION_ARG);
-					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-					
+                    if(JPdfVersionCombo.SAME_AS_SOURCE.equals(((StringItem)versionCombo.getSelectedItem()).getId())){
+                    	args.add(Character.toString(item.getPdfVersion()));
+                    }else{
+                    	args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+                    }
                     args.add(AbstractParsedCommand.COMMAND_SPLIT); 
                     
 		        	final String[] myStringArray = (String[])args.toArray(new String[args.size()]);

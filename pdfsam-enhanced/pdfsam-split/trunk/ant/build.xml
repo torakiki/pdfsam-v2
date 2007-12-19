@@ -22,7 +22,7 @@
 	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-alpha.jar"/>	
  
   <property name="pdfsam-split.jar.name" value="pdfsam-split"/>
-  <property name="pdfsam-split.jar.version" value="0.4.0"/>	
+  <property name="pdfsam-split.jar.version" value="0.4.1"/>	
   
   <target name="init">
     <!-- Create the time stamp -->
