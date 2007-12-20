@@ -94,8 +94,7 @@ public class CommonComponentsFactory {
 		switch(checkboxType){
 		
 		case COMPRESS_CHECKBOX_TYPE:
-			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Compress output file"));
-	        retVal.setSelected(true);
+			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Compress output file/files"));
 			break;
 		
 		case OVERWRITE_CHECKBOX_TYPE:

@@ -353,9 +353,13 @@ public class JPdfSelectionPanel extends JPanel {
 		workInProgressList.setModel(new DefaultListModel()); 
 		workInProgressList.setBackground(this.getBackground());
 		wipListScrollPane = new JScrollPane(workInProgressList);
-		wipListScrollPane.setMaximumSize(new Dimension(1500, 30));
-		wipListScrollPane.setPreferredSize(new Dimension(700,30));
-		wipListScrollPane.setMinimumSize(new Dimension(300,30));
+		int wipHeight = 30;
+		if(SINGLE_SELECTABLE_FILE == maxSelectableFiles){
+			wipHeight = 18;
+		}
+		wipListScrollPane.setMaximumSize(new Dimension(1500, wipHeight));
+		wipListScrollPane.setPreferredSize(new Dimension(700,wipHeight));
+		wipListScrollPane.setMinimumSize(new Dimension(300,wipHeight));		
 		wipListScrollPane.setBorder(BorderFactory.createEmptyBorder());
 		
 		GridBagConstraints tableConstraints = new GridBagConstraints();

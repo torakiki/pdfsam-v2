@@ -54,8 +54,8 @@ public class GuiClient extends JFrame {
 			loadApplicationProperties();
 			clientGUI = new JMainFrame();
 			clientGUI.setVisible(true);
-		} catch (Exception e) {
-			log.fatal(e);
+		} catch (Throwable t) {
+			log.fatal("Error:", t);
 		}
 	}
 

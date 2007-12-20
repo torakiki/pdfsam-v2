@@ -14,10 +14,8 @@
  */
 package org.pdfsam.guiclient.commons.business.listeners;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.AbstractButton;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -26,22 +24,21 @@ import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
  * @author Andrea Vacondio
  *
  */
-public class CompressCheckBoxActionListener implements ActionListener {
+public class CompressCheckBoxItemListener implements ItemListener {
 
 	private JPdfVersionCombo versionCombo = null;
 	
 	/**
 	 * @param versionCombo version Combo 
 	 */
-	public CompressCheckBoxActionListener(JPdfVersionCombo versionCombo) {
+	public CompressCheckBoxItemListener(JPdfVersionCombo versionCombo) {
 		super();
 		this.versionCombo = versionCombo;
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void itemStateChanged(ItemEvent e) {
 		if(versionCombo != null){
-			AbstractButton abstractButton = (AbstractButton) e.getSource();
-	        if(abstractButton.getModel().isSelected()){ 
+			if(ItemEvent.SELECTED == e.getStateChange()){
 	        	versionCombo.removeLowerVersionItems(Integer.parseInt(""+AbstractParsedCommand.VERSION_1_5));
 	        }else{
 	      	  	versionCombo.enableAll();
