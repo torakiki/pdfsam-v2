@@ -41,6 +41,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
@@ -95,7 +96,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
     private final ThreadGroup runThreads = new ThreadGroup("run threads");
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_NAME = "Alternate Mix";
 	private static final String PLUGIN_VERSION = "0.1.0e";
 
 	
@@ -177,7 +177,9 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		
 //		CHECK_BOX
 		destinationPanel.add(overwriteCheckbox);
-        
+		
+		outputCompressedCheck.addItemListener(new CompressCheckBoxItemListener(versionCombo));
+		outputCompressedCheck.setSelected(true);
         destinationPanel.add(outputCompressedCheck);
         destinationPanel.add(versionCombo);
         
@@ -249,7 +251,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 									if(cmd != null){
 										config.getConsoleServicesFacade().execute(cmd);							
 									}else{
-										log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Parsed command is null."));
+										log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
 									}
 									log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
 								}catch(Exception any_ex){    
@@ -352,7 +354,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	 * @return the Plugin name
 	 */    
 	public String getPluginName(){
-		return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
+		return GettextResource.gettext(config.getI18nResourceBundle(),"Alternate Mix");
 	}
 
 	/**
@@ -370,24 +372,26 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 	}
 
-	public Node getJobNode(Node arg0) throws SaveJobException {
+	public Node getJobNode(Node arg0, boolean savePasswords) throws SaveJobException {
 		try{
 			if (arg0 != null){
-				String firstFile = "";
-				String secondFile = "";
 				PdfSelectionTableItem[] items = selectionPanel.getTableRows();
 				if(items != null && items.length>0){
-					firstFile = items[0].getInputFile().getAbsolutePath();
-					if(items.length>1){
-						secondFile  = items[1].getInputFile().getAbsolutePath();
+					Element firstNode = ((Element)arg0).addElement("first");
+					firstNode.addAttribute("value", items[0].getInputFile().getAbsolutePath());	
+					if(savePasswords){
+						firstNode.addAttribute("password",items[0].getPassword());
 					}
-				}
-				Element firstNode = ((Element)arg0).addElement("first");
-				firstNode.addAttribute("value", firstFile);			
-
-				Element secondNode = ((Element)arg0).addElement("second");
-				secondNode.addAttribute("value", secondFile);			
-
+					
+					Element secondNode = ((Element)arg0).addElement("second");
+					if(items.length>1){
+						secondNode.addAttribute("value", items[1].getInputFile().getAbsolutePath());	
+						if(savePasswords){
+							secondNode.addAttribute("password",items[1].getPassword());
+						}
+					}
+				}		
+		
 				Element fileDestination = ((Element)arg0).addElement("destination");
 				fileDestination.addAttribute("value", destinationTextField.getText());			
 
@@ -413,54 +417,56 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		}
 	}
 
-	public void loadJobNode(Node arg) throws LoadJobException {
-		final Node arg0 = arg;
-		try{
-			Node firstNode = (Node) arg0.selectSingleNode("first/@value");
-			if (firstNode != null && firstNode.getText().length()>0){
-				selectionPanel.getLoader().addFile(new File(firstNode.getText()));
-			}
-			Node secondNode = (Node) arg0.selectSingleNode("second/@value");
-			if (secondNode != null && secondNode.getText().length()>0){
-				selectionPanel.getLoader().addFile(new File(secondNode.getText()));
-			}
-			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-			if (fileDestination != null){
-				destinationTextField.setText(fileDestination.getText());
-			}
-			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-			if (fileOverwrite != null){
-				overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
-			}
-			Node reverseFirst = (Node) arg0.selectSingleNode("reverse_first/@value");
-			if (reverseFirst != null){
-				reverseFirstCheckbox.setSelected(reverseFirst.getText().equals("true"));
-			}
-			Node reverseSecond = (Node) arg0.selectSingleNode("reverse_second/@value");
-			if (reverseSecond != null){
-				reverseSecondCheckbox.setSelected(reverseSecond.getText().equals("true"));
-			}
-			
-			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-			if (fileCompressed != null){
-				outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
-			}
-
-			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
-			if (pdfVersion != null){
-				for (int i = 0; i<versionCombo.getItemCount(); i++){
-					if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
-						versionCombo.setSelectedIndex(i);
-						break;
+	public void loadJobNode(Node arg0) throws LoadJobException {
+		if(arg0 != null){
+			try{
+				Node firstNode = (Node) arg0.selectSingleNode("first/@value");
+				if (firstNode != null && firstNode.getText().length()>0){
+					Node firstPwd = (Node) arg0.selectSingleNode("first/@password");	
+					selectionPanel.getLoader().addFile(new File(firstNode.getText()), (firstPwd!=null)?firstPwd.getText():null);
+				}
+				Node secondNode = (Node) arg0.selectSingleNode("second/@value");
+				if (secondNode != null && secondNode.getText().length()>0){
+					Node secondPwd = (Node) arg0.selectSingleNode("second/@password");
+					selectionPanel.getLoader().addFile(new File(secondNode.getText()), (secondPwd!=null)?secondPwd.getText():null);
+				}
+				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+				if (fileDestination != null){
+					destinationTextField.setText(fileDestination.getText());
+				}
+				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+				if (fileOverwrite != null){
+					overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
+				}
+				Node reverseFirst = (Node) arg0.selectSingleNode("reverse_first/@value");
+				if (reverseFirst != null){
+					reverseFirstCheckbox.setSelected(reverseFirst.getText().equals("true"));
+				}
+				Node reverseSecond = (Node) arg0.selectSingleNode("reverse_second/@value");
+				if (reverseSecond != null){
+					reverseSecondCheckbox.setSelected(reverseSecond.getText().equals("true"));
+				}
+				
+				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+				if (fileCompressed != null){
+					outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
+				}
+	
+				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+				if (pdfVersion != null){
+					for (int i = 0; i<versionCombo.getItemCount(); i++){
+						if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+							versionCombo.setSelectedIndex(i);
+							break;
+						}
 					}
 				}
+				log.info(GettextResource.gettext(config.getI18nResourceBundle(),"AlternateMix section loaded."));                     
 			}
-			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"AlternateMix section loaded."));                     
+			catch (Exception ex){
+				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
+			}
 		}
-		catch (Exception ex){
-			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
-		}
-
 	}
 
 
