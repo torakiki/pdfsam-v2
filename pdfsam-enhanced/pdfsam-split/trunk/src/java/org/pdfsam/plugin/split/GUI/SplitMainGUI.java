@@ -41,7 +41,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
-import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxActionListener;
+import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
@@ -259,7 +259,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         
         destinationPanel.add(outputCompressedCheck); 
 		
-        outputCompressedCheck.addActionListener(new CompressCheckBoxActionListener(versionCombo));
+        outputCompressedCheck.addItemListener(new CompressCheckBoxItemListener(versionCombo));
+        outputCompressedCheck.setSelected(true);
         
         destinationPanel.add(versionCombo);
         
