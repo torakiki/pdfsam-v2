@@ -43,6 +43,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
@@ -197,7 +198,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         overwriteCheckbox.setSelected(true);
         destinationPanel.add(overwriteCheckbox);
         
-        outputCompressedCheck.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Compress output file"));
+        outputCompressedCheck.addItemListener(new CompressCheckBoxItemListener(versionCombo));
         outputCompressedCheck.setSelected(true);
         destinationPanel.add(outputCompressedCheck);
         
