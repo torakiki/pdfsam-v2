@@ -1,6 +1,16 @@
 /*
- * Created on 04-Jul-2006
+ * Created on 14-Nov-2007
+ * Copyright (C) 2006 by Andrea Vacondio.
  *
+ * This program is free software; you can redistribute it and/or modify it under the terms of the 
+ * GNU General Public License as published by the Free Software Foundation; 
+ * either version 2 of the License.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with this program; 
+ * if not, write to the Free Software Foundation, Inc., 
+ *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 package org.pdfsam.guiclient.commons.business.listeners;
 
@@ -10,7 +20,7 @@ import java.awt.event.ActionListener;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.business.PdfLoader;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
-import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.panels.JStatusPanel;
@@ -54,7 +64,7 @@ public class PdfSelectionTableActionListener implements ActionListener{
         if (e != null && mainTable != null){        	
     		try{
     			if(CLEAR.equals(e.getActionCommand())){
-    				 ((PdfSelectionTableModel) mainTable.getModel()).clearData();
+    				 ((SimplePdfSelectionTableModel) mainTable.getModel()).clearData();
     			}else if (ADD.equals(e.getActionCommand())){
     				loader.showFileChooserAndAddFiles();
     			}else if (ADDSINGLE.equals(e.getActionCommand())){
@@ -63,17 +73,17 @@ public class PdfSelectionTableActionListener implements ActionListener{
     				int[] selectedRows = mainTable.getSelectedRows();
     				if (selectedRows.length > 0){
     					if(MOVE_UP.equals(e.getActionCommand())){
-    						((PdfSelectionTableModel) mainTable.getModel()).moveUpRows(selectedRows);
+    						((SimplePdfSelectionTableModel) mainTable.getModel()).moveUpRows(selectedRows);
     						if (selectedRows[0] > 0){
     							mainTable.setRowSelectionInterval(selectedRows[0]-1, selectedRows[selectedRows.length-1]-1);
 	                        }
     					}else if(MOVE_DOWN.equals(e.getActionCommand())){
-    						((PdfSelectionTableModel) mainTable.getModel()).moveDownRows(selectedRows);
-    						if (selectedRows[selectedRows.length-1] < (((PdfSelectionTableModel) mainTable.getModel()).getRowCount()-1)){
+    						((SimplePdfSelectionTableModel) mainTable.getModel()).moveDownRows(selectedRows);
+    						if (selectedRows[selectedRows.length-1] < (((SimplePdfSelectionTableModel) mainTable.getModel()).getRowCount()-1)){
     							 mainTable.setRowSelectionInterval(selectedRows[0]+1, selectedRows[selectedRows.length-1]+1);   
 	                        }
     					}else if(REMOVE.equals(e.getActionCommand())){
-    						((PdfSelectionTableModel) mainTable.getModel()).deleteRows(selectedRows);
+    						((SimplePdfSelectionTableModel) mainTable.getModel()).deleteRows(selectedRows);
     					}
     				}
     			}

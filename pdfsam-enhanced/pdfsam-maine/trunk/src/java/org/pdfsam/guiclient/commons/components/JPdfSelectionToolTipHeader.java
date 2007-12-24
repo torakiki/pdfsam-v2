@@ -54,5 +54,8 @@ public class JPdfSelectionToolTipHeader extends JTableHeader {
      */
     public void setToolTips(String[] toolTips) {
       this.toolTips = toolTips;
+      
     }
+    
+    
 }

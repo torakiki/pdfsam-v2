@@ -16,8 +16,6 @@ package org.pdfsam.guiclient.commons.models;
 
 import java.util.Vector;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
@@ -30,35 +28,20 @@ import org.pdfsam.i18n.GettextResource;
  * @author  Andrea Vacondio
  * @see     javax.swing.table.AbstractTableModel
  */
-public class PdfSelectionTableModel extends AbstractTableModel {
+public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel {
 
 	private static final long serialVersionUID = 1655126010246744193L;
 
-	//colums order
-    public final static int FILENAME = 0;
-    public final static int PATH = 1;
-    public final static int PAGES = 2;
-    public final static int PASSWORD = 3;
-    public final static int PAGESELECTION = 4;
-    
-    public final static int MAX_COLUMNS_NUMBER = 5;
-    public final static int DEFAULT_SHOWED_COLUMNS_NUMBER = 4;
-    
-    //colums names
-    private String[] columnNames;
-    
-    //tooltips
-    private String[] toolTips ;
+
     //data array
-    private Vector data = new Vector();
-    private int showedColumns = DEFAULT_SHOWED_COLUMNS_NUMBER;
-    private int maxRowsNumber = JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER;
-    private Configuration config;
+    protected Vector data = new Vector();
+
+    protected Configuration config;
     
 	/**
 	 * default constructor with 4 showed columns
 	 */
-	public PdfSelectionTableModel() {
+	public SimplePdfSelectionTableModel() {
 		this(DEFAULT_SHOWED_COLUMNS_NUMBER, JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER);
 	}
 
@@ -66,7 +49,7 @@ public class PdfSelectionTableModel extends AbstractTableModel {
 	 * @param showedColumns
 	 * @param maxRowsNumber
 	 */
-	public PdfSelectionTableModel(int showedColumns, int maxRowsNumber) {
+	public SimplePdfSelectionTableModel(int showedColumns, int maxRowsNumber) {
 		config = Configuration.getInstance();
 		String[] i18nColumnNames = {
 				GettextResource.gettext(config.getI18nResourceBundle(),"File name"),
@@ -74,7 +57,7 @@ public class PdfSelectionTableModel extends AbstractTableModel {
                 GettextResource.gettext(config.getI18nResourceBundle(),"Pages"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Password"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Page Selection")};
-		columnNames = i18nColumnNames;
+		setColumnNames(i18nColumnNames);
 		
 		String[] i18nToolTips ={
 			"",
@@ -82,19 +65,13 @@ public class PdfSelectionTableModel extends AbstractTableModel {
             GettextResource.gettext(config.getI18nResourceBundle(),"Total pages of the document"),
             GettextResource.gettext(config.getI18nResourceBundle(),"Password to open the document (if needed)"),
             GettextResource.gettext(config.getI18nResourceBundle(),"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-7,12-)")};
-		toolTips = i18nToolTips;
+		setToolTips(i18nToolTips);
 		
 		setShowedColumns(showedColumns);
 		setMaxRowsNumber(maxRowsNumber);
 	}
 
 
-	/**
-     * @return Number of showed columns
-     */
-    public int getColumnCount() {
-        return showedColumns;
-    }
 
     /**
      * @return Rows number
@@ -104,51 +81,13 @@ public class PdfSelectionTableModel extends AbstractTableModel {
     }
 
     
-    /**
-	 * @return the showedColumns
-	 */
-	public int getShowedColumns() {
-		return showedColumns;
-	}
-
-	/**
-	 * @param showedColumns the showedColumns to set (must be positive)
-	 */
-	public void setShowedColumns(int showedColumns) {
-		if(showedColumns < 1){
-			this.showedColumns = 1;
-		}else if (showedColumns > MAX_COLUMNS_NUMBER){
-			this.showedColumns = MAX_COLUMNS_NUMBER;
-		}else{
-			this.showedColumns = showedColumns;
-		}
-	}
-
-	
-	/**
-	 * @return the maxRowsNumber
-	 */
-	public int getMaxRowsNumber() {
-		return maxRowsNumber;
-	}
-
-	/**
-	 * @param maxRowsNumber the maxRowsNumber to set (must be positive)
-	 */
-	public void setMaxRowsNumber(int maxRowsNumber) {
-		if(maxRowsNumber < 1){
-			this.maxRowsNumber = 1;
-		}else{
-			this.maxRowsNumber = maxRowsNumber;
-		}
-	}
 
 	/**
      * Return the value at row, col
      */
     public Object getValueAt(int row, int col) {
     	String retVal = "";
-    	if(row < data.size() && col < showedColumns){
+    	if(row < data.size() && col < getShowedColumns()){
     		PdfSelectionTableItem tmpElement = (PdfSelectionTableItem)(data.get(row));
     		switch(col){
     			case FILENAME:
@@ -188,7 +127,7 @@ public class PdfSelectionTableModel extends AbstractTableModel {
      */
     public void setData(PdfSelectionTableItem[] inputData){
         data.clear();
-        for(int i=0; (i<inputData.length && data.size()<maxRowsNumber); i++){
+        for(int i=0; (i<inputData.length && data.size()<getMaxRowsNumber()); i++){
             data.add(inputData[i]);
         }
         this.fireTableDataChanged();
@@ -202,17 +141,8 @@ public class PdfSelectionTableModel extends AbstractTableModel {
         this.fireTableDataChanged();
     }
 
-    /**
-     * Return true if the cell is editable
-     */
-    public boolean isCellEditable(int row, int column) {
-        return ((PAGESELECTION==column)||(PASSWORD==column));
-    }
     
     /**
-     *  This empty implementation is provided so users don't have to implement
-     *  this method if their data model is not editable.
-     *
      *  @param  value   value to assign to cell
      *  @param  row   row of cell
      *  @param  column  column of cell
@@ -233,18 +163,53 @@ public class PdfSelectionTableModel extends AbstractTableModel {
      * @param inputData <code>PdfSelectionTableItem</code> to add to the data source
      */
     public void addRow(PdfSelectionTableItem inputData){
-            if (inputData != null && data.size()<maxRowsNumber){
+            if (inputData != null && data.size()<getMaxRowsNumber()){
                 data.add(inputData);
                 this.fireTableRowsInserted(data.size(),data.size());
             }
     }
-    
+ 
     /**
+     * <p>Remove a row from the table data source and fire to Listeners
+     * 
+     * @param row row number to remove from the data source
+     * @throws Exception if an exception occurs
+     * */
+    public void deleteRow(int row) throws IndexOutOfBoundsException{
+         data.remove(row);
+         fireTableRowsDeleted(row,row);
+    }
+    /**
+     * <p>Remove a set of rows from the table data source and fire to Listeners
+     * 
+     * @param rows rows number to remove from the data source
+     * @throws Exception if an exception occurs
+     * */   
+    public void deleteRows(int[] rows) throws IndexOutOfBoundsException{
+        if (rows.length > 0 && rows.length <= data.size()){
+        	data.subList(rows[0], rows[rows.length-1]+1).clear();           
+            this.fireTableRowsDeleted(rows[0], rows[rows.length -1]);
+        }
+    }  
+    
+ 
+    /**
+     * @return rows of the model
+     */
+    public PdfSelectionTableItem[] getRows(){
+    	PdfSelectionTableItem[] retVal = null;
+    	if (data != null){
+    		retVal = (PdfSelectionTableItem[]) data.toArray(new PdfSelectionTableItem[data.size()]);
+    	}
+    	return retVal;
+    }
+
+	/**
      * Add a row to the table data source if maxRowsNumber is not reached and fire to Listeners
      * @param inputData <code>PdfSelectionTableItem</code> to add to the data source
      */
     public void addRowAt(int index, PdfSelectionTableItem inputData){
-            if (inputData != null && data.size()<maxRowsNumber && index>=0 && index<=data.size()){
+            if (inputData != null && data.size()<getMaxRowsNumber() && index>=0 && index<=data.size()){
                 data.add(index, inputData);
                 this.fireTableRowsInserted(index,index);
             }
@@ -316,62 +281,17 @@ public class PdfSelectionTableModel extends AbstractTableModel {
         }
     }
     
-    /**
-     * <p>Remove a row from the table data source and fire to Listeners
-     * 
-     * @param row row number to remove from the data source
-     * @throws Exception if an exception occurs
-     * */
-    public void deleteRow(int row) throws IndexOutOfBoundsException{
-         data.remove(row);
-         fireTableRowsDeleted(row,row);
-    }
-    /**
-     * <p>Remove a set of rows from the table data source and fire to Listeners
-     * 
-     * @param rows rows number to remove from the data source
-     * @throws Exception if an exception occurs
-     * */   
-    public void deleteRows(int[] rows) throws IndexOutOfBoundsException{
-        if (rows.length > 0 && rows.length <= data.size()){
-        	data.subList(rows[0], rows[rows.length-1]+1).clear();           
-            this.fireTableRowsDeleted(rows[0], rows[rows.length -1]);
-        }
-    }  
+    //sorting features not implemeneted
     
-    /**
-     * <p> Return column name
-     * 
-     * @param col Column number
-     * @return Column name
-     */
-    public String getColumnName(int col) {
-    	return (col < columnNames.length)? columnNames[col]: "";
-        
+    public void sort(){
+    	
+    }
+    
+    public SortingState getSortingState(){
+    	return null;
     }
 
-    /**
-     * @return Returns the toolTips.
-     */
-    public String[] getToolTips() {
-        return toolTips;
-    }
-
-    /**
-     * @param columnNames The columnNames to set.
-     */
-    public void setColumnNames(String[] columnNames) {
-        this.columnNames = columnNames;
-    }  
-    
-    /**
-     * @return rows of the model
-     */
-    public PdfSelectionTableItem[] getRows(){
-    	PdfSelectionTableItem[] retVal = null;
-    	if (data != null){
-    		retVal = (PdfSelectionTableItem[]) data.toArray(new PdfSelectionTableItem[data.size()]);
-    	}
-    	return retVal;
-    }
+	public void setSortingState(SortingState sortingState) {
+		
+	}
 }

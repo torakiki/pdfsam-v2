@@ -50,12 +50,16 @@ import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.PdfFileDropper;
 import org.pdfsam.guiclient.commons.business.PdfLoader;
+import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionMouseHeaderAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionTableActionListener;
+import org.pdfsam.guiclient.commons.components.ArrowHeaderRenderer;
 import org.pdfsam.guiclient.commons.components.FilenameCellRenderer;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionToolTipHeader;
 import org.pdfsam.guiclient.commons.components.PasswordCellRenderer;
-import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.SortablePdfSelectionTableModel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.i18n.GettextResource;
@@ -81,7 +85,7 @@ public class JPdfSelectionPanel extends JPanel {
 	private String defaultOutputPath = "";
 	
 	private final JPdfSelectionTable mainTable = new JPdfSelectionTable();
-	private PdfSelectionTableModel tableModel;
+	private AbstractPdfSelectionTableModel tableModel;
 	private final JList workInProgressList = new JList();
 	private JScrollPane tableScrollPane;
 	private JScrollPane wipListScrollPane;
@@ -111,7 +115,7 @@ public class JPdfSelectionPanel extends JPanel {
 	 * default constructor shows every button and permits an unlimited number of selected input documents
 	 */
 	public JPdfSelectionPanel(){
-		this(UNLIMTED_SELECTABLE_FILE_NUMBER, PdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER, true);
+		this(UNLIMTED_SELECTABLE_FILE_NUMBER, SimplePdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER, true);
 	}
 	
 	/**
@@ -156,7 +160,12 @@ public class JPdfSelectionPanel extends JPanel {
 	private void init(){
 		//TODO SORTER
 		setLayout(new GridBagLayout());
-		tableModel = new PdfSelectionTableModel(showedColums, maxSelectableFiles);
+				
+		if(maxSelectableFiles>1){
+			tableModel = new SortablePdfSelectionTableModel(showedColums, maxSelectableFiles);
+		}else{
+			tableModel = new SimplePdfSelectionTableModel(showedColums, maxSelectableFiles);
+		}
 		mainTable.setModel(tableModel);
 		mainTable.setDragEnabled(true);
 		mainTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -168,18 +177,22 @@ public class JPdfSelectionPanel extends JPanel {
 		mainTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		mainTable.setGridColor(Color.LIGHT_GRAY);
 		mainTable.setIntercellSpacing(new Dimension(3, 3));
-		mainTable.getTableHeader().setReorderingAllowed(false);		
 		
 		TableColumnModel mainTableColModel = mainTable.getColumnModel();
-	    mainTableColModel.getColumn(PdfSelectionTableModel.FILENAME).setCellRenderer(new FilenameCellRenderer());
-	    mainTableColModel.getColumn(PdfSelectionTableModel.PASSWORD).setCellEditor(new DefaultCellEditor(new JPasswordField()));
-	    mainTableColModel.getColumn(PdfSelectionTableModel.PASSWORD).setCellRenderer(new PasswordCellRenderer());
+	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.FILENAME).setCellRenderer(new FilenameCellRenderer());
+	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.PASSWORD).setCellEditor(new DefaultCellEditor(new JPasswordField()));
+	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.PASSWORD).setCellRenderer(new PasswordCellRenderer());
 	    
 	    //header tooltip
-	    JPdfSelectionToolTipHeader tooTipHeader = new JPdfSelectionToolTipHeader(mainTableColModel);
-	    tooTipHeader.setToolTips(tableModel.getToolTips());
-	    mainTable.setTableHeader(tooTipHeader); 
-		
+	    JPdfSelectionToolTipHeader toolTipHeader = new JPdfSelectionToolTipHeader(mainTableColModel);
+	    toolTipHeader.setReorderingAllowed(false);
+	    toolTipHeader.setToolTips(tableModel.getToolTips());
+	    mainTable.setTableHeader(toolTipHeader); 
+	    if(maxSelectableFiles>1){
+		    toolTipHeader.setDefaultRenderer(new ArrowHeaderRenderer(tableModel, toolTipHeader.getDefaultRenderer()));
+	    	toolTipHeader.addMouseListener(new PdfSelectionMouseHeaderAdapter(tableModel));
+		}
+	    
 	    tableScrollPane = new JScrollPane(mainTable);
 	    tableScrollPane.setPreferredSize(new Dimension(600,350));
 	    tableScrollPane.setMinimumSize(new Dimension(200,50));
@@ -295,7 +308,7 @@ public class JPdfSelectionPanel extends JPanel {
 	                if (mainTable.getSelectedRow() != -1){
 	                    try{
 	                    	String previousValue = defaultOutputPath;
-	                    	defaultOutputPath = ((PdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
+	                    	defaultOutputPath = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
 	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, previousValue, defaultOutputPath);
 	                    }
 	                    catch (Exception ex){
@@ -446,7 +459,7 @@ public class JPdfSelectionPanel extends JPanel {
      * @param item
      */
     public synchronized void addTableRow(PdfSelectionTableItem item){
-    	((PdfSelectionTableModel)mainTable.getModel()).addRow(item);
+    	((AbstractPdfSelectionTableModel)mainTable.getModel()).addRow(item);
         log.info(GettextResource.gettext(config.getI18nResourceBundle(),"File selected: ")+item.getInputFile().getName());
     }
 
@@ -466,7 +479,7 @@ public class JPdfSelectionPanel extends JPanel {
      * @return rows of the model
      */
     public PdfSelectionTableItem[] getTableRows(){
-    	return ((PdfSelectionTableModel)mainTable.getModel()).getRows();
+    	return ((AbstractPdfSelectionTableModel)mainTable.getModel()).getRows();
     }
     
     /**

@@ -23,7 +23,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
 
-import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 /**
  * Renderer for the filename cell, shows a lock if the file is encrypted
  * @author Andrea Vacondio
@@ -51,8 +51,8 @@ public class FilenameCellRenderer extends JLabel implements TableCellRenderer{
 		}else{
 			setText("");
 		}		
-		if (column == PdfSelectionTableModel.FILENAME){
-			if(((PdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
+		if (column == SimplePdfSelectionTableModel.FILENAME){
+			if(((SimplePdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
 			   setIcon(new ImageIcon(this.getClass().getResource("/images/encrypted.png")));
 		   	}
 		}
