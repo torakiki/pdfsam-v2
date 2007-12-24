@@ -46,7 +46,7 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
-import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
@@ -82,7 +82,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     private JCheckBox mergeTypeCheck = new JCheckBox();
     private final JLabel optionLabel = new JLabel();
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
-	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, PdfSelectionTableModel.MAX_COLUMNS_NUMBER);
+	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.MAX_COLUMNS_NUMBER);
 
 
 	//button
