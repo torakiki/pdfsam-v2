@@ -44,7 +44,7 @@ import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
-import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
@@ -84,7 +84,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private String  splitType = "";
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
     private Configuration config;
-	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.SINGLE_SELECTABLE_FILE, PdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
+	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.SINGLE_SELECTABLE_FILE, SimplePdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
 	private JSplitSizeCombo splitSizeCombo = new JSplitSizeCombo();
     
 //file_chooser    
