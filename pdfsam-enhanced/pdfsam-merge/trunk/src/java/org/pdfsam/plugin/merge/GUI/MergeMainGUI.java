@@ -43,6 +43,8 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.commons.business.WorkExecutor;
+import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -96,16 +98,14 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //keylisteners
     private final EnterDoClickListener runEnterKeyListener = new EnterDoClickListener(runButton);
     private final EnterDoClickListener browseEnterKeyListener = new EnterDoClickListener(browseDestButton);
-    
-    private final ThreadGroup runThreads = new ThreadGroup("run threads");
-
+   
 //focus policy 
     private final MergeFocusPolicy mergeFocusPolicy = new MergeFocusPolicy();
     private final JLabel destinationLabel = new JLabel();
 	private final JLabel outputVersionLabel = new JLabel();	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.0";
+    private static final String PLUGIN_VERSION = "0.6.1";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -221,7 +221,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //RUN_BUTTON
 	    runButton.addActionListener(new ActionListener() {            
             public void actionPerformed(ActionEvent e) {
-            	if (runThreads.activeCount() > 0 || selectionPanel.isAdding()){
+            	if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
                     log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
                     return;
                 }                             
@@ -282,23 +282,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 					args.add (AbstractParsedCommand.COMMAND_CONCAT);
                 
 	                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		            //run concat in its own thread              
-		            final Thread runThread = new Thread(runThreads, "run") {
-		                 public void run() {
-		                	 try{
-								AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
-								if(cmd != null){
-									config.getConsoleServicesFacade().execute(cmd);							
-								}else{
-									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
-								}
-								log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
-							}catch(Exception ex){    
-								log.error("Command Line: "+args.toString(), ex);
-							}                            
-		                 }
-		            };
-		            runThread.start();               
+	                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));               
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }    
