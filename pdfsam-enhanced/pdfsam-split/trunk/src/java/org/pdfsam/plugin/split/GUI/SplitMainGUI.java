@@ -41,6 +41,8 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
+import org.pdfsam.guiclient.commons.business.WorkExecutor;
+import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -129,8 +131,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private final JLabel outPrefixLabel = new JLabel();
 	private final JLabel outputVersionLabel = new JLabel();	
   
-    private final ThreadGroup runThreads = new ThreadGroup("run threads");
-   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_VERSION = "0.4.1";
     
@@ -329,7 +329,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         //listener
         runButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (runThreads.activeCount() > 0 || selectionPanel.isAdding()){
+                if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
                     log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
                     return;
                 }
@@ -389,23 +389,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     args.add(AbstractParsedCommand.COMMAND_SPLIT); 
                     
 		        	final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		            //run split in its own thread              
-		            final Thread runThread = new Thread(runThreads, "run") {
-		                 public void run() {
-		                	 try{
-								AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
-								if(cmd != null){
-									config.getConsoleServicesFacade().execute(cmd);							
-								}else{
-									log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
-								}
-								log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
-							}catch(Exception ex){    
-								log.error("Command Line: "+args.toString(), ex);
-							}                            
-		                 }
-		            };
-		            runThread.start();   
+		        	WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }      
