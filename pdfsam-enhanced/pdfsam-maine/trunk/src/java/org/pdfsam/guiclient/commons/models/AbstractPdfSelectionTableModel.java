@@ -78,6 +78,9 @@ public abstract class AbstractPdfSelectionTableModel extends AbstractTableModel 
 		return showedColumns;
 	}
 
+	public Class getColumnClass(int columnIndex) {
+		return String.class;
+	}
 	/**
 	 * @param showedColumns the showedColumns to set (must be positive)
 	 */

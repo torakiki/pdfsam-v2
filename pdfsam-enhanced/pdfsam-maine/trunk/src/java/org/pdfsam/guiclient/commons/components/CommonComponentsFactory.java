@@ -35,6 +35,7 @@ public class CommonComponentsFactory {
 
 	public static final int OVERWRITE_CHECKBOX_TYPE = 1;
 	public static final int COMPRESS_CHECKBOX_TYPE = 2;
+	public static final int DONT_PRESERVER_ORDER_CHECKBOX_TYPE = 3;
 	
 	private static CommonComponentsFactory instance = null;
 	private Configuration config;
@@ -102,6 +103,10 @@ public class CommonComponentsFactory {
 			retVal.setSelected(true);
 			break;
 		
+		case DONT_PRESERVER_ORDER_CHECKBOX_TYPE:
+			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Don't preserve file order (fast load)"));
+			break;
+
 		default:
 			break;
 		}

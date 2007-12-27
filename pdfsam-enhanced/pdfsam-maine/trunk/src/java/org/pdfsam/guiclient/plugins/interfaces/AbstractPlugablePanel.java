@@ -31,7 +31,7 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
     private Configuration config;
     
     public AbstractPlugablePanel(){
-    	config = Configuration.getInstance();          
+    	config = Configuration.getInstance(); 
 		init();
 	}
     
@@ -69,4 +69,6 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
     	setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		setFocusable(false);    	
     }
+    
+
 }

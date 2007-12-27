@@ -1,5 +1,5 @@
 /*
- * Created on 18-Nov-2007
+ * Created on 27-Dec-2007
  * Copyright (C) 2006 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -12,8 +12,9 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.components;
+package org.pdfsam.guiclient.commons.renderers;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.ImageIcon;
@@ -25,44 +26,55 @@ import javax.swing.table.TableCellRenderer;
 
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 /**
- * Renderer for the filename cell, shows a lock if the file is encrypted
+ * Renderer to show red background in rows loaded with errors
  * @author Andrea Vacondio
  *
  */
-public class FilenameCellRenderer extends JLabel implements TableCellRenderer{
+public class JPdfSelectionTableRenderer extends JLabel implements TableCellRenderer{
 
-	private static final long serialVersionUID = -1276471348276524210L;
+	private static final long serialVersionUID = -4780112050203181493L;
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-	        boolean isSelected, boolean hasFocus, int row, int column) {
+	public Component getTableCellRendererComponent( JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
 		setOpaque(true);
 		setIcon(null);
 		setFont(table.getFont());
+		boolean loadedWithErrors = ((SimplePdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
 		if(isSelected){
           setForeground(table.getSelectionForeground());
           setBackground(table.getSelectionBackground());
         }
         else{
           setForeground(table.getForeground());
-          setBackground(table.getBackground());
+          if(loadedWithErrors){
+        	  setBackground(new Color(222,189,189));
+          }else{
+        	  setBackground(table.getBackground());
+          }
         }
-		if(value != null){
-			setText(value.toString()); 
+		//value
+		if (column == SimplePdfSelectionTableModel.PASSWORD){
+			setText("**********");
 		}else{
-			setText("");
-		}		
+			if(value != null){
+				setText(value.toString()); 
+			}else{
+				setText("");
+			}		
+		}
+		//encrypt icon
 		if (column == SimplePdfSelectionTableModel.FILENAME){
 			if(((SimplePdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
 			   setIcon(new ImageIcon(this.getClass().getResource("/images/encrypted.png")));
 		   	}
 		}
+		//focus
 		if (hasFocus) {
 		    setBorder( UIManager.getBorder("Table.focusCellHighlightBorder") );
 		} else {
 		    setBorder(new EmptyBorder(1, 1, 1, 1));
 		}        
 
-        return this;
-    }
+        return this;		
+	}
 
 }

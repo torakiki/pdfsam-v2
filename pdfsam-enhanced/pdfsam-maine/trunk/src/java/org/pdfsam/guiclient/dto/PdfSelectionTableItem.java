@@ -26,7 +26,7 @@ import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
  */
 public class PdfSelectionTableItem implements Serializable{
 
-	private static final long serialVersionUID = 2654013156896850862L;
+	private static final long serialVersionUID = -1875282827162621122L;
 
 	private File inputFile;
 	private String pagesNumber;
@@ -34,16 +34,12 @@ public class PdfSelectionTableItem implements Serializable{
 	private boolean encrypted;
 	private String password;
 	private char pdfVersion;
+	private boolean loadedWithErrors = false;
 	/**
-	 * 
+	 * Default values
 	 */
 	public PdfSelectionTableItem() {
-		inputFile = null;
-		pagesNumber = "0";
-		pageSelection = "All";
-		encrypted = false;
-		password = null;
-		this.pdfVersion = 0;
+		this(null, "0", "All", false, null);
 	}
 	
 	/**
@@ -52,18 +48,32 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param pageSelection
 	 * @param encrypted
 	 * @param password
+	 * @param loadedWithErrors
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, String password) {
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, String password, boolean loadedWithErrors) {
 		super();
 		this.inputFile = inputFile;
 		this.pagesNumber = pagesNumber;
 		this.pageSelection = pageSelection;
 		this.encrypted = encrypted;
 		this.password = password;
+		this.loadedWithErrors = loadedWithErrors;
 	}
 
 	/**
+	 * loadedWithErrors is false
+	 * @param inputFile
+	 * @param pagesNumber
+	 * @param pageSelection
+	 * @param encrypted
+	 * @param password
+	 */
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, String password) {
+		this(inputFile, pagesNumber, pageSelection, encrypted, password, false);
+	}
+	/**
 	 * No password given
+	 * loadedWithErrors is false
 	 * @param inputFile
 	 * @param pagesNumber
 	 * @param pageSelection
@@ -158,6 +168,20 @@ public class PdfSelectionTableItem implements Serializable{
 		this.pdfVersion = pdfVersion;
 	}
 
+	/**
+	 * @return the loadedWithErrors
+	 */
+	public boolean isLoadedWithErrors() {
+		return loadedWithErrors;
+	}
+
+	/**
+	 * @param loadedWithErrors the loadedWithErrors to set
+	 */
+	public void setLoadedWithErrors(boolean loadedWithErrors) {
+		this.loadedWithErrors = loadedWithErrors;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -166,6 +190,7 @@ public class PdfSelectionTableItem implements Serializable{
 		int result = 1;
 		result = prime * result + (encrypted ? 1231 : 1237);
 		result = prime * result + ((inputFile == null) ? 0 : inputFile.hashCode());
+		result = prime * result + (loadedWithErrors ? 1231 : 1237);
 		result = prime * result + ((pageSelection == null) ? 0 : pageSelection.hashCode());
 		result = prime * result + ((pagesNumber == null) ? 0 : pagesNumber.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
@@ -191,6 +216,8 @@ public class PdfSelectionTableItem implements Serializable{
 				return false;
 		} else if (!inputFile.equals(other.inputFile))
 			return false;
+		if (loadedWithErrors != other.loadedWithErrors)
+			return false;
 		if (pageSelection == null) {
 			if (other.pageSelection != null)
 				return false;
@@ -211,5 +238,6 @@ public class PdfSelectionTableItem implements Serializable{
 		return true;
 	}
 
+	
 	
 }

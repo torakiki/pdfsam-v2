@@ -52,14 +52,13 @@ import org.pdfsam.guiclient.commons.business.PdfFileDropper;
 import org.pdfsam.guiclient.commons.business.PdfLoader;
 import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionMouseHeaderAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionTableActionListener;
-import org.pdfsam.guiclient.commons.components.ArrowHeaderRenderer;
-import org.pdfsam.guiclient.commons.components.FilenameCellRenderer;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionToolTipHeader;
-import org.pdfsam.guiclient.commons.components.PasswordCellRenderer;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SortablePdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.renderers.ArrowHeaderRenderer;
+import org.pdfsam.guiclient.commons.renderers.JPdfSelectionTableRenderer;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.i18n.GettextResource;
@@ -158,7 +157,6 @@ public class JPdfSelectionPanel extends JPanel {
 	}
 	
 	private void init(){
-		//TODO SORTER
 		setLayout(new GridBagLayout());
 				
 		if(maxSelectableFiles>1){
@@ -177,11 +175,10 @@ public class JPdfSelectionPanel extends JPanel {
 		mainTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		mainTable.setGridColor(Color.LIGHT_GRAY);
 		mainTable.setIntercellSpacing(new Dimension(3, 3));
+		mainTable.setDefaultRenderer(String.class, new JPdfSelectionTableRenderer());
 		
 		TableColumnModel mainTableColModel = mainTable.getColumnModel();
-	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.FILENAME).setCellRenderer(new FilenameCellRenderer());
 	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.PASSWORD).setCellEditor(new DefaultCellEditor(new JPasswordField()));
-	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.PASSWORD).setCellRenderer(new PasswordCellRenderer());
 	    
 	    //header tooltip
 	    JPdfSelectionToolTipHeader toolTipHeader = new JPdfSelectionToolTipHeader(mainTableColModel);

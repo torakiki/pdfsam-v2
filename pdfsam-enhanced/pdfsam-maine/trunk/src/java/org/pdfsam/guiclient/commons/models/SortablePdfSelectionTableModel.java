@@ -150,8 +150,8 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
         	if(sortingState.getCol() == -1){
         		retVal = o1.toString().compareTo(o2.toString());
         	}else{
-        		String first = "";
-        		String second = "";
+        		Object first;
+        		Object second;
         		switch(sortingState.getCol()){
     			case FILENAME:
     				first = (((PdfSelectionTableItem)o1).getInputFile() != null)? ((PdfSelectionTableItem)o1).getInputFile().getName(): "";
@@ -162,8 +162,8 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
     				second = (((PdfSelectionTableItem)o2).getInputFile() != null)? ((PdfSelectionTableItem)o2).getInputFile().getAbsolutePath(): "";
     				break;
     			case PAGES:
-    				first = (((PdfSelectionTableItem)o1).getPagesNumber() != null)? ((PdfSelectionTableItem)o1).getPagesNumber(): "";
-    				second = (((PdfSelectionTableItem)o2).getPagesNumber() != null)? ((PdfSelectionTableItem)o2).getPagesNumber(): "";
+    				first = (((PdfSelectionTableItem)o1).getPagesNumber() != null)? new Integer(((PdfSelectionTableItem)o1).getPagesNumber()): new Integer("0");
+    				second = (((PdfSelectionTableItem)o2).getPagesNumber() != null)? new Integer(((PdfSelectionTableItem)o2).getPagesNumber()): new Integer("0");
     				break;
     			case PASSWORD:
     				first = (((PdfSelectionTableItem)o1).getPassword() != null)? ((PdfSelectionTableItem)o1).getPassword(): "";
@@ -174,14 +174,22 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
     				second = (((PdfSelectionTableItem)o2).getPageSelection() != null)? ((PdfSelectionTableItem)o2).getPageSelection(): "";
     				break;
     			default:
-    				first = o1.toString();
-    				second = o2.toString();
+    				first = o1;
+    				second = o2;
     				break;
         		}
-        		if(sortingState.getSortType() == DESCENDING){
-        			retVal = first.toString().compareTo(second.toString());
+        		if (Comparable.class.isAssignableFrom(first.getClass())) {
+        			if(sortingState.getSortType() == DESCENDING){
+        				retVal = ((Comparable) first).compareTo(second);
+        			}else{
+        				retVal = ((Comparable) second).compareTo(first);
+        			}
         		}else{
-        			retVal = second.toString().compareTo(first.toString());
+	        		if(sortingState.getSortType() == DESCENDING){
+	        			retVal = first.toString().compareTo(second.toString());
+	        		}else{
+	        			retVal = second.toString().compareTo(first.toString());
+	        		}
         		}
             }
         	return retVal;
