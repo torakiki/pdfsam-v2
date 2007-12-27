@@ -41,10 +41,12 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.WorkExecutor;
+import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
-import org.pdfsam.guiclient.commons.models.PdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
@@ -70,7 +72,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	
 	private SpringLayout destinationPanelLayout;
 	private JPanel destinationPanel = new JPanel();
-	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.DOUBLE_SELECTABLE_FILE, PdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
+	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.DOUBLE_SELECTABLE_FILE, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
     private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
@@ -92,8 +94,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 	private final EnterDoClickListener runEnterkeyListener = new EnterDoClickListener(runButton);
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
-
-    private final ThreadGroup runThreads = new ThreadGroup("run threads");
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
 	private static final String PLUGIN_VERSION = "0.1.0e";
@@ -201,7 +201,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 //		RUN_BUTTON
 		runButton.addActionListener(new ActionListener() {            
 			public void actionPerformed(ActionEvent e) {
-				if (runThreads.activeCount() > 0 || selectionPanel.isAdding()){
+				if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
                     log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
                     return;
                 }
@@ -242,24 +242,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
 						
 						args.add (AbstractParsedCommand.COMMAND_MIX);
-		//				cast array
 						final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-						final Thread runThread = new Thread(runThreads, "run") {
-							public void run() {
-								try{
-									AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
-									if(cmd != null){
-										config.getConsoleServicesFacade().execute(cmd);							
-									}else{
-										log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
-									}
-									log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
-								}catch(Exception any_ex){    
-									log.error("Command Line: "+args.toString(), any_ex);
-								}                       
-							}
-						};
-						runThread.start();
+						WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
 					}else{
 						log.warn(GettextResource.gettext(config.getI18nResourceBundle(),"Please select two pdf documents."));
 					}
