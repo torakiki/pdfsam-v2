@@ -90,7 +90,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
 	
 	private final JLabel destinationLabel = new JLabel();
-	private final JLabel outputVersionLabel = new JLabel();	
+	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
 	private final EnterDoClickListener runEnterkeyListener = new EnterDoClickListener(runButton);
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
@@ -183,7 +183,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
         destinationPanel.add(outputCompressedCheck);
         destinationPanel.add(versionCombo);
         
-        outputVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output document pdf version:"));
         destinationPanel.add(outputVersionLabel);
         
 //		END_CHECK_BOX 
