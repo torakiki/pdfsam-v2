@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-encrypt" default="dist" basedir="../">
+    <description>
+        Encrypt plugin for pdfsam 
+    </description>
+  <!-- Component Paths - Override if needed -->
+	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
+	<property name="langpack.jar.name" value="pdfsam-langpack"/>
+	<property name="console.jar.name" value="pdfsam-console-1.1.0e"/>
+	<property name="log4j.jar.name" value="log4j-1.2.15"/>
+	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
+	<property name="jaxen.jar.name" value="jaxen-1.1"/>
+  
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-encrypt.src.dir" location="src/java"/>
+  	<property name="pdfsam-encrypt.etc.dir" location="etc"/>
+  	<property name="build.dir" location="f:/build/pdfsam-encrypt"/>
+  	<property name="pdfsam-encrypt.build.dir" location="${build.dir}/build"/>
+  	<property name="pdfsam-encrypt.dist.dir"  location="${build.dir}/dist"/>
+  	<property name="pdfsam-encrypt.javadoc.dir"  location="${build.dir}/doc"/>
+	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-alpha.jar"/>	
+ 
+  <property name="pdfsam-encrypt.jar.name" value="pdfsam-encrypt"/>
+  <property name="pdfsam-encrypt.jar.version" value="0.2.0"/>	
+  
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${pdfsam-encrypt.build.dir}"/>
+    <mkdir dir="${pdfsam-encrypt.javadoc.dir}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="pdfsam-encrypt " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-encrypt.classpath">
+        <fileset dir="${lib.location}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${console.jar.name}.jar"/>
+          <include name="**/${langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-encrypt.build.dir}"/>
+        <pathelement path="${main.lib}"/>    	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-encrypt.src.dir}" destdir="${pdfsam-encrypt.build.dir}" debug="true">
+    <classpath refid="pdfsam-encrypt.classpath"/>
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${pdfsam-encrypt.dist.dir}"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${pdfsam-encrypt.dist.dir}/${pdfsam-encrypt.jar.name}-${pdfsam-encrypt.jar.version}.jar" basedir="${pdfsam-encrypt.build.dir}">
+    <manifest>
+	<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+	<fileset dir=".">
+	    <include name="images/*.png"/>
+	</fileset>    	  	
+    </jar>
+    
+  </target>
+
+
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${dist} directory trees -->
+    <delete dir="${pdfsam-encrypt.javadoc.dir}"/>
+    <delete dir="${pdfsam-encrypt.dist.dir}"/>
+    <delete dir="${pdfsam-encrypt.build.dir}"/>
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="init">
+    <javadoc
+      packagenames="org.pdfsam.plugin.encrypt.*"
+      sourcepath="${pdfsam-encrypt.src.dir}"
+      destdir="${pdfsam-encrypt.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Encrypt Plugin API"
+      doctitle="pdfsam Encrypt Plugin API" >
+    <classpath refid="pdfsam-encrypt.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-encrypt.dist.dir}/${pdfsam-encrypt.jar.name}-${pdfsam-encrypt.jar.version}-build-src.zip">	
+		<fileset dir=".">
+	    	<include name="src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="doc/**/*.*"/>
+    	</fileset>
+    </zip>
+  </target>
+
+</project>
+
