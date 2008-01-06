@@ -17,6 +17,7 @@ package org.pdfsam.plugin.split.GUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -129,7 +130,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private final JLabel destFolderLabel = new JLabel();
     private final JLabel outputOptionsLabel = new JLabel();
     private final JLabel outPrefixLabel = new JLabel();
-	private final JLabel outputVersionLabel = new JLabel();	
+	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
+	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_VERSION = "0.4.1";
@@ -146,6 +148,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/split.png");
+        setPreferredSize(new Dimension(400,550));
+        
 //        
         splitSpringLayout = new SpringLayout();
         setLayout(splitSpringLayout);
@@ -264,7 +268,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         
         destinationPanel.add(versionCombo);
         
-        outputVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output document pdf version:"));
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
