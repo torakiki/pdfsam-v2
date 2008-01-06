@@ -27,6 +27,7 @@ import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 public class CompressCheckBoxItemListener implements ItemListener {
 
 	private JPdfVersionCombo versionCombo = null;
+	private static Integer versionFilter = new Integer(""+AbstractParsedCommand.VERSION_1_5);
 	
 	/**
 	 * @param versionCombo version Combo 
@@ -39,9 +40,9 @@ public class CompressCheckBoxItemListener implements ItemListener {
 	public void itemStateChanged(ItemEvent e) {
 		if(versionCombo != null){
 			if(ItemEvent.SELECTED == e.getStateChange()){
-	        	versionCombo.removeLowerVersionItems(Integer.parseInt(""+AbstractParsedCommand.VERSION_1_5));
-	        }else{
-	      	  	versionCombo.enableAll();
+	        	versionCombo.addVersionFilter(versionFilter);
+	        }else if(e.getStateChange() == ItemEvent.DESELECTED){
+	      	  	versionCombo.removeVersionFilter(versionFilter);
 	        }
         }
 	}

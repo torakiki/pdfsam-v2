@@ -53,6 +53,7 @@ public class TreeMediator implements TreeSelectionListener {
 				CardLayout cl = (CardLayout)(plugsPanel.getLayout());
 				cl.show(plugsPanel, selectedPlug.getName());	   
 				container.setFocusTraversalPolicy(panel.getFocusPolicy());
+				container.setMainPanelPreferredSize(panel.getPreferredSize());
 			}
 		}
 	}

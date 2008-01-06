@@ -36,6 +36,8 @@
     <property name="split.dir" value="${workspace.dir}/pdfsam-split"/>
     <property name="merge.dir" value="${workspace.dir}/pdfsam-merge"/>
     <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
+	<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
+	<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
     <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
     
 
@@ -155,9 +157,19 @@
 		
 		<!--mix-->
 	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="dist" inheritAll="false">
-	  		<property name="pdfsam-split.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 		
+		<!--cover-->
+	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-cover.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+		<!--encrypt-->
+	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
 	</target>
 	
 	
@@ -254,6 +266,15 @@
 	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
+	  	<!--cover-->
+	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-cover.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--encrypt-->
+	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
 	</target>	
 
 </project>

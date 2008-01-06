@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.Serializable;
 
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
+import org.pdfsam.guiclient.utils.PdfVersionUtility;
 
 /**
  * Item of the table in {@link JPdfSelectionPanel}
@@ -26,7 +27,7 @@ import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
  */
 public class PdfSelectionTableItem implements Serializable{
 
-	private static final long serialVersionUID = -1875282827162621122L;
+	private static final long serialVersionUID = 2000606807163108571L;
 
 	private File inputFile;
 	private String pagesNumber;
@@ -34,12 +35,13 @@ public class PdfSelectionTableItem implements Serializable{
 	private boolean encrypted;
 	private String password;
 	private char pdfVersion;
+	private String pdfVersionDescription;
 	private boolean loadedWithErrors = false;
 	/**
 	 * Default values
 	 */
 	public PdfSelectionTableItem() {
-		this(null, "0", "All", false, null);
+		this(null, "0", "All", false, ' ');
 	}
 	
 	/**
@@ -50,12 +52,14 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param password
 	 * @param loadedWithErrors
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, String password, boolean loadedWithErrors) {
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password, boolean loadedWithErrors) {
 		super();
 		this.inputFile = inputFile;
 		this.pagesNumber = pagesNumber;
 		this.pageSelection = pageSelection;
 		this.encrypted = encrypted;
+		this.pdfVersion = pdfVersion;
+		this.pdfVersionDescription = PdfVersionUtility.getVersionDescription(pdfVersion);
 		this.password = password;
 		this.loadedWithErrors = loadedWithErrors;
 	}
@@ -68,8 +72,8 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param encrypted
 	 * @param password
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, String password) {
-		this(inputFile, pagesNumber, pageSelection, encrypted, password, false);
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password) {
+		this(inputFile, pagesNumber, pageSelection, encrypted, pdfVersion, password, false);
 	}
 	/**
 	 * No password given
@@ -79,8 +83,8 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param pageSelection
 	 * @param encrypted
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber,String pageSelection, boolean encrypted) {
-		this(inputFile, pagesNumber, pageSelection, encrypted, null);
+	public PdfSelectionTableItem(File inputFile, String pagesNumber,String pageSelection, boolean encrypted, char pdfVersion) {
+		this(inputFile, pagesNumber, pageSelection, encrypted, pdfVersion, null);
 	}
 
 	/**
@@ -166,6 +170,7 @@ public class PdfSelectionTableItem implements Serializable{
 	 */
 	public void setPdfVersion(char pdfVersion) {
 		this.pdfVersion = pdfVersion;
+		this.pdfVersionDescription = PdfVersionUtility.getVersionDescription(pdfVersion);
 	}
 
 	/**
@@ -180,6 +185,13 @@ public class PdfSelectionTableItem implements Serializable{
 	 */
 	public void setLoadedWithErrors(boolean loadedWithErrors) {
 		this.loadedWithErrors = loadedWithErrors;
+	}	
+
+	/**
+	 * @return the pdfVersionDescription
+	 */
+	public String getPdfVersionDescription() {
+		return pdfVersionDescription;
 	}
 
 	/* (non-Javadoc)
@@ -195,6 +207,7 @@ public class PdfSelectionTableItem implements Serializable{
 		result = prime * result + ((pagesNumber == null) ? 0 : pagesNumber.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + pdfVersion;
+		result = prime * result + ((pdfVersionDescription == null) ? 0 : pdfVersionDescription.hashCode());
 		return result;
 	}
 
@@ -235,9 +248,13 @@ public class PdfSelectionTableItem implements Serializable{
 			return false;
 		if (pdfVersion != other.pdfVersion)
 			return false;
+		if (pdfVersionDescription == null) {
+			if (other.pdfVersionDescription != null)
+				return false;
+		} else if (!pdfVersionDescription.equals(other.pdfVersionDescription))
+			return false;
 		return true;
 	}
 
-	
-	
+
 }

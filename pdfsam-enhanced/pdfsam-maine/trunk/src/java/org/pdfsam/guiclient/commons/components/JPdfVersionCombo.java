@@ -15,13 +15,16 @@
 package org.pdfsam.guiclient.commons.components;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JComboBox;
 
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
+import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
+import org.pdfsam.guiclient.utils.PdfVersionUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Combo box for the output pdf version choice
@@ -31,9 +34,11 @@ public class JPdfVersionCombo extends JComboBox {
 
 	private static final long serialVersionUID = -5004011941231451770L;
 	public static final String SAME_AS_SOURCE = "1000";
+	private static final Logger log = Logger.getLogger(JPdfVersionCombo.class.getPackage().getName());
 	
 	private Configuration config;
 	private boolean addSameAsSourceItem = false;
+	private Vector filterVersions = new Vector();
 	/**
 	 * Size of the model when full
 	 */
@@ -56,12 +61,10 @@ public class JPdfVersionCombo extends JComboBox {
 		if(addSameAsSourceItem){
 			addItem(new StringItem(SAME_AS_SOURCE, GettextResource.gettext(config.getI18nResourceBundle(),"Same as input document")));			
 		}
-		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_2), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.2 (Acrobat 3)")));
-		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_3), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.3 (Acrobat 4)")));
-		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_4), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.4 (Acrobat 5)")));
-		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_5), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.5 (Acrobat 6)")));
-		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_6), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.6 (Acrobat 7)")));
-		addItem(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_7), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.7 (Acrobat 8)")));
+		ArrayList values = PdfVersionUtility.getVersionsList();
+		for(Iterator it = values.iterator(); it.hasNext();){
+			addItem((StringItem) it.next());
+		}		
 		setSelectedIndex(getModel().getSize()-3);
 		this.fullSize = this.getModel().getSize();
 		this.setEnabled(true);
@@ -69,13 +72,16 @@ public class JPdfVersionCombo extends JComboBox {
 	
 	/**
 	 * removes items with lower version then <code>version</code>
-	 * @param version
+	 * @param version versionFilter
 	 */
-	public void removeLowerVersionItems(int version){
+	public synchronized void addVersionFilter(Integer version){
 		ArrayList removeList = new ArrayList();
+		log.debug("Adding filter "+version);
+		this.filterVersions.add(version);
+		Integer minFilter = (Integer) Collections.min(filterVersions);
 		for(int i =0; i<this.getItemCount(); i++){
 			StringItem currentItem = (StringItem)getItemAt(i);
-			if(currentItem!=null && version > Integer.parseInt(currentItem.getId())){
+			if(currentItem!=null && minFilter.compareTo(new Integer(currentItem.getId()))>0){
 				removeList.add(getItemAt(i));
 			}
 		}
@@ -92,10 +98,31 @@ public class JPdfVersionCombo extends JComboBox {
 	}
 	
 	/**
+	 * remove the filter
+	 * @param version versionFilter
+	 */
+	public synchronized void removeVersionFilter(Integer version){
+		log.debug("Removing filter "+version);
+		if(this.filterVersions.remove(version)){
+			if(filterVersions.isEmpty()){
+				removeFilters();
+			}else{
+				Integer minFilter = (Integer) Collections.min(filterVersions);
+				if(minFilter.compareTo(version)>0){
+					this.removeAllItems();
+					this.init(addSameAsSourceItem);
+					this.addVersionFilter(minFilter);
+				}
+			}
+		}
+	}
+	
+	/**
 	 * Enables every item
 	 */
-	public void enableAll(){
+	public synchronized void removeFilters(){
 		if(this.getModel().getSize()<fullSize){
+			this.filterVersions.clear();
 			this.removeAllItems();
 			this.init(addSameAsSourceItem);			
 		}

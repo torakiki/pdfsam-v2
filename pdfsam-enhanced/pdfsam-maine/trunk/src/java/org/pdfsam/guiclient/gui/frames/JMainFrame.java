@@ -268,4 +268,11 @@ public class JMainFrame extends JFrame {
 		return mainPanel;
 	}    
     
+	/**
+	 * sets the minimum size of the scroll pane
+	 * @param d
+	 */
+	public void setMainPanelPreferredSize(Dimension d){
+		mainPanel.setPreferredSize(d);
+	}
 }

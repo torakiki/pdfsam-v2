@@ -18,6 +18,7 @@ package org.pdfsam.guiclient.gui.panels;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -110,6 +111,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private void initialize() {     
     	config = Configuration.getInstance();
         setPanelIcon("/images/settings.png");
+        setPreferredSize(new Dimension(400,450));
 
         settingsLayout = new SpringLayout();
         setLayout(settingsLayout);

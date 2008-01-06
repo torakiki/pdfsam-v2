@@ -19,6 +19,7 @@ import java.awt.Insets;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
@@ -36,6 +37,8 @@ public class CommonComponentsFactory {
 	public static final int OVERWRITE_CHECKBOX_TYPE = 1;
 	public static final int COMPRESS_CHECKBOX_TYPE = 2;
 	public static final int DONT_PRESERVER_ORDER_CHECKBOX_TYPE = 3;
+	
+	public static final int PDF_VERSION_LABEL = 1;
 	
 	private static CommonComponentsFactory instance = null;
 	private Configuration config;
@@ -106,6 +109,27 @@ public class CommonComponentsFactory {
 		case DONT_PRESERVER_ORDER_CHECKBOX_TYPE:
 			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Don't preserve file order (fast load)"));
 			break;
+
+		default:
+			break;
+		}
+		
+		return retVal;
+	}
+	
+	/**
+	 * 
+	 * @param labelType
+	 * @return a JLabel instance
+	 */
+	public synchronized JLabel createLabel(int labelType){
+		JLabel retVal = new JLabel();
+		
+		switch(labelType){
+		
+		case PDF_VERSION_LABEL:
+			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output document pdf version:"));
+			break;		
 
 		default:
 			break;

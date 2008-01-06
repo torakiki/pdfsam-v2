@@ -39,7 +39,7 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
     protected Configuration config;
     
 	/**
-	 * default constructor with 4 showed columns
+	 * default constructor with default number of showed columns
 	 */
 	public SimplePdfSelectionTableModel() {
 		this(DEFAULT_SHOWED_COLUMNS_NUMBER, JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER);
@@ -56,6 +56,7 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
                 GettextResource.gettext(config.getI18nResourceBundle(),"Path"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Pages"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Password"),
+                GettextResource.gettext(config.getI18nResourceBundle(),"Version"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Page Selection")};
 		setColumnNames(i18nColumnNames);
 		
@@ -64,6 +65,7 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
             "",
             GettextResource.gettext(config.getI18nResourceBundle(),"Total pages of the document"),
             GettextResource.gettext(config.getI18nResourceBundle(),"Password to open the document (if needed)"),
+            GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version of the document"),
             GettextResource.gettext(config.getI18nResourceBundle(),"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-7,12-)")};
 		setToolTips(i18nToolTips);
 		
@@ -101,6 +103,9 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
     				break;
     			case PASSWORD:
     				retVal = (tmpElement.getPassword() != null)? tmpElement.getPassword(): "";
+    				break;
+    			case PDF_DOCUMENT_VERSION:
+    				retVal = tmpElement.getPdfVersionDescription();
     				break;
     			case PAGESELECTION:
     				retVal = (tmpElement.getPageSelection() != null)? tmpElement.getPageSelection(): "";

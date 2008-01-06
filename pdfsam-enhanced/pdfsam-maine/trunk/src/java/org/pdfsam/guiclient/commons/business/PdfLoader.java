@@ -19,13 +19,10 @@ import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
@@ -59,7 +56,7 @@ public class PdfLoader {
 			workQueue = new WorkQueue(1, 1);
 		}else{
 			workQueue = new WorkQueue(10, 1);			
-			fileChooser.setAccessory(CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.DONT_PRESERVER_ORDER_CHECKBOX_TYPE));
+//			fileChooser.setAccessory(CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.DONT_PRESERVER_ORDER_CHECKBOX_TYPE));
 		}
         
 	}
@@ -125,12 +122,7 @@ public class PdfLoader {
 			if(!(workQueue.getRunning()>0)){
 		        if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
 		            if(fileChooser.isMultiSelectionEnabled()){
-		            	boolean dontPreserverOrder = false;
-		            	JComponent accessory = fileChooser.getAccessory();
-		            	if (accessory != null && accessory instanceof JCheckBox){
-		            		dontPreserverOrder = ((JCheckBox)accessory).isSelected();
-		            	}
-		            	addFiles(fileChooser.getSelectedFiles(), !dontPreserverOrder);
+		            	addFiles(fileChooser.getSelectedFiles(),true);
 		            }else{
 		            	addFile(fileChooser.getSelectedFile());
 		            }
