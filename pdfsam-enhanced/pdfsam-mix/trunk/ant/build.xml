@@ -21,7 +21,7 @@
   	<property name="pdfsam-mix.dist.dir"  location="${build.dir}/dist"/>
   	<property name="pdfsam-mix.img.dir"  location="images"/>	
   	<property name="pdfsam-mix.javadoc.dir"  location="${build.dir}/doc"/>
-	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-alpha.jar"/>	
+	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.4.0e-alpha.jar"/>	
  
   <property name="pdfsam-mix.jar.name" value="pdfsam-mix"/>
   <property name="pdfsam-mix.jar.version" value="0.1.0e"/>	

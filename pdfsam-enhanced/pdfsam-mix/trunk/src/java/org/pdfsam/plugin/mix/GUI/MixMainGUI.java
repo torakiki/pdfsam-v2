@@ -17,6 +17,7 @@ package org.pdfsam.plugin.mix.GUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -112,6 +113,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private void initialize() {
 		config = Configuration.getInstance();
 		setPanelIcon("/images/mix.png");
+        setPreferredSize(new Dimension(400,450));
+		
 		//set focus  policy
 		springLayoutMixPanel = new SpringLayout();
 		setLayout(springLayoutMixPanel);
