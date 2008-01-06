@@ -19,7 +19,7 @@
   	<property name="pdfsam-merge.build.dir" location="${build.dir}/build"/>
   	<property name="pdfsam-merge.dist.dir"  location="${build.dir}/dist"/>
   	<property name="pdfsam-merge.javadoc.dir"  location="${build.dir}/doc"/>
-	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-alpha.jar"/>	
+	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.4.0e-alpha.jar"/>	
  
   <property name="pdfsam-merge.jar.name" value="pdfsam-merge"/>
   <property name="pdfsam-merge.jar.version" value="0.6.0"/>	

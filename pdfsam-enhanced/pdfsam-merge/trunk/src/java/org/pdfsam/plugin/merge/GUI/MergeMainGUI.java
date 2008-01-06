@@ -19,6 +19,7 @@ package org.pdfsam.plugin.merge.GUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +44,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -59,7 +61,6 @@ import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
-import org.pdfsam.plugin.merge.listeners.EnterDoClickListener;
 /**
  * Plugable JPanel provides a GUI for merge functions.
  * @author Andrea Vacondio
@@ -102,7 +103,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //focus policy 
     private final MergeFocusPolicy mergeFocusPolicy = new MergeFocusPolicy();
     private final JLabel destinationLabel = new JLabel();
-	private final JLabel outputVersionLabel = new JLabel();	
+	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private static final String PLUGIN_VERSION = "0.6.1";
@@ -123,6 +124,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/merge.png");
+        setPreferredSize(new Dimension(400,550));
         
         layoutMergePanel = new SpringLayout();
         setLayout(layoutMergePanel);
@@ -204,7 +206,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         
         destinationPanel.add(versionCombo);
         
-        outputVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output document pdf version:"));
         destinationPanel.add(outputVersionLabel);
         
 //END_CHECK_BOX  
