@@ -124,7 +124,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/merge.png");
-        setPreferredSize(new Dimension(400,550));
+        setPreferredSize(new Dimension(500,550));
         
         layoutMergePanel = new SpringLayout();
         setLayout(layoutMergePanel);
@@ -231,7 +231,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 //validation and permission check are demanded 
                 try{
                     //if no extension given
-                    if ((destinationTextField.getText().length() > 0) && (destinationTextField.getText().lastIndexOf('.') == -1)){
+                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)"+PDF_EXTENSION+"$"))){
                         destinationTextField.setText(destinationTextField.getText()+".pdf");
                     }
                     args.add(destinationTextField.getText());
