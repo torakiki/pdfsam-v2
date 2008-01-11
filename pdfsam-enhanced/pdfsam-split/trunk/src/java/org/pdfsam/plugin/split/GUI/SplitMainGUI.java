@@ -42,6 +42,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
+import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -60,7 +61,6 @@ import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.split.components.JSplitRadioButton;
 import org.pdfsam.plugin.split.components.JSplitRadioButtonModel;
 import org.pdfsam.plugin.split.components.JSplitSizeCombo;
-import org.pdfsam.plugin.split.listeners.EnterDoClickListener;
 import org.pdfsam.plugin.split.listeners.RadioListener;
 /**
  * Plugable JPanel provides a GUI for split functions.
@@ -148,7 +148,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/split.png");
-        setPreferredSize(new Dimension(400,550));
+        setPreferredSize(new Dimension(500,550));
         
 //        
         splitSpringLayout = new SpringLayout();
