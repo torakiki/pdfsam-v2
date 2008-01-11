@@ -113,7 +113,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private void initialize() {
 		config = Configuration.getInstance();
 		setPanelIcon("/images/mix.png");
-        setPreferredSize(new Dimension(400,450));
+        setPreferredSize(new Dimension(500,450));
 		
 		//set focus  policy
 		springLayoutMixPanel = new SpringLayout();
@@ -230,7 +230,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 						args.add("-"+MixParsedCommand.O_ARG);
 						//if no extension given
-						if (destinationTextField.getText().lastIndexOf('.') == -1){
+	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)"+PDF_EXTENSION+"$"))){
 							destinationTextField.setText(destinationTextField.getText()+".pdf");
 						}
 						args.add(destinationTextField.getText());
