@@ -20,7 +20,7 @@ import java.awt.Container;
 import javax.swing.JTable;
 import javax.swing.JViewport;
 /**
- * Code snippet found on forum.java.sun by Deudeu.
+ * Code snippet found on forum.java.sun by pam11 .
  * @author Andrea Vacondio
  *
  */
@@ -29,13 +29,14 @@ public class JPdfSelectionTable extends JTable {
 	private static final long serialVersionUID = -6501303401258684529L;
 
     public boolean getScrollableTracksViewportWidth() {
-    	boolean retVal = false;
-        if (autoResizeMode != AUTO_RESIZE_OFF) {
-            Container p = getParent();
-            if (p instanceof JViewport) {
-                    retVal =  !(p.getSize().getWidth()<getPreferredSize().getWidth());
+    	boolean retVal = super.getScrollableTracksViewportWidth();
+        if (autoResizeMode == AUTO_RESIZE_OFF) {
+            Container parent = getParent();
+            if (parent instanceof JViewport) {
+                    retVal =  (parent.getSize().getWidth() > getPreferredSize().getWidth());
             }
         }
         return retVal;
+    
     }
 }

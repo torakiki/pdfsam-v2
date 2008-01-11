@@ -70,7 +70,7 @@ public class ArrowHeaderRenderer extends JLabel implements TableCellRenderer {
 		Icon retVal = null;
 		SortingState sortingState = tableModel.getSortingState();
 		if(sortingState != null && (AbstractPdfSelectionTableModel.NOT_SORTED != sortingState.getSortType()) && (column == sortingState.getCol())){
-			retVal = new Arrow(sortingState.getSortType() == AbstractPdfSelectionTableModel.DESCENDING, size);
+			retVal = new Arrow(sortingState.getSortType() != AbstractPdfSelectionTableModel.DESCENDING, size);
 		}
         return retVal;
     }

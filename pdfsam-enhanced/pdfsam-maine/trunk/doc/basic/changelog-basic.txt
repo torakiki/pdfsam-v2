@@ -2,12 +2,12 @@
 ===================================
 -PdfVersion combo now have support to enable/disable items 
 -Added WorkExecutor singleton to execute commands
--documents are now loaded ordered
+-documents are now loaded ordered (fix Bug #1858707 and #1858705)
 -Added sort feature to the selection table
 -Added selection table renderer to show red background if there is some error loading a document
 -Added document version in selection table
  
-1.0.0 alpha
+1.0.0 alpha (17-Dec-2007)
 ===================================
 -Console: complete refactor
 -Console: added the -pdfversion option to set the output documents pdf version
@@ -29,7 +29,7 @@ page number 3 to the end of the document
 -bcmail 138
 -bcprov 138
 
-0.7 stable release 1
+0.7 stable release 1 (28-Aug-2007)
 ===================================
 -Console: fix Bug #1764362
 -Console: fixed merged pages count
@@ -37,7 +37,7 @@ page number 3 to the end of the document
 -langpack
 -iText 2.0.2 (untill a user password input field will be added)
 
-0.7 beta 2
+0.7 beta 2 (19-Jul-2007)
 ===================================
 -Console: added -compressed option to compress output documents
 -Split, Merge: check to use -compressed option
@@ -47,7 +47,7 @@ page number 3 to the end of the document
 -looks 2.1.4
 -langpack
 
-0.7 beta 1
+0.7 beta 1 (23-Jun-2007)
 ===================================
 -Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
 -Added configuration singleton

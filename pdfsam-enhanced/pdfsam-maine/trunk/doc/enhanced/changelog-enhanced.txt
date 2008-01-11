@@ -2,7 +2,7 @@
 ===================================
 -PdfVersion combo now have support to enable/disable items 
 -Added WorkExecutor singleton to execute commands
--documents are now loaded ordered
+-documents are now loaded ordered (fix Bug #1858707 and #1858705)
 -Added sort feature to the selection table
 -Added selection table renderer to show red background if there is some error loading a document
 -Added document version in selection table

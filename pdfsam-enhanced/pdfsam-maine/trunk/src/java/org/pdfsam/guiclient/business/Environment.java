@@ -112,6 +112,11 @@ public class Environment {
 						AbstractPlugablePanel plugablePanel = (AbstractPlugablePanel) plugsIterator.next();
 						Node node = document.selectSingleNode("/pdfsam_saved_jobs/plugin[@class=\""
 								+ plugablePanel.getClass().getName() + "\"]");
+						if(node == null){
+							//backwards compatibility
+							node = document.selectSingleNode("/pdfsam_saved_jobs/plugin[@class=\""
+									+ plugablePanel.getClass().getName().replaceAll("^it.pdfsam", "org.pdfsam") + "\"]");
+						}
 						if(node != null){
 							plugablePanel.loadJobNode(node);
 						}

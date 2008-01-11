@@ -21,7 +21,6 @@ import java.util.Vector;
 
 import javax.swing.JComboBox;
 
-import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.utils.PdfVersionUtility;
@@ -34,7 +33,6 @@ public class JPdfVersionCombo extends JComboBox {
 
 	private static final long serialVersionUID = -5004011941231451770L;
 	public static final String SAME_AS_SOURCE = "1000";
-	private static final Logger log = Logger.getLogger(JPdfVersionCombo.class.getPackage().getName());
 	
 	private Configuration config;
 	private boolean addSameAsSourceItem = false;
@@ -51,23 +49,40 @@ public class JPdfVersionCombo extends JComboBox {
 	public JPdfVersionCombo(boolean addSameAsSourceItem){
 		config = Configuration.getInstance();
 		init(addSameAsSourceItem);
+		this.fullSize = this.getModel().getSize();
+		this.setEnabled(true);
 	}
 	
 	/**
-	 * Component initialization
+	 * 
+	 * @param addSameAsSourceItem if true init adding the item "Same as source"
+	 * @param checkFilters if true init checking filters vector
 	 */
-	private void init(boolean addSameAsSourceItem){
+	private void init(boolean addSameAsSourceItem, boolean checkFilters){
 		this.addSameAsSourceItem = addSameAsSourceItem;
 		if(addSameAsSourceItem){
 			addItem(new StringItem(SAME_AS_SOURCE, GettextResource.gettext(config.getI18nResourceBundle(),"Same as input document")));			
 		}
 		ArrayList values = PdfVersionUtility.getVersionsList();
+		Integer maxFilter = new Integer(-1);
+		if(checkFilters && !filterVersions.isEmpty()){
+			maxFilter = (Integer) Collections.max(filterVersions);
+		}
 		for(Iterator it = values.iterator(); it.hasNext();){
-			addItem((StringItem) it.next());
+			StringItem currentItem = (StringItem)it.next();
+			if(currentItem!=null && new Integer(currentItem.getId()).compareTo(maxFilter)>=0){
+				addItem(currentItem);
+			}
 		}		
+	}
+	
+	/**
+	 * default initialization with checkFilters false
+	 * @param addSameAsSourceItem
+	 */
+	private void init(boolean addSameAsSourceItem){
+		init(addSameAsSourceItem, false);
 		setSelectedIndex(getModel().getSize()-3);
-		this.fullSize = this.getModel().getSize();
-		this.setEnabled(true);
 	}
 	
 	/**
@@ -76,13 +91,16 @@ public class JPdfVersionCombo extends JComboBox {
 	 */
 	public synchronized void addVersionFilter(Integer version){
 		ArrayList removeList = new ArrayList();
-		log.debug("Adding filter "+version);
 		this.filterVersions.add(version);
-		Integer minFilter = (Integer) Collections.min(filterVersions);
+		Integer maxFilter = (Integer) Collections.max(filterVersions);
+		Object item = this.getSelectedItem();
 		for(int i =0; i<this.getItemCount(); i++){
 			StringItem currentItem = (StringItem)getItemAt(i);
-			if(currentItem!=null && minFilter.compareTo(new Integer(currentItem.getId()))>0){
-				removeList.add(getItemAt(i));
+			if(currentItem!=null && maxFilter.compareTo(new Integer(currentItem.getId()))>0){
+				removeList.add(currentItem);
+				if(currentItem.equals(item)){
+					item = null;
+				}
 			}
 		}
 		if(removeList.size()>0){
@@ -94,6 +112,12 @@ public class JPdfVersionCombo extends JComboBox {
 		//if it's empty i disable
 		if(this.getItemCount() == 0){
 			this.setEnabled(false);
+		}else{
+			if(item == null){
+				setSelectedIndex(0);
+			}else{
+				setSelectedItem(item);
+			}
 		}
 	}
 	
@@ -102,16 +126,18 @@ public class JPdfVersionCombo extends JComboBox {
 	 * @param version versionFilter
 	 */
 	public synchronized void removeVersionFilter(Integer version){
-		log.debug("Removing filter "+version);
 		if(this.filterVersions.remove(version)){
 			if(filterVersions.isEmpty()){
 				removeFilters();
 			}else{
-				Integer minFilter = (Integer) Collections.min(filterVersions);
-				if(minFilter.compareTo(version)>0){
+				Integer maxFilter = (Integer) Collections.max(filterVersions);
+				if(maxFilter.compareTo(version)<0){
+					Object item = this.getSelectedItem();
 					this.removeAllItems();
-					this.init(addSameAsSourceItem);
-					this.addVersionFilter(minFilter);
+					this.init(addSameAsSourceItem, true);
+					if(item != null){
+						setSelectedItem(item);
+					}
 				}
 			}
 		}
@@ -122,9 +148,13 @@ public class JPdfVersionCombo extends JComboBox {
 	 */
 	public synchronized void removeFilters(){
 		if(this.getModel().getSize()<fullSize){
+			Object item = this.getSelectedItem();
 			this.filterVersions.clear();
 			this.removeAllItems();
-			this.init(addSameAsSourceItem);			
+			this.init(addSameAsSourceItem);
+			if(item != null){
+				setSelectedItem(item);
+			}
 		}
 	}
 	

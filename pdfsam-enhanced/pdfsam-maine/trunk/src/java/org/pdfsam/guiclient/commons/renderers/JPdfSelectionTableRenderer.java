@@ -47,6 +47,9 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
           setForeground(table.getForeground());
           if(loadedWithErrors){
         	  setBackground(new Color(222,189,189));
+        	  if (column == SimplePdfSelectionTableModel.FILENAME){
+        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
+        	  }
           }else{
         	  setBackground(table.getBackground());
           }

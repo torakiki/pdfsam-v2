@@ -169,7 +169,7 @@ public class JPdfSelectionPanel extends JPanel {
 		mainTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 		mainTable.setRowHeight(20);
 		mainTable.setRowMargin(5);
-		mainTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		mainTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		mainTable.setSelectionForeground(Color.BLACK);
 		mainTable.setSelectionBackground(new Color(211, 221, 222));
 		mainTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -191,9 +191,7 @@ public class JPdfSelectionPanel extends JPanel {
 		}
 	    
 	    tableScrollPane = new JScrollPane(mainTable);
-	    tableScrollPane.setPreferredSize(new Dimension(600,350));
-	    tableScrollPane.setMinimumSize(new Dimension(200,50));
-	    tableScrollPane.setMaximumSize(new Dimension(1500,800));
+	    tableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		pdfSelectionTableListener = new PdfSelectionTableActionListener(this, loader);
 		
 		//drag and drop
