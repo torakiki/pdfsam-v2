@@ -17,6 +17,7 @@ package org.pdfsam.plugin.encrypt.GUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,6 +59,7 @@ import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.encrypt.listeners.EncryptionTypeComboActionListener;
 /** 
  * Plugable JPanel provides a GUI for encrypt functions.
  * @author Andrea Vacondio
@@ -123,18 +125,18 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_VERSION = "0.2.0e";
 	
-	private final static String RC4_40 = "RC4-40b";
-	private final static String RC4_128 = "RC4-128b";
-	private final static String AES_128 = "AES-128b";
+    public final static String RC4_40 = "RC4-40b";
+	public final static String RC4_128 = "RC4-128b";
+	public final static String AES_128 = "AES-128b";
 	
-	private final static int DPRINT = 0;
-	private final static int PRINT = 1;
-	private final static int COPY = 2;
-	private final static int MODIFY = 3;
-	private final static int FILL = 4;
-	private final static int SCREEN = 5;
-	private final static int ASSEMBLY = 6;
-	private final static int ANNOTATION = 7;
+	public final static int DPRINT = 0;
+	public final static int PRINT = 1;
+	public final static int COPY = 2;
+	public final static int MODIFY = 3;
+	public final static int FILL = 4;
+	public final static int SCREEN = 5;
+	public final static int ASSEMBLY = 6;
+	public final static int ANNOTATION = 7;
     
 /**
  * Constructor
@@ -149,6 +151,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/encrypt.png");
+        setPreferredSize(new Dimension(500,700));        
 //        
         encryptSpringLayout = new SpringLayout();
         setLayout(encryptSpringLayout);
@@ -301,29 +304,8 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 //END_HELP_LABEL_DESTINATION         
         outputOptionsLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output options:"));
         add(outputOptionsLabel);
-        
-        encryptType.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {	 
-        		if(!allowAllCheck.isSelected()){
-        			String encType = (String)encryptType.getSelectedItem();
-        			if(encType.equals(EncryptMainGUI.RC4_40)){
-        		        permissionsCheck[EncryptMainGUI.PRINT].setEnabled(true);
-        		        permissionsCheck[EncryptMainGUI.DPRINT].setEnabled(false);
-        		        permissionsCheck[EncryptMainGUI.COPY].setEnabled(true);
-        		        permissionsCheck[EncryptMainGUI.MODIFY].setEnabled(true);
-        		        permissionsCheck[EncryptMainGUI.ANNOTATION].setEnabled(true);
-        		        permissionsCheck[EncryptMainGUI.FILL].setEnabled(false);
-        		        permissionsCheck[EncryptMainGUI.SCREEN].setEnabled(false);
-        		        permissionsCheck[EncryptMainGUI.ASSEMBLY].setEnabled(false);
-        			}else{
-						for(int i=0; i<permissionsCheck.length; i++){
-							permissionsCheck[i].setEnabled(true);
-						}
-					}
-				}
-        	}
-        });
-        encryptType.setSelectedIndex(1);
+        encryptType.addItemListener(new EncryptionTypeComboActionListener(allowAllCheck, permissionsCheck, versionCombo));    
+        encryptType.setSelectedIndex(0);
 //S_PANEL
         outputOptionsPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         encryptPanelLayout = new SpringLayout();

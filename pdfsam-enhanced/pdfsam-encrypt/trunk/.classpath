@@ -6,6 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-maine"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-langpack.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/j2sdk1.4.2_05"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

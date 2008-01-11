@@ -19,7 +19,7 @@
   	<property name="pdfsam-encrypt.build.dir" location="${build.dir}/build"/>
   	<property name="pdfsam-encrypt.dist.dir"  location="${build.dir}/dist"/>
   	<property name="pdfsam-encrypt.javadoc.dir"  location="${build.dir}/doc"/>
-	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-alpha.jar"/>	
+	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.4.0e-alpha.jar"/>	
  
   <property name="pdfsam-encrypt.jar.name" value="pdfsam-encrypt"/>
   <property name="pdfsam-encrypt.jar.version" value="0.2.0"/>	
