@@ -19,6 +19,7 @@ package org.pdfsam.plugin.coverfooter.GUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +44,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -57,9 +59,7 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
-import org.pdfsam.plugin.coverfooter.listeners.EnterDoClickListener;
 /**
  * Plugable JPanel provides a GUI for merge functions.
  * @author Andrea Vacondio
@@ -105,10 +105,10 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 //focus policy 
     private final CoverFooterFocusPolicy coverFooterFocusPolicy = new CoverFooterFocusPolicy();
     private final JLabel destinationLabel = new JLabel();
-	private final JLabel outputVersionLabel = new JLabel();	
+	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.0";
+    private static final String PLUGIN_VERSION = "0.2.0e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -126,7 +126,8 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/cover_footer.png");
-        
+        setPreferredSize(new Dimension(500,750));
+
         layoutMergePanel = new SpringLayout();
         setLayout(layoutMergePanel);
         add(coverSelectionPanel);
@@ -143,8 +144,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 
 //BROWSE_FILE_CHOOSER        
         browseDestFileChooser = new JFileChooser();
-        browseDestFileChooser.setFileFilter(new PdfFilter());
-        browseDestFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 //END_BROWSE_FILE_CHOOSER        
 
 //      OPTION_PANEL
@@ -180,7 +180,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         destinationTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destinationPanel.add(destinationTextField);
         
-        destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
+        destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
         add(destinationLabel);
 //BROWSE_BUTTON        
         browseDestButton.addActionListener(new ActionListener() {
@@ -205,7 +205,6 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         destinationPanel.add(browseDestButton);
 //END_BROWSE_BUTTON
 //CHECK_BOX
-        overwriteCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Overwrite if already exists"));
         overwriteCheckbox.setSelected(true);
         destinationPanel.add(overwriteCheckbox);
         
@@ -214,8 +213,6 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         destinationPanel.add(outputCompressedCheck);
         
         destinationPanel.add(versionCombo);
-        
-        outputVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output document pdf version:"));
         destinationPanel.add(outputVersionLabel);
         
 //END_CHECK_BOX  
@@ -237,7 +234,8 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
                     return;
                 }                             
                 final LinkedList args = new LinkedList();                
-                final LinkedList args1 = new LinkedList();                
+                final LinkedList args1 = new LinkedList();
+                final LinkedList argsFooter = new LinkedList();
                 //validation and permission check are demanded 
                 try{
                 	if (overwriteCheckbox.isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
@@ -249,15 +247,14 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 					
 					PdfSelectionTableItem[] coveritems = coverSelectionPanel.getTableRows();
 					PdfSelectionTableItem[] footeritems = footerSelectionPanel.getTableRows();
-					String coverSelection = "";
-					String footerSelection = "";
+					String coverSelectionString = "";
 					//manage cover 
 					if((coveritems==null || coveritems.length != 1) && (footeritems==null || footeritems.length != 1)){
 						throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Select at least one cover or one footer"));
 					}else{
 						if((coveritems!=null && coveritems.length == 1)) {
 							PdfSelectionTableItem coveritem = coveritems[0];
-							coverSelection = (coveritem.getPageSelection()!=null && coveritem.getPageSelection().length()>0)?coveritem.getPageSelection():ALL_STRING;
+							String coverSelection = (coveritem.getPageSelection()!=null && coveritem.getPageSelection().length()>0)?coveritem.getPageSelection():ALL_STRING;
 							if(coverSelection.trim().length()>0 && coverSelection.indexOf(",") != 0){
 	                            String[] selectionsArray = coverSelection.split(",");
 	                            for(int j = 0; j<selectionsArray.length; j++){
@@ -270,7 +267,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 		        							f +=":"+coveritem.getPassword();
 		        						}
 		        						args.add(f);
-		        						coverSelection += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
+		        						coverSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
 	                                }                                
 	                            }
 	                        
@@ -282,92 +279,97 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	    							f +=":"+coveritem.getPassword();
 	    						}
 	    						args.add(f);
-	    						coverSelection += (coverSelection.matches("[\\d]+"))? coverSelection+"-"+coverSelection+":" : coverSelection+":";
+	    						coverSelectionString += (coverSelection.matches("[\\d]+"))? coverSelection+"-"+coverSelection+":" : coverSelection+":";
 	                        }	
 						}					
-					}
-					
-					 //selection page 
-                    PdfSelectionTableItem item = null;
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	String pageSelectionString = coverSelection;
-                	for (int i = 0; i < items.length; i++){
-                		try{
-	                		args1.clear();
-	                		args1.addAll(args);
-	                		
-							item = items[i];
-							String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
-							if(pageSelection.trim().length()>0 && pageSelection.indexOf(",") != 0){
-	                            String[] selectionsArray = pageSelection.split(",");
+						String footerSelectionString = "";
+						//manage footer
+						if((footeritems!=null && footeritems.length == 1)) {
+							PdfSelectionTableItem footeritem = footeritems[0];
+							String footerSelection = (footeritem.getPageSelection()!=null && footeritem.getPageSelection().length()>0)?footeritem.getPageSelection():ALL_STRING;
+							if(footerSelection.trim().length()>0 && footerSelection.indexOf(",") != 0){
+	                            String[] selectionsArray = footerSelection.split(",");
 	                            for(int j = 0; j<selectionsArray.length; j++){
 	                                String tmpString = selectionsArray[j].trim();
 	                                if((tmpString != null)&&(!tmpString.equals(""))){
-	                                	args1.add("-"+ConcatParsedCommand.F_ARG);
-		                                String f = item.getInputFile().getAbsolutePath();
-		        						if((item.getPassword()) != null && (item.getPassword()).length()>0){
+	                                	argsFooter.add("-"+ConcatParsedCommand.F_ARG);
+		                                String footerItem = footeritem.getInputFile().getAbsolutePath();
+		        						if((footeritem.getPassword()) != null && (footeritem.getPassword()).length()>0){
 		        							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-		        							f +=":"+item.getPassword();
+		        							footerItem +=":"+footeritem.getPassword();
 		        						}
-		        						args1.add(f);
-		                                pageSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
+		        						argsFooter.add(footerItem);
+		        						footerSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
 	                                }                                
 	                            }
 	                        
 	                        }else{
-	                        	args1.add("-"+ConcatParsedCommand.F_ARG);
-	                            String f = item.getInputFile().getAbsolutePath();
-	    						if((item.getPassword()) != null && (item.getPassword()).length()>0){
+	                        	argsFooter.add("-"+ConcatParsedCommand.F_ARG);
+	                        	String footerItem = footeritem.getInputFile().getAbsolutePath();
+	    						if((footeritem.getPassword()) != null && (footeritem.getPassword()).length()>0){
 	    							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	    							f +=":"+item.getPassword();
+	    							footerItem +=":"+footeritem.getPassword();
 	    						}
-	    						args1.add(f);
-	                            pageSelectionString += (pageSelection.matches("[\\d]+"))? pageSelection+"-"+pageSelection+":" : pageSelection+":";
-	                        }
-							//manage footer
-							if((footeritems!=null && footeritems.length == 1)) {
-								PdfSelectionTableItem footeritem = footeritems[0];
-								footerSelection = (footeritem.getPageSelection()!=null && footeritem.getPageSelection().length()>0)?footeritem.getPageSelection():ALL_STRING;
-								if(footerSelection.trim().length()>0 && footerSelection.indexOf(",") != 0){
-		                            String[] selectionsArray = footerSelection.split(",");
+	    						argsFooter.add(footerItem);
+	    						footerSelectionString += (footerSelection.matches("[\\d]+"))? footerSelection+"-"+footerSelection+":" : footerSelection+":";
+	                        }		
+						}					
+						 //selection page 
+	                    PdfSelectionTableItem item = null;
+	                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
+	                	for (int i = 0; i < items.length; i++){
+		                	String pageSelectionString = coverSelectionString;
+	                		try{
+		                		args1.clear();
+		                		args1.addAll(args);
+		                		
+								item = items[i];
+								String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
+								if(pageSelection.trim().length()>0 && pageSelection.indexOf(",") != 0){
+		                            String[] selectionsArray = pageSelection.split(",");
 		                            for(int j = 0; j<selectionsArray.length; j++){
 		                                String tmpString = selectionsArray[j].trim();
 		                                if((tmpString != null)&&(!tmpString.equals(""))){
-			                                args1.add("-"+ConcatParsedCommand.F_ARG);
-			                                String f = footeritem.getInputFile().getAbsolutePath();
-			        						if((footeritem.getPassword()) != null && (footeritem.getPassword()).length()>0){
+		                                	args1.add("-"+ConcatParsedCommand.F_ARG);
+			                                String f = item.getInputFile().getAbsolutePath();
+			        						if((item.getPassword()) != null && (item.getPassword()).length()>0){
 			        							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-			        							f +=":"+footeritem.getPassword();
+			        							f +=":"+item.getPassword();
 			        						}
 			        						args1.add(f);
-			        						coverSelection += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
+			                                pageSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
 		                                }                                
 		                            }
 		                        
 		                        }else{
 		                        	args1.add("-"+ConcatParsedCommand.F_ARG);
-		                            String f = footeritem.getInputFile().getAbsolutePath();
-		    						if((footeritem.getPassword()) != null && (footeritem.getPassword()).length()>0){
+		                            String f = item.getInputFile().getAbsolutePath();
+		    						if((item.getPassword()) != null && (item.getPassword()).length()>0){
 		    							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-		    							f +=":"+footeritem.getPassword();
+		    							f +=":"+item.getPassword();
 		    						}
 		    						args1.add(f);
-		    						coverSelection += (coverSelection.matches("[\\d]+"))? coverSelection+"-"+coverSelection+":" : coverSelection+":";
-		                        }		
-							}
-							//manage output destination option
-							args1.add("-"+ConcatParsedCommand.O_ARG);
-							if (destinationTextField.getText().length() > 0){
-								args1.add(destinationTextField.getText()+File.separator+item.getInputFile().getName());
-							}
-							
-							args1.add (AbstractParsedCommand.COMMAND_CONCAT);
-							
-			                WorkExecutor.getInstance().execute(new WorkThread((String[])args1.toArray(new String[args1.size()])));
-                		}catch(Exception ex){    
-                        	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-                        } 
-					}
+		                            pageSelectionString += (pageSelection.matches("[\\d]+"))? pageSelection+"-"+pageSelection+":" : pageSelection+":";
+		                        }
+									                         
+	                            args1.addAll(argsFooter);
+	                            args1.add("-"+ConcatParsedCommand.U_ARG);
+	                            args1.add(pageSelectionString+footerSelectionString);
+	                            
+								//manage output destination option
+								args1.add("-"+ConcatParsedCommand.O_ARG);
+								if (destinationTextField.getText().length() > 0){
+									args1.add(destinationTextField.getText()+File.separator+item.getInputFile().getName());
+								}
+								
+								args1.add (AbstractParsedCommand.COMMAND_CONCAT);
+								
+				                WorkExecutor.getInstance().execute(new WorkThread((String[])args1.toArray(new String[args1.size()])));
+	                		}catch(Exception ex){    
+	                        	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+	                        } 
+						}					
+                	}					
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }    
@@ -567,6 +569,8 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
     public void loadJobNode(Node arg0) throws LoadJobException {
     	if(arg0 != null){
 			try{	
+				
+				coverSelectionPanel.getClearButton().doClick();
 				Node coverSource = (Node) arg0.selectSingleNode("cover/@value");
 				if (coverSource != null && coverSource.getText().length()>0){
 					Node coverPageSelection = (Node) arg0.selectSingleNode("cover/@pageselection");
@@ -574,6 +578,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 					coverSelectionPanel.getLoader().addFile(new File(coverSource.getText()), (coverFilePwd!=null)?coverFilePwd.getText():null, (coverPageSelection!=null)?coverPageSelection.getText():null);
 				}
 				
+				footerSelectionPanel.getClearButton().doClick();
 				Node footerSource = (Node) arg0.selectSingleNode("cover/@value");
 				if (footerSource != null && footerSource.getText().length()>0){
 					Node footerPageSelection = (Node) arg0.selectSingleNode("cover/@pageselection");
@@ -624,7 +629,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 						}
 					}
 				}
-                log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Merge section loaded."));  
+                log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Cover And Footer section loaded."));  
             }
 			catch (Exception ex){
 				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                             
