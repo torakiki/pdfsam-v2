@@ -16,4 +16,6 @@
     <language value="pl_PL" description="Polish" />
     <language value="hu_HU" description="Hungarian" />
     <language value="zh_TW" description="Traditional Chinese" />
+    <language value="de_DE" description="German" />
+    <language value="id_ID" description="Indonesian" />
 </languages>

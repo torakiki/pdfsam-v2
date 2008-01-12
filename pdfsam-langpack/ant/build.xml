@@ -1,14 +1,15 @@
 <project name="pdfsam-langpack" default="genproperties" basedir="../">
 	
 			<property name="po" location="po" />
-	        <property name="gettext.dir" value="gettext" />
-	        <property name="pot" value="po/Messages.pot" />
+	        <property name="gettext.dir" value="/usr/bin" />
+	        <property name="pot" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-langpack/po/Messages.pot" />
 	        <property name="basic.langpack.dir" location="/media/LACIE/pdfsam/workspace-basic/pdfsam-main/lib" />
-	        <property name="enhanced.langpack.dir" location="/media/LACIE//pdfsam/workspace-enhanced/new-pdfsam-maine\lib" />
+	        <property name="enhanced.langpack.dir" location="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine\lib" />
 		    <property name="src.dir" location="src/java" />
 		    <property name="resources.dir" location="${src.dir}/org/pdfsam/i18n/resources" />
+		    <property name="filelist.dir" location="resources" />
 			<property name="user.name" value="Andrea Vacondio" />
-			<property name="build.dir" location="g:/build/pdfsam-langpack"/>
+			<property name="build.dir" location="/media/LACIE/build/pdfsam-langpack"/>
 	  		<property name="pdfsam-langpack.build.dir" location="${build.dir}/build"/>
 	  		<property name="pdfsam-langpack.dist.dir"  location="${build.dir}/dist"/>
 	  		<property name="pdfsam-langpack.javadoc.dir"  location="${build.dir}/doc"/>
@@ -46,7 +47,7 @@
  	        <target name="genpot" description="generates pot files">
 				 <!-- new pot -->
 				 <exec executable="${gettext.dir}/xgettext">
-						 <arg line="-ktr -ktrn:1,2 -ktrc -kmarktr -Ljava -o${pot} -ffilelist.txt"/>
+						 <arg line="-ktr -ktrn:1,2 -ktrc -kmarktr -Ljava -o${pot} -f ${filelist.dir}/filelist.txt"/>
 				 </exec>
  	        </target>
 
@@ -66,9 +67,6 @@
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/ru/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/sv/Messages.po ${pot}"/>
@@ -95,6 +93,9 @@
 						 <arg line="-U ${po}/da/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/de/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/hu/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
@@ -102,6 +103,9 @@
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/zh_TW/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/id/Messages.po ${pot}"/>
 				 </exec>
  	        </target>
  	
@@ -157,6 +161,9 @@
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_id_ID.properties ${po}/id/Messages.po"/>
 				 </exec>
 			 </target>
 			
