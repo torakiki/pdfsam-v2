@@ -499,6 +499,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     public void loadJobNode(Node arg0) throws LoadJobException {
     	if(arg0!=null){
 			try{	
+				selectionPanel.getClearButton().doClick();
 				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
 				if (fileSource != null && fileSource.getText().length()>0){
 					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
