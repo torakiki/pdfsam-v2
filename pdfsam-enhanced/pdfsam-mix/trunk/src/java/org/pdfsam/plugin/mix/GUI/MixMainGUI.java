@@ -406,6 +406,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	public void loadJobNode(Node arg0) throws LoadJobException {
 		if(arg0 != null){
 			try{
+				selectionPanel.getClearButton().doClick();
 				Node firstNode = (Node) arg0.selectSingleNode("first/@value");
 				if (firstNode != null && firstNode.getText().length()>0){
 					Node firstPwd = (Node) arg0.selectSingleNode("first/@password");	
