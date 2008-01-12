@@ -1,4 +1,4 @@
-1.4.0e alpha
+1.4.0e beta 1 (12-Jan-2008)
 ===================================
 -PdfVersion combo now have support to enable/disable items 
 -Added WorkExecutor singleton to execute commands
@@ -17,6 +17,8 @@ page number 3 to the end of the document
 -Use of JTextPaneAppender and log4j for the logging panel
 -Chance to use the config file ${user.home}/.pdfsam/config.xml 
 -Created commons classes to help plugins
+-Fixed output env xml document
+-Console: fixed merged pages count
 -Included and modified jcmdline. Added PdfFileParam to manage pdf documents password
 -Split, Merge, Encrypt, AlternateMix, Cover Footer: now uses JPdfSelectionPanel with documents password for encrypted documents
 -Split, Merge, Encrypt, AlternateMix, Cover Footer: chance to set pdf version for output documents
@@ -25,12 +27,7 @@ page number 3 to the end of the document
 -bcmail 138
 -bcprov 138
 
-1.3.0e stable release 2
-===================================
--Fixed output env xml document
--Console: fixed merged pages count
-
-1.3.0e stable release 1
+1.3.0e stable release 1 (9-Aug-2007)
 ===================================
 -Console: fix Bug #1764362
 -Fixed focus policy for every plugin
@@ -40,7 +37,7 @@ page number 3 to the end of the document
 -looks 2.1.4
 -langpack
 
-1.3.0e beta 1
+1.3.0e beta 1 (24-Jun-2007)
 ===================================
 -Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
 -Console: rewritten PdfSplit to keep file annotations
@@ -58,14 +55,14 @@ page number 3 to the end of the document
 -bcmail 135
 -bcprov 135
 
-1.2.0e beta
+1.2.0e beta (29-Mar-2007)
 ===================================
 -Console: fix split page numbers starting from 1 and code cleaning
 -Encrypt: permissions checks enabled/disabled based on the encrypt algorithm chosen
 -Fixed scroll bars for plugins
 -Fixed install script
 
-1.2.0e alpha
+1.2.0e alpha (10-Mar-2007)
 ===================================
 -Console: added xml input file -l option for merge
 -Console: rewrote commands handler

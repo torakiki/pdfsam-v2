@@ -115,7 +115,7 @@ public class Environment {
 						if(node == null){
 							//backwards compatibility
 							node = document.selectSingleNode("/pdfsam_saved_jobs/plugin[@class=\""
-									+ plugablePanel.getClass().getName().replaceAll("^it.pdfsam", "org.pdfsam") + "\"]");
+									+ plugablePanel.getClass().getName().replaceAll("^org.pdfsam", "it.pdfsam") + "\"]");
 						}
 						if(node != null){
 							plugablePanel.loadJobNode(node);

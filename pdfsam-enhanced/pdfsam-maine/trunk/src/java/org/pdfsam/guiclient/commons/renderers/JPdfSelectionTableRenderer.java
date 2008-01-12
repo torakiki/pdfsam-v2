@@ -41,7 +41,14 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		boolean loadedWithErrors = ((SimplePdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
 		if(isSelected){
           setForeground(table.getSelectionForeground());
-          setBackground(table.getSelectionBackground());
+          if(loadedWithErrors){
+        	  setBackground(new Color(222,189,189));
+        	  if (column == SimplePdfSelectionTableModel.FILENAME){
+        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
+        	  }
+          }else{
+        	  setBackground(table.getSelectionBackground());
+          }          
         }
         else{
           setForeground(table.getForeground());
