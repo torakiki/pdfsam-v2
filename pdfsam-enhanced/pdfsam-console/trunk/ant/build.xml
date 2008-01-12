@@ -22,7 +22,7 @@
   <property name="pdfsam-console.javadoc.dir"  location="${build.dir}/doc"/>
  
   <property name="pdfsam-console.jar.name" value="pdfsam-console"/>
-  <property name="pdfsam-console.jar.version" value="1.1.0e"/>	
+  <property name="pdfsam-console.jar.version" value="1.1.1e"/>	
   
   <target name="init">
     <!-- Create the time stamp -->
@@ -48,7 +48,7 @@
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-console.src.dir}" destdir="${pdfsam-console.build.dir}">
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-console.src.dir}" destdir="${pdfsam-console.build.dir}" debug="true">
     <classpath refid="pdfsam-console.classpath"/>
     </javac>
   </target>

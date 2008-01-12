@@ -85,7 +85,9 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 					pdfStamper.setEncryption(encType, inputCommand.getUserPwd(), inputCommand.getOwnerPwd(), inputCommand.getPermissions());
 					pdfStamper.close();
 					File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-					FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+		    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
+	                	log.debug("File "+outFile.getCanonicalPath()+" created.");
+	                }  		
 				}
 				log.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
 				log.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");

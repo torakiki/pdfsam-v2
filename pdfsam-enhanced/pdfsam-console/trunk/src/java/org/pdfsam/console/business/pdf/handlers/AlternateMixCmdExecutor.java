@@ -112,8 +112,9 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				pdfWriter.freeReader(pdfReader2);
 
 				pdfDocument.close();
-				// step 6: temporary buffer moved to output file
-				FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+	    		if(FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite())){
+                	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
+                }  		
 				log.info("Alternate mix completed.");
 			}catch(Exception e){    		
 				throw new MixException(e);
