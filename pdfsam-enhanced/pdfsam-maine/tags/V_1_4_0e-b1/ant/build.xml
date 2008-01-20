@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam" default="dist" basedir="../">
+    <description>
+    	pdfsam 
+    </description>
+	
+    <property name="user.name" value="Andrea Vacondio"/>
+	<property name="workspace.dir" value="f:/pdfsam/workspace-enhanced"/>
+	<property name="lib.location" value="${workspace.dir}/pdfsam-maine/lib"/>	
+	<property name="itext.jar.name" value="iText-2.0.7"/>
+	<property name="jcmdline.jar.name" value="pdfsam-jcmdline-1.0.3"/>
+	<property name="emp4j.jar.name" value="emp4j-1.0.0"/>
+	<property name="log4j.jar.name" value="log4j-1.2.15"/>
+	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
+	<property name="jaxen.jar.name" value="jaxen-1.1"/>
+	<property name="bcmail.jar.name" value="bcmail-jdk14-138"/>
+	<property name="bcprov.jar.name" value="bcprov-jdk14-138"/>
+	<property name="looks.jar.name" value="looks-2.1.4"/>
+	<property name="console.jar.name" value="pdfsam-console-1.1.0e"/>
+	<property name="langpack.jar.name" value="pdfsam-langpack"/>
+	
+	<!-- set global properties for this build -->
+	<property name="pdfsam.src.dir" location="src/java"/>
+	<property name="pdfsam.etc.dir" location="etc"/>
+	<property name="build.dir" location="f:/build/pdfsam"/>
+	<property name="pdfsam.build.dir" location="${build.dir}/build"/>
+	<property name="pdfsam.dist.dir"  location="${build.dir}/dist"/>
+	<property name="pdfsam.release.dir"  location="${build.dir}/release"/>
+	<property name="pdfsam.release.jar.dir"  location="${pdfsam.release.dir}/jar"/>
+	<property name="pdfsam.release.src.dir"  location="${pdfsam.release.dir}/src"/>
+	<property name="pdfsam.javadoc.dir"  location="${build.dir}/doc"/>
+ 
+    <property name="jcmdline.dir" value="${workspace.dir}/jcmdline"/>
+    <property name="emp4j.dir" value="${workspace.dir}/emp4j"/>
+    <property name="console.dir" value="${workspace.dir}/pdfsam-console"/>
+    <property name="split.dir" value="${workspace.dir}/pdfsam-split"/>
+    <property name="merge.dir" value="${workspace.dir}/pdfsam-merge"/>
+    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
+	<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
+	<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
+    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
+    
+
+  	<property name="pdfsam.jar.name" value="pdfsam"/>
+	
+	
+	
+	
+	
+	
+	
+	<!-- main base dir -->
+    <property name="project.dir" value="F:/pdfsam/workspace-enhanced"/>
+	<!-- where source package is store-->
+	<property name="src.dir" value="F:/pdfsam/workspace-enhanced/pdfsam-src"/>
+    <property name="launcher.project.dir" value="${project.dir}/pdfsam-launcher"/>
+	
+	<target name="init">
+		<property file="ant/${current.version}.properties" />
+
+		<property name="pdfsam.jar.version" value="1.0.0-alpha"/>	
+	    <property name="pdfsam.version" value="basic"/>
+		<property name="current.version" value="basic"/>
+		
+		<!-- Create the time stamp -->
+	    <tstamp/>
+	    <!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam.build.dir}"/>
+	    <mkdir dir="${pdfsam.release.dir}"/>
+	    <mkdir dir="${pdfsam.dist.dir}"/>
+	    <mkdir dir="${pdfsam.javadoc.dir}"/>		
+	    <mkdir dir="${pdfsam.release.jar.dir}"/>
+		<mkdir dir="${pdfsam.release.src.dir}"/>
+		
+		<condition property="isEnhanced">
+			<equals arg1="${pdfsam.version}" arg2="enhanced" casesensitive="false"/>
+		</condition>
+	</target>
+	
+	<target name="compile" depends="init" description="pdfsam compile" >
+		
+	    <!-- Construct classpath -->
+	    <path id="pdfsam.classpath">
+	      <fileset dir="${lib.location}">
+	        <include name="**/*.jar"/>
+	      </fileset>
+	      <pathelement path="${pdfsam.build.dir}"/>
+	    </path>
+
+	    <!-- Compile the java code from ${src} into ${build} -->
+	    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam.src.dir}" destdir="${pdfsam.build.dir}" debug="true">
+	    <classpath refid="pdfsam.classpath"/>
+	    </javac>
+	  </target>
+	
+
+	  <target name="dist" depends="compile"
+	        description="generate the distribution" >
+	    <!-- Create the distribution directory -->
+	    <mkdir dir="${pdfsam.dist.dir}"/>
+	  	
+	  	<!--copy property file-->
+	  	<copy file="ant/${current.version}.properties" tofile="${pdfsam.build.dir}/pdfsam.properties" overwrite="true" />
+	  	
+	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+	    <jar jarfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}.jar" basedir="${pdfsam.build.dir}">
+		    <manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
+			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${langpack.jar.name}.jar"/>
+		    </manifest>
+			<fileset dir="${pdfsam.etc.dir}">
+			    <include name="*.xml"/>
+			</fileset>
+			<fileset dir=".">
+			    <include name="images/**.png"/>
+			</fileset>		    	
+	    </jar>
+	  	
+	  	<copy todir="${pdfsam.release.jar.dir}">
+			<fileset dir="${pdfsam.dist.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+
+	  	<!--emp4j-->
+	  	<ant antfile="${emp4j.dir}/ant/build.xml" dir="${emp4j.dir}" target="dist" inheritAll="false">
+	  		<property name="emp4j.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+	  	<!--jcmdline-->
+	  	<ant antfile="${jcmdline.dir}/ant/build.xml" dir="${jcmdline.dir}" target="dist" inheritAll="false">
+	  		<property name="jcmdline.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+	  	<!--console-->
+	  	<ant antfile="${console.dir}/ant/build.xml" dir="${console.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-console.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+	  	<!--split-->
+	  	<ant antfile="${split.dir}/ant/build.xml" dir="${split.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-split.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+	  	<!--merge-->
+	  	<ant antfile="${merge.dir}/ant/build.xml" dir="${merge.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-merge.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+	  	
+	  	<antcall target="dist-enhanced" />
+	  </target>
+	
+	
+	
+	<target name="dist-enhanced" if="isEnhanced" description="generate the enhanced plugins distribution" >
+		
+		<!--mix-->
+	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+		
+		<!--cover-->
+	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-cover.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+		<!--encrypt-->
+	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="dist" inheritAll="false">
+	  		<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+	</target>
+	
+	
+	  <target name="clean"
+	        description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam.javadoc.dir}"/>
+	    <delete dir="${pdfsam.dist.dir}"/>
+	    <delete dir="${pdfsam.build.dir}"/>
+	    <delete dir="${pdfsam.release.dir}"/>
+	  </target>
+
+	  <!-- Javadoc -->
+	  <target name="javadoc" depends="init">
+	    <javadoc
+	      packagenames="org.pdfsam.guiclient.*"
+	      sourcepath="${pdfsam.src.dir}"
+	      destdir="${pdfsam.javadoc.dir}"
+	      author="true"
+	      version="true"
+	      use="true"
+	      windowtitle="pdfsam API ${pdfsam.version} ${pdfsam.jar.version}"
+	      doctitle="pdfsam API" >
+	    <classpath refid="pdfsam.classpath"/>
+	    </javadoc>
+	  </target>
+
+	<!--build javadoc and zip for every single project and a single zip containig them-->
+	  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
+	    <zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}-build-src.zip">
+	    	<fileset dir=".">
+		    	<include name="src/java/**/*"/>
+	    	</fileset>
+			<fileset dir="${build.dir}">
+		    	<include name="doc/**/*.*"/>
+	    	</fileset>
+	    </zip>
+	  	
+	  	<!--emp4j-->
+	  	<ant antfile="${emp4j.dir}/ant/build.xml" dir="${emp4j.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="emp4j.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+	  	
+	  	<!--jcmdline-->
+	  	<ant antfile="${jcmdline.dir}/ant/build.xml" dir="${jcmdline.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="jcmdline.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+	  	
+	  	<!--console-->
+	  	<ant antfile="${console.dir}/ant/build.xml" dir="${console.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-console.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+	  	
+	  	<!--split-->
+	  	<ant antfile="${split.dir}/ant/build.xml" dir="${split.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-split.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+	  	
+	  	<!--merge-->
+	  	<ant antfile="${merge.dir}/ant/build.xml" dir="${merge.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-merge.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+	  	<antcall target="buildZipPackage-enhanced" />
+	  	
+	  	<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" 
+	    	 basedir="${launcher.dir}">
+	    </zip>			  		
+		
+		<zip destfile="${pdfsam.release.src.dir}/nsi.zip" >
+			<fileset dir=".">
+					<include name="ant/*.nsi"/>
+			</fileset>
+	    </zip>	
+				
+	  	<copy todir="${pdfsam.release.src.dir}">
+			<fileset dir="${pdfsam.dist.dir}">
+				<include name="*.zip" />
+			</fileset>
+		</copy>
+	  	
+	  	<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-${pdfsam.jar.version}-out-src.zip">
+	    	<fileset dir="${pdfsam.release.src.dir}">
+		    	<include name="*.zip"/>
+	    	</fileset>  			  		
+	    </zip>	  	
+	  </target>
+	
+	<!--build zip package for enhanced plugins-->
+	<target name="buildZipPackage-enhanced" if="isEnhanced" description="generate the zip files for enhanced plugins distribution" >
+			
+	  	<!--mix-->
+	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+	  	<!--cover-->
+	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-cover.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--encrypt-->
+	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="buildZipPackage" inheritAll="false">
+	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+	</target>	
+
+</project>
