@@ -1,6 +1,6 @@
 Application: PDF Split and Merge basic
 
-Version: 1.0.0 alpha
+Version: 1.0.0 beta 1
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
@@ -19,7 +19,7 @@ Linked libraries:
 	-log4j-1.2.15
 	-bcmail-jdk14-138.jar
 	-bcprov-jdk14-138.jar
-	-pdfsam-console-1.1.0e *
+	-pdfsam-console-1.1.1e *
 	-emp4j-1.0.0 *
 	-pdfsam-langpack *
 	

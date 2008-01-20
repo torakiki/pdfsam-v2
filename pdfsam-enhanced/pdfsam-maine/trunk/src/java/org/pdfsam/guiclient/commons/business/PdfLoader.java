@@ -39,6 +39,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
 public class PdfLoader {
 
 	private static final Logger log = Logger.getLogger(PdfLoader.class.getPackage().getName());
+	
     //threshold to low priority addThread 
     private static long LOW_PRIORITY_SIZE = 5*1024*1024; //5MB
     
@@ -60,48 +61,7 @@ public class PdfLoader {
 		}
         
 	}
-	  /**
-     * 
-     * @param fileToAdd file to add
-     * @param password password to open the file
-     * @return the item to add to the table
-     */
-    public PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd, String password, String pageSelection){
-    	PdfSelectionTableItem tableItem = null;
-    	PdfReader pdfReader = null;
-        if (fileToAdd != null){
-        	tableItem = new PdfSelectionTableItem();
-        	tableItem.setInputFile(fileToAdd);
-        	tableItem.setPassword(password);
-        	tableItem.setPageSelection(pageSelection);
-            try{
-                //fix 03/07 for memory usage
-                pdfReader = new PdfReader(new RandomAccessFileOrArray(new FileInputStream(fileToAdd)), (password != null)?password.getBytes():null);
-                tableItem.setEncrypted(pdfReader.isEncrypted());
-                tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
-                tableItem.setPdfVersion(pdfReader.getPdfVersion());
-            }
-            catch (Exception e){
-            	tableItem.setLoadedWithErrors(true);
-            	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error loading ")+fileToAdd.getAbsolutePath()+" :", e);
-            }
-            finally{
-            	if(pdfReader != null){
-            		pdfReader.close();
-            	}
-            }               
-        }
-        return tableItem;    
-    }
-    
-    /**
-     * 
-     * @param fileToAdd
-     * @return the item to add to the table
-     */
-    public PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd){
-    	return getPdfSelectionTableItem(fileToAdd, null, null);
-    }
+
     
     
     /**
@@ -246,7 +206,7 @@ public class PdfLoader {
     			 if (inputFile != null){
 						if(new PdfFilter(false).accept(inputFile)){
 			    			wipText = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please wait while reading")+" "+inputFile.getName()+" ...";
-			                panel.addWipText(wipText);
+			                panel.addWipText(wipText);			                
 			                panel.addTableRow(getPdfSelectionTableItem(inputFile, password, pageSelection));
 			                panel.removeWipText(wipText);
 						}else{
@@ -257,6 +217,41 @@ public class PdfLoader {
 	   			 log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "),e); 
 	   		 }	
 		 }
+    		
+  	  /**
+         * 
+         * @param fileToAdd file to add
+         * @param password password to open the file
+         * @return the item to add to the table
+         */
+        private PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd, String password, String pageSelection){
+        	PdfSelectionTableItem tableItem = null;
+        	PdfReader pdfReader = null;
+            if (fileToAdd != null){
+            	tableItem = new PdfSelectionTableItem();
+            	tableItem.setInputFile(fileToAdd);
+            	tableItem.setPassword(password);
+            	tableItem.setPageSelection(pageSelection);
+                try{
+                    //fix 03/07 for memory usage
+                    pdfReader = new PdfReader(new RandomAccessFileOrArray(new FileInputStream(fileToAdd)), (password != null)?password.getBytes():null);
+                    tableItem.setEncrypted(pdfReader.isEncrypted());
+                    tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
+                    tableItem.setPdfVersion(pdfReader.getPdfVersion());
+                }
+                catch (Exception e){
+                	tableItem.setLoadedWithErrors(true);
+                	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error loading ")+fileToAdd.getAbsolutePath()+" :", e);
+                }
+                finally{
+                	if(pdfReader != null){
+                		pdfReader.close();
+    					pdfReader = null;
+                	}
+                }               
+            }
+            return tableItem;    
+        }              
     }
     
     /**
