@@ -24,6 +24,7 @@ import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
+import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.EncryptException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PrefixParser;
@@ -41,7 +42,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 
 	private final Logger log = Logger.getLogger(EncryptCmdExecutor.class.getPackage().getName());
 	
-	public void execute(AbstractParsedCommand parsedCommand) throws EncryptException {
+	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
 		if((parsedCommand != null) && (parsedCommand instanceof EncryptParsedCommand)){
 			
@@ -97,7 +98,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			setWorkCompleted();
 		}
 	}else{
-		throw new EncryptException(EncryptException.ERR_BAD_COMMAND);
+		throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 	}
 
 	}

@@ -25,6 +25,7 @@ import jcmdline.dto.PdfFile;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
+import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.utils.FileUtility;
 /**
@@ -33,7 +34,7 @@ import org.pdfsam.console.utils.FileUtility;
  */
 public class MixCmdValidator extends AbstractCmdValidator {
 
-	public AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ParseException {
+	public AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ConsoleException {
 		
 		MixParsedCommand parsedCommandDTO = new MixParsedCommand();
 		
@@ -84,7 +85,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        //-reversesecond
 	        parsedCommandDTO.setReverseSecond(((BooleanParam) cmdLineHandler.getOption("reversesecond")).isTrue());
 		}else{
-			throw new ParseException(ParseException.CMD_LINE_HANDLER_NULL);
+			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}
         return parsedCommandDTO;
 	}		

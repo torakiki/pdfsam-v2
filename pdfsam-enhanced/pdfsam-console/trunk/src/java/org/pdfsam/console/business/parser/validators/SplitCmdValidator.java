@@ -80,6 +80,8 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	        StringParam sOption = (StringParam) cmdLineHandler.getOption("s");
 	        if(sOption.isSet()){
 	        	parsedCommandDTO.setSplitType(sOption.getValue());
+	        }else{
+	        	throw new ParseException(ParseException.ERR_NO_S);	
 	        }
 	        
 	        //-b
@@ -123,7 +125,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	            }
 	        }
 		}else{
-			throw new ParseException(ParseException.CMD_LINE_HANDLER_NULL);
+			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}
 		return parsedCommandDTO;
 	}

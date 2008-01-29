@@ -122,7 +122,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				setWorkCompleted();
 			}
 		}else{
-			throw new MixException(MixException.ERR_BAD_COMMAND);
+			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 		}
 		
 	}

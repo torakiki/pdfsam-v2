@@ -29,6 +29,7 @@ import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
+import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SplitException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PrefixParser;
@@ -48,7 +49,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	private final Logger log = Logger.getLogger(SplitCmdExecutor.class.getPackage().getName());
 	private PrefixParser prefixParser;
 	
-	public void execute(AbstractParsedCommand parsedCommand) throws SplitException {
+	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
 		if((parsedCommand != null) && (parsedCommand instanceof SplitParsedCommand)){
 			SplitParsedCommand inputCommand = (SplitParsedCommand) parsedCommand;
@@ -66,7 +67,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				}else if(SplitParsedCommand.S_SIZE.equals(inputCommand.getSplitType())){
 					executeSizeSplit(inputCommand);
 				}else{
-					throw new SplitException(SplitException.ERR_NOT_VALID_SPLIT_TYPE);
+					throw new SplitException(SplitException.ERR_NOT_VALID_SPLIT_TYPE, new String[]{inputCommand.getSplitType()});
 				}
 			}catch(Exception e){    		
 				throw new SplitException(e);
@@ -74,7 +75,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				setWorkCompleted();
 			}
 		}else{
-			throw new SplitException(SplitException.ERR_BAD_COMMAND);
+			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 		}
 	}
 	
@@ -302,7 +303,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	        int n = pdfReader.getNumberOfPages();
 			int numberPage = numberPages[0].intValue();
 			if (numberPage < 1 || numberPage > n) {
-				throw new SplitException(SplitException.ERR_NO_SUCH_PAGE);
+				throw new SplitException(SplitException.ERR_NO_SUCH_PAGE, new String[]{""+numberPage});
 			}else{
 				ArrayList retVal = new ArrayList();
 				for (int i = numberPage; i < n; i += numberPage) {

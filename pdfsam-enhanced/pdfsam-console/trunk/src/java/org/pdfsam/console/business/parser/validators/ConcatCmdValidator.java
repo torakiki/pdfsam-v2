@@ -101,7 +101,7 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	        //-copyfields
 	        parsedCommandDTO.setCopyFields(((BooleanParam) cmdLineHandler.getOption("copyfields")).isTrue());
 		}else{
-			throw new ParseException(ParseException.CMD_LINE_HANDLER_NULL);
+			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}
 		return parsedCommandDTO;
 	}

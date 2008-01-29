@@ -37,7 +37,7 @@ import org.pdfsam.console.business.pdf.writers.PdfCopyFieldsConcatenator;
 import org.pdfsam.console.business.pdf.writers.PdfSimpleConcatenator;
 import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
 import org.pdfsam.console.exceptions.console.ConcatException;
-import org.pdfsam.console.exceptions.console.MixException;
+import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
 
 import com.lowagie.text.Document;
@@ -54,7 +54,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	
 	private final static String ALL_STRING = "all"; 
 	
-	public void execute(AbstractParsedCommand parsedCommand) throws ConcatException {
+	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof ConcatParsedCommand)){
 			ConcatParsedCommand inputCommand = (ConcatParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
@@ -131,7 +131,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 			                else if (start > endPage){
 			                	valid = false;
 								FileUtility.deleteFile(tmpFile);
-								throw new ConcatException(ConcatException.ERR_CANNOT_MERGE, new String[]{""+start,""+endPage,""+currentPageSelection});
+								throw new ConcatException(ConcatException.ERR_START_BIGGER_THAN_END, new String[]{""+start,""+endPage,""+currentPageSelection});
 			                }
 		                }
 	    			}
@@ -211,7 +211,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 				setWorkCompleted();
 			}
 		}else{
-			throw new ConcatException(MixException.ERR_BAD_COMMAND);
+			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 		}
 	
 	}
@@ -255,8 +255,22 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 			org.dom4j.Document document = reader.read(inputFile);
             List pdfFileList = document.selectNodes("/filelist/file");
 			for (int i = 0; pdfFileList != null && i < pdfFileList.size(); i++) {
-				Node pdf_node = (Node) pdfFileList.get(i);
-				fileList.add(new PdfFile(pdf_node.selectSingleNode("@value").getText().trim(), null));
+				Node pdfNode = (Node) pdfFileList.get(i);
+				String pwd = null;
+				String fileName = null;
+				//get filename
+				Node fileNode = pdfNode.selectSingleNode("@value");
+				if(fileNode != null){
+					fileName = fileNode.getText().trim();
+				}else{
+					throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[]{"Empty file name"});
+				}
+				//get pwd value
+				Node pwdNode = pdfNode.selectSingleNode("@password");
+				if(pwdNode != null){
+					pwd = pwdNode.getText();
+				}
+				fileList.add(new PdfFile(fileName, pwd));
 			}
         }catch (Exception e) {
         	throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML,e);

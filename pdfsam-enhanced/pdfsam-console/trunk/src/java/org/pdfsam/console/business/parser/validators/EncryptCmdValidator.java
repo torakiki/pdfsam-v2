@@ -38,7 +38,7 @@ import com.lowagie.text.pdf.PdfWriter;
  */
 public class EncryptCmdValidator extends AbstractCmdValidator {
 
-	protected AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ConsoleException {
+	public AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ConsoleException {
 		
 		EncryptParsedCommand parsedCommandDTO = new EncryptParsedCommand();
 		
@@ -112,7 +112,7 @@ public class EncryptCmdValidator extends AbstractCmdValidator {
 	        	parsedCommandDTO.setPermissions(permissions);
 	        }
 		}else{
-			throw new ParseException(ParseException.CMD_LINE_HANDLER_NULL);
+			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}
 		return parsedCommandDTO;	
 	}
