@@ -10,7 +10,7 @@
 	<property name="jaxen.jar.name" value="jaxen-1.1"/>
   
   <!-- set global properties for this build -->
-  <property name="emp4j.user.name" value="Andrea Vacondio"/>
+  <property name="user.name" value="Andrea Vacondio"/>
   <property name="emp4j.src.dir" location="src/java"/>
   <property name="build.dir" location="f:/build/emp4j"/>
   <property name="emp4j.build.dir" location="${build.dir}/build"/>
@@ -42,7 +42,7 @@
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${emp4j.src.dir}" destdir="${emp4j.build.dir}">
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${emp4j.src.dir}" destdir="${emp4j.build.dir}" debug="true">
     <classpath refid="emp4j.classpath"/>
     </javac>
   </target>
