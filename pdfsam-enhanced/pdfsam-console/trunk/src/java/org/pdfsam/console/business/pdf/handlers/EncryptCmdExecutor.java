@@ -55,40 +55,46 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			try{
 				PdfFile[] fileList = inputCommand.getInputFileList();
 				for(int i = 0; i<fileList.length; i++){
-					//set the encryption type
-		        	if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())){
-			        	encType = PdfWriter.ENCRYPTION_AES_128;
-			        }else if (EncryptParsedCommand.E_RC4_128.equals(inputCommand.getEncryptionType())){
-			        	encType = PdfWriter.STANDARD_ENCRYPTION_128;
-			        }	
-		        	
-					prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
-					File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-					pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
-					
-					//version
-					log.debug("Creating a new document.");
-					Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-					if(pdfVersion != null){
-						pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
-					}else{
-						pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader.getPdfVersion());
-					}
-
-					HashMap meta = pdfReader.getInfo();
-					meta.put("Creator", ConsoleServicesFacade.CREATOR);
-					
-					if(inputCommand.isCompress()){
-						pdfStamper.setFullCompression();
-			        }
-					
-					pdfStamper.setMoreInfo(meta);
-					pdfStamper.setEncryption(encType, inputCommand.getUserPwd(), inputCommand.getOwnerPwd(), inputCommand.getPermissions());
-					pdfStamper.close();
-					File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-		    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-	                	log.debug("File "+outFile.getCanonicalPath()+" created.");
-	                }  		
+					try{
+						//set the encryption type
+			        	if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())){
+				        	encType = PdfWriter.ENCRYPTION_AES_128;
+				        }else if (EncryptParsedCommand.E_RC4_128.equals(inputCommand.getEncryptionType())){
+				        	encType = PdfWriter.STANDARD_ENCRYPTION_128;
+				        }	
+			        	
+						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
+						File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
+						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						
+						//version
+						log.debug("Creating a new document.");
+						Character pdfVersion = inputCommand.getOutputPdfVersion(); 
+						if(pdfVersion != null){
+							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
+						}else{
+							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader.getPdfVersion());
+						}
+	
+						HashMap meta = pdfReader.getInfo();
+						meta.put("Creator", ConsoleServicesFacade.CREATOR);
+						
+						if(inputCommand.isCompress()){
+							pdfStamper.setFullCompression();
+				        }
+						
+						pdfStamper.setMoreInfo(meta);
+						pdfStamper.setEncryption(encType, inputCommand.getUserPwd(), inputCommand.getOwnerPwd(), inputCommand.getPermissions());
+						pdfStamper.close();
+						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
+			    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
+		                	log.debug("File "+outFile.getCanonicalPath()+" created.");
+		                } 
+			    		pdfReader.close();
+		    		}
+		    		catch(Exception e){
+		    			log.error("Error encrypting file "+fileList[i].getFile().getName(), e);
+		    		}
 				}
 				log.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
 				log.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");

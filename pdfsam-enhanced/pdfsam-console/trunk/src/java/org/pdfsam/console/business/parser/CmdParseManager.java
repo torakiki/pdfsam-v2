@@ -22,16 +22,19 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
+import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.parser.handlers.ConcatCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.MixCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SplitCmdHandler;
+import org.pdfsam.console.business.parser.handlers.UnpackCmdHandler;
 import org.pdfsam.console.business.parser.handlers.interfaces.CmdHandler;
 import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.console.business.parser.validators.EncryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.MixCmdValidator;
 import org.pdfsam.console.business.parser.validators.SplitCmdValidator;
+import org.pdfsam.console.business.parser.validators.UnpackCmdValidator;
 import org.pdfsam.console.business.parser.validators.interfaces.CmdValidator;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
@@ -89,6 +92,10 @@ public class CmdParseManager {
 		else if(EncryptParsedCommand.COMMAND_ECRYPT.equals(inputCommand)){
 			cmdHandler = new EncryptCmdHandler();
 			cmdValidator = new EncryptCmdValidator();
+		}
+		else if(UnpackParsedCommand.COMMAND_UNPACK.equals(inputCommand)){
+			cmdHandler = new UnpackCmdHandler();
+			cmdValidator = new UnpackCmdValidator();
 		}else{
 			cmdHandler = new DefaultCmdHandler();
 		}

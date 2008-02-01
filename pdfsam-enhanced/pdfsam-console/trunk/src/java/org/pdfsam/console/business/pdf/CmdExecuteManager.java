@@ -23,10 +23,12 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
+import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.AlternateMixCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.ConcatCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.EncryptCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SplitCmdExecutor;
+import org.pdfsam.console.business.pdf.handlers.UnpackCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.TimeUtility;
@@ -84,6 +86,8 @@ public class CmdExecuteManager extends Observable implements Observer{
 			retVal = new EncryptCmdExecutor();
 		}else if(ConcatParsedCommand.COMMAND_CONCAT.equals(parsedCommand.getCommand())){
 			retVal = new ConcatCmdExecutor();
+		}else if(UnpackParsedCommand.COMMAND_UNPACK.equals(parsedCommand.getCommand())){
+			retVal = new UnpackCmdExecutor();
 		}else {
 			retVal = null;
 		}

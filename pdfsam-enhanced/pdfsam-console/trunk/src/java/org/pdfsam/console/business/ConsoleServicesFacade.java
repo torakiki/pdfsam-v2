@@ -30,7 +30,7 @@ public class ConsoleServicesFacade {
 	
 	private final Logger log = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 	
-    public static final String VERSION = "1.1.1e"; 
+    public static final String VERSION = "1.1.2e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +ConsoleServicesFacade.VERSION+ ")";   
     public static final String LICENSE =
 		ConsoleServicesFacade.CREATOR+"  Copyright (C) 2007  Andrea Vacondio\n"+
@@ -44,7 +44,7 @@ public class ConsoleServicesFacade {
 		"You should have received a copy of the GNU General Public License\n"+
 		"along with this program.  If not, see <http://www.gnu.org/licenses/>..\n"+
 		"This is free software, and you are welcome to redistribute it\n"+
-		"under certain conditions; type `show c' for details.\n";
+		"under certain conditions;\n";
 	
     private CmdParseManager cmdParserManager;
     private CmdExecuteManager cmdExecuteManager;

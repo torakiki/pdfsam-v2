@@ -45,8 +45,8 @@ public class DefaultCmdHandler implements CmdHandler {
      */
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[concat], [split], [encrypt], [mix]}",
-                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ECRYPT, AbstractParsedCommand.COMMAND_MIX },
+                    "command to execute {[concat], [split], [encrypt], [mix], [unpack]}",
+                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ECRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK },
                     StringParam.REQUIRED)
     }));
 	

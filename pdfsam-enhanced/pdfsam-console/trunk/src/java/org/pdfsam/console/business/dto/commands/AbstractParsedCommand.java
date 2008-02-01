@@ -29,6 +29,7 @@ public abstract class AbstractParsedCommand implements Serializable {
     public static final String COMMAND_SPLIT = "split";    
     public static final String COMMAND_ECRYPT = "encrypt";  
     public static final String COMMAND_MIX = "mix"; 
+    public static final String COMMAND_UNPACK = "unpack"; 
     
     public static final char VERSION_1_2 = PdfWriter.VERSION_1_2;
     public static final char VERSION_1_3 = PdfWriter.VERSION_1_3;

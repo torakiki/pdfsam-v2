@@ -32,7 +32,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class EncryptCmdHandler extends AbstractCmdHandler {
 	
-	private  final String commandDescription = "Merge together pdf documents.";
+	private  final String commandDescription = "Encrypt pdf documents.";
 	
 	/**
 	 * Options for the encrypt handler

@@ -31,15 +31,23 @@ public abstract class  AbstractCmdValidator implements CmdValidator{
 	public AbstractParsedCommand validate(CmdLineHandler cmdLineHandler)
 			throws ConsoleException {
 		AbstractParsedCommand parsedCommand = validateArguments(cmdLineHandler);
-		parsedCommand.setOverwrite(((BooleanParam) cmdLineHandler.getOption("overwrite")).isTrue());
-		parsedCommand.setCompress(((BooleanParam) cmdLineHandler.getOption("compressed")).isTrue());
-        FileParam logOption = (FileParam) cmdLineHandler.getOption("log");
-        if (logOption.isSet()){
-        	parsedCommand.setLogFile(logOption.getFile());
+		if(cmdLineHandler.getOption(AbstractParsedCommand.OVERWRITE_ARG) != null){
+			parsedCommand.setOverwrite(((BooleanParam) cmdLineHandler.getOption(AbstractParsedCommand.OVERWRITE_ARG)).isTrue());			
+		}
+		if(cmdLineHandler.getOption(AbstractParsedCommand.COMPRESSED_ARG) != null){
+			parsedCommand.setCompress(((BooleanParam) cmdLineHandler.getOption(AbstractParsedCommand.COMPRESSED_ARG)).isTrue());
+		}
+		if(cmdLineHandler.getOption(AbstractParsedCommand.LOG_ARG) != null){
+	        FileParam logOption = (FileParam) cmdLineHandler.getOption(AbstractParsedCommand.LOG_ARG);
+	        if (logOption.isSet()){
+	        	parsedCommand.setLogFile(logOption.getFile());
+	        }
         }
-        StringParam pdfversionOption = (StringParam) cmdLineHandler.getOption("pdfversion");
-        if (pdfversionOption.isSet()){
-        	parsedCommand.setOutputPdfVersion(pdfversionOption.getValue().charAt(0));
+		if(cmdLineHandler.getOption(AbstractParsedCommand.PDFVERSION_ARG) != null){
+	        StringParam pdfversionOption = (StringParam) cmdLineHandler.getOption(AbstractParsedCommand.PDFVERSION_ARG);
+	        if (pdfversionOption.isSet()){
+	        	parsedCommand.setOutputPdfVersion(pdfversionOption.getValue().charAt(0));
+	        }
         }
 		return parsedCommand;
 	}

@@ -126,6 +126,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             }
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
+        pdfReader.close();
         log.info("Burst done.");
     }
     
@@ -193,6 +194,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                 	log.debug("File "+outFile.getCanonicalPath()+" created.");
                 }
             }
+            pdfReader.close();
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
          log.info("Split "+inputCommand.getSplitType()+" done.");
@@ -288,6 +290,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			}
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
 		}
+		pdfReader.close();
 		log.info("Split "+inputCommand.getSplitType()+" done.");
     }
     
@@ -311,6 +314,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				}
 				inputCommand.setSplitPageNumbers((Integer[])retVal.toArray(new Integer[0]));
 			}
+			pdfReader.close();
 		}		
 		executeSplit(inputCommand);
 	}
@@ -388,6 +392,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                 }
                 relativeCurrentPage = 0; 
 			}
+			pdfReader.close();
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
 		}
 
