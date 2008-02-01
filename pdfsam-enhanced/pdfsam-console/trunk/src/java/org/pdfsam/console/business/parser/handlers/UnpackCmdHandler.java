@@ -52,7 +52,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
 		          new PdfFileParam(UnpackParsedCommand.F_ARG,
 		                          "pdf files to unpack: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
 		                          FileParam.IS_READABLE,
-		                          FileParam.REQUIRED, 
+		                          FileParam.OPTIONAL, 
 		                          FileParam.MULTI_VALUED),
 	              new FileParam(UnpackParsedCommand.D_ARG,
 			                      "input directory",

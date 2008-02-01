@@ -53,45 +53,55 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 			UnpackParsedCommand inputCommand = (UnpackParsedCommand) parsedCommand;
 			setWorkIndeterminate();
 			PdfReader pdfReader;
-			try{				
-				PdfFile[] fileList = inputCommand.getInputFileList();
-				if(inputCommand.getInputDirectory() != null){
-					/*System.arraycopy(src, srcPos, dest, destPos, length)
-					getPdfFiles(inputCommand.getInputDirectory());*/
+			try{	
+				ArrayList fileLists = new ArrayList();
+				if(inputCommand.getInputFileList() != null){
+					fileLists.add(inputCommand.getInputFileList());
 				}
-				for(int i = 0; i<fileList.length; i++){
-					try{
-						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
-						PdfDictionary catalog = pdfReader.getCatalog();
-						PdfDictionary names = (PdfDictionary) PdfReader.getPdfObject(catalog.get(PdfName.NAMES));
-						if (names != null) {
-							PdfDictionary embFiles = (PdfDictionary) PdfReader.getPdfObject(names.get(new PdfName("EmbeddedFiles")));
-							if (embFiles != null) {
-								HashMap embMap = PdfNameTree.readTree(embFiles);
-								for (Iterator iter = embMap.values().iterator(); iter.hasNext();) {
-									PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
-									unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-								}
-							}
-						}
-						for (int k = 1; k <= pdfReader.getNumberOfPages(); ++k) {
-							PdfArray annots = (PdfArray) PdfReader.getPdfObject(pdfReader.getPageN(k).get(PdfName.ANNOTS));
-							if (annots != null){
-								for (Iterator iter = annots.listIterator(); iter.hasNext();) {
-									PdfDictionary annot = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
-									PdfName subType = (PdfName) PdfReader.getPdfObject(annot.get(PdfName.SUBTYPE));
-									if (PdfName.FILEATTACHMENT.equals(subType)){
-										PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject(annot.get(PdfName.FS));
+				if(inputCommand.getInputDirectory() != null){
+					PdfFile[] foundFiles = getPdfFiles(inputCommand.getInputDirectory());
+					if(foundFiles != null){
+						fileLists.add(foundFiles);
+					}else{
+						log.warn("No pdf documents found in "+inputCommand.getInputDirectory());
+					}
+				}
+				for(Iterator listsIter = fileLists.iterator(); listsIter.hasNext();){
+					PdfFile[] fileList = (PdfFile[])listsIter.next();
+					for(int i = 0; i<fileList.length; i++){
+						try{
+							pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+							PdfDictionary catalog = pdfReader.getCatalog();
+							PdfDictionary names = (PdfDictionary) PdfReader.getPdfObject(catalog.get(PdfName.NAMES));
+							if (names != null) {
+								PdfDictionary embFiles = (PdfDictionary) PdfReader.getPdfObject(names.get(new PdfName("EmbeddedFiles")));
+								if (embFiles != null) {
+									HashMap embMap = PdfNameTree.readTree(embFiles);
+									for (Iterator iter = embMap.values().iterator(); iter.hasNext();) {
+										PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
 										unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
 									}
 								}
 							}
-						}
-						pdfReader.close();
-						log.info("File "+fileList[i].getFile().getName()+" unpacked.");
-					}catch(Exception e){
-		    			log.error("Error unpacking file "+fileList[i].getFile().getName(), e);
-		    		}
+							for (int k = 1; k <= pdfReader.getNumberOfPages(); ++k) {
+								PdfArray annots = (PdfArray) PdfReader.getPdfObject(pdfReader.getPageN(k).get(PdfName.ANNOTS));
+								if (annots != null){
+									for (Iterator iter = annots.listIterator(); iter.hasNext();) {
+										PdfDictionary annot = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
+										PdfName subType = (PdfName) PdfReader.getPdfObject(annot.get(PdfName.SUBTYPE));
+										if (PdfName.FILEATTACHMENT.equals(subType)){
+											PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject(annot.get(PdfName.FS));
+											unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+										}
+									}
+								}
+							}
+							pdfReader.close();
+							log.info("File "+fileList[i].getFile().getName()+" unpacked.");
+						}catch(Exception e){
+			    			log.error("Error unpacking file "+fileList[i].getFile().getName(), e);
+			    		}
+					}
 				}
 			}catch(Exception e){    		
 				throw new UnpackException(e);

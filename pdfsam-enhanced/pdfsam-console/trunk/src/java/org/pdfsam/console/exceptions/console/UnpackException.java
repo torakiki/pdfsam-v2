@@ -19,6 +19,8 @@ package org.pdfsam.console.exceptions.console;
  */
 public class UnpackException extends ConsoleException {
 	
+	public final static int ERR_NO_D_OR_F = 0x01;
+	
 	private static final long serialVersionUID = 6507276853411967680L;
 
 	public UnpackException(int exceptionErrorCode, String[] args, Throwable e) {

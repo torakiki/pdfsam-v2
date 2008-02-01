@@ -5,10 +5,16 @@
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ConsoleException" description="CLS">
 		<exception errorcode="1" message="Filename length is 0." />		
+		<exception errorcode="2" message="Command line handler is null." />		
+		<exception errorcode="3" message="Original file name is empty." />		
+		<exception errorcode="4" message="Command line validator is null." />		
+		<exception errorcode="5" message="Bad command." />		
+		<exception errorcode="6" message="Command line validator is null for the command {0}." />		
+		<exception errorcode="7" message="Input command is null." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
 		<exception errorcode="1" message="Parse error. {0}" />		
-		<exception errorcode="2" message="Output file not a pdf format." />		
+		<exception errorcode="2" message="Output file not a pdf format. {0}" />		
 		<exception errorcode="3" message="No output file name." />		
 		<exception errorcode="4" message="No -f or -l option given." />		
 		<exception errorcode="5" message="Both -f and -l options given." />		
@@ -27,18 +33,24 @@
 		<exception errorcode="18" message="Unnecessary option -b for the selected split mode." />		
 		<exception errorcode="19" message="No -b option given." />		
 		<exception errorcode="20" message="No -f option given." />	
+		<exception errorcode="21" message="-d {0} must be a directory." />
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
 		<exception errorcode="1" message="Cannot find page limits, please check input value." />		
-		<exception errorcode="2" message="Cannot split this document at page {1}. No such page." />		
+		<exception errorcode="2" message="Cannot split this document at page {0}. No such page." />		
+		<exception errorcode="3" message="Input split type {0} is not valid." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ConcatException" description="MRG">
-		<exception errorcode="1" message="{0}: Syntax error on {1}." />	
-		<exception errorcode="2" message="{0}: Unable to delete temporary file." />	
-		<exception errorcode="3" message="{0}: Syntax error. {1} must be positive in {2}." />				
+		<exception errorcode="1" message="Syntax error on {0}." />	
+		<exception errorcode="2" message="Unable to delete temporary file." />	
+		<exception errorcode="3" message="Syntax error. {0} must be positive in {1}." />				
+		<exception errorcode="4" message="Error reading csv or xml input file. {0}" />				
 		<exception errorcode="5" message="Cannot merge at page {0}. No such page." />				
 		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
 	</type>
-	<type key="5" description="ENC" />
-	<type key="6" description="MIX" />
+	<type key="org.pdfsam.console.exceptions.console.EncryptException" description="ENC" />
+	<type key="org.pdfsam.console.exceptions.console.MixException" description="MIX" />
+	<type key="org.pdfsam.console.exceptions.console.UnpackException" description="UNP">
+		<exception errorcode="1" message="No -f or -d option given." />	
+	</type>
 </exception-types>
