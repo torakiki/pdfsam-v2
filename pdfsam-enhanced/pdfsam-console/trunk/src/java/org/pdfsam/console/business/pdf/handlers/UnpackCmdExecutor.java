@@ -11,6 +11,10 @@
  * You should have received a copy of the GNU General Public License along with this program; 
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *  
+ *  This class is based on the ExtractAttachments.java part of the iText toolbox 0.0.2  
+ *  $Id: ExtractAttachments.java 45 2007-05-15 22:02:53Z chammer $
+ * 	Copyright (c) 2005-2007 Paulo Soares, Bruno Lowagie, Carsten Hammer 
  */
 package org.pdfsam.console.business.pdf.handlers;
 
@@ -69,6 +73,7 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 				for(Iterator listsIter = fileLists.iterator(); listsIter.hasNext();){
 					PdfFile[] fileList = (PdfFile[])listsIter.next();
 					for(int i = 0; i<fileList.length; i++){
+						int unpackedFiles = 0;
 						try{
 							pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
 							PdfDictionary catalog = pdfReader.getCatalog();
@@ -79,7 +84,7 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 									HashMap embMap = PdfNameTree.readTree(embFiles);
 									for (Iterator iter = embMap.values().iterator(); iter.hasNext();) {
 										PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
-										unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+										unpackedFiles += unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
 									}
 								}
 							}
@@ -91,13 +96,17 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 										PdfName subType = (PdfName) PdfReader.getPdfObject(annot.get(PdfName.SUBTYPE));
 										if (PdfName.FILEATTACHMENT.equals(subType)){
 											PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject(annot.get(PdfName.FS));
-											unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+											unpackedFiles += unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
 										}
 									}
 								}
 							}
 							pdfReader.close();
-							log.info("File "+fileList[i].getFile().getName()+" unpacked.");
+							if(unpackedFiles >0){
+								log.info("File "+fileList[i].getFile().getName()+" unpacked, found "+unpackedFiles+" attachments.");
+							}else{
+								log.info("No attachments in "+fileList[i].getFile().getName()+".");
+							}
 						}catch(Exception e){
 			    			log.error("Error unpacking file "+fileList[i].getFile().getName(), e);
 			    		}
@@ -120,9 +129,11 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 	 * @param filespec the dictionary
 	 * @param outPath output directory
 	 * @param overwrite if true overwrite if already exists
+	 * @return number of unpacked files
 	 * @throws IOException
 	 */
-	private void unpackFile(PdfDictionary filespec, File outPath, boolean overwrite) throws IOException {
+	private int unpackFile(PdfDictionary filespec, File outPath, boolean overwrite) throws IOException {
+		int retVal = 0;
 		if (filespec != null){
 			PdfName type = (PdfName) PdfReader.getPdfObject(filespec.get(PdfName.TYPE));
 			if (PdfName.F.equals(type) || PdfName.FILESPEC.equals(type)){
@@ -149,11 +160,13 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 							FileOutputStream fout = new FileOutputStream(fullPath);
 							fout.write(b);
 							fout.close();
+							retVal = 1;
 						}	
 					}			
 				}
 			}
 		}
+		return retVal;
 	}
 	
 	/**
