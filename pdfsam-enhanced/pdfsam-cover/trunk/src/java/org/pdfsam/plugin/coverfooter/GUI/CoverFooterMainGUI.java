@@ -50,6 +50,7 @@ import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -108,7 +109,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.0e";
+    private static final String PLUGIN_VERSION = "0.2.1e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -774,6 +775,17 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 			destinationTextField.setText(((String)evt.getNewValue()));
 		}
 		
+	}
+	
+	public void resetPanel() {
+		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		((AbstractPdfSelectionTableModel)coverSelectionPanel.getMainTable().getModel()).clearData();	
+		((AbstractPdfSelectionTableModel)footerSelectionPanel.getMainTable().getModel()).clearData();	
+		destinationTextField.setText("");
+		versionCombo.resetComponent();
+		outputCompressedCheck.setSelected(true);
+		overwriteCheckbox.setSelected(false);
+		mergeTypeCheck.setSelected(false);
 	}
   
 }
