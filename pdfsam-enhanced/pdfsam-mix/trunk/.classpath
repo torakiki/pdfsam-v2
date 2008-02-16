@@ -6,8 +6,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-maine"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-console"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-console-1.1.0e.jar"/>
 	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-langpack.jar"/>
-	<classpathentry kind="lib" path="/pdfsam-maine/lib/emp4j-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/pdfsam-maine/lib/pdfsam-console-1.1.2e.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

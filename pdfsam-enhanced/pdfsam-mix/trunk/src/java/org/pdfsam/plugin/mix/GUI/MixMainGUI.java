@@ -97,7 +97,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.0e";
+	private static final String PLUGIN_VERSION = "0.1.1e";
 
 	
 	/**
@@ -230,7 +230,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 						args.add("-"+MixParsedCommand.O_ARG);
 						//if no extension given
-	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)"+PDF_EXTENSION+"$"))){
+	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)[^.]+?\\.("+PDF_EXTENSION+")$"))){
 							destinationTextField.setText(destinationTextField.getText()+".pdf");
 						}
 						args.add(destinationTextField.getText());
@@ -291,7 +291,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		springLayoutMixPanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, reverseSecondCheckbox);
 
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
-		destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 5, SpringLayout.NORTH, destinationPanel);
+		destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationTextField, 30, SpringLayout.NORTH, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, destinationTextField, 5, SpringLayout.WEST, destinationPanel);
 
@@ -406,7 +406,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	public void loadJobNode(Node arg0) throws LoadJobException {
 		if(arg0 != null){
 			try{
-				selectionPanel.getClearButton().doClick();
+				resetPanel();
 				Node firstNode = (Node) arg0.selectSingleNode("first/@value");
 				if (firstNode != null && firstNode.getText().length()>0){
 					Node firstPwd = (Node) arg0.selectSingleNode("first/@password");	
@@ -577,6 +577,17 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 			destinationTextField.setText(((String)evt.getNewValue())+File.separatorChar+"mixed_document.pdf");
 		}
 		
+	}
+
+
+	public void resetPanel() {
+		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();
+		versionCombo.resetComponent();
+		reverseFirstCheckbox.setSelected(false);
+		reverseSecondCheckbox.setSelected(true);
+		destinationTextField.setText("");
+		outputCompressedCheck.setSelected(true);
+		overwriteCheckbox.setSelected(false);
 	}
 
 }

@@ -6,7 +6,7 @@
   <!-- Component Paths - Override if needed -->
 	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
 	<property name="langpack.jar.name" value="pdfsam-langpack"/>
-	<property name="console.jar.name" value="pdfsam-console-1.1.0e"/>
+	<property name="console.jar.name" value="pdfsam-console-1.1.2e"/>
 	<property name="log4j.jar.name" value="log4j-1.2.15"/>
 	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
 	<property name="jaxen.jar.name" value="jaxen-1.1"/>
@@ -24,7 +24,7 @@
 	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.4.0e-b1.jar"/>	
  
   <property name="pdfsam-mix.jar.name" value="pdfsam-mix"/>
-  <property name="pdfsam-mix.jar.version" value="0.1.0e"/>	
+  <property name="pdfsam-mix.jar.version" value="0.1.1e"/>	
   
   <target name="init">
     <!-- Create the time stamp -->
