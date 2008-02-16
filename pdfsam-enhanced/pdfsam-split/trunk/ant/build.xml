@@ -6,7 +6,7 @@
   <!-- Component Paths - Override if needed -->
 	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
 	<property name="langpack.jar.name" value="pdfsam-langpack"/>
-	<property name="console.jar.name" value="pdfsam-console-1.1.0e"/>
+	<property name="console.jar.name" value="pdfsam-console-1.1.2e"/>
 	<property name="log4j.jar.name" value="log4j-1.2.15"/>
 	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
 	<property name="jaxen.jar.name" value="jaxen-1.1"/>
@@ -19,10 +19,10 @@
   	<property name="pdfsam-split.build.dir" location="${build.dir}/build"/>
   	<property name="pdfsam-split.dist.dir"  location="${build.dir}/dist"/>
   	<property name="pdfsam-split.javadoc.dir"  location="${build.dir}/doc"/>
-	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.4.0e-b1.jar"/>	
+	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.0.0-b1.jar"/>	
  
   <property name="pdfsam-split.jar.name" value="pdfsam-split"/>
-  <property name="pdfsam-split.jar.version" value="0.4.1"/>	
+  <property name="pdfsam-split.jar.version" value="0.4.2"/>	
   
   <target name="init">
     <!-- Create the time stamp -->

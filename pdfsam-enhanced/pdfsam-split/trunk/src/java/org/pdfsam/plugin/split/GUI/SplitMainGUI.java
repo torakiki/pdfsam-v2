@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -48,6 +49,7 @@ import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -134,7 +136,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.1";
+    private final String PLUGIN_VERSION = "0.4.2";
     
 /**
  * Constructor
@@ -498,8 +500,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 
     public void loadJobNode(Node arg0) throws LoadJobException {
     	if(arg0!=null){
-			try{	
-				selectionPanel.getClearButton().doClick();
+			try{
+				resetPanel();
 				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
 				if (fileSource != null && fileSource.getText().length()>0){
 					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
@@ -535,7 +537,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 				}
 				
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-				if (fileDestination != null){
+				if (fileDestination != null && fileDestination.getText().length()>0){
 					destinationFolderText.setText(fileDestination.getText());
 					chooseAFolderRadio.doClick();
 				}else{
@@ -896,5 +898,19 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         }
     }
  
-   
+    public void resetPanel() {
+		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		destinationFolderText.setText("");
+		versionCombo.resetComponent();
+		outputCompressedCheck.setSelected(true);
+		overwriteCheckbox.setSelected(false);
+		thisPageTextField.setText("");
+	    nPagesTextField.setText("");
+	    outPrefixText.setText("pdfsam_");
+	    ButtonModel bmodel=splitOptionsRadioGroup.getSelection();
+	    if(bmodel != null){
+	    	bmodel.setSelected(false);
+	    }	   
+	    chooseAFolderRadio.setSelected(true);
+	}
 }
