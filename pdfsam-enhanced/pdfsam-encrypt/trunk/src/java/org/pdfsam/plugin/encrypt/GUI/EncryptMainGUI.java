@@ -123,7 +123,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.0e";
+    private final String PLUGIN_VERSION = "0.2.1e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -978,7 +978,22 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
 			destFolderText.setText(((String)evt.getNewValue()));
+		}		
+	}
+	
+	public void resetPanel() {
+		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		destFolderText.setText("");
+		versionCombo.resetComponent();
+		outputCompressedCheck.setSelected(true);
+		overwriteCheckbox.setSelected(false);
+		destFolderText.setText("");
+		userPwdField.setText("");
+		outPrefixTextField.setText("");
+		encryptType.setSelectedItem(EncryptMainGUI.RC4_40);
+		allowAllCheck.setSelected(false);
+		for(int i = 0; i<permissionsCheck.length; i++){
+			permissionsCheck[i].setSelected(false);
 		}
-		
 	}
 }
