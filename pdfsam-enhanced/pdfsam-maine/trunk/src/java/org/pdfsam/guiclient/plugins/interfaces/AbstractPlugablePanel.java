@@ -29,7 +29,7 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
 	
     private String panelIcon = "";
     private Configuration config;
-    protected static final String PDF_EXTENSION = ".pdf"; 
+    protected static final String PDF_EXTENSION = "pdf"; 
     
     public AbstractPlugablePanel(){
     	config = Configuration.getInstance(); 

@@ -63,4 +63,9 @@ public interface Plugable{
      * @return the icon for the tabbed panel
      */
     public Icon getIcon();
+    
+    /**
+     * reset the panel before to load an environment
+     */
+    public void resetPanel();
 }

@@ -16,7 +16,7 @@
 	<property name="bcmail.jar.name" value="bcmail-jdk14-138"/>
 	<property name="bcprov.jar.name" value="bcprov-jdk14-138"/>
 	<property name="looks.jar.name" value="looks-2.1.4"/>
-	<property name="console.jar.name" value="pdfsam-console-1.1.1e"/>
+	<property name="console.jar.name" value="pdfsam-console-1.1.2e"/>
 	<property name="langpack.jar.name" value="pdfsam-langpack"/>
 	
 	<!-- set global properties for this build -->

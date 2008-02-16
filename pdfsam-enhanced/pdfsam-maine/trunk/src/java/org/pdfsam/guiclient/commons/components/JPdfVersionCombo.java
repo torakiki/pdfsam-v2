@@ -158,4 +158,12 @@ public class JPdfVersionCombo extends JComboBox {
 		}
 	}
 	
+	/**
+	 * resets the component
+	 */
+	public void resetComponent(){
+		this.filterVersions.clear();
+		this.init(addSameAsSourceItem);
+	}
+	
 }

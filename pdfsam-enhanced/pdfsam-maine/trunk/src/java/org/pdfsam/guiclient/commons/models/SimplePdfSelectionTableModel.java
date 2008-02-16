@@ -221,6 +221,18 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
     }
    
     /**
+     * Replace a row to the table data source and fire to Listeners
+     * @param index index to be replaced
+     * @param inputData new <code>PdfSelectionTableItem</code> to replace the data source
+     */
+    public void updateRowAt(int index, PdfSelectionTableItem inputData){
+        if (inputData != null && index>=0 && index<data.size()){
+            data.set(index, inputData);
+            this.fireTableRowsUpdated(index,index);
+        }
+    }
+    
+    /**
      * Moves up a row to the table data source and fire to Listeners
      * @param row Row number to move from the data source
      */

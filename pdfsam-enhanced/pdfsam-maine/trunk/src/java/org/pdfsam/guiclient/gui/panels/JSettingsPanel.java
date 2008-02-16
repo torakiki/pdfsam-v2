@@ -510,5 +510,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	public void loadJobNode(org.dom4j.Node arg0) throws LoadJobException {
 		log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Unimplemented method for JSettingsPanel"));
 	}
+
+	public void resetPanel() {
+		
+	}
 }
 

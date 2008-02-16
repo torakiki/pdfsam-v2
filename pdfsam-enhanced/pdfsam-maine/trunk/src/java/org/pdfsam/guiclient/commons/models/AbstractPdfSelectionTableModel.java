@@ -203,6 +203,12 @@ public abstract class AbstractPdfSelectionTableModel extends AbstractTableModel 
      */
     public abstract void addRowAt(int index, PdfSelectionTableItem inputData);
     /**
+     * Replace a row to the table data source and fire to Listeners
+     * @param index index to be replaced
+     * @param inputData new <code>PdfSelectionTableItem</code> to replace the data source
+     */
+    public abstract void updateRowAt(int index, PdfSelectionTableItem inputData);
+    /**
      * Add a row to the table data source if maxRowsNumber is not reached and fire to Listeners
      * @param inputData <code>PdfSelectionTableItem</code> to add to the data source
      */

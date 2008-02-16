@@ -239,6 +239,29 @@ public class JPdfSelectionPanel extends JPanel {
 	    });
 		popupMenu.add(menuItemRemove);
 		
+		//reload file popup
+		final JMenuItem menuItemReload = new JMenuItem();
+		menuItemReload.setIcon(new ImageIcon(this.getClass().getResource("/images/reload.png")));
+		menuItemReload.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reload"));
+		menuItemReload.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+                if (mainTable.getSelectedRow() != -1){
+                    try{
+                    	int[] selectedRows = mainTable.getSelectedRows();
+                    	for(int i=0; i<selectedRows.length; i++){
+							PdfSelectionTableItem row = ((SimplePdfSelectionTableModel) mainTable.getModel()).getRow(selectedRows[i]);
+							loader.reloadFile(row.getInputFile(), row.getPassword(), row.getPageSelection(), selectedRows[i]);
+						}
+                    }
+                    catch (Exception ex){
+                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to reload the selected file/s."), ex); 
+                    }
+                }
+              }
+        });
+		popupMenu.add(menuItemReload);
+		
+		
 		if(showEveryButton){
 			//move up button
 			moveUpButton.setMargin(new Insets(2, 2, 2, 2));
@@ -312,7 +335,7 @@ public class JPdfSelectionPanel extends JPanel {
 	                }
 	              }
 	        });
-			popupMenu.add(menuItemSetOutputPath);
+			popupMenu.add(menuItemSetOutputPath);						
 			
 			//key listener
 			mainTable.addKeyListener(new KeyAdapter() {
@@ -325,7 +348,7 @@ public class JPdfSelectionPanel extends JPanel {
 	                }
 	                else if((e.getKeyCode() == KeyEvent.VK_DELETE)){
 	                	removeFileButton.doClick();
-	                }
+	                }	                
 	            }
 	        });
 		}else{
@@ -457,7 +480,17 @@ public class JPdfSelectionPanel extends JPanel {
     	((AbstractPdfSelectionTableModel)mainTable.getModel()).addRow(item);
         log.info(GettextResource.gettext(config.getI18nResourceBundle(),"File selected: ")+item.getInputFile().getName());
     }
-
+    
+    /**
+     * update an item to the table
+     * @param index
+     * @param item
+     */
+    public synchronized void updateTableRow(int index, PdfSelectionTableItem item){
+    	((AbstractPdfSelectionTableModel)mainTable.getModel()).updateRowAt(index, item);
+        log.info(GettextResource.gettext(config.getI18nResourceBundle(),"File reloaded: ")+item.getInputFile().getName());
+    }
+    
     /**
      * adds a button to the button panel
      * @param button

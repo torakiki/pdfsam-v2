@@ -222,4 +222,9 @@ public class JInfoPanel extends AbstractPlugablePanel{
         }
     }
 
+
+	public void resetPanel() {
+		
+	}
+
 }

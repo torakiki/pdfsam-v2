@@ -20,9 +20,10 @@ import java.awt.event.ActionListener;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.business.PdfLoader;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
-import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.guiclient.gui.panels.JStatusPanel;
 import org.pdfsam.i18n.GettextResource;
    
@@ -40,6 +41,7 @@ public class PdfSelectionTableActionListener implements ActionListener{
     public static final String MOVE_DOWN = "moveDown";
     public static final String CLEAR = "clear";        
     public static final String REMOVE = "remove";
+    public static final String RELOAD = "reload";
     /**
      * reference to the merge table
      */
@@ -64,7 +66,7 @@ public class PdfSelectionTableActionListener implements ActionListener{
         if (e != null && mainTable != null){        	
     		try{
     			if(CLEAR.equals(e.getActionCommand())){
-    				 ((SimplePdfSelectionTableModel) mainTable.getModel()).clearData();
+    				 ((AbstractPdfSelectionTableModel) mainTable.getModel()).clearData();
     			}else if (ADD.equals(e.getActionCommand())){
     				loader.showFileChooserAndAddFiles();
     			}else if (ADDSINGLE.equals(e.getActionCommand())){
@@ -73,17 +75,22 @@ public class PdfSelectionTableActionListener implements ActionListener{
     				int[] selectedRows = mainTable.getSelectedRows();
     				if (selectedRows.length > 0){
     					if(MOVE_UP.equals(e.getActionCommand())){
-    						((SimplePdfSelectionTableModel) mainTable.getModel()).moveUpRows(selectedRows);
+    						((AbstractPdfSelectionTableModel) mainTable.getModel()).moveUpRows(selectedRows);
     						if (selectedRows[0] > 0){
     							mainTable.setRowSelectionInterval(selectedRows[0]-1, selectedRows[selectedRows.length-1]-1);
 	                        }
     					}else if(MOVE_DOWN.equals(e.getActionCommand())){
-    						((SimplePdfSelectionTableModel) mainTable.getModel()).moveDownRows(selectedRows);
-    						if (selectedRows[selectedRows.length-1] < (((SimplePdfSelectionTableModel) mainTable.getModel()).getRowCount()-1)){
+    						((AbstractPdfSelectionTableModel) mainTable.getModel()).moveDownRows(selectedRows);
+    						if (selectedRows[selectedRows.length-1] < (((AbstractPdfSelectionTableModel) mainTable.getModel()).getRowCount()-1)){
     							 mainTable.setRowSelectionInterval(selectedRows[0]+1, selectedRows[selectedRows.length-1]+1);   
 	                        }
     					}else if(REMOVE.equals(e.getActionCommand())){
-    						((SimplePdfSelectionTableModel) mainTable.getModel()).deleteRows(selectedRows);
+    						((AbstractPdfSelectionTableModel) mainTable.getModel()).deleteRows(selectedRows);
+    					}else if (RELOAD.equals(e.getActionCommand())){
+    						for(int i=0; i<selectedRows.length; i++){
+    							PdfSelectionTableItem row = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(selectedRows[i]);
+    							loader.reloadFile(row.getInputFile(), row.getPassword(), row.getPageSelection(), selectedRows[i]);
+    						}
     					}
     				}
     			}

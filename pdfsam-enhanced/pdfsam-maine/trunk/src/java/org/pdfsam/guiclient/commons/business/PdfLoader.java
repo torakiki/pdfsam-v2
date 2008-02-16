@@ -128,6 +128,35 @@ public class PdfLoader {
     	this.addFile(file, null, null);
     }
     /**
+     * reload a file to the selectionTable
+     * @param file input file
+     * @param password password
+     * @param pageSelection page selection
+     */
+    public synchronized void reloadFile(File file, String password, String pageSelection, int index){
+    	if (file != null){
+    		workQueue.execute(new ReloadThread(file, password, pageSelection, index), (file.length()<(LOW_PRIORITY_SIZE))? WorkQueue.HIGH: WorkQueue.LOW);
+    	}
+    }
+    
+    /**
+     * reload a file to the selectionTable
+     * @param file input file
+     * @param password password
+     */
+    public void reloadFile(File file, String password, int index){
+    	this.reloadFile(file, password, null, index);
+    }
+
+    /**
+     * reload a file to the selectionTable
+     * @param file input file
+     */
+    public void reloadFile(File file, int index){
+    	this.reloadFile(file, null, null, index);
+    }
+    
+    /**
      * adds files to the selectionTable
      * @param files
      * @param ordered files are added keeping order
@@ -182,10 +211,10 @@ public class PdfLoader {
      *
      */
     private class AddThread implements Runnable{
-    	private String wipText;
-    	private File inputFile;
-    	private String password;
-    	private String pageSelection;
+    	String wipText;
+    	File inputFile;
+    	String password;
+    	String pageSelection;
     	
     	public AddThread(File inputFile){
     		this(inputFile, null, null);
@@ -224,7 +253,7 @@ public class PdfLoader {
          * @param password password to open the file
          * @return the item to add to the table
          */
-        private PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd, String password, String pageSelection){
+        PdfSelectionTableItem getPdfSelectionTableItem(File fileToAdd, String password, String pageSelection){
         	PdfSelectionTableItem tableItem = null;
         	PdfReader pdfReader = null;
             if (fileToAdd != null){
@@ -252,6 +281,58 @@ public class PdfLoader {
             }
             return tableItem;    
         }              
+    }
+    
+    /**
+     * Runnable to reload pdf documents
+     * @author Andrea Vacondio
+     *
+     */
+    private class ReloadThread extends AddThread{
+    	
+    	private int index = 0;
+
+		/**
+		 * @param inputFile
+		 * @param password
+		 * @param pageSelection
+		 */
+		public ReloadThread(File inputFile, String password, String pageSelection, int index) {
+			super(inputFile, password, pageSelection);
+			this.index = index;
+		}
+
+		/**
+		 * @param inputFile
+		 * @param password
+		 */
+		public ReloadThread(File inputFile, String password, int index) {
+			this(inputFile, password, null, index);			
+		}
+
+		/**
+		 * @param inputFile
+		 */
+		public ReloadThread(File inputFile, int index) {
+			this(inputFile, null, null, index);
+		}
+
+		public void run() {					
+    		try{
+    			 if (inputFile != null){
+						if(new PdfFilter(false).accept(inputFile)){
+			    			wipText = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please wait while reading")+" "+inputFile.getName()+" ...";
+			                panel.addWipText(wipText);			                
+			                panel.updateTableRow(index, getPdfSelectionTableItem(inputFile, password, pageSelection));
+			                panel.removeWipText(wipText);
+						}else{
+							log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selected file is not a pdf document.")+" "+inputFile.getName());
+						}
+                }
+	   		 }catch(Throwable e){
+	   			 log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "),e); 
+	   		 }	
+		 }    	
     }
     
     /**
