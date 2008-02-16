@@ -106,7 +106,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.1";
+    private static final String PLUGIN_VERSION = "0.6.2";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -215,7 +215,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Browse or enter the full path to the destination output file.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want to overwrite the output file if it already exists.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want compressed output files.")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"PDF version 1.5 or above.")+"</p>"+
-    		"</body></html>";
+    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Set the pdf version of the ouput document.")+"</p>"+    		"</body></html>";
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION        
@@ -231,7 +231,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 //validation and permission check are demanded 
                 try{
                     //if no extension given
-                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)"+PDF_EXTENSION+"$"))){
+                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)[^.]+?\\.("+PDF_EXTENSION+")$"))){
                         destinationTextField.setText(destinationTextField.getText()+".pdf");
                     }
                     args.add(destinationTextField.getText());
@@ -442,7 +442,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 
     public void loadJobNode(Node arg0) throws LoadJobException {
     	if(arg0 != null){
-			try{	
+			try{
+				resetPanel();
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
 				if (fileDestination != null){
 					destinationTextField.setText(fileDestination.getText());
@@ -458,7 +459,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 					mergeTypeCheck.setSelected(mergeType.getText().equals("true"));
 				}
 
-				selectionPanel.getClearButton().doClick();
 				List fileList = arg0.selectNodes("filelist/file");
 				for (int i = 0; fileList != null && i < fileList.size(); i++) {
 					Node fileNode = (Node) fileList.get(i);
@@ -605,8 +605,16 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
 			destinationTextField.setText(((String)evt.getNewValue())+File.separatorChar+"merged_file.pdf");
-		}
-		
+		}		
+	}
+	
+	public void resetPanel() {
+		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		destinationTextField.setText("");
+		versionCombo.resetComponent();
+		outputCompressedCheck.setSelected(true);
+		overwriteCheckbox.setSelected(false);
+		mergeTypeCheck.setSelected(false);
 	}
   
 }
