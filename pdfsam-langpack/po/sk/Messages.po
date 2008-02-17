@@ -1,16 +1,16 @@
-# German translation for pdfsam
-# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# Slovak translation for pdfsam
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the pdfsam package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-17 15:00+0100\n"
-"PO-Revision-Date: 2008-01-24 19:54+0000\n"
+"POT-Creation-Date: 2008-02-17 15:33+0100\n"
+"PO-Revision-Date: 2008-01-31 15:21+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German <de@li.org>\n"
+"Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,55 +20,52 @@ msgstr ""
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:148
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:158
 msgid "Merge options:"
-msgstr "Zusammenfüge-Optionen:"
+msgstr "Možnosti zlúčenia:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:151
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:161
 msgid "PDF documents contain forms"
-msgstr "PDF Dokumente beinhalten Formulare"
+msgstr "PDF dokumenty obsahujú formuláre"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:156
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:166
 msgid "Merge type"
-msgstr "Zusammenfüge-Typ"
+msgstr "Typ zlúčenia"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:157
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:167
 msgid "Unchecked"
-msgstr "nicht angekreuzt"
+msgstr "Nezaškrtnuté"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:157
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:167
 msgid "Use this merge type for standard pdf documents"
-msgstr "Benutzen Sie diesen Zusammenfüge-Typ für Standard PDF Dokumente"
+msgstr "Použiť tento typ zlúčenia pre štandardné PDF dokumenty"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:158
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:168
 msgid "Checked"
-msgstr "angekreuzt"
+msgstr "Zaškrtnuté"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:158
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:168
 msgid "Use this merge type for pdf documents containing forms"
-msgstr ""
-"Benutzen Sie diesen Zusammenfüge-Typ für Dokumente die Forumlare enthalten"
+msgstr "Použiť tento typ zlúčenia pre pdf dokumenty, ktoré obsahujú formuláre"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:159
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:169
 msgid "Note"
-msgstr "Bemerkung"
+msgstr "Poznámka"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:159
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:169
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr ""
-"Bei Setzen dieser Option werden die Dokumente vollständig in den Speicher "
-"geladen"
+msgstr "Nastavením tejto možnosti budú dokumenty plne načítané do pamäte"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:174
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:131
 msgid "Destination output file:"
-msgstr "Zieldatei"
+msgstr "Cieľový súbor výstupu:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:190
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:288
@@ -100,53 +97,52 @@ msgstr "Zieldatei"
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:314
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JStatusPanel.java:196
 msgid "Error: "
-msgstr "Fehler: "
+msgstr "Chyba: "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:199
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:105
 msgid "Overwrite if already exists"
-msgstr "Überschreiben, falls die Datei bereits existiert"
+msgstr "Prepísať ak už existuje"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:214
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:222
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:194
 msgid "Destination output file"
-msgstr "Ziel-Datei"
+msgstr "Cieľový výstupný súbor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:215
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:223
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:195
 msgid "Browse or enter the full path to the destination output file."
-msgstr "Zieldatei suchen oder vollständigen Pfad eingeben"
+msgstr "Nájdite, alebo zadajte plnú cestu do cie+ového výstupného súboru."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:216
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:224
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:196
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr "existierende Ausgabedatei überschreiben"
+msgstr "Zvoľte túto možnosť, pokiaľ si želáte prepísať súbor, ak už existuje."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:217
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:299
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:225
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:299
 msgid "Check the box if you want compressed output files."
-msgstr ""
-"Markieren Sie das Kästchen wenn die Ausgabedateien komprimiert werden soll."
+msgstr "Zašktnite, ak si želáte zkomprimovať výstupné súbory."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:217
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:299
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:225
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:299
 msgid "PDF version 1.5 or above."
-msgstr "PDF Version 1.5 oder höher."
+msgstr "PDF verzia 1.5, alebo vyššia."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:218
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:300
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:300
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:198
 msgid "Set the pdf version of the ouput document."
-msgstr "Die PDF Version für die Ausgabedatei festlegen"
+msgstr "Nastavte verziu pdf výstupného dokumentu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:226
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:338
@@ -155,7 +151,7 @@ msgstr "Die PDF Version für die Ausgabedatei festlegen"
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:207
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:91
 msgid "Please wait while all files are processed.."
-msgstr "Bitte warten, Dateien werden verarbeitet..."
+msgstr "Prosím čakajte než sa spracujú všetky súbory..."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:253
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:265
@@ -168,254 +164,252 @@ msgstr "Bitte warten, Dateien werden verarbeitet..."
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:349
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:354
 msgid "Found a password for input file."
-msgstr "Es wurde in Passwort für die Ursprungsdatei gefunden."
+msgstr "Nájdené heslo pre vstupný súbor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:292
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:379
 msgid "Execute pdf merge"
-msgstr "PDF-Dateien zusammenfügen"
+msgstr "Spustiť PDF zlúčenie"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:389
 msgid "Merge/Extract"
-msgstr "Zusammenfügen/Extrahieren"
+msgstr "Spojiť/Extrahovať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java:489
 msgid "Merge section loaded."
-msgstr ""
+msgstr "Spojiť nahratú sekciu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:167
 msgid "Burst (split into single pages)"
-msgstr "Teilen (in einzelne Seiten trennen)"
+msgstr "Rozdeliť na jednotlivé stránky"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:170
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:201
 msgid "Split every \"n\" pages"
-msgstr "Im Abstand von \"n\" Seiten trennen"
+msgstr "Rozdeliť každých \"n\" stránok"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:178
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:202
 msgid "Split even pages"
-msgstr "Nach geraden Seitennummern trennen"
+msgstr "Rozdeliť párne stránky"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:181
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:203
 msgid "Split odd pages"
-msgstr "Nach ungeraden Seitennummern trennen"
+msgstr "Rozdeliť nepárne stránky"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:184
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:204
 msgid "Split after these pages"
-msgstr "Nach folgenden Seitennummern trennen"
+msgstr "Rozdeliť za týmito stránkami"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:187
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:205
-#, fuzzy
 msgid "Split at this size"
-msgstr "Nach folgenden Seitennummern trennen"
+msgstr "Rozdeliť na tejto veľkosti"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:199
 msgid "Split options"
-msgstr "Trenn-Optionen"
+msgstr "Možnosti rozdelenia"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:200
 msgid "Burst"
-msgstr "In einzelne Seiten zerlegen"
+msgstr "Rozdeliť po stránkach"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:200
 msgid "Explode the pdf document into single pages"
-msgstr "pdf In einzelne Seiten zerlegen"
+msgstr "Rozdelí PDF súbor po jednotlivých stránkach"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:201
 msgid "Split the document every \"n\" pages"
-msgstr "pdf in jeweils \"n\" Seiten trennen"
+msgstr "Rozdelí dokument každých \"n\" stránok"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:202
 msgid "Split the document every even page"
-msgstr "pdf bei ungeraden Seiten trennen"
+msgstr "Rozdelí dokument na každej párnej stránke"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:203
 msgid "Split the document every odd page"
-msgstr "pdf bei geraden Seiten trennen"
+msgstr "Rozdelí dokument na každej nepárnej stránke"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:204
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "pdf nach Seitenzahlen trennen (Seite1-Seite2-Seite3...)"
+msgstr "Rozdelí dokument po číslach stránok (č1-č2-č3..)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:205
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)."
-msgstr "pdf bei ungeraden Seiten trennen"
+msgstr "Rozdelí dokument do súborov danej veľkosti (približne)."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:212
 msgid "Split options:"
-msgstr "Trennoptionen:"
+msgstr "Možnosti rozdelenia:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:238
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:184
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:256
 msgid "Destination folder:"
-msgstr "Ausgabeordner:"
+msgstr "Cieľový priečinok:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:241
 msgid "Same as source"
-msgstr "Im gleichen Ordner wie die Quelldatei"
+msgstr "Rovnaký ako zdroj"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:245
 msgid "Choose a folder"
-msgstr "Wählen Sie einen Ordner"
+msgstr "Vyberte priečinok"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:295
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:295
 msgid "Destination output directory"
-msgstr "Zielverzeichnis für die Ausgabe"
+msgstr "Cieľový priečinok výstupu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:296
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:296
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr "Gleiches Verzeichnis wie Eingabedatei oder neues Verzeichnis auswählen"
+msgstr "Použi rovnaký priečinok výstupu ako vstupu, alebo zvoľ priečinok."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:297
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:297
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
-msgstr "Ausgabepfad auswählen oder vollständigen Pfad eingeben"
+msgstr ""
+"Pre vybratie priečinku ho nalistujte, alebo napíšte k nemu úplnú cestu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:298
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:298
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr "vorhandene Dateien überschreiben"
+msgstr ""
+"Zvoľte túto možnosť, ak si želáte prepísať súbor, pokiaľ už existuje v "
+"cieľovom priečinku súbor s rovnakým názvom."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:306
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:305
 msgid "Output options:"
-msgstr "Ausgabeoptionen:"
+msgstr "Možnosti výstupu:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:314
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:315
 msgid "Output file names prefix:"
-msgstr "Präfix der Augabedatei:"
+msgstr "Prefix názvov výstupných súborov:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:324
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:325
 msgid "Output files prefix"
-msgstr "Präfix der Augabedatei:"
+msgstr "Prefix výstupných súborov"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:325
 msgid ""
 "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
 "substitution."
 msgstr ""
-"Falls es \"[CURRENTPAGE]\" oder \"[TIMESTAMP]\" enthält werden die Variablen "
-"ersetzt."
+"Pokiaľ obsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" vykoná náhradu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:326
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr "z.B. prefix_[BASENAME]_[CURRENTPAGE] erstellt prefix_FileName_005.pdf."
+msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:327
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
 "oldstyle output file names."
 msgstr ""
-"Enthält es nicht \"[CURRENTPAGE]\" oder \"[TIMESTAMP]\" werden Dateinamen im "
-"alten Stil erzeugt"
+"Pokiaľ neobsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" generuje názvy "
+"súborov v starom štýle."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:328
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-msgstr "Verwendbare Variablen: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr "Možné premenné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:355
-#, fuzzy
 msgid "Select an input file"
-msgstr "Ausgabedatei bestimmen"
+msgstr "Vyberte vstupný súbor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:373
 msgid "Invalid split size"
-msgstr "Unzulässige Trenngröße"
+msgstr "Neplatná veľkosť rozdelenia"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:403
 msgid "Split selected file"
-msgstr "Ausgewählte Datei teilen"
+msgstr "Rozdeliť vybraný súbor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:443
 msgid "Split"
-msgstr "Teilen"
+msgstr "Rozdeliť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java:572
 msgid "Split section loaded."
-msgstr "Geteilter Abschnitt geladen."
+msgstr "Rozdeliť nahratú sekciu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JSplitSizeCombo.java:70
 msgid "Invalid unit: "
-msgstr ""
+msgstr "Neplatný diel: "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:137
 msgid "Cover pdf file:"
-msgstr "PDF für Titelseite"
+msgstr "Prvá strana pdf súboru"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:142
 msgid "Footer pdf file:"
-msgstr "PDF für Fußzeile"
+msgstr "Záhlavie pdf súboru"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:254
 msgid "Select at least one cover or one footer"
-msgstr "Wählen sie mindestens einen Kopf oder einen Fuß"
+msgstr "Vyberte aspoň jedn prvú stranu, alebo jednu poslednú stranu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:496
 msgid "Cover and Footer"
-msgstr "Kopf und Fuß"
+msgstr "Prvá a posledná strana"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java:633
-#, fuzzy
 msgid "Cover And Footer section loaded."
-msgstr "Titelseite und Fußzeile geladen"
+msgstr "Prvá a posledná strana nahratej sekcie."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:170
 msgid "Owner password:"
-msgstr "Benutzerpasswort:"
+msgstr "Heslo majiteľa:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:174
 msgid "Owner password (Max 32 chars long)"
-msgstr "Benutzerpasswort (max 32 Zeichen)"
+msgstr "Heslo majiteľa (Maximálna dĺžka 32 znakov)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:178
 msgid "User password:"
-msgstr "Benutzerpasswort:"
+msgstr "Užívateľské heslo:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:182
 msgid "User password (Max 32 chars long)"
-msgstr "Benutzerpasswort:"
+msgstr "Užívateľské heslo (Maximálna veľkosť 32 znakov)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:186
 msgid "Encryption angorithm:"
-msgstr "Verschlüsselungsalgorithmus"
+msgstr "Šifrovací algoritmus:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:193
 msgid "Print"
-msgstr "Drucken.."
+msgstr "Tlačiť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:196
 msgid "Low quality print"
-msgstr "niedrige Druckqualität"
+msgstr "Nízka kvalita tlače"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:199
 msgid "Copy or extract"
-msgstr "kopieren oder extrahieren"
+msgstr "Skopírovať alebo extrahovať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:202
 msgid "Modify"
-msgstr "Ändern..."
+msgstr "Upraviť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:205
 msgid "Add or modify text annotations"
-msgstr "Anmerkungen hinzufügen oder ändern"
+msgstr "Pridať alebo upraviť textové poznámky"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:208
 msgid "Fill form fields"
-msgstr "Formularfelder ausfüllen"
+msgstr "Vyplniť polia formuláru"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:211
 msgid "Extract for use by accessibility dev."
@@ -423,89 +417,85 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:214
 msgid "Manipulate pages and add bookmarks"
-msgstr "Seiten ändern und Lesezeichen hinzufügen"
+msgstr "Pracovať so stránkami a pridať záložky"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:217
 msgid "Allow all"
-msgstr "Alle erlaubt"
+msgstr "Povoliť všetko"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:220
 msgid "Encrypt options:"
-msgstr "Verschlüsselungsoptionen:"
+msgstr "Možnosti šifrovania:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:326
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr "Die Variable [TIMESTAMP] wird ersetzt"
+msgstr "Ak obsahuje \"[TIMESTAMP]\" urobí zámenu premenných."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:327
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"z.B. [BASENAME]_prefix_[TIMESTAMP] erzeugt "
-"Dateiname_prefix_20070517_113423471.pdf."
+"Priklad [BASENAME]_prefix_[TIMESTAMP] generuje "
+"NázovSúboru_prefix_20070517_113423471.pdf."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:328
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
-msgstr "Falls es \"[TIMESTAMP]\" nicht enthält wird ein Dateiname generiert"
+msgstr "Ak neobsahujen \"[TIMESTAMP]\" generuje staré typy mien súborov."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:329
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr "verfügbare Variablen: [TIMESTAMP], [BASENAME]"
+msgstr "Dostupné premenné: [TIMESTAMP], [BASENAME]."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:387
-#, fuzzy
 msgid "Encrypt selected files"
-msgstr "ausgewählte Datei verschlüsseln"
+msgstr "Zašifruj vybrané súbory"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:414
-#, fuzzy
 msgid "Encrypt"
-msgstr "Verschlüsselungsoptionen:"
+msgstr "Zašifrovať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java:555
 msgid "Encrypt section loaded."
-msgstr ""
+msgstr "Zašifrovať nahratú sekciu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:136
-#, fuzzy
 msgid "Reverse first document"
-msgstr "letzte Seite zuerst"
+msgstr "Obrátiť prvý dokument"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:140
-#, fuzzy
 msgid "Reverse second document"
-msgstr "letzte Seite zuerst"
+msgstr "Obrátiť druhý dokument"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:197
-#, fuzzy
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
-msgstr "vorhandene Dateien überschreiben"
+msgstr ""
+"Zaškrtnite ak chcete zmenšiť veľkosť výstupných súborov (Pdf verzia 1.5 "
+"alebo vyššia)."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:218
 msgid "Found a password for first file."
-msgstr "Es wurde ein Passwort für die erste Datei gefunden."
+msgstr "Nájdené heslo pre prvý súbor."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:226
 msgid "Found a password for second file."
-msgstr "Es wurde ein Passwort für die zweite Datei gefunden."
+msgstr "Nájdené heslo pre druhý súbor."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:250
-#, fuzzy
 msgid "Please select two pdf documents."
-msgstr "Zweites pdf-Dukument"
+msgstr "Prosím vyberte dva pdf dokumenty."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:343
 msgid "Alternate Mix"
-msgstr ""
+msgstr "Náhodne premiešať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java:451
 msgid "AlternateMix section loaded."
-msgstr ""
+msgstr "Náhodne premiešať nahratú sekciu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java:55
 msgid "Ok"
@@ -515,155 +505,149 @@ msgstr "Ok"
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
+"Uložiť informácie o hesle (budú čitateľné pri otváraní výstupného súboru)?"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java:86
 msgid "Confirm password saving"
-msgstr ""
+msgstr "Potvrdiť uloženie hesla"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java:92
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/LogActionListener.java:66
 msgid "Unknown action."
-msgstr "Unbekannte Aktion."
+msgstr "Neznáma činnosť."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/LogActionListener.java:89
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:265
 msgid "Save"
-msgstr "Speichern"
+msgstr "Uložiť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/LogActionListener.java:99
 msgid "Log saved."
-msgstr "Log gespeichert."
+msgstr "Záznam uložený."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:75
 msgid " node environment loaded."
-msgstr " keine Umgebung geladen."
+msgstr " uzlové prostredie nahraté."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:85
 msgid "Environment saved."
-msgstr "Umgebung gespeichert."
+msgstr "Prostredie uložené"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:87
 msgid "Error saving environment, output file is null."
-msgstr "Fehler beim Speichern der Umgebung. Die Ausgabedatei ist Null."
+msgstr "Chyba pri ukladaní prostredia, výstupný súbor je prázdny."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:90
 msgid "Error saving environment."
-msgstr "Fehler beim Speichern der Umgebung."
+msgstr "Chyba pri ukladaní prostredia."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:124
 msgid "Environment loaded."
-msgstr "Umgebung geladen."
+msgstr "Prostredie nahraté."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:127
 msgid "Error loading environment."
-msgstr "Fehler beim Laden der Umgebung."
+msgstr "Chyba pri nahrávaní prostredia."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java:130
 msgid "Error loading environment from input file. "
-msgstr "Fehler beim Laden der Umgebung von der Eingabedatei. "
+msgstr "Chyba pri nahrávaní prostredia zo vstupného súboru. "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:73
 msgid "Selection table is full, please remove some pdf document."
-msgstr "Auswahltabelle ist voll. Bitte entfernen sie einige PDF Dateien."
+msgstr "Tabuľka výberu je plná, prosím odstráňte niektorý pdf dokument."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:74
 msgid "Table full"
-msgstr "Tabelle voll."
+msgstr "Tabuľka plná"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:237
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:324
-#, fuzzy
 msgid "Please wait while reading"
-msgstr "Lesevorgang, bitte warten"
+msgstr "Prosím čakajte počas čítania"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:242
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:329
-#, fuzzy
 msgid "Selected file is not a pdf document."
-msgstr "Zweites pdf-Dukument"
+msgstr "Vybraný súbor nie je pdf dokument."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/PdfLoader.java:273
 msgid "Error loading "
-msgstr "Fehler beim Laden "
+msgstr "Chyba pri nahrávaní "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/WorkThread.java:44
 msgid "Command validation returned an empty value."
-msgstr ""
+msgstr "Overovanie príkazu vrátilo prázdnu hodnotu."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/WorkThread.java:46
 msgid "Command executed."
-msgstr "Befehl ausgeführt."
+msgstr "Príkaz spustený."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:72
 msgid "Execute pdf alternate mix"
-msgstr ""
+msgstr "Spustiť náhodné premiešanie pdf"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:74
 msgid "Run"
-msgstr "Start"
+msgstr "Spustiť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:80
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:241
 msgid "Browse"
-msgstr "Öffnen"
+msgstr "Prehliadať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:101
-#, fuzzy
 msgid "Compress output file/files"
-msgstr "Ausgabedatei bestimmen"
+msgstr "Komprimovať výstupný súbor/súbory"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:110
 msgid "Don't preserve file order (fast load)"
-msgstr ""
+msgstr "Nezachovávať poradie súborov (rýchle nahrávanie)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java:131
-#, fuzzy
 msgid "Output document pdf version:"
-msgstr "Ausgabeoptionen:"
+msgstr "Verzia výstupného pdf dokumentu:"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/JPdfVersionCombo.java:64
-#, fuzzy
 msgid "Same as input document"
-msgstr "Zweites pdf-Dukument"
+msgstr "Rovnaký ako vstupný dokument"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:55
 msgid "File name"
-msgstr "Dateiname"
+msgstr "Názov súboru"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:56
 msgid "Path"
-msgstr "Pfad"
+msgstr "Cesta"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:57
 msgid "Pages"
-msgstr "Seiten"
+msgstr "Strany"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:58
-#, fuzzy
 msgid "Password"
-msgstr "Benutzerpasswort:"
+msgstr "Heslo"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:59
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:125
 msgid "Version"
-msgstr "Version"
+msgstr "Verzia"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:60
 msgid "Page Selection"
-msgstr "Seitenauswahl"
+msgstr "Výber strany"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:66
 msgid "Total pages of the document"
-msgstr "Anzahl aller Seiten des Dokumentes"
+msgstr "Počet strán dokumentu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:67
 msgid "Password to open the document (if needed)"
-msgstr "Passwort zum Öffnen des Dokumentes (wenn benötigt)"
+msgstr "Heslo pre otvorenie dokumentu (ak je potrebné)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:68
-#, fuzzy
 msgid "Pdf version of the document"
-msgstr "letzte Seite zuerst"
+msgstr "Pdf verzia dokumentu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java:69
 msgid ""
@@ -673,24 +657,24 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:207
 msgid "Add a pdf to the list"
-msgstr "PDF zur Liste hinzufügen"
+msgstr "Pridať PDF do zoznamu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:215
 msgid "Add"
-msgstr "Hinzufügen"
+msgstr "Pridať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:222
 msgid "Remove a pdf from the list"
-msgstr "PDF aus der Liste entfernen"
+msgstr "Odstrániť PDF zo zoznamu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:222
 msgid "(Canc)"
-msgstr ""
+msgstr "(Zrušiť)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:226
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:234
 msgid "Remove"
-msgstr "Entfernen"
+msgstr "Odstrániť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:245
 msgid "Reload"
@@ -699,116 +683,113 @@ msgstr ""
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:257
 #, fuzzy
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Fehler: Dateipfad kann nicht ermittelt werden."
+msgstr "Chyba: Nie je možné nájsť zadanú cestu k súboru."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:271
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:279
 msgid "Move Up"
-msgstr "Nach open"
+msgstr "Posunúť nahor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:272
 msgid "Move up selected pdf file"
-msgstr "Ausgewählte PDF-Datei nach oben verschieben"
+msgstr "Posunúť nahor vybraný PDF súbor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:272
 msgid "(Alt+ArrowUp)"
-msgstr "(Alt + Pfeil hoch)"
+msgstr "(Alt+Šípka Nahor)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:292
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:300
 msgid "Move Down"
-msgstr "Nach unten"
+msgstr "Posunúť dole"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:293
 msgid "Move down selected pdf file"
-msgstr "Ausgewählte PDF-Datei nach unten verschieben"
+msgstr "Posunúť nadol vybraný PDF súbor"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:293
 msgid "(Alt+ArrowDown)"
-msgstr "(Alt + Pfeil nach unten)"
+msgstr "Alt+ŠípkaDole"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:313
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JLogPopupMenu.java:61
 msgid "Clear"
-msgstr "Löschen"
+msgstr "Vyčistiť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:314
 msgid "Remove every pdf file from the merge list"
-msgstr "Alle PDF-Dateien aus der Liste entfernen"
+msgstr "Odstrániť všetky pdf súbory zo zoznamu spájania"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:323
 msgid "Set output file"
-msgstr "Ausgabedatei bestimmen"
+msgstr "Nastaviť súbor výstupu"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:333
 msgid "Error: Unable to get the file path."
-msgstr "Fehler: Dateipfad kann nicht ermittelt werden."
+msgstr "Chyba: Nie je možné nájsť zadanú cestu k súboru."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:450
 msgid "Unable to remove JList text "
-msgstr ""
+msgstr "Nie je možné odstrániť JList text "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:481
 msgid "File selected: "
-msgstr "Ausgewählte Datei: "
+msgstr "Vybraný súbor: "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/panels/JPdfSelectionPanel.java:491
 #, fuzzy
 msgid "File reloaded: "
-msgstr "Ausgewählte Datei: "
+msgstr "Vybraný súbor: "
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/configuration/Configuration.java:135
-#, fuzzy
 msgid "Setting look and feel..."
-msgstr "Aussehen"
+msgstr "Nastavenie vzhľadu a prostredia..."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/configuration/Configuration.java:165
 msgid "Setting logging level..."
-msgstr ""
+msgstr "Nastavenie prihlasovacej úrovne..."
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/configuration/Configuration.java:172
 msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr ""
+"Nie je možné nájsť zaznamenanú proveň, nastavujem na predvolenú úroveň "
+"(DEBUG)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/configuration/Configuration.java:177
-#, fuzzy
 msgid "Logging level set to "
-msgstr "Protokolllierungsstufe: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/configuration/Configuration.java:180
 msgid "Unable to set logging level."
 msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:65
-#, fuzzy
 msgid "Error getting plugins directory."
-msgstr "Zielverzeichnis für die Ausgabe"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:91
 msgid "Cannot read plugins directory "
-msgstr "Kann Plugin-Verzeichniss nicht lesen "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:94
 msgid "Plugins directory is null."
-msgstr "Plugin-Verzeichniss ist Null"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:121
 msgid "Found zero or many jars in plugin directory "
-msgstr "Es wurden kein oder viele jars im Plugin-Verzeichniss gefunden "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:124
-#, fuzzy
 msgid "Exception loading plugins."
-msgstr "Lade Plugins.."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:127
 msgid "Cannot read plugin directory "
-msgstr "Kann Pluginverzeichniss nicht lesen "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:142
-#, fuzzy
 msgid " plugin loaded."
-msgstr " Geteilter Abschnitt geladen."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/plugins/PlugInsLoader.java:144
 msgid "Unable to load a plugin that is not JPanel subclass."
@@ -820,35 +801,35 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JLogPopupMenu.java:55
 msgid "Copy"
-msgstr "Kopie"
+msgstr "Kopírovať"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JLogPopupMenu.java:68
 msgid "Select all"
-msgstr "Alle Markieren"
+msgstr "Vybrať všetko"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JLogPopupMenu.java:77
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JButtonsPanel.java:85
 msgid "Save log"
-msgstr "Log speichern"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JMainMenuBar.java:61
 msgid "File"
-msgstr "Datei"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JMainMenuBar.java:64
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JButtonsPanel.java:75
 msgid "Save environment"
-msgstr "Speichere Umgebung"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JMainMenuBar.java:71
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JButtonsPanel.java:80
 msgid "Load environment"
-msgstr "Lade Umgebung"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JMainMenuBar.java:78
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JButtonsPanel.java:95
 msgid "Exit"
-msgstr "Beenden"
+msgstr "Ukončiť"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/components/JMainMenuBar.java:90
 msgid "Unable to initialize menu bar."
@@ -860,31 +841,31 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/frames/JMainFrame.java:114
 msgid "Loading plugins.."
-msgstr "Lade Plugins.."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/frames/JMainFrame.java:136
 msgid "Building menus.."
-msgstr "Erzeuge Menüs.."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/frames/JMainFrame.java:142
 msgid "Building buttons bar.."
-msgstr "Erzeuge Schaltflächen.."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/frames/JMainFrame.java:147
 msgid "Building status bar.."
-msgstr "Erzeuge Statusanzeige.."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/frames/JMainFrame.java:153
 msgid "Building tree.."
-msgstr "Erzeuge Baum..."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/frames/JMainFrame.java:185
 msgid "Error starting pdfsam."
-msgstr "Fehler beim Starten von pdfsam"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JButtonsPanel.java:90
 msgid "Clear log"
-msgstr "Protokoll löschen"
+msgstr "Vyčistiť záznam"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JButtonsPanel.java:107
 msgid "Unable to initialize button bar."
@@ -892,24 +873,23 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:107
 msgid "Version: "
-msgstr "Version: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:108
 msgid "Language: "
-msgstr "Sprache: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:109
 msgid "Build date: "
-msgstr "Erstellungsdatum: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:110
 msgid "Java home: "
 msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:111
-#, fuzzy
 msgid "Java version: "
-msgstr "Version: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:112
 msgid "Configuration file: "
@@ -917,15 +897,15 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:113
 msgid "Website: "
-msgstr "Webseite: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:125
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:125
 msgid "Author"
-msgstr "Autor"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:169
 msgid "Unimplemented method for JInfoPanel"
@@ -933,28 +913,28 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JInfoPanel.java:174
 msgid "Contributes: "
-msgstr "Mitwirkende: "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JLogPanel.java:68
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:133
 msgid "Log level:"
-msgstr "Protokollierungsstufe:"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:124
 msgid "Look and feel:"
-msgstr "Aussehen:"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:127
 msgid "Theme:"
-msgstr "Design:"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:130
 msgid "Language:"
-msgstr "Sprache:"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:136
 msgid "Load default environment at startup:"
-msgstr "Lade Standardumgebung beim Start:"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:143
 msgid "Error getting default environment."
@@ -962,151 +942,81 @@ msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:231
 msgid "Settings "
-msgstr "Einstellungen "
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:232
 msgid "Language"
-msgstr "Sprache"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:232
 msgid "Set your preferred language (restart needed)"
-msgstr "Wählen sie ihre Sprache (Neustart nötig)"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:233
 msgid "Look and feel"
-msgstr "Aussehen"
+msgstr "Vzhľad"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:233
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
-msgstr ""
-"Wählen sie das bevorzugtes Aussehen und Ihr bevorzugtes Design (Neustart "
-"nötig)"
+msgstr "Nastavte vami preferovaný vzhľad a tému (potrebný reštart)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:234
 msgid "Log level"
-msgstr "Protokollierungsstufe"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:234
 msgid "Set a log detail level (restart needed)"
-msgstr "Wähle die Protokollierungsstufe (Neustart nötig)"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:235
 msgid "Default env."
-msgstr "Standard Umgebung"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:235
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
 msgstr ""
-"Wählen sie eine gespeicherte Env.-Datei aus die beim Start automatisch "
-"geladen wird"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:281
-#, fuzzy
 msgid "Configuration saved."
-msgstr "Log gespeichert."
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/gui/panels/JSettingsPanel.java:511
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:47
-#, fuzzy
 msgid "Error getting pdf version description."
-msgstr "Zielverzeichnis für die Ausgabe"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:58
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:74
 msgid "Version 1.2 (Acrobat 3)"
-msgstr "Version 1.2 (Acrobat 3)"
+msgstr ""
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:59
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:75
 msgid "Version 1.3 (Acrobat 4)"
-msgstr "Version 1.3 (Acrobat 4)"
+msgstr "Verzia 1.3 (Acrobat 4)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:60
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:76
 msgid "Version 1.4 (Acrobat 5)"
-msgstr "Version 1.4 (Acrobat 5)"
+msgstr "Verzia 1.4 (Acrobat 5)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:61
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:77
 msgid "Version 1.5 (Acrobat 6)"
-msgstr "Version 1.5 (Acrobat 6)"
+msgstr "Verzia 1.5 (Acrobat 6)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:62
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:78
 msgid "Version 1.6 (Acrobat 7)"
-msgstr "Version 1.6 (Acrobat 7)"
+msgstr "Verzia 1.6 (Acrobat 7)"
 
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:63
 #: /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java:79
 msgid "Version 1.7 (Acrobat 8)"
-msgstr "Version 1.7 (Acrobat 8)"
-
-#~ msgid "Please wait while reading "
-#~ msgstr "Lesevorgang, bitte warten "
-
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Alle PDF-Dateien aus der Liste löschen"
-
-#~ msgid "Destination output directory:"
-#~ msgstr "Zielverzeichnis:"
-
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Titelseite suchen"
-
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "PDf für Fußzeile suchen"
-
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Zielverzeichnis suchen oder vollständigen Pfad eingeben"
-
-#, fuzzy
-#~ msgid "Execute pdf add cover footer"
-#~ msgstr "Pdf erzeugen,  Titelseite und Fußzeile hinzufügen"
-
-#~ msgid "Source file:"
-#~ msgstr "Quelldatei:"
-
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "PDF zm Verschlüsseln auswählen"
-
-#~ msgid "Browse filesystem for the first file to mix"
-#~ msgstr "Erste Datei suchen"
-
-#~ msgid "Browse filesystem for the second file to mix"
-#~ msgstr "Zweite Datei suchen"
-
-#~ msgid "First pdf document:"
-#~ msgstr "Erstes pdf-Dukument"
-
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Wählen Sie eine PDF-Datei zum Trennen aus"
-
-#~ msgid "RuntimeError:"
-#~ msgstr "Laufzeitfehler:"
-
-#~ msgid "About"
-#~ msgstr "Über"
-
-#~ msgid "Info"
-#~ msgstr "Info"
-
-#~ msgid "Informations:"
-#~ msgstr "Informationen:"
-
-#~ msgid "Application name: "
-#~ msgstr "Programmname: "
-
-#~ msgid "Application version: "
-#~ msgstr "Programmversion: "
-
-#~ msgid "Installed plugins:"
-#~ msgstr "Installierte Plugins:"
-
-#~ msgid "Close"
-#~ msgstr "Schließen"
+msgstr "Verzia 1.7 (Acrobat 8)"
