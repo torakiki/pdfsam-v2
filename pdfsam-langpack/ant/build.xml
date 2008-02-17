@@ -54,116 +54,140 @@
 			<!-- update po files --> 	
  	        <target name="updatepo" description="updates po files">
 				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/en/Messages.po ${pot}"/>
+						 <arg line="-U ${po}/bs_BA/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
+						 <arg line="-U ${po}/cs_CZ/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/fr/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/es/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/ru/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/sv/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/nl/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/el/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/tr/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/fi/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/da/Messages.po ${pot}"/>
+						 <arg line="-U ${po}/da_DK/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/de/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/el_GR/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/en/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/es/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/fi/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/fr/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/he_IL/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/hu/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/id/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/nl/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/pl/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/pt/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/ru/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/sk/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/sv_SE/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
+						 <arg line="-U ${po}/tr/Messages.po ${pot}"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msgmerge">
 						 <arg line="-U ${po}/zh_TW/Messages.po ${pot}"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/id/Messages.po ${pot}"/>
+						 <arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
 				 </exec>
  	        </target>
  	
 			<!-- generete properties -->
  	        <target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
 				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/Messages.po"/>
+						 <arg line="-p -o ${resources.dir}/Messages_bs_BA.properties ${po}/bs_BA/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_de_DE.properties ${po}/de/Messages.po"/>
+						 <arg line="-p -o ${resources.dir}/Messages_cs_CZ.properties ${po}/cs_CZ/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_da_DK.properties ${po}/da_DK/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_el_GR.properties ${po}/el_GR/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_es_ES.properties ${po}/es/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_fr_FR.properties ${po}/fr/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_it_IT.properties ${po}/it/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_pt_BR.properties ${po}/pt_BR/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_ru_RU.properties ${po}/ru/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_sv_SE.properties ${po}/sv/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_el_EL.properties ${po}/el/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_nl_NL.properties ${po}/nl/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_tr_TR.properties ${po}/tr/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_fi_FI.properties ${po}/fi/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_da_DA.properties ${po}/da/Messages.po"/>
+						 <arg line="-p -o ${resources.dir}/Messages_he_IL.properties ${po}/he_IL/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_hu_HU.properties ${po}/hu/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_id_ID.properties ${po}/id/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_it_IT.properties ${po}/it/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_nl_NL.properties ${po}/nl/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_pl_PL.properties ${po}/pl/Messages.po"/>
+				 </exec>
+ 	        	<exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_pt_PT.properties ${po}/pt/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_pt_BR.properties ${po}/pt_BR/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_ru_RUI.properties ${po}/ru/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_sk_SK.properties ${po}/sk/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_sv_SE.properties ${po}/sv_SE/Messages.po"/>
+				 </exec>
+				 <exec executable="${gettext.dir}/msguniq">
+						 <arg line="-p -o ${resources.dir}/Messages_tr_TR.properties ${po}/tr/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
 						 <arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/Messages.po"/>
 				 </exec>
 				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_id_ID.properties ${po}/id/Messages.po"/>
+						 <arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
 				 </exec>
 			 </target>
 			
