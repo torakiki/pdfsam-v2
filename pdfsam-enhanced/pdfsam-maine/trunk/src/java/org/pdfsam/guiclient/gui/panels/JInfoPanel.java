@@ -86,7 +86,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
              version = GuiClient.getVersion();
              applicationName = GuiClient.getApplicationName();
              language = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/language");
-             buildDate = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/build_date");
+             buildDate = GuiClient.getBuildDate();
              javaHome = System.getProperty("java.home");
              javaVersion = System.getProperty("java.runtime.name")+" "+System.getProperty("java.runtime.version");
              configPath = config.getXmlConfigObject().getXMLConfigFile().getAbsolutePath();
@@ -109,6 +109,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Build date: ")+buildDate+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java home: ")+javaHome+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java version: ")+javaVersion+"<br>"
+        		+GettextResource.gettext(config.getI18nResourceBundle(),"Max memory: ")+(Runtime.getRuntime().maxMemory()/1048576)+"Mb<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Configuration file: ")+configPath+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Website: ")+"<a href=\"http://www.pdfsam.org\" title=\"pdfsam\">http://www.pdfsam.org</a>"
         		+"<br><br>"+getThanksText()+"</body></html>");

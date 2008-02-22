@@ -23,7 +23,7 @@ Linked libraries:
 	-emp4j-1.0.0 *
 	-pdfsam-langpack *
 	
-Note: This is a test version and many fixes have to be done. PDF Split and Merge comes with ABSOLUTELY NO WARRANTY;
+Note: This is a beta version and some fixes have to be done. PDF Split and Merge comes with ABSOLUTELY NO WARRANTY;
 see the file gpl.txt in licenses/pdfsam subdirectory for details.
 
 Installation: Unzip the archive into a directory. Double click pdfsam-1.0.0-b2.jar or open a console a type the command
