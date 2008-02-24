@@ -63,7 +63,6 @@ import org.pdfsam.plugin.encrypt.listeners.EncryptionTypeComboActionListener;
 /** 
  * Plugable JPanel provides a GUI for encrypt functions.
  * @author Andrea Vacondio
- * @see it.pdfsam.interfaces.PlugablePanel
  * @see javax.swing.JPanel
  */
 public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyChangeListener{
