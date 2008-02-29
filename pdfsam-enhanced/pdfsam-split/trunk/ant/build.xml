@@ -1,65 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="pdfsam-cover" default="dist" basedir="../">
+<project name="pdfsam-split" default="build-jars" basedir="../">
     <description>
-        CoverFooter plugin for pdfsam 
+        Split plugin for pdfsam 
     </description>
-  <!-- Component Paths - Override if needed -->
-	<property name="lib.location" value="f:/pdfsam/workspace-enhanced/pdfsam-maine/lib"/>	
-	<property name="langpack.jar.name" value="pdfsam-langpack"/>
-	<property name="console.jar.name" value="pdfsam-console-1.1.2e"/>
-	<property name="log4j.jar.name" value="log4j-1.2.15"/>
-	<property name="dom4j.jar.name" value="dom4j-1.6.1"/>
-	<property name="jaxen.jar.name" value="jaxen-1.1"/>
-  
+	
   <!-- set global properties for this build -->
   	<property name="user.name" value="Andrea Vacondio"/>
-  	<property name="pdfsam-cover.src.dir" location="src/java"/>
-  	<property name="pdfsam-cover.etc.dir" location="etc"/>
-  	<property name="build.dir" location="f:/build/pdfsam-cover"/>
-  	<property name="pdfsam-cover.build.dir" location="${build.dir}/build"/>
-  	<property name="pdfsam-cover.dist.dir"  location="${build.dir}/dist"/>
-  	<property name="pdfsam-cover.javadoc.dir"  location="${build.dir}/doc"/>
-	<property name="main.lib" value="f:/build/pdfsam/dist/pdfsam-1.4.0e-b1.jar"/>	
- 
-  <property name="pdfsam-cover.jar.name" value="pdfsam-cover"/>
-  <property name="pdfsam-cover.jar.version" value="0.2.1"/>	
-  
-  <target name="init">
-    <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${pdfsam-cover.build.dir}"/>
-    <mkdir dir="${pdfsam-cover.javadoc.dir}"/>
-  </target>
+  	<property name="pdfsam-split.src.dir" location="src/java"/>
+  	<property name="pdfsam-split.etc.dir" location="etc"/>
+	 
+	  <target name="init">
+	  	<property file="ant/build.properties" />
+	  	  	
+	  	<property name="pdfsam-split.build.root" location="${build.dir}/pdfsam-split"/>
+	  	<property name="pdfsam-split.build.dir" location="${pdfsam-split.build.root}/build"/>
+	  	<property name="pdfsam-split.dist.dir"  location="${pdfsam-split.build.root}/dist"/>
+	  	<property name="pdfsam-split.javadoc.dir"  location="${pdfsam-split.build.root}/apidocs"/>   
+	  </target>
+	
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-split.build.dir}"/>
+		<mkdir dir="${pdfsam-split.dist.dir}"/>
+	    <mkdir dir="${pdfsam-split.javadoc.dir}"/>
+	</target>	
 
-  <target name="compile" depends="init"
-        description="pdfsam-cover " >
+	  <target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-split.javadoc.dir}"/>
+	    <delete dir="${pdfsam-split.dist.dir}"/>
+	    <delete dir="${pdfsam-split.build.dir}"/>
+	  </target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-split " >
     <!-- Construct classpath -->
-    <path id="pdfsam-cover.classpath">
-        <fileset dir="${lib.location}">
+    <path id="pdfsam-split.classpath">
+        <fileset dir="${libs.dir}">
           <include name="**/${log4j.jar.name}.jar"/>
           <include name="**/${dom4j.jar.name}.jar"/>
           <include name="**/${jaxen.jar.name}.jar"/>
-          <include name="**/${console.jar.name}.jar"/>
-          <include name="**/${langpack.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
         </fileset> 	
-        <pathelement path="${pdfsam-cover.build.dir}"/>
-        <pathelement path="${main.lib}"/>    	
+        <pathelement path="${pdfsam-split.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-cover.src.dir}" destdir="${pdfsam-cover.build.dir}" debug="true">
-    <classpath refid="pdfsam-cover.classpath"/>
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-split.src.dir}" destdir="${pdfsam-split.build.dir}" debug="true">
+    	<classpath refid="pdfsam-split.classpath"/>
     </javac>
   </target>
 
-  <target name="dist" depends="compile"
-        description="generate the distribution" >
-    <!-- Create the distribution directory -->
-    <mkdir dir="${pdfsam-cover.dist.dir}"/>
+  <target name="build-jars" depends="compile" description="generate the distribution" >
 
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${pdfsam-cover.dist.dir}/${pdfsam-cover.jar.name}-${pdfsam-cover.jar.version}.jar" basedir="${pdfsam-cover.build.dir}">
+    <jar jarfile="${pdfsam-split.dist.dir}/${pdfsam-split.jar.name}.jar" basedir="${pdfsam-split.build.dir}">
     <manifest>
-	<attribute name="Built-By" value="${user.name}"/>
+		<attribute name="Built-By" value="${user.name}"/>
     </manifest>
 	<fileset dir=".">
 	    <include name="images/*.png"/>
@@ -68,41 +66,35 @@
     
   </target>
 
-
-
-  <target name="clean"
-        description="clean up" >
-    <!-- Delete the ${dist} directory trees -->
-    <delete dir="${pdfsam-cover.javadoc.dir}"/>
-    <delete dir="${pdfsam-cover.dist.dir}"/>
-    <delete dir="${pdfsam-cover.build.dir}"/>
-  </target>
-
   <!-- Javadoc -->
-  <target name="javadoc" depends="init">
+  <target name="javadoc" depends="make-structure">
     <javadoc
-      packagenames="org.pdfsam.plugin.coverfooter.*"
-      sourcepath="${pdfsam-cover.src.dir}"
-      destdir="${pdfsam-cover.javadoc.dir}"
+      packagenames="org.pdfsam.plugin.split.*"
+      sourcepath="${pdfsam-split.src.dir}"
+      destdir="${pdfsam-split.javadoc.dir}"
       author="true"
       version="true"
       use="true"
-      windowtitle="pdfsam Cover And Footer Plugin API"
-      doctitle="pdfsam Cover And Footer Plugin API" >
-    <classpath refid="pdfsam-cover.classpath"/>
+      windowtitle="pdfsam Split Plugin API"
+      doctitle="pdfsam Split Plugin API" >
+    <classpath refid="pdfsam-split.classpath"/>
     </javadoc>
   </target>
 
 
   
-  <target name="buildZipPackage" depends="javadoc" description="generate build sources zip package" >
-    <zip destfile="${pdfsam-cover.dist.dir}/${pdfsam-cover.jar.name}-${pdfsam-cover.jar.version}-build-src.zip">	
-		<fileset dir=".">
-	    	<include name="src/java/**/*"/>
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-split.dist.dir}/${pdfsam-split.jar.name}-build-src.zip">	
+		<fileset dir="..">
+	    	<include name="pdfsam-split/src/java/**/*"/>
     	</fileset>
 		<fileset dir="${build.dir}">
-	    	<include name="doc/**/*.*"/>
+	    	<include name="pdfsam-split/apidocs/**/*.*"/>
     	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-split/ant/**/*.*"/>
+    		<include name="pdfsam-split/images**/*.png"/>
+    	</fileset>    	
     </zip>
   </target>
 
