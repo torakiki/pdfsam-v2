@@ -155,6 +155,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptSpringLayout = new SpringLayout();
         setLayout(encryptSpringLayout);
         add(selectionPanel);
+        selectionPanel.addPropertyChangeListener(this);
 
 //FILE_CHOOSER
         browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -292,10 +293,9 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 //      HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Destination output directory")+"</b>" +
-    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Use the same output folder as the input file or choose a folder.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
-    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want compressed output files.")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"PDF version 1.5 or above.")+"</p>"+
+    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want compressed output files (Pdf version 1.5 or higher).")+"</p>"+
     		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Set the pdf version of the ouput document.")+"</p>"+
     		"</body></html>";
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
