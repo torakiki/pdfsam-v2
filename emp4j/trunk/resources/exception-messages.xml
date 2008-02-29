@@ -33,6 +33,7 @@
 		<exception errorcode="18" message="Unnecessary option -b for the selected split mode." />		
 		<exception errorcode="19" message="No -b option given." />		
 		<exception errorcode="20" message="No -f option given." />	
+		<exception errorcode="21" message="-d {0} must be a directory." />
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
 		<exception errorcode="1" message="Cannot find page limits, please check input value." />		
@@ -47,6 +48,9 @@
 		<exception errorcode="5" message="Cannot merge at page {0}. No such page." />				
 		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
 	</type>
-	<type key="5" description="ENC" />
-	<type key="6" description="MIX" />
+	<type key="org.pdfsam.console.exceptions.console.EncryptException" description="ENC" />
+	<type key="org.pdfsam.console.exceptions.console.MixException" description="MIX" />
+	<type key="org.pdfsam.console.exceptions.console.UnpackException" description="UNP">
+		<exception errorcode="1" message="No -f or -d option given." />	
+	</type>
 </exception-types>
