@@ -6,6 +6,7 @@
 -Console: added to "unpack" command
 -Selection table menu now have a "Reload" feature to reload documents
 -Split: fixed an error when loading the environment
+-Encrypt: fixed the setOutputPath menu item
 -A reset method is called before loading an environment for every plugin
 
 1.4.0e beta 1 (12-Jan-2008)
