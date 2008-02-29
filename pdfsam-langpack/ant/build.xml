@@ -1,221 +1,225 @@
-<project name="pdfsam-langpack" default="genproperties" basedir="../">
-	
-			<property name="po" location="po" />
-	        <property name="gettext.dir" value="/usr/bin" />
-	        <property name="pot" value="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-langpack/po/Messages.pot" />
-	        <property name="basic.langpack.dir" location="/media/LACIE/pdfsam/workspace-basic/pdfsam-main/lib" />
-	        <property name="enhanced.langpack.dir" location="/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine\lib" />
-		    <property name="src.dir" location="src/java" />
-		    <property name="resources.dir" location="${src.dir}/org/pdfsam/i18n/resources" />
-		    <property name="filelist.dir" location="resources" />
-			<property name="user.name" value="Andrea Vacondio" />
-			<property name="build.dir" location="/media/LACIE/build/pdfsam-langpack"/>
-	  		<property name="pdfsam-langpack.build.dir" location="${build.dir}/build"/>
-	  		<property name="pdfsam-langpack.dist.dir"  location="${build.dir}/dist"/>
-	  		<property name="pdfsam-langpack.javadoc.dir"  location="${build.dir}/doc"/>
-		  	<property name="pdfsam-langpack.jar.name"  value="pdfsam-langpack"/>
-	  			
-	  		<target name="init">
-	  		    <!-- Create the time stamp -->
-	  		    <tstamp/>
-	  		    <!-- Create the build directory structure used by compile -->
-	  		    <mkdir dir="${pdfsam-langpack.build.dir}"/>
-	  		    <mkdir dir="${pdfsam-langpack.javadoc.dir}"/>
-	  		</target>
+<project name="pdfsam-langpack" default="genproperties" basedir="..">
+
+	<!-- set global properties for this build -->
+	<property name="user.name" value="Andrea Vacondio"/>
+	<property name="pdfsam-langpack.src.dir" location="src/java"/>
+	<property name="po" location="po" />
+	<property name="gettext.dir" location="/usr/bin" />
+	<property name="pot" location="${po}/Messages.pot" />
+	<property name="resources.dir" location="${pdfsam-langpack.src.dir}/org/pdfsam/i18n/resources" />
+	<property name="filelist.dir" location="resources" />
 
 
-  		      <target name="compile" depends="init"
-  		            description="pdfsam-langpack " >
-	           	<path id="pdfsam-langpack.classpath">
-           	    </path>
-  		        <!-- Compile the java code from ${src} into ${build} -->
-  		        <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${src.dir}" destdir="${pdfsam-langpack.build.dir}">
-  		        	<classpath refid="pdfsam-langpack.classpath"/>
-  		        </javac>
-  		      </target>
-	  		      	
- 	        <target name="clean" description="removes previously created files">
-			  <delete verbose="true">
-				<fileset dir="${resources.dir}"/>
-			  </delete>
- 	        	 	<delete dir="${pdfsam-langpack.javadoc.dir}"/>
-					<delete dir="${pdfsam-langpack.dist.dir}"/>
- 	        	 	<delete dir="${pdfsam-langpack.build.dir}"/>
- 	        </target>
- 	        	
-			<!-- new pot -->
- 	        <target name="genpot" description="generates pot files">
-				 <!-- new pot -->
-				 <exec executable="${gettext.dir}/xgettext">
-						 <arg line="-ktr -ktrn:1,2 -ktrc -kmarktr -Ljava -o${pot} -f ${filelist.dir}/filelist.txt"/>
-				 </exec>
- 	        </target>
+	<target name="init">
+		<property file="ant/build.properties" />
 
-			<!-- update po files --> 	
- 	        <target name="updatepo" description="updates po files">
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/bs_BA/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/cs_CZ/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/da_DK/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/de/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/el_GR/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/en/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/es/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/fi/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/fr/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/he_IL/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/hu/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/id/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/it/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/nl/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/pl/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/pt/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/ru/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/sk/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/sv_SE/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/tr/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/zh_TW/Messages.po ${pot}"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msgmerge">
-						 <arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
-				 </exec>
- 	        </target>
- 	
-			<!-- generete properties -->
- 	        <target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_bs_BA.properties ${po}/bs_BA/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_cs_CZ.properties ${po}/cs_CZ/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_da_DK.properties ${po}/da_DK/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_el_GR.properties ${po}/el_GR/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_es_ES.properties ${po}/es/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_fi_FI.properties ${po}/fi/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_he_IL.properties ${po}/he_IL/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_hu_HU.properties ${po}/hu/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_id_ID.properties ${po}/id/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_it_IT.properties ${po}/it/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_nl_NL.properties ${po}/nl/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_pl_PL.properties ${po}/pl/Messages.po"/>
-				 </exec>
- 	        	<exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_pt_PT.properties ${po}/pt/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_pt_BR.properties ${po}/pt_BR/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_ru_RUI.properties ${po}/ru/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_sk_SK.properties ${po}/sk/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_sv_SE.properties ${po}/sv_SE/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_tr_TR.properties ${po}/tr/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/Messages.po"/>
-				 </exec>
-				 <exec executable="${gettext.dir}/msguniq">
-						 <arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
-				 </exec>
-			 </target>
-			
-			  <target name="dist" depends="compile"
-			    description="generate the distribution" >
-					<!-- Create the distribution directory -->
-					<mkdir dir="${pdfsam-langpack.dist.dir}"/>
-					
-					<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-					<jar jarfile="${pdfsam-langpack.dist.dir}/${pdfsam-langpack.jar.name}.jar" basedir="${pdfsam-langpack.build.dir}">
-					<manifest>
-					<attribute name="Built-By" value="${user.name}"/>
-					</manifest>
-					<fileset dir="${src.dir}">
-					    <include name="**/*.xml"/>
-					    <include name="**/*.properties"/>
-					    <exclude name="**/*.java"/>
-					</fileset>		
-					</jar>
-					    
-			  </target>
-	
-			<!-- crates tar to rosetta upload -->
-			<target name="tar_to_rosetta" description="generate the tar to upload on rosetta" >
-				<delete file="${po}/pdfsam-langpack.tar.gz" />	
-				<tar destfile="${po}/pdfsam-langpack.tar.gz" 
+		<property name="pdfsam-langpack.build.root" location="${build.dir}/pdfsam-langpack"/>
+		<property name="pdfsam-langpack.build.dir" location="${pdfsam-langpack.build.root}/build"/>
+		<property name="pdfsam-langpack.dist.dir"  location="${pdfsam-langpack.build.root}/dist"/>
+	</target>
+
+	<target name="make-structure" depends="init">
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${pdfsam-langpack.build.dir}"/>
+		<mkdir dir="${pdfsam-langpack.dist.dir}"/>
+	</target>
+
+	<target name="clean" depends="init" description="clean up" >
+		<!-- Delete the ${dist} directory trees -->
+		<delete dir="${pdfsam-langpack.dist.dir}"/>
+		<delete dir="${pdfsam-langpack.build.dir}"/>
+	</target>
+
+	<target name="compile" depends="make-structure" description="pdfsam-langpack " >
+		<path id="pdfsam-langpack.classpath" />
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-langpack.src.dir}" destdir="${pdfsam-langpack.build.dir}">
+			<classpath refid="pdfsam-langpack.classpath"/>
+		</javac>
+	</target>
+
+
+	<!-- new pot -->
+	<target name="genpot" description="generates pot files">
+		<!-- new pot -->
+		<exec executable="${gettext.dir}/xgettext">
+			<arg line="-ktr -ktrn:1,2 -ktrc -kmarktr -Ljava -o${pot} -f ${filelist.dir}/filelist.txt"/>
+		</exec>
+	</target>
+
+	<!-- update po files -->
+	<target name="updatepo" description="updates po files">
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/bs_BA/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/cs_CZ/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/da_DK/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/de/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/el_GR/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/en/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/es/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/fi/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/fr/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/he_IL/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/hu/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/id/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/it/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/nl/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/pl/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/pt/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/ru/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/sk/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/sv_SE/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/tr/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/zh_TW/Messages.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
+		</exec>
+	</target>
+
+	<!-- generete properties -->
+	<target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_bs_BA.properties ${po}/bs_BA/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_cs_CZ.properties ${po}/cs_CZ/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_da_DK.properties ${po}/da_DK/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_el_GR.properties ${po}/el_GR/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_es_ES.properties ${po}/es/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_fi_FI.properties ${po}/fi/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_he_IL.properties ${po}/he_IL/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_hu_HU.properties ${po}/hu/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_id_ID.properties ${po}/id/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_it_IT.properties ${po}/it/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_nl_NL.properties ${po}/nl/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_pl_PL.properties ${po}/pl/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_pt_PT.properties ${po}/pt/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_pt_BR.properties ${po}/pt_BR/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_ru_RUI.properties ${po}/ru/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_sk_SK.properties ${po}/sk/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_sv_SE.properties ${po}/sv_SE/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_tr_TR.properties ${po}/tr/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
+		</exec>
+	</target>
+
+	<target name="build-jars" depends="compile" description="generate the distribution" >
+
+		<jar jarfile="${pdfsam-langpack.dist.dir}/${pdfsam-langpack.jar.name}.jar" basedir="${pdfsam-langpack.build.dir}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+			</manifest>
+			<fileset dir="${pdfsam-langpack.src.dir}">
+				<include name="**/*.xml"/>
+				<include name="**/*.properties"/>
+				<exclude name="**/*.java"/>
+			</fileset>
+		</jar>
+
+	</target>
+
+	<!-- crates tar to rosetta upload -->
+	<target name="tar_to_rosetta" description="generate the tar to upload on rosetta" >
+		<delete file="${po}/pdfsam-langpack.tar.gz" />
+		<tar destfile="${po}/pdfsam-langpack.tar.gz" 
 					 basedir="${po}"
 					 excludes=".svn/**"
-					 compression="gzip" />	
-			</target>	
- 	</project>
+					 compression="gzip" />
+	</target>
+
+	<target name="buildZipSrcPackage" description="generate build sources zip package" >
+		<zip destfile="${pdfsam-langpack.dist.dir}/${pdfsam-langpack.jar.name}-build-src.zip">
+			<fileset dir="..">
+				<include name="pdfsam-langpack/src/java/**/*"/>
+			</fileset>
+			<fileset dir="..">
+				<include name="pdfsam-langpack/ant/**/*.*"/>
+			</fileset>
+		</zip>
+	</target>
+
+</project>
