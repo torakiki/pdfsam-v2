@@ -347,7 +347,8 @@
 		
 		<zip destfile="${pdfsam.release.src.dir}/nsi.zip" >
 			<fileset dir=".">
-					<include name="ant/*.nsi"/>
+				<include name="install/install-${pdfsam.version}.nsi"/>
+				<include name="install/install-data/*.*"/>
 			</fileset>
 	    </zip>	
 				
