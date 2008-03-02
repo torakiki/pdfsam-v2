@@ -11,7 +11,7 @@ SetCompressor /SOLID lzma
 # MUI defines
 !define MUI_ICON install-data\install.ico
 !define MUI_FINISHPAGE_NOAUTOCLOSE
-!define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "PDF Split And Merge"
@@ -39,7 +39,6 @@ SetCompressor /SOLID lzma
 !include "XML.nsh"
 
 ;Required functions
-
   !insertmacro GetParameters
   !insertmacro GetOptions
   !insertmacro un.GetParameters
@@ -47,14 +46,17 @@ SetCompressor /SOLID lzma
 ;--------------------------------
 
 # Variables
-Var StartMenuGroup
-Var LANG_NAME
+  Var StartMenuGroup
+  Var LANG_NAME
 ;user control
   Var ALL_USERS
   Var ALL_USERS_FIXED
   Var ALL_USERS_BUTTON
   Var IS_ADMIN
   Var USERNAME
+; uninstaller variables
+  Var un.REMOVE_ALL_USERS
+  Var un.REMOVE_CURRENT_USER
 ;-------------------
 
 # Installer pages
@@ -69,6 +71,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 !define MUI_PAGE_CUSTOMFUNCTION_PRE un.FinishPagePre ;for fancy uninstall
+!insertmacro MUI_UNPAGE_FINISH
 
 # Installer languages
   !insertmacro MUI_LANGUAGE "English" # first language is the default language
@@ -139,10 +142,10 @@ Function getLangName ;pretty sure there's a better way to do this...
     Pop $0
     ${Switch} $0
         ${Case} ${LANG_ENGLISH}
-        	Push 'en_GB' 
+            Push 'en_GB' 
         ${Break}
         ${Case} ${LANG_ITALIAN}
-        	Push 'it_IT' 
+            Push 'it_IT' 
         ${Break}
         ${Case} ${LANG_BOSNIAN}
             Push 'bs_BA' 
@@ -160,55 +163,55 @@ Function getLangName ;pretty sure there's a better way to do this...
             Push 'he_IL' 
         ${Break}
         ${Case} ${LANG_RUSSIAN}
-        	Push 'ru_RU' 
+            Push 'ru_RU' 
         ${Break} 
         ${Case} ${LANG_SWEDISH}
-        	Push 'sv_SE' 
+            Push 'sv_SE' 
         ${Break} 
         ${Case} ${LANG_SPANISH}
-        	Push 'es_ES' 
+            Push 'es_ES' 
         ${Break}
         ${Case} ${LANG_PORTUGUESE}
-        	Push 'pt_PT' 
+            Push 'pt_PT' 
         ${Break}
         ${Case} ${LANG_DUTCH}
-        	Push 'nl_NL' 
+            Push 'nl_NL' 
         ${Break}   
         ${Case} ${LANG_FRENCH}
-        	Push 'fr_FR' 
+            Push 'fr_FR' 
         ${Break}
         ${Case} ${LANG_GREEK}
-        	Push 'el_GR' 
+            Push 'el_GR' 
         ${Break}
         ${Case} ${LANG_TURKISH}
-        	Push 'tr_TR' 
+            Push 'tr_TR' 
         ${Break}
         ${Case} ${LANG_GERMAN}
-        	Push 'de_DE' 
+            Push 'de_DE' 
         ${Break}
         ${Case} ${LANG_POLISH}
-        	Push 'pl_PL' 
+            Push 'pl_PL' 
         ${Break}
         ${Case} ${LANG_FINNISH}
-        	Push 'fi_FI' 
+            Push 'fi_FI' 
         ${Break}
         ${Case} ${LANG_SIMPCHINESE}
-        	Push 'zh_CN' 
+            Push 'zh_CN' 
         ${Break}
         ${Case} ${LANG_HUNGARIAN}
-        	Push 'hu_HU' 
+            Push 'hu_HU' 
         ${Break}
         ${Case} ${LANG_DANISH}
-        	Push 'da_DK' 
+            Push 'da_DK' 
         ${Break}
         ${Case} ${LANG_TRADCHINESE}
-        	Push 'zh_TW' 
+            Push 'zh_TW' 
         ${Break}
         ${Case} ${LANG_INDONESIAN}
-        	Push 'id_ID' 
+            Push 'id_ID' 
         ${Break}
         ${Default}
-        	Push 'en_NG'
+        	Push 'Default'
         ${Break}
     ${EndSwitch}
     Pop $LANG_NAME
@@ -228,8 +231,10 @@ Section -post SEC0001
     SetOutPath $INSTDIR
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
-    #SetOutPath $SMPROGRAMS\$StartMenuGroup
+    SetOutPath $INSTDIR
+    ;use the INSTDIR outpath for the next shortcut in order to launch the JAR file properly
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk" $INSTDIR\pdfsam-starter.exe
+    SetOutPath $SMPROGRAMS\$StartMenuGroup
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Readme.lnk" $INSTDIR\doc\readme.txt
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.0.0-b2-tutorial.pdf
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk" $INSTDIR\uninstall.exe
@@ -259,6 +264,7 @@ SectionEnd
 
 # Uninstaller sections
 Section /o "-un.Install Section" UNSEC0000
+  
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\plugins\split\*.xml"
   Delete "$INSTDIR\plugins\split\*.jar"
@@ -267,7 +273,7 @@ Section /o "-un.Install Section" UNSEC0000
   Delete "$INSTDIR\*.jar"
   Delete "$INSTDIR\*.exe"
   Delete "$INSTDIR\examples\*.*"
-  Delete "$INSTDIR\licenses\*.exe"
+  Delete "$INSTDIR\licenses\*.*"
   Delete "$INSTDIR\doc\*.txt"
   Delete "$INSTDIR\doc\*.pdf" 
   Delete "$INSTDIR\doc\licenses\bouncyCastle\*.*"
@@ -295,24 +301,22 @@ Section /o "-un.Install Section" UNSEC0000
   RMDir "$INSTDIR\doc\licenses\log4j"
   RMDir "$INSTDIR\doc\licenses\looks"
   RMDir "$INSTDIR\doc\licenses\pdfsam"
-  RMDir "$INSTDIR\doc\licenses\jcmdline" 
+  RMDir "$INSTDIR\doc\licenses\jcmdline"
   RMDir "$INSTDIR\doc"
-  RMDir "$INSTDIR"
-  RMDir ""
-    
-  DeleteRegValue HKLM "${REGKEY}\Components" "Install Section"
+  RMDir /REBOOTOK "$INSTDIR"
   
     ${If} $un.REMOVE_ALL_USERS == 1
         SetShellVarContext all
         Call un.RemoveStartmenu
     
-        DeleteRegKey /ifempty HKLM "Software\pdfsam"
+        DeleteRegKey /ifempty HKLM "Software\$(^Name)"
+        DeleteRegValue HKLM "${REGKEY}\Components" "Install Section"
     ${EndIf}
     ${If} $un.REMOVE_CURRENT_USER == 1
         SetShellVarContext current
         Call un.RemoveStartmenu
     
-        DeleteRegKey /ifempty HKCU "Software\pdfsam"
+        DeleteRegKey /ifempty HKCU "Software\$(^Name)"
     ${EndIf}
 SectionEnd
 
@@ -519,60 +523,115 @@ Function .onInit
     Push ${LANG_SLOVAK}
     Push Slovak
     Push ${LANG_HEBREW}
-    Push Hebrew     
+    Push Hebrew  
     Push A ; A means auto count languages
            ; for the auto count to work the first empty push (Push "") must remain
     LangDLL::LangDialog "Installer Language" "Please select the language of the installer"
+    
+    Call GetUserInfo
+    Call ReadAllUsersCommandline
+
+    ${If} $ALL_USERS == 1
+        ${If} $IS_ADMIN == 0    
+            ${If} $ALL_USERS_FIXED == 1
+                MessageBox MB_ICONSTOP "pdfsam has been previously installed for all users.$\nPlease restart the installer with Administrator privileges."
+                Abort
+            ${Else}
+                StrCpy $All_USERS 0
+            ${EndIf}
+        ${EndIf}
+    ${EndIf} 
 
     Pop $LANGUAGE
     StrCmp $LANGUAGE "cancel" 0 +2
         Abort
     
-  Call GetUserInfo
-  Call ReadAllUsersCommandline
-
-  ${If} $ALL_USERS == 1
-    ${If} $IS_ADMIN == 0
-
-      ${If} $ALL_USERS_FIXED == 1
-        MessageBox MB_ICONSTOP "pdfsam has been previously installed for all users.$\nPlease restart the installer with Administrator privileges."
-        Abort
-      ${Else}
-        StrCpy $All_USERS 0
-      ${EndIf}
-    ${EndIf}
-  ${EndIf}       
+      
 FunctionEnd
 
 # Uninstaller functions
 Function un.onInit
 
+    ;copied 
+    Call un.GetUserInfo
+    Call un.ReadPreviousVersion
+    
+    ${If} $un.REMOVE_ALL_USERS == 1
+    ${AndIf} $IS_ADMIN == 0
+    MessageBox MB_ICONSTOP "$(^Name) has been installed for all users.$\nPlease restart the uninstaller with Administrator privileges to remove it."
+    Abort
+    ${EndIf}
+    ;------------
+    
     !insertmacro MUI_UNGETLANGUAGE
+    ;TODO insert language dependent uninstall string below
+    ;TODO uninstall prompt should not display location where files are being removed from
     MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "Are you sure you want to completely remove $(^Name)?" IDYES +2
     Abort
-    Call un.GetUserInfo
-    ${If} $un.REMOVE_ALL_USERS == 1
-        ${AndIf} $IS_ADMIN == 0
-        MessageBox MB_ICONSTOP "pdfsam has been installed for all users.$\nPlease restart the uninstaller with Administrator privileges to remove it."
-        Abort
-    ${EndIf}
+    
+    ;should the following be here? -- match to context - HKLM or HKCU
     ReadRegStr $INSTDIR HKLM "${REGKEY}" Path
-    !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro SELECT_UNSECTION "Install Section" ${UNSEC0000}
 FunctionEnd
 
+Function un.ReadPreviousVersion
+
+  ReadRegStr $R0 HKLM "Software\$(^Name)" ""
+
+  ${If} $R0 != ""
+    ;Detect version
+    ReadRegStr $R2 HKLM "Software\$(^Name)" "Version"
+    ${If} $R2 == ""
+      StrCpy $R0 ""
+    ${EndIf}
+  ${EndIf}
+
+  ReadRegStr $R1 HKCU "Software\FileZilla Client" ""
+  
+  ${If} $R1 != ""
+    ;Detect version
+    ReadRegStr $R2 HKCU "Software\FileZilla Client" "Version"
+    ${If} $R2 == ""
+      StrCpy $R1 ""
+    ${EndIf}
+  ${EndIf}
+
+  ${If} $R1 == $INSTDIR
+    Strcpy $un.REMOVE_CURRENT_USER 1
+  ${EndIf}
+  ${If} $R0 == $INSTDIR
+    Strcpy $un.REMOVE_ALL_USERS 1
+  ${EndIf}
+  ${If} $un.REMOVE_CURRENT_USER != 1
+  ${AndIf} $un.REMOVE_ALL_USERS != 1
+    ${If} $R1 != ""
+      Strcpy $un.REMOVE_CURRENT_USER 1
+      ${If} $R0 == $R1
+        Strcpy $un.REMOVE_ALL_USERS 1
+      ${EndIf}
+    ${Else}
+      StrCpy $un.REMOVE_ALL_USERS = 1
+    ${EndIf}
+  ${EndIf}
+
+FunctionEnd
+
 Function un.RemoveStartmenu
+
+  !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
+  
   Delete "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk"
   Delete "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk"
   Delete "$SMPROGRAMS\$StartMenuGroup\readme.lnk"
   Delete "$SMPROGRAMS\$StartMenuGroup\tutorial.lnk"
-  Delete "$STARTMENU.lnk"
+  RMDir "$SMPROGRAMS\$StartMenuGroup"
 FunctionEnd
 
 ;fancy uninstaller sections
 Function un.onUninstSuccess
   HideWindow
-  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) completely removed."
+  ;if we want a box saying "pdfsam completely removed we will uncomment below"
+  ;MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) completely removed."
 FunctionEnd
 
 Function un.GetUserInfo
@@ -623,27 +682,25 @@ FunctionEnd
 ;--------------------------
 
 # Installer Language Strings
-# TODO Update the Language Strings with the appropriate translations.
-
 LangString ^UninstallLink ${LANG_ENGLISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_ITALIAN} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_RUSSIAN} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_SWEDISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_SPANISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_PORTUGUESE} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_DUTCH} "Uninstall $(^Name)"
+LangString ^UninstallLink ${LANG_ITALIAN} "Disinstalla $(^Name)"
+LangString ^UninstallLink ${LANG_RUSSIAN} "Óä&àëèòü $(^Name)"
+LangString ^UninstallLink ${LANG_SWEDISH} "Avinstallera $(^Name)"
+LangString ^UninstallLink ${LANG_SPANISH} "Desinstalar $(^Name)"
+LangString ^UninstallLink ${LANG_PORTUGUESE} "Desinstalar $(^Name)"
+LangString ^UninstallLink ${LANG_DUTCH} "Verwijderen $(^Name)"
 LangString ^UninstallLink ${LANG_FRENCH} "Désinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_GREEK} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_TURKISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_GERMAN} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_POLISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_FINNISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_SIMPCHINESE} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_HUNGARIAN} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_DANISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_TRADCHINESE} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_INDONESIAN} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_CZECH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_SLOVAK} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_BOSNIAN} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_HEBREW} "Uninstall $(^Name)"
+LangString ^UninstallLink ${LANG_GREEK} "Áðå&ãêáôÜóô $(^Name)"
+LangString ^UninstallLink ${LANG_TURKISH} "Kaldýr $(^Name)"
+LangString ^UninstallLink ${LANG_GERMAN} "Deinstallieren $(^Name)"
+LangString ^UninstallLink ${LANG_POLISH} "Odinstaluj $(^Name)"
+LangString ^UninstallLink ${LANG_FINNISH} "Poista $(^Name)"
+LangString ^UninstallLink ${LANG_SIMPCHINESE} "ÒÆ³ý(&U) $(^Name)"
+LangString ^UninstallLink ${LANG_HUNGARIAN} "Eltávolítás $(^Name)"
+LangString ^UninstallLink ${LANG_DANISH} "Afinstaller $(^Name)"
+LangString ^UninstallLink ${LANG_TRADCHINESE} "²¾°£(&U) $(^Name)"
+LangString ^UninstallLink ${LANG_INDONESIAN} "Uninstal $(^Name)"
+LangString ^UninstallLink ${LANG_CZECH} "Odinstalace $(^Name)"
+LangString ^UninstallLink ${LANG_SLOVAK} "Odinštalovanie $(^Name)"
+LangString ^UninstallLink ${LANG_BOSNIAN} "Uklanjanje $(^Name)"
+LangString ^UninstallLink ${LANG_HEBREW} "îñéø $(^Name)"
