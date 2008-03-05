@@ -39,16 +39,12 @@ public class Configuration{
 	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
 	
     
-    public static final String AUTHOR = "Andrea Vacondio";
-	public static final String NAME = "PDF Split and Merge enhanced";
-	public static final String UNIXNAME = "pdfsam";
-	public static final String APP_VERSION = "1.4.0 alpha";
-	
 	private static Configuration configObject;
 	private ResourceBundle i18nMessages;
 	private XMLConfig xmlConfigObject;
 	private ConsoleServicesFacade servicesFacade;
 	private Level loggingLevel = Level.DEBUG;
+	private boolean checkForUpdates = true;
 
 	private Configuration() {
 		init();
@@ -109,6 +105,13 @@ public class Configuration{
 	public Level getLoggingLevel() {
 		return loggingLevel;
 	}
+	
+	/**
+	 * @return the checkForUpdates
+	 */
+	public boolean isCheckForUpdates() {
+		return checkForUpdates;
+	}
 
 	private void init(){
 		try{
@@ -122,6 +125,8 @@ public class Configuration{
 			setLookAndFeel();
 			//log init
 			setLoggingLevel();
+			//check for updates init
+			setCheckForUpdates();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -178,6 +183,22 @@ public class Configuration{
 			appender.setThreshold(loggingLevel);
 		} catch (Exception e) {
 			log.warn(GettextResource.gettext(i18nMessages,"Unable to set logging level."), e);
+		}
+	}
+	
+	/**
+	 * sets the configuration about the updates check
+	 */
+	private void setCheckForUpdates(){
+		try {
+			String checkUpdates = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/checkupdates");
+			if(checkUpdates != null && checkUpdates.length()>0){
+				checkForUpdates = Integer.parseInt(checkUpdates)== 1;
+			}
+			
+		} catch (Exception e) {
+			//default
+			checkForUpdates = true;
 		}
 	}
 }

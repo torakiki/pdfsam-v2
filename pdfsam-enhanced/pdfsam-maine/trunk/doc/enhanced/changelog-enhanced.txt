@@ -1,3 +1,12 @@
+1.4.0e beta 3 ()
+===================================
+-Added update checker to check for a new version
+-Modified JPdfSelectionPanel to enable or disable clear button, move buttons
+-Modified JPdfSelectionPanel to enable outputPathMenuItem
+-Modified JPdfSelectionPanel password column render to show '******' only when a password is typed
+-Encrypt: removed the move buttons
+-Added the Unpack plugin
+
 1.4.0e beta 2 (02-Mar-2008)
 ===================================
 -Merge, Mix: pdf extension is appended to the output document file name only if it doesn't already ends with ".pdf" (Fix Bug #1881243)

@@ -22,6 +22,7 @@ import java.util.Observer;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -48,9 +49,11 @@ public class JStatusPanel extends JPanel implements Observer{
 	private static final Logger log = Logger.getLogger(JStatusPanel.class.getPackage().getName());
 	
 	private final JLabel plugIcon = new JLabel();
+	private final JLabel updatesAvailableIcon = new JLabel();
 	private final JLabel plugDesc = new JLabel();
 	private final JProgressBar progressBar = new JProgressBar();
 	private final Configuration config;
+	private final String updateIconUrl = "/images/updates_available.png";
 
 	public JStatusPanel() {
 		this(null, "", 1000);
@@ -63,6 +66,7 @@ public class JStatusPanel extends JPanel implements Observer{
 	public JStatusPanel(Icon icon, String desc, int maxValue) {
 		config = Configuration.getInstance();
 		plugIcon.setIcon(icon);
+		updatesAvailableIcon.setIcon(new ImageIcon(this.getClass().getResource(updateIconUrl)));
 		plugDesc.setText(desc);
 		progressBar.setMaximum(maxValue);
 		init();
@@ -140,17 +144,30 @@ public class JStatusPanel extends JPanel implements Observer{
 		return progressBar.getValue();
 	}
 	
+	/**
+	 * Shows the update available icon
+	 * @param version new available version
+	 */
+	public void setNewAvailableVersion(String version){
+		updatesAvailableIcon.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"New version available: ")+version);
+		updatesAvailableIcon.setVisible(true);
+	}
+	
 	private void init() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		setPreferredSize(new Dimension(600, 24));
 		setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		 
 		plugIcon.setMinimumSize(new Dimension(20, 20));
+		updatesAvailableIcon.setMinimumSize(new Dimension(20, 20));
 		plugDesc.setMinimumSize(new Dimension(100, 20));
 		plugDesc.setMaximumSize(new Dimension(Short.MAX_VALUE, Short.MAX_VALUE));
 
 		plugIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
+		updatesAvailableIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
 		plugDesc.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
+		updatesAvailableIcon.setVisible(false);
 		
 		progressBar.setBorderPainted(true);
 		progressBar.setOrientation(JProgressBar.HORIZONTAL);
@@ -171,6 +188,8 @@ public class JStatusPanel extends JPanel implements Observer{
 		add(Box.createRigidArea(new Dimension(5, 0)));
 		add(plugDesc);
 		add(Box.createHorizontalGlue());
+		add(updatesAvailableIcon);
+		add(Box.createRigidArea(new Dimension(5, 0)));
 		add(progressBar);
 	}
 

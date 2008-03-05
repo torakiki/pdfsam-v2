@@ -79,6 +79,9 @@ public class JPdfSelectionPanel extends JPanel {
 	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";
 	
 	private boolean showEveryButton = false;
+	private boolean showClearButton = false;
+	private boolean showMoveButtons = false;
+	
 	private int maxSelectableFiles = 0;
 	private int showedColums;
 	private String defaultOutputPath = "";
@@ -101,6 +104,8 @@ public class JPdfSelectionPanel extends JPanel {
     private final JButton moveUpButton = new JButton();
     private final JButton moveDownButton = new JButton();
     private final JButton clearButton = new JButton();
+    
+    private boolean setOutputPathMenuItemEnabled = false;
     
     //keylisteners
     private final EnterDoClickListener addEnterKeyListener = new EnterDoClickListener(addFileButton);
@@ -126,11 +131,40 @@ public class JPdfSelectionPanel extends JPanel {
 		this(maxSelectableFiles,showedColums, (maxSelectableFiles>1));
 	}
 	
+	/**
+	 * @param maxSelectableFiles
+	 * @param showedColums
+	 * @param showEveryButton if true shows every button, if false hide clear button and move buttons
+	 */
 	public JPdfSelectionPanel(int maxSelectableFiles, int showedColums, boolean showEveryButton){
+		this(maxSelectableFiles, showedColums, showEveryButton, false, false);
+	}
+
+	/**
+	 * @param maxSelectableFiles
+	 * @param showedColums
+	 * @param showClearButton if true shows the clear button
+	 * @param showMoveButtons if true shows the move buttons
+	 */
+	public JPdfSelectionPanel(int maxSelectableFiles, int showedColums, boolean showClearButton, boolean showMoveButtons){
+		this(maxSelectableFiles, showedColums, false, showClearButton, showMoveButtons);
+	}
+	
+	/**
+	 * Full constructor
+	 * @param maxSelectableFiles
+	 * @param showedColums
+	 * @param showEveryButton
+	 * @param showClearButton
+	 * @param showMoveButtons
+	 */
+	private JPdfSelectionPanel(int maxSelectableFiles, int showedColums, boolean showEveryButton, boolean showClearButton, boolean showMoveButtons){
 		this.config = Configuration.getInstance();
 		this.maxSelectableFiles = maxSelectableFiles;
 		this.showedColums = showedColums;
 		this.showEveryButton = showEveryButton;
+		this.showClearButton = showClearButton;
+		this.showMoveButtons = showMoveButtons;
 		loader = new PdfLoader(this);
 		init();
 	}
@@ -263,80 +297,10 @@ public class JPdfSelectionPanel extends JPanel {
 		
 		
 		if(showEveryButton){
-			//move up button
-			moveUpButton.setMargin(new Insets(2, 2, 2, 2));
-			moveUpButton.addActionListener(pdfSelectionTableListener);        
-			moveUpButton.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
-			moveUpButton.setActionCommand(PdfSelectionTableActionListener.MOVE_UP);
-			moveUpButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
-			moveUpButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move up selected pdf file")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowUp)"));
-			moveUpButton.addKeyListener(moveuEnterKeyListener);
-			moveUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			buttonPanel.add(moveUpButton);
-			addButtonToButtonPanel(moveUpButton);
-			final JMenuItem menuItemMoveUp = new JMenuItem();
-			menuItemMoveUp.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
-			menuItemMoveUp.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
-			menuItemMoveUp.addMouseListener(new MouseAdapter() {
-	            public void mouseReleased(MouseEvent e) {
-	            	moveUpButton.doClick(0);
-	            }
-	        });
-			popupMenu.add(menuItemMoveUp);
-			
-			//move down button
-			moveDownButton.addActionListener(pdfSelectionTableListener);
-			moveDownButton.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
-			moveDownButton.setActionCommand(PdfSelectionTableActionListener.MOVE_DOWN);
-			moveDownButton.setMargin(new Insets(2, 2, 2, 2));
-			moveDownButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
-			moveDownButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move down selected pdf file")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowDown)"));
-			moveDownButton.addKeyListener(movedEnterKeyListener);
-			moveDownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			buttonPanel.add(moveDownButton);
-			addButtonToButtonPanel(moveDownButton);
-			final JMenuItem menuItemMoveDown = new JMenuItem();
-	        menuItemMoveDown.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
-	        menuItemMoveDown.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
-	        menuItemMoveDown.addMouseListener(new MouseAdapter() {
-	            public void mouseReleased(MouseEvent e) {
-	            	moveDownButton.doClick(0);
-	            }
-	        });
-	        popupMenu.add(menuItemMoveDown);
-	        
-			//clear button
-			clearButton.addActionListener(pdfSelectionTableListener);
-			clearButton.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
-			clearButton.setActionCommand(PdfSelectionTableActionListener.CLEAR);
-			clearButton.setMargin(new Insets(2, 2, 2, 2));
-			clearButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
-			clearButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Remove every pdf file from the merge list"));
-			clearButton.addKeyListener(clearEnterKeyListener);
-			clearButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			buttonPanel.add(clearButton);
-			addButtonToButtonPanel(clearButton);
-			
-			//set out file popup
-			final JMenuItem menuItemSetOutputPath = new JMenuItem();
-			menuItemSetOutputPath.setIcon(new ImageIcon(this.getClass().getResource("/images/set_outfile.png")));
-			menuItemSetOutputPath.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set output file"));
-			menuItemSetOutputPath.addMouseListener(new MouseAdapter() {
-	            public void mouseReleased(MouseEvent e) {
-	                if (mainTable.getSelectedRow() != -1){
-	                    try{
-	                    	String previousValue = defaultOutputPath;
-	                    	defaultOutputPath = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
-	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, previousValue, defaultOutputPath);
-	                    }
-	                    catch (Exception ex){
-	                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to get the file path."), ex); 
-	                    }
-	                }
-	              }
-	        });
-			popupMenu.add(menuItemSetOutputPath);						
-			
+			initMoveUpButton();
+			initMoveDownButton();
+			initClearButton();													
+			enableSetOutputPathMenuItem();
 			//key listener
 			mainTable.addKeyListener(new KeyAdapter() {
 	            public void keyPressed(KeyEvent e) {
@@ -352,11 +316,26 @@ public class JPdfSelectionPanel extends JPanel {
 	            }
 	        });
 		}else{
+			if(showClearButton){			
+				initClearButton();	
+			}
+			if(showMoveButtons){
+				initMoveUpButton();
+				initMoveDownButton();
+			}
 			//key listener
 			mainTable.addKeyListener(new KeyAdapter() {
 	            public void keyPressed(KeyEvent e) {
 	                if((e.getKeyCode() == KeyEvent.VK_DELETE)){
 	                	removeFileButton.doClick();
+	                }
+	                else if(showMoveButtons){
+		                if((e.isAltDown())&& (e.getKeyCode() == KeyEvent.VK_UP)){
+		                	moveUpButton.doClick();
+		                }
+		                else if((e.isAltDown())&& (e.getKeyCode() == KeyEvent.VK_DOWN)){
+		                	moveDownButton.doClick();
+		                }
 	                }
 	            }
 	        });
@@ -511,6 +490,103 @@ public class JPdfSelectionPanel extends JPanel {
     }
     
     /**
+     * initialize the moveUpButton
+     */
+    private void initMoveUpButton(){
+    	//move up button
+		moveUpButton.setMargin(new Insets(2, 2, 2, 2));
+		moveUpButton.addActionListener(pdfSelectionTableListener);        
+		moveUpButton.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
+		moveUpButton.setActionCommand(PdfSelectionTableActionListener.MOVE_UP);
+		moveUpButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
+		moveUpButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move up selected pdf file")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowUp)"));
+		moveUpButton.addKeyListener(moveuEnterKeyListener);
+		moveUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		buttonPanel.add(moveUpButton);
+		addButtonToButtonPanel(moveUpButton);
+		final JMenuItem menuItemMoveUp = new JMenuItem();
+		menuItemMoveUp.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
+		menuItemMoveUp.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
+		menuItemMoveUp.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+            	moveUpButton.doClick(0);
+            }
+        });
+		popupMenu.add(menuItemMoveUp);
+    }
+    
+    /**
+     * initialize the move down button
+     */
+    private void initMoveDownButton(){
+    	//move down button
+		moveDownButton.addActionListener(pdfSelectionTableListener);
+		moveDownButton.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
+		moveDownButton.setActionCommand(PdfSelectionTableActionListener.MOVE_DOWN);
+		moveDownButton.setMargin(new Insets(2, 2, 2, 2));
+		moveDownButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
+		moveDownButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move down selected pdf file")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowDown)"));
+		moveDownButton.addKeyListener(movedEnterKeyListener);
+		moveDownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		buttonPanel.add(moveDownButton);
+		addButtonToButtonPanel(moveDownButton);
+		final JMenuItem menuItemMoveDown = new JMenuItem();
+        menuItemMoveDown.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
+        menuItemMoveDown.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
+        menuItemMoveDown.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+            	moveDownButton.doClick(0);
+            }
+        });
+        popupMenu.add(menuItemMoveDown);
+    }
+    
+    /**
+     * initialize the clear button
+     */
+    private void initClearButton(){
+    	//clear button
+		clearButton.addActionListener(pdfSelectionTableListener);
+		clearButton.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
+		clearButton.setActionCommand(PdfSelectionTableActionListener.CLEAR);
+		clearButton.setMargin(new Insets(2, 2, 2, 2));
+		clearButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
+		clearButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Remove every pdf file from the merge list"));
+		clearButton.addKeyListener(clearEnterKeyListener);
+		clearButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		buttonPanel.add(clearButton);
+		addButtonToButtonPanel(clearButton);
+    }
+    
+    /**
+     * enables the set output path menu item
+     */
+    public void enableSetOutputPathMenuItem(){
+    	if (!setOutputPathMenuItemEnabled){
+	    	//set out file popup
+	    	setOutputPathMenuItemEnabled = true;
+			final JMenuItem menuItemSetOutputPath = new JMenuItem();
+			menuItemSetOutputPath.setIcon(new ImageIcon(this.getClass().getResource("/images/set_outfile.png")));
+			menuItemSetOutputPath.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set output file"));
+			menuItemSetOutputPath.addMouseListener(new MouseAdapter() {
+	            public void mouseReleased(MouseEvent e) {
+	                if (mainTable.getSelectedRow() != -1){
+	                    try{
+	                    	String previousValue = defaultOutputPath;
+	                    	defaultOutputPath = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
+	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, previousValue, defaultOutputPath);
+	                    }
+	                    catch (Exception ex){
+	                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to get the file path."), ex); 
+	                    }
+	                }
+	              }
+	        });
+			popupMenu.add(menuItemSetOutputPath);
+    	}
+    }
+    
+    /**
      * @return the pdf loader
      */
     public PdfLoader getLoader(){
@@ -565,6 +641,14 @@ public class JPdfSelectionPanel extends JPanel {
 	public DropTarget getScrollPanelDropTarget() {
 		return scrollPanelDropTarget;
 	}
+
+	/**
+	 * @return the setOutputPathMenuItemEnabled
+	 */
+	public boolean isSetOutputPathMenuItemEnabled() {
+		return setOutputPathMenuItemEnabled;
+	}
     
+	
     
 }

@@ -41,7 +41,7 @@ public class GuiClient extends JFrame {
 	private static final String VERSION_TYPE_DEFAULT = "basic";
 	
 	private static final String VERSION_PROPERTY = "pdfsam.jar.version";
-	private static final String VERSION_DEFAULT = "1.0.0 beta 2";	
+	private static final String VERSION_DEFAULT = "1.0.0-b3";	
 	
 	private static final String BUILDDATE_PROPERTY = "pdfsam.builddate";
 	private static final String BUILDDATE_DEFAULT = "";	

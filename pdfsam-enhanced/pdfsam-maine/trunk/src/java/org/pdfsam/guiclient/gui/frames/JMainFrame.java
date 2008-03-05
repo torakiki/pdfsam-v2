@@ -41,6 +41,7 @@ import org.pdfsam.guiclient.business.Environment;
 import org.pdfsam.guiclient.business.listeners.LogActionListener;
 import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.TreeMediator;
+import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JMainMenuBar;
 import org.pdfsam.guiclient.gui.panels.JButtonsPanel;
@@ -71,6 +72,7 @@ public class JMainFrame extends JFrame {
 	private JSplashScreen screen;
 	private Hashtable pluginsMap;
 	private EnvironmentMediator envMediator;
+	private UpdateCheckerMediator updateMediator;
 	private JStatusPanel statusPanel;
 	private JTreePanel treePanel;
 	private JButtonsPanel buttonsPanel;
@@ -163,6 +165,13 @@ public class JMainFrame extends JFrame {
 	        //add info and settings to plugins map
 	        pluginsMap.put(settingsDataModel, settingsPanel);
 	        pluginsMap.put(infoDataModel, infoPanel);	        	      
+	        
+	        //set up check for updates mediator
+	        updateMediator = new UpdateCheckerMediator(statusPanel);
+	        if(config.isCheckForUpdates()){
+	        	updateMediator.checkForUpdates(5000, false);
+	        }
+	        settingsPanel.setCheckUpdateMediator(updateMediator);
 	        
 	        //final set up
 	        mainScrollPanel = new JScrollPane(mainPanel);

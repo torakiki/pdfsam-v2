@@ -45,6 +45,7 @@ import org.dom4j.Document;
 import org.dom4j.Node;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
@@ -52,6 +53,7 @@ import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.ThemeUtility;
+import org.pdfsam.guiclient.utils.UpdatesUtility;
 import org.pdfsam.guiclient.utils.filters.XmlFilter;
 import org.pdfsam.guiclient.utils.xml.XMLParser;
 import org.pdfsam.i18n.GettextResource;
@@ -72,6 +74,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private JComboBox comboLog;	
     private JComboBox comboLaf;
     private JComboBox comboTheme;
+    private JComboBox comboCheckNewVersion;
     private JHelpLabel envHelpLabel;
 	private JFileChooser fileChooser = new JFileChooser();
 
@@ -80,6 +83,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     
     private final JButton browseButton = new JButton();
     private final JButton saveButton = new JButton();
+    private final JButton checkNowButton = new JButton();
 
     private final EnterDoClickListener browseEnterKeyListener = new EnterDoClickListener(browseButton);
     private final EnterDoClickListener saveEnterKeyListener = new EnterDoClickListener(saveButton);
@@ -92,12 +96,13 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final JLabel subThemeLabel = new JLabel();
     private final JLabel languageLabel = new JLabel();
     private final JLabel logLabel = new JLabel();
+    private final JLabel checkNewVersionLabel = new JLabel();
     private final JLabel loadDefaultEnvLabel = new JLabel();
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private static final String PLUGIN_NAME = "Settings";
-    private static final String PLUGIN_VERSION = "0.0.5e";
+    private static final String PLUGIN_VERSION = "0.0.6e";
     
 /**
  * Constructor
@@ -133,6 +138,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 		logLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"));
         settingsOptionsPanel.add(logLabel);
 
+        checkNewVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates:"));
+        settingsOptionsPanel.add(checkNewVersionLabel);
+        
 		loadDefaultEnvLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load default environment at startup:"));
         settingsOptionsPanel.add(loadDefaultEnvLabel);
         
@@ -150,7 +158,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 //END_FILE_CHOOSER
 //JCOMBO
-    	//languageCombo = new JComboBox(config.getLanguagesList().toArray());
         languageCombo = new JComboBox(loadLanguages().toArray());
     	languageCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         settingsOptionsPanel.add(languageCombo);
@@ -224,7 +231,18 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	 		}
 	    }catch (Exception e){
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-	    }        
+	    }  
+	    
+	    comboCheckNewVersion = new JComboBox(UpdatesUtility.getCheckNewVersionItems().toArray());
+	    comboCheckNewVersion.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+        settingsOptionsPanel.add(comboCheckNewVersion);
+        try{	 		
+   			if (config.isCheckForUpdates()){
+   				comboCheckNewVersion.setSelectedItem(comboCheckNewVersion.getItemAt(1));
+   			}	 		
+	    }catch (Exception e){
+	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
+	    }        	    
 //END_JCOMBO
 //ENV_LABEL_PREFIX       
         String helpTextEnv = 
@@ -232,6 +250,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Language")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set your preferred language (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set your preferred look and feel and your preferred theme (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Log level")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set a log detail level (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set when new version availability should be checked (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default env.")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a previously saved env. file that will be automatically loaded at startup")+".</li>" +
     		"</ul></body></html>";
 	    envHelpLabel = new JHelpLabel(helpTextEnv, true);
@@ -261,6 +280,10 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         });         
         settingsOptionsPanel.add(browseButton);
 
+        checkNowButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check now"));
+        checkNowButton.setMargin(new Insets(2, 2, 2, 2));       
+        settingsOptionsPanel.add(checkNowButton);
+        
         saveButton.setIcon(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
         saveButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Save"));
         saveButton.setMargin(new Insets(2, 2, 2, 2));
@@ -272,6 +295,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((StringItem)comboTheme.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
+					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/checkupdates", ((StringItem)comboCheckNewVersion.getSelectedItem()).getId());
 					if (loadDefaultEnv != null){
 						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob", loadDefaultEnv.getText());
 					}else{
@@ -320,6 +344,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     
     /**
      * Loads the available log levels
+     * @return logs level list
      */
     private Vector loadLogLevels(){
     	Vector logs = new Vector(10,5);
@@ -331,6 +356,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 		return logs;
     }
  
+   
     /**
      * @return Returns the Plugin author.
      */
@@ -359,19 +385,20 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 180, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 200, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);
 
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, languageLabel, 40, SpringLayout.NORTH, this);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, languageLabel, 100, SpringLayout.WEST, this);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, languageLabel, 120, SpringLayout.WEST, this);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, languageLabel, 20, SpringLayout.NORTH, this);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, languageLabel, 5, SpringLayout.WEST, this);
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, languageCombo, 0, SpringLayout.SOUTH, languageLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, languageCombo, 120, SpringLayout.WEST, languageCombo);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, languageCombo, 0, SpringLayout.NORTH, languageLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, languageCombo, 5, SpringLayout.EAST, languageLabel);
+        
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, themeLabel, 20, SpringLayout.NORTH, themeLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, themeLabel, 0, SpringLayout.EAST, languageLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, themeLabel, 5, SpringLayout.SOUTH, languageLabel);
@@ -390,7 +417,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboTheme, 5, SpringLayout.EAST, subThemeLabel);
         
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, logLabel, 20, SpringLayout.NORTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, logLabel, -5, SpringLayout.EAST, settingsOptionsPanel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, logLabel, 0, SpringLayout.EAST, themeLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, logLabel, 5, SpringLayout.SOUTH, themeLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, logLabel, 0, SpringLayout.WEST, themeLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboLog, 0, SpringLayout.SOUTH, logLabel);
@@ -398,10 +425,23 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboLog, 0, SpringLayout.NORTH, logLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboLog, 0, SpringLayout.WEST, comboLaf);
 
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNewVersionLabel, 20, SpringLayout.NORTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNewVersionLabel, 0, SpringLayout.EAST, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNewVersionLabel, 5, SpringLayout.SOUTH, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNewVersionLabel, 0, SpringLayout.WEST, logLabel);       
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboCheckNewVersion, 0, SpringLayout.SOUTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboCheckNewVersion, 120, SpringLayout.WEST, comboCheckNewVersion);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboCheckNewVersion, 0, SpringLayout.NORTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboCheckNewVersion, 5, SpringLayout.EAST, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNowButton, 0, SpringLayout.SOUTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNowButton, 0, SpringLayout.EAST, subThemeLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNowButton, 0, SpringLayout.NORTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNowButton, 0, SpringLayout.WEST, subThemeLabel);
+        
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, loadDefaultEnvLabel, 20, SpringLayout.NORTH, loadDefaultEnvLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, loadDefaultEnvLabel, -5, SpringLayout.EAST, settingsOptionsPanel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, loadDefaultEnvLabel, 5, SpringLayout.SOUTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, loadDefaultEnvLabel, 0, SpringLayout.WEST, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, loadDefaultEnvLabel, 5, SpringLayout.SOUTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, loadDefaultEnvLabel, 0, SpringLayout.WEST, checkNewVersionLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, loadDefaultEnv, 20, SpringLayout.NORTH, loadDefaultEnv);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, loadDefaultEnv, -100, SpringLayout.EAST, settingsOptionsPanel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, loadDefaultEnv, 5, SpringLayout.SOUTH, loadDefaultEnvLabel);
@@ -419,7 +459,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         settingsLayout.putConstraint(SpringLayout.EAST, saveButton, -10, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, saveButton, 5, SpringLayout.SOUTH, settingsOptionsPanel);
         settingsLayout.putConstraint(SpringLayout.WEST, saveButton, -95, SpringLayout.EAST, this);
-		           
+
     }    
     
     public FocusTraversalPolicy getFocusPolicy(){
@@ -449,6 +489,12 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboLog;
             }
             else if (aComponent.equals(comboLog)){
+                return comboCheckNewVersion;
+            }
+            else if (aComponent.equals(comboCheckNewVersion)){
+                return checkNowButton;
+            }
+            else if (aComponent.equals(checkNowButton)){
                 return loadDefaultEnv;
             }
             else if (aComponent.equals(loadDefaultEnv)){
@@ -469,8 +515,14 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return loadDefaultEnv;
             }
             else if (aComponent.equals(loadDefaultEnv)){
-                return comboLog;
+                return checkNowButton;
             }
+            else if (aComponent.equals(checkNowButton)){
+                return comboCheckNewVersion;
+            }
+            else if (aComponent.equals(comboCheckNewVersion)){
+                return comboLog;
+            }            
             else if (aComponent.equals(comboLog)){
                 return comboTheme;
             }
@@ -513,6 +565,14 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 
 	public void resetPanel() {
 		
+	}
+	
+	/**
+	 * sets the check update mediator
+	 * @param updateCheckerMediator
+	 */
+	public void setCheckUpdateMediator(UpdateCheckerMediator updateCheckerMediator){
+		checkNowButton.addActionListener(updateCheckerMediator);
 	}
 }
 

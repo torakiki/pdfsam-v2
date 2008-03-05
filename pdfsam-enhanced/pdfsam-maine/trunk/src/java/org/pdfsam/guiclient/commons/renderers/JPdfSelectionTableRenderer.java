@@ -63,7 +63,11 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
         }
 		//value
 		if (column == SimplePdfSelectionTableModel.PASSWORD){
-			setText("**********");
+			if(value != null && value.toString().length()>0){
+				setText("**********"); 
+			}else{
+				setText("");
+			}	
 		}else{
 			if(value != null){
 				setText(value.toString()); 
