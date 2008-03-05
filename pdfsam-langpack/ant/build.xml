@@ -132,6 +132,9 @@
 			<arg line="-p -o ${resources.dir}/Messages_da_DK.properties ${po}/da_DK/Messages.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_de_DE.properties ${po}/de/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_el_GR.properties ${po}/el_GR/Messages.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
@@ -142,6 +145,9 @@
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_fi_FI.properties ${po}/fi/Messages.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_fr_FR.properties ${po}/fr/Messages.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_he_IL.properties ${po}/he_IL/Messages.po"/>
