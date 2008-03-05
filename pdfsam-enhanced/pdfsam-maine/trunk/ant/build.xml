@@ -36,6 +36,7 @@
 	    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
 		<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
 		<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
+		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries" />
@@ -102,7 +103,7 @@
 		    <manifest>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
-			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar"/>
+			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/${httpclient.jar.name}"/>
 		    </manifest>
 			<fileset dir="${pdfsam.etc.dir}">
 			    <include name="*.xml"/>
@@ -174,6 +175,11 @@
 	  		<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 
+		<!--unpack-->
+	  	<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="build-jars">
+	  		<property name="pdfsam-unpack.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
 	</target>
 	
 	<!--creates the distribution of pdfsam-->	
@@ -226,6 +232,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-cover.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/cover" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-encrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/encrypt" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
 	</target>	
 
 	<!--deploy pdfsam-->	
@@ -347,8 +354,7 @@
 		
 		<zip destfile="${pdfsam.release.src.dir}/nsi.zip" >
 			<fileset dir=".">
-				<include name="install/install-${pdfsam.version}.nsi"/>
-				<include name="install/install-data/*.*"/>
+					<include name="ant/*.nsi"/>
 			</fileset>
 	    </zip>	
 				
@@ -381,6 +387,11 @@
 		<!--encrypt-->
 	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="buildZipSrcPackage">
 	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--unpack-->
+	  	<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-unpack.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 	</target>	
 
