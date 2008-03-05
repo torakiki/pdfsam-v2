@@ -83,7 +83,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     private JHelpLabel prefixHelpLabel;
     private JHelpLabel destinationHelpLabel; 	
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
-	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
+	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER, true, false);
 
 	private Configuration config;
 	
@@ -122,7 +122,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.1e";
+    private final String PLUGIN_VERSION = "0.2.2e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -155,6 +155,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptSpringLayout = new SpringLayout();
         setLayout(encryptSpringLayout);
         add(selectionPanel);
+		selectionPanel.enableSetOutputPathMenuItem();
         selectionPanel.addPropertyChangeListener(this);
 
 //FILE_CHOOSER
