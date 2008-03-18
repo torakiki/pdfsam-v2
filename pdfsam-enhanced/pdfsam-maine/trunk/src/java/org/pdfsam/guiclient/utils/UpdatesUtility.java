@@ -34,7 +34,7 @@ public class UpdatesUtility {
     public static  Vector getCheckNewVersionItems(){
     	Vector items = new Vector(2,2);
     	items.add(new StringItem(NEVER_CHECK, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Never")));
-    	items.add(new StringItem(CHECK_AT_STARTUP, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"When pdfsam starts")));    	
+    	items.add(new StringItem(CHECK_AT_STARTUP, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"pdfsam start up")));    	
 		return items;
     }
 }

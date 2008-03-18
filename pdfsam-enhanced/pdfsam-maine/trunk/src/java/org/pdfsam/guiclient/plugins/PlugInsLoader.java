@@ -17,7 +17,6 @@ package org.pdfsam.guiclient.plugins;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -53,14 +52,11 @@ public class  PlugInsLoader{
     public PlugInsLoader(String pluginsDirectory) throws PluginException {
     	config = Configuration.getInstance();
         if (pluginsDirectory != null && pluginsDirectory.length() >0){
-        	this.pluginsDirectory = new File(pluginsDirectory);
-                
+        	this.pluginsDirectory = new File(pluginsDirectory);                
         }
         else {
         	try{
-                File plugsPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8"));
-                String dir = (plugsPath.getParent().endsWith("/") || plugsPath.getParent().endsWith("\\"))? plugsPath.getParent()+"plugins" :plugsPath.getParent()+"/plugins";
-                this.pluginsDirectory = new File(dir);
+                this.pluginsDirectory = new File(config.getMainJarPath(), "plugins");
             }catch (Exception e){
                 throw new PluginException(GettextResource.gettext(config.getI18nResourceBundle(),"Error getting plugins directory."), e);
             }

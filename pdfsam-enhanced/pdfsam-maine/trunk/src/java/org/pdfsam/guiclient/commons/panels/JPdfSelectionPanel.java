@@ -76,7 +76,7 @@ public class JPdfSelectionPanel extends JPanel {
 	public static final int SINGLE_SELECTABLE_FILE = 1;
 	public static final int DOUBLE_SELECTABLE_FILE = 2;
 	
-	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";
+	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";	
 	
 	private boolean showEveryButton = false;
 	private boolean showClearButton = false;
@@ -364,7 +364,7 @@ public class JPdfSelectionPanel extends JPanel {
 		workInProgressList.setBackground(this.getBackground());
 		wipListScrollPane = new JScrollPane(workInProgressList);
 		int wipHeight = 30;
-		if(SINGLE_SELECTABLE_FILE == maxSelectableFiles){
+		if(isSingleSelectableFile()){
 			wipHeight = 18;
 		}
 		wipListScrollPane.setMaximumSize(new Dimension(1500, wipHeight));
@@ -649,6 +649,12 @@ public class JPdfSelectionPanel extends JPanel {
 		return setOutputPathMenuItemEnabled;
 	}
     
+	/**
+	 * @return true if it's a single selectable file panel
+	 */
+	public boolean isSingleSelectableFile(){
+		return (SINGLE_SELECTABLE_FILE == maxSelectableFiles);
+	}
 	
     
 }

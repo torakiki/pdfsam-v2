@@ -29,6 +29,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.guiclient.exceptions.ConfigurationException;
 
 
 /**
@@ -71,6 +72,9 @@ public class XMLConfig{
     	if(checkUserHome){
     		File defaultConfigFile = new File(defaultDirectory, "config.xml");
     		if (!(defaultConfigFile.exists() && defaultConfigFile.canWrite())){
+    			if(!configFile.exists()){
+    				throw new ConfigurationException("Unable to find configuration file.");
+    			}
     			if (!configFile.canWrite()){
     				File defaultDir = new File(defaultDirectory);
     				defaultDir.mkdirs();

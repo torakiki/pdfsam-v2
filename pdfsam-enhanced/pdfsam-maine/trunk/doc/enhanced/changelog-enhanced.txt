@@ -6,6 +6,8 @@
 -Modified JPdfSelectionPanel password column render to show '******' only when a password is typed
 -Encrypt: removed the move buttons
 -Added the Unpack plugin
+-Fixed bug #1909755
+-Fixed bug #1909815
 
 1.4.0e beta 2 (02-Mar-2008)
 ===================================

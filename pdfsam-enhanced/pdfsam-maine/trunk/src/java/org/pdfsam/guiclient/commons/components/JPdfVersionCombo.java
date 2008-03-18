@@ -166,4 +166,21 @@ public class JPdfVersionCombo extends JComboBox {
 		this.init(addSameAsSourceItem);
 	}
 	
+	/**
+	 * @return the item with the lower id
+	 */
+	public StringItem getMinItem(){
+		StringItem minItem = null;
+		for(int i =0; i<this.getItemCount(); i++){
+			StringItem currentItem = (StringItem)getItemAt(i);
+			if(minItem!= null){
+				if(currentItem!=null && new Integer(minItem.getId()).compareTo(new Integer(currentItem.getId()))>0){
+					minItem = currentItem;				
+				}
+			}else{
+				minItem = currentItem;
+			}
+		}
+		return minItem;
+	}
 }

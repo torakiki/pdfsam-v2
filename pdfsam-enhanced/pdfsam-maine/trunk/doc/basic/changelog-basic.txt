@@ -4,6 +4,8 @@
 -Modified JPdfSelectionPanel to enable or disable clear button, move buttons
 -Modified JPdfSelectionPanel to enable outputPathMenuItem
 -Modified JPdfSelectionPanel password column render to show '******' only when a password is typed
+-Fixed bug #1909755
+-Fixed bug #1909815
 
 1.0.0 beta 2 (02-Mar-2008)
 ===================================

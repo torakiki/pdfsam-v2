@@ -268,7 +268,6 @@
 	<target name="buildRelease" depends="dist" description="generate packages to be released" >
 		<antcall target="buildZipPackage" />
 		<antcall target="buildZipSrcPackage" />		
-		<antcall target="buildDmgPackage" />
 	</target>
 		
 	<!-- creates the zip package to release-->
@@ -276,13 +275,7 @@
 		<zip destfile="${pdfsam.release.dir}/${pdfsam.jar.name}-out.zip">
 	    	<fileset dir="${pdfsam.release.dist.dir}" />		     				  		
     	</zip>
-	</target>
-	
-	<!-- creates the dmg pakage to release-->	
-	<target name="buildDmgPackage" description="generate distribution dmg package" >
-		<exec executable="hdiutil">
-			<arg line="create -srcfolder ${pdfsam.release.dist.dir} ${pdfsam.release.dir}/${pdfsam.jar.name}.dmg" />
-		</exec>
+		<checksum file="${pdfsam.release.dir}/${pdfsam.jar.name}-out.zip"/>
 	</target>
 	
 	<!--build javadoc and zip for every single project and a single zip containig them-->
@@ -368,7 +361,8 @@
 	    	<fileset dir="${pdfsam.release.src.dir}">
 		    	<include name="*.zip"/>
 	    	</fileset>  			  		
-	    </zip>	  	
+	    </zip>
+		<checksum file="${pdfsam.release.dir}/${pdfsam.jar.name}-out-src.zip"/>
 	  </target>
 	
 	<!--build zip package for enhanced plugins-->

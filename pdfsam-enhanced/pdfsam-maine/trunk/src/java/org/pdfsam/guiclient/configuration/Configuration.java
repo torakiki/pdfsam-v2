@@ -24,6 +24,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.guiclient.business.TextPaneAppender;
+import org.pdfsam.guiclient.exceptions.ConfigurationException;
 import org.pdfsam.guiclient.l10n.LanguageLoader;
 import org.pdfsam.guiclient.utils.ThemeUtility;
 import org.pdfsam.guiclient.utils.xml.XMLConfig;
@@ -45,6 +46,7 @@ public class Configuration{
 	private ConsoleServicesFacade servicesFacade;
 	private Level loggingLevel = Level.DEBUG;
 	private boolean checkForUpdates = true;
+	private String mainJarPath = ""; 
 
 	private Configuration() {
 		init();
@@ -107,6 +109,13 @@ public class Configuration{
 	}
 	
 	/**
+	 * @return the mainJarPath
+	 */
+	public String getMainJarPath() {
+		return mainJarPath;
+	}
+
+	/**
 	 * @return the checkForUpdates
 	 */
 	public boolean isCheckForUpdates() {
@@ -115,9 +124,20 @@ public class Configuration{
 
 	private void init(){
 		try{
-			String applicationPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(),"UTF-8")).getParent();
+			mainJarPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
 			log.info("Loading configuration..");
-			xmlConfigObject = new XMLConfig(applicationPath, true);
+			try{
+				xmlConfigObject = new XMLConfig(mainJarPath, true);
+			}catch(ConfigurationException ce){
+				/**
+				 * 18-Mar-2008
+				 * Bug fix #1909755 (not completely fixed)
+				 */
+				log.warn("Unable to find configuration file into "+mainJarPath);
+				mainJarPath = System.getProperty("user.dir");
+				log.info("Looking for configuration file into "+mainJarPath);
+				xmlConfigObject = new XMLConfig(mainJarPath, true);
+			}
 			servicesFacade = new ConsoleServicesFacade();
 			//language
 			setLanguage();
