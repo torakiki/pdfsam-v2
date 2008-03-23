@@ -30,6 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -136,7 +137,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.2";
+    private final String PLUGIN_VERSION = "0.4.3";
     
 /**
  * Constructor
@@ -387,7 +388,20 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     if (outputCompressedCheck.isSelected()) args.add("-"+SplitParsedCommand.COMPRESSED_ARG); 
                     args.add("-"+MixParsedCommand.PDFVERSION_ARG);
                     if(JPdfVersionCombo.SAME_AS_SOURCE.equals(((StringItem)versionCombo.getSelectedItem()).getId())){
-                    	args.add(Character.toString(item.getPdfVersion()));
+                    	StringItem minItem = versionCombo.getMinItem();
+                    	String currentPdfVersion = Character.toString(item.getPdfVersion());
+                    	if(minItem != null){
+                    		if(Integer.parseInt(currentPdfVersion) < Integer.parseInt(minItem.getId())){
+                    			if(JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(getParent(),
+			            						    GettextResource.gettext(config.getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n "+GettextResource.gettext(config.getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
+			            						    GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version conflict"),
+			            						    JOptionPane.WARNING_MESSAGE,
+			            						    JOptionPane.YES_NO_OPTION)){
+                    				return;
+                    			}
+                    		}
+                    	}
+                    	args.add(currentPdfVersion);                    	
                     }else{
                     	args.add(((StringItem)versionCombo.getSelectedItem()).getId());
                     }
