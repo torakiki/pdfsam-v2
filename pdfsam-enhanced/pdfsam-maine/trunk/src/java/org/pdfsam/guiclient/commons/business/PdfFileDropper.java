@@ -40,15 +40,20 @@ public class PdfFileDropper extends DropTargetAdapter {
 		this.loader = loader;		
 	}
 	
+	/**
+	 * execute the drop
+	 */
 	public void drop(DropTargetDropEvent e)  {
 		try {
             DropTargetContext context = e.getDropTargetContext();
             e.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
             Transferable t = e.getTransferable();
-            Object data = t.getTransferData(DataFlavor.javaFileListFlavor);
-            if (data instanceof List) {
-                List files = (List)data;
-                loader.addFiles(files);
+            if(hasFileFlavor(t)){
+	            Object data = t.getTransferData(DataFlavor.javaFileListFlavor);
+	            if (data instanceof List) {
+	                List files = (List)data;
+	                loader.addFiles(files);
+	            }
             }
             context.dropComplete(true);
         }       
@@ -56,5 +61,23 @@ public class PdfFileDropper extends DropTargetAdapter {
             log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), ex);
         }	
     }
+	
+	/**
+	 * @param t
+	 * @return true if it's a file flavor
+	 */
+	private boolean hasFileFlavor(Transferable t) {
+		boolean retVal = false;
+		DataFlavor[] flavors;
+		flavors = t.getTransferDataFlavors();
+		for (int i = 0; i < flavors.length; i++) {
+			if (flavors[i].equals(DataFlavor.javaFileListFlavor)) {
+				retVal = true;
+				break;
+			}
+		}
+		return retVal;
+	}
+	   
 
 }

@@ -4,7 +4,7 @@ SetCompressor /SOLID lzma
 
 # Defines
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.0.0-b2
+!define VERSION 1.0.0-b3
 !define COMPANY "Andrea Vacondio"
 !define URL ""
 
@@ -99,7 +99,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_0_0-b2.exe
+OutFile pdfsam-win32inst-v1_0_0-b3.exe
 InstallDir "$PROGRAMFILES\pdfsam"
 CRCCheck on
 XPStyle on
@@ -231,6 +231,7 @@ Section -post SEC0001
     SetOutPath $INSTDIR
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+    CreateDirectory "$SMPROGRAMS\$StartMenuGroup"
     SetOutPath $INSTDIR
     ;use the INSTDIR outpath for the next shortcut in order to launch the JAR file properly
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk" $INSTDIR\pdfsam-starter.exe
@@ -303,7 +304,7 @@ Section /o "-un.Install Section" UNSEC0000
   RMDir "$INSTDIR\doc\licenses\pdfsam"
   RMDir "$INSTDIR\doc\licenses\jcmdline"
   RMDir "$INSTDIR\doc"
-  RMDir /REBOOTOK "$INSTDIR"
+  RMDir "$INSTDIR"
   
     ${If} $un.REMOVE_ALL_USERS == 1
         SetShellVarContext all
@@ -322,13 +323,13 @@ SectionEnd
 
 Section -un.post UNSEC0001
     DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk"
-    Delete /REBOOTOK $INSTDIR\uninstall.exe
+    Delete "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk"
+    Delete $INSTDIR\uninstall.exe
     DeleteRegValue HKLM "${REGKEY}" StartMenuGroup
     DeleteRegValue HKLM "${REGKEY}" Path
     DeleteRegKey /IfEmpty HKLM "${REGKEY}\Components"
     DeleteRegKey /IfEmpty HKLM "${REGKEY}"
-    RmDir /REBOOTOK $SMPROGRAMS\$StartMenuGroup
+    RmDir $SMPROGRAMS\$StartMenuGroup
     RmDir /r $INSTDIR
     Push $R0
     StrCpy $R0 $StartMenuGroup 1
@@ -586,11 +587,11 @@ Function un.ReadPreviousVersion
     ${EndIf}
   ${EndIf}
 
-  ReadRegStr $R1 HKCU "Software\FileZilla Client" ""
+  ReadRegStr $R1 HKCU "Software\$(^Name)" ""
   
   ${If} $R1 != ""
     ;Detect version
-    ReadRegStr $R2 HKCU "Software\FileZilla Client" "Version"
+    ReadRegStr $R2 HKCU "Software\$(^Name)" "Version"
     ${If} $R2 == ""
       StrCpy $R1 ""
     ${EndIf}

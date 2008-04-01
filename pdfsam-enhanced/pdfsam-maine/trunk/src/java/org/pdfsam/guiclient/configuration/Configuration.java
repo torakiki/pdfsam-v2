@@ -95,6 +95,21 @@ public class Configuration{
 	}
 
 	/**
+	 * @return the default environment file from the config.xml or null if nothing is set
+	 */
+	public File getDefaultEnv(){
+		File retVal = null;
+		try{
+			String defaultEnv = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/defaultjob");
+			if (defaultEnv != null && defaultEnv.length() > 0){
+				retVal = new File(defaultEnv);
+			}
+		}catch(Exception e){
+			log.warn(GettextResource.gettext(i18nMessages,"Unable to get the default environment informations."));
+		}
+		return retVal;
+	}
+	/**
 	 * @return the ConsoleServicesFacade
 	 */
 	public ConsoleServicesFacade getConsoleServicesFacade() {

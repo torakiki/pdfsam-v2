@@ -19,6 +19,7 @@ package org.pdfsam.guiclient.gui.frames;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.io.File;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -188,6 +189,12 @@ public class JMainFrame extends JFrame {
 	        verticalSplitPane.setResizeWeight(1.0);
 	        verticalSplitPane.setDividerLocation(0.75);
 	        
+	        //load the default env if set
+	        File defaultEnv = config.getDefaultEnv();
+	        if(defaultEnv != null && defaultEnv.exists() && defaultEnv.isFile()){
+	        	log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Loading default environment."));
+	        	envMediator.getEnvironment().loadJobs(defaultEnv);
+	        }
 	        getContentPane().add(verticalSplitPane,BorderLayout.CENTER);
 
 		}catch(Exception e){

@@ -16,6 +16,7 @@ package org.pdfsam.guiclient.gui.panels;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -145,6 +146,14 @@ public class JStatusPanel extends JPanel implements Observer{
 	}
 	
 	/**
+	 * Delegate to progressBar
+	 * @return percent completed
+	 */
+	public double getPercentComplete(){
+		return progressBar.getPercentComplete();
+	}
+	
+	/**
 	 * Shows the update available icon
 	 * @param version new available version
 	 */
@@ -201,12 +210,17 @@ public class JStatusPanel extends JPanel implements Observer{
 	            	int percentage = dto.getPercentage();
 	            	if(percentage == WorkDoneDataModel.INDETERMINATE){
 	            		setBarIndeterminate(true);
+	            		setBarStringPainted(false);
 	            	}else if (percentage == WorkDoneDataModel.MAX_PERGENTAGE){
 	            		setBarIndeterminate(false);
-	            		setBarValue(0);	            		
+	            		setBarStringPainted(true);
+	            		setBarValue(WorkDoneDataModel.MAX_PERGENTAGE);
+	            		setBarString(new DecimalFormat("0.# %").format(getPercentComplete()));
 	            	}else{
-	            		setBarString(percentage+" %");
-	            		setBarValue(percentage);	
+	            		setBarValue(percentage);	            		
+	            		setBarStringPainted(true);
+	            		setBarString(new DecimalFormat("0.# %").format(getPercentComplete()));
+	            			
 	            	}
 	            }
 	        };
