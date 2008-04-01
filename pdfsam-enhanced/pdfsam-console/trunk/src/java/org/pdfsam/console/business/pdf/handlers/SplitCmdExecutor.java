@@ -35,9 +35,9 @@ import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PrefixParser;
 
 import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfSmartCopy;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 import com.lowagie.text.pdf.SimpleBookmark;
 /**
@@ -99,7 +99,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         	File outFile = new File(inputCommand.getOutputFile().getCanonicalPath(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
         	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
         	
-            PdfCopy pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
+            PdfSmartCopy pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
 
         	//set creator
         	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
@@ -144,7 +144,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
          int currentPage;
          Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
          boolean isTimeToClose = false;
-         PdfCopy pdfWriter = null;
+         PdfSmartCopy pdfWriter = null;
          PdfImportedPage importedPage;
          File tmpFile = null;
          File outFile = null;
@@ -167,7 +167,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
             	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
 
-            	pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
+            	pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
             	//set creator
             	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 
@@ -224,7 +224,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		int relativeCurrentPage = 0;
 		int endPage = n;
 		int startPage = 1;
-        PdfCopy pdfWriter = null;
+        PdfSmartCopy pdfWriter = null;
         PdfImportedPage importedPage;
         File tmpFile = null;
         File outFile = null;
@@ -243,7 +243,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             	startPage = currentPage;
             	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
                 
-            	pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
+            	pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
             	
             	//set creator
             	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
@@ -331,7 +331,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);
         int currentPage;        
 		Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
-        PdfCopy pdfWriter = null;
+        PdfSmartCopy pdfWriter = null;
         PdfImportedPage importedPage;
         File tmpFile = null;
         File outFile = null;
@@ -348,7 +348,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	        	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
 	        	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
 	        	baos = new ByteArrayOutputStream(); 
-	        	pdfWriter = new PdfCopy(currentDocument, baos);
+	        	pdfWriter = new PdfSmartCopy(currentDocument, baos);
 	        	//set creator
 	        	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 	            
