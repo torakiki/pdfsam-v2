@@ -19,7 +19,7 @@ Linked libraries:
 	-log4j-1.2.15
 	-bcmail-jdk14-138.jar
 	-bcprov-jdk14-138.jar
-	-pdfsam-console-1.1.2e *
+	-pdfsam-console-1.1.3e *
 	-emp4j-1.0.0 *
 	-pdfsam-langpack *
 	

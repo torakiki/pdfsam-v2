@@ -1,19 +1,19 @@
 Name "pdfsam"
 
-SetCompressor /SOLID lzma
+SetCompressor /SOLID zlib
 
 # Defines
-!define REGKEY "SOFTWARE\$(^Name)"
+!define REGKEY "Software\$(^Name)"
 !define VERSION 1.0.0-b3
 !define COMPANY "Andrea Vacondio"
-!define URL ""
+!define URL "http://www.pdfsam.org/"
 
 # MUI defines
 !define MUI_ICON install-data\install.ico
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
-!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
+;!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "PDF Split And Merge"
 !define MUI_WELCOMEFINISHPAGE_BITMAP install-data\install.bmp
 !define MUI_UNICON install-data\uninstall.ico
@@ -22,18 +22,18 @@ SetCompressor /SOLID lzma
 !define MUI_LANGDLL_WINDOWTITLE "${LANGUAGE_TITLE}"
 
 # Remember language for uninstallation
-!define MUI_LANGDLL_REGISTRY_ROOT HKLM
-!define MUI_LANGDLL_REGISTRY_KEY "SOFTWARE\$(^Name)"
+;!define MUI_LANGDLL_REGISTRY_ROOT HKLM
+;!define MUI_LANGDLL_REGISTRY_KEY "Software\$(^Name)"
 !define MUI_LANGDLL_REGISTRY_VALUENAME lang
 
 # Included files
 !include Sections.nsh
 !include MUI.nsh
-  !include "WordFunc.nsh"
-  !include Library.nsh
-  !include "WinVer.nsh"
-  !include "nsDialogs.nsh"
-  !include "FileFunc.nsh"
+!include "WordFunc.nsh"
+!include Library.nsh
+!include "WinVer.nsh"
+!include "nsDialogs.nsh"
+!include "FileFunc.nsh"
 #for modern UI functionality
 !include "${NSISDIR}\Contrib\Modern UI\System.nsh"
 !include "XML.nsh"
@@ -111,22 +111,9 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileDescription ""
-VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright ""
-InstallDirRegKey HKLM "${REGKEY}" Path
+VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2008"
+;InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails hide
-
-# Macro for selecting uninstaller sections
-!macro SELECT_UNSECTION SECTION_NAME UNSECTION_ID
-    Push $R0
-    ReadRegStr $R0 HKLM "${REGKEY}\Components" "${SECTION_NAME}"
-    StrCmp $R0 1 0 next${UNSECTION_ID}
-    !insertmacro SelectSection "${UNSECTION_ID}"
-    GoTo done${UNSECTION_ID}
-next${UNSECTION_ID}:
-    !insertmacro UnselectSection "${UNSECTION_ID}"
-done${UNSECTION_ID}:
-    Pop $R0
-!macroend
 
 !define getLanguageName "!insertmacro getLanguageName"
 
@@ -211,23 +198,32 @@ Function getLangName ;pretty sure there's a better way to do this...
             Push 'id_ID' 
         ${Break}
         ${Default}
-        	Push 'Default'
+            Push 'Default'
         ${Break}
     ${EndSwitch}
     Pop $LANG_NAME
 FunctionEnd
 
+Function WarnDirExists    
+    IfFileExists $INSTDIR\*.* DirExists DirExistsOK
+    DirExists:
+    MessageBox MB_YESNO|MB_ICONQUESTION|MB_DEFBUTTON2 \
+        "Installation directory already exists, please uninstall any previous installed version.$\nWould you like to install anyway?" \
+        IDYES DirExistsOK
+    Abort
+    DirExistsOK:
+FunctionEnd
 
 # Installer sections
 Section "-Install Section" SEC0000
+    Call WarnDirExists
     SetOutPath $INSTDIR
     SetOverwrite on
     File /r F:\pdfsam\pdfsam-basic\*
-    WriteRegStr HKLM "${REGKEY}\Components" "Install Section" 1
+    ;WriteRegStr HKLM "${REGKEY}\Components" "Install Section" 1
 SectionEnd
 
 Section -post SEC0001
-    WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
     SetOutPath $INSTDIR
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -238,15 +234,20 @@ Section -post SEC0001
     SetOutPath $SMPROGRAMS\$StartMenuGroup
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Readme.lnk" $INSTDIR\doc\readme.txt
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.0.0-b2-tutorial.pdf
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk" $INSTDIR\uninstall.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" Publisher "${COMPANY}"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayIcon $INSTDIR\uninstall.exe
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
-    WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
-    WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
+    
+    WriteRegStr SHCTX "Software\$(^Name)" "" $INSTDIR
+    WriteRegStr SHCTX "Software\$(^Name)" "Version" "${VERSION}"
+    WriteRegExpandStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" "InstallLocation" "$INSTDIR"
+    WriteRegExpandStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
+    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
+    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
+    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayIcon $INSTDIR\uninstall.exe
+    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" "URLInfoAbout" "${URL}"
+    WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
+    WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
+  
 SectionEnd
 
 Section "-Write XML" ;writes to XML file
@@ -264,78 +265,28 @@ Section "-Write XML" ;writes to XML file
 SectionEnd
 
 # Uninstaller sections
-Section /o "-un.Install Section" UNSEC0000
+Section "Uninstall"
   
-  Delete "$INSTDIR\uninst.exe"
-  Delete "$INSTDIR\plugins\split\*.xml"
-  Delete "$INSTDIR\plugins\split\*.jar"
-  Delete "$INSTDIR\plugins\merge\*.xml"
-  Delete "$INSTDIR\plugins\merge\*.jar"
-  Delete "$INSTDIR\*.jar"
-  Delete "$INSTDIR\*.exe"
-  Delete "$INSTDIR\examples\*.*"
-  Delete "$INSTDIR\licenses\*.*"
-  Delete "$INSTDIR\doc\*.txt"
-  Delete "$INSTDIR\doc\*.pdf" 
-  Delete "$INSTDIR\doc\licenses\bouncyCastle\*.*"
-  Delete "$INSTDIR\doc\licenses\dom4j\*.*"
-  Delete "$INSTDIR\doc\licenses\emp4j\*.*"
-  Delete "$INSTDIR\doc\licenses\iText\*.*"
-  Delete "$INSTDIR\doc\licenses\jaxen\*.*"
-  Delete "$INSTDIR\doc\licenses\log4j\*.*"
-  Delete "$INSTDIR\doc\licenses\looks\*.*"
-  Delete "$INSTDIR\doc\licenses\pdfsam\*.*"
-  Delete "$INSTDIR\doc\licenses\jcmdline\*.*" 
-  Delete "$INSTDIR\lib\*.jar"
+  Delete "$INSTDIR\uninstall.exe"
   Delete "$INSTDIR\config.xml"
+  Delete "$INSTDIR\pdfsam-starter.exe"
+  Delete "$INSTDIR\*.jar"
 
-  RMDir "$SMPROGRAMS\$StartMenuGroup"
-  RMDir "$INSTDIR\lib"
-  RMDir "$INSTDIR\plugins\split"
-  RMDir "$INSTDIR\plugins\merge"
-  RMDir "$INSTDIR\plugins"
-  RMDir "$INSTDIR\doc\licenses\bouncyCastle"
-  RMDir "$INSTDIR\doc\licenses\dom4j"
-  RMDir "$INSTDIR\doc\licenses\emp4j"
-  RMDir "$INSTDIR\doc\licenses\iText"
-  RMDir "$INSTDIR\doc\licenses\jaxen"
-  RMDir "$INSTDIR\doc\licenses\log4j"
-  RMDir "$INSTDIR\doc\licenses\looks"
-  RMDir "$INSTDIR\doc\licenses\pdfsam"
-  RMDir "$INSTDIR\doc\licenses\jcmdline"
-  RMDir "$INSTDIR\doc"
+  RMDir /r "$INSTDIR\lib"
+  RMDir /r "$INSTDIR\bin"
+  RMDir /r "$INSTDIR\plugins"
+  RMDir /r "$INSTDIR\doc"
   RMDir "$INSTDIR"
-  
+   
     ${If} $un.REMOVE_ALL_USERS == 1
         SetShellVarContext all
-        Call un.RemoveStartmenu
-    
-        DeleteRegKey /ifempty HKLM "Software\$(^Name)"
-        DeleteRegValue HKLM "${REGKEY}\Components" "Install Section"
     ${EndIf}
     ${If} $un.REMOVE_CURRENT_USER == 1
         SetShellVarContext current
-        Call un.RemoveStartmenu
-    
-        DeleteRegKey /ifempty HKCU "Software\$(^Name)"
     ${EndIf}
-SectionEnd
-
-Section -un.post UNSEC0001
-    DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
-    Delete "$SMPROGRAMS\$StartMenuGroup\$(^UninstallLink).lnk"
-    Delete $INSTDIR\uninstall.exe
-    DeleteRegValue HKLM "${REGKEY}" StartMenuGroup
-    DeleteRegValue HKLM "${REGKEY}" Path
-    DeleteRegKey /IfEmpty HKLM "${REGKEY}\Components"
-    DeleteRegKey /IfEmpty HKLM "${REGKEY}"
-    RmDir $SMPROGRAMS\$StartMenuGroup
-    RmDir /r $INSTDIR
-    Push $R0
-    StrCpy $R0 $StartMenuGroup 1
-    StrCmp $R0 ">" no_smgroup
-no_smgroup:
-    Pop $R0
+    Call un.RemoveStartmenu
+    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
+    DeleteRegKey SHCTX "Software\$(^Name)"
 SectionEnd
 
 ;This part controls installation for the current user / for all users
@@ -436,9 +387,9 @@ Function PageAllUsers
   
   ${If} $ALL_USERS_FIXED == 1
     ${If} $ALL_USERS == 1
-      nsDialogs::CreateItem /NOUNLOAD STATIC ${WS_VISIBLE}|${WS_CHILD}|${WS_CLIPSIBLINGS} 0 0 -30 100% 30 "FileZilla has been previously installed for all users. Please uninstall first before changing setup type."
+      nsDialogs::CreateItem /NOUNLOAD STATIC ${WS_VISIBLE}|${WS_CHILD}|${WS_CLIPSIBLINGS} 0 0 -30 100% 30 "pdfsam has been previously installed for all users. Please uninstall first before changing setup type."
     ${Else}
-      nsDialogs::CreateItem /NOUNLOAD STATIC ${WS_VISIBLE}|${WS_CHILD}|${WS_CLIPSIBLINGS} 0 0 -30 100% 30 "FileZilla has been previously installed for this user only. Please uninstall first before changing setup type."
+      nsDialogs::CreateItem /NOUNLOAD STATIC ${WS_VISIBLE}|${WS_CHILD}|${WS_CLIPSIBLINGS} 0 0 -30 100% 30 "pdfsam has been previously installed for this user only. Please uninstall first before changing setup type."
     ${EndIf}
   ${Else}
     nsDialogs::CreateItem /NOUNLOAD STATIC ${WS_VISIBLE}|${WS_CHILD}|${WS_CLIPSIBLINGS} 0 0 -30 100% 30 "Installation for all users requires Administrator privileges."
@@ -570,9 +521,6 @@ Function un.onInit
     MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "Are you sure you want to completely remove $(^Name)?" IDYES +2
     Abort
     
-    ;should the following be here? -- match to context - HKLM or HKCU
-    ReadRegStr $INSTDIR HKLM "${REGKEY}" Path
-    !insertmacro SELECT_UNSECTION "Install Section" ${UNSEC0000}
 FunctionEnd
 
 Function un.ReadPreviousVersion
@@ -618,7 +566,6 @@ Function un.ReadPreviousVersion
 FunctionEnd
 
 Function un.RemoveStartmenu
-
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
   
   Delete "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk"

@@ -5,9 +5,10 @@
 -Modified JPdfSelectionPanel to enable outputPathMenuItem
 -Modified JPdfSelectionPanel password column render to show '******' only when a password is typed
 -Progress bar now shows percentage to give a better feedback to the user
--Fixed bug #1909755
--Fixed bug #1909815
--Fixed bug #1926928 
+-Fixed bug #1909755 ('+' char in installation dir)
+-Fixed bug #1909815 
+-Fixed bug #1926030 (installer)
+-Fixed bug #1926928 (default env loading)
 
 1.0.0 beta 2 (02-Mar-2008)
 ===================================
