@@ -1,4 +1,4 @@
-1.4.0e beta 3 ()
+1.4.0e beta 3 (12-Apr-2008)
 ===================================
 -Added update checker to check for a new version
 -Modified JPdfSelectionPanel to enable or disable clear button, move buttons
@@ -6,6 +6,8 @@
 -Modified JPdfSelectionPanel password column render to show '******' only when a password is typed
 -Encrypt: removed the move buttons
 -Progress bar now shows percentage to give a better feedback to the user
+-Console: split now uses PdfSmartCopy to minimize output files size
+-Updated langpack
 -Fixed bug #1909755 ('+' char in installation dir)
 -Fixed bug #1909815 
 -Fixed bug #1926030 (installer)

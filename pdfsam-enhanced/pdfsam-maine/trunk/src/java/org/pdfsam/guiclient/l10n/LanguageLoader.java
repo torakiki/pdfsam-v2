@@ -39,7 +39,11 @@ public class LanguageLoader {
         bundleName = bundle;
         String[] i18nInfos = languageCode.split("_");
         try{
-            currentLocale = new Locale (i18nInfos[0].toLowerCase(), i18nInfos[1].toUpperCase());
+        	if(i18nInfos.length>1){
+        		currentLocale = new Locale (i18nInfos[0].toLowerCase(), i18nInfos[1].toUpperCase());
+        	}else{
+        		currentLocale = new Locale (i18nInfos[0].toLowerCase());
+        	}
         }catch(Exception ex){
             currentLocale = DEFAULT_LOCALE;
         }

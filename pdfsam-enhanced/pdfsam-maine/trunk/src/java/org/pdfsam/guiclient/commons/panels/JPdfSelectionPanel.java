@@ -226,6 +226,12 @@ public class JPdfSelectionPanel extends JPanel {
 	    
 	    tableScrollPane = new JScrollPane(mainTable);
 	    tableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	    /* Not working yet
+	     * if(maxSelectableFiles>1){
+	    	JViewport viewPort = new JViewport();
+	    	viewPort.setView(new JPdfSelectionTableRowHeader(mainTable));
+	    	tableScrollPane.setRowHeader(viewPort);
+	    }*/
 		pdfSelectionTableListener = new PdfSelectionTableActionListener(this, loader);
 		
 		//drag and drop
