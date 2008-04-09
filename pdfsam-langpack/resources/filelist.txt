@@ -7,6 +7,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/listeners/EncryptionTypeComboActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-unpack/src/java/org/pdfsam/plugin/unpack/GUI/UnpackMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/TreeMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/EnterDoClickListener.java

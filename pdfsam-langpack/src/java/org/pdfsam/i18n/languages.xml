@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <languages>
-    <language value="bs_BA" description="Bosnian" />  
+    <language value="bs" description="Bosnian" />  
     <language value="pt_BR" description="Brazilian Portuguese" />    
-    <language value="cs_CZ" description="Czech" />  
-    <language value="da_DK" description="Danish" />  	
-    <language value="nl_NL" description="Dutch" />  	
+    <language value="cs" description="Czech" />  
+    <language value="da" description="Danish" />  	
+    <language value="nl" description="Dutch" />  	
     <language value="en_GB" description="English" />    
-    <language value="fi_FI" description="Finnish" />  	
-    <language value="fr_FR" description="French" />    
-    <language value="de_DE" description="German" />
-    <language value="el_GR" description="Greek" />   
-    <language value="he_IL" description="Hebrew" />  
-    <language value="hu_HU" description="Hungarian" />
-    <language value="id_ID" description="Indonesian" />
-    <language value="it_IT" description="Italian" />  
-    <language value="pl_PL" description="Polish" />
-    <language value="pt_PT" description="Portuguese" />  
-    <language value="ru_RU" description="Russian" />    
+    <language value="fa" description="Persian" />  	
+    <language value="fi" description="Finnish" />  	
+    <language value="fr" description="French" />    
+    <language value="de" description="German" />
+    <language value="el" description="Greek" />   
+    <language value="he" description="Hebrew" />  
+    <language value="hu" description="Hungarian" />
+    <language value="id" description="Indonesian" />
+    <language value="it" description="Italian" />  
+    <language value="ko" description="Korean" />  
+    <language value="pl" description="Polish" />
+    <language value="pt" description="Portuguese" />  
+    <language value="ru" description="Russian" />    
     <language value="zh_CN" description="Simplified Chinese" />  	
-    <language value="sk_SK" description="Slovak" />    
-    <language value="es_ES" description="Spanish" />    
-    <language value="sv_SE" description="Swedish" />   
-    <language value="tr_TR" description="Turkish" />   
+    <language value="sk" description="Slovak" />    
+    <language value="es" description="Spanish" />    
+    <language value="sv" description="Swedish" />   
+    <language value="vi" description="Vietnamese" />   
+    <language value="tr" description="Turkish" />   
     <language value="zh_TW" description="Traditional Chinese" />
+    <language value="zh_HK" description="Chinese (Hong Kong)" />
 </languages>
