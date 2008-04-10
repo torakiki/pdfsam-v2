@@ -42,7 +42,7 @@
 		<property name="libs.dir" value="${workspace.dir}/libraries" />
 		
 		<!-- default values -->
-		<property name="pdfsam.jar.version" value="1.0.0-b1"/>	
+		<property name="pdfsam.jar.version" value="1.0.0-b3"/>	
 	    <property name="pdfsam.version" value="basic"/>
 	
 		

@@ -81,12 +81,14 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "German"
   !insertmacro MUI_LANGUAGE "Greek"
   !insertmacro MUI_LANGUAGE "Spanish"
+  !insertmacro MUI_LANGUAGE "Farsi"  
   !insertmacro MUI_LANGUAGE "Finnish"  
   !insertmacro MUI_LANGUAGE "French"
   !insertmacro MUI_LANGUAGE "Hebrew"
   !insertmacro MUI_LANGUAGE "Hungarian"
   !insertmacro MUI_LANGUAGE "Indonesian"
   !insertmacro MUI_LANGUAGE "Italian"
+  !insertmacro MUI_LANGUAGE "Korean"
   !insertmacro MUI_LANGUAGE "Dutch"
   !insertmacro MUI_LANGUAGE "Polish"
   !insertmacro MUI_LANGUAGE "Portuguese"
@@ -197,6 +199,12 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Case} ${LANG_INDONESIAN}
             Push 'id_ID' 
         ${Break}
+        ${Case} ${LANG_FARSI}
+            Push 'fa' 
+        ${Break}
+        ${Case} ${LANG_KOREAN}
+            Push 'ko' 
+        ${Break}                
         ${Default}
             Push 'Default'
         ${Break}
@@ -464,6 +472,10 @@ Function .onInit
     Push Hungarian
     Push ${LANG_DANISH}
     Push Danish
+    Push ${LANG_FARSI}
+    Push Farsi
+    Push ${LANG_KOREAN}
+    Push Korean
     Push ${LANG_TRADCHINESE}
     Push TradChinese
     Push ${LANG_INDONESIAN}
