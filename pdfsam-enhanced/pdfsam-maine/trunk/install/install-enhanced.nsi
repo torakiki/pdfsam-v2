@@ -134,70 +134,70 @@ Function getLangName ;pretty sure there's a better way to do this...
             Push 'en_GB' 
         ${Break}
         ${Case} ${LANG_ITALIAN}
-            Push 'it_IT' 
+            Push 'it' 
         ${Break}
         ${Case} ${LANG_BOSNIAN}
-            Push 'bs_BA' 
+            Push 'bs' 
         ${Break}
         ${Case} ${LANG_CZECH}
-            Push 'cs_CZ' 
+            Push 'cs' 
         ${Break}
         ${Case} ${LANG_SLOVAK}
-            Push 'sk_SK' 
+            Push 'sk' 
         ${Break}
         ${Case} ${LANG_ITALIAN}
-            Push 'it_IT' 
+            Push 'it' 
         ${Break}
         ${Case} ${LANG_HEBREW}
-            Push 'he_IL' 
+            Push 'he' 
         ${Break}
         ${Case} ${LANG_RUSSIAN}
-            Push 'ru_RU' 
+            Push 'ru' 
         ${Break} 
         ${Case} ${LANG_SWEDISH}
-            Push 'sv_SE' 
+            Push 'sv' 
         ${Break} 
         ${Case} ${LANG_SPANISH}
-            Push 'es_ES' 
+            Push 'es' 
         ${Break}
         ${Case} ${LANG_PORTUGUESE}
             Push 'pt_PT' 
         ${Break}
         ${Case} ${LANG_DUTCH}
-            Push 'nl_NL' 
+            Push 'nl' 
         ${Break}   
         ${Case} ${LANG_FRENCH}
-            Push 'fr_FR' 
+            Push 'fr' 
         ${Break}
         ${Case} ${LANG_GREEK}
-            Push 'el_GR' 
+            Push 'el' 
         ${Break}
         ${Case} ${LANG_TURKISH}
-            Push 'tr_TR' 
+            Push 'tr' 
         ${Break}
         ${Case} ${LANG_GERMAN}
-            Push 'de_DE' 
+            Push 'de' 
         ${Break}
         ${Case} ${LANG_POLISH}
-            Push 'pl_PL' 
+            Push 'pl' 
         ${Break}
         ${Case} ${LANG_FINNISH}
-            Push 'fi_FI' 
+            Push 'fi' 
         ${Break}
         ${Case} ${LANG_SIMPCHINESE}
             Push 'zh_CN' 
         ${Break}
         ${Case} ${LANG_HUNGARIAN}
-            Push 'hu_HU' 
+            Push 'hu' 
         ${Break}
         ${Case} ${LANG_DANISH}
-            Push 'da_DK' 
+            Push 'da' 
         ${Break}
         ${Case} ${LANG_TRADCHINESE}
             Push 'zh_TW' 
         ${Break}
         ${Case} ${LANG_INDONESIAN}
-            Push 'id_ID' 
+            Push 'id' 
         ${Break}
         ${Case} ${LANG_FARSI}
             Push 'fa' 
