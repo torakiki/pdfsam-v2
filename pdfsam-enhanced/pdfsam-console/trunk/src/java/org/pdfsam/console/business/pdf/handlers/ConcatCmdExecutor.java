@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -224,6 +225,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
     private PdfFile[] parseCsvFile(File inputFile)throws ConcatException{
         ArrayList retVal = new ArrayList();
         try {
+        	log.debug("Parsing CSV file "+inputFile.getAbsolutePath());
             BufferedReader bufferReader = new BufferedReader(new FileReader(inputFile));
             String temp = "";
             //read file
@@ -250,33 +252,66 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
      */
     private PdfFile[] parseXmlFile(File inputFile)throws ConcatException{
 		List fileList = new ArrayList();
+		String parentPath = null;
         try {
+        	log.debug("Parsing XML file "+inputFile.getAbsolutePath());
 			SAXReader reader = new SAXReader();
 			org.dom4j.Document document = reader.read(inputFile);
-            List pdfFileList = document.selectNodes("/filelist/file");
-			for (int i = 0; pdfFileList != null && i < pdfFileList.size(); i++) {
-				Node pdfNode = (Node) pdfFileList.get(i);
-				String pwd = null;
-				String fileName = null;
-				//get filename
-				Node fileNode = pdfNode.selectSingleNode("@value");
-				if(fileNode != null){
-					fileName = fileNode.getText().trim();
+            //processing the single file tags
+			fileList.addAll(getPdfFileListFromNode(document.selectNodes("/filelist/file"), parentPath));
+			//processing the files tags
+			List pdfFileSetList = document.selectNodes("/fileset");
+			for (int i = 0; pdfFileSetList != null && i < pdfFileSetList.size(); i++) {
+				parentPath = null;
+				Node pdfFileSetNode = (Node) pdfFileSetList.get(i);
+				Node useCurrentDir = pdfFileSetNode.selectSingleNode("@usecurrentdir");
+				Node dir = pdfFileSetNode.selectSingleNode("@dir");
+				if(dir != null && dir.getText().trim().length()>0){
+					parentPath = dir.getText();
 				}else{
-					throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[]{"Empty file name"});
-				}
-				//get pwd value
-				Node pwdNode = pdfNode.selectSingleNode("@password");
-				if(pwdNode != null){
-					pwd = pwdNode.getText();
-				}
-				fileList.add(new PdfFile(fileName, pwd));
+					if(useCurrentDir!=null && Boolean.valueOf(useCurrentDir.getText()).booleanValue()){
+						parentPath = inputFile.getParent();
+					}
+				}				
+				fileList.addAll(getPdfFileListFromNode(pdfFileSetNode.selectNodes("file"), parentPath));
 			}
         }catch (Exception e) {
         	throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML,e);
        }
         return (PdfFile[])fileList.toArray(new PdfFile[0]);
-   }
+    }
+    
+    /**
+     * @param fileList Node list
+     * @param parentPath parent dir for the files
+     * @return list of PdfFile
+     */
+    private List getPdfFileListFromNode(List fileList, String parentPath) throws Exception{
+    	List retVal = Collections.EMPTY_LIST;
+    	for (int i = 0; fileList != null && i < fileList.size(); i++) {
+			Node pdfNode = (Node) fileList.get(i);
+			String pwd = null;
+			String fileName = null;
+			//get filename
+			Node fileNode = pdfNode.selectSingleNode("@value");
+			if(fileNode != null){
+				fileName = fileNode.getText().trim();
+			}else{
+				throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[]{"Empty file name"});
+			}
+			//get pwd value
+			Node pwdNode = pdfNode.selectSingleNode("@password");
+			if(pwdNode != null){
+				pwd = pwdNode.getText();
+			}
+			if(parentPath!=null && parentPath.length()>0){
+				retVal.add(new PdfFile(new File(parentPath,fileName), pwd));
+			}else{
+				retVal.add(new PdfFile(fileName, pwd));
+			}
+		}
+    	return retVal;
+    }
     
     /**
      * Reads the input file and return a File[] of input files
