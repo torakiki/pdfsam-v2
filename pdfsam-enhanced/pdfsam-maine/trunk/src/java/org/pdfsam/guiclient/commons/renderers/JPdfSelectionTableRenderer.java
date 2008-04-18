@@ -24,7 +24,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
 
-import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
+import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 /**
  * Renderer to show red background in rows loaded with errors
  * @author Andrea Vacondio
@@ -38,31 +38,38 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		setOpaque(true);
 		setIcon(null);
 		setFont(table.getFont());
-		boolean loadedWithErrors = ((SimplePdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
-		if(isSelected){
-          setForeground(table.getSelectionForeground());
-          if(loadedWithErrors){
-        	  setBackground(new Color(222,189,189));
-        	  if (column == SimplePdfSelectionTableModel.FILENAME){
-        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
-        	  }
-          }else{
-        	  setBackground(table.getSelectionBackground());
-          }          
-        }
-        else{
-          setForeground(table.getForeground());
-          if(loadedWithErrors){
-        	  setBackground(new Color(222,189,189));
-        	  if (column == SimplePdfSelectionTableModel.FILENAME){
-        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
-        	  }
-          }else{
-        	  setBackground(table.getBackground());
-          }
-        }
+		boolean loadedWithErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
+		//rowheader
+		if (column == AbstractPdfSelectionTableModel.ROW_NUM){
+			setFont(table.getTableHeader().getFont());
+			setBackground(table.getTableHeader().getBackground());
+			setForeground(table.getTableHeader().getForeground());			
+		}else{
+			if(isSelected){
+	          setForeground(table.getSelectionForeground());
+	          if(loadedWithErrors){
+	        	  setBackground(new Color(222,189,189));
+	        	  if (column == AbstractPdfSelectionTableModel.FILENAME){
+	        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
+	        	  }
+	          }else{
+	        	  setBackground(table.getSelectionBackground());
+	          }          
+	        }
+	        else{
+	          setForeground(table.getForeground());
+	          if(loadedWithErrors){
+	        	  setBackground(new Color(222,189,189));
+	        	  if (column == AbstractPdfSelectionTableModel.FILENAME){
+	        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
+	        	  }
+	          }else{
+	        	  setBackground(table.getBackground());
+	          }
+	        }
+		}
 		//value
-		if (column == SimplePdfSelectionTableModel.PASSWORD){
+		if (column == AbstractPdfSelectionTableModel.PASSWORD){
 			if(value != null && value.toString().length()>0){
 				setText("**********"); 
 			}else{
@@ -76,17 +83,21 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 			}		
 		}
 		//encrypt icon
-		if (column == SimplePdfSelectionTableModel.FILENAME){
-			if(((SimplePdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
+		if (column == AbstractPdfSelectionTableModel.FILENAME){
+			if(((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
 			   setIcon(new ImageIcon(this.getClass().getResource("/images/encrypted.png")));
 		   	}
 		}
 		//focus
-		if (hasFocus) {
-		    setBorder( UIManager.getBorder("Table.focusCellHighlightBorder") );
-		} else {
-		    setBorder(new EmptyBorder(1, 1, 1, 1));
-		}        
+		if(column == AbstractPdfSelectionTableModel.ROW_NUM){
+			setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+		}else{
+			if (hasFocus) {
+			    setBorder( UIManager.getBorder("Table.focusCellHighlightBorder") );
+			} else {
+			    setBorder(new EmptyBorder(1, 1, 1, 1));
+			}     
+		}   
 
         return this;		
 	}

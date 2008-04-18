@@ -27,15 +27,16 @@ import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
  */
 public abstract class AbstractPdfSelectionTableModel extends AbstractTableModel {
 	//colums order
-    public final static int FILENAME = 0;
-    public final static int PATH = 1;
-    public final static int PAGES = 2;
-    public final static int PASSWORD = 3;
-    public final static int PDF_DOCUMENT_VERSION = 4;
-    public final static int PAGESELECTION = 5;
+    public final static int ROW_NUM = 0;
+    public final static int FILENAME = 1;
+    public final static int PATH = 2;
+    public final static int PAGES = 3;
+    public final static int PASSWORD = 4;
+    public final static int PDF_DOCUMENT_VERSION = 5;
+    public final static int PAGESELECTION = 6;
     
-    public final static int MAX_COLUMNS_NUMBER = 6;
-    public final static int DEFAULT_SHOWED_COLUMNS_NUMBER = 5;
+    public final static int MAX_COLUMNS_NUMBER = 7;
+    public final static int DEFAULT_SHOWED_COLUMNS_NUMBER = 6;
     
     public static final int DESCENDING = -1;
     public static final int NOT_SORTED = 0;

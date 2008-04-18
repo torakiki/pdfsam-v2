@@ -1,3 +1,9 @@
+1.4.0e release candidate 1 ()
+===================================
+-Console: now xml input for the concat command can take relative files path
+-Added row header to show the row number
+-Encrypt: modified layout
+
 1.4.0e beta 3 (12-Apr-2008)
 ===================================
 -Added update checker to check for a new version

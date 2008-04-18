@@ -41,7 +41,7 @@ public class PdfSelectionMouseHeaderAdapter extends MouseAdapter {
 	        TableColumnModel columnModel = h.getColumnModel();
 	        int viewColumn = columnModel.getColumnIndexAtX(e.getX());
 	        int column = columnModel.getColumn(viewColumn).getModelIndex();
-	        if (column != -1 && column != SortablePdfSelectionTableModel.PASSWORD) {
+	        if (column != -1 && column != SortablePdfSelectionTableModel.PASSWORD && column != SortablePdfSelectionTableModel.ROW_NUM) {
 	            int sortType = (tableModel.getSortingState().getCol() == column)?tableModel.getSortingState().getSortType(): SortablePdfSelectionTableModel.NOT_SORTED;
 	          
 	            // Cycle the sorting states through {NOT_SORTED, ASCENDING, DESCENDING} or 

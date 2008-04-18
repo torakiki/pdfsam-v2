@@ -2,4 +2,17 @@
 <filelist>
 	<file value="f:\pdf\mattone.pdf" />
 	<file value="f:\pdf\FontEmbedding.pdf" password="test"/>
+	<fileset usecurrentdir="true">
+		<file value="mattone1.pdf" />
+		<file value="mattone2.pdf" />
+	</fileset>
+	<fileset dir="f:\tempdir\subdir" usecurrentdir="false">
+		<file value="mattone1.pdf" />
+		<file value="mattone2.pdf" />
+	</fileset>	
+	<fileset dir="f:\tempdir\subdir2">
+		<file value="mattone1.pdf" />
+		<file value="mattone2.pdf" />
+		<file value="mattone3.pdf" />
+	</fileset>	
 </filelist>

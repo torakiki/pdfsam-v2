@@ -44,6 +44,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.Logger;
@@ -213,7 +214,11 @@ public class JPdfSelectionPanel extends JPanel {
 		
 		TableColumnModel mainTableColModel = mainTable.getColumnModel();
 	    mainTableColModel.getColumn(AbstractPdfSelectionTableModel.PASSWORD).setCellEditor(new DefaultCellEditor(new JPasswordField()));
-	    
+
+	    TableColumn tc = mainTableColModel.getColumn(AbstractPdfSelectionTableModel.ROW_NUM);
+	    tc.setPreferredWidth(25);
+	    tc.setMaxWidth(35);
+
 	    //header tooltip
 	    JPdfSelectionToolTipHeader toolTipHeader = new JPdfSelectionToolTipHeader(mainTableColModel);
 	    toolTipHeader.setReorderingAllowed(false);
@@ -223,15 +228,9 @@ public class JPdfSelectionPanel extends JPanel {
 		    toolTipHeader.setDefaultRenderer(new ArrowHeaderRenderer(tableModel, toolTipHeader.getDefaultRenderer()));
 	    	toolTipHeader.addMouseListener(new PdfSelectionMouseHeaderAdapter(tableModel));
 		}
-	    
+	    	    
 	    tableScrollPane = new JScrollPane(mainTable);
 	    tableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-	    /* Not working yet
-	     * if(maxSelectableFiles>1){
-	    	JViewport viewPort = new JViewport();
-	    	viewPort.setView(new JPdfSelectionTableRowHeader(mainTable));
-	    	tableScrollPane.setRowHeader(viewPort);
-	    }*/
 		pdfSelectionTableListener = new PdfSelectionTableActionListener(this, loader);
 		
 		//drag and drop
@@ -662,5 +661,12 @@ public class JPdfSelectionPanel extends JPanel {
 		return (SINGLE_SELECTABLE_FILE == maxSelectableFiles);
 	}
 	
-    
+	/**
+	 * @param menuItem item to add to the popup menu
+	 */
+    public void addPopupMenuItem(JMenuItem menuItem){
+    	if(menuItem != null){
+    		popupMenu.add(menuItem);
+    	}
+    }
 }

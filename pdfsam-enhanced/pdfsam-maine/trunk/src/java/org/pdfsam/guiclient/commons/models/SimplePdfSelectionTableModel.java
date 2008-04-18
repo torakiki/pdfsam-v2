@@ -52,6 +52,7 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
 	public SimplePdfSelectionTableModel(int showedColumns, int maxRowsNumber) {
 		config = Configuration.getInstance();
 		String[] i18nColumnNames = {
+				"#",
 				GettextResource.gettext(config.getI18nResourceBundle(),"File name"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Path"),
                 GettextResource.gettext(config.getI18nResourceBundle(),"Pages"),
@@ -61,6 +62,7 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
 		setColumnNames(i18nColumnNames);
 		
 		String[] i18nToolTips ={
+			"",
 			"",
             "",
             GettextResource.gettext(config.getI18nResourceBundle(),"Total pages of the document"),
@@ -92,6 +94,9 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
     	if(row < data.size() && col < getShowedColumns()){
     		PdfSelectionTableItem tmpElement = (PdfSelectionTableItem)(data.get(row));
     		switch(col){
+    			case ROW_NUM:
+    				retVal = (row+1)+"";
+    				break;
     			case FILENAME:
     				retVal = (tmpElement.getInputFile() != null)? tmpElement.getInputFile().getName(): "";
     				break;
