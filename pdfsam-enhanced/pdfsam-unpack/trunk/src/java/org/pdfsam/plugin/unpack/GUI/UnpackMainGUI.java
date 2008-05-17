@@ -31,6 +31,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -91,7 +92,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.1e";
+	private static final String PLUGIN_VERSION = "0.0.3e";
 	
 	/**
 	 * Constructor
@@ -114,7 +115,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		selectionPanel.enableSetOutputPathMenuItem();
 		
 //		BROWSE_FILE_CHOOSER        
-		browseDirChooser = new JFileChooser();
+		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 		browseDirChooser.setFileFilter(new PdfFilter());
 		browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
@@ -194,7 +195,19 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
     					args.add(f);                        						
 					}
                 	
-                    args.add("-"+UnpackParsedCommand.O_ARG);                   
+                    args.add("-"+UnpackParsedCommand.O_ARG);
+                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
+                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+                		if(suggestedDir != null){
+                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
+        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
+        						    JOptionPane.YES_NO_OPTION,
+        						    JOptionPane.QUESTION_MESSAGE)){
+                				destinationTextField.setText(suggestedDir);
+		        			}
+                		}                    	
+                    }
                     args.add(destinationTextField.getText());
 
                     if (overwriteCheckbox.isSelected()) args.add("-"+UnpackParsedCommand.OVERWRITE_ARG);
@@ -209,7 +222,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 
 			}
 		});
-		
+        runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Unpack selected files"));
 		add(runButton);
 //		END_RUN_BUTTON		
 		
