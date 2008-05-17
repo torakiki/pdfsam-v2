@@ -32,6 +32,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -88,7 +89,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private Configuration config;
 	
 //file_chooser    
-    private final JFileChooser browseDestFileChooser = new JFileChooser();
+    private final JFileChooser browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 
 //button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
@@ -122,7 +123,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.2e";
+    private final String PLUGIN_VERSION = "0.2.3e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -366,7 +367,20 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
                     //check if is needed page option
 					args.add("-"+EncryptParsedCommand.ETYPE_ARG);
 					args.add(getEncAlg((String)encryptType.getSelectedItem()));
-                    args.add("-"+EncryptParsedCommand.O_ARG);                   
+                    args.add("-"+EncryptParsedCommand.O_ARG);
+                    
+                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
+                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+                		if(suggestedDir != null){
+                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
+        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
+        						    JOptionPane.YES_NO_OPTION,
+        						    JOptionPane.QUESTION_MESSAGE)){
+                				destFolderText.setText(suggestedDir);
+		        			}
+                		}                    	
+                    }
                     args.add(destFolderText.getText());
 
                     if (overwriteCheckbox.isSelected()) args.add("-"+EncryptParsedCommand.OVERWRITE_ARG);
@@ -570,7 +584,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     	encryptSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
 		encryptSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
 		
-		encryptSpringLayout.putConstraint(SpringLayout.SOUTH, encryptOptionsPanel, 150, SpringLayout.NORTH, encryptOptionsPanel);
+		encryptSpringLayout.putConstraint(SpringLayout.SOUTH, encryptOptionsPanel, 170, SpringLayout.NORTH, encryptOptionsPanel);
 		encryptSpringLayout.putConstraint(SpringLayout.EAST, encryptOptionsPanel, -5, SpringLayout.EAST, this);
 	    encryptSpringLayout.putConstraint(SpringLayout.NORTH, encryptOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
 	    encryptSpringLayout.putConstraint(SpringLayout.WEST, encryptOptionsPanel, 0, SpringLayout.WEST, selectionPanel);
@@ -642,30 +656,30 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 
 //      RADIO_LAYOUT
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, ownerPwdLabel, 20, SpringLayout.NORTH, ownerPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, ownerPwdLabel, 140, SpringLayout.WEST, ownerPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.EAST, ownerPwdLabel, 160, SpringLayout.WEST, ownerPwdLabel);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, ownerPwdLabel, 10, SpringLayout.NORTH, encryptOptionsPanel);
         optionsPanelLayout.putConstraint(SpringLayout.WEST, ownerPwdLabel, 10, SpringLayout.WEST, encryptOptionsPanel);
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, ownerPwdField, 0, SpringLayout.SOUTH, ownerPwdLabel);
         optionsPanelLayout.putConstraint(SpringLayout.EAST, ownerPwdField, 140, SpringLayout.WEST, ownerPwdField);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, ownerPwdField, 0, SpringLayout.NORTH, ownerPwdLabel);
         optionsPanelLayout.putConstraint(SpringLayout.WEST, ownerPwdField, 5, SpringLayout.EAST, ownerPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, userPwdLabel, 0, SpringLayout.SOUTH, ownerPwdField);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, userPwdLabel, 100, SpringLayout.WEST, userPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, userPwdLabel, 0, SpringLayout.NORTH, ownerPwdField);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, userPwdLabel, 5, SpringLayout.EAST, ownerPwdField);
+        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, userPwdLabel, 20, SpringLayout.NORTH, userPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.EAST, userPwdLabel, 0, SpringLayout.EAST, ownerPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.NORTH, userPwdLabel, 5, SpringLayout.SOUTH, ownerPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, userPwdLabel, 0, SpringLayout.WEST, ownerPwdLabel);
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, userPwdField, 0, SpringLayout.SOUTH, userPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, userPwdField, 140, SpringLayout.WEST, userPwdField);
+        optionsPanelLayout.putConstraint(SpringLayout.EAST, userPwdField, 0, SpringLayout.EAST, ownerPwdField);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, userPwdField, 0, SpringLayout.NORTH, userPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, userPwdField, 5, SpringLayout.EAST, userPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, userPwdField, 0, SpringLayout.WEST, ownerPwdField);
 
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, encryptTypeLabel, 20, SpringLayout.NORTH, encryptTypeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, encryptTypeLabel, 0, SpringLayout.EAST, ownerPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, encryptTypeLabel, 5, SpringLayout.SOUTH, ownerPwdLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, encryptTypeLabel, 0, SpringLayout.WEST, ownerPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.EAST, encryptTypeLabel, 0, SpringLayout.EAST, userPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.NORTH, encryptTypeLabel, 5, SpringLayout.SOUTH, userPwdLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, encryptTypeLabel, 0, SpringLayout.WEST, userPwdLabel);
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, encryptType, 0, SpringLayout.SOUTH, encryptTypeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, encryptType, 100, SpringLayout.WEST, encryptType);
+        optionsPanelLayout.putConstraint(SpringLayout.EAST, encryptType, 0, SpringLayout.EAST, ownerPwdField);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, encryptType, 0, SpringLayout.NORTH, encryptTypeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, encryptType, 5, SpringLayout.EAST, encryptTypeLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, encryptType, 0, SpringLayout.WEST, ownerPwdField);
         
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, allowAllCheck, 20, SpringLayout.NORTH, allowAllCheck);
         optionsPanelLayout.putConstraint(SpringLayout.EAST, allowAllCheck, 170, SpringLayout.WEST, allowAllCheck);
