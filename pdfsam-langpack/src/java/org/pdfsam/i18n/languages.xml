@@ -5,7 +5,7 @@
     <language value="cs" description="Czech" />  
     <language value="da" description="Danish" />  	
     <language value="nl" description="Dutch" />  	
-    <language value="en_GB" description="English" />    
+    <language value="en_GB" description="English (UK)" />    
     <language value="fa" description="Persian" />  	
     <language value="fi" description="Finnish" />  	
     <language value="fr" description="French" />    
@@ -16,6 +16,7 @@
     <language value="id" description="Indonesian" />
     <language value="it" description="Italian" />  
     <language value="ko" description="Korean" />  
+    <language value="nb" description="Norwegian Bokmal" />  
     <language value="pl" description="Polish" />
     <language value="pt" description="Portuguese" />  
     <language value="ru" description="Russian" />    

@@ -5,7 +5,7 @@
 	<property name="pdfsam-langpack.src.dir" location="src/java"/>
 	<property name="po" location="po" />
 	<property name="gettext.dir" location="/usr/bin" />
-	<property name="pot" location="${po}/Messages.pot" />
+	<property name="pot" location="${po}/pdfsam.pot" />
 	<property name="resources.dir" location="${pdfsam-langpack.src.dir}/org/pdfsam/i18n/resources" />
 	<property name="filelist.dir" location="resources" />
 
@@ -50,170 +50,176 @@
 	<!-- update po files -->
 	<target name="updatepo" description="updates po files">
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/bs/Messages.po ${pot}"/>
+			<arg line="-U ${po}/bs/pdfsam-bs.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/cs/Messages.po ${pot}"/>
+			<arg line="-U ${po}/cs/pdfsam-cs.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/da/Messages.po ${pot}"/>
+			<arg line="-U ${po}/da/pdfsam-da.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/de/Messages.po ${pot}"/>
+			<arg line="-U ${po}/de/pdfsam-de.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/el/Messages.po ${pot}"/>
+			<arg line="-U ${po}/el/pdfsam-el.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/en/Messages.po ${pot}"/>
+			<arg line="-U ${po}/en/pdfsam-en_GB.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/es/Messages.po ${pot}"/>
+			<arg line="-U ${po}/es/pdfsam-es.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/fa/Messages.po ${pot}"/>
+			<arg line="-U ${po}/fa/pdfsam-fa.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/fi/Messages.po ${pot}"/>
+			<arg line="-U ${po}/fi/pdfsam-fi.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/fr/Messages.po ${pot}"/>
+			<arg line="-U ${po}/fr/pdfsam-fr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/he/Messages.po ${pot}"/>
+			<arg line="-U ${po}/he/pdfsam-he.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/hu/Messages.po ${pot}"/>
+			<arg line="-U ${po}/hu/pdfsam-hu.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/id/Messages.po ${pot}"/>
+			<arg line="-U ${po}/id/pdfsam-id.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/it/Messages.po ${pot}"/>
+			<arg line="-U ${po}/it/pdfsam-it.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/ko/Messages.po ${pot}"/>
+			<arg line="-U ${po}/ko/pdfsam-ko.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/nl/Messages.po ${pot}"/>
+			<arg line="-U ${po}/nb/pdfsam-nb.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/pl/Messages.po ${pot}"/>
+			<arg line="-U ${po}/nl/pdfsam-nl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/pt/Messages.po ${pot}"/>
+			<arg line="-U ${po}/pl/pdfsam-pl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/pt_BR/Messages.po ${pot}"/>
+			<arg line="-U ${po}/pt/pdfsam-pt.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/ru/Messages.po ${pot}"/>
+			<arg line="-U ${po}/pt_BR/pdfsam-pt_BR.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/sk/Messages.po ${pot}"/>
+			<arg line="-U ${po}/ru/pdfsam-ru.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/sv/Messages.po ${pot}"/>
+			<arg line="-U ${po}/sk/pdfsam-sk.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/tr/Messages.po ${pot}"/>
+			<arg line="-U ${po}/sv/pdfsam-sv.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/vi/Messages.po ${pot}"/>
+			<arg line="-U ${po}/tr/pdfsam-tr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/zh_TW/Messages.po ${pot}"/>
+			<arg line="-U ${po}/vi/pdfsam-vi.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/zh_CN/Messages.po ${pot}"/>
+			<arg line="-U ${po}/zh_TW/pdfsam-zh_TW.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/zh_HK/Messages.po ${pot}"/>
+			<arg line="-U ${po}/zh_CN/pdfsam-zh_CN.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/zh_HK/pdfsam-zh_HK.po ${pot}"/>
 		</exec>
 	</target>
 
 	<!-- generete properties -->
 	<target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_bs.properties ${po}/bs/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_bs.properties ${po}/bs/pdfsam-bs.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_cs.properties ${po}/cs/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_cs.properties ${po}/cs/pdfsam-cs.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_da.properties ${po}/da/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_da.properties ${po}/da/pdfsam-da.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_de.properties ${po}/de/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_de.properties ${po}/de/pdfsam-de.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_el.properties ${po}/el/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_el.properties ${po}/el/pdfsam-el.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_en_GB.properties ${po}/en/pdfsam-en_GB.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_es.properties ${po}/es/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_es.properties ${po}/es/pdfsam-es.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_fa.properties ${po}/fa/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_fa.properties ${po}/fa/pdfsam-fa.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_fi.properties ${po}/fi/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_fi.properties ${po}/fi/pdfsam-fi.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_fr.properties ${po}/fr/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_fr.properties ${po}/fr/pdfsam-fr.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_he.properties ${po}/he/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_he.properties ${po}/he/pdfsam-he.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_hu.properties ${po}/hu/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_hu.properties ${po}/hu/pdfsam-hu.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_id.properties ${po}/id/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_id.properties ${po}/id/pdfsam-id.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_it.properties ${po}/it/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_it.properties ${po}/it/pdfsam-it.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_ko.properties ${po}/ko/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_ko.properties ${po}/ko/pdfsam-ko.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_nl.properties ${po}/nl/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_nl.properties ${po}/nl/pdfsam-nl.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_pl.properties ${po}/pl/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_nb.properties ${po}/nb/pdfsam-nb.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_pt.properties ${po}/pt/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_pl.properties ${po}/pl/pdfsam-pl.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_pt_BR.properties ${po}/pt_BR/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_pt.properties ${po}/pt/pdfsam-pt.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_ru.properties ${po}/ru/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_pt_BR.properties ${po}/pt_BR/pdfsam-pt_BR.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_sk.properties ${po}/sk/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_ru.properties ${po}/ru/pdfsam-ru.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_sv.properties ${po}/sv/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_sk.properties ${po}/sk/pdfsam-sk.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_tr.properties ${po}/tr/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_sv.properties ${po}/sv/pdfsam-sv.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_vi.properties ${po}/vi/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_tr.properties ${po}/tr/pdfsam-tr.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_vi.properties ${po}/vi/pdfsam-vi.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_zh_TW.properties ${po}/zh_TW/pdfsam-zh_TW.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_zh_HK.properties ${po}/zh_HK/Messages.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_zh_CN.properties ${po}/zh_CN/pdfsam-zh_CN.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_zh_HK.properties ${po}/zh_HK/pdfsam-zh_HK.po"/>
 		</exec>
 	</target>
 
