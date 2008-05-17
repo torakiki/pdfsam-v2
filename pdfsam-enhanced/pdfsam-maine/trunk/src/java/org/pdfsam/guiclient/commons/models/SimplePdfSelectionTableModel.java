@@ -269,7 +269,32 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
            }
        }
     } 
-    
+    /*
+    public void moveUpRows(int[] rows, int steps)throws IndexOutOfBoundsException{    	
+    	if (rows.length > 0 && rows.length < data.size()){
+    		//no move up if i'm selecting the first element of the table
+            if (rows[0] > 0){
+            	ArrayList movingElements = new ArrayList();
+            	//if steps would bring the rows out of the table we limit the value
+            	int validatedSteps = ((rows[0]-steps)>=0)? steps: rows[0];
+            	//saving old rows
+            	for(int i=1; i<=validatedSteps; i++){
+            		movingElements.add((PdfSelectionTableItem)data.get(rows[0]-i));
+            	}
+            	//moving up
+            	for (int j=0; j<rows.length; j++){   
+            		 if (rows[j] > 0){
+                         data.set(rows[j]-validatedSteps, data.get(rows[j]));
+            		 }
+            	}            	
+            	//restore old rows
+            	for(int k=0; k<movingElements.size(); k++){
+            		data.set(rows[rows.length-validatedSteps]+k,(PdfSelectionTableItem)movingElements.get(k));
+            	}
+            }
+    	}
+    }
+    */
     /**
      * Moves down a row to the table data source and fire to Listeners
      * @param row Row number to remove from the data source

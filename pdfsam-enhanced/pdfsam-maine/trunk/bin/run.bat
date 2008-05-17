@@ -1,14 +1,14 @@
 @echo off
 
-set DIRNAME=..\lib\
-set CONSOLEJAR=%DIRNAME%\pdfsam-console-1.1.4e.jar
+set DIRNAME=..\
+set PDFSAMJAR=%DIRNAME%\pdfsam-1.0.0-rc1.jar
 
-if exist "%CONSOLEJAR%" goto FOUND_CONSOLE_JAR
-echo Could not locate %CONSOLEJAR%. Please check that you are in the
+if exist "%PDFSAMJAR%" goto FOUND_PDFSAM_JAR
+echo Could not locate %PDFSAMJAR%. Please check that you are in the
 echo bin directory when running this script.
 goto END
 
-:FOUND_CONSOLE_JAR
+:FOUND_PDFSAM_JAR
 if not "%JAVA_HOME%" == "" goto HOME_SET
 
 set JAVA=java
@@ -21,26 +21,26 @@ goto SKIP_HOME_SET
 set JAVA=%JAVA_HOME%\bin\java
 
 :SKIP_HOME_SET
-set JAVA_OPTS= -Dlog4j.configuration=console-log4j.xml
+set JAVA_OPTS= -Xmx128m
 
-set CONSOLE_CLASSPATH=%CONSOLEJAR%
+set PDFSAM_CLASSPATH=%PDFSAMJAR%
 
 echo ===============================================================================
 echo.
-echo   pdfsam console
+echo   pdfsam
 echo.
 echo   JAVA: %JAVA%
 echo.
 echo   JAVA_OPTS: %JAVA_OPTS%
 echo.
-echo   CLASSPATH: %CONSOLE_CLASSPATH%
+echo   CLASSPATH: %PDFSAM_CLASSPATH%
 echo.
 echo ===============================================================================
 echo.
 
 :RESTART
 @echo on
-"%JAVA%" %JAVA_OPTS%  -classpath "%CONSOLE_CLASSPATH%" org.pdfsam.console.ConsoleClient %*
+"%JAVA%" %JAVA_OPTS%  -classpath "%PDFSAM_CLASSPATH%" org.pdfsam.guiclient.GuiClient %*
 @echo off
 if ERRORLEVEL 10 goto RESTART
 

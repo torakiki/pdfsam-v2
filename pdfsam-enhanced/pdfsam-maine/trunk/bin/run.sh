@@ -15,14 +15,14 @@ die() {
 }
 
 
-DIRNAME="../lib/"
-CONSOLEJAR="$DIRNAME/pdfsam-console-1.1.4e.jar"
+DIRNAME="../"
+PDFSAMJAR="$DIRNAME/pdfsam-1.0.0-rc1.jar"
 
 # Setup the classpath
-if [ ! -f "$CONSOLEJAR" ]; then
-    die "Missing required file: $CONSOLEJAR"
+if [ ! -f "$PDFSAMJAR" ]; then
+    die "Missing required file: $PDFSAMJAR"
 fi
-CONSOLE_CLASSPATH="$CONSOLEJAR"
+PDFSAM_CLASSPATH="$PDFSAMJAR"
 
 # Setup the JVM
 if [ "x$JAVA" = "x" ]; then
@@ -34,23 +34,23 @@ if [ "x$JAVA" = "x" ]; then
 fi
 
 # Setup JBoss sepecific properties
-JAVA_OPTS="-Dlog4j.configuration=console-log4j.xml"
+JAVA_OPTS="-Xmx128m"
 
 # Display our environment
 echo "========================================================================="
 echo ""
-echo " pdfsam console"
+echo " pdfsam"
 echo ""
 echo "  JAVA: $JAVA"
 echo ""
 echo "  JAVA_OPTS: $JAVA_OPTS"
 echo ""
-echo "  CLASSPATH: $CONSOLE_CLASSPATH"
+echo "  CLASSPATH: $PDFSAM_CLASSPATH"
 echo ""
 echo "========================================================================="
 echo ""
 
 # Execute the JVM in the foreground
       "$JAVA" $JAVA_OPTS \
-         -classpath "$CONSOLE_CLASSPATH" \
-         org.pdfsam.console.ConsoleClient "$@"
+         -classpath "$PDFSAM_CLASSPATH" \
+         org.pdfsam.guiclient.GuiClient "$@"

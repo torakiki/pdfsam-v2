@@ -53,7 +53,7 @@ public class JHelpLabel extends JLabel {
 	/**
 	 * Thanks to benoit.heinrich on forum.java.sun.com
 	 * @param str
-	 * @return
+	 * @return html encoded string
 	 */
 	private String HTMLEncode(String str){
 		StringBuffer sbhtml = new StringBuffer();

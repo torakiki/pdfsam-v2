@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class LanguageLoader {
 
     //const
-    public static final String DEFAULT_LANGUAGE = "en_EN";
+    public static final String DEFAULT_LANGUAGE = "en_GB";
     public final Locale DEFAULT_LOCALE = Locale.UK;
     //vars
     private String bundleName;

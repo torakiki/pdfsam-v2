@@ -47,6 +47,7 @@ public class Configuration{
 	private Level loggingLevel = Level.DEBUG;
 	private boolean checkForUpdates = true;
 	private String mainJarPath = ""; 
+	private String defaultWorkingDir = null;
 
 	private Configuration() {
 		init();
@@ -137,6 +138,13 @@ public class Configuration{
 		return checkForUpdates;
 	}
 
+	/**
+	 * @return the defaultWorkingDir
+	 */
+	public String getDefaultWorkingDir() {
+		return defaultWorkingDir;
+	}
+
 	private void init(){
 		try{
 			mainJarPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
@@ -162,6 +170,8 @@ public class Configuration{
 			setLoggingLevel();
 			//check for updates init
 			setCheckForUpdates();
+			//default working dir
+			setDefaultWorkingDir();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -218,6 +228,22 @@ public class Configuration{
 			appender.setThreshold(loggingLevel);
 		} catch (Exception e) {
 			log.warn(GettextResource.gettext(i18nMessages,"Unable to set logging level."), e);
+		}
+	}
+	
+	/**
+	 * sets the default working directory
+	 */
+	private void setDefaultWorkingDir(){
+		try {
+			String defWorkingDir = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/default_working_dir");
+			if(defWorkingDir != null && defWorkingDir.length()>0){
+				defaultWorkingDir = defWorkingDir;
+			}
+			
+		} catch (Exception e) {
+			//default
+			defaultWorkingDir = null;
 		}
 	}
 	

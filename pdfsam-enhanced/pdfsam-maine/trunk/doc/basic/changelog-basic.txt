@@ -1,7 +1,12 @@
-1.0.0 release candidate 1 ()
+1.0.0 release candidate 1 (18-May-2008)
 ===================================
 -Console: now xml input for the concat command can take relative files path
 -Added row header to show the row number
+-Added .bat and .sh script to run pdfsam
+-Added the default working directory to set a directory as a workspace
+-Added the OFF debug level to switch off log messages
+-Merge: added context menu to export file list as an xml file
+-Suggested output location if the selected one has problems 
 
 1.0.0 beta 3 (12-Apr-2008)
 ===================================

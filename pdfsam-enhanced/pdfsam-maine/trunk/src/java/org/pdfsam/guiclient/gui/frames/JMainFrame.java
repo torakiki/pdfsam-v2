@@ -97,10 +97,7 @@ public class JMainFrame extends JFrame {
 	 * initialization
 	 */
 	private void initialize() {
-		try{
-			setSize(640, 480);
-			setExtendedState(JFrame.MAXIMIZED_BOTH);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try{			
 			//center(this,800,600);
 			URL iconUrl = this.getClass().getResource("/images/pdf_"+GuiClient.getVersionType()+".png");
 			URL iconUrl16 = this.getClass().getResource("/images/pdf_"+GuiClient.getVersionType()+"16.png");
@@ -196,6 +193,10 @@ public class JMainFrame extends JFrame {
 	        	envMediator.getEnvironment().loadJobs(defaultEnv);
 	        }
 	        getContentPane().add(verticalSplitPane,BorderLayout.CENTER);
+	        
+	        setSize(640, 480);
+			setExtendedState(JFrame.MAXIMIZED_BOTH);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		}catch(Exception e){
 			log.fatal(GettextResource.gettext(config.getI18nResourceBundle(),"Error starting pdfsam."),e);

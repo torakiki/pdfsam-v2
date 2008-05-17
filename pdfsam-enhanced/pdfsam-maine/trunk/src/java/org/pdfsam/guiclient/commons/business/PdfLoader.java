@@ -49,7 +49,7 @@ public class PdfLoader {
 	
 	public PdfLoader(JPdfSelectionPanel panel){
 		this.panel = panel;
-		fileChooser = new JFileChooser();
+		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
         fileChooser.setFileFilter(new PdfFilter());
         fileChooser.setMultiSelectionEnabled(true);
 		//number of threads in workqueue based on the number of selectable documents

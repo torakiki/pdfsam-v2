@@ -23,7 +23,6 @@ import java.awt.FocusTraversalPolicy;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
@@ -46,6 +45,7 @@ import org.dom4j.Node;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
+import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
@@ -70,6 +70,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	private static final Logger log = Logger.getLogger(JSettingsPanel.class.getPackage().getName());
 	
 	private JTextField loadDefaultEnv;
+	private JTextField defaultDirectory;
     private JComboBox languageCombo;	
     private JComboBox comboLog;	
     private JComboBox comboLaf;
@@ -81,10 +82,12 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	private SpringLayout settingsLayout;
     private SpringLayout grayBorderSettingsLayout;
     
-    private final JButton browseButton = new JButton();
+    private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
+    private final JButton browseDestDirButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
     private final JButton saveButton = new JButton();
     private final JButton checkNowButton = new JButton();
 
+    private final EnterDoClickListener browseDestDirEnterKeyListener = new EnterDoClickListener(browseDestDirButton);
     private final EnterDoClickListener browseEnterKeyListener = new EnterDoClickListener(browseButton);
     private final EnterDoClickListener saveEnterKeyListener = new EnterDoClickListener(saveButton);
 
@@ -98,11 +101,12 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final JLabel logLabel = new JLabel();
     private final JLabel checkNewVersionLabel = new JLabel();
     private final JLabel loadDefaultEnvLabel = new JLabel();
+    private final JLabel defaultDirLabel = new JLabel();
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private static final String PLUGIN_NAME = "Settings";
-    private static final String PLUGIN_VERSION = "0.0.6e";
+    private static final String PLUGIN_VERSION = "0.0.7e";
     
 /**
  * Constructor
@@ -144,6 +148,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 		loadDefaultEnvLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load default environment at startup:"));
         settingsOptionsPanel.add(loadDefaultEnvLabel);
         
+        defaultDirLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory:"));
+        settingsOptionsPanel.add(defaultDirLabel);
+        
         try{
         	loadDefaultEnv= new JTextField();
         	loadDefaultEnv.setText(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/defaultjob"));
@@ -153,10 +160,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         loadDefaultEnv.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         settingsOptionsPanel.add(loadDefaultEnv);
 		
-//FILE_CHOOSER
-        fileChooser.setFileFilter(new XmlFilter());
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-//END_FILE_CHOOSER
+        defaultDirectory= new JTextField();
+        defaultDirectory.setText(config.getDefaultWorkingDir());
+        defaultDirectory.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+        settingsOptionsPanel.add(defaultDirectory);
+
 //JCOMBO
         languageCombo = new JComboBox(loadLanguages().toArray());
     	languageCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
@@ -252,33 +260,46 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Log level")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set a log detail level (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set when new version availability should be checked (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default env.")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a previously saved env. file that will be automatically loaded at startup")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a directory where documents will be saved and loaded by default")+".</li>" +
     		"</ul></body></html>";
 	    envHelpLabel = new JHelpLabel(helpTextEnv, true);
 	    settingsOptionsPanel.add(envHelpLabel);
-//ENV_LABEL_PREFIX 
-        browseButton.setIcon(new ImageIcon(this.getClass().getResource("/images/browse.png")));
-        browseButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Browse"));
-        browseButton.setMargin(new Insets(2, 2, 2, 2));
+//ENV_LABEL_PREFIX        
         browseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int return_val = fileChooser.showOpenDialog(browseButton.getParent());
-                File chosen_file = null;                
-                if (return_val == JFileChooser.APPROVE_OPTION){
-                    chosen_file = fileChooser.getSelectedFile();
-                }
-                //write the destination in text field
-                if (chosen_file != null){
-                    try{
-                    	loadDefaultEnv.setText(chosen_file.getAbsolutePath());
+            	fileChooser.setFileFilter(new XmlFilter());
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
+                    if (fileChooser.getSelectedFile() != null){
+                        try{
+                        	loadDefaultEnv.setText(fileChooser.getSelectedFile().getAbsolutePath());
+                        }
+                        catch (Exception ex){
+                        	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                       
+                        }
                     }
-                    catch (Exception ex){
-                    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                       
-                    }
-                }
-                
+                }              
             }
         });         
         settingsOptionsPanel.add(browseButton);
+        
+        browseDestDirButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	fileChooser.setFileFilter(null);
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
+                    if (fileChooser.getSelectedFile() != null){
+                        try{
+                        	defaultDirectory.setText(fileChooser.getSelectedFile().getAbsolutePath());
+                        }
+                        catch (Exception ex){
+                        	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                       
+                        }
+                    }
+                }              
+            }
+        });         
+        settingsOptionsPanel.add(browseDestDirButton);
 
         checkNowButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check now"));
         checkNowButton.setMargin(new Insets(2, 2, 2, 2));       
@@ -301,9 +322,10 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					}else{
 						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob","");
 					}
+					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/default_working_dir", defaultDirectory.getText());
 					config.getXmlConfigObject().saveXMLfile();
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
-					}
+				}
                 catch (Exception ex){
                     log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "),ex);                       
                 }
@@ -312,6 +334,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 		add(saveButton);		
 		
 //ENTER_KEY_LISTENERS
+        browseDestDirButton.addKeyListener(browseDestDirEnterKeyListener);
         browseButton.addKeyListener(browseEnterKeyListener);
         saveButton.addKeyListener(saveEnterKeyListener);
 //END_ENTER_KEY_LISTENERS
@@ -336,7 +359,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 			}
 		}catch(Exception e){
 			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-			langs.add(new StringItem("en_GB", "English"));
+			langs.add(new StringItem("en_GB", "English (UK)"));
 		}
 		Collections.sort(langs);
 		return langs;
@@ -353,6 +376,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     	logs.add(new StringItem(Integer.toString(Level.WARN_INT), Level.WARN.toString()));
     	logs.add(new StringItem(Integer.toString(Level.ERROR_INT), Level.ERROR.toString()));
     	logs.add(new StringItem(Integer.toString(Level.FATAL_INT), Level.FATAL.toString()));
+    	logs.add(new StringItem(Integer.toString(Level.OFF_INT), Level.OFF.toString()));
 		return logs;
     }
  
@@ -385,7 +409,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 200, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 260, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);
@@ -434,9 +458,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboCheckNewVersion, 0, SpringLayout.NORTH, checkNewVersionLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboCheckNewVersion, 5, SpringLayout.EAST, checkNewVersionLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNowButton, 0, SpringLayout.SOUTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNowButton, 0, SpringLayout.EAST, subThemeLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNowButton, 0, SpringLayout.EAST, comboTheme);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNowButton, 0, SpringLayout.NORTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNowButton, 0, SpringLayout.WEST, subThemeLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNowButton, 0, SpringLayout.WEST, comboTheme);
         
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, loadDefaultEnvLabel, 20, SpringLayout.NORTH, loadDefaultEnvLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, loadDefaultEnvLabel, -5, SpringLayout.EAST, settingsOptionsPanel);
@@ -451,6 +475,20 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, browseButton, -5, SpringLayout.EAST, settingsOptionsPanel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, browseButton, 0, SpringLayout.NORTH, loadDefaultEnv);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, browseButton, -90, SpringLayout.EAST, settingsOptionsPanel);        
+
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, defaultDirLabel, 20, SpringLayout.NORTH, defaultDirLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, defaultDirLabel, 0, SpringLayout.EAST, loadDefaultEnvLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, defaultDirLabel, 5, SpringLayout.SOUTH, loadDefaultEnv);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, defaultDirLabel, 0, SpringLayout.WEST, loadDefaultEnvLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, defaultDirectory, 20, SpringLayout.NORTH, defaultDirectory);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, defaultDirectory, 0, SpringLayout.EAST, loadDefaultEnv);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, defaultDirectory, 5, SpringLayout.SOUTH, defaultDirLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, defaultDirectory, 0, SpringLayout.WEST, loadDefaultEnv);
+        
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, browseDestDirButton, 25, SpringLayout.NORTH, browseDestDirButton);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, browseDestDirButton, 0, SpringLayout.EAST, browseButton);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, browseDestDirButton, 0, SpringLayout.NORTH, defaultDirectory);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, browseDestDirButton, 0, SpringLayout.WEST, browseButton);        
 
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, envHelpLabel, -1, SpringLayout.SOUTH, settingsOptionsPanel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, envHelpLabel, -1, SpringLayout.EAST, settingsOptionsPanel);
@@ -501,6 +539,12 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                     return browseButton;
             }        
             else if (aComponent.equals(browseButton)){
+                return defaultDirectory;
+            }        
+            else if (aComponent.equals(defaultDirectory)){
+                return browseDestDirButton;
+            }        
+            else if (aComponent.equals(browseDestDirButton)){
                 return saveButton;
             }
             else if (aComponent.equals(saveButton)){
@@ -533,6 +577,12 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return languageCombo;
             }
             else if (aComponent.equals(saveButton)){
+                return browseDestDirButton;
+            }
+            else if (aComponent.equals(browseDestDirButton)){
+                return defaultDirectory;
+            }
+            else if (aComponent.equals(defaultDirectory)){
                 return browseButton;
             }
             else if (aComponent.equals(languageCombo)){

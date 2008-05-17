@@ -69,7 +69,6 @@ public class CommonComponentsFactory {
 		
 		case RUN_BUTTON_TYPE:
 			retVal.setMargin(new Insets(2, 2, 2, 2));
-			retVal.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf alternate mix"));
 			retVal.setIcon(new ImageIcon(this.getClass().getResource("/images/run.png")));
 			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Run"));
 			break;

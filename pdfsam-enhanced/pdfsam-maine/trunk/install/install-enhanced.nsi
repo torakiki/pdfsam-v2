@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 1.4.0e-b3
+!define VERSION 1.4.0e-rc1
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -89,6 +89,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Indonesian"
   !insertmacro MUI_LANGUAGE "Italian"
   !insertmacro MUI_LANGUAGE "Korean"
+  !insertmacro MUI_LANGUAGE "Norwegian"
   !insertmacro MUI_LANGUAGE "Dutch"
   !insertmacro MUI_LANGUAGE "Polish"
   !insertmacro MUI_LANGUAGE "Portuguese"
@@ -101,7 +102,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_4_0e-b3.exe
+OutFile pdfsam-win32inst-v1_4_0e-rc1.exe
 InstallDir "$PROGRAMFILES\pdfsam-enhanced"
 CRCCheck on
 XPStyle on
@@ -157,6 +158,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Case} ${LANG_SWEDISH}
             Push 'sv' 
         ${Break} 
+        ${Case} ${LANG_NORWEGIAN}
+            Push 'nb' 
+        ${Break}  
         ${Case} ${LANG_SPANISH}
             Push 'es' 
         ${Break}
@@ -458,6 +462,8 @@ Function .onInit
     Push French
     Push ${LANG_GREEK}
     Push Greek
+    Push ${LANG_NORWEGIAN}
+    Push Norwegian
     Push ${LANG_TURKISH}
     Push Turkish
     Push ${LANG_GERMAN}
