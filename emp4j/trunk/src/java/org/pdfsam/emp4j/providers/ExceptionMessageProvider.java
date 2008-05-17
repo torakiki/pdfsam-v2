@@ -80,8 +80,7 @@ public class ExceptionMessageProvider implements Serializable{
 	 * It gets the value of the property emp4j.configuration assigning it the default value 'emp4j.xml' if the property is empty.
 	 * First it tries using the value of emp4j.configuration as an absolute path.
 	 * Second it tries using the value of emp4j.configuration Resource name or a SystemResource name.
-	 * @param filepath
-	 * @return
+	 * @return the Document object
 	 * @throws Exception
 	 */
 	private Document getConfiguration() throws Exception{

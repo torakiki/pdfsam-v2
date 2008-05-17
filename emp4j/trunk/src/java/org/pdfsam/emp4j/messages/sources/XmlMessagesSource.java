@@ -50,7 +50,7 @@ public class XmlMessagesSource extends AbstractMessagesSource{
 	 * First it tries using <code>filename</code> as a path to file.
 	 * Second it tries to use it as Resource name or a SystemResource name.
 	 * @param filename
-	 * @return
+	 * @return the Document object
 	 * @throws Exception
 	 */
 	private Document getDocument(String filename) throws Exception{
