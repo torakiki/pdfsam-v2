@@ -133,7 +133,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	/**
 	 * Converts a string like num-num-num... in an Integer array
 	 * @param nValue
-	 * @return
+	 * @return integer array
 	 * @throws ParseException
 	 */
 	private Integer[] getSplitPageNumbers(String nValue) throws ParseException{

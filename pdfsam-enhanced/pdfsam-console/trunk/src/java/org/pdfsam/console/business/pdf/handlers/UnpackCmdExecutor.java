@@ -172,7 +172,7 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 	/**
 	 * get an array of PdfFile in the input directory
 	 * @param directory
-	 * @return
+	 * @return PdfFile array from the input directory
 	 */
 	private PdfFile[] getPdfFiles(File directory){
 		File[] fileList = directory.listFiles(new PdfFilter());

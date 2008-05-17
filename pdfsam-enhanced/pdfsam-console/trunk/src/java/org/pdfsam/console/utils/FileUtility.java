@@ -121,7 +121,7 @@ public class FileUtility {
      * Used to rename 
      * @param tmpFile
      * @param outputFile
-     * @return
+     * @return true if renamed correctly 
      */
     private static boolean renameFile(File tmpFile, File outputFile) throws Exception{
     	boolean retVal = tmpFile.renameTo(outputFile);
