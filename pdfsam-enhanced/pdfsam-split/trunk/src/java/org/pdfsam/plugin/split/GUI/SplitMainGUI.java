@@ -94,7 +94,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	private JSplitSizeCombo splitSizeCombo = new JSplitSizeCombo();
     
 //file_chooser    
-    private final JFileChooser browseDestFileChooser = new JFileChooser();
+    private final JFileChooser browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 
 //button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
@@ -137,7 +137,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.3";
+    private final String PLUGIN_VERSION = "0.4.4";
     
 /**
  * Constructor
@@ -382,6 +382,18 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     		args.add(item.getInputFile().getParent());
                     	}
                     }else{
+                    	if(destinationFolderText.getText()==null || destinationFolderText.getText().length()==0){                    
+                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		if(suggestedDir != null){
+	                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+	        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
+	        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
+	        						    JOptionPane.YES_NO_OPTION,
+            						    JOptionPane.QUESTION_MESSAGE)){
+	                				destinationFolderText.setText(suggestedDir);
+			        			}
+	                		}                    	
+	                    }
                         args.add(destinationFolderText.getText());
                     }
                     if (overwriteCheckbox.isSelected()) args.add("-"+SplitParsedCommand.OVERWRITE_ARG);
@@ -393,10 +405,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     	if(minItem != null){
                     		if(Integer.parseInt(currentPdfVersion) < Integer.parseInt(minItem.getId())){
                     			if(JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(getParent(),
-			            						    GettextResource.gettext(config.getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n "+GettextResource.gettext(config.getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
+			            						    GettextResource.gettext(config.getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
 			            						    GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version conflict"),
-			            						    JOptionPane.WARNING_MESSAGE,
-			            						    JOptionPane.YES_NO_OPTION)){
+			            						    JOptionPane.YES_NO_OPTION,
+			            						    JOptionPane.WARNING_MESSAGE)){
                     				return;
                     			}
                     		}
