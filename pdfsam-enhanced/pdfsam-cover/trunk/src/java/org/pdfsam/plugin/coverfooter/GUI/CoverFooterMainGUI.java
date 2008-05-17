@@ -33,6 +33,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -85,7 +86,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
     private JCheckBox mergeTypeCheck = new JCheckBox();
     private final JLabel optionLabel = new JLabel();
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
-	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, SimplePdfSelectionTableModel.MAX_COLUMNS_NUMBER);
+	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, SimplePdfSelectionTableModel.MAX_COLUMNS_NUMBER, true, false);
 	private JPdfSelectionPanel coverSelectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.SINGLE_SELECTABLE_FILE, SimplePdfSelectionTableModel.MAX_COLUMNS_NUMBER);
 	private JPdfSelectionPanel footerSelectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.SINGLE_SELECTABLE_FILE, SimplePdfSelectionTableModel.MAX_COLUMNS_NUMBER);
 	private JLabel coverLabel = new JLabel();
@@ -109,7 +110,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.1e";
+    private static final String PLUGIN_VERSION = "0.2.2e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -144,7 +145,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         selectionPanel.addPropertyChangeListener(this);
 
 //BROWSE_FILE_CHOOSER        
-        browseDestFileChooser = new JFileChooser();
+        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
         browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 //END_BROWSE_FILE_CHOOSER        
 
@@ -359,6 +360,18 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	                            
 								//manage output destination option
 								args1.add("-"+ConcatParsedCommand.O_ARG);
+							   if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
+			                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+			                		if(suggestedDir != null){
+			                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+			        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
+			        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
+			        						    JOptionPane.YES_NO_OPTION,
+		            						    JOptionPane.QUESTION_MESSAGE)){
+			                				destinationTextField.setText(suggestedDir);
+					        			}
+			                		}                    	
+			                    }
 								if (destinationTextField.getText().length() > 0){
 									args1.add(destinationTextField.getText()+File.separator+item.getInputFile().getName());
 								}
