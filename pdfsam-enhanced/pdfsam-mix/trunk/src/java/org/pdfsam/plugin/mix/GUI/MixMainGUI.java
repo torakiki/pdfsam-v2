@@ -30,6 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -97,7 +98,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.1e";
+	private static final String PLUGIN_VERSION = "0.1.2e";
 
 	
 	/**
@@ -123,7 +124,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		selectionPanel.addPropertyChangeListener(this);
 		
 //		BROWSE_FILE_CHOOSER        
-		browseFileChooser = new JFileChooser();
+		browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 		browseFileChooser.setFileFilter(new PdfFilter());
 		browseFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
@@ -233,6 +234,30 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)[^.]+?\\.("+PDF_EXTENSION+")$"))){
 							destinationTextField.setText(destinationTextField.getText()+".pdf");
 						}
+	                    if(destinationTextField.getText().length()>0){
+	                    	File destinationDir = new File(destinationTextField.getText());
+	                    	File parent = destinationDir.getParentFile();
+	                    	if(!(parent!=null && parent.exists())){
+	                    		String suggestedDir = null;
+	                    		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
+	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
+	                    		}else{	                    			
+                    				PdfSelectionTableItem item = items[1];
+                    				if(item!=null && item.getInputFile()!=null){
+                    					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
+                    				}	                    			
+	                    		}
+	                    		if(suggestedDir != null){
+	                    			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+	            						    GettextResource.gettext(config.getI18nResourceBundle(),"Output file location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
+	            						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
+	            						    JOptionPane.YES_NO_OPTION,
+	            						    JOptionPane.QUESTION_MESSAGE)){
+	                    				destinationTextField.setText(suggestedDir);
+				        			}
+	                    		}
+	                    	}
+	                    }
 						args.add(destinationTextField.getText());
 
 						if (overwriteCheckbox.isSelected()) args.add("-"+MixParsedCommand.OVERWRITE_ARG);
@@ -255,7 +280,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 			}
 		});
-		
+	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf alternate mix"));
 		add(runButton);
 //		END_RUN_BUTTON		
 		
