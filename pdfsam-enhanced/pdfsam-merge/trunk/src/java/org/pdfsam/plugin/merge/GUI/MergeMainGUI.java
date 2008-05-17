@@ -33,6 +33,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -61,6 +62,7 @@ import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.merge.components.JSaveListAsXmlMenuItem;
 /**
  * Plugable JPanel provides a GUI for merge functions.
  * @author Andrea Vacondio
@@ -106,7 +108,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.2";
+    private static final String PLUGIN_VERSION = "0.6.3";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -133,7 +135,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         selectionPanel.addPropertyChangeListener(this);
 
 //BROWSE_FILE_CHOOSER        
-        browseDestFileChooser = new JFileChooser();
+        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
         browseDestFileChooser.setFileFilter(new PdfFilter());
         browseDestFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 //END_BROWSE_FILE_CHOOSER        
@@ -229,10 +231,37 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 final LinkedList args = new LinkedList();                
                 args.add("-"+ConcatParsedCommand.O_ARG);
                 //validation and permission check are demanded 
-                try{
+                try{                	
                     //if no extension given
                     if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)[^.]+?\\.("+PDF_EXTENSION+")$"))){
                         destinationTextField.setText(destinationTextField.getText()+".pdf");
+                    }                    
+                    if(destinationTextField.getText().length()>0){
+                    	File destinationDir = new File(destinationTextField.getText());
+                    	File parent = destinationDir.getParentFile();
+                    	if(!(parent!=null && parent.exists())){
+                    		String suggestedDir = null;
+                    		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
+                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
+                    		}else{
+                    			PdfSelectionTableItem[] items = selectionPanel.getTableRows();
+                    			if(items!=null & items.length>0){
+                    				PdfSelectionTableItem item = items[items.length-1];
+                    				if(item!=null && item.getInputFile()!=null){
+                    					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
+                    				}
+                    			}
+                    		}
+                    		if(suggestedDir != null){
+                    			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+            						    GettextResource.gettext(config.getI18nResourceBundle(),"Output file location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
+            						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
+            						    JOptionPane.YES_NO_OPTION,
+            						    JOptionPane.QUESTION_MESSAGE)){
+                    				destinationTextField.setText(suggestedDir);
+			        			}
+                    		}
+                    	}
                     }
                     args.add(destinationTextField.getText());
                     
@@ -297,8 +326,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         browseDestButton.addKeyListener(browseEnterKeyListener);
         
         destinationTextField.addKeyListener(runEnterKeyListener);
-
 //LAYOUT
+        selectionPanel.addPopupMenuItem(new JSaveListAsXmlMenuItem(selectionPanel));
         setLayout();
 
 //END_LAYOUT
