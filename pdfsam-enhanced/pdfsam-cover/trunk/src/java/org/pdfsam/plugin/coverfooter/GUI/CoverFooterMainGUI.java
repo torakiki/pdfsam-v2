@@ -110,7 +110,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.2e";
+    private static final String PLUGIN_VERSION = "0.2.3e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -562,13 +562,13 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 				fileDestination.addAttribute("value", destinationTextField.getText());			
 				
 				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
-				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
 
 				Element mergeType = ((Element)arg0).addElement("merge_type");
-				mergeType.addAttribute("value", mergeTypeCheck.isSelected()?"true":"false");
+				mergeType.addAttribute("value", mergeTypeCheck.isSelected()?TRUE:FALSE);
 
 				Element fileCompress = ((Element)arg0).addElement("compressed");
-				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
 				
 				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
 				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
@@ -582,9 +582,8 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 
     public void loadJobNode(Node arg0) throws LoadJobException {
     	if(arg0 != null){
-			try{	
-				
-				coverSelectionPanel.getClearButton().doClick();
+			try{					
+				resetPanel();
 				Node coverSource = (Node) arg0.selectSingleNode("cover/@value");
 				if (coverSource != null && coverSource.getText().length()>0){
 					Node coverPageSelection = (Node) arg0.selectSingleNode("cover/@pageselection");
@@ -607,12 +606,12 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 				
 				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
+					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
 				}
 				
 				Node mergeType = (Node) arg0.selectSingleNode("merge_type/@value");
 				if (mergeType != null){
-					mergeTypeCheck.setSelected(mergeType.getText().equals("true"));
+					mergeTypeCheck.setSelected(TRUE.equals(mergeType.getText()));
 				}
 
 				selectionPanel.getClearButton().doClick();
@@ -630,8 +629,8 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
                 }
 				
 				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null){
-					outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
+				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+					outputCompressedCheck.doClick();
 				}
 				
 				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
