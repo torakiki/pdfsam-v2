@@ -137,7 +137,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.4";
+    private final String PLUGIN_VERSION = "0.4.5";
     
 /**
  * Constructor
@@ -508,10 +508,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 				filePrefix.addAttribute("value", outPrefixText.getText());	
 				
 				Element file_overwrite = ((Element)arg0).addElement("overwrite");
-				file_overwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				file_overwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
 
 				Element fileCompress = ((Element)arg0).addElement("compressed");
-				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
 				
 				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
 				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
@@ -572,12 +572,12 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 
 				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
+					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
 				}
 
 				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null){
-					outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
+				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+					outputCompressedCheck.doClick();
 				}
 				
 				Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
@@ -928,7 +928,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
 		destinationFolderText.setText("");
 		versionCombo.resetComponent();
-		outputCompressedCheck.setSelected(true);
+		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 		thisPageTextField.setText("");
 	    nPagesTextField.setText("");
