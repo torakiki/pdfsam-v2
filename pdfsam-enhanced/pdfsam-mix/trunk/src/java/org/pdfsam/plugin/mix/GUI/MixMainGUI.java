@@ -98,7 +98,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.2e";
+	private static final String PLUGIN_VERSION = "0.1.3e";
 
 	
 	/**
@@ -407,16 +407,16 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 				fileDestination.addAttribute("value", destinationTextField.getText());			
 
 				Element reverseFirst = ((Element)arg0).addElement("reverse_first");
-				reverseFirst.addAttribute("value", reverseFirstCheckbox.isSelected()?"true":"false");
+				reverseFirst.addAttribute("value", reverseFirstCheckbox.isSelected()?TRUE:FALSE);
 
 				Element reverseSecond = ((Element)arg0).addElement("reverse_second");
-				reverseSecond.addAttribute("value", reverseSecondCheckbox.isSelected()?"true":"false");
+				reverseSecond.addAttribute("value", reverseSecondCheckbox.isSelected()?TRUE:FALSE);
 				
 				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
-				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
 
 				Element fileCompress = ((Element)arg0).addElement("compressed");
-				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
 
 				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
 				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
@@ -448,20 +448,20 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 				}
 				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
+					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
 				}
 				Node reverseFirst = (Node) arg0.selectSingleNode("reverse_first/@value");
 				if (reverseFirst != null){
-					reverseFirstCheckbox.setSelected(reverseFirst.getText().equals("true"));
+					reverseFirstCheckbox.setSelected(TRUE.equals(reverseFirst.getText()));
 				}
 				Node reverseSecond = (Node) arg0.selectSingleNode("reverse_second/@value");
 				if (reverseSecond != null){
-					reverseSecondCheckbox.setSelected(reverseSecond.getText().equals("true"));
+					reverseSecondCheckbox.setSelected(TRUE.equals(reverseSecond.getText()));
 				}
 				
 				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null){
-					outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
+				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+					outputCompressedCheck.doClick();
 				}
 	
 				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
@@ -611,7 +611,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		reverseFirstCheckbox.setSelected(false);
 		reverseSecondCheckbox.setSelected(true);
 		destinationTextField.setText("");
-		outputCompressedCheck.setSelected(true);
+		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 	}
 
