@@ -115,6 +115,8 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
     			case PAGESELECTION:
     				retVal = (tmpElement.getPageSelection() != null)? tmpElement.getPageSelection(): "";
     				break;
+				default: 
+					break;
     		}
     	}
         return retVal;

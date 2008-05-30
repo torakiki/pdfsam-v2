@@ -59,6 +59,7 @@ public class JPdfVersionCombo extends JComboBox {
 	 * @param checkFilters if true init checking filters vector
 	 */
 	private void init(boolean addSameAsSourceItem, boolean checkFilters){
+		removeAllItems();
 		this.addSameAsSourceItem = addSameAsSourceItem;
 		if(addSameAsSourceItem){
 			addItem(new StringItem(SAME_AS_SOURCE, GettextResource.gettext(config.getI18nResourceBundle(),"Same as input document")));			

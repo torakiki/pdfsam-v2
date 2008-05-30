@@ -349,12 +349,14 @@ public class JPdfSelectionPanel extends JPanel {
 		
 		mainTable.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                if (e.isPopupTrigger())
-                    showMenu(e);
+                if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
             }
             public void mouseReleased(MouseEvent e) {
-                if (e.isPopupTrigger())
-                    showMenu(e);
+                if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
             }
             private void showMenu(MouseEvent e) {
                 popupMenu.show(mainTable, e.getX(), e.getY());

@@ -311,8 +311,9 @@ public abstract class AbstractPdfSelectionTableModel extends AbstractTableModel 
 		 * @see java.lang.Object#equals(java.lang.Object)
 		 */
 		public boolean equals(Object obj) {
-			if (this == obj)
+			if (this == obj) {
 				return true;
+			}
 			if (obj == null)
 				return false;
 			if (getClass() != obj.getClass())

@@ -1,3 +1,7 @@
+1.4.0e stable release 1 ()
+===================================
+-Fixed version combo when loading an environment
+
 1.4.0e release candidate 1 (18-May-2008)
 ===================================
 -Console: now xml input for the concat command can take relative files path
