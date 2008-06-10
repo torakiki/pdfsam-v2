@@ -240,9 +240,15 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
                 final LinkedList argsFooter = new LinkedList();
                 //validation and permission check are demanded 
                 try{
-                	if (overwriteCheckbox.isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
-                    if (outputCompressedCheck.isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
-                    if (mergeTypeCheck.isSelected()) args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
+                	if (overwriteCheckbox.isSelected()) {
+						args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
+					}
+                    if (outputCompressedCheck.isSelected()) {
+						args.add("-"+ConcatParsedCommand.COMPRESSED_ARG);
+					} 
+                    if (mergeTypeCheck.isSelected()) {
+						args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
+					}
 
                     args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
 					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
