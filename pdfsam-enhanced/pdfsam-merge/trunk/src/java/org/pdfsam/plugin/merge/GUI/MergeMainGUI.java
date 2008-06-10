@@ -108,7 +108,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.3";
+    private static final String PLUGIN_VERSION = "0.6.4";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -451,13 +451,13 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 				fileDestination.addAttribute("value", destinationTextField.getText());			
 				
 				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
-				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
 
 				Element mergeType = ((Element)arg0).addElement("merge_type");
-				mergeType.addAttribute("value", mergeTypeCheck.isSelected()?"true":"false");
+				mergeType.addAttribute("value", mergeTypeCheck.isSelected()?TRUE:FALSE);
 
 				Element fileCompress = ((Element)arg0).addElement("compressed");
-				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
 				
 				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
 				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
@@ -480,12 +480,12 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 				
 				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
+					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
 				}
 				
 				Node mergeType = (Node) arg0.selectSingleNode("merge_type/@value");
 				if (mergeType != null){
-					mergeTypeCheck.setSelected(mergeType.getText().equals("true"));
+					mergeTypeCheck.setSelected(TRUE.equals(mergeType.getText()));
 				}
 
 				List fileList = arg0.selectNodes("filelist/file");
@@ -502,8 +502,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 }
 				
 				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null){
-					outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
+				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+					outputCompressedCheck.doClick();
 				}
 				
 				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
@@ -641,7 +641,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
 		destinationTextField.setText("");
 		versionCombo.resetComponent();
-		outputCompressedCheck.setSelected(true);
+		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 		mergeTypeCheck.setSelected(false);
 	}
