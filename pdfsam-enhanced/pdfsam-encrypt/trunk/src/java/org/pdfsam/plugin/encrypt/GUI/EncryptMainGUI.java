@@ -123,7 +123,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.3e";
+    private final String PLUGIN_VERSION = "0.2.4e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -383,8 +383,12 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
                     }
                     args.add(destFolderText.getText());
 
-                    if (overwriteCheckbox.isSelected()) args.add("-"+EncryptParsedCommand.OVERWRITE_ARG);
-                    if (outputCompressedCheck.isSelected()) args.add("-"+EncryptParsedCommand.COMPRESSED_ARG); 
+                    if (overwriteCheckbox.isSelected()) {
+						args.add("-"+EncryptParsedCommand.OVERWRITE_ARG);
+					}
+                    if (outputCompressedCheck.isSelected()) {
+						args.add("-"+EncryptParsedCommand.COMPRESSED_ARG);
+					} 
 
                     args.add("-"+EncryptParsedCommand.PDFVERSION_ARG);
 					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
@@ -450,7 +454,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				
 				Element allowall = ((Element)arg0).addElement("allowall");
 				if(allowAllCheck.isSelected()){
-					allowall.addAttribute("value","true");
+					allowall.addAttribute("value",TRUE);
 				}
 				else{
 					Element permissions = ((Element)arg0).addElement("permissions");
@@ -478,10 +482,10 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				file_prefix.addAttribute("value", outPrefixTextField.getText());
 				
 				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
-				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
 
 				Element fileCompress = ((Element)arg0).addElement("compressed");
-				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?"true":"false");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
 				
 				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
 				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
@@ -494,8 +498,8 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	}
 
     public void loadJobNode(Node arg0) throws LoadJobException {		
-			try{	
-				selectionPanel.getClearButton().doClick();
+			try{
+				resetPanel();
 				List fileList = arg0.selectNodes("filelist/file");
 				for (int i = 0; fileList != null && i < fileList.size(); i++) {
 					Node fileNode = (Node) fileList.get(i);
@@ -509,7 +513,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
                 }
 
 				Node allowAll = (Node) arg0.selectSingleNode("allowall/@value");
-				if(allowAll != null && allowAll.getText().equals("true")){
+				if(allowAll != null && TRUE.equals(allowAll.getText())){
 					allowAllCheck.doClick();
 				}else{
 					Node permissions = (Node) arg0.selectSingleNode("permissions");
@@ -545,12 +549,12 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 								
 				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
+					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
 				}
 
 				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null){
-					outputCompressedCheck.setSelected(fileCompressed.getText().equals("true"));
+				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+					outputCompressedCheck.doClick();
 				}
 				
 				Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
@@ -999,7 +1003,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
 		destFolderText.setText("");
 		versionCombo.resetComponent();
-		outputCompressedCheck.setSelected(true);
+		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 		destFolderText.setText("");
 		userPwdField.setText("");
