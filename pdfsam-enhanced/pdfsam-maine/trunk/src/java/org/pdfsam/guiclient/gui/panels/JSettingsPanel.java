@@ -77,7 +77,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private JComboBox comboTheme;
     private JComboBox comboCheckNewVersion;
     private JHelpLabel envHelpLabel;
-	private JFileChooser fileChooser = new JFileChooser();
+	private JFileChooser fileChooser ;
 
 	private SpringLayout settingsLayout;
     private SpringLayout grayBorderSettingsLayout;
@@ -119,6 +119,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 
     private void initialize() {     
     	config = Configuration.getInstance();
+    	fileChooser = new JFileChooser(config.getDefaultWorkingDir());
         setPanelIcon("/images/settings.png");
         setPreferredSize(new Dimension(400,450));
 

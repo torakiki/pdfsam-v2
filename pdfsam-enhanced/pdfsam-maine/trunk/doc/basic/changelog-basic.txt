@@ -1,3 +1,9 @@
+1.0.0 stable release (30-Jun-2008)
+===================================
+-Fixed bug  #1972966 (version combo when loading an environment)
+-Fixed some JFileChoosers that didn't check about the default working directory
+-Updated langpack
+
 1.0.0 release candidate 1 (18-May-2008)
 ===================================
 -Console: now xml input for the concat command can take relative files path

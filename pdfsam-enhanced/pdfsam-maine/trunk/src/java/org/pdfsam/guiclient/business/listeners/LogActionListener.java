@@ -47,7 +47,7 @@ public class LogActionListener implements ActionListener {
 	public LogActionListener(JTextPane logTextArea){
 		this.config = Configuration.getInstance();
 		this.logTextArea = logTextArea;
-		this.fileChooser = new JFileChooser();
+		this.fileChooser = new JFileChooser(config.getDefaultWorkingDir());
 		this.fileChooser.setFileFilter(new TxtFilter(false));
 	}
 	

@@ -50,10 +50,9 @@ public class EnvironmentMediator implements ActionListener {
 		this.environment = environment;
 		this.parent = parent;
 		this.i18nMessages = Configuration.getInstance().getI18nResourceBundle();
-		fileChooser = new JFileChooser();
+		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 		fileChooser.setFileFilter(new XmlFilter());
 		fileChooser.setApproveButtonText(GettextResource.gettext(i18nMessages, "Ok"));
-		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 	}
 
 	/**

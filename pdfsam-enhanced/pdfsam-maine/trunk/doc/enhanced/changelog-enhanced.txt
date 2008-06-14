@@ -1,6 +1,8 @@
-1.4.0e stable release 1 ()
+1.4.0e stable release (30-Jun-2008)
 ===================================
--Fixed version combo when loading an environment
+-Fixed bug  #1972966 (version combo when loading an environment)
+-Fixed some JFileChoosers that didn't check about the default working directory
+-Updated langpack
 
 1.4.0e release candidate 1 (18-May-2008)
 ===================================
