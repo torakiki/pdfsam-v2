@@ -126,7 +126,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 //		BROWSE_FILE_CHOOSER        
 		browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 		browseFileChooser.setFileFilter(new PdfFilter());
-		browseFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
 
 		destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
