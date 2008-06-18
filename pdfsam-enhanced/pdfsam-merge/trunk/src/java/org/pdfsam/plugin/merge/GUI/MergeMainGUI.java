@@ -137,7 +137,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //BROWSE_FILE_CHOOSER        
         browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
         browseDestFileChooser.setFileFilter(new PdfFilter());
-        browseDestFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 //END_BROWSE_FILE_CHOOSER        
 
 //      OPTION_PANEL

@@ -90,10 +90,9 @@ public class JSaveListAsXmlMenuItem extends JMenuItem {
 	 */
 	private void lazyInitJFileChooser(){
 		if(fileChooser == null){
-			fileChooser = new JFileChooser();
+			fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 			fileChooser.setFileFilter(new XmlFilter());
 			fileChooser.setApproveButtonText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Ok"));
-			fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		}
 	}
 	
