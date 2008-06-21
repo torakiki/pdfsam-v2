@@ -210,7 +210,9 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
                     }
                     args.add(destinationTextField.getText());
 
-                    if (overwriteCheckbox.isSelected()) args.add("-"+UnpackParsedCommand.OVERWRITE_ARG);
+                    if (overwriteCheckbox.isSelected()) {
+						args.add("-"+UnpackParsedCommand.OVERWRITE_ARG);
+					}
 
 					args.add (AbstractParsedCommand.COMMAND_UNPACK);
 
