@@ -2,6 +2,8 @@
 <languages>
     <language value="bs" description="Bosnian" />  
     <language value="pt_BR" description="Brazilian Portuguese" />    
+    <language value="ca" description="Catalan" />  
+    <language value="hr" description="Croatian" />  
     <language value="cs" description="Czech" />  
     <language value="da" description="Danish" />  	
     <language value="nl" description="Dutch" />  	
@@ -24,8 +26,9 @@
     <language value="sk" description="Slovak" />    
     <language value="es" description="Spanish" />    
     <language value="sv" description="Swedish" />   
-    <language value="vi" description="Vietnamese" />   
     <language value="tr" description="Turkish" />   
+    <language value="th" description="Thai" />   
+    <language value="vi" description="Vietnamese" />   
     <language value="zh_TW" description="Traditional Chinese" />
     <language value="zh_HK" description="Chinese (Hong Kong)" />
 </languages>
