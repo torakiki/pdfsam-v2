@@ -76,6 +76,8 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
 # Installer languages
   !insertmacro MUI_LANGUAGE "English" # first language is the default language
   !insertmacro MUI_LANGUAGE "Bosnian"
+  !insertmacro MUI_LANGUAGE "Croatian"
+  !insertmacro MUI_LANGUAGE "Catalan"
   !insertmacro MUI_LANGUAGE "Czech"
   !insertmacro MUI_LANGUAGE "Danish"
   !insertmacro MUI_LANGUAGE "German"
@@ -97,6 +99,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Russian"
   !insertmacro MUI_LANGUAGE "Slovak"
   !insertmacro MUI_LANGUAGE "Swedish"
+  !insertmacro MUI_LANGUAGE "Thai"
   !insertmacro MUI_LANGUAGE "Turkish"
   !insertmacro MUI_LANGUAGE "SimpChinese"
   !insertmacro MUI_LANGUAGE "TradChinese"
@@ -139,6 +142,12 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}
         ${Case} ${LANG_BOSNIAN}
             Push 'bs' 
+        ${Break}
+        ${Case} ${LANG_CATALAN}
+            Push 'ca' 
+        ${Break}
+        ${Case} ${LANG_CROATIAN}
+            Push 'hr' 
         ${Break}
         ${Case} ${LANG_CZECH}
             Push 'cs' 
@@ -209,6 +218,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Case} ${LANG_KOREAN}
             Push 'ko' 
         ${Break}                
+        ${Case} ${LANG_THAI}
+            Push 'th' 
+        ${Break}                
         ${Default}
             Push 'Default'
         ${Break}
@@ -245,7 +257,7 @@ Section -post SEC0001
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk" $INSTDIR\pdfsam-starter.exe
     SetOutPath $SMPROGRAMS\$StartMenuGroup
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Readme.lnk" $INSTDIR\doc\readme.txt
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.0.0-b2-tutorial.pdf
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.0.0-tutorial.pdf
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     
@@ -492,6 +504,12 @@ Function .onInit
     Push Czech
     Push ${LANG_SLOVAK}
     Push Slovak
+    Push ${LANG_THAI}
+    Push Thai
+    Push ${LANG_CATALAN}
+    Push Catalan
+    Push ${LANG_CROATIAN}
+    Push Croatian
     Push ${LANG_HEBREW}
     Push Hebrew  
     Push A ; A means auto count languages
