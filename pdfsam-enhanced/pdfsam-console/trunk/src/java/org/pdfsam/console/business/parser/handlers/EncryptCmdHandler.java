@@ -2,9 +2,32 @@
  * Created on 16-Oct-2007
  * Copyright (C) 2007 by Andrea Vacondio.
  *
+ *
+ * This library is provided under dual licenses.
+ * You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2
+ * License at your discretion.
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation;
+ * version 2.1 of the License.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * 
+ * 
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
  * either version 2 of the License.
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
  * See the GNU General Public License for more details.
@@ -60,10 +83,10 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	           new StringParam(EncryptParsedCommand.ALLOW_ARG,
 	                          "permissions: a list of permissions. { "+EncryptParsedCommand.E_PRINT+", "+EncryptParsedCommand.E_MODIFY+", "+EncryptParsedCommand.E_COPY+", "+EncryptParsedCommand.E_ANNOTATION+", "+EncryptParsedCommand.E_FILL+", "+EncryptParsedCommand.E_SCREEN+", "+EncryptParsedCommand.E_ASSEMBLY+", "+EncryptParsedCommand.E_DPRINT+"} ", 
 							  new String[] { EncryptParsedCommand.E_PRINT, EncryptParsedCommand.E_MODIFY, EncryptParsedCommand.E_COPY, EncryptParsedCommand.E_ANNOTATION, EncryptParsedCommand.E_FILL, EncryptParsedCommand.E_SCREEN, EncryptParsedCommand.E_ASSEMBLY, EncryptParsedCommand.E_DPRINT },
-	                          FileParam.OPTIONAL, 
-	                          FileParam.MULTI_VALUED),						   
+							  StringParam.OPTIONAL, 
+							  StringParam.MULTI_VALUED),						   
 	           new StringParam(EncryptParsedCommand.ETYPE_ARG,   
-	                           "encryption angorithm {"+EncryptParsedCommand.E_RC4_40+", "+EncryptParsedCommand.E_RC4_128+", "+EncryptParsedCommand.E_AES_128+"}. If omitted it uses rc4_128",
+	                           "encryption angorithm {"+EncryptParsedCommand.E_RC4_40+", "+EncryptParsedCommand.E_RC4_128+", "+EncryptParsedCommand.E_AES_128+"}. If omitted it uses "+EncryptParsedCommand.E_RC4_128,
 	                           new String[] { EncryptParsedCommand.E_RC4_40, EncryptParsedCommand.E_RC4_128, EncryptParsedCommand.E_AES_128},
 	                           StringParam.OPTIONAL, 
 	                           StringParam.SINGLE_VALUED)
@@ -82,7 +105,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	/**
 	 * Help text for the encrypt command
 	 */
-	private static final String encryptHelpText =  "Encrypt pdf files. "+ 
+	private static final String encryptHelpText =  "Encrypt pdf files. \n"+ 
     "You must specify '-o /home/user' to set the output directory.\n"+
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to encrypt (use filename:password if the file is password protected).\n"+
     "'-apwd password' to set the owner password.\n"+

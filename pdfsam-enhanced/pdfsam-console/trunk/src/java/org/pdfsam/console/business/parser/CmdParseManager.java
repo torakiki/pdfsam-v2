@@ -2,9 +2,32 @@
  * Created on 21-Sep-2007
  * Copyright (C) 2006 by Andrea Vacondio.
  *
+ *
+ * This library is provided under dual licenses.
+ * You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2
+ * License at your discretion.
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation;
+ * version 2.1 of the License.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * 
+ * 
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
  * either version 2 of the License.
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
  * See the GNU General Public License for more details.
@@ -21,18 +44,24 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
+import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
+import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.parser.handlers.ConcatCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.MixCmdHandler;
+import org.pdfsam.console.business.parser.handlers.SetViewerCmdHandler;
+import org.pdfsam.console.business.parser.handlers.SlideShowCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SplitCmdHandler;
 import org.pdfsam.console.business.parser.handlers.UnpackCmdHandler;
 import org.pdfsam.console.business.parser.handlers.interfaces.CmdHandler;
 import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.console.business.parser.validators.EncryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.MixCmdValidator;
+import org.pdfsam.console.business.parser.validators.SetViewerCmdValidator;
+import org.pdfsam.console.business.parser.validators.SlideShowCmdValidator;
 import org.pdfsam.console.business.parser.validators.SplitCmdValidator;
 import org.pdfsam.console.business.parser.validators.UnpackCmdValidator;
 import org.pdfsam.console.business.parser.validators.interfaces.CmdValidator;
@@ -96,6 +125,14 @@ public class CmdParseManager {
 		else if(UnpackParsedCommand.COMMAND_UNPACK.equals(inputCommand)){
 			cmdHandler = new UnpackCmdHandler();
 			cmdValidator = new UnpackCmdValidator();
+		}
+		else if(SetViewerParsedCommand.COMMAND_SETVIEWER.equals(inputCommand)){
+			cmdHandler = new SetViewerCmdHandler();
+			cmdValidator = new SetViewerCmdValidator();
+		}
+		else if(SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(inputCommand)){
+			cmdHandler = new SlideShowCmdHandler();
+			cmdValidator = new SlideShowCmdValidator();
 		}else{
 			cmdHandler = new DefaultCmdHandler();
 		}

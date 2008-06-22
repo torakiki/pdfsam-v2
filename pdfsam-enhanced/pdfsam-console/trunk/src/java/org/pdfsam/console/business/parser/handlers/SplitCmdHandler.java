@@ -2,9 +2,32 @@
  * Created on 16-Oct-2007
  * Copyright (C) 2007 by Andrea Vacondio.
  *
+ *
+ * This library is provided under dual licenses.
+ * You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2
+ * License at your discretion.
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation;
+ * version 2.1 of the License.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * 
+ * 
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
  * either version 2 of the License.
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
  * See the GNU General Public License for more details.
@@ -78,8 +101,8 @@ public class SplitCmdHandler extends AbstractCmdHandler {
     /**
      * Help text for the split handler
      */
-    private static final String splitHelpText = "Split pdf file. "+ 
-	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split.\n" +
+    private static final String splitHelpText = "Split pdf file. \n"+ 
+	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split (use filename:password if the file is password protected).\n" +
 	    "You must specify '-o /home/user' to set the output directory.\n"+
 	    "You must specify '-s split_type' to set the split type. Possible values: {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"]}\n"+
 	    "'-p prefix_' to specify a prefix for output names of files. If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[CURRENTPAGE] generates FileName_prefix_005.pdf)\n"+

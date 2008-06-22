@@ -1,6 +1,6 @@
 /*
- * Created on 16-Oct-2007
- * Copyright (C) 2006 by Andrea Vacondio.
+ * Created on 06-Mar-2008
+ * Copyright (C) 2008 by Andrea Vacondio.
  *
  *
  * This library is provided under dual licenses.
@@ -35,28 +35,32 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.console.business.parser.validators.interfaces;
-
-import jcmdline.CmdLineHandler;
-
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.exceptions.console.ConsoleException;
-
+package org.pdfsam.console.exceptions.console;
 /**
- * Interface for the command line validators
+ * Exception thrown while setting viewer options to pdf files
  * @author Andrea Vacondio
- *
  */
-public interface CmdValidator {
-	
-	public static final String PDF_EXTENSION = ".pdf";
-	public static final String XML_EXTENSION = ".xml";	
-	public static final String CSV_EXTENSION = ".csv";	
-	
-	/**
-	 * called by the Manager to validate input arguments for this validator.
-	 * @return the dto containing parsed command
-	 * @throws ConsoleException
-	 */
-	public AbstractParsedCommand validate(CmdLineHandler cmdLineHandler) throws ConsoleException;
+public class SetViewerException extends ConsoleException {
+
+	private static final long serialVersionUID = -5870074661855916725L;
+
+	public SetViewerException(int exceptionErrorCode, String[] args, Throwable e) {
+		super(exceptionErrorCode, args, e);
+	}
+
+	public SetViewerException(int exceptionErrorCode, Throwable e) {
+		super(exceptionErrorCode, e);
+	}
+
+	public SetViewerException(int exceptionErrorCode) {
+		super(exceptionErrorCode);
+	}
+
+	public SetViewerException(Throwable e) {
+		super(e);
+	}
+
+	public SetViewerException(int exceptionErrorCode, String[] args) {
+		super(exceptionErrorCode, args);
+	}
 }

@@ -22,11 +22,15 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
+import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
+import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.AlternateMixCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.ConcatCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.EncryptCmdExecutor;
+import org.pdfsam.console.business.pdf.handlers.SetViewerCmdExecutor;
+import org.pdfsam.console.business.pdf.handlers.SlideShowCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SplitCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.UnpackCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
@@ -74,7 +78,7 @@ public class CmdExecuteManager extends Observable implements Observer{
 
 	/**
 	 * @param parsedCommand
-	 * @return an istance of the proper executor for the parsed command
+	 * @return an instance of the proper executor for the parsed command
 	 */	
 	private AbstractCmdExecutor getExecutor(AbstractParsedCommand parsedCommand){
 		AbstractCmdExecutor retVal;
@@ -88,6 +92,10 @@ public class CmdExecuteManager extends Observable implements Observer{
 			retVal = new ConcatCmdExecutor();
 		}else if(UnpackParsedCommand.COMMAND_UNPACK.equals(parsedCommand.getCommand())){
 			retVal = new UnpackCmdExecutor();
+		}else if(SetViewerParsedCommand.COMMAND_SETVIEWER.equals(parsedCommand.getCommand())){
+			retVal = new SetViewerCmdExecutor();
+		}else if(SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(parsedCommand.getCommand())){
+			retVal = new SlideShowCmdExecutor();
 		}else {
 			retVal = null;
 		}

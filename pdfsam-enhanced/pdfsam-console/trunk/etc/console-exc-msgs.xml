@@ -34,6 +34,7 @@
 		<exception errorcode="19" message="No -b option given." />		
 		<exception errorcode="20" message="No -f option given." />	
 		<exception errorcode="21" message="-d {0} must be a directory." />
+		<exception errorcode="22" message="Input file not an xml format." />
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
 		<exception errorcode="1" message="Cannot find page limits, please check input value." />		
@@ -52,5 +53,15 @@
 	<type key="org.pdfsam.console.exceptions.console.MixException" description="MIX" />
 	<type key="org.pdfsam.console.exceptions.console.UnpackException" description="UNP">
 		<exception errorcode="1" message="No -f or -d option given." />	
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.SetViewerException" description="SVW" />
+	<type key="org.pdfsam.console.exceptions.console.SlideShowException" description="SLS">
+		<exception errorcode="1" message="Empty input transition string." />	
+		<exception errorcode="2" message="Uncomplete input transition string {0}." />	
+		<exception errorcode="3" message="Bad input transition string {0}." />	
+		<exception errorcode="4" message="Unable to add the transition string {0}. Resulting object {1}." />	
+		<exception errorcode="5" message="Error reading xml input file." />	
+		<exception errorcode="6" message="Default transition already exists." />	
+		<exception errorcode="7" message="Error reading transition number {0}." />	
 	</type>
 </exception-types>

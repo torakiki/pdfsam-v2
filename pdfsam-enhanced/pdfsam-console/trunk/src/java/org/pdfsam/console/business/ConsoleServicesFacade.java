@@ -2,9 +2,31 @@
  * Created on 02-Nov-2007
  * Copyright (C) 2007 by Andrea Vacondio.
  *
+ * This library is provided under dual licenses.
+ * You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2
+ * License at your discretion.
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation;
+ * version 2.1 of the License.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * 
+ * 
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
  * either version 2 of the License.
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
  * See the GNU General Public License for more details.
@@ -30,10 +52,24 @@ public class ConsoleServicesFacade {
 	
 	private final Logger log = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 	
-    public static final String VERSION = "1.1.4e"; 
+    public static final String VERSION = "1.2.0e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +ConsoleServicesFacade.VERSION+ ")";   
     public static final String LICENSE =
 		ConsoleServicesFacade.CREATOR+"  Copyright (C) 2007  Andrea Vacondio\n"+
+		"This library is provided under dual licenses.\n"+
+		"You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2\n"+
+		"License at your discretion.\n\n"+
+		"This library is free software; you can redistribute it and/or\n"+
+		"modify it under the terms of the GNU Lesser General Public\n"+
+		"License as published by the Free Software Foundation;\n"+
+		"version 2.1 of the License.\n\n"+
+		"This library is distributed in the hope that it will be useful,\n"+
+		"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"+
+		"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"+
+		"Lesser General Public License for more details.\n\n"+
+		"You should have received a copy of the GNU Lesser General Public\n"+
+		"License along with this library; if not, write to the Free Software\n"+
+		"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA\n\n\n"+
 		"This program is free software: you can redistribute it and/or modify\n"+
 		"it under the terms of the GNU General Public License as published by\n"+
 		"the Free Software Foundation,version 2 of the License\n\n"+
@@ -54,7 +90,7 @@ public class ConsoleServicesFacade {
 		cmdExecuteManager = new CmdExecuteManager();
 	}
     /**
-     * esecute parsedCommand
+     * execute parsedCommand
      * @param parsedCommand
      * @throws Exception. This way we don't have dependencies from emp4j client side
      */

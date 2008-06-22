@@ -1,6 +1,6 @@
 /*
- * Created on 22-Oct-2007
- * Copyright (C) 2007 by Andrea Vacondio.
+ * Created on 06-Mar-2008
+ * Copyright (C) 2008 by Andrea Vacondio.
  *
  *
  * This library is provided under dual licenses.
@@ -46,47 +46,37 @@ import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
+import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
-import org.pdfsam.console.exceptions.console.EncryptException;
+import org.pdfsam.console.exceptions.console.SetViewerException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PrefixParser;
 
-import com.lowagie.text.pdf.PdfEncryptor;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 /**
- * Command executor for the encrypt command
+ * Command executor for the setviewer command
  * @author Andrea Vacondio
  */
-public class EncryptCmdExecutor extends AbstractCmdExecutor {
+public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(EncryptCmdExecutor.class.getPackage().getName());
+	private final Logger log = Logger.getLogger(SetViewerCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
-		
-		if((parsedCommand != null) && (parsedCommand instanceof EncryptParsedCommand)){
+		if((parsedCommand != null) && (parsedCommand instanceof SetViewerParsedCommand)){
 			
-			EncryptParsedCommand inputCommand = (EncryptParsedCommand) parsedCommand;
-			setPercentageOfWorkDone(0);
-			int encType = PdfWriter.STANDARD_ENCRYPTION_40;
-			PrefixParser prefixParser;
+			SetViewerParsedCommand inputCommand = (SetViewerParsedCommand) parsedCommand;
 			PdfReader pdfReader;
 			PdfStamper pdfStamper;
+			PrefixParser prefixParser;
+			setPercentageOfWorkDone(0);
 			try{
 				PdfFile[] fileList = inputCommand.getInputFileList();
 				for(int i = 0; i<fileList.length; i++){
 					try{
-						//set the encryption type
-			        	if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())){
-				        	encType = PdfWriter.ENCRYPTION_AES_128;
-				        }else if (EncryptParsedCommand.E_RC4_128.equals(inputCommand.getEncryptionType())){
-				        	encType = PdfWriter.STANDARD_ENCRYPTION_128;
-				        }	
-			        	
 						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
 						File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
@@ -108,30 +98,60 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 				        }
 						
 						pdfStamper.setMoreInfo(meta);
-						pdfStamper.setEncryption(encType, inputCommand.getUserPwd(), inputCommand.getOwnerPwd(), inputCommand.getPermissions());
+						pdfStamper.setViewerPreferences(inputCommand.getDirection() | inputCommand.getLayout() | inputCommand.getMode() | inputCommand.getNfsmode() | getVewerOptions(inputCommand));
 						pdfStamper.close();
+						
 						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
 			    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-		                	log.debug("Encrypted file "+outFile.getCanonicalPath()+" created.");
+		                	log.debug("File "+outFile.getCanonicalPath()+" created.");
 		                } 
 			    		pdfReader.close();
-			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
-		    		}
+						setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
+					}
 		    		catch(Exception e){
-		    			log.error("Error encrypting file "+fileList[i].getFile().getName(), e);
+		    			log.error("Error setting options for file "+fileList[i].getFile().getName(), e);
 		    		}
 				}
-				log.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
-				log.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");
-		}catch(Exception e){    		
-			throw new EncryptException(e);
-		}finally{
-			setWorkCompleted();
+				log.info("Viewer options set. Pdf files created in "+inputCommand.getOutputFile().getAbsolutePath()+".");
+			}catch(Exception e){    		
+				throw new SetViewerException(e);
+			}finally{
+				setWorkCompleted();
+			}		
+		}else{
+			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 		}
-	}else{
-		throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
-	}
 
+	}
+	
+	/**
+	 * @param parsedCommand
+	 * @return the viewer options
+	 */
+	private int getVewerOptions(SetViewerParsedCommand parsedCommand){
+		int retVal = 0;
+		if(parsedCommand.isCenterWindow()){
+			retVal |= PdfWriter.CenterWindow;
+		}
+		if(parsedCommand.isDisplayDocTitle()){
+			retVal |= PdfWriter.DisplayDocTitle;
+		}
+		if(parsedCommand.isFitWindow()){
+			retVal |= PdfWriter.FitWindow;
+		}
+		if(parsedCommand.isHideMenu()){
+			retVal |= PdfWriter.HideMenubar;
+		}
+		if(parsedCommand.isHideToolBar()){
+			retVal |= PdfWriter.HideToolbar;
+		}
+		if(parsedCommand.isHideWindowUI()){
+			retVal |= PdfWriter.HideWindowUI;
+		}
+		if(parsedCommand.isNoPrintScaling()){
+			retVal |= PdfWriter.PrintScalingNone;
+		}
+		return retVal;
 	}
 
 }

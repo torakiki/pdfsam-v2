@@ -1,10 +1,33 @@
 /*
  * Created on 18-Oct-2007
- * Copyright (C) 2006 by Andrea Vacondio.
+ * Copyright (C) 2007 by Andrea Vacondio.
  *
+ *
+ * This library is provided under dual licenses.
+ * You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2
+ * License at your discretion.
+ * 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation;
+ * version 2.1 of the License.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * 
+ * 
+ * 
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
  * either version 2 of the License.
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
  * See the GNU General Public License for more details.
@@ -38,15 +61,15 @@ public class DefaultCmdHandler implements CmdHandler {
 
 	private VersionCmdLineHandler commandLineHandler = null;
 	
-	private static final String commandDescription = "merge, split, mix or encrypt pdf files.";
+	private static final String commandDescription = "merge, split, mix, setviewer, unpack, encrypt, slideshow.";
 	
 	 /**
      * The default arguments 
      */
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[concat], [split], [encrypt], [mix], [unpack]}",
-                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ECRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK },
+                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ECRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"]}",
+                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ECRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER },
                     StringParam.REQUIRED)
     }));
 	
