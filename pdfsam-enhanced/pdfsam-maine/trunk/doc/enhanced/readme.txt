@@ -11,7 +11,7 @@ Plugins included:
 	-pdfsam-split-0.4.5 *
 	-pdfsam-encrypt-0.2.4e *
 	-pdfsam-mix-0.1.3e *
-	-pdfsam-cover-0.2.3e *
+	-pdfsam-cover-0.2.4e *
 
 Linked libraries:
 	-itext-2.0.7
