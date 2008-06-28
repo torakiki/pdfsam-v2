@@ -110,7 +110,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.3e";
+    private static final String PLUGIN_VERSION = "0.2.4e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -801,7 +801,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 		((AbstractPdfSelectionTableModel)footerSelectionPanel.getMainTable().getModel()).clearData();	
 		destinationTextField.setText("");
 		versionCombo.resetComponent();
-		outputCompressedCheck.setSelected(true);
+		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 		mergeTypeCheck.setSelected(false);
 	}
