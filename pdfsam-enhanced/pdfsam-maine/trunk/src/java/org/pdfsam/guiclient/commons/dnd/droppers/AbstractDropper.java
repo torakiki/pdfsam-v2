@@ -1,6 +1,6 @@
 /*
  * Created on 23-Nov-2007
- * Copyright (C) 2006 by Andrea Vacondio.
+ * Copyright (C) 2007 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
@@ -12,7 +12,7 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.business;
+package org.pdfsam.guiclient.commons.dnd.droppers;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -20,26 +20,19 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetContext;
 import java.awt.dnd.DropTargetDropEvent;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 /**
- * Drag&Drop class
+ * Drag&Drop abstract class
  * @author Andrea Vacondio
  *
  */
-public class PdfFileDropper extends DropTargetAdapter {
+public abstract class AbstractDropper extends DropTargetAdapter {
 	
-	private static final Logger log = Logger.getLogger(PdfFileDropper.class.getPackage().getName());
+	private static final Logger log = Logger.getLogger(AbstractDropper.class.getPackage().getName());
 
-	private PdfLoader loader;
-
-	public PdfFileDropper(PdfLoader loader){
-		this.loader = loader;		
-	}
-	
 	/**
 	 * execute the drop
 	 */
@@ -50,9 +43,8 @@ public class PdfFileDropper extends DropTargetAdapter {
             Transferable t = e.getTransferable();
             if(hasFileFlavor(t)){
 	            Object data = t.getTransferData(DataFlavor.javaFileListFlavor);
-	            if (data instanceof List) {
-	                List files = (List)data;
-	                loader.addFiles(files);
+	            if(data!=null){
+	            	executeDrop(data);
 	            }
             }
             context.dropComplete(true);
@@ -79,5 +71,9 @@ public class PdfFileDropper extends DropTargetAdapter {
 		return retVal;
 	}
 	   
-
+	/**
+	 * Executes the drop logic given the TransferData
+	 * @param arg0
+	 */
+	protected abstract void executeDrop(Object arg0);
 }

@@ -18,13 +18,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.commons.business.PdfLoader;
+import org.pdfsam.guiclient.commons.business.loaders.PdfLoader;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
-import org.pdfsam.guiclient.gui.panels.JStatusPanel;
 import org.pdfsam.i18n.GettextResource;
    
 /**
@@ -33,7 +32,7 @@ import org.pdfsam.i18n.GettextResource;
 */
 public class PdfSelectionTableActionListener implements ActionListener{
     	
-	private static final Logger log = Logger.getLogger(JStatusPanel.class.getPackage().getName());
+	private static final Logger log = Logger.getLogger(PdfSelectionTableActionListener.class.getPackage().getName());
     
 	public static final String ADD = "add";
 	public static final String ADDSINGLE = "addSingle";

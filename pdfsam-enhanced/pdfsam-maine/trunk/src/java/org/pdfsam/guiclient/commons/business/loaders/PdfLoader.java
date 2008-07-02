@@ -12,7 +12,7 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.business;
+package org.pdfsam.guiclient.commons.business.loaders;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,14 +44,12 @@ public class PdfLoader {
     private static long LOW_PRIORITY_SIZE = 5*1024*1024; //5MB
     
 	private JPdfSelectionPanel panel;
-    private JFileChooser fileChooser;
+    private JFileChooser fileChooser = null;
     private WorkQueue workQueue = null;
 	
 	public PdfLoader(JPdfSelectionPanel panel){
 		this.panel = panel;
-		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-        fileChooser.setFileFilter(new PdfFilter());
-        fileChooser.setMultiSelectionEnabled(true);
+		
 		//number of threads in workqueue based on the number of selectable documents
 		if(panel.getMaxSelectableFiles() <= 1){
 			workQueue = new WorkQueue(1, 1);
@@ -60,9 +58,7 @@ public class PdfLoader {
 //			fileChooser.setAccessory(CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.DONT_PRESERVER_ORDER_CHECKBOX_TYPE));
 		}
         
-	}
-
-    
+	}    
     
     /**
      * adds a file or many files depending on the value of singleSelection
@@ -74,6 +70,7 @@ public class PdfLoader {
     				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Table full"),
     				JOptionPane.INFORMATION_MESSAGE);
     	}else{
+    		lazyInitFileChooser();
 			if(singleSelection){
 				fileChooser.setMultiSelectionEnabled(false);
 			}else{
@@ -98,6 +95,17 @@ public class PdfLoader {
      */
     public void showFileChooserAndAddFiles(){
     	showFileChooserAndAddFiles(false);
+    }
+    
+    /**
+     * Lazy JFileChooser initialization
+     */
+    private void lazyInitFileChooser(){
+    	if(fileChooser == null){
+    		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+            fileChooser.setFileFilter(new PdfFilter());
+            fileChooser.setMultiSelectionEnabled(true);
+    	}
     }
     /**
      * add a file to the selectionTable

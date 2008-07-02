@@ -49,12 +49,12 @@ import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.PdfFileDropper;
-import org.pdfsam.guiclient.commons.business.PdfLoader;
 import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionMouseHeaderAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionTableActionListener;
+import org.pdfsam.guiclient.commons.business.loaders.PdfLoader;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionToolTipHeader;
+import org.pdfsam.guiclient.commons.dnd.droppers.JPdfSelectionTableDropper;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SortablePdfSelectionTableModel;
@@ -234,7 +234,7 @@ public class JPdfSelectionPanel extends JPanel {
 		pdfSelectionTableListener = new PdfSelectionTableActionListener(this, loader);
 		
 		//drag and drop
-		PdfFileDropper dropper = new PdfFileDropper(loader);
+		JPdfSelectionTableDropper dropper = new JPdfSelectionTableDropper(loader);
 		tableDropTarget = new DropTarget(tableScrollPane,dropper);
 		scrollPanelDropTarget = new DropTarget(mainTable, dropper);
         
