@@ -25,6 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -43,7 +44,9 @@ import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.PagesWorker;
 import org.pdfsam.guiclient.commons.business.listeners.VisualPdfSelectionActionListener;
-import org.pdfsam.guiclient.commons.business.listeners.VisualPdfSelectionMouseAdapter;
+import org.pdfsam.guiclient.commons.business.listeners.adapters.VisualPdfSelectionKeyAdapter;
+import org.pdfsam.guiclient.commons.business.listeners.adapters.VisualPdfSelectionMouseAdapter;
+import org.pdfsam.guiclient.commons.business.listeners.mediators.PagesActionsMediator;
 import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
 import org.pdfsam.guiclient.commons.dnd.droppers.JVisualSelectionListDropper;
@@ -51,7 +54,6 @@ import org.pdfsam.guiclient.commons.dnd.handlers.VisualSelectionListTransferHand
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.renderers.VisualListRenderer;
 import org.pdfsam.guiclient.configuration.Configuration;
-import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Customizable panel for a visual page selection
@@ -71,15 +73,17 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
+	private boolean showButtonPanel = true;	
 	/**
 	 * if true deleted items appear with a red cross over 
 	 */
 	private boolean drawDeletedItems = true;
 	//if the JList uses wrap
 	private boolean wrap = false;
+	
+	
 	private Configuration config;
 	private PagesWorker pagesWorker;
-	private final JButton loadFileButton = new JButton();
     //menu
 	private final JMenuBar optionsMenu = new JMenuBar();
     private final JMenu menuOptions = new JMenu();
@@ -87,15 +91,25 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private final JMenuItem clearItem = new JMenuItem();
 	private final JMenuItem zoomInItem = new JMenuItem();
 	private final JMenuItem zoomOutItem = new JMenuItem();
+	private final JButton loadFileButton = new JButton();
 	
     private final JLabel documentProperties = new JLabel();    
     private final JVisualSelectionList thumbnailList = new JVisualSelectionList();
     private DropTarget scrollPanelDropTarget;
     private PdfThumbnailsLoader pdfLoader;
     private VisualPdfSelectionActionListener pdfSelectionActionListener;
+    private PagesActionsMediator pageActionListener;
 	private final JPopupMenu popupMenu = new JPopupMenu();
-
+	
+	//button panel
+	private JPanel buttonPanel;
+	private JButton undeleteButton;
+    private JButton removeButton;
+    private JButton moveUpButton;
+    private JButton moveDownButton;
+	
     private final EnterDoClickListener addEnterKeyListener = new EnterDoClickListener(loadFileButton);
+
     /**
      * default constructor
      */
@@ -104,22 +118,25 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	}
 	/**
 	 * draw deleted items default value (true)
+	 * show button panel default value (true)
 	 * @param orientation panel orientation
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation){
-		this(orientation, true);
+		this(orientation, true, true);
 	}
 	
 	/**
 	 * @param orientation panel orientation
 	 * @param drawDeletedItems if true deleted items appear with a red cross over 
+	 * @param showButtonPanel true=shows button panel
 	 */
-	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems){
+	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel){
 		this.orientation = orientation;
 		this.config = Configuration.getInstance();
 		this.pdfLoader = new PdfThumbnailsLoader(this);
 		this.drawDeletedItems = drawDeletedItems;
-		init();
+		this.showButtonPanel = showButtonPanel;
+		init();		
 	}
     
 	/**
@@ -132,6 +149,12 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		thumbnailList.setTransferHandler(new VisualSelectionListTransferHandler(pdfLoader));
 		thumbnailList.setDragEnabled(true);
 		pagesWorker = new PagesWorker(thumbnailList);
+		thumbnailList.addKeyListener(new VisualPdfSelectionKeyAdapter(pagesWorker));
+		
+		if(showButtonPanel){
+			initButtonPanel(pagesWorker);
+		}
+		
 		//JList orientation
 		if(HORIZONTAL_ORIENTATION == orientation){
 			thumbnailList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
@@ -146,7 +169,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		topPanel.setPreferredSize(new Dimension(400,30));
 		
 	    pdfSelectionActionListener = new VisualPdfSelectionActionListener(this, pdfLoader);
-
 		//load button
 		loadFileButton.setMargin(new Insets(2, 2, 2, 2));
 		loadFileButton.setPreferredSize(new Dimension(30,30));
@@ -254,6 +276,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		menuItemUndelete.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.UNDELETE, pagesWorker));
 		popupMenu.add(menuItemUndelete);
 		
+		//shyow popup
 		thumbnailList.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.isPopupTrigger()) {
@@ -271,16 +294,9 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
             		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
             		selection = thumbnailList.getSelectedIndices();
             	}
-            	//if elements are physically deleted i don't need this logic
+            	//if elements are physically deleted i don't need this item
             	if(drawDeletedItems){
-	            	menuItemUndelete.setEnabled(true);
-	            	for(int i=0; i<selection.length; i++){
-	            		VisualPageListItem element = (VisualPageListItem) thumbnailList.getModel().getElementAt(selection[i]);
-	            		if(element!=null && !element.isDeleted()){
-	            			menuItemUndelete.setEnabled(false);
-	            			break;
-	            		}
-	            	}
+	            	menuItemUndelete.setEnabled(true);	            	
             	}else{
             		menuItemUndelete.setEnabled(false);
             	}
@@ -301,8 +317,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		topConstraints.gridy=0;
 		topConstraints.gridwidth=3;
 		topConstraints.gridheight=1;
-		topConstraints.insets = new Insets(1,1,1,1);
-		topConstraints.weightx=0.0;
+		topConstraints.insets = new Insets(5,5,5,5);
+		topConstraints.weightx=1.0;
 		topConstraints.weighty=0.0;		
 		add(topPanel, topConstraints);
 
@@ -310,14 +326,97 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		thumbConstraints.fill = GridBagConstraints.BOTH;
 		thumbConstraints.gridx=0;
 		thumbConstraints.gridy=1;
-		thumbConstraints.gridwidth=3;
+		thumbConstraints.gridwidth=(showButtonPanel?2:3);
 		thumbConstraints.gridheight=2;
-		thumbConstraints.insets = new Insets(1,1,1,1);
+		thumbConstraints.insets = new Insets(5,5,5,5);
 		thumbConstraints.weightx=1.0;
 		thumbConstraints.weighty=1.0;		
 		add(listScroller, thumbConstraints);
+		
+		if(showButtonPanel){
+			GridBagConstraints buttonsConstraints = new GridBagConstraints();
+			buttonsConstraints.fill = GridBagConstraints.BOTH;
+			buttonsConstraints.gridx=2;
+			buttonsConstraints.gridy=1;
+			buttonsConstraints.gridwidth=1;
+			buttonsConstraints.gridheight=2;
+			buttonsConstraints.insets = new Insets(5,5,5,5);
+			buttonsConstraints.weightx=0.0;
+			buttonsConstraints.weighty=1.0;		
+			add(buttonPanel, buttonsConstraints);
+		}
 	}
 	
+	
+	/**
+     * adds a button to the button panel
+     * @param button
+     */
+    private void addButtonToButtonPanel(JButton button){
+    	button.setMinimumSize(new Dimension(90, 25));
+    	button.setMaximumSize(new Dimension(100, 25));
+    	button.setPreferredSize(new Dimension(95, 25));
+    	buttonPanel.add(button);
+		buttonPanel.add(Box.createRigidArea(new Dimension(0,5)));
+    }
+    
+	private void initButtonPanel(PagesWorker pagesWorker){
+		buttonPanel = new JPanel();
+		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+		
+	    pageActionListener = new PagesActionsMediator(pagesWorker);
+
+	    //move up button
+		moveUpButton = new JButton();
+		moveUpButton.setMargin(new Insets(2, 2, 2, 2));
+		moveUpButton.addActionListener(pageActionListener);        
+		moveUpButton.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
+		moveUpButton.setActionCommand(PagesWorker.MOVE_UP);
+		moveUpButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
+		moveUpButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move up selected pages")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowUp)"));
+		moveUpButton.addKeyListener(new EnterDoClickListener(moveUpButton));
+		moveUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButtonToButtonPanel(moveUpButton);
+		
+    	//move down button
+		moveDownButton = new JButton();
+		moveDownButton.addActionListener(pageActionListener);
+		moveDownButton.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
+		moveDownButton.setActionCommand(PagesWorker.MOVE_DOWN);
+		moveDownButton.setMargin(new Insets(2, 2, 2, 2));
+		moveDownButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
+		moveDownButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move down selected pages")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowDown)"));
+		moveDownButton.addKeyListener(new EnterDoClickListener(moveDownButton));
+		moveDownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButtonToButtonPanel(moveDownButton);
+		
+		//delete button
+		removeButton = new JButton();
+		removeButton.addActionListener(pageActionListener);
+		removeButton.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
+		removeButton.setActionCommand(PagesWorker.REMOVE);
+		removeButton.setMargin(new Insets(2, 2, 2, 2));
+		removeButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Delete"));
+		removeButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Delete selected pages")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Canc)"));
+		removeButton.addKeyListener(new EnterDoClickListener(removeButton));
+		removeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButtonToButtonPanel(removeButton);
+		
+		//undelete button
+		if(drawDeletedItems){
+			undeleteButton = new JButton();
+			undeleteButton.addActionListener(pageActionListener);
+			undeleteButton.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
+			undeleteButton.setActionCommand(PagesWorker.UNDELETE);
+			undeleteButton.setMargin(new Insets(2, 2, 2, 2));
+			undeleteButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete"));
+			undeleteButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete selected pages")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Ctrl+Z)"));
+			undeleteButton.addKeyListener(new EnterDoClickListener(undeleteButton));
+			undeleteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+			addButtonToButtonPanel(undeleteButton);
+		}
+	}
 	/**
 	 * reset the panel
 	 */

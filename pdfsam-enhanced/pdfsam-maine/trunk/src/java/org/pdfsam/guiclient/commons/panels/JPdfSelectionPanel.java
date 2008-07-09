@@ -49,8 +49,8 @@ import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionMouseHeaderAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.PdfSelectionTableActionListener;
+import org.pdfsam.guiclient.commons.business.listeners.adapters.PdfSelectionMouseHeaderAdapter;
 import org.pdfsam.guiclient.commons.business.loaders.PdfLoader;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionToolTipHeader;
@@ -509,7 +509,6 @@ public class JPdfSelectionPanel extends JPanel {
 		moveUpButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move up selected pdf file")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowUp)"));
 		moveUpButton.addKeyListener(moveuEnterKeyListener);
 		moveUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		buttonPanel.add(moveUpButton);
 		addButtonToButtonPanel(moveUpButton);
 		final JMenuItem menuItemMoveUp = new JMenuItem();
 		menuItemMoveUp.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
@@ -535,7 +534,6 @@ public class JPdfSelectionPanel extends JPanel {
 		moveDownButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Move down selected pdf file")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowDown)"));
 		moveDownButton.addKeyListener(movedEnterKeyListener);
 		moveDownButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		buttonPanel.add(moveDownButton);
 		addButtonToButtonPanel(moveDownButton);
 		final JMenuItem menuItemMoveDown = new JMenuItem();
         menuItemMoveDown.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
