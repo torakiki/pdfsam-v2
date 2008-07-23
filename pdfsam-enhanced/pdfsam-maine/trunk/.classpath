@@ -2,10 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/pdfsam-all"/>
-	<classpathentry kind="lib" path="F:/temp/clibwrapper_jiio.jar"/>
-	<classpathentry kind="lib" path="F:/temp/jai_imageio.jar"/>
-	<classpathentry kind="lib" path="F:/temp/jpedal_gpl.jar" sourcepath="F:/temp/jpedal/src"/>
-	<classpathentry kind="lib" path="F:/temp/cid.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/pdfsam-all-2"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

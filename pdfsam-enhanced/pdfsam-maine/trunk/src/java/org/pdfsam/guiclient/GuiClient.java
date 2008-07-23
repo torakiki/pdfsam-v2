@@ -41,10 +41,13 @@ public class GuiClient extends JFrame {
 	private static final String VERSION_TYPE_DEFAULT = "basic";
 	
 	private static final String VERSION_PROPERTY = "pdfsam.jar.version";
-	private static final String VERSION_DEFAULT = "1.0.0-b3";	
+	private static final String VERSION_DEFAULT = "1.0.0";	
 	
 	private static final String BUILDDATE_PROPERTY = "pdfsam.builddate";
 	private static final String BUILDDATE_DEFAULT = "";	
+
+	private static final String BRANCH_PROPERTY = "pdfsam.branch";
+	private static final String BRANCH_DEFAULT = "1";	
 
 	private static JMainFrame clientGUI;
 	private static Properties defaultProps = new Properties();
@@ -100,5 +103,12 @@ public class GuiClient extends JFrame {
 	 */
 	public static String getBuildDate(){
 		return defaultProps.getProperty(BUILDDATE_PROPERTY, BUILDDATE_DEFAULT);
+	}
+	
+	/**
+	 * @return application branch
+	 */
+	public static String getBranch(){
+		return defaultProps.getProperty(BRANCH_PROPERTY, BRANCH_DEFAULT);
 	}
 }
