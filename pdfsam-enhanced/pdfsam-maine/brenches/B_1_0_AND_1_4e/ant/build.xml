@@ -27,10 +27,10 @@
 		<property name="pdfsam.release.src.dir"  location="${pdfsam.release.dir}/src"/>
 		<property name="pdfsam.release.dist.dir"  location="${pdfsam.release.dir}/dist/pdfsam-${pdfsam.version}"/>
 		<property name="pdfsam.javadoc.dir"  location="${pdfsam.build.root}/apidocs"/>		
-	    <property name="template.dir" value="${workspace.dir}/template-${pdfsam.version}"/>
+	    <property name="template.dir" value="${workspace.dir}/template-${pdfsam.version}-${pdfsam.main.version}"/>
 	    <property name="jcmdline.dir" value="${workspace.dir}/jcmdline"/>
 	    <property name="emp4j.dir" value="${workspace.dir}/emp4j"/>
-	    <property name="console.dir" value="${workspace.dir}/pdfsam-console"/>
+	    <property name="console.dir" value="${workspace.dir}/pdfsam-console-br1"/>
 	    <property name="split.dir" value="${workspace.dir}/pdfsam-split"/>
 	    <property name="merge.dir" value="${workspace.dir}/pdfsam-merge"/>
 	    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
@@ -39,10 +39,10 @@
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
-		<property name="libs.dir" value="${workspace.dir}/libraries" />
+		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
 		
 		<!-- default values -->
-		<property name="pdfsam.jar.version" value="1.0.0-b3"/>	
+		<property name="pdfsam.jar.version" value="1.0.0"/>	
 	    <property name="pdfsam.version" value="basic"/>
 	
 		
@@ -383,10 +383,6 @@
 	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
-		<!--unpack-->
-	  	<!--<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="buildZipSrcPackage">
-	  		  	<property name="pdfsam-unpack.dist.dir" value="${pdfsam.release.src.dir}"/>
-	  	</ant>-->
 	</target>	
 
 </project>
