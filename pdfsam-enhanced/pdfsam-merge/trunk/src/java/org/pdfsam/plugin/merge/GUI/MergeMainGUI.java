@@ -108,7 +108,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.4";
+    private static final String PLUGIN_VERSION = "0.6.5";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -232,7 +232,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 //validation and permission check are demanded 
                 try{                	
                     //if no extension given
-                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)[^.]+?\\.("+PDF_EXTENSION+")$"))){
+                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
                         destinationTextField.setText(destinationTextField.getText()+".pdf");
                     }                    
                     if(destinationTextField.getText().length()>0){
