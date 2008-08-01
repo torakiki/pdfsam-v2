@@ -38,6 +38,7 @@
 		<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
+		<property name="vpagereorder.dir" value="${workspace.dir}/pdfsam-vpagereorder"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
@@ -186,6 +187,11 @@
 	  		<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 
+		<!--vpagereorder-->
+	  	<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="build-jars">
+	  		<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
 	</target>
 	
 	<!--creates the distribution of pdfsam-->	
@@ -240,6 +246,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-encrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/encrypt" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-setviewer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/setviewer" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
 	</target>	
 
 	<!--deploy pdfsam-->	
@@ -398,6 +405,11 @@
 		<!--setviewer-->
 	  	<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="buildZipSrcPackage">
 	  		  	<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--vpagereorder-->
+	  	<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
 	</target>	

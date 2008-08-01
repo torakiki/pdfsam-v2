@@ -49,7 +49,7 @@ public class HttpUpdateChecker implements UpdateChecker {
 	    if(xmlContent != null){
 	    	try{
 		    	SAXReader reader = new SAXReader();
-				Document document = reader.read(new StringReader(new String(xmlContent)));
+				Document document = reader.read(new StringReader(xmlContent));
 				Node node = document.selectSingleNode("/pdfsam/latestVersion/@value");
 				if(node != null){
 					retVal = node.getText().trim();

@@ -85,7 +85,6 @@ public class JPdfSelectionPanel extends JPanel {
 	
 	private int maxSelectableFiles = 0;
 	private int showedColums;
-	private String defaultOutputPath = "";
 	
 	private final JPdfSelectionTable mainTable = new JPdfSelectionTable();
 	private AbstractPdfSelectionTableModel tableModel;
@@ -577,9 +576,8 @@ public class JPdfSelectionPanel extends JPanel {
 	            public void mouseReleased(MouseEvent e) {
 	                if (mainTable.getSelectedRow() != -1){
 	                    try{
-	                    	String previousValue = defaultOutputPath;
-	                    	defaultOutputPath = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
-	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, previousValue, defaultOutputPath);
+	                    	String defaultOutputPath = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow()).getInputFile().getParent();
+	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, "", defaultOutputPath);
 	                    }
 	                    catch (Exception ex){
 	                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to get the file path."), ex); 

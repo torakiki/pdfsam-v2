@@ -98,7 +98,7 @@ public class UpdateCheckerMediator implements ActionListener {
 		public void run() {
 			try{ 
 		 		Thread.sleep(delay);
-		 		URL url = new URL(destinationUrl+"?version="+URLEncoder.encode(GuiClient.getVersionType(),"UTF-8")+"&remoteversion="+URLEncoder.encode(GuiClient.getVersion(),"UTF-8"));
+		 		URL url = new URL(destinationUrl+"?version="+URLEncoder.encode(GuiClient.getVersionType(),"UTF-8")+"&remoteversion="+URLEncoder.encode(GuiClient.getVersion(),"UTF-8")+"&branch="+URLEncoder.encode(GuiClient.getBranch(),"UTF-8"));
 		 		if(updateManager == null){
 		 			updateManager = new UpdateManager(url);
 		 		}
