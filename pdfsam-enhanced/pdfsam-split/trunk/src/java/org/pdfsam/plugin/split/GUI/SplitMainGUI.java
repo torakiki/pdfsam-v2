@@ -94,7 +94,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	private JSplitSizeCombo splitSizeCombo = new JSplitSizeCombo();
     
 //file_chooser    
-    private final JFileChooser browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    private JFileChooser browseDestFileChooser = null;
 
 //button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
@@ -137,7 +137,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.5";
+    private final String PLUGIN_VERSION = "0.4.6";
     
 /**
  * Constructor
@@ -157,8 +157,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         splitSpringLayout = new SpringLayout();
         setLayout(splitSpringLayout);
         add(selectionPanel);
-        
-        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
 //SPLIT_SECTION
         optionsPaneLayout = new SpringLayout();
         splitOptionsPanel.setLayout(optionsPaneLayout);
@@ -274,6 +273,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	if(browseDestFileChooser==null){
+                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
+                    browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            	}
                 File chosenFile = null;                
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
