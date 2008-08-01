@@ -98,7 +98,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.3e";
+	private static final String PLUGIN_VERSION = "0.1.4e";
 
 	
 	/**
@@ -230,7 +230,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 						args.add("-"+MixParsedCommand.O_ARG);
 						//if no extension given
-	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches("(?i)[^.]+?\\.("+PDF_EXTENSION+")$"))){
+	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
 							destinationTextField.setText(destinationTextField.getText()+".pdf");
 						}
 	                    if(destinationTextField.getText().length()>0){
