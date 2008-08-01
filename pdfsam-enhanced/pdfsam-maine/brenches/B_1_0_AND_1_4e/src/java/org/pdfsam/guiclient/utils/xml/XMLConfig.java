@@ -77,10 +77,13 @@ public class XMLConfig{
     			}
     			if (!configFile.canWrite()){
     				File defaultDir = new File(defaultDirectory);
-    				defaultDir.mkdirs();
-    				log.info("Copying config.xml from "+configFile.getPath()+" to "+defaultConfigFile.getPath());
-    				FileUtility.copyFile(configFile, defaultConfigFile);
-    				configFile = defaultConfigFile;
+    				if(defaultDir.mkdirs()){
+	    				log.info("Copying config.xml from "+configFile.getPath()+" to "+defaultConfigFile.getPath());
+	    				FileUtility.copyFile(configFile, defaultConfigFile);
+	    				configFile = defaultConfigFile;
+    				}else{
+    					throw new ConfigurationException("Unable to create "+defaultDirectory);
+    				}
     			}
     		}else{
     			configFile = defaultConfigFile;

@@ -26,8 +26,8 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class UpdatesUtility {
 	
-	public static String NEVER_CHECK = "0";
-	public static String CHECK_AT_STARTUP = "1";
+	public final static String NEVER_CHECK = "0";
+	public final static String CHECK_AT_STARTUP = "1";
 	 /**
      * @return the items for the checkNewVersion combo
      */

@@ -26,6 +26,9 @@ import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
  *
  */
 public abstract class AbstractPdfSelectionTableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = -4626256408853242065L;
+
 	//colums order
     public final static int ROW_NUM = 0;
     public final static int FILENAME = 1;

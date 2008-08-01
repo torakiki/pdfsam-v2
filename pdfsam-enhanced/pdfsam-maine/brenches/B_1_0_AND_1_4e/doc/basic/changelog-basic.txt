@@ -1,3 +1,9 @@
+1.0.1 stable release ()
+===================================
+-Fixed some matches found with FindBugs
+-Fixed bug #2034850
+-Merge: Fixed reopened bug #1926019  
+
 1.0.0 stable release (30-Jun-2008)
 ===================================
 -Fixed bug  #1972966 (version combo when loading an environment)

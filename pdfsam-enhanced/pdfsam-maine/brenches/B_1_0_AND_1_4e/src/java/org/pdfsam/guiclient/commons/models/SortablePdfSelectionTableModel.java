@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.models;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -141,9 +142,10 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
      * @author Andrea Vacondio
      *
      */
-    public class  PdfSelectionTableItemComparator implements Comparator{
-    	
-    	private SortingState sortingState = new SortingState();
+    public class  PdfSelectionTableItemComparator implements Comparator, Serializable{
+
+		private static final long serialVersionUID = 1128466157306952391L;
+		private SortingState sortingState = new SortingState();
     	
         public int compare(Object o1, Object o2) {
         	int retVal = 0;
