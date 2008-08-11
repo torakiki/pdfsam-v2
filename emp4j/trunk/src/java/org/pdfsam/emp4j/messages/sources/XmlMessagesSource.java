@@ -31,8 +31,8 @@ import org.w3c.dom.DOMException;
  */
 public class XmlMessagesSource extends AbstractMessagesSource{
 
-	private static final long serialVersionUID = 1L;
-	private Document document;
+	private static final long serialVersionUID = -5549563695772599153L;
+	private transient Document document;
 
 	public XmlMessagesSource(Node node) throws Exception{
 		super(node);
