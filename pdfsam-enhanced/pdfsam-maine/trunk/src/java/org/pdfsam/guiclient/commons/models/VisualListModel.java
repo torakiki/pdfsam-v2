@@ -116,9 +116,9 @@ public class VisualListModel extends AbstractListModel {
      * @throws Exception if an exception occurs
      * */   
     public void removeElements(int fromIndex, int toIndex, boolean physicalDeletion)  throws IndexOutOfBoundsException{
-        if (fromIndex >= 0 && toIndex < data.size() && fromIndex<toIndex){
+        if (fromIndex >= 0 && toIndex < data.size() && fromIndex<=toIndex){
         	if(physicalDeletion){
-        		data.subList(fromIndex, toIndex).clear();
+        		data.subList(fromIndex, toIndex+1).clear();
         	}else{
         		for(int i=fromIndex; i<toIndex; i++){
         			((VisualPageListItem)data.get(i)).setDeleted(true);
@@ -172,7 +172,7 @@ public class VisualListModel extends AbstractListModel {
      * @param c
      */
     public void addAllElements(int index, Collection c){
-    	if(c!=null && index>=0 && index<data.size()){
+    	if(c!=null && index>=0 && index<=data.size()){
     		int i = index;
     		for(Iterator iter = c.iterator(); iter.hasNext();){
     			VisualPageListItem element = (VisualPageListItem)iter.next();
@@ -185,20 +185,29 @@ public class VisualListModel extends AbstractListModel {
     
     /**
      * delegated to the Vector subList
-     * @param fromIndex
-     * @param toIndex
+     * @param fromIndex start inclusive
+     * @param toIndex end exclusive
      * @return null if limits are not corrected
      * @see Vector#subList(int, int)
      */
     public Collection subList(int fromIndex, int toIndex){
+    	return subList(fromIndex, toIndex, false);
+    }
+    
+    /**
+     * @param fromIndex start inclusive
+     * @param toIndex end exclusive
+     * @param newInstance if false delegates to the Vector#subList(int, int) if true return a new Vector
+     * @return a portion of the data Vector, nll if limits are not corrected
+     * @see Vector#subList(int, int)
+     */
+    public Collection subList(int fromIndex, int toIndex, boolean newInstance){
     	Collection retVal = null;
-    	if(fromIndex>=0 && toIndex<data.size()){
-    		retVal = data.subList(fromIndex, toIndex);
+    	if(fromIndex>=0 && toIndex<=data.size()){
+    		retVal = (newInstance)? new Vector(data.subList(fromIndex, toIndex)): data.subList(fromIndex, toIndex);
     	}
     	return retVal;
     }
-    
-    
     
     /**
      * @return items of the model

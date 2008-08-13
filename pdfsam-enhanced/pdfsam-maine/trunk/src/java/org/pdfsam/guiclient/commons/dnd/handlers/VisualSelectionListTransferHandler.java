@@ -70,11 +70,7 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 		VisualPageListTransferable retVal = null;
 		int[] selectedList = ((JVisualSelectionList)c).getSelectedIndices();
 		if(selectedList != null && selectedList.length>0){
-			retVal = new VisualPageListTransferable(c,selectedList);
-			log.debug("Transferable created with index list: "+selectedList);
-			for(int i=0; i<selectedList.length;i++){
-				log.debug("Element="+selectedList[i]);
-			}
+			retVal = new VisualPageListTransferable(c,selectedList);			
 		}
 		return retVal;
 	}
@@ -83,7 +79,6 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 		if(action==MOVE){
 	    	JVisualSelectionList listComponent = (JVisualSelectionList) source;
 	    	int[] dataList = ((VisualPageListTransferable) data).getDataList();
-	    	log.debug("Cleaning: "+dataList);
 	    	if (dataList[0] <= addIndex) {
 	    		((VisualListModel)listComponent.getModel()).removeElements(dataList[0], dataList[dataList.length-1], true);
 	        }else{
@@ -107,9 +102,13 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
                 		log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a single pdf document."));
                 	}else{
                 		File selectedFile = (File)fileList.get(0);
-                		if (selectedFile!=null && new PdfFilter(false).accept(selectedFile)){
-                			loader.addFile(selectedFile);
-                			retVal = true;
+                		if (selectedFile!=null && new PdfFilter(false).accept(selectedFile)){                			
+                			if(loader.canLoad()){ 
+                				loader.addFile(selectedFile);
+                    			retVal = true;
+                			}else{
+                    			retVal = false;                				
+                			}
                 		}else{
                 			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File type not supported."));
                 		}
@@ -182,11 +181,17 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
     			addIndex=listSize;
     		}else if (index<0){
     			addIndex=0;
+    		}else{
+    			addIndex = index;
+    			//if moving forward
+    			if(addIndex>dataList[0]){
+    				addIndex++;
+    			}
     		}
     		//
-    		Collection c = ((VisualListModel)listComponent.getModel()).subList(dataList[0], dataList[dataList.length-1]+1);
-    		log.debug("importVisualListItems: Retrived objects "+c);
+    		Collection c = ((VisualListModel)listComponent.getModel()).subList(dataList[0], dataList[dataList.length-1]+1, true);
     		((VisualListModel)listComponent.getModel()).addAllElements(addIndex, c);
+    		listComponent.setSelectionInterval(addIndex, addIndex+dataList.length-1);
     		retVal = true;
     	}    
     	return retVal;

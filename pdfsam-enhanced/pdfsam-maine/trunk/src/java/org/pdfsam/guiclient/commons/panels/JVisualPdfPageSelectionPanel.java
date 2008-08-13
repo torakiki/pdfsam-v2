@@ -60,6 +60,10 @@ import org.pdfsam.i18n.GettextResource;
  * @author Andrea Vacondio
  *
  */
+/**
+ * @author Andrea Vacondio
+ *
+ */
 public class JVisualPdfPageSelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -9119425032984495971L;
@@ -73,6 +77,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
+	private String selectedPdfDocumentPassword = null;
 	private boolean showButtonPanel = true;	
 	/**
 	 * if true deleted items appear with a red cross over 
@@ -171,7 +176,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	    pdfSelectionActionListener = new VisualPdfSelectionActionListener(this, pdfLoader);
 		//load button
 		loadFileButton.setMargin(new Insets(2, 2, 2, 2));
-		loadFileButton.setPreferredSize(new Dimension(30,30));
+		loadFileButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
+		loadFileButton.setPreferredSize(new Dimension(100,30));
 		loadFileButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Load a pdf document"));
 		loadFileButton.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
 		loadFileButton.addKeyListener(addEnterKeyListener);
@@ -422,9 +428,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 */
 	public void resetPanel(){
 		thumbnailList.setCurrentZoomLevel(JVisualSelectionList.DEFAULT_ZOOM_LEVEL);
+		zoomInItem.setEnabled(true);
+		zoomOutItem.setEnabled(true);
 		((VisualListModel)thumbnailList.getModel()).clearData();
 		selectedPdfDocument = null;
+		selectedPdfDocumentPassword = "";
 		setDocumentPropertiesVisible(false);
+		
 	}
 	/**
 	 * Set the visible the label that shows document properties
@@ -452,7 +462,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param creator
 	 * @param producer
 	 */
-	public void setDocumentProperties(String fileName, String pages, String version, String title, String author, String creator, String producer){
+	public void setDocumentProperties(String fileName, String pages, String version, String title, String author, String creator, String producer, boolean isEncrypted){
+		String encrypted = GettextResource.gettext(config.getI18nResourceBundle(),"No");
+		if(isEncrypted){
+			encrypted = GettextResource.gettext(config.getI18nResourceBundle(),"Yes");
+		}
 		setDocumentProperties( 
 	    		"<html><body><b><p>"+GettextResource.gettext(config.getI18nResourceBundle(),"File: ")+"</b>"+fileName+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pages: ")+"</b>"+pages+"</p>"+
@@ -461,6 +475,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+author+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+creator+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+producer+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Encrypted: ")+"</b>"+encrypted+"</p>"+
 	    		"</body></html>");
 	}
 	
@@ -513,6 +528,24 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 */
 	public void setDrawDeletedItems(boolean drawDeletedItems) {
 		this.drawDeletedItems = drawDeletedItems;
+	}
+	/**
+	 * @return the pdfLoader
+	 */
+	public PdfThumbnailsLoader getPdfLoader() {
+		return pdfLoader;
+	}
+	/**
+	 * @return the selectedPdfDocumentPassword
+	 */
+	public String getSelectedPdfDocumentPassword() {
+		return selectedPdfDocumentPassword;
+	}
+	/**
+	 * @param selectedPdfDocumentPassword the selectedPdfDocumentPassword to set
+	 */
+	public void setSelectedPdfDocumentPassword(String selectedPdfDocumentPassword) {
+		this.selectedPdfDocumentPassword = selectedPdfDocumentPassword;
 	}
 
 	

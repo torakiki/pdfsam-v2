@@ -16,6 +16,8 @@ package org.pdfsam.guiclient.dto;
 
 import java.awt.Image;
 import java.io.Serializable;
+
+import javax.swing.ImageIcon;
 /**
  * DTO representing a page of a document 
  * @author Andrea Vacondio
@@ -25,11 +27,20 @@ public class VisualPageListItem implements Serializable {
 
 	private static final long serialVersionUID = 7598120284619680606L;
 
-	private Image thumbnail;
+	public static final Image HOURGLASS =  new ImageIcon(VisualPageListItem.class.getResource("/images/hourglass.png")).getImage();
+	
+	private Image thumbnail = HOURGLASS;
 	private int pageNumber;
 	private boolean deleted = false;
 
 	public VisualPageListItem() {
+	}
+
+	/**
+	 * @param pageNumber
+	 */
+	public VisualPageListItem(int pageNumber) {
+		this(HOURGLASS, pageNumber);
 	}
 	/**
 	 * @param thumbnail

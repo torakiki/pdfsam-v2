@@ -66,23 +66,9 @@ public class PdfThumbnailsLoader {
     public void showFileChooserAndAddFile(){ 
     	lazyInitFileChooser();
 		if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
-			if(panel.getThumbnailList().getModel().getSize() >= 1){
-				//JList has elements and i want to clean
-	    		if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(panel,
-	       				GettextResource.gettext(config.getI18nResourceBundle(),"Selection list is full, would you like to empty before the new documents is loaded?"),
-	    				GettextResource.gettext(config.getI18nResourceBundle(),"List full"),
-					    JOptionPane.YES_NO_OPTION,
-					    JOptionPane.QUESTION_MESSAGE)){
-	    			//empty the model
-	    			panel.resetPanel();
-	    			if((workQueue.getQueueSize()>0)){
-	    		        workQueue.cleanQueue();
-	    			}
-				}else{
-					return;
-				}
-	    	}	    	
-        	addFile(fileChooser.getSelectedFile());
+			if(canLoad()){	    	
+				addFile(fileChooser.getSelectedFile());
+        	}
 		}
     }
     
@@ -95,6 +81,31 @@ public class PdfThumbnailsLoader {
             fileChooser.setFileFilter(new PdfFilter());
             fileChooser.setMultiSelectionEnabled(false); 
     	}
+    }
+    
+    /**
+     * check if the panel is empty and, if necessary shows a dialog to ask the user
+     * @return true if can load
+     */
+    public boolean canLoad(){
+    	boolean retVal = true;
+    	if(panel.getThumbnailList().getModel().getSize() >= 1){
+			//JList has elements and i want to clean
+    		if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(panel,
+       				GettextResource.gettext(config.getI18nResourceBundle(),"Selection list is full, would you like to empty before the new documents is loaded?"),
+    				GettextResource.gettext(config.getI18nResourceBundle(),"List full"),
+				    JOptionPane.YES_NO_OPTION,
+				    JOptionPane.QUESTION_MESSAGE)){
+    			//empty the model
+    			panel.resetPanel();
+    			if((workQueue.getQueueSize()>0)){
+    		        workQueue.cleanQueue();
+    			}
+			}else{
+				retVal = false;
+			}
+    	}
+    	return retVal;
     }
     
     /**
@@ -112,6 +123,7 @@ public class PdfThumbnailsLoader {
 	            	try{
 	            		if(inputFile!=null){
 		            		if(pwd != null && pwd.length()>0){
+		            			panel.setSelectedPdfDocumentPassword(pwd);
 		            			decoder.openPdfFile(inputFile.getAbsolutePath(), pwd);
 		            		}else{
 		            			decoder.openPdfFile(inputFile.getAbsolutePath());
@@ -121,15 +133,15 @@ public class PdfThumbnailsLoader {
 		            		PdfFileInformation information = decoder.getFileInformationData();
 		            		if(information!=null && information.getFieldValues()!=null){
 		            			String[] infos = information.getFieldValues();
-		            			panel.setDocumentProperties(inputFile.getAbsolutePath(), pages+"", decoder.getPDFVersion(), infos[0], infos[1], infos[4], infos[5]);		            			
+		            			panel.setDocumentProperties(inputFile.getAbsolutePath(), pages+"", decoder.getPDFVersion(), infos[0], infos[1], infos[4], infos[5], decoder.isEncrypted());		            			
 		            		}else{
-		            			panel.setDocumentProperties(inputFile.getAbsolutePath(), pages+"", decoder.getPDFVersion(), "", "", "", "");
+		            			panel.setDocumentProperties(inputFile.getAbsolutePath(), pages+"", decoder.getPDFVersion(), "", "", "", "", decoder.isEncrypted());
 		            		}
 		            		panel.setDocumentPropertiesVisible(true);
 		            		if(pages > 0){
 		            			ArrayList modelList = new ArrayList(pages);
 		            			for (int i = 1; i<=pages; i++){
-		            				modelList.add(new VisualPageListItem(null, i));
+		            				modelList.add(new VisualPageListItem(i));
 		            			}
 		            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));
 		            			workQueue.addPages(modelList);
@@ -278,7 +290,6 @@ public class PdfThumbnailsLoader {
                    if(pageItem != null){
 	                    try{
 	                    	long i = System.currentTimeMillis();
-	                      	log.debug("["+this+"]: getting image from decoder.");
 	                      	int height = PORTRAIT_HEIGHT;
 	                      	if(pdfPageData.getCropBoxHeight(pageItem.getPageNumber())<pdfPageData.getCropBoxWidth(pageItem.getPageNumber())){
 	                      		height = LANDSCAPE_HEIGHT;
@@ -298,7 +309,7 @@ public class PdfThumbnailsLoader {
                     //close decoder
                     running--;
             		if(queue.isEmpty() && running==0){
-            			log.debug("["+this+"]: closing decoder.");
+            			log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails generated"));
             			decoder.setThumbnailsDrawing(false);
             			decoder.closePdfFile();
             		}
