@@ -74,7 +74,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	                          FileParam.OPTIONAL, 
 	                          FileParam.MULTI_VALUED),
 	            new StringParam(ConcatParsedCommand.U_ARG,   
-	                          "page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
+	                          "page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" or \"num-\" or \"num1,num2-num3..\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -f /tmp/file3.pdf -u all:12-14:32,12-14,4,34-:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
 	                          StringParam.OPTIONAL),                                             
 	            new FileParam(ConcatParsedCommand.L_ARG,
 							  "xml or csv file containing pdf files list to concat. If csv file in comma separated value format; if xml file <filelist><file value=\"filepath\" /></filelist>",

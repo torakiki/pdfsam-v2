@@ -52,7 +52,7 @@ public class ConsoleServicesFacade {
 	
 	private final Logger log = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 	
-    public static final String VERSION = "1.2.0e"; 
+    public static final String VERSION = "2.0.0e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +ConsoleServicesFacade.VERSION+ ")";   
     public static final String LICENSE =
 		ConsoleServicesFacade.CREATOR+"  Copyright (C) 2007  Andrea Vacondio\n"+
@@ -104,7 +104,7 @@ public class ConsoleServicesFacade {
     
 	/**
 	 * parse and validate the input arguments 
-	 * @param inputArguments the parsedCommand dto
+	 * @param inputArguments input string arguments
 	 * @return the parsed command
      * @throws Exception. This way we don't have dependencies from emp4j client side
 	 */
