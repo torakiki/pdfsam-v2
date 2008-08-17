@@ -124,8 +124,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		selectionPanel.addPropertyChangeListener(this);
 		
 //		BROWSE_FILE_CHOOSER        
-		browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-		browseFileChooser.setFileFilter(new PdfFilter());
+		
 
 
 		destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
@@ -158,9 +157,13 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int return_val = browseFileChooser.showOpenDialog(browseButton.getParent());
+				if(browseFileChooser==null){
+					browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+					browseFileChooser.setFileFilter(new PdfFilter());
+				}
+				int retVal = browseFileChooser.showOpenDialog(browseButton.getParent());
 				File chosen_file = null;                
-				if (return_val == JFileChooser.APPROVE_OPTION){
+				if (retVal == JFileChooser.APPROVE_OPTION){
 					chosen_file = browseFileChooser.getSelectedFile();
 				}
 				//write the destination in text field
