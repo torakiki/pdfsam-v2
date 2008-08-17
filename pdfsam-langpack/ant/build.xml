@@ -83,6 +83,9 @@
 			<arg line="-U ${po}/fr/pdfsam-fr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/gl/pdfsam-gl.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-U ${po}/he/pdfsam-he.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
@@ -92,6 +95,9 @@
 			<arg line="-U ${po}/hr/pdfsam-hr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/ja/pdfsam-ja.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-U ${po}/id/pdfsam-id.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
@@ -99,6 +105,9 @@
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-U ${po}/ko/pdfsam-ko.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/lv/pdfsam-lv.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-U ${po}/nb/pdfsam-nb.po ${pot}"/>
@@ -180,6 +189,9 @@
 			<arg line="-p -o ${resources.dir}/Messages_fr.properties ${po}/fr/pdfsam-fr.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_gl.properties ${po}/gl/pdfsam-gl.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_he.properties ${po}/he/pdfsam-he.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
@@ -189,6 +201,9 @@
 			<arg line="-p -o ${resources.dir}/Messages_hu.properties ${po}/hu/pdfsam-hu.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_ja.properties ${po}/ja/pdfsam-ja.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_id.properties ${po}/id/pdfsam-id.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
@@ -196,6 +211,9 @@
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_ko.properties ${po}/ko/pdfsam-ko.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_lv.properties ${po}/lv/pdfsam-lv.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_nl.properties ${po}/nl/pdfsam-nl.po"/>
