@@ -70,6 +70,7 @@ import org.pdfsam.plugin.merge.components.JSaveListAsXmlMenuItem;
  */
 public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChangeListener{
 
+	private static final String DEFAULT_OUPUT_NAME = "merged_file.pdf";
 	private static final long serialVersionUID = -992513717368544272L;
 
 	private static final Logger log = Logger.getLogger(MergeMainGUI.class.getPackage().getName());
@@ -132,11 +133,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         setLayout(layoutMergePanel);
         
         add(selectionPanel);
-        selectionPanel.addPropertyChangeListener(this);
-
-//BROWSE_FILE_CHOOSER        
-        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-        browseDestFileChooser.setFileFilter(new PdfFilter());
+        selectionPanel.addPropertyChangeListener(this);      
+       
 //END_BROWSE_FILE_CHOOSER        
 
 //      OPTION_PANEL
@@ -177,6 +175,10 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //BROWSE_BUTTON        
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	if(browseDestFileChooser==null){
+            		 browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+            		 browseDestFileChooser.setFileFilter(new PdfFilter());
+            	}
                 int retVal = browseDestFileChooser.showOpenDialog(browseDestButton.getParent());
                 File chosenFile = null;                
                 if (retVal == JFileChooser.APPROVE_OPTION){
@@ -632,7 +634,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
-			destinationTextField.setText(((String)evt.getNewValue())+File.separatorChar+"merged_file.pdf");
+			destinationTextField.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
 		}		
 	}
 	
