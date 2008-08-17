@@ -11,14 +11,17 @@
     <language value="fa" description="Persian" />  	
     <language value="fi" description="Finnish" />  	
     <language value="fr" description="French" />    
+    <language value="gl" description="Galician" />
     <language value="de" description="German" />
     <language value="el" description="Greek" />   
     <language value="he" description="Hebrew" />  
     <language value="hu" description="Hungarian" />
+    <language value="ja" description="Japanese" />
     <language value="id" description="Indonesian" />
     <language value="it" description="Italian" />  
     <language value="ko" description="Korean" />  
     <language value="nb" description="Norwegian Bokmal" />  
+    <language value="lv" description="Latvian" />  
     <language value="pl" description="Polish" />
     <language value="pt" description="Portuguese" />  
     <language value="ru" description="Russian" />    
