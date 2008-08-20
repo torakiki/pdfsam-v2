@@ -1,8 +1,9 @@
-1.4.1e stable release ()
+1.4.1e stable release (24-Aug-2008)
 ===================================
 -Fixed some matches found with FindBugs
 -Fixed bug #2034850
--Merge, Mix: Fixed reopened bug #1926019  
+-Merge: Fixed reopened bug #1926019 
+-Updated langpack 
 
 1.4.0e stable release (30-Jun-2008)
 ===================================

@@ -1,8 +1,9 @@
-1.0.1 stable release ()
+1.0.1 stable release (24-Aug-2008)
 ===================================
 -Fixed some matches found with FindBugs
 -Fixed bug #2034850
--Merge: Fixed reopened bug #1926019  
+-Merge: Fixed reopened bug #1926019 
+-Updated langpack 
 
 1.0.0 stable release (30-Jun-2008)
 ===================================
