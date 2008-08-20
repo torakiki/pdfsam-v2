@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exception-message-provider>
+	<source class="org.pdfsam.emp4j.messages.sources.XmlMessagesSource">
+		<xmlsource filename="exception-messages.xml" />
+	</source>
+</exception-message-provider>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="emp4j" default="build-jars" basedir="../">
+    <description>
+        Exception Message Provider For Java
+    </description>
+  
+  <!-- set global properties for this build -->
+  <property name="user.name" value="Andrea Vacondio"/>
+  <property name="emp4j.src.dir" location="src/java"/>	
+  
+  <target name="init">
+  	<property file="ant/build.properties" />
+
+	<property name="emp4j.build.root" location="${build.dir}/emp4j"/>
+  	<property name="emp4j.build.dir" location="${emp4j.build.root}/build"/>
+    <property name="emp4j.dist.dir"  location="${emp4j.build.root}/dist"/>  	
+    <property name="emp4j.javadoc.dir"  location="${emp4j.build.root}/apidocs"/>
+
+  </target>
+	
+	<target name="make-structure" depends="init">  	
+	    <!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${emp4j.build.dir}"/>
+	  	<mkdir dir="${emp4j.dist.dir}"/>
+	    <mkdir dir="${emp4j.javadoc.dir}"/>
+	</target>
+	
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${emp4j.javadoc.dir}"/>
+	    <delete dir="${emp4j.dist.dir}"/>
+	    <delete dir="${emp4j.build.dir}"/>
+	</target>
+	
+  <target name="compile" depends="make-structure" description="emp4j compile" >
+    <!-- Construct classpath -->
+    <path id="emp4j.classpath">
+	 	<fileset dir="${libs.dir}">
+	        <include name="**/${log4j.jar.name}.jar"/>
+	        <include name="**/${dom4j.jar.name}.jar"/>
+	        <include name="**/${jaxen.jar.name}.jar"/>
+	        <include name="**/${jcmdline.jar.name}.jar"/>
+	    </fileset>
+    	<pathelement path="${emp4j.build.dir}"/>
+    </path>
+
+    <!-- Compile the java code -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${emp4j.src.dir}" destdir="${emp4j.build.dir}" debug="true">
+    	<classpath refid="emp4j.classpath"/>
+    </javac>
+  </target>
+	
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${emp4j.dist.dir}/${emp4j.jar.name}.jar" basedir="${emp4j.build.dir}">
+	    <manifest>
+			<attribute name="Built-By" value="${user.name}"/>
+			<attribute name="Main-Class" value=""/>
+		    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar"/>
+	    </manifest>
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.emp4j.*"
+      sourcepath="${emp4j.src.dir}"
+      destdir="${emp4j.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="emp4j API"
+      doctitle="emp4j API" >
+    <classpath refid="emp4j.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${emp4j.dist.dir}/${emp4j.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="emp4j/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="emp4j/apidocs/**/*.*"/>
+    	</fileset>
+    	<fileset dir="..">
+    		<include name="emp4j/ant/**/*.*"/>
+    		<include name="emp4j/etc/**/*.*"/>
+    	</fileset>
+     </zip>
+  </target>
+
+</project>
+
