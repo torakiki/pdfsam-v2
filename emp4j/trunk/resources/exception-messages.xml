@@ -20,7 +20,7 @@
 		<exception errorcode="5" message="Both -f and -l options given." />		
 		<exception errorcode="6" message="Input list file not a csv or xml format" />		
 		<exception errorcode="7" message="Input file {0} is not a pdf format." />		
-		<exception errorcode="8" message="-u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />		
+		<exception errorcode="8" message="-u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />				
 		<exception errorcode="9" message="Output is not a directory." />		
 		<exception errorcode="10" message="Not -s option given." />		
 		<exception errorcode="11" message="-n option not a numeric value." />		
