@@ -194,10 +194,10 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                 	log.debug("File "+outFile.getCanonicalPath()+" created.");
                 }
             }
-            pdfReader.close();
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
-         log.info("Split "+inputCommand.getSplitType()+" done.");
+        pdfReader.close();
+        log.info("Split "+inputCommand.getSplitType()+" done.");
     }
     
     /**
@@ -372,8 +372,6 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             //if it's time to close the document
 			if ((currentPage == n) || ((relativeCurrentPage>1) && ((baos.size()/relativeCurrentPage)*(1+relativeCurrentPage) > inputCommand.getSplitSize().longValue()))){
 				log.debug("Current stream size: "+baos.size()+" bytes.");
-				baos.writeTo(new FileOutputStream(tmpFile));
-                log.info("Temporary document "+tmpFile.getName()+" done, now adding bookmarks...");
                 //manage bookmarks
                 ArrayList master = new ArrayList();
                 List thisBook = SimpleBookmark.getBookmark(pdfReader);
@@ -386,18 +384,21 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                    master.addAll(thisBook);
                    pdfWriter.setOutlines(master);
                 }
+                relativeCurrentPage = 0; 
                 currentDocument.close();
+				FileOutputStream fos = new FileOutputStream(tmpFile);
+				baos.writeTo(fos);
+				fos.close();
+				baos.close();				
+                log.info("Temporary document "+tmpFile.getName()+" done.");
                 if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
                 	log.debug("File "+outFile.getCanonicalPath()+" created.");
                 }
-                relativeCurrentPage = 0; 
 			}
-			pdfReader.close();
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
 		}
-
-        
-			
+		pdfReader.close();  
+		log.info("Split "+inputCommand.getSplitType()+" done.");
 	}
   
     /**

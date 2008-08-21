@@ -30,7 +30,7 @@ public class ConsoleServicesFacade {
 	
 	private final Logger log = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 	
-    public static final String VERSION = "1.1.4e"; 
+    public static final String VERSION = "1.1.5e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +ConsoleServicesFacade.VERSION+ ")";   
     public static final String LICENSE =
 		ConsoleServicesFacade.CREATOR+"  Copyright (C) 2007  Andrea Vacondio\n"+
