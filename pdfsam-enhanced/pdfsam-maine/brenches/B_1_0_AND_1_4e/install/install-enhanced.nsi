@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 1.4.0e
+!define VERSION 1.4.1e
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -80,6 +80,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Catalan"
   !insertmacro MUI_LANGUAGE "Czech"
   !insertmacro MUI_LANGUAGE "Danish"
+  !insertmacro MUI_LANGUAGE "Galician"
   !insertmacro MUI_LANGUAGE "German"
   !insertmacro MUI_LANGUAGE "Greek"
   !insertmacro MUI_LANGUAGE "Spanish"
@@ -90,7 +91,9 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Hungarian"
   !insertmacro MUI_LANGUAGE "Indonesian"
   !insertmacro MUI_LANGUAGE "Italian"
+  !insertmacro MUI_LANGUAGE "Japanese"  
   !insertmacro MUI_LANGUAGE "Korean"
+  !insertmacro MUI_LANGUAGE "Latvian"
   !insertmacro MUI_LANGUAGE "Norwegian"
   !insertmacro MUI_LANGUAGE "Dutch"
   !insertmacro MUI_LANGUAGE "Polish"
@@ -105,7 +108,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_4_0e.exe
+OutFile pdfsam-win32inst-v1_4_1e.exe
 InstallDir "$PROGRAMFILES\pdfsam-enhanced"
 CRCCheck on
 XPStyle on
@@ -220,6 +223,15 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}                
         ${Case} ${LANG_THAI}
             Push 'th' 
+        ${Break}                
+        ${Case} ${LANG_GALICIAN}
+            Push 'gl' 
+        ${Break}                
+        ${Case} ${LANG_JAPANESE}
+            Push 'ja' 
+        ${Break}                
+        ${Case} ${LANG_LATVIAN}
+            Push 'lv' 
         ${Break}                
         ${Default}
             Push 'Default'
@@ -472,14 +484,16 @@ Function .onInit
     Push Dutch    
     Push ${LANG_FRENCH}
     Push French
+    Push ${LANG_GERMAN}
+    Push German
+    Push ${LANG_GALICIAN}
+    Push Galician
     Push ${LANG_GREEK}
     Push Greek
     Push ${LANG_NORWEGIAN}
     Push Norwegian
     Push ${LANG_TURKISH}
     Push Turkish
-    Push ${LANG_GERMAN}
-    Push German
     Push ${LANG_POLISH}
     Push Polish
     Push ${LANG_FINNISH}
@@ -494,6 +508,10 @@ Function .onInit
     Push Farsi
     Push ${LANG_KOREAN}
     Push Korean
+    Push ${LANG_JAPANESE}
+    Push Japanese
+    Push ${LANG_LATVIAN}
+    Push Latvian
     Push ${LANG_TRADCHINESE}
     Push TradChinese
     Push ${LANG_INDONESIAN}
@@ -511,7 +529,7 @@ Function .onInit
     Push ${LANG_CROATIAN}
     Push Croatian
     Push ${LANG_HEBREW}
-    Push Hebrew   
+    Push Hebrew  
     Push A ; A means auto count languages
            ; for the auto count to work the first empty push (Push "") must remain
     LangDLL::LangDialog "Installer Language" "Please select the language of the installer"

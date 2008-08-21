@@ -1,7 +1,7 @@
 @echo off
 
 set DIRNAME=..\lib\
-set CONSOLEJAR=%DIRNAME%\pdfsam-console-1.1.4e.jar
+set CONSOLEJAR=%DIRNAME%\pdfsam-console-1.1.5e.jar
 
 if exist "%CONSOLEJAR%" goto FOUND_CONSOLE_JAR
 echo Could not locate %CONSOLEJAR%. Please check that you are in the

@@ -2,6 +2,7 @@
 ===================================
 -Fixed some matches found with FindBugs
 -Fixed bug #2034850
+-Console: Fixed bug #2064962 (Split by size)
 -Merge: Fixed reopened bug #1926019 
 -Updated langpack 
 

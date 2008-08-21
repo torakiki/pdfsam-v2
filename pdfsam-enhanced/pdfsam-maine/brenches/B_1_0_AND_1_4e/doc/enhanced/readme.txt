@@ -1,4 +1,4 @@
-Application: PDF Split and Merge enanched
+Application: PDF Split and Merge enhanced
 
 Version: 1.4.1e stable release
 
@@ -22,7 +22,7 @@ Linked libraries:
 	-log4j-1.2.15
 	-bcmail-jdk14-138.jar
 	-bcprov-jdk14-138.jar
-	-pdfsam-console-1.1.4e *
+	-pdfsam-console-1.1.5e *
 	-emp4j-1.0.1 *
 	-pdfsam-langpack *
 	
