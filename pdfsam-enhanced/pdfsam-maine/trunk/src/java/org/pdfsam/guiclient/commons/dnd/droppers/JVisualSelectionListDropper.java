@@ -48,7 +48,7 @@ public class JVisualSelectionListDropper extends AbstractDropper {
     	}else{
     		File selectedFile = (File)fileList.get(0);
     		if (selectedFile!=null && new PdfFilter(false).accept(selectedFile)){
-    			loader.addFile(selectedFile);
+    			loader.addFile(selectedFile, true);
     		}else{
     			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File type not supported."));
     		}

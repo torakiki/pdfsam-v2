@@ -24,6 +24,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.Collection;
+import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -39,6 +41,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.EtchedBorder;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
@@ -54,6 +57,7 @@ import org.pdfsam.guiclient.commons.dnd.handlers.VisualSelectionListTransferHand
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.renderers.VisualListRenderer;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Customizable panel for a visual page selection
@@ -78,7 +82,12 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
 	private String selectedPdfDocumentPassword = null;
-	private boolean showButtonPanel = true;	
+	private boolean showButtonPanel = true;
+	private boolean showTopPanel = true;
+	private boolean minimalTopPanel = false;
+	private boolean acceptDropFromDifferentComponents = true;
+	private boolean showContextMenu = true;
+	
 	/**
 	 * if true deleted items appear with a red cross over 
 	 */
@@ -105,6 +114,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     private VisualPdfSelectionActionListener pdfSelectionActionListener;
     private PagesActionsMediator pageActionListener;
 	private final JPopupMenu popupMenu = new JPopupMenu();
+	private final JPanel topPanel = new JPanel();
 	
 	//button panel
 	private JPanel buttonPanel;
@@ -112,8 +122,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     private JButton removeButton;
     private JButton moveUpButton;
     private JButton moveDownButton;
-	
-    private final EnterDoClickListener addEnterKeyListener = new EnterDoClickListener(loadFileButton);
 
     /**
      * default constructor
@@ -136,11 +144,25 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param showButtonPanel true=shows button panel
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel){
+		this(orientation, drawDeletedItems, showButtonPanel, false, true, true, false);
+	}
+	
+	/**
+	 * @param orientation panel orientation
+	 * @param drawDeletedItems if true deleted items appear with a red cross over 
+	 * @param showButtonPanel true=shows button panel
+	 * @param acceptDropFromDifferentComponents if true accepts dropping items from other components
+	 */
+	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, boolean acceptDropFromDifferentComponents, boolean showContextMenu, boolean showTopPanel, boolean minimalTopPanel){
 		this.orientation = orientation;
 		this.config = Configuration.getInstance();
 		this.pdfLoader = new PdfThumbnailsLoader(this);
 		this.drawDeletedItems = drawDeletedItems;
 		this.showButtonPanel = showButtonPanel;
+		this.showContextMenu = showContextMenu;
+		this.acceptDropFromDifferentComponents = acceptDropFromDifferentComponents;
+		this.showTopPanel = showTopPanel;
+		this.minimalTopPanel = minimalTopPanel;
 		init();		
 	}
     
@@ -151,7 +173,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		setLayout(new GridBagLayout());
 		
 		thumbnailList.setDrawDeletedItems(drawDeletedItems);
-		thumbnailList.setTransferHandler(new VisualSelectionListTransferHandler(pdfLoader));
+		thumbnailList.setTransferHandler(new VisualSelectionListTransferHandler(pdfLoader, acceptDropFromDifferentComponents));
 		thumbnailList.setDragEnabled(true);
 		pagesWorker = new PagesWorker(thumbnailList);
 		thumbnailList.addKeyListener(new VisualPdfSelectionKeyAdapter(pagesWorker));
@@ -168,23 +190,24 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 				thumbnailList.setLayoutOrientation(JList.VERTICAL_WRAP);
 			}
 		}
-		
-		JPanel topPanel = new JPanel();
+				
 		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
 		topPanel.setPreferredSize(new Dimension(400,30));
 		
 	    pdfSelectionActionListener = new VisualPdfSelectionActionListener(this, pdfLoader);
-		//load button
-		loadFileButton.setMargin(new Insets(2, 2, 2, 2));
-		loadFileButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
-		loadFileButton.setPreferredSize(new Dimension(100,30));
-		loadFileButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Load a pdf document"));
-		loadFileButton.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
-		loadFileButton.addKeyListener(addEnterKeyListener);
-		loadFileButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		loadFileButton.setAlignmentY(Component.CENTER_ALIGNMENT);
-		loadFileButton.setActionCommand(VisualPdfSelectionActionListener.ADD);
-		loadFileButton.addActionListener(pdfSelectionActionListener);		
+		if(!minimalTopPanel){
+		    //load button
+			loadFileButton.setMargin(new Insets(2, 2, 2, 2));
+			loadFileButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
+			loadFileButton.setPreferredSize(new Dimension(100,30));
+			loadFileButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Load a pdf document"));
+			loadFileButton.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
+			loadFileButton.addKeyListener(new EnterDoClickListener(loadFileButton));
+			loadFileButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+			loadFileButton.setAlignmentY(Component.CENTER_ALIGNMENT);
+			loadFileButton.setActionCommand(VisualPdfSelectionActionListener.ADD);
+			loadFileButton.addActionListener(pdfSelectionActionListener);		
+		}
 		documentProperties.setIcon(new ImageIcon(this.getClass().getResource("/images/info.png")));
 		documentProperties.setVisible(false);
 		
@@ -192,27 +215,31 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		//menu
 		menuOptions.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Options"));
 		menuOptions.setMnemonic(KeyEvent.VK_O);
+		optionsMenu.setMargin(new Insets(2, 2, 2, 2));
 		optionsMenu.add(menuOptions);
-		
-		loadDocItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
-		loadDocItem.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
-		loadDocItem.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {               
-            	loadFileButton.doClick();
-            }
-        });
-		menuOptions.add(loadDocItem);
-		
-		clearItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
-		clearItem.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
-		clearItem.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {               
-               	resetPanel();
-            }
-        });
-		menuOptions.add(clearItem);
-
+		optionsMenu.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+		//if minimal these items are not shown
+		if(!minimalTopPanel){
+			loadDocItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
+			loadDocItem.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
+			loadDocItem.addMouseListener(new MouseAdapter() {
+	            public void mouseReleased(MouseEvent e) {               
+	            	loadFileButton.doClick();
+	            }
+	        });
+			menuOptions.add(loadDocItem);
+			
+			clearItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
+			clearItem.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
+			clearItem.addMouseListener(new MouseAdapter() {
+	            public void mouseReleased(MouseEvent e) {               
+	               	resetPanel();
+	            }
+	        });
+			menuOptions.add(clearItem);
+		}
 		zoomInItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Zoom in"));
+		zoomInItem.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomin.png")));
 		zoomInItem.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent e) {               
                 try{
@@ -231,6 +258,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		menuOptions.add(zoomInItem);
 
 		zoomOutItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Zoom out"));
+		zoomOutItem.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomout.png")));
 		zoomOutItem.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent e) {               
                 try{
@@ -257,61 +285,65 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		JVisualSelectionListDropper dropper = new JVisualSelectionListDropper(pdfLoader);
 		scrollPanelDropTarget = new DropTarget(listScroller,dropper);
 		
-		//popup
-		final JMenuItem menuItemMoveUp = new JMenuItem();
-		menuItemMoveUp.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
-		menuItemMoveUp.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
-		menuItemMoveUp.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.MOVE_UP, pagesWorker));
-		popupMenu.add(menuItemMoveUp);
+		if(showContextMenu){
+			//popup
+			final JMenuItem menuItemMoveUp = new JMenuItem();
+			menuItemMoveUp.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
+			menuItemMoveUp.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Up"));
+			menuItemMoveUp.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.MOVE_UP, pagesWorker));
+			popupMenu.add(menuItemMoveUp);
+			
+			final JMenuItem menuItemMoveDown = new JMenuItem();
+			menuItemMoveDown.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
+			menuItemMoveDown.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
+			menuItemMoveDown.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.MOVE_DOWN, pagesWorker));
+			popupMenu.add(menuItemMoveDown);
+			
+			final JMenuItem menuItemRemove = new JMenuItem();
+			menuItemRemove.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
+			menuItemRemove.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Delete"));
+			menuItemRemove.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.REMOVE, pagesWorker));
+			popupMenu.add(menuItemRemove);
+			
+			final JMenuItem menuItemUndelete = new JMenuItem();
+			menuItemUndelete.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
+			menuItemUndelete.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete"));
+			menuItemUndelete.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.UNDELETE, pagesWorker));
+			popupMenu.add(menuItemUndelete);
+			
+			//shyow popup
+			thumbnailList.addMouseListener(new MouseAdapter() {
+	            public void mousePressed(MouseEvent e) {
+	                if (e.isPopupTrigger()) {
+						showMenu(e);
+					}
+	            }
+	            public void mouseReleased(MouseEvent e) {
+	                if (e.isPopupTrigger()) {
+						showMenu(e);
+					}
+	            }
+	            private void showMenu(MouseEvent e) {
+	            	int[] selection = thumbnailList.getSelectedIndices();
+	            	if(!(selection!=null && selection.length>1)){
+	            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
+	            		selection = thumbnailList.getSelectedIndices();
+	            	}
+	            	//if elements are physically deleted i don't need this item
+	            	if(drawDeletedItems){
+		            	menuItemUndelete.setEnabled(true);	            	
+	            	}else{
+	            		menuItemUndelete.setEnabled(false);
+	            	}
+	            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
+	            }
+	        });
+		}
 		
-		final JMenuItem menuItemMoveDown = new JMenuItem();
-		menuItemMoveDown.setIcon(new ImageIcon(this.getClass().getResource("/images/down.png")));
-		menuItemMoveDown.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move Down"));
-		menuItemMoveDown.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.MOVE_DOWN, pagesWorker));
-		popupMenu.add(menuItemMoveDown);
-		
-		final JMenuItem menuItemRemove = new JMenuItem();
-		menuItemRemove.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
-		menuItemRemove.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Delete"));
-		menuItemRemove.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.REMOVE, pagesWorker));
-		popupMenu.add(menuItemRemove);
-		
-		final JMenuItem menuItemUndelete = new JMenuItem();
-		menuItemUndelete.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
-		menuItemUndelete.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete"));
-		menuItemUndelete.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.UNDELETE, pagesWorker));
-		popupMenu.add(menuItemUndelete);
-		
-		//shyow popup
-		thumbnailList.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-            }
-            public void mouseReleased(MouseEvent e) {
-                if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-            }
-            private void showMenu(MouseEvent e) {
-            	int[] selection = thumbnailList.getSelectedIndices();
-            	if(!(selection!=null && selection.length>1)){
-            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
-            		selection = thumbnailList.getSelectedIndices();
-            	}
-            	//if elements are physically deleted i don't need this item
-            	if(drawDeletedItems){
-	            	menuItemUndelete.setEnabled(true);	            	
-            	}else{
-            		menuItemUndelete.setEnabled(false);
-            	}
-            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
-            }
-        });
-		
-		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-		topPanel.add(loadFileButton);
+		if(!minimalTopPanel){
+			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+			topPanel.add(loadFileButton);
+		}
 		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 		topPanel.add(documentProperties);
 		topPanel.add(Box.createHorizontalGlue());
@@ -326,7 +358,9 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		topConstraints.insets = new Insets(5,5,5,5);
 		topConstraints.weightx=1.0;
 		topConstraints.weighty=0.0;		
-		add(topPanel, topConstraints);
+		if(showTopPanel){
+			add(topPanel, topConstraints);
+		}
 
 		GridBagConstraints thumbConstraints = new GridBagConstraints();
 		thumbConstraints.fill = GridBagConstraints.BOTH;
@@ -547,7 +581,61 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public void setSelectedPdfDocumentPassword(String selectedPdfDocumentPassword) {
 		this.selectedPdfDocumentPassword = selectedPdfDocumentPassword;
 	}
-
-	
+	/**
+	 * @return the topPanel
+	 */
+	public JPanel getTopPanel() {
+		return topPanel;
+	}
+	/**
+	 * 
+	 * @return valid elements as a String that can be used as "-u" parameter for the concat console command. Empty String if no valid elements.
+	 */
+	public String getValidElementsString(){
+		String retVal = "";
+		Collection validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
+		if(validElements!=null && validElements.size()>0){
+			StringBuffer buffer = new StringBuffer();
+			VisualPageListItem startElement = null;
+			VisualPageListItem endElement = null;
+			for(Iterator iter = validElements.iterator(); iter.hasNext();){
+				VisualPageListItem currentElement = (VisualPageListItem)iter.next();
+				//time to start a new section
+				if(startElement==null){					
+					startElement = currentElement;
+					endElement = currentElement;
+				}else{
+					//let's check if it's the next number or not
+					if(currentElement.getPageNumber() == (endElement.getPageNumber()+1)){
+						endElement = currentElement;
+					}else{
+						if (buffer.length()>0){
+							buffer = buffer.append(',');
+						}
+						if(startElement.getPageNumber() == endElement.getPageNumber()){
+							//just the page number
+							buffer = buffer.append(startElement.getPageNumber());
+						}else{
+							//page range
+							buffer = buffer.append(startElement.getPageNumber()).append('-').append(endElement.getPageNumber());
+						}
+						startElement = currentElement;
+						endElement = currentElement;
+					}
+				}
+			}
+			//check the last elements
+			if (buffer.length()>0){
+				buffer = buffer.append(',');
+			}
+			if(startElement.getPageNumber() == endElement.getPageNumber()){
+				buffer = buffer.append(startElement.getPageNumber());
+			}else{
+				buffer = buffer.append(startElement.getPageNumber()).append('-').append(endElement.getPageNumber());
+			}
+			retVal = buffer.append(':').toString();
+		}
+		return retVal;
+	}
 	
 }

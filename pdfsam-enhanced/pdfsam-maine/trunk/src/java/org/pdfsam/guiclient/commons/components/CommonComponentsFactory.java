@@ -33,6 +33,7 @@ public class CommonComponentsFactory {
 
 	public static final int RUN_BUTTON_TYPE = 1;
 	public static final int BROWSE_BUTTON_TYPE = 2;
+	public static final int ADD_BUTTON_TYPE = 3;
 
 	public static final int OVERWRITE_CHECKBOX_TYPE = 1;
 	public static final int COMPRESS_CHECKBOX_TYPE = 2;
@@ -79,6 +80,12 @@ public class CommonComponentsFactory {
 			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Browse"));
 			break;
 		
+		case ADD_BUTTON_TYPE:
+			retVal.setMargin(new Insets(2, 2, 2, 2));
+			retVal.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
+			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Add"));
+			break;
+
 		default:
 			break;
 		}

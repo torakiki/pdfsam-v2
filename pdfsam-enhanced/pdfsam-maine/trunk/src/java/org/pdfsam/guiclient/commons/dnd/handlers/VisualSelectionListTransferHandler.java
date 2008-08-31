@@ -45,12 +45,24 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 
 	private PdfThumbnailsLoader loader;
 	private int addIndex = 0;
+	private boolean fromDifferentSource = false;
+	private boolean acceptFromDifferentSource = false;
 	
 	public VisualSelectionListTransferHandler(PdfThumbnailsLoader loader) {
+		this(loader, false);
+	}	
+	
+	/**
+	 * @param acceptFromDifferentSource
+	 * @param loader
+	 */
+	public VisualSelectionListTransferHandler(PdfThumbnailsLoader loader, boolean acceptFromDifferentSource) {
 		super();
+		this.acceptFromDifferentSource = acceptFromDifferentSource;
 		this.loader = loader;
 	}
-	
+
+
 	public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {
 		boolean retVal = false;
 		if((comp instanceof JVisualSelectionList) && (transferFlavors != null)){
@@ -76,7 +88,8 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 	}
 	
 	protected void exportDone(JComponent source, Transferable data, int action) {
-		if(action==MOVE){
+		//clean the source only if i'm not exporting to another component
+		if(action==MOVE && !fromDifferentSource){
 	    	JVisualSelectionList listComponent = (JVisualSelectionList) source;
 	    	int[] dataList = ((VisualPageListTransferable) data).getDataList();
 	    	if (dataList[0] <= addIndex) {
@@ -116,7 +129,11 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
                 }else if (hasVisualListItemFlavor(t)) {
                 	Object obj = t.getTransferData(VisualPageListTransferable.getVisualListFlavor());
                     if ((obj instanceof VisualPageListTransferable)){
-                    	retVal = importVisualListItems(comp, (VisualPageListTransferable)obj);
+                    	fromDifferentSource = !(comp.equals(((VisualPageListTransferable)obj).getSource()));
+                    	//source and destination are equals or the handler accepts different components
+                    	if(!fromDifferentSource || (fromDifferentSource && acceptFromDifferentSource)){	
+                    		retVal = importVisualListItems(comp, (VisualPageListTransferable)obj);
+                    	}
                     }
                 }
             }catch(Exception e){
@@ -170,13 +187,18 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
      */
     private boolean importVisualListItems(JComponent comp, VisualPageListTransferable t){
     	boolean retVal = false;
-    	JVisualSelectionList listComponent = (JVisualSelectionList) comp;
+    	JVisualSelectionList destComponent = (JVisualSelectionList) comp;
+    	JVisualSelectionList sourceComponent = (fromDifferentSource)? ((JVisualSelectionList) t.getSource()) : destComponent;
     	int[] dataList = t.getDataList();
-    	int index = listComponent.getSelectedIndex();
-        //prevent dropping over itself
-    	if(dataList!=null && dataList.length>0 &&(index<(dataList[0]) || (index>dataList[dataList.length-1]))){
+    	int index = destComponent.getSelectedIndex();
+    	if(fromDifferentSource){
+    		addIndex = index+1;
+    		retVal = true;
+    	}
+        //same component prevents dropping over itself
+    	else if(dataList!=null && dataList.length>0 &&(index<(dataList[0]) || (index>dataList[dataList.length-1]))){
     		//check limits
-    		int listSize = listComponent.getModel().getSize();
+    		int listSize = destComponent.getModel().getSize();
     		if(index>listSize){
     			addIndex=listSize;
     		}else if (index<0){
@@ -188,12 +210,14 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
     				addIndex++;
     			}
     		}
-    		//
-    		Collection c = ((VisualListModel)listComponent.getModel()).subList(dataList[0], dataList[dataList.length-1]+1, true);
-    		((VisualListModel)listComponent.getModel()).addAllElements(addIndex, c);
-    		listComponent.setSelectionInterval(addIndex, addIndex+dataList.length-1);
     		retVal = true;
+    	}
+    	if(retVal){
+    		Collection c = ((VisualListModel)sourceComponent.getModel()).subList(dataList[0], dataList[dataList.length-1]+1, true);
+    		((VisualListModel)destComponent.getModel()).addAllElements(addIndex, c);
+    		destComponent.setSelectionInterval(addIndex, addIndex+dataList.length-1);    		
     	}    
     	return retVal;
     }
+ 
 }

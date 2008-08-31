@@ -2,8 +2,13 @@
 ===================================
 -Fixed some matches found with FindBugs
 -Fixed bug #2034850
+-Console: Fixed bug #2064962 (Split by size)
 -Merge, Mix: Fixed reopened bug #1926019 
--Console: concat command no take -u param using print notation (Ex. 2,3-6,9-) 
+-Console: concat command now takes -u param using print notation (Ex. 2,3-6,9-)
+-Console: added setviewer and slideshow commands
+-Mix plugin taken from the enhanced version 
+-New VisualReorder plugin
+-Updated libraries
 
 1.0.0 stable release (30-Jun-2008)
 ===================================

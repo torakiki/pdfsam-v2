@@ -14,12 +14,15 @@
  */
 package org.pdfsam.guiclient.commons.business.loaders;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -43,6 +46,7 @@ import org.pdfsam.i18n.GettextResource;
 public class PdfThumbnailsLoader {
 	
 	private static final Logger log = Logger.getLogger(PdfThumbnailsLoader.class.getPackage().getName());
+	public static final Image ERROR_IMAGE =  new ImageIcon(PdfThumbnailsLoader.class.getResource("/images/thumbnailerror.png")).getImage();
 	
 	private JVisualPdfPageSelectionPanel panel;
 	private JFileChooser fileChooser = null;
@@ -55,7 +59,7 @@ public class PdfThumbnailsLoader {
 		config = Configuration.getInstance();
 		
         decoder = new PdfDecoder(true);
-        workQueue = new WorkQueue(3, decoder);
+        workQueue = new WorkQueue(2, decoder);
 		
 	}
 	
@@ -141,7 +145,7 @@ public class PdfThumbnailsLoader {
 		            		if(pages > 0){
 		            			ArrayList modelList = new ArrayList(pages);
 		            			for (int i = 1; i<=pages; i++){
-		            				modelList.add(new VisualPageListItem(i));
+		            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath()));
 		            			}
 		            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));
 		            			workQueue.addPages(modelList);
@@ -166,6 +170,17 @@ public class PdfThumbnailsLoader {
      */
     public void addFile(File file){
     	this.addFile(file, null);
+    }
+    
+    /**
+     * add a file to the JList
+     * @param file
+     * @param checkIfAlreadyAdded if true it checks if the list is already filled, if so it askes the user
+     */
+    public void addFile(File file, boolean checkIfAlreadyAdded){
+    	if(!checkIfAlreadyAdded || (checkIfAlreadyAdded && canLoad())){	    	
+			addFile(file);
+    	}
     }
     
     /**
@@ -289,17 +304,20 @@ public class PdfThumbnailsLoader {
                     }
                    if(pageItem != null){
 	                    try{
-	                    	long i = System.currentTimeMillis();
 	                      	int height = PORTRAIT_HEIGHT;
 	                      	if(pdfPageData.getCropBoxHeight(pageItem.getPageNumber())<pdfPageData.getCropBoxWidth(pageItem.getPageNumber())){
 	                      		height = LANDSCAPE_HEIGHT;
 	                      	}
-	                      	image = thumbDecoder.getPageAsThumbnail(pageItem.getPageNumber(), height);	
+	                      	if(Configuration.getInstance().isHighQualityThumbnails()){
+	                      		image = thumbDecoder.getPageAsThumbnail(pageItem.getPageNumber(), height);
+	                      	}else{
+	                      		image = getLowQualityThumbnail(pageItem.getPageNumber(), height, decoder);
+	                      	}
 	                      	pageItem.setThumbnail(image);
 	                        ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
-	                        log.debug("["+this+"]: thumbnail generated in "+(System.currentTimeMillis()-i));
                         }catch (Exception e) {
                         	running--;
+                        	pageItem.setThumbnail(ERROR_IMAGE);
                     		log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to generate thumbnail"),e);
                     	}finally{
                     		image = null;
@@ -314,6 +332,23 @@ public class PdfThumbnailsLoader {
             			decoder.closePdfFile();
             		}
                 }
+            }
+            
+            /**
+             * 
+             * @param pageNumber
+             * @param height
+             * @param decoder
+             * @return a low quality thumbnail
+             */
+            private BufferedImage getLowQualityThumbnail(int pageNumber, int height, PdfDecoder decoder) throws Exception{
+            	BufferedImage retVal = null;            	
+            	BufferedImage page =decoder.getPageAsImage(pageNumber);
+            	Image scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_SMOOTH);
+            	retVal  = new BufferedImage(scaledInstance.getWidth(null),scaledInstance.getHeight(null) , BufferedImage.TYPE_INT_ARGB);                
+                Graphics2D g2 = retVal.createGraphics();                
+                g2.drawImage(scaledInstance, 0, 0,null);
+            	return retVal;
             }
         }
     }

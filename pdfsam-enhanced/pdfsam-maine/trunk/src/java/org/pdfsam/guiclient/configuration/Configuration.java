@@ -48,6 +48,7 @@ public class Configuration{
 	private boolean checkForUpdates = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
+	private boolean highQualityThumbnails = false;
 
 	private Configuration() {
 		init();
@@ -145,6 +146,14 @@ public class Configuration{
 		return defaultWorkingDir;
 	}
 
+	
+	/**
+	 * @return the highQualityThumbnails
+	 */
+	public boolean isHighQualityThumbnails() {
+		return highQualityThumbnails;
+	}
+
 	private void init(){
 		try{
 			mainJarPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
@@ -172,6 +181,8 @@ public class Configuration{
 			setCheckForUpdates();
 			//default working dir
 			setDefaultWorkingDir();
+			//thumbnails quality
+			setHighQualityThumbnails();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -261,5 +272,29 @@ public class Configuration{
 			//default
 			checkForUpdates = true;
 		}
+	}
+	
+	/**
+	 * sets the configuration about the thumbnails quality
+	 */
+	private void setHighQualityThumbnails(){
+		try {
+			String highQualityThumb = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/highqualitythumbnails");
+			if(highQualityThumb != null && highQualityThumb.length()>0){
+				highQualityThumbnails = Integer.parseInt(highQualityThumb)== 1;
+			}
+			
+		} catch (Exception e) {
+			//default
+			highQualityThumbnails = false;
+		}
+	}
+	
+	/**
+	 * set the quality of the thumbnails generated
+	 * @param highQualityThumbnails
+	 */
+	public void setHighQualityThumbnails(boolean highQualityThumbnails){
+		this.highQualityThumbnails = highQualityThumbnails;
 	}
 }

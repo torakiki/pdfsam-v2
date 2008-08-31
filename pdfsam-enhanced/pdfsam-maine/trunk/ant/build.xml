@@ -39,6 +39,7 @@
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
 		<property name="vpagereorder.dir" value="${workspace.dir}/pdfsam-vpagereorder"/>
+		<property name="vcomposer.dir" value="${workspace.dir}/pdfsam-vcomposer"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
@@ -192,6 +193,10 @@
 	  		<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 
+		<!--vcomposer-->
+	  	<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="build-jars">
+	  		<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
 	</target>
 	
 	<!--creates the distribution of pdfsam-->	
@@ -247,6 +252,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-setviewer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/setviewer" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
 	</target>	
 
 	<!--deploy pdfsam-->	
@@ -412,6 +418,10 @@
 	  		  	<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
+		<!--vcomposer-->
+	  	<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
 	</target>	
 
 </project>
