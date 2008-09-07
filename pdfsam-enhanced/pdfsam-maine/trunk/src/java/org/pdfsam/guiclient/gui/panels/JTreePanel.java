@@ -21,7 +21,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.plugins.models.PluginDataModel;
+import org.pdfsam.i18n.GettextResource;
 /**
  * panel containing the selection tree
  * @author Andrea Vacondio
@@ -38,7 +40,7 @@ public class JTreePanel extends JScrollPane {
 	
 	public JTreePanel(DefaultMutableTreeNode rootNode){
 		this.rootNode = rootNode;
-		this.plugsNode = new DefaultMutableTreeNode("Plugins");
+		this.plugsNode = new DefaultMutableTreeNode(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Plugins"));
 		this.rootNode.add(plugsNode); 
 		this.treeModel = new DefaultTreeModel(rootNode);
 		this.tree = new JTree(treeModel);

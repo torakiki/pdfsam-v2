@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.business.loaders;
 
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -29,7 +30,6 @@ import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
 import org.jpedal.PdfDecoder;
-import org.jpedal.ThumbnailDecoder;
 import org.jpedal.objects.PdfFileInformation;
 import org.jpedal.objects.PdfPageData;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
@@ -59,8 +59,7 @@ public class PdfThumbnailsLoader {
 		config = Configuration.getInstance();
 		
         decoder = new PdfDecoder(true);
-        workQueue = new WorkQueue(2, decoder);
-		
+        workQueue = new WorkQueue(2, decoder);		
 	}
 	
 	 
@@ -209,23 +208,22 @@ public class PdfThumbnailsLoader {
         private final ThumbnailWorker[] threads;
         private final LinkedList queue;
     	private PdfDecoder decoder;
-    	private ThumbnailDecoder thumbDecoder;
     	private PdfPageData pdfPageData = null;
         private int running = 0;
 
         /**
          * Default pool size = 1
          */
-        public WorkQueue(PdfDecoder decoder){
+       /* public WorkQueue(PdfDecoder decoder){
         	this(1, decoder);
-        }
+        }*/
         
         /**
          * @param nThreads pool size 
          */
         public WorkQueue(int nThreads, PdfDecoder decoder){
+
         	this.decoder = decoder;
-        	this.thumbDecoder = new ThumbnailDecoder(decoder);
             this.queue = new LinkedList();
             this.threads = new ThumbnailWorker[nThreads];
 
@@ -284,7 +282,7 @@ public class PdfThumbnailsLoader {
         	
             public void run() {
             	VisualPageListItem pageItem = null;
-                BufferedImage image = null;
+                Image image = null;
                 while (true) {
                     synchronized(queue) {
                         while (queue.isEmpty()) {
@@ -298,21 +296,36 @@ public class PdfThumbnailsLoader {
                         if(pdfPageData==null){
                         	pdfPageData = decoder.getPdfPageData();
                         }
-                        if(!decoder.isThumbnailsDrawing()){
-                        	decoder.setThumbnailsDrawing(true);
-                        }
+                        
                     }
                    if(pageItem != null){
 	                    try{
 	                      	int height = PORTRAIT_HEIGHT;
 	                      	if(pdfPageData.getCropBoxHeight(pageItem.getPageNumber())<pdfPageData.getCropBoxWidth(pageItem.getPageNumber())){
 	                      		height = LANDSCAPE_HEIGHT;
-	                      	}
-	                      	if(Configuration.getInstance().isHighQualityThumbnails()){
+	                      	}	                      	
+	                      	String quality = Configuration.getInstance().getThumbnailsQuality();
+	                      	long t = System.currentTimeMillis();
+	                      		BufferedImage page =decoder.getPageAsImage(pageItem.getPageNumber());
+	                      	log.debug("BufferedImage got in "+(System.currentTimeMillis() - t));
+	                      	
+	                      	log.debug("Generating "+quality+" quality thumb");
+	                    	long t2 = System.currentTimeMillis();
+	                      		image = getLowQualityThumbnail(page, height, quality);
+	                      	log.debug("Image resized in "+(System.currentTimeMillis() - t2));
+	                      	/*if(Configuration.HIGH_QUALITY.equals(quality)){
+	                      		log.debug("Generating high quality thumb");
+	                      		if(!decoder.isThumbnailsDrawing()){
+	                            	decoder.setThumbnailsDrawing(true);
+	                            }
 	                      		image = thumbDecoder.getPageAsThumbnail(pageItem.getPageNumber(), height);
+	                      	}else if(Configuration.MEDIUM_QUALITY.equals(quality)){
+	                      		log.debug("Generating medium quality thumb");
 	                      	}else{
-	                      		image = getLowQualityThumbnail(pageItem.getPageNumber(), height, decoder);
-	                      	}
+	                      		log.debug("Generating low quality thumb");
+	                        	BufferedImage page =decoder.getPageAsImage(pageItem.getPageNumber());
+	                      		image = getLowQualityThumbnail(page, height, quality);
+	                      	}*/
 	                      	pageItem.setThumbnail(image);
 	                        ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
                         }catch (Exception e) {
@@ -327,9 +340,13 @@ public class PdfThumbnailsLoader {
                     //close decoder
                     running--;
             		if(queue.isEmpty() && running==0){
-            			log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails generated"));
-            			decoder.setThumbnailsDrawing(false);
-            			decoder.closePdfFile();
+            			try{
+	            			log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails generated"));
+	            			//decoder.setThumbnailsDrawing(false);
+	            			decoder.closePdfFile();
+            			}catch(Exception e){
+            				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "),e);
+            			}
             		}
                 }
             }
@@ -341,15 +358,63 @@ public class PdfThumbnailsLoader {
              * @param decoder
              * @return a low quality thumbnail
              */
-            private BufferedImage getLowQualityThumbnail(int pageNumber, int height, PdfDecoder decoder) throws Exception{
+            private BufferedImage getLowQualityThumbnail(BufferedImage page , int height, String quality) throws Exception{
             	BufferedImage retVal = null;            	
-            	BufferedImage page =decoder.getPageAsImage(pageNumber);
-            	Image scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_SMOOTH);
+            	Image scaledInstance = null;
+	    		if(Configuration.HIGH_QUALITY.equals(quality)){
+	    			scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_SMOOTH);
+	    		}else if(Configuration.MEDIUM_QUALITY.equals(quality)){
+	    			scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_AREA_AVERAGING);
+	    		}else{
+	    			scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_FAST);
+	    		}
             	retVal  = new BufferedImage(scaledInstance.getWidth(null),scaledInstance.getHeight(null) , BufferedImage.TYPE_INT_ARGB);                
                 Graphics2D g2 = retVal.createGraphics();                
                 g2.drawImage(scaledInstance, 0, 0,null);
             	return retVal;
             }
+          
         }
     }
+    
+    public static BufferedImage getScaledImage(
+
+    		BufferedImage bi,
+
+    		int width,
+
+    		int height)
+
+    	{
+
+    		BufferedImage new_bi = new BufferedImage(width, width, bi.getType());
+
+
+    		Graphics g = new_bi.getGraphics();
+
+    		g.drawImage(bi, 0, 0, width, height, null);
+
+    		return new_bi;
+
+    	}
+
+    	public static BufferedImage getScaledImage(BufferedImage bi, float scale)
+
+    	{
+
+
+    		int width = (int) (bi.getWidth() * scale);
+
+    		int height = (int) (bi.getHeight() * scale);
+
+    		BufferedImage new_bi = new BufferedImage(width, width, bi.getType());
+
+    		Graphics g = new_bi.getGraphics();
+
+
+    		g.drawImage(bi, 0, 0, width, height, null);
+
+    		return new_bi;
+
+    	}
 }

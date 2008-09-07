@@ -61,7 +61,6 @@ public class JVisualMultiSelectionPanel extends JPanel {
      */
     private void init(){
     	setLayout(new GridBagLayout());
-    	
 		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.LINE_AXIS));
 		topPanel.setPreferredSize(new Dimension(400,30));		
 		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
@@ -69,8 +68,8 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 		topPanel.add(currentTopPanel);
 		
-	    inputTabbedPanel.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 	    Icon icon = new ImageIcon(this.getClass().getResource("/images/add.png"));
+	    inputTabbedPanel.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 	    inputTabbedPanel.setCloseIcons(icon, icon, icon);
 	    inputTabbedPanel.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -100,14 +99,14 @@ public class JVisualMultiSelectionPanel extends JPanel {
                     chosenFiles = browseOpenFileChooser.getSelectedFiles();
                     if(chosenFiles != null && chosenFiles.length>0){
                     	for(int i =0; i<chosenFiles.length; i++){
-                    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, false, false, true);
+                    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, false, false, true, true, false, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
                     		inputPanel.setSelectedPdfDocument(chosenFiles[i]);
                     		inputPanel.getPdfLoader().addFile(chosenFiles[i]);
                     		String panelName = chosenFiles[i].getName();
                     		if(panelName.length()>12){
                     			panelName = chosenFiles[i].getName().substring(0, 9)+"...";
                     		}
-                    		inputTabbedPanel.addTab(panelName, null, inputPanel, chosenFiles[i].getName());
+                    		inputTabbedPanel.addTab(panelName, inputPanel, null, chosenFiles[i].getName());
                     	}
                     }
                 }               

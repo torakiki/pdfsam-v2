@@ -65,7 +65,6 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private final InfoFocusPolicy infoFocusPolicy = new InfoFocusPolicy();
     
     private final static String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final static String PLUGIN_NAME = "About";
     private final static String PLUGIN_VERSION = "0.0.3e";
 
     
@@ -153,7 +152,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
      * @return Returns the Plugin name.
      */
     public String getPluginName() {
-    	return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
+    	return GettextResource.gettext(config.getI18nResourceBundle(),"About");
     }
 
     /**

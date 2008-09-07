@@ -45,8 +45,9 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 
 	private PdfThumbnailsLoader loader;
 	private int addIndex = 0;
-	private boolean fromDifferentSource = false;
 	private boolean acceptFromDifferentSource = false;
+	private boolean canImportFile = true;
+	private boolean canImportListObject = true;
 	
 	public VisualSelectionListTransferHandler(PdfThumbnailsLoader loader) {
 		this(loader, false);
@@ -57,17 +58,31 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 	 * @param loader
 	 */
 	public VisualSelectionListTransferHandler(PdfThumbnailsLoader loader, boolean acceptFromDifferentSource) {
-		super();
-		this.acceptFromDifferentSource = acceptFromDifferentSource;
-		this.loader = loader;
+		this(loader, acceptFromDifferentSource, true, true);
 	}
 
+	
+
+	/**
+	 * @param loader
+	 * @param acceptFromDifferentSource
+	 * @param canImportFile
+	 * @param canImportListObject
+	 */
+	public VisualSelectionListTransferHandler(PdfThumbnailsLoader loader, boolean acceptFromDifferentSource, boolean canImportFile,
+			boolean canImportListObject) {
+		super();
+		this.acceptFromDifferentSource = acceptFromDifferentSource;
+		this.canImportFile = canImportFile;
+		this.canImportListObject = canImportListObject;
+		this.loader = loader;
+	}
 
 	public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {
 		boolean retVal = false;
 		if((comp instanceof JVisualSelectionList) && (transferFlavors != null)){
 			for (int i = 0; i<transferFlavors.length; i++){
-				if(transferFlavors[i].equals(DataFlavor.javaFileListFlavor) || transferFlavors[i].equals(VisualPageListTransferable.getVisualListFlavor())){
+				if((transferFlavors[i].equals(DataFlavor.javaFileListFlavor) && canImportFile) || (transferFlavors[i].equals(VisualPageListTransferable.getVisualListFlavor()) && canImportListObject)){
 					retVal = true;
 				}else{
 					retVal = false;
@@ -89,7 +104,8 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 	
 	protected void exportDone(JComponent source, Transferable data, int action) {
 		//clean the source only if i'm not exporting to another component
-		if(action==MOVE && !fromDifferentSource){
+		if(action==MOVE && !((VisualPageListTransferable)data).isDifferentDestination()){
+			log.debug("Export done da stesso componente");
 	    	JVisualSelectionList listComponent = (JVisualSelectionList) source;
 	    	int[] dataList = ((VisualPageListTransferable) data).getDataList();
 	    	if (dataList[0] <= addIndex) {
@@ -129,13 +145,14 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
                 }else if (hasVisualListItemFlavor(t)) {
                 	Object obj = t.getTransferData(VisualPageListTransferable.getVisualListFlavor());
                     if ((obj instanceof VisualPageListTransferable)){
-                    	fromDifferentSource = !(comp.equals(((VisualPageListTransferable)obj).getSource()));
+                    	VisualPageListTransferable transferable = (VisualPageListTransferable)obj;
+                    	transferable.setDestination(comp);
                     	//source and destination are equals or the handler accepts different components
-                    	if(!fromDifferentSource || (fromDifferentSource && acceptFromDifferentSource)){	
-                    		retVal = importVisualListItems(comp, (VisualPageListTransferable)obj);
+                    	if(!transferable.isDifferentDestination()|| (transferable.isDifferentDestination() && acceptFromDifferentSource)){	
+                    		retVal = importVisualListItems(transferable);
                     	}
                     }
-                }
+                } 
             }catch(Exception e){
             	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error during drag and drop."), e);
             }
@@ -185,13 +202,13 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
      * @param t
      * @return
      */
-    private boolean importVisualListItems(JComponent comp, VisualPageListTransferable t){
+    private boolean importVisualListItems(VisualPageListTransferable t){
     	boolean retVal = false;
-    	JVisualSelectionList destComponent = (JVisualSelectionList) comp;
-    	JVisualSelectionList sourceComponent = (fromDifferentSource)? ((JVisualSelectionList) t.getSource()) : destComponent;
+    	JVisualSelectionList destComponent = (JVisualSelectionList) t.getDestination();
+    	JVisualSelectionList sourceComponent = (JVisualSelectionList) t.getSource();
     	int[] dataList = t.getDataList();
     	int index = destComponent.getSelectedIndex();
-    	if(fromDifferentSource){
+    	if(t.isDifferentDestination()){
     		addIndex = index+1;
     		retVal = true;
     	}

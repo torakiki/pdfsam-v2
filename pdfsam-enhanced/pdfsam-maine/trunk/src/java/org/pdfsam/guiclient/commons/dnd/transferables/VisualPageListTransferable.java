@@ -34,16 +34,24 @@ public class VisualPageListTransferable implements Transferable {
 	private static final Logger log = Logger.getLogger(VisualPageListTransferable.class.getPackage().getName());
 	
 	private JComponent source;
+	private JComponent destination;
 	private int[] dataList;
 	private static DataFlavor visualListFlavor;
 	
+	
+	public VisualPageListTransferable(JComponent source, int[] dataList) {
+		this(source, null, dataList);
+	}
+	
 	/**
 	 * @param source
+	 * @param destination
 	 * @param dataList
 	 */
-	public VisualPageListTransferable(JComponent source, int[] dataList) {
+	public VisualPageListTransferable(JComponent source, JComponent destination, int[] dataList) {
 		super();
 		this.source = source;
+		this.destination = destination;
 		this.dataList = dataList;
 		init();
 	}
@@ -113,5 +121,27 @@ public class VisualPageListTransferable implements Transferable {
 		return visualListFlavor;
 	}
 
+	
+	/**
+	 * @return the destination
+	 */
+	public JComponent getDestination() {
+		return destination;
+	}
+
+	/**
+	 * @param destination the destination to set
+	 */
+	public void setDestination(JComponent destination) {
+		this.destination = destination;
+	}
+
+	/**
+	 * @return the differentDestination
+	 */
+	public boolean isDifferentDestination() {
+		return !source.equals(destination);
+	}
+	
 	
 }

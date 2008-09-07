@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
  * @author Andrea Vacondio
  *
  */
-public class VisualPageListItem implements Serializable {
+public class VisualPageListItem implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 7598120284619680606L;
 
@@ -193,6 +193,13 @@ public class VisualPageListItem implements Serializable {
 	        .append(" )");
 	    
 	    return retValue.toString();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	protected Object clone() throws CloneNotSupportedException {
+		return new VisualPageListItem(thumbnail, pageNumber, deleted, parentFileCanonicalPath);
 	}
 	
 	

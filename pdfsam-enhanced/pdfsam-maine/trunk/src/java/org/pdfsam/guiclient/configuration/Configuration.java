@@ -39,6 +39,9 @@ public class Configuration{
 
 	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
 	
+    public static final String HIGH_QUALITY = "0";
+    public static final String MEDIUM_QUALITY = "1";
+    public static final String LOW_QUALITY = "2";
     
 	private static Configuration configObject;
 	private ResourceBundle i18nMessages;
@@ -48,7 +51,7 @@ public class Configuration{
 	private boolean checkForUpdates = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
-	private boolean highQualityThumbnails = false;
+	private String thumbnailsQuality = HIGH_QUALITY;
 
 	private Configuration() {
 		init();
@@ -144,14 +147,13 @@ public class Configuration{
 	 */
 	public String getDefaultWorkingDir() {
 		return defaultWorkingDir;
-	}
+	}	
 
-	
 	/**
-	 * @return the highQualityThumbnails
+	 * @return the thumbnailsQuality
 	 */
-	public boolean isHighQualityThumbnails() {
-		return highQualityThumbnails;
+	public String getThumbnailsQuality() {
+		return thumbnailsQuality;
 	}
 
 	private void init(){
@@ -182,7 +184,7 @@ public class Configuration{
 			//default working dir
 			setDefaultWorkingDir();
 			//thumbnails quality
-			setHighQualityThumbnails();
+			setThumbnailsQuality();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -250,8 +252,7 @@ public class Configuration{
 			String defWorkingDir = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/default_working_dir");
 			if(defWorkingDir != null && defWorkingDir.length()>0){
 				defaultWorkingDir = defWorkingDir;
-			}
-			
+			}			
 		} catch (Exception e) {
 			//default
 			defaultWorkingDir = null;
@@ -277,24 +278,29 @@ public class Configuration{
 	/**
 	 * sets the configuration about the thumbnails quality
 	 */
-	private void setHighQualityThumbnails(){
+	private void setThumbnailsQuality() {
+		String thumbQuality = LOW_QUALITY;
 		try {
-			String highQualityThumb = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/highqualitythumbnails");
-			if(highQualityThumb != null && highQualityThumb.length()>0){
-				highQualityThumbnails = Integer.parseInt(highQualityThumb)== 1;
+			thumbQuality = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnailsquality");
+			if (HIGH_QUALITY.equals(thumbQuality)) {
+				thumbnailsQuality = HIGH_QUALITY;
+			} else if (MEDIUM_QUALITY.equals(thumbQuality)) {
+				thumbnailsQuality = MEDIUM_QUALITY;
+			} else {
+				thumbnailsQuality = LOW_QUALITY;
 			}
-			
 		} catch (Exception e) {
-			//default
-			highQualityThumbnails = false;
+			// default
+			thumbQuality = LOW_QUALITY;
 		}
 	}
-	
+
 	/**
-	 * set the quality of the thumbnails generated
-	 * @param highQualityThumbnails
+	 * @param thumbnailsQuality the thumbnailsQuality to set
 	 */
-	public void setHighQualityThumbnails(boolean highQualityThumbnails){
-		this.highQualityThumbnails = highQualityThumbnails;
+	public void setThumbnailsQuality(String thumbnailsQuality) {
+		this.thumbnailsQuality = thumbnailsQuality;
 	}
+	
+	
 }
