@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-vpagereorder" default="build-jars" basedir="../">
+    <description>
+        SetViewer plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-vpagereorder.src.dir" location="src/java"/>
+  	<property name="pdfsam-vpagereorder.etc.dir" location="etc"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="pdfsam-vpagereorder.build.root" location="${build.dir}/pdfsam-vpagereorder"/>
+	  	<property name="pdfsam-vpagereorder.build.dir" location="${pdfsam-vpagereorder.build.root}/build"/>
+	  	<property name="pdfsam-vpagereorder.dist.dir"  location="${pdfsam-vpagereorder.build.root}/dist"/>
+	  	<property name="pdfsam-vpagereorder.javadoc.dir"  location="${pdfsam-vpagereorder.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-vpagereorder.build.dir}"/>
+		<mkdir dir="${pdfsam-vpagereorder.dist.dir}"/>
+	    <mkdir dir="${pdfsam-vpagereorder.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-vpagereorder.javadoc.dir}"/>
+	    <delete dir="${pdfsam-vpagereorder.dist.dir}"/>
+	    <delete dir="${pdfsam-vpagereorder.build.dir}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-vpagereorder " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-vpagereorder.classpath">
+    	<fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-vpagereorder.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-vpagereorder.src.dir}" destdir="${pdfsam-vpagereorder.build.dir}" debug="true">
+    	<classpath refid="pdfsam-vpagereorder.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-vpagereorder.dist.dir}/${pdfsam-vpagereorder.jar.name}.jar" basedir="${pdfsam-vpagereorder.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+    	<fileset dir=".">
+		    <include name="images/*.png"/>
+		</fileset>    	  	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.vpagereorder.*"
+      sourcepath="${pdfsam-vpagereorder.src.dir}"
+      destdir="${pdfsam-vpagereorder.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Set Viewer Plugin API"
+      doctitle="pdfsam Set Viewer Plugin API" >
+    <classpath refid="pdfsam-vpagereorder.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-vpagereorder.dist.dir}/${pdfsam-vpagereorder.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-vpagereorder/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-vpagereorder/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-vpagereorder/ant/**/*.*"/>
+    		<include name="pdfsam-vpagereorder/images**/*.png"/>
+    	</fileset>  
+    </zip>
+  </target>
+
+</project>
+
