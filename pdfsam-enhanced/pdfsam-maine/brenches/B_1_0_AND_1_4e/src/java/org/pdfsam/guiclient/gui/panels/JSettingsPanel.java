@@ -105,7 +105,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private static final String PLUGIN_NAME = "Settings";
     private static final String PLUGIN_VERSION = "0.0.7e";
     
 /**
@@ -394,7 +393,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      * @return Returns the Plugin name.
      */
     public String getPluginName() {
-        return GettextResource.gettext(config.getI18nResourceBundle(),PLUGIN_NAME);
+        return GettextResource.gettext(config.getI18nResourceBundle(),"Settings");
     }
 
     /**
