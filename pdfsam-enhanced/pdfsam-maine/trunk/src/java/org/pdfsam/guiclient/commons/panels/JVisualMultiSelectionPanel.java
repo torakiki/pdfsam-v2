@@ -19,6 +19,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.dnd.DropTarget;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -34,8 +35,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.pdfsam.guiclient.commons.business.ClosableTabbedPanelAdder;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
+import org.pdfsam.guiclient.commons.dnd.droppers.JVisualMultiSelectionDropper;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 /**
  * Panel to let the user select multiple pdf document and show thumbnails in a tabbed panel
@@ -51,7 +55,9 @@ public class JVisualMultiSelectionPanel extends JPanel {
     private final JPanel topPanel = new JPanel();
     private JFileChooser browseOpenFileChooser = null;
     private JPanel currentTopPanel = new JPanel();
-
+    private ClosableTabbedPanelAdder tabsAdder;
+    private DropTarget tabbedPanelDropTarget;
+    
 	public JVisualMultiSelectionPanel() {
 		init();
 	}
@@ -68,9 +74,11 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 		topPanel.add(currentTopPanel);
 		
-	    Icon icon = new ImageIcon(this.getClass().getResource("/images/add.png"));
+	    Icon normal = new ImageIcon(this.getClass().getResource("/images/crossclose.png"));
+	    Icon hover = new ImageIcon(this.getClass().getResource("/images/crosscloseover.png"));
+	    Icon pressed = new ImageIcon(this.getClass().getResource("/images/crossclosedown.png"));
 	    inputTabbedPanel.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-	    inputTabbedPanel.setCloseIcons(icon, icon, icon);
+	    inputTabbedPanel.setCloseIcons(normal, hover, pressed);
 	    inputTabbedPanel.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				CloseableTabbedPane source = (CloseableTabbedPane)(e.getSource());
@@ -85,8 +93,12 @@ public class JVisualMultiSelectionPanel extends JPanel {
 				topPanel.validate();
 			}
 		});
-
 	    
+	    //files drop
+	    tabsAdder = new ClosableTabbedPanelAdder(inputTabbedPanel);
+	    JVisualMultiSelectionDropper dropper = new JVisualMultiSelectionDropper(tabsAdder);
+	    tabbedPanelDropTarget = new DropTarget(inputTabbedPanel,dropper);
+		
 		openButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseOpenFileChooser==null){
@@ -97,18 +109,7 @@ public class JVisualMultiSelectionPanel extends JPanel {
                 File[] chosenFiles = null;                
                 if (browseOpenFileChooser.showOpenDialog(browseOpenFileChooser.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFiles = browseOpenFileChooser.getSelectedFiles();
-                    if(chosenFiles != null && chosenFiles.length>0){
-                    	for(int i =0; i<chosenFiles.length; i++){
-                    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, false, false, true, true, false, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
-                    		inputPanel.setSelectedPdfDocument(chosenFiles[i]);
-                    		inputPanel.getPdfLoader().addFile(chosenFiles[i]);
-                    		String panelName = chosenFiles[i].getName();
-                    		if(panelName.length()>12){
-                    			panelName = chosenFiles[i].getName().substring(0, 9)+"...";
-                    		}
-                    		inputTabbedPanel.addTab(panelName, inputPanel, null, chosenFiles[i].getName());
-                    	}
-                    }
+                    tabsAdder.addTabs(chosenFiles); 
                 }               
                 
             }
@@ -136,4 +137,34 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		thumbConstraints.weighty=1.0;		
 		add(inputTabbedPanel, thumbConstraints);
     }
+
+	/**
+	 * @return the tabbedPanelDropTarget
+	 */
+	public DropTarget getTabbedPanelDropTarget() {
+		return tabbedPanelDropTarget;
+	}
+
+	/**
+	 * @param tabbedPanelDropTarget the tabbedPanelDropTarget to set
+	 */
+	public void setTabbedPanelDropTarget(DropTarget tabbedPanelDropTarget) {
+		this.tabbedPanelDropTarget = tabbedPanelDropTarget;
+	}
+    
+	/**
+	 * 
+	 * @return selected elements of the current panel or an empty array
+	 */
+	public VisualPageListItem[] getSelectedElements(){
+		VisualPageListItem[] retVal = new VisualPageListItem[0];
+		if(inputTabbedPanel!=null && inputTabbedPanel.getTabCount()>0){
+			Component currentTab = inputTabbedPanel.getSelectedComponent();
+			if(currentTab!=null){
+				retVal = ((JVisualPdfPageSelectionPanel)currentTab).getSelectedElements();
+			}
+		}
+		return retVal;
+	}
+    
 }

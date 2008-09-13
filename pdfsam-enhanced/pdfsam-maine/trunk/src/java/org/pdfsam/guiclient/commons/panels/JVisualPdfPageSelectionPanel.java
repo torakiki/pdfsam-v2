@@ -82,13 +82,16 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public static int MULTIPLE_INTERVAL_SELECTION = ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
 	public static int SINGLE_SELECTION = ListSelectionModel.SINGLE_SELECTION;
 
+	public static int STYLE_TOP_PANEL_HIDE = 0;
+	public static int STYLE_TOP_PANEL_MINIMAL = 1;
+	public static int STYLE_TOP_PANEL_MEDIUM = 2;
+	public static int STYLE_TOP_PANEL_FULL = 3;
 	
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
 	private String selectedPdfDocumentPassword = null;
 	private boolean showButtonPanel = true;
-	private boolean showTopPanel = true;
-	private boolean minimalTopPanel = false;
+	private int topPanelStyle = STYLE_TOP_PANEL_FULL;
 	private boolean acceptDropFromDifferentComponents = true;
 	private boolean showContextMenu = true;
 	private boolean canImportFile = true;
@@ -151,7 +154,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param showButtonPanel true=shows button panel
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel){
-		this(orientation, drawDeletedItems, showButtonPanel, false, true, true, false);
+		this(orientation, drawDeletedItems, showButtonPanel, false, true, STYLE_TOP_PANEL_FULL);
 	}
 
 	/**
@@ -161,12 +164,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param showButtonPanel true=shows button panel
 	 * @param acceptDropFromDifferentComponents if true accepts dropping items from other components
 	 * @param showContextMenu
-	 * @param showTopPanel
-	 * @param minimalTopPanel
+	 * @param topPanelStyle
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, boolean acceptDropFromDifferentComponents, 
-			boolean showContextMenu, boolean showTopPanel, boolean minimalTopPanel){
-		this(orientation, drawDeletedItems, showButtonPanel, acceptDropFromDifferentComponents, showContextMenu, showTopPanel, minimalTopPanel, true, true, SINGLE_INTERVAL_SELECTION);
+			boolean showContextMenu, int topPanelStyle){
+		this(orientation, drawDeletedItems, showButtonPanel, acceptDropFromDifferentComponents, showContextMenu, topPanelStyle, true, true, SINGLE_INTERVAL_SELECTION);
 	}
     
 	/**
@@ -176,13 +178,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param showButtonPanel true=shows button panel
 	 * @param acceptDropFromDifferentComponents if true accepts dropping items from other components
 	 * @param showContextMenu
-	 * @param showTopPanel
-	 * @param minimalTopPanel
+	 * @param topPanelStyle top panel style
 	 * @param canImportFile true if can accept file drop
 	 * @param canImportListObject true if can accept JVM object
+	 * @param selectionType selection type
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, boolean acceptDropFromDifferentComponents, 
-			boolean showContextMenu, boolean showTopPanel, boolean minimalTopPanel, boolean canImportFile, boolean canImportListObject, int selectionType){
+			boolean showContextMenu, int topPanelStyle, boolean canImportFile, boolean canImportListObject, int selectionType){
 		this.orientation = orientation;
 		this.config = Configuration.getInstance();
 		this.pdfLoader = new PdfThumbnailsLoader(this);
@@ -190,8 +192,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		this.showButtonPanel = showButtonPanel;
 		this.showContextMenu = showContextMenu;
 		this.acceptDropFromDifferentComponents = acceptDropFromDifferentComponents;
-		this.showTopPanel = showTopPanel;
-		this.minimalTopPanel = minimalTopPanel;
+		this.topPanelStyle = topPanelStyle;
 		this.canImportFile = canImportFile;
 		this.canImportListObject = canImportListObject;
 		this.selectionType = selectionType;
@@ -226,7 +227,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		topPanel.setPreferredSize(new Dimension(400,30));
 		
 	    pdfSelectionActionListener = new VisualPdfSelectionActionListener(this, pdfLoader);
-		if(!minimalTopPanel){
+		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 		    //load button
 			loadFileButton.setMargin(new Insets(2, 2, 2, 2));
 			loadFileButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
@@ -252,8 +253,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		optionsMenu.setPreferredSize(new Dimension(60, 30));
 		optionsMenu.setMinimumSize(new Dimension(60, 30));
 		optionsMenu.setBorder(BorderFactory.createEmptyBorder());
-		//if minimal these items are not shown
-		if(!minimalTopPanel){
+		//check if need to be shown
+		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 			loadDocItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
 			loadDocItem.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
 			loadDocItem.addMouseListener(new MouseAdapter() {
@@ -262,7 +263,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	            }
 	        });
 			menuOptions.add(loadDocItem);
-			
+		}
+		if(topPanelStyle>=STYLE_TOP_PANEL_MEDIUM){
 			clearItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
 			clearItem.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
 			clearItem.addMouseListener(new MouseAdapter() {
@@ -341,12 +343,15 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			menuItemRemove.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.REMOVE, pagesWorker));
 			popupMenu.add(menuItemRemove);
 			
-			final JMenuItem menuItemUndelete = new JMenuItem();
-			menuItemUndelete.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
-			menuItemUndelete.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete"));
-			menuItemUndelete.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.UNDELETE, pagesWorker));
-			popupMenu.add(menuItemUndelete);
-			
+        	//if elements are physically deleted i don't need this item
+        	if(drawDeletedItems){
+				final JMenuItem menuItemUndelete = new JMenuItem();
+				menuItemUndelete.setIcon(new ImageIcon(this.getClass().getResource("/images/remove.png")));
+				menuItemUndelete.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete"));
+				menuItemUndelete.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.UNDELETE, pagesWorker));
+				popupMenu.add(menuItemUndelete);
+        	}
+        	
 			//shyow popup
 			thumbnailList.addMouseListener(new MouseAdapter() {
 	            public void mousePressed(MouseEvent e) {
@@ -365,18 +370,12 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
 	            		selection = thumbnailList.getSelectedIndices();
 	            	}
-	            	//if elements are physically deleted i don't need this item
-	            	if(drawDeletedItems){
-		            	menuItemUndelete.setEnabled(true);	            	
-	            	}else{
-	            		menuItemUndelete.setEnabled(false);
-	            	}
 	            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
 	            }
 	        });
 		}
 		
-		if(!minimalTopPanel){
+		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			topPanel.add(loadFileButton);
 		}
@@ -394,7 +393,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		topConstraints.insets = new Insets(5,5,5,5);
 		topConstraints.weightx=1.0;
 		topConstraints.weighty=0.0;		
-		if(showTopPanel){
+		if(topPanelStyle>STYLE_TOP_PANEL_HIDE){
 			add(topPanel, topConstraints);
 		}
 
@@ -697,12 +696,12 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 					previousElement = currentElement;
 				}
 				if(!currentElement.getParentFileCanonicalPath().equals(previousElement.getParentFileCanonicalPath())){
-					retVal.add(" -" + ConcatParsedCommand.F_ARG);
+					retVal.add("-" + ConcatParsedCommand.F_ARG);
 					retVal.add(previousElement.getParentFileCanonicalPath());
 					previousElement = currentElement;
 				}
 			}
-			retVal.add(" -" + ConcatParsedCommand.F_ARG);
+			retVal.add("-" + ConcatParsedCommand.F_ARG);
 			retVal.add(previousElement.getParentFileCanonicalPath());
 		}
 		return retVal;
@@ -713,11 +712,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param c
 	 */
 	public void addToTopPanel(Component c){
+		topPanel.removeAll();
+		/*TODO fix this*/
 		if(c!=null){
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			topPanel.add(c);
 		}
-		if(!minimalTopPanel){
+		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			topPanel.add(loadFileButton);
 		}
@@ -726,5 +727,32 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		topPanel.add(Box.createHorizontalGlue());
 		topPanel.add(optionsMenu);
 		topPanel.validate();
+	}
+	
+	/**
+	 * 
+	 * @return Returns an array of all the selected values, in increasing order based on their indices in the list or an empty array if nothing is selected
+	 */
+	public VisualPageListItem[] getSelectedElements(){
+		Object[] elems = thumbnailList.getSelectedValues();
+		VisualPageListItem[] visElems = new VisualPageListItem[elems.length];
+		System.arraycopy(elems, 0, visElems, 0, elems.length);
+		return visElems;
+	}
+	
+	/**
+	 * @param c
+	 * @see VisualListModel#appendAllElements(Collection)
+	 */
+	public void appendElements(Collection c){
+		((VisualListModel)thumbnailList.getModel()).appendAllElements(c);
+	}
+	
+	/**
+	 * @param c
+	 * @see VisualListModel#prependAllElements(Collection)
+	 */
+	public void prependElements(Collection c){
+		((VisualListModel)thumbnailList.getModel()).prependAllElements(c);
 	}
 }

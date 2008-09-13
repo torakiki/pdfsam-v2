@@ -165,7 +165,26 @@ public class VisualListModel extends AbstractListModel {
     		fireIntervalAdded(this, data.size(), data.size()+i-1);
     	}
     }
-       
+    
+    /**
+     * same as addAllElements. Appends elements to the end
+     * @param c
+     */
+    public void appendAllElements(Collection c){
+    	addAllElements(c);
+    }
+     
+    /**
+     * Add elements at the beginning
+     * @param c
+     */
+    public void prependAllElements(Collection c){
+    	if(c!=null && c.size()>0){
+    		data.addAll(0, c);
+    		fireIntervalAdded(this, 0, c.size()-1);
+    	}
+    }
+    
     /**
      * Add elements in c at the given index
      * @param index

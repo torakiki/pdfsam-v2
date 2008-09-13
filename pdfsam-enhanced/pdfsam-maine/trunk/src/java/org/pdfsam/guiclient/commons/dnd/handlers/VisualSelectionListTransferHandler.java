@@ -105,7 +105,6 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
 	protected void exportDone(JComponent source, Transferable data, int action) {
 		//clean the source only if i'm not exporting to another component
 		if(action==MOVE && !((VisualPageListTransferable)data).isDifferentDestination()){
-			log.debug("Export done da stesso componente");
 	    	JVisualSelectionList listComponent = (JVisualSelectionList) source;
 	    	int[] dataList = ((VisualPageListTransferable) data).getDataList();
 	    	if (dataList[0] <= addIndex) {

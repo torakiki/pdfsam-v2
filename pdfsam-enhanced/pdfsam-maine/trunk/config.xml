@@ -18,7 +18,7 @@
     <loglevel>10000</loglevel>  
     <checkupdates>1</checkupdates>  
     <default_working_dir></default_working_dir>  
-    <thumbnailsquality>0</thumbnailsquality> 
+    <thumbnailsquality>1</thumbnailsquality> 
   </settings>  
   <adata> 
     <author> 
