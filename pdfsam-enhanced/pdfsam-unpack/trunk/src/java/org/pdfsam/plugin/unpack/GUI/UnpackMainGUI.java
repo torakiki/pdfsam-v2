@@ -35,7 +35,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -55,7 +54,6 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 /** 
  * Plugable JPanel provides a GUI for unpack functions.
@@ -75,7 +73,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private JPanel destinationPanel = new JPanel();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER, true, false);
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
-	private JTextField destinationTextField;
+	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
 	private SpringLayout springLayoutUnpackPanel;
 	private Configuration config;
@@ -92,7 +90,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.3e";
+	private static final String PLUGIN_VERSION = "0.0.4e";
 	
 	/**
 	 * Constructor
@@ -114,11 +112,6 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		selectionPanel.addPropertyChangeListener(this);
 		selectionPanel.enableSetOutputPathMenuItem();
 		
-//		BROWSE_FILE_CHOOSER        
-		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-		browseDirChooser.setFileFilter(new PdfFilter());
-		browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		
 		destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
 		add(destinationLabel);
 		
@@ -129,24 +122,24 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		add(destinationPanel);
 //		END_DESTINATION_PANEL   
-	
-		destinationTextField = new JTextField();
-		destinationTextField.setDropTarget(null);
-		destinationTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
+      
 		destinationPanel.add(destinationTextField);
 		
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int return_val = browseDirChooser.showOpenDialog(browseButton.getParent());
-				File chosen_file = null;                
-				if (return_val == JFileChooser.APPROVE_OPTION){
-					chosen_file = browseDirChooser.getSelectedFile();
+            	if(browseDirChooser==null){
+            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    		        browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            	}
+                File chosenFile = null;                
+				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
+					chosenFile = browseDirChooser.getSelectedFile();
 				}
 				//write the destination in text field
-				if (chosen_file != null){
+				if (chosenFile != null){
 					try{
-						destinationTextField.setText(chosen_file.getAbsolutePath());
+						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}
 					catch (Exception ex){
 						log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
