@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.LinkedList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -164,7 +165,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
                 //write the destination in text field
-                if (chosenFile != null && chosenFile.isDirectory()){
+                if (chosenFile != null){
                     try{
                         destinationFileText.setText(chosenFile.getAbsolutePath());
                     }
@@ -189,100 +190,114 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION  
 	    
-	       
+        final ButtonGroup outputRadioGroup = new ButtonGroup();
+        outputRadioGroup.add(sameAsSourceRadio);
+        outputRadioGroup.add(chooseAFolderRadio); 
 	  //RADIO_LISTENERS
-	          sameAsSourceRadio.addActionListener(new ActionListener() {
-	              public void actionPerformed(ActionEvent e) {
-	                  destinationFileText.setEnabled(false);
-	                  browseDestButton.setEnabled(false);
-	              }
-	          });
-	          
-	          chooseAFolderRadio.addActionListener(new ActionListener() {
-	              public void actionPerformed(ActionEvent e) {
-	                  destinationFileText.setEnabled(true);
-	                  browseDestButton.setEnabled(true);
-	              }
-	          });
-	  //END_RADIO_LISTENERS
-	  //ENTER_KEY_LISTENERS
-	          browseDestButton.addKeyListener(browsedEnterkeyListener);
-	          runButton.addKeyListener(runEnterkeyListener);
-	  //END_ENTER_KEY_LISTENERS
-	          runButton.addActionListener(new ActionListener() {
-	              public void actionPerformed(ActionEvent e) {
-	            	  File inputFile = selectionPanel.getSelectedPdfDocument();
-	            	  String selectionString = selectionPanel.getValidElementsString();
-	            	  if(inputFile==null || selectionString.length()==0){
-	                      log.warn(GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document or undelete some page"));
-	                      return;
-	                  }                             
-	                  final LinkedList args = new LinkedList();                
-	                  try{
+		sameAsSourceRadio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				destinationFileText.setEnabled(false);
+				browseDestButton.setEnabled(false);
+			}
+		});
 
-	  						args.add("-"+ConcatParsedCommand.F_ARG);
-	  						String f = inputFile.getAbsolutePath();
-	  						if((selectionPanel.getSelectedPdfDocumentPassword()) != null && selectionPanel.getSelectedPdfDocumentPassword().length()>0){
-	  							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	  							f +=":"+selectionPanel.getSelectedPdfDocumentPassword();
-	  						}
-	  						args.add(f);
-		                     
-	  						args.add("-"+ConcatParsedCommand.U_ARG);
-		                      args.add(selectionString);
-		                      
-	  	                args.add("-"+ConcatParsedCommand.O_ARG);
-	                    //check radio for output options
-	                    if (sameAsSourceRadio.isSelected()){
-	                    	if(inputFile != null){
-	                    		args.add(inputFile.getAbsolutePath());
-	                    	}
-	                    }else{
-	                    	if(destinationFileText.getText().length()>0){
-	                        	File destinationDir = new File(destinationFileText.getText());
-	                        	File parent = destinationDir.getParentFile();
-	                        	if(!(parent!=null && parent.exists())){
-	                        		String suggestedDir = null;
-	                        		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
-	                        			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
-	                        		}else{
-	                        			suggestedDir = new File(inputFile.getParent(), destinationDir.getName()).getAbsolutePath();
-	                        		}
-	                        		if(suggestedDir != null){
-	                        			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
-	                						    GettextResource.gettext(config.getI18nResourceBundle(),"Output file location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
-	                						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
-	                						    JOptionPane.YES_NO_OPTION,
-	                						    JOptionPane.QUESTION_MESSAGE)){
-	                        				destinationFileText.setText(suggestedDir);
-	    			        			}
-	                        		}
-	                        	}
-	                        }
-	                        args.add(destinationFileText.getText());
-	                    }	                      	                   
-	  					                    
+		chooseAFolderRadio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				destinationFileText.setEnabled(true);
+				browseDestButton.setEnabled(true);
+			}
+		});
+		// END_RADIO_LISTENERS
+		// ENTER_KEY_LISTENERS
+		browseDestButton.addKeyListener(browsedEnterkeyListener);
+		runButton.addKeyListener(runEnterkeyListener);
+		// END_ENTER_KEY_LISTENERS
+		runButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				File inputFile = selectionPanel.getSelectedPdfDocument();
+				String selectionString = selectionPanel.getValidElementsString();
+				if (inputFile == null || selectionString.length() == 0) {
+					log.warn(GettextResource.gettext(config.getI18nResourceBundle(),
+							"Please select a pdf document or undelete some page"));
+					return;
+				}
+				final LinkedList args = new LinkedList();
+				try {
 
-	                      
-	                      if (overwriteCheckbox.isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
-	                      if (outputCompressedCheck.isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
+					args.add("-" + ConcatParsedCommand.F_ARG);
+					String f = inputFile.getAbsolutePath();
+					if ((selectionPanel.getSelectedPdfDocumentPassword()) != null
+							&& selectionPanel.getSelectedPdfDocumentPassword().length() > 0) {
+						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),
+								"Found a password for input file."));
+						f += ":" + selectionPanel.getSelectedPdfDocumentPassword();
+					}
+					args.add(f);
 
-	                      args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
-	  					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+					args.add("-" + ConcatParsedCommand.U_ARG);
+					args.add(selectionString);
 
-	  					args.add (AbstractParsedCommand.COMMAND_CONCAT);
-	                  
-	  	                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-	  	                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));               
-	                  }catch(Exception ex){    
-	                  	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-	                  }   
-	              }
-	          });
-	          runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pages reorder"));
-	          add(runButton);
-	          setLayout();
-    }
+					args.add("-" + ConcatParsedCommand.O_ARG);
+					// check radio for output options
+					if (sameAsSourceRadio.isSelected()) {
+						if (inputFile != null) {
+							args.add(inputFile.getAbsolutePath());
+						}
+					} else {
+						if (destinationFileText.getText().length() > 0) {
+							File destinationDir = new File(destinationFileText.getText());
+							File parent = destinationDir.getParentFile();
+							if (!(parent != null && parent.exists())) {
+								String suggestedDir = null;
+								if (Configuration.getInstance().getDefaultWorkingDir() != null
+										&& Configuration.getInstance().getDefaultWorkingDir().length() > 0) {
+									suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(),
+											destinationDir.getName()).getAbsolutePath();
+								} else {
+									suggestedDir = new File(inputFile.getParent(), destinationDir.getName())
+											.getAbsolutePath();
+								}
+								if (suggestedDir != null) {
+									if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
+											GettextResource.gettext(config.getI18nResourceBundle(),
+													"Output file location is not correct")
+													+ ".\n"
+													+ GettextResource.gettext(config.getI18nResourceBundle(),
+															"Would you like to change it to")
+													+ " "
+													+ suggestedDir
+													+ " ?", GettextResource.gettext(config.getI18nResourceBundle(),
+													"Output location error"), JOptionPane.YES_NO_OPTION,
+											JOptionPane.QUESTION_MESSAGE)) {
+										destinationFileText.setText(suggestedDir);
+									}
+								}
+							}
+						}
+						args.add(destinationFileText.getText());
+					}
+
+					if (overwriteCheckbox.isSelected())
+						args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
+					if (outputCompressedCheck.isSelected())
+						args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
+
+					args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
+					args.add(((StringItem) versionCombo.getSelectedItem()).getId());
+
+					args.add(AbstractParsedCommand.COMMAND_CONCAT);
+
+					final String[] myStringArray = (String[]) args.toArray(new String[args.size()]);
+					WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
+				} catch (Exception ex) {
+					log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
+				}
+			}
+		});
+		runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(), "Execute pages reorder"));
+		add(runButton);
+		setLayout();
+	}
     
     /**
      * Set plugin layout for each component
