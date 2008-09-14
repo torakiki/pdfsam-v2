@@ -75,7 +75,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private JTextField outPrefixTextField;
     private SpringLayout encryptPanelLayout;
     private SpringLayout destinationPanelLayout;
-    private JTextField destFolderText;
+    private JTextField destFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);;
     private SpringLayout optionsPanelLayout;
     private SpringLayout encryptSpringLayout;
     private JTextField userPwdField;
@@ -89,7 +89,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private Configuration config;
 	
 //file_chooser    
-    private final JFileChooser browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    private JFileChooser browseDestFileChooser;
 
 //button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
@@ -123,7 +123,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.4e";
+    private final String PLUGIN_VERSION = "0.2.5e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -158,10 +158,6 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         add(selectionPanel);
 		selectionPanel.enableSetOutputPathMenuItem();
         selectionPanel.addPropertyChangeListener(this);
-
-//FILE_CHOOSER
-        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//END_FILE_CHOOSER
 
 //ENCRYPT_SECTION
         optionsPanelLayout = new SpringLayout();
@@ -257,9 +253,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 //END_DESTINATION_PANEL        
         destFolderLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
         add(destFolderLabel);
-        
-        destFolderText = new JTextField();
-        destFolderText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+
         destinationPanel.add(destFolderText);
 
 //CHECK_BOX
@@ -275,7 +269,11 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                File chosenFile = null;                
+            	if(browseDestFileChooser==null){
+    		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    		        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            	}
+                File chosenFile = null;                    
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
