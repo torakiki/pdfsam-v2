@@ -16,7 +16,7 @@ die() {
 
 
 DIRNAME="../"
-PDFSAMJAR="$DIRNAME/pdfsam-1.0.1.jar"
+PDFSAMJAR="$DIRNAME/pdfsam-1.0.2.jar"
 
 # Setup the classpath
 if [ ! -f "$PDFSAMJAR" ]; then

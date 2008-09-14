@@ -1,3 +1,10 @@
+1.4.2e stable release
+===================================
+-Added some new translatable string
+-Fixed bug #2098518 (Not giving the pdf extension could lead to block)
+-Added Copy/Cut/Paste popup menu to destination text fields
+-Updated langpack
+
 1.4.1e stable release (24-Aug-2008)
 ===================================
 -Fixed some matches found with FindBugs

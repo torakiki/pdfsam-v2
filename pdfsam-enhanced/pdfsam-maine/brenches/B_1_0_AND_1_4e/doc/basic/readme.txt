@@ -1,14 +1,14 @@
 Application: PDF Split and Merge basic
 
-Version: 1.0.1 stable release
+Version: 1.0.2 stable release
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
 License: GPL2
 
 Plugins included:
-	-pdfsam-merge-0.6.5 *
-	-pdfsam-split-0.4.6 *
+	-pdfsam-merge-0.6.6 *
+	-pdfsam-split-0.4.7 *
 
 Linked libraries:
 	-itext-2.0.7
@@ -26,8 +26,8 @@ Linked libraries:
 Note: PDF Split and Merge comes with ABSOLUTELY NO WARRANTY;
 see the file gpl.txt in licenses/pdfsam subdirectory for details.
 
-Installation: Unzip the archive into a directory. Double click pdfsam-1.0.1.jar or open a console a type the command
-"java -jar /pathwhereyouunzipped/pdfsam-1.0.1.jar"
+Installation: Unzip the archive into a directory. Double click pdfsam-1.0.2.jar or open a console a type the command
+"java -jar /pathwhereyouunzipped/pdfsam-1.0.2.jar"
 
 Prerequisites: A working Java Runtime Environment is needed. This software has been tested on 
 Java(TM) 2 Runtime Environment, Standard Edition Version 1.4.2. Please report any trouble or bug with this or other

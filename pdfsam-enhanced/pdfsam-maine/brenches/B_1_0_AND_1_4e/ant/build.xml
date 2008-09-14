@@ -19,7 +19,7 @@
 		<property file="ant/${pdfsam.version}.properties" />
 		
 	  	<property name="pdfsam.jar.name" value="pdfsam-${pdfsam.jar.version}"/>				
-		<property name="pdfsam.build.root" location="${build.dir}/pdfsam-maine/"/>
+		<property name="pdfsam.build.root" location="${build.dir}/pdfsam-maine-br1/"/>
 		<property name="pdfsam.build.dir" location="${pdfsam.build.root}/build"/>
 		<property name="pdfsam.dist.dir"  location="${pdfsam.build.root}/dist"/>		
 		<property name="pdfsam.release.dir"  location="${pdfsam.build.root}/release"/>
@@ -282,29 +282,29 @@
 	  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
 	    <zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-build-src.zip">
 	    	<fileset dir="..">
-		    	<include name="pdfsam-maine/src/java/**/*"/>
-	    		<include name="pdfsam-maine/ant/**/*"/>
-	    		<include name="pdfsam-maine/etc/**/*"/>
-	    		<include name="pdfsam-maine/bin/**/*"/>
-	    		<include name="pdfsam-maine/doc/licenses/**/*"/>
-	    		<include name="pdfsam-maine/doc/examples/**/*"/>
-	    		<include name="pdfsam-maine/doc/${pdfsam.version}/**/*"/>
-	    		<include name="pdfsam-maine/images/*.png"/>
+		    	<include name="pdfsam-maine-br1/src/java/**/*"/>
+	    		<include name="pdfsam-maine-br1/ant/**/*"/>
+	    		<include name="pdfsam-maine-br1/etc/**/*"/>
+	    		<include name="pdfsam-maine-br1/bin/**/*"/>
+	    		<include name="pdfsam-maine-br1/doc/licenses/**/*"/>
+	    		<include name="pdfsam-maine-br1/doc/examples/**/*"/>
+	    		<include name="pdfsam-maine-br1/doc/${pdfsam.version}/**/*"/>
+	    		<include name="pdfsam-maine-br1/images/*.png"/>
 	    	</fileset>
 			<fileset dir="${build.dir}">
-		    	<include name="pdfsam-maine/apidocs/**/*.*"/>
+		    	<include name="pdfsam-maine-br1/apidocs/**/*.*"/>
 	    	</fileset>
 	    </zip>
 	  	
 	  	<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-template.zip">
 	  		<fileset dir="..">
-	  			<include name="template-${pdfsam.version}/**/*" />
+	  			<include name="template-${pdfsam.version}-${pdfsam.main.version}/**/*" />
 	  		</fileset>
 	  	</zip>
 
 	  	<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-libraries.zip">
 	  		<fileset dir="..">
-	  			<include name="libraries/**/*" />
+	  			<include name="libraries-${pdfsam.main.version}/**/*" />
 	  		</fileset>
 	  	</zip>
 	  	<!--emp4j-->
