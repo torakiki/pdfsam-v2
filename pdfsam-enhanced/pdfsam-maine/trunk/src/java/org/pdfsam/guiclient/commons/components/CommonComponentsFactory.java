@@ -20,7 +20,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 
+import org.pdfsam.guiclient.commons.components.listeners.DefaultMouseListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 
@@ -31,6 +34,8 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class CommonComponentsFactory {
 
+	public static final int DESTINATION_TEXT_FIELD_TYPE = 1;
+	
 	public static final int RUN_BUTTON_TYPE = 1;
 	public static final int BROWSE_BUTTON_TYPE = 2;
 	public static final int ADD_BUTTON_TYPE = 3;
@@ -144,7 +149,29 @@ public class CommonComponentsFactory {
 		return retVal;
 	}
 	
+	/**
+	 * 
+	 * @param textFieldType
+	 * @return a JTextField instance
+	 */
+	public synchronized JTextField createTextField(int textFieldType){
+		JTextField retVal = new JTextField();
+		
+		switch(textFieldType){
+		
+		case DESTINATION_TEXT_FIELD_TYPE:
+			retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+			retVal.addMouseListener(new DefaultMouseListener());
+			break;		
+
+		default:
+			break;
+		}
+		
+		return retVal;
+	}
+	
 	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException("Cannot clone configuration object.");
+		throw new CloneNotSupportedException("Cannot clone ComponentFactory object.");
 	}
 }

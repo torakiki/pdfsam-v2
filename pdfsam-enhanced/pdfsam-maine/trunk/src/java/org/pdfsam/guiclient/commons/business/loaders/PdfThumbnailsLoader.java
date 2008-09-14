@@ -305,14 +305,14 @@ public class PdfThumbnailsLoader {
 	                      		height = LANDSCAPE_HEIGHT;
 	                      	}	                      	
 	                      	String quality = Configuration.getInstance().getThumbnailsQuality();
-	                      	long t = System.currentTimeMillis();
+	                      	//long t = System.currentTimeMillis();
 	                      		BufferedImage page =decoder.getPageAsImage(pageItem.getPageNumber());
-	                      	log.debug("BufferedImage got in "+(System.currentTimeMillis() - t));
+	                      	//log.debug("BufferedImage got in "+(System.currentTimeMillis() - t));
 	                      	
-	                      	log.debug("Generating "+quality+" quality thumb");
-	                    	long t2 = System.currentTimeMillis();
+	                      	//log.debug("Generating "+quality+" quality thumb");
+	                    	//long t2 = System.currentTimeMillis();
 	                      		image = getLowQualityThumbnail(page, height, quality);
-	                      	log.debug("Image resized in "+(System.currentTimeMillis() - t2));
+	                      	//log.debug("Image resized in "+(System.currentTimeMillis() - t2));
 	                      	/*if(Configuration.HIGH_QUALITY.equals(quality)){
 	                      		log.debug("Generating high quality thumb");
 	                      		if(!decoder.isThumbnailsDrawing()){
@@ -342,7 +342,7 @@ public class PdfThumbnailsLoader {
             		if(queue.isEmpty() && running==0){
             			try{
 	            			log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails generated"));
-	            			//decoder.setThumbnailsDrawing(false);
+	            			decoder.setThumbnailsDrawing(false);
 	            			decoder.closePdfFile();
             			}catch(Exception e){
             				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "),e);
