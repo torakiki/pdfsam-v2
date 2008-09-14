@@ -31,7 +31,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -65,7 +64,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
 
 	private static final Logger log = Logger.getLogger(VPageReorderMainGUI.class.getPackage().getName());
 	
-    private JTextField destinationFileText;
+    private JTextField destinationFileText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
     private JHelpLabel destinationHelpLabel;
     private Configuration config;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
@@ -142,9 +141,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
         chooseAFolderRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Choose a folder"));
         destinationPanel.add(chooseAFolderRadio);
 //END_DESTINATION_RADIOS 
-        
-        destinationFileText = new JTextField();
-        destinationFileText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+
         destinationPanel.add(destinationFileText);
         destinationPanel.add(overwriteCheckbox);
         
