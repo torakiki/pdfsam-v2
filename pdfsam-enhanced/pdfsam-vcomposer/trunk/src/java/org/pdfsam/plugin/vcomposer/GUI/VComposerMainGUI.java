@@ -38,7 +38,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -75,14 +74,14 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
 
 	private static final Logger log = Logger.getLogger(VComposerMainGUI.class.getPackage().getName());
 	
-    private JTextField destinationFileText;
+    private JTextField destinationFileText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
     private JHelpLabel destinationHelpLabel;
     private Configuration config;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
     private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, false, true, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);
     
     //layouts
-    private SpringLayout vreorderSpringLayout;
+    private SpringLayout vcomposerSpringLayout;
     private SpringLayout destinationPanelLayout;
     
 	//button
@@ -127,8 +126,8 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
         setPanelIcon("/images/vcomposer.png");
         setPreferredSize(new Dimension(500,700));
         
-        vreorderSpringLayout = new SpringLayout();
-        setLayout(vreorderSpringLayout);
+        vcomposerSpringLayout = new SpringLayout();
+        setLayout(vcomposerSpringLayout);
         
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.LINE_AXIS));
@@ -186,9 +185,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
         
         destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
         add(destinationLabel);
-        
-        destinationFileText = new JTextField();
-        destinationFileText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));           
+                
         destinationPanel.add(destinationFileText);
         destinationPanel.add(overwriteCheckbox);
         
@@ -307,23 +304,23 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
      *
      */
     private void setLayout(){
-    	vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, inputPanel, 260, SpringLayout.NORTH, this);
-    	vreorderSpringLayout.putConstraint(SpringLayout.EAST, inputPanel, -5, SpringLayout.EAST, this);
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, inputPanel, 5, SpringLayout.NORTH, this);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, inputPanel, 5, SpringLayout.WEST, this);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, inputPanel, 260, SpringLayout.NORTH, this);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.EAST, inputPanel, -5, SpringLayout.EAST, this);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, inputPanel, 5, SpringLayout.NORTH, this);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, inputPanel, 5, SpringLayout.WEST, this);
     	
-    	vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, composerPanel, 260, SpringLayout.NORTH, composerPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.EAST, composerPanel, 0, SpringLayout.EAST, inputPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, composerPanel, 5, SpringLayout.SOUTH, inputPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, composerPanel, 0, SpringLayout.WEST, inputPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, composerPanel, 260, SpringLayout.NORTH, composerPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.EAST, composerPanel, 0, SpringLayout.EAST, inputPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, composerPanel, 5, SpringLayout.SOUTH, inputPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, composerPanel, 0, SpringLayout.WEST, inputPanel);
 
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, destinationLabel, 5, SpringLayout.SOUTH, composerPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, composerPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, destinationLabel, 5, SpringLayout.SOUTH, composerPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, composerPanel);
         
-    	vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 115, SpringLayout.NORTH, destinationPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, composerPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, composerPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, composerPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 115, SpringLayout.NORTH, destinationPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, composerPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, composerPanel);
+    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, composerPanel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationFileText, 20, SpringLayout.NORTH, destinationFileText);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationFileText, 10, SpringLayout.NORTH, destinationPanel);
@@ -355,10 +352,10 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);
         
         
-        vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        vreorderSpringLayout.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        vreorderSpringLayout.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        vreorderSpringLayout.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
+        vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
+        vcomposerSpringLayout.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
+        vcomposerSpringLayout.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
+        vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
     }
     
 	public FocusTraversalPolicy getFocusPolicy() {
