@@ -34,7 +34,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -80,7 +79,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
     private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
 	private final JCheckBox reverseFirstCheckbox = new JCheckBox();
 	private final JCheckBox reverseSecondCheckbox = new JCheckBox();
-	private JTextField destinationTextField;
+	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
 	private SpringLayout springLayoutMixPanel;
 	private Configuration config;
@@ -98,7 +97,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.4e";
+	private static final String PLUGIN_VERSION = "0.1.5e";
 
 	
 	/**
@@ -148,10 +147,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		add(destinationPanel);
 //		END_DESTINATION_PANEL   
-	
-		destinationTextField = new JTextField();
-		destinationTextField.setDropTarget(null);
-		destinationTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
+	       
 		destinationPanel.add(destinationTextField);
 		
 //		BROWSE_BUTTON        
