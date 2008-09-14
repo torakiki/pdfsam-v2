@@ -37,7 +37,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -75,7 +74,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 
 	private static final Logger log = Logger.getLogger(MergeMainGUI.class.getPackage().getName());
 
-    private JTextField destinationTextField;
+    private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
     private SpringLayout layoutMergePanel;
     private JFileChooser browseDestFileChooser;
     private SpringLayout layoutDestinationPanel;
@@ -109,7 +108,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.5";
+    private static final String PLUGIN_VERSION = "0.6.6";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -165,9 +164,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         add(destinationPanel);
 //END_DESTINATION_PANEL   
-        
-        destinationTextField = new JTextField();
-        destinationTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+
         destinationPanel.add(destinationTextField);
         
         destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
