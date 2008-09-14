@@ -79,7 +79,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	private JTextField outPrefixText;
     private SpringLayout outputPanelLayout;
     private SpringLayout destinationPanelLayout;
-    private JTextField destinationFolderText;
+    private JTextField destinationFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
     private JTextField thisPageTextField;
     private JTextField nPagesTextField;
     private JHelpLabel checksHelpLabel;
@@ -137,7 +137,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.6";
+    private final String PLUGIN_VERSION = "0.4.7";
     
 /**
  * Constructor
@@ -258,8 +258,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         outputRadioGroup.add(chooseAFolderRadio);  
 //END_RADIOGROUP
 
-        destinationFolderText = new JTextField();
-        destinationFolderText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         destinationPanel.add(destinationFolderText);
         destinationPanel.add(overwriteCheckbox);
         
