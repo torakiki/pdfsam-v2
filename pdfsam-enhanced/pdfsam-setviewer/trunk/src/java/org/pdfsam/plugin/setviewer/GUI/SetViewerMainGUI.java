@@ -58,6 +58,7 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyChangeListener {
 
+	private static final long serialVersionUID = -5145250933588350919L;
 
 	private static final Logger log = Logger.getLogger(SetViewerMainGUI.class.getPackage().getName());
 	
@@ -66,7 +67,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     private SpringLayout setviewerSpringLayout;
     private SpringLayout destinationPanelLayout;
     private SpringLayout setviewerOptionPanelLayout;
-    private JTextField destFolderText;
+    private JTextField destFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
     private JHelpLabel prefixHelpLabel;
     private JHelpLabel destinationHelpLabel;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
@@ -209,9 +210,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 //END_DESTINATION_PANEL        
         destFolderLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
         add(destFolderLabel);
-        
-        destFolderText = new JTextField();
-        destFolderText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+
         destinationPanel.add(destFolderText);
 
 //CHECK_BOX
