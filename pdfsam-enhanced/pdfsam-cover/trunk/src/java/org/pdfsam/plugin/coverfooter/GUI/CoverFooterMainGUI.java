@@ -37,7 +37,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -73,7 +72,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 
 	private static final Logger log = Logger.getLogger(CoverFooterMainGUI.class.getPackage().getName());
 
-    private JTextField destinationTextField;
+    private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);;
     private SpringLayout layoutMergePanel;
     private JFileChooser browseDestFileChooser;
     private SpringLayout layoutDestinationPanel;
@@ -110,7 +109,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.4e";
+    private static final String PLUGIN_VERSION = "0.2.5e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -142,12 +141,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         add(selectionPanel);
         footerLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Footer pdf file:"));
 		add(footerLabel);
-        selectionPanel.addPropertyChangeListener(this);
-
-//BROWSE_FILE_CHOOSER        
-        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//END_BROWSE_FILE_CHOOSER        
+        selectionPanel.addPropertyChangeListener(this);      
 
 //      OPTION_PANEL
         layoutOptionPanel = new SpringLayout();
@@ -176,10 +170,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         destinationPanel.setLayout(layoutDestinationPanel);
         destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         add(destinationPanel);
-//END_DESTINATION_PANEL   
-        
-        destinationTextField = new JTextField();
-        destinationTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+//END_DESTINATION_PANEL           
         destinationPanel.add(destinationTextField);
         
         destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
@@ -187,9 +178,12 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 //BROWSE_BUTTON        
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int retVal = browseDestFileChooser.showOpenDialog(browseDestButton.getParent());
+            	if(browseDestFileChooser==null){
+    		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    		        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            	}
                 File chosenFile = null;                
-                if (retVal == JFileChooser.APPROVE_OPTION){
+                if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                 	chosenFile = browseDestFileChooser.getSelectedFile();
                 }
                 //write the destination in text field
