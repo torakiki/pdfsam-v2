@@ -1,0 +1,822 @@
+# Slovak translation for pdfsam
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the pdfsam package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pdfsam\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"PO-Revision-Date: 2008-06-12 13:40+0000\n"
+"Last-Translator: Holco <Unknown>\n"
+"Language-Team: Lukas Holcek <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Country: SLOVAKIA\n"
+"X-Poedit-Language: Slovak\n"
+"X-Poedit-SourceCharset: iso-8859-2\n"
+
+msgid "Merge options:"
+msgstr "Možnosti zlúčenia:"
+
+msgid "PDF documents contain forms"
+msgstr "PDF dokumenty obsahujú formuláre"
+
+msgid "Merge type"
+msgstr "Typ zlúčenia"
+
+msgid "Unchecked"
+msgstr "Nezaškrtnuté"
+
+msgid "Use this merge type for standard pdf documents"
+msgstr "Použiť tento typ zlúčenia pre štandardné PDF dokumenty"
+
+msgid "Checked"
+msgstr "Zaškrtnuté"
+
+msgid "Use this merge type for pdf documents containing forms"
+msgstr "Použiť tento typ zlúčenia pre pdf dokumenty, ktoré obsahujú formuláre"
+
+msgid "Note"
+msgstr "Poznámka"
+
+msgid "Setting this option the documents will be completely loaded in memory"
+msgstr "Nastavením tejto možnosti budú dokumenty plne načítané do pamäte"
+
+msgid "Destination output file:"
+msgstr "Cieľový výstupný súbor:"
+
+msgid "Error: "
+msgstr "Chyba: "
+
+msgid "Overwrite if already exists"
+msgstr "Prepísať ak už existuje"
+
+msgid "Destination output file"
+msgstr "Cieľový výstupný súbor"
+
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Nájdite, alebo zadajte plnú cestu do cie+ového výstupného súboru."
+
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr "Zvoľte túto možnosť, pokiaľ si želáte prepísať súbor, ak už existuje."
+
+msgid "Check the box if you want compressed output files."
+msgstr "Zašktnite, ak si želáte zkomprimovať výstupné súbory."
+
+msgid "PDF version 1.5 or above."
+msgstr "PDF verzia 1.5, alebo vyššia."
+
+msgid "Set the pdf version of the ouput document."
+msgstr "Nastavte verziu pdf výstupného dokumentu."
+
+msgid "Please wait while all files are processed.."
+msgstr "Prosím čakajte než sa spracujú všetky súbory..."
+
+msgid "Output file location is not correct"
+msgstr "Nesprávne umiestnenie výstupu"
+
+msgid "Would you like to change it to"
+msgstr "Želáte si to zmeniť na"
+
+msgid "Output location error"
+msgstr "Chyba výstupného umiestnenia"
+
+msgid "Found a password for input file."
+msgstr "Nájdené heslo pre vstupný súbor"
+
+msgid "Execute pdf merge"
+msgstr "Spustiť PDF zlúčenie"
+
+msgid "Merge/Extract"
+msgstr "Spojiť/Extrahovať"
+
+msgid "Merge section loaded."
+msgstr "Spojiť nahratú sekciu."
+
+msgid "Export as xml"
+msgstr "Exportovať do xml"
+
+msgid "Unable to save xml file."
+msgstr "Nemôžem uložiť xml súor."
+
+msgid "Ok"
+msgstr "Ok"
+
+msgid "File xml saved."
+msgstr "xml súor uložený"
+
+msgid "Error saving xml file, output file is null."
+msgstr "Chyba pri ukladaní xml súboru, výstupný súbor je nulový."
+
+msgid "Burst (split into single pages)"
+msgstr "Rozdeliť na jednotlivé stránky"
+
+msgid "Split every \"n\" pages"
+msgstr "Rozdeliť každých \"n\" stránok"
+
+msgid "Split even pages"
+msgstr "Rozdeliť párne stránky"
+
+msgid "Split odd pages"
+msgstr "Rozdeliť nepárne stránky"
+
+msgid "Split after these pages"
+msgstr "Rozdeliť za týmito stránkami"
+
+msgid "Split at this size"
+msgstr "Rozdeliť na tejto veľkosti"
+
+msgid "Split options"
+msgstr "Možnosti rozdelenia"
+
+msgid "Burst"
+msgstr "Rozdeliť po stránkach"
+
+msgid "Explode the pdf document into single pages"
+msgstr "Rozdelí PDF súbor po jednotlivých stránkach"
+
+msgid "Split the document every \"n\" pages"
+msgstr "Rozdelí dokument každých \"n\" stránok"
+
+msgid "Split the document every even page"
+msgstr "Rozdelí dokument na každej párnej stránke"
+
+msgid "Split the document every odd page"
+msgstr "Rozdelí dokument na každej nepárnej stránke"
+
+msgid "Split the document after page numbers (num1-num2-num3..)"
+msgstr "Rozdelí dokument po číslach stránok (č1-č2-č3..)"
+
+msgid "Split the document in files of the given size (roughly)."
+msgstr "Rozdelí dokument do súborov danej veľkosti (približne)."
+
+msgid "Split options:"
+msgstr "Možnosti rozdelenia:"
+
+msgid "Destination folder:"
+msgstr "Cieľový priečinok:"
+
+msgid "Same as source"
+msgstr "Rovnaký ako zdroj"
+
+msgid "Choose a folder"
+msgstr "Vyberte priečinok"
+
+msgid "Destination output directory"
+msgstr "Cieľový priečinok výstupu"
+
+msgid "Use the same output folder as the input file or choose a folder."
+msgstr "Použi rovnaký priečinok výstupu ako vstupu, alebo zvoľ priečinok."
+
+msgid ""
+"To choose a folder browse or enter the full path to the destination output "
+"directory."
+msgstr ""
+"Pre vybratie priečinku ho nalistujte, alebo napíšte k nemu úplnú cestu."
+
+msgid ""
+"Check the box if you want to overwrite the output files if they already "
+"exist."
+msgstr ""
+"Zvoľte túto možnosť, ak si želáte prepísať súbor, pokiaľ už existuje v "
+"cieľovom priečinku súbor s rovnakým názvom."
+
+msgid "Output options:"
+msgstr "Možnosti výstupu:"
+
+msgid "Output file names prefix:"
+msgstr "Prefix názvov výstupných súborov:"
+
+msgid "Output files prefix"
+msgstr "Prefix výstupných súborov"
+
+msgid ""
+"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
+"substitution."
+msgstr ""
+"Pokiaľ obsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" vykoná náhradu."
+
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
+
+msgid ""
+"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
+"oldstyle output file names."
+msgstr ""
+"Pokiaľ neobsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" generuje názvy "
+"súborov v starom štýle."
+
+msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr "Možné premenné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+msgid "Select an input file"
+msgstr "Vyberte vstupný súbor"
+
+msgid "Invalid split size"
+msgstr "Neplatná veľkosť rozdelenia"
+
+msgid "Output location is not correct"
+msgstr "Nesprávne umiestnenie výstupu"
+
+msgid "The lowest available pdf version is "
+msgstr "Najnižšia dostupná verzia pdf je "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Vybrali ste nižšiu pdf verziu, želáte si pokračovať?"
+
+msgid "Pdf version conflict"
+msgstr "Konflikt Pdf verzií"
+
+msgid "Split selected file"
+msgstr "Rozdeliť vybraný súbor"
+
+msgid "Split"
+msgstr "Rozdeliť"
+
+msgid "Split section loaded."
+msgstr "Rozdeliť nahratú sekciu."
+
+msgid "Invalid unit: "
+msgstr "Neplatný diel: "
+
+msgid "Cover pdf file:"
+msgstr "Prvá strana pdf súboru"
+
+msgid "Footer pdf file:"
+msgstr "Záhlavie pdf súboru"
+
+msgid "Select at least one cover or one footer"
+msgstr "Vyberte aspoň jedn prvú stranu, alebo jednu poslednú stranu"
+
+msgid "Cover and Footer"
+msgstr "Prvá a posledná strana"
+
+msgid "Cover And Footer section loaded."
+msgstr "Prvá a posledná strana nahratej sekcie."
+
+msgid "Owner password:"
+msgstr "Heslo majiteľa:"
+
+msgid "Owner password (Max 32 chars long)"
+msgstr "Heslo majiteľa (Maximálna dĺžka 32 znakov)"
+
+msgid "User password:"
+msgstr "Užívateľské heslo:"
+
+msgid "User password (Max 32 chars long)"
+msgstr "Užívateľské heslo (Maximálna veľkosť 32 znakov)"
+
+msgid "Encryption angorithm:"
+msgstr "Šifrovací algoritmus:"
+
+msgid "Print"
+msgstr "Tlačiť"
+
+msgid "Low quality print"
+msgstr "Nízka kvalita tlače"
+
+msgid "Copy or extract"
+msgstr "Skopírovať alebo extrahovať"
+
+msgid "Modify"
+msgstr "Upraviť"
+
+msgid "Add or modify text annotations"
+msgstr "Pridať alebo upraviť textové poznámky"
+
+msgid "Fill form fields"
+msgstr "Vyplniť polia formuláru"
+
+msgid "Extract for use by accessibility dev."
+msgstr "Extrahovať pre použitie vývpjového prístupu."
+
+msgid "Manipulate pages and add bookmarks"
+msgstr "Pracovať so stránkami a pridať záložky"
+
+msgid "Allow all"
+msgstr "Povoliť všetko"
+
+msgid "Encrypt options:"
+msgstr "Možnosti šifrovania:"
+
+msgid ""
+"Check the box if you want compressed output files (Pdf version 1.5 or "
+"higher)."
+msgstr ""
+"Zaškrtnite ak chcete zmenšiť veľkosť výstupných súborov (Pdf verzia 1.5 "
+"alebo vyššia)."
+
+msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
+msgstr "Ak obsahuje \"[TIMESTAMP]\" urobí zámenu premenných."
+
+msgid ""
+"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
+"FileName_prefix_20070517_113423471.pdf."
+msgstr ""
+"Priklad [BASENAME]_prefix_[TIMESTAMP] generuje "
+"NázovSúboru_prefix_20070517_113423471.pdf."
+
+msgid ""
+"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
+"names."
+msgstr "Ak neobsahujen \"[TIMESTAMP]\" generuje staré typy mien súborov."
+
+msgid "Available variables: [TIMESTAMP], [BASENAME]."
+msgstr "Dostupné premenné: [TIMESTAMP], [BASENAME]."
+
+msgid "Encrypt selected files"
+msgstr "Zašifruj vybrané súbory"
+
+msgid "Encrypt"
+msgstr "Zašifrovať"
+
+msgid "Encrypt section loaded."
+msgstr "Zašifrovať nahratú sekciu."
+
+msgid "Reverse first document"
+msgstr "Obrátiť prvý dokument"
+
+msgid "Reverse second document"
+msgstr "Obrátiť druhý dokument"
+
+msgid "Found a password for first file."
+msgstr "Nájdené heslo pre prvý súbor."
+
+msgid "Found a password for second file."
+msgstr "Nájdené heslo pre druhý súbor."
+
+msgid "Please select two pdf documents."
+msgstr "Prosím vyberte dva pdf dokumenty."
+
+msgid "Execute pdf alternate mix"
+msgstr "Spustiť náhodné premiešanie pdf"
+
+msgid "Alternate Mix"
+msgstr "Náhodne premiešať"
+
+msgid "AlternateMix section loaded."
+msgstr "Náhodne premiešať nahratú sekciu."
+
+msgid "Unpack selected files"
+msgstr "Rozbaliť vybrané súbory"
+
+msgid "Unpack"
+msgstr "Rozbaliť"
+
+msgid "Unpack section loaded."
+msgstr "Rozbaliť nahratú sekciu."
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Uložiť informácie o hesle (budú čitateľné pri otváraní výstupného súboru)?"
+
+msgid "Confirm password saving"
+msgstr "Potvrdiť uloženie hesla"
+
+msgid "Unknown action."
+msgstr "Neznáma činnosť."
+
+msgid "Save"
+msgstr "Uložiť"
+
+msgid "Log saved."
+msgstr "Záznam uložený."
+
+msgid " node environment loaded."
+msgstr " uzlové prostredie nahraté."
+
+msgid "Environment saved."
+msgstr "Prostredie uložené"
+
+msgid "Error saving environment, output file is null."
+msgstr "Chyba pri ukladaní prostredia, výstupný súbor je prázdny."
+
+msgid "Error saving environment."
+msgstr "Chyba pri ukladaní prostredia."
+
+msgid "Environment loaded."
+msgstr "Prostredie nahraté."
+
+msgid "Error loading environment."
+msgstr "Chyba pri nahrávaní prostredia."
+
+msgid "Error loading environment from input file. "
+msgstr "Chyba pri nahrávaní prostredia zo vstupného súboru. "
+
+msgid "Selection table is full, please remove some pdf document."
+msgstr "Tabuľka výberu je plná, prosím odstráňte niektorý pdf dokument."
+
+msgid "Table full"
+msgstr "Tabuľka plná"
+
+msgid "Please wait while reading"
+msgstr "Prosím čakajte počas čítania"
+
+msgid "Selected file is not a pdf document."
+msgstr "Vybraný súbor nie je pdf dokument."
+
+msgid "Error loading "
+msgstr "Chyba pri nahrávaní "
+
+msgid "Command validation returned an empty value."
+msgstr "Overovanie príkazu vrátilo prázdnu hodnotu."
+
+msgid "Command executed."
+msgstr "Príkaz spustený."
+
+msgid "Run"
+msgstr "Spustiť"
+
+msgid "Browse"
+msgstr "Prehliadať"
+
+msgid "Add"
+msgstr "Pridať"
+
+msgid "Compress output file/files"
+msgstr "Komprimovať výstupný súbor/súbory"
+
+msgid "Don't preserve file order (fast load)"
+msgstr "Nezachovávať poradie súborov (rýchle nahrávanie)"
+
+msgid "Output document pdf version:"
+msgstr "Verzia výstupného pdf dokumentu:"
+
+msgid "Same as input document"
+msgstr "Rovnaký ako vstupný dokument"
+
+msgid "File name"
+msgstr "Názov súboru"
+
+msgid "Path"
+msgstr "Cesta"
+
+msgid "Pages"
+msgstr "Strany"
+
+msgid "Password"
+msgstr "Heslo"
+
+msgid "Version"
+msgstr "Verzia"
+
+msgid "Page Selection"
+msgstr "Výber strany"
+
+msgid "Total pages of the document"
+msgstr "Počet strán dokumentu"
+
+msgid "Password to open the document (if needed)"
+msgstr "Heslo pre otvorenie dokumentu (ak je potrebné)"
+
+msgid "Pdf version of the document"
+msgstr "Pdf verzia dokumentu"
+
+msgid ""
+"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+"7,12-)"
+msgstr ""
+"Dvojklikom nastavte stránky ktoré majú byť spojené (napr. 2 alebo Všetky "
+"alebo 5-23 alebo 2,5-7,12-)"
+
+msgid "Add a pdf to the list"
+msgstr "Pridať pdf do zoznamu"
+
+msgid "Remove a pdf from the list"
+msgstr "Odobrať pdf zo zoznamu"
+
+msgid "(Canc)"
+msgstr "(Zruš)"
+
+msgid "Remove"
+msgstr "Odobrať"
+
+msgid "Reload"
+msgstr "Obnoviť"
+
+msgid "Error: Unable to reload the selected file/s."
+msgstr "Chyba: Nemôžem nájsť zadanú cestu k súboru/om."
+
+msgid "Unable to remove JList text "
+msgstr "Nemôžem odobrať JList text "
+
+msgid "File selected: "
+msgstr "Vybraný súbor: "
+
+msgid "File reloaded: "
+msgstr "Vybraný súbor: "
+
+msgid "Move Up"
+msgstr "Posunúť nahor"
+
+msgid "Move up selected pdf file"
+msgstr "Posunúť nahor vybraný pdf súbor"
+
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+ šípka nahor)"
+
+msgid "Move Down"
+msgstr "Posunúť nadol"
+
+msgid "Move down selected pdf file"
+msgstr "Posunúť nadol vybraný pdf súbor"
+
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+ šípka nadol)"
+
+msgid "Clear"
+msgstr "Vyčistiť"
+
+msgid "Remove every pdf file from the merge list"
+msgstr "Odstániť každý pdf súbor zo zoznamu zlúčenia"
+
+msgid "Set output file"
+msgstr "Nastaviť výstupný súbor"
+
+msgid "Error: Unable to get the file path."
+msgstr "Chyba: Nemôžem získať cestu k súboru"
+
+msgid "Unable to get the default environment informations."
+msgstr "Nemôžem získať predvolené informácie o prostredí."
+
+msgid "Setting look and feel..."
+msgstr "Nastavenie vzhľadu..."
+
+msgid "Setting logging level..."
+msgstr "Nastavenie prihlasovacej úrovne..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
+
+msgid "Logging level set to "
+msgstr "Záznamová úroveň nastavená na "
+
+msgid "Unable to set logging level."
+msgstr "Nemôžem nastaviť úroveň záznamu."
+
+msgid "Error getting plugins directory."
+msgstr "Chyba pri čítaní adresáru plaginov"
+
+msgid "Cannot read plugins directory "
+msgstr "Nemôžem čítať adresár pluginov "
+
+msgid "Plugins directory is null."
+msgstr "Adresár pluginov je prázdny"
+
+msgid "Found zero or many jars in plugin directory "
+msgstr "Nájdené nula alebo veľa jar súborov v adresári pluginov "
+
+msgid "Exception loading plugins."
+msgstr "Výnimka nahrávania pluginov."
+
+msgid "Cannot read plugin directory "
+msgstr "Nemôžem prečítať zložku s pluginmi "
+
+msgid " plugin loaded."
+msgstr " plugin nahratý."
+
+msgid "Unable to load a plugin that is not JPanel subclass."
+msgstr "Nemôžem nahrať plugin, ktorý nie je JPabel subclass."
+
+msgid "Error loading class "
+msgstr "Chyba pri nahrávaní triedy "
+
+msgid "Copy"
+msgstr "Kopírovať"
+
+msgid "Select all"
+msgstr "Vybrať všetko"
+
+msgid "Save log"
+msgstr "Uložiť záznam"
+
+msgid "File"
+msgstr "Súbor"
+
+msgid "Save environment"
+msgstr "Uložiť prostredie"
+
+msgid "Load environment"
+msgstr "Nahrať prostredie"
+
+msgid "Exit"
+msgstr "Ukončiť"
+
+msgid "Unable to initialize menu bar."
+msgstr "Nemôžem spustiť menu."
+
+msgid "started in "
+msgstr "spustený v "
+
+msgid "Loading plugins.."
+msgstr "Nahrávam pluginy..."
+
+msgid "Building menus.."
+msgstr "Vytváram menu..."
+
+msgid "Building buttons bar.."
+msgstr "Vytváram panel nástrojov..."
+
+msgid "Building status bar.."
+msgstr "Vytváram stavový riadok..."
+
+msgid "Building tree.."
+msgstr "Vytváram strom..."
+
+msgid "Loading default environment."
+msgstr "Nahrávam predvolené prostredie."
+
+msgid "Error starting pdfsam."
+msgstr "Chyba pri spustení pdfsam."
+
+msgid "Clear log"
+msgstr "Vyčistiť záznam"
+
+msgid "Unable to initialize button bar."
+msgstr "Nemôžem spustiť panel nástrojov."
+
+msgid "Version: "
+msgstr "Verzia: "
+
+msgid "Language: "
+msgstr "Jazyk: "
+
+msgid "Author: "
+msgstr "Autor: "
+
+msgid "Build date: "
+msgstr "Dátum dokončenia: "
+
+msgid "Java home: "
+msgstr "Java: "
+
+msgid "Java version: "
+msgstr "Java verzia: "
+
+msgid "Max memory: "
+msgstr "Maximálna pamäť: "
+
+msgid "Configuration file: "
+msgstr "Konfiguračný súbor: "
+
+msgid "Website: "
+msgstr "Web stránka: "
+
+msgid "Name"
+msgstr "Meno"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "About"
+msgstr ""
+
+msgid "Unimplemented method for JInfoPanel"
+msgstr "Neimplementovaná metóda pre JInfoPanel"
+
+msgid "Contributes: "
+msgstr "Prispievatelia: "
+
+msgid "Log level:"
+msgstr "Úroveň záznamu:"
+
+msgid "Look and feel:"
+msgstr "Vzhľad:"
+
+msgid "Theme:"
+msgstr "Motív:"
+
+msgid "Language:"
+msgstr "Jazyk:"
+
+msgid "Check for updates:"
+msgstr "Skontrolovať aktualizácie:"
+
+msgid "Load default environment at startup:"
+msgstr "Nahrať pôvodné prostredie pri štarte:"
+
+msgid "Default working directory:"
+msgstr "Predvolený pracovný priečinok:"
+
+msgid "Error getting default environment."
+msgstr "Chyba pri nastavení pôvodného prostredia."
+
+msgid "Settings "
+msgstr "Nastavenia "
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Set your preferred language (restart needed)"
+msgstr "Nastavte vami preferovaný jazyk (potrebný reštart)"
+
+msgid "Look and feel"
+msgstr "Vzhľad"
+
+msgid ""
+"Set your preferred look and feel and your preferred theme (restart needed)"
+msgstr "Nastavte vami preferovaný vzhľad a tému (potrebný reštart)"
+
+msgid "Log level"
+msgstr "Úroveň záznamu"
+
+msgid "Set a log detail level (restart needed)"
+msgstr "Nastav úroveň záznamu (vyžaduje reštart)"
+
+msgid "Check for updates"
+msgstr "Skontrolovať aktualizácie"
+
+msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+"Nastaviť kedy sa má kontrolovať dostupnosť novej verzie (vyžaduje reštart)"
+
+msgid "Default env."
+msgstr "Pôvodné prostredie"
+
+msgid ""
+"Select a previously saved env. file that will be automatically loaded at "
+"startup"
+msgstr ""
+"Vyber predtým uložený súbor s prostredím, ktorý bude automaticky nahraný pri "
+"štarte."
+
+msgid "Default working directory"
+msgstr "Predvolený pracovný priečinok"
+
+msgid "Select a directory where documents will be saved and loaded by default"
+msgstr "Vyberte priečinok, v ktorom budú dokumenty ukladané a nahrávané"
+
+msgid "Check now"
+msgstr "Zaškrtnúť teraz"
+
+msgid "Configuration saved."
+msgstr "Konfigurácia uložená."
+
+#, fuzzy
+msgid "Settings"
+msgstr "Nastavenia "
+
+msgid "Unimplemented method for JSettingsPanel"
+msgstr "Neimplementovaná metóda pre JSettings Panel"
+
+msgid "New version available: "
+msgstr "Nová verzia dostupná: "
+
+msgid "Plugins"
+msgstr ""
+
+msgid "Error getting pdf version description."
+msgstr "Chyba pri získávaní popisu verzie pdf."
+
+msgid "Version 1.2 (Acrobat 3)"
+msgstr "Verzia 1.2 (Acrobat 3)"
+
+msgid "Version 1.3 (Acrobat 4)"
+msgstr "Verzia 1.3 (Acrobat 4)"
+
+msgid "Version 1.4 (Acrobat 5)"
+msgstr "Verzia 1.4 (Acrobat 5)"
+
+msgid "Version 1.5 (Acrobat 6)"
+msgstr "Verzia 1.5 (Acrobat 6)"
+
+msgid "Version 1.6 (Acrobat 7)"
+msgstr "Verzia 1.6 (Acrobat 7)"
+
+msgid "Version 1.7 (Acrobat 8)"
+msgstr "Verzia 1.7 (Acrobat 8)"
+
+msgid "Never"
+msgstr "Nikdy"
+
+msgid "pdfsam start up"
+msgstr "spustenie pdfsam"
+
+msgid "Checking for a new version available."
+msgstr "Kontrolujem nové verzie."
+
+msgid "Error checking for a new version available."
+msgstr "Chyba pri kontrolovaní nových verzií."
+
+msgid "Unable to get latest available version"
+msgstr "Nemôžem stiahnuť najnovšiu verziu."
+
+msgid "New version available."
+msgstr "Nová verzia dostupná."
+
+msgid "No new version available."
+msgstr "Žiadna nová verzia dostupná."
+
+msgid "Cut"
+msgstr ""
+
+#, fuzzy
+msgid "Paste"
+msgstr "Cesta"
