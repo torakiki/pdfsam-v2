@@ -43,7 +43,7 @@
 	<target name="genpot" description="generates pot files">
 		<!-- new pot -->
 		<exec executable="${gettext.dir}/xgettext">
-			<arg line="-ktr -ktrn:1,2 -ktrc -kmarktr -Ljava -o${pot} -f ${filelist.dir}/filelist.txt"/>
+			<arg line="-ktr -ktrn:1,2 -ktrc -kmarktr --no-location -Ljava -o${pot} -f ${filelist.dir}/filelist.txt"/>
 		</exec>
 	</target>
 
@@ -138,6 +138,9 @@
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-U ${po}/tr/pdfsam-tr.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-U ${po}/uk/pdfsam-uk.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-U ${po}/vi/pdfsam-vi.po ${pot}"/>
@@ -244,6 +247,9 @@
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_tr.properties ${po}/tr/pdfsam-tr.po"/>
+		</exec>
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_uk.properties ${po}/uk/pdfsam-uk.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_vi.properties ${po}/vi/pdfsam-vi.po"/>
