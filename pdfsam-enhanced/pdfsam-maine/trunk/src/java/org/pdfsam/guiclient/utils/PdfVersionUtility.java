@@ -31,8 +31,8 @@ import org.pdfsam.i18n.GettextResource;
 public class PdfVersionUtility {
 	
 	private static final Logger log = Logger.getLogger(PdfVersionUtility.class.getPackage().getName());
-	private static HashMap cache = new HashMap(); 
-	private static ArrayList listCache = new ArrayList(); 
+	private static HashMap<String, String> cache = new HashMap<String, String>(); 
+	private static ArrayList<StringItem> listCache = new ArrayList<StringItem>(); 
 	
 	/**
 	 * @param c pdfVersion
@@ -52,7 +52,7 @@ public class PdfVersionUtility {
 	/**
 	 * @return a map containing every possible pdf version
 	 */
-	public static HashMap getVersions(){
+	public static HashMap<String, String> getVersions(){
 		if(cache.isEmpty()){
 			Configuration config = Configuration.getInstance();
 			cache.put(Character.toString(AbstractParsedCommand.VERSION_1_2), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.2 (Acrobat 3)"));
@@ -68,7 +68,7 @@ public class PdfVersionUtility {
 	/**
 	 * @return a list containing every possible pdf version as a StrinItem
 	 */
-	public static ArrayList getVersionsList(){
+	public static ArrayList<StringItem> getVersionsList(){
 		if(listCache.isEmpty()){
 			Configuration config = Configuration.getInstance();
 			listCache.add(new StringItem(Character.toString(AbstractParsedCommand.VERSION_1_2), GettextResource.gettext(config.getI18nResourceBundle(),"Version 1.2 (Acrobat 3)")));

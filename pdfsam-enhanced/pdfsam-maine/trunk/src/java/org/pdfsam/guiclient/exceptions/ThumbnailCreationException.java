@@ -1,5 +1,5 @@
 /*
- * Created on 27-Jun-2008
+ * Created on 27-Sep-2008
  * Copyright (C) 2008 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -12,27 +12,30 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.dnd.droppers;
-
-import java.util.List;
-
-import org.pdfsam.guiclient.commons.business.loaders.PdfLoader;
+package org.pdfsam.guiclient.exceptions;
 /**
- * Dropper for the JPdfSelectionTable
+ * Thumbnail creation exception
  * @author Andrea Vacondio
+ *
  */
-public class JPdfSelectionTableDropper extends AbstractDropper {
+public class ThumbnailCreationException extends Exception {
 
-	private PdfLoader loader;
+	private static final long serialVersionUID = 4787815531944278473L;
 
-	public JPdfSelectionTableDropper(PdfLoader loader){
-		this.loader = loader;		
+	public ThumbnailCreationException() {
+		super();
 	}
-	
-	protected void executeDrop(Object arg0){
-		 if (arg0 instanceof List) {
-             List files = (List)arg0;
-             loader.addFiles(files, true);
-         }
+
+	public ThumbnailCreationException(String arg0, Throwable arg1) {
+		super(arg0, arg1);
 	}
+
+	public ThumbnailCreationException(String arg0) {
+		super(arg0);
+	}
+
+	public ThumbnailCreationException(Throwable arg0) {
+		super(arg0);
+	}
+
 }

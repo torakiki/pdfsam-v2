@@ -277,7 +277,7 @@ public class VisualListModel extends AbstractListModel {
      * @throws IndexOutOfBoundsException
      */
     public void undeleteElements(int[] indexes)throws IndexOutOfBoundsException{
-        if (indexes.length>0 && indexes.length < data.size()){
+        if (indexes.length>0 && indexes.length <= data.size()){
         	for (int i=0; i<indexes.length; i++){
         		((VisualPageListItem)data.get(indexes[i])).setDeleted(false);
         	}  

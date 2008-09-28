@@ -192,7 +192,7 @@ public class PdfLoader {
      * @param files File objects list
      * @param ordered files are added keeping order 
      */
-    public void addFiles(List files, boolean ordered){
+    public void addFiles(List<File> files, boolean ordered){
     	if (files != null && !files.isEmpty()){
     		addFiles((File[])files.toArray(new File[files.size()]), ordered);
    	 	}     
@@ -202,7 +202,7 @@ public class PdfLoader {
      * Add files without keeping order
      * @param files
      */   
-    public void addFiles(List files){
+    public void addFiles(List<File> files){
     	addFiles(files,false);
     }
     
@@ -361,9 +361,9 @@ public class PdfLoader {
         private final LowWorker[] lowThreads;
         private final SingleWorker singleThread;
         
-        private final LinkedList highQueue = new LinkedList();
-        private final LinkedList lowQueue = new LinkedList();
-        private final LinkedList singleQueue = new LinkedList();
+        private final LinkedList<Runnable> highQueue = new LinkedList<Runnable>();
+        private final LinkedList<Runnable> lowQueue = new LinkedList<Runnable>();
+        private final LinkedList<Runnable> singleQueue = new LinkedList<Runnable>();
         private int highRunning = 0;
         private int running = 0;
         

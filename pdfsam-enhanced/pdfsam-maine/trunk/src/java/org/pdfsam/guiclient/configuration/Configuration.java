@@ -49,6 +49,7 @@ public class Configuration{
 	private ConsoleServicesFacade servicesFacade;
 	private Level loggingLevel = Level.DEBUG;
 	private boolean checkForUpdates = true;
+	private boolean playSounds = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
 	private String thumbnailsQuality = HIGH_QUALITY;
@@ -155,6 +156,20 @@ public class Configuration{
 	public String getThumbnailsQuality() {
 		return thumbnailsQuality;
 	}
+	
+	/**
+	 * @return the playSounds
+	 */
+	public boolean isPlaySounds() {
+		return playSounds;
+	}
+
+	/**
+	 * @param playSounds the playSounds to set
+	 */
+	public void setPlaySounds(boolean playSounds) {
+		this.playSounds = playSounds;
+	}
 
 	private void init(){
 		try{
@@ -174,17 +189,19 @@ public class Configuration{
 			}
 			servicesFacade = new ConsoleServicesFacade();
 			//language
-			setLanguage();
+			initLanguage();
 			//look and feel
-			setLookAndFeel();
+			initLookAndFeel();
 			//log init
-			setLoggingLevel();
+			initLoggingLevel();
 			//check for updates init
-			setCheckForUpdates();
+			initCheckForUpdates();
+			//check play sounds
+			initPlaySounds();
 			//default working dir
-			setDefaultWorkingDir();
+			initDefaultWorkingDir();
 			//thumbnails quality
-			setThumbnailsQuality();
+			initThumbnailsQuality();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -194,7 +211,7 @@ public class Configuration{
 	 * sets the look and feel
 	 * @throws Exception
 	 */
-	private void setLookAndFeel() throws Exception{
+	private void initLookAndFeel() throws Exception{
 		log.info(GettextResource.gettext(i18nMessages,"Setting look and feel..."));
 		int lookAndFeelIntValue = Integer.parseInt(xmlConfigObject.getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"));
 		String loogAndFeel = ThemeUtility.getLAF(lookAndFeelIntValue);            
@@ -207,7 +224,7 @@ public class Configuration{
 	/**
 	 * sets the ResourceBoudle for the selected language
 	 */
-	private void setLanguage(){
+	private void initLanguage(){
 		log.info("Getting language...");
 		String language;
 		try{
@@ -224,7 +241,7 @@ public class Configuration{
 	/**
 	 * sets the logging threshold for the appender
 	 */
-	private void setLoggingLevel(){
+	private void initLoggingLevel(){
 		log.info(GettextResource.gettext(i18nMessages,"Setting logging level..."));
 		int logLevel;
 		try {
@@ -247,7 +264,7 @@ public class Configuration{
 	/**
 	 * sets the default working directory
 	 */
-	private void setDefaultWorkingDir(){
+	private void initDefaultWorkingDir(){
 		try {
 			String defWorkingDir = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/default_working_dir");
 			if(defWorkingDir != null && defWorkingDir.length()>0){
@@ -262,7 +279,7 @@ public class Configuration{
 	/**
 	 * sets the configuration about the updates check
 	 */
-	private void setCheckForUpdates(){
+	private void initCheckForUpdates(){
 		try {
 			String checkUpdates = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/checkupdates");
 			if(checkUpdates != null && checkUpdates.length()>0){
@@ -276,9 +293,24 @@ public class Configuration{
 	}
 	
 	/**
+	 * sets the configuration about the play sounds
+	 */
+	private void initPlaySounds(){
+		try {
+			String sounds = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/playsounds");
+			if(sounds != null && sounds.length()>0){
+				playSounds = Integer.parseInt(sounds)== 1;
+			}
+			
+		} catch (Exception e) {
+			//default
+			playSounds = false;
+		}
+	}
+	/**
 	 * sets the configuration about the thumbnails quality
 	 */
-	private void setThumbnailsQuality() {
+	private void initThumbnailsQuality() {
 		String thumbQuality = LOW_QUALITY;
 		try {
 			thumbQuality = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnailsquality");

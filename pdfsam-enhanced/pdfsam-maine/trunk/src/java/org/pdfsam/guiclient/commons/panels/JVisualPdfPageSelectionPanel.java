@@ -58,6 +58,7 @@ import org.pdfsam.guiclient.commons.dnd.handlers.VisualSelectionListTransferHand
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.renderers.VisualListRenderer;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
 /**
@@ -516,38 +517,27 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	/**
 	 * Set the document properties to be shown as a tooltip of the documentProperties JLabel
 	 * @param properties
-	 */
-	public void setDocumentProperties(String properties){
-		documentProperties.setToolTipText(properties);
-	}
+	 */	
 	
-	/**
-	 *  Sets the document properties
-	 * @param fileName
-	 * @param pages
-	 * @param version
-	 * @param title
-	 * @param author
-	 * @param creator
-	 * @param producer
-	 */
-	public void setDocumentProperties(String fileName, String pages, String version, String title, String author, String creator, String producer, boolean isEncrypted){
+	public void setDocumentProperties(DocumentInfo documetnInfo){
+		if(documetnInfo != null){
 		String encrypted = GettextResource.gettext(config.getI18nResourceBundle(),"No");
-		if(isEncrypted){
+		if(documetnInfo.isEncrypted()){
 			encrypted = GettextResource.gettext(config.getI18nResourceBundle(),"Yes");
 		}
-		setDocumentProperties( 
-	    		"<html><body><b><p>"+GettextResource.gettext(config.getI18nResourceBundle(),"File: ")+"</b>"+fileName+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pages: ")+"</b>"+pages+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version: ")+"</b>"+version+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Title: ")+"</b>"+title+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+author+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+creator+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+producer+"</p>"+
+		documentProperties.setToolTipText( 
+	    		"<html><body><b><p>"+GettextResource.gettext(config.getI18nResourceBundle(),"File: ")+"</b>"+documetnInfo.getFileName()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pages: ")+"</b>"+documetnInfo.getPages()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version: ")+"</b>"+documetnInfo.getPdfVersion()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Title: ")+"</b>"+documetnInfo.getTitle()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+documetnInfo.getAuthor()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+documetnInfo.getCreator()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+documetnInfo.getProducer()+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Encrypted: ")+"</b>"+encrypted+"</p>"+
 	    		"</body></html>");
+		}
+		
 	}
-	
 	/**
 	 * @return the orientation
 	 */

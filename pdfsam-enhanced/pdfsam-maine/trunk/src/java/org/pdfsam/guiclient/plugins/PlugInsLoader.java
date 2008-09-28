@@ -70,7 +70,7 @@ public class  PlugInsLoader{
      * @throws PluginLoadException
      */
     private File[] getPlugInsList()throws PluginException {
-    	ArrayList retVal = new ArrayList();
+    	ArrayList<File> retVal = new ArrayList<File>();
     	if(pluginsDirectory != null){
     		if(pluginsDirectory.isDirectory() && pluginsDirectory.canRead()){
     			try{

@@ -216,6 +216,13 @@ public class JStatusPanel extends JPanel implements Observer{
 	            		setBarStringPainted(true);
 	            		setBarValue(WorkDoneDataModel.MAX_PERGENTAGE);
 	            		setBarString(new DecimalFormat("0.# %").format(getPercentComplete()));
+	            		if(config.isPlaySounds()){
+	            			try{
+	            				//TODO play sound
+	            			}catch(Exception ex){
+	            				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to play sound."));
+	            			}
+	            		}
 	            	}else{
 	            		setBarValue(percentage);	            		
 	            		setBarStringPainted(true);
@@ -226,6 +233,13 @@ public class JStatusPanel extends JPanel implements Observer{
 	        };
 	        SwingUtilities.invokeLater(runner);
         }catch(Exception e){
+        	if(config.isPlaySounds()){
+    			try{
+    				//TODO play error sound
+    			}catch(Exception ex){
+    				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to play sound."));
+    			}
+    		}
         	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
         }
 	}
