@@ -80,8 +80,8 @@ public class ThemeUtility {
      * 
      * @return a LinkedList of ListItem objects with the availales LAF
      */
-	public static LinkedList getLAFList(){
-	    LinkedList retval = new LinkedList();
+	public static LinkedList<StringItem> getLAFList(){
+	    LinkedList<StringItem> retval = new LinkedList<StringItem>();
 	    retval.add(new StringItem("0","Java"));
 	    retval.add(new StringItem("1","System"));
 	    retval.add(new StringItem("2","Metal"));
@@ -96,8 +96,8 @@ public class ThemeUtility {
      * 
      * @return  LinkedList of ListItem objects with the available Themes form Plastic
      */
-    public static LinkedList getThemeList(){
-        LinkedList retval = new LinkedList();
+    public static LinkedList<StringItem> getThemeList(){
+        LinkedList<StringItem> retval = new LinkedList<StringItem>();
         retval.add(new StringItem("0","None"));
         retval.add(new StringItem("1","DesertBlue"));
         retval.add(new StringItem("2","DesertRed"));

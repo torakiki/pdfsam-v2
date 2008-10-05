@@ -74,7 +74,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	private JTextField defaultDirectory;
     private JComboBox languageCombo;	
     private JComboBox comboLog;	
-    private JComboBox thumbQualityCombo;	
+    private JComboBox thumbLibraryCombo;	
     private JComboBox comboLaf;
     private JComboBox comboTheme;
     private JComboBox comboCheckNewVersion;
@@ -106,11 +106,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final JLabel checkNewVersionLabel = new JLabel();
     private final JLabel loadDefaultEnvLabel = new JLabel();
     private final JLabel defaultDirLabel = new JLabel();
-    private final JLabel thumbnailsQuality = new JLabel();
+    private final JLabel thumbnailsLibrary = new JLabel();
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private static final String PLUGIN_VERSION = "0.0.8e";
+    private static final String PLUGIN_VERSION = "0.0.9e";
     
 /**
  * Constructor
@@ -155,10 +155,10 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         
         defaultDirLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory:"));
         settingsOptionsPanel.add(defaultDirLabel);
-        
-        thumbnailsQuality.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails quality:"));
-        settingsOptionsPanel.add(thumbnailsQuality);
-        
+               
+        thumbnailsLibrary.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails generator:"));
+        settingsOptionsPanel.add(thumbnailsLibrary);
+
         try{
         	loadDefaultEnv= new JTextField();
         	loadDefaultEnv.setText(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/defaultjob"));
@@ -248,22 +248,22 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	 		}
 	    }catch (Exception e){
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-	    }  
-	    
-	    //qualities
-	    thumbQualityCombo = new JComboBox(loadThumbQualities().toArray());
-	    thumbQualityCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(thumbQualityCombo);
+	    }  	    	  
+
+	    //thumb library
+	    thumbLibraryCombo = new JComboBox(loadThumblibraries().toArray());
+	    thumbLibraryCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+        settingsOptionsPanel.add(thumbLibraryCombo);
         try{
-	 		for (int i=0; i<thumbQualityCombo.getItemCount(); i++){
-	   			if (((StringItem)thumbQualityCombo.getItemAt(i)).getId().equals(config.getThumbnailsQuality())){
-	   				thumbQualityCombo.setSelectedItem(thumbQualityCombo.getItemAt(i));
+	 		for (int i=0; i<thumbLibraryCombo.getItemCount(); i++){
+	   			if (((StringItem)thumbLibraryCombo.getItemAt(i)).getId().equals(config.getThumbnailsGeneratorLibrary())){
+	   				thumbLibraryCombo.setSelectedItem(thumbLibraryCombo.getItemAt(i));
 	             break;
 	   			}
 	 		}
 	    }catch (Exception e){
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-	    }  
+	    } 
 	    
 	    comboCheckNewVersion = new JComboBox(UpdatesUtility.getCheckNewVersionItems().toArray());
 	    comboCheckNewVersion.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
@@ -346,7 +346,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((StringItem)comboTheme.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/thumbnailsquality", ((StringItem)thumbQualityCombo.getSelectedItem()).getId());
+					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/thumbnailsgenerator", ((StringItem)thumbLibraryCombo.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/checkupdates", ((StringItem)comboCheckNewVersion.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/playsounds", (playSounds.isSelected()?"1":"0"));
 					if (loadDefaultEnv != null){
@@ -356,7 +356,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					}
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/default_working_dir", defaultDirectory.getText());
 					config.getXmlConfigObject().saveXMLfile();
-					config.setThumbnailsQuality(((StringItem)thumbQualityCombo.getSelectedItem()).getId());
+					config.setThumbnailsGeneratorLibrary(((StringItem)thumbLibraryCombo.getSelectedItem()).getId());
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
 				}
                 catch (Exception ex){
@@ -379,11 +379,12 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     /**
      * Loads the available languages
      */
-    private Vector loadLanguages(){
-    	Vector langs = new Vector(10,5);
+    @SuppressWarnings("unchecked")
+	private Vector<StringItem> loadLanguages(){
+    	Vector<StringItem> langs = new Vector<StringItem>(40,5);
     	try{
 			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/org/pdfsam/i18n/languages.xml"));
-			List nodeList = document.selectNodes("/languages/language");
+			List<Node> nodeList = document.selectNodes("/languages/language");
 			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
 				Node langNode  =((Node) nodeList.get(i));
 				if (langNode != null){
@@ -402,8 +403,8 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      * Loads the available log levels
      * @return logs level list
      */
-    private Vector loadLogLevels(){
-    	Vector logs = new Vector(10,5);
+    private Vector<StringItem> loadLogLevels(){
+    	Vector<StringItem> logs = new Vector<StringItem>(10,5);
     	logs.add(new StringItem(Integer.toString(Level.DEBUG_INT), Level.DEBUG.toString()));
     	logs.add(new StringItem(Integer.toString(Level.INFO_INT), Level.INFO.toString()));
     	logs.add(new StringItem(Integer.toString(Level.WARN_INT), Level.WARN.toString()));
@@ -411,20 +412,18 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     	logs.add(new StringItem(Integer.toString(Level.FATAL_INT), Level.FATAL.toString()));
     	logs.add(new StringItem(Integer.toString(Level.OFF_INT), Level.OFF.toString()));
 		return logs;
-    }
- 
+    }   
+   
     /**
-     * Loads the available qualities levels
-     * @return logs level list
+     * 
+     * @return generators list
      */
-    private Vector loadThumbQualities(){
-    	Vector logs = new Vector(5,5);
-    	logs.add(new StringItem(Configuration.HIGH_QUALITY, GettextResource.gettext(config.getI18nResourceBundle(),"High quality (slowest)")));
-    	logs.add(new StringItem(Configuration.MEDIUM_QUALITY, GettextResource.gettext(config.getI18nResourceBundle(),"Medium quality")));
-    	logs.add(new StringItem(Configuration.LOW_QUALITY, GettextResource.gettext(config.getI18nResourceBundle(),"Low quality (fastest)")));
+    private Vector<StringItem> loadThumblibraries(){
+    	Vector<StringItem> logs = new Vector<StringItem>(2,2);
+    	logs.add(new StringItem(Configuration.JPEDAL, GettextResource.gettext(config.getI18nResourceBundle(),"IDRsolutions JPedal")));
+    	logs.add(new StringItem(Configuration.JPOD, GettextResource.gettext(config.getI18nResourceBundle(),"Intarsys JPod")));
 		return logs;
     }
-   
     /**
      * @return Returns the Plugin author.
      */
@@ -492,20 +491,20 @@ public class JSettingsPanel extends AbstractPlugablePanel{
       //  grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboLog, 0, SpringLayout.EAST, comboLaf);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboLog, 0, SpringLayout.NORTH, logLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboLog, 0, SpringLayout.WEST, comboLaf);
-
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, thumbnailsQuality, 20, SpringLayout.NORTH, thumbnailsQuality);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, thumbnailsQuality, 0, SpringLayout.EAST, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, thumbnailsQuality, 5, SpringLayout.SOUTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, thumbnailsQuality, 0, SpringLayout.WEST, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, thumbQualityCombo, 0, SpringLayout.SOUTH, thumbnailsQuality);
-  //      grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, thumbQualityCombo, 0, SpringLayout.EAST, comboLog);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, thumbQualityCombo, 0, SpringLayout.NORTH, thumbnailsQuality);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, thumbQualityCombo, 0, SpringLayout.WEST, comboLog);
         
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, thumbnailsLibrary, 20, SpringLayout.NORTH, thumbnailsLibrary);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, thumbnailsLibrary, 0, SpringLayout.EAST, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, thumbnailsLibrary, 5, SpringLayout.SOUTH, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, thumbnailsLibrary, 0, SpringLayout.WEST, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, thumbLibraryCombo, 0, SpringLayout.SOUTH, thumbnailsLibrary);
+  //      grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, thumbQualityCombo, 0, SpringLayout.EAST, comboLog);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, thumbLibraryCombo, 0, SpringLayout.NORTH, thumbnailsLibrary);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, thumbLibraryCombo, 0, SpringLayout.WEST, comboLog);
+
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNewVersionLabel, 20, SpringLayout.NORTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNewVersionLabel, 0, SpringLayout.EAST, thumbnailsQuality);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNewVersionLabel, 5, SpringLayout.SOUTH, thumbnailsQuality);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNewVersionLabel, 0, SpringLayout.WEST, thumbnailsQuality);       
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNewVersionLabel, 0, SpringLayout.EAST, thumbnailsLibrary);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNewVersionLabel, 5, SpringLayout.SOUTH, thumbnailsLibrary);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNewVersionLabel, 0, SpringLayout.WEST, thumbnailsLibrary);       
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboCheckNewVersion, 0, SpringLayout.SOUTH, checkNewVersionLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboCheckNewVersion, 120, SpringLayout.WEST, comboCheckNewVersion);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboCheckNewVersion, 0, SpringLayout.NORTH, checkNewVersionLabel);
@@ -584,9 +583,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboLog;
             }
             else if (aComponent.equals(comboLog)){
-                return thumbQualityCombo;
-            }
-            else if (aComponent.equals(thumbQualityCombo)){
+                return thumbLibraryCombo;
+            }                        
+            else if (aComponent.equals(thumbLibraryCombo)){
                 return comboCheckNewVersion;
             }                        
             else if (aComponent.equals(comboCheckNewVersion)){
@@ -631,9 +630,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboCheckNewVersion;
             }
             else if (aComponent.equals(comboCheckNewVersion)){
-                return thumbQualityCombo;
-            }            
-            else if (aComponent.equals(thumbQualityCombo)){
+                return thumbLibraryCombo;
+            }
+            else if (aComponent.equals(thumbLibraryCombo)){
                 return comboLog;
             }            
             else if (aComponent.equals(comboLog)){

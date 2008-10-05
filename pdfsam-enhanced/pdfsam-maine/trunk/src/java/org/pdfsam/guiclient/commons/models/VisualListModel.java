@@ -16,14 +16,13 @@ package org.pdfsam.guiclient.commons.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.AbstractListModel;
 
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 /**
- * Model for the Jlist in the JVisualPdfPageSelectionPanel
+ * Model for the JList in the JVisualPdfPageSelectionPanel
  * @author Andrea Vacondio
  *
  */
@@ -31,7 +30,7 @@ public class VisualListModel extends AbstractListModel {
 
 	private static final long serialVersionUID = -1468591826451724954L;
 
-	protected Vector data = new Vector();
+	protected Vector<VisualPageListItem> data = new Vector<VisualPageListItem>();
     
 	public Object getElementAt(int index) {
 		VisualPageListItem retVal = null;
@@ -154,11 +153,10 @@ public class VisualListModel extends AbstractListModel {
      * @param c
      * @see Vector#addAll(Collection)
      */
-    public void addAllElements(Collection c){
+    public void addAllElements(Collection<VisualPageListItem> c){
     	if(c!=null){
     		int i=0;
-    		for(Iterator iter = c.iterator(); iter.hasNext();){
-    			VisualPageListItem element = (VisualPageListItem)iter.next();
+    		for(VisualPageListItem element : c){
     			data.add(element);
     			i++;
     		}
@@ -170,7 +168,7 @@ public class VisualListModel extends AbstractListModel {
      * same as addAllElements. Appends elements to the end
      * @param c
      */
-    public void appendAllElements(Collection c){
+    public void appendAllElements(Collection<VisualPageListItem> c){
     	addAllElements(c);
     }
      
@@ -178,7 +176,7 @@ public class VisualListModel extends AbstractListModel {
      * Add elements at the beginning
      * @param c
      */
-    public void prependAllElements(Collection c){
+    public void prependAllElements(Collection<VisualPageListItem> c){
     	if(c!=null && c.size()>0){
     		data.addAll(0, c);
     		fireIntervalAdded(this, 0, c.size()-1);
@@ -190,11 +188,10 @@ public class VisualListModel extends AbstractListModel {
      * @param index
      * @param c
      */
-    public void addAllElements(int index, Collection c){
+    public void addAllElements(int index, Collection<VisualPageListItem> c){
     	if(c!=null && index>=0 && index<=data.size()){
     		int i = index;
-    		for(Iterator iter = c.iterator(); iter.hasNext();){
-    			VisualPageListItem element = (VisualPageListItem)iter.next();
+    		for(VisualPageListItem element : c){
     			data.add(i, element);
     			i++;
     		}
@@ -209,7 +206,7 @@ public class VisualListModel extends AbstractListModel {
      * @return null if limits are not corrected
      * @see Vector#subList(int, int)
      */
-    public Collection subList(int fromIndex, int toIndex){
+    public Collection<VisualPageListItem> subList(int fromIndex, int toIndex){
     	return subList(fromIndex, toIndex, false);
     }
     
@@ -217,13 +214,13 @@ public class VisualListModel extends AbstractListModel {
      * @param fromIndex start inclusive
      * @param toIndex end exclusive
      * @param newInstance if false delegates to the Vector#subList(int, int) if true return a new Vector
-     * @return a portion of the data Vector, nll if limits are not corrected
+     * @return a portion of the data Vector, null if limits are not corrected
      * @see Vector#subList(int, int)
      */
-    public Collection subList(int fromIndex, int toIndex, boolean newInstance){
-    	Collection retVal = null;
+    public Collection<VisualPageListItem> subList(int fromIndex, int toIndex, boolean newInstance){
+    	Collection<VisualPageListItem> retVal = null;
     	if(fromIndex>=0 && toIndex<=data.size()){
-    		retVal = (newInstance)? new Vector(data.subList(fromIndex, toIndex)): data.subList(fromIndex, toIndex);
+    		retVal = (newInstance)? new Vector<VisualPageListItem>(data.subList(fromIndex, toIndex)): data.subList(fromIndex, toIndex);
     	}
     	return retVal;
     }
@@ -352,12 +349,12 @@ public class VisualListModel extends AbstractListModel {
     }
     
     /**
-     * @return a Collection of elements with the isDeleted=false, null if there are no elements
+     * @return a Collection<VisualPageListItem> of elements with the isDeleted=false, null if there are no elements
      */
-    public Collection getValidElements(){
-    	ArrayList retVal = null;
+    public Collection<VisualPageListItem> getValidElements(){
+    	ArrayList<VisualPageListItem> retVal = null;
     	if(data!=null && data.size()>0){
-    		retVal = new ArrayList(data.size());
+    		retVal = new ArrayList<VisualPageListItem>(data.size());
     		 for (int i=0; i<data.size(); i++){   
     			 if(!((VisualPageListItem)data.get(i)).isDeleted()){
     				 retVal.add(data.get(i));

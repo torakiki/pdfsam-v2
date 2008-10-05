@@ -38,10 +38,9 @@ import org.pdfsam.i18n.GettextResource;
 public class Configuration{
 
 	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
-	
-    public static final String HIGH_QUALITY = "0";
-    public static final String MEDIUM_QUALITY = "1";
-    public static final String LOW_QUALITY = "2";
+    
+    public static final String JPEDAL = "0";
+    public static final String JPOD = "1";
     
 	private static Configuration configObject;
 	private ResourceBundle i18nMessages;
@@ -52,7 +51,7 @@ public class Configuration{
 	private boolean playSounds = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
-	private String thumbnailsQuality = HIGH_QUALITY;
+	private String thumbnailsGeneratorLibrary = JPOD;
 
 	private Configuration() {
 		init();
@@ -149,13 +148,6 @@ public class Configuration{
 	public String getDefaultWorkingDir() {
 		return defaultWorkingDir;
 	}	
-
-	/**
-	 * @return the thumbnailsQuality
-	 */
-	public String getThumbnailsQuality() {
-		return thumbnailsQuality;
-	}
 	
 	/**
 	 * @return the playSounds
@@ -169,6 +161,21 @@ public class Configuration{
 	 */
 	public void setPlaySounds(boolean playSounds) {
 		this.playSounds = playSounds;
+	}
+
+	
+	/**
+	 * @return the thumbnailsGeneratorLibrary
+	 */
+	public String getThumbnailsGeneratorLibrary() {
+		return thumbnailsGeneratorLibrary;
+	}
+
+	/**
+	 * @param thumbnailsGeneratorLibrary the thumbnailsGeneratorLibrary to set
+	 */
+	public void setThumbnailsGeneratorLibrary(String thumbnailsGeneratorLibrary) {
+		this.thumbnailsGeneratorLibrary = thumbnailsGeneratorLibrary;
 	}
 
 	private void init(){
@@ -200,8 +207,8 @@ public class Configuration{
 			initPlaySounds();
 			//default working dir
 			initDefaultWorkingDir();
-			//thumbnails quality
-			initThumbnailsQuality();
+			//thumbnails generator
+			initThumbnailsGeneratorLibrary();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -265,6 +272,7 @@ public class Configuration{
 	 * sets the default working directory
 	 */
 	private void initDefaultWorkingDir(){
+		log.info(GettextResource.gettext(i18nMessages,"Setting default working directory..."));
 		try {
 			String defWorkingDir = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/default_working_dir");
 			if(defWorkingDir != null && defWorkingDir.length()>0){
@@ -300,39 +308,30 @@ public class Configuration{
 			String sounds = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/playsounds");
 			if(sounds != null && sounds.length()>0){
 				playSounds = Integer.parseInt(sounds)== 1;
-			}
-			
+			}			
 		} catch (Exception e) {
 			//default
 			playSounds = false;
 		}
 	}
-	/**
-	 * sets the configuration about the thumbnails quality
-	 */
-	private void initThumbnailsQuality() {
-		String thumbQuality = LOW_QUALITY;
-		try {
-			thumbQuality = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnailsquality");
-			if (HIGH_QUALITY.equals(thumbQuality)) {
-				thumbnailsQuality = HIGH_QUALITY;
-			} else if (MEDIUM_QUALITY.equals(thumbQuality)) {
-				thumbnailsQuality = MEDIUM_QUALITY;
-			} else {
-				thumbnailsQuality = LOW_QUALITY;
-			}
-		} catch (Exception e) {
-			// default
-			thumbQuality = LOW_QUALITY;
-		}
-	}
 
 	/**
-	 * @param thumbnailsQuality the thumbnailsQuality to set
+	 * sets the configuration about the thumbnails generator
 	 */
-	public void setThumbnailsQuality(String thumbnailsQuality) {
-		this.thumbnailsQuality = thumbnailsQuality;
+	private void initThumbnailsGeneratorLibrary() {
+		log.info(GettextResource.gettext(i18nMessages,"Setting thumbnails generation library..."));
+		String thumbGenerator = JPEDAL;
+		try {
+			thumbGenerator = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnailsgenerator");
+			if (JPEDAL.equals(thumbGenerator)) {
+				thumbnailsGeneratorLibrary = JPEDAL;
+			} else if (JPOD.equals(thumbGenerator)) {
+				thumbnailsGeneratorLibrary = JPOD;
+			} 
+		} catch (Exception e) {
+			// default
+			thumbnailsGeneratorLibrary = JPOD;
+		}
 	}
-	
 	
 }

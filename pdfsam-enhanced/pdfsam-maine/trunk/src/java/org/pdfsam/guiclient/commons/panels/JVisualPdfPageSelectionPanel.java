@@ -20,12 +20,12 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.dnd.DropTarget;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
@@ -35,8 +35,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -66,13 +64,9 @@ import org.pdfsam.i18n.GettextResource;
  * @author Andrea Vacondio
  *
  */
-/**
- * @author Andrea Vacondio
- *
- */
 public class JVisualPdfPageSelectionPanel extends JPanel {
 
-	private static final long serialVersionUID = -9119425032984495971L;
+	private static final long serialVersionUID = 1384691784810385438L;
 
 	private static final Logger log = Logger.getLogger(JVisualPdfPageSelectionPanel.class.getPackage().getName());
 	
@@ -88,6 +82,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public static int STYLE_TOP_PANEL_MEDIUM = 2;
 	public static int STYLE_TOP_PANEL_FULL = 3;
 	
+	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";	
+	
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
 	private String selectedPdfDocumentPassword = null;
@@ -98,6 +94,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private boolean canImportFile = true;
 	private boolean canImportListObject = true;
 	private int selectionType = SINGLE_INTERVAL_SELECTION;
+	private final JMenuItem menuItemSetOutputPath = new JMenuItem();
 	
 	/**
 	 * if true deleted items appear with a red cross over 
@@ -110,13 +107,10 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private Configuration config;
 	private PagesWorker pagesWorker;
     //menu
-	private final JMenuBar optionsMenu = new JMenuBar();
-    private final JMenu menuOptions = new JMenu();
-	private final JMenuItem loadDocItem = new JMenuItem();
-	private final JMenuItem clearItem = new JMenuItem();
-	private final JMenuItem zoomInItem = new JMenuItem();
-	private final JMenuItem zoomOutItem = new JMenuItem();
 	private final JButton loadFileButton = new JButton();
+	private final JButton clearButton = new JButton();
+	private final JButton zoomInButton = new JButton();
+	private final JButton zoomOutButton = new JButton();
 	
     private final JLabel documentProperties = new JLabel();    
     private final JVisualSelectionList thumbnailList = new JVisualSelectionList();
@@ -230,7 +224,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	    pdfSelectionActionListener = new VisualPdfSelectionActionListener(this, pdfLoader);
 		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 		    //load button
-			loadFileButton.setMargin(new Insets(2, 2, 2, 2));
+			loadFileButton.setMargin(new Insets(1, 1, 1, 1));
 			loadFileButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
 			loadFileButton.setPreferredSize(new Dimension(100,30));
 			loadFileButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Load a pdf document"));
@@ -244,46 +238,30 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		documentProperties.setIcon(new ImageIcon(this.getClass().getResource("/images/info.png")));
 		documentProperties.setVisible(false);
 		
-		
-		//menu
-		menuOptions.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Options"));
-		menuOptions.setMargin(new Insets(2, 2, 2, 2));
-		menuOptions.setMnemonic(KeyEvent.VK_O);
-		optionsMenu.setMargin(new Insets(5, 5, 5, 5));
-		optionsMenu.add(menuOptions);
-		optionsMenu.setPreferredSize(new Dimension(60, 30));
-		optionsMenu.setMinimumSize(new Dimension(60, 30));
-		optionsMenu.setBorder(BorderFactory.createEmptyBorder());
-		//check if need to be shown
-		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
-			loadDocItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Open"));
-			loadDocItem.setIcon(new ImageIcon(this.getClass().getResource("/images/add.png")));
-			loadDocItem.addMouseListener(new MouseAdapter() {
-	            public void mouseReleased(MouseEvent e) {               
-	            	loadFileButton.doClick();
-	            }
-	        });
-			menuOptions.add(loadDocItem);
-		}
+				
 		if(topPanelStyle>=STYLE_TOP_PANEL_MEDIUM){
-			clearItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
-			clearItem.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
-			clearItem.addMouseListener(new MouseAdapter() {
-	            public void mouseReleased(MouseEvent e) {               
-	               	resetPanel();
-	            }
+			clearButton.setMargin(new Insets(1, 1, 1, 1));
+			clearButton.setMinimumSize(new Dimension(30,30));
+			clearButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear"));
+			clearButton.setIcon(new ImageIcon(this.getClass().getResource("/images/clear.png")));
+			clearButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					resetPanel();
+				}
 	        });
-			menuOptions.add(clearItem);
 		}
-		zoomInItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Zoom in"));
-		zoomInItem.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomin.png")));
-		zoomInItem.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {               
+		
+		zoomInButton.setMargin(new Insets(1, 1, 1, 1));
+		zoomInButton.setMinimumSize(new Dimension(30,30));
+		zoomInButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Zoom in"));
+		zoomInButton.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomin.png")));
+		zoomInButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {            
                 try{
                 	thumbnailList.incZoomLevel();
-            		zoomOutItem.setEnabled(true);
+            		zoomOutButton.setEnabled(true);
                 	if(thumbnailList.getCurrentZoomLevel() >= JVisualSelectionList.MAX_ZOOM_LEVEL){
-                		zoomInItem.setEnabled(false);
+                		zoomInButton.setEnabled(false);
                 	} 
                 	((VisualListModel)thumbnailList.getModel()).elementsChanged();
                 }
@@ -291,18 +269,19 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
                     log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error setting zoom level."), ex); 
                 }                
             }
-        });
-		menuOptions.add(zoomInItem);
+        });		
 
-		zoomOutItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Zoom out"));
-		zoomOutItem.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomout.png")));
-		zoomOutItem.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {               
+		zoomOutButton.setMargin(new Insets(1, 1, 1, 1));
+		zoomOutButton.setMinimumSize(new Dimension(30,30));
+		zoomOutButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Zoom out"));
+		zoomOutButton.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomout.png")));
+		zoomOutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {               
                 try{
                 	thumbnailList.deincZoomLevel();
-            		zoomInItem.setEnabled(true);
+                	zoomInButton.setEnabled(true);
                 	if(thumbnailList.getCurrentZoomLevel() <= JVisualSelectionList.MIN_ZOOM_LEVEL){
-                		zoomOutItem.setEnabled(false);
+                		zoomOutButton.setEnabled(false);
                 	} 
                 	((VisualListModel)thumbnailList.getModel()).elementsChanged();
                 }
@@ -310,8 +289,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
                     log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error setting zoom level."), ex); 
                 }                
             }
-        });
-		menuOptions.add(zoomOutItem);
+        });		
 
 		thumbnailList.setModel(new VisualListModel());
 		thumbnailList.setCellRenderer(new VisualListRenderer());
@@ -353,7 +331,9 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 				popupMenu.add(menuItemUndelete);
         	}
         	
-			//shyow popup
+        	enableSetOutputPathMenuItem();
+        	
+			//show popup
 			thumbnailList.addMouseListener(new MouseAdapter() {
 	            public void mousePressed(MouseEvent e) {
 	                if (e.isPopupTrigger()) {
@@ -380,10 +360,16 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			topPanel.add(loadFileButton);
 		}
+		if(topPanelStyle>=STYLE_TOP_PANEL_MEDIUM){
+			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+			topPanel.add(clearButton);
+		}
 		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 		topPanel.add(documentProperties);
 		topPanel.add(Box.createHorizontalGlue());
-		topPanel.add(optionsMenu);
+		topPanel.add(zoomInButton);
+		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+		topPanel.add(zoomOutButton);
 		
 		GridBagConstraints topConstraints = new GridBagConstraints();
 		topConstraints.fill = GridBagConstraints.BOTH  ;
@@ -498,8 +484,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 */
 	public void resetPanel(){
 		thumbnailList.setCurrentZoomLevel(JVisualSelectionList.DEFAULT_ZOOM_LEVEL);
-		zoomInItem.setEnabled(true);
-		zoomOutItem.setEnabled(true);
+		zoomInButton.setEnabled(true);
+		zoomOutButton.setEnabled(true);
 		((VisualListModel)thumbnailList.getModel()).clearData();
 		selectedPdfDocument = null;
 		selectedPdfDocumentPassword = "";
@@ -528,11 +514,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		documentProperties.setToolTipText( 
 	    		"<html><body><b><p>"+GettextResource.gettext(config.getI18nResourceBundle(),"File: ")+"</b>"+documetnInfo.getFileName()+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pages: ")+"</b>"+documetnInfo.getPages()+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version: ")+"</b>"+documetnInfo.getPdfVersion()+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Title: ")+"</b>"+documetnInfo.getTitle()+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+documetnInfo.getAuthor()+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+documetnInfo.getCreator()+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+documetnInfo.getProducer()+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version: ")+"</b>"+(documetnInfo.getPdfVersion()!=null? documetnInfo.getPdfVersion():"")+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Title: ")+"</b>"+(documetnInfo.getTitle()!=null? documetnInfo.getAuthor():"")+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+(documetnInfo.getAuthor()!=null? documetnInfo.getAuthor():"")+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+(documetnInfo.getCreator()!=null? documetnInfo.getCreator():"")+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+(documetnInfo.getProducer()!=null? documetnInfo.getProducer():"")+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Encrypted: ")+"</b>"+encrypted+"</p>"+
 	    		"</body></html>");
 		}
@@ -618,14 +604,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 */
 	public String getValidElementsString(){
 		String retVal = "";
-		Collection validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
+		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
 		if(validElements!=null && validElements.size()>0){
 			StringBuffer buffer = new StringBuffer();
 			VisualPageListItem startElement = null;
 			VisualPageListItem endElement = null;
 			VisualPageListItem previousElement = null;
-			for(Iterator iter = validElements.iterator(); iter.hasNext();){
-				VisualPageListItem currentElement = (VisualPageListItem)iter.next();
+			for(VisualPageListItem currentElement : validElements){
 				if(previousElement == null){
 					previousElement = currentElement;
 				}
@@ -675,13 +660,12 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * 
 	 * @return a Collection that can be used as -f parameters string 
 	 */
-	public Collection getValidElementsFiles(){
-		LinkedList retVal = new LinkedList(); 
-		Collection validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
+	public Collection<String> getValidElementsFiles(){
+		LinkedList<String> retVal = new LinkedList<String>(); 
+		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
 		if(validElements!=null && validElements.size()>0){
 			VisualPageListItem previousElement = null;
-			for(Iterator iter = validElements.iterator(); iter.hasNext();){
-				VisualPageListItem currentElement = (VisualPageListItem)iter.next();
+			for(VisualPageListItem currentElement : validElements){
 				if(previousElement == null){
 					previousElement = currentElement;
 				}
@@ -712,11 +696,16 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			topPanel.add(loadFileButton);
 		}
+		if(topPanelStyle>=STYLE_TOP_PANEL_MEDIUM){
+			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+			topPanel.add(clearButton);
+		}
 		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 		topPanel.add(documentProperties);
 		topPanel.add(Box.createHorizontalGlue());
-		topPanel.add(optionsMenu);
-		topPanel.validate();
+		topPanel.add(zoomInButton);
+		topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+		topPanel.add(zoomOutButton);
 	}
 	
 	/**
@@ -734,7 +723,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param c
 	 * @see VisualListModel#appendAllElements(Collection)
 	 */
-	public void appendElements(Collection c){
+	public void appendElements(Collection<VisualPageListItem> c){
 		((VisualListModel)thumbnailList.getModel()).appendAllElements(c);
 	}
 	
@@ -742,7 +731,63 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param c
 	 * @see VisualListModel#prependAllElements(Collection)
 	 */
-	public void prependElements(Collection c){
+	public void prependElements(Collection<VisualPageListItem> c){
 		((VisualListModel)thumbnailList.getModel()).prependAllElements(c);
 	}
+	
+	 /**
+     * enables the set output path menu item
+     */
+    public void enableSetOutputPathMenuItem(){
+    
+			menuItemSetOutputPath.setIcon(new ImageIcon(this.getClass().getResource("/images/set_outfile.png")));
+			menuItemSetOutputPath.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set output file"));
+			menuItemSetOutputPath.addMouseListener(new MouseAdapter() {
+	            public void mouseReleased(MouseEvent e) {
+	                if (selectedPdfDocument != null){
+	                    try{
+	                    	String defaultOutputPath = selectedPdfDocument.getParent();
+	                    	firePropertyChange(OUTPUT_PATH_PROPERTY, "", defaultOutputPath);
+	                    }
+	                    catch (Exception ex){
+	                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to get the file path."), ex); 
+	                    }
+	                }
+	              }
+	        });
+			popupMenu.add(menuItemSetOutputPath);
+			
+			if(!showContextMenu){
+				//show popup
+				thumbnailList.addMouseListener(new MouseAdapter() {
+		            public void mousePressed(MouseEvent e) {
+		                if (e.isPopupTrigger()) {
+							showMenu(e);
+						}
+		            }
+		            public void mouseReleased(MouseEvent e) {
+		                if (e.isPopupTrigger()) {
+							showMenu(e);
+						}
+		            }
+		            private void showMenu(MouseEvent e) {
+		            	int[] selection = thumbnailList.getSelectedIndices();
+		            	if(!(selection!=null && selection.length>1)){
+		            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
+		            		selection = thumbnailList.getSelectedIndices();
+		            	}
+		            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
+		            }
+		        });
+			}
+    }
+    
+    /**
+     * remove the set ouput path menu item
+     */
+    public void disableSetOutputPathMenuItem(){
+    	popupMenu.remove(menuItemSetOutputPath);
+    }
+
+    	
 }

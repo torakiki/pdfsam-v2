@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.business;
 
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.List;
 
@@ -26,20 +27,33 @@ import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 public class ClosableTabbedPanelAdder {
 	
 	private CloseableTabbedPane inputTabbedPanel;
-	
+	private PropertyChangeListener outputPathPropertyChangeListener = null;
 	/**
 	 * @param inputTabbedPanel
 	 */
 	public ClosableTabbedPanelAdder(CloseableTabbedPane inputTabbedPanel) {
 		super();
 		this.inputTabbedPanel = inputTabbedPanel;
+		this.outputPathPropertyChangeListener = null;
 	}
+
+	
+	/**
+	 * @param inputTabbedPanel
+	 * @param outputPathPropertyChangeListener listen the JVisualPdfPageSelectionPanel.OUTPUT_PATH_PROPERTY changes
+	 */
+	public ClosableTabbedPanelAdder(CloseableTabbedPane inputTabbedPanel, PropertyChangeListener outputPathPropertyChangeListener) {
+		super();
+		this.inputTabbedPanel = inputTabbedPanel;
+		this.outputPathPropertyChangeListener = outputPathPropertyChangeListener;
+	}
+
 
 	/**
 	 * Adds a tab for every File in fileList
 	 * @param fileList File list
 	 */
-	public void addTabs(List fileList) {		
+	public void addTabs(List<File> fileList) {		
 		if(fileList != null && fileList.size()>0){
 			addTabs((File[]) fileList.toArray(new File[fileList.size()]));        	
         }		
@@ -52,6 +66,10 @@ public class ClosableTabbedPanelAdder {
 	public void addTabs(File[] files){
 		for(int i =0; i<files.length; i++){
     		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, true, false, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
+    		if(outputPathPropertyChangeListener!=null){
+    			inputPanel.enableSetOutputPathMenuItem();
+    			inputPanel.addPropertyChangeListener(outputPathPropertyChangeListener);
+    		}
     		File currFile = files[i];
     		inputPanel.setSelectedPdfDocument(currFile);
     		inputPanel.getPdfLoader().addFile(currFile);
@@ -62,4 +80,20 @@ public class ClosableTabbedPanelAdder {
     		inputTabbedPanel.addTab(panelName, inputPanel, null, currFile.getName());
     	}
 	}
+
+	/**
+	 * @return the propertyChangeListener
+	 */
+	public PropertyChangeListener getOutputPathPropertyChangeListener() {
+		return outputPathPropertyChangeListener;
+	}
+
+	/**
+	 * @param outputPathPropertyChangeListener the propertyChangeListener to set, listen the JVisualPdfPageSelectionPanel.OUTPUT_PATH_PROPERTY changes
+	 */
+	public void setOutputPathPropertyChangeListener(PropertyChangeListener outputPathPropertyChangeListener) {
+		this.outputPathPropertyChangeListener = outputPathPropertyChangeListener;
+	}
+	
+	
 }

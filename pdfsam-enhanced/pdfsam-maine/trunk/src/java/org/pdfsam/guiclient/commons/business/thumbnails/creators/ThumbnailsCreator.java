@@ -99,4 +99,9 @@ public interface ThumbnailsCreator {
 	 * @param panel
 	 */
 	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel);
+	
+	/**
+	 * Clean up
+	 */
+	public void clean();
 }

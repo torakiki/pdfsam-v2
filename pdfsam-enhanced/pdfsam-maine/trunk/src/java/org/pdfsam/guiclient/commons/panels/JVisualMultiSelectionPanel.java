@@ -22,6 +22,7 @@ import java.awt.Insets;
 import java.awt.dnd.DropTarget;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 
 import javax.swing.Box;
@@ -167,4 +168,12 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		return retVal;
 	}
     
+	/**
+	 * @param propertyChangeListener the propertyChangeListener to set, listen the JVisualPdfPageSelectionPanel.OUTPUT_PATH_PROPERTY changes
+	 */
+	public void setOutputPathPropertyChangeListener(PropertyChangeListener propertyChangeListener) {
+		if(tabsAdder != null){
+			tabsAdder.setOutputPathPropertyChangeListener(propertyChangeListener);
+		}
+	}
 }

@@ -18,10 +18,10 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.business.thumbnails.creators.JPedalThumbnailCreator;
+import org.pdfsam.guiclient.commons.business.thumbnails.creators.JPodThumbnailCreator;
 import org.pdfsam.guiclient.commons.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -38,7 +38,7 @@ public class PdfThumbnailsLoader {
 	
 	private JVisualPdfPageSelectionPanel panel;
 	private JFileChooser fileChooser = null;
-	private ThumbnailsCreator creator = new JPedalThumbnailCreator();
+	private ThumbnailsCreator creator;
 	
 	public PdfThumbnailsLoader(JVisualPdfPageSelectionPanel panel){
 		this.panel = panel;
@@ -82,7 +82,8 @@ public class PdfThumbnailsLoader {
 				    JOptionPane.YES_NO_OPTION,
 				    JOptionPane.QUESTION_MESSAGE)){
     			//empty the model
-    			panel.resetPanel();    			
+    			panel.resetPanel(); 
+    			creator.clean();
 			}else{
 				retVal = false;
 			}
@@ -97,6 +98,7 @@ public class PdfThumbnailsLoader {
      */
     public synchronized void addFile(final File file, final String password){
     	try{
+    		initThumbnailsCreator();
 			creator.initThumbnailsPanel(file, password, panel);					
         }catch(Exception e){
         	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
@@ -119,6 +121,17 @@ public class PdfThumbnailsLoader {
     public void addFile(File file, boolean checkIfAlreadyAdded){
     	if(!checkIfAlreadyAdded || (checkIfAlreadyAdded && canLoad())){	    	
 			addFile(file);
+    	}
+    }
+    
+    /**
+     * Thumbnails creator initialization
+     */
+    private void initThumbnailsCreator(){
+    	if(Configuration.JPEDAL.equals(Configuration.getInstance().getThumbnailsGeneratorLibrary())){
+    		creator = new JPedalThumbnailCreator();
+    	}else{
+    		creator = new JPodThumbnailCreator();
     	}
     }
     

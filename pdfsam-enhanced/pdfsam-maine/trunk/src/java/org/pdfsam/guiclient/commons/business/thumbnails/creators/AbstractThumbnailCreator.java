@@ -14,6 +14,8 @@
  */
 package org.pdfsam.guiclient.commons.business.thumbnails.creators;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -68,5 +70,23 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 		}
 		return retVal;		
 	}
+	
+	/**
+	 * 
+	 * @param page the imput image
+	 * @param height new height
+	 * @return a scaled version of the image
+	 * @throws Exception
+	 */
+    protected synchronized BufferedImage getScaledImage(BufferedImage page , int height) throws Exception{
+    	BufferedImage retVal = null;            	
+    	Image scaledInstance = null;
+    	scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_SMOOTH);
+    	retVal  = new BufferedImage(scaledInstance.getWidth(null),scaledInstance.getHeight(null) , BufferedImage.TYPE_INT_ARGB);                
+        Graphics2D g2 = retVal.createGraphics();                
+        g2.drawImage(scaledInstance, 0, 0,null);
+    	return retVal;
+    }
+
 
 }
