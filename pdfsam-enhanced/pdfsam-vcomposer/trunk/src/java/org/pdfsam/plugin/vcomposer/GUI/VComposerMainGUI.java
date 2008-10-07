@@ -21,6 +21,8 @@ import java.awt.FocusTraversalPolicy;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
@@ -51,6 +53,7 @@ import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.commons.panels.JVisualMultiSelectionPanel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -68,10 +71,12 @@ import org.pdfsam.i18n.GettextResource;
  * @author Andrea Vacondio
  *
  */
-public class VComposerMainGUI extends AbstractPlugablePanel {
+public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyChangeListener{
 
 	private static final long serialVersionUID = -3265981976255542241L;
-
+	
+	private static final String DEFAULT_OUPUT_NAME = "composed_file.pdf";
+	
 	private static final Logger log = Logger.getLogger(VComposerMainGUI.class.getPackage().getName());
 	
     private JTextField destinationFileText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
@@ -108,7 +113,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 	
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.1";
+    private static final String PLUGIN_VERSION = "0.0.2";
     
     /**
      * Constructor
@@ -128,6 +133,8 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
         
         vcomposerSpringLayout = new SpringLayout();
         setLayout(vcomposerSpringLayout);
+        
+        inputPanel.setOutputPathPropertyChangeListener(this);
         
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.LINE_AXIS));
@@ -174,6 +181,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
 		buttonsPanel.add(moveToBottomButton);
 		
         composerPanel.addToTopPanel(buttonsPanel);
+        composerPanel.disableSetOutputPathMenuItem();
         add(composerPanel);
         
       //DESTINATION_PANEL
@@ -461,4 +469,12 @@ public class VComposerMainGUI extends AbstractPlugablePanel {
 		overwriteCheckbox.setSelected(false);
 	}
 
+	 /**
+	 * The menu item to set the output path has been clicked
+	 */
+	public void propertyChange(PropertyChangeEvent evt) {
+		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
+			destinationFileText.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
+		}		
+	}
 }
