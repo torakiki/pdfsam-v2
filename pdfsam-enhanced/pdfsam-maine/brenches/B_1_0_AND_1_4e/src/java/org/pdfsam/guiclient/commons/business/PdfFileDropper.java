@@ -52,7 +52,7 @@ public class PdfFileDropper extends DropTargetAdapter {
 	            Object data = t.getTransferData(DataFlavor.javaFileListFlavor);
 	            if (data instanceof List) {
 	                List files = (List)data;
-	                loader.addFiles(files);
+	                loader.addFiles(files, true);
 	            }
             }
             context.dropComplete(true);

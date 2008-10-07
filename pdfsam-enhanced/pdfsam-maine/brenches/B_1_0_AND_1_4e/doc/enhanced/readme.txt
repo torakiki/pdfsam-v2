@@ -8,8 +8,8 @@ License: GPL2
 
 Plugins included:
 	-pdfsam-merge-0.6.6 *
-	-pdfsam-split-0.4.7 *
-	-pdfsam-encrypt-0.2.5e *
+	-pdfsam-split-0.4.8 *
+	-pdfsam-encrypt-0.2.6e *
 	-pdfsam-mix-0.1.5e *
 	-pdfsam-cover-0.2.5e *
 

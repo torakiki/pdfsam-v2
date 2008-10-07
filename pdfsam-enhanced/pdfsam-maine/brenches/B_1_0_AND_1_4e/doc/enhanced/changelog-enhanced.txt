@@ -1,3 +1,8 @@
+1.4.3e stable release ()
+===================================
+-Fixed bug #2122945 
+-Added Copy/Cut/Paste popup menu to prefix text fields
+
 1.4.2e stable release (21-Sep-2008)
 ===================================
 -Added some new translatable string

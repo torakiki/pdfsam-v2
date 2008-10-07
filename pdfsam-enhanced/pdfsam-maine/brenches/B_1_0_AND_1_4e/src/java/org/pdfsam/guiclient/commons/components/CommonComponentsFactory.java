@@ -35,6 +35,7 @@ import org.pdfsam.i18n.GettextResource;
 public class CommonComponentsFactory {
 
 	public static final int DESTINATION_TEXT_FIELD_TYPE = 1;
+	public static final int PREFIX_TEXT_FIELD_TYPE = 2;
 	
 	public static final int RUN_BUTTON_TYPE = 1;
 	public static final int BROWSE_BUTTON_TYPE = 2;
@@ -163,6 +164,13 @@ public class CommonComponentsFactory {
 			retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 			retVal.addMouseListener(new DefaultMouseListener());
 			break;		
+
+		case PREFIX_TEXT_FIELD_TYPE:
+			retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+			retVal.addMouseListener(new DefaultMouseListener());
+			retVal.setText("pfdsam_");
+			break;		
+
 
 		default:
 			break;

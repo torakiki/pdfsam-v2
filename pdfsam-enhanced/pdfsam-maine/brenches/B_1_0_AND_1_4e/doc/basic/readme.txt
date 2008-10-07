@@ -8,7 +8,7 @@ License: GPL2
 
 Plugins included:
 	-pdfsam-merge-0.6.6 *
-	-pdfsam-split-0.4.7 *
+	-pdfsam-split-0.4.8 *
 
 Linked libraries:
 	-itext-2.0.7
