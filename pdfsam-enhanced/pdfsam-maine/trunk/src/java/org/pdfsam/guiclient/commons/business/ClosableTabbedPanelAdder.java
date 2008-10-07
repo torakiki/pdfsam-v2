@@ -18,6 +18,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.List;
 
+import org.pdfsam.guiclient.commons.business.listeners.CleanClosedTabbedPanelListener;
 import org.pdfsam.guiclient.commons.panels.CloseableTabbedPane;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 /**
@@ -78,6 +79,7 @@ public class ClosableTabbedPanelAdder {
     			panelName = currFile.getName().substring(0, 9)+"...";
     		}
     		inputTabbedPanel.addTab(panelName, inputPanel, null, currFile.getName());
+    		inputTabbedPanel.addCloseableTabbedPaneListener(new CleanClosedTabbedPanelListener(inputTabbedPanel));
     	}
 	}
 

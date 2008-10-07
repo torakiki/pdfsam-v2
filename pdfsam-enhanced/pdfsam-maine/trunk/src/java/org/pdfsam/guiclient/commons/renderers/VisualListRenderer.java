@@ -37,8 +37,7 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 
 	private static final long serialVersionUID = -6125533840590452401L;
 	
-	private static final int HORIZONTAL_GAP = 6;
-	private static final int VERTICAL_GAP = 25;
+	private static final double ZOOM_STEP = 0.1;
 	
 	private boolean drawRedCross = false;
 
@@ -82,19 +81,14 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 		if(image != null && list != null){
 			int height = image.getIconHeight();
 			int width = image.getIconWidth();
-			if (height>width){
-				retVal = new Dimension(width+HORIZONTAL_GAP+(list.getCurrentZoomLevel()*JVisualSelectionList.HORIZONTAL_ZOOM_STEP), height+VERTICAL_GAP+(list.getCurrentZoomLevel()*JVisualSelectionList.VERTICAL_ZOOM_STEP));
-			}else if (width>height){
-				retVal = new Dimension(width+HORIZONTAL_GAP+(list.getCurrentZoomLevel()*JVisualSelectionList.VERTICAL_ZOOM_STEP), height+VERTICAL_GAP+(list.getCurrentZoomLevel()*JVisualSelectionList.HORIZONTAL_ZOOM_STEP));
-			}else{
-				retVal = new Dimension(width+HORIZONTAL_GAP+(list.getCurrentZoomLevel()*JVisualSelectionList.HORIZONTAL_ZOOM_STEP), height+VERTICAL_GAP+(list.getCurrentZoomLevel()*JVisualSelectionList.HORIZONTAL_ZOOM_STEP));
-			}
+			retVal = new Dimension(width+(int)(width*ZOOM_STEP*list.getCurrentZoomLevel()), height+(int)(height*ZOOM_STEP*list.getCurrentZoomLevel()));
 		}
 		return retVal;
 	}	
 
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);		
+		super.paintComponent(g);
+		 g.drawImage(((ImageIcon)getIcon()).getImage(), 1, 0, getWidth()-2, getHeight()-15, null);
 		if(drawRedCross){
 			g.setColor(Color.red);	
 			g.drawLine(0,getHeight(),getWidth(),0); 

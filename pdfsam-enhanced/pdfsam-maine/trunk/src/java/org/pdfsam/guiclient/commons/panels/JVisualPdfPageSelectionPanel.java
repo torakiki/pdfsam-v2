@@ -59,6 +59,7 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Customizable panel for a visual page selection
  * @author Andrea Vacondio

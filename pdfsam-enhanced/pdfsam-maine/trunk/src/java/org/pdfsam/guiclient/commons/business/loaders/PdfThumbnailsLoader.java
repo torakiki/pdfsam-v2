@@ -135,5 +135,11 @@ public class PdfThumbnailsLoader {
     	}
     }
     
+    /**
+     * Clean creator
+     */
+    public void cleanCreator(){
+    	creator.clean();
+    }
    
 }

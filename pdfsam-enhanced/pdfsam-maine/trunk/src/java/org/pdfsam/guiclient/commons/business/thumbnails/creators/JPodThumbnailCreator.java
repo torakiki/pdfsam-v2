@@ -25,9 +25,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
-import org.jpedal.PdfDecoder;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -55,6 +57,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
 	private static final Logger log = Logger.getLogger(JPodThumbnailCreator.class.getPackage().getName());
 	private ExecutorService pool = null;
+	private Thread closer = null;
 	
 	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
@@ -150,7 +153,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
                 	documentInfo.setFileName(inputFile.getAbsolutePath());
                 	documentInfo.setPages(pages);
         			documentInfo.setAuthor(pdfDoc.getAuthor());
-               		documentInfo.setPdfVersion(pdfDoc.getCreationDateString());
+               		documentInfo.setPdfVersion(pdfDoc.cosGetDoc().stGetDoc().getDocType().getVersion());
                		documentInfo.setEncrypted(pdfDoc.isEncrypted());
                		documentInfo.setTitle(pdfDoc.getTitle());
            			documentInfo.setProducer(pdfDoc.getProducer());
@@ -162,7 +165,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
             				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath()));
             			}
             			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
-            			initThumbnails(pdfDoc, pageTree, panel, modelList);				            			
+            			initThumbnails(pdfDoc, pageTree, panel, modelList);
+            			closer = new Thread(new CreatorCloser(pool, pdfDoc));
+            			closer.start();
             		}		            				            		            		
         		}catch(Exception e){
         			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document."), e);
@@ -187,9 +192,6 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
 				execute(new ThumnailCreator(pdPage, pageItem, panel));	
 			}
-			if(pdfDoc!=null){
-				execute(new CreatorCloser(pdfDoc));
-			}
 		}		 		
 	}
 	/**
@@ -198,7 +200,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 */
 	private void execute(Runnable r){
 		if(pool==null || pool.isShutdown()){
-			pool = Executors.newSingleThreadExecutor();
+			pool = Executors.newFixedThreadPool(3);
 		}
 		pool.execute(r);
 	}
@@ -207,6 +209,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		if(pool!=null){
 			pool.shutdownNow();
 			pool = null;
+			if(closer != null){
+				closer = null;
+			}
 		}		
 	}
 	
@@ -280,19 +285,27 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	private class CreatorCloser implements Runnable{
 		
 		private PDDocument pdfDoc;
-
+		private ExecutorService pool;
 		/**
 		 * @param decoder
 		 */
-		public CreatorCloser(PDDocument pdfDoc) {
+		public CreatorCloser(ExecutorService pool, PDDocument pdfDoc) {
 			super();
 			this.pdfDoc = pdfDoc;
+			this.pool = pool;
 		}
 		
 		public void run() {				
 			try{
-				pdfDoc.close();
-				log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generator closed"));
+				if(pool!=null){
+					pool.shutdown();
+					if(pool.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS)){
+						if(pdfDoc!=null){
+							pdfDoc.close();
+							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generator closed"));
+						}
+					}
+				}
             }catch (Exception e) {
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to close thumbnail creator"),e);
         	}				           

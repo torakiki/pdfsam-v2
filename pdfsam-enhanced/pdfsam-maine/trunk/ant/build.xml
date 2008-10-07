@@ -106,7 +106,7 @@
 		    <manifest>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
-			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/${jpedal.jar.name}"/>
+			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/${jpedal.jar.name} lib/jai_imageio.jar lib/jna.jar lib/jbig2.jar lib/jai_codec.jar lib/jai_core.jar lib/isfreetype.jar lib/jPodFonts.jar lib/isrt.jar lib/iscwt.jar lib/jPod.jar lib/jPodRenderer.jar lib/isnativec.jar lib/jpedal_gpl.jar"/>
 		    </manifest>
 			<fileset dir="${pdfsam.etc.dir}">
 			    <include name="*.xml"/>
