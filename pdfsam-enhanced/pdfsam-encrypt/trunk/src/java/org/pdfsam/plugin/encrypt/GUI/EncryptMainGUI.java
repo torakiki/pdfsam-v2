@@ -72,7 +72,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 
 	private static final Logger log = Logger.getLogger(EncryptMainGUI.class.getPackage().getName());
 	
-	private JTextField outPrefixTextField;
+	private JTextField outPrefixTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE);
     private SpringLayout encryptPanelLayout;
     private SpringLayout destinationPanelLayout;
     private JTextField destFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);;
@@ -123,7 +123,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.5e";
+    private final String PLUGIN_VERSION = "0.2.6e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -314,9 +314,6 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         outPrefixLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output file names prefix:"));
         outputOptionsPanel.add(outPrefixLabel);
 
-        outPrefixTextField = new JTextField();
-        outPrefixTextField.setText("pdfsam_");
-        outPrefixTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         outputOptionsPanel.add(outPrefixTextField);
 //END_S_PANEL
 //      HELP_LABEL_PREFIX       
