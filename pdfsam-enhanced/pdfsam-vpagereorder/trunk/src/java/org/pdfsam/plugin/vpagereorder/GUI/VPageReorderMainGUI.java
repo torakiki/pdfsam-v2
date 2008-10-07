@@ -19,6 +19,8 @@ import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.LinkedList;
 
@@ -45,6 +47,7 @@ import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
@@ -59,9 +62,11 @@ import org.pdfsam.i18n.GettextResource;
  * @author Andrea Vacondio
  *
  */
-public class VPageReorderMainGUI extends AbstractPlugablePanel {
+public class VPageReorderMainGUI extends AbstractPlugablePanel  implements PropertyChangeListener{
 
 	private static final long serialVersionUID = -1965981976755542201L;
+	
+	private static final String DEFAULT_OUPUT_NAME = "reordered_file.pdf";
 
 	private static final Logger log = Logger.getLogger(VPageReorderMainGUI.class.getPackage().getName());
 	
@@ -102,7 +107,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
     private final JRadioButton chooseAFolderRadio = new JRadioButton();
     
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.1";
+    private static final String PLUGIN_VERSION = "0.0.2";
     
     /**
      * Constructor
@@ -123,7 +128,8 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
         vreorderSpringLayout = new SpringLayout();
         setLayout(vreorderSpringLayout);
         add(selectionPanel);
-        
+        selectionPanel.addPropertyChangeListener(this);
+
       //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
         destinationPanel.setLayout(destinationPanelLayout);
@@ -466,4 +472,12 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel {
 		overwriteCheckbox.setSelected(false);
 	}
 
+	 /**
+	 * The menu item to set the output path has been clicked
+	 */
+	public void propertyChange(PropertyChangeEvent evt) {
+		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
+			destinationFileText.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
+		}		
+	}
 }
