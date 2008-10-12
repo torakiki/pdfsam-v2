@@ -60,6 +60,7 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Plugable JPanel provides a GUI for merge functions.
@@ -109,7 +110,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.5e";
+    private static final String PLUGIN_VERSION = "0.2.6e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -363,12 +364,11 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 							   if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
 			                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
 			                		if(suggestedDir != null){
-			                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
-			        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
-			        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
-			        						    JOptionPane.YES_NO_OPTION,
-		            						    JOptionPane.QUESTION_MESSAGE)){
-			                				destinationTextField.setText(suggestedDir);
+		                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+		                    			if(JOptionPane.YES_OPTION == chosenOpt){
+		                    				destinationTextField.setText(suggestedDir);
+					        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+					        				return;
 					        			}
 			                		}                    	
 			                    }
