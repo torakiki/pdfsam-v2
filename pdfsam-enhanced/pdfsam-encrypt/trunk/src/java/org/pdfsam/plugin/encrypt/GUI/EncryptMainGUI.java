@@ -59,6 +59,7 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.encrypt.listeners.EncryptionTypeComboActionListener;
 /** 
@@ -123,7 +124,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.6e";
+    private final String PLUGIN_VERSION = "0.2.7e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -367,13 +368,13 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
                     if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
                 		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
                 		if(suggestedDir != null){
-                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
-        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
-        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
-        						    JOptionPane.YES_NO_OPTION,
-        						    JOptionPane.QUESTION_MESSAGE)){
+                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+                			if(JOptionPane.YES_OPTION == chosenOpt){
                 				destFolderText.setText(suggestedDir);
+		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+		        				return;
 		        			}
+
                 		}                    	
                     }
                     args.add(destFolderText.getText());
