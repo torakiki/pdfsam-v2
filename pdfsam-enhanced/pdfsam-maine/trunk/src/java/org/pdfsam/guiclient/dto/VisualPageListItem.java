@@ -33,6 +33,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	private int pageNumber;
 	private boolean deleted = false;
 	private String parentFileCanonicalPath = "";
+	private String documentPassword = "";
 
 	public VisualPageListItem() {
 	}
@@ -48,8 +49,17 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param parentFileCanonicalPath
 	 */
 	public VisualPageListItem(int pageNumber, String parentFileCanonicalPath) {
-		this(HOURGLASS, pageNumber, false, parentFileCanonicalPath);
+		this(HOURGLASS, pageNumber, false, parentFileCanonicalPath, null);
 	}
+	/**
+	 * @param pageNumber
+	 * @param parentFileCanonicalPath
+	 * @param documentPassword
+	 */
+	public VisualPageListItem(int pageNumber, String parentFileCanonicalPath, String documentPassword) {
+		this(HOURGLASS, pageNumber, false, parentFileCanonicalPath, documentPassword);
+	}
+
 	/**
 	 * @param thumbnail
 	 * @param pageNumber
@@ -63,20 +73,22 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param deleted
 	 */
 	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted){
-		this(thumbnail, pageNumber, deleted, "");
+		this(thumbnail, pageNumber, deleted, "", null);
 	}
 	/**
 	 * @param thumbnail
 	 * @param pageNumber
 	 * @param deleted
 	 * @param parentFileCanonicalPath
+	 * @param documentPassword 
 	 */
-	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath) {
+	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword) {
 		super();
 		this.thumbnail = thumbnail;
 		this.pageNumber = pageNumber;
 		this.deleted = deleted;
 		this.parentFileCanonicalPath = parentFileCanonicalPath;
+		this.documentPassword = documentPassword;
 	}
 	/**
 	 * @return the thumbnail
@@ -127,47 +139,20 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 */
 	public void setParentFileCanonicalPath(String parentFileCanonicalPath) {
 		this.parentFileCanonicalPath = parentFileCanonicalPath;
+	}	
+
+	/**
+	 * @return the documentPassword
+	 */
+	public String getDocumentPassword() {
+		return documentPassword;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * @param documentPassword the documentPassword to set
 	 */
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (deleted ? 1231 : 1237);
-		result = prime * result + pageNumber;
-		result = prime * result + ((parentFileCanonicalPath == null) ? 0 : parentFileCanonicalPath.hashCode());
-		result = prime * result + ((thumbnail == null) ? 0 : thumbnail.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		VisualPageListItem other = (VisualPageListItem) obj;
-		if (deleted != other.deleted)
-			return false;
-		if (pageNumber != other.pageNumber)
-			return false;
-		if (parentFileCanonicalPath == null) {
-			if (other.parentFileCanonicalPath != null)
-				return false;
-		} else if (!parentFileCanonicalPath.equals(other.parentFileCanonicalPath))
-			return false;
-		if (thumbnail == null) {
-			if (other.thumbnail != null)
-				return false;
-		} else if (!thumbnail.equals(other.thumbnail))
-			return false;
-		return true;
+	public void setDocumentPassword(String documentPassword) {
+		this.documentPassword = documentPassword;
 	}
 
 	/**
@@ -190,17 +175,13 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	        .append(OPEN).append("pageNumber=").append(this.pageNumber).append(CLOSE)
 	        .append(OPEN).append("deleted=").append(this.deleted).append(CLOSE)
 	        .append(OPEN).append("parentFileCanonicalPath=").append(this.parentFileCanonicalPath).append(CLOSE)
+	        .append(OPEN).append("documentPassword=").append(this.documentPassword).append(CLOSE)
 	        .append(" )");
 	    
 	    return retValue.toString();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#clone()
-	 */
-	protected Object clone() throws CloneNotSupportedException {
-		return new VisualPageListItem(thumbnail, pageNumber, deleted, parentFileCanonicalPath);
-	}
+	
 	
 	
 }

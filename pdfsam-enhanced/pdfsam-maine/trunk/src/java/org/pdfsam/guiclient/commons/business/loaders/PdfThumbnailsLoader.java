@@ -100,7 +100,7 @@ public class PdfThumbnailsLoader {
     	try{
     		initThumbnailsCreator();
 			creator.initThumbnailsPanel(file, password, panel);					
-        }catch(Exception e){
+    	}catch(Exception e){
         	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
         }
     }

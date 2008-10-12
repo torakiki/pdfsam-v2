@@ -87,7 +87,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
-	private String selectedPdfDocumentPassword = null;
 	private boolean showButtonPanel = true;
 	private int topPanelStyle = STYLE_TOP_PANEL_FULL;
 	private boolean acceptDropFromDifferentComponents = true;
@@ -489,7 +488,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		zoomOutButton.setEnabled(true);
 		((VisualListModel)thumbnailList.getModel()).clearData();
 		selectedPdfDocument = null;
-		selectedPdfDocumentPassword = "";
 		setDocumentPropertiesVisible(false);
 		
 	}
@@ -582,18 +580,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		return pdfLoader;
 	}
 	/**
-	 * @return the selectedPdfDocumentPassword
-	 */
-	public String getSelectedPdfDocumentPassword() {
-		return selectedPdfDocumentPassword;
-	}
-	/**
-	 * @param selectedPdfDocumentPassword the selectedPdfDocumentPassword to set
-	 */
-	public void setSelectedPdfDocumentPassword(String selectedPdfDocumentPassword) {
-		this.selectedPdfDocumentPassword = selectedPdfDocumentPassword;
-	}
-	/**
 	 * @return the topPanel
 	 */
 	public JPanel getTopPanel() {
@@ -672,12 +658,14 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 				}
 				if(!currentElement.getParentFileCanonicalPath().equals(previousElement.getParentFileCanonicalPath())){
 					retVal.add("-" + ConcatParsedCommand.F_ARG);
-					retVal.add(previousElement.getParentFileCanonicalPath());
+					String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath():previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword());
+					retVal.add(fileElem);
 					previousElement = currentElement;
 				}
 			}
 			retVal.add("-" + ConcatParsedCommand.F_ARG);
-			retVal.add(previousElement.getParentFileCanonicalPath());
+			String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath():previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword());
+			retVal.add(fileElem);
 		}
 		return retVal;
 	}

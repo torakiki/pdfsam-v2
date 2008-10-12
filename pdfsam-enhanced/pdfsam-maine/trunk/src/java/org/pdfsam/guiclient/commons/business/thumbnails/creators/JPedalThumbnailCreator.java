@@ -24,7 +24,6 @@ import org.apache.log4j.Logger;
 import org.jpedal.PdfDecoder;
 import org.jpedal.objects.PdfFileInformation;
 import org.jpedal.objects.PdfPageData;
-import org.jpedal.render.DynamicVectorRenderer;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -108,7 +107,6 @@ public class JPedalThumbnailCreator extends AbstractThumbnailCreator {
         			decoder = new PdfDecoder();
         			panel.setSelectedPdfDocument(inputFile);
             		if(password != null && password.length()>0){
-            			panel.setSelectedPdfDocumentPassword(password);
             			decoder.openPdfFile(inputFile.getAbsolutePath(), password);
             		}else{
             			decoder.openPdfFile(inputFile.getAbsolutePath());
@@ -133,7 +131,7 @@ public class JPedalThumbnailCreator extends AbstractThumbnailCreator {
             		if(pages > 0){
             			ArrayList<VisualPageListItem> modelList = new ArrayList<VisualPageListItem>(pages);
             			for (int i = 1; i<=pages; i++){
-            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath()));
+            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), password));
             			}
             			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
             			initThumbnails(decoder, panel, modelList);				

@@ -20,14 +20,13 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
@@ -36,12 +35,15 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 
 import de.intarsys.cwt.awt.environment.CwtAwtGraphicsContext;
 import de.intarsys.cwt.environment.IGraphicsContext;
 import de.intarsys.pdf.content.CSContent;
+import de.intarsys.pdf.crypt.COSSecurityException;
 import de.intarsys.pdf.crypt.PasswordProvider;
+import de.intarsys.pdf.parser.COSLoadException;
 import de.intarsys.pdf.pd.PDDocument;
 import de.intarsys.pdf.pd.PDPage;
 import de.intarsys.pdf.pd.PDPageTree;
@@ -65,20 +67,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		PDDocument pdfDoc = null;
 		if (inputFile.exists() && inputFile.isFile()){
 			try {
-				FileLocator locator = new FileLocator(inputFile);
-				//create doc
-				if(password!=null){
-					Map options = new HashMap();					
-					final char[] pwd = password.toCharArray();
-					PasswordProvider.setPasswordProvider(options,new IPasswordProvider() {
-						public char[] getPassword() {
-							return pwd;
-						}
-					});
-					pdfDoc = PDDocument.createFromLocator(locator, options);
-				}else{
-					pdfDoc = PDDocument.createFromLocator(locator);					
-				}
+				pdfDoc = openDoc(inputFile, password);
 				PDPage pdPage = pdfDoc.getPageTree().getPageAt(page-1);			
 				Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
 	
@@ -99,8 +88,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				if(pdfDoc!=null){
 					pdfDoc.close();
 				}
-			}catch(Exception e){
-				throw new ThumbnailCreationException(e);
+			}catch(Throwable t){
+				throw new ThumbnailCreationException(t);
 			}		
 			finally {
 				if (graphics != null) {
@@ -126,51 +115,55 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	}
 
 	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel) {
+		String providedPwd = password;
 		try{			
 			PDDocument pdfDoc = null;
 			if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
 				try {
-					FileLocator locator = new FileLocator(inputFile);
 					//create doc
-					if(password!=null){
-						Map options = new HashMap();					
-						final char[] pwd = password.toCharArray();
-						PasswordProvider.setPasswordProvider(options,new IPasswordProvider() {
-							public char[] getPassword() {
-								return pwd;
+					try{
+						pdfDoc = openDoc(inputFile, providedPwd);
+					}catch(IOException ioe){
+						if(ioe.getCause() instanceof COSSecurityException){
+							providedPwd = DialogUtility.askForDocumentPasswordDialog(panel);
+							if(providedPwd != null && providedPwd.length()>0){
+								pdfDoc = openDoc(inputFile, providedPwd);
+							}else{
+								pdfDoc = null;
 							}
-						});
-						pdfDoc = PDDocument.createFromLocator(locator, options);
-					}else{
-						pdfDoc = PDDocument.createFromLocator(locator);					
+						}else{
+							throw ioe;
+						}
 					}
-					panel.setSelectedPdfDocument(inputFile);              	
-                	//set file informations
-					PDPageTree pageTree = pdfDoc.getPageTree();
-					int pages = pageTree.getCount();
-                	DocumentInfo documentInfo = new DocumentInfo();
-            		documentInfo.setCreator(pdfDoc.getCreator());
-                	documentInfo.setFileName(inputFile.getAbsolutePath());
-                	documentInfo.setPages(pages);
-        			documentInfo.setAuthor(pdfDoc.getAuthor());
-               		documentInfo.setPdfVersion(pdfDoc.cosGetDoc().stGetDoc().getDocType().getVersion());
-               		documentInfo.setEncrypted(pdfDoc.isEncrypted());
-               		documentInfo.setTitle(pdfDoc.getTitle());
-           			documentInfo.setProducer(pdfDoc.getProducer());
-                	panel.setDocumentProperties(documentInfo);		            		
-                	panel.setDocumentPropertiesVisible(true);
-            		if(pages > 0){
-            			ArrayList<VisualPageListItem> modelList = new ArrayList<VisualPageListItem>(pages);
-            			for (int i = 1; i<=pages; i++){
-            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath()));
-            			}
-            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
-            			initThumbnails(pdfDoc, pageTree, panel, modelList);
-            			closer = new Thread(new CreatorCloser(pool, pdfDoc));
-            			closer.start();
-            		}		            				            		            		
-        		}catch(Exception e){
-        			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document."), e);
+					if(pdfDoc != null){
+						panel.setSelectedPdfDocument(inputFile);              	
+	                	//set file informations
+						PDPageTree pageTree = pdfDoc.getPageTree();
+						int pages = pageTree.getCount();
+	                	DocumentInfo documentInfo = new DocumentInfo();
+	            		documentInfo.setCreator(pdfDoc.getCreator());
+	                	documentInfo.setFileName(inputFile.getAbsolutePath());
+	                	documentInfo.setPages(pages);
+	        			documentInfo.setAuthor(pdfDoc.getAuthor());
+	               		documentInfo.setPdfVersion(pdfDoc.cosGetDoc().stGetDoc().getDocType().getVersion());
+	               		documentInfo.setEncrypted(pdfDoc.isEncrypted());
+	               		documentInfo.setTitle(pdfDoc.getTitle());
+	           			documentInfo.setProducer(pdfDoc.getProducer());
+	                	panel.setDocumentProperties(documentInfo);		            		
+	                	panel.setDocumentPropertiesVisible(true);
+	            		if(pages > 0){
+	            			ArrayList<VisualPageListItem> modelList = new ArrayList<VisualPageListItem>(pages);
+	            			for (int i = 1; i<=pages; i++){
+	            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), providedPwd));
+	            			}
+	            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
+	            			initThumbnails(pdfDoc, pageTree, panel, modelList);
+	            			closer = new Thread(new CreatorCloser(pool, pdfDoc));
+	            			closer.start();
+	            		}	
+					}
+        		}catch(Throwable t){
+        			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document."), t);
         		}
     		}else{
 				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Input file doesn't exists or is a directory"));
@@ -267,9 +260,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
               	pageItem.setThumbnail(scaledInstance);
               	long t2 = System.currentTimeMillis()-t;
               	log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnail generated in ")+t2+"ms");
-            }catch (Exception e) {
+            }catch (Throwable t) {
             	pageItem.setThumbnail(ERROR_IMAGE);
-        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),e);
+        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
         	}finally{
         		graphics.dispose();
         	}
@@ -311,5 +304,32 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
         	}				           
 		}    	
 		
+	}
+	
+	/**
+	 * Creates the PDDocument
+	 * @param inputFile
+	 * @param password
+	 * @return
+	 * @throws IOException
+	 * @throws COSLoadException
+	 */
+	@SuppressWarnings("unchecked")
+	private PDDocument openDoc(File inputFile, String password) throws IOException, COSLoadException{
+		PDDocument retVal = null;
+		FileLocator locator = new FileLocator(inputFile);
+		if(password!=null){					
+			Map options = new HashMap();					
+			final char[] pwd = password.toCharArray();
+			PasswordProvider.setPasswordProvider(options,new IPasswordProvider() {
+				public char[] getPassword() {
+					return pwd;
+				}
+			});
+			retVal = PDDocument.createFromLocator(locator, options);
+		}else{
+			retVal = PDDocument.createFromLocator(locator);					
+		}
+		return retVal;
 	}
 }
