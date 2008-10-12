@@ -60,6 +60,7 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.split.components.JSplitRadioButton;
 import org.pdfsam.plugin.split.components.JSplitRadioButtonModel;
@@ -383,13 +384,13 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     	if(destinationFolderText.getText()==null || destinationFolderText.getText().length()==0){                    
                 		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
 	                		if(suggestedDir != null){
-	                			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(getParent(),
-	        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location is not correct")+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
-	        						    GettextResource.gettext(config.getI18nResourceBundle(),"Output location error"),
-	        						    JOptionPane.YES_NO_OPTION,
-            						    JOptionPane.QUESTION_MESSAGE)){
-	                				destinationFolderText.setText(suggestedDir);
+                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+                    			if(JOptionPane.YES_OPTION == chosenOpt){
+                    				destinationFolderText.setText(suggestedDir);
+			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+			        				return;
 			        			}
+
 	                		}                    	
 	                    }
                         args.add(destinationFolderText.getText());
