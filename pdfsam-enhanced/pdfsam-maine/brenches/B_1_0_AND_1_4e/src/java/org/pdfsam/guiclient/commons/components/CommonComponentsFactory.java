@@ -168,7 +168,7 @@ public class CommonComponentsFactory {
 		case PREFIX_TEXT_FIELD_TYPE:
 			retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 			retVal.addMouseListener(new DefaultMouseListener());
-			retVal.setText("pfdsam_");
+			retVal.setText("pdfsam_");
 			break;		
 
 
