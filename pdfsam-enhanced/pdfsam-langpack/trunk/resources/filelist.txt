@@ -53,6 +53,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/gui/panels/JTreePanel.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/utils/PdfVersionUtility.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/utils/UpdatesUtility.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/utils/DialogUtility.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/updates/UpdateManager.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/updates/checkers/UpdateChecker.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/updates/checkers/HttpUpdateChecker.java

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
-"PO-Revision-Date: 2008-06-12 13:40+0000\n"
-"Last-Translator: Holco <Unknown>\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"PO-Revision-Date: 2008-09-24 09:47+0000\n"
+"Last-Translator: blackmore <Unknown>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVAKIA\n"
 "X-Poedit-Language: Slovak\n"
@@ -77,15 +77,6 @@ msgstr "Nastavte verziu pdf výstupného dokumentu."
 
 msgid "Please wait while all files are processed.."
 msgstr "Prosím čakajte než sa spracujú všetky súbory..."
-
-msgid "Output file location is not correct"
-msgstr "Nesprávne umiestnenie výstupu"
-
-msgid "Would you like to change it to"
-msgstr "Želáte si to zmeniť na"
-
-msgid "Output location error"
-msgstr "Chyba výstupného umiestnenia"
 
 msgid "Found a password for input file."
 msgstr "Nájdené heslo pre vstupný súbor"
@@ -220,9 +211,6 @@ msgstr "Vyberte vstupný súbor"
 
 msgid "Invalid split size"
 msgstr "Neplatná veľkosť rozdelenia"
-
-msgid "Output location is not correct"
-msgstr "Nesprávne umiestnenie výstupu"
 
 msgid "The lowest available pdf version is "
 msgstr "Najnižšia dostupná verzia pdf je "
@@ -676,7 +664,7 @@ msgid "Author"
 msgstr "Autor"
 
 msgid "About"
-msgstr ""
+msgstr "O aplikácii"
 
 msgid "Unimplemented method for JInfoPanel"
 msgstr "Neimplementovaná metóda pre JInfoPanel"
@@ -759,9 +747,8 @@ msgstr "Zaškrtnúť teraz"
 msgid "Configuration saved."
 msgstr "Konfigurácia uložená."
 
-#, fuzzy
 msgid "Settings"
-msgstr "Nastavenia "
+msgstr "Nastavenia"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Neimplementovaná metóda pre JSettings Panel"
@@ -770,7 +757,7 @@ msgid "New version available: "
 msgstr "Nová verzia dostupná: "
 
 msgid "Plugins"
-msgstr ""
+msgstr "Pluginy"
 
 msgid "Error getting pdf version description."
 msgstr "Chyba pri získávaní popisu verzie pdf."
@@ -799,6 +786,15 @@ msgstr "Nikdy"
 msgid "pdfsam start up"
 msgstr "spustenie pdfsam"
 
+msgid "Output file location is not correct"
+msgstr "Nesprávne umiestnenie výstupu"
+
+msgid "Would you like to change it to"
+msgstr "Želáte si to zmeniť na"
+
+msgid "Output location error"
+msgstr "Chyba výstupného umiestnenia"
+
 msgid "Checking for a new version available."
 msgstr "Kontrolujem nové verzie."
 
@@ -815,8 +811,10 @@ msgid "No new version available."
 msgstr "Žiadna nová verzia dostupná."
 
 msgid "Cut"
-msgstr ""
+msgstr "Vystrihnúť"
 
-#, fuzzy
 msgid "Paste"
-msgstr "Cesta"
+msgstr "Prilepiť"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Nesprávne umiestnenie výstupu"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-04-03 09:49+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -74,15 +74,6 @@ msgstr "הגדר את גירסת ה-PDF למסמך הפלט."
 
 msgid "Please wait while all files are processed.."
 msgstr "נא המתן במהלך עיבוד כל הקבצים.."
-
-msgid "Output file location is not correct"
-msgstr ""
-
-msgid "Would you like to change it to"
-msgstr ""
-
-msgid "Output location error"
-msgstr ""
 
 msgid "Found a password for input file."
 msgstr "נמצאה הגנה בסיסמה עבור קובץ הקלט."
@@ -214,9 +205,6 @@ msgstr "בחר קובץ קלט"
 
 msgid "Invalid split size"
 msgstr "גודל הפיצול שגוי"
-
-msgid "Output location is not correct"
-msgstr ""
 
 msgid "The lowest available pdf version is "
 msgstr "גירסת ה-PDF הנמוכה ביותר הזמינה היא "
@@ -782,6 +770,15 @@ msgid "Never"
 msgstr ""
 
 msgid "pdfsam start up"
+msgstr ""
+
+msgid "Output file location is not correct"
+msgstr ""
+
+msgid "Would you like to change it to"
+msgstr ""
+
+msgid "Output location error"
 msgstr ""
 
 msgid "Checking for a new version available."

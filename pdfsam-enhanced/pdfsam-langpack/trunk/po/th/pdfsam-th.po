@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-05-29 10:01+0000\n"
 "Last-Translator: Uthen Phutneam <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -78,15 +78,6 @@ msgstr "ตั้งค่าเวอร์ชั่นของไฟล์ท
 
 msgid "Please wait while all files are processed.."
 msgstr "กรุณารอขณะกำลังประมวณผล"
-
-msgid "Output file location is not correct"
-msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้วไม่ถูกต้อง"
-
-msgid "Would you like to change it to"
-msgstr "คุณต้องการที่จะเปลี่ยนมันเป็น"
-
-msgid "Output location error"
-msgstr "ที่เก็บไฟล์ที่เสร็จแล้วไม่ถูกต้อง"
 
 msgid "Found a password for input file."
 msgstr "พบการตั้งค่ารหัสผ่านของไฟล์นำเข้า"
@@ -217,9 +208,6 @@ msgstr "เลือกไฟล์นำเข้า"
 
 msgid "Invalid split size"
 msgstr "ขนาดไฟล์ที่แยกผิดพลาด"
-
-msgid "Output location is not correct"
-msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้วไม่ถูกต้อง"
 
 msgid "The lowest available pdf version is "
 msgstr "pdf รุ่นต่ำสุดที่มีอยู่คือ "
@@ -792,6 +780,15 @@ msgstr "ไม่มีทาง"
 msgid "pdfsam start up"
 msgstr "เริ่มการทำงาน pdfsam"
 
+msgid "Output file location is not correct"
+msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้วไม่ถูกต้อง"
+
+msgid "Would you like to change it to"
+msgstr "คุณต้องการที่จะเปลี่ยนมันเป็น"
+
+msgid "Output location error"
+msgstr "ที่เก็บไฟล์ที่เสร็จแล้วไม่ถูกต้อง"
+
 msgid "Checking for a new version available."
 msgstr "กำลังตรวจสอบรุ่นใหม่อยู่"
 
@@ -813,3 +810,6 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "พาธ"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้วไม่ถูกต้อง"

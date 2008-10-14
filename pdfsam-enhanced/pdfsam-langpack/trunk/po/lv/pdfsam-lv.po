@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-07-10 08:52+0000\n"
 "Last-Translator: Kristaps <retail@inbox.lv>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -74,15 +74,6 @@ msgstr ""
 
 msgid "Please wait while all files are processed.."
 msgstr "Lūdzu uzgaidiet kamēr visi faili tiek apstrādāti..."
-
-msgid "Output file location is not correct"
-msgstr "Izejošā faila atrašanās vieta nav pareiza"
-
-msgid "Would you like to change it to"
-msgstr "Vai Jūs vēlaties mainīt to uz"
-
-msgid "Output location error"
-msgstr ""
 
 msgid "Found a password for input file."
 msgstr "Atrasta parole priekš izejošā faila."
@@ -211,9 +202,6 @@ msgstr "Izvēlieties izejošo failu."
 
 msgid "Invalid split size"
 msgstr ""
-
-msgid "Output location is not correct"
-msgstr "Izejošā atrašanās vieta nav pareiza."
 
 msgid "The lowest available pdf version is "
 msgstr "Zemākā pieejamā pdf versija ir "
@@ -779,6 +767,15 @@ msgstr ""
 msgid "pdfsam start up"
 msgstr ""
 
+msgid "Output file location is not correct"
+msgstr "Izejošā faila atrašanās vieta nav pareiza"
+
+msgid "Would you like to change it to"
+msgstr "Vai Jūs vēlaties mainīt to uz"
+
+msgid "Output location error"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -800,3 +797,6 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Ceļš"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Izejošā atrašanās vieta nav pareiza."

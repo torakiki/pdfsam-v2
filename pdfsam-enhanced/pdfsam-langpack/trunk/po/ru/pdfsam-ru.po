@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-08-01 06:22+0000\n"
 "Last-Translator: Vlasov Alexey <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -107,17 +107,6 @@ msgstr "Установить версию PDF в сохраняемом доку
 
 msgid "Please wait while all files are processed.."
 msgstr "Дождитесь окончания обработки всех файлов.."
-
-#, fuzzy
-msgid "Output file location is not correct"
-msgstr "Расположение выходящего файла неверно"
-
-#, fuzzy
-msgid "Would you like to change it to"
-msgstr "Хотите ли вы изменить это на"
-
-msgid "Output location error"
-msgstr ""
 
 msgid "Found a password for input file."
 msgstr "Пароль для загружаемого файла найден."
@@ -280,9 +269,6 @@ msgstr "Укажите  входной файл"
 #, fuzzy
 msgid "Invalid split size"
 msgstr "Неверный размер части."
-
-msgid "Output location is not correct"
-msgstr "Выходная папка задана неверно."
 
 msgid "The lowest available pdf version is "
 msgstr "Младшая доступная версия PDF "
@@ -1044,6 +1030,17 @@ msgstr ""
 msgid "pdfsam start up"
 msgstr ""
 
+#, fuzzy
+msgid "Output file location is not correct"
+msgstr "Расположение выходящего файла неверно"
+
+#, fuzzy
+msgid "Would you like to change it to"
+msgstr "Хотите ли вы изменить это на"
+
+msgid "Output location error"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -1068,6 +1065,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Местоположение"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Выходная папка задана неверно."
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:231
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252

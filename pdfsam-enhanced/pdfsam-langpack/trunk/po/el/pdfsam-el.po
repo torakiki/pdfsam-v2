@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-03-24 16:10+0000\n"
 "Last-Translator: dizzyk <hibaman@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -124,15 +124,6 @@ msgstr ""
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
 msgid "Please wait while all files are processed.."
 msgstr "Παρακαλώ περιμένετε όσο επεξεργάζονται όλα τα αρχεία.."
-
-msgid "Output file location is not correct"
-msgstr ""
-
-msgid "Would you like to change it to"
-msgstr ""
-
-msgid "Output location error"
-msgstr ""
 
 msgid "Found a password for input file."
 msgstr ""
@@ -285,9 +276,6 @@ msgid "Select an input file"
 msgstr "Ορισμός αρχείου εξόδου"
 
 msgid "Invalid split size"
-msgstr ""
-
-msgid "Output location is not correct"
 msgstr ""
 
 msgid "The lowest available pdf version is "
@@ -1034,6 +1022,15 @@ msgid "Never"
 msgstr ""
 
 msgid "pdfsam start up"
+msgstr ""
+
+msgid "Output file location is not correct"
+msgstr ""
+
+msgid "Would you like to change it to"
+msgstr ""
+
+msgid "Output location error"
 msgstr ""
 
 msgid "Checking for a new version available."

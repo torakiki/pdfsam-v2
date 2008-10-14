@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-04-01 10:20+0000\n"
 "Last-Translator: egg8383 <egg8383@yahoo.com.hk>\n"
 "Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
@@ -74,15 +74,6 @@ msgstr "設定pdf輸出文件版本"
 
 msgid "Please wait while all files are processed.."
 msgstr "請等待所有檔案處理"
-
-msgid "Output file location is not correct"
-msgstr ""
-
-msgid "Would you like to change it to"
-msgstr ""
-
-msgid "Output location error"
-msgstr ""
 
 msgid "Found a password for input file."
 msgstr "找到一個輸入檔案密碼"
@@ -210,9 +201,6 @@ msgid "Select an input file"
 msgstr ""
 
 msgid "Invalid split size"
-msgstr ""
-
-msgid "Output location is not correct"
 msgstr ""
 
 msgid "The lowest available pdf version is "
@@ -777,6 +765,15 @@ msgid "Never"
 msgstr ""
 
 msgid "pdfsam start up"
+msgstr ""
+
+msgid "Output file location is not correct"
+msgstr ""
+
+msgid "Would you like to change it to"
+msgstr ""
+
+msgid "Output location error"
 msgstr ""
 
 msgid "Checking for a new version available."

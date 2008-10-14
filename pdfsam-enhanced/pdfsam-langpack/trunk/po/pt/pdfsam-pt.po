@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-06-02 15:43+0000\n"
 "Last-Translator: lameiro <lameiro@macinhata.net>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -87,16 +87,6 @@ msgstr "Defina a versão pdf do documento de saída."
 
 msgid "Please wait while all files are processed.."
 msgstr "Por favor espere enquanto todos os ficheiros são processados..."
-
-msgid "Output file location is not correct"
-msgstr "A localização do ficheiro de saída não é correcta"
-
-msgid "Would you like to change it to"
-msgstr "Gostaria de mudá-lo para"
-
-#, fuzzy
-msgid "Output location error"
-msgstr "Erro de localização de saída"
 
 msgid "Found a password for input file."
 msgstr "Foi encontrada uma palavra-chave pra o ficheiro de entrada"
@@ -242,9 +232,6 @@ msgstr "Seleccione um ficheiro de entrada"
 
 msgid "Invalid split size"
 msgstr "Tamanho de divisão inválido"
-
-msgid "Output location is not correct"
-msgstr "A localização de saída não é correcta"
 
 msgid "The lowest available pdf version is "
 msgstr "A versão mais baixa do pdf disponível é "
@@ -829,6 +816,16 @@ msgstr ""
 msgid "pdfsam start up"
 msgstr ""
 
+msgid "Output file location is not correct"
+msgstr "A localização do ficheiro de saída não é correcta"
+
+msgid "Would you like to change it to"
+msgstr "Gostaria de mudá-lo para"
+
+#, fuzzy
+msgid "Output location error"
+msgstr "Erro de localização de saída"
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -850,3 +847,6 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Caminho(PATH)"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "A localização de saída não é correcta"

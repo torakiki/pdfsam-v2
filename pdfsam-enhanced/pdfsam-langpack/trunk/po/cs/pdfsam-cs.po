@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -74,15 +74,6 @@ msgstr "Zadejte verzi výstupního PDF dokumentu."
 
 msgid "Please wait while all files are processed.."
 msgstr "Prosím čekejte dokud všechny soubory nebudou zpracovány..."
-
-msgid "Output file location is not correct"
-msgstr "Nesprávná cesta k výstupnímu souboru"
-
-msgid "Would you like to change it to"
-msgstr "Přejete si ji změnit na"
-
-msgid "Output location error"
-msgstr "Chyba výstupního umístění"
 
 msgid "Found a password for input file."
 msgstr "Nalezeno heslo vstupního souboru."
@@ -218,9 +209,6 @@ msgstr "Vyberte vstupní soubor"
 
 msgid "Invalid split size"
 msgstr "Chybná velikost rozdělování."
-
-msgid "Output location is not correct"
-msgstr "Nesprávná cesta k výstupnímu souboru"
 
 msgid "The lowest available pdf version is "
 msgstr "Nejnižší použitelná verze pdf je "
@@ -798,6 +786,15 @@ msgstr "Nikdy"
 msgid "pdfsam start up"
 msgstr "Při spuštění programu Pdfsam"
 
+msgid "Output file location is not correct"
+msgstr "Nesprávná cesta k výstupnímu souboru"
+
+msgid "Would you like to change it to"
+msgstr "Přejete si ji změnit na"
+
+msgid "Output location error"
+msgstr "Chyba výstupního umístění"
+
 msgid "Checking for a new version available."
 msgstr "Zjištění dostupnosti nové verze."
 
@@ -819,3 +816,6 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Umístění"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Nesprávná cesta k výstupnímu souboru"

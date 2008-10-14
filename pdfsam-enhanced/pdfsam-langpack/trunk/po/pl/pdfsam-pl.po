@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 10:52+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-09-09 21:21+0000\n"
 "Last-Translator: Kamil Skrzypiński <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -75,15 +75,6 @@ msgstr "Ustal wersję pdf dla dokumentu wyjściowego"
 
 msgid "Please wait while all files are processed.."
 msgstr "Czekaj, przetwarzanie wszystkich plików w toku"
-
-msgid "Output file location is not correct"
-msgstr ""
-
-msgid "Would you like to change it to"
-msgstr ""
-
-msgid "Output location error"
-msgstr ""
 
 msgid "Found a password for input file."
 msgstr "Odnaleziono hasło dla pliku wejściowego"
@@ -218,9 +209,6 @@ msgid "Select an input file"
 msgstr ""
 
 msgid "Invalid split size"
-msgstr ""
-
-msgid "Output location is not correct"
 msgstr ""
 
 msgid "The lowest available pdf version is "
@@ -790,6 +778,15 @@ msgid "Never"
 msgstr ""
 
 msgid "pdfsam start up"
+msgstr ""
+
+msgid "Output file location is not correct"
+msgstr ""
+
+msgid "Would you like to change it to"
+msgstr ""
+
+msgid "Output location error"
 msgstr ""
 
 msgid "Checking for a new version available."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-06-07 10:20+0000\n"
 "Last-Translator: Manic <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -78,15 +78,6 @@ msgstr "Postavi pdf inačicu izlaznog dokumenta."
 
 msgid "Please wait while all files are processed.."
 msgstr "Molimo pričekajte dok se datoteke ne obrade..."
-
-msgid "Output file location is not correct"
-msgstr "Lokacija izlazne datoteke nije valjana"
-
-msgid "Would you like to change it to"
-msgstr "Da li želiti promijeniti u"
-
-msgid "Output location error"
-msgstr "Greška odredišne lokacije"
 
 msgid "Found a password for input file."
 msgstr "Pronađena zaporka ulaznog dokumenta"
@@ -222,9 +213,6 @@ msgstr "Odaberite ulaznu datoteku"
 
 msgid "Invalid split size"
 msgstr "Neispravna veličina razdvajanja"
-
-msgid "Output location is not correct"
-msgstr "Izlazna lokacija nije valjana"
 
 msgid "The lowest available pdf version is "
 msgstr "Najniža dostupna pdf inačica je "
@@ -805,6 +793,15 @@ msgstr "Nikada"
 msgid "pdfsam start up"
 msgstr "Pokretanje pdfsam aplikacije"
 
+msgid "Output file location is not correct"
+msgstr "Lokacija izlazne datoteke nije valjana"
+
+msgid "Would you like to change it to"
+msgstr "Da li želiti promijeniti u"
+
+msgid "Output location error"
+msgstr "Greška odredišne lokacije"
+
 msgid "Checking for a new version available."
 msgstr "Provjeravam dostupnost nove inačice."
 
@@ -826,3 +823,6 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Putanja"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Izlazna lokacija nije valjana"

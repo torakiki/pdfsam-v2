@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 10:52+0200\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
 "PO-Revision-Date: 2008-09-07 18:12+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -74,15 +74,6 @@ msgstr "設定輸出文件的 PDF 版本"
 
 msgid "Please wait while all files are processed.."
 msgstr "檔案處理中請稍待..."
-
-msgid "Output file location is not correct"
-msgstr "輸出檔位置並不正確"
-
-msgid "Would you like to change it to"
-msgstr "您是否要更改至"
-
-msgid "Output location error"
-msgstr "輸出檔位置錯誤"
 
 msgid "Found a password for input file."
 msgstr "輸入檔需要密碼"
@@ -213,9 +204,6 @@ msgstr "請選擇一個輸入檔"
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
-
-msgid "Output location is not correct"
-msgstr "輸出檔位置並不正確"
 
 msgid "The lowest available pdf version is "
 msgstr "可用的 PDF 版本至少為 "
@@ -783,6 +771,15 @@ msgstr "從不"
 msgid "pdfsam start up"
 msgstr "pdfsam 啟動時"
 
+msgid "Output file location is not correct"
+msgstr "輸出檔位置並不正確"
+
+msgid "Would you like to change it to"
+msgstr "您是否要更改至"
+
+msgid "Output location error"
+msgstr "輸出檔位置錯誤"
+
 msgid "Checking for a new version available."
 msgstr "正在確認是否有新版本可用。"
 
@@ -803,6 +800,9 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
+
+#~ msgid "Output location is not correct"
+#~ msgstr "輸出檔位置並不正確"
 
 #~ msgid "Please wait while reading "
 #~ msgstr "讀取中請稍待... "

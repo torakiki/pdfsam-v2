@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 10:52+0200\n"
-"PO-Revision-Date: 2008-09-19 01:30+0000\n"
-"Last-Translator: hamtle <hamtleronaz@gmail.com>\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"PO-Revision-Date: 2008-10-03 23:07+0000\n"
+"Last-Translator: Luis García <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-20 08:24+0000\n"
+"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options:"
@@ -117,15 +117,6 @@ msgstr "Configura la versión pdf del documento de salida."
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
 msgid "Please wait while all files are processed.."
 msgstr "Espere mientras se procesan todos los archivos..."
-
-msgid "Output file location is not correct"
-msgstr "La ubicación  del archivo no es correcta"
-
-msgid "Would you like to change it to"
-msgstr "Quisiera cambiarlo a"
-
-msgid "Output location error"
-msgstr "Error de ubicación de salida"
 
 msgid "Found a password for input file."
 msgstr "Encuentra una contraseña para el archivo de salida"
@@ -297,9 +288,6 @@ msgstr "Seleccionar archivo de entrada"
 
 msgid "Invalid split size"
 msgstr "Tamaño de división inválida"
-
-msgid "Output location is not correct"
-msgstr "Ubicación de salida no es correcta"
 
 msgid "The lowest available pdf version is "
 msgstr "La menor versión pdf disponible es "
@@ -1048,6 +1036,15 @@ msgstr "Nunca"
 msgid "pdfsam start up"
 msgstr "Inicio de pdfsam"
 
+msgid "Output file location is not correct"
+msgstr "La ubicación  del archivo no es correcta"
+
+msgid "Would you like to change it to"
+msgstr "Quisiera cambiarlo a"
+
+msgid "Output location error"
+msgstr "Error de ubicación de salida"
+
 msgid "Checking for a new version available."
 msgstr "Revisando si existe una nueva versión disponible"
 
@@ -1142,3 +1139,6 @@ msgstr "Pegar"
 
 #~ msgid "Page numbers you want to split after (num1-num2-num3..)"
 #~ msgstr "Números de página que desea dividir (num1-num2-num3...)"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Ubicación de salida no es correcta"

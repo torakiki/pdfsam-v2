@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 19:11+0200\n"
-"PO-Revision-Date: 2008-05-04 09:36+0000\n"
-"Last-Translator: Jen Ockwell <jenfraggleubuntu@googlemail.com>\n"
+"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"PO-Revision-Date: 2008-10-05 04:41+0000\n"
+"Last-Translator: 2p0rk <Unknown>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
 "X-Poedit-Language: English\n"
@@ -74,15 +74,6 @@ msgstr "Set the pdf version of the ouput document."
 msgid "Please wait while all files are processed.."
 msgstr "Please wait while all files are processed.."
 
-msgid "Output file location is not correct"
-msgstr ""
-
-msgid "Would you like to change it to"
-msgstr ""
-
-msgid "Output location error"
-msgstr ""
-
 msgid "Found a password for input file."
 msgstr "Found a password for input file."
 
@@ -96,7 +87,7 @@ msgid "Merge section loaded."
 msgstr "Merge section loaded."
 
 msgid "Export as xml"
-msgstr ""
+msgstr "Copy text   \t Export as xml"
 
 msgid "Unable to save xml file."
 msgstr "Unable to save xml file."
@@ -209,19 +200,14 @@ msgstr ""
 "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
 "oldstyle output file names."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-msgstr ""
+msgstr "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 msgid "Select an input file"
 msgstr "Select an input file"
 
 msgid "Invalid split size"
 msgstr "Invalid split size"
-
-msgid "Output location is not correct"
-msgstr ""
 
 msgid "The lowest available pdf version is "
 msgstr "The lowest available pdf version is "
@@ -271,9 +257,8 @@ msgstr "User password:"
 msgid "User password (Max 32 chars long)"
 msgstr "User password (Max 32 chars long)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
 msgid "Encryption angorithm:"
-msgstr ""
+msgstr "Encryption algorithm:"
 
 msgid "Print"
 msgstr "Print"
@@ -365,7 +350,7 @@ msgid "AlternateMix section loaded."
 msgstr "AlternateMix section loaded."
 
 msgid "Unpack selected files"
-msgstr ""
+msgstr "Unpack selected files"
 
 msgid "Unpack"
 msgstr "Unpack"
@@ -493,9 +478,8 @@ msgstr "Add a pdf to the list"
 msgid "Remove a pdf from the list"
 msgstr "Remove a pdf from the list"
 
-# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:213
 msgid "(Canc)"
-msgstr ""
+msgstr "(Canc)"
 
 msgid "Remove"
 msgstr "Remove"
@@ -678,14 +662,13 @@ msgid "Author"
 msgstr "Author"
 
 msgid "About"
-msgstr ""
+msgstr "About"
 
 msgid "Unimplemented method for JInfoPanel"
 msgstr "Unimplemented method for JInfoPanel"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:167
 msgid "Contributes: "
-msgstr ""
+msgstr "Contributes: "
 
 msgid "Log level:"
 msgstr "Log level:"
@@ -706,7 +689,7 @@ msgid "Load default environment at startup:"
 msgstr "Load default environment at startup:"
 
 msgid "Default working directory:"
-msgstr ""
+msgstr "Default working directory:"
 
 msgid "Error getting default environment."
 msgstr "Error getting default environment."
@@ -751,10 +734,10 @@ msgstr ""
 "startup"
 
 msgid "Default working directory"
-msgstr ""
+msgstr "Default working directory"
 
 msgid "Select a directory where documents will be saved and loaded by default"
-msgstr ""
+msgstr "Select a directory where documents will be saved and loaded by default"
 
 msgid "Check now"
 msgstr "Check now"
@@ -762,9 +745,8 @@ msgstr "Check now"
 msgid "Configuration saved."
 msgstr "Configuration saved."
 
-#, fuzzy
 msgid "Settings"
-msgstr "Settings "
+msgstr "Settings"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Unimplemented method for JSettingsPanel"
@@ -773,7 +755,7 @@ msgid "New version available: "
 msgstr "New version available: "
 
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 msgid "Error getting pdf version description."
 msgstr "Error getting pdf version description."
@@ -802,6 +784,15 @@ msgstr "Never"
 msgid "pdfsam start up"
 msgstr "pdfsam start up"
 
+msgid "Output file location is not correct"
+msgstr "Output file location is not correct"
+
+msgid "Would you like to change it to"
+msgstr "Copy text   \t Would you like to change it to"
+
+msgid "Output location error"
+msgstr "Output location error"
+
 msgid "Checking for a new version available."
 msgstr "Checking if a new version is available."
 
@@ -818,8 +809,10 @@ msgid "No new version available."
 msgstr "No new version available."
 
 msgid "Cut"
-msgstr ""
+msgstr "Cut"
 
-#, fuzzy
 msgid "Paste"
-msgstr "Path"
+msgstr "Paste"
+
+#~ msgid "Output location is not correct"
+#~ msgstr "Output location is not correct"
