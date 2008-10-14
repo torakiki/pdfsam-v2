@@ -35,17 +35,13 @@ public class DialogUtility {
 	 * @return
 	 */
 	public static int showConfirmOuputLocationDialog(Component comp, String suggestedDir){
-		Object[] options = {
-				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Yes"),
-				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"No"),
-				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Cancel")};
 
 		return JOptionPane.showOptionDialog(comp,
 			    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Output file location is not correct")+".\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Would you like to change it to")+" "+suggestedDir+" ?",
 			    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Output location error"),
 			    JOptionPane.YES_NO_CANCEL_OPTION,
 			    JOptionPane.QUESTION_MESSAGE,null,
-			    options,
-			    options[0]);
+			    null,
+			    null);
 	}
 }

@@ -1,7 +1,10 @@
-1.4.3e stable release ()
+1.4.3e stable release (19-Oct-2008)
 ===================================
 -Fixed bug #2122945 
 -Added Copy/Cut/Paste popup menu to prefix text fields
+-Added sounds to confirm execution or errors
+-Modified the dialog to ask confirmation to change output directory
+-Updated langpack
 
 1.4.2e stable release (21-Sep-2008)
 ===================================
