@@ -178,39 +178,46 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 
 					PdfSelectionTableItem item = null;
                 	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	for (int i = 0; i < items.length; i++){
-						item = items[i];
-						args.add("-"+UnpackParsedCommand.F_ARG);
-                        String f = item.getInputFile().getAbsolutePath();
-                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
-    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-    						f +=":"+item.getPassword();
-    					}
-    					args.add(f);                        						
+                	if(items != null && items.length >= 1){	
+	                	for (int i = 0; i < items.length; i++){
+							item = items[i];
+							args.add("-"+UnpackParsedCommand.F_ARG);
+	                        String f = item.getInputFile().getAbsolutePath();
+	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
+	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
+	    						f +=":"+item.getPassword();
+	    					}
+	    					args.add(f);                        						
+						}
+	                	
+	                    args.add("-"+UnpackParsedCommand.O_ARG);
+	                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		if(suggestedDir != null){
+	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+	                			if(JOptionPane.YES_OPTION == chosenOpt){
+	                				destinationTextField.setText(suggestedDir);
+			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+			        				return;
+			        			}
+	                		}                    	
+	                    }
+	                    args.add(destinationTextField.getText());
+	
+	                    if (overwriteCheckbox.isSelected()) {
+							args.add("-"+UnpackParsedCommand.OVERWRITE_ARG);
+						}
+	
+						args.add (AbstractParsedCommand.COMMAND_UNPACK);
+	
+		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));     
+                	}else{
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
 					}
-                	
-                    args.add("-"+UnpackParsedCommand.O_ARG);
-                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
-                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
-                		if(suggestedDir != null){
-                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-                			if(JOptionPane.YES_OPTION == chosenOpt){
-                				destinationTextField.setText(suggestedDir);
-		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-		        				return;
-		        			}
-                		}                    	
-                    }
-                    args.add(destinationTextField.getText());
-
-                    if (overwriteCheckbox.isSelected()) {
-						args.add("-"+UnpackParsedCommand.OVERWRITE_ARG);
-					}
-
-					args.add (AbstractParsedCommand.COMMAND_UNPACK);
-
-	                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-	                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));     
 				}catch(Exception any_ex){   
 					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), any_ex);
 				} 
