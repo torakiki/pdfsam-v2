@@ -227,91 +227,96 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                     log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
                     return;
                 }                             
-                final LinkedList args = new LinkedList();                
-                args.add("-"+ConcatParsedCommand.O_ARG);
-                //validation and permission check are demanded 
-                try{                	
-                    //if no extension given
-                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
-                        destinationTextField.setText(destinationTextField.getText()+".pdf");
-                    }                    
-                    if(destinationTextField.getText().length()>0){
-                    	File destinationDir = new File(destinationTextField.getText());
-                    	File parent = destinationDir.getParentFile();
-                    	if(!(parent!=null && parent.exists())){
-                    		String suggestedDir = null;
-                    		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
-                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
-                    		}else{
-                    			PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                    			if(items!=null & items.length>0){
-                    				PdfSelectionTableItem item = items[items.length-1];
-                    				if(item!=null && item.getInputFile()!=null){
-                    					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
-                    				}
-                    			}
-                    		}
-                    		if(suggestedDir != null){
-                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-                    			if(JOptionPane.YES_OPTION == chosenOpt){
-                    				destinationTextField.setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
-
-                    		}
-                    	}
-                    }
-                    args.add(destinationTextField.getText());
-                    
-                    PdfSelectionTableItem item = null;
+                final LinkedList args = new LinkedList();  
+                try{             	
                 	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	String pageSelectionString = "";
-                	for (int i = 0; i < items.length; i++){
-						item = items[i];
-						String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
-						if(pageSelection.trim().length()>0 && pageSelection.indexOf(",") != 0){
-                            String[] selectionsArray = pageSelection.split(",");
-                            for(int j = 0; j<selectionsArray.length; j++){
-                                String tmpString = selectionsArray[j].trim();
-                                if((tmpString != null)&&(!tmpString.equals(""))){
-	                                args.add("-"+ConcatParsedCommand.F_ARG);
-	                                String f = item.getInputFile().getAbsolutePath();
-	        						if((item.getPassword()) != null && (item.getPassword()).length()>0){
-	        							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	        							f +=":"+item.getPassword();
-	        						}
-	        						args.add(f);
-	                                pageSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
-                                }                                
-                            }
-                        
-                        }else{
-                        	args.add("-"+ConcatParsedCommand.F_ARG);
-                            String f = item.getInputFile().getAbsolutePath();
-    						if((item.getPassword()) != null && (item.getPassword()).length()>0){
-    							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-    							f +=":"+item.getPassword();
-    						}
-    						args.add(f);
-                            pageSelectionString += (pageSelection.matches("[\\d]+"))? pageSelection+"-"+pageSelection+":" : pageSelection+":";
-                        }						
+                	if(items != null && items.length >= 1){					
+		                args.add("-"+ConcatParsedCommand.O_ARG);
+	                    //if no extension given
+	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
+	                        destinationTextField.setText(destinationTextField.getText()+".pdf");
+	                    }                    
+	                    if(destinationTextField.getText().length()>0){
+	                    	File destinationDir = new File(destinationTextField.getText());
+	                    	File parent = destinationDir.getParentFile();
+	                    	if(!(parent!=null && parent.exists())){
+	                    		String suggestedDir = null;
+	                    		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
+	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
+	                    		}else{
+	                    			if(items!=null & items.length>0){
+	                    				PdfSelectionTableItem item = items[items.length-1];
+	                    				if(item!=null && item.getInputFile()!=null){
+	                    					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
+	                    				}
+	                    			}
+	                    		}
+	                    		if(suggestedDir != null){
+	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+	                    			if(JOptionPane.YES_OPTION == chosenOpt){
+	                    				destinationTextField.setText(suggestedDir);
+				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+				        				return;
+				        			}
+	
+	                    		}
+	                    	}
+	                    }
+	                    args.add(destinationTextField.getText());
+	                    
+	                    PdfSelectionTableItem item = null;    
+	                	String pageSelectionString = "";
+	                	for (int i = 0; i < items.length; i++){
+							item = items[i];
+							String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
+							if(pageSelection.trim().length()>0 && pageSelection.indexOf(",") != 0){
+	                            String[] selectionsArray = pageSelection.split(",");
+	                            for(int j = 0; j<selectionsArray.length; j++){
+	                                String tmpString = selectionsArray[j].trim();
+	                                if((tmpString != null)&&(!tmpString.equals(""))){
+		                                args.add("-"+ConcatParsedCommand.F_ARG);
+		                                String f = item.getInputFile().getAbsolutePath();
+		        						if((item.getPassword()) != null && (item.getPassword()).length()>0){
+		        							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
+		        							f +=":"+item.getPassword();
+		        						}
+		        						args.add(f);
+		                                pageSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
+	                                }                                
+	                            }
+	                        
+	                        }else{
+	                        	args.add("-"+ConcatParsedCommand.F_ARG);
+	                            String f = item.getInputFile().getAbsolutePath();
+	    						if((item.getPassword()) != null && (item.getPassword()).length()>0){
+	    							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
+	    							f +=":"+item.getPassword();
+	    						}
+	    						args.add(f);
+	                            pageSelectionString += (pageSelection.matches("[\\d]+"))? pageSelection+"-"+pageSelection+":" : pageSelection+":";
+	                        }						
+						}
+						                    
+	                    args.add("-"+ConcatParsedCommand.U_ARG);
+	                    args.add(pageSelectionString);
+	                    
+	                    if (overwriteCheckbox.isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
+	                    if (outputCompressedCheck.isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
+	                    if (mergeTypeCheck.isSelected()) args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
+		
+	                    args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
+						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+	
+						args.add (AbstractParsedCommand.COMMAND_CONCAT);
+	                
+		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray)); 
+					}else{
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
 					}
-					                    
-                    args.add("-"+ConcatParsedCommand.U_ARG);
-                    args.add(pageSelectionString);
-                    
-                    if (overwriteCheckbox.isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
-                    if (outputCompressedCheck.isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
-                    if (mergeTypeCheck.isSelected()) args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
-
-                    args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
-					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-
-					args.add (AbstractParsedCommand.COMMAND_CONCAT);
-                
-	                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-	                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));               
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }    
@@ -632,7 +637,12 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
-			destinationTextField.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
+			String newVal = (String)evt.getNewValue();
+			if(newVal.endsWith(File.separator)){
+				destinationTextField.setText(newVal+DEFAULT_OUPUT_NAME);
+			}else{
+				destinationTextField.setText(newVal+File.separator+DEFAULT_OUPUT_NAME);
+			}
 		}		
 	}
 	
