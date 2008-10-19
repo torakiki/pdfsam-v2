@@ -35,7 +35,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
@@ -81,8 +80,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private SpringLayout outputPanelLayout;
     private SpringLayout destinationPanelLayout;
     private JTextField destinationFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
-    private JTextField thisPageTextField;
-    private JTextField nPagesTextField;
+    private JTextField thisPageTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.SIMPLE_TEXT_FIELD_TYPE);
+    private JTextField nPagesTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.SIMPLE_TEXT_FIELD_TYPE);
     private JHelpLabel checksHelpLabel;
     private SpringLayout optionsPaneLayout;
     private JHelpLabel prefixHelpLabel;
@@ -171,8 +170,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         everyNRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split every \"n\" pages"));
         splitOptionsPanel.add(everyNRadio);
         
-        nPagesTextField = new JTextField();
-        nPagesTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         nPagesTextField.setEnabled(false);
         splitOptionsPanel.add(nPagesTextField);        
         
@@ -188,8 +185,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         sizeRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size"));
         splitOptionsPanel.add(sizeRadio);
         
-        thisPageTextField = new JTextField();
-        thisPageTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         thisPageTextField.setEnabled(false);
         splitOptionsPanel.add(thisPageTextField);
         
@@ -351,75 +346,79 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 							f +=":"+item.getPassword();
 						}
 						args.add(f);
-					}else{
-						throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Select an input file"));
-					}
-                    args.add("-"+SplitParsedCommand.P_ARG);
-                    args.add(outPrefixText.getText());
-                    args.add("-"+SplitParsedCommand.S_ARG);
-                    args.add(splitType);
-                    //check if is needed page option
-                    if (splitType.equals(SplitParsedCommand.S_SPLIT)){
-                        args.add("-"+SplitParsedCommand.N_ARG);
-                        args.add(thisPageTextField.getText());                        
-                    }else if (splitType.equals(SplitParsedCommand.S_NSPLIT)){
-                            args.add("-"+SplitParsedCommand.N_ARG);
-                            args.add(nPagesTextField.getText());                        
-                    }else if (splitType.equals(SplitParsedCommand.S_SIZE)){
-                        args.add("-"+SplitParsedCommand.B_ARG);
-                        if(splitSizeCombo.isSelectedItem() && splitSizeCombo.isValidSelectedItem()){
-                        	args.add(Long.toString(splitSizeCombo.getSelectedBytes()));                        
-                        }else{
-                        	throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Invalid split size"));
-                        }
-                    }                      
-                                        
-                    args.add("-"+SplitParsedCommand.O_ARG);
-                    //check radio for output options
-                    if (sameAsSourceRadio.isSelected()){
-                    	if(item != null){
-                    		args.add(item.getInputFile().getParent());
-                    	}
-                    }else{
-                    	if(destinationFolderText.getText()==null || destinationFolderText.getText().length()==0){                    
-                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
-	                		if(suggestedDir != null){
-                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-                    			if(JOptionPane.YES_OPTION == chosenOpt){
-                    				destinationFolderText.setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
-
-	                		}                    	
+					
+	                    args.add("-"+SplitParsedCommand.P_ARG);
+	                    args.add(outPrefixText.getText());
+	                    args.add("-"+SplitParsedCommand.S_ARG);
+	                    args.add(splitType);
+	                    //check if is needed page option
+	                    if (splitType.equals(SplitParsedCommand.S_SPLIT)){
+	                        args.add("-"+SplitParsedCommand.N_ARG);
+	                        args.add(thisPageTextField.getText());                        
+	                    }else if (splitType.equals(SplitParsedCommand.S_NSPLIT)){
+	                            args.add("-"+SplitParsedCommand.N_ARG);
+	                            args.add(nPagesTextField.getText());                        
+	                    }else if (splitType.equals(SplitParsedCommand.S_SIZE)){
+	                        args.add("-"+SplitParsedCommand.B_ARG);
+	                        if(splitSizeCombo.isSelectedItem() && splitSizeCombo.isValidSelectedItem()){
+	                        	args.add(Long.toString(splitSizeCombo.getSelectedBytes()));                        
+	                        }else{
+	                        	throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Invalid split size"));
+	                        }
+	                    }                      
+	                                        
+	                    args.add("-"+SplitParsedCommand.O_ARG);
+	                    //check radio for output options
+	                    if (sameAsSourceRadio.isSelected()){
+	                    	if(item != null){
+	                    		args.add(item.getInputFile().getParent());
+	                    	}
+	                    }else{
+	                    	if(destinationFolderText.getText()==null || destinationFolderText.getText().length()==0){                    
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+		                		if(suggestedDir != null){
+	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+	                    			if(JOptionPane.YES_OPTION == chosenOpt){
+	                    				destinationFolderText.setText(suggestedDir);
+				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+				        				return;
+				        			}
+	
+		                		}                    	
+		                    }
+	                        args.add(destinationFolderText.getText());
 	                    }
-                        args.add(destinationFolderText.getText());
-                    }
-                    if (overwriteCheckbox.isSelected()) args.add("-"+SplitParsedCommand.OVERWRITE_ARG);
-                    if (outputCompressedCheck.isSelected()) args.add("-"+SplitParsedCommand.COMPRESSED_ARG); 
-                    args.add("-"+MixParsedCommand.PDFVERSION_ARG);
-                    if(JPdfVersionCombo.SAME_AS_SOURCE.equals(((StringItem)versionCombo.getSelectedItem()).getId())){
-                    	StringItem minItem = versionCombo.getMinItem();
-                    	String currentPdfVersion = Character.toString(item.getPdfVersion());
-                    	if(minItem != null){
-                    		if(Integer.parseInt(currentPdfVersion) < Integer.parseInt(minItem.getId())){
-                    			if(JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(getParent(),
-			            						    GettextResource.gettext(config.getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
-			            						    GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version conflict"),
-			            						    JOptionPane.YES_NO_OPTION,
-			            						    JOptionPane.WARNING_MESSAGE)){
-                    				return;
-                    			}
-                    		}
-                    	}
-                    	args.add(currentPdfVersion);                    	
-                    }else{
-                    	args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-                    }
-                    args.add(AbstractParsedCommand.COMMAND_SPLIT); 
-                    
-		        	final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		        	WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
+	                    if (overwriteCheckbox.isSelected()) args.add("-"+SplitParsedCommand.OVERWRITE_ARG);
+	                    if (outputCompressedCheck.isSelected()) args.add("-"+SplitParsedCommand.COMPRESSED_ARG); 
+	                    args.add("-"+MixParsedCommand.PDFVERSION_ARG);
+	                    if(JPdfVersionCombo.SAME_AS_SOURCE.equals(((StringItem)versionCombo.getSelectedItem()).getId())){
+	                    	StringItem minItem = versionCombo.getMinItem();
+	                    	String currentPdfVersion = Character.toString(item.getPdfVersion());
+	                    	if(minItem != null){
+	                    		if(Integer.parseInt(currentPdfVersion) < Integer.parseInt(minItem.getId())){
+	                    			if(JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(getParent(),
+				            						    GettextResource.gettext(config.getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
+				            						    GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version conflict"),
+				            						    JOptionPane.YES_NO_OPTION,
+				            						    JOptionPane.WARNING_MESSAGE)){
+	                    				return;
+	                    			}
+	                    		}
+	                    	}
+	                    	args.add(currentPdfVersion);                    	
+	                    }else{
+	                    	args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+	                    }
+	                    args.add(AbstractParsedCommand.COMMAND_SPLIT); 
+	                    
+			        	final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+			        	WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
+					}else{
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
+					}
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }      
