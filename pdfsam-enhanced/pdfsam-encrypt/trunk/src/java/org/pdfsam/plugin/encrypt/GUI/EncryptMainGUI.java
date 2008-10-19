@@ -124,7 +124,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.7e";
+    private final String PLUGIN_VERSION = "0.2.6e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -339,60 +339,67 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				final LinkedList args = new LinkedList();
                 //validation and permission check are demanded to the CmdParser object
                 try{
-					args.addAll(getEncPermissions(permissionsCheck, allowAllCheck));
-
 					PdfSelectionTableItem item = null;
                 	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	for (int i = 0; i < items.length; i++){
-						item = items[i];
-						args.add("-"+EncryptParsedCommand.F_ARG);
-                        String f = item.getInputFile().getAbsolutePath();
-                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
-    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-    						f +=":"+item.getPassword();
-    					}
-    					args.add(f);                        						
+                	if(items != null && items.length >= 1){	
+						args.addAll(getEncPermissions(permissionsCheck, allowAllCheck));
+	
+	                	for (int i = 0; i < items.length; i++){
+							item = items[i];
+							args.add("-"+EncryptParsedCommand.F_ARG);
+	                        String f = item.getInputFile().getAbsolutePath();
+	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
+	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
+	    						f +=":"+item.getPassword();
+	    					}
+	    					args.add(f);                        						
+						}
+	                	
+	                    args.add("-"+EncryptParsedCommand.P_ARG);
+	                    args.add(outPrefixTextField.getText());
+	                    args.add("-"+EncryptParsedCommand.APWD_ARG);
+	                    args.add(ownerPwdField.getText());
+	                    args.add("-"+EncryptParsedCommand.UPWD_ARG);
+	                    args.add(userPwdField.getText());
+	                    //check if is needed page option
+						args.add("-"+EncryptParsedCommand.ETYPE_ARG);
+						args.add(getEncAlg((String)encryptType.getSelectedItem()));
+	                    args.add("-"+EncryptParsedCommand.O_ARG);
+	                    
+	                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		if(suggestedDir != null){
+	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+	                			if(JOptionPane.YES_OPTION == chosenOpt){
+	                				destFolderText.setText(suggestedDir);
+			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+			        				return;
+			        			}
+	
+	                		}                    	
+	                    }
+	                    args.add(destFolderText.getText());
+	
+	                    if (overwriteCheckbox.isSelected()) {
+							args.add("-"+EncryptParsedCommand.OVERWRITE_ARG);
+						}
+	                    if (outputCompressedCheck.isSelected()) {
+							args.add("-"+EncryptParsedCommand.COMPRESSED_ARG);
+						} 
+	
+	                    args.add("-"+EncryptParsedCommand.PDFVERSION_ARG);
+						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+	
+						args.add (AbstractParsedCommand.COMMAND_ECRYPT);
+	
+		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));  
+                	}else{
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
 					}
-                	
-                    args.add("-"+EncryptParsedCommand.P_ARG);
-                    args.add(outPrefixTextField.getText());
-                    args.add("-"+EncryptParsedCommand.APWD_ARG);
-                    args.add(ownerPwdField.getText());
-                    args.add("-"+EncryptParsedCommand.UPWD_ARG);
-                    args.add(userPwdField.getText());
-                    //check if is needed page option
-					args.add("-"+EncryptParsedCommand.ETYPE_ARG);
-					args.add(getEncAlg((String)encryptType.getSelectedItem()));
-                    args.add("-"+EncryptParsedCommand.O_ARG);
-                    
-                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
-                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
-                		if(suggestedDir != null){
-                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-                			if(JOptionPane.YES_OPTION == chosenOpt){
-                				destFolderText.setText(suggestedDir);
-		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-		        				return;
-		        			}
-
-                		}                    	
-                    }
-                    args.add(destFolderText.getText());
-
-                    if (overwriteCheckbox.isSelected()) {
-						args.add("-"+EncryptParsedCommand.OVERWRITE_ARG);
-					}
-                    if (outputCompressedCheck.isSelected()) {
-						args.add("-"+EncryptParsedCommand.COMPRESSED_ARG);
-					} 
-
-                    args.add("-"+EncryptParsedCommand.PDFVERSION_ARG);
-					args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-
-					args.add (AbstractParsedCommand.COMMAND_ECRYPT);
-
-	                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-	                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));               
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
                 }     
