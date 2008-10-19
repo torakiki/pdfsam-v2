@@ -21,8 +21,6 @@
 package org.pdfsam.guiclient.utils.xml;
 
 import java.io.File;
-import java.util.List;
-import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
@@ -114,20 +112,6 @@ public class XMLConfig{
     		retVal = node.getText().trim();
     	}
     	return retVal;
-    }
- 
-     /**
-     * It gives back the language tag value
-     * 
-     * @return tag value
-     */
-    public List getXMLLanguagesList() throws Exception{        
-			Vector langs = new Vector(10,5);
-			List nodeList = document.selectNodes("/pdfsam/available_languages/language");
-			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
-				langs.add(((Node) nodeList.get(i)).selectSingleNode("@value").getText());
-			}
-            return langs;
     }
 	
     /**

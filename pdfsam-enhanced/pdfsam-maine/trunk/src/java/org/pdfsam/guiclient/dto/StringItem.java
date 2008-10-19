@@ -19,7 +19,7 @@ import java.io.Serializable;
  * Model of a String id and its description
  * @author  Andrea Vacondio
  */
-public class StringItem implements Serializable, Comparable {
+public class StringItem implements Serializable, Comparable<StringItem> {
 
 	private static final long serialVersionUID = -2689293296890998558L;
 
@@ -98,13 +98,8 @@ public class StringItem implements Serializable, Comparable {
 			return false;
 		return true;
 	}
-
-	public int compareTo(Object arg0) {
-		return (this.equals(arg0))? 0 : compareTo((StringItem)arg0);
-		
-	}
 	
-	private int compareTo(StringItem item){
+	public int compareTo(StringItem item){
 		int retVal = description.compareTo(item.description);
 		if (retVal == 0){
 			retVal = (this.hashCode()>item.hashCode())? 1: -1;

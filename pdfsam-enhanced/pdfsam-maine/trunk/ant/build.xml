@@ -113,7 +113,10 @@
 			</fileset>
 			<fileset dir=".">
 			    <include name="images/**.png"/>
-			</fileset>		    	
+			</fileset>
+	    	<fileset dir=".">
+			    <include name="resources/**/*.wav"/>
+			</fileset>	
 	    </jar>
 	  	
 	  	<copy todir="${pdfsam.release.jar.dir}">

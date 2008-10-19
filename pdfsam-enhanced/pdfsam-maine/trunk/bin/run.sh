@@ -33,8 +33,8 @@ if [ "x$JAVA" = "x" ]; then
     fi
 fi
 
-# Setup JBoss sepecific properties
-JAVA_OPTS="-Xmx128m"
+# Setup pdfsam memory properties
+JAVA_OPTS="-Xmx256m"
 
 # Display our environment
 echo "========================================================================="

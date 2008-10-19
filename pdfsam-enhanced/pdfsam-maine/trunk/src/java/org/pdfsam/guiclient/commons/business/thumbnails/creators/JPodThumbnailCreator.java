@@ -137,6 +137,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 					}
 					if(pdfDoc != null){
 						panel.setSelectedPdfDocument(inputFile);              	
+						panel.setSelectedPdfDocumentPassword(providedPwd);
 	                	//set file informations
 						PDPageTree pageTree = pdfDoc.getPageTree();
 						int pages = pageTree.getCount();

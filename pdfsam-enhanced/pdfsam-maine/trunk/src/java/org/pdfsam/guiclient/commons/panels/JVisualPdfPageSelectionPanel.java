@@ -87,6 +87,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
+	private String selectedPdfDocumentPassword = "";
 	private boolean showButtonPanel = true;
 	private int topPanelStyle = STYLE_TOP_PANEL_FULL;
 	private boolean acceptDropFromDifferentComponents = true;
@@ -488,6 +489,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		zoomOutButton.setEnabled(true);
 		((VisualListModel)thumbnailList.getModel()).clearData();
 		selectedPdfDocument = null;
+		selectedPdfDocumentPassword = "";
 		setDocumentPropertiesVisible(false);
 		
 	}
@@ -777,6 +779,18 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     public void disableSetOutputPathMenuItem(){
     	popupMenu.remove(menuItemSetOutputPath);
     }
-
+	/**
+	 * @return the selectedPdfDocumentPassword
+	 */
+	public String getSelectedPdfDocumentPassword() {
+		return selectedPdfDocumentPassword;
+	}
+	/**
+	 * @param selectedPdfDocumentPassword the selectedPdfDocumentPassword to set
+	 */
+	public void setSelectedPdfDocumentPassword(String selectedPdfDocumentPassword) {
+		this.selectedPdfDocumentPassword = selectedPdfDocumentPassword;
+	}
+ 
     	
 }
