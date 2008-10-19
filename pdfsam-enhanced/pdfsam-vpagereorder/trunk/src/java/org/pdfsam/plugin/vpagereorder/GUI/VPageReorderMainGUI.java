@@ -224,74 +224,76 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 				File inputFile = selectionPanel.getSelectedPdfDocument();
 				String selectionString = selectionPanel.getValidElementsString();
 				if (inputFile == null || selectionString.length() == 0) {
-					log.warn(GettextResource.gettext(config.getI18nResourceBundle(),
-							"Please select a pdf document or undelete some page"));
-					return;
-				}
-				final LinkedList args = new LinkedList();
-				try {
-
-					args.add("-" + ConcatParsedCommand.F_ARG);
-					String f = inputFile.getAbsolutePath();
-					if ((selectionPanel.getSelectedPdfDocumentPassword()) != null
-							&& selectionPanel.getSelectedPdfDocumentPassword().length() > 0) {
-						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),
-								"Found a password for input file."));
-						f += ":" + selectionPanel.getSelectedPdfDocumentPassword();
-					}
-					args.add(f);
-
-					args.add("-" + ConcatParsedCommand.U_ARG);
-					args.add(selectionString);
-
-					args.add("-" + ConcatParsedCommand.O_ARG);
-					// check radio for output options
-					if (sameAsSourceRadio.isSelected()) {
-						if (inputFile != null) {
-							args.add(inputFile.getAbsolutePath());
+					  JOptionPane.showMessageDialog(getParent(),
+          				  	GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document or undelete some page"),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
+				}else{
+					final LinkedList args = new LinkedList();
+					try {
+	
+						args.add("-" + ConcatParsedCommand.F_ARG);
+						String f = inputFile.getAbsolutePath();
+						if ((selectionPanel.getSelectedPdfDocumentPassword()) != null
+								&& selectionPanel.getSelectedPdfDocumentPassword().length() > 0) {
+							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),
+									"Found a password for input file."));
+							f += ":" + selectionPanel.getSelectedPdfDocumentPassword();
 						}
-					} else {
-						if (destinationFileText.getText().length() > 0) {
-							File destinationDir = new File(destinationFileText.getText());
-							File parent = destinationDir.getParentFile();
-							if (!(parent != null && parent.exists())) {
-								String suggestedDir = null;
-								if (Configuration.getInstance().getDefaultWorkingDir() != null
-										&& Configuration.getInstance().getDefaultWorkingDir().length() > 0) {
-									suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(),
-											destinationDir.getName()).getAbsolutePath();
-								} else {
-									suggestedDir = new File(inputFile.getParent(), destinationDir.getName())
-											.getAbsolutePath();
-								}
-								if (suggestedDir != null) {
-	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                    			if(JOptionPane.YES_OPTION == chosenOpt){
-	                    				destinationFileText.setText(suggestedDir);
-				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-				        				return;
-				        			}
-
+						args.add(f);
+	
+						args.add("-" + ConcatParsedCommand.U_ARG);
+						args.add(selectionString);
+	
+						args.add("-" + ConcatParsedCommand.O_ARG);
+						// check radio for output options
+						if (sameAsSourceRadio.isSelected()) {
+							if (inputFile != null) {
+								args.add(inputFile.getAbsolutePath());
+							}
+						} else {
+							if (destinationFileText.getText().length() > 0) {
+								File destinationDir = new File(destinationFileText.getText());
+								File parent = destinationDir.getParentFile();
+								if (!(parent != null && parent.exists())) {
+									String suggestedDir = null;
+									if (Configuration.getInstance().getDefaultWorkingDir() != null
+											&& Configuration.getInstance().getDefaultWorkingDir().length() > 0) {
+										suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(),
+												destinationDir.getName()).getAbsolutePath();
+									} else {
+										suggestedDir = new File(inputFile.getParent(), destinationDir.getName())
+												.getAbsolutePath();
+									}
+									if (suggestedDir != null) {
+		                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+		                    			if(JOptionPane.YES_OPTION == chosenOpt){
+		                    				destinationFileText.setText(suggestedDir);
+					        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+					        				return;
+					        			}
+	
+									}
 								}
 							}
+							args.add(destinationFileText.getText());
 						}
-						args.add(destinationFileText.getText());
+	
+						if (overwriteCheckbox.isSelected())
+							args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
+						if (outputCompressedCheck.isSelected())
+							args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
+	
+						args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
+						args.add(((StringItem) versionCombo.getSelectedItem()).getId());
+	
+						args.add(AbstractParsedCommand.COMMAND_CONCAT);
+	
+						final String[] myStringArray = (String[]) args.toArray(new String[args.size()]);
+						WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
+					} catch (Exception ex) {
+						log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
 					}
-
-					if (overwriteCheckbox.isSelected())
-						args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
-					if (outputCompressedCheck.isSelected())
-						args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
-
-					args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
-					args.add(((StringItem) versionCombo.getSelectedItem()).getId());
-
-					args.add(AbstractParsedCommand.COMMAND_CONCAT);
-
-					final String[] myStringArray = (String[]) args.toArray(new String[args.size()]);
-					WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
-				} catch (Exception ex) {
-					log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
 				}
 			}
 		});
