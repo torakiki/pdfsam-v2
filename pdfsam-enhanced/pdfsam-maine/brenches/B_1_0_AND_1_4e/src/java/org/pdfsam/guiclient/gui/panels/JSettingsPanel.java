@@ -29,6 +29,7 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -76,6 +77,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private JComboBox comboLaf;
     private JComboBox comboTheme;
     private JComboBox comboCheckNewVersion;
+    private JCheckBox playSounds;
     private JHelpLabel envHelpLabel;
 	private JFileChooser fileChooser ;
 
@@ -250,7 +252,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
    			}	 		
 	    }catch (Exception e){
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-	    }        	    
+	    }  
+	    
+	    playSounds = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Play alert sounds"));
+	    playSounds.setSelected(config.isPlaySounds());
+	    settingsOptionsPanel.add(playSounds);
 //END_JCOMBO
 //ENV_LABEL_PREFIX       
         String helpTextEnv = 
@@ -259,6 +265,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set your preferred look and feel and your preferred theme (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Log level")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set a log detail level (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set when new version availability should be checked (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Play alert sounds")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Turn on or off alert sounds")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default env.")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a previously saved env. file that will be automatically loaded at startup")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a directory where documents will be saved and loaded by default")+".</li>" +
     		"</ul></body></html>";
@@ -317,6 +324,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/checkupdates", ((StringItem)comboCheckNewVersion.getSelectedItem()).getId());
+					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/playsounds", (playSounds.isSelected()? "1": "0"));
 					if (loadDefaultEnv != null){
 						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob", loadDefaultEnv.getText());
 					}else{
@@ -324,6 +332,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					}
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/default_working_dir", defaultDirectory.getText());
 					config.getXmlConfigObject().saveXMLfile();
+					config.setPlaySounds(playSounds.isSelected());
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
 				}
                 catch (Exception ex){
@@ -409,7 +418,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 260, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 280, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);
@@ -462,10 +471,15 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNowButton, 0, SpringLayout.NORTH, checkNewVersionLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNowButton, 0, SpringLayout.WEST, comboTheme);
         
+        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, playSounds, 20, SpringLayout.NORTH, playSounds);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, playSounds, -5, SpringLayout.EAST, settingsOptionsPanel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, playSounds, 5, SpringLayout.SOUTH, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, playSounds, 0, SpringLayout.WEST, checkNewVersionLabel);
+
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, loadDefaultEnvLabel, 20, SpringLayout.NORTH, loadDefaultEnvLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, loadDefaultEnvLabel, -5, SpringLayout.EAST, settingsOptionsPanel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, loadDefaultEnvLabel, 5, SpringLayout.SOUTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, loadDefaultEnvLabel, 0, SpringLayout.WEST, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, loadDefaultEnvLabel, 5, SpringLayout.SOUTH, playSounds);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, loadDefaultEnvLabel, 0, SpringLayout.WEST, playSounds);
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, loadDefaultEnv, 20, SpringLayout.NORTH, loadDefaultEnv);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, loadDefaultEnv, -100, SpringLayout.EAST, settingsOptionsPanel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, loadDefaultEnv, 5, SpringLayout.SOUTH, loadDefaultEnvLabel);
@@ -533,6 +547,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return checkNowButton;
             }
             else if (aComponent.equals(checkNowButton)){
+                return playSounds;
+            }
+            else if (aComponent.equals(playSounds)){
                 return loadDefaultEnv;
             }
             else if (aComponent.equals(loadDefaultEnv)){
@@ -559,6 +576,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return loadDefaultEnv;
             }
             else if (aComponent.equals(loadDefaultEnv)){
+                return playSounds;
+            }
+            else if (aComponent.equals(playSounds)){
                 return checkNowButton;
             }
             else if (aComponent.equals(checkNowButton)){

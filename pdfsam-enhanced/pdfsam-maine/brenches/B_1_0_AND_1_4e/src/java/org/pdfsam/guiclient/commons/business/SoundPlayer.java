@@ -50,16 +50,18 @@ public class SoundPlayer {
 	 * Plays an error sound
 	 */
 	public void playErrorSound(){
-		try{
-			if(errorClip == null){
-				AudioInputStream  sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(ERROR_SOUND));
-				DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-				errorClip = (Clip) AudioSystem.getLine(info);
-				errorClip.open(sound);
+		if(Configuration.getInstance().isPlaySounds()){
+			try{
+				if(errorClip == null){
+					AudioInputStream  sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(ERROR_SOUND));
+					DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+					errorClip = (Clip) AudioSystem.getLine(info);
+					errorClip.open(sound);
+				}
+				execute(new PlayThread(errorClip));
+			}catch (Exception e){
+				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound:")+" "+e.getMessage());
 			}
-			execute(new PlayThread(errorClip));
-		}catch (Exception e){
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound"),e);
 		}
 	}
 	
@@ -67,16 +69,18 @@ public class SoundPlayer {
 	 * Plays a sound
 	 */
 	public void playSound(){
-		try{
-			if(soundClip == null){
-				AudioInputStream  sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(SOUND));
-				DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-				soundClip = (Clip) AudioSystem.getLine(info);
-				soundClip.open(sound);
+		if(Configuration.getInstance().isPlaySounds()){
+			try{
+				if(soundClip == null){
+					AudioInputStream  sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(SOUND));
+					DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+					soundClip = (Clip) AudioSystem.getLine(info);
+					soundClip.open(sound);
+				}
+				execute(new PlayThread(soundClip));
+			}catch (Exception e){
+				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound:")+" "+e.getMessage());
 			}
-			execute(new PlayThread(soundClip));
-		}catch (Exception e){
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound"),e);
 		}
 	}
 	
@@ -108,6 +112,8 @@ public class SoundPlayer {
 
 		public void run() {
             try{
+            	clip.setFramePosition(0);
+				clip.stop();
             	clip.start();
             }catch(Exception e){
             	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound"),e);

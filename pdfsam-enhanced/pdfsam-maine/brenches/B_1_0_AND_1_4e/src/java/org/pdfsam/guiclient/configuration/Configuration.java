@@ -43,9 +43,10 @@ public class Configuration{
 	private static Configuration configObject;
 	private ResourceBundle i18nMessages;
 	private XMLConfig xmlConfigObject;
-	private ConsoleServicesFacade servicesFacade;
+	private ConsoleServicesFacade consoleServicesFacade;
 	private Level loggingLevel = Level.DEBUG;
 	private boolean checkForUpdates = true;
+	private boolean playSounds = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
 
@@ -114,7 +115,7 @@ public class Configuration{
 	 * @return the ConsoleServicesFacade
 	 */
 	public ConsoleServicesFacade getConsoleServicesFacade() {
-		return servicesFacade;
+		return consoleServicesFacade;
 	}			
 	
 	/**
@@ -161,7 +162,7 @@ public class Configuration{
 				log.info("Looking for configuration file into "+mainJarPath);
 				xmlConfigObject = new XMLConfig(mainJarPath, true);
 			}
-			servicesFacade = new ConsoleServicesFacade();
+			consoleServicesFacade = new ConsoleServicesFacade();
 			//language
 			setLanguage();
 			//look and feel
@@ -172,6 +173,8 @@ public class Configuration{
 			setCheckForUpdates();
 			//default working dir
 			setDefaultWorkingDir();
+			//play sounds init
+			setPlaySounds();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -262,4 +265,36 @@ public class Configuration{
 			checkForUpdates = true;
 		}
 	}
+	
+	/**
+	 * sets the configuration about the sounds
+	 */
+	private void setPlaySounds(){
+		try {
+			String playSoundsString = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/playsounds");
+			if(playSoundsString != null && playSoundsString.length()>0){
+				playSounds = Integer.parseInt(playSoundsString)== 1;
+			}
+			
+		} catch (Exception e) {
+			//default
+			playSounds = true;
+		}
+	}
+
+	/**
+	 * @return the playSounds
+	 */
+	public boolean isPlaySounds() {
+		return playSounds;
+	}
+
+	/**
+	 * @param playSounds the playSounds to set
+	 */
+	public void setPlaySounds(boolean playSounds) {
+		this.playSounds = playSounds;
+	}
+	
+	
 }

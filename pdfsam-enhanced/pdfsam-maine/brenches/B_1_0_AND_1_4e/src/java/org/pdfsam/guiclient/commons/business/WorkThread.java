@@ -45,8 +45,8 @@ public class WorkThread implements Runnable{
 				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
 			}
 			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
-		}catch(Exception ex){    
-			log.error("Command Line: "+commandToString(), ex);
+		}catch(Throwable t){    
+			log.error("Command Line: "+commandToString(), t);
 			SoundPlayer.getInstance().playErrorSound();
 		}                                         
 	}

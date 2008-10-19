@@ -1,9 +1,11 @@
-1.0.3 stable release (19-Oct-2008)
+1.0.3 stable release (26-Oct-2008)
 ===================================
 -Fixed bug #2122945
 -Added Copy/Cut/Paste popup menu to prefix text fields
 -Added sounds to confirm execution or errors
+-Added setting to enable/disable sounds
 -Modified the dialog to ask confirmation to change output directory
+-Merge: Fixed the "set output path" if path ends with File.separator
 -Updated langpack
 
 1.0.2 stable release (21-Sep-2008)
