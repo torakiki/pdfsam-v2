@@ -251,9 +251,19 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 					PdfSelectionTableItem[] coveritems = coverSelectionPanel.getTableRows();
 					PdfSelectionTableItem[] footeritems = footerSelectionPanel.getTableRows();
 					String coverSelectionString = "";
+					PdfSelectionTableItem[] items = selectionPanel.getTableRows();
 					//manage cover 
-					if((coveritems==null || coveritems.length != 1) && (footeritems==null || footeritems.length != 1)){
-						throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Select at least one cover or one footer"));
+					if(items == null || items.length == 0){		
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
+					}
+					else if((coveritems==null || coveritems.length != 1) && (footeritems==null || footeritems.length != 1)){
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Select at least one cover or one footer"),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
 					}else{
 						if((coveritems!=null && coveritems.length == 1)) {
 							PdfSelectionTableItem coveritem = coveritems[0];
@@ -318,8 +328,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	                        }		
 						}					
 						 //selection page 
-	                    PdfSelectionTableItem item = null;
-	                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
+	                    PdfSelectionTableItem item = null;	                	
 	                	for (int i = 0; i < items.length; i++){
 		                	String pageSelectionString = coverSelectionString;
 	                		try{
