@@ -71,6 +71,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private static final long serialVersionUID = -4353488705164373490L;
 
 	private static final Logger log = Logger.getLogger(MixMainGUI.class.getPackage().getName());
+	private static final String DEFAULT_OUPUT_NAME = "mixed_document.pdf";
 	
 	private SpringLayout destinationPanelLayout;
 	private JPanel destinationPanel = new JPanel();
@@ -270,7 +271,10 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 						final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
 						WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
 					}else{
-						log.warn(GettextResource.gettext(config.getI18nResourceBundle(),"Please select two pdf documents."));
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select two pdf documents."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
 					}
 				}catch(Exception any_ex){   
 					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), any_ex);
@@ -597,7 +601,12 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
-			destinationTextField.setText(((String)evt.getNewValue())+File.separatorChar+"mixed_document.pdf");
+			String newVal = (String)evt.getNewValue();
+			if(newVal.endsWith(File.separator)){
+				destinationTextField.setText(newVal+DEFAULT_OUPUT_NAME);
+			}else{
+				destinationTextField.setText(newVal+File.separator+DEFAULT_OUPUT_NAME);
+			}
 		}
 		
 	}
