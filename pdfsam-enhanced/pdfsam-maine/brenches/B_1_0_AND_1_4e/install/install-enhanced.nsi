@@ -76,6 +76,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
 # Installer languages
   !insertmacro MUI_LANGUAGE "English" # first language is the default language
   !insertmacro MUI_LANGUAGE "Bosnian"
+  !insertmacro MUI_LANGUAGE "Bulgarian"
   !insertmacro MUI_LANGUAGE "Croatian"
   !insertmacro MUI_LANGUAGE "Catalan"
   !insertmacro MUI_LANGUAGE "Czech"
@@ -143,6 +144,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}
         ${Case} ${LANG_ITALIAN}
             Push 'it' 
+        ${Break}
+        ${Case} ${LANG_BULGARIAN}
+            Push 'bg' 
         ${Break}
         ${Case} ${LANG_BOSNIAN}
             Push 'bs' 
@@ -478,6 +482,8 @@ Function .onInit
     Push Italian
     Push ${LANG_RUSSIAN}
     Push Russian
+    Push ${LANG_BULGARIAN}
+    Push Bulgarian
     Push ${LANG_SWEDISH}
     Push Swedish
     Push ${LANG_SPANISH}

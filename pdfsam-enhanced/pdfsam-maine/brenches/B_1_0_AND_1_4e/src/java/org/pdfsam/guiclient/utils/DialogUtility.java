@@ -32,7 +32,7 @@ public class DialogUtility {
 	 * Shows a yes/no/cancel dialog to ask for change the ouput directory
 	 * @param comp parent component
 	 * @param suggestedDir suggested directory
-	 * @return
+	 * @return the dialog return value
 	 */
 	public static int showConfirmOuputLocationDialog(Component comp, String suggestedDir){
 
