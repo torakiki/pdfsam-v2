@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-mix" default="build-jars" basedir="../">
+    <description>
+        Mix plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-mix.src.dir" location="src/java"/>
+  	<property name="pdfsam-mix.etc.dir" location="etc"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="pdfsam-mix.build.root" location="${build.dir}/pdfsam-mix"/>
+	  	<property name="pdfsam-mix.build.dir" location="${pdfsam-mix.build.root}/build"/>
+	  	<property name="pdfsam-mix.dist.dir"  location="${pdfsam-mix.build.root}/dist"/>
+	  	<property name="pdfsam-mix.javadoc.dir"  location="${pdfsam-mix.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-mix.build.dir}"/>
+		<mkdir dir="${pdfsam-mix.dist.dir}"/>
+	    <mkdir dir="${pdfsam-mix.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-mix.javadoc.dir}"/>
+	    <delete dir="${pdfsam-mix.dist.dir}"/>
+	    <delete dir="${pdfsam-mix.build.dir}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-mix " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-mix.classpath">
+    	<fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-mix.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-mix.src.dir}" destdir="${pdfsam-mix.build.dir}" debug="true">
+    	<classpath refid="pdfsam-mix.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-mix.dist.dir}/${pdfsam-mix.jar.name}.jar" basedir="${pdfsam-mix.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+    	<fileset dir=".">
+		    <include name="images/*.png"/>
+		</fileset>    	  	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.mix.*"
+      sourcepath="${pdfsam-mix.src.dir}"
+      destdir="${pdfsam-mix.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Mix Plugin API"
+      doctitle="pdfsam Mix Plugin API" >
+    <classpath refid="pdfsam-mix.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-mix.dist.dir}/${pdfsam-mix.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-mix/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-mix/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-mix/ant/**/*.*"/>
+    		<include name="pdfsam-mix/images**/*.png"/>
+    	</fileset>  
+    </zip>
+  </target>
+
+</project>
+
