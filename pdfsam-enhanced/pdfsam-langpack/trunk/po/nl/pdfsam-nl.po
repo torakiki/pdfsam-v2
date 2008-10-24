@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-09-20 15:16+0000\n"
 "Last-Translator: pjv <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -151,6 +151,13 @@ msgstr "Een moment geduld om alle bestanden te verwerken.."
 
 msgid "Found a password for input file."
 msgstr "Wachtwoord gevonden voor het input-bestand"
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Gelieve 2 pdf bestanden te selecteren."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Samenvoegen van pdf's uitvoeren"
@@ -356,9 +363,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Beschikbare variabelen: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Selecteer een invoerbestand"
-
 msgid "Invalid split size"
 msgstr "Ongeldige splitsingsgroote"
 
@@ -372,6 +376,10 @@ msgstr ""
 
 msgid "Pdf version conflict"
 msgstr "\"Pdf-versie\"-conflict"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Gelieve 2 pdf bestanden te selecteren."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -999,6 +1007,9 @@ msgstr "Standaard werkpad:"
 msgid "Error getting default environment."
 msgstr "Fout bij het ophalen van de standaard instellingen."
 
+msgid "Play alert sounds"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:181
 msgid "Settings "
@@ -1042,6 +1053,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Instellen wanneer de beschikbaarheid van een nieuwe versie dient "
 "gecontroleerd te worden. (Herstarten van de applicatie is noodzakelijk.)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid "Default env."
@@ -1137,6 +1151,9 @@ msgstr "Knippen"
 
 msgid "Paste"
 msgstr "Plakken"
+
+#~ msgid "Select an input file"
+#~ msgstr "Selecteer een invoerbestand"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869

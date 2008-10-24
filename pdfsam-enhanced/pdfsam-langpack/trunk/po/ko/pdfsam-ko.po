@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-06-24 09:30+0000\n"
 "Last-Translator: sanghyun lee <joohi@hanafos.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -78,6 +78,12 @@ msgstr "모든 파일이 처리될 동안 잠시 기다리세요."
 #, fuzzy
 msgid "Found a password for input file."
 msgstr "입력 파일 암호 발견."
+
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "PDF 병합 실행"
@@ -202,9 +208,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "사용가능한 변수: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "입력 파일 선택"
-
 msgid "Invalid split size"
 msgstr "유효하지 않은 분할 크기"
 
@@ -216,6 +219,9 @@ msgstr "더 낮은 PDF 버전으로 출력을 선택했습니다. 계속 할까�
 
 msgid "Pdf version conflict"
 msgstr "PDF 버전 충돌"
+
+msgid "Please select a pdf document."
+msgstr ""
 
 msgid "Split selected file"
 msgstr "선택된 파일 분할"
@@ -685,6 +691,9 @@ msgstr ""
 msgid "Error getting default environment."
 msgstr ""
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -711,6 +720,9 @@ msgid "Check for updates"
 msgstr ""
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Turn on or off alert sounds"
 msgstr ""
 
 msgid "Default env."
@@ -801,3 +813,6 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
+
+#~ msgid "Select an input file"
+#~ msgstr "입력 파일 선택"

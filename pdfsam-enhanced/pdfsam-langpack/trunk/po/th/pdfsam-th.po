@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-05-29 10:01+0000\n"
 "Last-Translator: Uthen Phutneam <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -81,6 +81,13 @@ msgstr "กรุณารอขณะกำลังประมวณผล"
 
 msgid "Found a password for input file."
 msgstr "พบการตั้งค่ารหัสผ่านของไฟล์นำเข้า"
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "กรุณาเลือก pdf สองเอกสาร"
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "ดำเนินงานรวม pdf"
@@ -203,9 +210,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr ""
 
-msgid "Select an input file"
-msgstr "เลือกไฟล์นำเข้า"
-
 msgid "Invalid split size"
 msgstr "ขนาดไฟล์ที่แยกผิดพลาด"
 
@@ -217,6 +221,10 @@ msgstr "คุณได้เลือก pdf รุ่นต่ำกว่า,
 
 msgid "Pdf version conflict"
 msgstr "รุ่นของ pdf ขัดแย้งกัน"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "กรุณาเลือก pdf สองเอกสาร"
 
 msgid "Split selected file"
 msgstr "เลือกไฟล์ที่แยกแล้ว"
@@ -691,6 +699,9 @@ msgstr "ห้องทำงานปริยาย"
 msgid "Error getting default environment."
 msgstr "เกิดข้อผิดพลาดในการใช้งานสภาพแวดล้อมการทำงานแบบปริยาย"
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "ตั้งค่า "
 
@@ -719,6 +730,9 @@ msgstr "ตรวจสอบรายการอัพเดท"
 #, fuzzy
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "ตั้งค่าให้ตรวจสอบโปรแกรมรุ่นใหม่ (ต้องเรียกใช้งานโปรแกรมใหม่)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "ค่าปริยายของสภาพแวดล้อมการทำงาน"
@@ -810,6 +824,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "พาธ"
+
+#~ msgid "Select an input file"
+#~ msgstr "เลือกไฟล์นำเข้า"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้วไม่ถูกต้อง"

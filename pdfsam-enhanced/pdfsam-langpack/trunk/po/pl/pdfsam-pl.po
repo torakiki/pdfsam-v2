@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-09-09 21:21+0000\n"
 "Last-Translator: Kamil Skrzypiński <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -78,6 +78,12 @@ msgstr "Czekaj, przetwarzanie wszystkich plików w toku"
 
 msgid "Found a password for input file."
 msgstr "Odnaleziono hasło dla pliku wejściowego"
+
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Łącz pliki PDF"
@@ -205,9 +211,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Dostęne zmienne: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr ""
-
 msgid "Invalid split size"
 msgstr ""
 
@@ -219,6 +222,10 @@ msgstr ""
 
 msgid "Pdf version conflict"
 msgstr ""
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Pierwszy dokument pdf:"
 
 msgid "Split selected file"
 msgstr "Podziel wybrany plik"
@@ -692,6 +699,9 @@ msgstr ""
 msgid "Error getting default environment."
 msgstr ""
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Ustawienia "
 
@@ -719,6 +729,9 @@ msgid "Check for updates"
 msgstr ""
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Turn on or off alert sounds"
 msgstr ""
 
 msgid "Default env."
@@ -837,9 +850,6 @@ msgstr ""
 
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "Przeglądaj system w poszukiwaniu drugiego pliku do miksa"
-
-#~ msgid "First pdf document:"
-#~ msgstr "Pierwszy dokument pdf:"
 
 #~ msgid "Select a PDF file to split"
 #~ msgstr "Wybierz plik PDF do podziału"

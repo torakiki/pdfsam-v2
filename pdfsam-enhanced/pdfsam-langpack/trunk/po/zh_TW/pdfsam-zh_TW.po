@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
-"PO-Revision-Date: 2008-09-07 18:12+0000\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"PO-Revision-Date: 2008-10-22 19:14+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-20 08:24+0000\n"
+"X-Launchpad-Export-Date: 2008-10-24 12:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options:"
@@ -77,6 +77,12 @@ msgstr "檔案處理中請稍待..."
 
 msgid "Found a password for input file."
 msgstr "輸入檔需要密碼"
+
+msgid "Please select at least one pdf document."
+msgstr "請至少選取一個 PDF 文件。"
+
+msgid "Warning"
+msgstr "警告"
 
 msgid "Execute pdf merge"
 msgstr "執行PDF合併"
@@ -186,21 +192,17 @@ msgid ""
 "substitution."
 msgstr "若包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，會顯示不同的替代文字。"
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
-"例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
 "oldstyle output file names."
-msgstr ""
-"若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
+msgstr "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
 
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "可用的變數：[CURRENTPAGE], [TIMESTAMP], [BASENAME]。"
-
-msgid "Select an input file"
-msgstr "請選擇一個輸入檔"
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
@@ -213,6 +215,9 @@ msgstr "您已選擇了一個較舊的輸出 PDF 版本，確定要繼續嗎？"
 
 msgid "Pdf version conflict"
 msgstr "PDF版本衝突"
+
+msgid "Please select a pdf document."
+msgstr "請選取一個 PDF 文件。"
 
 msgid "Split selected file"
 msgstr "分割選取的檔案"
@@ -298,8 +303,7 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴"
-"_20070517_113423471.pdf\"。"
+"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴_20070517_113423471.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -684,6 +688,9 @@ msgstr "預設的工作目錄："
 msgid "Error getting default environment."
 msgstr "無法取得預設環境變數。"
 
+msgid "Play alert sounds"
+msgstr "播放警示音效"
+
 msgid "Settings "
 msgstr "設定 "
 
@@ -712,6 +719,9 @@ msgstr "檢查更新"
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "設定何時該檢查更新（需要重新啟動）"
 
+msgid "Turn on or off alert sounds"
+msgstr "開啟或關閉警示音效"
+
 msgid "Default env."
 msgstr "預設環境變數。"
 
@@ -723,7 +733,8 @@ msgstr "請選取一個之前儲存的環境變數檔，啟動時會自動載入
 msgid "Default working directory"
 msgstr "預設的工作目錄"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr "請選擇一個用以儲存或載入文件的預設目錄"
 
 msgid "Check now"
@@ -796,13 +807,10 @@ msgid "No new version available."
 msgstr "已為最新版本。"
 
 msgid "Cut"
-msgstr ""
+msgstr "剪下"
 
 msgid "Paste"
-msgstr ""
-
-#~ msgid "Output location is not correct"
-#~ msgstr "輸出檔位置並不正確"
+msgstr "貼上"
 
 #~ msgid "Please wait while reading "
 #~ msgstr "讀取中請稍待... "

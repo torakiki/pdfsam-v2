@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -81,6 +81,13 @@ msgstr "Espereu mentre es processen tots els fitxers."
 
 msgid "Found a password for input file."
 msgstr "S'ha trobat una contrasenya pel fitxer d'entrada."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Si us  plau, seleccioneu dos documents pdf"
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Executa la combinació de pdf"
@@ -211,9 +218,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Variables disponibles: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Seleccioneu un fitxer d'entrada"
-
 msgid "Invalid split size"
 msgstr "Mida de divisió incorrecta"
 
@@ -225,6 +229,10 @@ msgstr "Heu triat una versió de sortida inferior de pdf, continuar?"
 
 msgid "Pdf version conflict"
 msgstr "Conflicte de versions de pdf"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Si us  plau, seleccioneu dos documents pdf"
 
 msgid "Split selected file"
 msgstr "Divideix el fitxer seleccionat"
@@ -704,6 +712,9 @@ msgstr "Directori de treball predeterminat:"
 msgid "Error getting default environment."
 msgstr "Error en obtenir l'entorn predeterminat."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Paràmetres "
 
@@ -733,6 +744,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Definiu quan voleu comprovar la disponibilitat de noves versions (cal "
 "reiniciar)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Entorn predeterminat."
@@ -826,6 +840,9 @@ msgstr "Retalla"
 
 msgid "Paste"
 msgstr "Enganxa"
+
+#~ msgid "Select an input file"
+#~ msgstr "Seleccioneu un fitxer d'entrada"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "La ubicació de sortida no és correcte"

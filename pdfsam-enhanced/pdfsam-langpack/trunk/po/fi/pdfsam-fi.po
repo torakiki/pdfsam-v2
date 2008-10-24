@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-03-25 18:57+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -148,6 +148,13 @@ msgstr "Ole hyvä ja odota kunnes kaikki tiedostot on käsitelty."
 
 msgid "Found a password for input file."
 msgstr "Syöttötiedosto on suojattu salasanalla."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Valitse kaksi pdf-dokumenttia."
+
+msgid "Warning"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
@@ -355,9 +362,6 @@ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr ""
 "Käytettävissä olevat muuttujat: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Valitse syöttötiedosto."
-
 msgid "Invalid split size"
 msgstr "Kelvoton jakamiskoko."
 
@@ -369,6 +373,10 @@ msgstr "Valitsit vanhemman PDF-version kohdetiedostolle, jatketaanko?"
 
 msgid "Pdf version conflict"
 msgstr "PDF-versioiden ristiriita"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Valitse kaksi pdf-dokumenttia."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -1008,6 +1016,9 @@ msgstr ""
 msgid "Error getting default environment."
 msgstr "Oletuskäyttöympäristön lataaminen epäonnistui."
 
+msgid "Play alert sounds"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:181
 msgid "Settings "
@@ -1049,6 +1060,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Määritä, koska uudet päivitykset tarkistetaan (ohjelma pitää käynnistää "
 "uudelleen)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid "Default env."
@@ -1149,6 +1163,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Polku"
+
+#~ msgid "Select an input file"
+#~ msgstr "Valitse syöttötiedosto."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869

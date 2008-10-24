@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-10-05 04:41+0000\n"
 "Last-Translator: 2p0rk <Unknown>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
@@ -76,6 +76,13 @@ msgstr "Please wait while all files are processed.."
 
 msgid "Found a password for input file."
 msgstr "Found a password for input file."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Please select two pdf documents."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Execute pdf merge"
@@ -203,9 +210,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Select an input file"
-
 msgid "Invalid split size"
 msgstr "Invalid split size"
 
@@ -217,6 +221,10 @@ msgstr "You selected a lower output pdf version, continue anyway ?"
 
 msgid "Pdf version conflict"
 msgstr "Pdf version conflict"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Please select two pdf documents."
 
 msgid "Split selected file"
 msgstr "Split selected file"
@@ -694,6 +702,9 @@ msgstr "Default working directory:"
 msgid "Error getting default environment."
 msgstr "Error getting default environment."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Settings "
 
@@ -722,6 +733,9 @@ msgstr "Check for updates"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "Set when new version availability should be checked (restart needed)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Default env."
@@ -813,6 +827,9 @@ msgstr "Cut"
 
 msgid "Paste"
 msgstr "Paste"
+
+#~ msgid "Select an input file"
+#~ msgstr "Select an input file"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "Output location is not correct"

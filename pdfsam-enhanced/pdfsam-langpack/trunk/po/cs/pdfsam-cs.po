@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -77,6 +77,13 @@ msgstr "Prosím čekejte dokud všechny soubory nebudou zpracovány..."
 
 msgid "Found a password for input file."
 msgstr "Nalezeno heslo vstupního souboru."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Prosím vyber dva pdf dokumenty."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Provede sloučení souborů"
@@ -204,9 +211,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Dostupné proměnné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Vyberte vstupní soubor"
-
 msgid "Invalid split size"
 msgstr "Chybná velikost rozdělování."
 
@@ -218,6 +222,10 @@ msgstr "Pro výstup jste zvolili nižší verzi pdf, chcete přesto pokračovat?
 
 msgid "Pdf version conflict"
 msgstr "Konflikt verzí pdf"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Prosím vyber dva pdf dokumenty."
 
 msgid "Split selected file"
 msgstr "Rozdělí vybraný soubor"
@@ -694,6 +702,9 @@ msgstr "Přednastavený pracovní adresář:"
 msgid "Error getting default environment."
 msgstr "Chyba při nastavení výchozího prostředí."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Nastavení: "
 
@@ -722,6 +733,9 @@ msgstr "Zkontrolovat aktualizace"
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Nastavte, pokud je potřeba ověřit dostupnost nové verze (vyžaduje restart)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Výchozí prostředí"
@@ -816,6 +830,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Umístění"
+
+#~ msgid "Select an input file"
+#~ msgstr "Vyberte vstupní soubor"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "Nesprávná cesta k výstupnímu souboru"

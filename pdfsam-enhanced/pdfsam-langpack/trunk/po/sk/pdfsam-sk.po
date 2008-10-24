@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-09-24 09:47+0000\n"
 "Last-Translator: blackmore <Unknown>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -80,6 +80,13 @@ msgstr "Prosím čakajte než sa spracujú všetky súbory..."
 
 msgid "Found a password for input file."
 msgstr "Nájdené heslo pre vstupný súbor"
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Prosím vyberte dva pdf dokumenty."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Spustiť PDF zlúčenie"
@@ -206,9 +213,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Možné premenné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Vyberte vstupný súbor"
-
 msgid "Invalid split size"
 msgstr "Neplatná veľkosť rozdelenia"
 
@@ -220,6 +224,10 @@ msgstr "Vybrali ste nižšiu pdf verziu, želáte si pokračovať?"
 
 msgid "Pdf version conflict"
 msgstr "Konflikt Pdf verzií"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Prosím vyberte dva pdf dokumenty."
 
 msgid "Split selected file"
 msgstr "Rozdeliť vybraný súbor"
@@ -696,6 +704,9 @@ msgstr "Predvolený pracovný priečinok:"
 msgid "Error getting default environment."
 msgstr "Chyba pri nastavení pôvodného prostredia."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Nastavenia "
 
@@ -724,6 +735,9 @@ msgstr "Skontrolovať aktualizácie"
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Nastaviť kedy sa má kontrolovať dostupnosť novej verzie (vyžaduje reštart)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Pôvodné prostredie"
@@ -815,6 +829,9 @@ msgstr "Vystrihnúť"
 
 msgid "Paste"
 msgstr "Prilepiť"
+
+#~ msgid "Select an input file"
+#~ msgstr "Vyberte vstupný súbor"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "Nesprávne umiestnenie výstupu"

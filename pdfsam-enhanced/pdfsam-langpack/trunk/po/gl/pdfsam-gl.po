@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-06-25 23:29+0000\n"
 "Last-Translator: Susana Sotelo Docío <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -82,6 +82,13 @@ msgstr "Por favor, agarde mentras os ficheiros son procesados.."
 
 msgid "Found a password for input file."
 msgstr "Atopouse un contrasinal para o ficheiro de entrada."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Por favor, escolla dous documentos PDF."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Executar a unión de PDF"
@@ -214,9 +221,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Variábeis dispoñíbeis: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Escolla un ficheiro de entrada"
-
 msgid "Invalid split size"
 msgstr "Tamaño de división non válido"
 
@@ -230,6 +234,10 @@ msgstr ""
 
 msgid "Pdf version conflict"
 msgstr "Conflito na versión de PDF"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Por favor, escolla dous documentos PDF."
 
 msgid "Split selected file"
 msgstr "Dividir o ficheiro seleccionado"
@@ -710,6 +718,9 @@ msgstr "Directorio de traballo por defecto:"
 msgid "Error getting default environment."
 msgstr "Erro ao obter o contorno por defecto."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -736,6 +747,9 @@ msgid "Check for updates"
 msgstr "Buscar actualizacións"
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Turn on or off alert sounds"
 msgstr ""
 
 msgid "Default env."
@@ -829,6 +843,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Ruta"
+
+#~ msgid "Select an input file"
+#~ msgstr "Escolla un ficheiro de entrada"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "A ubicación de saída non é correcta"

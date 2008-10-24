@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-06-22 00:36+0000\n"
 "Last-Translator: Marcos Fernando Simon <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,6 +81,13 @@ msgstr "Por favor aguarde enquanto todos arquivos são processados.."
 
 msgid "Found a password for input file."
 msgstr "Foi encontrado uma senha para o arquivo de entrada."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Por favor, selecione dois documentos pdf."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Executar mesclagem pdf"
@@ -210,9 +217,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Variáveis disponíveis: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Selecione um arquivo de entrada"
-
 msgid "Invalid split size"
 msgstr "Tamanho de divisão inválido"
 
@@ -225,6 +229,10 @@ msgstr ""
 
 msgid "Pdf version conflict"
 msgstr "Conflito na versão do Pdf"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Por favor, selecione dois documentos pdf."
 
 msgid "Split selected file"
 msgstr "Dividir arquivo selecionado"
@@ -704,6 +712,9 @@ msgstr "Diretório padrão:"
 msgid "Error getting default environment."
 msgstr "Erro ao recuperar ambiente padrão."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Configurações "
 
@@ -731,6 +742,9 @@ msgstr "Verificar se há atualizações"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "Define quando procurar por nova versão (é necessário reiniciar)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Amb. padrão."
@@ -824,6 +838,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Caminho"
+
+#~ msgid "Select an input file"
+#~ msgstr "Selecione um arquivo de entrada"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "O local de saída está incorreto"

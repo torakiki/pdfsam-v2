@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-03-24 16:10+0000\n"
 "Last-Translator: dizzyk <hibaman@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -126,6 +126,14 @@ msgid "Please wait while all files are processed.."
 msgstr "Παρακαλώ περιμένετε όσο επεξεργάζονται όλα τα αρχεία.."
 
 msgid "Found a password for input file."
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Δεύτερο pdf κείμενο:"
+
+msgid "Warning"
 msgstr ""
 
 msgid "Execute pdf merge"
@@ -268,13 +276,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
-msgid "Select an input file"
-msgstr "Ορισμός αρχείου εξόδου"
-
 msgid "Invalid split size"
 msgstr ""
 
@@ -288,6 +289,11 @@ msgstr ""
 #, fuzzy
 msgid "Pdf version conflict"
 msgstr "Πρώτο pdf κείμενο:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Δεύτερο pdf κείμενο:"
 
 msgid "Split selected file"
 msgstr ""
@@ -926,6 +932,9 @@ msgstr ""
 msgid "Error getting default environment."
 msgstr ""
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -955,6 +964,9 @@ msgid "Check for updates"
 msgstr ""
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Turn on or off alert sounds"
 msgstr ""
 
 msgid "Default env."
@@ -1057,6 +1069,13 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Θέση"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#, fuzzy
+#~ msgid "Select an input file"
+#~ msgstr "Ορισμός αρχείου εξόδου"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-04-26 10:16+0000\n"
 "Last-Translator: carson <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -154,6 +154,14 @@ msgid "Please wait while all files are processed.."
 msgstr "Vent venligst mens der arbejdes på alle filer.."
 
 msgid "Found a password for input file."
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Andet pdf-dokument:"
+
+msgid "Warning"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
@@ -369,13 +377,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Tilgængelige variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
-msgid "Select an input file"
-msgstr "Opret destinationsfil"
-
 msgid "Invalid split size"
 msgstr ""
 
@@ -390,6 +391,11 @@ msgstr ""
 #, fuzzy
 msgid "Pdf version conflict"
 msgstr "Omdan dette dokument"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Andet pdf-dokument:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -1104,6 +1110,9 @@ msgstr ""
 msgid "Error getting default environment."
 msgstr "Hent standardindstillinger ved opstart:"
 
+msgid "Play alert sounds"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
 msgid "Settings "
@@ -1143,6 +1152,9 @@ msgid "Check for updates"
 msgstr "Søg efter opdateringer"
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Turn on or off alert sounds"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
@@ -1254,6 +1266,13 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Sti"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
+#, fuzzy
+#~ msgid "Select an input file"
+#~ msgstr "Opret destinationsfil"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869

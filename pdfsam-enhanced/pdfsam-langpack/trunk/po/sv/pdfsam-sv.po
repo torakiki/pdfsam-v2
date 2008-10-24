@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-09-27 21:19+0000\n"
 "Last-Translator: Linus C Unneback <linus@folkdatorn.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -122,6 +122,13 @@ msgstr "Vänta medan alla filer behandlas..."
 
 msgid "Found a password for input file."
 msgstr "Fann lösenord för källfilen."
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Välj två PDF-dokument"
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Påbörja sammanslagning av PDF-filer"
@@ -291,9 +298,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Tilgängliga variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Välj en källfil"
-
 msgid "Invalid split size"
 msgstr "Ogiltig delningsstorlek."
 
@@ -305,6 +309,10 @@ msgstr "Du har valt en lägre pdf-version på målfilen, vill du fortsätta änd
 
 msgid "Pdf version conflict"
 msgstr "PDF-version konflikt"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Välj två PDF-dokument"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:369
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
@@ -879,6 +887,9 @@ msgstr "Förvald arbetsmapp:"
 msgid "Error getting default environment."
 msgstr "Fel vid laddning av standardmiljö:"
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Inställningar "
 
@@ -910,6 +921,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Ställ in när du vill att programmet ska söka efter nya uppdateringar "
 "(omstart krävs)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Förvald miljö."
@@ -999,6 +1013,9 @@ msgstr "Klipp ut"
 
 msgid "Paste"
 msgstr "Klistra in"
+
+#~ msgid "Select an input file"
+#~ msgstr "Välj en källfil"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:231
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252

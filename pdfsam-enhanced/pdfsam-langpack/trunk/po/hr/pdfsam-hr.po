@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-14 21:42+0200\n"
+"POT-Creation-Date: 2008-10-19 19:49+0200\n"
 "PO-Revision-Date: 2008-06-07 10:20+0000\n"
 "Last-Translator: Manic <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -81,6 +81,13 @@ msgstr "Molimo pričekajte dok se datoteke ne obrade..."
 
 msgid "Found a password for input file."
 msgstr "Pronađena zaporka ulaznog dokumenta"
+
+#, fuzzy
+msgid "Please select at least one pdf document."
+msgstr "Molimo odaberite dva pdf dokumenta."
+
+msgid "Warning"
+msgstr ""
 
 msgid "Execute pdf merge"
 msgstr "Izvrši pdf spajanje"
@@ -208,9 +215,6 @@ msgstr ""
 msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 msgstr "Dostupne varijable: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
-msgid "Select an input file"
-msgstr "Odaberite ulaznu datoteku"
-
 msgid "Invalid split size"
 msgstr "Neispravna veličina razdvajanja"
 
@@ -222,6 +226,10 @@ msgstr "Odabrali ste nižu izlaznu pdf inačicu. Nastaviti?"
 
 msgid "Pdf version conflict"
 msgstr "Sukob pdf inačice"
+
+#, fuzzy
+msgid "Please select a pdf document."
+msgstr "Molimo odaberite dva pdf dokumenta."
 
 msgid "Split selected file"
 msgstr "Razdijeli odabranu datoteku"
@@ -701,6 +709,9 @@ msgstr "Uobičajena mapa za rad:"
 msgid "Error getting default environment."
 msgstr "Greška pri traženju uobičajenog okružja."
 
+msgid "Play alert sounds"
+msgstr ""
+
 msgid "Settings "
 msgstr "Postavke "
 
@@ -730,6 +741,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Postavite kada bi dostupnost nove verzije trebalo provjeriti (potrebno je "
 "ponovno pokretanje)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
 
 msgid "Default env."
 msgstr "Uobičajeno okružje"
@@ -823,6 +837,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Putanja"
+
+#~ msgid "Select an input file"
+#~ msgstr "Odaberite ulaznu datoteku"
 
 #~ msgid "Output location is not correct"
 #~ msgstr "Izlazna lokacija nije valjana"
