@@ -97,8 +97,8 @@ public class  PlugInsLoader{
      * @return a map(k,value) where k is the pluginDataModel and value is the instance
      * @throws PluginException
      */
-    public Hashtable loadPlugins() throws PluginException {
-    	Hashtable retMap = new Hashtable();
+    public Hashtable<PluginDataModel, AbstractPlugablePanel> loadPlugins() throws PluginException {
+    	Hashtable<PluginDataModel, AbstractPlugablePanel> retMap = new Hashtable<PluginDataModel, AbstractPlugablePanel>();
     	URLClassLoader urlClassLoader = null;
     	ArrayList urlList = new ArrayList();
     	ArrayList classList = new ArrayList();

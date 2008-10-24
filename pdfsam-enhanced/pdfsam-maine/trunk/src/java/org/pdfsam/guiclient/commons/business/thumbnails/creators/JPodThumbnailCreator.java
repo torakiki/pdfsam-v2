@@ -76,6 +76,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				graphics = new CwtAwtGraphicsContext(g2);
 				// setup user space
 				AffineTransform imgTransform = graphics.getTransform();
+				imgTransform.scale(1, -1);
 				imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
 				graphics.setTransform(imgTransform);
 				graphics.setBackgroundColor(Color.WHITE);
@@ -84,7 +85,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				if (content != null) {
 					CSPlatformRenderer renderer = new CSPlatformRenderer(null,graphics);
 					renderer.process(content, pdPage.getResources());
-				}	
+				}											
 				if(pdfDoc!=null){
 					pdfDoc.close();
 				}
@@ -280,9 +281,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		
 		private PDDocument pdfDoc;
 		private ExecutorService pool;
-		/**
-		 * @param decoder
-		 */
+		
+		
 		public CreatorCloser(ExecutorService pool, PDDocument pdfDoc) {
 			super();
 			this.pdfDoc = pdfDoc;

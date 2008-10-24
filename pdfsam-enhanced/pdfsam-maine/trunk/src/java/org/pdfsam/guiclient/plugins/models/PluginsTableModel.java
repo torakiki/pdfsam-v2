@@ -20,6 +20,8 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import javax.swing.table.AbstractTableModel;
+
+import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 /**
  * Table model for the info GUI table. It shows informations about loaded plugins
  * @author Andrea Vacondio
@@ -37,15 +39,15 @@ public class PluginsTableModel extends AbstractTableModel {
     private String[] columnNames = {"Name","Version","Author"};
 
     //data array
-    private ArrayList pluginsData;
+    private ArrayList<PluginDataModel> pluginsData;
 
-    public PluginsTableModel(ArrayList pluginsData){
+    public PluginsTableModel(ArrayList<PluginDataModel> pluginsData){
         this.pluginsData = pluginsData;
     }
     
-    public PluginsTableModel(Hashtable pluginsData){
-    	this.pluginsData = new ArrayList();
-    	for (Enumeration plugsEnumeration = pluginsData.keys();plugsEnumeration.hasMoreElements();) {
+    public PluginsTableModel(Hashtable<PluginDataModel, AbstractPlugablePanel> pluginsData){
+    	this.pluginsData = new ArrayList<PluginDataModel>();
+    	for (Enumeration<PluginDataModel> plugsEnumeration = pluginsData.keys();plugsEnumeration.hasMoreElements();) {
 			this.pluginsData.add((PluginDataModel) plugsEnumeration.nextElement());
     	}
         

@@ -67,7 +67,7 @@ public class WorkExecutor {
     public class WorkQueue{
     	
         private final PoolWorker[] threads;
-        private final LinkedList queue;
+        private final LinkedList<Runnable> queue;
         private int running = 0;
 
         /**
@@ -81,7 +81,7 @@ public class WorkExecutor {
          * @param nThreads pool size 
          */
         public WorkQueue(int nThreads){
-            queue = new LinkedList();
+            queue = new LinkedList<Runnable>();
             threads = new PoolWorker[nThreads];
 
             for (int i=0; i<nThreads; i++) {

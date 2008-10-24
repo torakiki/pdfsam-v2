@@ -20,7 +20,6 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
@@ -34,6 +33,7 @@ import org.dom4j.io.XMLWriter;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.plugins.models.PluginDataModel;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Environment logic
@@ -46,9 +46,9 @@ public class Environment {
 	
 	private ResourceBundle i18nMessages;
 
-	private Hashtable plugins;
+	private Hashtable<PluginDataModel, AbstractPlugablePanel> plugins;
 	
-	public Environment(Hashtable plugins){
+	public Environment(Hashtable<PluginDataModel, AbstractPlugablePanel> plugins){
 		this.plugins = plugins;
 		this.i18nMessages = Configuration.getInstance().getI18nResourceBundle();
 	}
@@ -66,8 +66,7 @@ public class Environment {
 					Element root = document.addElement("pdfsam_saved_jobs");
 					root.addAttribute("version", GuiClient.getVersion());
 					root.addAttribute("savedate", new SimpleDateFormat("dd-MMM-yyyy").format(new Date()));
-					for (Iterator plugsIterator = plugins.values().iterator();plugsIterator.hasNext();) {
-						AbstractPlugablePanel plugablePanel = (AbstractPlugablePanel) plugsIterator.next();
+					for (AbstractPlugablePanel plugablePanel: plugins.values()) {
 						Element node = (Element) root.addElement("plugin");
 						node.addAttribute("class", plugablePanel.getClass().getName());
 						node.addAttribute("name", plugablePanel.getPluginName());
@@ -108,8 +107,7 @@ public class Environment {
 				synchronized(Environment.class){
 					SAXReader reader = new SAXReader();
 					Document document = reader.read(inputFile);
-					for (Iterator plugsIterator = plugins.values().iterator();plugsIterator.hasNext();) {
-						AbstractPlugablePanel plugablePanel = (AbstractPlugablePanel) plugsIterator.next();
+					for (AbstractPlugablePanel plugablePanel: plugins.values()) {
 						Node node = document.selectSingleNode("/pdfsam_saved_jobs/plugin[@class=\""
 								+ plugablePanel.getClass().getName() + "\"]");
 						if(node == null){

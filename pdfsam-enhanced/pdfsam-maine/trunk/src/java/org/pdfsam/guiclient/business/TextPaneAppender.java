@@ -36,7 +36,7 @@ public class TextPaneAppender extends AppenderSkeleton {
 
 	private static JTextPane logTextArea = null;
 	private static StyledDocument styledDocument = null;
-	private static Hashtable attributes = null;
+	private static Hashtable<Level, SimpleAttributeSet> attributes = null;
 	
 	public TextPaneAppender() {
 		getTextPaneInstance();
@@ -57,7 +57,7 @@ public class TextPaneAppender extends AppenderSkeleton {
 	 * creates attributes map for message style
 	 */
 	private static void createTextAttributes() {	
-		attributes = new Hashtable();
+		attributes = new Hashtable<Level, SimpleAttributeSet>();
 		attributes.put(Level.ERROR, new SimpleAttributeSet());
 		attributes.put(Level.FATAL, new SimpleAttributeSet());
 		attributes.put(Level.WARN, new SimpleAttributeSet());

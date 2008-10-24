@@ -14,37 +14,21 @@
  */
 package org.pdfsam.guiclient.commons.business.listeners;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 /**
- * ActionListener used to disable or enable items in JPdfVersionCombo
+ * ItemListener used to disable or enable items in JPdfVersionCombo
  * @author Andrea Vacondio
  *
  */
-public class CompressCheckBoxItemListener implements ItemListener {
+public class CompressCheckBoxItemListener extends VersionFilterCheckBoxItemListener {
 
-	private JPdfVersionCombo versionCombo = null;
 	private static Integer versionFilter = new Integer(""+AbstractParsedCommand.VERSION_1_5);
 	
 	/**
 	 * @param versionCombo version Combo 
 	 */
 	public CompressCheckBoxItemListener(JPdfVersionCombo versionCombo) {
-		super();
-		this.versionCombo = versionCombo;
+		super(versionCombo, versionFilter);
 	}
-
-	public void itemStateChanged(ItemEvent e) {
-		if(versionCombo != null){
-			if(ItemEvent.SELECTED == e.getStateChange()){
-	        	versionCombo.addVersionFilter(versionFilter);
-	        }else if(e.getStateChange() == ItemEvent.DESELECTED){
-	      	  	versionCombo.removeVersionFilter(versionFilter);
-	        }
-        }
-	}
-
 }

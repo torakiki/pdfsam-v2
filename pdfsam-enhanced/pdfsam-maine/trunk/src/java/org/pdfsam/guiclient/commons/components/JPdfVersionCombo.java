@@ -16,7 +16,6 @@ package org.pdfsam.guiclient.commons.components;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -36,7 +35,7 @@ public class JPdfVersionCombo extends JComboBox {
 	
 	private Configuration config;
 	private boolean addSameAsSourceItem = false;
-	private Vector filterVersions = new Vector();
+	private Vector<Integer> filterVersions = new Vector<Integer>();
 	/**
 	 * Size of the model when full
 	 */
@@ -64,13 +63,12 @@ public class JPdfVersionCombo extends JComboBox {
 		if(addSameAsSourceItem){
 			addItem(new StringItem(SAME_AS_SOURCE, GettextResource.gettext(config.getI18nResourceBundle(),"Same as input document")));			
 		}
-		ArrayList values = PdfVersionUtility.getVersionsList();
+		ArrayList<StringItem> values = PdfVersionUtility.getVersionsList();
 		Integer maxFilter = new Integer(-1);
 		if(checkFilters && !filterVersions.isEmpty()){
-			maxFilter = (Integer) Collections.max(filterVersions);
+			maxFilter = Collections.max(filterVersions);
 		}
-		for(Iterator it = values.iterator(); it.hasNext();){
-			StringItem currentItem = (StringItem)it.next();
+		for(StringItem currentItem : values){
 			if(currentItem!=null && new Integer(currentItem.getId()).compareTo(maxFilter)>=0){
 				addItem(currentItem);
 			}
@@ -91,9 +89,9 @@ public class JPdfVersionCombo extends JComboBox {
 	 * @param version versionFilter
 	 */
 	public synchronized void addVersionFilter(Integer version){
-		ArrayList removeList = new ArrayList();
+		ArrayList<StringItem> removeList = new ArrayList<StringItem>();
 		this.filterVersions.add(version);
-		Integer maxFilter = (Integer) Collections.max(filterVersions);
+		Integer maxFilter = Collections.max(filterVersions);
 		Object item = this.getSelectedItem();
 		for(int i =0; i<this.getItemCount(); i++){
 			StringItem currentItem = (StringItem)getItemAt(i);
@@ -105,8 +103,7 @@ public class JPdfVersionCombo extends JComboBox {
 			}
 		}
 		if(removeList.size()>0){
-			for(Iterator iter = removeList.iterator(); iter.hasNext();){
-				StringItem currentItem = (StringItem)iter.next();
+			for(StringItem currentItem:  removeList){
 				this.removeItem(currentItem);
 			}	
 		}
@@ -131,7 +128,7 @@ public class JPdfVersionCombo extends JComboBox {
 			if(filterVersions.isEmpty()){
 				removeFilters();
 			}else{
-				Integer maxFilter = (Integer) Collections.max(filterVersions);
+				Integer maxFilter = Collections.max(filterVersions);
 				if(maxFilter.compareTo(version)<0){
 					Object item = this.getSelectedItem();
 					this.removeAllItems();

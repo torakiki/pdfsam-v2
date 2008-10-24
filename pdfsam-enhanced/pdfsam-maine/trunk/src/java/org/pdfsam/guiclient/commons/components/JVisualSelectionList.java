@@ -45,7 +45,6 @@ public class JVisualSelectionList extends JList {
 	 */
 	public JVisualSelectionList(ListModel dataModel) {
 		super(dataModel);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -53,15 +52,13 @@ public class JVisualSelectionList extends JList {
 	 */
 	public JVisualSelectionList(Object[] listData) {
 		super(listData);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param listData
 	 */
-	public JVisualSelectionList(Vector listData) {
+	public JVisualSelectionList(Vector<?> listData) {
 		super(listData);
-		// TODO Auto-generated constructor stub
 	}
 
 	public JVisualSelectionList(boolean drawDeletedItems) {		

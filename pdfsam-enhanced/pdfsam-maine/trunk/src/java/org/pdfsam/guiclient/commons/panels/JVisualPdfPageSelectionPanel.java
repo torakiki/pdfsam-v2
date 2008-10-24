@@ -46,6 +46,7 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.PagesWorker;
 import org.pdfsam.guiclient.commons.business.listeners.VisualPdfSelectionActionListener;
+import org.pdfsam.guiclient.commons.business.listeners.adapters.PageOpenerMouseAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.adapters.VisualPdfSelectionKeyAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.adapters.VisualPdfSelectionMouseAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.mediators.PagesActionsMediator;
@@ -205,6 +206,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		thumbnailList.setDragEnabled(true);
 		pagesWorker = new PagesWorker(thumbnailList);
 		thumbnailList.addKeyListener(new VisualPdfSelectionKeyAdapter(pagesWorker));
+		thumbnailList.addMouseListener(new PageOpenerMouseAdapter(thumbnailList));
 		
 		if(showButtonPanel){
 			initButtonPanel(pagesWorker);

@@ -36,6 +36,7 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.plugins.models.PluginDataModel;
 import org.pdfsam.guiclient.plugins.models.PluginsTableModel;
 import org.pdfsam.i18n.GettextResource;
 /**
@@ -60,7 +61,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private String javaVersion = "";
     private String configPath = "";
     private Configuration config;
-    private Hashtable plugins;
+    private Hashtable<PluginDataModel, AbstractPlugablePanel> plugins;
     
     private final InfoFocusPolicy infoFocusPolicy = new InfoFocusPolicy();
     
@@ -72,7 +73,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
      * Constructor. It provides initialization.
      * @param plugins Informations about loaded plugins
      */
-    public JInfoPanel(Hashtable plugins) {
+    public JInfoPanel(Hashtable<PluginDataModel, AbstractPlugablePanel> plugins) {
         this.plugins = plugins;
         initialize();
     }
