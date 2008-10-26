@@ -16,6 +16,7 @@ package org.pdfsam.guiclient.commons.business;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
+import org.pdfsam.guiclient.business.SoundPlayer;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 /**

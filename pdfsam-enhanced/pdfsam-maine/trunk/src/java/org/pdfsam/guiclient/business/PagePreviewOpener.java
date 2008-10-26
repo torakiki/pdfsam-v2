@@ -12,14 +12,14 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.business;
+package org.pdfsam.guiclient.business;
 
 import java.io.File;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.commons.business.thumbnails.creators.JPedalThumbnailCreator;
-import org.pdfsam.guiclient.commons.business.thumbnails.creators.JPodThumbnailCreator;
-import org.pdfsam.guiclient.commons.business.thumbnails.creators.ThumbnailsCreator;
+import org.pdfsam.guiclient.business.thumbnails.creators.JPedalThumbnailCreator;
+import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
+import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.frames.JPagePreviewFrame;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;

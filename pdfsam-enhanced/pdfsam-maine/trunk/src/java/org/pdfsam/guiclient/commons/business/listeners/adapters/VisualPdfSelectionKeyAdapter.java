@@ -17,7 +17,7 @@ package org.pdfsam.guiclient.commons.business.listeners.adapters;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import org.pdfsam.guiclient.commons.business.PagesWorker;
+import org.pdfsam.guiclient.business.PagesWorker;
 
 /**
  * KeyAdapter for the thumbnails JList

@@ -20,9 +20,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.commons.business.thumbnails.creators.JPedalThumbnailCreator;
-import org.pdfsam.guiclient.commons.business.thumbnails.creators.JPodThumbnailCreator;
-import org.pdfsam.guiclient.commons.business.thumbnails.creators.ThumbnailsCreator;
+import org.pdfsam.guiclient.business.thumbnails.creators.JPedalThumbnailCreator;
+import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
+import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;

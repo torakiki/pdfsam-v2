@@ -17,7 +17,7 @@ package org.pdfsam.guiclient.commons.business.listeners.mediators;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.pdfsam.guiclient.commons.business.PagesWorker;
+import org.pdfsam.guiclient.business.PagesWorker;
 
 /**
  * @author Andrea Vacondio

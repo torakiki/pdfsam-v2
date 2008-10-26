@@ -16,7 +16,7 @@ package org.pdfsam.guiclient.commons.dnd.droppers;
 
 import java.util.List;
 
-import org.pdfsam.guiclient.commons.business.ClosableTabbedPanelAdder;
+import org.pdfsam.guiclient.business.ClosableTabbedPanelAdder;
 
 /**
  * Dropper for the JVisualMultiSelectionPanel

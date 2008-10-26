@@ -36,7 +36,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.pdfsam.guiclient.commons.business.ClosableTabbedPanelAdder;
+import org.pdfsam.guiclient.business.ClosableTabbedPanelAdder;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.dnd.droppers.JVisualMultiSelectionDropper;
 import org.pdfsam.guiclient.configuration.Configuration;

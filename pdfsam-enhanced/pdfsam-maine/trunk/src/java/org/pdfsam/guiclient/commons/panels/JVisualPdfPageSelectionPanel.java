@@ -43,8 +43,8 @@ import javax.swing.ListSelectionModel;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.business.PagesWorker;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.PagesWorker;
 import org.pdfsam.guiclient.commons.business.listeners.VisualPdfSelectionActionListener;
 import org.pdfsam.guiclient.commons.business.listeners.adapters.PageOpenerMouseAdapter;
 import org.pdfsam.guiclient.commons.business.listeners.adapters.VisualPdfSelectionKeyAdapter;

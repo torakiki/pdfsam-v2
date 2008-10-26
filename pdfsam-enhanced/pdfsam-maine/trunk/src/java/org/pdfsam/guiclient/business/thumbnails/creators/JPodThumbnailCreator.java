@@ -12,7 +12,7 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.business.thumbnails.creators;
+package org.pdfsam.guiclient.business.thumbnails.creators;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

@@ -17,7 +17,7 @@ package org.pdfsam.guiclient.commons.business.listeners.adapters;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import org.pdfsam.guiclient.commons.business.PagesWorker;
+import org.pdfsam.guiclient.business.PagesWorker;
 
 /**
  * MouseAdapter for the popup menu
