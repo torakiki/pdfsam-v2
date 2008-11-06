@@ -124,7 +124,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.6e";
+    private final String PLUGIN_VERSION = "0.2.7e";
 	
     public final static String RC4_40 = "RC4-40b";
 	public final static String RC4_128 = "RC4-128b";
@@ -390,7 +390,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	                    args.add("-"+EncryptParsedCommand.PDFVERSION_ARG);
 						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
 	
-						args.add (AbstractParsedCommand.COMMAND_ECRYPT);
+						args.add (AbstractParsedCommand.COMMAND_ENCRYPT);
 	
 		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
 		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));  
