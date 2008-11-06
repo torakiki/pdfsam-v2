@@ -212,7 +212,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 	}
 
 	public String getCommand() {
-		return COMMAND_ECRYPT;
+		return COMMAND_ENCRYPT;
 	}
 	
 	public String toString(){

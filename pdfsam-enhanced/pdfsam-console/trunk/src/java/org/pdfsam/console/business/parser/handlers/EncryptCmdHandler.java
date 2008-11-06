@@ -98,7 +98,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	private final List encryptArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
                     "command to execute {[encrypt]}",
-                    new String[] { EncryptParsedCommand.COMMAND_ECRYPT },
+                    new String[] { EncryptParsedCommand.COMMAND_ENCRYPT },
                     StringParam.REQUIRED),
     }));
     

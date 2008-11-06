@@ -20,6 +20,7 @@ import java.util.Observer;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
@@ -28,6 +29,7 @@ import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.AlternateMixCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.ConcatCmdExecutor;
+import org.pdfsam.console.business.pdf.handlers.DecryptCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.EncryptCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SetViewerCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SlideShowCmdExecutor;
@@ -86,7 +88,7 @@ public class CmdExecuteManager extends Observable implements Observer{
 			retVal = new AlternateMixCmdExecutor();
 		}else if(SplitParsedCommand.COMMAND_SPLIT.equals(parsedCommand.getCommand())){
 			retVal = new SplitCmdExecutor();
-		}else if(EncryptParsedCommand.COMMAND_ECRYPT.equals(parsedCommand.getCommand())){
+		}else if(EncryptParsedCommand.COMMAND_ENCRYPT.equals(parsedCommand.getCommand())){
 			retVal = new EncryptCmdExecutor();
 		}else if(ConcatParsedCommand.COMMAND_CONCAT.equals(parsedCommand.getCommand())){
 			retVal = new ConcatCmdExecutor();
@@ -96,6 +98,8 @@ public class CmdExecuteManager extends Observable implements Observer{
 			retVal = new SetViewerCmdExecutor();
 		}else if(SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(parsedCommand.getCommand())){
 			retVal = new SlideShowCmdExecutor();
+		}else if(DecryptParsedCommand.COMMAND_DECRYPT.equals(parsedCommand.getCommand())){
+			retVal = new DecryptCmdExecutor();
 		}else {
 			retVal = null;
 		}

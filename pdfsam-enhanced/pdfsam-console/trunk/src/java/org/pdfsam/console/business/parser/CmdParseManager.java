@@ -42,6 +42,7 @@ import jcmdline.CmdLineHandler;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
@@ -49,6 +50,7 @@ import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.parser.handlers.ConcatCmdHandler;
+import org.pdfsam.console.business.parser.handlers.DecryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.MixCmdHandler;
@@ -58,6 +60,7 @@ import org.pdfsam.console.business.parser.handlers.SplitCmdHandler;
 import org.pdfsam.console.business.parser.handlers.UnpackCmdHandler;
 import org.pdfsam.console.business.parser.handlers.interfaces.CmdHandler;
 import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
+import org.pdfsam.console.business.parser.validators.DecryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.EncryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.MixCmdValidator;
 import org.pdfsam.console.business.parser.validators.SetViewerCmdValidator;
@@ -118,7 +121,7 @@ public class CmdParseManager {
 			cmdHandler = new SplitCmdHandler();
 			cmdValidator = new SplitCmdValidator();
 		}
-		else if(EncryptParsedCommand.COMMAND_ECRYPT.equals(inputCommand)){
+		else if(EncryptParsedCommand.COMMAND_ENCRYPT.equals(inputCommand)){
 			cmdHandler = new EncryptCmdHandler();
 			cmdValidator = new EncryptCmdValidator();
 		}
@@ -133,6 +136,9 @@ public class CmdParseManager {
 		else if(SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(inputCommand)){
 			cmdHandler = new SlideShowCmdHandler();
 			cmdValidator = new SlideShowCmdValidator();
+		}else if(DecryptParsedCommand.COMMAND_DECRYPT.equals(inputCommand)){
+			cmdHandler = new DecryptCmdHandler();
+			cmdValidator = new DecryptCmdValidator();
 		}else{
 			cmdHandler = new DefaultCmdHandler();
 		}

@@ -61,15 +61,15 @@ public class DefaultCmdHandler implements CmdHandler {
 
 	private VersionCmdLineHandler commandLineHandler = null;
 	
-	private static final String commandDescription = "merge, split, mix, setviewer, unpack, encrypt, slideshow.";
+	private static final String commandDescription = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt.";
 	
 	 /**
      * The default arguments 
      */
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ECRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"]}",
-                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ECRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER },
+                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ENCRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"], ["+AbstractParsedCommand.COMMAND_DECRYPT+"]}",
+                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ENCRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER , AbstractParsedCommand.COMMAND_DECRYPT },
                     StringParam.REQUIRED)
     }));
 	

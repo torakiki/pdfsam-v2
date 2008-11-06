@@ -48,9 +48,12 @@ import com.lowagie.text.pdf.PdfWriter;
  */
 public abstract class AbstractParsedCommand implements Serializable {
 
-    public static final String COMMAND_CONCAT = "concat";
+	private static final long serialVersionUID = -7162638813535213378L;
+	
+	public static final String COMMAND_CONCAT = "concat";
     public static final String COMMAND_SPLIT = "split";    
-    public static final String COMMAND_ECRYPT = "encrypt";  
+    public static final String COMMAND_ENCRYPT = "encrypt";  
+    public static final String COMMAND_DECRYPT = "decrypt";  
     public static final String COMMAND_MIX = "mix"; 
     public static final String COMMAND_UNPACK = "unpack"; 
     public static final String COMMAND_SETVIEWER = "setviewer"; 

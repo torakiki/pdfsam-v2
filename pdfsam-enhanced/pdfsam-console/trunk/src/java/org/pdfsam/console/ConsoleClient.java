@@ -64,8 +64,8 @@ public class ConsoleClient {
 			}else{
 				log.fatal("Unable to reach services, service facade is null.");
 			}
-		}catch(Exception e){
-			log.fatal("Error executing ConsoleClient", e);
+		}catch(Throwable t){
+			log.fatal("Error executing ConsoleClient", t);
 		}
 	}
 

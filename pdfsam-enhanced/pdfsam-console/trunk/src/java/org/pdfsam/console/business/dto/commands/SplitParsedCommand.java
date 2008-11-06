@@ -192,7 +192,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		retVal.append(super.toString());
 		retVal.append((outputFile== null)?"":"[outputDir="+outputFile.getAbsolutePath()+"]");
 		retVal.append((inputFile== null)?"":"[inputFile="+inputFile+"]");
-		retVal.append("[pageSelection="+outputFilesPrefix+"]");
+		retVal.append("[outputFilesPrefix="+outputFilesPrefix+"]");
 		retVal.append("[splitType="+splitType+"]");
 		retVal.append("[splitSize="+splitSize+"]");
 		if(splitPageNumbers != null){

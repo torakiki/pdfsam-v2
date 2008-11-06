@@ -118,7 +118,7 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	            	parsedCommandDTO.setPageSelection(uOption.getValue());
 	            }
 	            else{
-	            	throw new ParseException(ParseException.ERR_ILLEGAL_U);
+	            	throw new ParseException(ParseException.ERR_ILLEGAL_U, new String[]{uOption.getValue()});
 	            }
 	        }
 	

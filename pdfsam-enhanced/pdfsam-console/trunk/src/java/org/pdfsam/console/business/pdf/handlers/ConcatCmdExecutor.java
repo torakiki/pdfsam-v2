@@ -133,7 +133,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 						int pdfNumberOfPages = pdfReader.getNumberOfPages();
 						Bounds bonuds;
 		    			try{
-		    				bonuds = getBounds(pdfNumberOfPages, currentPageSelection);
+		    				bonuds = getBounds(pdfNumberOfPages, selectionGroups[j]);
 		    			}catch(ConcatException ce){
 		    				FileUtility.deleteFile(tmpFile);
 							throw new ConcatException(ce);
@@ -160,7 +160,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		    			int relativeOffset = (bonuds.getEnd() - bonuds.getStart())+1;
 		    			pageOffset += relativeOffset;
 		    			log.info(fileList[i].getFile().getAbsolutePath()+ ": " + relativeOffset + " pages to be added.");
-		    			if (i == 0) {
+		    			if (pdfWriter == null) {
 		                    if(inputCommand.isCopyFields()){
 		                        // step 1: we create a writer 
 		                    	pdfWriter = new PdfCopyFieldsConcatenator(new FileOutputStream(tmpFile), inputCommand.isCompress());
@@ -195,8 +195,8 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		    	        pdfWriter.freeReader(pdfReader);
 		    	        totalProcessedPages += relativeOffset;
 		    			log.info(relativeOffset + " pages processed correctly.");
-	    				setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);
 					}
+    				setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);
 				}
 				if (master.size() > 0){
 	    			pdfWriter.setOutlines(master);
@@ -232,7 +232,12 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
                 if(limits.length > 1){
                 	retVal.setEnd(Integer.parseInt(limits[1]));
                 }else{
-                	retVal.setEnd(pdfNumberOfPages);
+                	//difference between '4' and '4-'
+                	if(currentPageSelection.indexOf('-')== -1){
+                		retVal.setEnd(Integer.parseInt(limits[0]));
+                	}else{
+                		retVal.setEnd(pdfNumberOfPages);
+                	}
                 }
             }catch(NumberFormatException nfe){
 				throw new ConcatException(ConcatException.ERR_SYNTAX, new String[]{""+currentPageSelection},nfe);							
