@@ -69,7 +69,7 @@ public class JSaveListAsXmlMenuItem extends JMenuItem {
                 if (rows != null && rows.length>0){
                     try{
                     	lazyInitJFileChooser();
-                    	if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    	if (fileChooser.showSaveDialog(selectionPanel) == JFileChooser.APPROVE_OPTION) {
 	                    	File selectedFile = fileChooser.getSelectedFile();	
 	        				if(selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1){
 	        					selectedFile = new File(selectedFile.getParent(), selectedFile.getName()+".xml");

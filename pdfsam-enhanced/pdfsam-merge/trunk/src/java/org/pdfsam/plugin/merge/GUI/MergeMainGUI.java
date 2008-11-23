@@ -109,7 +109,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.7";
+    private static final String PLUGIN_VERSION = "0.6.8";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -177,9 +177,11 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
             		 browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
             		 browseDestFileChooser.setFileFilter(new PdfFilter());
             	}
-                int retVal = browseDestFileChooser.showOpenDialog(browseDestButton.getParent());
-                File chosenFile = null;                
-                if (retVal == JFileChooser.APPROVE_OPTION){
+                File chosenFile = null;
+                if(destinationTextField.getText().length()>0){
+                	browseDestFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+                }
+                if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                 	chosenFile = browseDestFileChooser.getSelectedFile();
                 }
                 //write the destination in text field
