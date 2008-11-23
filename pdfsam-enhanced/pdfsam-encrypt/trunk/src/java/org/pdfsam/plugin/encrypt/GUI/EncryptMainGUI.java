@@ -274,7 +274,10 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
     		        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
-                File chosenFile = null;                    
+                File chosenFile = null; 
+                if(destFolderText.getText().length()>0){
+                	browseDestFileChooser.setCurrentDirectory(new File(destFolderText.getText()));
+                }
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
@@ -827,14 +830,8 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
                 return selectionPanel.getRemoveFileButton();
             }
             else if (aComponent.equals(selectionPanel.getRemoveFileButton())){
-                return selectionPanel.getMoveUpButton();
-            }
-            else if (aComponent.equals(selectionPanel.getMoveUpButton())){
-                return selectionPanel.getMoveDownButton();
-            }
-            else if (aComponent.equals(selectionPanel.getMoveDownButton())){
                 return selectionPanel.getClearButton();
-            }  
+            }
             else if (aComponent.equals(selectionPanel.getClearButton())){
                 return ownerPwdField;
             }
@@ -962,13 +959,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
             else if (aComponent.equals(ownerPwdField)){
                 return selectionPanel.getClearButton();
             }
-            else if (aComponent.equals(selectionPanel.getClearButton())){
-                return selectionPanel.getMoveDownButton();
-            }
-            else if (aComponent.equals(selectionPanel.getMoveDownButton())){
-                return selectionPanel.getMoveUpButton();
-            }
-            else if (aComponent.equals(selectionPanel.getMoveUpButton())){
+            else if (aComponent.equals(selectionPanel.getClearButton())){                
                 return selectionPanel.getRemoveFileButton();
             }        
             else if (aComponent.equals(selectionPanel.getRemoveFileButton())){
