@@ -99,7 +99,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.6e";
+	private static final String PLUGIN_VERSION = "0.1.7e";
 
 	
 	/**
@@ -154,20 +154,22 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {								
 				if(browseFileChooser==null){
 					browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 					browseFileChooser.setFileFilter(new PdfFilter());
 				}
-				int retVal = browseFileChooser.showOpenDialog(browseButton.getParent());
-				File chosen_file = null;                
-				if (retVal == JFileChooser.APPROVE_OPTION){
-					chosen_file = browseFileChooser.getSelectedFile();
+				File chosenFile = null;   
+                if(destinationTextField.getText().length()>0){
+                	browseFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+                }
+				if (browseFileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
+					chosenFile = browseFileChooser.getSelectedFile();
 				}
 				//write the destination in text field
-				if (chosen_file != null){
+				if (chosenFile != null){
 					try{
-						destinationTextField.setText(chosen_file.getAbsolutePath());
+						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}
 					catch (Exception ex){
 						log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
