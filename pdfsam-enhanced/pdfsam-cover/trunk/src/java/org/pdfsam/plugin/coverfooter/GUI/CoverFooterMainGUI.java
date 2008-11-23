@@ -110,7 +110,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.6e";
+    private static final String PLUGIN_VERSION = "0.2.7e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -183,7 +183,10 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
     		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
     		        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
-                File chosenFile = null;                
+                File chosenFile = null;   
+                if(destinationTextField.getText().length()>0){
+                	browseDestFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+                }                
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                 	chosenFile = browseDestFileChooser.getSelectedFile();
                 }
