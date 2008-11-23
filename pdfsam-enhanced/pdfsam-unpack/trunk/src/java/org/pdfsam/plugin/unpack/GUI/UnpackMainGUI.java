@@ -133,7 +133,10 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
             		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
     		        browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
-                File chosenFile = null;                
+                File chosenFile = null; 
+                if(destinationTextField.getText().length()>0){
+                	browseDirChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+                }
 				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
 					chosenFile = browseDirChooser.getSelectedFile();
 				}
