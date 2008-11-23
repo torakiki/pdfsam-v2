@@ -15,6 +15,8 @@
 package org.pdfsam.plugin.setviewer.GUI;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.LinkedList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -29,27 +32,34 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
+import org.dom4j.Element;
 import org.dom4j.Node;
+import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.WorkExecutor;
+import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
+import org.pdfsam.guiclient.commons.business.listeners.VersionFilterCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 /** 
  * Plugable JPanel provides a GUI for set viewer functions.
@@ -62,7 +72,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 
 	private static final Logger log = Logger.getLogger(SetViewerMainGUI.class.getPackage().getName());
 	
-	private JTextField outPrefixTextField;
+	private JTextField outPrefixTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE);
 	private SpringLayout optionsPanelLayout;
     private SpringLayout setviewerSpringLayout;
     private SpringLayout destinationPanelLayout;
@@ -75,7 +85,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 
     private Configuration config;
 
-    private final JFileChooser browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    private JFileChooser browseDestFileChooser = null;
 	
     //button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
@@ -106,7 +116,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final JLabel directionLabel= new JLabel();
 
 	//focus policy 
-    //private final EncryptFocusPolicy encryptfocusPolicy = new EncryptFocusPolicy();
+    private final SetViewerFocusPolicy setViewerFocusPolicy = new SetViewerFocusPolicy();
 
     //panels
     private final JPanel setviewerOptionsPanel = new JPanel();
@@ -131,8 +141,8 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
      */
     private void initialize() {
     	config = Configuration.getInstance();
-        setPanelIcon("/images/encrypt.png");
-        setPreferredSize(new Dimension(500,700));  
+        setPanelIcon("/images/setviewer.png");
+        setPreferredSize(new Dimension(600,700));  
         
         setviewerSpringLayout = new SpringLayout();
         setLayout(setviewerSpringLayout);
@@ -140,8 +150,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 		selectionPanel.enableSetOutputPathMenuItem();
         selectionPanel.addPropertyChangeListener(this);
 
-//FILE_CHOOSER
-        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+       
 //END_FILE_CHOOSER
         
       //SETVIEWER_SECTION
@@ -171,11 +180,15 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         setviewerOptionsPanel.add(centerScreen);
 
         displayTitle.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Display document title as window title"));
+        displayTitle.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.4");
+        displayTitle.addItemListener(new VersionFilterCheckBoxItemListener(versionCombo, new Integer(""+AbstractParsedCommand.VERSION_1_4)));
         displayTitle.setSelected(false);
         setviewerOptionsPanel.add(displayTitle);
 
         noPageScaling.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"No page scaling in print dialog"));
         noPageScaling.setSelected(false);
+        noPageScaling.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.6");
+        noPageScaling.addItemListener(new VersionFilterCheckBoxItemListener(versionCombo, new Integer(""+AbstractParsedCommand.VERSION_1_6)));
         setviewerOptionsPanel.add(noPageScaling);
 //end_check
 //combos
@@ -197,6 +210,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         directionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Direction:"));
         setviewerOptionsPanel.add(directionLabel);
         directionCombo = new JComboBox(getDirectionComboItems());
+        directionCombo.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.3");
         setviewerOptionsPanel.add(directionCombo);
        
         setviewerOptionsLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set viewer options:"));
@@ -226,7 +240,14 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                File chosenFile = null;                
+                if(browseDestFileChooser==null){
+                	browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());      		
+                    browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
+            	}
+                File chosenFile = null; 
+                if(destFolderText.getText().length()>0){
+                	browseDestFileChooser.setCurrentDirectory(new File(destFolderText.getText()));
+                }
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
@@ -267,10 +288,113 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
        
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Set options"));
         add(runButton);
-        
-        outPrefixTextField = new JTextField();
-        outPrefixTextField.setText("pdfsam_");
-        outPrefixTextField.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+      //RUN_BUTTON
+        //listener
+	    runButton.addActionListener(new ActionListener() {            
+            public void actionPerformed(ActionEvent e) {
+            	if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
+                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
+                    return;
+                }      
+				final LinkedList args = new LinkedList();
+                //validation and permission check are demanded to the CmdParser object
+                try{
+					PdfSelectionTableItem item = null;
+                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
+                	if(items != null && items.length >= 1){	
+	                	for (int i = 0; i < items.length; i++){
+							item = items[i];
+							args.add("-"+SetViewerParsedCommand.F_ARG);
+	                        String f = item.getInputFile().getAbsolutePath();
+	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
+	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
+	    						f +=":"+item.getPassword();
+	    					}
+	    					args.add(f);                        						
+						}
+	                	
+	                    args.add("-"+SetViewerParsedCommand.P_ARG);
+	                    args.add(outPrefixTextField.getText());
+	                   
+	                    args.add("-"+SetViewerParsedCommand.O_ARG);
+	                    
+	                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		if(suggestedDir != null){
+	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
+	                			if(JOptionPane.YES_OPTION == chosenOpt){
+	                				destFolderText.setText(suggestedDir);
+			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+			        				return;
+			        			}
+	
+	                		}                    	
+	                    }
+	                    args.add(destFolderText.getText());
+	
+	                    
+						args.add("-"+SetViewerParsedCommand.L_ARG);
+						args.add(((StringItem)viewerLayout.getSelectedItem()).getId());
+						
+						args.add("-"+SetViewerParsedCommand.M_ARG);
+						args.add(((StringItem)viewerOpenMode.getSelectedItem()).getId());
+
+						args.add("-"+SetViewerParsedCommand.NFSM_ARG);
+						args.add(((StringItem)nonFullScreenMode.getSelectedItem()).getId());
+
+						args.add("-"+SetViewerParsedCommand.D_ARG);
+						args.add(((StringItem)directionCombo.getSelectedItem()).getId());
+                	
+	                    if (hideMenuBar.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.HIDEMENU_ARG);
+						}
+	                    if (hideToolBar.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.HIDETOOLBAR_ARG);
+						}
+	                    if (hideUIElements.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.HIDEWINDOWUI_ARG);
+						}
+	                    if (resizeToFit.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.FITWINDOW_ARG);
+						}
+	                    if (centerScreen.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.CENTERWINDOW_ARG);
+						}
+	                    if (displayTitle.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.DOCTITLE_ARG);
+						}
+	                    if (noPageScaling.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.NOPRINTSCALING_ARG);
+						}
+	                    if (overwriteCheckbox.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.OVERWRITE_ARG);
+						}
+	                    if (outputCompressedCheck.isSelected()) {
+							args.add("-"+SetViewerParsedCommand.COMPRESSED_ARG);
+						} 
+	
+	                    args.add("-"+SetViewerParsedCommand.PDFVERSION_ARG);
+						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+	
+						args.add (AbstractParsedCommand.COMMAND_SETVIEWER);
+	
+		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
+		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));  
+                	}else{
+						JOptionPane.showMessageDialog(getParent(),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
+								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
+							    JOptionPane.WARNING_MESSAGE);
+					}
+                }catch(Exception ex){    
+                	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+                }     
+            }
+        });
+	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Set viewer options for selected files"));
+        add(runButton);
+       
+//END_RUN_BUTTON
         outputOptionsPanel.add(outPrefixTextField);
 //END_S_PANEL
 //      HELP_LABEL_PREFIX       
@@ -299,7 +423,8 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
      * @return the direction combo items
      */
     private Vector getDirectionComboItems(){
-    	Vector retVal = new Vector(2);
+    	Vector retVal = new Vector(3);
+    	retVal.add(new StringItem(SetViewerParsedCommand.D_NONE, GettextResource.gettext(config.getI18nResourceBundle(),"None")));
     	retVal.add(new StringItem(SetViewerParsedCommand.D_L2R, GettextResource.gettext(config.getI18nResourceBundle(),"Left to right")));
     	retVal.add(new StringItem(SetViewerParsedCommand.D_R2L, GettextResource.gettext(config.getI18nResourceBundle(),"Right to left")));
     	return retVal;
@@ -498,14 +623,76 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 }
     
 	public FocusTraversalPolicy getFocusPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+		return setViewerFocusPolicy;
 	}
 
 	public Node getJobNode(Node arg0, boolean savePasswords)
 			throws SaveJobException {
-		// TODO Auto-generated method stub
-		return null;
+		try{
+			if (arg0 != null){
+				Element fileSource = ((Element)arg0).addElement("source");
+				PdfSelectionTableItem[] items = selectionPanel.getTableRows();
+				if(items != null && items.length>0){
+					fileSource.addAttribute("value",items[0].getInputFile().getAbsolutePath());
+					if(savePasswords){
+						fileSource.addAttribute("password",items[0].getPassword());
+					}
+				}					
+
+				Element viewerLayoutNode = ((Element)arg0).addElement("viewer-layout");
+				viewerLayoutNode.addAttribute("value", ((StringItem)viewerLayout.getSelectedItem()).getId());
+				
+				Element viewerOpenModeNode = ((Element)arg0).addElement("viewer-open-mode");
+				viewerOpenModeNode.addAttribute("value", ((StringItem)viewerOpenMode.getSelectedItem()).getId());
+
+				Element nonFullScreenModeNode = ((Element)arg0).addElement("non-fullscreen-mode");
+				nonFullScreenModeNode.addAttribute("value", ((StringItem)nonFullScreenMode.getSelectedItem()).getId());
+
+				Element directionComboNode = ((Element)arg0).addElement("direction");
+				directionComboNode.addAttribute("value", ((StringItem)directionCombo.getSelectedItem()).getId());
+
+				Element hideMenuBarNode = ((Element)arg0).addElement("hide-menu-bar");
+				hideMenuBarNode.addAttribute("value", hideMenuBar.isSelected()?TRUE:FALSE);
+				
+				Element hideToolBarNode = ((Element)arg0).addElement("hide-tool-bar");
+				hideToolBarNode.addAttribute("value", hideToolBar.isSelected()?TRUE:FALSE);
+				
+				Element hideUIElementsNode = ((Element)arg0).addElement("hide-ui-elements");				
+				hideUIElementsNode.addAttribute("value", hideUIElements.isSelected()?TRUE:FALSE);
+				
+				Element resizeNode = ((Element)arg0).addElement("resize");				
+				resizeNode.addAttribute("value", resizeToFit.isSelected()?TRUE:FALSE);
+				
+				Element centerScreenNode = ((Element)arg0).addElement("center-screen");				
+				centerScreenNode.addAttribute("value", centerScreen.isSelected()?TRUE:FALSE);
+				
+				Element displayTitleNode = ((Element)arg0).addElement("display-title");				
+				displayTitleNode.addAttribute("value", displayTitle.isSelected()?TRUE:FALSE);
+				
+				Element noPageScalingNode = ((Element)arg0).addElement("no-page-scaling");				
+				noPageScalingNode.addAttribute("value", noPageScaling.isSelected()?TRUE:FALSE);
+				
+				Element fileDestination = ((Element)arg0).addElement("destination");
+				fileDestination.addAttribute("value", destFolderText.getText());			
+				
+				Element filePrefix = ((Element)arg0).addElement("prefix");
+				filePrefix.addAttribute("value", outPrefixTextField.getText());	
+				
+				Element file_overwrite = ((Element)arg0).addElement("overwrite");
+				file_overwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
+
+				Element fileCompress = ((Element)arg0).addElement("compressed");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
+				
+				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
+				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
+
+			}
+			return arg0;
+		}
+		catch (Exception ex){
+            throw new SaveJobException(ex);                     
+        }
 	}
 
 	public String getPluginAuthor() {
@@ -521,13 +708,303 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 	}
 
 	public void loadJobNode(Node arg0) throws LoadJobException {
-		// TODO Auto-generated method stub
+		if(arg0!=null){
+			try{
+				resetPanel();
+				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
+				if (fileSource != null && fileSource.getText().length()>0){
+					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
+					String password = null;
+					if (filePwd != null && filePwd.getText().length()>0){
+						password = filePwd.getText();
+					}
+					selectionPanel.getLoader().addFile(new File(fileSource.getText()), password);
+				}
+						
+				Node viewerLayoutNode = (Node) arg0.selectSingleNode("viewer-layout/@value");
+				if (viewerLayoutNode != null){
+					for (int i = 0; i<viewerLayout.getItemCount(); i++){
+						if(((StringItem)viewerLayout.getItemAt(i)).getId().equals(viewerLayoutNode.getText())){
+							viewerLayout.setSelectedIndex(i);
+							break;
+						}
+					}
+				}
+
+				Node viewerOpenModeNode = (Node) arg0.selectSingleNode("viewer-open-mode/@value");
+				if (viewerOpenModeNode != null){
+					for (int i = 0; i<viewerOpenMode.getItemCount(); i++){
+						if(((StringItem)viewerOpenMode.getItemAt(i)).getId().equals(viewerOpenModeNode.getText())){
+							viewerOpenMode.setSelectedIndex(i);
+							break;
+						}
+					}
+				}
+
+				Node nonFullScreenModeNode = (Node) arg0.selectSingleNode("non-fullscreen-mode/@value");
+				if (nonFullScreenModeNode != null){
+					for (int i = 0; i<nonFullScreenMode.getItemCount(); i++){
+						if(((StringItem)nonFullScreenMode.getItemAt(i)).getId().equals(nonFullScreenModeNode.getText())){
+							nonFullScreenMode.setSelectedIndex(i);
+							break;
+						}
+					}
+				}
+
+				Node directionComboNode = (Node) arg0.selectSingleNode("direction/@value");
+				if (directionComboNode != null){
+					for (int i = 0; i<directionCombo.getItemCount(); i++){
+						if(((StringItem)directionCombo.getItemAt(i)).getId().equals(directionComboNode.getText())){
+							directionCombo.setSelectedIndex(i);
+							break;
+						}
+					}
+				}
+				
+				Node hideMenuBarNode = (Node) arg0.selectSingleNode("hide-menu-bar/@value");
+				if (hideMenuBarNode != null){
+					hideMenuBar.setSelected(TRUE.equals(hideMenuBarNode.getText()));
+				}
+
+				Node hideToolBarNode = (Node) arg0.selectSingleNode("hide-tool-bar/@value");
+				if (hideToolBarNode != null){
+					hideToolBar.setSelected(TRUE.equals(hideToolBarNode.getText()));
+				}
+
+				Node hideUIElementsNode = (Node) arg0.selectSingleNode("hide-ui-elements/@value");
+				if (hideUIElementsNode != null){
+					hideUIElements.setSelected(TRUE.equals(hideUIElementsNode.getText()));
+				}
+
+				Node resizeNode = (Node) arg0.selectSingleNode("resize/@value");
+				if (resizeNode != null){
+					resizeToFit.setSelected(TRUE.equals(resizeNode.getText()));
+				}
+
+				Node centerScreenNode = (Node) arg0.selectSingleNode("center-screen/@value");
+				if (centerScreenNode != null){
+					centerScreen.setSelected(TRUE.equals(centerScreenNode.getText()));
+				}
+
+				Node displayTitleNode = (Node) arg0.selectSingleNode("display-title/@value");
+				if (displayTitleNode != null && TRUE.equals(displayTitleNode.getText())){
+					displayTitle.doClick();
+				}
+
+				Node noPageScalingNode = (Node) arg0.selectSingleNode("no-page-scaling/@value");
+				if (noPageScalingNode != null && TRUE.equals(noPageScalingNode.getText())){
+					noPageScaling.doClick();
+				}
+				
+				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+				if (fileDestination != null){
+					destFolderText.setText(fileDestination.getText());
+				}
+
+				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+				if (fileOverwrite != null){
+					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
+				}
+
+				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+					outputCompressedCheck.doClick();
+				}
+				
+				Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
+				if (filePrefix != null){
+					outPrefixTextField.setText(filePrefix.getText());
+				}
+
+				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+				if (pdfVersion != null){
+					for (int i = 0; i<versionCombo.getItemCount(); i++){
+						if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+							versionCombo.setSelectedIndex(i);
+							break;
+						}
+					}
+				}
+				
+				log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer options section loaded."));  
+            }
+			catch (Exception ex){
+				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
+			}
+		}	
 
 	}
 
 	public void resetPanel() {
-		// TODO Auto-generated method stub
+		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		destFolderText.setText("");
+		versionCombo.resetComponent();
+		outputCompressedCheck.setSelected(false);
+		hideMenuBar.setSelected(false);
+		hideToolBar.setSelected(false);
+		hideUIElements.setSelected(false);
+		resizeToFit.setSelected(false);
+		centerScreen.setSelected(false);
+		displayTitle.setSelected(false);
+		noPageScaling.setSelected(false);
+		overwriteCheckbox.setSelected(false);
+		viewerLayout.setSelectedIndex(0);
+		viewerOpenMode.setSelectedIndex(0);
+		nonFullScreenMode.setSelectedIndex(0);
+		directionCombo.setSelectedIndex(0);
+		destFolderText.setText("");
+		outPrefixTextField.setText("");
 
 	}
+	
+	   /**
+     * 
+     * @author Andrea Vacondio
+     * Focus policy for set viewer panel
+     *
+     */
+    public class SetViewerFocusPolicy extends FocusTraversalPolicy {
+        public SetViewerFocusPolicy(){
+            super();
+        }
+        
+        public Component getComponentAfter(Container CycleRootComp, Component aComponent){            
+        	if (aComponent.equals(selectionPanel.getAddFileButton())){
+                return selectionPanel.getRemoveFileButton();
+            }
+            else if (aComponent.equals(selectionPanel.getRemoveFileButton())){               
+                return selectionPanel.getClearButton();
+            }  
+            else if (aComponent.equals(selectionPanel.getClearButton())){
+                return viewerOpenMode;
+            }           
+            else if (aComponent.equals(viewerOpenMode)){
+                return nonFullScreenMode;
+            }
+            else if (aComponent.equals(nonFullScreenMode)){
+                return directionCombo;
+            }
+            else if (aComponent.equals(directionCombo)){
+                return hideMenuBar;
+            }
+            else if (aComponent.equals(hideMenuBar)){
+                return hideToolBar;
+            }
+            else if (aComponent.equals(hideToolBar)){
+                return hideUIElements;
+            }
+            else if (aComponent.equals(hideUIElements)){
+                return centerScreen;
+            }
+            else if (aComponent.equals(centerScreen)){
+                return noPageScaling;
+            }
+            else if (aComponent.equals(noPageScaling)){
+                return resizeToFit;
+            }
+            else if (aComponent.equals(resizeToFit)){
+                return displayTitle;
+            }
+            else if (aComponent.equals(displayTitle)){
+                return destFolderText;
+            }
+            else if (aComponent.equals(destFolderText)){
+                return browseDestButton;
+            }
+            else if (aComponent.equals(browseDestButton)){
+                return overwriteCheckbox;
+            }   
+			else if (aComponent.equals(overwriteCheckbox)){
+				return outputCompressedCheck;
+			}
+			else if (aComponent.equals(outputCompressedCheck)){
+				return versionCombo;
+			}            
+			else if (aComponent.equals(versionCombo)){
+				return runButton;
+			}            
+            else if (aComponent.equals(runButton)){
+                return selectionPanel.getAddFileButton();
+            }
+            return selectionPanel.getAddFileButton();
+        }
+        
+        public Component getComponentBefore(Container CycleRootComp, Component aComponent){
+            
+        	if (aComponent.equals(runButton)){
+				return outPrefixTextField;
+			}
+			else if (aComponent.equals(outPrefixTextField)){
+				return versionCombo;
+			}
+			else if (aComponent.equals(versionCombo)){
+				return overwriteCheckbox;
+			}
+			else if (aComponent.equals(outputCompressedCheck)){
+				return overwriteCheckbox;
+			}           
+            else if (aComponent.equals(overwriteCheckbox)){            	
+                return browseDestButton;              
+            }
+            else if (aComponent.equals(browseDestButton)){
+                return destFolderText;
+            }                
+            else if (aComponent.equals(viewerOpenMode)){
+                return selectionPanel.getClearButton();
+            }
+            else if (aComponent.equals(nonFullScreenMode)){
+                return viewerOpenMode;
+            }
+            else if (aComponent.equals(directionCombo)){
+                return nonFullScreenMode;
+            }
+            else if (aComponent.equals(hideMenuBar)){
+                return directionCombo;
+            }
+            else if (aComponent.equals(hideToolBar)){
+                return hideMenuBar;
+            }
+            else if (aComponent.equals(hideUIElements)){
+                return hideToolBar;
+            }
+            else if (aComponent.equals(centerScreen)){
+                return hideUIElements;
+            }
+            else if (aComponent.equals(noPageScaling)){
+                return centerScreen;
+            }
+            else if (aComponent.equals(resizeToFit)){
+                return noPageScaling;
+            }
+            else if (aComponent.equals(displayTitle)){
+                return resizeToFit;
+            }
+            else if (aComponent.equals(destFolderText)){
+                return displayTitle;
+            }
+            else if (aComponent.equals(selectionPanel.getClearButton())){
+               return selectionPanel.getRemoveFileButton();
+            }        
+            else if (aComponent.equals(selectionPanel.getRemoveFileButton())){
+                return selectionPanel.getAddFileButton();
+            }
+            else if (aComponent.equals(selectionPanel.getAddFileButton())){
+                return runButton;
+            }
+            return selectionPanel.getAddFileButton();
+        }
+        
+        public Component getDefaultComponent(Container CycleRootComp){
+            return selectionPanel.getAddFileButton();
+        }
+
+        public Component getLastComponent(Container CycleRootComp){
+            return runButton;
+        }
+
+        public Component getFirstComponent(Container CycleRootComp){
+            return selectionPanel.getAddFileButton();
+        }
+    } 
 
 }
