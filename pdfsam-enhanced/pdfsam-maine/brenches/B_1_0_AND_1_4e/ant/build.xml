@@ -30,13 +30,14 @@
 	    <property name="template.dir" value="${workspace.dir}/template-${pdfsam.version}-${pdfsam.main.version}"/>
 	    <property name="jcmdline.dir" value="${workspace.dir}/jcmdline"/>
 	    <property name="emp4j.dir" value="${workspace.dir}/emp4j"/>
-	    <property name="console.dir" value="${workspace.dir}/pdfsam-console-br1"/>
+	    <property name="console.dir" value="${workspace.dir}/pdfsam-console"/>
 	    <property name="split.dir" value="${workspace.dir}/pdfsam-split"/>
 	    <property name="merge.dir" value="${workspace.dir}/pdfsam-merge"/>
 	    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
 		<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
 		<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
+		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
@@ -155,6 +156,11 @@
 	  	<ant antfile="${merge.dir}/ant/build.xml" dir="${merge.dir}" target="build-jars">
 	  		<property name="pdfsam-merge.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
+		
+	  	<!--mix-->
+	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="build-jars">
+	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
 	  	
 	  	<antcall target="build-jars-enhanced" />
 	  </target>
@@ -162,12 +168,7 @@
 	
 	<!-- build the pdfsam enhanced jars -->
 	<target name="build-jars-enhanced" if="isEnhanced" description="generate the enhanced plugins distribution" >
-		
-		<!--mix-->
-	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="build-jars">
-	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
-	  	</ant>
-		
+				
 		<!--cover-->
 	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="build-jars">
 	  		<property name="pdfsam-cover.dist.dir" value="${pdfsam.release.jar.dir}"/>
@@ -179,9 +180,14 @@
 	  	</ant>
 
 		<!--unpack-->
-	 <!-- 	<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="build-jars">
+	  	<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="build-jars">
 	  		<property name="pdfsam-unpack.dist.dir" value="${pdfsam.release.jar.dir}"/>
-	  	</ant>-->
+	  	</ant>
+
+		<!--setviewer-->
+	  	<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="build-jars">
+	  		<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
 
 	</target>
 	
@@ -227,16 +233,17 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar" todir="${pdfsam.release.dist.dir}" overwrite="true"/>		
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-split.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/split" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-merge.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/merge" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
 		
 		<antcall target="dist-enhanced" />		
 	</target>
 
 	<target name="dist-enhanced" if="isEnhanced" description="distribution of the enhanced plugins of pdfsam" >
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-cover.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/cover" overwrite="true"/>
-		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-encrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/encrypt" overwrite="true"/>
-		<!--<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>-->
-	</target>	
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-setviewer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/setviewer" overwrite="true"/>
+</target>	
 
 	<!--deploy pdfsam-->	
 	<target name="deploy" depends="dist" description="distribution to the deploy dir" >
@@ -339,7 +346,12 @@
 	  	<ant antfile="${merge.dir}/ant/build.xml" dir="${merge.dir}" target="buildZipSrcPackage">
 	  		  	<property name="pdfsam-merge.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
-
+		
+	  	<!--mix-->
+	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+	  	
 	  	<antcall target="buildZipSrcPackage-enhanced" />
 	  	
 	  	<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" >
@@ -370,11 +382,6 @@
 	
 	<!--build zip package for enhanced plugins-->
 	<target name="buildZipSrcPackage-enhanced" if="isEnhanced" description="generate the zip files for enhanced plugins distribution" >
-			
-	  	<!--mix-->
-	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="buildZipSrcPackage">
-	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
-	  	</ant>
 
 	  	<!--cover-->
 	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="buildZipSrcPackage">
@@ -384,6 +391,16 @@
 		<!--encrypt-->
 	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="buildZipSrcPackage">
 	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--unpack-->
+	  	<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-unpack.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--setviewer-->
+	  	<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
 	</target>	

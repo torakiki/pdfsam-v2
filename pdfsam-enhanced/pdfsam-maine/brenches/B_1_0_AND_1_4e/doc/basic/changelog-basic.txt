@@ -1,3 +1,15 @@
+1.1.0 stable release ()
+===================================
+-Merge: fixed a JFileChooser call
+-Lazy JFileChooser init when call environment load/save 
+-Lazy JFileChooser init when call log save
+-Fixed memory leak when loading documents into JPdfSelectionPanel
+-Added the AlternateMix plugin from the enhanced version
+-Console: added to "setviewer" command
+-Console: added to "decrypt" command
+-Console: added to "slideshow" command
+-JFileChooser now looks at the JTextField to find if it's already filled. 
+
 1.0.3 stable release (26-Oct-2008)
 ===================================
 -Fixed bug #2122945

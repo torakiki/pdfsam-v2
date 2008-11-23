@@ -1,3 +1,19 @@
+1.5.0e stable release ()
+===================================
+-Merge: fixed a JFileChooser call
+-Lazy JFileChooser init when call environment load/save 
+-Lazy JFileChooser init when call log save
+-Fixed memory leak when loading documents into JPdfSelectionPanel
+-Added the Unpack plugin
+-Added the SetViewerOptions plugin
+-Console: added to "setviewer" command
+-Console: added to "decrypt" command
+-Console: added to "slideshow" command
+-Encrypt: fixed a constant name
+-Encrypt: fixed focus policy
+-JFileChooser now looks at the JTextField to find if it's already filled. 
+
+
 1.4.3e stable release (26-Oct-2008)
 ===================================
 -Fixed bug #2122945 

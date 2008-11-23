@@ -112,6 +112,7 @@ public class CommonComponentsFactory {
 		
 		case COMPRESS_CHECKBOX_TYPE:
 			retVal.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Compress output file/files"));
+			retVal.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.5");			
 			break;
 		
 		case OVERWRITE_CHECKBOX_TYPE:

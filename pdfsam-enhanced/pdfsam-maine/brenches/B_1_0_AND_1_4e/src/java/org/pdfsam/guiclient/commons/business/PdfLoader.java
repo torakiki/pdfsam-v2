@@ -15,7 +15,6 @@
 package org.pdfsam.guiclient.commons.business;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -262,8 +261,8 @@ public class PdfLoader {
             	tableItem.setPassword(password);
             	tableItem.setPageSelection(pageSelection);
                 try{
-                    //fix 03/07 for memory usage
-                    pdfReader = new PdfReader(new RandomAccessFileOrArray(new FileInputStream(fileToAdd)), (password != null)?password.getBytes():null);
+                    //fix 04/11/08 for memory usage
+                    pdfReader = new PdfReader(new RandomAccessFileOrArray(fileToAdd.getAbsolutePath()), (password != null)?password.getBytes():null);                	
                     tableItem.setEncrypted(pdfReader.isEncrypted());
                     tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
                     tableItem.setPdfVersion(pdfReader.getPdfVersion());
