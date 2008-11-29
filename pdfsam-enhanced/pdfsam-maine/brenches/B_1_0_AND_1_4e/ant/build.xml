@@ -36,6 +36,7 @@
 	    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
 		<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
 		<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
+		<property name="decrypt.dir" value="${workspace.dir}/pdfsam-decrypt"/>
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
@@ -179,6 +180,11 @@
 	  		<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 
+		<!--decrypt-->
+	  	<ant antfile="${decrypt.dir}/ant/build.xml" dir="${decrypt.dir}" target="build-jars">
+	  		<property name="pdfsam-decrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
 		<!--unpack-->
 	  	<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="build-jars">
 	  		<property name="pdfsam-unpack.dist.dir" value="${pdfsam.release.jar.dir}"/>
@@ -241,6 +247,7 @@
 	<target name="dist-enhanced" if="isEnhanced" description="distribution of the enhanced plugins of pdfsam" >
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-cover.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/cover" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-encrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/encrypt" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-decrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/decrypt" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-setviewer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/setviewer" overwrite="true"/>
 </target>	
@@ -391,6 +398,11 @@
 		<!--encrypt-->
 	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="buildZipSrcPackage">
 	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--decrypt-->
+	  	<ant antfile="${decrypt.dir}/ant/build.xml" dir="${decrypt.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-decrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
 		<!--unpack-->

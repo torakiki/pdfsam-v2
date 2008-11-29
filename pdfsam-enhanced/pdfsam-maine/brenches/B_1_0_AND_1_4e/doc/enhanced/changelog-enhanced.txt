@@ -1,4 +1,4 @@
-1.5.0e stable release ()
+1.5.0e ()
 ===================================
 -Merge: fixed a JFileChooser call
 -Lazy JFileChooser init when call environment load/save 
@@ -6,9 +6,13 @@
 -Fixed memory leak when loading documents into JPdfSelectionPanel
 -Added the Unpack plugin
 -Added the SetViewerOptions plugin
+-Added the Decrypt plugin
 -Console: added to "setviewer" command
 -Console: added to "decrypt" command
 -Console: added to "slideshow" command
+-Console: new complex prefix [FILENUMBER]
+-Console: complex prefix [FILENUMBER] and [CURRENTPAGE] can take now the output patter (Ex. [FILENUMBER###]
+-Console: Dual license GPL and LGPL 
 -Encrypt: fixed a constant name
 -Encrypt: fixed focus policy
 -JFileChooser now looks at the JTextField to find if it's already filled. 

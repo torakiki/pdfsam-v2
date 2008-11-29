@@ -1,4 +1,4 @@
-1.1.0 stable release ()
+1.1.0 ()
 ===================================
 -Merge: fixed a JFileChooser call
 -Lazy JFileChooser init when call environment load/save 
@@ -8,6 +8,9 @@
 -Console: added to "setviewer" command
 -Console: added to "decrypt" command
 -Console: added to "slideshow" command
+-Console: new complex prefix [FILENUMBER]
+-Console: complex prefix [FILENUMBER] and [CURRENTPAGE] can take now the output patter (Ex. [FILENUMBER###]
+-Console: Dual license GPL and LGPL 
 -JFileChooser now looks at the JTextField to find if it's already filled. 
 
 1.0.3 stable release (26-Oct-2008)
