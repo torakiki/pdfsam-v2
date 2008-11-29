@@ -40,7 +40,6 @@ package org.pdfsam.console.business.pdf.handlers;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -114,12 +113,13 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
         //we retrieve the total number of pages
         int n = pdfReader.getNumberOfPages();
+        int fileNum = 0;
         log.info("Found "+n+" pages in input pdf document.");
-        DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);
         for (currentPage = 1; currentPage <= n; currentPage++) {
 			log.debug("Creating a new document.");
+			fileNum++;
         	File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-        	File outFile = new File(inputCommand.getOutputFile().getCanonicalPath(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
+        	File outFile = new File(inputCommand.getOutputFile().getCanonicalPath(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
         	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
         	
             PdfSmartCopy pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
@@ -162,8 +162,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
          PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
          //we retrieve the total number of pages
          int n = pdfReader.getNumberOfPages();
+         int fileNum = 0;
          log.info("Found "+n+" pages in input pdf document.");
-         DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);
          int currentPage;
          Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
          boolean isTimeToClose = false;
@@ -186,8 +186,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
            
             if (!isTimeToClose){
 				log.debug("Creating a new document.");
+				fileNum++;
             	tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
+            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
             	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
 
             	pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
@@ -231,8 +232,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
     private void executeSplit(SplitParsedCommand inputCommand) throws Exception{
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
         int n = pdfReader.getNumberOfPages();
+        int fileNum = 0;
         log.info("Found "+n+" pages in input pdf document.");
-        DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);
         
         Integer[] limits = inputCommand.getSplitPageNumbers();
 		// limits list validation end clean
@@ -261,8 +262,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             //check if i've to read one more page or to open a new doc
             if (relativeCurrentPage == 1){            	
 				log.debug("Creating a new document.");
-            	tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
+            	fileNum++;
+				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());            	
+            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
             	startPage = currentPage;
             	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
                 
@@ -350,8 +352,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	private void executeSizeSplit(SplitParsedCommand inputCommand) throws Exception{
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
         int n = pdfReader.getNumberOfPages();
+        int fileNum = 0;
         log.info("Found "+n+" pages in input pdf document.");
-        DecimalFormat fileNumberFormatter = getFileNumberFormatter(n);
         int currentPage;        
 		Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
         PdfSmartCopy pdfWriter = null;
@@ -367,8 +369,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			if (relativeCurrentPage == 1){
 				log.debug("Creating a new document.");
 				startPage = currentPage;
+				fileNum++;
 				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-	        	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(fileNumberFormatter.format(currentPage)));
+	        	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
 	        	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
 	        	baos = new ByteArrayOutputStream(); 
 	        	pdfWriter = new PdfSmartCopy(currentDocument, baos);
@@ -423,27 +426,13 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		pdfReader.close();  
 		log.info("Split "+inputCommand.getSplitType()+" done.");
 	}
-  
-    /**
-     * @param n number of pages
-     * @return the DecimalFormat
-     */
-    private DecimalFormat getFileNumberFormatter(int n){
-    	DecimalFormat retVal = new DecimalFormat();
-    	try {
-    		retVal.applyPattern(Integer.toString(n).replaceAll("\\d", "0"));
-		} catch (Exception fe) {
-			retVal.applyPattern("00000");
-		}
-		return retVal;
-    }
 
     /**
 	 * Validate the limit list in "split after these pages"
 	 * 
-	 * @param limits limits array containig page numbers
+	 * @param limits limits array containing page numbers
 	 * @param upperLimit max page number
-	 * @return epurated list
+	 * @return purged list
 	 */
 	private TreeSet validateSplitLimits(Integer[] limits, int upperLimit) {
 		TreeSet limitsList = new TreeSet();

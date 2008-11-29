@@ -88,19 +88,26 @@ public class SetViewerCmdValidator extends AbstractCmdValidator {
 		        
 				//-mode
 		        StringParam mOption = (StringParam) cmdLineHandler.getOption(SetViewerParsedCommand.M_ARG);
-		        parsedCommandDTO.setMode(getMode(mOption.getValue()));		     
-		        
+		        if(mOption.isSet()){
+		        	parsedCommandDTO.setMode(getMode(mOption.getValue()));		     
+		        }
 				//-layout
 		        StringParam lOption = (StringParam) cmdLineHandler.getOption(SetViewerParsedCommand.L_ARG);
-		        parsedCommandDTO.setLayout(getLayout(lOption.getValue()));	       
+		        if(lOption.isSet()){
+		        	parsedCommandDTO.setLayout(getLayout(lOption.getValue()));	       
+		        }
 		        
 				//-nfsmode
 		        StringParam nfsmOption = (StringParam) cmdLineHandler.getOption(SetViewerParsedCommand.NFSM_ARG);		      
-		        parsedCommandDTO.setNfsmode(getNFSMode(nfsmOption.getValue()));
+		        if(nfsmOption.isSet()){
+		        	parsedCommandDTO.setNfsmode(getNFSMode(nfsmOption.getValue()));
+		        }
 		        
 				//-direction
 		        StringParam dOption = (StringParam) cmdLineHandler.getOption(SetViewerParsedCommand.D_ARG);
-		        parsedCommandDTO.setDirection(getDirection(dOption.getValue()));
+		        if(dOption.isSet()){
+		        	parsedCommandDTO.setDirection(getDirection(dOption.getValue()));
+		        }
 		        
 				 //-f
 		        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");
@@ -142,9 +149,11 @@ public class SetViewerCmdValidator extends AbstractCmdValidator {
 	 * @return The direction to iText 
 	 */
 	private int getDirection(String direction){
-		int retVal = PdfWriter.DirectionL2R;
+		int retVal = 0;
 		if(SetViewerParsedCommand.D_R2L.equals(direction)){
 			retVal = PdfWriter.DirectionR2L;
+		}else if (SetViewerParsedCommand.D_L2R.equals(direction)){
+			retVal = PdfWriter.DirectionL2R;
 		}
 		return retVal;
 	}

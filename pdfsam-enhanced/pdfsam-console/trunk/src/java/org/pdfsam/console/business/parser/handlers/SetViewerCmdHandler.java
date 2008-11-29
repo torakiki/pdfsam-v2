@@ -91,8 +91,8 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
                        		  StringParam.OPTIONAL, 
                        		  StringParam.SINGLE_VALUED),
 	          new StringParam(SetViewerParsedCommand.D_ARG,   
-                       		  "direction {"+SetViewerParsedCommand.D_L2R+", "+SetViewerParsedCommand.D_R2L+"}. If omitted it uses "+SetViewerParsedCommand.D_L2R,
-                       		  new String[] { SetViewerParsedCommand.D_L2R, SetViewerParsedCommand.D_R2L},
+                       		  "direction {"+SetViewerParsedCommand.D_L2R+", "+SetViewerParsedCommand.D_R2L+", "+SetViewerParsedCommand.D_NONE+"}. If omitted it uses "+SetViewerParsedCommand.D_NONE,
+                       		  new String[] { SetViewerParsedCommand.D_L2R, SetViewerParsedCommand.D_R2L, SetViewerParsedCommand.D_NONE},
                        		  StringParam.OPTIONAL, 
                        		  StringParam.SINGLE_VALUED),
               new BooleanParam(SetViewerParsedCommand.HIDEMENU_ARG, "hide the menu bar"),
@@ -115,7 +115,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
     "'-layout chosenlayout' to set the viewer layout for the document. Possible values { "+SetViewerParsedCommand.L_ONECOLUMN+", "+SetViewerParsedCommand.L_SINGLEPAGE+", "+SetViewerParsedCommand.L_TWOCOLUMNLEFT+", "+SetViewerParsedCommand.L_TWOCOLUMNRIGHT+", "+SetViewerParsedCommand.L_TWOPAGELEFT+", "+SetViewerParsedCommand.L_TWOPAGERIGHT+"} \n"+
     "'-mode chosenmode' to set the viewer mode for the document. Possible values {"+SetViewerParsedCommand.M_ATTACHMENTS+", "+SetViewerParsedCommand.M_FULLSCREEN+", "+SetViewerParsedCommand.M_NONE+", "+SetViewerParsedCommand.M_OCONTENT+", "+SetViewerParsedCommand.M_OUTLINES+", "+SetViewerParsedCommand.M_THUMBS+"}. If omitted it uses "+SetViewerParsedCommand.M_NONE+"\n"+
     "'-nfsmode chosennonfullscreenmode' to set the viewer mode for the document when exiting full screen mode. Possible values {"+SetViewerParsedCommand.NFSM_NONE+", "+SetViewerParsedCommand.NFSM_OCONTENT+", "+SetViewerParsedCommand.NFSM_OUTLINES+", "+SetViewerParsedCommand.NFSM_THUMBS+"}. If omitted it uses "+SetViewerParsedCommand.NFSM_NONE+" \n"+
-    "'-direction chosendirection' to set the viewer direction. Possible values {"+SetViewerParsedCommand.D_L2R+", "+SetViewerParsedCommand.D_R2L+"}\n"+
+    "'-direction chosendirection' to set the viewer direction. Possible values {"+SetViewerParsedCommand.D_L2R+", "+SetViewerParsedCommand.D_R2L+", "+SetViewerParsedCommand.D_NONE+"}\n"+
     "'-"+SetViewerParsedCommand.HIDEMENU_ARG+"' hide the menu bar.\n"+
     "'-"+SetViewerParsedCommand.HIDETOOLBAR_ARG+"' hide the toolbar.\n"+
     "'-"+SetViewerParsedCommand.HIDEWINDOWUI_ARG+"' hide the user interface elements (scrollbars, ...).\n"+

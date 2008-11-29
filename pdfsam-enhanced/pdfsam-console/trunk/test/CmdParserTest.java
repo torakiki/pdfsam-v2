@@ -2,8 +2,6 @@ import junit.framework.TestCase;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
-import org.pdfsam.console.business.dto.commands.MixParsedCommand;
-import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.parser.CmdParseManager;
 
 
