@@ -14,11 +14,13 @@
  */
 package org.pdfsam.plugin.decrypt.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -27,15 +29,15 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -76,7 +78,6 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
-	private SpringLayout springLayoutDecryptPanel;
 	private Configuration config;
 	private JFileChooser browseDirChooser;
 
@@ -84,8 +85,6 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	//buttons
 	private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
 	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
-	
-	private final JLabel destinationLabel = new JLabel();
 
 	private final EnterDoClickListener runEnterkeyListener = new EnterDoClickListener(runButton);
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
@@ -106,22 +105,38 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		setPanelIcon("/images/decrypt.png");
         setPreferredSize(new Dimension(500,450));
         
-		springLayoutDecryptPanel = new SpringLayout();
-		setLayout(springLayoutDecryptPanel);
+        setLayout(new GridBagLayout());
+        
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+		add(selectionPanel, c);
 		
-		add(selectionPanel);
 		selectionPanel.addPropertyChangeListener(this);
 		selectionPanel.enableSetOutputPathMenuItem();
-		
-		destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
-		add(destinationLabel);
 		
 
 //		DESTINATION_PANEL
 		destinationPanelLayout = new SpringLayout();
-		destinationPanel.setLayout(destinationPanelLayout);
-		destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-		add(destinationPanel);
+		destinationPanel.setLayout(destinationPanelLayout);		 
+		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
+		destinationPanel.setBorder(titledBorder);
+		destinationPanel.setPreferredSize(new Dimension(200, 110));
+		destinationPanel.setMinimumSize(new Dimension(150, 100));
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;		
+		add(destinationPanel, c);
 //		END_DESTINATION_PANEL   
       
 		destinationPanel.add(destinationTextField);
@@ -228,7 +243,18 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 			}
 		});
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Decrypt selected files"));
-		add(runButton);
+        runButton.setSize(new Dimension(88,25));
+        
+        c.fill = GridBagConstraints.NONE;
+	    c.ipadx = 5;
+	    c.weightx = 0.0;
+	    c.weighty = 0.0;
+	    c.anchor = GridBagConstraints.LAST_LINE_END;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
+	    c.gridy = 2;
+	    c.insets = new Insets(10,5,5,5); 
+        add(runButton, c);
 //		END_RUN_BUTTON		
 		
 		destinationTextField.addKeyListener(runEnterkeyListener);
@@ -242,17 +268,6 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	 *
 	 */
 	private void setLayout(){
-		springLayoutDecryptPanel.putConstraint(SpringLayout.SOUTH, selectionPanel, 200, SpringLayout.NORTH, this);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
-      
-
-		springLayoutDecryptPanel.putConstraint(SpringLayout.SOUTH, destinationPanel, 110, SpringLayout.NORTH, destinationPanel);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.EAST, destinationPanel, -7, SpringLayout.EAST, this);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.NORTH, destinationPanel, 35, SpringLayout.SOUTH, selectionPanel);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
-
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationTextField, 30, SpringLayout.NORTH, destinationPanel);
@@ -262,9 +277,6 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, overwriteCheckbox, 5, SpringLayout.SOUTH, destinationTextField);
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, overwriteCheckbox, 0, SpringLayout.WEST, destinationTextField);
 
-		springLayoutDecryptPanel.putConstraint(SpringLayout.SOUTH, destinationLabel, 0, SpringLayout.NORTH, destinationPanel);
-		springLayoutDecryptPanel.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, destinationPanel);
-
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseButton, 25, SpringLayout.NORTH, browseButton);
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, browseButton, -10, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, browseButton, 0, SpringLayout.NORTH, destinationTextField);
@@ -272,11 +284,6 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);                
-
-        springLayoutDecryptPanel.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        springLayoutDecryptPanel.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        springLayoutDecryptPanel.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        springLayoutDecryptPanel.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
 
 	}
 
