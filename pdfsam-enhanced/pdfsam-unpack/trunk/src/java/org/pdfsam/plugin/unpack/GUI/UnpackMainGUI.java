@@ -14,11 +14,13 @@
  */
 package org.pdfsam.plugin.unpack.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -27,15 +29,15 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -76,7 +78,6 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
-	private SpringLayout springLayoutUnpackPanel;
 	private Configuration config;
 	private JFileChooser browseDirChooser;
 
@@ -85,8 +86,6 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
 	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
 	
-	private final JLabel destinationLabel = new JLabel();
-
 	private final EnterDoClickListener runEnterkeyListener = new EnterDoClickListener(runButton);
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
@@ -105,23 +104,40 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		config = Configuration.getInstance();
 		setPanelIcon("/images/unpack.png");
         setPreferredSize(new Dimension(500,450));
+           
+        setLayout(new GridBagLayout());
         
-		springLayoutUnpackPanel = new SpringLayout();
-		setLayout(springLayoutUnpackPanel);
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+		add(selectionPanel, c);
 		
-		add(selectionPanel);
 		selectionPanel.addPropertyChangeListener(this);
 		selectionPanel.enableSetOutputPathMenuItem();
-		
-		destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
-		add(destinationLabel);
 		
 
 //		DESTINATION_PANEL
 		destinationPanelLayout = new SpringLayout();
-		destinationPanel.setLayout(destinationPanelLayout);
-		destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-		add(destinationPanel);
+		destinationPanel.setLayout(destinationPanelLayout);		 
+		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
+		destinationPanel.setBorder(titledBorder);
+		destinationPanel.setPreferredSize(new Dimension(200, 110));
+		destinationPanel.setMinimumSize(new Dimension(150, 100));
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;		
+		add(destinationPanel, c);
+		
 //		END_DESTINATION_PANEL   
       
 		destinationPanel.add(destinationTextField);
@@ -228,7 +244,18 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 			}
 		});
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Unpack selected files"));
-		add(runButton);
+        runButton.setSize(new Dimension(88,25));
+        
+        c.fill = GridBagConstraints.NONE;
+	    c.ipadx = 5;
+	    c.weightx = 0.0;
+	    c.weighty = 0.0;
+	    c.anchor = GridBagConstraints.LAST_LINE_END;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
+	    c.gridy = 2;
+	    c.insets = new Insets(10,5,5,5); 
+        add(runButton, c);
 //		END_RUN_BUTTON		
 		
 		destinationTextField.addKeyListener(runEnterkeyListener);
@@ -242,16 +269,6 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	 *
 	 */
 	private void setLayout(){
-		springLayoutUnpackPanel.putConstraint(SpringLayout.SOUTH, selectionPanel, 200, SpringLayout.NORTH, this);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
-      
-
-		springLayoutUnpackPanel.putConstraint(SpringLayout.SOUTH, destinationPanel, 110, SpringLayout.NORTH, destinationPanel);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.EAST, destinationPanel, -7, SpringLayout.EAST, this);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.NORTH, destinationPanel, 35, SpringLayout.SOUTH, selectionPanel);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
 
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
@@ -262,21 +279,13 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, overwriteCheckbox, 5, SpringLayout.SOUTH, destinationTextField);
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, overwriteCheckbox, 0, SpringLayout.WEST, destinationTextField);
 
-		springLayoutUnpackPanel.putConstraint(SpringLayout.SOUTH, destinationLabel, 0, SpringLayout.NORTH, destinationPanel);
-		springLayoutUnpackPanel.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, destinationPanel);
-
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseButton, 25, SpringLayout.NORTH, browseButton);
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, browseButton, -10, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, browseButton, 0, SpringLayout.NORTH, destinationTextField);
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, browseButton, -88, SpringLayout.EAST, browseButton);        
 
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
-        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);                
-
-        springLayoutUnpackPanel.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        springLayoutUnpackPanel.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        springLayoutUnpackPanel.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        springLayoutUnpackPanel.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);               
 
 	}
 
