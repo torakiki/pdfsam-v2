@@ -14,11 +14,13 @@
  */
 package org.pdfsam.plugin.mix.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -26,6 +28,9 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.LinkedList;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -34,7 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -76,6 +81,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private SpringLayout destinationPanelLayout;
 	private JPanel destinationPanel = new JPanel();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.DOUBLE_SELECTABLE_FILE, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
+	private JPanel topPanel = new JPanel();
+	private JPanel mixOptionsPanel = new JPanel();
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
     private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
@@ -83,7 +90,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final JCheckBox reverseSecondCheckbox = new JCheckBox();
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
-	private SpringLayout springLayoutMixPanel;
 	private Configuration config;
 	private JFileChooser browseFileChooser;
 
@@ -92,7 +98,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
 	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
 	
-	private final JLabel destinationLabel = new JLabel();
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
 	private final EnterDoClickListener runEnterkeyListener = new EnterDoClickListener(runButton);
@@ -117,37 +122,77 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		setPanelIcon("/images/mix.png");
         setPreferredSize(new Dimension(500,450));
 		
-		//set focus  policy
-		springLayoutMixPanel = new SpringLayout();
-		setLayout(springLayoutMixPanel);
+        setLayout(new GridBagLayout());
+        
+   
+        topPanel.setLayout(new GridBagLayout());
+        GridBagConstraints topConst = new GridBagConstraints();
+        topConst.fill = GridBagConstraints.BOTH;
+        topConst.ipady = 5;
+        topConst.weightx = 1.0;
+        topConst.weighty = 1.0;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 2;
+        topConst.gridx = 0;
+        topConst.gridy = 0;
+		topPanel.add(selectionPanel, topConst);
 		
-		add(selectionPanel);
-		selectionPanel.addPropertyChangeListener(this);
-		
-//		BROWSE_FILE_CHOOSER        
-		
+//CHECK_BOX	
+		mixOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Mix options")));
+		mixOptionsPanel.setLayout(new BoxLayout(mixOptionsPanel, BoxLayout.LINE_AXIS));
+		mixOptionsPanel.add(Box.createRigidArea(new Dimension(5,0)));
 
-
-		destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
-		add(destinationLabel);
-		
-		
-//CHECK_BOX		
 		reverseFirstCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse first document"));
-		reverseFirstCheckbox.setSelected(false);
-		add(reverseFirstCheckbox);
+		reverseFirstCheckbox.setSelected(false);		
+		mixOptionsPanel.add(reverseFirstCheckbox);
+		mixOptionsPanel.add(Box.createRigidArea(new Dimension(10,0)));
 
 		reverseSecondCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse second document"));
 		reverseSecondCheckbox.setSelected(true);
-		add(reverseSecondCheckbox);
+		mixOptionsPanel.add(reverseSecondCheckbox);
+
+
+        topConst.fill = GridBagConstraints.HORIZONTAL;
+        topConst.weightx = 0.0;
+        topConst.weighty = 0.0;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 1;
+        topConst.gridx = 0;
+        topConst.gridy = 2;
+        topPanel.add(mixOptionsPanel, topConst);
 		
 //END_CHECK_BOX
+		
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0, 0, 10, 0);
+		add(topPanel, c);
+		
+		selectionPanel.addPropertyChangeListener(this); 
 
 //		DESTINATION_PANEL
 		destinationPanelLayout = new SpringLayout();
 		destinationPanel.setLayout(destinationPanelLayout);
-		destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-		add(destinationPanel);
+		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
+		destinationPanel.setBorder(titledBorder);
+		destinationPanel.setPreferredSize(new Dimension(200, 130));
+		destinationPanel.setMinimumSize(new Dimension(150, 125));
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;	
+	    c.insets = new Insets(0, 0, 0, 0);
+		add(destinationPanel, c);
 //		END_DESTINATION_PANEL   
 	       
 		destinationPanel.add(destinationTextField);
@@ -285,7 +330,18 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 			}
 		});
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf alternate mix"));
-		add(runButton);
+	    runButton.setSize(new Dimension(88,25));
+        
+        c.fill = GridBagConstraints.NONE;
+	    c.ipadx = 5;
+	    c.weightx = 0.0;
+	    c.weighty = 0.0;
+	    c.anchor = GridBagConstraints.LAST_LINE_END;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
+	    c.gridy = 2;
+	    c.insets = new Insets(10,10,10,10); 
+        add(runButton, c);
 //		END_RUN_BUTTON		
 		
 		destinationTextField.addKeyListener(runEnterkeyListener);
@@ -299,25 +355,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	 *
 	 */
 	private void setLayout(){
-		springLayoutMixPanel.putConstraint(SpringLayout.SOUTH, selectionPanel, 200, SpringLayout.NORTH, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
-
-		springLayoutMixPanel.putConstraint(SpringLayout.SOUTH, reverseFirstCheckbox, 20, SpringLayout.NORTH, reverseFirstCheckbox);
-		springLayoutMixPanel.putConstraint(SpringLayout.EAST, reverseFirstCheckbox, -5, SpringLayout.EAST, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.NORTH, reverseFirstCheckbox, 2, SpringLayout.SOUTH, selectionPanel);
-		springLayoutMixPanel.putConstraint(SpringLayout.WEST, reverseFirstCheckbox, 5, SpringLayout.WEST, this);        
-
-		springLayoutMixPanel.putConstraint(SpringLayout.SOUTH, reverseSecondCheckbox, 20, SpringLayout.NORTH, reverseSecondCheckbox);
-		springLayoutMixPanel.putConstraint(SpringLayout.EAST, reverseSecondCheckbox, -5, SpringLayout.EAST, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.NORTH, reverseSecondCheckbox, 2, SpringLayout.SOUTH, reverseFirstCheckbox);
-		springLayoutMixPanel.putConstraint(SpringLayout.WEST, reverseSecondCheckbox, 5, SpringLayout.WEST, this);        
-
-		springLayoutMixPanel.putConstraint(SpringLayout.SOUTH, destinationPanel, 110, SpringLayout.NORTH, destinationPanel);
-		springLayoutMixPanel.putConstraint(SpringLayout.EAST, destinationPanel, -7, SpringLayout.EAST, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.NORTH, destinationPanel, 35, SpringLayout.SOUTH, reverseSecondCheckbox);
-		springLayoutMixPanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, reverseSecondCheckbox);
 
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
@@ -340,9 +377,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
 
-        springLayoutMixPanel.putConstraint(SpringLayout.SOUTH, destinationLabel, 0, SpringLayout.NORTH, destinationPanel);
-		springLayoutMixPanel.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, destinationPanel);
-
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseButton, 25, SpringLayout.NORTH, browseButton);
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, browseButton, -10, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, browseButton, 0, SpringLayout.NORTH, destinationTextField);
@@ -350,11 +384,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);                
-
-		springLayoutMixPanel.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-		springLayoutMixPanel.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-		springLayoutMixPanel.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-		springLayoutMixPanel.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
 
 	}
 

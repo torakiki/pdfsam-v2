@@ -124,7 +124,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 //		DESTINATION_PANEL
 		destinationPanelLayout = new SpringLayout();
 		destinationPanel.setLayout(destinationPanelLayout);		 
-		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
+		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder"));
 		destinationPanel.setBorder(titledBorder);
 		destinationPanel.setPreferredSize(new Dimension(200, 110));
 		destinationPanel.setMinimumSize(new Dimension(150, 100));
@@ -253,7 +253,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	    c.gridwidth = 1;
 	    c.gridx = 2;
 	    c.gridy = 2;
-	    c.insets = new Insets(10,5,5,5); 
+	    c.insets = new Insets(10,10,10,10);  
         add(runButton, c);
 //		END_RUN_BUTTON		
 		
