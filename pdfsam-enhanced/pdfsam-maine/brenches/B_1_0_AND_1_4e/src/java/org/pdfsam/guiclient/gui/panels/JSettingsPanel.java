@@ -15,11 +15,11 @@
 
 package org.pdfsam.guiclient.gui.panels;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +27,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -37,7 +38,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -94,6 +94,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final EnterDoClickListener saveEnterKeyListener = new EnterDoClickListener(saveButton);
 
 	private final JPanel settingsOptionsPanel = new JPanel();
+	private final JPanel gridOptionsPanel = new JPanel();
 //  focus policy 
     private final SettingsFocusPolicy settingsFocusPolicy = new SettingsFocusPolicy();	
 //labels    
@@ -127,32 +128,23 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         settingsLayout = new SpringLayout();
         setLayout(settingsLayout);
 		
-		settingsOptionsPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+		settingsOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Settings")));
         grayBorderSettingsLayout = new SpringLayout();
         settingsOptionsPanel.setLayout(grayBorderSettingsLayout);
         add(settingsOptionsPanel);
 		
-		themeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel:"));
-        settingsOptionsPanel.add(themeLabel);
-		
-		subThemeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Theme:"));
-        settingsOptionsPanel.add(subThemeLabel);
-		
+        gridOptionsPanel.setLayout(new GridLayout(4,4,3,3));
+
+		themeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel:"));		
+		subThemeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Theme:"));		
 		languageLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Language:"));
-        settingsOptionsPanel.add(languageLabel);
-
 		logLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"));
-        settingsOptionsPanel.add(logLabel);
-
-        checkNewVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates:"));
-        settingsOptionsPanel.add(checkNewVersionLabel);
-        
-		loadDefaultEnvLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load default environment at startup:"));
-        settingsOptionsPanel.add(loadDefaultEnvLabel);
-        
+        checkNewVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates:"));       
+		loadDefaultEnvLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load default environment at startup:"));        
         defaultDirLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory:"));
+        settingsOptionsPanel.add(loadDefaultEnvLabel);
         settingsOptionsPanel.add(defaultDirLabel);
-        
+      
         try{
         	loadDefaultEnv= new JTextField();
         	loadDefaultEnv.setText(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/defaultjob"));
@@ -170,7 +162,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 //JCOMBO
         languageCombo = new JComboBox(loadLanguages().toArray());
     	languageCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(languageCombo);
         try{
 	 		for (int i=0; i<languageCombo.getItemCount(); i++){
 	   			if (((StringItem)languageCombo.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/i18n"))){
@@ -184,8 +175,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         }
         
         comboLaf = new JComboBox(ThemeUtility.getLAFList().toArray());
-        comboLaf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(comboLaf);
+        comboLaf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
         try{
 	 		for (int i=0; i<comboLaf.getItemCount(); i++){
 	   			if (((StringItem)comboLaf.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"))){
@@ -198,8 +188,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	    }       
 	    
         comboTheme = new JComboBox(ThemeUtility.getThemeList().toArray());
-        comboTheme.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(comboTheme);
+        comboTheme.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
         try{
         	for (int i=0; i<comboTheme.getItemCount(); i++){
 	            if (((StringItem)comboTheme.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/theme"))){
@@ -230,8 +219,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         }); 
        
 	    comboLog = new JComboBox(loadLogLevels().toArray());
-        comboLog.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(comboLog);
+        comboLog.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
         try{
 	 		for (int i=0; i<comboLog.getItemCount(); i++){
 	   			if (((StringItem)comboLog.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/loglevel"))){
@@ -245,7 +233,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	    
 	    comboCheckNewVersion = new JComboBox(UpdatesUtility.getCheckNewVersionItems().toArray());
 	    comboCheckNewVersion.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(comboCheckNewVersion);
         try{	 		
    			if (config.isCheckForUpdates()){
    				comboCheckNewVersion.setSelectedItem(comboCheckNewVersion.getItemAt(1));
@@ -253,11 +240,37 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	    }catch (Exception e){
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
 	    }  
-	    
+
+	    //layout
+        checkNowButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check now"));
+        checkNowButton.setMargin(new Insets(2, 2, 2, 2));       
+
+        gridOptionsPanel.add(languageLabel);
+        gridOptionsPanel.add(languageCombo);
+        gridOptionsPanel.add(new JLabel());
+        gridOptionsPanel.add(new JLabel());
+        
+        gridOptionsPanel.add(themeLabel);
+        gridOptionsPanel.add(comboLaf);
+        gridOptionsPanel.add(subThemeLabel);
+        gridOptionsPanel.add(comboTheme);
+        
+        gridOptionsPanel.add(logLabel);
+        gridOptionsPanel.add(comboLog);
+        gridOptionsPanel.add(new JLabel());
+        gridOptionsPanel.add(new JLabel());
+        
+        gridOptionsPanel.add(checkNewVersionLabel);
+        gridOptionsPanel.add(comboCheckNewVersion);
+        gridOptionsPanel.add(new JLabel());
+        gridOptionsPanel.add(checkNowButton);
+        
+        settingsOptionsPanel.add(gridOptionsPanel);
+        
 	    playSounds = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Play alert sounds"));
 	    playSounds.setSelected(config.isPlaySounds());
 	    settingsOptionsPanel.add(playSounds);
-//END_JCOMBO
+
 //ENV_LABEL_PREFIX       
         String helpTextEnv = 
     		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Settings ")+"</b><ul>" +
@@ -308,13 +321,10 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         });         
         settingsOptionsPanel.add(browseDestDirButton);
 
-        checkNowButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check now"));
-        checkNowButton.setMargin(new Insets(2, 2, 2, 2));       
-        settingsOptionsPanel.add(checkNowButton);
-        
         saveButton.setIcon(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
         saveButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Save"));
-        saveButton.setMargin(new Insets(2, 2, 2, 2));
+        saveButton.setMargin(new Insets(5, 5, 5, 5));
+        saveButton.setSize(new Dimension(88,25));
 		saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 				try{
@@ -418,63 +428,18 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 280, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 300, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);
 
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, languageLabel, 40, SpringLayout.NORTH, this);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, languageLabel, 120, SpringLayout.WEST, this);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, languageLabel, 20, SpringLayout.NORTH, this);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, languageLabel, 5, SpringLayout.WEST, this);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, languageCombo, 0, SpringLayout.SOUTH, languageLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, languageCombo, 120, SpringLayout.WEST, languageCombo);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, languageCombo, 0, SpringLayout.NORTH, languageLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, languageCombo, 5, SpringLayout.EAST, languageLabel);
-        
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, themeLabel, 20, SpringLayout.NORTH, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, themeLabel, 0, SpringLayout.EAST, languageLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, themeLabel, 5, SpringLayout.SOUTH, languageLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, themeLabel, 0, SpringLayout.WEST, languageLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboLaf, 0, SpringLayout.SOUTH, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboLaf, 120, SpringLayout.WEST, comboLaf);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboLaf, 0, SpringLayout.NORTH, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboLaf, 5, SpringLayout.EAST, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, subThemeLabel, 0, SpringLayout.SOUTH, comboLaf);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, subThemeLabel, 90, SpringLayout.WEST, subThemeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, subThemeLabel, 0, SpringLayout.NORTH, comboLaf);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, subThemeLabel, 5, SpringLayout.EAST, comboLaf);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboTheme, 0, SpringLayout.SOUTH, subThemeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboTheme, 120, SpringLayout.WEST, comboTheme);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboTheme, 0, SpringLayout.NORTH, subThemeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboTheme, 5, SpringLayout.EAST, subThemeLabel);
-        
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, logLabel, 20, SpringLayout.NORTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, logLabel, 0, SpringLayout.EAST, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, logLabel, 5, SpringLayout.SOUTH, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, logLabel, 0, SpringLayout.WEST, themeLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboLog, 0, SpringLayout.SOUTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboLog, 0, SpringLayout.EAST, comboLaf);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboLog, 0, SpringLayout.NORTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboLog, 0, SpringLayout.WEST, comboLaf);
-
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNewVersionLabel, 20, SpringLayout.NORTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNewVersionLabel, 0, SpringLayout.EAST, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNewVersionLabel, 5, SpringLayout.SOUTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNewVersionLabel, 0, SpringLayout.WEST, logLabel);       
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboCheckNewVersion, 0, SpringLayout.SOUTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboCheckNewVersion, 120, SpringLayout.WEST, comboCheckNewVersion);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboCheckNewVersion, 0, SpringLayout.NORTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboCheckNewVersion, 5, SpringLayout.EAST, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNowButton, 0, SpringLayout.SOUTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNowButton, 0, SpringLayout.EAST, comboTheme);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNowButton, 0, SpringLayout.NORTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNowButton, 0, SpringLayout.WEST, comboTheme);
-        
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, gridOptionsPanel, 5, SpringLayout.NORTH, settingsOptionsPanel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, gridOptionsPanel, 5, SpringLayout.WEST, settingsOptionsPanel);
+      
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, playSounds, 20, SpringLayout.NORTH, playSounds);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, playSounds, -5, SpringLayout.EAST, settingsOptionsPanel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, playSounds, 5, SpringLayout.SOUTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, playSounds, 0, SpringLayout.WEST, checkNewVersionLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, playSounds, 5, SpringLayout.SOUTH, gridOptionsPanel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, playSounds, 0, SpringLayout.WEST, gridOptionsPanel);
 
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, loadDefaultEnvLabel, 20, SpringLayout.NORTH, loadDefaultEnvLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, loadDefaultEnvLabel, -5, SpringLayout.EAST, settingsOptionsPanel);
@@ -507,10 +472,8 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, envHelpLabel, -1, SpringLayout.SOUTH, settingsOptionsPanel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, envHelpLabel, -1, SpringLayout.EAST, settingsOptionsPanel);
 		
-        settingsLayout.putConstraint(SpringLayout.SOUTH, saveButton, 25, SpringLayout.NORTH, saveButton);
         settingsLayout.putConstraint(SpringLayout.EAST, saveButton, -10, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, saveButton, 5, SpringLayout.SOUTH, settingsOptionsPanel);
-        settingsLayout.putConstraint(SpringLayout.WEST, saveButton, -95, SpringLayout.EAST, this);
 
     }    
     

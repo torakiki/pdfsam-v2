@@ -1,19 +1,20 @@
 Application: PDF Split and Merge enhanced
 
-Version: 1.5.0e stable release
+Version: 1.5.0e
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
 License: GPL2
 
 Plugins included:
-	-pdfsam-merge-0.6.7 *
-	-pdfsam-split-0.4.8 *
-	-pdfsam-encrypt-0.2.6e *
-	-pdfsam-mix-0.1.6e *
-	-pdfsam-cover-0.2.6e *
-	-pdfsam-unpack-0.0.4e *
+	-pdfsam-merge-0.6.8 *
+	-pdfsam-split-0.4.9 *
+	-pdfsam-encrypt-0.2.7e *
+	-pdfsam-mix-0.1.7e *
+	-pdfsam-cover-0.2.7e *
+	-pdfsam-unpack-0.0.5e *
 	-pdfsam-setviewer-0.0.1e *
+	-pdfsam-decrypt-0.0.1e *
 
 Linked libraries:
 	-itext-2.0.7
@@ -24,7 +25,7 @@ Linked libraries:
 	-log4j-1.2.15
 	-bcmail-jdk14-138.jar
 	-bcprov-jdk14-138.jar
-	-pdfsam-console-1.1.5e *
+	-pdfsam-console-2.0.0e *
 	-emp4j-1.0.1 *
 	-pdfsam-langpack *
 	

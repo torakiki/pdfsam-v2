@@ -16,7 +16,7 @@
 -Encrypt: fixed a constant name
 -Encrypt: fixed focus policy
 -JFileChooser now looks at the JTextField to find if it's already filled. 
-
+-Fixed some plugins layout
 
 1.4.3e stable release (26-Oct-2008)
 ===================================

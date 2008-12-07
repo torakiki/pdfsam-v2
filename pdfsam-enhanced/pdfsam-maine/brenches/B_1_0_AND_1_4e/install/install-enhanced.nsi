@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 1.4.3e
+!define VERSION 1.5.0e
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -110,12 +110,12 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_4_3e.exe
+OutFile pdfsam-win32inst-v1_5_0e.exe
 InstallDir "$PROGRAMFILES\pdfsam-enhanced"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 1.0.0.0
+VIProductVersion 1.5.0.0
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam enhanced"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
@@ -277,7 +277,7 @@ Section -post SEC0001
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk" $INSTDIR\pdfsam-starter.exe
     SetOutPath $SMPROGRAMS\$StartMenuGroup
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Readme.lnk" $INSTDIR\doc\readme.txt
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.4.0e-tutorial.pdf
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.5.0e-tutorial.pdf
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     

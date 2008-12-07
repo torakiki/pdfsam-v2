@@ -1,15 +1,15 @@
 Application: PDF Split and Merge basic
 
-Version: 1.1.0 stable release
+Version: 1.1.0
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
 License: GPL2
 
 Plugins included:
-	-pdfsam-merge-0.6.7 *
-	-pdfsam-split-0.4.8 *
-	-pdfsam-mix-0.1.6e *
+	-pdfsam-merge-0.6.8 *
+	-pdfsam-split-0.4.9 *
+	-pdfsam-mix-0.1.7e *
 
 Linked libraries:
 	-itext-2.0.7
@@ -20,7 +20,7 @@ Linked libraries:
 	-log4j-1.2.15
 	-bcmail-jdk14-138.jar
 	-bcprov-jdk14-138.jar
-	-pdfsam-console-1.1.5e *
+	-pdfsam-console-2.0.0e *
 	-emp4j-1.0.1 *
 	-pdfsam-langpack *
 	
