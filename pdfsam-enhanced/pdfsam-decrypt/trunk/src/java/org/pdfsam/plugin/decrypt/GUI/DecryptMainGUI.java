@@ -33,6 +33,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -47,11 +48,14 @@ import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
+import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
+import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
+import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
@@ -76,10 +80,13 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private JPanel destinationPanel = new JPanel();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER, true, false);
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
+    private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
 	private Configuration config;
 	private JFileChooser browseDirChooser;
+	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
+	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
 	private final DecryptFocusPolicy decryptFocusPolicy = new DecryptFocusPolicy();
 	//buttons
@@ -126,8 +133,8 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanel.setLayout(destinationPanelLayout);		 
 		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder"));
 		destinationPanel.setBorder(titledBorder);
-		destinationPanel.setPreferredSize(new Dimension(200, 110));
-		destinationPanel.setMinimumSize(new Dimension(150, 100));
+		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setMinimumSize(new Dimension(160, 150));
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 	    c.ipady = 5;
@@ -170,10 +177,16 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanel.add(browseButton);
 //		END_BROWSE_BUTTON		
 
-//		CHECK_BOX
+		overwriteCheckbox.setSelected(true);
 		destinationPanel.add(overwriteCheckbox);
-	       
-//		END_CHECK_BOX 
+
+		outputCompressedCheck.addItemListener(new CompressCheckBoxItemListener(versionCombo));
+		outputCompressedCheck.setSelected(true);
+		
+		destinationPanel.add(outputCompressedCheck);
+		destinationPanel.add(versionCombo);
+		destinationPanel.add(outputVersionLabel);
+		
 //      HELP_LABEL_DESTINATION        
         String helpTextDest = 
     		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Destination output directory")+"</b>" +
@@ -225,7 +238,13 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	                    if (overwriteCheckbox.isSelected()) {
 							args.add("-"+DecryptParsedCommand.OVERWRITE_ARG);
 						}
-	
+	                    if (outputCompressedCheck.isSelected()) {
+	                    	args.add("-"+DecryptParsedCommand.COMPRESSED_ARG); 
+	                    }
+
+	                    args.add("-"+DecryptParsedCommand.PDFVERSION_ARG);
+						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
+						
 						args.add (AbstractParsedCommand.COMMAND_DECRYPT);
 	
 		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
@@ -276,7 +295,19 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, overwriteCheckbox, 17, SpringLayout.NORTH, overwriteCheckbox);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, overwriteCheckbox, 5, SpringLayout.SOUTH, destinationTextField);
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, overwriteCheckbox, 0, SpringLayout.WEST, destinationTextField);
+		
+		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, outputCompressedCheck, 17, SpringLayout.NORTH, outputCompressedCheck);
+		destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputCompressedCheck, 5, SpringLayout.SOUTH, overwriteCheckbox);
+		destinationPanelLayout.putConstraint(SpringLayout.WEST, outputCompressedCheck, 0, SpringLayout.WEST, destinationTextField);
 
+		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, outputVersionLabel, 17, SpringLayout.NORTH, outputVersionLabel);
+		destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputVersionLabel, 5, SpringLayout.SOUTH, outputCompressedCheck);
+		destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destinationTextField);
+        
+		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
+		destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
+		destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
+        
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseButton, 25, SpringLayout.NORTH, browseButton);
 		destinationPanelLayout.putConstraint(SpringLayout.EAST, browseButton, -10, SpringLayout.EAST, destinationPanel);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, browseButton, 0, SpringLayout.NORTH, destinationTextField);
