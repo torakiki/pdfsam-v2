@@ -89,7 +89,6 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 	public static final String NFSM_OCONTENT = "nfsocontent";
 	
 	//directions
-	public static final String D_NONE = "dnone";
 	public static final String D_L2R = "l2r";
 	public static final String D_R2L = "r2l";
 	
