@@ -16,11 +16,13 @@
 
 package org.pdfsam.plugin.merge.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -29,6 +31,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -37,7 +40,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -76,7 +78,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private static final Logger log = Logger.getLogger(MergeMainGUI.class.getPackage().getName());
 
     private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
-    private SpringLayout layoutMergePanel;
     private JFileChooser browseDestFileChooser;
     private SpringLayout layoutDestinationPanel;
     private JPanel destinationPanel = new JPanel();
@@ -86,10 +87,9 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     private JHelpLabel destinationHelpLabel;
     private Configuration config;
     private JCheckBox mergeTypeCheck = new JCheckBox();
-    private final JLabel optionLabel = new JLabel();
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.MAX_COLUMNS_NUMBER);
-
+	private JPanel topPanel = new JPanel();
 
 	//button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
@@ -105,7 +105,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
    
 //focus policy 
     private final MergeFocusPolicy mergeFocusPolicy = new MergeFocusPolicy();
-    private final JLabel destinationLabel = new JLabel();
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
@@ -128,11 +127,21 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     	config = Configuration.getInstance();
         setPanelIcon("/images/merge.png");
         setPreferredSize(new Dimension(500,550));
+		
+        setLayout(new GridBagLayout());        
+   
+        topPanel.setLayout(new GridBagLayout());
+        GridBagConstraints topConst = new GridBagConstraints();
+        topConst.fill = GridBagConstraints.BOTH;
+        topConst.ipady = 5;
+        topConst.weightx = 1.0;
+        topConst.weighty = 1.0;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 2;
+        topConst.gridx = 0;
+        topConst.gridy = 0;
+		topPanel.add(selectionPanel, topConst);
         
-        layoutMergePanel = new SpringLayout();
-        setLayout(layoutMergePanel);
-        
-        add(selectionPanel);
         selectionPanel.addPropertyChangeListener(this);      
        
 //END_BROWSE_FILE_CHOOSER        
@@ -140,13 +149,19 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //      OPTION_PANEL
         layoutOptionPanel = new SpringLayout();
         optionPanel.setLayout(layoutOptionPanel);
-        optionPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        add(optionPanel);
+        optionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Merge options")));
+        optionPanel.setMinimumSize(new Dimension(50,50));
+        optionPanel.setPreferredSize(new Dimension(50,60));
         
-//END_OPTION_PANEL 
-        optionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Merge options:"));
-        add(optionLabel);
-
+        topConst.fill = GridBagConstraints.HORIZONTAL;
+        topConst.weightx = 0.0;
+        topConst.weighty = 0.0;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 1;
+        topConst.gridx = 0;
+        topConst.gridy = 2;
+        topPanel.add(optionPanel, topConst);                
+        
         mergeTypeCheck.setText(GettextResource.gettext(config.getI18nResourceBundle(),"PDF documents contain forms"));
         mergeTypeCheck.setSelected(false);
         optionPanel.add(mergeTypeCheck);     
@@ -158,18 +173,40 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
     		"<br><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Note")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Setting this option the documents will be completely loaded in memory")+".</li>" +
     		"</ul></body></html>";
 	    mergeTypeHelpLabel = new JHelpLabel(helpText, true);
-	    optionPanel.add(mergeTypeHelpLabel);       
+	    optionPanel.add(mergeTypeHelpLabel); 
+//END_OPTION_PANEL 	   
+	    
+	    GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0, 0, 10, 0);
+		add(topPanel, c);
+		
 //DESTINATION_PANEL
         layoutDestinationPanel = new SpringLayout();
         destinationPanel.setLayout(layoutDestinationPanel);
-        destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        add(destinationPanel);
+        destinationPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file")));
+		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setMinimumSize(new Dimension(160, 150));
+
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;	
+	    c.insets = new Insets(0, 0, 0, 0);
+		add(destinationPanel, c);
 //END_DESTINATION_PANEL   
 
         destinationPanel.add(destinationTextField);
-        
-        destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
-        add(destinationLabel);
 //BROWSE_BUTTON        
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -199,8 +236,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         destinationPanel.add(browseDestButton);
 //END_BROWSE_BUTTON
 //CHECK_BOX
-        overwriteCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Overwrite if already exists"));
-        overwriteCheckbox.setSelected(true);
         destinationPanel.add(overwriteCheckbox);
         
         outputCompressedCheck.addItemListener(new CompressCheckBoxItemListener(versionCombo));
@@ -325,7 +360,19 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
             }
         });
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf merge"));
-        add(runButton);
+	    runButton.setSize(new Dimension(88,25));
+        
+        c.fill = GridBagConstraints.NONE;
+	    c.ipadx = 5;
+	    c.weightx = 0.0;
+	    c.weighty = 0.0;
+	    c.anchor = GridBagConstraints.LAST_LINE_END;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
+	    c.gridy = 2;
+	    c.insets = new Insets(10,10,10,10); 
+        add(runButton, c);
+        
 //END_RUN_BUTTON
 //KEY_LISTENER
         runButton.addKeyListener(runEnterKeyListener);
@@ -345,32 +392,14 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
      *
      */
     private void setLayout(){
-    	layoutMergePanel.putConstraint(SpringLayout.SOUTH, selectionPanel, 250, SpringLayout.NORTH, this);
-    	layoutMergePanel.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-		layoutMergePanel.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-		layoutMergePanel.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
-        
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, optionPanel, 50, SpringLayout.NORTH, optionPanel);
-        layoutMergePanel.putConstraint(SpringLayout.EAST, optionPanel, -5, SpringLayout.EAST, this);
-        layoutMergePanel.putConstraint(SpringLayout.NORTH, optionPanel, 20, SpringLayout.SOUTH, selectionPanel);
-        layoutMergePanel.putConstraint(SpringLayout.WEST, optionPanel, 0, SpringLayout.WEST, selectionPanel);
-
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, optionLabel, 0, SpringLayout.NORTH, optionPanel);
-        layoutMergePanel.putConstraint(SpringLayout.WEST, optionLabel, 0, SpringLayout.WEST, optionPanel);
-
         layoutOptionPanel.putConstraint(SpringLayout.SOUTH, mergeTypeCheck, 30, SpringLayout.NORTH, optionPanel);
         layoutOptionPanel.putConstraint(SpringLayout.EAST, mergeTypeCheck, -40, SpringLayout.EAST, optionPanel);
-        layoutOptionPanel.putConstraint(SpringLayout.NORTH, mergeTypeCheck, 5, SpringLayout.NORTH, optionPanel);
+        layoutOptionPanel.putConstraint(SpringLayout.NORTH, mergeTypeCheck, 0, SpringLayout.NORTH, optionPanel);
         layoutOptionPanel.putConstraint(SpringLayout.WEST, mergeTypeCheck, 5, SpringLayout.WEST, optionPanel);
 
         layoutOptionPanel.putConstraint(SpringLayout.SOUTH, mergeTypeHelpLabel, -1, SpringLayout.SOUTH, optionPanel);
         layoutOptionPanel.putConstraint(SpringLayout.EAST, mergeTypeHelpLabel, -1, SpringLayout.EAST, optionPanel);
 
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, destinationPanel, 120, SpringLayout.NORTH, destinationPanel);
-        layoutMergePanel.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, optionPanel);
-        layoutMergePanel.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, optionPanel);
-        layoutMergePanel.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
-        
         layoutDestinationPanel.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
         layoutDestinationPanel.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
         layoutDestinationPanel.putConstraint(SpringLayout.SOUTH, destinationTextField, 30, SpringLayout.NORTH, destinationPanel);
@@ -391,9 +420,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         layoutDestinationPanel.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
         layoutDestinationPanel.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         layoutDestinationPanel.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
-
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, destinationLabel, 0, SpringLayout.NORTH, destinationPanel);
-        layoutMergePanel.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, destinationPanel);
         
         layoutDestinationPanel.putConstraint(SpringLayout.SOUTH, browseDestButton, 25, SpringLayout.NORTH, browseDestButton);
         layoutDestinationPanel.putConstraint(SpringLayout.EAST, browseDestButton, -5, SpringLayout.EAST, destinationPanel);
@@ -402,11 +428,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         
         layoutDestinationPanel.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         layoutDestinationPanel.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);        
-        
-        layoutMergePanel.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        layoutMergePanel.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        layoutMergePanel.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        layoutMergePanel.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
+
 
     }
        

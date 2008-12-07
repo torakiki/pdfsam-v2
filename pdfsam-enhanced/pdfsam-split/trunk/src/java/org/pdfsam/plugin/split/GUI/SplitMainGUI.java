@@ -14,16 +14,18 @@
  */
 package org.pdfsam.plugin.split.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.LinkedList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
@@ -35,7 +37,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -127,11 +128,9 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private final JPanel splitOptionsPanel = new JPanel();
     private final JPanel destinationPanel = new JPanel();
     private final JPanel outputOptionsPanel = new JPanel();
-
+    private final JPanel splitTypesPanel = new JPanel();
+    
 //labels    
-    private final JLabel splitOptionsLabel = new JLabel();
-    private final JLabel destFolderLabel = new JLabel();
-    private final JLabel outputOptionsLabel = new JLabel();
     private final JLabel outPrefixLabel = new JLabel();
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 	
@@ -161,35 +160,36 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 //SPLIT_SECTION
         optionsPaneLayout = new SpringLayout();
         splitOptionsPanel.setLayout(optionsPaneLayout);
-        splitOptionsPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        
+        splitOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Split options")));
         add(splitOptionsPanel);
 
-        burstRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Burst (split into single pages)"));
-        splitOptionsPanel.add(burstRadio);
-
+        GridLayout splitOptionsLayout = new GridLayout(0,3,5,5);
+        splitTypesPanel.setLayout(splitOptionsLayout);
+        
+        burstRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Burst (split into single pages)"));        
         everyNRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split every \"n\" pages"));
-        splitOptionsPanel.add(everyNRadio);
-        
-        nPagesTextField.setEnabled(false);
-        splitOptionsPanel.add(nPagesTextField);        
-        
         evenRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split even pages"));      
-        splitOptionsPanel.add(evenRadio);
-        
         oddRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split odd pages"));
-        splitOptionsPanel.add(oddRadio);
-        
+        nPagesTextField.setEnabled(false);
         thisPageRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split after these pages"));
-        splitOptionsPanel.add(thisPageRadio);
-        
         sizeRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size"));
-        splitOptionsPanel.add(sizeRadio);
-        
         thisPageTextField.setEnabled(false);
-        splitOptionsPanel.add(thisPageTextField);
-        
         splitSizeCombo.setEnabled(false);
-        splitOptionsPanel.add(splitSizeCombo);
+        
+        splitTypesPanel.add(burstRadio);
+        splitTypesPanel.add(thisPageRadio);
+        splitTypesPanel.add(thisPageTextField);
+
+        splitTypesPanel.add(evenRadio);
+        splitTypesPanel.add(everyNRadio);        
+        splitTypesPanel.add(nPagesTextField);        
+                
+        splitTypesPanel.add(oddRadio);               
+        splitTypesPanel.add(sizeRadio);                
+        splitTypesPanel.add(splitSizeCombo);
+        
+        splitOptionsPanel.add(splitTypesPanel);
         
         String helpText = 
         		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split options")+"</b><ul>" +
@@ -203,10 +203,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         checksHelpLabel = new JHelpLabel(helpText, true);
         splitOptionsPanel.add(checksHelpLabel);        
 //END_SPLIT_SECTION
-        
-        
-        splitOptionsLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split options:"));
-        add(splitOptionsLabel);
+
 //RADIO_LISTENERS
         /*This listeners enable or disable text field based on what you select*/
         radioListener = new RadioListener(this, nPagesTextField, thisPageTextField, splitSizeCombo); 
@@ -226,14 +223,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
         destinationPanel.setLayout(destinationPanelLayout);
-        destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        destinationPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder")));
         add(destinationPanel);
 //END_DESTINATION_PANEL        
 //DESTINATION_RADIOS
-        
-        destFolderLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
-        add(destFolderLabel);
-
         sameAsSourceRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Same as source"));
         destinationPanel.add(sameAsSourceRadio);
 
@@ -304,10 +297,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION  
 	    
-        outputOptionsLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output options:"));
-        add(outputOptionsLabel);
 //S_PANEL
-        outputOptionsPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        outputOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Output options")));
         outputPanelLayout = new SpringLayout();
         outputOptionsPanel.setLayout(outputPanelLayout);
         add(outputOptionsPanel);
@@ -315,6 +306,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         outPrefixLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output file names prefix:"));
         outputOptionsPanel.add(outPrefixLabel);
 
+        outPrefixText.setPreferredSize(new Dimension(180,20));
         outputOptionsPanel.add(outPrefixText);
 //END_S_PANEL
 //HELP_LABEL_PREFIX       
@@ -428,6 +420,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
             }
         });
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Split selected file"));
+        runButton.setMargin(new Insets(5, 5, 5, 5));
+        runButton.setSize(new Dimension(88,25));
         add(runButton);
 //END_RUN_BUTTON
         
@@ -614,25 +608,18 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 		splitSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
 		splitSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
 //      LAYOUT
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 103, SpringLayout.NORTH, splitOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 112, SpringLayout.NORTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, splitOptionsPanel, -5, SpringLayout.EAST, this);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
-        splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsPanel, 0, SpringLayout.WEST, selectionPanel);
+        splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsPanel, 0, SpringLayout.WEST, selectionPanel);       
         
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsLabel, 0, SpringLayout.NORTH, splitOptionsPanel);
-        splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsLabel, 5, SpringLayout.SOUTH, selectionPanel);
-        splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsLabel, 0, SpringLayout.WEST, selectionPanel);
-        
-        splitSpringLayout.putConstraint(SpringLayout.NORTH, destFolderLabel, 5, SpringLayout.SOUTH, splitOptionsPanel);
-        splitSpringLayout.putConstraint(SpringLayout.WEST, destFolderLabel, 0, SpringLayout.WEST, splitOptionsPanel);
-        
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 130, SpringLayout.NORTH, destinationPanel);
+        splitSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 160, SpringLayout.NORTH, destinationPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, splitOptionsPanel);
-        splitSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, splitOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 10, SpringLayout.SOUTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, splitOptionsPanel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, sameAsSourceRadio, 25, SpringLayout.NORTH, sameAsSourceRadio);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, sameAsSourceRadio, 1, SpringLayout.NORTH, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, sameAsSourceRadio, 0, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, sameAsSourceRadio, 10, SpringLayout.WEST, destinationPanel);        
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, chooseAFolderRadio, 0, SpringLayout.SOUTH, sameAsSourceRadio);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, chooseAFolderRadio, 0, SpringLayout.NORTH, sameAsSourceRadio);
@@ -666,64 +653,29 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);
-        
-        splitSpringLayout.putConstraint(SpringLayout.EAST, outputOptionsLabel, 0, SpringLayout.EAST, destinationPanel);
-        splitSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsLabel, 0, SpringLayout.WEST, destinationPanel);
-        splitSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsLabel, 5, SpringLayout.SOUTH, destinationPanel);
+
 		
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, outputOptionsPanel, 48, SpringLayout.NORTH, outputOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.SOUTH, outputOptionsPanel, 55, SpringLayout.NORTH, outputOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, outputOptionsPanel, 0, SpringLayout.EAST, destinationPanel);
-        splitSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsPanel, 0, SpringLayout.SOUTH, outputOptionsLabel);
-        splitSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsPanel, 0, SpringLayout.WEST, outputOptionsLabel);
-        outputPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixLabel, 25, SpringLayout.NORTH, outputOptionsPanel);
-        outputPanelLayout.putConstraint(SpringLayout.NORTH, outPrefixLabel, 5, SpringLayout.NORTH, outputOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsPanel, 10, SpringLayout.SOUTH, destinationPanel);
+        splitSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsPanel, 0, SpringLayout.WEST, destinationPanel);
+        outputPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixLabel, 20, SpringLayout.NORTH, outputOptionsPanel);
+        outputPanelLayout.putConstraint(SpringLayout.NORTH, outPrefixLabel, 0, SpringLayout.NORTH, outputOptionsPanel);
         outputPanelLayout.putConstraint(SpringLayout.WEST, outPrefixLabel, 5, SpringLayout.WEST, outputOptionsPanel);
-        outputPanelLayout.putConstraint(SpringLayout.EAST, outPrefixText, -10, SpringLayout.EAST, outputOptionsPanel);
         outputPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixText, 0, SpringLayout.SOUTH, outPrefixLabel);
-        outputPanelLayout.putConstraint(SpringLayout.NORTH, outPrefixText, 0, SpringLayout.NORTH, outPrefixLabel);
-        outputPanelLayout.putConstraint(SpringLayout.WEST, outPrefixText, 15, SpringLayout.EAST, outPrefixLabel);
+        outputPanelLayout.putConstraint(SpringLayout.WEST, outPrefixText, 10, SpringLayout.EAST, outPrefixLabel);
 
         outputPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
         outputPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
         
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        splitSpringLayout.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        splitSpringLayout.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
+        splitSpringLayout.putConstraint(SpringLayout.EAST, runButton, -11, SpringLayout.EAST, this);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, outputOptionsPanel);
 
 
 //      RADIO_LAYOUT
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, burstRadio, 10, SpringLayout.NORTH, splitOptionsPanel);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, burstRadio, 10, SpringLayout.WEST, splitOptionsPanel);
-                
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, evenRadio, 0, SpringLayout.WEST, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, evenRadio, 2, SpringLayout.SOUTH, burstRadio);
-        
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, oddRadio, 0, SpringLayout.WEST, evenRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, oddRadio, 2, SpringLayout.SOUTH, evenRadio);
-        
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, thisPageRadio, 0, SpringLayout.NORTH, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageRadio, 2, SpringLayout.EAST, burstRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, thisPageTextField, 17, SpringLayout.NORTH, thisPageTextField);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, thisPageTextField, 75, SpringLayout.EAST, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, thisPageTextField, 0, SpringLayout.NORTH, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, thisPageTextField, 5, SpringLayout.EAST, thisPageRadio);
-        
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, everyNRadio, 2, SpringLayout.SOUTH, thisPageRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, everyNRadio, 2, SpringLayout.EAST, evenRadio);
-        
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, nPagesTextField, 17, SpringLayout.NORTH, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, nPagesTextField, 45, SpringLayout.EAST, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, nPagesTextField, 0, SpringLayout.NORTH, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, nPagesTextField, 5, SpringLayout.EAST, everyNRadio);
-
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, sizeRadio, 2, SpringLayout.EAST, oddRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, sizeRadio, 2, SpringLayout.SOUTH, everyNRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.SOUTH, splitSizeCombo, 17, SpringLayout.NORTH, splitSizeCombo);
-        optionsPaneLayout.putConstraint(SpringLayout.EAST, splitSizeCombo, 100, SpringLayout.EAST, sizeRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.NORTH, splitSizeCombo, 0, SpringLayout.NORTH, sizeRadio);
-        optionsPaneLayout.putConstraint(SpringLayout.WEST, splitSizeCombo, 5, SpringLayout.EAST, sizeRadio);
-        
+        optionsPaneLayout.putConstraint(SpringLayout.NORTH, splitTypesPanel, 0, SpringLayout.NORTH, splitOptionsPanel);
+        optionsPaneLayout.putConstraint(SpringLayout.WEST, splitTypesPanel, 10, SpringLayout.WEST, splitOptionsPanel);
+                 
         optionsPaneLayout.putConstraint(SpringLayout.SOUTH, checksHelpLabel, -1, SpringLayout.SOUTH, splitOptionsPanel);
         optionsPaneLayout.putConstraint(SpringLayout.EAST, checksHelpLabel, -1, SpringLayout.EAST, splitOptionsPanel);         
     }

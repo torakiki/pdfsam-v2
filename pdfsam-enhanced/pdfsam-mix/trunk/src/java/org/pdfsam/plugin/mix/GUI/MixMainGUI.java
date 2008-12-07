@@ -181,8 +181,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		destinationPanel.setLayout(destinationPanelLayout);
 		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
 		destinationPanel.setBorder(titledBorder);
-		destinationPanel.setPreferredSize(new Dimension(200, 130));
-		destinationPanel.setMinimumSize(new Dimension(150, 125));
+		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setMinimumSize(new Dimension(160, 150));
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 	    c.ipady = 5;
