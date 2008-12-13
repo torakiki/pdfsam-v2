@@ -604,12 +604,12 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
      */
     private void setLayout(){
     	splitSpringLayout.putConstraint(SpringLayout.SOUTH, selectionPanel, 115, SpringLayout.NORTH, this);
-		splitSpringLayout.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-		splitSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-		splitSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
+		splitSpringLayout.putConstraint(SpringLayout.EAST, selectionPanel, -1, SpringLayout.EAST, this);
+		splitSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 1, SpringLayout.NORTH, this);
+		splitSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 1, SpringLayout.WEST, this);
 //      LAYOUT
         splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 112, SpringLayout.NORTH, splitOptionsPanel);
-        splitSpringLayout.putConstraint(SpringLayout.EAST, splitOptionsPanel, -5, SpringLayout.EAST, this);
+        splitSpringLayout.putConstraint(SpringLayout.EAST, splitOptionsPanel, -1, SpringLayout.EAST, this);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsPanel, 0, SpringLayout.WEST, selectionPanel);       
         
@@ -746,7 +746,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     return sameAsSourceRadio;
                 }
             }
-            else if (aComponent.equals(splitSizeCombo) || aComponent.equals(splitSizeCombo.getEditor())){
+            else if (aComponent.equals(splitSizeCombo) || aComponent.getParent().equals(splitSizeCombo)){
                 return sameAsSourceRadio;
             }        
             else if (aComponent.equals(sameAsSourceRadio)){
@@ -823,7 +823,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                     return sizeRadio;
                 }
             }
-            else if (aComponent.equals(splitSizeCombo) || aComponent.equals(splitSizeCombo.getEditor())){
+            else if (aComponent.equals(splitSizeCombo) || aComponent.getParent().equals(splitSizeCombo)){
                 return sizeRadio;
             }
             else if (aComponent.equals(sizeRadio)){
