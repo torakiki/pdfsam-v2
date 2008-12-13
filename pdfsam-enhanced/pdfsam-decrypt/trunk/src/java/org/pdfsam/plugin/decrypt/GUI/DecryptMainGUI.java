@@ -433,10 +433,16 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 			}
 			else if (aComponent.equals(browseButton)){
 				return overwriteCheckbox;
-			}            
+			}             
 			else if (aComponent.equals(overwriteCheckbox)){
-				return runButton;
+				return outputCompressedCheck;
 			}
+			else if (aComponent.equals(outputCompressedCheck)){
+				return versionCombo;
+			}            
+			else if (aComponent.equals(versionCombo)){
+				return runButton;
+			}            
 			else if (aComponent.equals(runButton)){
 				return selectionPanel.getAddFileButton();
 			}
@@ -446,6 +452,12 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		public Component getComponentBefore(Container CycleRootComp, Component aComponent){
 
 			if (aComponent.equals(runButton)){
+				return versionCombo;
+			}
+			else if (aComponent.equals(versionCombo)){
+				return outputCompressedCheck;
+			}
+			else if (aComponent.equals(outputCompressedCheck)){
 				return overwriteCheckbox;
 			}
 			else if (aComponent.equals(overwriteCheckbox)){
