@@ -608,7 +608,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 				return versionCombo;
 			}
 			else if (aComponent.equals(versionCombo)){
-				return overwriteCheckbox;
+				return outputCompressedCheck;
 			}
 			else if (aComponent.equals(outputCompressedCheck)){
 				return overwriteCheckbox;
