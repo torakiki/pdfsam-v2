@@ -14,11 +14,14 @@
  */
 package org.pdfsam.plugin.setviewer.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -27,6 +30,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -36,7 +40,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -74,7 +77,6 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 	
 	private JTextField outPrefixTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE);
 	private SpringLayout optionsPanelLayout;
-    private SpringLayout setviewerSpringLayout;
     private SpringLayout destinationPanelLayout;
     private SpringLayout setviewerOptionPanelLayout;
     private JTextField destFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
@@ -122,12 +124,11 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     private final JPanel setviewerOptionsPanel = new JPanel();
     private final JPanel destinationPanel = new JPanel();
     private final JPanel outputOptionsPanel = new JPanel();
-
+    private final JPanel mainOptionsPanel = new JPanel();
+    private final JPanel setviewerOptsCheckPanel = new JPanel();
+        
     //labels    
-    final JLabel destFolderLabel = new JLabel();
-    final JLabel outputOptionsLabel = new JLabel();
     final JLabel outPrefixLabel = new JLabel();
-    final JLabel setviewerOptionsLabel= new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
     private final String PLUGIN_VERSION = "0.0.1e";  
@@ -142,54 +143,75 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/setviewer.png");
-        setPreferredSize(new Dimension(600,700));  
+        setPreferredSize(new Dimension(700,700));  
+        setLayout(new GridBagLayout());
         
-        setviewerSpringLayout = new SpringLayout();
-        setLayout(setviewerSpringLayout);
-        add(selectionPanel);
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+		add(selectionPanel, c);
+		
 		selectionPanel.enableSetOutputPathMenuItem();
         selectionPanel.addPropertyChangeListener(this);
-
-       
+        
+        mainOptionsPanel.setLayout(new GridBagLayout());
+        GridBagConstraints mainCons = new GridBagConstraints();
+        mainCons.fill = GridBagConstraints.BOTH;
+        mainCons.ipady = 5;
+        mainCons.insets = new Insets(0, 0, 5, 0);
+        mainCons.weightx = 1.0;
+        mainCons.weighty = 1.0;
+        mainCons.gridwidth = 3;
+        mainCons.gridx = 0;
+        mainCons.gridy = 0;
 //END_FILE_CHOOSER
         
       //SETVIEWER_SECTION
         optionsPanelLayout = new SpringLayout();
         setviewerOptionsPanel.setLayout(optionsPanelLayout);
-        setviewerOptionsPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        add(setviewerOptionsPanel);
-//checks        
+		setviewerOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Set viewer options")));
+		setviewerOptionsPanel.setMinimumSize(new Dimension(330, 195));
+		setviewerOptionsPanel.setPreferredSize(new Dimension(400, 215));
+//checks     
+		setviewerOptsCheckPanel.setLayout(new GridLayout(3,3,5,5));
+		
         hideMenuBar.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Hide the menubar"));
         hideMenuBar.setSelected(false);
-        setviewerOptionsPanel.add(hideMenuBar);
+        setviewerOptsCheckPanel.add(hideMenuBar);
         
         hideToolBar.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Hide the toolbar"));
         hideToolBar.setSelected(false);
-        setviewerOptionsPanel.add(hideToolBar);
+        setviewerOptsCheckPanel.add(hideToolBar);
 
         hideUIElements.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Hide user interface elements"));
         hideUIElements.setSelected(false);
-        setviewerOptionsPanel.add(hideUIElements);
+        setviewerOptsCheckPanel.add(hideUIElements);
 
         resizeToFit.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Rezise the window to fit the page size"));
         resizeToFit.setSelected(false);
-        setviewerOptionsPanel.add(resizeToFit);
+        setviewerOptsCheckPanel.add(resizeToFit);
 
         centerScreen.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Center of the screen"));
         centerScreen.setSelected(false);
-        setviewerOptionsPanel.add(centerScreen);
+        setviewerOptsCheckPanel.add(centerScreen);
 
         displayTitle.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Display document title as window title"));
         displayTitle.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.4");
         displayTitle.addItemListener(new VersionFilterCheckBoxItemListener(versionCombo, new Integer(""+AbstractParsedCommand.VERSION_1_4)));
         displayTitle.setSelected(false);
-        setviewerOptionsPanel.add(displayTitle);
+        setviewerOptsCheckPanel.add(displayTitle);
 
         noPageScaling.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"No page scaling in print dialog"));
         noPageScaling.setSelected(false);
         noPageScaling.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.6");
         noPageScaling.addItemListener(new VersionFilterCheckBoxItemListener(versionCombo, new Integer(""+AbstractParsedCommand.VERSION_1_6)));
-        setviewerOptionsPanel.add(noPageScaling);
+        setviewerOptsCheckPanel.add(noPageScaling);
+        setviewerOptionsPanel.add(setviewerOptsCheckPanel);
 //end_check
 //combos
         viewerLayoutLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer layout:"));
@@ -205,27 +227,26 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         nonFullScreenModeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Non fullscreen mode:"));
         setviewerOptionsPanel.add(nonFullScreenModeLabel);
         nonFullScreenMode = new JComboBox(getViewerNonFullScreenItems());
+        nonFullScreenMode.setEnabled(false);
         setviewerOptionsPanel.add(nonFullScreenMode);
+        viewerOpenMode.addActionListener(new OpenModeComboListener(nonFullScreenMode));
 
         directionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Direction:"));
         setviewerOptionsPanel.add(directionLabel);
         directionCombo = new JComboBox(getDirectionComboItems());
         directionCombo.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.3");
         setviewerOptionsPanel.add(directionCombo);
-       
-        setviewerOptionsLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Set viewer options:"));
-        add(setviewerOptionsLabel);
+
 //end_combos       
 //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
         destinationPanel.setLayout(destinationPanelLayout);
-        destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        add(destinationPanel);
-//END_DESTINATION_PANEL        
-        destFolderLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder:"));
-        add(destFolderLabel);
-
+		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setMinimumSize(new Dimension(160, 150));
+        destinationPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder")));      
         destinationPanel.add(destFolderText);
+//END_DESTINATION_PANEL        
+
 
 //CHECK_BOX
         overwriteCheckbox.setSelected(true);
@@ -274,18 +295,39 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     		"</body></html>";
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
-        outputOptionsLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output options:"));
-        add(outputOptionsLabel);
        
 //S_PANEL
-        outputOptionsPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        outputOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Output options")));
+        outputOptionsPanel.setPreferredSize(new Dimension(200, 55));
+        outputOptionsPanel.setMinimumSize(new Dimension(160, 50));
         setviewerOptionPanelLayout = new SpringLayout();
         outputOptionsPanel.setLayout(setviewerOptionPanelLayout);
-        add(outputOptionsPanel);
-
+        
+        outPrefixTextField.setPreferredSize(new Dimension(180,20));
         outPrefixLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output file names prefix:"));
         outputOptionsPanel.add(outPrefixLabel);
        
+        mainOptionsPanel.add(setviewerOptionsPanel, mainCons);
+        mainCons.fill = GridBagConstraints.HORIZONTAL;
+        mainCons.weightx = 0.0;
+        mainCons.weighty = 0.0;
+        mainCons.gridy = 1;
+        mainOptionsPanel.add(destinationPanel, mainCons);
+        mainCons.fill = GridBagConstraints.HORIZONTAL;
+        mainCons.weightx = 0.0;
+        mainCons.weighty = 0.0;
+        mainCons.gridy = 2;
+        mainOptionsPanel.add(outputOptionsPanel, mainCons);
+        
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.ipady = 5;
+        c.weightx = 0.0;
+        c.weighty = 0.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 1;
+		add(mainOptionsPanel, c);
+        
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Set options"));
         add(runButton);
       //RUN_BUTTON
@@ -338,13 +380,17 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 						
 						args.add("-"+SetViewerParsedCommand.M_ARG);
 						args.add(((StringItem)viewerOpenMode.getSelectedItem()).getId());
-
-						args.add("-"+SetViewerParsedCommand.NFSM_ARG);
-						args.add(((StringItem)nonFullScreenMode.getSelectedItem()).getId());
-
-						args.add("-"+SetViewerParsedCommand.D_ARG);
-						args.add(((StringItem)directionCombo.getSelectedItem()).getId());
-                	
+						
+						if(nonFullScreenMode.isEnabled()){
+							args.add("-"+SetViewerParsedCommand.NFSM_ARG);
+							args.add(((StringItem)nonFullScreenMode.getSelectedItem()).getId());
+						}
+						
+						if(((StringItem)directionCombo.getSelectedItem()).getId().length()>0){
+							args.add("-"+SetViewerParsedCommand.D_ARG);
+							args.add(((StringItem)directionCombo.getSelectedItem()).getId());
+						}
+						
 	                    if (hideMenuBar.isSelected()) {
 							args.add("-"+SetViewerParsedCommand.HIDEMENU_ARG);
 						}
@@ -392,7 +438,19 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
             }
         });
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Set viewer options for selected files"));
-        add(runButton);
+	    runButton.setSize(new Dimension(88,25));
+        
+        c.fill = GridBagConstraints.NONE;
+	    c.ipadx = 5;
+	    c.weightx = 0.0;
+	    c.weighty = 0.0;
+	    c.anchor = GridBagConstraints.LAST_LINE_END;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
+	    c.gridy = 2;
+	    c.insets = new Insets(10,10,10,10); 
+        add(runButton, c);     
+//END_RUN_BUTTON
        
 //END_RUN_BUTTON
         outputOptionsPanel.add(outPrefixTextField);
@@ -424,7 +482,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
      */
     private Vector getDirectionComboItems(){
     	Vector retVal = new Vector(3);
-    	retVal.add(new StringItem(SetViewerParsedCommand.D_NONE, GettextResource.gettext(config.getI18nResourceBundle(),"None")));
+    	retVal.add(new StringItem("", ""));
     	retVal.add(new StringItem(SetViewerParsedCommand.D_L2R, GettextResource.gettext(config.getI18nResourceBundle(),"Left to right")));
     	retVal.add(new StringItem(SetViewerParsedCommand.D_R2L, GettextResource.gettext(config.getI18nResourceBundle(),"Right to left")));
     	return retVal;
@@ -477,36 +535,16 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 	}
 	
     private void setLayout(){
-    	setviewerSpringLayout.putConstraint(SpringLayout.SOUTH, selectionPanel, 220, SpringLayout.NORTH, this);
-    	setviewerSpringLayout.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-    	setviewerSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-    	setviewerSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
-		
-    	setviewerSpringLayout.putConstraint(SpringLayout.SOUTH, setviewerOptionsPanel, 170, SpringLayout.NORTH, setviewerOptionsPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.EAST, setviewerOptionsPanel, -5, SpringLayout.EAST, this);
-    	setviewerSpringLayout.putConstraint(SpringLayout.NORTH, setviewerOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.WEST, setviewerOptionsPanel, 0, SpringLayout.WEST, selectionPanel);
-
-    	setviewerSpringLayout.putConstraint(SpringLayout.SOUTH, setviewerOptionsLabel, 0, SpringLayout.NORTH, setviewerOptionsPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.WEST, setviewerOptionsLabel, 0, SpringLayout.WEST, setviewerOptionsPanel);
         
-    	setviewerSpringLayout.putConstraint(SpringLayout.NORTH, destFolderLabel, 5, SpringLayout.SOUTH, setviewerOptionsPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.WEST, destFolderLabel, 0, SpringLayout.WEST, setviewerOptionsPanel);
-
-    	setviewerSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 120, SpringLayout.NORTH, destinationPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, setviewerOptionsPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, setviewerOptionsPanel);
-    	setviewerSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
-        
-        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destFolderText, 30, SpringLayout.NORTH, destinationPanel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, destFolderText, 10, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destFolderText, -105, SpringLayout.EAST, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, destFolderText, 10, SpringLayout.NORTH, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destFolderText, 30, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, destFolderText, 5, SpringLayout.WEST, destinationPanel);
 
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, overwriteCheckbox, 17, SpringLayout.NORTH, overwriteCheckbox);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, overwriteCheckbox, 5, SpringLayout.SOUTH, destFolderText);
-        destinationPanelLayout.putConstraint(SpringLayout.WEST, overwriteCheckbox, 0, SpringLayout.WEST, destFolderText);   
-        
+        destinationPanelLayout.putConstraint(SpringLayout.WEST, overwriteCheckbox, 0, SpringLayout.WEST, destFolderText);
+
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, outputCompressedCheck, 17, SpringLayout.NORTH, outputCompressedCheck);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputCompressedCheck, 5, SpringLayout.SOUTH, overwriteCheckbox);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputCompressedCheck, 0, SpringLayout.WEST, destFolderText);
@@ -519,40 +557,23 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
         
-        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 0, SpringLayout.SOUTH, destFolderText);
-        destinationPanelLayout.putConstraint(SpringLayout.EAST, browseDestButton, -10, SpringLayout.EAST, destinationPanel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, browseDestButton, -25, SpringLayout.SOUTH, destFolderText);
-        destinationPanelLayout.putConstraint(SpringLayout.WEST, browseDestButton, -98, SpringLayout.EAST, destinationPanel);
-
+        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 25, SpringLayout.NORTH, browseDestButton);
+        destinationPanelLayout.putConstraint(SpringLayout.EAST, browseDestButton, -5, SpringLayout.EAST, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, browseDestButton, 0, SpringLayout.NORTH, destFolderText);
+        destinationPanelLayout.putConstraint(SpringLayout.WEST, browseDestButton, -93, SpringLayout.EAST, destinationPanel);        
+        
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);
-
-        setviewerSpringLayout.putConstraint(SpringLayout.EAST, outputOptionsLabel, 0, SpringLayout.EAST, destinationPanel);
-        setviewerSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsLabel, 0, SpringLayout.WEST, destinationPanel);
-        setviewerSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsLabel, 5, SpringLayout.SOUTH, destinationPanel);
-        
-        setviewerSpringLayout.putConstraint(SpringLayout.SOUTH, outputOptionsPanel, 48, SpringLayout.NORTH, outputOptionsPanel);
-        setviewerSpringLayout.putConstraint(SpringLayout.EAST, outputOptionsPanel, 0, SpringLayout.EAST, destinationPanel);
-        setviewerSpringLayout.putConstraint(SpringLayout.NORTH, outputOptionsPanel, 0, SpringLayout.SOUTH, outputOptionsLabel);
-        setviewerSpringLayout.putConstraint(SpringLayout.WEST, outputOptionsPanel, 0, SpringLayout.WEST, outputOptionsLabel);
-      
-        setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixLabel, 25, SpringLayout.NORTH, outputOptionsPanel);
+             
+        setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixLabel, 20, SpringLayout.NORTH, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.NORTH, outPrefixLabel, 5, SpringLayout.NORTH, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.WEST, outPrefixLabel, 5, SpringLayout.WEST, outputOptionsPanel);
-        setviewerOptionPanelLayout.putConstraint(SpringLayout.EAST, outPrefixTextField, -10, SpringLayout.EAST, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixTextField, 0, SpringLayout.SOUTH, outPrefixLabel);
-        setviewerOptionPanelLayout.putConstraint(SpringLayout.NORTH, outPrefixTextField, 0, SpringLayout.NORTH, outPrefixLabel);
-        setviewerOptionPanelLayout.putConstraint(SpringLayout.WEST, outPrefixTextField, 15, SpringLayout.EAST, outPrefixLabel);
+        setviewerOptionPanelLayout.putConstraint(SpringLayout.WEST, outPrefixTextField, 10, SpringLayout.EAST, outPrefixLabel);
         
         setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
-        
-        setviewerSpringLayout.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        setviewerSpringLayout.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        setviewerSpringLayout.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        setviewerSpringLayout.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, outputOptionsPanel);
-        
-
+                
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, viewerLayoutLabel, 20, SpringLayout.NORTH, viewerLayoutLabel);
         optionsPanelLayout.putConstraint(SpringLayout.EAST, viewerLayoutLabel, 160, SpringLayout.WEST, viewerLayoutLabel);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, viewerLayoutLabel, 10, SpringLayout.NORTH, setviewerOptionsPanel);
@@ -589,7 +610,10 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, directionCombo, 0, SpringLayout.NORTH, directionLabel);
         optionsPanelLayout.putConstraint(SpringLayout.WEST, directionCombo, 0, SpringLayout.WEST, viewerOpenMode);
         
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, hideMenuBar, 20, SpringLayout.NORTH, hideMenuBar);
+        optionsPanelLayout.putConstraint(SpringLayout.NORTH, setviewerOptsCheckPanel, 10, SpringLayout.SOUTH, directionLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsCheckPanel, 0, SpringLayout.WEST, directionLabel);
+
+      /*  optionsPanelLayout.putConstraint(SpringLayout.SOUTH, hideMenuBar, 20, SpringLayout.NORTH, hideMenuBar);
         optionsPanelLayout.putConstraint(SpringLayout.EAST, hideMenuBar, 230, SpringLayout.WEST, hideMenuBar);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, hideMenuBar, 10, SpringLayout.SOUTH, directionLabel);
         optionsPanelLayout.putConstraint(SpringLayout.WEST, hideMenuBar, 0, SpringLayout.WEST, directionLabel);
@@ -618,7 +642,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         optionsPanelLayout.putConstraint(SpringLayout.SOUTH, displayTitle, 20, SpringLayout.NORTH, displayTitle);
         optionsPanelLayout.putConstraint(SpringLayout.EAST, displayTitle, 0, SpringLayout.EAST, centerScreen);
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, displayTitle, 0, SpringLayout.SOUTH, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, displayTitle, 0, SpringLayout.WEST, centerScreen);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, displayTitle, 0, SpringLayout.WEST, centerScreen);*/
 
 }
     
@@ -851,6 +875,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 		viewerLayout.setSelectedIndex(0);
 		viewerOpenMode.setSelectedIndex(0);
 		nonFullScreenMode.setSelectedIndex(0);
+		nonFullScreenMode.setEnabled(false);
 		directionCombo.setSelectedIndex(0);
 		destFolderText.setText("");
 		outPrefixTextField.setText("");
@@ -876,10 +901,17 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
                 return selectionPanel.getClearButton();
             }  
             else if (aComponent.equals(selectionPanel.getClearButton())){
-                return viewerOpenMode;
+                return viewerLayout;
             }           
+            else if (aComponent.equals(viewerLayout)){
+                return viewerOpenMode;
+            }
             else if (aComponent.equals(viewerOpenMode)){
-                return nonFullScreenMode;
+            	if (nonFullScreenMode.isEnabled()){
+                    return nonFullScreenMode;
+                }else{
+                    return directionCombo;
+                }
             }
             else if (aComponent.equals(nonFullScreenMode)){
                 return directionCombo;
@@ -894,18 +926,18 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
                 return hideUIElements;
             }
             else if (aComponent.equals(hideUIElements)){
-                return centerScreen;
-            }
-            else if (aComponent.equals(centerScreen)){
-                return noPageScaling;
-            }
-            else if (aComponent.equals(noPageScaling)){
                 return resizeToFit;
             }
             else if (aComponent.equals(resizeToFit)){
+                return centerScreen;
+            }
+            else if (aComponent.equals(centerScreen)){
                 return displayTitle;
             }
             else if (aComponent.equals(displayTitle)){
+                return noPageScaling;
+            }
+            else if (aComponent.equals(noPageScaling)){
                 return destFolderText;
             }
             else if (aComponent.equals(destFolderText)){
@@ -921,8 +953,11 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 				return versionCombo;
 			}            
 			else if (aComponent.equals(versionCombo)){
+				return outPrefixTextField;
+			}
+			else if (aComponent.equals(outPrefixTextField)){
 				return runButton;
-			}            
+			} 
             else if (aComponent.equals(runButton)){
                 return selectionPanel.getAddFileButton();
             }
@@ -938,7 +973,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 				return versionCombo;
 			}
 			else if (aComponent.equals(versionCombo)){
-				return overwriteCheckbox;
+				return outputCompressedCheck;
 			}
 			else if (aComponent.equals(outputCompressedCheck)){
 				return overwriteCheckbox;
@@ -949,38 +984,45 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
             else if (aComponent.equals(browseDestButton)){
                 return destFolderText;
             }                
-            else if (aComponent.equals(viewerOpenMode)){
-                return selectionPanel.getClearButton();
+            else if (aComponent.equals(destFolderText)){
+                return noPageScaling;
             }
-            else if (aComponent.equals(nonFullScreenMode)){
-                return viewerOpenMode;
+            else if (aComponent.equals(noPageScaling)){
+                return displayTitle;
             }
-            else if (aComponent.equals(directionCombo)){
-                return nonFullScreenMode;
+            else if (aComponent.equals(displayTitle)){
+                return centerScreen;
             }
-            else if (aComponent.equals(hideMenuBar)){
-                return directionCombo;
+            else if (aComponent.equals(centerScreen)){
+                return resizeToFit;
             }
-            else if (aComponent.equals(hideToolBar)){
-                return hideMenuBar;
+            else if (aComponent.equals(resizeToFit)){
+                return hideUIElements;
             }
             else if (aComponent.equals(hideUIElements)){
                 return hideToolBar;
             }
-            else if (aComponent.equals(centerScreen)){
-                return hideUIElements;
+            else if (aComponent.equals(hideToolBar)){
+                return hideMenuBar;
             }
-            else if (aComponent.equals(noPageScaling)){
-                return centerScreen;
+            else if (aComponent.equals(hideMenuBar)){
+                return directionCombo;
             }
-            else if (aComponent.equals(resizeToFit)){
-                return noPageScaling;
+            else if (aComponent.equals(directionCombo)){
+            	if (nonFullScreenMode.isEnabled()){
+                    return nonFullScreenMode;
+                }else{
+                    return viewerOpenMode;
+                }
             }
-            else if (aComponent.equals(displayTitle)){
-                return resizeToFit;
+            else if (aComponent.equals(nonFullScreenMode)){
+                return viewerOpenMode;
             }
-            else if (aComponent.equals(destFolderText)){
-                return displayTitle;
+            else if (aComponent.equals(viewerOpenMode)){
+                return viewerLayout;
+            }
+            else if (aComponent.equals(viewerLayout)){
+                return selectionPanel.getClearButton();
             }
             else if (aComponent.equals(selectionPanel.getClearButton())){
                return selectionPanel.getRemoveFileButton();
@@ -1007,4 +1049,36 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         }
     } 
 
+    /**
+     * Action listener for the open mode combo. Enable the nonFullScreenCombo only if the full screen mode is selected
+     * @author Andrea Vacondio
+     *
+     */
+    private class OpenModeComboListener implements ActionListener {
+    	
+    	private JComboBox nonFullScreenCombo = null;    	    	
+
+		/**
+		 * @param nonFullScreenCombo
+		 * @param openModeCombo
+		 */
+		public OpenModeComboListener(JComboBox nonFullScreenCombo) {
+			super();
+			this.nonFullScreenCombo = nonFullScreenCombo;
+		}
+
+
+		public void actionPerformed(ActionEvent e) {
+			JComboBox openModeCombo = (JComboBox) e.getSource();
+    		if(openModeCombo!=null && nonFullScreenCombo!=null && openModeCombo.getSelectedItem()!=null){
+    			if(SetViewerParsedCommand.M_FULLSCREEN.equals(((StringItem)openModeCombo.getSelectedItem()).getId())){
+    				nonFullScreenCombo.setEnabled(true);
+    			}else{
+    				nonFullScreenCombo.setEnabled(false);
+    			}
+    		}
+
+    	}
+
+    }
 }
