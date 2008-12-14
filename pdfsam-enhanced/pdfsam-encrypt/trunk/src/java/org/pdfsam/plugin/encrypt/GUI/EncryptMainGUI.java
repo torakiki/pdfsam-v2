@@ -240,7 +240,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptPwdsPanel.add(fieldsPanel);
 
         
-	    encryptOptsPanel.setLayout(new GridLayout(0,3,5,5));
+	    encryptOptsPanel.setLayout(new GridLayout(3,3,5,5));
 	    
 
         allowAllCheck.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Allow all"));
