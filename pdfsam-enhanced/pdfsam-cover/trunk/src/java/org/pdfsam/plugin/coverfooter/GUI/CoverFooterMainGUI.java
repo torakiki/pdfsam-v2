@@ -177,14 +177,11 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         
         centralPanelLayout = new SpringLayout();
         centralPanel.setLayout(centralPanelLayout);
-        
         centralPanel.setMinimumSize(new Dimension(100, 220));
 //      OPTION_PANEL
         layoutOptionPanel = new SpringLayout();
         optionPanel.setLayout(layoutOptionPanel);
-        optionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Merge options")));
-        optionPanel.setMinimumSize(new Dimension(50,50));
-        optionPanel.setPreferredSize(new Dimension(50,60));       
+        optionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Merge options")));      
 //END_OPTION_PANEL 
         mergeTypeCheck.setText(GettextResource.gettext(config.getI18nResourceBundle(),"PDF documents contain forms"));
         mergeTypeCheck.setSelected(false);
@@ -202,8 +199,6 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         layoutDestinationPanel = new SpringLayout();
         destinationPanel.setLayout(layoutDestinationPanel);
         destinationPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination folder")));
-        destinationPanel.setPreferredSize(new Dimension(200, 155));
-		destinationPanel.setMinimumSize(new Dimension(160, 145));
 		centralPanel.add(optionPanel);
 		centralPanel.add(destinationPanel);
 		
@@ -475,6 +470,15 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
      *
      */
     private void setLayout(){
+        centralPanelLayout.putConstraint(SpringLayout.SOUTH, optionPanel, 60, SpringLayout.NORTH, optionPanel);
+        centralPanelLayout.putConstraint(SpringLayout.EAST, optionPanel, 0, SpringLayout.EAST, centralPanel);
+        centralPanelLayout.putConstraint(SpringLayout.NORTH, optionPanel, 5, SpringLayout.NORTH, centralPanel);
+        centralPanelLayout.putConstraint(SpringLayout.WEST, optionPanel, 0, SpringLayout.WEST, centralPanel);
+  
+        centralPanelLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 155, SpringLayout.NORTH, destinationPanel);
+        centralPanelLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, optionPanel);
+        centralPanelLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 5, SpringLayout.SOUTH, optionPanel);
+        centralPanelLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, optionPanel);
 
         layoutOptionPanel.putConstraint(SpringLayout.SOUTH, mergeTypeCheck, 30, SpringLayout.NORTH, optionPanel);
         layoutOptionPanel.putConstraint(SpringLayout.EAST, mergeTypeCheck, -40, SpringLayout.EAST, optionPanel);
@@ -513,13 +517,6 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         layoutDestinationPanel.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         layoutDestinationPanel.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);    
         
-        centralPanelLayout.putConstraint(SpringLayout.NORTH, optionPanel, 5, SpringLayout.NORTH, centralPanel);
-        centralPanelLayout.putConstraint(SpringLayout.WEST, optionPanel, 0, SpringLayout.WEST, centralPanel);
-        centralPanelLayout.putConstraint(SpringLayout.EAST, optionPanel, 0, SpringLayout.EAST, centralPanel);
-  
-        centralPanelLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 5, SpringLayout.SOUTH, optionPanel);
-        centralPanelLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, optionPanel);
-        centralPanelLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, optionPanel);
     }
        
     /**
