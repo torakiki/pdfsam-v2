@@ -1,4 +1,4 @@
-1.5.0e ()
+1.5.0e (23-Dec-2008)
 ===================================
 -Merge: fixed a JFileChooser call
 -Lazy JFileChooser init when call environment load/save 
@@ -7,16 +7,18 @@
 -Added the Unpack plugin
 -Added the SetViewerOptions plugin
 -Added the Decrypt plugin
--Console: added to "setviewer" command
--Console: added to "decrypt" command
--Console: added to "slideshow" command
+-Console: added the "setviewer" command
+-Console: added the "decrypt" command
+-Console: added the "slideshow" command
 -Console: new complex prefix [FILENUMBER]
 -Console: complex prefix [FILENUMBER] and [CURRENTPAGE] can take now the output patter (Ex. [FILENUMBER###]
 -Console: Dual license GPL and LGPL 
 -Encrypt: fixed a constant name
 -Encrypt: fixed focus policy
--JFileChooser now looks at the JTextField to find if it's already filled. 
--Fixed some plugins layout
+-JFileChoosers now look at the JTextField to find if it's already filled.
+-Fixed FocusPolicy and layout for every plugin 
+-iText 2.1.3
+-looks 2.2.1
 
 1.4.3e stable release (26-Oct-2008)
 ===================================
