@@ -366,7 +366,13 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				fileDestination.addAttribute("value", destinationTextField.getText());				
 				
 				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
-				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?"true":"false");
+				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
+
+				Element fileCompress = ((Element)arg0).addElement("compressed");
+				fileCompress.addAttribute("value", outputCompressedCheck.isSelected()?TRUE:FALSE);
+				
+				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
+				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
 
 			}
 			return arg0;
@@ -401,6 +407,21 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
 			}
 
+			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+				outputCompressedCheck.doClick();
+			}
+			
+			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+			if (pdfVersion != null){
+				for (int i = 0; i<versionCombo.getItemCount(); i++){
+					if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+						versionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+			
 			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Decrypt section loaded."));  
         }
 		catch (Exception ex){
@@ -507,6 +528,8 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	public void resetPanel() {
 		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
 		destinationTextField.setText("");
+		versionCombo.resetComponent();
+		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 	}
 
