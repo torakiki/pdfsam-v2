@@ -95,6 +95,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Japanese"  
   !insertmacro MUI_LANGUAGE "Korean"
   !insertmacro MUI_LANGUAGE "Latvian"
+  !insertmacro MUI_LANGUAGE "Lithuanian"
   !insertmacro MUI_LANGUAGE "Norwegian"
   !insertmacro MUI_LANGUAGE "Dutch"
   !insertmacro MUI_LANGUAGE "Polish"
@@ -237,6 +238,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}                
         ${Case} ${LANG_LATVIAN}
             Push 'lv' 
+        ${Break}                
+        ${Case} ${LANG_LITHUANIAN}
+            Push 'lt' 
         ${Break}                
         ${Case} ${LANG_UKRAINIAN}
             Push 'uk' 
@@ -522,6 +526,8 @@ Function .onInit
     Push Japanese
     Push ${LANG_LATVIAN}
     Push Latvian
+    Push ${LANG_LITHUANIAN}
+    Push Lithuanian
     Push ${LANG_TRADCHINESE}
     Push TradChinese
     Push ${LANG_INDONESIAN}

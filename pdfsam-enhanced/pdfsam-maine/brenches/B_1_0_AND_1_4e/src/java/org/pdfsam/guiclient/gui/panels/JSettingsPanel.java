@@ -428,7 +428,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 300, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 310, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);

@@ -17,9 +17,9 @@ Plugins included:
 	-pdfsam-decrypt-0.0.1e *
 
 Linked libraries:
-	-itext-2.0.7
+	-iText-2.1.4
 	-pdfsam-jcmdline-1.0.3
-	-looks-2.1.4
+	-looks-2.2.1
 	-jaxen-1.1
 	-dom4j-1.6.1
 	-log4j-1.2.15
