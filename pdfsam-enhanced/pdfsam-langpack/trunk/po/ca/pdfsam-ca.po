@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
+#, fuzzy
+msgid "Merge options"
 msgstr "Opcions de combinació:"
 
 msgid "PDF documents contain forms"
@@ -47,17 +48,11 @@ msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
 "En activar aquesta opció els documents es carregaran completament en memòria"
 
-msgid "Destination output file:"
-msgstr "Fitxer de destí:"
+msgid "Destination output file"
+msgstr "Fitxer de destí"
 
 msgid "Error: "
 msgstr "S'ha produït un error: "
-
-msgid "Overwrite if already exists"
-msgstr "Sobreescriu si ja existeix"
-
-msgid "Destination output file"
-msgstr "Fitxer de destí"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Navegueu o introduïu el camí complet del fitxer de destí."
@@ -113,6 +108,9 @@ msgstr "S'ha desat el fitxer xml."
 msgid "Error saving xml file, output file is null."
 msgstr "Error en desar el fitxer xml, no hi ha fitxer de sortida."
 
+msgid "Split options"
+msgstr "Divideix les opcions"
+
 msgid "Burst (split into single pages)"
 msgstr "Escampar (dividir en pàgines)"
 
@@ -130,9 +128,6 @@ msgstr "Divideix després d'aquestes pàgines"
 
 msgid "Split at this size"
 msgstr "Divideix en aquesta mida"
-
-msgid "Split options"
-msgstr "Divideix les opcions"
 
 msgid "Burst"
 msgstr "Explosió"
@@ -155,10 +150,8 @@ msgstr "Divideix el document després dels números de pàgina (num1-num2-num3..
 msgid "Split the document in files of the given size (roughly)."
 msgstr "Divideix el document en fitxers de la mida indicada (aproximadament)."
 
-msgid "Split options:"
-msgstr "Divideix les opcions:"
-
-msgid "Destination folder:"
+#, fuzzy
+msgid "Destination folder"
 msgstr "Carpeta de destí:"
 
 msgid "Same as source"
@@ -189,7 +182,8 @@ msgstr ""
 "Marqueu la casella de selecció per sobreescriure els fitxers de sortida si "
 "ja existeixen."
 
-msgid "Output options:"
+#, fuzzy
+msgid "Output options"
 msgstr "Opcions de sortida:"
 
 msgid "Output file names prefix:"
@@ -198,9 +192,10 @@ msgstr "Prefix dels fitxers de sortida:"
 msgid "Output files prefix"
 msgstr "Prefix dels fitxers de sortida"
 
+#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 "Si conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\"  efectua una substitució de "
 "variables."
@@ -208,14 +203,17 @@ msgstr ""
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_FileName_005.pdf."
 
+#, fuzzy
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 "Si no conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera noms de fitxer de "
 "sortida de format antic."
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#, fuzzy
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr "Variables disponibles: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 msgid "Invalid split size"
@@ -246,10 +244,12 @@ msgstr "Divideix la secció carregada."
 msgid "Invalid unit: "
 msgstr "Unitat no vàlida: "
 
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "Fitxer pdf de la pàgina coberta:"
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Fitxer pdf del peu de pàgina:"
 
 msgid "Select at least one cover or one footer"
@@ -260,6 +260,10 @@ msgstr "Pàgina de coberta i peu de pàgina"
 
 msgid "Cover And Footer section loaded."
 msgstr "Secció de pàgina de coberta i peu de pàgina carregats"
+
+#, fuzzy
+msgid "Encrypt options"
+msgstr "Opcions de xifrat:"
 
 msgid "Owner password:"
 msgstr "Contrasenya del propietari:"
@@ -273,8 +277,12 @@ msgstr "Contrasenya d'usuari:"
 msgid "User password (Max 32 chars long)"
 msgstr "Contrasenya d'usuari (màxim 32 caràcters de longitud)"
 
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "Algoritme d'encriptació:"
+
+msgid "Allow all"
+msgstr "Permetre'ls tots"
 
 msgid "Print"
 msgstr "Imprimeix"
@@ -299,12 +307,6 @@ msgstr "Extraure per emprar amb dispositiu d'accessibilitat"
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "Manipular pàgines i afegir adreça d'interès"
-
-msgid "Allow all"
-msgstr "Permetre'ls tots"
-
-msgid "Encrypt options:"
-msgstr "Opcions de xifrat:"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -340,6 +342,22 @@ msgstr "Xifra"
 msgid "Encrypt section loaded."
 msgstr "Xifra la secció carregada."
 
+#, fuzzy
+msgid "Decrypt selected files"
+msgstr "Xifra els fitxers seleccionats"
+
+#, fuzzy
+msgid "Decrypt"
+msgstr "Xifra"
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "Xifra la secció carregada."
+
+#, fuzzy
+msgid "Mix options"
+msgstr "Divideix les opcions"
+
 msgid "Reverse first document"
 msgstr "Inverteix el primer document"
 
@@ -373,6 +391,107 @@ msgstr "Descomprimeix"
 msgid "Unpack section loaded."
 msgstr "Descomprimeix la secció carregada."
 
+#, fuzzy
+msgid "Set viewer options"
+msgstr "Divideix les opcions"
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+#, fuzzy
+msgid "Pdf version required:"
+msgstr "Conflicte de versions de pdf"
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "Divideix les opcions"
+
+#, fuzzy
+msgid "Set viewer options for selected files"
+msgstr "Xifra els fitxers seleccionats"
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr "Nota"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+#, fuzzy
+msgid "Document outline"
+msgstr "Els documents PDF contenen formularis"
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options"
+msgstr "Opcions de combinació:"
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "Xifra la secció carregada."
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -384,9 +503,6 @@ msgstr "Confirmeu el desat de contrassenyes"
 
 msgid "Unknown action."
 msgstr "Acció desconeguda."
-
-msgid "Save"
-msgstr "Desa"
 
 msgid "Log saved."
 msgstr "S'ha desat el registre."
@@ -444,6 +560,9 @@ msgstr "Afegeix"
 
 msgid "Compress output file/files"
 msgstr "Comprimeix el/s fitxer/s de sortida"
+
+msgid "Overwrite if already exists"
+msgstr "Sobreescriu si ja existeix"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "No conservar l'ordre dels fitxers (càrrega ràpida)"
@@ -691,6 +810,9 @@ msgstr "Contribucions: "
 msgid "Log level:"
 msgstr "Nivell de depuració:"
 
+msgid "Settings"
+msgstr "Configuració"
+
 msgid "Look and feel:"
 msgstr "Aparença:"
 
@@ -711,6 +833,9 @@ msgstr "Directori de treball predeterminat:"
 
 msgid "Error getting default environment."
 msgstr "Error en obtenir l'entorn predeterminat."
+
+msgid "Check now"
+msgstr "Verifica-ho ara"
 
 msgid "Play alert sounds"
 msgstr ""
@@ -766,14 +891,11 @@ msgstr ""
 "Seleccioneu un directori on es desin i carreguin els documents de manera "
 "predeterminada"
 
-msgid "Check now"
-msgstr "Verifica-ho ara"
+msgid "Save"
+msgstr "Desa"
 
 msgid "Configuration saved."
 msgstr "S'ha desat la configuració."
-
-msgid "Settings"
-msgstr "Configuració"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Mètode per a JSettingsPanel no implementat"
@@ -840,6 +962,12 @@ msgstr "Retalla"
 
 msgid "Paste"
 msgstr "Enganxa"
+
+#~ msgid "Destination output file:"
+#~ msgstr "Fitxer de destí:"
+
+#~ msgid "Split options:"
+#~ msgstr "Divideix les opcions:"
 
 #~ msgid "Select an input file"
 #~ msgstr "Seleccioneu un fitxer d'entrada"

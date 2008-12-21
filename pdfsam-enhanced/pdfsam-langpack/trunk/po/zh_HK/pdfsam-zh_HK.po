@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-04-01 10:20+0000\n"
 "Last-Translator: egg8383 <egg8383@yahoo.com.hk>\n"
 "Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
+#, fuzzy
+msgid "Merge options"
 msgstr "合拼選項"
 
 msgid "PDF documents contain forms"
@@ -44,17 +45,11 @@ msgstr "備註"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "設定這選項文件將被完全地載入記憶體"
 
-msgid "Destination output file:"
+msgid "Destination output file"
 msgstr "目標輸出檔案"
 
 msgid "Error: "
 msgstr "錯誤： "
-
-msgid "Overwrite if already exists"
-msgstr "覆寫己存在的"
-
-msgid "Destination output file"
-msgstr "目標輸出檔案"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "瀏覧或進入全路徑輸出檔案"
@@ -108,6 +103,9 @@ msgstr ""
 msgid "Error saving xml file, output file is null."
 msgstr ""
 
+msgid "Split options"
+msgstr "分離選項"
+
 msgid "Burst (split into single pages)"
 msgstr "爆開(分離在單頁)"
 
@@ -125,9 +123,6 @@ msgstr "分離此頁後"
 
 msgid "Split at this size"
 msgstr "分離在這尺吋"
-
-msgid "Split options"
-msgstr "分離選項"
 
 msgid "Burst"
 msgstr ""
@@ -150,11 +145,9 @@ msgstr ""
 msgid "Split the document in files of the given size (roughly)."
 msgstr ""
 
-msgid "Split options:"
-msgstr ""
-
-msgid "Destination folder:"
-msgstr ""
+#, fuzzy
+msgid "Destination folder"
+msgstr "目標輸出檔案"
 
 msgid "Same as source"
 msgstr ""
@@ -178,8 +171,9 @@ msgid ""
 "exist."
 msgstr ""
 
-msgid "Output options:"
-msgstr ""
+#, fuzzy
+msgid "Output options"
+msgstr "分離選項"
 
 msgid "Output file names prefix:"
 msgstr ""
@@ -188,19 +182,20 @@ msgid "Output files prefix"
 msgstr ""
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr ""
 
 msgid "Invalid split size"
@@ -230,10 +225,10 @@ msgstr ""
 msgid "Invalid unit: "
 msgstr ""
 
-msgid "Cover pdf file:"
+msgid "Cover pdf file"
 msgstr ""
 
-msgid "Footer pdf file:"
+msgid "Footer pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -244,6 +239,10 @@ msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr ""
+
+#, fuzzy
+msgid "Encrypt options"
+msgstr "分離選項"
 
 msgid "Owner password:"
 msgstr ""
@@ -257,7 +256,10 @@ msgstr ""
 msgid "User password (Max 32 chars long)"
 msgstr ""
 
-msgid "Encryption angorithm:"
+msgid "Encryption algorithm:"
+msgstr ""
+
+msgid "Allow all"
 msgstr ""
 
 msgid "Print"
@@ -282,12 +284,6 @@ msgid "Extract for use by accessibility dev."
 msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
-msgstr ""
-
-msgid "Allow all"
-msgstr ""
-
-msgid "Encrypt options:"
 msgstr ""
 
 msgid ""
@@ -319,6 +315,20 @@ msgstr ""
 
 msgid "Encrypt section loaded."
 msgstr ""
+
+msgid "Decrypt selected files"
+msgstr ""
+
+msgid "Decrypt"
+msgstr ""
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "合拼部份己載入"
+
+#, fuzzy
+msgid "Mix options"
+msgstr "分離選項"
 
 msgid "Reverse first document"
 msgstr ""
@@ -353,6 +363,105 @@ msgstr ""
 msgid "Unpack section loaded."
 msgstr ""
 
+#, fuzzy
+msgid "Set viewer options"
+msgstr "分離選項"
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+msgid "Pdf version required:"
+msgstr ""
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "分離選項"
+
+msgid "Set viewer options for selected files"
+msgstr ""
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr "備註"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+#, fuzzy
+msgid "Document outline"
+msgstr "PDF 文件包含形式"
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options"
+msgstr "合拼選項"
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "合拼部份己載入"
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -361,9 +470,6 @@ msgid "Confirm password saving"
 msgstr ""
 
 msgid "Unknown action."
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Log saved."
@@ -422,6 +528,9 @@ msgstr ""
 
 msgid "Compress output file/files"
 msgstr ""
+
+msgid "Overwrite if already exists"
+msgstr "覆寫己存在的"
 
 msgid "Don't preserve file order (fast load)"
 msgstr ""
@@ -665,6 +774,9 @@ msgstr ""
 msgid "Log level:"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "Look and feel:"
 msgstr ""
 
@@ -684,6 +796,9 @@ msgid "Default working directory:"
 msgstr ""
 
 msgid "Error getting default environment."
+msgstr ""
+
+msgid "Check now"
 msgstr ""
 
 msgid "Play alert sounds"
@@ -734,13 +849,10 @@ msgstr ""
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
-msgid "Check now"
+msgid "Save"
 msgstr ""
 
 msgid "Configuration saved."
-msgstr ""
-
-msgid "Settings"
 msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
@@ -808,3 +920,6 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
+
+#~ msgid "Destination output file:"
+#~ msgstr "目標輸出檔案"

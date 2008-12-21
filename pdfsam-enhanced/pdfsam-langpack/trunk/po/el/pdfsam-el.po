@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-03-24 16:10+0000\n"
 "Last-Translator: dizzyk <hibaman@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -17,8 +17,10 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
-msgstr ""
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#, fuzzy
+msgid "Merge options"
+msgstr "Επιλογές κρυπτογράφησης:"
 
 msgid "PDF documents contain forms"
 msgstr ""
@@ -48,11 +50,11 @@ msgstr "Σημείωση"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-msgid "Destination output file:"
-msgstr "Αρχείο προορισμού εξόδου:"
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:444
+msgid "Destination output file"
+msgstr "Αρχείο προορισμού εξόδου"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
@@ -80,21 +82,6 @@ msgstr "Αρχείο προορισμού εξόδου:"
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:907
 msgid "Error: "
 msgstr "Σφάλμα: "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:438
-msgid "Overwrite if already exists"
-msgstr "Αντικατάσταση αν ήδη υπάρχει"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:444
-msgid "Destination output file"
-msgstr "Αρχείο προορισμού εξόδου"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
@@ -160,6 +147,9 @@ msgstr ""
 msgid "Error saving xml file, output file is null."
 msgstr ""
 
+msgid "Split options"
+msgstr ""
+
 msgid "Burst (split into single pages)"
 msgstr ""
 
@@ -176,9 +166,6 @@ msgid "Split after these pages"
 msgstr ""
 
 msgid "Split at this size"
-msgstr ""
-
-msgid "Split options"
 msgstr ""
 
 msgid "Burst"
@@ -202,13 +189,11 @@ msgstr ""
 msgid "Split the document in files of the given size (roughly)."
 msgstr ""
 
-msgid "Split options:"
-msgstr ""
-
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-msgid "Destination folder:"
+#, fuzzy
+msgid "Destination folder"
 msgstr "Φάκελος προορισμού:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
@@ -251,7 +236,8 @@ msgstr ""
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-msgid "Output options:"
+#, fuzzy
+msgid "Output options"
 msgstr "Επιλογές εξόδου:"
 
 msgid "Output file names prefix:"
@@ -261,19 +247,20 @@ msgid "Output files prefix"
 msgstr ""
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr ""
 
 msgid "Invalid split size"
@@ -308,11 +295,13 @@ msgid "Invalid unit: "
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "Αρχείο .pdf ως εξώφυλλο:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Αρχείο .pdf ως υποσμείωση:"
 
 msgid "Select at least one cover or one footer"
@@ -323,6 +312,11 @@ msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#, fuzzy
+msgid "Encrypt options"
+msgstr "Επιλογές κρυπτογράφησης:"
 
 msgid "Owner password:"
 msgstr ""
@@ -338,8 +332,12 @@ msgid "User password (Max 32 chars long)"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "Αλγόριθμος κρυπτογράφησης:"
+
+msgid "Allow all"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
 msgid "Print"
@@ -367,13 +365,6 @@ msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
 msgstr ""
-
-msgid "Allow all"
-msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-msgid "Encrypt options:"
-msgstr "Επιλογές κρυπτογράφησης:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
@@ -415,6 +406,26 @@ msgstr "Επιλογές κρυπτογράφησης:"
 msgid "Encrypt section loaded."
 msgstr ""
 
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
+#, fuzzy
+msgid "Decrypt selected files"
+msgstr "Κρυπτογράφηση επιλεγμένου αρχείου"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#, fuzzy
+msgid "Decrypt"
+msgstr "Επιλογές κρυπτογράφησης:"
+
+msgid "Decrypt section loaded."
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
+#, fuzzy
+msgid "Mix options"
+msgstr "Επιλογές εξόδου:"
+
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
 #, fuzzy
 msgid "Reverse first document"
@@ -454,6 +465,112 @@ msgstr ""
 msgid "Unpack section loaded."
 msgstr ""
 
+msgid "Set viewer options"
+msgstr ""
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
+#, fuzzy
+msgid "Pdf version required:"
+msgstr "Πρώτο pdf κείμενο:"
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
+#, fuzzy
+msgid "Set options"
+msgstr "Επιλογές εξόδου:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
+#, fuzzy
+msgid "Set viewer options for selected files"
+msgstr "Κρυπτογράφηση επιλεγμένου αρχείου"
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
+#, fuzzy
+msgid "None"
+msgstr "Σημείωση"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+msgid "Document outline"
+msgstr ""
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#, fuzzy
+msgid "Viewer options"
+msgstr "Επιλογές κρυπτογράφησης:"
+
+msgid "Viewer options section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -463,12 +580,6 @@ msgstr ""
 
 msgid "Unknown action."
 msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:241
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:190
-msgid "Save"
-msgstr "Αποθήκευση"
 
 msgid "Log saved."
 msgstr ""
@@ -563,6 +674,15 @@ msgstr "Προσθήκη"
 #, fuzzy
 msgid "Compress output file/files"
 msgstr "Ορισμός αρχείου εξόδου"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:438
+msgid "Overwrite if already exists"
+msgstr "Αντικατάσταση αν ήδη υπάρχει"
 
 msgid "Don't preserve file order (fast load)"
 msgstr ""
@@ -907,6 +1027,9 @@ msgstr ""
 msgid "Log level:"
 msgstr "Επίπεδο καταγραφής:"
 
+msgid "Settings"
+msgstr ""
+
 msgid "Look and feel:"
 msgstr ""
 
@@ -931,6 +1054,12 @@ msgstr ""
 
 msgid "Error getting default environment."
 msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
+#, fuzzy
+msgid "Check now"
+msgstr "Επιλεγμένο"
 
 msgid "Play alert sounds"
 msgstr ""
@@ -983,16 +1112,13 @@ msgstr ""
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-#, fuzzy
-msgid "Check now"
-msgstr "Επιλεγμένο"
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:241
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:190
+msgid "Save"
+msgstr "Αποθήκευση"
 
 msgid "Configuration saved."
-msgstr ""
-
-msgid "Settings"
 msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
@@ -1069,6 +1195,12 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Θέση"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
+#~ msgid "Destination output file:"
+#~ msgstr "Αρχείο προορισμού εξόδου:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338

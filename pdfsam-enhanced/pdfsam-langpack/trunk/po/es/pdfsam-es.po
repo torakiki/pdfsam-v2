@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
-"PO-Revision-Date: 2008-10-03 23:07+0000\n"
-"Last-Translator: Luis García <Unknown>\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"PO-Revision-Date: 2008-11-27 17:47+0000\n"
+"Last-Translator: Helmy Giacoman || Eos87 <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 14:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
-msgstr "Opciones de fusión:"
+msgid "Merge options"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 msgid "PDF documents contain forms"
@@ -46,47 +46,11 @@ msgstr "Anotación"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "Seleccionando esta opción los documentos serán cargados en memoria"
 
-msgid "Destination output file:"
-msgstr "Ubicación para el fichero de destino:"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:441
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:599
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:619
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:649
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:879
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:983
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:616
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:423
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:588
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:608
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:638
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:861
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:977
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:143
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:170
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:237
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:498
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:539
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:256
-msgid "Error: "
-msgstr "Error: "
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
-msgid "Overwrite if already exists"
-msgstr "Sobreescribir si ya existe"
-
 msgid "Destination output file"
-msgstr "Archivo de salida de destino"
+msgstr "Destino del archivo de salida"
+
+msgid "Error: "
+msgstr "Error "
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Busque o ingrese la ruta completa al archivo de salida de destino."
@@ -121,12 +85,11 @@ msgstr "Espere mientras se procesan todos los archivos..."
 msgid "Found a password for input file."
 msgstr "Encuentra una contraseña para el archivo de salida"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Seleccione dos documentos pdf"
+msgstr "Por favor, seleccione al menos un documento pdf"
 
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:464
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
@@ -153,6 +116,9 @@ msgstr "Archivo .xml guardado"
 
 msgid "Error saving xml file, output file is null."
 msgstr "Error salvando el archivo xml, la salida es nula"
+
+msgid "Split options"
+msgstr "Opciones de división."
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:181
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:195
@@ -186,9 +152,6 @@ msgstr "Dividir estas páginas"
 msgid "Split at this size"
 msgstr "Dividir en esta medida"
 
-msgid "Split options"
-msgstr "Opciones de división."
-
 msgid "Burst"
 msgstr "Ráfaga"
 
@@ -211,16 +174,8 @@ msgstr "Dividir el documento después de números de página (num1-num2-num3...)
 msgid "Split the document in files of the given size (roughly)."
 msgstr "Dividir el documento en archivos del tamaño dado (aproximadamente)"
 
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-msgid "Split options:"
-msgstr "Opciones de división:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-msgid "Destination folder:"
-msgstr "Carpeta de destino:"
+msgid "Destination folder"
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:234
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
@@ -254,11 +209,8 @@ msgid ""
 msgstr ""
 "Chequea la caja si quieres sobreescribir el archivo de salida si ya existe."
 
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:283
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-msgid "Output options:"
-msgstr "Opciones de destino"
+msgid "Output options"
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:291
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
@@ -270,25 +222,22 @@ msgid "Output files prefix"
 msgstr "Prefijo de los archivos de salida"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
-"Si contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" realiza sustitución de "
-"variable."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ej. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_NombreArvchivo_005.pdf."
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
-"Si no contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera nombres de "
-"archivos con estilo antiguo"
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-msgstr "Variables disponibles: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Tamaño de división inválida"
@@ -302,9 +251,8 @@ msgstr "Ha seleccionada una versión de salida PDF menor, ¿continuar?"
 msgid "Pdf version conflict"
 msgstr "Conflicto con la versión Pdf"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Seleccione dos documentos pdf"
+msgstr "Por favor, seleccion un documento pdf"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:369
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
@@ -322,12 +270,14 @@ msgstr "Sección de división cargada."
 msgid "Invalid unit: "
 msgstr "Unidad inválida: "
 
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "Archivo pdf de portada:"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:269
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Archivo de pie de página PDF"
 
 msgid "Select at least one cover or one footer"
@@ -338,6 +288,9 @@ msgstr "Cubierta y pie"
 
 msgid "Cover And Footer section loaded."
 msgstr "Secciones Portada y Pié de Página cargadas."
+
+msgid "Encrypt options"
+msgstr ""
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:202
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
@@ -361,8 +314,12 @@ msgstr "Contraseña de usuario (Max 32 caracteres)"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "Algoritmo de encriptación:"
+
+msgid "Allow all"
+msgstr "Permitir todo"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:225
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
@@ -399,14 +356,6 @@ msgstr "Extraer para ser usado por accessibility dev."
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "Manipular páginas y añadir marcadores"
-
-msgid "Allow all"
-msgstr "Permitir todo"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-msgid "Encrypt options:"
-msgstr "Opciones de encriptación:"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -445,6 +394,18 @@ msgstr "Encriptar"
 msgid "Encrypt section loaded."
 msgstr "Encriptar sección cargada."
 
+msgid "Decrypt selected files"
+msgstr ""
+
+msgid "Decrypt"
+msgstr ""
+
+msgid "Decrypt section loaded."
+msgstr ""
+
+msgid "Mix options"
+msgstr ""
+
 msgid "Reverse first document"
 msgstr "Reverso del primer documento."
 
@@ -478,6 +439,99 @@ msgstr "Desempaquetar"
 msgid "Unpack section loaded."
 msgstr "Sección de descompactar cargada."
 
+msgid "Set viewer options"
+msgstr ""
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+msgid "Pdf version required:"
+msgstr ""
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+msgid "Set options"
+msgstr ""
+
+msgid "Set viewer options for selected files"
+msgstr ""
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+msgid "Document outline"
+msgstr ""
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+msgid "Viewer options"
+msgstr ""
+
+msgid "Viewer options section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -491,9 +545,6 @@ msgstr "Confirmar la contraseña guardada"
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
 msgid "Unknown action."
 msgstr "Acción desconocida."
-
-msgid "Save"
-msgstr "Guardar"
 
 msgid "Log saved."
 msgstr "Registro guardado."
@@ -585,6 +636,15 @@ msgstr "Añadir"
 
 msgid "Compress output file/files"
 msgstr "Comprimir archivo/archivos de salida"
+
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:249
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:279
+msgid "Overwrite if already exists"
+msgstr "Sobreescribir si ya existe"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "No conservar el orden de archivos (carga rápida)"
@@ -923,6 +983,9 @@ msgstr "Colaboradores: "
 msgid "Log level:"
 msgstr "Nivel de registro:"
 
+msgid "Settings"
+msgstr "Preferencias"
+
 msgid "Look and feel:"
 msgstr "Apariencia:"
 
@@ -948,8 +1011,11 @@ msgstr "Direectorio de trabajo predeterminado:"
 msgid "Error getting default environment."
 msgstr "Error al obtener el ambiente predeterminado."
 
+msgid "Check now"
+msgstr "Revisar ahora"
+
 msgid "Play alert sounds"
-msgstr ""
+msgstr "Reproducir los sonidos de alerta"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 msgid "Settings "
@@ -985,7 +1051,7 @@ msgstr ""
 "revisada (necesita reiniciar)"
 
 msgid "Turn on or off alert sounds"
-msgstr ""
+msgstr "Encender o apagar los sonidos de alerta"
 
 msgid "Default env."
 msgstr "Ambiente predeterminado"
@@ -1005,14 +1071,11 @@ msgstr ""
 "Selecciones un directorio donde los documentos serán guardados y cargados de "
 "forma predeterminada"
 
-msgid "Check now"
-msgstr "Revisar ahora"
+msgid "Save"
+msgstr "Guardar"
 
 msgid "Configuration saved."
 msgstr "Configuración guardada."
-
-msgid "Settings"
-msgstr "Preferencias"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Método no implementado de JSettingsPanel"
@@ -1080,8 +1143,22 @@ msgstr "Cortar"
 msgid "Paste"
 msgstr "Pegar"
 
-#~ msgid "Select an input file"
-#~ msgstr "Seleccionar archivo de entrada"
+# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
+#~ msgid "Split options:"
+#~ msgstr "Opciones de división:"
+
+# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:231
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+#~ msgid "Destination folder:"
+#~ msgstr "Carpeta de destino:"
+
+# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:283
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
+#~ msgid "Output options:"
+#~ msgstr "Opciones de destino"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:231
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
@@ -1121,6 +1198,11 @@ msgstr "Pegar"
 #~ msgid "Select a PDF file to encrypt"
 #~ msgstr "Seleccionar un archivo PDF para encriptar"
 
+# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#~ msgid "Encrypt options:"
+#~ msgstr "Opciones de encriptación:"
+
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:152
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
 #~ msgid "Select a PDF file to split"
@@ -1156,6 +1238,3 @@ msgstr "Pegar"
 
 #~ msgid "Page numbers you want to split after (num1-num2-num3..)"
 #~ msgstr "Números de página que desea dividir (num1-num2-num3...)"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "Ubicación de salida no es correcta"

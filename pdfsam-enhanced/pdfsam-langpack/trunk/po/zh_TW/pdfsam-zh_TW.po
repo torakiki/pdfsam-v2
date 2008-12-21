@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
-"PO-Revision-Date: 2008-10-22 19:14+0000\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"PO-Revision-Date: 2008-12-07 15:32+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-24 12:12+0000\n"
+"X-Launchpad-Export-Date: 2008-12-08 14:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
-msgstr "合併選項："
+msgid "Merge options"
+msgstr "合併選項"
 
 msgid "PDF documents contain forms"
 msgstr "PDF文件包含表格"
@@ -44,17 +44,11 @@ msgstr "注意"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "一旦選擇這個選項，全部文件都會載入記憶體中"
 
-msgid "Destination output file:"
-msgstr "輸出檔案："
+msgid "Destination output file"
+msgstr "輸出檔案路徑"
 
 msgid "Error: "
 msgstr "錯誤： "
-
-msgid "Overwrite if already exists"
-msgstr "覆蓋舊檔"
-
-msgid "Destination output file"
-msgstr "輸出檔案路徑"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "請瀏覽或輸入存放輸出檔的完整路徑。"
@@ -108,6 +102,9 @@ msgstr "xml 檔已儲存。"
 msgid "Error saving xml file, output file is null."
 msgstr "無法儲存 xml 檔，輸出檔是空的。"
 
+msgid "Split options"
+msgstr "分割選項"
+
 msgid "Burst (split into single pages)"
 msgstr "細分（分割成多個單頁）"
 
@@ -125,9 +122,6 @@ msgstr "分割出這些頁面之後的部份"
 
 msgid "Split at this size"
 msgstr "依指定的檔案大小分割"
-
-msgid "Split options"
-msgstr "分割選項"
 
 msgid "Burst"
 msgstr "細分"
@@ -150,11 +144,8 @@ msgstr "分割出這些頁碼後面的部份（頁碼1-頁碼2-頁碼3...）"
 msgid "Split the document in files of the given size (roughly)."
 msgstr "將文件（約略地）分割成指定大小的檔案"
 
-msgid "Split options:"
-msgstr "分割選項："
-
-msgid "Destination folder:"
-msgstr "輸出檔存放路徑："
+msgid "Destination folder"
+msgstr "目的地資料夾"
 
 msgid "Same as source"
 msgstr "與原始檔案相同路徑"
@@ -178,8 +169,8 @@ msgid ""
 "exist."
 msgstr "如果您想覆蓋舊的輸出檔，請勾選這個選項。"
 
-msgid "Output options:"
-msgstr "輸出選項："
+msgid "Output options"
+msgstr "輸出選項"
 
 msgid "Output file names prefix:"
 msgstr "輸出檔案名稱前綴："
@@ -188,21 +179,26 @@ msgid "Output files prefix"
 msgstr "輸出檔案名稱前綴"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
-msgstr "若包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，會顯示不同的替代文字。"
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
+msgstr ""
+"若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行變"
+"數替換。"
+
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr ""
+"例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
 
 msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr "例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
+msgstr ""
+"若不包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將產生"
+"舊式的輸出檔名稱。"
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
-msgstr "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
-
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-msgstr "可用的變數：[CURRENTPAGE], [TIMESTAMP], [BASENAME]。"
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgstr "可用的變數：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME] 及 [FILENUMBER]。"
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
@@ -231,10 +227,12 @@ msgstr "分割已完成。"
 msgid "Invalid unit: "
 msgstr "無效的單位： "
 
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "作為封面的PDF檔："
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "作為封底的PDF檔："
 
 msgid "Select at least one cover or one footer"
@@ -245,6 +243,9 @@ msgstr "封面與封底"
 
 msgid "Cover And Footer section loaded."
 msgstr "新增封面和封底已完成。"
+
+msgid "Encrypt options"
+msgstr "加密選項"
 
 msgid "Owner password:"
 msgstr "管理者密碼："
@@ -258,8 +259,12 @@ msgstr "使用者密碼："
 msgid "User password (Max 32 chars long)"
 msgstr "使用者密碼（最多32個字元）"
 
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "加密演算法："
+
+msgid "Allow all"
+msgstr "全部允許"
 
 msgid "Print"
 msgstr "列印"
@@ -285,12 +290,6 @@ msgstr "摘錄供無障礙裝置使用。"
 msgid "Manipulate pages and add bookmarks"
 msgstr "安排頁面和新增書籤"
 
-msgid "Allow all"
-msgstr "全部允許"
-
-msgid "Encrypt options:"
-msgstr "加密選項："
-
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
@@ -303,7 +302,8 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴_20070517_113423471.pdf\"。"
+"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴"
+"_20070517_113423471.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -322,6 +322,18 @@ msgstr "加密"
 msgid "Encrypt section loaded."
 msgstr "加密已完成。"
 
+msgid "Decrypt selected files"
+msgstr "解密所選取的檔案"
+
+msgid "Decrypt"
+msgstr "解密"
+
+msgid "Decrypt section loaded."
+msgstr "已載入解密的區段。"
+
+msgid "Mix options"
+msgstr "混合選項"
+
 msgid "Reverse first document"
 msgstr "顛倒第一份文件的順序"
 
@@ -338,7 +350,7 @@ msgid "Please select two pdf documents."
 msgstr "請選擇兩個 PDF 文件。"
 
 msgid "Execute pdf alternate mix"
-msgstr "執行PDF交替合併"
+msgstr "執行PDF交替混合"
 
 msgid "Alternate Mix"
 msgstr "交替合併"
@@ -355,6 +367,99 @@ msgstr "解開"
 msgid "Unpack section loaded."
 msgstr "已完成解開的動作。"
 
+msgid "Set viewer options"
+msgstr "設定檢視器選項"
+
+msgid "Hide the menubar"
+msgstr "隱藏選單列"
+
+msgid "Hide the toolbar"
+msgstr "隱藏工具列"
+
+msgid "Hide user interface elements"
+msgstr "隱藏使用者介面元件"
+
+msgid "Rezise the window to fit the page size"
+msgstr "重新縮放視窗來符合頁面尺寸"
+
+msgid "Center of the screen"
+msgstr "螢幕中心"
+
+msgid "Display document title as window title"
+msgstr "將文件標題顯示為視窗標題"
+
+msgid "Pdf version required:"
+msgstr "所需的 PDF 版本："
+
+msgid "No page scaling in print dialog"
+msgstr "列印對話框中未指定頁面的比例"
+
+msgid "Viewer layout:"
+msgstr "檢視器配置："
+
+msgid "Viewer open mode:"
+msgstr "以檢視器開啟模式："
+
+msgid "Non fullscreen mode:"
+msgstr "非全螢幕模式："
+
+msgid "Direction:"
+msgstr "方向："
+
+msgid "Set options"
+msgstr "設定選項"
+
+msgid "Set viewer options for selected files"
+msgstr "設定所選取檔案的檢視器選項"
+
+msgid "Left to right"
+msgstr "由左至右"
+
+msgid "Right to left"
+msgstr "由右至左"
+
+msgid "None"
+msgstr "無"
+
+msgid "Fullscreen"
+msgstr "全螢幕"
+
+msgid "Attachments"
+msgstr "附件"
+
+msgid "Optional content group panel"
+msgstr "可選擇的內容群組面板"
+
+msgid "Document outline"
+msgstr "文件大綱"
+
+msgid "Thumbnail images"
+msgstr "縮圖"
+
+msgid "One page at a time"
+msgstr "一次顯示一頁"
+
+msgid "Pages in one column"
+msgstr "頁面顯示於一直行上"
+
+msgid "Pages in two columns (odd on the left)"
+msgstr "頁面顯示成兩行（單數頁於左方）"
+
+msgid "Pages in two columns (odd on the right)"
+msgstr "頁面顯示成兩行（單數頁於右方）"
+
+msgid "Two pages at a time (odd on the left)"
+msgstr "一次顯示兩頁（單數頁於左方）"
+
+msgid "Two pages at a time (odd on the right)"
+msgstr "一次顯示兩頁（單數頁於右方）"
+
+msgid "Viewer options"
+msgstr "檢視器選項"
+
+msgid "Viewer options section loaded."
+msgstr "已載入檢視器選項區段。"
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "您是否要儲存密碼（於開啟輸出檔時，程式可以讀取）？"
@@ -364,9 +469,6 @@ msgstr "請確認儲存密碼"
 
 msgid "Unknown action."
 msgstr "未知的動作。"
-
-msgid "Save"
-msgstr "儲存"
 
 msgid "Log saved."
 msgstr "紀錄檔已儲存。"
@@ -424,6 +526,9 @@ msgstr "新增"
 
 msgid "Compress output file/files"
 msgstr "壓縮輸出檔"
+
+msgid "Overwrite if already exists"
+msgstr "覆蓋舊檔"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "不要保留檔案排序（加速載入）"
@@ -667,6 +772,9 @@ msgstr "協助開發： "
 msgid "Log level:"
 msgstr "紀錄檔層級："
 
+msgid "Settings"
+msgstr "設定"
+
 msgid "Look and feel:"
 msgstr "外觀："
 
@@ -687,6 +795,9 @@ msgstr "預設的工作目錄："
 
 msgid "Error getting default environment."
 msgstr "無法取得預設環境變數。"
+
+msgid "Check now"
+msgstr "立刻檢查"
 
 msgid "Play alert sounds"
 msgstr "播放警示音效"
@@ -733,18 +844,14 @@ msgstr "請選取一個之前儲存的環境變數檔，啟動時會自動載入
 msgid "Default working directory"
 msgstr "預設的工作目錄"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "請選擇一個用以儲存或載入文件的預設目錄"
 
-msgid "Check now"
-msgstr "立刻檢查"
+msgid "Save"
+msgstr "儲存"
 
 msgid "Configuration saved."
 msgstr "設定已儲存。"
-
-msgid "Settings"
-msgstr "設定"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "尚未實作的 JSettingsPanel 方法"
@@ -812,6 +919,32 @@ msgstr "剪下"
 msgid "Paste"
 msgstr "貼上"
 
+#~ msgid "Merge options:"
+#~ msgstr "合併選項："
+
+#~ msgid "Split options:"
+#~ msgstr "分割選項："
+
+#~ msgid "Destination folder:"
+#~ msgstr "輸出檔存放路徑："
+
+#~ msgid "Output options:"
+#~ msgstr "輸出選項："
+
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
+#~ "substitution."
+#~ msgstr "若包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，會顯示不同的替代文字。"
+
+#~ msgid ""
+#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
+#~ "oldstyle output file names."
+#~ msgstr ""
+#~ "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
+
+#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#~ msgstr "可用的變數：[CURRENTPAGE], [TIMESTAMP], [BASENAME]。"
+
 #~ msgid "Please wait while reading "
 #~ msgstr "讀取中請稍待... "
 
@@ -838,6 +971,12 @@ msgstr "貼上"
 
 #~ msgid "Select a PDF file to encrypt"
 #~ msgstr "請選取要加密的PDF檔"
+
+#~ msgid "Encrypt options:"
+#~ msgstr "加密選項："
+
+#~ msgid "Destination output file:"
+#~ msgstr "輸出檔案："
 
 #~ msgid "Browse filesystem for the first file to mix"
 #~ msgstr "在電腦中選取要交替合併的第一個檔案"

@@ -7,65 +7,58 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
-"PO-Revision-Date: 2008-08-06 01:48+0000\n"
-"Last-Translator: galicia <seki@assistv.co.jp>\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"PO-Revision-Date: 2008-12-12 08:22+0000\n"
+"Last-Translator: parkmount <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-17 09:24+0000\n"
+"X-Launchpad-Export-Date: 2008-12-20 15:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
-msgstr "結合オプション:"
+msgid "Merge options"
+msgstr "マージオプション"
 
 msgid "PDF documents contain forms"
-msgstr "フォームを含むPDF文書"
+msgstr "フォーム付PDF文書"
 
 msgid "Merge type"
-msgstr "結合の種類"
+msgstr "マージタイプ"
 
 msgid "Unchecked"
-msgstr "未チェック"
+msgstr "未選択"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr ""
+msgstr "このマージタイプを標準PDF文書に適用"
 
 msgid "Checked"
-msgstr "チェック済"
+msgstr "選択済"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "フォームを含むPDF文書にこのタイプの結合を適用する"
+msgstr "このマージタイプをフォーム付PDF文書に適用"
 
 msgid "Note"
-msgstr ""
+msgstr "注記"
 
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "このオプションを指定すると文書は完全にメモリ内にロードされます"
-
-msgid "Destination output file:"
-msgstr "保存先ファイル:"
-
-msgid "Error: "
-msgstr "エラー: "
-
-msgid "Overwrite if already exists"
-msgstr "既存の場合上書きする"
+msgstr "このオプションを指定すると文書は完全にメモリ内に組み込まれます"
 
 msgid "Destination output file"
 msgstr "出力先ファイル"
 
+msgid "Error: "
+msgstr "エラー: "
+
 msgid "Browse or enter the full path to the destination output file."
-msgstr ""
+msgstr "出力ファイルの保存アドレスを見るか記入する"
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr ""
-"出力ファイルが既に存在する場合に、上書き保存するならチェックしてください。"
+msgstr "出力ファイルが既存の場合で、上書きする時はチェックボックスを選択する"
 
 msgid "Check the box if you want compressed output files."
-msgstr "出力ファイルを圧縮したいときにチェックしてください。"
+msgstr "出力ファイルを圧縮する場合、チェックボックスを選択する"
 
 msgid "PDF version 1.5 or above."
 msgstr "PDFバージョン1.5以上"
@@ -79,27 +72,26 @@ msgstr "すべての処理が完了するまで少々お待ちください..."
 msgid "Found a password for input file."
 msgstr "入力ファイルにパスワードがかかっています。"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "2つのPDF文書を選択してください。"
+msgstr "少なくとも１件のPDF文書を選択して下さい"
 
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 msgid "Execute pdf merge"
-msgstr "PDF結合の実行"
+msgstr "PDFマージを実行する"
 
 msgid "Merge/Extract"
-msgstr "結合/抽出"
+msgstr "マージ／抽出"
 
 msgid "Merge section loaded."
-msgstr ""
+msgstr "マージ部分の取り込み完了"
 
 msgid "Export as xml"
-msgstr "XMLとしてエクスポート"
+msgstr "XMLとしてエクスポートする"
 
 msgid "Unable to save xml file."
-msgstr "XMLの保存に失敗しました。"
+msgstr "XMLファイルの保存が出来ません"
 
 msgid "Ok"
 msgstr "OK"
@@ -108,31 +100,31 @@ msgid "File xml saved."
 msgstr "ファイルをXMLで保存しました。"
 
 msgid "Error saving xml file, output file is null."
-msgstr "XMLファイル保存時にエラーが発生しました。出力ファイルは空です。"
-
-msgid "Burst (split into single pages)"
-msgstr "バースト（1ページ単位に分割）"
-
-msgid "Split every \"n\" pages"
-msgstr "\"n\"ページ単位に分割"
-
-msgid "Split even pages"
-msgstr "各奇数ページが先頭になるように分割"
-
-msgid "Split odd pages"
-msgstr "各偶数ページが先頭になるように分割"
-
-msgid "Split after these pages"
-msgstr "次のページまでで2分割"
-
-msgid "Split at this size"
-msgstr "このサイズで分割する"
+msgstr "XMLファイル保存時にエラーが発生しました。出力ファイルは空白です。"
 
 msgid "Split options"
 msgstr "分割オプション"
 
+msgid "Burst (split into single pages)"
+msgstr "バースト（1ページ単位に分割）する"
+
+msgid "Split every \"n\" pages"
+msgstr "\"n\"ページ単位に分割する"
+
+msgid "Split even pages"
+msgstr "各奇数ページが先頭になるように分割する"
+
+msgid "Split odd pages"
+msgstr "各偶数ページが先頭になるように分割する"
+
+msgid "Split after these pages"
+msgstr "既定ページ後、分割する"
+
+msgid "Split at this size"
+msgstr "このサイズで分割する"
+
 msgid "Burst"
-msgstr "バースト"
+msgstr "バーストする"
 
 msgid "Explode the pdf document into single pages"
 msgstr "PDF文書を1ページ単位にばらします"
@@ -147,22 +139,19 @@ msgid "Split the document every odd page"
 msgstr "偶数ページ区切りで文書を分割します"
 
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "指定したページ番号の後ろで文書を分割します（数字1-数字2-数字3..）"
+msgstr "指定したページ番号の後で文書を分割します（数字1-数字2-数字3..）"
 
 msgid "Split the document in files of the given size (roughly)."
-msgstr "指定サイズ（おおよその）に収まるように文書を分割します"
+msgstr "指定ファイルサイズ（おおよその）に収まるように文書を分割します"
 
-msgid "Split options:"
-msgstr "分割オプション:"
-
-msgid "Destination folder:"
-msgstr "保存先フォルダ:"
+msgid "Destination folder"
+msgstr "出力先フォルダ"
 
 msgid "Same as source"
 msgstr "元フォルダと同じ"
 
 msgid "Choose a folder"
-msgstr "フォルダの選択"
+msgstr "フォルダを選択する"
 
 msgid "Destination output directory"
 msgstr "保存先ディレクトリ"
@@ -173,15 +162,15 @@ msgstr "入力ファイルと同じ場所に保存するか、別のフォルダ
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
-msgstr ""
+msgstr "フォルダ一覧から選択するか、出力先保存ディレクトリ・アドレスを記入する"
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr "同名ファイルが存在する場合、上書き保存する。"
+msgstr "同名の既存ファイルを上書き保存する場合、チェックボックスを選択する"
 
-msgid "Output options:"
-msgstr "出力オプション:"
+msgid "Output options"
+msgstr "出力オプション"
 
 msgid "Output file names prefix:"
 msgstr "出力ファイル名の接頭辞:"
@@ -190,84 +179,92 @@ msgid "Output files prefix"
 msgstr "出力ファイルの接頭辞:"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
-"\"[CURRENTPAGE]\" または \"[TIMESTAMP]\" を含む場合、変数の置き換えを実行しま"
-"す。"
+"\"[CURRENTPAGE]\", \"[TIMESTAMP]\" 、若しくは \"[FILENUMBER]\" のコードが含ま"
+"れている場合は、それぞれ、実際のページ・ナンバー、タイムスタンプ、及びファイ"
+"ル・ナンバーに変換されます"
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "例）　prefix_[BASENAME]_[CURRENTPAGE]　と指定すると、prefix_FileName_005.pdf"
-"　という風になります。"
+"　と変換されます。"
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
-"\"[CURRENTPAGE]\" や \"[TIMESTAMP]\" を含まない場合、通常の出力ファイル名にな"
-"ります。"
+"\"[CURRENTPAGE]\", \"[TIMESTAMP]\" 、若しくは \"[FILENUMBER]\" のコードが含ま"
+"れていない場合は、通常のファイル名が作成されます。"
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-msgstr "使用可能な変数: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgstr ""
+"使用可能な変換コード： [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
-msgstr "無効な分割サイズです"
+msgstr "分割サイズは無効です"
 
 msgid "The lowest available pdf version is "
-msgstr "使用可能で最も低いPDFバージョンは "
+msgstr "使用可能な最も古いPDFバージョンは "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "より低いバージョンを出力PDFとして選択しました。継続しますか？"
+msgstr "古いPDFバージョンを保存に選択しました。続行しますか？"
 
 msgid "Pdf version conflict"
-msgstr ""
+msgstr "PDFバージョン・ミスマッチ"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "2つのPDF文書を選択してください。"
+msgstr "PDF文書を選択して下さい"
 
 msgid "Split selected file"
-msgstr "選択したファイルを分割"
+msgstr "選択したファイルを分割する"
 
 msgid "Split"
 msgstr "分割"
 
 msgid "Split section loaded."
-msgstr "分割セクションをロードしました。"
+msgstr "分割セクションを取り込みました。"
 
 msgid "Invalid unit: "
 msgstr "無効な単位: "
 
-msgid "Cover pdf file:"
-msgstr "カバーPDFファイル:"
+msgid "Cover pdf file"
+msgstr ""
 
-msgid "Footer pdf file:"
-msgstr "フッターPDFファイル:"
+msgid "Footer pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
-msgstr "最低1つのカバー、もしくはフッターを選択してください"
+msgstr "最低1つの表紙書き、もしくは下欄書きを選択してください"
 
 msgid "Cover and Footer"
-msgstr "カバーとフッター"
+msgstr "表紙書きと下欄書き"
 
 msgid "Cover And Footer section loaded."
 msgstr "カバー/フッターセクションをロードしました。"
 
+msgid "Encrypt options"
+msgstr "暗号化オプション"
+
 msgid "Owner password:"
-msgstr "オーナーパスワード:"
+msgstr "作成者パスワード"
 
 msgid "Owner password (Max 32 chars long)"
-msgstr "オーナーパスワード（最長32文字）"
+msgstr "作成者パスワード（最長32文字）"
 
 msgid "User password:"
-msgstr "ユーザーパスワード:"
+msgstr ""
 
 msgid "User password (Max 32 chars long)"
 msgstr "ユーザーパスワード（最長32文字）"
 
-msgid "Encryption angorithm:"
-msgstr "暗号化アルゴリズム:"
+msgid "Encryption algorithm:"
+msgstr ""
+
+msgid "Allow all"
+msgstr "すべてを許可"
 
 msgid "Print"
 msgstr "プリント"
@@ -285,19 +282,13 @@ msgid "Add or modify text annotations"
 msgstr "テキスト注釈の追加または変更"
 
 msgid "Fill form fields"
-msgstr ""
+msgstr "フォーム各項を記入する"
 
 msgid "Extract for use by accessibility dev."
-msgstr ""
+msgstr "障害者補助機器用に抽出する"
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "ページの操作としおりの追加"
-
-msgid "Allow all"
-msgstr "すべてを許可"
-
-msgid "Encrypt options:"
-msgstr "暗号化オプション:"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -307,7 +298,8 @@ msgstr ""
 "い。"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr "\"[TIMESTAMP]\"  を含む場合、変数として置き換えを実行します。"
+msgstr ""
+"\"[TIMESTAMP]\"  を含む場合、実際のタイムスタンプへの変換を実行します。"
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
@@ -320,7 +312,7 @@ msgid ""
 msgstr ""
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr "使用可能な変数: [TIMESTAMP], [BASENAME]."
+msgstr "使用可能な変換コード: [TIMESTAMP], [BASENAME]."
 
 msgid "Encrypt selected files"
 msgstr "選択したファイルを暗号化"
@@ -330,6 +322,18 @@ msgstr "暗号化"
 
 msgid "Encrypt section loaded."
 msgstr "暗号化セクションをロードしました。"
+
+msgid "Decrypt selected files"
+msgstr "選択したファイルを解読する"
+
+msgid "Decrypt"
+msgstr "解読"
+
+msgid "Decrypt section loaded."
+msgstr ""
+
+msgid "Mix options"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr ""
@@ -364,6 +368,99 @@ msgstr "解凍"
 msgid "Unpack section loaded."
 msgstr "解凍セクションをロードしました。"
 
+msgid "Set viewer options"
+msgstr ""
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+msgid "Pdf version required:"
+msgstr ""
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+msgid "Set options"
+msgstr ""
+
+msgid "Set viewer options for selected files"
+msgstr ""
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+msgid "Document outline"
+msgstr ""
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+msgid "Viewer options"
+msgstr ""
+
+msgid "Viewer options section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -373,9 +470,6 @@ msgstr "パスワード保存の確認"
 
 msgid "Unknown action."
 msgstr "不明なアクションです。"
-
-msgid "Save"
-msgstr "保存"
 
 msgid "Log saved."
 msgstr "ログを保存しました。"
@@ -433,6 +527,9 @@ msgstr "追加"
 
 msgid "Compress output file/files"
 msgstr ""
+
+msgid "Overwrite if already exists"
+msgstr "既存の場合上書きする"
 
 msgid "Don't preserve file order (fast load)"
 msgstr ""
@@ -678,6 +775,9 @@ msgstr ""
 msgid "Log level:"
 msgstr "ログレベル:"
 
+msgid "Settings"
+msgstr ""
+
 msgid "Look and feel:"
 msgstr "外観:"
 
@@ -697,6 +797,9 @@ msgid "Default working directory:"
 msgstr "デフォルトの作業ディレクトリ:"
 
 msgid "Error getting default environment."
+msgstr ""
+
+msgid "Check now"
 msgstr ""
 
 msgid "Play alert sounds"
@@ -747,15 +850,11 @@ msgstr ""
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
-msgid "Check now"
-msgstr ""
+msgid "Save"
+msgstr "保存"
 
 msgid "Configuration saved."
 msgstr ""
-
-#, fuzzy
-msgid "Settings"
-msgstr "設定 "
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -820,12 +919,5 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
-#, fuzzy
 msgid "Paste"
-msgstr "パス"
-
-#~ msgid "Select an input file"
-#~ msgstr "処理するファイルを選択してください"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "出力場所が適切ではありません"
+msgstr ""

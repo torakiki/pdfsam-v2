@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-03-24 16:12+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
+msgid "Merge options"
 msgstr ""
 
 msgid "PDF documents contain forms"
@@ -44,17 +44,11 @@ msgstr ""
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
 
-msgid "Destination output file:"
+msgid "Destination output file"
 msgstr ""
 
 msgid "Error: "
 msgstr "Salah: "
-
-msgid "Overwrite if already exists"
-msgstr "Ditimpa jika sudah ada"
-
-msgid "Destination output file"
-msgstr ""
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
@@ -108,6 +102,9 @@ msgstr ""
 msgid "Error saving xml file, output file is null."
 msgstr ""
 
+msgid "Split options"
+msgstr ""
+
 msgid "Burst (split into single pages)"
 msgstr ""
 
@@ -124,9 +121,6 @@ msgid "Split after these pages"
 msgstr ""
 
 msgid "Split at this size"
-msgstr ""
-
-msgid "Split options"
 msgstr ""
 
 msgid "Burst"
@@ -150,11 +144,9 @@ msgstr ""
 msgid "Split the document in files of the given size (roughly)."
 msgstr ""
 
-msgid "Split options:"
-msgstr ""
-
-msgid "Destination folder:"
-msgstr ""
+#, fuzzy
+msgid "Destination folder"
+msgstr "Direktori tujuan keluaran"
 
 msgid "Same as source"
 msgstr ""
@@ -178,7 +170,7 @@ msgid ""
 "exist."
 msgstr "Tandai kotak jika Anda ingin menimpa berkas keluaran jika sudah ada"
 
-msgid "Output options:"
+msgid "Output options"
 msgstr ""
 
 msgid "Output file names prefix:"
@@ -188,19 +180,20 @@ msgid "Output files prefix"
 msgstr ""
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr ""
 
 msgid "Invalid split size"
@@ -230,10 +223,12 @@ msgstr ""
 msgid "Invalid unit: "
 msgstr ""
 
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "Halaman depan file pdf:"
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Catatan kaki file pdf:"
 
 msgid "Select at least one cover or one footer"
@@ -245,6 +240,9 @@ msgstr ""
 #, fuzzy
 msgid "Cover And Footer section loaded."
 msgstr "Bagian SampulDanCatatankaki dimuat"
+
+msgid "Encrypt options"
+msgstr ""
 
 msgid "Owner password:"
 msgstr ""
@@ -258,7 +256,10 @@ msgstr ""
 msgid "User password (Max 32 chars long)"
 msgstr ""
 
-msgid "Encryption angorithm:"
+msgid "Encryption algorithm:"
+msgstr ""
+
+msgid "Allow all"
 msgstr ""
 
 msgid "Print"
@@ -283,12 +284,6 @@ msgid "Extract for use by accessibility dev."
 msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
-msgstr ""
-
-msgid "Allow all"
-msgstr ""
-
-msgid "Encrypt options:"
 msgstr ""
 
 #, fuzzy
@@ -320,6 +315,19 @@ msgid "Encrypt"
 msgstr ""
 
 msgid "Encrypt section loaded."
+msgstr ""
+
+msgid "Decrypt selected files"
+msgstr ""
+
+msgid "Decrypt"
+msgstr ""
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "Bagian SampulDanCatatankaki dimuat"
+
+msgid "Mix options"
 msgstr ""
 
 msgid "Reverse first document"
@@ -356,6 +364,101 @@ msgstr ""
 msgid "Unpack section loaded."
 msgstr "Bagian SampulDanCatatankaki dimuat"
 
+msgid "Set viewer options"
+msgstr ""
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+msgid "Pdf version required:"
+msgstr ""
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "Tentukan file keluaran"
+
+msgid "Set viewer options for selected files"
+msgstr ""
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+msgid "Document outline"
+msgstr ""
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+msgid "Viewer options"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "Bagian SampulDanCatatankaki dimuat"
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -364,9 +467,6 @@ msgid "Confirm password saving"
 msgstr ""
 
 msgid "Unknown action."
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Log saved."
@@ -427,6 +527,9 @@ msgstr "Tambah"
 #, fuzzy
 msgid "Compress output file/files"
 msgstr "Tentukan file keluaran"
+
+msgid "Overwrite if already exists"
+msgstr "Ditimpa jika sudah ada"
 
 msgid "Don't preserve file order (fast load)"
 msgstr ""
@@ -673,6 +776,9 @@ msgstr ""
 msgid "Log level:"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "Look and feel:"
 msgstr ""
 
@@ -692,6 +798,9 @@ msgid "Default working directory:"
 msgstr ""
 
 msgid "Error getting default environment."
+msgstr ""
+
+msgid "Check now"
 msgstr ""
 
 msgid "Play alert sounds"
@@ -742,13 +851,10 @@ msgstr ""
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
-msgid "Check now"
+msgid "Save"
 msgstr ""
 
 msgid "Configuration saved."
-msgstr ""
-
-msgid "Settings"
 msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"

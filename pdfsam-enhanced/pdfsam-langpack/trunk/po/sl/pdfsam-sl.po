@@ -1,4 +1,4 @@
-# Korean translation for pdfsam
+# Slovenian translation for pdfsam
 # Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the pdfsam package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
@@ -6,355 +6,345 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
-"PO-Revision-Date: 2008-06-24 09:30+0000\n"
-"Last-Translator: sanghyun lee <joohi@hanafos.com>\n"
-"Language-Team: Korean <ko@li.org>\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2008-12-14 18:54+0100\n"
+"PO-Revision-Date: 2008-12-20 09:13+0000\n"
+"Last-Translator: jure <jure1001@yahoo.com>\n"
+"Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-17 09:24+0000\n"
+"X-Launchpad-Export-Date: 2008-12-20 15:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "Merge options:"
+msgstr "Možnosti združevanja"
 
 msgid "PDF documents contain forms"
-msgstr "폼을 포함한 PDF 문서"
+msgstr "PDF dokumenti vsebujejo forme"
 
 msgid "Merge type"
-msgstr "병합 형식"
+msgstr "Tip spajanja"
 
 msgid "Unchecked"
-msgstr "선택 안함"
+msgstr "Preklic"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr "표준 pdf 문서에 이 병합 형식 사용"
+msgstr "Uporabi ta tip spajanja za standarne pdf dokumente"
 
 msgid "Checked"
-msgstr "선택함"
+msgstr "Označeno"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "폼을 포함한 문서에 이 병합 형식 사용"
+msgstr "Uporabi ta tip spajanja za pdf dokumente, ki vsebujejo forme"
 
 msgid "Note"
-msgstr "노트"
+msgstr "Opomba"
 
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "이 옵션을 선택하면 문서 전부를 메모리에 읽어들입니다"
+msgstr "Z izbiro te možnosti bodo dokumenti shranjeni v spomin"
 
 msgid "Destination output file"
-msgstr "출력 파일"
+msgstr "Mesto shranjevanja datoteke"
 
 msgid "Error: "
-msgstr "오류: "
+msgstr "Napaka "
 
 msgid "Browse or enter the full path to the destination output file."
-msgstr "출력파일을 선택하거나 완전한 경로를 입력하세요."
+msgstr "Poišči ali vpiši celo pot do datoteke"
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr "출력 파일이 이미 있을 경우 덮어쓰기를 원하면 선택하세요."
+msgstr "Označi, če želiš prepisati že obstoječo datoteko"
 
 msgid "Check the box if you want compressed output files."
-msgstr "출력 파일을 압축하려면 선택하세요."
+msgstr "Označi za stiskanje shranjene datoteke"
 
 msgid "PDF version 1.5 or above."
-msgstr "PDF 버전 1.5 이상."
+msgstr "PDF verzija 1.5 in naprej"
 
 msgid "Set the pdf version of the ouput document."
-msgstr "출력 문서의 PDF 버전 설정."
+msgstr "Izberi PDF verzijo shranjene datoteke"
 
 msgid "Please wait while all files are processed.."
-msgstr "모든 파일이 처리될 동안 잠시 기다리세요."
+msgstr "Prosim, počakaj...procesiram"
 
-#, fuzzy
 msgid "Found a password for input file."
-msgstr "입력 파일 암호 발견."
+msgstr "Najdeno geslo za izbrano datoteko"
 
 msgid "Please select at least one pdf document."
-msgstr ""
+msgstr "Izberi vsaj en PDF dokument"
 
 msgid "Warning"
-msgstr ""
+msgstr "Opozorilo"
 
 msgid "Execute pdf merge"
-msgstr "PDF 병합 실행"
+msgstr "Začni PDF spajanje"
 
 msgid "Merge/Extract"
-msgstr "병합/추출"
+msgstr "Spajanje/razdruževanje"
 
 msgid "Merge section loaded."
-msgstr "읽은 영역 병합."
+msgstr "Sektor  združevanja naložen"
 
 msgid "Export as xml"
-msgstr ""
+msgstr "Izvozi kot xml"
 
 msgid "Unable to save xml file."
-msgstr ""
+msgstr "Ne morem shraniti xml datoteke"
 
 msgid "Ok"
-msgstr ""
+msgstr "V redu"
 
 msgid "File xml saved."
-msgstr ""
+msgstr "xml datoteka shranjena"
 
 msgid "Error saving xml file, output file is null."
-msgstr ""
+msgstr "Napaka pri shranjevanju xml datoteke, ni shranjene datoteke"
 
 msgid "Split options"
-msgstr "분할 옵션"
+msgstr "Opcije razdruževanja"
 
 msgid "Burst (split into single pages)"
-msgstr "파쇄 (한 페이지씩 분할)"
+msgstr "Razdruži (na posamezne strani)"
 
 msgid "Split every \"n\" pages"
-msgstr "\"n\" 페이지씩 분할"
+msgstr "Razdruži vsako \"n\" stran"
 
 msgid "Split even pages"
-msgstr "짝수 페이지 분할"
+msgstr "Razdruži parne strani"
 
 msgid "Split odd pages"
-msgstr "홀수 페이지 분할"
+msgstr "Razdruži neparne strani"
 
 msgid "Split after these pages"
-msgstr "이 페이지들 이후 분할"
+msgstr "Razdruži po tej strani"
 
 msgid "Split at this size"
-msgstr "이 크기로 분할"
+msgstr "Razdeli na to velikost"
 
 msgid "Burst"
-msgstr "파쇄"
+msgstr "Razdruževanje"
 
 msgid "Explode the pdf document into single pages"
-msgstr "PDF 문서를 한 페이지씩 파쇄"
+msgstr "PDF dokument na posmezne strani"
 
 msgid "Split the document every \"n\" pages"
-msgstr "문서를 \"n\" 페이지씩 분할"
+msgstr "Razdruži dokument na vsako \"n\" stran"
 
 msgid "Split the document every even page"
-msgstr "문서를 각 짝수 페이지로 분할"
+msgstr "Razdruži dokument  na parne strani"
 
 msgid "Split the document every odd page"
-msgstr "문서를 각 홀수 페이지로 분할"
+msgstr "Razdruži dokument  na neparne strani"
 
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "문서를 페이지 번호이후 분할 (num1-num2-num3..)"
+msgstr "Razdruži dokument  po št. strani (št1-št2-št3...)"
 
 msgid "Split the document in files of the given size (roughly)."
-msgstr "문서를 (대략의) 크기로 분할."
+msgstr "Razdruži dokument  na datoteke po vpisani velikosti"
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "대상 폴더:"
+msgstr "Ciljna mapa"
 
 msgid "Same as source"
-msgstr "원본과 동일"
+msgstr "Enako izvoru"
 
 msgid "Choose a folder"
-msgstr "폴더 선택"
+msgstr "Izberi mapo"
 
 msgid "Destination output directory"
-msgstr "출력 디렉토리"
+msgstr "Izberi ciljni direktorij"
 
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr "입력 파일과 같은 폴더를 사용하거나 다른 폴더를 선택."
+msgstr "Uporabi enako mapo kot izbrana datoteka ali jo izberi"
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
-msgstr "출력 폴더를 선택하거나 완전한 경로를 입력하세요."
+msgstr "Za izbiro mape poišči ali vpiši polno pot do direktorija"
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr "출력 파일이 이미 있을 경우 덮어쓰기를 원하면 선택하세요."
+msgstr "Izberi za prepis obstoječe datoteke"
 
-#, fuzzy
 msgid "Output options"
-msgstr "출력 옵션:"
+msgstr "Možnosti shranjevanja"
 
 msgid "Output file names prefix:"
-msgstr "출력 파일명 접두어:"
+msgstr "Predpona imena shranjene datoteke"
 
 msgid "Output files prefix"
-msgstr "출력 파일 접두어"
+msgstr "Predpona shranjene datoteke"
 
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"\"[CURRENTPAGE]\" 또는 \"[TIMESTAMP]\"를 포함하고 있으면 변수 치환을 합니다."
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
-"예. prefix_[BASENAME]_[CURRENTPAGE]는 prefix_FileName_005.pdf로 됩니다."
+"Ex. prefiks_[BASENAME]_[CURRENTPAGE] generira prefiks_FileName_005.pdf."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"\"[CURRENTPAGE]\" 또는 \"[TIMESTAMP]\"를 포함하고 있지 않으면 예전 스타일의 "
-"출력 파일 이름을 생성합니다."
+"Če ne vsebuje \"[CURRENTPAGE]\", \"[TIMESTAMP]\" ali \"[FILENUMBER]\" "
+"generira starejši način imenovanja datotek."
 
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "사용가능한 변수: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr "Razpoložljive spremenjljivke, [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
-msgstr "유효하지 않은 분할 크기"
+msgstr "Nepravilna velikost razdružene datoteke"
 
 msgid "The lowest available pdf version is "
-msgstr "최소 PDF 버전은 "
+msgstr "Najstarejša verzija PDF datoteke je "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "더 낮은 PDF 버전으로 출력을 선택했습니다. 계속 할까요?"
+msgstr "Izbrali ste najstarejšo verzijo PDF, ali nadaljujem?"
 
 msgid "Pdf version conflict"
-msgstr "PDF 버전 충돌"
+msgstr "Konflikt PDF verzije"
 
 msgid "Please select a pdf document."
-msgstr ""
+msgstr "Izberi PDF dokument"
 
 msgid "Split selected file"
-msgstr "선택된 파일 분할"
+msgstr "Razdruži izbrano datoteko"
 
 msgid "Split"
-msgstr "분할"
+msgstr "Razdeli"
 
 msgid "Split section loaded."
-msgstr "읽은 영역 분할."
+msgstr "Razdruženi del naložen"
 
 msgid "Invalid unit: "
-msgstr "유효하지 않은 단위: "
+msgstr "Napaka, enota "
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "표지 PDF 파일:"
+msgstr "PDF datoteka za naslovnico"
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "표지 PDF 파일:"
+msgstr "PDF datoteka za nogo"
 
 msgid "Select at least one cover or one footer"
-msgstr ""
+msgstr "Izberi vsaj eno platnico ali nogo"
 
 msgid "Cover and Footer"
-msgstr ""
+msgstr "Naslovnica in noga"
 
 msgid "Cover And Footer section loaded."
-msgstr ""
+msgstr "Naslovnica in noga naložena"
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "분할 옵션"
+msgstr "Možnosti šifriranja"
 
 msgid "Owner password:"
-msgstr "소유자 암호:"
+msgstr "Geslo lastnika"
 
 msgid "Owner password (Max 32 chars long)"
-msgstr "소유자 암호 (최대 32 글자)"
+msgstr "Geslo lastnika 32 znakov maks."
 
 msgid "User password:"
-msgstr "사용자 암호:"
+msgstr "Uporabniško geslo"
 
 msgid "User password (Max 32 chars long)"
-msgstr "사용자 암호 (최대 32 글자)"
+msgstr "Uporabniško geslo 32 zankov maks."
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "Algoritem šifriranja"
 
 msgid "Allow all"
-msgstr ""
+msgstr "Dovoli vse"
 
 msgid "Print"
-msgstr "인쇄"
+msgstr "Natisni"
 
 msgid "Low quality print"
-msgstr "저수준 인쇄"
+msgstr "Nizka kvaliteta tiskanja"
 
 msgid "Copy or extract"
-msgstr "복사 또는 추출"
+msgstr "Kopiranje ali razširitev"
 
 msgid "Modify"
-msgstr "수정"
+msgstr "Popravi"
 
 msgid "Add or modify text annotations"
-msgstr ""
+msgstr "Dodaj ali popravi tekst"
 
 msgid "Fill form fields"
-msgstr ""
+msgstr "Izpolni polja"
 
 msgid "Extract for use by accessibility dev."
 msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
-msgstr ""
+msgstr "Obdelava strani in dodajanje zaznamkov"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
-msgstr ""
+msgstr "Izberi za stiskanje izhodne datoteke (PDF 1.5 ali novejši)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr ""
+msgstr "Če vsebuje \"[TIMESTAMP]\" it performs variable substitution."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
+"Ex. [BASENAME]_prefiks_[TIMESTAMP] generira "
+"FileName_prefiks_20070517_113423471.pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr ""
+"Če ne vsebuje \"[TIMESTAMP]\" generira starejši način imenovanja datotek"
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr ""
+msgstr "Razpoložljive spremenjljivke: [TIMESTAMP], [BASENAME]."
 
 msgid "Encrypt selected files"
-msgstr ""
+msgstr "Šifriraj izbrane datoteke"
 
 msgid "Encrypt"
-msgstr ""
+msgstr "Šifriraj"
 
 msgid "Encrypt section loaded."
-msgstr ""
+msgstr "Šifrirana datoteka naložena"
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "선택된 파일 분할"
+msgstr "Dešifriraj izbrane datoteke"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "Dešifriraj"
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "읽은 영역 병합."
+msgstr "Dešifriana datoteka naložena"
 
-#, fuzzy
 msgid "Mix options"
-msgstr "분할 옵션"
+msgstr "Mešane možnosti"
 
 msgid "Reverse first document"
-msgstr ""
+msgstr "Prvi dokument obrnjeno"
 
 msgid "Reverse second document"
-msgstr ""
+msgstr "Drugi dokument obrnjeno"
 
 msgid "Found a password for first file."
-msgstr ""
+msgstr "Najdeno geslo za prvo datoteko"
 
 msgid "Found a password for second file."
-msgstr ""
+msgstr "Najdeno geslo za drugo datoteko"
 
 msgid "Please select two pdf documents."
-msgstr ""
+msgstr "Izberi dva PDF dokumenta"
 
 msgid "Execute pdf alternate mix"
 msgstr ""
@@ -366,309 +356,301 @@ msgid "AlternateMix section loaded."
 msgstr ""
 
 msgid "Unpack selected files"
-msgstr ""
+msgstr "Razširi izbrane datoteke"
 
 msgid "Unpack"
-msgstr ""
+msgstr "Razširi"
 
 msgid "Unpack section loaded."
-msgstr ""
+msgstr "Razširjeni del naložen"
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "분할 옵션"
+msgstr "Nastavitve pregledovalnika"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Skrij  vrstico menija"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "Skrij orodno vrstico"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Skrij elemente uporabniškega vmesnika"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Prilagodi okno na velikost strani"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Center zaslona"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Prikaži naslov dokumenta kot windows naslov"
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "PDF 버전 충돌"
+msgstr "PDF verzija zahteva:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Brez prikaza razmerja strani pri tiskanju"
 
 msgid "Viewer layout:"
 msgstr ""
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "Odpiralni način pregledovalnika"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Brez celozaslonskega načina"
 
 msgid "Direction:"
-msgstr ""
+msgstr "Smer:"
 
-#, fuzzy
 msgid "Set options"
-msgstr "분할 옵션"
+msgstr "Opcije"
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "선택된 파일 분할"
+msgstr "Nastavitve pregledovalnika za izbrane datoteke"
 
 msgid "Left to right"
-msgstr ""
+msgstr "Z leve na desno"
 
 msgid "Right to left"
-msgstr ""
+msgstr "Z desne proti levi"
 
-#, fuzzy
 msgid "None"
-msgstr "노트"
+msgstr "Brez"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Celozaslonsko"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Priponke"
 
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "폼을 포함한 PDF 문서"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
 
 msgid "One page at a time"
-msgstr ""
+msgstr "1 stran naenkrat"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Strani v eni vrstici"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Strani v dveh vrsticah (neparne na levi)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Strani v dveh vrsticah (neparne na desni)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Dve strani naekrat (neparne na levi)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Dve strani naekrat (neparne na desni)"
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "Merge options:"
+msgstr "Možnosti pregledovalnika"
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "읽은 영역 병합."
+msgstr "Možnosti pregledovalnika naložene"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
+msgstr "Shrani podatke za geslo"
 
 msgid "Confirm password saving"
-msgstr ""
+msgstr "Potrdi shranjevanje gesla"
 
 msgid "Unknown action."
-msgstr ""
+msgstr "Neznana operacija"
 
 msgid "Log saved."
-msgstr ""
+msgstr "Zapis shranjen"
 
 msgid " node environment loaded."
 msgstr ""
 
 msgid "Environment saved."
-msgstr ""
+msgstr "Okolje shranjeno"
 
 msgid "Error saving environment, output file is null."
-msgstr ""
+msgstr "Napaka pri shranjevanju okolja, datoteka je prazna."
 
 msgid "Error saving environment."
-msgstr ""
+msgstr "Napaka pri shranjevanju okolja"
 
 msgid "Environment loaded."
-msgstr ""
+msgstr "Okolje naloženo"
 
 msgid "Error loading environment."
-msgstr ""
+msgstr "Napaka pri nalaganju okolja"
 
 msgid "Error loading environment from input file. "
-msgstr ""
+msgstr "Napaka pri nalaganju okolja "
 
 msgid "Selection table is full, please remove some pdf document."
-msgstr ""
+msgstr "Izbira PDF dokumentov je prevelika, odstrani nekaj dokumentov"
 
 msgid "Table full"
-msgstr ""
+msgstr "Tabela je polna"
 
 msgid "Please wait while reading"
-msgstr ""
+msgstr "Počakaj, berem"
 
 msgid "Selected file is not a pdf document."
-msgstr ""
+msgstr "Izbran dokument ni PDF"
 
 msgid "Error loading "
-msgstr ""
+msgstr "Error nalganje "
 
 msgid "Command validation returned an empty value."
-msgstr ""
+msgstr "Napaka ukaza, ni podatka"
 
 msgid "Command executed."
-msgstr ""
+msgstr "Zahteva izvršena"
 
 msgid "Run"
-msgstr ""
+msgstr "START"
 
 msgid "Browse"
-msgstr ""
+msgstr "Išči"
 
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 msgid "Compress output file/files"
-msgstr ""
+msgstr "Stisni shranjene datoteke"
 
 msgid "Overwrite if already exists"
-msgstr "파일이 이미 있으면 덮어 쓰기"
+msgstr "Prepiši obstoječ zapis"
 
 msgid "Don't preserve file order (fast load)"
-msgstr ""
+msgstr "Brez izbire vrstnega reda (hitro)"
 
 msgid "Output document pdf version:"
-msgstr ""
+msgstr "Verzija PDF"
 
 msgid "Same as input document"
-msgstr ""
+msgstr "Isto kot izbrana datoteka"
 
 msgid "File name"
-msgstr ""
+msgstr "Ime datoteke"
 
 msgid "Path"
-msgstr ""
+msgstr "Pot"
 
 msgid "Pages"
-msgstr ""
+msgstr "Strani"
 
 msgid "Password"
-msgstr ""
+msgstr "Geslo"
 
 msgid "Version"
-msgstr ""
+msgstr "Verzija"
 
 msgid "Page Selection"
-msgstr ""
+msgstr "Izbor strani"
 
 msgid "Total pages of the document"
-msgstr ""
+msgstr "Število strani skupaj"
 
 msgid "Password to open the document (if needed)"
-msgstr ""
+msgstr "Geslo za odpiranje (če obstaja)"
 
 msgid "Pdf version of the document"
-msgstr ""
+msgstr "PDF verzija dokumenta"
 
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 "7,12-)"
-msgstr ""
+msgstr "klik na strani za združitev (eks: 2 ali Vse ali 5-23 ali 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
-msgstr ""
+msgstr "Dodaj PDF na listo"
 
 msgid "Remove a pdf from the list"
-msgstr ""
+msgstr "Izbriši PDF iz liste"
 
 msgid "(Canc)"
-msgstr ""
+msgstr "Prekliči"
 
 msgid "Remove"
-msgstr ""
+msgstr "Odstrani"
 
 msgid "Reload"
-msgstr ""
+msgstr "Ponovno naloži"
 
 msgid "Error: Unable to reload the selected file/s."
-msgstr ""
+msgstr "Napaka pri ponovnem nalaganju"
 
 msgid "Unable to remove JList text "
-msgstr ""
+msgstr "Napaka JList "
 
 msgid "File selected: "
-msgstr ""
+msgstr "Dat. izbrane.: "
 
 msgid "File reloaded: "
-msgstr ""
+msgstr "Dat. naložena: "
 
 msgid "Move Up"
-msgstr ""
+msgstr "Premakni gor"
 
 msgid "Move up selected pdf file"
-msgstr ""
+msgstr "Premakni izbrani PDF navzgor"
 
 msgid "(Alt+ArrowUp)"
-msgstr ""
+msgstr "Alt+ArrowUp)"
 
 msgid "Move Down"
-msgstr ""
+msgstr "Premakni dol"
 
 msgid "Move down selected pdf file"
-msgstr ""
+msgstr "Premakni izbrani PDF navzdol"
 
 msgid "(Alt+ArrowDown)"
-msgstr ""
+msgstr "(Alt+ArrowDown)"
 
 msgid "Clear"
-msgstr ""
+msgstr "Izbriši"
 
 msgid "Remove every pdf file from the merge list"
-msgstr ""
+msgstr "Izbriši vse PDF datoteke iz liste"
 
 msgid "Set output file"
-msgstr ""
+msgstr "Nastavi datoteko za shranjevanje"
 
 msgid "Error: Unable to get the file path."
-msgstr ""
+msgstr "Napaka. Ni poti do datoteke."
 
 msgid "Unable to get the default environment informations."
-msgstr ""
+msgstr "Napaka privzetih informacij pri odpiranju"
 
 msgid "Setting look and feel..."
-msgstr ""
+msgstr "Nastavi izgled"
 
 msgid "Setting logging level..."
-msgstr ""
+msgstr "Nastavi nivo logiranja"
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
+msgstr "Ni nivoja logiranaj, uporabljen privzeti nivo"
 
 msgid "Logging level set to "
-msgstr ""
+msgstr "Nastavi nivo logiranja "
 
 msgid "Unable to set logging level."
-msgstr ""
+msgstr "Napaka nastavitve nivoja logiranja"
 
 msgid "Error getting plugins directory."
-msgstr ""
+msgstr "Napaka nalaganja vtičnikov"
 
 msgid "Cannot read plugins directory "
-msgstr ""
+msgstr "Napaka vtičnikov, direktorij "
 
 msgid "Plugins directory is null."
-msgstr ""
+msgstr "Direktorij vtičnikov je prazen"
 
 msgid "Found zero or many jars in plugin directory "
 msgstr ""
@@ -689,184 +671,185 @@ msgid "Error loading class "
 msgstr ""
 
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 msgid "Select all"
-msgstr ""
+msgstr "Izberi vse"
 
 msgid "Save log"
-msgstr ""
+msgstr "Shrani dnevnik"
 
 msgid "File"
-msgstr ""
+msgstr "Datoteka"
 
 msgid "Save environment"
-msgstr ""
+msgstr "Shrani okolje"
 
 msgid "Load environment"
-msgstr ""
+msgstr "Naloži okolje"
 
 msgid "Exit"
-msgstr ""
+msgstr "Izhod"
 
 msgid "Unable to initialize menu bar."
 msgstr ""
 
 msgid "started in "
-msgstr ""
+msgstr "start   v "
 
 msgid "Loading plugins.."
-msgstr ""
+msgstr "Nalagam vtičnike"
 
 msgid "Building menus.."
-msgstr ""
+msgstr "Izdelava menija"
 
 msgid "Building buttons bar.."
-msgstr ""
+msgstr "Izdelava vrstice gumbov"
 
 msgid "Building status bar.."
-msgstr ""
+msgstr "Izdelava vrstice stanja"
 
 msgid "Building tree.."
-msgstr ""
+msgstr "Izdelava drevesa"
 
 msgid "Loading default environment."
-msgstr ""
+msgstr "Nalagam okolje"
 
 msgid "Error starting pdfsam."
-msgstr ""
+msgstr "Napaka pri startu pdfsam"
 
 msgid "Clear log"
-msgstr ""
+msgstr "Izbriši dnevnik"
 
 msgid "Unable to initialize button bar."
 msgstr ""
 
 msgid "Version: "
-msgstr ""
+msgstr "Verzija "
 
 msgid "Language: "
-msgstr ""
+msgstr "Jezik: "
 
 msgid "Author: "
-msgstr ""
+msgstr "Avtor MarkoV: "
 
 msgid "Build date: "
-msgstr ""
+msgstr "Datum izd: "
 
 msgid "Java home: "
-msgstr ""
+msgstr "Java home: "
 
 msgid "Java version: "
-msgstr ""
+msgstr "Java verzija: "
 
 msgid "Max memory: "
-msgstr ""
+msgstr "Max spomin: "
 
 msgid "Configuration file: "
-msgstr ""
+msgstr "Datoteka "
 
 msgid "Website: "
-msgstr ""
+msgstr "Spletna stran: "
 
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 msgid "Author"
-msgstr ""
+msgstr "Avtor"
 
 msgid "About"
-msgstr ""
+msgstr "O programu"
 
 msgid "Unimplemented method for JInfoPanel"
 msgstr ""
 
 msgid "Contributes: "
-msgstr ""
+msgstr "Prispevki: "
 
 msgid "Log level:"
-msgstr ""
+msgstr "Nivo logiranja"
 
 msgid "Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 msgid "Look and feel:"
-msgstr ""
+msgstr "Izgled:"
 
 msgid "Theme:"
-msgstr ""
+msgstr "Tema:"
 
 msgid "Language:"
-msgstr ""
+msgstr "Jezik:"
 
 msgid "Check for updates:"
-msgstr ""
+msgstr "Preveri posodobitve:"
 
 msgid "Load default environment at startup:"
-msgstr ""
+msgstr "Naloži izbrano okolje pri startu:"
 
 msgid "Default working directory:"
-msgstr ""
+msgstr "Izbran delovni direktorij:"
 
 msgid "Error getting default environment."
-msgstr ""
+msgstr "Napaka pri nalaganju privzetega okolja"
 
 msgid "Check now"
-msgstr ""
+msgstr "Preveri zdaj"
 
 msgid "Play alert sounds"
-msgstr ""
+msgstr "Opozorilni ton"
 
 msgid "Settings "
-msgstr ""
+msgstr "Nastavitve "
 
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 msgid "Set your preferred language (restart needed)"
-msgstr ""
+msgstr "Izberi priljubljeni jezik (ponovni zagon)"
 
 msgid "Look and feel"
-msgstr ""
+msgstr "Poglej"
 
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
-msgstr ""
+msgstr "Izberi priljubljen izgled in temo"
 
 msgid "Log level"
-msgstr ""
+msgstr "Nivo logiranja"
 
 msgid "Set a log detail level (restart needed)"
-msgstr ""
+msgstr "Nastavi nivo logiranja"
 
 msgid "Check for updates"
-msgstr ""
+msgstr "Preverjanje posodobitev"
 
 msgid "Set when new version availability should be checked (restart needed)"
-msgstr ""
+msgstr "Nastavi način posodobitev"
 
 msgid "Turn on or off alert sounds"
-msgstr ""
+msgstr "Vklop/izklop alarma"
 
 msgid "Default env."
-msgstr ""
+msgstr "Privzeto okloje"
 
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
-msgstr ""
+msgstr "Zadnje shranjeno okolje se naloži pri zagonu"
 
 msgid "Default working directory"
-msgstr ""
+msgstr "Izbrani delovni direktorij"
 
-msgid "Select a directory where documents will be saved and loaded by default"
-msgstr ""
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
+msgstr "Izberi direktorij kjer bodo dokumenti shranjeni iz naloženi"
 
 msgid "Save"
-msgstr ""
+msgstr "Shrani"
 
 msgid "Configuration saved."
-msgstr ""
+msgstr "Nastavitve shranjene"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -875,70 +858,61 @@ msgid "New version available: "
 msgstr ""
 
 msgid "Plugins"
-msgstr ""
+msgstr "Vtičniki"
 
 msgid "Error getting pdf version description."
-msgstr ""
+msgstr "Napaka pdf verzije"
 
 msgid "Version 1.2 (Acrobat 3)"
-msgstr ""
+msgstr "Verzija 1.2 (Acrobat 3)"
 
 msgid "Version 1.3 (Acrobat 4)"
-msgstr ""
+msgstr "Verzija 1.3 (Acrobat 4)"
 
 msgid "Version 1.4 (Acrobat 5)"
-msgstr ""
+msgstr "Verzija 1.4 (Acrobat 5)"
 
 msgid "Version 1.5 (Acrobat 6)"
-msgstr ""
+msgstr "Verzija 1.5 (Acrobat 6)"
 
 msgid "Version 1.6 (Acrobat 7)"
-msgstr ""
+msgstr "Verzija 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
-msgstr ""
+msgstr "Verzija 1.7 (Acrobat 8)"
 
 msgid "Never"
-msgstr ""
+msgstr "Nikoli"
 
 msgid "pdfsam start up"
-msgstr ""
+msgstr "pdfsam zagon"
 
 msgid "Output file location is not correct"
-msgstr ""
+msgstr "Napaka mesta shranjevanja"
 
 msgid "Would you like to change it to"
-msgstr ""
+msgstr "Ali želiš spremeniti v"
 
 msgid "Output location error"
-msgstr ""
+msgstr "Izhodna napaka"
 
 msgid "Checking for a new version available."
-msgstr ""
+msgstr "Preveri posodobitve"
 
 msgid "Error checking for a new version available."
-msgstr ""
+msgstr "Napaka pri preverjanju posodobitve"
 
 msgid "Unable to get latest available version"
-msgstr ""
+msgstr "Napaka pri nalaganju posodobitve"
 
 msgid "New version available."
-msgstr ""
+msgstr "Nova verzija na voljo"
 
 msgid "No new version available."
-msgstr ""
+msgstr "Ni posodobitev -Laservis d.o.o."
 
 msgid "Cut"
-msgstr ""
+msgstr "Izreži"
 
 msgid "Paste"
-msgstr ""
-
-#~ msgid "Destination output file:"
-#~ msgstr "출력 파일:"
-
-#~ msgid "Split options:"
-#~ msgstr "분할 옵션:"
-
-#~ msgid "Select an input file"
-#~ msgstr "입력 파일 선택"
+msgstr "Prilepi"

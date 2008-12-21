@@ -23,6 +23,7 @@
     <language value="ko" description="Korean" />  
     <language value="nb" description="Norwegian Bokmal" />  
     <language value="lv" description="Latvian" />  
+    <language value="lt" description="Lithuanian" />  
     <language value="pl" description="Polish" />
     <language value="pt" description="Portuguese" />  
     <language value="ru" description="Russian" />    

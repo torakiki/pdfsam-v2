@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-06-02 15:43+0000\n"
 "Last-Translator: lameiro <lameiro@macinhata.net>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
+#, fuzzy
+msgid "Merge options"
 msgstr "Opções de concatenação:"
 
 msgid "PDF documents contain forms"
@@ -50,18 +51,11 @@ msgstr ""
 "Seleccionando esta opção os documentos serão carregados completamente para a "
 "memória"
 
-#, fuzzy
-msgid "Destination output file:"
-msgstr "Destino do ficheiro de saída:"
+msgid "Destination output file"
+msgstr "Ficheiro de destino"
 
 msgid "Error: "
 msgstr "Erro: "
-
-msgid "Overwrite if already exists"
-msgstr "Substituir ficheiro se este já existir"
-
-msgid "Destination output file"
-msgstr "Ficheiro de destino"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
@@ -122,6 +116,9 @@ msgstr "Ficheiro xml guardado."
 msgid "Error saving xml file, output file is null."
 msgstr "Erro a salvar ficheiro xml. Ficheiro de saida não existe."
 
+msgid "Split options"
+msgstr "opções de divisão"
+
 msgid "Burst (split into single pages)"
 msgstr "Burst (dividir para páginas únicas)"
 
@@ -139,9 +136,6 @@ msgstr "Dividir após estas páginas"
 
 msgid "Split at this size"
 msgstr "Dividir a este tamanho"
-
-msgid "Split options"
-msgstr "opções de divisão"
 
 #, fuzzy
 msgid "Burst"
@@ -170,10 +164,8 @@ msgstr ""
 "Dividir o documento em ficheiros de um tamanho previamente especificado "
 "(apreoximadamente)."
 
-msgid "Split options:"
-msgstr "Opções de divisão:"
-
-msgid "Destination folder:"
+#, fuzzy
+msgid "Destination folder"
 msgstr "Pasta de destino:"
 
 msgid "Same as source"
@@ -205,7 +197,8 @@ msgid ""
 msgstr ""
 "Seleccione a caixa se quiser substituir o ficheiro no caso de já existir"
 
-msgid "Output options:"
+#, fuzzy
+msgid "Output options"
 msgstr "Opções de saída:"
 
 msgid "Output file names prefix:"
@@ -214,9 +207,10 @@ msgstr "Prefixo do nome do ficheiro de saída:"
 msgid "Output files prefix"
 msgstr "Prefixo dos ficheiros de saída"
 
+#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 "Se contiver \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\" efectua uma substituição de "
 "variáveis."
@@ -226,12 +220,17 @@ msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ex. : prefixo_[NOMEBASE]_[PAGINAACTUAL] gera prefixo_NomeDoFicheiro_005.pdf"
 
+#, fuzzy
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
+"Se contiver \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\" efectua uma substituição de "
+"variáveis."
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#, fuzzy
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr "Variáveis disponiveis: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 msgid "Invalid split size"
@@ -265,10 +264,11 @@ msgid "Invalid unit: "
 msgstr "Unidade inválida: "
 
 #, fuzzy
-msgid "Cover pdf file:"
+msgid "Cover pdf file"
 msgstr "Ficheiro pdf da capa:"
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Ficheiro pdf de rodapé"
 
 msgid "Select at least one cover or one footer"
@@ -279,6 +279,10 @@ msgstr "Capa e Rodapé"
 
 msgid "Cover And Footer section loaded."
 msgstr "Secção de Capa e Rodapé carregada."
+
+#, fuzzy
+msgid "Encrypt options"
+msgstr "Opções de encriptação:"
 
 msgid "Owner password:"
 msgstr "Password de proprietário"
@@ -292,8 +296,12 @@ msgstr "Password de utilizador"
 msgid "User password (Max 32 chars long)"
 msgstr "Password de utilizador (Máximo 32 caracteres de comprimento)"
 
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "Algoritmo de encriptação:"
+
+msgid "Allow all"
+msgstr "Permitir todos"
 
 msgid "Print"
 msgstr "Imprimir"
@@ -320,12 +328,6 @@ msgstr "Extrair para uso do desnvolvimento de acessibilidade."
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "Manipulação de páginas e adição de favoritos"
-
-msgid "Allow all"
-msgstr "Permitir todos"
-
-msgid "Encrypt options:"
-msgstr "Opções de encriptação:"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -357,6 +359,22 @@ msgstr "Encriptar"
 #, fuzzy
 msgid "Encrypt section loaded."
 msgstr "Secção de encriptação carregada"
+
+#, fuzzy
+msgid "Decrypt selected files"
+msgstr "Encriptar os ficheiros seleccionados"
+
+#, fuzzy
+msgid "Decrypt"
+msgstr "Encriptar"
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "Secção de encriptação carregada"
+
+#, fuzzy
+msgid "Mix options"
+msgstr "opções de divisão"
 
 msgid "Reverse first document"
 msgstr "Inverter o primeiro documento"
@@ -395,6 +413,107 @@ msgstr "Descompactar"
 msgid "Unpack section loaded."
 msgstr "Descompactar a secção que esta carregada."
 
+#, fuzzy
+msgid "Set viewer options"
+msgstr "opções de divisão"
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+#, fuzzy
+msgid "Pdf version required:"
+msgstr "Conflicto entre versões de pdf"
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "opções de divisão"
+
+#, fuzzy
+msgid "Set viewer options for selected files"
+msgstr "Encriptar os ficheiros seleccionados"
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr "Nota"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+#, fuzzy
+msgid "Document outline"
+msgstr "Documentos PDF contém formulários"
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options"
+msgstr "Opções de concatenação:"
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "Secção de encriptação carregada"
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -405,9 +524,6 @@ msgstr "Confirme gravar a password"
 
 msgid "Unknown action."
 msgstr "Acção desconhecida."
-
-msgid "Save"
-msgstr "Guardar"
 
 #, fuzzy
 msgid "Log saved."
@@ -470,6 +586,9 @@ msgstr "Adicionar"
 
 msgid "Compress output file/files"
 msgstr "Comprimir ficheiro(s) de saída"
+
+msgid "Overwrite if already exists"
+msgstr "Substituir ficheiro se este já existir"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "Não manter a ordem dos ficheiros (carregamento mais rápido)"
@@ -716,6 +835,9 @@ msgstr ""
 msgid "Log level:"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "Look and feel:"
 msgstr ""
 
@@ -735,6 +857,9 @@ msgid "Default working directory:"
 msgstr ""
 
 msgid "Error getting default environment."
+msgstr ""
+
+msgid "Check now"
 msgstr ""
 
 msgid "Play alert sounds"
@@ -785,13 +910,10 @@ msgstr ""
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
-msgid "Check now"
-msgstr ""
+msgid "Save"
+msgstr "Guardar"
 
 msgid "Configuration saved."
-msgstr ""
-
-msgid "Settings"
 msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
@@ -861,6 +983,13 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Caminho(PATH)"
+
+#, fuzzy
+#~ msgid "Destination output file:"
+#~ msgstr "Destino do ficheiro de saída:"
+
+#~ msgid "Split options:"
+#~ msgstr "Opções de divisão:"
 
 #~ msgid "Select an input file"
 #~ msgstr "Seleccione um ficheiro de entrada"

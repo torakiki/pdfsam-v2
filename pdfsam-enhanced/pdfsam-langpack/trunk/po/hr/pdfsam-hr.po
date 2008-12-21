@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-06-07 10:20+0000\n"
 "Last-Translator: Manic <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
+#, fuzzy
+msgid "Merge options"
 msgstr "Mogućnosti spajanja:"
 
 msgid "PDF documents contain forms"
@@ -46,17 +47,11 @@ msgstr ""
 "Postavljanjem ove mogućnosti dokumenti će biti u potpunosti učitani u "
 "memoriju"
 
-msgid "Destination output file:"
-msgstr "Odredište izlazne datoteke:"
+msgid "Destination output file"
+msgstr "Odredište izlazne datoteke"
 
 msgid "Error: "
 msgstr "Greška: "
-
-msgid "Overwrite if already exists"
-msgstr "Prepiši preko ako već postoji"
-
-msgid "Destination output file"
-msgstr "Odredište izlazne datoteke"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Odaberite ili unesite punu putanju do odredišta izlazne datoteke."
@@ -113,6 +108,9 @@ msgstr "XML datoteka je spremljena."
 msgid "Error saving xml file, output file is null."
 msgstr "Greška pri spremanju xml datoteke, izlazna datoteka je prazna."
 
+msgid "Split options"
+msgstr "Mogućnosti dijeljenja"
+
 msgid "Burst (split into single pages)"
 msgstr "Raskidanje (podijela na pojedinačne stranice)"
 
@@ -130,9 +128,6 @@ msgstr "Podijeli poslije ovih stranica"
 
 msgid "Split at this size"
 msgstr "Podijeli kod ove veličine"
-
-msgid "Split options"
-msgstr "Mogućnosti dijeljenja"
 
 msgid "Burst"
 msgstr "Raskidanje"
@@ -155,10 +150,8 @@ msgstr "Razdvoji dokument poslije brojeva stranica (n1-n2-n3)"
 msgid "Split the document in files of the given size (roughly)."
 msgstr "Razdvoji dokument na datoteke zadane veličine (približno)"
 
-msgid "Split options:"
-msgstr "Mogućnosti razdvajanja:"
-
-msgid "Destination folder:"
+#, fuzzy
+msgid "Destination folder"
 msgstr "Odredišna mapa:"
 
 msgid "Same as source"
@@ -186,7 +179,8 @@ msgid ""
 msgstr ""
 "Odaberite opciju ako želite prepisati izlaznu datoteku ako već postoji."
 
-msgid "Output options:"
+#, fuzzy
+msgid "Output options"
 msgstr "Izlazne mogućnosti:"
 
 msgid "Output file names prefix:"
@@ -195,9 +189,10 @@ msgstr "Prefiks imena izlazne datoteke:"
 msgid "Output files prefix"
 msgstr "Prefiks izlaznih datoteka"
 
+#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 "Ako sadrži \"[CURRENTPAGE]\" ili \"[TIMESTAMP]\" izvršava zamjenu varijable."
 
@@ -205,14 +200,17 @@ msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Npr. prefix_[BASENAME]_[CURRENTPAGE] generira prefix_ImeDatoteke_005.pdf."
 
+#, fuzzy
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 "Ako ne sadrži \"[CURRENTPAGE]\" ili \"[TIMESTAMP]\" generira imena izlazne "
 "datoteke u starom stilu."
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#, fuzzy
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr "Dostupne varijable: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 msgid "Invalid split size"
@@ -243,10 +241,12 @@ msgstr "Učitana razdijeljena sekcija"
 msgid "Invalid unit: "
 msgstr "Neispravna jedinica: "
 
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "Naslovnica pdf datoteke"
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Podnožje pdf dokumenta"
 
 msgid "Select at least one cover or one footer"
@@ -257,6 +257,10 @@ msgstr "Naslovnica i podnožje"
 
 msgid "Cover And Footer section loaded."
 msgstr "Sekcija naslovnice i podnožja je učitana."
+
+#, fuzzy
+msgid "Encrypt options"
+msgstr "Mogućnosti enkripcije"
 
 msgid "Owner password:"
 msgstr "Vlasnička zaporka"
@@ -270,8 +274,12 @@ msgstr "Korisnička zaporka:"
 msgid "User password (Max 32 chars long)"
 msgstr "Korisnička zaporka (Maksimalno 32 znaka)"
 
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "Algoritam enkripcije"
+
+msgid "Allow all"
+msgstr "Dozvoli sve"
 
 msgid "Print"
 msgstr "Ispis"
@@ -296,12 +304,6 @@ msgstr "Izdvoji za korištenje pri razvoju dostupnosti."
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "Manipuliraj stranicama i dodaj knjiške oznake"
-
-msgid "Allow all"
-msgstr "Dozvoli sve"
-
-msgid "Encrypt options:"
-msgstr "Mogućnosti enkripcije"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -339,6 +341,22 @@ msgstr "Enkriptiraj"
 msgid "Encrypt section loaded."
 msgstr "Učitana enkriptirana sekcija."
 
+#, fuzzy
+msgid "Decrypt selected files"
+msgstr "Enkriptiraj odabrane datoteke"
+
+#, fuzzy
+msgid "Decrypt"
+msgstr "Enkriptiraj"
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "Učitana enkriptirana sekcija."
+
+#, fuzzy
+msgid "Mix options"
+msgstr "Mogućnosti dijeljenja"
+
 msgid "Reverse first document"
 msgstr "Preokreni prvi dokument"
 
@@ -372,6 +390,107 @@ msgstr "Raspakiraj"
 msgid "Unpack section loaded."
 msgstr "Učitana raspakirana sekcija."
 
+#, fuzzy
+msgid "Set viewer options"
+msgstr "Mogućnosti dijeljenja"
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+#, fuzzy
+msgid "Pdf version required:"
+msgstr "Sukob pdf inačice"
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "Mogućnosti dijeljenja"
+
+#, fuzzy
+msgid "Set viewer options for selected files"
+msgstr "Enkriptiraj odabrane datoteke"
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr "Bilješka"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+#, fuzzy
+msgid "Document outline"
+msgstr "PDF dokumenti sadrže formulare"
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options"
+msgstr "Mogućnosti spajanja:"
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "Učitana enkriptirana sekcija."
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -382,9 +501,6 @@ msgstr "Potvrdi spremanje zaporke"
 
 msgid "Unknown action."
 msgstr "Nepoznata akcija"
-
-msgid "Save"
-msgstr "Spremi"
 
 msgid "Log saved."
 msgstr "Zapisnik spremljen."
@@ -442,6 +558,9 @@ msgstr "Dodaj"
 
 msgid "Compress output file/files"
 msgstr "Sažmi izlazne datoteke"
+
+msgid "Overwrite if already exists"
+msgstr "Prepiši preko ako već postoji"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "Nemoj očuvati redoslijed datoteka (brzo učitavanje)"
@@ -688,6 +807,10 @@ msgstr "Doprinijeli su: "
 msgid "Log level:"
 msgstr "Razina zapisnika:"
 
+#, fuzzy
+msgid "Settings"
+msgstr "Postavke "
+
 msgid "Look and feel:"
 msgstr "Izgled sučelja"
 
@@ -708,6 +831,9 @@ msgstr "Uobičajena mapa za rad:"
 
 msgid "Error getting default environment."
 msgstr "Greška pri traženju uobičajenog okružja."
+
+msgid "Check now"
+msgstr "Provjeri sada"
 
 msgid "Play alert sounds"
 msgstr ""
@@ -761,15 +887,11 @@ msgstr "Uobičajena mapa za rad"
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Odaberite mapu gdje će dokumenti biti spremljeni i učitani"
 
-msgid "Check now"
-msgstr "Provjeri sada"
+msgid "Save"
+msgstr "Spremi"
 
 msgid "Configuration saved."
 msgstr "Konfiguracija spremljena."
-
-#, fuzzy
-msgid "Settings"
-msgstr "Postavke "
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Neimplementirana metoda za JSettingsPanel"
@@ -837,6 +959,12 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Putanja"
+
+#~ msgid "Destination output file:"
+#~ msgstr "Odredište izlazne datoteke:"
+
+#~ msgid "Split options:"
+#~ msgstr "Mogućnosti razdvajanja:"
 
 #~ msgid "Select an input file"
 #~ msgstr "Odaberite ulaznu datoteku"

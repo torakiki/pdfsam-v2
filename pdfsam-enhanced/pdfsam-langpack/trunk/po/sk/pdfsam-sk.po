@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-09-24 09:47+0000\n"
 "Last-Translator: blackmore <Unknown>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
 
-msgid "Merge options:"
+#, fuzzy
+msgid "Merge options"
 msgstr "Možnosti zlúčenia:"
 
 msgid "PDF documents contain forms"
@@ -47,17 +48,11 @@ msgstr "Poznámka"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "Nastavením tejto možnosti budú dokumenty plne načítané do pamäte"
 
-msgid "Destination output file:"
-msgstr "Cieľový výstupný súbor:"
+msgid "Destination output file"
+msgstr "Cieľový výstupný súbor"
 
 msgid "Error: "
 msgstr "Chyba: "
-
-msgid "Overwrite if already exists"
-msgstr "Prepísať ak už existuje"
-
-msgid "Destination output file"
-msgstr "Cieľový výstupný súbor"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Nájdite, alebo zadajte plnú cestu do cie+ového výstupného súboru."
@@ -112,6 +107,9 @@ msgstr "xml súor uložený"
 msgid "Error saving xml file, output file is null."
 msgstr "Chyba pri ukladaní xml súboru, výstupný súbor je nulový."
 
+msgid "Split options"
+msgstr "Možnosti rozdelenia"
+
 msgid "Burst (split into single pages)"
 msgstr "Rozdeliť na jednotlivé stránky"
 
@@ -129,9 +127,6 @@ msgstr "Rozdeliť za týmito stránkami"
 
 msgid "Split at this size"
 msgstr "Rozdeliť na tejto veľkosti"
-
-msgid "Split options"
-msgstr "Možnosti rozdelenia"
 
 msgid "Burst"
 msgstr "Rozdeliť po stránkach"
@@ -154,10 +149,8 @@ msgstr "Rozdelí dokument po číslach stránok (č1-č2-č3..)"
 msgid "Split the document in files of the given size (roughly)."
 msgstr "Rozdelí dokument do súborov danej veľkosti (približne)."
 
-msgid "Split options:"
-msgstr "Možnosti rozdelenia:"
-
-msgid "Destination folder:"
+#, fuzzy
+msgid "Destination folder"
 msgstr "Cieľový priečinok:"
 
 msgid "Same as source"
@@ -185,7 +178,8 @@ msgstr ""
 "Zvoľte túto možnosť, ak si želáte prepísať súbor, pokiaľ už existuje v "
 "cieľovom priečinku súbor s rovnakým názvom."
 
-msgid "Output options:"
+#, fuzzy
+msgid "Output options"
 msgstr "Možnosti výstupu:"
 
 msgid "Output file names prefix:"
@@ -194,23 +188,27 @@ msgstr "Prefix názvov výstupných súborov:"
 msgid "Output files prefix"
 msgstr "Prefix výstupných súborov"
 
+#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 "Pokiaľ obsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" vykoná náhradu."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
 
+#, fuzzy
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 "Pokiaľ neobsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" generuje názvy "
 "súborov v starom štýle."
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#, fuzzy
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr "Možné premenné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 msgid "Invalid split size"
@@ -241,10 +239,12 @@ msgstr "Rozdeliť nahratú sekciu."
 msgid "Invalid unit: "
 msgstr "Neplatný diel: "
 
-msgid "Cover pdf file:"
+#, fuzzy
+msgid "Cover pdf file"
 msgstr "Prvá strana pdf súboru"
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "Záhlavie pdf súboru"
 
 msgid "Select at least one cover or one footer"
@@ -255,6 +255,10 @@ msgstr "Prvá a posledná strana"
 
 msgid "Cover And Footer section loaded."
 msgstr "Prvá a posledná strana nahratej sekcie."
+
+#, fuzzy
+msgid "Encrypt options"
+msgstr "Možnosti šifrovania:"
 
 msgid "Owner password:"
 msgstr "Heslo majiteľa:"
@@ -268,8 +272,12 @@ msgstr "Užívateľské heslo:"
 msgid "User password (Max 32 chars long)"
 msgstr "Užívateľské heslo (Maximálna veľkosť 32 znakov)"
 
-msgid "Encryption angorithm:"
+#, fuzzy
+msgid "Encryption algorithm:"
 msgstr "Šifrovací algoritmus:"
+
+msgid "Allow all"
+msgstr "Povoliť všetko"
 
 msgid "Print"
 msgstr "Tlačiť"
@@ -294,12 +302,6 @@ msgstr "Extrahovať pre použitie vývpjového prístupu."
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "Pracovať so stránkami a pridať záložky"
-
-msgid "Allow all"
-msgstr "Povoliť všetko"
-
-msgid "Encrypt options:"
-msgstr "Možnosti šifrovania:"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -335,6 +337,22 @@ msgstr "Zašifrovať"
 msgid "Encrypt section loaded."
 msgstr "Zašifrovať nahratú sekciu."
 
+#, fuzzy
+msgid "Decrypt selected files"
+msgstr "Zašifruj vybrané súbory"
+
+#, fuzzy
+msgid "Decrypt"
+msgstr "Zašifrovať"
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "Zašifrovať nahratú sekciu."
+
+#, fuzzy
+msgid "Mix options"
+msgstr "Možnosti rozdelenia"
+
 msgid "Reverse first document"
 msgstr "Obrátiť prvý dokument"
 
@@ -368,6 +386,107 @@ msgstr "Rozbaliť"
 msgid "Unpack section loaded."
 msgstr "Rozbaliť nahratú sekciu."
 
+#, fuzzy
+msgid "Set viewer options"
+msgstr "Možnosti rozdelenia"
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+#, fuzzy
+msgid "Pdf version required:"
+msgstr "Konflikt Pdf verzií"
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "Možnosti rozdelenia"
+
+#, fuzzy
+msgid "Set viewer options for selected files"
+msgstr "Zašifruj vybrané súbory"
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr "Poznámka"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+#, fuzzy
+msgid "Document outline"
+msgstr "PDF dokumenty obsahujú formuláre"
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options"
+msgstr "Možnosti zlúčenia:"
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "Zašifrovať nahratú sekciu."
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -378,9 +497,6 @@ msgstr "Potvrdiť uloženie hesla"
 
 msgid "Unknown action."
 msgstr "Neznáma činnosť."
-
-msgid "Save"
-msgstr "Uložiť"
 
 msgid "Log saved."
 msgstr "Záznam uložený."
@@ -438,6 +554,9 @@ msgstr "Pridať"
 
 msgid "Compress output file/files"
 msgstr "Komprimovať výstupný súbor/súbory"
+
+msgid "Overwrite if already exists"
+msgstr "Prepísať ak už existuje"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "Nezachovávať poradie súborov (rýchle nahrávanie)"
@@ -683,6 +802,9 @@ msgstr "Prispievatelia: "
 msgid "Log level:"
 msgstr "Úroveň záznamu:"
 
+msgid "Settings"
+msgstr "Nastavenia"
+
 msgid "Look and feel:"
 msgstr "Vzhľad:"
 
@@ -703,6 +825,9 @@ msgstr "Predvolený pracovný priečinok:"
 
 msgid "Error getting default environment."
 msgstr "Chyba pri nastavení pôvodného prostredia."
+
+msgid "Check now"
+msgstr "Zaškrtnúť teraz"
 
 msgid "Play alert sounds"
 msgstr ""
@@ -755,14 +880,11 @@ msgstr "Predvolený pracovný priečinok"
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Vyberte priečinok, v ktorom budú dokumenty ukladané a nahrávané"
 
-msgid "Check now"
-msgstr "Zaškrtnúť teraz"
+msgid "Save"
+msgstr "Uložiť"
 
 msgid "Configuration saved."
 msgstr "Konfigurácia uložená."
-
-msgid "Settings"
-msgstr "Nastavenia"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Neimplementovaná metóda pre JSettings Panel"
@@ -829,6 +951,12 @@ msgstr "Vystrihnúť"
 
 msgid "Paste"
 msgstr "Prilepiť"
+
+#~ msgid "Destination output file:"
+#~ msgstr "Cieľový výstupný súbor:"
+
+#~ msgid "Split options:"
+#~ msgstr "Možnosti rozdelenia:"
 
 #~ msgid "Select an input file"
 #~ msgstr "Vyberte vstupný súbor"

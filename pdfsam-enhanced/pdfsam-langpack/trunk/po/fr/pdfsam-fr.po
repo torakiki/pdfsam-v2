@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
-"PO-Revision-Date: 2008-10-22 00:44+0000\n"
+"POT-Creation-Date: 2008-12-14 18:54+0100\n"
+"PO-Revision-Date: 2008-12-16 00:35+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-24 12:12+0000\n"
+"X-Launchpad-Export-Date: 2008-12-20 15:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: FRANCE\n"
 "X-Poedit-Language: French\n"
 
-msgid "Merge options:"
-msgstr "Paramètres de fusion :"
+msgid "Merge options"
+msgstr "Paramètres de fusion"
 
 msgid "PDF documents contain forms"
 msgstr "Documents pdf avec formulaires"
@@ -48,17 +48,11 @@ msgstr "Remarque"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "Si coché, le document sera entièrement chargé en mémoire"
 
-msgid "Destination output file:"
-msgstr "Fichier à créer :"
+msgid "Destination output file"
+msgstr "Fichier à créer"
 
 msgid "Error: "
 msgstr "Erreur : "
-
-msgid "Overwrite if already exists"
-msgstr "Remplacer le fichier existant"
-
-msgid "Destination output file"
-msgstr "Fichier à créer"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Recherchez ou entrez le chemin complet des fichiers à créer."
@@ -71,7 +65,7 @@ msgid "Check the box if you want compressed output files."
 msgstr "Cochez la case pour compresser le(s) fichier(s) à créer."
 
 msgid "PDF version 1.5 or above."
-msgstr "Pdf version 1.5 ou supérieure."
+msgstr "Version pdf 1.5 ou supérieure."
 
 msgid "Set the pdf version of the ouput document."
 msgstr "Sélectionnez la version pdf du document à créer."
@@ -112,6 +106,9 @@ msgstr "Fichier xml sauvegardé."
 msgid "Error saving xml file, output file is null."
 msgstr "Erreur d'enregistrement du fichier xml, le fichier n'a pas été créé."
 
+msgid "Split options"
+msgstr "Options de découpage"
+
 msgid "Burst (split into single pages)"
 msgstr "Par page (fragmenter)"
 
@@ -129,9 +126,6 @@ msgstr "Après les pages"
 
 msgid "Split at this size"
 msgstr "En fichiers de"
-
-msgid "Split options"
-msgstr "Options de découpage"
 
 msgid "Burst"
 msgstr "Par page"
@@ -154,11 +148,8 @@ msgstr "Sectionne après chaque page indiquée (syntaxe : x-y-z...)"
 msgid "Split the document in files of the given size (roughly)."
 msgstr "Scinde en fichiers de la taille indiquée (approximation)"
 
-msgid "Split options:"
-msgstr "Options de découpage :"
-
-msgid "Destination folder:"
-msgstr "Dossier de création :"
+msgid "Destination folder"
+msgstr "Dossier de création"
 
 msgid "Same as source"
 msgstr "Identique à la source"
@@ -185,8 +176,8 @@ msgid ""
 "exist."
 msgstr "Cocher la case pour remplacer les fichiers existants."
 
-msgid "Output options:"
-msgstr "Options de création :"
+msgid "Output options"
+msgstr "Options de création"
 
 msgid "Output file names prefix:"
 msgstr "Préfixe de nom de fichier :"
@@ -195,11 +186,11 @@ msgid "Output files prefix"
 msgstr "Préfixe pour les fichiers créés"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
-"S'il comporte \"[CURRENTPAGE]\" et/ou \"[TIMESTAMP]\", une substitution de "
-"variable est effectuée."
+"S'il comporte \"[CURRENTPAGE]\", \"[TIMESTAMP]\" ou \"[FILENUMBER]\", une "
+"substitution de variable est effectuée."
 
 msgid ""
 "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -208,14 +199,16 @@ msgstr ""
 "\"préfixeperso_NomdeFichier_00X.pdf\""
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
-"S'il ne comporte ni \"[CURRENTPAGE]\" ni \"[TIMESTAMP]\",  un nom standard "
-"de fichiers est attribué."
+"S\"il ne comporte pas \"[CURRENTPAGE]\", \"[TIMESTAMP]\" ou "
+"\"[FILENUMBER]\", un nom standard de fichiers est attribué."
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-msgstr "Variables acceptées : [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgstr ""
+"Variables acceptées : [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
 msgstr "Taille indiquée incorrecte"
@@ -244,11 +237,11 @@ msgstr "Section \"Découpage\" chargée."
 msgid "Invalid unit: "
 msgstr "Unité de taille incorrecte : "
 
-msgid "Cover pdf file:"
-msgstr "Fichier de première de couverture :"
+msgid "Cover pdf file"
+msgstr "Première de couverture"
 
-msgid "Footer pdf file:"
-msgstr "Fichier de quatrième de couverture :"
+msgid "Footer pdf file"
+msgstr "Quatrième de couverture"
 
 msgid "Select at least one cover or one footer"
 msgstr "Sélectionnez au moins un fichier de couverture"
@@ -258,6 +251,9 @@ msgstr "Couverture"
 
 msgid "Cover And Footer section loaded."
 msgstr "Section \"Couverture\" chargée."
+
+msgid "Encrypt options"
+msgstr "Options de chiffrement"
 
 msgid "Owner password:"
 msgstr "Mot de passe Propriétaire :"
@@ -271,8 +267,11 @@ msgstr "Mot de passe Utilisateur :"
 msgid "User password (Max 32 chars long)"
 msgstr "Mot de passe utilisateur (max. 32 caractères)"
 
-msgid "Encryption angorithm:"
-msgstr "Algorithme de chiffement :"
+msgid "Encryption algorithm:"
+msgstr "Algorithme de chiffrement :"
+
+msgid "Allow all"
+msgstr "Tout autoriser"
 
 msgid "Print"
 msgstr "Impression"
@@ -295,20 +294,16 @@ msgstr "Remplissage de formulaire"
 msgid "Extract for use by accessibility dev."
 msgstr "Accès aux outils d'accessibilité"
 
+# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:246
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
 msgid "Manipulate pages and add bookmarks"
-msgstr "Gestion des pages et ajout de signets"
-
-msgid "Allow all"
-msgstr "Tout autoriser"
-
-msgid "Encrypt options:"
-msgstr "Options de chiffrement :"
+msgstr "manipuler les pages et ajouter des signets"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
-"Cochez la case pour compresser le(s) fichier(s) à créer (Pdf version 1.5 ou "
+"Cochez la case pour compresser le(s) fichier(s) à créer (version pdf 1.5 ou "
 "supérieure)."
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
@@ -341,6 +336,18 @@ msgstr "Chiffrement"
 msgid "Encrypt section loaded."
 msgstr "Section \"Chiffrement\" chargée."
 
+msgid "Decrypt selected files"
+msgstr "Lancer le déchiffrage des fichiers"
+
+msgid "Decrypt"
+msgstr "Déchiffrer"
+
+msgid "Decrypt section loaded."
+msgstr "Section Déchiffrage chargée"
+
+msgid "Mix options"
+msgstr "Options d'assemblage"
+
 msgid "Reverse first document"
 msgstr "Inverser l'ordre du premier document"
 
@@ -366,13 +373,106 @@ msgid "AlternateMix section loaded."
 msgstr "Section \"Assemblage\" chargée."
 
 msgid "Unpack selected files"
-msgstr "Extraire les fichiers sélectionnés"
+msgstr "Lancer l'extraction des fichiers"
 
 msgid "Unpack"
 msgstr "Extraction"
 
 msgid "Unpack section loaded."
 msgstr "Section \"Extraction\" chargée"
+
+msgid "Set viewer options"
+msgstr "Options d'affichage"
+
+msgid "Hide the menubar"
+msgstr "Cacher la barre de menu"
+
+msgid "Hide the toolbar"
+msgstr "Cacher la barre d'outils"
+
+msgid "Hide user interface elements"
+msgstr "Cacher les éléments de l'interface utilisateur"
+
+msgid "Rezise the window to fit the page size"
+msgstr "Redimensionner la fenêtre pour s'adapter à la page"
+
+msgid "Center of the screen"
+msgstr "Centrer à l'écran"
+
+msgid "Display document title as window title"
+msgstr "Afficher le titre du document dans la barre de titre"
+
+msgid "Pdf version required:"
+msgstr "Version pdf requise :"
+
+msgid "No page scaling in print dialog"
+msgstr "Pas d'échelle dans la fenêtre d'impression"
+
+msgid "Viewer layout:"
+msgstr "Mode d'affichage des pages :"
+
+msgid "Viewer open mode:"
+msgstr "Mode d'ouverture de la fenêtre :"
+
+msgid "Non fullscreen mode:"
+msgstr "En sortie du plein écran :"
+
+msgid "Direction:"
+msgstr "Direction du texte :"
+
+msgid "Set options"
+msgstr "Choix des options :"
+
+msgid "Set viewer options for selected files"
+msgstr "Appliquer les options aux fichiers"
+
+msgid "Left to right"
+msgstr "De gauche à droite"
+
+msgid "Right to left"
+msgstr "De droite à gauche"
+
+msgid "None"
+msgstr "Ne pas préciser"
+
+msgid "Fullscreen"
+msgstr "Plein écran"
+
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+msgid "Optional content group panel"
+msgstr "Calques"
+
+msgid "Document outline"
+msgstr "Plan du document"
+
+msgid "Thumbnail images"
+msgstr "Miniatures"
+
+msgid "One page at a time"
+msgstr "Une par une"
+
+msgid "Pages in one column"
+msgstr "En continu"
+
+msgid "Pages in two columns (odd on the left)"
+msgstr "En vis-à-vis continu (paires à droite)"
+
+msgid "Pages in two columns (odd on the right)"
+msgstr "En vis-à-vis continu (paires à gauche)"
+
+msgid "Two pages at a time (odd on the left)"
+msgstr "En vis-à-vis unique (paires à droite)"
+
+msgid "Two pages at a time (odd on the right)"
+msgstr "En vis-à-vis unique (paires à gauche)"
+
+msgid "Viewer options"
+msgstr "Options d'affichage"
+
+msgid "Viewer options section loaded."
+msgstr "Section \"Options d'affichage\" chargée."
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -385,9 +485,6 @@ msgstr "Confirmer la sauvegarde du mot de passe"
 
 msgid "Unknown action."
 msgstr "Action invalide."
-
-msgid "Save"
-msgstr "Enregistrer"
 
 msgid "Log saved."
 msgstr "Sauvegarde du journal effectuée."
@@ -454,6 +551,9 @@ msgstr "Ajouter"
 
 msgid "Compress output file/files"
 msgstr "Compresser le(s) fichier(s) créé(s)"
+
+msgid "Overwrite if already exists"
+msgstr "Remplacer le fichier existant"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "Ne pas conserver l'ordre des fichiers (rapide)"
@@ -737,6 +837,9 @@ msgstr "Contributions : "
 msgid "Log level:"
 msgstr "Niveau du journal :"
 
+msgid "Settings"
+msgstr "Réglages"
+
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:117
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
 msgid "Look and feel:"
@@ -760,8 +863,11 @@ msgstr "Répertoire de travail par défaut :"
 msgid "Error getting default environment."
 msgstr "Erreur d'acquisition de configuration."
 
+msgid "Check now"
+msgstr "Vérifier maintenant"
+
 msgid "Play alert sounds"
-msgstr "Jouer les sons d'alerte"
+msgstr "Jouer les alertes sonores"
 
 msgid "Settings "
 msgstr "Réglages "
@@ -796,7 +902,7 @@ msgstr ""
 "nécessaire)"
 
 msgid "Turn on or off alert sounds"
-msgstr "Activez ou désactivez les sons d'alerte"
+msgstr "Activez ou désactivez les alertes sonores"
 
 msgid "Default env."
 msgstr "Configuration par défaut"
@@ -817,14 +923,11 @@ msgstr ""
 "Sélectionnez un répertoire de chargement et d'enregistrement des documents "
 "par défaut"
 
-msgid "Check now"
-msgstr "Vérifier maintenant"
+msgid "Save"
+msgstr "Enregistrer"
 
 msgid "Configuration saved."
 msgstr "Réglages enregistrés."
-
-msgid "Settings"
-msgstr "Réglages"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Méthode non implémentée pour JSettingsPanel"

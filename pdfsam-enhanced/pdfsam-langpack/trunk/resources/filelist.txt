@@ -6,9 +6,11 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JSplitSizeCombo.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-decrypt/src/java/org/pdfsam/plugin/decrypt/GUI/DecryptMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/listeners/EncryptionTypeComboActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-unpack/src/java/org/pdfsam/plugin/unpack/GUI/UnpackMainGUI.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-setviewer/src/java/org/pdfsam/plugin/setviewer/GUI/SetViewerMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/business/listeners/mediators/TreeMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/business/listeners/EnterDoClickListener.java

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 19:49+0200\n"
+"POT-Creation-Date: 2008-12-20 17:33+0100\n"
 "PO-Revision-Date: 2008-05-29 10:01+0000\n"
 "Last-Translator: Uthen Phutneam <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Merge options:"
+#, fuzzy
+msgid "Merge options"
 msgstr "ตัวเลือกของการรวมไฟล์"
 
 #, fuzzy
@@ -48,17 +49,11 @@ msgstr "บันทึกย่อ"
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "ตั้งค่าตัวเลือกนี้เอกสารจะถูกโหลดเข้าสู่หน่วยความจำโดยสมบูรณ์"
 
-msgid "Destination output file:"
-msgstr "เลือกที่เก็บไฟล์ที่ส่งออก"
+msgid "Destination output file"
+msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้ว"
 
 msgid "Error: "
 msgstr "ข้อผิดพลาด: "
-
-msgid "Overwrite if already exists"
-msgstr "เขียนทับไฟล์เดิม"
-
-msgid "Destination output file"
-msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้ว"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "เลือกหรือป้อนที่เก็บไฟล์ที่ทำเสร็จแล้ว"
@@ -113,6 +108,9 @@ msgstr "บันทึกเป็นไฟล์ xml แล้ว"
 msgid "Error saving xml file, output file is null."
 msgstr "เกิดข้อผิดพลาดในขณะบันทึกเป็นไฟล์ xml, ไฟล์ที่ส่งออกไม่มีข้อมูล"
 
+msgid "Split options"
+msgstr "ตัวเลือกการแยกไฟล์"
+
 msgid "Burst (split into single pages)"
 msgstr "แตก (แยกหนึ่งหน้าต่อหนึ่งไฟล์)"
 
@@ -130,9 +128,6 @@ msgstr "แยกไฟล์ถัดจากหน้าที่"
 
 msgid "Split at this size"
 msgstr "แยกไฟล์ตามขนาดไฟล์"
-
-msgid "Split options"
-msgstr "ตัวเลือกการแยกไฟล์"
 
 msgid "Burst"
 msgstr "แตก"
@@ -157,10 +152,8 @@ msgstr "แยกเอกสารถัดจากหน้าที่ (num1
 msgid "Split the document in files of the given size (roughly)."
 msgstr "แยกเอกสารตามขนาดไฟล์ที่กำหนดให้ (อย่างคร่าวๆ)"
 
-msgid "Split options:"
-msgstr "ตัวเลือกการแยกไฟล์"
-
-msgid "Destination folder:"
+#, fuzzy
+msgid "Destination folder"
 msgstr "โฟลเดอร์ปลายทาง:"
 
 msgid "Same as source"
@@ -185,7 +178,8 @@ msgid ""
 "exist."
 msgstr "เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
 
-msgid "Output options:"
+#, fuzzy
+msgid "Output options"
 msgstr "ตัวเลือกของไฟล์ที่ทำเสร็จแล้ว"
 
 msgid "Output file names prefix:"
@@ -195,19 +189,20 @@ msgid "Output files prefix"
 msgstr "คำนำหน้าชื่อไฟล์ที่แยก"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-"substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
-"If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-"oldstyle output file names."
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
 msgstr ""
 
-msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr ""
 
 msgid "Invalid split size"
@@ -239,10 +234,11 @@ msgid "Invalid unit: "
 msgstr "หน่วยไม่ถูกต้อง "
 
 #, fuzzy
-msgid "Cover pdf file:"
+msgid "Cover pdf file"
 msgstr "ปกไฟล์ pdf"
 
-msgid "Footer pdf file:"
+#, fuzzy
+msgid "Footer pdf file"
 msgstr "ท้ายกระดาษไฟล์ pdf"
 
 msgid "Select at least one cover or one footer"
@@ -253,6 +249,10 @@ msgstr "ปกและท้ายกระดาษ"
 
 msgid "Cover And Footer section loaded."
 msgstr "หมวดปกและท้ายกระดาษถูกเรียกใช้งานแล้ว"
+
+#, fuzzy
+msgid "Encrypt options"
+msgstr "ตัวเลือกการเข้ารหัส"
 
 msgid "Owner password:"
 msgstr "รหัสผ่านของเจ้าของ"
@@ -266,8 +266,11 @@ msgstr "รหัสผ่านผู้ใช้งาน"
 msgid "User password (Max 32 chars long)"
 msgstr "รหัสผ่านผู้ใช้งาน (ได้มากสุด 32 ตัวอักษร)"
 
-msgid "Encryption angorithm:"
+msgid "Encryption algorithm:"
 msgstr ""
+
+msgid "Allow all"
+msgstr "อนุญาติทั้งหมด"
 
 msgid "Print"
 msgstr "พิมพ์"
@@ -292,12 +295,6 @@ msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "ปรับหน้าหรือเพิ่มที่คั่นหน้า"
-
-msgid "Allow all"
-msgstr "อนุญาติทั้งหมด"
-
-msgid "Encrypt options:"
-msgstr "ตัวเลือกการเข้ารหัส"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -328,6 +325,22 @@ msgstr "การเข้ารหัส"
 
 msgid "Encrypt section loaded."
 msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
+
+#, fuzzy
+msgid "Decrypt selected files"
+msgstr "เข้ารหัสไฟล์ที่ถูกเลือก"
+
+#, fuzzy
+msgid "Decrypt"
+msgstr "การเข้ารหัส"
+
+#, fuzzy
+msgid "Decrypt section loaded."
+msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
+
+#, fuzzy
+msgid "Mix options"
+msgstr "ตัวเลือกการแยกไฟล์"
 
 #, fuzzy
 msgid "Reverse first document"
@@ -364,6 +377,107 @@ msgstr "แยกออก"
 msgid "Unpack section loaded."
 msgstr "หมวดแยกออกถูกเรียกใช้งานแล้ว"
 
+#, fuzzy
+msgid "Set viewer options"
+msgstr "ตัวเลือกการแยกไฟล์"
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+#, fuzzy
+msgid "Pdf version required:"
+msgstr "รุ่นของ pdf ขัดแย้งกัน"
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+#, fuzzy
+msgid "Set options"
+msgstr "ตัวเลือกการแยกไฟล์"
+
+#, fuzzy
+msgid "Set viewer options for selected files"
+msgstr "เข้ารหัสไฟล์ที่ถูกเลือก"
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+#, fuzzy
+msgid "None"
+msgstr "บันทึกย่อ"
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+#, fuzzy
+msgid "Document outline"
+msgstr "เอกสาร PDF ประกอบด้วยฟอร์ม"
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+#, fuzzy
+msgid "Viewer options"
+msgstr "ตัวเลือกของการรวมไฟล์"
+
+#, fuzzy
+msgid "Viewer options section loaded."
+msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -373,9 +487,6 @@ msgstr "ยึ่นยันการบันทึกรหัสผ่าน
 
 msgid "Unknown action."
 msgstr "การดำเนินการที่ไม่รู้จัก"
-
-msgid "Save"
-msgstr "บันทึก"
 
 #, fuzzy
 msgid "Log saved."
@@ -435,6 +546,9 @@ msgstr "เพิ่ม"
 
 msgid "Compress output file/files"
 msgstr "บีบอัดไฟล์ที่ทำเสร็จแล้ว"
+
+msgid "Overwrite if already exists"
+msgstr "เขียนทับไฟล์เดิม"
 
 msgid "Don't preserve file order (fast load)"
 msgstr "ไม่สนใจการเรียงไฟล์ (โหลดแบบเร็ว)"
@@ -678,6 +792,10 @@ msgstr "ให้ความช่วยเหลือ "
 msgid "Log level:"
 msgstr "ระดับการบันทึก:"
 
+#, fuzzy
+msgid "Settings"
+msgstr "ตั้งค่า "
+
 msgid "Look and feel:"
 msgstr "มุมมองและรูปแบบ:"
 
@@ -698,6 +816,9 @@ msgstr "ห้องทำงานปริยาย"
 
 msgid "Error getting default environment."
 msgstr "เกิดข้อผิดพลาดในการใช้งานสภาพแวดล้อมการทำงานแบบปริยาย"
+
+msgid "Check now"
+msgstr "ตรวจสอบทันที"
 
 msgid "Play alert sounds"
 msgstr ""
@@ -748,15 +869,11 @@ msgstr "ค่าปริยายของห้องที่ทำงาน
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "เลือกที่เก็บปริยายสำหรับเอาไว้บันทึกและโหลดไฟล์"
 
-msgid "Check now"
-msgstr "ตรวจสอบทันที"
+msgid "Save"
+msgstr "บันทึก"
 
 msgid "Configuration saved."
 msgstr "บันทึกการตั้งค่าแล้ว"
-
-#, fuzzy
-msgid "Settings"
-msgstr "ตั้งค่า "
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -824,6 +941,12 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "พาธ"
+
+#~ msgid "Destination output file:"
+#~ msgstr "เลือกที่เก็บไฟล์ที่ส่งออก"
+
+#~ msgid "Split options:"
+#~ msgstr "ตัวเลือกการแยกไฟล์"
 
 #~ msgid "Select an input file"
 #~ msgstr "เลือกไฟล์นำเข้า"
