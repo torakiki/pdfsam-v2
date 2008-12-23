@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exception-types>
+	<type key="org.pdfsam.console.exceptions.BasicException" description="GEN">
+		<exception errorcode="1" message="Unknown exception." />
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.ConsoleException" description="CLS">
+		<exception errorcode="1" message="Filename length is 0." />		
+		<exception errorcode="2" message="Command line handler is null." />		
+		<exception errorcode="3" message="Original file name is empty." />		
+		<exception errorcode="4" message="Command line validator is null." />		
+		<exception errorcode="5" message="Bad command." />		
+		<exception errorcode="6" message="Command line validator is null for the command {0}." />		
+		<exception errorcode="7" message="Input command is null." />		
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
+		<exception errorcode="1" message="Parse error. {0}" />		
+		<exception errorcode="2" message="Output file not a pdf format. {0}" />		
+		<exception errorcode="3" message="No output file name." />		
+		<exception errorcode="4" message="No -f or -l option given." />		
+		<exception errorcode="5" message="Both -f and -l options given." />		
+		<exception errorcode="6" message="Input list file not a csv or xml format" />		
+		<exception errorcode="7" message="Input file {0} is not a pdf format." />		
+		<exception errorcode="8" message="-u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />		
+		<exception errorcode="9" message="Output is not a directory." />		
+		<exception errorcode="10" message="Not -s option given." />		
+		<exception errorcode="11" message="-n option not a numeric value." />		
+		<exception errorcode="12" message="-n option must be a number or a sequence number-number-number..." />		
+		<exception errorcode="13" message="Unable to find required option -n for the selected split mode." />		
+		<exception errorcode="14" message="Unnecessary option -n for the selected split mode." />		
+		<exception errorcode="15" message="Missing or illegal -o option." />		
+		<exception errorcode="16" message="No -f1 option given." />		
+		<exception errorcode="17" message="No -f2 option given." />		
+		<exception errorcode="18" message="Unnecessary option -b for the selected split mode." />		
+		<exception errorcode="19" message="No -b option given." />		
+		<exception errorcode="20" message="No -f option given." />	
+		<exception errorcode="21" message="-d {0} must be a directory." />
+		<exception errorcode="22" message="Input file not an xml format." />
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
+		<exception errorcode="1" message="Cannot find page limits, please check input value." />		
+		<exception errorcode="2" message="Cannot split this document at page {0}. No such page." />		
+		<exception errorcode="3" message="Input split type {0} is not valid." />		
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.ConcatException" description="MRG">
+		<exception errorcode="1" message="Syntax error on {0}." />	
+		<exception errorcode="2" message="Unable to delete temporary file." />	
+		<exception errorcode="3" message="Syntax error. {0} must be positive in {1}." />				
+		<exception errorcode="4" message="Error reading csv or xml input file. {0}" />				
+		<exception errorcode="5" message="Cannot merge at page {0}. No such page." />				
+		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.EncryptException" description="ENC" />
+	<type key="org.pdfsam.console.exceptions.console.MixException" description="MIX" />
+	<type key="org.pdfsam.console.exceptions.console.UnpackException" description="UNP">
+		<exception errorcode="1" message="No -f or -d option given." />	
+	</type>
+	<type key="org.pdfsam.console.exceptions.console.SetViewerException" description="SVW" />
+	<type key="org.pdfsam.console.exceptions.console.SlideShowException" description="SLS">
+		<exception errorcode="1" message="Empty input transition string." />	
+		<exception errorcode="2" message="Uncomplete input transition string {0}." />	
+		<exception errorcode="3" message="Bad input transition string {0}." />	
+		<exception errorcode="4" message="Unable to add the transition string {0}. Resulting object {1}." />	
+		<exception errorcode="5" message="Error reading xml input file." />	
+		<exception errorcode="6" message="Default transition already exists." />	
+		<exception errorcode="7" message="Error reading transition number {0}." />	
+	</type>
+</exception-types>
