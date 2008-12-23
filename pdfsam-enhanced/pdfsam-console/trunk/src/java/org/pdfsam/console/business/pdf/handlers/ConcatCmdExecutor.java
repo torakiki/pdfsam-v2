@@ -222,7 +222,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	}
 	
 	private Bounds getBounds(int pdfNumberOfPages, String currentPageSelection) throws ConcatException{
-		Bounds retVal = new Bounds(1, pdfNumberOfPages);
+		Bounds retVal = new Bounds(pdfNumberOfPages , 1);
 		if (!(ALL_STRING.equals(currentPageSelection))){
         	boolean valid = true;
             String[] limits = currentPageSelection.split("-");
