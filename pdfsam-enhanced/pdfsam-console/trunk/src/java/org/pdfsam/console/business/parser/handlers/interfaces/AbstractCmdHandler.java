@@ -62,7 +62,7 @@ public abstract class AbstractCmdHandler implements CmdHandler{
     /**
      * help text commonly used by any handler
      */
-	private final String commonHelpText =
+	private static final String commonHelpText =
 		"'-log' to set a log file.\n"+
     	"'-overwrite' to overwrite output file if already exists.\n"+
         "'-pdfversion version' to set the output document pdf version. Possible values {["+AbstractParsedCommand.VERSION_1_2+"], ["+AbstractParsedCommand.VERSION_1_3+"], ["+AbstractParsedCommand.VERSION_1_4+"], ["+AbstractParsedCommand.VERSION_1_5+"], ["+AbstractParsedCommand.VERSION_1_6+"], ["+AbstractParsedCommand.VERSION_1_7+"]}\n"+

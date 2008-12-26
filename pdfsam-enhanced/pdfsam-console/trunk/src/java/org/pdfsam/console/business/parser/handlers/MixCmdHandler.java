@@ -57,7 +57,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class MixCmdHandler extends AbstractCmdHandler {
 	
-	private  final String commandDescription = "Mix of two pdf documents.";
+	private static final String commandDescription = "Mix of two pdf documents.";
 	
 	/**
 	 * Options for the mix handler
@@ -85,7 +85,7 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	/**
 	 * help text for the mix handler
 	 */
-	private final String mixHelpText = "Mix alternate two pdf files. \n"+
+	private static final String mixHelpText = "Mix alternate two pdf files. \n"+
 	"You must specify '-o /home/user/out.pdf' to set the output file.\n"+
     "You must specify '-f1 /home/user/infile1.pdf' option to set the first input file (use filename:password if the file is password protected).\n" +
     "You must specify '-f2 /home/user/infile2.pdf' option to set the second input file (use filename:password if the file is password protected).\n" +
@@ -95,7 +95,7 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	/**
 	 * example text for the mix handler
 	 */
-	private final String mixExample = "Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f1 /tmp/1.pdf -f2 /tmp/2.pdf:password -reversesecond mix\n";
+	private static final String mixExample = "Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f1 /tmp/1.pdf -f2 /tmp/2.pdf:password -reversesecond mix\n";
 	
 	/**
 	 * Arguments for the mix handler

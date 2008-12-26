@@ -58,7 +58,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class SplitCmdHandler extends AbstractCmdHandler {
 
-	private  final String commandDescription = "Split a pdf document.";
+	private static final String commandDescription = "Split a pdf document.";
 	
 	/**
 	 * Options for the split handler

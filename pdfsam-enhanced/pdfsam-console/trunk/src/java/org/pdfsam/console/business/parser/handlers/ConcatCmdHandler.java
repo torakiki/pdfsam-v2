@@ -58,7 +58,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class ConcatCmdHandler extends AbstractCmdHandler {
 
-	private  final String commandDescription = "Merge together pdf documents.";
+	private static final String commandDescription = "Merge together pdf documents.";
 	/**
 	 * options for the concat handler
 	 */
@@ -108,7 +108,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
     /**
      *  example text for the concat handler
      */
-    private final String concatExample = 
+    private static final String concatExample = 
     	"Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f /tmp/1.pdf:password -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console-VERSION.jar -l c:\\docs\\list.csv concat";
     

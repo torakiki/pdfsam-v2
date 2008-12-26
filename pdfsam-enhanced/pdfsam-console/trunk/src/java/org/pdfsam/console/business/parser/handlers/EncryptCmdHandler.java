@@ -55,7 +55,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class EncryptCmdHandler extends AbstractCmdHandler {
 	
-	private  final String commandDescription = "Encrypt pdf documents.";
+	private static final String commandDescription = "Encrypt pdf documents.";
 	
 	/**
 	 * Options for the encrypt handler
@@ -118,7 +118,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
     /**
      *  example text for the encrypt handler
      */
-    private final String encryptExample = 
+    private static final String encryptExample = 
     "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -apwd hello -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
  
 	

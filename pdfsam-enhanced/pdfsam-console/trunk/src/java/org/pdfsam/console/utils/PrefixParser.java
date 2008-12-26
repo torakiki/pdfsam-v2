@@ -65,17 +65,17 @@ public class PrefixParser {
 	private static final String PDF_EXTENSION = ".pdf";
 	
 	//regexp to match
-	private final String CURRENT_PAGE_REGX = "(.)*(\\[CURRENTPAGE(#*)\\])+(.)*";
-	private final String FILE_NUMBER_REGX = "(.)*(\\[FILENUMBER(#*)\\])+(.)*";
-	private final String TIMESTAMP_STRING = "[TIMESTAMP]";
-	private final String BASE_NAME_STRING  = "[BASENAME]";
+	private static final String CURRENT_PAGE_REGX = "(.)*(\\[CURRENTPAGE(#*)\\])+(.)*";
+	private static final String FILE_NUMBER_REGX = "(.)*(\\[FILENUMBER(#*)\\])+(.)*";
+	private static final String TIMESTAMP_STRING = "[TIMESTAMP]";
+	private static final String BASE_NAME_STRING  = "[BASENAME]";
 	
 	
 	//regexp to replace
-	private final String CURRENT_PAGE_REPLACE_REGX = "\\[CURRENTPAGE(#+)*\\]";
-	private final String FILE_NUMBER_REPLACE_REGX = "\\[FILENUMBER(#+)*\\]";
-	private final String TIMESTAMP_REPLACE_RGX = "\\[TIMESTAMP\\]";
-	private final String BASE_NAME_REPLACE_REGX = "\\[BASENAME\\]";
+	private static final String CURRENT_PAGE_REPLACE_REGX = "\\[CURRENTPAGE(#+)*\\]";
+	private static final String FILE_NUMBER_REPLACE_REGX = "\\[FILENUMBER(#+)*\\]";
+	private static final String TIMESTAMP_REPLACE_RGX = "\\[TIMESTAMP\\]";
+	private static final String BASE_NAME_REPLACE_REGX = "\\[BASENAME\\]";
 
 	private String prefix = "";
 	private String fileName = "";

@@ -182,7 +182,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 				retVal.add(new Integer(limits[i]));
 		    }
 		}catch(NumberFormatException nfe){			
-			new ParseException(ParseException.ERR_N_NOT_NUM_OR_SEQ, nfe);
+			throw new ParseException(ParseException.ERR_N_NOT_NUM_OR_SEQ, nfe);
 		}
 		return (Integer[]) retVal.toArray(new Integer[0]);
 	}

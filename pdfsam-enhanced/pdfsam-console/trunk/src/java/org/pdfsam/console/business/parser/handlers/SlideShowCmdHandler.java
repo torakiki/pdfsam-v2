@@ -57,7 +57,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class SlideShowCmdHandler extends AbstractCmdHandler {
 
-	private  final String commandDescription = "Set slide show options.";
+	private static final String commandDescription = "Set slide show options.";
 
 	/**
 	 * Options for the slide show handler
@@ -115,7 +115,7 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
 	 /**
      *  example text for the slide show handler
      */
-    private final String slideshowExample = 
+    private static final String slideshowExample = 
     "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp/out.pdf -fullscreen -dt dissolve:1:5 -t wipel2r:1:5:20 -t wiper2l:1:5:21 -overwrite slideshow\n";
 	
 	 /**
