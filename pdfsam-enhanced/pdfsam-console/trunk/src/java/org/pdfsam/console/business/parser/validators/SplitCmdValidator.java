@@ -43,6 +43,7 @@ import java.util.regex.Pattern;
 
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
+import jcmdline.IntParam;
 import jcmdline.LongParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
@@ -108,7 +109,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	        }
 	        
 	        //-b
-	        LongParam bOption = (LongParam) cmdLineHandler.getOption("b");	        
+	        LongParam bOption = (LongParam) cmdLineHandler.getOption(SplitParsedCommand.B_ARG);	        
 	        if(SplitParsedCommand.S_SIZE.equals(parsedCommandDTO.getSplitType())){
 	        	if(bOption.isSet()){	    
 	        		parsedCommandDTO.setSplitSize(new Long(bOption.longValue()));
@@ -121,6 +122,20 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	            }
 	        }
 	        
+	        //-bl
+	        IntParam blOption = (IntParam) cmdLineHandler.getOption(SplitParsedCommand.BL_ARG);	        
+	        if(SplitParsedCommand.S_BLEVEL.equals(parsedCommandDTO.getSplitType())){
+	        	if(blOption.isSet()){	    
+	        		parsedCommandDTO.setBookmarksLevel(new Integer(blOption.intValue()));
+	        	}else{
+	        		throw new ParseException(ParseException.ERR_NO_BL);
+	        	}
+	        }else{
+	        	if(bOption.isSet()){
+	        		throw new ParseException(ParseException.ERR_BL_NOT_NEEDED);
+	            }
+	        }
+
 	        //-n	       
 	        StringParam nOption = (StringParam) cmdLineHandler.getOption("n");
 	        if(SplitParsedCommand.S_NSPLIT.equals(parsedCommandDTO.getSplitType()) || SplitParsedCommand.S_SPLIT.equals(parsedCommandDTO.getSplitType())){

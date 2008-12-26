@@ -1,6 +1,6 @@
 /*
- * Created on 20-Jun-2007
- * Copyright (C) 2007 by Andrea Vacondio.
+ * Created on 24-DEC-2008
+ * Copyright (C) 2008 by Andrea Vacondio.
  *
  *
  * This library is provided under dual licenses.
@@ -35,43 +35,39 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.console.exceptions.console;
+package org.pdfsam.console.utils;
+
+import java.io.InputStream;
+import java.util.List;
+
+import org.dom4j.io.SAXReader;
+
+
 /**
- * Exception thrown while splitting pdf files
+ * Utility class for pdf documents
  * @author Andrea Vacondio
  *
  */
-public class SplitException extends ConsoleException {
+public class PdfUtility {
 
-	public final static int ERR_NO_PAGE_LIMITS = 0x01;
-	public final static int ERR_NO_SUCH_PAGE = 0x02;
-	public final static int ERR_NOT_VALID_SPLIT_TYPE = 0x03;
-	public final static int ERR_NOT_VALID_BLEVEL = 0x04;
-	public final static int ERR_BLEVEL_OUTOFBOUNDS = 0x05;
-	public final static int ERR_BLEVEL = 0x06;
-	public final static int ERR_BLEVEL_NO_DEST = 0x06;
-	
-    private static final long serialVersionUID = -2125271375075332148L;
-
-	public SplitException(int exceptionErrorCode, String[] args, Throwable e) {
-		super(exceptionErrorCode, args, e);
+	/**
+	 * @param bookmarks the stream to read the xml. Stream is not closed. 
+	 * @return the max depth of the bookmarks tree. 0 if no bookmark.
+	 */
+	public static int getMaxBookmarksDepth(InputStream bookmarks) throws Exception{
+		int retVal = 0;
+		if(bookmarks!=null){
+			SAXReader reader = new SAXReader();
+			org.dom4j.Document document = reader.read(bookmarks);
+			String xQuery = "/Bookmark/Title[@Action=\"GoTo\"]";
+			List nodes = document.selectNodes(xQuery);
+			while((nodes!=null && nodes.size()>0)){
+				retVal++;
+				xQuery += "/Title[@Action=\"GoTo\"]";
+				nodes = document.selectNodes(xQuery);
+			}
+			
+		}
+		return retVal;
 	}
-
-	public SplitException(int exceptionErrorCode, Throwable e) {
-		super(exceptionErrorCode, e);
-	}
-
-	public SplitException(int exceptionErrorCode) {
-		super(exceptionErrorCode);
-	}
-
-	public SplitException(Throwable e) {
-		super(e);
-	}
-
-	public SplitException(int exceptionErrorCode, String[] args) {
-		super(exceptionErrorCode, args);
-	}
-
 }
-

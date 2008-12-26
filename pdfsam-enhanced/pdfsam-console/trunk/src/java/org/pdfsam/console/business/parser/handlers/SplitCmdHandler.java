@@ -43,6 +43,7 @@ import java.util.Collection;
 import java.util.List;
 
 import jcmdline.FileParam;
+import jcmdline.IntParam;
 import jcmdline.LongParam;
 import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
@@ -77,15 +78,18 @@ public class SplitCmdHandler extends AbstractCmdHandler {
                     "prefix for the output files name",
                             StringParam.OPTIONAL),                      
             new StringParam(SplitParsedCommand.S_ARG,   
-                    "split type {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"], ["+SplitParsedCommand.S_SIZE+"]}",
-                    new String[] { SplitParsedCommand.S_BURST, SplitParsedCommand.S_ODD, SplitParsedCommand.S_EVEN, SplitParsedCommand.S_SPLIT, SplitParsedCommand.S_NSPLIT, SplitParsedCommand.S_SIZE },
+                    "split type {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"], ["+SplitParsedCommand.S_SIZE+"], ["+SplitParsedCommand.S_BLEVEL+"]}",
+                    new String[] { SplitParsedCommand.S_BURST, SplitParsedCommand.S_ODD, SplitParsedCommand.S_EVEN, SplitParsedCommand.S_SPLIT, SplitParsedCommand.S_NSPLIT, SplitParsedCommand.S_SIZE, SplitParsedCommand.S_BLEVEL },
                             StringParam.REQUIRED),
             new StringParam(SplitParsedCommand.N_ARG,
                     "page number to split at if -s is "+SplitParsedCommand.S_SPLIT +" or " + SplitParsedCommand.S_NSPLIT ,             
                     StringParam.OPTIONAL),
             new LongParam(SplitParsedCommand.B_ARG,
                     "size in bytes to split at if -s is "+SplitParsedCommand.S_SIZE ,             
-                    LongParam.OPTIONAL)                    
+                    LongParam.OPTIONAL),
+            new IntParam(SplitParsedCommand.BL_ARG,
+                    "bookmarks depth to split if -s is "+SplitParsedCommand.S_BLEVEL ,             
+                    IntParam.OPTIONAL)                      
 	}));
     
 	/**
@@ -104,7 +108,7 @@ public class SplitCmdHandler extends AbstractCmdHandler {
     private static final String splitHelpText = "Split pdf file. \n"+ 
 	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split (use filename:password if the file is password protected).\n" +
 	    "You must specify '-o /home/user' to set the output directory.\n"+
-	    "You must specify '-s split_type' to set the split type. Possible values: {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"]}\n"+
+	    "You must specify '-s split_type' to set the split type. Possible values: {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"], ["+SplitParsedCommand.S_BLEVEL+"]}\n"+
 	    "'-p prefix_' to specify a prefix for output names of files. If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[CURRENTPAGE] generates FileName_prefix_005.pdf)\n"+
 	    "Available prefix variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].\n"+
 	    "'-n number' to specify a page number to split at if -s is SPLIT or NSPLIT.\n"+

@@ -37,15 +37,19 @@
  */
 package org.pdfsam.console.business.pdf.handlers;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
@@ -54,6 +58,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SplitException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.PrefixParser;
 
 import com.lowagie.text.Document;
@@ -88,6 +93,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 					executeSplitOddEven(inputCommand);
 				}else if(SplitParsedCommand.S_SIZE.equals(inputCommand.getSplitType())){
 					executeSizeSplit(inputCommand);
+				}else if(SplitParsedCommand.S_BLEVEL.equals(inputCommand.getSplitType())){
+					executeBookmarksSplit(inputCommand);
 				}else{
 					throw new SplitException(SplitException.ERR_NOT_VALID_SPLIT_TYPE, new String[]{inputCommand.getSplitType()});
 				}
@@ -231,6 +238,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      */
     private void executeSplit(SplitParsedCommand inputCommand) throws Exception{
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+        pdfReader.consolidateNamedDestinations();
         int n = pdfReader.getNumberOfPages();
         int fileNum = 0;
         log.info("Found "+n+" pages in input pdf document.");
@@ -331,6 +339,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	        int n = pdfReader.getNumberOfPages();
 			int numberPage = numberPages[0].intValue();
 			if (numberPage < 1 || numberPage > n) {
+				pdfReader.close();
 				throw new SplitException(SplitException.ERR_NO_SUCH_PAGE, new String[]{""+numberPage});
 			}else{
 				ArrayList retVal = new ArrayList();
@@ -341,6 +350,73 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			}
 			pdfReader.close();
 		}		
+		executeSplit(inputCommand);
+	}
+	
+	 /**
+	 * Execute the split of a pdf document when split type is S_BLEVEL
+	 * 
+	 * @param inputCommand
+	 * @throws Exception
+	 */
+	private void executeBookmarksSplit(SplitParsedCommand inputCommand) throws Exception {
+		PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+		int bLevel = inputCommand.getBookmarksLevel().intValue();
+		if(bLevel>0){
+			pdfReader.consolidateNamedDestinations();
+			List bookmarks = SimpleBookmark.getBookmark(pdfReader);
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			SimpleBookmark.exportToXML(bookmarks, out, "UTF-8", false);
+			ByteArrayInputStream input = new ByteArrayInputStream(out.toByteArray());			
+			int maxDepth = PdfUtility.getMaxBookmarksDepth(input);
+			input.reset();
+			if(bLevel<=maxDepth){
+				SAXReader reader = new SAXReader();
+				org.dom4j.Document document = reader.read(input);					
+				String xQuery = "/Bookmark";
+				for(int i=0; i<bLevel; i++){
+					xQuery += "/Title[@Action=\"GoTo\"]";
+				}
+				List nodes = document.selectNodes(xQuery);
+				input.close();
+				input = null;
+				if(nodes!=null && nodes.size()>0){
+					LinkedHashSet pageSet = new LinkedHashSet(nodes.size());
+					for(Iterator nodeIter = nodes.iterator(); nodeIter.hasNext();){
+						Node currentNode = (Node) nodeIter.next();
+						Node pageAttribute = currentNode.selectSingleNode("@Page");
+						if(pageAttribute!=null && pageAttribute.getText().length()>0){
+							String attribute = pageAttribute.getText();
+							int blankIndex = attribute.indexOf(' ');
+							if(blankIndex>0){
+								Integer currentNumber = new Integer(attribute.substring(0, blankIndex));
+								//to split just before the given page
+								if((currentNumber.intValue()-1)>0){
+									pageSet.add(new Integer(currentNumber.intValue()-1));
+								}
+							}
+						}
+					}
+					if(pageSet.size()>0){
+						log.debug("Found "+pageSet.size()+" destination pages at level "+bLevel);
+						inputCommand.setSplitPageNumbers((Integer[])pageSet.toArray(new Integer[pageSet.size()]));
+					}else{
+						throw new SplitException(SplitException.ERR_BLEVEL_NO_DEST, new String[] { "" + bLevel });	
+					}
+				}else{
+					throw new SplitException(SplitException.ERR_BLEVEL, new String[] { "" + bLevel });	
+				}
+			}else{
+				input.close();
+				pdfReader.close();
+				throw new SplitException(SplitException.ERR_BLEVEL_OUTOFBOUNDS, new String[] { "" + bLevel, "" + maxDepth });
+				
+			}
+		}else{
+			pdfReader.close();
+			throw new SplitException(SplitException.ERR_NOT_VALID_BLEVEL, new String[] { "" + bLevel });				
+		}	
+		pdfReader.close();
 		executeSplit(inputCommand);
 	}
 	

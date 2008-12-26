@@ -57,6 +57,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
     public static final String S_EVEN = "EVEN";    
     public static final String S_ODD = "ODD";
     public static final String S_SIZE = "SIZE";
+    public static final String S_BLEVEL = "BLEVEL";
     
 	public static final String F_ARG = "f";
 	public static final String P_ARG = "p";
@@ -64,6 +65,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 	public static final String N_ARG = "n";
 	public static final String B_ARG = "b";
 	public static final String O_ARG = "o";
+	public static final String BL_ARG = "bl";
     
     private File outputFile;
     private String outputFilesPrefix = "";
@@ -71,13 +73,14 @@ public class SplitParsedCommand extends AbstractParsedCommand {
     private String splitType = "";
     private Integer[] splitPageNumbers = new Integer[0];
     private Long splitSize;
+    private Integer bookmarksLevel;
     
     public SplitParsedCommand(){
     	
     }
     
 	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
-			String splitType, Integer[] splitPageNumbers, Long splitSize) {
+			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel) {
 		super();
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
@@ -85,10 +88,11 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		this.splitType = splitType;
 		this.splitPageNumbers = splitPageNumbers;
 		this.splitSize = splitSize;
+		this.bookmarksLevel = bookmarksLevel;
 	}
 	
 	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
-			String splitType, Integer[] splitPageNumbers, Long splitSize, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
@@ -96,7 +100,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		this.splitType = splitType;
 		this.splitPageNumbers = splitPageNumbers;
 		this.splitSize = splitSize;
-
+		this.bookmarksLevel = bookmarksLevel;
 	}
 	
 	/**
@@ -183,6 +187,20 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		this.splitSize = splitSize;
 	}
 
+	/**
+	 * @return the bookmarksLevel
+	 */
+	public Integer getBookmarksLevel() {
+		return bookmarksLevel;
+	}
+
+	/**
+	 * @param bookmarksLevel the bookmarksLevel to set
+	 */
+	public void setBookmarksLevel(Integer bookmarksLevel) {
+		this.bookmarksLevel = bookmarksLevel;
+	}
+
 	public String getCommand() {
 		return COMMAND_SPLIT;
 	}
@@ -195,6 +213,7 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		retVal.append("[outputFilesPrefix="+outputFilesPrefix+"]");
 		retVal.append("[splitType="+splitType+"]");
 		retVal.append("[splitSize="+splitSize+"]");
+		retVal.append("[bookmarksLevel="+bookmarksLevel+"]");
 		if(splitPageNumbers != null){
 			for(int i = 0; i<splitPageNumbers.length; i++){
 				retVal.append("[splitPageNumbers["+i+"]="+splitPageNumbers[i]+"]");				

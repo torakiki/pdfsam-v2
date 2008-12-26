@@ -35,11 +35,17 @@
 		<exception errorcode="20" message="No -f option given." />	
 		<exception errorcode="21" message="-d {0} must be a directory." />
 		<exception errorcode="22" message="Input file not an xml format." />
+		<exception errorcode="23" message="Unnecessary option -bl for the selected split mode." />
+		<exception errorcode="24" message="No -bl option given." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
 		<exception errorcode="1" message="Cannot find page limits, please check input value." />		
 		<exception errorcode="2" message="Cannot split this document at page {0}. No such page." />		
 		<exception errorcode="3" message="Input split type {0} is not valid." />		
+		<exception errorcode="4" message="Bookmark level {0} is not valid." />		
+		<exception errorcode="5" message="Bookmark level {0} is not valid. Max available level is {1}" />		
+		<exception errorcode="6" message="Error getting bookmarks at level {0}." />		
+		<exception errorcode="7" message="No destination pages found at level {0}." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ConcatException" description="MRG">
 		<exception errorcode="1" message="Syntax error on {0}." />	

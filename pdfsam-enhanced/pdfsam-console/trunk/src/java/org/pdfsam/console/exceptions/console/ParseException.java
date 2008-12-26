@@ -65,6 +65,8 @@ public class ParseException extends ConsoleException {
 	public final static int ERR_NO_F = 0x14;
 	public final static int ERR_D_NOT_DIR = 0x15;
 	public final static int ERR_NOT_XML = 0x16;
+	public final static int ERR_BL_NOT_NEEDED = 0x17;
+	public final static int ERR_NO_BL = 0x18;
 	
     private static final long serialVersionUID = -3982153307443637295L;
 
