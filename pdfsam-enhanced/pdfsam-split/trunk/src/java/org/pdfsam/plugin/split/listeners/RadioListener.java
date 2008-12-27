@@ -34,10 +34,12 @@ public class RadioListener implements ActionListener {
     public static final String ENABLE_FIRST = "enableFirst";
     public static final String ENABLE_SECOND = "enableSecond";
     public static final String ENABLE_THIRD = "enableThird";
+    public static final String ENABLE_FOURTH = "enableFourth";
     
     private Component first;
     private Component second;
     private Component third;
+    private Component fourth;
     private SplitMainGUI container;
   
 /**
@@ -45,10 +47,11 @@ public class RadioListener implements ActionListener {
  * @param first First JTextField of the radio group
  * @param second Second JTextField of the radio group
  */
-    public RadioListener(SplitMainGUI container, Component first, Component second, Component third){
+    public RadioListener(SplitMainGUI container, Component first, Component second, Component third, Component fourth){
         this.first = first;
         this.second = second;
         this.third = third;
+        this.fourth = fourth;
         this.container = container;
     }
     
@@ -61,21 +64,31 @@ public class RadioListener implements ActionListener {
     			first.setEnabled(false);
     			second.setEnabled(false);
     			third.setEnabled(false);
+    			fourth.setEnabled(false);
     		}else if(ENABLE_FIRST.equals(e.getActionCommand())){
     			first.setEnabled(true);
     			second.setEnabled(false);
     			third.setEnabled(false);
+    			fourth.setEnabled(false);
                 first.requestFocus();
     		}else if(ENABLE_SECOND.equals(e.getActionCommand())){
     			first.setEnabled(false);
     			second.setEnabled(true);
     			third.setEnabled(false);
+    			fourth.setEnabled(false);
     			second.requestFocus();
     		}else if(ENABLE_THIRD.equals(e.getActionCommand())){
     			first.setEnabled(false);
     			second.setEnabled(false);
     			third.setEnabled(true);
+    			fourth.setEnabled(false);
     			third.requestFocus();
+    		}else if(ENABLE_FOURTH.equals(e.getActionCommand())){
+    			first.setEnabled(false);
+    			second.setEnabled(false);
+    			third.setEnabled(false);
+    			fourth.setEnabled(true);
+    			fourth.requestFocus();
     		} 
     	}  
     	container.setSplitType(((JSplitRadioButton)e.getSource()).getSplitCommand());

@@ -62,6 +62,7 @@ import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.split.components.JBLevelCombo;
 import org.pdfsam.plugin.split.components.JSplitRadioButton;
 import org.pdfsam.plugin.split.components.JSplitRadioButtonModel;
 import org.pdfsam.plugin.split.components.JSplitSizeCombo;
@@ -93,6 +94,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private Configuration config;
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.SINGLE_SELECTABLE_FILE, SimplePdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
 	private JSplitSizeCombo splitSizeCombo = new JSplitSizeCombo();
+	private JBLevelCombo bLevelCombo = new JBLevelCombo(selectionPanel);
     
 //file_chooser    
     private JFileChooser browseDestFileChooser = null;
@@ -111,6 +113,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private final JSplitRadioButton oddRadio = new JSplitRadioButton(SplitParsedCommand.S_ODD);
     private final JSplitRadioButton thisPageRadio = new JSplitRadioButton(SplitParsedCommand.S_SPLIT);
     private final JSplitRadioButton sizeRadio = new JSplitRadioButton(SplitParsedCommand.S_SIZE);
+    private final JSplitRadioButton bookmarksLevel = new JSplitRadioButton(SplitParsedCommand.S_BLEVEL);
     
     private RadioListener radioListener;
 //radio
@@ -136,7 +139,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.4.9";
+    private final String PLUGIN_VERSION = "0.5.0";
     
 /**
  * Constructor
@@ -150,7 +153,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/split.png");
-        setPreferredSize(new Dimension(500,550));
+        setPreferredSize(new Dimension(500,555));
         
 //        
         splitSpringLayout = new SpringLayout();
@@ -174,8 +177,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         nPagesTextField.setEnabled(false);
         thisPageRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split after these pages"));
         sizeRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size"));
+        bookmarksLevel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Split by bookmarks level"));
         thisPageTextField.setEnabled(false);
         splitSizeCombo.setEnabled(false);
+        bLevelCombo.setEnabled(false);
         
         splitTypesPanel.add(burstRadio);
         splitTypesPanel.add(thisPageRadio);
@@ -189,6 +194,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         splitTypesPanel.add(sizeRadio);                
         splitTypesPanel.add(splitSizeCombo);
         
+        splitTypesPanel.add(new JLabel());               
+        splitTypesPanel.add(bookmarksLevel);                
+        splitTypesPanel.add(bLevelCombo);
+        
         splitOptionsPanel.add(splitTypesPanel);
         
         String helpText = 
@@ -198,7 +207,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split even pages")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document every even page")+".</li>" +
         		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split odd pages")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document every odd page")+".</li>" +
         		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split after these pages")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document after page numbers (num1-num2-num3..)")+".</li>" +
-        		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document in files of the given size (roughly).")+".</li>" +
+        		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split at this size")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document in files of the given size (roughly)")+".</li>" +
+        		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Split by bookmarks level")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Split the document at pages referred by bookmarks of the given level")+".</li>" +
         		"</ul></body></html>";
         checksHelpLabel = new JHelpLabel(helpText, true);
         splitOptionsPanel.add(checksHelpLabel);        
@@ -206,7 +216,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 
 //RADIO_LISTENERS
         /*This listeners enable or disable text field based on what you select*/
-        radioListener = new RadioListener(this, nPagesTextField, thisPageTextField, splitSizeCombo); 
+        radioListener = new RadioListener(this, nPagesTextField, thisPageTextField, splitSizeCombo, bLevelCombo); 
         burstRadio.setActionCommand(RadioListener.DISABLE_ALL);
         burstRadio.addActionListener(radioListener);
         everyNRadio.setActionCommand(RadioListener.ENABLE_FIRST);
@@ -219,6 +229,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         thisPageRadio.addActionListener(radioListener);
         sizeRadio.setActionCommand(RadioListener.ENABLE_THIRD);
         sizeRadio.addActionListener(radioListener);
+        bookmarksLevel.setActionCommand(RadioListener.ENABLE_FOURTH);
+        bookmarksLevel.addActionListener(radioListener);
 //END_RADIO_LISTENERS 
 //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
@@ -242,6 +254,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         splitOptionsRadioGroup.add(oddRadio);
         splitOptionsRadioGroup.add(thisPageRadio);
         splitOptionsRadioGroup.add(sizeRadio);
+        splitOptionsRadioGroup.add(bookmarksLevel);        
         final ButtonGroup outputRadioGroup = new ButtonGroup();
         outputRadioGroup.add(sameAsSourceRadio);
         outputRadioGroup.add(chooseAFolderRadio);  
@@ -351,8 +364,8 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	                        args.add("-"+SplitParsedCommand.N_ARG);
 	                        args.add(thisPageTextField.getText());                        
 	                    }else if (splitType.equals(SplitParsedCommand.S_NSPLIT)){
-	                            args.add("-"+SplitParsedCommand.N_ARG);
-	                            args.add(nPagesTextField.getText());                        
+	                        args.add("-"+SplitParsedCommand.N_ARG);
+	                        args.add(nPagesTextField.getText());                        
 	                    }else if (splitType.equals(SplitParsedCommand.S_SIZE)){
 	                        args.add("-"+SplitParsedCommand.B_ARG);
 	                        if(splitSizeCombo.isSelectedItem() && splitSizeCombo.isValidSelectedItem()){
@@ -360,7 +373,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	                        }else{
 	                        	throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Invalid split size"));
 	                        }
-	                    }                      
+	                    } else if (splitType.equals(SplitParsedCommand.S_BLEVEL)){
+	                    	 args.add("-"+SplitParsedCommand.BL_ARG);
+	                    	 args.add((String)bLevelCombo.getSelectedItem()); 
+	                    }
 	                                        
 	                    args.add("-"+SplitParsedCommand.O_ARG);
 	                    //check radio for output options
@@ -496,6 +512,9 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 				Element splitSize = ((Element)arg0).addElement("splitsize");
 				splitSize.addAttribute("value", splitSizeCombo.getSelectedItem().toString());			
 
+				Element bookLevel = ((Element)arg0).addElement("bookmarkslevel");
+				bookLevel.addAttribute("value", bLevelCombo.getSelectedItem().toString());			
+
 				Element fileDestination = ((Element)arg0).addElement("destination");
 				fileDestination.addAttribute("value", destinationFolderText.getText());			
 				
@@ -541,6 +560,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 					else if(splitOption.getText().equals(oddRadio.getSplitCommand()))  oddRadio.doClick();
 					else if(splitOption.getText().equals(thisPageRadio.getSplitCommand()))  thisPageRadio.doClick();
 					else if(splitOption.getText().equals(sizeRadio.getSplitCommand()))  sizeRadio.doClick();
+					else if(splitOption.getText().equals(bookmarksLevel.getSplitCommand()))  bookmarksLevel.doClick();					
 				}
 				Node splitNpages = (Node) arg0.selectSingleNode("npages/@value");
 				if (splitNpages != null){
@@ -555,6 +575,11 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 				Node splitSize = (Node) arg0.selectSingleNode("splitsize/@value");
 				if (splitSize != null){
 					splitSizeCombo.setSelectedItem(splitSize.getText());
+				}
+				
+				Node bookLevel = (Node) arg0.selectSingleNode("bookmarkslevel/@value");
+				if (bookLevel != null){
+					bLevelCombo.setSelectedItem(bookLevel.getText());
 				}
 				
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
@@ -608,7 +633,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 		splitSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 0, SpringLayout.NORTH, this);
 		splitSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 0, SpringLayout.WEST, this);
 //      LAYOUT
-        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 112, SpringLayout.NORTH, splitOptionsPanel);
+        splitSpringLayout.putConstraint(SpringLayout.SOUTH, splitOptionsPanel, 145, SpringLayout.NORTH, splitOptionsPanel);
         splitSpringLayout.putConstraint(SpringLayout.EAST, splitOptionsPanel, 0, SpringLayout.EAST, this);
         splitSpringLayout.putConstraint(SpringLayout.NORTH, splitOptionsPanel, 20, SpringLayout.SOUTH, selectionPanel);
         splitSpringLayout.putConstraint(SpringLayout.WEST, splitOptionsPanel, 0, SpringLayout.WEST, selectionPanel);       
@@ -743,12 +768,29 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                 if (splitSizeCombo.isEnabled()){
                     return splitSizeCombo;
                 }else{
-                    return sameAsSourceRadio;
+                    return bookmarksLevel;
                 }
             }
             else if (aComponent.equals(splitSizeCombo) || aComponent.getParent().equals(splitSizeCombo)){
+                return bookmarksLevel;
+            }
+            else if (aComponent.equals(bookmarksLevel)){
+                if (bLevelCombo.isEnabled()){
+                    return bLevelCombo.getLevelCombo();
+                }else{
+                    return sameAsSourceRadio;
+                }
+            }
+            else if (aComponent.equals(bLevelCombo.getLevelCombo()) || aComponent.getParent().equals(bLevelCombo.getLevelCombo())){
+            	if (bLevelCombo.getFillCombo().isEnabled()){
+                    return bLevelCombo.getFillCombo();
+                }else{
+                    return sameAsSourceRadio;
+                }
+            }
+            else if (aComponent.equals(bLevelCombo.getFillCombo())){
                 return sameAsSourceRadio;
-            }        
+            }
             else if (aComponent.equals(sameAsSourceRadio)){
                 return chooseAFolderRadio;
             }
@@ -817,6 +859,23 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
                 return sameAsSourceRadio;
             }        
             else if (aComponent.equals(sameAsSourceRadio)){
+                if (bLevelCombo.isEnabled()){
+                	if(bLevelCombo.getFillCombo().isEnabled()){
+                		return bLevelCombo.getFillCombo();
+                	}else{
+                		return bLevelCombo.getLevelCombo();
+                	}                    
+                }else{
+                    return bookmarksLevel;
+                }
+            }
+            else if (aComponent.equals(bLevelCombo.getLevelCombo()) || aComponent.getParent().equals(bLevelCombo.getLevelCombo())){
+                return bookmarksLevel;
+            }
+            else if (aComponent.equals(bLevelCombo.getFillCombo())){
+                return bLevelCombo.getLevelCombo();
+            }  
+            else if (aComponent.equals(bookmarksLevel)){
                 if (splitSizeCombo.isEnabled()){
                     return splitSizeCombo;
                 }else{
@@ -886,6 +945,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 		thisPageTextField.setText("");
 	    nPagesTextField.setText("");
 	    outPrefixText.setText("pdfsam_");
+	    bLevelCombo.resetComponent();
 	    ButtonModel bmodel=splitOptionsRadioGroup.getSelection();
 	    if(bmodel != null){
 	    	bmodel.setSelected(false);
