@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-06-24 09:30+0000\n"
 "Last-Translator: sanghyun lee <joohi@hanafos.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -125,6 +125,9 @@ msgstr "이 페이지들 이후 분할"
 msgid "Split at this size"
 msgstr "이 크기로 분할"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "파쇄"
 
@@ -143,7 +146,12 @@ msgstr "문서를 각 홀수 페이지로 분할"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "문서를 페이지 번호이후 분할 (num1-num2-num3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "문서를 (대략의) 크기로 분할."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "문서를 (대략의) 크기로 분할."
 
 #, fuzzy
@@ -232,6 +240,12 @@ msgstr "읽은 영역 분할."
 
 msgid "Invalid unit: "
 msgstr "유효하지 않은 단위: "
+
+msgid "Fill from document"
+msgstr ""
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"

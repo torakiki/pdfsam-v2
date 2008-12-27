@@ -28,7 +28,8 @@
     <language value="pt" description="Portuguese" />  
     <language value="ru" description="Russian" />    
     <language value="zh_CN" description="Simplified Chinese" />  	
-    <language value="sk" description="Slovak" />    
+    <language value="sk" description="Slovak" />  
+    <language value="sl" description="Slovenian" />        
     <language value="es" description="Spanish" />    
     <language value="sv" description="Swedish" />   
     <language value="tr" description="Turkish" />   

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-07 19:39+0000\n"
 "Last-Translator: reset <resetinbox@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -163,6 +163,9 @@ msgstr "Разбить после этих страниц"
 msgid "Split at this size"
 msgstr ""
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Разбивка"
 
@@ -181,7 +184,12 @@ msgstr "Разбивать документ после каждой нечётн
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Разбивать документ после номеров страниц (ном1-ном2-ном3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Разбить документа в файлы указанного размера (примерно)."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Разбить документа в файлы указанного размера (примерно)."
 
 msgid "Destination folder"
@@ -268,6 +276,12 @@ msgstr "Секция файла загружена."
 
 msgid "Invalid unit: "
 msgstr "Неверная единица: "
+
+msgid "Fill from document"
+msgstr ""
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:260
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274

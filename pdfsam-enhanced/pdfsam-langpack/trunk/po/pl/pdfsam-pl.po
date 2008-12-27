@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-09-09 21:21+0000\n"
 "Last-Translator: Kamil Skrzypiński <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -125,6 +125,9 @@ msgstr "Podziel po tych stronach"
 msgid "Split at this size"
 msgstr ""
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Najlepsza"
 
@@ -143,7 +146,11 @@ msgstr "Podziej dokument co każdą stronę nieparzystą"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Podiel dokument po stronach nr (nr1-nr2-nr3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Podziej dokument co każdą stronę parzystą"
+
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
 #, fuzzy
@@ -235,6 +242,12 @@ msgid "Split section loaded."
 msgstr "Wczytano sekcję dzielenia."
 
 msgid "Invalid unit: "
+msgstr ""
+
+msgid "Fill from document"
+msgstr ""
+
+msgid "Getting bookmarks max depth"
 msgstr ""
 
 #, fuzzy

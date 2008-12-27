@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -129,6 +129,9 @@ msgstr "Divideix després d'aquestes pàgines"
 msgid "Split at this size"
 msgstr "Divideix en aquesta mida"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Explosió"
 
@@ -147,7 +150,12 @@ msgstr "Divideix el document en cada pàgina senar"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Divideix el document després dels números de pàgina (num1-num2-num3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Divideix el document en fitxers de la mida indicada (aproximadament)."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Divideix el document en fitxers de la mida indicada (aproximadament)."
 
 #, fuzzy
@@ -243,6 +251,13 @@ msgstr "Divideix la secció carregada."
 
 msgid "Invalid unit: "
 msgstr "Unitat no vàlida: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Inverteix el primer document"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"

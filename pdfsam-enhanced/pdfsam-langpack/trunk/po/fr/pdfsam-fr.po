@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 18:54+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-16 00:35+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
@@ -38,8 +38,7 @@ msgid "Checked"
 msgstr "Coché"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr ""
-"Type de fusion à utiliser pour les documents contenant des formulaires"
+msgstr "Type de fusion à utiliser pour les documents contenant des formulaires"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 msgid "Note"
@@ -127,6 +126,9 @@ msgstr "Après les pages"
 msgid "Split at this size"
 msgstr "En fichiers de"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Par page"
 
@@ -145,7 +147,12 @@ msgstr "Décompose en feuillets \"pages paire/impaire\""
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Sectionne après chaque page indiquée (syntaxe : x-y-z...)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Scinde en fichiers de la taille indiquée (approximation)"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Scinde en fichiers de la taille indiquée (approximation)"
 
 msgid "Destination folder"
@@ -161,8 +168,7 @@ msgid "Destination output directory"
 msgstr "Répertoire de création"
 
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr ""
-"Utilisez le dossier du fichier source ou choisissez un autre dossier."
+msgstr "Utilisez le dossier du fichier source ou choisissez un autre dossier."
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
@@ -192,8 +198,7 @@ msgstr ""
 "S'il comporte \"[CURRENTPAGE]\", \"[TIMESTAMP]\" ou \"[FILENUMBER]\", une "
 "substitution de variable est effectuée."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ex. : \"préfixeperso_[BASENAME]_[CURRENTPAGE]\" génère "
 "\"préfixeperso_NomdeFichier_00X.pdf\""
@@ -202,8 +207,8 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"S\"il ne comporte pas \"[CURRENTPAGE]\", \"[TIMESTAMP]\" ou "
-"\"[FILENUMBER]\", un nom standard de fichiers est attribué."
+"S\"il ne comporte pas \"[CURRENTPAGE]\", \"[TIMESTAMP]\" ou \"[FILENUMBER]"
+"\", un nom standard de fichiers est attribué."
 
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
@@ -236,6 +241,13 @@ msgstr "Section \"Découpage\" chargée."
 
 msgid "Invalid unit: "
 msgstr "Unité de taille incorrecte : "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Inverser l'ordre du premier document"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 msgid "Cover pdf file"
 msgstr "Première de couverture"
@@ -715,8 +727,7 @@ msgid " plugin loaded."
 msgstr " chargé depuis les modules."
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr ""
-"Chargement d'un plugin qui n'est pas de la classe JPanel imposssible."
+msgstr "Chargement d'un plugin qui n'est pas de la classe JPanel imposssible."
 
 msgid "Error loading class "
 msgstr "Erreur de chargement de la classe "
@@ -917,8 +928,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Répertoire de travail par défaut"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Sélectionnez un répertoire de chargement et d'enregistrement des documents "
 "par défaut"

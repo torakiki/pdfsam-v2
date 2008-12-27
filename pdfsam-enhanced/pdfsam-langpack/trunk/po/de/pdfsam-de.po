@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 18:54+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-18 18:59+0000\n"
 "Last-Translator: Marcel Mayr <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -127,6 +127,9 @@ msgstr "Nach folgenden Seitennummern trennen"
 msgid "Split at this size"
 msgstr "Bei folgender Größe teilen"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Trennen"
 
@@ -145,7 +148,12 @@ msgstr "Dokument bei ungeraden Seiten teilen"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dokument nach Seitenzahlen trennen (Seite1-Seite2-Seite3...)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Dokument in Einzeldateien folgender Größe aufteilen."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Dokument in Einzeldateien folgender Größe aufteilen."
 
 msgid "Destination folder"
@@ -190,11 +198,10 @@ msgstr ""
 "Falls  \"[CURRENTPAGE]\", \"[TIMESTAMP]\" oder \"[FILENUMBER]\" enthalten "
 "sind, erfolgt eine variable Benennung."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
-"Beispielsweise erzeugt prefix_[BASENAME]_[CURRENTPAGE] "
-"prefix_FileName_005.pdf."
+"Beispielsweise erzeugt prefix_[BASENAME]_[CURRENTPAGE] prefix_FileName_005."
+"pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
@@ -236,6 +243,13 @@ msgstr "Geteilter Abschnitt geladen."
 
 msgid "Invalid unit: "
 msgstr "Ungültige Einheit: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Erstes pdf-Dukument"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 msgid "Cover pdf file"
 msgstr "PDF-Datei für Titelseite"
@@ -303,15 +317,14 @@ msgid ""
 msgstr "Ausgabedatei komprimieren (PDF-Version 1.5 oder neuer)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr ""
-"Falls \"[TIMESTAMP]\" enthalten ist, erfolgt eine variable Benennung."
+msgstr "Falls \"[TIMESTAMP]\" enthalten ist, erfolgt eine variable Benennung."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"[BASENAME]_prefix_[TIMESTAMP] erzeugt "
-"Dateiname_prefix_20070517_113423471.pdf."
+"[BASENAME]_prefix_[TIMESTAMP] erzeugt Dateiname_prefix_20070517_113423471."
+"pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -651,8 +664,7 @@ msgid "Setting logging level..."
 msgstr "Setze Protokollierungsstufe fest..."
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Kann Protokollierungsstufe nicht finden, benutze Standardlevel (DEBUG)"
+msgstr "Kann Protokollierungsstufe nicht finden, benutze Standardlevel (DEBUG)"
 
 msgid "Logging level set to "
 msgstr "Protokollierungsstufe gesetzt auf "
@@ -862,8 +874,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Standard-Arbeitsverzeichnis"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Wählen Sie ein Verzeichnis, in dem die Dokumente standardmäßig gespeichert "
 "und geladen werden"
@@ -984,9 +995,6 @@ msgstr "Einfügen"
 
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "Zweite Datei suchen"
-
-#~ msgid "First pdf document:"
-#~ msgstr "Erstes pdf-Dukument"
 
 #~ msgid "Select a PDF file to split"
 #~ msgstr "Wählen Sie eine PDF-Datei zum Trennen aus"

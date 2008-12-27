@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-12-14 18:54+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-20 09:13+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -123,6 +123,9 @@ msgstr "Razdruži po tej strani"
 msgid "Split at this size"
 msgstr "Razdeli na to velikost"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Razdruževanje"
 
@@ -141,7 +144,12 @@ msgstr "Razdruži dokument  na neparne strani"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Razdruži dokument  po št. strani (št1-št2-št3...)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Razdruži dokument  na datoteke po vpisani velikosti"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Razdruži dokument  na datoteke po vpisani velikosti"
 
 msgid "Destination folder"
@@ -183,8 +191,7 @@ msgid ""
 "performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ex. prefiks_[BASENAME]_[CURRENTPAGE] generira prefiks_FileName_005.pdf."
 
@@ -225,6 +232,13 @@ msgstr "Razdruženi del naložen"
 
 msgid "Invalid unit: "
 msgstr "Napaka, enota "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Prvi dokument obrnjeno"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 msgid "Cover pdf file"
 msgstr "PDF datoteka za naslovnico"
@@ -841,8 +855,7 @@ msgstr "Zadnje shranjeno okolje se naloži pri zagonu"
 msgid "Default working directory"
 msgstr "Izbrani delovni direktorij"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Izberi direktorij kjer bodo dokumenti shranjeni iz naloženi"
 
 msgid "Save"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -125,6 +125,9 @@ msgstr "Rozdělit za těmito stránkami"
 msgid "Split at this size"
 msgstr "Rozdělit na tuto velikost"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Roztrhat"
 
@@ -143,7 +146,12 @@ msgstr "Rozdělí dokument za každou lichou stránkou"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Rozdělí dokument za stránkami číslo (číslo1-číslo2-číslo3...)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Rozdělí dokument na soubory o zadané velikosti (přibližně)."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Rozdělí dokument na soubory o zadané velikosti (přibližně)."
 
 #, fuzzy
@@ -236,6 +244,13 @@ msgstr "Modul Rozdělování nahrán."
 
 msgid "Invalid unit: "
 msgstr "Nesprávná jednotka: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Obrátit první dokument"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"

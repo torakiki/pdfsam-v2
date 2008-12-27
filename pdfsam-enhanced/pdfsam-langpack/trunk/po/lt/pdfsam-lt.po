@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-11 15:19+0000\n"
 "Last-Translator: Simas J <simasj@gmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -125,6 +125,9 @@ msgstr "Atskirti po šių puslapių"
 msgid "Split at this size"
 msgstr "Atskirti pagal dydį"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Pliūpsnis"
 
@@ -143,7 +146,12 @@ msgstr "Išskaidyti dokumentą atskiriant kas kiekvieną nelyginį puslapį"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Skaidyti dokumentą po šių puslapių (num1-num2-num3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Išskaidyti dokumentą į nurodyto dydžio (apytiksliai) failus"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Išskaidyti dokumentą į nurodyto dydžio (apytiksliai) failus"
 
 msgid "Destination folder"
@@ -236,6 +244,13 @@ msgstr "Skaidymo dalis įkrauta"
 
 msgid "Invalid unit: "
 msgstr "Neteisingas matavimo vienetas: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Reversuoti pirmąjį dokumentą"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 msgid "Cover pdf file"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-05-07 08:32+0000\n"
 "Last-Translator: Sefa Denizoğlu <denizoglu@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org.tr>\n"
@@ -198,6 +198,9 @@ msgstr "Bu sayfalardan sonra böl"
 msgid "Split at this size"
 msgstr "Bu boyutta parçalara ayır"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 msgid "Burst"
@@ -218,7 +221,12 @@ msgstr "Dökümanı her tek numaralı sayfada ayır"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dökümanı şu sayfalarda böl (syf1-syf2-syf3...)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Dökümanı (yaklaşık) şu boyutlarda parçalara ayır"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Dökümanı (yaklaşık) şu boyutlarda parçalara ayır"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
@@ -351,6 +359,14 @@ msgstr "Yüklenen bölümü böl."
 
 msgid "Invalid unit: "
 msgstr "Geçersiz birim: "
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
+#, fuzzy
+msgid "Fill from document"
+msgstr "İlk pdf belgesi:"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
 #, fuzzy
@@ -1398,10 +1414,6 @@ msgstr "Yol"
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
 #~ msgid "Select a PDF file to encrypt"
 #~ msgstr "Kodlamak için bir PDF dosyası seçin"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#~ msgid "First pdf document:"
-#~ msgstr "İlk pdf belgesi:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165

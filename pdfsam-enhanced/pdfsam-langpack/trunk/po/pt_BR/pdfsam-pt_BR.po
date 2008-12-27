@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-05 22:48+0000\n"
 "Last-Translator: Paulo R. H. <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,6 +127,9 @@ msgstr "Dividir após estas páginas"
 msgid "Split at this size"
 msgstr "Dividir neste tamanho"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Burst"
 
@@ -145,7 +148,12 @@ msgstr "Dividir o documento a cada página ímpar"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dividir o documento após páginas número (num1-num2-num3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Dividir o documento em arquivos do tamanho dado (aproximadamente)."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Dividir o documento em arquivos do tamanho dado (aproximadamente)."
 
 msgid "Destination folder"
@@ -232,6 +240,13 @@ msgstr "Seção de divisão carregada."
 
 msgid "Invalid unit: "
 msgstr "Unidade inválida: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Inverter primeiro documento"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"

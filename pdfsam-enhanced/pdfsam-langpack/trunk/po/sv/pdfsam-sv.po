@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-09-27 21:19+0000\n"
 "Last-Translator: Linus C Unneback <linus@folkdatorn.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -177,6 +177,9 @@ msgstr "Dela upp efter dessa sidor"
 msgid "Split at this size"
 msgstr "Dela upp till denna storlek"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Gasa"
 
@@ -197,7 +200,12 @@ msgstr "Dela upp dokumentet efter udda sidor."
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dela dokumentet efter sidnummer (sid1-sid2-sid3)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Dela upp dokumentet i filer med angivesn storlek (ungefär)"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Dela upp dokumentet i filer med angivesn storlek (ungefär)"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:231
@@ -314,6 +322,13 @@ msgstr "Dela laddat urval."
 
 msgid "Invalid unit: "
 msgstr "Ogiltig enhet: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Vänd första dokumentet."
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"

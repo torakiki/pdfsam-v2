@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-06-07 10:20+0000\n"
 "Last-Translator: Manic <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -129,6 +129,9 @@ msgstr "Podijeli poslije ovih stranica"
 msgid "Split at this size"
 msgstr "Podijeli kod ove veličine"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "Raskidanje"
 
@@ -147,7 +150,12 @@ msgstr "Razdvoji dokument na svakoj neparnoj stranici"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Razdvoji dokument poslije brojeva stranica (n1-n2-n3)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Razdvoji dokument na datoteke zadane veličine (približno)"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Razdvoji dokument na datoteke zadane veličine (približno)"
 
 #, fuzzy
@@ -240,6 +248,13 @@ msgstr "Učitana razdijeljena sekcija"
 
 msgid "Invalid unit: "
 msgstr "Neispravna jedinica: "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "Preokreni prvi dokument"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"

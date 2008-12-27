@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-12 08:22+0000\n"
 "Last-Translator: parkmount <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -123,6 +123,9 @@ msgstr "既定ページ後、分割する"
 msgid "Split at this size"
 msgstr "このサイズで分割する"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "バーストする"
 
@@ -141,7 +144,12 @@ msgstr "偶数ページ区切りで文書を分割します"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "指定したページ番号の後で文書を分割します（数字1-数字2-数字3..）"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "指定ファイルサイズ（おおよその）に収まるように文書を分割します"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "指定ファイルサイズ（おおよその）に収まるように文書を分割します"
 
 msgid "Destination folder"
@@ -229,6 +237,12 @@ msgstr "分割セクションを取り込みました。"
 
 msgid "Invalid unit: "
 msgstr "無効な単位: "
+
+msgid "Fill from document"
+msgstr ""
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 msgid "Cover pdf file"
 msgstr ""

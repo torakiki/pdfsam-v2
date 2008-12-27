@@ -4,6 +4,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JSplitRadioButton.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JSplitRadioButtonModel.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JSplitSizeCombo.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JBLevelCombo.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-cover/src/java/org/pdfsam/plugin/coverfooter/GUI/CoverFooterMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/GUI/EncryptMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-decrypt/src/java/org/pdfsam/plugin/decrypt/GUI/DecryptMainGUI.java

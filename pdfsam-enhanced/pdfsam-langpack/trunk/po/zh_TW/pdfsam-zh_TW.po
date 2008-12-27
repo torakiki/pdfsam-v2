@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-12-07 15:32+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -123,6 +123,9 @@ msgstr "分割出這些頁面之後的部份"
 msgid "Split at this size"
 msgstr "依指定的檔案大小分割"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr "細分"
 
@@ -141,7 +144,12 @@ msgstr "分割出文件的奇數頁"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "分割出這些頁碼後面的部份（頁碼1-頁碼2-頁碼3...）"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "將文件（約略地）分割成指定大小的檔案"
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "將文件（約略地）分割成指定大小的檔案"
 
 msgid "Destination folder"
@@ -226,6 +234,13 @@ msgstr "分割已完成。"
 
 msgid "Invalid unit: "
 msgstr "無效的單位： "
+
+#, fuzzy
+msgid "Fill from document"
+msgstr "第一個PDF文件："
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 #, fuzzy
 msgid "Cover pdf file"
@@ -983,9 +998,6 @@ msgstr "貼上"
 
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "在電腦中選取要交替合併的第二個檔案"
-
-#~ msgid "First pdf document:"
-#~ msgstr "第一個PDF文件："
 
 #~ msgid "Select a PDF file to split"
 #~ msgstr "請選取要分割的PDF檔"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-09-20 15:16+0000\n"
 "Last-Translator: pjv <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -213,6 +213,9 @@ msgstr "Splits na deze pagina's"
 msgid "Split at this size"
 msgstr ""
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 msgid "Burst"
@@ -243,7 +246,12 @@ msgstr "Splist het document op de oneven pagina's"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Splits het document na de volgende pagina nummers (num1-num2-num3..)"
 
-msgid "Split the document in files of the given size (roughly)."
+#, fuzzy
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Splits het document in bestanden van (ongeveer) de opgegeven grootte."
+
+#, fuzzy
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Splits het document in bestanden van (ongeveer) de opgegeven grootte."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
@@ -382,6 +390,14 @@ msgstr "Splits-sectei geladen"
 
 msgid "Invalid unit: "
 msgstr "Ongeldige eenheid: "
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
+#, fuzzy
+msgid "Fill from document"
+msgstr "Eerste pdf-bestand"
+
+msgid "Getting bookmarks max depth"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
 #, fuzzy
@@ -1348,10 +1364,6 @@ msgstr "Plakken"
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "Blader naar het tweede mix-bestand"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#~ msgid "First pdf document:"
-#~ msgstr "Eerste pdf-bestand"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165

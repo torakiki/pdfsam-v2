@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-20 17:33+0100\n"
+"POT-Creation-Date: 2008-12-27 15:06+0100\n"
 "PO-Revision-Date: 2008-04-01 10:20+0000\n"
 "Last-Translator: egg8383 <egg8383@yahoo.com.hk>\n"
 "Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
@@ -124,6 +124,9 @@ msgstr "分離此頁後"
 msgid "Split at this size"
 msgstr "分離在這尺吋"
 
+msgid "Split by bookmarks level"
+msgstr ""
+
 msgid "Burst"
 msgstr ""
 
@@ -142,7 +145,10 @@ msgstr ""
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr ""
 
-msgid "Split the document in files of the given size (roughly)."
+msgid "Split the document in files of the given size (roughly)"
+msgstr ""
+
+msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
 #, fuzzy
@@ -223,6 +229,12 @@ msgid "Split section loaded."
 msgstr ""
 
 msgid "Invalid unit: "
+msgstr ""
+
+msgid "Fill from document"
+msgstr ""
+
+msgid "Getting bookmarks max depth"
 msgstr ""
 
 msgid "Cover pdf file"
