@@ -266,6 +266,7 @@ public class PdfLoader {
                     tableItem.setEncrypted(pdfReader.isEncrypted());
                     tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
                     tableItem.setPdfVersion(pdfReader.getPdfVersion());
+                    tableItem.setSyntaxErrors(pdfReader.isRebuilt());
                 }
                 catch (Exception e){
                 	tableItem.setLoadedWithErrors(true);
