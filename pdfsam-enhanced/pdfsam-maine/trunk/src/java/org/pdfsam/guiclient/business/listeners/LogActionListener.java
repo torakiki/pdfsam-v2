@@ -47,8 +47,7 @@ public class LogActionListener implements ActionListener {
 	public LogActionListener(JTextPane logTextArea){
 		this.config = Configuration.getInstance();
 		this.logTextArea = logTextArea;
-		this.fileChooser = new JFileChooser(config.getDefaultWorkingDir());
-		this.fileChooser.setFileFilter(new TxtFilter(false));
+		
 	}
 	
 	public LogActionListener(){
@@ -86,9 +85,12 @@ public class LogActionListener implements ActionListener {
 	 * Save log text to file
 	 */
 	private void saveLog(){
-		fileChooser.setApproveButtonText(GettextResource.gettext(config.getI18nResourceBundle(), "Save"));
+		if(fileChooser==null){
+			fileChooser = new JFileChooser(config.getDefaultWorkingDir());
+			fileChooser.setFileFilter(new TxtFilter(false));
+		}
 		File chosenFile = null;
-		if (fileChooser.showOpenDialog(logTextArea) == JFileChooser.APPROVE_OPTION) {
+		if (fileChooser.showSaveDialog(logTextArea) == JFileChooser.APPROVE_OPTION) {
 			chosenFile = fileChooser.getSelectedFile();
 			if (chosenFile != null) {
 				try {						
@@ -99,7 +101,6 @@ public class LogActionListener implements ActionListener {
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(), "Log saved."));								
 				} catch (Exception e) {
 					log.error("Error saving log file. ",e);
-
 				}
 			}
 		}		

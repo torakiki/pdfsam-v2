@@ -39,6 +39,7 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		setIcon(null);
 		setFont(table.getFont());
 		boolean loadedWithErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
+		boolean syntaxErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isSyntaxErrors();
 		//rowheader
 		if (column == AbstractPdfSelectionTableModel.ROW_NUM){
 			setFont(table.getTableHeader().getFont());
@@ -52,6 +53,8 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 	        	  if (column == AbstractPdfSelectionTableModel.FILENAME){
 	        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
 	        	  }
+	          }else if(syntaxErrors){
+	        	  setBackground(Color.YELLOW);
 	          }else{
 	        	  setBackground(table.getSelectionBackground());
 	          }          
@@ -63,6 +66,8 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 	        	  if (column == AbstractPdfSelectionTableModel.FILENAME){
 	        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
 	        	  }
+	          }else if(syntaxErrors){
+	        	  setBackground(Color.YELLOW);
 	          }else{
 	        	  setBackground(table.getBackground());
 	          }

@@ -50,9 +50,7 @@ public class EnvironmentMediator implements ActionListener {
 		this.environment = environment;
 		this.parent = parent;
 		this.i18nMessages = Configuration.getInstance().getI18nResourceBundle();
-		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-		fileChooser.setFileFilter(new XmlFilter());
-		fileChooser.setApproveButtonText(GettextResource.gettext(i18nMessages, "Ok"));
+
 	}
 
 	/**
@@ -73,12 +71,22 @@ public class EnvironmentMediator implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {		
 		if(environment != null && e != null){
-			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-				File selectedFile = fileChooser.getSelectedFile();	
-				if(selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1){
-					selectedFile = new File(selectedFile.getParent(), selectedFile.getName()+".xml");
-				}
+			if(fileChooser==null){
+				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+				fileChooser.setFileFilter(new XmlFilter());
+			}
+			int state = JFileChooser.CANCEL_OPTION;
+			if(SAVE_ENV_ACTION.equals(e.getActionCommand())){
+				state = fileChooser.showSaveDialog(parent);
+			}else{
+				state = fileChooser.showOpenDialog(parent);
+			}
+			if (state == JFileChooser.APPROVE_OPTION) {
+				File selectedFile = fileChooser.getSelectedFile();					
 				if(SAVE_ENV_ACTION.equals(e.getActionCommand())){
+					if(selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1){
+						selectedFile = new File(selectedFile.getParent(), selectedFile.getName()+".xml");
+					}
 					int savePwd = JOptionPane.showConfirmDialog(
 							parent,
 						    GettextResource.gettext(i18nMessages,"Save passwords informations (they will be readable opening the output file)?"),

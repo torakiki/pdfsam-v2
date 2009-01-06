@@ -39,9 +39,6 @@ public class Configuration{
 
 	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
     
-    public static final String JPEDAL = "0";
-    public static final String JPOD = "1";
-    
 	private static Configuration configObject;
 	private ResourceBundle i18nMessages;
 	private XMLConfig xmlConfigObject;
@@ -51,7 +48,6 @@ public class Configuration{
 	private boolean playSounds = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
-	private String thumbnailsGeneratorLibrary = JPOD;
 
 	private Configuration() {
 		init();
@@ -163,21 +159,6 @@ public class Configuration{
 		this.playSounds = playSounds;
 	}
 
-	
-	/**
-	 * @return the thumbnailsGeneratorLibrary
-	 */
-	public String getThumbnailsGeneratorLibrary() {
-		return thumbnailsGeneratorLibrary;
-	}
-
-	/**
-	 * @param thumbnailsGeneratorLibrary the thumbnailsGeneratorLibrary to set
-	 */
-	public void setThumbnailsGeneratorLibrary(String thumbnailsGeneratorLibrary) {
-		this.thumbnailsGeneratorLibrary = thumbnailsGeneratorLibrary;
-	}
-
 	private void init(){
 		try{
 			mainJarPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
@@ -207,8 +188,6 @@ public class Configuration{
 			initPlaySounds();
 			//default working dir
 			initDefaultWorkingDir();
-			//thumbnails generator
-			initThumbnailsGeneratorLibrary();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -312,25 +291,6 @@ public class Configuration{
 		} catch (Exception e) {
 			//default
 			playSounds = false;
-		}
-	}
-
-	/**
-	 * sets the configuration about the thumbnails generator
-	 */
-	private void initThumbnailsGeneratorLibrary() {
-		log.info(GettextResource.gettext(i18nMessages,"Setting thumbnails generation library..."));
-		String thumbGenerator = JPEDAL;
-		try {
-			thumbGenerator = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnailsgenerator");
-			if (JPEDAL.equals(thumbGenerator)) {
-				thumbnailsGeneratorLibrary = JPEDAL;
-			} else if (JPOD.equals(thumbGenerator)) {
-				thumbnailsGeneratorLibrary = JPOD;
-			} 
-		} catch (Exception e) {
-			// default
-			thumbnailsGeneratorLibrary = JPOD;
 		}
 	}
 	

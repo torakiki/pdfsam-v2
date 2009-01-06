@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.business;
 
+import java.awt.Dimension;
 import java.awt.geom.AffineTransform;
 
 /**
@@ -48,10 +49,46 @@ public class TransformationHandler {
 	public AffineTransform getFlipVerticalTransform(){
 		return getScaleTransform(1.0, -1.0);
 	}
+	
 	/**
 	 * @return a flip horizontally transformation
 	 */
 	public AffineTransform getFlipHorizontalTransform(){
 		return getScaleTransform(-1.0, 1.0);
 	}
+
+
+    /**
+     * Scales the currently displayed image
+     * @param z the zoom factor
+     */
+    public AffineTransform getZoomTransformation(double z) {
+    	AffineTransform retVal = new AffineTransform();
+        double x = retVal.getScaleX(),
+               y = retVal.getScaleY();
+        if (z != 0 && x != 0 && y != 0) {
+            x = (x < 0)? -z: z;
+            y = (y < 0)? -z: z;
+            retVal.setToScale(x, y);
+        }
+        return retVal;
+    }
+
+    /**
+     * 
+     * @param size dimension to fit
+     * @param sourceDimension original dimension
+     * @return transformation
+     */
+    public AffineTransform getFitTransformation(Dimension size, Dimension sourceDimension) {
+        double sourceScale = sourceDimension.width / (double)sourceDimension.height,
+               targetScale = size.getWidth() / (double)size.getHeight(),
+               zoom = 1.0;
+        if (sourceScale > targetScale) {
+            zoom = size.width / (double)sourceDimension.width;
+        } else if (sourceScale < targetScale) {
+            zoom = size.height / (double)sourceDimension.height;
+        }
+        return getZoomTransformation(zoom);
+    }
 }

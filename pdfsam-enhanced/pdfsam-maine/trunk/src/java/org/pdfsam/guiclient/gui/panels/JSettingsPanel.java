@@ -74,7 +74,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	private JTextField defaultDirectory;
     private JComboBox languageCombo;	
     private JComboBox comboLog;	
-    private JComboBox thumbLibraryCombo;	
     private JComboBox comboLaf;
     private JComboBox comboTheme;
     private JComboBox comboCheckNewVersion;
@@ -105,8 +104,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final JLabel logLabel = new JLabel();
     private final JLabel checkNewVersionLabel = new JLabel();
     private final JLabel loadDefaultEnvLabel = new JLabel();
-    private final JLabel defaultDirLabel = new JLabel();
-    private final JLabel thumbnailsLibrary = new JLabel();
+    private final JLabel defaultDirLabel = new JLabel();    
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
@@ -155,9 +153,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         
         defaultDirLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory:"));
         settingsOptionsPanel.add(defaultDirLabel);
-               
-        thumbnailsLibrary.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails generator:"));
-        settingsOptionsPanel.add(thumbnailsLibrary);
 
         try{
         	loadDefaultEnv= new JTextField();
@@ -249,21 +244,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	    }catch (Exception e){
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
 	    }  	    	  
-
-	    //thumb library
-	    thumbLibraryCombo = new JComboBox(loadThumblibraries().toArray());
-	    thumbLibraryCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        settingsOptionsPanel.add(thumbLibraryCombo);
-        try{
-	 		for (int i=0; i<thumbLibraryCombo.getItemCount(); i++){
-	   			if (((StringItem)thumbLibraryCombo.getItemAt(i)).getId().equals(config.getThumbnailsGeneratorLibrary())){
-	   				thumbLibraryCombo.setSelectedItem(thumbLibraryCombo.getItemAt(i));
-	             break;
-	   			}
-	 		}
-	    }catch (Exception e){
-	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-	    } 
 	    
 	    comboCheckNewVersion = new JComboBox(UpdatesUtility.getCheckNewVersionItems().toArray());
 	    comboCheckNewVersion.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
@@ -346,7 +326,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((StringItem)comboTheme.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/thumbnailsgenerator", ((StringItem)thumbLibraryCombo.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/checkupdates", ((StringItem)comboCheckNewVersion.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/playsounds", (playSounds.isSelected()?"1":"0"));
 					if (loadDefaultEnv != null){
@@ -356,7 +335,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					}
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/default_working_dir", defaultDirectory.getText());
 					config.getXmlConfigObject().saveXMLfile();
-					config.setThumbnailsGeneratorLibrary(((StringItem)thumbLibraryCombo.getSelectedItem()).getId());
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
 				}
                 catch (Exception ex){
@@ -413,17 +391,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     	logs.add(new StringItem(Integer.toString(Level.OFF_INT), Level.OFF.toString()));
 		return logs;
     }   
-   
-    /**
-     * 
-     * @return generators list
-     */
-    private Vector<StringItem> loadThumblibraries(){
-    	Vector<StringItem> logs = new Vector<StringItem>(2,2);
-    	logs.add(new StringItem(Configuration.JPEDAL, GettextResource.gettext(config.getI18nResourceBundle(),"IDRsolutions JPedal")));
-    	logs.add(new StringItem(Configuration.JPOD, GettextResource.gettext(config.getI18nResourceBundle(),"Intarsys JPod")));
-		return logs;
-    }
+
     /**
      * @return Returns the Plugin author.
      */
@@ -452,7 +420,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 300, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 310, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);
@@ -492,19 +460,10 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboLog, 0, SpringLayout.NORTH, logLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, comboLog, 0, SpringLayout.WEST, comboLaf);
         
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, thumbnailsLibrary, 20, SpringLayout.NORTH, thumbnailsLibrary);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, thumbnailsLibrary, 0, SpringLayout.EAST, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, thumbnailsLibrary, 5, SpringLayout.SOUTH, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, thumbnailsLibrary, 0, SpringLayout.WEST, logLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, thumbLibraryCombo, 0, SpringLayout.SOUTH, thumbnailsLibrary);
-  //      grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, thumbQualityCombo, 0, SpringLayout.EAST, comboLog);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, thumbLibraryCombo, 0, SpringLayout.NORTH, thumbnailsLibrary);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, thumbLibraryCombo, 0, SpringLayout.WEST, comboLog);
-
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, checkNewVersionLabel, 20, SpringLayout.NORTH, checkNewVersionLabel);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNewVersionLabel, 0, SpringLayout.EAST, thumbnailsLibrary);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNewVersionLabel, 5, SpringLayout.SOUTH, thumbnailsLibrary);
-        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNewVersionLabel, 0, SpringLayout.WEST, thumbnailsLibrary);       
+        grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, checkNewVersionLabel, 0, SpringLayout.EAST, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, checkNewVersionLabel, 5, SpringLayout.SOUTH, logLabel);
+        grayBorderSettingsLayout.putConstraint(SpringLayout.WEST, checkNewVersionLabel, 0, SpringLayout.WEST, logLabel);       
         grayBorderSettingsLayout.putConstraint(SpringLayout.SOUTH, comboCheckNewVersion, 0, SpringLayout.SOUTH, checkNewVersionLabel);
         grayBorderSettingsLayout.putConstraint(SpringLayout.EAST, comboCheckNewVersion, 120, SpringLayout.WEST, comboCheckNewVersion);
         grayBorderSettingsLayout.putConstraint(SpringLayout.NORTH, comboCheckNewVersion, 0, SpringLayout.NORTH, checkNewVersionLabel);
@@ -583,9 +542,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboLog;
             }
             else if (aComponent.equals(comboLog)){
-                return thumbLibraryCombo;
-            }                        
-            else if (aComponent.equals(thumbLibraryCombo)){
                 return comboCheckNewVersion;
             }                        
             else if (aComponent.equals(comboCheckNewVersion)){
@@ -630,11 +586,8 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboCheckNewVersion;
             }
             else if (aComponent.equals(comboCheckNewVersion)){
-                return thumbLibraryCombo;
-            }
-            else if (aComponent.equals(thumbLibraryCombo)){
                 return comboLog;
-            }            
+            }
             else if (aComponent.equals(comboLog)){
                 return comboTheme;
             }

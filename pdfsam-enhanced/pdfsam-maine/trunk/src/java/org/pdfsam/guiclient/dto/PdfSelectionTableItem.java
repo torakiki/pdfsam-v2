@@ -37,6 +37,7 @@ public class PdfSelectionTableItem implements Serializable{
 	private char pdfVersion;
 	private String pdfVersionDescription;
 	private boolean loadedWithErrors = false;
+	private boolean syntaxErrors = false;
 	/**
 	 * Default values
 	 */
@@ -51,8 +52,9 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param encrypted
 	 * @param password
 	 * @param loadedWithErrors
+	 * @param syntaxErrors
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password, boolean loadedWithErrors) {
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password, boolean loadedWithErrors, boolean syntaxErrors) {
 		super();
 		this.inputFile = inputFile;
 		this.pagesNumber = pagesNumber;
@@ -62,6 +64,7 @@ public class PdfSelectionTableItem implements Serializable{
 		this.pdfVersionDescription = PdfVersionUtility.getVersionDescription(pdfVersion);
 		this.password = password;
 		this.loadedWithErrors = loadedWithErrors;
+		this.syntaxErrors = syntaxErrors;
 	}
 
 	/**
@@ -73,7 +76,7 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param password
 	 */
 	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password) {
-		this(inputFile, pagesNumber, pageSelection, encrypted, pdfVersion, password, false);
+		this(inputFile, pagesNumber, pageSelection, encrypted, pdfVersion, password, false, false);
 	}
 	/**
 	 * No password given
@@ -194,6 +197,20 @@ public class PdfSelectionTableItem implements Serializable{
 		return pdfVersionDescription;
 	}
 
+	/**
+	 * @return the syntaxErrors
+	 */
+	public boolean isSyntaxErrors() {
+		return syntaxErrors;
+	}
+
+	/**
+	 * @param syntaxErrors the syntaxErrors to set
+	 */
+	public void setSyntaxErrors(boolean syntaxErrors) {
+		this.syntaxErrors = syntaxErrors;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -208,6 +225,7 @@ public class PdfSelectionTableItem implements Serializable{
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + pdfVersion;
 		result = prime * result + ((pdfVersionDescription == null) ? 0 : pdfVersionDescription.hashCode());
+		result = prime * result + (syntaxErrors ? 1231 : 1237);
 		return result;
 	}
 
@@ -221,7 +239,7 @@ public class PdfSelectionTableItem implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final PdfSelectionTableItem other = (PdfSelectionTableItem) obj;
+		PdfSelectionTableItem other = (PdfSelectionTableItem) obj;
 		if (encrypted != other.encrypted)
 			return false;
 		if (inputFile == null) {
@@ -253,8 +271,9 @@ public class PdfSelectionTableItem implements Serializable{
 				return false;
 		} else if (!pdfVersionDescription.equals(other.pdfVersionDescription))
 			return false;
+		if (syntaxErrors != other.syntaxErrors)
+			return false;
 		return true;
 	}
-
 
 }

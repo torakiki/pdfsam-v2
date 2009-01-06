@@ -36,6 +36,7 @@
 	    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
 		<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
 		<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
+		<property name="decrypt.dir" value="${workspace.dir}/pdfsam-decrypt"/>
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
 		<property name="vpagereorder.dir" value="${workspace.dir}/pdfsam-vpagereorder"/>
@@ -106,7 +107,7 @@
 		    <manifest>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
-			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/${jpedal.jar.name} lib/jai_imageio.jar lib/jna.jar lib/jbig2.jar lib/jai_codec.jar lib/jai_core.jar lib/isfreetype.jar lib/jPodFonts.jar lib/isrt.jar lib/iscwt.jar lib/jPod.jar lib/jPodRenderer.jar lib/isnativec.jar lib/jpedal_gpl.jar"/>
+			    <attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/jai_imageio.jar lib/jna.jar lib/jbig2.jar lib/jai_codec.jar lib/jai_core.jar lib/isfreetype.jar lib/jPodFonts.jar lib/isrt.jar lib/iscwt.jar lib/jPod.jar lib/jPodRenderer.jar lib/isnativec.jar"/>
 		    </manifest>
 			<fileset dir="${pdfsam.etc.dir}">
 			    <include name="*.xml"/>
@@ -159,17 +160,27 @@
 	  		<property name="pdfsam-merge.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 	  	
+		<!--mix-->
+	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="build-jars">
+	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+	  	
+		<!--vpagereorder-->
+	  	<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="build-jars">
+	  		<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+		<!--vcomposer-->
+	  	<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="build-jars">
+	  		<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+	  	
 	  	<antcall target="build-jars-enhanced" />
 	  </target>
 	
 	
 	<!-- build the pdfsam enhanced jars -->
 	<target name="build-jars-enhanced" if="isEnhanced" description="generate the enhanced plugins distribution" >
-		
-		<!--mix-->
-	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="build-jars">
-	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
-	  	</ant>
 		
 		<!--cover-->
 	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="build-jars">
@@ -179,6 +190,11 @@
 		<!--encrypt-->
 	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="build-jars">
 	  		<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
+		<!--decrypt-->
+	  	<ant antfile="${decrypt.dir}/ant/build.xml" dir="${decrypt.dir}" target="build-jars">
+	  		<property name="pdfsam-decrypt.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 
 		<!--unpack-->
@@ -191,15 +207,6 @@
 	  		<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 
-		<!--vpagereorder-->
-	  	<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="build-jars">
-	  		<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.jar.dir}"/>
-	  	</ant>
-
-		<!--vcomposer-->
-	  	<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="build-jars">
-	  		<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.jar.dir}"/>
-	  	</ant>
 	</target>
 	
 	<!--creates the distribution of pdfsam-->	
@@ -244,18 +251,19 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar" todir="${pdfsam.release.dist.dir}" overwrite="true"/>		
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-split.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/split" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-merge.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/merge" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
 		
 		<antcall target="dist-enhanced" />		
 	</target>
 
 	<target name="dist-enhanced" if="isEnhanced" description="distribution of the enhanced plugins of pdfsam" >
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-cover.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/cover" overwrite="true"/>
-		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-encrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/encrypt" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-decrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/decrypt" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-setviewer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/setviewer" overwrite="true"/>
-		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
-		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
 	</target>	
 
 	<!--deploy pdfsam-->	
@@ -360,6 +368,21 @@
 	  		  	<property name="pdfsam-merge.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
+	  	<!--mix-->
+	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--vpagereorder-->
+	  	<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--vcomposer-->
+	  	<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
 	  	<antcall target="buildZipSrcPackage-enhanced" />
 	  	
 	  	<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" >
@@ -391,10 +414,6 @@
 	<!--build zip package for enhanced plugins-->
 	<target name="buildZipSrcPackage-enhanced" if="isEnhanced" description="generate the zip files for enhanced plugins distribution" >
 			
-	  	<!--mix-->
-	  	<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="buildZipSrcPackage">
-	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
-	  	</ant>
 
 	  	<!--cover-->
 	  	<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="buildZipSrcPackage">
@@ -404,6 +423,11 @@
 		<!--encrypt-->
 	  	<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="buildZipSrcPackage">
 	  		  	<property name="pdfsam-encrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
+		<!--decrypt-->
+	  	<ant antfile="${decrypt.dir}/ant/build.xml" dir="${decrypt.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-decrypt.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
 		<!--unpack-->
@@ -416,15 +440,6 @@
 	  		  	<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 
-		<!--vpagereorder-->
-	  	<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="buildZipSrcPackage">
-	  		  	<property name="pdfsam-vpagereorder.dist.dir" value="${pdfsam.release.src.dir}"/>
-	  	</ant>
-
-		<!--vcomposer-->
-	  	<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="buildZipSrcPackage">
-	  		  	<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.src.dir}"/>
-	  	</ant>
 	</target>	
 
 </project>

@@ -17,7 +17,6 @@ package org.pdfsam.guiclient.business;
 import java.io.File;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.thumbnails.creators.JPedalThumbnailCreator;
 import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.frames.JPagePreviewFrame;
@@ -91,13 +90,7 @@ public class PagePreviewOpener {
      * Page preview creator initialization
      */
     private ThumbnailsCreator getCreator(){
-    	ThumbnailsCreator retVal = null;
-    	if(Configuration.JPEDAL.equals(Configuration.getInstance().getThumbnailsGeneratorLibrary())){
-    		retVal = new JPedalThumbnailCreator();
-    	}else{
-    		retVal = new JPodThumbnailCreator();
-    	}
-    	return retVal;
+    	return new JPodThumbnailCreator();
     }
     
     /**
@@ -136,8 +129,8 @@ public class PagePreviewOpener {
 
 		public void run() {				
 			try{
-				frame.setPagePreview(getCreator().getPageImage(inputFile, password, page));
 				frame.setVisible(true);
+				frame.setPagePreview(getCreator().getPageImage(inputFile, password, page));
             }catch (Exception e) {
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open image preview"),e);
         	}				           

@@ -63,7 +63,7 @@ public class JPreviewImage extends JComponent {
 		resetComponent();
 		if(image != null){
 			this.image = image;
-			this.originalDimension = new Dimension(image.getWidth(null), image.getHeight(null));
+			this.originalDimension = new Dimension(image.getWidth(this), image.getHeight(this));
 		}
 		this.bounds = new Rectangle();
 		setTransformation(null);
@@ -86,7 +86,7 @@ public class JPreviewImage extends JComponent {
 			centerTrans.concatenate(transformation);
 		}
 		this.transformation = centerTrans;
-        validate();
+        revalidate();
         repaint();        
 	}
 
@@ -117,7 +117,7 @@ public class JPreviewImage extends JComponent {
 	        Graphics2D graphics = (Graphics2D)g;
 	        graphics.setBackground(getBackground());
 	        graphics.clearRect(0, 0, getWidth(), getHeight());
-	        graphics.drawImage(image, transformation, null);
+	        graphics.drawImage(image, transformation, this);
 	        g.dispose();
         }
     }

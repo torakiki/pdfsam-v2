@@ -184,7 +184,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final ArrayList<VisualPageListItem> modelList){	
 		if(pageTree!=null && panel != null && modelList!=null && modelList.size()>0){
 			for(VisualPageListItem pageItem : modelList){
-				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
+				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber());
 				execute(new ThumnailCreator(pdPage, pageItem, panel));	
 			}
 		}		 		
