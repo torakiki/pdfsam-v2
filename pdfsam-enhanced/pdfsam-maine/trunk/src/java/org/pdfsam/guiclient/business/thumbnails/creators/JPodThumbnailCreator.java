@@ -126,7 +126,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 						pdfDoc = openDoc(inputFile, providedPwd);
 					}catch(IOException ioe){
 						if(ioe.getCause() instanceof COSSecurityException){
-							providedPwd = DialogUtility.askForDocumentPasswordDialog(panel);
+							providedPwd = DialogUtility.askForDocumentPasswordDialog(panel, inputFile.getName());
 							if(providedPwd != null && providedPwd.length()>0){
 								pdfDoc = openDoc(inputFile, providedPwd);
 							}else{
@@ -184,7 +184,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final ArrayList<VisualPageListItem> modelList){	
 		if(pageTree!=null && panel != null && modelList!=null && modelList.size()>0){
 			for(VisualPageListItem pageItem : modelList){
-				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber());
+				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
 				execute(new ThumnailCreator(pdPage, pageItem, panel));	
 			}
 		}		 		
@@ -195,7 +195,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 */
 	private void execute(Runnable r){
 		if(pool==null || pool.isShutdown()){
-			pool = Executors.newFixedThreadPool(3);
+			//pool = Executors.newFixedThreadPool(2);			
+			pool = Executors.newSingleThreadExecutor();
 		}
 		pool.execute(r);
 	}
@@ -237,7 +238,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		public void run() {		
 			IGraphicsContext graphics = null;
 			try{
-				long t = System.currentTimeMillis();
+			//	long t = System.currentTimeMillis();
 				Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
 				int height = Math.round(((int) rect.getHeight())*DEFAULT_RESIZE_PERCENTAGE);
 				int width = Math.round(((int) rect.getWidth())*DEFAULT_RESIZE_PERCENTAGE);
@@ -260,8 +261,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				}
 				              	
               	pageItem.setThumbnail(scaledInstance);
-              	long t2 = System.currentTimeMillis()-t;
-              	log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnail generated in ")+t2+"ms");
+              //	long t2 = System.currentTimeMillis()-t;
+              //	log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnail generated in ")+t2+"ms");
             }catch (Throwable t) {
             	pageItem.setThumbnail(ERROR_IMAGE);
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);

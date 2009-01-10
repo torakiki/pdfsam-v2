@@ -18,6 +18,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.RenderedImage;
+import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -58,18 +59,22 @@ public class SaveImageActionListener implements ActionListener {
 			if(fileChooser==null){
 				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
 				String[] types = ImageIO.getWriterFormatNames();
-				for(final String type : types){					
-					fileChooser.addChoosableFileFilter(new AbstractFileFilter(){
-							public String getAcceptedExtension() {
-								return type;
-							}
-	
-							public String getDescription() {							
-								return type;
-							}
-					});
+				HashSet<String> extensionsSet = new HashSet<String>();
+				for(final String type : types){
+					extensionsSet.add(type.toLowerCase());
 				}
-				
+				if(extensionsSet.size()>0){
+					for(final String extension : extensionsSet){
+						fileChooser.addChoosableFileFilter(new AbstractFileFilter(){
+							public String getAcceptedExtension() {
+								return extension;
+							}
+							public String getDescription() {							
+								return extension;
+							}
+						});	
+					}
+				}
 			}
 			 if (fileChooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
 				 try {

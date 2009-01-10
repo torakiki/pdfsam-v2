@@ -91,7 +91,8 @@ public class JVisualMultiSelectionPanel extends JPanel {
 				topPanel.remove(currentTopPanel);
 				currentTopPanel = subTopPanel;
 				topPanel.add(currentTopPanel);
-				topPanel.validate();
+				topPanel.revalidate();
+				topPanel.repaint();
 			}
 		});
 	    

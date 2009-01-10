@@ -43,6 +43,5 @@ public class PageOpenerMouseAdapter  extends MouseAdapter {
 			VisualPageListItem item = (VisualPageListItem) thumbnailList.getModel().getElementAt(index);
 			PagePreviewOpener.getInstance().openPreview(item.getParentFileCanonicalPath(), item.getDocumentPassword(), item.getPageNumber());
 		}
-	}
-
+	}	
 }

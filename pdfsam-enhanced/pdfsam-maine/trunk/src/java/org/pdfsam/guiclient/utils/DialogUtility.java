@@ -17,6 +17,7 @@ package org.pdfsam.guiclient.utils;
 import java.awt.Component;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
@@ -50,9 +51,9 @@ public class DialogUtility {
 	 * @param comp
 	 * @return
 	 */
-	public static String askForDocumentPasswordDialog(Component comp){
+	public static String askForDocumentPasswordDialog(Component comp, String filename){
 		return (String)JOptionPane.showInputDialog(comp,
-                GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please provide the password to open the encrypted document"),
+                GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please provide the password to open the encrypted document "+filename),
                 GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password request"),
                 JOptionPane.PLAIN_MESSAGE,
                 null,

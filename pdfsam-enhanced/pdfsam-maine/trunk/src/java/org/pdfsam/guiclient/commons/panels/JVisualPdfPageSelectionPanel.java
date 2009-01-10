@@ -43,6 +43,7 @@ import javax.swing.ListSelectionModel;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.business.PagePreviewOpener;
 import org.pdfsam.guiclient.business.PagesWorker;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.listeners.VisualPdfSelectionActionListener;
@@ -121,6 +122,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     private VisualPdfSelectionActionListener pdfSelectionActionListener;
     private PagesActionsMediator pageActionListener;
 	private final JPopupMenu popupMenu = new JPopupMenu();
+	private final JMenuItem menuItemPreview = new JMenuItem();
 	private final JPanel topPanel = new JPanel();
 	
 	//button panel
@@ -304,6 +306,19 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			JVisualSelectionListDropper dropper = new JVisualSelectionListDropper(pdfLoader);
 			scrollPanelDropTarget = new DropTarget(listScroller,dropper);
 		}
+
+		//preview item	
+		//menuItemPreview.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
+		menuItemPreview.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Preview"));
+		menuItemPreview.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+            	int[] selection = thumbnailList.getSelectedIndices();
+            	if(selection!=null && selection.length==1){
+            		VisualPageListItem item = (VisualPageListItem) thumbnailList.getModel().getElementAt(selection[0]);
+            		PagePreviewOpener.getInstance().openPreview(item.getParentFileCanonicalPath(), item.getDocumentPassword(), item.getPageNumber());
+            	}
+            }
+        });
 		
 		if(showContextMenu){
 			//popup
@@ -336,28 +351,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
         	
         	enableSetOutputPathMenuItem();
         	
-			//show popup
-			thumbnailList.addMouseListener(new MouseAdapter() {
-	            public void mousePressed(MouseEvent e) {
-	                if (e.isPopupTrigger()) {
-						showMenu(e);
-					}
-	            }
-	            public void mouseReleased(MouseEvent e) {
-	                if (e.isPopupTrigger()) {
-						showMenu(e);
-					}
-	            }
-	            private void showMenu(MouseEvent e) {
-	            	int[] selection = thumbnailList.getSelectedIndices();
-	            	if(!(selection!=null && selection.length>1)){
-	            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
-	            		selection = thumbnailList.getSelectedIndices();
-	            	}
-	            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
-	            }
-	        });
+        	addPopupShower();
 		}
+		
+		popupMenu.add(menuItemPreview);
+		
 		
 		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
@@ -662,13 +660,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 				}
 				if(!currentElement.getParentFileCanonicalPath().equals(previousElement.getParentFileCanonicalPath())){
 					retVal.add("-" + ConcatParsedCommand.F_ARG);
-					String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath():previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword());
+					String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword():previousElement.getParentFileCanonicalPath());
 					retVal.add(fileElem);
 					previousElement = currentElement;
 				}
 			}
 			retVal.add("-" + ConcatParsedCommand.F_ARG);
-			String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath():previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword());
+			String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword():previousElement.getParentFileCanonicalPath());
 			retVal.add(fileElem);
 		}
 		return retVal;
@@ -727,6 +725,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public void prependElements(Collection<VisualPageListItem> c){
 		((VisualListModel)thumbnailList.getModel()).prependAllElements(c);
 	}
+	/**
+	 * Adds a item to the popup menu
+	 * @param item
+	 */
+	public void addMenuItem(JMenuItem item){
+		popupMenu.add(item);		
+	}
 	
 	 /**
      * enables the set output path menu item
@@ -752,29 +757,36 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			
 			if(!showContextMenu){
 				//show popup
-				thumbnailList.addMouseListener(new MouseAdapter() {
-		            public void mousePressed(MouseEvent e) {
-		                if (e.isPopupTrigger()) {
-							showMenu(e);
-						}
-		            }
-		            public void mouseReleased(MouseEvent e) {
-		                if (e.isPopupTrigger()) {
-							showMenu(e);
-						}
-		            }
-		            private void showMenu(MouseEvent e) {
-		            	int[] selection = thumbnailList.getSelectedIndices();
-		            	if(!(selection!=null && selection.length>1)){
-		            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
-		            		selection = thumbnailList.getSelectedIndices();
-		            	}
-		            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
-		            }
-		        });
+				addPopupShower();
 			}
     }
-    
+    /**
+     * adds the listener that showes the popup
+     */
+    private void addPopupShower(){
+    	//show popup
+		thumbnailList.addMouseListener(new MouseAdapter() { 
+            public void mousePressed(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+            }
+            public void mouseReleased(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+            }
+            private void showMenu(MouseEvent e) {
+            	int[] selection = thumbnailList.getSelectedIndices();
+            	if(!(selection!=null && selection.length>1)){
+            		thumbnailList.setSelectedIndex(thumbnailList.locationToIndex(e.getPoint()) );
+            		selection = thumbnailList.getSelectedIndices();
+            	}
+            	menuItemPreview.setEnabled(selection!=null && selection.length==1);
+            	popupMenu.show(thumbnailList, e.getX(), e.getY() );
+            }
+        });
+    }
     /**
      * remove the set ouput path menu item
      */

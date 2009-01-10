@@ -69,6 +69,14 @@ public class JPreviewImage extends JComponent {
 		setTransformation(null);
 	}
 
+    @Override
+    public void setBounds(int x, int y, int width, int height) {
+        boolean resized = width != getWidth() || height != getHeight();
+        super.setBounds(x, y, width, height);
+        if (resized) {
+        	setTransformation(null);
+        }
+    }
 	/**
 	 * @return the transformation
 	 */
@@ -80,7 +88,7 @@ public class JPreviewImage extends JComponent {
 	 * @param transformation the transformation to set
 	 */
 	public void setTransformation(AffineTransform transformation) {
-        initBounds();
+        initBounds(transformation);
 		AffineTransform centerTrans = getCenteredTransformation();
 		if(transformation != null){
 			centerTrans.concatenate(transformation);
@@ -113,13 +121,13 @@ public class JPreviewImage extends JComponent {
     
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(image != null){
-	        Graphics2D graphics = (Graphics2D)g;
-	        graphics.setBackground(getBackground());
-	        graphics.clearRect(0, 0, getWidth(), getHeight());
-	        graphics.drawImage(image, transformation, this);
-	        g.dispose();
-        }
+	    Graphics2D graphics = (Graphics2D)g;
+	    graphics.setBackground(getBackground());
+	    graphics.clearRect(0, 0, getWidth(), getHeight());
+	    if(image != null){
+	    	graphics.drawImage(image, transformation, this);
+	    }
+	    g.dispose();
     }
     
     private AffineTransform getCenteredTransformation () {
@@ -148,9 +156,9 @@ public class JPreviewImage extends JComponent {
     }
 
  
-    private void initBounds() {
+    private void initBounds(AffineTransform inputTransformation) {
         bounds = new Rectangle(originalDimension);
-        if (image != null && transformation != null) {
+        if (image != null && inputTransformation != null) {
             // Determine the bounding rectangle of the canvas before
             // userTransformation
             Point[] points = new Point[] {

@@ -61,6 +61,7 @@ public class JPagePreviewFrame extends JFrame {
 		try{	
 			URL iconUrl = this.getClass().getResource("/images/pdf_"+GuiClient.getVersionType()+".png");
 			setIconImage(new ImageIcon(iconUrl).getImage());
+	        setSize(640, 480);
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			
@@ -135,12 +136,12 @@ public class JPagePreviewFrame extends JFrame {
 			menuEdit.add(rotateLeftItem);
 			
 			menuBar.add(menuFile);
-			menuBar.add(menuEdit);
+			//menuBar.add(menuEdit);
 			getRootPane().setJMenuBar(menuBar);
 			
-			mainScrollPanel = new JScrollPane(pagePreview);
-			mainPanel.add(mainScrollPanel);
-			add(mainPanel);
+			mainPanel.add(pagePreview);
+			mainScrollPanel = new JScrollPane(mainPanel);
+			add(mainScrollPanel);
 		}catch(Exception e){
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating preview panel."),e);
 		}
@@ -152,6 +153,8 @@ public class JPagePreviewFrame extends JFrame {
 	 */
 	public void setPagePreview(Image image){
 		pagePreview.setImage(image);
+		validate();
+        repaint();  
 	}
 	@Override
 	public Dimension getPreferredSize(){
