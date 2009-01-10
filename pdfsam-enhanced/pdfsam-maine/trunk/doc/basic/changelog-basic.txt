@@ -1,14 +1,51 @@
-2.0.0 alpha ()
+1.1.1 ()
+===================================
+-Console: fixed bug #2464606 (bookmarks management in split command)
+-Console: added the split by bookmarks level
+-Split: added options to split by bookmarks level
+
+1.1.0 (23-Dec-2008)
+===================================
+-Merge: fixed a JFileChooser call
+-Lazy JFileChooser init when call environment load/save 
+-Lazy JFileChooser init when call log save
+-Fixed memory leak when loading documents into JPdfSelectionPanel
+-Added the AlternateMix plugin from the enhanced version
+-Console: added the "setviewer" command
+-Console: added the "decrypt" command
+-Console: added the "slideshow" command
+-Console: new complex prefix [FILENUMBER]
+-Console: complex prefix [FILENUMBER] and [CURRENTPAGE] can take now the output patter (Ex. [FILENUMBER###]
+-Console: Dual license GPL and LGPL 
+-JFileChoosers now look at the JTextField to find if it's already filled.
+-Fixed FocusPolicy and layout for every plugin 
+-iText 2.1.4
+-looks 2.2.1
+
+1.0.3 stable release (26-Oct-2008)
+===================================
+-Fixed bug #2122945
+-Added Copy/Cut/Paste popup menu to prefix text fields
+-Added sounds to confirm execution or errors
+-Added setting to enable/disable sounds
+-Modified the dialog to ask confirmation to change output directory
+-Merge: Fixed the "set output path" if path ends with File.separator
+-Updated langpack
+
+1.0.2 stable release (21-Sep-2008)
+===================================
+-Added some new translatable string
+-Fixed bug #2098518 (Not giving the pdf extension could lead to block)
+-Added Copy/Cut/Paste popup menu to destination text fields
+-Updated langpack
+
+1.0.1 stable release (24-Aug-2008)
 ===================================
 -Fixed some matches found with FindBugs
 -Fixed bug #2034850
 -Console: Fixed bug #2064962 (Split by size)
--Merge, Mix: Fixed reopened bug #1926019 
--Console: concat command now takes -u param using print notation (Ex. 2,3-6,9-)
--Console: added setviewer and slideshow commands
--Mix plugin taken from the enhanced version 
--New VisualReorder plugin
--Updated libraries
+-Merge: Fixed reopened bug #1926019 
+-Updated langpack 
 
 1.0.0 stable release (30-Jun-2008)
 ===================================

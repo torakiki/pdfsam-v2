@@ -1,15 +1,55 @@
-2.4.0e alpha ()
+1.5.1e ()
+===================================
+-Console: fixed bug #2464606 (bookmarks management in split command)
+-Console: added the split by bookmarks level
+-Split: added options to split by bookmarks level
+
+1.5.0e (23-Dec-2008)
+===================================
+-Merge: fixed a JFileChooser call
+-Lazy JFileChooser init when call environment load/save 
+-Lazy JFileChooser init when call log save
+-Fixed memory leak when loading documents into JPdfSelectionPanel
+-Added the Unpack plugin
+-Added the SetViewerOptions plugin
+-Added the Decrypt plugin
+-Console: added the "setviewer" command
+-Console: added the "decrypt" command
+-Console: added the "slideshow" command
+-Console: new complex prefix [FILENUMBER]
+-Console: complex prefix [FILENUMBER] and [CURRENTPAGE] can take now the output patter (Ex. [FILENUMBER###]
+-Console: Dual license GPL and LGPL 
+-Encrypt: fixed a constant name
+-Encrypt: fixed focus policy
+-JFileChoosers now look at the JTextField to find if it's already filled.
+-Fixed FocusPolicy and layout for every plugin 
+-iText 2.1.4
+-looks 2.2.1
+
+1.4.3e stable release (26-Oct-2008)
+===================================
+-Fixed bug #2122945 
+-Added Copy/Cut/Paste popup menu to prefix text fields
+-Added sounds to confirm execution or errors
+-Added setting to enable/disable sounds
+-Modified the dialog to ask confirmation to change output directory
+-Merge,Mix: Fixed the "set output path" if path ends with File.separator
+-Updated langpack
+
+1.4.2e stable release (21-Sep-2008)
+===================================
+-Added some new translatable string
+-Fixed bug #2098518 (Not giving the pdf extension could lead to block)
+-Added Copy/Cut/Paste popup menu to destination text fields
+-Updated langpack
+
+1.4.1e stable release (24-Aug-2008)
 ===================================
 -Fixed some matches found with FindBugs
 -Fixed bug #2034850
 -Console: Fixed bug #2064962 (Split by size)
--Merge, Mix: Fixed reopened bug #1926019 
--Console: concat command now takes -u param using print notation (Ex. 2,3-6,9-) 
--Console: added setviewer and slideshow commands 
--New Unpack plugin
--New SetViewer plugin
--New VisualReorder plugin
--Updated libraries
+-Merge: Fixed reopened bug #1926019 
+-Updated langpack 
 
 1.4.0e stable release (30-Jun-2008)
 ===================================
