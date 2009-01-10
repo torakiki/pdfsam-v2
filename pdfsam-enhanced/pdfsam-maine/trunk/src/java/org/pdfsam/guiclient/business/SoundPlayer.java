@@ -14,9 +14,6 @@
  */
 package org.pdfsam.guiclient.business;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -35,10 +32,9 @@ public class SoundPlayer {
 
 	private static final Logger log = Logger.getLogger(SoundPlayer.class.getPackage().getName());
 	
-	private static final String SOUND = "/resources/sound.wav";
-	private static final String ERROR_SOUND = "/resources/error_sound.wav";
+	private static final String SOUND = "/resources/sounds/ok_sound.wav";
+	private static final String ERROR_SOUND = "/resources/sounds/error_sound.wav";
 	
-	private ExecutorService executor = null;
 	private static SoundPlayer player= null;
 	private Clip errorClip;
 	private Clip soundClip;
@@ -54,18 +50,18 @@ public class SoundPlayer {
 	 * Plays an error sound
 	 */
 	public void playErrorSound(){
-		try{
-			synchronized(errorClip){
+		if(Configuration.getInstance().isPlaySounds()){
+			try{
 				if(errorClip == null){
 					AudioInputStream  sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(ERROR_SOUND));
 					DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 					errorClip = (Clip) AudioSystem.getLine(info);
 					errorClip.open(sound);
 				}
+				execute(new PlayThread(errorClip));
+			}catch (Exception e){
+				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound:")+" "+e.getMessage());
 			}
-			execute(new PlayThread(errorClip));
-		}catch (Exception e){
-			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound:")+" "+e.getMessage());
 		}
 	}
 	
@@ -73,18 +69,18 @@ public class SoundPlayer {
 	 * Plays a sound
 	 */
 	public void playSound(){
-		try{
-			synchronized(soundClip){
+		if(Configuration.getInstance().isPlaySounds()){
+			try{
 				if(soundClip == null){
 					AudioInputStream  sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(SOUND));
 					DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 					soundClip = (Clip) AudioSystem.getLine(info);
 					soundClip.open(sound);
 				}
+				execute(new PlayThread(soundClip));
+			}catch (Exception e){
+				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound:")+" "+e.getMessage());
 			}
-			execute(new PlayThread(soundClip));
-		}catch (Exception e){
-			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error playing sound:")+" "+e.getMessage());
 		}
 	}
 	
@@ -93,10 +89,7 @@ public class SoundPlayer {
 	 * @param r
 	 */
 	private void execute(Runnable r){
-		if(executor==null || executor.isShutdown()){
-			executor = Executors.newSingleThreadExecutor();
-		}
-		executor.execute(r);
+		new Thread(r).start();
 	}
 	
 	/**
@@ -119,7 +112,7 @@ public class SoundPlayer {
 
 		public void run() {
             try{
-				clip.setFramePosition(0);
+            	clip.setFramePosition(0);
 				clip.stop();
             	clip.start();
             }catch(Exception e){
