@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.frames;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -21,13 +22,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.SoftBevelBorder;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
@@ -49,6 +54,8 @@ public class JPagePreviewFrame extends JFrame {
 	private static final Logger log = Logger.getLogger(JPagePreviewFrame.class.getPackage().getName());
 	
 	private final JPanel mainPanel = new JPanel();
+	private final JPanel statusPanel = new JPanel();
+	private final JLabel statusLabel = new JLabel();
 	private JScrollPane mainScrollPanel;
 	private final JPreviewImage pagePreview = new JPreviewImage();
 	private final TransformationHandler transformationHandler = new TransformationHandler();
@@ -141,7 +148,17 @@ public class JPagePreviewFrame extends JFrame {
 			
 			mainPanel.add(pagePreview);
 			mainScrollPanel = new JScrollPane(mainPanel);
-			add(mainScrollPanel);
+			
+			statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
+			statusPanel.setPreferredSize(new Dimension(600, 24));			
+			statusPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+			statusPanel.add(statusLabel);			
+			statusPanel.add(Box.createHorizontalGlue());
+			statusPanel.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
+			
+			getContentPane().add(mainScrollPanel,BorderLayout.CENTER);
+	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
+			//add(mainScrollPanel);
 		}catch(Exception e){
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating preview panel."),e);
 		}
@@ -153,9 +170,13 @@ public class JPagePreviewFrame extends JFrame {
 	 */
 	public void setPagePreview(Image image){
 		pagePreview.setImage(image);
+		if(image != null){
+			statusLabel.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Dimensions")+": "+image.getWidth(this)+"x"+image.getHeight(this));
+		}
 		validate();
         repaint();  
 	}
+	
 	@Override
 	public Dimension getPreferredSize(){
 		return pagePreview.getPreferredSize();

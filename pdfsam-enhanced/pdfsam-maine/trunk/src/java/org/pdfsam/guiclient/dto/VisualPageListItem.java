@@ -26,14 +26,15 @@ import javax.swing.ImageIcon;
 public class VisualPageListItem implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 7598120284619680606L;
-
-	public static final Image HOURGLASS =  new ImageIcon(VisualPageListItem.class.getResource("/images/hourglass.png")).getImage();
 	
+	public static final Image HOURGLASS =  new ImageIcon(VisualPageListItem.class.getResource("/images/hourglass.png")).getImage();
+
 	private Image thumbnail = HOURGLASS;
 	private int pageNumber;
 	private boolean deleted = false;
 	private String parentFileCanonicalPath = "";
 	private String documentPassword = "";
+	private Rotation rotation = Rotation.DEGREES_0;
 
 	public VisualPageListItem() {
 	}
@@ -83,12 +84,25 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param documentPassword 
 	 */
 	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword) {
+		this(thumbnail, pageNumber, deleted, parentFileCanonicalPath, documentPassword, Rotation.DEGREES_0);
+	}
+	
+	/**
+	 * @param thumbnail
+	 * @param pageNumber
+	 * @param deleted
+	 * @param parentFileCanonicalPath
+	 * @param documentPassword
+	 * @param rotation
+	 */
+	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword, Rotation rotation) {
 		super();
 		this.thumbnail = thumbnail;
 		this.pageNumber = pageNumber;
 		this.deleted = deleted;
 		this.parentFileCanonicalPath = parentFileCanonicalPath;
 		this.documentPassword = documentPassword;
+		this.rotation = rotation;
 	}
 	/**
 	 * @return the thumbnail
@@ -154,7 +168,49 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	public void setDocumentPassword(String documentPassword) {
 		this.documentPassword = documentPassword;
 	}
+	
+	/**
+	 * @return the rotation
+	 */
+	public Rotation getRotation() {
+		return rotation;
+	}
 
+	/**
+	 * @param rotation the rotation to set
+	 */
+	public void setRotation(Rotation rotation) {
+		this.rotation = rotation;
+	}
+
+	/**
+	 * rotate clockwise the item
+	 */
+	public void rotateClockwise(){
+		this.rotation = rotation.rotateClockwise();
+	}
+
+	/**
+	 * rotate anticlockwise the item
+	 */
+	public void rotateAnticlockwise(){
+		this.rotation = rotation.rotateAnticlockwise();
+	}
+
+	/**
+	 * @return true if this item is rotated
+	 */
+	public boolean isRotated(){
+		return (!rotation.equals(Rotation.DEGREES_0));
+	}
+	
+	/**
+	 * @return if the item has a 180 degrees rotation
+	 */
+	public boolean isFullyRotated(){
+		return rotation.equals(Rotation.DEGREES_180);
+	}
+	
 	/**
 	 * Constructs a <code>String</code> with all attributes
 	 * in name = value format.
@@ -176,12 +232,10 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	        .append(OPEN).append("deleted=").append(this.deleted).append(CLOSE)
 	        .append(OPEN).append("parentFileCanonicalPath=").append(this.parentFileCanonicalPath).append(CLOSE)
 	        .append(OPEN).append("documentPassword=").append(this.documentPassword).append(CLOSE)
+	        .append(OPEN).append("rotation=").append(this.rotation).append(CLOSE)
 	        .append(" )");
 	    
 	    return retValue.toString();
 	}
 
-	
-	
-	
 }

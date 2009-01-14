@@ -159,8 +159,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), providedPwd));
 	            			}
 	            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
+	            			long startTime = System.currentTimeMillis();
 	            			initThumbnails(pdfDoc, pageTree, panel, modelList);
-	            			closer = new Thread(new CreatorCloser(pool, pdfDoc));
+	            			closer = new Thread(new CreatorCloser(pool, pdfDoc, startTime));
 	            			closer.start();
 	            		}	
 					}
@@ -282,12 +283,14 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		
 		private PDDocument pdfDoc;
 		private ExecutorService pool;
+		private long startTime = 0;
 		
 		
-		public CreatorCloser(ExecutorService pool, PDDocument pdfDoc) {
+		public CreatorCloser(ExecutorService pool, PDDocument pdfDoc, long startTime) {
 			super();
 			this.pdfDoc = pdfDoc;
 			this.pool = pool;
+			this.startTime = startTime;
 		}
 		
 		public void run() {				
@@ -297,7 +300,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 					if(pool.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS)){
 						if(pdfDoc!=null){
 							pdfDoc.close();
-							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generator closed"));
+							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
 						}
 					}
 				}

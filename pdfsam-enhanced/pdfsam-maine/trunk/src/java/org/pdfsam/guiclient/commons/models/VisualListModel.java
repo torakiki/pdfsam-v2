@@ -283,6 +283,34 @@ public class VisualListModel extends AbstractListModel {
     }
     
     /**
+     * rotates the given elements
+     * @param indexes
+     * @throws IndexOutOfBoundsException
+     */
+    public void rotateClockwiseElements(int[] indexes)throws IndexOutOfBoundsException{
+        if (indexes.length>0 && indexes.length <= data.size()){
+        	for (int i=0; i<indexes.length; i++){
+        		((VisualPageListItem)data.get(indexes[i])).rotateClockwise();
+        	}  
+        	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
+        }
+    }
+    
+    /**
+     * rotates anti clockwise the given elements
+     * @param indexes
+     * @throws IndexOutOfBoundsException
+     */
+    public void rotateAnticlockwiseElements(int[] indexes)throws IndexOutOfBoundsException{
+        if (indexes.length>0 && indexes.length <= data.size()){
+        	for (int i=0; i<indexes.length; i++){
+        		((VisualPageListItem)data.get(indexes[i])).rotateAnticlockwise();
+        	}  
+        	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
+        }
+    }
+    
+    /**
      * Moves up a item at the given index fire to Listeners
      * @param index element index to move from the data source
      */

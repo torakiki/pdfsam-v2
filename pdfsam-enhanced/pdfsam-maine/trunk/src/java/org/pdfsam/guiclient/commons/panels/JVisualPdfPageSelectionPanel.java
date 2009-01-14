@@ -308,7 +308,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		}
 
 		//preview item	
-		//menuItemPreview.setIcon(new ImageIcon(this.getClass().getResource("/images/up.png")));
+		menuItemPreview.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
 		menuItemPreview.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Preview"));
 		menuItemPreview.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent e) {
@@ -356,6 +356,33 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		
 		popupMenu.add(menuItemPreview);
 		
+		//rotate item	
+		final JMenuItem menuItemRotate = new JMenuItem();
+		menuItemRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
+		menuItemRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise"));
+		menuItemRotate.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+            	int[] selection = thumbnailList.getSelectedIndices();
+            	if(selection!=null){
+            		((VisualListModel)thumbnailList.getModel()).rotateClockwiseElements(selection);
+            	}
+            }
+        });
+		popupMenu.add(menuItemRotate);
+		
+		//rotate anticlock item	
+		final JMenuItem menuItemAntiRotate = new JMenuItem();
+		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
+		menuItemAntiRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise"));
+		menuItemAntiRotate.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+            	int[] selection = thumbnailList.getSelectedIndices();
+            	if(selection!=null){
+            		((VisualListModel)thumbnailList.getModel()).rotateAnticlockwiseElements(selection);
+            	}
+            }
+        });
+		popupMenu.add(menuItemAntiRotate);
 		
 		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
