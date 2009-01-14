@@ -54,6 +54,9 @@
 		<exception errorcode="4" message="Error reading csv or xml input file. {0}" />				
 		<exception errorcode="5" message="Cannot merge at page {0}. No such page." />				
 		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
+		<exception errorcode="7" message="Error parsing rotations values." />				
+		<exception errorcode="8" message="The given degrees value {0} is not allowed. Only multiple of 90 allowed." />				
+		<exception errorcode="9" message="Rotation parameter {0} incorrect." />				
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.EncryptException" description="ENC" />
 	<type key="org.pdfsam.console.exceptions.console.MixException" description="MIX" />

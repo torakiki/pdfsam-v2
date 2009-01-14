@@ -39,6 +39,7 @@ package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
 
+import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.PdfFile;
 
 
@@ -56,34 +57,38 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	public static final String L_ARG = "l";
 	public static final String U_ARG = "u";
 	public static final String O_ARG = "o";
+	public static final String R_ARG = "r";
 	
 	private File outputFile;
 	private File inputCvsOrXmlFile;
 	private PdfFile[] inputFileList;
 	private String pageSelection = "";
+	private PageRotation[] rotations = null;
 	private boolean copyFields = false;
 
 	public ConcatParsedCommand(){		
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			PdfFile[] inputFileList, String pageSelection, boolean copyFields) {
+			PdfFile[] inputFileList, String pageSelection, boolean copyFields, PageRotation[] rotations) {
 		super();
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
 		this.inputFileList = inputFileList;
 		this.pageSelection = pageSelection;
 		this.copyFields = copyFields;
+		this.rotations = rotations;
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
-			super(overwrite, compress, logFile, outputPdfVersion);
-			this.outputFile = outputFile;
-			this.inputCvsOrXmlFile = inputCvsOrXmlFile;
-			this.inputFileList = inputFileList;
-			this.pageSelection = pageSelection;
-			this.copyFields = copyFields;
+			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, PageRotation[] rotations, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+		super(overwrite, compress, logFile, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
+		this.inputFileList = inputFileList;
+		this.pageSelection = pageSelection;
+		this.copyFields = copyFields;
+		this.rotations = rotations;
 	}
 
 	/**
@@ -163,6 +168,20 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		this.copyFields = copyFields;
 	}
 
+	/**
+	 * @return the rotations
+	 */
+	public PageRotation[] getRotations() {
+		return rotations;
+	}
+
+	/**
+	 * @param rotations the rotations to set
+	 */
+	public void setRotations(PageRotation[] rotations) {
+		this.rotations = rotations;
+	}
+
 	public final String getCommand() {
 		return COMMAND_CONCAT;
 	}
@@ -176,6 +195,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getFile().getAbsolutePath()+"]");				
 			}
 		}
+		retVal.append("[rotations="+rotations+"]");
 		retVal.append((inputCvsOrXmlFile== null)?"":"[inputCvsOrXmlFile="+inputCvsOrXmlFile.getAbsolutePath()+"]");
 		retVal.append("[pageSelection="+pageSelection+"]");
 		retVal.append("[copyFields="+copyFields+"]");

@@ -76,6 +76,9 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	            new StringParam(ConcatParsedCommand.U_ARG,   
 	                          "page selection script. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" or \"num-\" or \"num1,num2-num3..\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -f /tmp/file3.pdf -u all:12-14:32,12-14,4,34-:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely",
 	                          StringParam.OPTIONAL),                                             
+  	            new StringParam(ConcatParsedCommand.R_ARG,   
+  	            			  "pages rotation. You can set pages rotation. Accepted string is a sequence of \"pagenumber:rotationdegrees,\" where pagenumber can be a number or one among \"all\", \"odd\", \"even\" where rotationdegrees can be \"90\", \"180\" or \"270\". Pages will be rotate clockwise",
+  	            			  StringParam.OPTIONAL),                                             
 	            new FileParam(ConcatParsedCommand.L_ARG,
 							  "xml or csv file containing pdf files list to concat. If csv file in comma separated value format; if xml file <filelist><file value=\"filepath\" /></filelist>",
 	                          FileParam.IS_FILE & FileParam.IS_READABLE,
@@ -102,6 +105,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
         "'-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list or at least one file to concat (use filename:password if the file is password protected).\n"+
         "'-l /tmp/list.csv' a csv file containing the list of files to concat, separated by a comma.\n"+
         "'-l /tmp/list.xml' a xml file containing the list of files to concat, <filelist><file value=\"filepath\" /></filelist>\n"+
+        "'-r 2:90,3:270' is optional to set pages rotation. (EX. -r 2:90,3:270 will rotate page number 2 of 90 degrees clockwise and page number 3 of 270 degrees clockwise)\n"+
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+
         "Note: You can use only one of these options not both in the same command line\n";
     
