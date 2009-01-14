@@ -14,9 +14,11 @@
  */
 package org.pdfsam.plugin.vpagereorder.GUI;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -24,6 +26,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.LinkedList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -34,7 +37,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -78,7 +81,6 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     private JVisualPdfPageSelectionPanel selectionPanel = new JVisualPdfPageSelectionPanel();
     
     //layouts
-    private SpringLayout vreorderSpringLayout;
     private SpringLayout destinationPanelLayout;
     
 	//button
@@ -100,7 +102,6 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     private final JPanel destinationPanel = new JPanel();
   
     //labels
-    private final JLabel destinationLabel = new JLabel();
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 	
   //radio
@@ -126,22 +127,31 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         setPanelIcon("/images/vreorder.png");
         setPreferredSize(new Dimension(500,550));
         
-        vreorderSpringLayout = new SpringLayout();
-        setLayout(vreorderSpringLayout);
-        add(selectionPanel);
+        setLayout(new GridBagLayout());
+        
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0, 0, 10, 0);
+		add(selectionPanel, c);
+		
         selectionPanel.addPropertyChangeListener(this);
 
       //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
         destinationPanel.setLayout(destinationPanelLayout);
-        destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
+		destinationPanel.setBorder(titledBorder);
+		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setMinimumSize(new Dimension(160, 150));
         add(destinationPanel);
 //END_DESTINATION_PANEL        
 //DESTINATION_RADIOS
-        
-        destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
-        add(destinationLabel);
-
         sameAsSourceRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Same as source"));
         destinationPanel.add(sameAsSourceRadio);
 
@@ -159,7 +169,17 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         outputCompressedCheck.setSelected(true);
         
         destinationPanel.add(versionCombo);
-        
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;	
+	    c.insets = new Insets(0, 0, 0, 0);
+		add(destinationPanel, c);
+		
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -167,7 +187,10 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
                     browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
                     browseDestFileChooser.setFileFilter(new PdfFilter());
             	}
-                File chosenFile = null;                
+                File chosenFile = null;    
+                if(destinationFileText.getText().length()>0){
+                	browseDestFileChooser.setCurrentDirectory(new File(destinationFileText.getText()));
+                }
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
@@ -252,6 +275,10 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 								args.add(inputFile.getAbsolutePath());
 							}
 						} else {
+							 //if no extension given
+		                    if ((destinationFileText.getText().length() > 0) && !(destinationFileText.getText().matches(PDF_EXTENSION_REGEXP))){
+		                    	destinationFileText.setText(destinationFileText.getText()+"."+PDF_EXTENSION);
+		                    } 
 							if (destinationFileText.getText().length() > 0) {
 								File destinationDir = new File(destinationFileText.getText());
 								File parent = destinationDir.getParentFile();
@@ -298,7 +325,18 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 			}
 		});
 		runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(), "Execute pages reorder"));
-		add(runButton);
+	    runButton.setSize(new Dimension(88,25));
+        
+        c.fill = GridBagConstraints.NONE;
+	    c.ipadx = 5;
+	    c.weightx = 0.0;
+	    c.weighty = 0.0;
+	    c.anchor = GridBagConstraints.LAST_LINE_END;
+	    c.gridwidth = 1;
+	    c.gridx = 2;
+	    c.gridy = 2;
+	    c.insets = new Insets(10,10,10,10); 
+        add(runButton, c);
 		setLayout();
 	}
     
@@ -307,18 +345,6 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
      *
      */
     private void setLayout(){
-    	vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, selectionPanel, 315, SpringLayout.NORTH, this);
-    	vreorderSpringLayout.putConstraint(SpringLayout.EAST, selectionPanel, -5, SpringLayout.EAST, this);
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, selectionPanel, 5, SpringLayout.NORTH, this);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, selectionPanel, 5, SpringLayout.WEST, this);
-
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, destinationLabel, 5, SpringLayout.SOUTH, selectionPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, selectionPanel);
-        
-    	vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 130, SpringLayout.NORTH, destinationPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, selectionPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, selectionPanel);
-    	vreorderSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, selectionPanel);
     	
     	destinationPanelLayout.putConstraint(SpringLayout.SOUTH, sameAsSourceRadio, 25, SpringLayout.NORTH, sameAsSourceRadio);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, sameAsSourceRadio, 1, SpringLayout.NORTH, destinationPanel);
@@ -355,12 +381,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);
-        
-        
-        vreorderSpringLayout.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        vreorderSpringLayout.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        vreorderSpringLayout.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        vreorderSpringLayout.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
+
     }
     
 	public FocusTraversalPolicy getFocusPolicy() {
