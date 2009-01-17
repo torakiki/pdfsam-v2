@@ -132,6 +132,9 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	
 	        //-copyfields
 	        parsedCommandDTO.setCopyFields(((BooleanParam) cmdLineHandler.getOption(ConcatParsedCommand.COPYFIELDS_ARG)).isTrue());
+	        
+	        //-replaceRotations
+	        parsedCommandDTO.setReplaceDocumentRotations(((BooleanParam) cmdLineHandler.getOption(ConcatParsedCommand.REPLACE_ROTATIONS_ARG)).isTrue());
 
 	        //-r
 	        StringParam rOption = (StringParam) cmdLineHandler.getOption(ConcatParsedCommand.R_ARG);
