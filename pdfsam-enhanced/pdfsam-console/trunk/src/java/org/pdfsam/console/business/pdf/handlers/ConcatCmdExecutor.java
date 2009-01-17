@@ -242,14 +242,15 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	 * @return temporary file with pages rotation
 	 */
 	private File applyRotations(File inputFile, ConcatParsedCommand inputCommand) throws Exception{
-		PdfReader tmpPdfReader = new PdfReader(new FileInputStream(inputFile));
+		FileInputStream readerIs = new FileInputStream(inputFile);
+		PdfReader tmpPdfReader = new PdfReader(readerIs);
 		tmpPdfReader.consolidateNamedDestinations();
 		int pdfNumberOfPages = tmpPdfReader.getNumberOfPages();
 		PageRotation[] rotations = inputCommand.getRotations();
 		if(rotations!=null && rotations.length>0){
 			if(rotations.length>1){
 				for(int i=0; i<rotations.length; i++){
-					if(pdfNumberOfPages>rotations[i].getPageNumber() && rotations[i].getPageNumber()>0){
+					if(pdfNumberOfPages>=rotations[i].getPageNumber() && rotations[i].getPageNumber()>0){
 						PdfDictionary dictionary = tmpPdfReader.getPageN(rotations[i].getPageNumber());
 						dictionary.put(PdfName.ROTATE, new PdfNumber(tmpPdfReader.getPageRotation(rotations[i].getPageNumber()) + rotations[i].getDegrees()));
 					}else{
@@ -265,7 +266,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 					}
 				}else if(rotations[0].getType() == PageRotation.SINGLE_PAGE){
 					//single page rotation
-					if(pdfNumberOfPages>rotations[0].getPageNumber() && rotations[0].getPageNumber()>0){
+					if(pdfNumberOfPages>=rotations[0].getPageNumber() && rotations[0].getPageNumber()>0){
 						PdfDictionary dictionary = tmpPdfReader.getPageN(rotations[0].getPageNumber());
 						dictionary.put(PdfName.ROTATE, new PdfNumber(tmpPdfReader.getPageRotation(rotations[0].getPageNumber()) + rotations[0].getDegrees()));
 					}else{
@@ -290,10 +291,11 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 			log.info("Pages rotation applied.");
 		}
 		File rotatedTmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-		FileOutputStream is = new FileOutputStream(rotatedTmpFile);
-		PdfStamper stamper = new PdfStamper(tmpPdfReader, is);
-		is.close();
+		FileOutputStream fos = new FileOutputStream(rotatedTmpFile);
+		PdfStamper stamper = new PdfStamper(tmpPdfReader, fos);
 		stamper.close();
+		fos.close();
+		readerIs.close();
 		tmpPdfReader.close();
 		return rotatedTmpFile;
 	}
