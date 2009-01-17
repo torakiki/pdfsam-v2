@@ -36,14 +36,14 @@ public interface ThumbnailsCreator {
 	 */
 	Image ERROR_IMAGE =  new ImageIcon(PdfThumbnailsLoader.class.getResource("/images/thumbnailerror.png")).getImage();
 	/**
-	 * Default resize percentage 15%
+	 * Default resize percentage 20%
 	 */
 	public static final float DEFAULT_RESIZE_PERCENTAGE = 0.2f;
-    
-	public static final String HIGH_QUALITY = "0";
-    public static final String MEDIUM_QUALITY = "1";
-    public static final String LOW_QUALITY = "2";
-    
+    /**
+     * Default size in pixel
+     */
+	public static final int DEFAULT_SIZE = 166;
+	
 	/**
 	 * 
 	 * @param fileName pdf document
@@ -100,6 +100,10 @@ public interface ThumbnailsCreator {
 	 */
 	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel);
 	
+	/**
+	 * @return resolution of the created thumbnails
+	 */
+	public int getResolution();
 	/**
 	 * Clean up
 	 */

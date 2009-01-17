@@ -18,6 +18,10 @@ import java.awt.Image;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
+
+import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.utils.ConversionUtility;
+import org.pdfsam.guiclient.utils.paper.PaperFormatUtility;
 /**
  * DTO representing a page of a document 
  * @author Andrea Vacondio
@@ -30,11 +34,13 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	public static final Image HOURGLASS =  new ImageIcon(VisualPageListItem.class.getResource("/images/hourglass.png")).getImage();
 
 	private Image thumbnail = HOURGLASS;
+	private Image rotatedThumbnail = null;
 	private int pageNumber;
 	private boolean deleted = false;
 	private String parentFileCanonicalPath = "";
 	private String documentPassword = "";
 	private Rotation rotation = Rotation.DEGREES_0;
+	private String originalDocumentSize = "";
 
 	public VisualPageListItem() {
 	}
@@ -103,6 +109,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 		this.parentFileCanonicalPath = parentFileCanonicalPath;
 		this.documentPassword = documentPassword;
 		this.rotation = rotation;
+		this.rotatedThumbnail = null;
 	}
 	/**
 	 * @return the thumbnail
@@ -187,7 +194,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * rotate clockwise the item
 	 */
 	public void rotateClockwise(){
-		this.rotation = rotation.rotateClockwise();
+		this.rotation = rotation.rotateClockwise();		
 	}
 
 	/**
@@ -212,6 +219,69 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	}
 	
 	/**
+	 * @return the rotatedThumbnail
+	 */
+	public Image getRotatedThumbnail() {
+		return rotatedThumbnail;
+	}
+
+	/**
+	 * @param rotatedThumbnail the rotatedThumbnail to set
+	 */
+	public void setRotatedThumbnail(Image rotatedThumbnail) {
+		this.rotatedThumbnail = rotatedThumbnail;
+	}
+
+	/**
+	 * @return the current thumbnail based on the rotation
+	 */
+	public Image getCurrentThumbnail(){
+		Image retVal = null;
+		if(isRotated() && rotatedThumbnail!=null){
+			retVal = rotatedThumbnail;
+		}else{
+			retVal = thumbnail;
+		}
+		return retVal;
+	}		
+	
+
+	/**
+	 * @return the originalDocumentSize
+	 */
+	public String getOriginalDocumentSize() {
+		return originalDocumentSize;
+	}
+
+	/**
+	 * @param originalDocumentSize the imageDimensions to set
+	 */
+	public void setOriginalDocumentSize(String originalDocumentSize) {
+		this.originalDocumentSize = originalDocumentSize;
+	}
+
+	/**
+	 * Set the original document size in a string format
+	 * @param width
+	 * @param height
+	 * @param resolution the resolution
+	 */
+	public void setOriginalDocumentSize(double width, double height, int resolution) {
+		double width2 = Math.round(ConversionUtility.toCentimeters(width/(double)resolution) * 10);
+		double height2 = Math.round(ConversionUtility.toCentimeters(height/(double)resolution) * 10);
+		this.originalDocumentSize = PaperFormatUtility.getFormat(width2,height2);
+	}
+
+	/**
+	 * set the original dimension taking the screen resolution
+	 * @param width
+	 * @param height
+	 */
+	public void setOriginalDocumentSize(double width, double height) {
+		setOriginalDocumentSize(width, height, Configuration.getInstance().getScreenResolution());
+	}
+
+	/**
 	 * Constructs a <code>String</code> with all attributes
 	 * in name = value format.
 	 *
@@ -228,14 +298,24 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	    retValue.append("VisualPageListItem ( ")
 	        .append(super.toString())
 	        .append(OPEN).append("thumbnail=").append(this.thumbnail).append(CLOSE)
+	        .append(OPEN).append("rotatedThumbnail=").append(this.rotatedThumbnail).append(CLOSE)
 	        .append(OPEN).append("pageNumber=").append(this.pageNumber).append(CLOSE)
 	        .append(OPEN).append("deleted=").append(this.deleted).append(CLOSE)
 	        .append(OPEN).append("parentFileCanonicalPath=").append(this.parentFileCanonicalPath).append(CLOSE)
 	        .append(OPEN).append("documentPassword=").append(this.documentPassword).append(CLOSE)
 	        .append(OPEN).append("rotation=").append(this.rotation).append(CLOSE)
+	        .append(OPEN).append("originalDocumentSize=").append(this.originalDocumentSize).append(CLOSE)
 	        .append(" )");
 	    
 	    return retValue.toString();
 	}
+	
+	public Object clone(){
+		VisualPageListItem retVal = new VisualPageListItem(thumbnail, pageNumber, deleted, parentFileCanonicalPath, documentPassword, rotation);
+		retVal.setOriginalDocumentSize(originalDocumentSize);
+		retVal.setRotatedThumbnail(rotatedThumbnail);
+		return retVal;
+	}
+
 
 }

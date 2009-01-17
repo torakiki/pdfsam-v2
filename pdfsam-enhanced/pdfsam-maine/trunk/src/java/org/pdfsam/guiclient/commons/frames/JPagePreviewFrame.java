@@ -41,6 +41,8 @@ import org.pdfsam.guiclient.business.listeners.SaveImageActionListener;
 import org.pdfsam.guiclient.business.listeners.mediators.TransformationHandlerMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
+import org.pdfsam.guiclient.utils.ConversionUtility;
+import org.pdfsam.guiclient.utils.paper.PaperFormatUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Frame to open the single page preview
@@ -168,11 +170,8 @@ public class JPagePreviewFrame extends JFrame {
 	 * sets the image to be displayed
 	 * @param image
 	 */
-	public void setPagePreview(Image image){
+	public void setPagePreview(Image image, int resolution){
 		pagePreview.setImage(image);
-		if(image != null){
-			statusLabel.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Dimensions")+": "+image.getWidth(this)+"x"+image.getHeight(this));
-		}
 		validate();
         repaint();  
 	}

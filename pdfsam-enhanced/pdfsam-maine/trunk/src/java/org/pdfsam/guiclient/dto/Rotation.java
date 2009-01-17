@@ -40,6 +40,29 @@ public enum Rotation {
 	}
 	
 	/**
+	 * @param input degrees
+	 * @return corresponding rotation
+	 */
+	public static Rotation getRotation(int degrees){
+		Rotation retVal = null;
+		switch(degrees) {
+	        case 90:   
+	        		retVal = DEGREES_90;
+	        		break;
+	        case 180:  
+	        		retVal = DEGREES_180;
+	        		break;
+	        case 270:  
+	        		retVal = DEGREES_270;
+	        		break;
+	        case 0: 
+	        		retVal = DEGREES_0;
+	        		break;
+		}
+		return retVal;
+	}
+	
+	/**
 	 * @return a clockwise rotation
 	 */
 	public Rotation rotateClockwise(){

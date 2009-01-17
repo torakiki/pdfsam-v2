@@ -347,42 +347,43 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 				menuItemUndelete.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Undelete"));
 				menuItemUndelete.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.UNDELETE, pagesWorker));
 				popupMenu.add(menuItemUndelete);
-        	}
-        	
+        	}        	
+    		
+    		//rotate item	
+    		final JMenuItem menuItemRotate = new JMenuItem();
+    		menuItemRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
+    		menuItemRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise"));
+    		menuItemRotate.addMouseListener(new MouseAdapter() {
+                public void mouseReleased(MouseEvent e) {
+                	int[] selection = thumbnailList.getSelectedIndices();
+                	if(selection!=null){
+                		((VisualListModel)thumbnailList.getModel()).rotateClockwiseElements(selection);
+                	}
+                }
+            });
+    		popupMenu.add(menuItemRotate);
+    		
+    		//rotate anticlock item	
+    		final JMenuItem menuItemAntiRotate = new JMenuItem();
+    		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
+    		menuItemAntiRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise"));
+    		menuItemAntiRotate.addMouseListener(new MouseAdapter() {
+                public void mouseReleased(MouseEvent e) {
+                	int[] selection = thumbnailList.getSelectedIndices();
+                	if(selection!=null){
+                		((VisualListModel)thumbnailList.getModel()).rotateAnticlockwiseElements(selection);
+                	}
+                }
+            });
+    		popupMenu.add(menuItemAntiRotate);
+    		
         	enableSetOutputPathMenuItem();
         	
         	addPopupShower();
 		}
 		
 		popupMenu.add(menuItemPreview);
-		
-		//rotate item	
-		final JMenuItem menuItemRotate = new JMenuItem();
-		menuItemRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
-		menuItemRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise"));
-		menuItemRotate.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {
-            	int[] selection = thumbnailList.getSelectedIndices();
-            	if(selection!=null){
-            		((VisualListModel)thumbnailList.getModel()).rotateClockwiseElements(selection);
-            	}
-            }
-        });
-		popupMenu.add(menuItemRotate);
-		
-		//rotate anticlock item	
-		final JMenuItem menuItemAntiRotate = new JMenuItem();
-		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
-		menuItemAntiRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise"));
-		menuItemAntiRotate.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent e) {
-            	int[] selection = thumbnailList.getSelectedIndices();
-            	if(selection!=null){
-            		((VisualListModel)thumbnailList.getModel()).rotateAnticlockwiseElements(selection);
-            	}
-            }
-        });
-		popupMenu.add(menuItemAntiRotate);
+
 		
 		if(topPanelStyle>=STYLE_TOP_PANEL_FULL){
 			topPanel.add(Box.createRigidArea(new Dimension(5, 0)));
@@ -695,6 +696,24 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			retVal.add("-" + ConcatParsedCommand.F_ARG);
 			String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword():previousElement.getParentFileCanonicalPath());
 			retVal.add(fileElem);
+		}
+		return retVal;
+	}
+	
+	/**
+	 * @return a String that can be used as a -r param for the pdfsam-console
+	 */
+	public String getRotatedElementsString(){
+		String retVal = "";
+		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
+		if(validElements!=null && validElements.size()>0){
+			int i=0;
+			for(VisualPageListItem currentElement : validElements){
+				i++;
+				if(currentElement.isRotated()){
+					retVal += i+":"+currentElement.getRotation().getDegrees()+","; 
+				}
+			}
 		}
 		return retVal;
 	}

@@ -15,7 +15,9 @@
 package org.pdfsam.guiclient.business.thumbnails.creators;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -33,9 +35,11 @@ import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
+import org.pdfsam.guiclient.dto.Rotation;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
+import org.pdfsam.guiclient.utils.ImageUtility;
 import org.pdfsam.i18n.GettextResource;
 
 import de.intarsys.cwt.awt.environment.CwtAwtGraphicsContext;
@@ -58,6 +62,7 @@ import de.intarsys.tools.locator.FileLocator;
 public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
 	private static final Logger log = Logger.getLogger(JPodThumbnailCreator.class.getPackage().getName());
+	private static final int JPOD_RESOLUTION = 72;
 	private ExecutorService pool = null;
 	private Thread closer = null;
 	
@@ -89,6 +94,12 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				if(pdfDoc!=null){
 					pdfDoc.close();
 				}
+				if(pdPage.getRotate()!=0){
+              		Image rotated = ImageUtility.rotateImage(retVal, pdPage.getRotate());	
+              		retVal = new BufferedImage(rotated.getWidth(null), rotated.getHeight(null), BufferedImage.TYPE_INT_RGB);
+              		Graphics g = retVal.getGraphics();
+              		g.drawImage(rotated, 0, 0, null);
+        		}
 			}catch(Throwable t){
 				throw new ThumbnailCreationException(t);
 			}		
@@ -108,7 +119,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		BufferedImage retVal = null;
 		BufferedImage tempImage = getPageImage(inputFile, password, page);
 		try {
-			retVal = getScaledImage(tempImage , Math.round(tempImage.getHeight()*resizePercentage));
+			retVal = getScaledImage(tempImage , Math.round(tempImage.getHeight(null)*resizePercentage));
 		} catch (Exception e) {
 			throw new ThumbnailCreationException(e);
 		}
@@ -239,18 +250,20 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		public void run() {		
 			IGraphicsContext graphics = null;
 			try{
-			//	long t = System.currentTimeMillis();
 				Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
-				int height = Math.round(((int) rect.getHeight())*DEFAULT_RESIZE_PERCENTAGE);
-				int width = Math.round(((int) rect.getWidth())*DEFAULT_RESIZE_PERCENTAGE);
+				double rectHeight = rect.getHeight();
+				double recWidth = rect.getWidth();				
+				double resizePercentage = getResizePercentage(rectHeight, recWidth);
 				
+				int height = Math.round(((int) rect.getHeight())*(float)resizePercentage);
+				int width = Math.round(((int) rect.getWidth())*(float)resizePercentage);
 				BufferedImage scaledInstance = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
 				Graphics2D g2 = (Graphics2D) scaledInstance.getGraphics();
 				graphics = new CwtAwtGraphicsContext(g2);
 				// setup user space
 				AffineTransform imgTransform = graphics.getTransform();
-				imgTransform.scale(DEFAULT_RESIZE_PERCENTAGE, -DEFAULT_RESIZE_PERCENTAGE);
+				imgTransform.scale(resizePercentage, -resizePercentage);
 				imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
 				graphics.setTransform(imgTransform);
 				graphics.setBackgroundColor(Color.WHITE);
@@ -260,10 +273,14 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 					CSPlatformRenderer renderer = new CSPlatformRenderer(null,graphics);
 					renderer.process(content, pdPage.getResources());
 				}
-				              	
               	pageItem.setThumbnail(scaledInstance);
-              //	long t2 = System.currentTimeMillis()-t;
-              //	log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnail generated in ")+t2+"ms");
+              	pageItem.setOriginalDocumentSize(recWidth, rectHeight, JPOD_RESOLUTION);
+              	if(pdPage.getRotate()!=0){
+              		pageItem.setRotation(Rotation.getRotation(pdPage.getRotate()));
+              	}
+              	if(pageItem.isRotated() && pageItem.getThumbnail()!=null){
+              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getRotation().getDegrees()));	
+        		}
             }catch (Throwable t) {
             	pageItem.setThumbnail(ERROR_IMAGE);
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
@@ -271,7 +288,21 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
         		graphics.dispose();
         	}
             ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
-		}    	
+		}
+		/**
+		 * @param height
+		 * @param width
+		 * @return percentage resize
+		 */
+		private double getResizePercentage(double height, double width){
+			double retVal = 0;
+			if(height>=width){
+				retVal = Math.round(((double)DEFAULT_SIZE/height)*100.0)/100.0;
+			}else{
+				retVal = Math.round(((double)DEFAULT_SIZE/width)*100.0)/100.0;
+			}
+			return retVal;
+		}
 	}
 	
 	/**
@@ -336,5 +367,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 			retVal = PDDocument.createFromLocator(locator);					
 		}
 		return retVal;
+	}
+	
+	public int getResolution(){
+		return JPOD_RESOLUTION;
 	}
 }

@@ -16,18 +16,20 @@ package org.pdfsam.guiclient.commons.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.AbstractListModel;
 
 import org.pdfsam.guiclient.dto.VisualPageListItem;
+import org.pdfsam.guiclient.utils.ImageUtility;
 /**
  * Model for the JList in the JVisualPdfPageSelectionPanel
  * @author Andrea Vacondio
  *
  */
 public class VisualListModel extends AbstractListModel {
-
+	
 	private static final long serialVersionUID = -1468591826451724954L;
 
 	protected Vector<VisualPageListItem> data = new Vector<VisualPageListItem>();
@@ -220,7 +222,20 @@ public class VisualListModel extends AbstractListModel {
     public Collection<VisualPageListItem> subList(int fromIndex, int toIndex, boolean newInstance){
     	Collection<VisualPageListItem> retVal = null;
     	if(fromIndex>=0 && toIndex<=data.size()){
-    		retVal = (newInstance)? new Vector<VisualPageListItem>(data.subList(fromIndex, toIndex)): data.subList(fromIndex, toIndex);
+    		if(newInstance){
+    			List<VisualPageListItem> itemsList = data.subList(fromIndex, toIndex);
+    			if(itemsList!=null && itemsList.size()>0){
+        			retVal = new Vector<VisualPageListItem>(itemsList.size());
+        			for(VisualPageListItem currItem : itemsList){
+        				retVal.add((VisualPageListItem) currItem.clone());
+        			}
+
+    			}else{
+        			retVal = new Vector<VisualPageListItem>();    				
+    			}
+    		}else{
+        		retVal = data.subList(fromIndex, toIndex);    			
+    		}
     	}
     	return retVal;
     }
@@ -290,7 +305,9 @@ public class VisualListModel extends AbstractListModel {
     public void rotateClockwiseElements(int[] indexes)throws IndexOutOfBoundsException{
         if (indexes.length>0 && indexes.length <= data.size()){
         	for (int i=0; i<indexes.length; i++){
-        		((VisualPageListItem)data.get(indexes[i])).rotateClockwise();
+        		VisualPageListItem item = (VisualPageListItem)data.get(indexes[i]);
+        		item.rotateClockwise();
+        		rotateItemThumnail(item);
         	}  
         	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
         }
@@ -304,10 +321,25 @@ public class VisualListModel extends AbstractListModel {
     public void rotateAnticlockwiseElements(int[] indexes)throws IndexOutOfBoundsException{
         if (indexes.length>0 && indexes.length <= data.size()){
         	for (int i=0; i<indexes.length; i++){
-        		((VisualPageListItem)data.get(indexes[i])).rotateAnticlockwise();
+        		VisualPageListItem item = (VisualPageListItem)data.get(indexes[i]);
+        		item.rotateAnticlockwise();
+        		rotateItemThumnail(item);
         	}  
         	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
         }
+    }
+    
+    /**
+     * set the thumbnail rotated
+     * @param item
+     */
+    private void rotateItemThumnail(VisualPageListItem item){
+    	//image rotation
+    	if(item.isRotated() && item.getThumbnail()!=null){
+			item.setRotatedThumbnail(ImageUtility.rotateImage(item.getThumbnail(), item.getRotation().getDegrees()));	
+		}else{
+			item.setRotatedThumbnail(null);
+		}
     }
     
     /**

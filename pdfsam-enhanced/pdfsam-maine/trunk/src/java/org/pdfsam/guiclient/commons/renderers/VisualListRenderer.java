@@ -20,6 +20,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -34,32 +35,39 @@ import org.pdfsam.guiclient.dto.VisualPageListItem;
  *
  */
 public class VisualListRenderer extends JLabel implements ListCellRenderer {
-
+		
 	private static final long serialVersionUID = -6125533840590452401L;
 	
 	private static final double ZOOM_STEP = 0.1;
+	private static final int COMPONENT_SIZE = 170;
 	
+	private int currentZoomLevel = 0;
 	private boolean drawRedCross = false;
-
+	private ImageIcon image = null;
+	
 	public VisualListRenderer() {
 		setOpaque(true);
 	}
 
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 		VisualPageListItem item = (VisualPageListItem)value;
+		currentZoomLevel = ((JVisualSelectionList)list).getCurrentZoomLevel();
 		if(!item.isDeleted() || (item.isDeleted() && ((JVisualSelectionList)list).isDrawDeletedItems())){		
-			if(item.getThumbnail()!= null){
-				ImageIcon image = new ImageIcon(item.getThumbnail());
-				setPreferredSize(getZoomedSize(image, (JVisualSelectionList)list));
+			if(item.getCurrentThumbnail()!= null){
+				image = new ImageIcon(item.getCurrentThumbnail());
+				setPreferredSize(getZoomedSize(image));
 				drawRedCross = item.isDeleted();
-				setIcon(image);
 			}
-			setText(item.getPageNumber()+"");
+			String text = item.getPageNumber()+"";
+			if(item.getOriginalDocumentSize()!=null && item.getOriginalDocumentSize().length()>0){
+				text += " - ["+item.getOriginalDocumentSize()+"]";
+			}
+			setText(text);
 			setHorizontalTextPosition(JLabel.CENTER);
 			setVerticalTextPosition(JLabel.BOTTOM);
 			setHorizontalAlignment(JLabel.CENTER);
 			setVerticalAlignment(JLabel.BOTTOM);
-			setIconTextGap(3);
+			setIconTextGap(2);
 	        setForeground(list.getForeground());
 	        setBackground(UIManager.getColor("Panel.background"));
 			if(isSelected){
@@ -76,23 +84,52 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 	 * @param list
 	 * @return the dimension of the image to be displayed according with the zoom level
 	 */
-	private Dimension getZoomedSize(ImageIcon image, JVisualSelectionList list){
+	private Dimension getZoomedSize(ImageIcon image){
 		Dimension retVal = null;
-		if(image != null && list != null){
-			int height = image.getIconHeight();
-			int width = image.getIconWidth();
-			retVal = new Dimension(width+(int)(width*ZOOM_STEP*list.getCurrentZoomLevel()), height+(int)(height*ZOOM_STEP*list.getCurrentZoomLevel()));
+		if(image != null){
+			int comSize = COMPONENT_SIZE+(int)(COMPONENT_SIZE*ZOOM_STEP*currentZoomLevel);
+			retVal = new Dimension(comSize+2, comSize+15);
 		}
 		return retVal;
 	}	
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		 g.drawImage(((ImageIcon)getIcon()).getImage(), 1, 0, getWidth()-2, getHeight()-15, null);
+		if(image!=null){
+			int imageHeight = 0;
+			int imageWidth = 0;
+			int x = 1;
+			int y = 0;
+			//get image dimensions
+			if(isHorizontal(image)){
+				imageWidth = getWidth()-2;
+				imageHeight = Math.round(image.getIconHeight()*((float)imageWidth/(float)image.getIconWidth()));
+				if(imageHeight>getHeight()-15){
+					imageHeight = getHeight()-15;
+				}
+				y=(getHeight()-15-imageHeight)/2;
+			}else{
+				imageHeight = getHeight()-15;
+				imageWidth = Math.round(image.getIconWidth()*((float)imageHeight/(float)image.getIconHeight()));
+				if(imageWidth>getWidth()-2){
+					imageWidth = getWidth()-2;
+				}
+				x=(getWidth()-2-imageWidth)/2;
+			}
+			g.drawImage((image).getImage(), x, y, imageWidth, imageHeight, null);
+		}
 		if(drawRedCross){
 			g.setColor(Color.red);	
 			g.drawLine(0,getHeight(),getWidth(),0); 
 			g.drawLine(getWidth(),getHeight(),0,0);
 		}
+	}
+	
+	private boolean isHorizontal(Icon image){
+		boolean retVal = false;
+		if(image!=null){
+			retVal = image.getIconWidth()>image.getIconHeight();
+		}
+		return retVal;
 	}
 }

@@ -1,6 +1,6 @@
 /*
- * Created on 12-Oct-2007
- * Copyright (C) 2006 by Andrea Vacondio.
+ * Created on 12-Oct-2008
+ * Copyright (C) 2008 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
@@ -17,7 +17,6 @@ package org.pdfsam.guiclient.utils;
 import java.awt.Component;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;

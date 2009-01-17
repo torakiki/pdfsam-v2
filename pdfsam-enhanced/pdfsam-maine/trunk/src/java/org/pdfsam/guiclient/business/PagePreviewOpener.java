@@ -129,7 +129,7 @@ public class PagePreviewOpener {
 
 		public void run() {				
 			try{
-				frame.setPagePreview(getCreator().getPageImage(inputFile, password, page));
+				frame.setPagePreview(getCreator().getPageImage(inputFile, password, page), getCreator().getResolution());
 				frame.setVisible(true);
             }catch (Exception e) {
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open image preview"),e);

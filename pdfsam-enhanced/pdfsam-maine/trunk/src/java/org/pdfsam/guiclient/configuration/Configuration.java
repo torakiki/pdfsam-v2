@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.configuration;
 
+import java.awt.Toolkit;
 import java.io.File;
 import java.net.URLDecoder;
 import java.util.ResourceBundle;
@@ -48,7 +49,8 @@ public class Configuration{
 	private boolean playSounds = true;
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
-
+	private int screenResolution = 0;
+	
 	private Configuration() {
 		init();
 	}
@@ -188,6 +190,8 @@ public class Configuration{
 			initPlaySounds();
 			//default working dir
 			initDefaultWorkingDir();
+			//get the screen resolution
+			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -293,5 +297,13 @@ public class Configuration{
 			playSounds = false;
 		}
 	}
+
+	/**
+	 * @return the screenResolution
+	 */
+	public int getScreenResolution() {
+		return screenResolution;
+	}
+	
 	
 }
