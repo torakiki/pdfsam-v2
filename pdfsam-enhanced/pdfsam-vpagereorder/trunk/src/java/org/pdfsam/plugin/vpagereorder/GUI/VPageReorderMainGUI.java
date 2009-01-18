@@ -267,7 +267,14 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	
 						args.add("-" + ConcatParsedCommand.U_ARG);
 						args.add(selectionString);
-	
+						
+						//rotation
+						String rotation = selectionPanel.getRotatedElementsString();
+						if(rotation!=null && rotation.length()>0){
+							args.add("-" + ConcatParsedCommand.R_ARG);
+							args.add(rotation);
+						}
+						
 						args.add("-" + ConcatParsedCommand.O_ARG);
 						// check radio for output options
 						if (sameAsSourceRadio.isSelected()) {
@@ -310,7 +317,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 							args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
 						if (outputCompressedCheck.isSelected())
 							args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
-	
+						
 						args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
 						args.add(((StringItem) versionCombo.getSelectedItem()).getId());
 	

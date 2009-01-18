@@ -14,10 +14,11 @@
  */
 package org.pdfsam.plugin.vcomposer.GUI;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -40,7 +42,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -85,9 +87,9 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
     private Configuration config;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
     private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, false, true, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);
-    
+	private JPanel topPanel = new JPanel();
+	
     //layouts
-    private SpringLayout vcomposerSpringLayout;
     private SpringLayout destinationPanelLayout;
     
 	//button
@@ -110,7 +112,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
     private final JVisualMultiSelectionPanel inputPanel = new JVisualMultiSelectionPanel();
   
     //labels
-    private final JLabel destinationLabel = new JLabel();
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 	
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
@@ -132,8 +133,20 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         setPanelIcon("/images/vcomposer.png");
         setPreferredSize(new Dimension(500,700));
         
-        vcomposerSpringLayout = new SpringLayout();
-        setLayout(vcomposerSpringLayout);
+        setLayout(new GridBagLayout());
+        
+        
+        topPanel.setLayout(new GridBagLayout());
+        GridBagConstraints topConst = new GridBagConstraints();
+        topConst.fill = GridBagConstraints.BOTH;
+        topConst.ipady = 5;
+        topConst.weightx = 0.5;
+        topConst.weighty = 0.5;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 1;
+        topConst.gridx = 0;
+        topConst.gridy = 0;
+		topPanel.add(inputPanel, topConst);
         
         inputPanel.setOutputPathPropertyChangeListener(this);
         
@@ -148,7 +161,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		moveOnTopButton.addKeyListener(new EnterDoClickListener(moveOnTopButton));
 		moveOnTopButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		moveOnTopButton.setMinimumSize(new Dimension(90, 25));
-		moveOnTopButton.setMaximumSize(new Dimension(130, 25));
+		//moveOnTopButton.setMaximumSize(new Dimension(130, 25));
 		moveOnTopButton.setPreferredSize(new Dimension(110, 25));
 		moveOnTopButton.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
@@ -166,7 +179,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		moveToBottomButton.addKeyListener(new EnterDoClickListener(moveOnTopButton));
 		moveToBottomButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		moveToBottomButton.setMinimumSize(new Dimension(90, 25));
-		moveToBottomButton.setMaximumSize(new Dimension(130, 25));
+		//moveToBottomButton.setMaximumSize(new Dimension(130, 25));
 		moveToBottomButton.setPreferredSize(new Dimension(110, 25));
 		moveToBottomButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -183,17 +196,45 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		
         composerPanel.addToTopPanel(buttonsPanel);
         composerPanel.disableSetOutputPathMenuItem();
-        add(composerPanel);
         
+        topConst.fill = GridBagConstraints.BOTH;
+        topConst.weightx = 0.5;
+        topConst.weighty = 0.5;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 1;
+        topConst.gridx = 0;
+        topConst.gridy = 1;
+        topPanel.add(composerPanel, topConst);
+        
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0, 0, 10, 0);
+		add(topPanel, c);
+		
       //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
         destinationPanel.setLayout(destinationPanelLayout);
-        destinationPanel.setBorder(new MatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        add(destinationPanel);
+		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
+		destinationPanel.setBorder(titledBorder);
+		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setMinimumSize(new Dimension(160, 150));
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;	
+	    c.insets = new Insets(0, 0, 0, 0);
+		add(destinationPanel, c);
 //END_DESTINATION_PANEL        
-        
-        destinationLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file:"));
-        add(destinationLabel);
                 
         destinationPanel.add(destinationFileText);
         destinationPanel.add(overwriteCheckbox);
@@ -212,7 +253,10 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
                     browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
                     browseDestFileChooser.setFileFilter(new PdfFilter());
             	}
-                File chosenFile = null;                
+                File chosenFile = null;      
+                if(destinationFileText.getText().length()>0){
+                	browseDestFileChooser.setCurrentDirectory(new File(destinationFileText.getText()));
+                }
                 if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     chosenFile = browseDestFileChooser.getSelectedFile();
                 }
@@ -240,7 +284,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 
-	    add(inputPanel);
 	 
 	  //ENTER_KEY_LISTENERS
 	          browseDestButton.addKeyListener(browsedEnterkeyListener);
@@ -262,9 +305,19 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 			
 								args.add("-" + ConcatParsedCommand.U_ARG);
 								args.add(selectionString);
-			
+								
+								//rotation
+								String rotation = composerPanel.getRotatedElementsString();
+								if(rotation!=null && rotation.length()>0){
+									args.add("-" + ConcatParsedCommand.R_ARG);
+									args.add(rotation);
+								}
+								
 								args.add("-" + ConcatParsedCommand.O_ARG);
-			
+			                    //if no extension given
+			                    if ((destinationFileText.getText().length() > 0) && !(destinationFileText.getText().matches(PDF_EXTENSION_REGEXP))){
+			                    	destinationFileText.setText(destinationFileText.getText()+"."+PDF_EXTENSION);
+			                    }   
 								if (destinationFileText.getText().length() > 0) {
 									File destinationDir = new File(destinationFileText.getText());
 									File parent = destinationDir.getParentFile();
@@ -307,9 +360,20 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	                  }
 	              }
 	          });
-	          runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pages reorder"));
-	          add(runButton);
-	          setLayout();
+	        runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pages reorder"));
+	  	    runButton.setSize(new Dimension(88,25));
+	        
+	        c.fill = GridBagConstraints.NONE;
+		    c.ipadx = 5;
+		    c.weightx = 0.0;
+		    c.weighty = 0.0;
+		    c.anchor = GridBagConstraints.LAST_LINE_END;
+		    c.gridwidth = 1;
+		    c.gridx = 2;
+		    c.gridy = 2;
+		    c.insets = new Insets(10,10,10,10); 
+	        add(runButton, c);
+	        setLayout();
     }
     
     /**
@@ -317,23 +381,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
      *
      */
     private void setLayout(){
-    	vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, inputPanel, 260, SpringLayout.NORTH, this);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.EAST, inputPanel, -5, SpringLayout.EAST, this);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, inputPanel, 5, SpringLayout.NORTH, this);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, inputPanel, 5, SpringLayout.WEST, this);
-    	
-    	vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, composerPanel, 260, SpringLayout.NORTH, composerPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.EAST, composerPanel, 0, SpringLayout.EAST, inputPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, composerPanel, 5, SpringLayout.SOUTH, inputPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, composerPanel, 0, SpringLayout.WEST, inputPanel);
-
-    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, destinationLabel, 5, SpringLayout.SOUTH, composerPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, destinationLabel, 0, SpringLayout.WEST, composerPanel);
-        
-    	vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, destinationPanel, 115, SpringLayout.NORTH, destinationPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.EAST, destinationPanel, 0, SpringLayout.EAST, composerPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, destinationPanel, 20, SpringLayout.SOUTH, composerPanel);
-    	vcomposerSpringLayout.putConstraint(SpringLayout.WEST, destinationPanel, 0, SpringLayout.WEST, composerPanel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationFileText, 20, SpringLayout.NORTH, destinationFileText);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationFileText, 10, SpringLayout.NORTH, destinationPanel);
@@ -363,12 +410,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);
-        
-        
-        vcomposerSpringLayout.putConstraint(SpringLayout.SOUTH, runButton, 25, SpringLayout.NORTH, runButton);
-        vcomposerSpringLayout.putConstraint(SpringLayout.EAST, runButton, -10, SpringLayout.EAST, this);
-        vcomposerSpringLayout.putConstraint(SpringLayout.WEST, runButton, -88, SpringLayout.EAST, runButton);
-        vcomposerSpringLayout.putConstraint(SpringLayout.NORTH, runButton, 10, SpringLayout.SOUTH, destinationPanel);
     }
     
 	public FocusTraversalPolicy getFocusPolicy() {
