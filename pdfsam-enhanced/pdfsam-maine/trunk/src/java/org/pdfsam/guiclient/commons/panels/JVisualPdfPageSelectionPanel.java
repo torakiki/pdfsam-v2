@@ -366,7 +366,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     		
     		//rotate anticlock item	
     		final JMenuItem menuItemAntiRotate = new JMenuItem();
-    		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/anticlockwise")));
+    		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/anticlockwise.png")));
     		menuItemAntiRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise"));
     		menuItemAntiRotate.addMouseListener(new MouseAdapter() {
                 public void mouseReleased(MouseEvent e) {
