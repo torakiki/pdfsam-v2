@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-01-18 18:07+0100\n"
 "PO-Revision-Date: 2008-12-20 09:13+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-20 15:44+0000\n"
+"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -144,13 +144,11 @@ msgstr "Razdruži dokument  na neparne strani"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Razdruži dokument  po št. strani (št1-št2-št3...)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Razdruži dokument  na datoteke po vpisani velikosti"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Razdruži dokument  na datoteke po vpisani velikosti"
+msgstr ""
 
 msgid "Destination folder"
 msgstr "Ciljna mapa"
@@ -233,9 +231,8 @@ msgstr "Razdruženi del naložen"
 msgid "Invalid unit: "
 msgstr "Napaka, enota "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Prvi dokument obrnjeno"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""

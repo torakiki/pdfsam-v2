@@ -7,21 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-09-20 15:16+0000\n"
-"Last-Translator: pjv <Unknown>\n"
+"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"PO-Revision-Date: 2009-01-14 09:58+0000\n"
+"Last-Translator: G.J. Werler <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
+"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Merge options"
-msgstr "Samenvoeg-opties"
+msgstr "Samenvoeg opties"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
@@ -138,12 +135,11 @@ msgstr "Een moment geduld om alle bestanden te verwerken.."
 msgid "Found a password for input file."
 msgstr "Wachtwoord gevonden voor het input-bestand"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Gelieve 2 pdf bestanden te selecteren."
+msgstr "Selecteer minimaal één PDF document"
 
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 msgid "Execute pdf merge"
 msgstr "Samenvoegen van pdf's uitvoeren"
@@ -211,10 +207,10 @@ msgid "Split after these pages"
 msgstr "Splits na deze pagina's"
 
 msgid "Split at this size"
-msgstr ""
+msgstr "Splits na deze grootte"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Splits op het bookmark niveau"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
@@ -246,20 +242,14 @@ msgstr "Splist het document op de oneven pagina's"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Splits het document na de volgende pagina nummers (num1-num2-num3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Splits het document in bestanden van (ongeveer) de opgegeven grootte."
+msgstr "Splits de documenten in files van de opgegeven grootte (ongeveer)"
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Splits het document in bestanden van (ongeveer) de opgegeven grootte."
+msgstr "Splits de documenten op het opgegeven bookmark niveau"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#, fuzzy
 msgid "Destination folder"
-msgstr "Doelmap:"
+msgstr "Doelmap"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
@@ -284,7 +274,8 @@ msgstr "Doelmap"
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:310
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:306
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr "Gebruik dezelfde doelmap als van het invoerbestand of kies een doelmap"
+msgstr ""
+"Gebruik dezelfde doelmap als van het invoerbestand of kies een doelmap"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
@@ -305,12 +296,8 @@ msgid ""
 msgstr ""
 "Aanvinken als je het doelbestand wilt overschrijven mocht het reeds bestaan."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output options"
-msgstr "Output opties:"
+msgstr "Resultaat opties"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
@@ -324,39 +311,29 @@ msgstr "Voorvoegsel doelbestand"
 msgid "Output files prefix"
 msgstr "Voorvoegsel doelbestanden"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"Als het \"[CURRENTPAGE]\" of \"[TIMESTAMP]\" bevat zullen deze variabelen "
-"worden vervangen"
+"Als het \"[CURRENTPAGE]\", \"[TIMESTAMP]\" of \"[FILENUMBER]\" bevat, dan "
+"wordt variabele substitutie uitgevoerd."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "bijv: voorvoegsel_[BASENAME]_[CURRENTPAGE]  wordt "
 "voorvoegsel_bestandsnaam_005.pdf."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Als het \"[CURRENTPAGE]\" of \"[TIMESTAMP]\" niet bevat dan wordt de naam "
-"van het doelbestand op de oude manier vastgesteld."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Beschikbare variabelen: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Ongeldige splitsingsgroote"
@@ -372,9 +349,8 @@ msgstr ""
 msgid "Pdf version conflict"
 msgstr "\"Pdf-versie\"-conflict"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Gelieve 2 pdf bestanden te selecteren."
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -391,23 +367,17 @@ msgstr "Splits-sectei geladen"
 msgid "Invalid unit: "
 msgstr "Ongeldige eenheid: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#, fuzzy
 msgid "Fill from document"
-msgstr "Eerste pdf-bestand"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "Omslagbestand pdf"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "Voettekstbestand pdf"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -418,10 +388,8 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Versleutel opties:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
@@ -439,10 +407,8 @@ msgstr "Wachtwoord gebruiker:"
 msgid "User password (Max 32 chars long)"
 msgstr "Wachtwoord gebruiker (max. 32 karakters)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Versleutel algoritme"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
 msgid "Allow all"
@@ -488,7 +454,8 @@ msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr "Als het \"[TIMESTAMP]\" bevat dan zal deze variabele worden vervangen"
+msgstr ""
+"Als het \"[TIMESTAMP]\" bevat dan zal deze variabele worden vervangen"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
 msgid ""
@@ -521,25 +488,17 @@ msgstr "Versleutelen"
 msgid "Encrypt section loaded."
 msgstr "Versleutel-sectie geladen"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Versleutel geselecteerd bestand"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt"
-msgstr "Versleutelen"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Versleutel-sectie geladen"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Mix options"
-msgstr "Opties voor splitsen"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr ""
@@ -576,11 +535,8 @@ msgstr "Pak uit"
 msgid "Unpack section loaded."
 msgstr "Sectie \"uitpakken\" geladen."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Opties voor splitsen"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -600,9 +556,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "\"Pdf-versie\"-conflict"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -619,16 +574,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Set options"
-msgstr "Opties voor splitsen"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Versleutel geselecteerd bestand"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -636,11 +586,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
-#, fuzzy
 msgid "None"
-msgstr "Notitie"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -651,11 +598,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
-#, fuzzy
 msgid "Document outline"
-msgstr "PDF documenten bevatten formulieren"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -678,16 +622,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Viewer options"
-msgstr "Samenvoeg-opties"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Versleutel-sectie geladen"
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -1221,7 +1160,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Geen standaard werkpad beschikbaar"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Selecteer een pad waar uw documenten standaard bewaard en gelezen zullen "
 "worden."
@@ -1301,19 +1241,50 @@ msgstr "Knippen"
 msgid "Paste"
 msgstr "Plakken"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-#~ msgid "Destination output file:"
-#~ msgstr "Doelbestand:"
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
+#~ msgid "Merge options:"
+#~ msgstr "Samenvoeg-opties"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
 #~ msgid "Split options:"
 #~ msgstr "Opties voor splitsen:"
 
-#~ msgid "Select an input file"
-#~ msgstr "Selecteer een invoerbestand"
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+#~ msgid "Destination folder:"
+#~ msgstr "Doelmap:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
+#~ msgid "Output options:"
+#~ msgstr "Output opties:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
+#~ "substitution."
+#~ msgstr ""
+#~ "Als het \"[CURRENTPAGE]\" of \"[TIMESTAMP]\" bevat zullen deze variabelen "
+#~ "worden vervangen"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
+#~ msgid ""
+#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
+#~ "oldstyle output file names."
+#~ msgstr ""
+#~ "Als het \"[CURRENTPAGE]\" of \"[TIMESTAMP]\" niet bevat dan wordt de naam "
+#~ "van het doelbestand op de oude manier vastgesteld."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
+#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#~ msgstr "Beschikbare variabelen: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
@@ -1330,6 +1301,14 @@ msgstr "Plakken"
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
 #~ msgid "Destination output directory:"
 #~ msgstr "Doeldirectory"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
+#~ msgid "Cover pdf file:"
+#~ msgstr "Omslagbestand pdf"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
+#~ msgid "Footer pdf file:"
+#~ msgstr "Voettekstbestand pdf"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
 #~ msgid "Browse filesystem for a cover file"
@@ -1357,6 +1336,20 @@ msgstr "Plakken"
 #~ msgid "Select a PDF file to encrypt"
 #~ msgstr "Selecteer het te versleutelen pdf-bestand"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
+#~ msgid "Encryption angorithm:"
+#~ msgstr "Versleutel algoritme"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#~ msgid "Encrypt options:"
+#~ msgstr "Versleutel opties:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
+#~ msgid "Destination output file:"
+#~ msgstr "Doelbestand:"
+
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
 #~ msgid "Browse filesystem for the first file to mix"
 #~ msgstr "Blader naar het eerste mix-bestand"
@@ -1364,6 +1357,10 @@ msgstr "Plakken"
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "Blader naar het tweede mix-bestand"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
+#~ msgid "First pdf document:"
+#~ msgstr "Eerste pdf-bestand"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
@@ -1410,6 +1407,3 @@ msgstr "Plakken"
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
 #~ msgid "Browse filesystem for a destination file"
 #~ msgstr "Blader door het bestandssysteem voor een doelbestand"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "Uitvoerlocatie is niet correct"

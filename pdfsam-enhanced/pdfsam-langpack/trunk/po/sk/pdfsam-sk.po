@@ -7,22 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-09-24 09:47+0000\n"
-"Last-Translator: blackmore <Unknown>\n"
+"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"PO-Revision-Date: 2009-01-17 12:54+0000\n"
+"Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
+"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVAKIA\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "Možnosti zlúčenia:"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "PDF dokumenty obsahujú formuláre"
@@ -40,7 +39,8 @@ msgid "Checked"
 msgstr "Zaškrtnuté"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "Použiť tento typ zlúčenia pre pdf dokumenty, ktoré obsahujú formuláre"
+msgstr ""
+"Použiť tento typ zlúčenia pre pdf dokumenty, ktoré obsahujú formuláre"
 
 msgid "Note"
 msgstr "Poznámka"
@@ -49,7 +49,10 @@ msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "Nastavením tejto možnosti budú dokumenty plne načítané do pamäte"
 
 msgid "Destination output file"
-msgstr "Cieľový výstupný súbor"
+msgstr ""
+"Corel, logo Corel, CorelDRAW, Corel R.A.V.E., CorelTUTOR, procreate, "
+"deepwhite, Perfect Shapes, PowerClip, Docker a Scrapbook jsou obchodní "
+"známky nebo registrované"
 
 msgid "Error: "
 msgstr "Chyba: "
@@ -59,7 +62,8 @@ msgstr "Nájdite, alebo zadajte plnú cestu do cie+ového výstupného súboru."
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr "Zvoľte túto možnosť, pokiaľ si želáte prepísať súbor, ak už existuje."
+msgstr ""
+"Zvoľte túto možnosť, pokiaľ si želáte prepísať súbor, ak už existuje."
 
 msgid "Check the box if you want compressed output files."
 msgstr "Zašktnite, ak si želáte zkomprimovať výstupné súbory."
@@ -76,9 +80,8 @@ msgstr "Prosím čakajte než sa spracujú všetky súbory..."
 msgid "Found a password for input file."
 msgstr "Nájdené heslo pre vstupný súbor"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Prosím vyberte dva pdf dokumenty."
+msgstr ""
 
 msgid "Warning"
 msgstr ""
@@ -149,17 +152,14 @@ msgstr "Rozdelí dokument na každej nepárnej stránke"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Rozdelí dokument po číslach stránok (č1-č2-č3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Rozdelí dokument do súborov danej veľkosti (približne)."
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Rozdelí dokument do súborov danej veľkosti (približne)."
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "Cieľový priečinok:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "Rovnaký ako zdroj"
@@ -186,9 +186,8 @@ msgstr ""
 "Zvoľte túto možnosť, ak si želáte prepísať súbor, pokiaľ už existuje v "
 "cieľovom priečinku súbor s rovnakým názvom."
 
-#, fuzzy
 msgid "Output options"
-msgstr "Možnosti výstupu:"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "Prefix názvov výstupných súborov:"
@@ -196,28 +195,24 @@ msgstr "Prefix názvov výstupných súborov:"
 msgid "Output files prefix"
 msgstr "Prefix výstupných súborov"
 
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"Pokiaľ obsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" vykoná náhradu."
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Pokiaľ neobsahuje \"[CURRENTPAGE]\", alebo \"[TIMESTAMP]\" generuje názvy "
-"súborov v starom štýle."
 
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Možné premenné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Neplatná veľkosť rozdelenia"
@@ -231,9 +226,8 @@ msgstr "Vybrali ste nižšiu pdf verziu, želáte si pokračovať?"
 msgid "Pdf version conflict"
 msgstr "Konflikt Pdf verzií"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Prosím vyberte dva pdf dokumenty."
+msgstr ""
 
 msgid "Split selected file"
 msgstr "Rozdeliť vybraný súbor"
@@ -247,20 +241,17 @@ msgstr "Rozdeliť nahratú sekciu."
 msgid "Invalid unit: "
 msgstr "Neplatný diel: "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Obrátiť prvý dokument"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "Prvá strana pdf súboru"
+msgstr ""
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "Záhlavie pdf súboru"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Vyberte aspoň jedn prvú stranu, alebo jednu poslednú stranu"
@@ -271,9 +262,8 @@ msgstr "Prvá a posledná strana"
 msgid "Cover And Footer section loaded."
 msgstr "Prvá a posledná strana nahratej sekcie."
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Možnosti šifrovania:"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "Heslo majiteľa:"
@@ -287,9 +277,8 @@ msgstr "Užívateľské heslo:"
 msgid "User password (Max 32 chars long)"
 msgstr "Užívateľské heslo (Maximálna veľkosť 32 znakov)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Šifrovací algoritmus:"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Povoliť všetko"
@@ -352,21 +341,17 @@ msgstr "Zašifrovať"
 msgid "Encrypt section loaded."
 msgstr "Zašifrovať nahratú sekciu."
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Zašifruj vybrané súbory"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt"
-msgstr "Zašifrovať"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Zašifrovať nahratú sekciu."
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "Možnosti rozdelenia"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr "Obrátiť prvý dokument"
@@ -401,9 +386,8 @@ msgstr "Rozbaliť"
 msgid "Unpack section loaded."
 msgstr "Rozbaliť nahratú sekciu."
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Možnosti rozdelenia"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -423,9 +407,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Konflikt Pdf verzií"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -442,13 +425,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "Možnosti rozdelenia"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Zašifruj vybrané súbory"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -456,9 +437,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "Poznámka"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -469,9 +449,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "PDF dokumenty obsahujú formuláre"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -494,13 +473,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "Možnosti zlúčenia:"
+msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Zašifrovať nahratú sekciu."
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -683,7 +660,8 @@ msgid "Setting logging level..."
 msgstr "Nastavenie prihlasovacej úrovne..."
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
+msgstr ""
+"Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
 
 msgid "Logging level set to "
 msgstr "Záznamová úroveň nastavená na "
@@ -892,7 +870,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Predvolený pracovný priečinok"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr "Vyberte priečinok, v ktorom budú dokumenty ukladané a nahrávané"
 
 msgid "Save"
@@ -966,15 +945,3 @@ msgstr "Vystrihnúť"
 
 msgid "Paste"
 msgstr "Prilepiť"
-
-#~ msgid "Destination output file:"
-#~ msgstr "Cieľový výstupný súbor:"
-
-#~ msgid "Split options:"
-#~ msgstr "Možnosti rozdelenia:"
-
-#~ msgid "Select an input file"
-#~ msgstr "Vyberte vstupný súbor"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "Nesprávne umiestnenie výstupu"

@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-04-03 09:49+0000\n"
+"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"PO-Revision-Date: 2009-01-01 18:45+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "אפשרויות מיזוג:"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "קובץ ה-PDF כולל טפסים"
@@ -145,29 +144,26 @@ msgstr "פצל את המסמך בכל עמוד אי-זוגי"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "פצל את המסמך לאחר מספרי העמודים (num1-num2-num3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "פצל את המסמך לקבצים בגודל הנתון (בגסות)."
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "פצל את המסמך לקבצים בגודל הנתון (בגסות)."
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "תיקיית היעד:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "זהה למקור"
 
 msgid "Choose a folder"
-msgstr "בחר תיקיה"
+msgstr "בחר תיקייה"
 
 msgid "Destination output directory"
 msgstr "תיקיית יעד הפלט"
 
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr "השתמש בתיקיית הקלט בתור תיקיית הפלט או בחר תיקיה."
+msgstr "השתמש בתיקיית הקלט בתור תיקיית הפלט או בחר תיקייה."
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
@@ -179,9 +175,8 @@ msgid ""
 "exist."
 msgstr "בחר תיבה זו במידה וברצונך לשכתב על קבצי הפלט במידה והם כבר קיימים."
 
-#, fuzzy
 msgid "Output options"
-msgstr "אפשרויות פלט:"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "הקידומת של שמות קבצי הפלט:"
@@ -189,28 +184,23 @@ msgstr "הקידומת של שמות קבצי הפלט:"
 msgid "Output files prefix"
 msgstr "קידומת קבצי הפלט"
 
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"במידה והקידומת מכילה \"[CURRENTPAGE]\" או \"[TIMESTAMP]\" תתבצע החלפת משתנים."
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "לדוגמא: קידומת_[BASENAME]_[CURRENTPAGE] תייצר קידומת_שםהקובץ_005.pdf"
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"במידה ולא יכללו המחרוזות \"[CURRENTPAGE]\" או \"[TIMESTAMP]\" השמות של קבצי "
-"הפלט יהיו בסגנון הישן."
 
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "משתנים זמינים:[CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "גודל הפיצול שגוי"
@@ -245,13 +235,11 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "קובץ pdf לכריכה:"
+msgstr ""
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "קובץ pdf לסיומת:"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "בחר לפחות כריכה אחת וסיומת אחת"
@@ -262,9 +250,8 @@ msgstr "כריכה וסיומת"
 msgid "Cover And Footer section loaded."
 msgstr "חלקי הכריכה והסיומת נטענו."
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "אפשרויות פיצול"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "סיסמת הבעלים:"
@@ -278,9 +265,8 @@ msgstr "סיסמת המשתמש:"
 msgid "User password (Max 32 chars long)"
 msgstr "סיסמת משתמש (32 תווים לכל היותר)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "אלגוריתם הצפנה:"
+msgstr ""
 
 msgid "Allow all"
 msgstr "אפשר הכל"
@@ -339,20 +325,17 @@ msgstr ""
 msgid "Encrypt section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "פצל את הקובץ הנבחר"
+msgstr ""
 
 msgid "Decrypt"
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "חלק המיזוג נטען."
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "אפשרויות פיצול"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr ""
@@ -384,13 +367,11 @@ msgstr ""
 msgid "Unpack"
 msgstr ""
 
-#, fuzzy
 msgid "Unpack section loaded."
-msgstr "חלק המיזוג נטען"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "אפשרויות פיצול"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -410,9 +391,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "התנגשות גירסאות pdf"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -429,13 +409,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "אפשרויות פיצול"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "פצל את הקובץ הנבחר"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -443,9 +421,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "הערה"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -456,9 +433,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "קובץ ה-PDF כולל טפסים"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -481,13 +457,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "אפשרויות מיזוג:"
+msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "חלק המיזוג נטען."
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -825,9 +799,8 @@ msgstr ""
 msgid "Error getting default environment."
 msgstr ""
 
-#, fuzzy
 msgid "Check now"
-msgstr "מסומן"
+msgstr ""
 
 msgid "Play alert sounds"
 msgstr ""
@@ -874,7 +847,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr ""
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 msgid "Save"
@@ -948,12 +922,3 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
-
-#~ msgid "Destination output file:"
-#~ msgstr "קובץ יעד הפלט:"
-
-#~ msgid "Split options:"
-#~ msgstr "אפשרויות פיצול:"
-
-#~ msgid "Select an input file"
-#~ msgstr "בחר קובץ קלט"

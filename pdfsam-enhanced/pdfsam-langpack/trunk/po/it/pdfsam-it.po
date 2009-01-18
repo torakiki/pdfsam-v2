@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-12-20 15:40+0000\n"
+"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"PO-Revision-Date: 2009-01-10 14:13+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-20 15:44+0000\n"
+"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -247,7 +247,7 @@ msgid "Split at this size"
 msgstr "Dividi a questa dimensione"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Dividi per livello di segnalibro"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
@@ -279,19 +279,14 @@ msgstr "Dividi ogni il documento ogni pagina dispari"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Divide il documento dopo i numeri di pagina (num1-num2-num3..)"
 
-# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
 msgstr ""
-"Divide il documento in file della dimensione data (approssimativamente)."
+"Dividi il documento in file della dimensione data (approssimativamente)"
 
-# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
-"Divide il documento in file della dimensione data (approssimativamente)."
+"Divide il documento alle pagine indicate dai segnalibri del livello "
+"selezionato"
 
 msgid "Destination folder"
 msgstr "Cartella di destinazione"
@@ -375,7 +370,8 @@ msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Es. prefisso_[BASENAME]_[CURRENTPAGE] genera prefisso_FileName_005.pdf."
 
@@ -426,16 +422,11 @@ msgstr "Sezione split caricata."
 msgid "Invalid unit: "
 msgstr "Unità non valida "
 
-# F:\workspace_pdfsame_enanched\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:189
-# F:\workspace_pdfsame_enanched\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:193
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Fill from document"
-msgstr "Inverti il primo documento"
+msgstr "Ricava dal documento"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "Ricavando la profondità massima dei segnalibri"
 
 msgid "Cover pdf file"
 msgstr "File pdf di copertina"
@@ -800,7 +791,8 @@ msgstr "Errore caricando l'ambiente dal file in input. "
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\business\PdfLoader.java:110
 msgid "Selection table is full, please remove some pdf document."
-msgstr "La tabella di selezione è piena, prego rimuovere alcuni documenti pdf."
+msgstr ""
+"La tabella di selezione è piena, prego rimuovere alcuni documenti pdf."
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\business\PdfLoader.java:111
 msgid "Table full"
@@ -1435,7 +1427,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Directory di lavoro di default"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Seleziona una directory dove i documenti saranno salvati e caricati di "
 "default"
@@ -1529,6 +1522,12 @@ msgstr "Taglia"
 msgid "Paste"
 msgstr "Incolla"
 
+# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:191
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
+#~ msgid "Split the document in files of the given size (roughly)."
+#~ msgstr ""
+#~ "Divide il documento in file della dimensione data (approssimativamente)."
+
 # F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:217
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
 #~ msgid "Split options:"
@@ -1554,8 +1553,8 @@ msgstr "Incolla"
 #~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
 #~ "substitution."
 #~ msgstr ""
-#~ "se contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" esegue la sostituzione "
-#~ "delle variabili."
+#~ "se contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" esegue la sostituzione delle "
+#~ "variabili."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:341
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
@@ -1563,8 +1562,8 @@ msgstr "Incolla"
 #~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
 #~ "oldstyle output file names."
 #~ msgstr ""
-#~ "se non contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera nomi dei file "
-#~ "di output col metodo standard."
+#~ "se non contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera nomi dei file di "
+#~ "output col metodo standard."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:342
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
