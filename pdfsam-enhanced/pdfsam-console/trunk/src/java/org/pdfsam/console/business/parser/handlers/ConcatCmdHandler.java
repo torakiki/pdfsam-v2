@@ -84,8 +84,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	                          FileParam.IS_FILE & FileParam.IS_READABLE,
 	                          FileParam.OPTIONAL,
 	                          FileParam.SINGLE_VALUED),            
-	            new BooleanParam(ConcatParsedCommand.COPYFIELDS_ARG, "input pdf documents contain forms (high memory usage)"),                          
-	            new BooleanParam(ConcatParsedCommand.REPLACE_ROTATIONS_ARG, "if true it replaces pages rotations with the \"-r\" rotations, if not specified the \"-r\" rotations are added to the pages rotations")                          
+	            new BooleanParam(ConcatParsedCommand.COPYFIELDS_ARG, "input pdf documents contain forms (high memory usage)")                          
     })); 
 	
 	/**

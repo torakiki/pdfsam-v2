@@ -58,7 +58,6 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	public static final String U_ARG = "u";
 	public static final String O_ARG = "o";
 	public static final String R_ARG = "r";
-	public static final String REPLACE_ROTATIONS_ARG = "replaceRotations";
 	
 	private File outputFile;
 	private File inputCvsOrXmlFile;
@@ -66,7 +65,6 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	private String pageSelection = "";
 	private PageRotation[] rotations = null;
 	private boolean copyFields = false;
-	private boolean replaceDocumentRotations = false;
 
 	public ConcatParsedCommand(){		
 	}
@@ -201,22 +199,8 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		retVal.append((inputCvsOrXmlFile== null)?"":"[inputCvsOrXmlFile="+inputCvsOrXmlFile.getAbsolutePath()+"]");
 		retVal.append("[pageSelection="+pageSelection+"]");
 		retVal.append("[copyFields="+copyFields+"]");
-		retVal.append("[replaceDocumentRotations="+replaceDocumentRotations+"]");
 		retVal.append("[command="+getCommand()+"]");
 		return retVal.toString();
 	}
 
-	/**
-	 * @return the replaceDocumentRotations
-	 */
-	public boolean isReplaceDocumentRotations() {
-		return replaceDocumentRotations;
-	}
-
-	/**
-	 * @param replaceDocumentRotations the replaceDocumentRotations to set
-	 */
-	public void setReplaceDocumentRotations(boolean replaceDocumentRotations) {
-		this.replaceDocumentRotations = replaceDocumentRotations;
-	}
 }
