@@ -274,12 +274,12 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 					renderer.process(content, pdPage.getResources());
 				}
               	pageItem.setThumbnail(scaledInstance);
-              	pageItem.setOriginalDocumentSize(recWidth, rectHeight, JPOD_RESOLUTION);
+              	pageItem.setPaperFormat(recWidth, rectHeight, JPOD_RESOLUTION);
               	if(pdPage.getRotate()!=0){
-              		pageItem.setRotation(Rotation.getRotation(pdPage.getRotate()));
+              		pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));
               	}
               	if(pageItem.isRotated() && pageItem.getThumbnail()!=null){
-              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getRotation().getDegrees()));	
+              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getCompleteRotation()));	
         		}
             }catch (Throwable t) {
             	pageItem.setThumbnail(ERROR_IMAGE);

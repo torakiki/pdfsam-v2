@@ -59,6 +59,7 @@ import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.renderers.VisualListRenderer;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
+import org.pdfsam.guiclient.dto.Rotation;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
 
@@ -710,7 +711,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			int i=0;
 			for(VisualPageListItem currentElement : validElements){
 				i++;
-				if(currentElement.isRotated()){
+				if(!Rotation.DEGREES_0.equals(currentElement.getRotation())){
 					retVal += i+":"+currentElement.getRotation().getDegrees()+","; 
 				}
 			}

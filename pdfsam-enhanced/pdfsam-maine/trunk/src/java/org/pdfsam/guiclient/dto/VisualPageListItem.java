@@ -40,7 +40,8 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	private String parentFileCanonicalPath = "";
 	private String documentPassword = "";
 	private Rotation rotation = Rotation.DEGREES_0;
-	private String originalDocumentSize = "";
+	private Rotation originalRotation = Rotation.DEGREES_0;
+	private String paperFormat = "";
 
 	public VisualPageListItem() {
 	}
@@ -208,14 +209,14 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @return true if this item is rotated
 	 */
 	public boolean isRotated(){
-		return (!rotation.equals(Rotation.DEGREES_0));
+		return (getCompleteRotation() != Rotation.DEGREES_0.getDegrees());
 	}
 	
 	/**
 	 * @return if the item has a 180 degrees rotation
 	 */
 	public boolean isFullyRotated(){
-		return rotation.equals(Rotation.DEGREES_180);
+		return (getCompleteRotation() == Rotation.DEGREES_180.getDegrees());
 	}
 	
 	/**
@@ -247,38 +248,24 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	
 
 	/**
-	 * @return the originalDocumentSize
+	 * Set the paper format in a string format
+	 * @param width width of the generated image
+	 * @param height height of the generated image
+	 * @param resolution the resolution of the generated image
 	 */
-	public String getOriginalDocumentSize() {
-		return originalDocumentSize;
-	}
-
-	/**
-	 * @param originalDocumentSize the imageDimensions to set
-	 */
-	public void setOriginalDocumentSize(String originalDocumentSize) {
-		this.originalDocumentSize = originalDocumentSize;
-	}
-
-	/**
-	 * Set the original document size in a string format
-	 * @param width
-	 * @param height
-	 * @param resolution the resolution
-	 */
-	public void setOriginalDocumentSize(double width, double height, int resolution) {
+	public void setPaperFormat(double width, double height, int resolution) {
 		double width2 = Math.round(ConversionUtility.toCentimeters(width/(double)resolution) * 10);
 		double height2 = Math.round(ConversionUtility.toCentimeters(height/(double)resolution) * 10);
-		this.originalDocumentSize = PaperFormatUtility.getFormat(width2,height2);
+		this.paperFormat = PaperFormatUtility.getFormat(width2,height2);
 	}
 
 	/**
-	 * set the original dimension taking the screen resolution
-	 * @param width
-	 * @param height
+	 * set the paper format using the screen resolution
+	 * @param width width of the generated image
+	 * @param height height of the generated image
 	 */
-	public void setOriginalDocumentSize(double width, double height) {
-		setOriginalDocumentSize(width, height, Configuration.getInstance().getScreenResolution());
+	public void setPaperFormat(double width, double height) {
+		setPaperFormat(width, height, Configuration.getInstance().getScreenResolution());
 	}
 
 	/**
@@ -304,7 +291,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	        .append(OPEN).append("parentFileCanonicalPath=").append(this.parentFileCanonicalPath).append(CLOSE)
 	        .append(OPEN).append("documentPassword=").append(this.documentPassword).append(CLOSE)
 	        .append(OPEN).append("rotation=").append(this.rotation).append(CLOSE)
-	        .append(OPEN).append("originalDocumentSize=").append(this.originalDocumentSize).append(CLOSE)
+	        .append(OPEN).append("paperFormat=").append(this.paperFormat).append(CLOSE)
 	        .append(" )");
 	    
 	    return retValue.toString();
@@ -312,10 +299,54 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	
 	public Object clone(){
 		VisualPageListItem retVal = new VisualPageListItem(thumbnail, pageNumber, deleted, parentFileCanonicalPath, documentPassword, rotation);
-		retVal.setOriginalDocumentSize(originalDocumentSize);
+		retVal.setPaperFormat(paperFormat);
 		retVal.setRotatedThumbnail(rotatedThumbnail);
+		retVal.setOriginalRotation(originalRotation);
 		return retVal;
 	}
 
+	/**
+	 * @return the paperFormat
+	 */
+	public String getPaperFormat() {
+		return paperFormat;
+	}
+
+	/**
+	 * @param paperFormat the paperFormat to set
+	 */
+	public void setPaperFormat(String paperFormat) {
+		this.paperFormat = paperFormat;
+	}
+
+	/**
+	 * @return the originalRotation
+	 */
+	public Rotation getOriginalRotation() {
+		return originalRotation;
+	}
+
+	/**
+	 * @param originalRotation the originalRotation to set
+	 */
+	public void setOriginalRotation(Rotation originalRotation) {
+		this.originalRotation = originalRotation;
+	}
+
+	/**
+	 * @return the full page rotation given by the sum of the {@link #originalRotation} and {@link #rotation}
+	 */
+	public int getCompleteRotation(){
+		int retVal = rotation.getDegrees();
+		System.out.println("---------------------");
+		System.out.println("Rotation: "+retVal);
+		if(originalRotation!=null){
+			retVal += originalRotation.getDegrees();
+			System.out.println("Complete rotation: "+retVal);
+		}
+		retVal = (retVal % 360);
+		System.out.println("Module rotation: "+retVal);
+		return retVal;
+	}
 
 }

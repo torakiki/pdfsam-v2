@@ -59,8 +59,8 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 				drawRedCross = item.isDeleted();
 			}
 			String text = item.getPageNumber()+"";
-			if(item.getOriginalDocumentSize()!=null && item.getOriginalDocumentSize().length()>0){
-				text += " - ["+item.getOriginalDocumentSize()+"]";
+			if(item.getPaperFormat()!=null && item.getPaperFormat().length()>0){
+				text += " - ["+item.getPaperFormat()+"]";
 			}
 			setText(text);
 			setHorizontalTextPosition(JLabel.CENTER);

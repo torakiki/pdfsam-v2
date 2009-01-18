@@ -336,7 +336,7 @@ public class VisualListModel extends AbstractListModel {
     private void rotateItemThumnail(VisualPageListItem item){
     	//image rotation
     	if(item.isRotated() && item.getThumbnail()!=null){
-			item.setRotatedThumbnail(ImageUtility.rotateImage(item.getThumbnail(), item.getRotation().getDegrees()));	
+			item.setRotatedThumbnail(ImageUtility.rotateImage(item.getThumbnail(), item.getCompleteRotation()));	
 		}else{
 			item.setRotatedThumbnail(null);
 		}
