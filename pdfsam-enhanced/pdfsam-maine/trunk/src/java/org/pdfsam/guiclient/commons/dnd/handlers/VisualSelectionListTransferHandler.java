@@ -208,7 +208,12 @@ public class VisualSelectionListTransferHandler extends TransferHandler {
     	int[] dataList = t.getDataList();
     	int index = destComponent.getSelectedIndex();
     	if(t.isDifferentDestination()){
-    		addIndex = index+1;
+    		//drop at the end if nothing is selected
+    		if(index == -1){
+    			addIndex = destComponent.getModel().getSize();
+    		}else{
+    			addIndex = index+1;
+    		}
     		retVal = true;
     	}
         //same component prevents dropping over itself

@@ -352,7 +352,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     		
     		//rotate item	
     		final JMenuItem menuItemRotate = new JMenuItem();
-    		menuItemRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
+    		menuItemRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/clockwise.png")));
     		menuItemRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise"));
     		menuItemRotate.addMouseListener(new MouseAdapter() {
                 public void mouseReleased(MouseEvent e) {
@@ -366,7 +366,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     		
     		//rotate anticlock item	
     		final JMenuItem menuItemAntiRotate = new JMenuItem();
-    		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
+    		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/anticlockwise")));
     		menuItemAntiRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise"));
     		menuItemAntiRotate.addMouseListener(new MouseAdapter() {
                 public void mouseReleased(MouseEvent e) {

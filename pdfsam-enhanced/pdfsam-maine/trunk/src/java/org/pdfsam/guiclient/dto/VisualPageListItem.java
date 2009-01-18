@@ -338,14 +338,10 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 */
 	public int getCompleteRotation(){
 		int retVal = rotation.getDegrees();
-		System.out.println("---------------------");
-		System.out.println("Rotation: "+retVal);
 		if(originalRotation!=null){
 			retVal += originalRotation.getDegrees();
-			System.out.println("Complete rotation: "+retVal);
 		}
 		retVal = (retVal % 360);
-		System.out.println("Module rotation: "+retVal);
 		return retVal;
 	}
 
