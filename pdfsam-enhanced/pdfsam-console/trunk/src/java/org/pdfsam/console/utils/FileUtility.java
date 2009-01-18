@@ -162,9 +162,11 @@ public class FileUtility {
     public static boolean deleteFile(File tmpFile){
     	boolean retVal = false;
     	try{
-    		tmpFile.renameTo(tmpFile);
+    		if(!tmpFile.delete()){
+    			log.error("Unable to delete file "+tmpFile.getName());
+    		}
     	}catch(Exception e){
-    		log.error("Unable to delete file "+tmpFile.getName());
+    		log.error("Unable to delete file "+tmpFile.getName(), e);
     	}
     	return retVal;
     }
