@@ -15,7 +15,6 @@
 package org.pdfsam.guiclient.commons.business.loaders;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -55,7 +54,6 @@ public class PdfLoader {
 			workQueue = new WorkQueue(1, 1);
 		}else{
 			workQueue = new WorkQueue(10, 1);			
-//			fileChooser.setAccessory(CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.DONT_PRESERVER_ORDER_CHECKBOX_TYPE));
 		}
         
 	}    

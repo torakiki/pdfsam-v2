@@ -66,7 +66,7 @@ public class ClosableTabbedPanelAdder {
 	 */
 	public void addTabs(File[] files){
 		for(int i =0; i<files.length; i++){
-    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, true, false, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
+    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, true, false, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
     		if(outputPathPropertyChangeListener!=null){
     			inputPanel.enableSetOutputPathMenuItem();
     			inputPanel.addPropertyChangeListener(outputPathPropertyChangeListener);
@@ -75,8 +75,8 @@ public class ClosableTabbedPanelAdder {
     		inputPanel.setSelectedPdfDocument(currFile);
     		inputPanel.getPdfLoader().addFile(currFile);
     		String panelName = currFile.getName();
-    		if(panelName.length()>12){
-    			panelName = currFile.getName().substring(0, 9)+"...";
+    		if(panelName.length()>16){
+    			panelName = currFile.getName().substring(0, 14)+"..";
     		}
     		inputTabbedPanel.addTab(panelName, inputPanel, null, currFile.getName());
     		inputTabbedPanel.addCloseableTabbedPaneListener(new CleanClosedTabbedPanelListener(inputTabbedPanel));

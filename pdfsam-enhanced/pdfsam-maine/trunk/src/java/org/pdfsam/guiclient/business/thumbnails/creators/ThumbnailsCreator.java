@@ -63,7 +63,17 @@ public interface ThumbnailsCreator {
 	 * @return an image version of the given page
 	 * @throws ThumbnailCreationException
 	 */
-	public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException;
+	public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException;	
+	/**
+	 * 
+	 * @param fileName
+	 * @param password
+	 * @param page
+	 * @param rotation page rotation in degrees
+	 * @return
+	 * @throws ThumbnailCreationException
+	 */
+	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
 	/**
 	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
 	 * @param fileName
@@ -92,6 +102,15 @@ public interface ThumbnailsCreator {
 	 * @throws ThumbnailCreationException
 	 */
 	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException;
+	/**
+	 * @param fileName
+	 * @param password
+	 * @param page
+	 * @param rotation page rotation in degrees
+	 * @return
+	 * @throws ThumbnailCreationException
+	 */
+	public BufferedImage getPageImage(File fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
 	/**
 	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
 	 * @param inputFile pdf document

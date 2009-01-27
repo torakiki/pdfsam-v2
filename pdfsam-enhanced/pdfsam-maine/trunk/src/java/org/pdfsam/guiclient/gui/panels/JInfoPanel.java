@@ -55,7 +55,6 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private String author = "";
     private String version = "";
     private String applicationName = "";
-    private String language = "";
     private String buildDate = "";
     private String javaHome = "";
     private String javaVersion = "";
@@ -85,7 +84,6 @@ public class JInfoPanel extends AbstractPlugablePanel{
              author = GuiClient.AUTHOR;
              version = GuiClient.getVersion();
              applicationName = GuiClient.getApplicationName();
-             language = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/language");
              buildDate = GuiClient.getBuildDate();
              javaHome = System.getProperty("java.home");
              javaVersion = System.getProperty("java.runtime.name")+" "+System.getProperty("java.runtime.version");
@@ -105,7 +103,6 @@ public class JInfoPanel extends AbstractPlugablePanel{
         textInfoArea.setContentType("text/html");   
         textInfoArea.setText("<html><head></head><body>"+applicationName+"<br><br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Version: ")+version+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Language: ")+language+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+author+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Build date: ")+buildDate+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java home: ")+javaHome+"<br>"

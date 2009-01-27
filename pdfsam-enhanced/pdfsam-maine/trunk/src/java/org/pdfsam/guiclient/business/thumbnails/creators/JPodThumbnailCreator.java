@@ -67,6 +67,10 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	private Thread closer = null;
 	
 	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException {
+		return getPageImage(inputFile, password, page, 0);
+	}
+
+	public BufferedImage getPageImage(File inputFile, String password, int page, int rotation) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		IGraphicsContext graphics = null;
 		PDDocument pdfDoc = null;
@@ -94,8 +98,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				if(pdfDoc!=null){
 					pdfDoc.close();
 				}
-				if(pdPage.getRotate()!=0){
-              		Image rotated = ImageUtility.rotateImage(retVal, pdPage.getRotate());	
+				int totalRotation = (rotation+pdPage.getRotate())%360;
+				if(totalRotation!=0){
+              		Image rotated = ImageUtility.rotateImage(retVal, totalRotation);	
               		retVal = new BufferedImage(rotated.getWidth(null), rotated.getHeight(null), BufferedImage.TYPE_INT_RGB);
               		Graphics g = retVal.getGraphics();
               		g.drawImage(rotated, 0, 0, null);
@@ -146,6 +151,10 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 						}else{
 							throw ioe;
 						}
+					}
+					//require password if encrypted
+					if(pdfDoc.isEncrypted() && (providedPwd==null || providedPwd.length()==0)){
+						providedPwd = DialogUtility.askForDocumentPasswordDialog(panel, inputFile.getName());
 					}
 					if(pdfDoc != null){
 						panel.setSelectedPdfDocument(inputFile);              	
@@ -207,8 +216,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 */
 	private void execute(Runnable r){
 		if(pool==null || pool.isShutdown()){
-			//pool = Executors.newFixedThreadPool(2);			
-			pool = Executors.newSingleThreadExecutor();
+			pool = Executors.newFixedThreadPool(3);			
+			//pool = Executors.newSingleThreadExecutor();
 		}
 		pool.execute(r);
 	}
@@ -372,4 +381,5 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	public int getResolution(){
 		return JPOD_RESOLUTION;
 	}
+
 }

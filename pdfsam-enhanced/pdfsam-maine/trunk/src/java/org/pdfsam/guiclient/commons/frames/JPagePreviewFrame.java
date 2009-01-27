@@ -36,13 +36,9 @@ import javax.swing.border.SoftBevelBorder;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
-import org.pdfsam.guiclient.business.TransformationHandler;
 import org.pdfsam.guiclient.business.listeners.SaveImageActionListener;
-import org.pdfsam.guiclient.business.listeners.mediators.TransformationHandlerMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
-import org.pdfsam.guiclient.utils.ConversionUtility;
-import org.pdfsam.guiclient.utils.paper.PaperFormatUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Frame to open the single page preview
@@ -60,7 +56,6 @@ public class JPagePreviewFrame extends JFrame {
 	private final JLabel statusLabel = new JLabel();
 	private JScrollPane mainScrollPanel;
 	private final JPreviewImage pagePreview = new JPreviewImage();
-	private final TransformationHandler transformationHandler = new TransformationHandler();
 	
 	public JPagePreviewFrame(){
 		initialize();
@@ -73,10 +68,8 @@ public class JPagePreviewFrame extends JFrame {
 	        setSize(640, 480);
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-			
-			TransformationHandlerMediator mediator = new TransformationHandlerMediator(transformationHandler, pagePreview);
-			
-			JMenuBar menuBar = new JMenuBar();
+
+		JMenuBar menuBar = new JMenuBar();
 			JMenu menuFile = new JMenu();
 			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File"));
 			menuFile.setMnemonic(KeyEvent.VK_F);
@@ -94,58 +87,11 @@ public class JPagePreviewFrame extends JFrame {
 				}				
 			});
 			
-			JMenu menuEdit = new JMenu();
-			menuEdit.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Edit"));
-			
-			JMenuItem zoomInItem = new JMenuItem();
-			zoomInItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Zoom in"));
-			zoomInItem.setActionCommand(TransformationHandlerMediator.ZOOM_IN_ACTION);
-			zoomInItem.addActionListener(mediator);
-			
-			JMenuItem zoomOutItem = new JMenuItem();
-			zoomOutItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Zoom out"));
-			zoomOutItem.setActionCommand(TransformationHandlerMediator.ZOOM_OUT_ACTION);
-			zoomOutItem.addActionListener(mediator);
-			
-			JMenuItem zoomNormalItem = new JMenuItem();
-			zoomNormalItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Zoom normal"));
-			zoomNormalItem.setActionCommand(TransformationHandlerMediator.ZOOM_NORMAL_ACTION);
-			zoomNormalItem.addActionListener(mediator);
-			
-			JMenuItem flipHorItem = new JMenuItem();
-			flipHorItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Flip horizontal"));
-			flipHorItem.setActionCommand(TransformationHandlerMediator.FLIP_HOR_ACTION);
-			flipHorItem.addActionListener(mediator);			
-	
-			JMenuItem flipVerItem = new JMenuItem();
-			flipVerItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Flip vertical"));
-			flipVerItem.setActionCommand(TransformationHandlerMediator.FLIP_VER_ACTION);
-			flipVerItem.addActionListener(mediator);			
-
-			JMenuItem rotateRightItem = new JMenuItem();
-			rotateRightItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Rotate right"));
-			rotateRightItem.setActionCommand(TransformationHandlerMediator.ROTATE_RIGHT_ACTION);
-			rotateRightItem.addActionListener(mediator);			
-
-			JMenuItem rotateLeftItem = new JMenuItem();
-			rotateLeftItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Rotate left"));
-			rotateLeftItem.setActionCommand(TransformationHandlerMediator.ROTATE_LEFT_ACTION);
-			rotateLeftItem.addActionListener(mediator);			
+				
 
 			menuFile.add(saveAsItem);
-			menuFile.add(closeItem);
-			menuEdit.add(zoomInItem);
-			menuEdit.add(zoomOutItem);
-			menuEdit.add(zoomNormalItem);
-			menuEdit.addSeparator();
-			menuEdit.add(flipHorItem);
-			menuEdit.add(flipVerItem);
-			menuEdit.addSeparator();
-			menuEdit.add(rotateRightItem);
-			menuEdit.add(rotateLeftItem);
-			
+			menuFile.add(closeItem);			
 			menuBar.add(menuFile);
-			//menuBar.add(menuEdit);
 			getRootPane().setJMenuBar(menuBar);
 			
 			mainPanel.add(pagePreview);
@@ -160,7 +106,6 @@ public class JPagePreviewFrame extends JFrame {
 			
 			getContentPane().add(mainScrollPanel,BorderLayout.CENTER);
 	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
-			//add(mainScrollPanel);
 		}catch(Exception e){
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating preview panel."),e);
 		}
@@ -170,7 +115,7 @@ public class JPagePreviewFrame extends JFrame {
 	 * sets the image to be displayed
 	 * @param image
 	 */
-	public void setPagePreview(Image image, int resolution){
+	public void setPagePreview(Image image){
 		pagePreview.setImage(image);
 		validate();
         repaint();  

@@ -34,15 +34,19 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	
 	private static final Logger log = Logger.getLogger(AbstractThumbnailCreator.class.getPackage().getName());
 	
-	public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException {
+	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		if(fileName != null && fileName.length()>0){
     		File inputFile = new File(fileName);
-    		retVal = getPageImage(inputFile, password, page);
+    		retVal = getPageImage(inputFile, password, page, rotation);
 		}else{
 			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create image for a null input document"));
 		}
 		return retVal;
+	}
+	
+	public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException {
+		return getPageImage(fileName, password, page, 0);
 	}
 	
 	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel) {

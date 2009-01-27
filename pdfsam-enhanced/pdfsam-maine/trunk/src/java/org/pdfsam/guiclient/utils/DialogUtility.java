@@ -17,6 +17,7 @@ package org.pdfsam.guiclient.utils;
 import java.awt.Component;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
@@ -29,7 +30,7 @@ import org.pdfsam.i18n.GettextResource;
 public class DialogUtility {
 
 	/**
-	 * Shows a yes/no/cancel dialog to ask for change the ouput directory
+	 * Shows a yes/no/cancel dialog to ask for change the output directory
 	 * @param comp parent component
 	 * @param suggestedDir suggested directory
 	 * @return
@@ -46,18 +47,36 @@ public class DialogUtility {
 	}
 	
 	/**
+	 * Shows a yes/no/cancel dialog to ask the user about overwriting output file
+	 * @param comp parent component
+	 * @param filename suggested directory
+	 * @return
+	 */
+	public static int askForOverwriteOutputFileDialog(Component comp, String filename){
+
+		return JOptionPane.showOptionDialog(comp,
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selected output file already exists")+filename+".\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Would you like to overwrite it?"),
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Output location error"),
+		    JOptionPane.YES_NO_CANCEL_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,
+		    null,
+		    null);
+
+	}
+	/**
 	 * Show a dialog to ask the user for the document password
 	 * @param comp
 	 * @return
 	 */
 	public static String askForDocumentPasswordDialog(Component comp, String filename){
-		return (String)JOptionPane.showInputDialog(comp,
-                GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please provide the password to open the encrypted document "+filename),
-                GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password request"),
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                null,
-                null);
+		String retVal = null;
+		JPasswordField passwordField= new JPasswordField();
+		Object[] message = new Object[] {GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please provide the password to open the encrypted document"), filename, passwordField};
 
+		if(JOptionPane.showOptionDialog(comp, message, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password request"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == 0){
+			retVal= String.valueOf(passwordField.getPassword());
+		}
+		return retVal; 
 	}
 }

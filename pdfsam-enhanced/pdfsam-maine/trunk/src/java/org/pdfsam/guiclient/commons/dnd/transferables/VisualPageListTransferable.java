@@ -19,10 +19,9 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
-import javax.swing.JComponent;
-
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Transferable for the D&D support 
@@ -33,26 +32,23 @@ public class VisualPageListTransferable implements Transferable {
 
 	private static final Logger log = Logger.getLogger(VisualPageListTransferable.class.getPackage().getName());
 	
-	private JComponent source;
-	private JComponent destination;
-	private int[] dataList;
+	private TransferableData data;
 	private static DataFlavor visualListFlavor;
-	
-	
-	public VisualPageListTransferable(JComponent source, int[] dataList) {
-		this(source, null, dataList);
-	}
 	
 	/**
 	 * @param source
 	 * @param destination
 	 * @param dataList
 	 */
-	public VisualPageListTransferable(JComponent source, JComponent destination, int[] dataList) {
+	public VisualPageListTransferable(TransferableData data) {
 		super();
-		this.source = source;
-		this.destination = destination;
-		this.dataList = dataList;
+		this.data = data;
+		init();
+	}
+	
+	public VisualPageListTransferable(VisualPageListItem[] dataList, int[] indexesList) {
+		super();
+		this.data = new TransferableData(dataList, indexesList);
 		init();
 	}
 
@@ -74,7 +70,7 @@ public class VisualPageListTransferable implements Transferable {
 		if (!isDataFlavorSupported(flavor)){
 			throw new UnsupportedFlavorException(flavor);
 	    }
-	    return this;
+	    return data;
 	}
 
 	public DataFlavor[] getTransferDataFlavors() {
@@ -86,34 +82,6 @@ public class VisualPageListTransferable implements Transferable {
 	}
 
 	/**
-	 * @return the source
-	 */
-	public JComponent getSource() {
-		return source;
-	}
-
-	/**
-	 * @param source the source to set
-	 */
-	public void setSource(JComponent source) {
-		this.source = source;
-	}
-
-	/**
-	 * @return the dataList
-	 */
-	public int[] getDataList() {
-		return dataList;
-	}
-
-	/**
-	 * @param dataList the dataList to set
-	 */
-	public void setDataList(int[] dataList) {
-		this.dataList = dataList;
-	}
-
-	/**
 	 * @return the visualListFlavor
 	 */
 	public static DataFlavor getVisualListFlavor() {
@@ -121,27 +89,53 @@ public class VisualPageListTransferable implements Transferable {
 		return visualListFlavor;
 	}
 
-	
 	/**
-	 * @return the destination
+	 * It models the transferred data
+	 * @author Andrea Vacondio
+	 *
 	 */
-	public JComponent getDestination() {
-		return destination;
-	}
+	public class TransferableData{
+		
+		private VisualPageListItem[] dataList;
+		private int[] indexesList;
+		
+		public TransferableData() {
+		}
 
-	/**
-	 * @param destination the destination to set
-	 */
-	public void setDestination(JComponent destination) {
-		this.destination = destination;
+		/**
+		 * @param dataList
+		 * @param indexesList
+		 */
+		public TransferableData(VisualPageListItem[] dataList, int[] indexesList) {
+			super();
+			this.dataList = dataList;
+			this.indexesList = indexesList;
+		}
+		/**
+		 * @return the dataList
+		 */
+		public VisualPageListItem[] getDataList() {
+			return dataList;
+		}
+		/**
+		 * @param dataList the dataList to set
+		 */
+		public void setDataList(VisualPageListItem[] dataList) {
+			this.dataList = dataList;
+		}
+		/**
+		 * @return the indexesList
+		 */
+		public int[] getIndexesList() {
+			return indexesList;
+		}
+		/**
+		 * @param indexesList the indexesList to set
+		 */
+		public void setIndexesList(int[] indexesList) {
+			this.indexesList = indexesList;
+		}
+		
+		
 	}
-
-	/**
-	 * @return the differentDestination
-	 */
-	public boolean isDifferentDestination() {
-		return !source.equals(destination);
-	}
-	
-	
 }

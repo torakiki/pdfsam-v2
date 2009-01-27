@@ -33,6 +33,8 @@ public class PagesWorker {
     public static final String MOVE_DOWN = "moveDown";
     public static final String REMOVE = "remove";
     public static final String UNDELETE = "undelete";
+    public static final String ROTATE_CLOCK = "rotateclock";
+    public static final String ROTATE_ANTICLOCK = "rotateanticlock";
     
     private JVisualSelectionList list;
     
@@ -67,7 +69,13 @@ public class PagesWorker {
 		    		((VisualListModel)list.getModel()).removeElements(selectedIndexes, !list.isDrawDeletedItems());
 		    	}else if(UNDELETE.equals(action)){
 		    		((VisualListModel)list.getModel()).undeleteElements(selectedIndexes);
-		    	}else {
+		    	}else if (ROTATE_CLOCK.equals(action)){
+                		((VisualListModel)list.getModel()).rotateClockwiseElements(selectedIndexes);
+		    	}else if (ROTATE_ANTICLOCK.equals(action)){
+                		((VisualListModel)list.getModel()).rotateAnticlockwiseElements(selectedIndexes);
+		    	}
+		    	else {
+		    	
 		    		log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unknown Action"));
 		    	}
 			}

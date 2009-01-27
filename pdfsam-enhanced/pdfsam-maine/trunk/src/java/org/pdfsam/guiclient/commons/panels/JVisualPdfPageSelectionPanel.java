@@ -31,6 +31,7 @@ import java.util.LinkedList;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DropMode;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -54,7 +55,8 @@ import org.pdfsam.guiclient.commons.business.listeners.mediators.PagesActionsMed
 import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
 import org.pdfsam.guiclient.commons.dnd.droppers.JVisualSelectionListDropper;
-import org.pdfsam.guiclient.commons.dnd.handlers.VisualSelectionListTransferHandler;
+import org.pdfsam.guiclient.commons.dnd.handlers.VisualListExportTransferHandler;
+import org.pdfsam.guiclient.commons.dnd.handlers.VisualListTransferHandler;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.renderers.VisualListRenderer;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -93,7 +95,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private String selectedPdfDocumentPassword = "";
 	private boolean showButtonPanel = true;
 	private int topPanelStyle = STYLE_TOP_PANEL_FULL;
-	private boolean acceptDropFromDifferentComponents = true;
 	private boolean showContextMenu = true;
 	private boolean canImportFile = true;
 	private boolean canImportListObject = true;
@@ -132,6 +133,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     private JButton removeButton;
     private JButton moveUpButton;
     private JButton moveDownButton;
+    private JButton rotateButton;
+    private JButton rotateAntiButton;
 
     /**
      * default constructor
@@ -154,7 +157,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param showButtonPanel true=shows button panel
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel){
-		this(orientation, drawDeletedItems, showButtonPanel, false, true, STYLE_TOP_PANEL_FULL);
+		this(orientation, drawDeletedItems, showButtonPanel, true, STYLE_TOP_PANEL_FULL);
 	}
 
 	/**
@@ -166,9 +169,9 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param showContextMenu
 	 * @param topPanelStyle
 	 */
-	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, boolean acceptDropFromDifferentComponents, 
+	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, 
 			boolean showContextMenu, int topPanelStyle){
-		this(orientation, drawDeletedItems, showButtonPanel, acceptDropFromDifferentComponents, showContextMenu, topPanelStyle, true, true, SINGLE_INTERVAL_SELECTION);
+		this(orientation, drawDeletedItems, showButtonPanel, showContextMenu, topPanelStyle, true, true, SINGLE_INTERVAL_SELECTION);
 	}
     
 	/**
@@ -183,7 +186,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param canImportListObject true if can accept JVM object
 	 * @param selectionType selection type
 	 */
-	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, boolean acceptDropFromDifferentComponents, 
+	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, 
 			boolean showContextMenu, int topPanelStyle, boolean canImportFile, boolean canImportListObject, int selectionType){
 		this.orientation = orientation;
 		this.config = Configuration.getInstance();
@@ -191,7 +194,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		this.drawDeletedItems = drawDeletedItems;
 		this.showButtonPanel = showButtonPanel;
 		this.showContextMenu = showContextMenu;
-		this.acceptDropFromDifferentComponents = acceptDropFromDifferentComponents;
 		this.topPanelStyle = topPanelStyle;
 		this.canImportFile = canImportFile;
 		this.canImportListObject = canImportListObject;
@@ -205,8 +207,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		setLayout(new GridBagLayout());
 		
 		thumbnailList.setDrawDeletedItems(drawDeletedItems);
-		thumbnailList.setTransferHandler(new VisualSelectionListTransferHandler(pdfLoader, acceptDropFromDifferentComponents, canImportFile, canImportListObject));
+		if(canImportListObject){
+			thumbnailList.setTransferHandler(new VisualListTransferHandler());
+		}else{
+			thumbnailList.setTransferHandler(new VisualListExportTransferHandler());
+		}
 		thumbnailList.setDragEnabled(true);
+		thumbnailList.setDropMode(DropMode.INSERT);
 		pagesWorker = new PagesWorker(thumbnailList);
 		thumbnailList.addKeyListener(new VisualPdfSelectionKeyAdapter(pagesWorker));
 		thumbnailList.addMouseListener(new PageOpenerMouseAdapter(thumbnailList));
@@ -305,7 +312,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		
 		if(canImportFile){
 			JVisualSelectionListDropper dropper = new JVisualSelectionListDropper(pdfLoader);
-			scrollPanelDropTarget = new DropTarget(listScroller,dropper);
+			scrollPanelDropTarget = new DropTarget(thumbnailList,dropper);
 		}
 
 		//preview item	
@@ -354,28 +361,14 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     		final JMenuItem menuItemRotate = new JMenuItem();
     		menuItemRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/clockwise.png")));
     		menuItemRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise"));
-    		menuItemRotate.addMouseListener(new MouseAdapter() {
-                public void mouseReleased(MouseEvent e) {
-                	int[] selection = thumbnailList.getSelectedIndices();
-                	if(selection!=null){
-                		((VisualListModel)thumbnailList.getModel()).rotateClockwiseElements(selection);
-                	}
-                }
-            });
+    		menuItemRotate.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.ROTATE_CLOCK, pagesWorker));
     		popupMenu.add(menuItemRotate);
     		
     		//rotate anticlock item	
     		final JMenuItem menuItemAntiRotate = new JMenuItem();
     		menuItemAntiRotate.setIcon(new ImageIcon(this.getClass().getResource("/images/anticlockwise.png")));
     		menuItemAntiRotate.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise"));
-    		menuItemAntiRotate.addMouseListener(new MouseAdapter() {
-                public void mouseReleased(MouseEvent e) {
-                	int[] selection = thumbnailList.getSelectedIndices();
-                	if(selection!=null){
-                		((VisualListModel)thumbnailList.getModel()).rotateAnticlockwiseElements(selection);
-                	}
-                }
-            });
+    		menuItemAntiRotate.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.ROTATE_ANTICLOCK, pagesWorker));
     		popupMenu.add(menuItemAntiRotate);
     		
         	enableSetOutputPathMenuItem();
@@ -508,6 +501,30 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			undeleteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 			addButtonToButtonPanel(undeleteButton);
 		}
+
+		//rotate button
+		rotateButton = new JButton();
+		rotateButton.addActionListener(pageActionListener);
+		rotateButton.setIcon(new ImageIcon(this.getClass().getResource("/images/clockwise.png")));
+		rotateButton.setActionCommand(PagesWorker.ROTATE_CLOCK);
+		rotateButton.setMargin(new Insets(2, 2, 2, 2));
+		rotateButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate right"));
+		rotateButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise selected pages"));
+		rotateButton.addKeyListener(new EnterDoClickListener(rotateButton));
+		rotateButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButtonToButtonPanel(rotateButton);
+
+		//rotate button
+		rotateAntiButton = new JButton();
+		rotateAntiButton.addActionListener(pageActionListener);
+		rotateAntiButton.setIcon(new ImageIcon(this.getClass().getResource("/images/anticlockwise.png")));
+		rotateAntiButton.setActionCommand(PagesWorker.ROTATE_ANTICLOCK);
+		rotateAntiButton.setMargin(new Insets(2, 2, 2, 2));
+		rotateAntiButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate left"));
+		rotateAntiButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise selected pages"));
+		rotateAntiButton.addKeyListener(new EnterDoClickListener(rotateAntiButton));
+		rotateAntiButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButtonToButtonPanel(rotateAntiButton);
 	}
 	/**
 	 * reset the panel
@@ -537,11 +554,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	public void setDocumentProperties(DocumentInfo documetnInfo){
 		if(documetnInfo != null){
-		String encrypted = GettextResource.gettext(config.getI18nResourceBundle(),"No");
-		if(documetnInfo.isEncrypted()){
-			encrypted = GettextResource.gettext(config.getI18nResourceBundle(),"Yes");
-		}
-		documentProperties.setToolTipText( 
+			String encrypted = documetnInfo.isEncrypted()?GettextResource.gettext(config.getI18nResourceBundle(),"Yes"):GettextResource.gettext(config.getI18nResourceBundle(),"No");
+			documentProperties.setToolTipText( 
 	    		"<html><body><b><p>"+GettextResource.gettext(config.getI18nResourceBundle(),"File: ")+"</b>"+documetnInfo.getFileName()+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pages: ")+"</b>"+documetnInfo.getPages()+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version: ")+"</b>"+(documetnInfo.getPdfVersion()!=null? documetnInfo.getPdfVersion():"")+"</p>"+

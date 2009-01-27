@@ -115,7 +115,7 @@ public class PdfThumbnailsLoader {
     /**
      * add a file to the JList
      * @param file
-     * @param checkIfAlreadyAdded if true it checks if the list is already filled, if so it askes the user
+     * @param checkIfAlreadyAdded if true it checks if the list is already filled, if so it asks the user
      */
     public void addFile(File file, boolean checkIfAlreadyAdded){
     	if(!checkIfAlreadyAdded || (checkIfAlreadyAdded && canLoad())){	    	
