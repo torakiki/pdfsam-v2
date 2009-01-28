@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.dnd.droppers;
 
+import java.io.File;
 import java.util.List;
 
 import org.pdfsam.guiclient.commons.business.loaders.PdfLoader;
@@ -29,10 +30,7 @@ public class JPdfSelectionTableDropper extends AbstractDropper {
 		this.loader = loader;		
 	}
 	
-	protected void executeDrop(Object arg0){
-		 if (arg0 instanceof List) {
-             List files = (List)arg0;
-             loader.addFiles(files, true);
-         }
+	protected void executeDrop(List<File> arg0){
+            loader.addFiles(arg0, true);
 	}
 }

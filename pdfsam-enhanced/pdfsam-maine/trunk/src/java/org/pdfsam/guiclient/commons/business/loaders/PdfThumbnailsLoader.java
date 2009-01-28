@@ -24,6 +24,7 @@ import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 /**
@@ -75,11 +76,7 @@ public class PdfThumbnailsLoader {
     	boolean retVal = true;
     	if(panel.getThumbnailList().getModel().getSize() >= 1){
 			//JList has elements and i want to clean
-    		if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(panel,
-       				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selection list is full, would you like to empty before the new documents is loaded?"),
-    				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"List full"),
-				    JOptionPane.YES_NO_OPTION,
-				    JOptionPane.QUESTION_MESSAGE)){
+    		if(JOptionPane.YES_OPTION == DialogUtility.askForEmptySelectionPanel(panel)){
     			//empty the model
     			panel.resetPanel(); 
     			creator.clean();

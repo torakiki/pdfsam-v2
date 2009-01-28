@@ -41,8 +41,7 @@ public class JVisualSelectionListDropper extends AbstractDropper {
 		this.loader = loader;
 	}
 
-	protected void executeDrop(Object arg0) {
-		List<File> fileList = (List<File>)arg0;
+	protected void executeDrop(List<File> fileList) {
     	if(fileList.size()!=1){
     		log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a single pdf document."));
     	}else{

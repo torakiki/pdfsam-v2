@@ -22,6 +22,8 @@ import java.awt.Insets;
 import java.awt.dnd.DropTarget;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -120,6 +122,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     private final JLabel documentProperties = new JLabel();    
     private final JVisualSelectionList thumbnailList = new JVisualSelectionList();
     private DropTarget scrollPanelDropTarget;
+    private DropTarget thumbListDropTarget;
     private PdfThumbnailsLoader pdfLoader;
     private VisualPdfSelectionActionListener pdfSelectionActionListener;
     private PagesActionsMediator pageActionListener;
@@ -220,6 +223,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		
 		if(showButtonPanel){
 			initButtonPanel(pagesWorker);
+			initKeyListener();
 		}
 		
 		//JList orientation
@@ -312,7 +316,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		
 		if(canImportFile){
 			JVisualSelectionListDropper dropper = new JVisualSelectionListDropper(pdfLoader);
-			scrollPanelDropTarget = new DropTarget(thumbnailList,dropper);
+			scrollPanelDropTarget = new DropTarget(listScroller,dropper);
+			thumbListDropTarget = new DropTarget(thumbnailList,dropper);
 		}
 
 		//preview item	
@@ -509,7 +514,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		rotateButton.setActionCommand(PagesWorker.ROTATE_CLOCK);
 		rotateButton.setMargin(new Insets(2, 2, 2, 2));
 		rotateButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate right"));
-		rotateButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise selected pages"));
+		rotateButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate clockwise selected pages")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowRight)"));
 		rotateButton.addKeyListener(new EnterDoClickListener(rotateButton));
 		rotateButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		addButtonToButtonPanel(rotateButton);
@@ -521,10 +526,31 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		rotateAntiButton.setActionCommand(PagesWorker.ROTATE_ANTICLOCK);
 		rotateAntiButton.setMargin(new Insets(2, 2, 2, 2));
 		rotateAntiButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate left"));
-		rotateAntiButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise selected pages"));
+		rotateAntiButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate anticlockwise selected pages")+" "+GettextResource.gettext(config.getI18nResourceBundle(),"(Alt+ArrowLeft)"));
 		rotateAntiButton.addKeyListener(new EnterDoClickListener(rotateAntiButton));
 		rotateAntiButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		addButtonToButtonPanel(rotateAntiButton);
+	}
+	
+	private void initKeyListener(){
+		//key listener
+		thumbnailList.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if((e.isAltDown())&& (e.getKeyCode() == KeyEvent.VK_UP)){
+                	moveUpButton.doClick();
+                } else if((e.isAltDown())&& (e.getKeyCode() == KeyEvent.VK_DOWN)){
+                	moveDownButton.doClick();
+                } else if((e.getKeyCode() == KeyEvent.VK_DELETE)){
+                	removeButton.doClick();
+                } else if(drawDeletedItems && (e.isControlDown())&& (e.getKeyCode() == KeyEvent.VK_Z)){
+                	undeleteButton.doClick();
+                } else if((e.isAltDown())&& (e.getKeyCode() == KeyEvent.VK_RIGHT)){
+                	rotateButton.doClick();
+                } else if((e.isAltDown())&& (e.getKeyCode() == KeyEvent.VK_LEFT)){
+                	rotateAntiButton.doClick();
+                }
+            }
+        });
 	}
 	/**
 	 * reset the panel
@@ -600,6 +626,12 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		this.selectedPdfDocument = selectedPdfDocument;
 	}
 
+	/**
+	 * @return the thumbListDropTarget
+	 */
+	protected DropTarget getThumbListDropTarget() {
+		return thumbListDropTarget;
+	}
 	/**
 	 * @return the scrollPanelDropTarget
 	 */
@@ -865,6 +897,60 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 */
 	public void setSelectedPdfDocumentPassword(String selectedPdfDocumentPassword) {
 		this.selectedPdfDocumentPassword = selectedPdfDocumentPassword;
+	}
+	/**
+	 * @return the clearButton
+	 */
+	protected JButton getClearButton() {
+		return clearButton;
+	}
+	/**
+	 * @return the zoomInButton
+	 */
+	protected JButton getZoomInButton() {
+		return zoomInButton;
+	}
+	/**
+	 * @return the zoomOutButton
+	 */
+	protected JButton getZoomOutButton() {
+		return zoomOutButton;
+	}
+	/**
+	 * @return the undeleteButton
+	 */
+	protected JButton getUndeleteButton() {
+		return undeleteButton;
+	}
+	/**
+	 * @return the removeButton
+	 */
+	protected JButton getRemoveButton() {
+		return removeButton;
+	}
+	/**
+	 * @return the moveUpButton
+	 */
+	protected JButton getMoveUpButton() {
+		return moveUpButton;
+	}
+	/**
+	 * @return the moveDownButton
+	 */
+	protected JButton getMoveDownButton() {
+		return moveDownButton;
+	}
+	/**
+	 * @return the rotateButton
+	 */
+	protected JButton getRotateButton() {
+		return rotateButton;
+	}
+	/**
+	 * @return the rotateAntiButton
+	 */
+	protected JButton getRotateAntiButton() {
+		return rotateAntiButton;
 	}
  
     	

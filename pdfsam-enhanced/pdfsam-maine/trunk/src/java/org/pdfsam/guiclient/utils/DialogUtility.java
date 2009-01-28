@@ -79,4 +79,17 @@ public class DialogUtility {
 		}
 		return retVal; 
 	}
+	
+	/**
+	 * Shows a yes/no confirmation dialog to ask the user if he wants to empty the selection list
+	 * @param comp
+	 * @return
+	 */
+	public static int askForEmptySelectionPanel(Component comp){
+		return  JOptionPane.showConfirmDialog(comp,
+   				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selection list is full, would you like to empty it and load the new document?"),
+				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"List full"),
+			    JOptionPane.YES_NO_OPTION,
+			    JOptionPane.QUESTION_MESSAGE);
+	}
 }

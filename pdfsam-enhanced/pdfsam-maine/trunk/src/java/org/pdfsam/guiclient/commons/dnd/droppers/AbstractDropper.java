@@ -20,6 +20,8 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetContext;
 import java.awt.dnd.DropTargetDropEvent;
+import java.io.File;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -42,7 +44,7 @@ public abstract class AbstractDropper extends DropTargetAdapter {
             e.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
             Transferable t = e.getTransferable();
             if(hasFileFlavor(t)){
-	            Object data = t.getTransferData(DataFlavor.javaFileListFlavor);
+	            List<File> data = (List<File>)t.getTransferData(DataFlavor.javaFileListFlavor);
 	            if(data!=null){
 	            	executeDrop(data);
 	            }
@@ -75,5 +77,5 @@ public abstract class AbstractDropper extends DropTargetAdapter {
 	 * Executes the drop logic given the TransferData
 	 * @param arg0
 	 */
-	protected abstract void executeDrop(Object arg0);
+	protected abstract void executeDrop(List<File> arg0);
 }

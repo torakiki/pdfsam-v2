@@ -16,16 +16,12 @@ package org.pdfsam.guiclient.commons.dnd.handlers;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 
 import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.TransferHandler;
 
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
 import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable;
-import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable.TransferableData;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 /**
  * Transfer Handler with the only export support

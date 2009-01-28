@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.dnd.droppers;
 
+import java.io.File;
 import java.util.List;
 
 import org.pdfsam.guiclient.business.ClosableTabbedPanelAdder;
@@ -35,8 +36,8 @@ public class JVisualMultiSelectionDropper extends AbstractDropper {
 	}
 
 
-	protected void executeDrop(Object arg0) {
-		adder.addTabs((List)arg0);	
+	protected void executeDrop(List<File> arg0) {
+		adder.addTabs(arg0);	
 	}
 
 }
