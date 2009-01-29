@@ -47,7 +47,7 @@
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-vcomposer.src.dir}" destdir="${pdfsam-vcomposer.build.dir}" debug="true">
+    <javac compiler="javac1.6" target="1.6" source="1.6" srcdir="${pdfsam-vcomposer.src.dir}" destdir="${pdfsam-vcomposer.build.dir}" debug="true">
     	<classpath refid="pdfsam-vcomposer.classpath"/>
     </javac>
   </target>

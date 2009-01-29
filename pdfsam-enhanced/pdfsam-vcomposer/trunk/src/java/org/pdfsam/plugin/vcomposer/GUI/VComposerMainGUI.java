@@ -25,9 +25,9 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Vector;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -40,6 +40,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
@@ -86,8 +87,9 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
     private JHelpLabel destinationHelpLabel;
     private Configuration config;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
-    private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, false, true, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);
+    private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, JVisualPdfPageSelectionPanel.DND_SUPPORT_JAVAOBJECTS, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);
 	private JPanel topPanel = new JPanel();
+    private JSplitPane splitPanel = null;
 	
     //layouts
     private SpringLayout destinationPanelLayout;
@@ -115,7 +117,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 	
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.2";
+    private static final String PLUGIN_VERSION = "0.0.3";
     
     /**
      * Constructor
@@ -161,13 +163,16 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		moveOnTopButton.addKeyListener(new EnterDoClickListener(moveOnTopButton));
 		moveOnTopButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		moveOnTopButton.setMinimumSize(new Dimension(90, 25));
-		//moveOnTopButton.setMaximumSize(new Dimension(130, 25));
 		moveOnTopButton.setPreferredSize(new Dimension(110, 25));
 		moveOnTopButton.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
             	 VisualPageListItem[] elements = inputPanel.getSelectedElements();
             	 if(elements!=null && elements.length>0){
-            		 composerPanel.prependElements(Arrays.asList(elements));
+            		 Vector<VisualPageListItem> newList = new Vector<VisualPageListItem>(elements.length);
+            		 for(VisualPageListItem currItem : elements){
+            			 newList.add((VisualPageListItem) currItem.clone());
+            		 }
+            		 composerPanel.prependElements(newList);
             	 }
              }
 		 });
@@ -179,16 +184,19 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		moveToBottomButton.addKeyListener(new EnterDoClickListener(moveOnTopButton));
 		moveToBottomButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		moveToBottomButton.setMinimumSize(new Dimension(90, 25));
-		//moveToBottomButton.setMaximumSize(new Dimension(130, 25));
 		moveToBottomButton.setPreferredSize(new Dimension(110, 25));
 		moveToBottomButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-           	 VisualPageListItem[] elements = inputPanel.getSelectedElements();
-           	 if(elements!=null && elements.length>0){
-           		 composerPanel.appendElements(Arrays.asList(elements));
-           	 }
-            }
-		 });
+			public void actionPerformed(ActionEvent e) {
+				VisualPageListItem[] elements = inputPanel.getSelectedElements();
+				if (elements != null && elements.length > 0) {
+					Vector<VisualPageListItem> newList = new Vector<VisualPageListItem>(elements.length);
+					for (VisualPageListItem currItem : elements) {
+						newList.add((VisualPageListItem) currItem.clone());
+					}
+					composerPanel.appendElements(newList);
+				}
+			}
+		});
 		
 		buttonsPanel.add(moveOnTopButton);		
 		buttonsPanel.add(Box.createRigidArea(new Dimension(10,5)));
@@ -205,17 +213,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         topConst.gridx = 0;
         topConst.gridy = 1;
         topPanel.add(composerPanel, topConst);
-        
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.ipady = 5;
-        c.weightx = 1.0;
-        c.weighty = 1.0;
-        c.gridwidth = 3;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 10, 0);
-		add(topPanel, c);
 		
       //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
@@ -223,18 +220,8 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
 		destinationPanel.setBorder(titledBorder);
 		destinationPanel.setPreferredSize(new Dimension(200, 160));
-		destinationPanel.setMinimumSize(new Dimension(160, 150));
-		
-		c.fill = GridBagConstraints.HORIZONTAL;
-	    c.ipady = 5;
-	    c.weightx = 1.0;
-	    c.weighty = 0.0;
-	    c.gridwidth = 3;
-	    c.gridx = 0;
-	    c.gridy = 1;	
-	    c.insets = new Insets(0, 0, 0, 0);
-		add(destinationPanel, c);
-//END_DESTINATION_PANEL        
+		destinationPanel.setMinimumSize(new Dimension(160, 150));		
+		//END_DESTINATION_PANEL        
                 
         destinationPanel.add(destinationFileText);
         destinationPanel.add(overwriteCheckbox);
@@ -284,7 +271,24 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 
-	 
+	  
+	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,topPanel, destinationPanel);
+        splitPanel.setOneTouchExpandable(true);
+        splitPanel.setResizeWeight(1.0);
+
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridheight = 2;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0, 0, 10, 0);
+        
+  		add(splitPanel, c);	 
 	  //ENTER_KEY_LISTENERS
 	          browseDestButton.addKeyListener(browsedEnterkeyListener);
 	          runButton.addKeyListener(runEnterkeyListener);
@@ -292,14 +296,14 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	          runButton.addActionListener(new ActionListener() {
 	              public void actionPerformed(ActionEvent e) {
 	            	  String selectionString = composerPanel.getValidElementsString();
-	            	  Collection selectedFiles = composerPanel.getValidElementsFiles();
+	            	  Collection<String> selectedFiles = composerPanel.getValidElementsFiles();
 	            	  if(selectionString.length()==0 || selectedFiles == null || selectedFiles.size()<=0){
 	            		  JOptionPane.showMessageDialog(getParent(),
 	            				  	GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document or undelete some page"),
 									GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
 								    JOptionPane.WARNING_MESSAGE);
 	                  }else{                             
-		                  final LinkedList args = new LinkedList();                
+		                  final LinkedList<String> args = new LinkedList<String>();                
 		                  try{		
 								args.addAll(selectedFiles);
 			
@@ -312,8 +316,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 									args.add("-" + ConcatParsedCommand.R_ARG);
 									args.add(rotation);
 								}
-								
-								args.add("-" + ConcatParsedCommand.O_ARG);
+								String destination = "";
 			                    //if no extension given
 			                    if ((destinationFileText.getText().length() > 0) && !(destinationFileText.getText().matches(PDF_EXTENSION_REGEXP))){
 			                    	destinationFileText.setText(destinationFileText.getText()+"."+PDF_EXTENSION);
@@ -339,7 +342,21 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 										}
 									}
 								}
-								args.add(destinationFileText.getText());
+								destination = destinationFileText.getText();
+								
+								//check if the file already exists and the user didn't select to overwrite
+								File destFile = (destination!=null)? new File(destination):null;
+								if(destFile!=null && destFile.exists()){
+									int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
+		                			if(JOptionPane.YES_OPTION == chosenOpt){
+		                				overwriteCheckbox.setSelected(true);
+				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+				        				return;
+				        			}
+								}
+
+								args.add("-" + ConcatParsedCommand.O_ARG);
+								args.add(destination);
 			
 								if (overwriteCheckbox.isSelected())
 									args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
