@@ -35,6 +35,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
@@ -100,6 +101,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 
     //panels
     private final JPanel destinationPanel = new JPanel();
+    private JSplitPane splitPanel = null;
   
     //labels
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
@@ -109,7 +111,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     private final JRadioButton chooseAFolderRadio = new JRadioButton();
     
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.2";
+    private static final String PLUGIN_VERSION = "0.0.3";
     
     /**
      * Constructor
@@ -127,19 +129,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         setPanelIcon("/images/vreorder.png");
         setPreferredSize(new Dimension(500,550));
         
-        setLayout(new GridBagLayout());
-        
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.ipady = 5;
-        c.weightx = 1.0;
-        c.weighty = 1.0;
-        c.gridwidth = 3;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 10, 0);
-		add(selectionPanel, c);
-		
+        setLayout(new GridBagLayout());        		
         selectionPanel.addPropertyChangeListener(this);
 
       //DESTINATION_PANEL
@@ -147,7 +137,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         destinationPanel.setLayout(destinationPanelLayout);
 		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
 		destinationPanel.setBorder(titledBorder);
-		destinationPanel.setPreferredSize(new Dimension(200, 160));
+		destinationPanel.setPreferredSize(new Dimension(180, 160));
 		destinationPanel.setMinimumSize(new Dimension(160, 150));
         add(destinationPanel);
 //END_DESTINATION_PANEL        
@@ -170,7 +160,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         
         destinationPanel.add(versionCombo);
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
+		/*c.fill = GridBagConstraints.HORIZONTAL;
 	    c.ipady = 5;
 	    c.weightx = 1.0;
 	    c.weighty = 0.0;
@@ -178,7 +168,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	    c.gridx = 0;
 	    c.gridy = 1;	
 	    c.insets = new Insets(0, 0, 0, 0);
-		add(destinationPanel, c);
+		add(destinationPanel, c);*/
 		
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
@@ -219,6 +209,24 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION  
+        
+	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,selectionPanel, destinationPanel);
+        splitPanel.setOneTouchExpandable(true);
+        splitPanel.setResizeWeight(1.0);
+
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridheight = 2;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(0, 0, 10, 0);
+  		add(splitPanel, c);
+
 	    
         final ButtonGroup outputRadioGroup = new ButtonGroup();
         outputRadioGroup.add(sameAsSourceRadio);
@@ -252,7 +260,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
 							    JOptionPane.WARNING_MESSAGE);
 				}else{
-					final LinkedList args = new LinkedList();
+					final LinkedList<String> args = new LinkedList<String>();
 					try {
 	
 						args.add("-" + ConcatParsedCommand.F_ARG);
@@ -275,11 +283,11 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 							args.add(rotation);
 						}
 						
-						args.add("-" + ConcatParsedCommand.O_ARG);
+						String destination = "";
 						// check radio for output options
 						if (sameAsSourceRadio.isSelected()) {
 							if (inputFile != null) {
-								args.add(inputFile.getAbsolutePath());
+								destination = inputFile.getAbsolutePath();
 							}
 						} else {
 							 //if no extension given
@@ -310,9 +318,22 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 									}
 								}
 							}
-							args.add(destinationFileText.getText());
+							destination = destinationFileText.getText();
 						}
-	
+						//check if the file already exists and the user didn't select to overwrite
+						File destFile = (destination!=null)? new File(destination):null;
+						if(destFile!=null && destFile.exists()){
+							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
+                			if(JOptionPane.YES_OPTION == chosenOpt){
+                				overwriteCheckbox.setSelected(true);
+		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+		        				return;
+		        			}
+						}
+						
+						args.add("-" + ConcatParsedCommand.O_ARG);						
+						args.add(destination);
+						
 						if (overwriteCheckbox.isSelected())
 							args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
 						if (outputCompressedCheck.isSelected())
