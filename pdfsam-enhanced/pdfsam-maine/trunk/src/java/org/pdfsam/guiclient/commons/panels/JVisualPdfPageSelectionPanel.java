@@ -19,7 +19,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.dnd.DropTarget;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -56,7 +55,6 @@ import org.pdfsam.guiclient.commons.business.listeners.adapters.VisualPdfSelecti
 import org.pdfsam.guiclient.commons.business.listeners.mediators.PagesActionsMediator;
 import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
-import org.pdfsam.guiclient.commons.dnd.droppers.JVisualSelectionListDropper;
 import org.pdfsam.guiclient.commons.dnd.handlers.VisualListExportTransferHandler;
 import org.pdfsam.guiclient.commons.dnd.handlers.VisualListTransferHandler;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
@@ -90,6 +88,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public static int STYLE_TOP_PANEL_MEDIUM = 2;
 	public static int STYLE_TOP_PANEL_FULL = 3;
 	
+	public static int DND_SUPPORT_NONE = 0;
+	public static int DND_SUPPORT_FILES = 1;
+	public static int DND_SUPPORT_JAVAOBJECTS = 2;
+	public static int DND_SUPPORT_FILES_AND_JAVAOBJECTS = 3;
+	
 	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";	
 	
 	private int orientation = HORIZONTAL_ORIENTATION;
@@ -98,8 +101,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private boolean showButtonPanel = true;
 	private int topPanelStyle = STYLE_TOP_PANEL_FULL;
 	private boolean showContextMenu = true;
-	private boolean canImportFile = true;
-	private boolean canImportListObject = true;
+	private int dndSupport = DND_SUPPORT_NONE;
 	private int selectionType = SINGLE_INTERVAL_SELECTION;
 	private final JMenuItem menuItemSetOutputPath = new JMenuItem();
 	
@@ -121,8 +123,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
     private final JLabel documentProperties = new JLabel();    
     private final JVisualSelectionList thumbnailList = new JVisualSelectionList();
-    private DropTarget scrollPanelDropTarget;
-    private DropTarget thumbListDropTarget;
     private PdfThumbnailsLoader pdfLoader;
     private VisualPdfSelectionActionListener pdfSelectionActionListener;
     private PagesActionsMediator pageActionListener;
@@ -174,7 +174,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, 
 			boolean showContextMenu, int topPanelStyle){
-		this(orientation, drawDeletedItems, showButtonPanel, showContextMenu, topPanelStyle, true, true, SINGLE_INTERVAL_SELECTION);
+		this(orientation, drawDeletedItems, showButtonPanel, showContextMenu, topPanelStyle, DND_SUPPORT_FILES_AND_JAVAOBJECTS, SINGLE_INTERVAL_SELECTION);
 	}
     
 	/**
@@ -185,12 +185,10 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param acceptDropFromDifferentComponents if true accepts dropping items from other components
 	 * @param showContextMenu
 	 * @param topPanelStyle top panel style
-	 * @param canImportFile true if can accept file drop
-	 * @param canImportListObject true if can accept JVM object
 	 * @param selectionType selection type
 	 */
 	public JVisualPdfPageSelectionPanel(int orientation, boolean drawDeletedItems, boolean showButtonPanel, 
-			boolean showContextMenu, int topPanelStyle, boolean canImportFile, boolean canImportListObject, int selectionType){
+			boolean showContextMenu, int topPanelStyle, int dndSupport, int selectionType){
 		this.orientation = orientation;
 		this.config = Configuration.getInstance();
 		this.pdfLoader = new PdfThumbnailsLoader(this);
@@ -198,8 +196,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		this.showButtonPanel = showButtonPanel;
 		this.showContextMenu = showContextMenu;
 		this.topPanelStyle = topPanelStyle;
-		this.canImportFile = canImportFile;
-		this.canImportListObject = canImportListObject;
+		this.dndSupport = dndSupport;		
 		this.selectionType = selectionType;
 		init();		
 	}
@@ -210,10 +207,14 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		setLayout(new GridBagLayout());
 		
 		thumbnailList.setDrawDeletedItems(drawDeletedItems);
-		if(canImportListObject){
+		if(dndSupport == DND_SUPPORT_FILES){
+			thumbnailList.setTransferHandler(new VisualListExportTransferHandler(pdfLoader));
+		}else if(dndSupport == DND_SUPPORT_JAVAOBJECTS){
 			thumbnailList.setTransferHandler(new VisualListTransferHandler());
+		}else if(dndSupport == DND_SUPPORT_FILES_AND_JAVAOBJECTS){
+			thumbnailList.setTransferHandler(new VisualListTransferHandler(pdfLoader));
 		}else{
-			thumbnailList.setTransferHandler(new VisualListExportTransferHandler());
+			thumbnailList.setTransferHandler(new VisualListExportTransferHandler(null));
 		}
 		thumbnailList.setDragEnabled(true);
 		thumbnailList.setDropMode(DropMode.INSERT);
@@ -313,12 +314,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		thumbnailList.setVisibleRowCount(-1);
 		thumbnailList.setSelectionMode(selectionType);		
 		JScrollPane listScroller = new JScrollPane(thumbnailList);		
-		
-		if(canImportFile){
-			JVisualSelectionListDropper dropper = new JVisualSelectionListDropper(pdfLoader);
-			scrollPanelDropTarget = new DropTarget(listScroller,dropper);
-			thumbListDropTarget = new DropTarget(thumbnailList,dropper);
-		}
 
 		//preview item	
 		menuItemPreview.setIcon(new ImageIcon(this.getClass().getResource("/images/preview-viewer.png")));
@@ -444,7 +439,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
      */
     private void addButtonToButtonPanel(JButton button){
     	button.setMinimumSize(new Dimension(90, 25));
-    	button.setMaximumSize(new Dimension(100, 25));
+    	button.setMaximumSize(new Dimension(115, 25));
     	button.setPreferredSize(new Dimension(95, 25));
     	buttonPanel.add(button);
 		buttonPanel.add(Box.createRigidArea(new Dimension(0,5)));
@@ -627,16 +622,10 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	}
 
 	/**
-	 * @return the thumbListDropTarget
+	 * @return the dndSupport
 	 */
-	protected DropTarget getThumbListDropTarget() {
-		return thumbListDropTarget;
-	}
-	/**
-	 * @return the scrollPanelDropTarget
-	 */
-	public DropTarget getScrollPanelDropTarget() {
-		return scrollPanelDropTarget;
+	public int getDndSupport() {
+		return dndSupport;
 	}
 	/**
 	 * @return the drawDeletedItems

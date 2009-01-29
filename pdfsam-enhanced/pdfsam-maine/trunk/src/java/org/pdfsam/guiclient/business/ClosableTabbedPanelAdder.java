@@ -66,7 +66,7 @@ public class ClosableTabbedPanelAdder {
 	 */
 	public void addTabs(File[] files){
 		for(int i =0; i<files.length; i++){
-    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, true, false, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
+    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, JVisualPdfPageSelectionPanel.DND_SUPPORT_FILES, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
     		if(outputPathPropertyChangeListener!=null){
     			inputPanel.enableSetOutputPathMenuItem();
     			inputPanel.addPropertyChangeListener(outputPathPropertyChangeListener);

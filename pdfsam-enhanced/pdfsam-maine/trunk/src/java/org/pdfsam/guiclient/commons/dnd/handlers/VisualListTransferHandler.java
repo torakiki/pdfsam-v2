@@ -26,6 +26,7 @@ import javax.swing.JList;
 import javax.swing.TransferHandler;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
 import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable;
 import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable.TransferableData;
@@ -46,7 +47,16 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
 
 	private int addIndex = 0;
 
-	
+	public VisualListTransferHandler() {
+	}
+
+	/**
+	 * @param loader
+	 */
+	public VisualListTransferHandler(PdfThumbnailsLoader loader) {
+		super(loader);
+	}
+
 	public int getSourceActions(JComponent c) {
 	    return MOVE;
 	}
@@ -73,9 +83,12 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
 	public boolean importData(TransferHandler.TransferSupport info) {
 		boolean retVal = false;
 		if(info.isDrop()){
-            try {           
+            try {        
+
             	Transferable t = info.getTransferable();
-            	if (hasVisualListItemFlavor(t)) {
+            	if(hasFileFlavor(t)){
+            		retVal = super.importData(info);
+            	}else if (hasVisualListItemFlavor(t)) {
                    	retVal = importVisualListItems(info);                    	
                 } 
             }catch(Exception e){
@@ -141,7 +154,10 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
     
     public boolean canImport(TransferHandler.TransferSupport info) {
     	boolean retVal = false;
-		if(info.getComponent() instanceof JVisualSelectionList){
+    	if(super.canImport(info)){
+    		retVal = true;
+    	}
+    	else if(info.getComponent() instanceof JVisualSelectionList){
 			if(info.isDataFlavorSupported(VisualPageListTransferable.getVisualListFlavor())){
 				if(info.getSourceDropActions()==MOVE){
 					try{

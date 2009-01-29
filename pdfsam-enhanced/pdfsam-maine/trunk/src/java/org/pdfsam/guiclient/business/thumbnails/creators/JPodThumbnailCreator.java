@@ -181,6 +181,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
 	            			long startTime = System.currentTimeMillis();
 	            			initThumbnails(pdfDoc, pageTree, panel, modelList);
+	            			pageTree = null;
 	            			closer = new Thread(new CreatorCloser(pool, pdfDoc, startTime));
 	            			closer.start();
 	            		}	
@@ -294,7 +295,10 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
             	pageItem.setThumbnail(ERROR_IMAGE);
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
         	}finally{
-        		graphics.dispose();
+        		if(graphics!=null){
+        			graphics.dispose();
+        		}
+        		pdPage = null;
         	}
             ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
 		}
@@ -341,14 +345,15 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 						if(pdfDoc!=null){
 							pdfDoc.close();
 							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
+							pdfDoc = null;
 						}
 					}
 				}
             }catch (Exception e) {
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to close thumbnail creator"),e);
         	}				           
-		}    	
-		
+		}
+
 	}
 	
 	/**

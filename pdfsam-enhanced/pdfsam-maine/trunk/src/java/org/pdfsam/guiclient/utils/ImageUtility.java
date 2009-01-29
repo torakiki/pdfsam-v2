@@ -30,9 +30,9 @@ import javax.media.jai.RenderedOp;
 public class ImageUtility {
 
 	
-	/*static{
+	static{
 		System.setProperty("com.sun.media.jai.disableMediaLib", "true");
-	}*/
+	}
 	
 	public static synchronized Image rotateImage(Image inputImage, int degrees){
 		Image retVal = null;

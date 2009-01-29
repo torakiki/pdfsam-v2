@@ -16,13 +16,20 @@ package org.pdfsam.guiclient.commons.dnd.handlers;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
+import java.io.File;
+import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
 import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable;
+import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
+import org.pdfsam.guiclient.utils.filters.PdfFilter;
+import org.pdfsam.i18n.GettextResource;
 /**
  * Transfer Handler with the only export support
  * @author Andrea Vacondio
@@ -31,6 +38,25 @@ import org.pdfsam.guiclient.dto.VisualPageListItem;
 public class VisualListExportTransferHandler extends TransferHandler {
 
 	private static final long serialVersionUID = -8912890262680226922L;
+	
+	private static final Logger log = Logger.getLogger(VisualListExportTransferHandler.class.getPackage().getName());
+
+	private PdfThumbnailsLoader loader = null;
+
+	/**
+	 * Default constructor. Cannot import files.
+	 */
+	public VisualListExportTransferHandler() {
+		this(null);
+	}
+
+	/**
+	 * @param if the loader is != null it can import files.
+	 */
+	public VisualListExportTransferHandler(PdfThumbnailsLoader loader) {
+		super();
+		this.loader = loader;
+	}
 
 	public int getSourceActions(JComponent c) {
 	    return COPY;
@@ -68,10 +94,26 @@ public class VisualListExportTransferHandler extends TransferHandler {
          return retVal;
     }
     
-
+    /**
+	 * @param t
+	 * @return true if it's a file flavor
+	 */
+	protected boolean hasFileFlavor(Transferable t) {
+		boolean retVal = false;
+		DataFlavor[] flavors;
+		flavors = t.getTransferDataFlavors();
+		for (int i = 0; i < flavors.length; i++) {
+			if (flavors[i].equals(DataFlavor.javaFileListFlavor)) {
+				retVal = true;
+				break;
+			}
+		}
+		return retVal;
+	}
+	
     public boolean canImport(TransferHandler.TransferSupport info) {
     	boolean retVal = false;
-		if(info.getComponent() instanceof JVisualSelectionList){
+		if(loader!=null && info.getComponent() instanceof JVisualSelectionList){
 			if(info.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){		
 					retVal = true;
 			}else{
@@ -80,4 +122,43 @@ public class VisualListExportTransferHandler extends TransferHandler {
 		}
 		return retVal;
    }
+
+	/**
+	 * @return the loader
+	 */
+	protected PdfThumbnailsLoader getLoader() {
+		return loader;
+	}
+
+	/**
+	 * @param loader the loader to set
+	 */
+	protected void setLoader(PdfThumbnailsLoader loader) {
+		this.loader = loader;
+	}
+    
+	@SuppressWarnings("unchecked")
+	public boolean importData(TransferHandler.TransferSupport info) {
+		boolean retVal = false;
+		if(loader != null && info.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+            try {
+            	List<File> fileList = (List<File>)info.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+            	if(fileList!=null && fileList.size()!=1){
+            		log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a single pdf document."));
+            	}else{
+            		File selectedFile = fileList.get(0);
+            		if (selectedFile!=null && new PdfFilter(false).accept(selectedFile)){
+            			loader.addFile(selectedFile, true);
+            			retVal = true;
+            		}else{
+            			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File type not supported."));
+            		}
+            	}
+            }catch(Exception e){
+            	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error during drag and drop."), e);
+            }
+		}
+        return retVal;
+	}
+	
 }

@@ -90,7 +90,7 @@
 	    </path>
 	
 	    <!-- Compile the java code from ${src} into ${build} -->
-	    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam.src.dir}" destdir="${pdfsam.build.dir}" debug="true">
+	    <javac compiler="javac1.6" target="1.6" source="1.6" srcdir="${pdfsam.src.dir}" destdir="${pdfsam.build.dir}" debug="true">
 	    	<classpath refid="pdfsam.classpath"/>
 	    </javac>
   	</target>
