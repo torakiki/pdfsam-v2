@@ -46,8 +46,8 @@ public class ParseException extends ConsoleException {
 	public final static int ERR_PARSE = 0x01;
 	public final static int ERR_OUT_NOT_PDF = 0x02;
 	public final static int ERR_NO_OUT = 0x03;
-	public final static int ERR_NO_F_OR_L = 0x04;
-	public final static int ERR_BOTH_F_OR_L = 0x05;
+	public final static int ERR_NO_F_OR_L_OR_D = 0x04;
+	public final static int ERR_BOTH_F_OR_L_OR_D = 0x05;
 	public final static int ERR_NOT_CSV_OR_XML = 0x06;
 	public final static int ERR_IN_NOT_PDF = 0x07;
 	public final static int ERR_ILLEGAL_U = 0x08;

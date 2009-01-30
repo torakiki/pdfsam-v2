@@ -89,11 +89,12 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	        	throw new ParseException(ParseException.ERR_NO_O);
 	        }
 	
-			//-f -l
+			//-f -l -d
 			FileParam lOption = (FileParam) cmdLineHandler.getOption(ConcatParsedCommand.L_ARG);
 			PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(ConcatParsedCommand.F_ARG);
-			if(lOption.isSet() || fOption.isSet()){
-				if(!(lOption.isSet() && fOption.isSet())){
+			FileParam dOption = (FileParam) cmdLineHandler.getOption(ConcatParsedCommand.D_ARG);
+			if(lOption.isSet() || fOption.isSet() || dOption.isSet()){
+				if(lOption.isSet() ^ fOption.isSet() ^ dOption.isSet()){
 					if(fOption.isSet()){
 						//validate file extensions
 						for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
@@ -103,18 +104,28 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 			        		}
 			        	}
 						parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
-					}else{
+					}else if(lOption.isSet()){
 						if(lOption.getFile().getPath().toLowerCase().endsWith(CSV_EXTENSION) || lOption.getFile().getPath().toLowerCase().endsWith(XML_EXTENSION)){
 							parsedCommandDTO.setInputCvsOrXmlFile(lOption.getFile());
 						}else{
 							throw new ParseException(ParseException.ERR_NOT_CSV_OR_XML);
 						}
+					}else{
+						if ((dOption.isSet())){
+				            File inputDir = dOption.getFile();
+				            if (inputDir.isDirectory()){
+				            	parsedCommandDTO.setInputDirectory(inputDir);	
+				    		}           
+				            else{
+				            	throw new ParseException(ParseException.ERR_D_NOT_DIR, new String[]{inputDir.getAbsolutePath()});
+				            }
+				        }
 					}
 				}else{
-					throw new ParseException(ParseException.ERR_BOTH_F_OR_L);
+					throw new ParseException(ParseException.ERR_BOTH_F_OR_L_OR_D);
 				}    			
 			}else{
-				throw new ParseException(ParseException.ERR_NO_F_OR_L);
+				throw new ParseException(ParseException.ERR_NO_F_OR_L_OR_D);
 			}
 	
 			//-u

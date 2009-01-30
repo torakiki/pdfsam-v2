@@ -16,8 +16,8 @@
 		<exception errorcode="1" message="Parse error. {0}" />		
 		<exception errorcode="2" message="Output file not a pdf format. {0}" />		
 		<exception errorcode="3" message="No output file name." />		
-		<exception errorcode="4" message="No -f or -l option given." />		
-		<exception errorcode="5" message="Both -f and -l options given." />		
+		<exception errorcode="4" message="No -f or -l or -d option given." />		
+		<exception errorcode="5" message="Too many options given, -f, -l, -d." />		
 		<exception errorcode="6" message="Input list file not a csv or xml format" />		
 		<exception errorcode="7" message="Input file {0} is not a pdf format." />		
 		<exception errorcode="8" message="-u value parsing error. The string must be 'num1-num2:' or 'all:' repeated for each pdf file in input." />		
@@ -56,7 +56,8 @@
 		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
 		<exception errorcode="7" message="Error parsing rotations values." />				
 		<exception errorcode="8" message="The given degrees value {0} is not allowed. Only multiple of 90 allowed." />				
-		<exception errorcode="9" message="Rotation parameter {0} incorrect." />				
+		<exception errorcode="9" message="Rotation parameter {0} incorrect." />
+		<exception errorcode="10" message="No input file found." />					
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.EncryptException" description="ENC" />
 	<type key="org.pdfsam.console.exceptions.console.MixException" description="MIX" />

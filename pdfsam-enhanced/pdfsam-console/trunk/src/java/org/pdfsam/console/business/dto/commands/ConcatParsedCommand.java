@@ -58,9 +58,11 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	public static final String U_ARG = "u";
 	public static final String O_ARG = "o";
 	public static final String R_ARG = "r";
+	public static final String D_ARG = "d";
 	
 	private File outputFile;
 	private File inputCvsOrXmlFile;
+	private File inputDirectory;
 	private PdfFile[] inputFileList;
 	private String pageSelection = "";
 	private PageRotation[] rotations = null;
@@ -70,7 +72,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			PdfFile[] inputFileList, String pageSelection, boolean copyFields, PageRotation[] rotations) {
+			PdfFile[] inputFileList, String pageSelection, boolean copyFields, PageRotation[] rotations, File inputDirectory) {
 		super();
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
@@ -78,10 +80,11 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		this.pageSelection = pageSelection;
 		this.copyFields = copyFields;
 		this.rotations = rotations;
+		this.inputDirectory = inputDirectory;
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, PageRotation[] rotations, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, PageRotation[] rotations, File inputDirectory, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
@@ -89,6 +92,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		this.pageSelection = pageSelection;
 		this.copyFields = copyFields;
 		this.rotations = rotations;
+		this.inputDirectory = inputDirectory;
 	}
 
 	/**
@@ -182,6 +186,20 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		this.rotations = rotations;
 	}
 
+	/**
+	 * @return the inputDirectory
+	 */
+	public File getInputDirectory() {
+		return inputDirectory;
+	}
+
+	/**
+	 * @param inputDirectory the inputDirectory to set
+	 */
+	public void setInputDirectory(File inputDirectory) {
+		this.inputDirectory = inputDirectory;
+	}
+
 	public final String getCommand() {
 		return COMMAND_CONCAT;
 	}
@@ -190,6 +208,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		StringBuffer retVal = new StringBuffer();
 		retVal.append(super.toString());
 		retVal.append((outputFile== null)?"":"[outputFile="+outputFile.getAbsolutePath()+"]");
+		retVal.append((inputDirectory== null)?"":"[inputDirectory="+inputDirectory.getAbsolutePath()+"]");
 		if(inputFileList != null){
 			for(int i = 0; i<inputFileList.length; i++){
 				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getFile().getAbsolutePath()+"]");				

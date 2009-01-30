@@ -64,7 +64,7 @@ public class UnpackCmdValidator extends AbstractCmdValidator {
 		
 		if(cmdLineHandler != null){	
 			//-o
-			FileParam oOption = (FileParam) cmdLineHandler.getOption("o");
+			FileParam oOption = (FileParam) cmdLineHandler.getOption(UnpackParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            if (outFile.isDirectory()){
@@ -78,8 +78,8 @@ public class UnpackCmdValidator extends AbstractCmdValidator {
 	        }
 			
 			//-f and -d
-			PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");
-	        FileParam dOption = (FileParam) cmdLineHandler.getOption("d");
+			PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(UnpackParsedCommand.F_ARG);
+	        FileParam dOption = (FileParam) cmdLineHandler.getOption(UnpackParsedCommand.D_ARG);
 	        if(fOption.isSet() || dOption.isSet()){
 		        //-f
 		        if(fOption.isSet()){
@@ -95,7 +95,7 @@ public class UnpackCmdValidator extends AbstractCmdValidator {
 		        
 		        //-d
 				if ((dOption.isSet())){
-		            File inputDir = oOption.getFile();
+		            File inputDir = dOption.getFile();
 		            if (inputDir.isDirectory()){
 		            	parsedCommandDTO.setInputDirectory(inputDir);	
 		    		}           

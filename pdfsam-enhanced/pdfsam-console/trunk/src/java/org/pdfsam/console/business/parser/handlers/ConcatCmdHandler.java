@@ -84,6 +84,11 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	                          FileParam.IS_FILE & FileParam.IS_READABLE,
 	                          FileParam.OPTIONAL,
 	                          FileParam.SINGLE_VALUED),            
+  	            new FileParam(ConcatParsedCommand.D_ARG,
+							  "directory containing pdf files to concat. Files will be merged in alphabetical order.",
+		                      FileParam.IS_DIR & FileParam.IS_READABLE,
+		                      FileParam.OPTIONAL,
+		                      FileParam.SINGLE_VALUED),            
 	            new BooleanParam(ConcatParsedCommand.COPYFIELDS_ARG, "input pdf documents contain forms (high memory usage)")                          
     })); 
 	
@@ -104,6 +109,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
         "you must specify the '-o /home/user/outfile.pdf' option to set the output file and the source file list:\n"+
         "'-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list or at least one file to concat (use filename:password if the file is password protected).\n"+
         "'-l /tmp/list.csv' a csv file containing the list of files to concat, separated by a comma.\n"+
+        "'-d /tmp' a directory containing the pdf files to concat in alphabetical order.\n"+
         "'-l /tmp/list.xml' a xml file containing the list of files to concat, <filelist><file value=\"filepath\" /></filelist>\n"+
         "'-r 2:90,3:270' is optional to set pages rotation. (EX. -r 2:90,3:270 will rotate page number 2 of 90 degrees clockwise and page number 3 of 270 degrees clockwise)\n"+
         "'-u All:All:3-15' is optional to set pages selection. You can set a subset of pages to merge. Accepted values: \"all\" or \"num1-num2\" (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:all:), (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf -u all:12-14:) to merge file1.pdf and pages 12,13,14 of file2.pdf. If -u is not set default behaviour is to merge document completely\n"+

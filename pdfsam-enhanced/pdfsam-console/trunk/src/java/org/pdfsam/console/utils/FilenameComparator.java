@@ -1,6 +1,6 @@
 /*
- * Created on 20-Jun-2007
- * Copyright (C) 2007 by Andrea Vacondio.
+ * Created on 27-Jan-2009
+ * Copyright (C) 2009 by Andrea Vacondio.
  *
  *
  * This library is provided under dual licenses.
@@ -35,45 +35,26 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.console.exceptions.console;
+package org.pdfsam.console.utils;
+
+import java.io.File;
+import java.util.Comparator;
 /**
- * Exception thrown while merging pdf files
+ * Comparator for the file names
  * @author Andrea Vacondio
  *
  */
-public class ConcatException extends ConsoleException {
+public class FilenameComparator implements Comparator {
 
-	public final static int ERR_SYNTAX = 0x01;
-	public final static int ERR_DEL_TEMP_FILE = 0x02;
-	public final static int ERR_NOT_POSITIVE = 0x03;
-	public final static int ERR_READING_CSV_OR_XML = 0x04;
-	public final static int ERR_CANNOT_MERGE = 0x05;
-	public final static int ERR_START_BIGGER_THAN_END = 0x06;
-	public final static int ERR_WRONG_ROTATION = 0x07;
-	public final static int ERR_DEGREES_NOT_ALLOWED = 0x08;
-	public final static int ERR_PARAM_ROTATION = 0x09;
-	public final static int CMD_NO_INPUT_FILE = 0x0A;
-	
-    private static final long serialVersionUID = -8242739056279169571L;
-
-	public ConcatException(int exceptionErrorCode, String[] args, Throwable e) {
-		super(exceptionErrorCode, args, e);
+	public int compare(Object arg0, Object arg1) {
+        if (arg0 == null || arg1 == null) {
+            throw new NullPointerException("Input files must not be null.");
+        }
+		if(!(arg0 instanceof File) || !(arg1 instanceof File)){
+			throw new ClassCastException("Input arguments must be File.");
+		}
+		
+		return ((File)arg0).compareTo((File)arg1);
 	}
 
-	public ConcatException(int exceptionErrorCode, Throwable e) {
-		super(exceptionErrorCode, e);
-	}
-
-	public ConcatException(int exceptionErrorCode) {
-		super(exceptionErrorCode);
-	}
-
-	public ConcatException(Throwable e) {
-		super(e);
-	}
-
-	public ConcatException(int exceptionErrorCode, String[] args) {
-		super(exceptionErrorCode, args);
-	}
-	
 }

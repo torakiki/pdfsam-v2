@@ -66,14 +66,14 @@ public class PrefixParser {
 	
 	//regexp to match
 	private static final String CURRENT_PAGE_REGX = "(.)*(\\[CURRENTPAGE(#*)\\])+(.)*";
-	private static final String FILE_NUMBER_REGX = "(.)*(\\[FILENUMBER(#*)\\])+(.)*";
+	private static final String FILE_NUMBER_REGX = "(.)*(\\[FILENUMBER(#*)(\\d*)\\])+(.)*";
 	private static final String TIMESTAMP_STRING = "[TIMESTAMP]";
 	private static final String BASE_NAME_STRING  = "[BASENAME]";
 	
 	
 	//regexp to replace
 	private static final String CURRENT_PAGE_REPLACE_REGX = "\\[CURRENTPAGE(#+)*\\]";
-	private static final String FILE_NUMBER_REPLACE_REGX = "\\[FILENUMBER(#+)*\\]";
+	private static final String FILE_NUMBER_REPLACE_REGX = "\\[FILENUMBER(#+)*(\\d+)*\\]";
 	private static final String TIMESTAMP_REPLACE_RGX = "\\[TIMESTAMP\\]";
 	private static final String BASE_NAME_REPLACE_REGX = "\\[BASENAME\\]";
 
@@ -222,15 +222,23 @@ public class PrefixParser {
 		String retVal = arg0;
 		if(fileNumber!=null){
 			String numberPatter = "";
+			String startingValue = "";
 			Matcher m = Pattern.compile(FILE_NUMBER_REGX).matcher(arg0);
 			if(m.matches()){
 				numberPatter = m.group(3);
+				startingValue = m.group(4);
 			}
+			int fileNum = 0;
+			//user entered a starting number
+			if(startingValue!=null && startingValue.length()>0){
+				fileNum = new Integer(startingValue).intValue();
+			}
+			fileNum += fileNumber.intValue();
 			String replacement = "";
 			if(numberPatter!=null && numberPatter.length()>0){
-				replacement = getFileNumberFormatter(numberPatter).format(fileNumber.intValue());
+				replacement = getFileNumberFormatter(numberPatter).format(fileNum);
 			}else{
-				replacement = getFileNumberFormatter(fileNumber.intValue()).format(fileNumber.intValue());
+				replacement = getFileNumberFormatter(fileNum).format(fileNum);
 			}
 			retVal = arg0.replaceAll(FILE_NUMBER_REPLACE_REGX, replacement);
 		}
