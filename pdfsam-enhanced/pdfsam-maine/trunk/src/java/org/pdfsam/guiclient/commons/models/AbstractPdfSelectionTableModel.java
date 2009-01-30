@@ -83,7 +83,7 @@ public abstract class AbstractPdfSelectionTableModel extends AbstractTableModel 
 		return showedColumns;
 	}
 
-	public Class getColumnClass(int columnIndex) {
+	public Class<?> getColumnClass(int columnIndex) {
 		return String.class;
 	}
 	/**

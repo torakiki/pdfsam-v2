@@ -1,16 +1,16 @@
 Application: PDF Split and Merge enhanced
 
-Version: 2.4.0e-dev
+Version: 2.0.0e-alpha
 
 Author: Andrea Vacondio <andrea.vacondio@gmail.com>
 
 License: GPL2
 
 Plugins included:
-	-pdfsam-merge-0.6.8 *
+	-pdfsam-merge-0.6.9 *
 	-pdfsam-split-0.5.0 *
 	-pdfsam-encrypt-0.2.7e *
-	-pdfsam-mix-0.1.7e *
+	-pdfsam-mix-0.1.8e *
 	-pdfsam-cover-0.2.7e *
 	-pdfsam-unpack-0.0.5e *
 	-pdfsam-setviewer-0.0.1e *
@@ -46,11 +46,11 @@ Linked libraries:
 Note: PDF Split and Merge comes with ABSOLUTELY NO WARRANTY;
 see the file gpl.txt in licenses/pdfsam subdirectory for details.
 
-Installation: Unzip the archive into a directory. Double click pdfsam-2.4.0e-dev.jar or open a console a type the command
-"java -jar /pathwhereyouunzipped/pdfsam-2.4.0e-dev.jar"
+Installation: Unzip the archive into a directory. Double click pdfsam-2.0.0e-alpha.jar or open a console a type the command
+"java -jar /pathwhereyouunzipped/pdfsam-2.0.0e-alpha.jar"
 
 Prerequisites: A working Java Runtime Environment is needed. This software has been tested on 
-Java(TM) 2 Runtime Environment, Standard Edition Version 1.4.2. Please report any trouble or bug with this or other
+Java(TM) 2 Runtime Environment, Standard Edition Version 1.6. Please report any trouble or bug with this or other
 Java versions.	
 	
 URL: http://www.pdfsam.org	

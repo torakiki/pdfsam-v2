@@ -1,12 +1,15 @@
-2.4.0e (01-Feb-2009)
+2.0.0e-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory
 -Console: fixed bug #2540496 (unpack -d parameter)
+-Console: added the chance to set a starting value for the [FILENUMBER] prefix (Ex. [FILENUMBER13] or [FILENUMBER###13])
 -Added the VisualReorder plugin
 -Added the VisualComposer plugin
+-Optimized PdfLoader
+-Merge, Mix: confirmation dialog if the output file already exists and the overwrite flag is false
 -Java 1.6 required
 
-1.5.1e (25-Jan-2009)
+1.5.1e (25-Jan-2009) (pdfsam-console 2.0.1e)
 ===================================
 -Console: fixed bug #2464606 (bookmarks management in split command)
 -Console: added the split by bookmarks level
@@ -14,7 +17,7 @@
 -Console: added pages rotation option to concat command
 -Updated langpack
 
-1.5.0e (23-Dec-2008)
+1.5.0e (23-Dec-2008) (pdfsam-console 2.0.0e)
 ===================================
 -Merge: fixed a JFileChooser call
 -Lazy JFileChooser init when call environment load/save 

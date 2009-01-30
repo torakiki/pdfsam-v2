@@ -365,7 +365,8 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     /**
      * Loads the available languages
      */
-    private Vector<StringItem> loadLanguages(){
+    @SuppressWarnings("unchecked")
+	private Vector<StringItem> loadLanguages(){
     	Vector<StringItem> langs = new Vector<StringItem>(10,5);
     	try{
 			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/org/pdfsam/i18n/languages.xml"));

@@ -142,12 +142,12 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
      * @author Andrea Vacondio
      *
      */
-    public class  PdfSelectionTableItemComparator implements Comparator, Serializable{
+    public class  PdfSelectionTableItemComparator implements Comparator<PdfSelectionTableItem>, Serializable{
 
 		private static final long serialVersionUID = 1128466157306952391L;
 		private SortingState sortingState = new SortingState();
     	
-        public int compare(Object o1, Object o2) {
+        public int compare(PdfSelectionTableItem o1, PdfSelectionTableItem o2) {
         	int retVal = 0;
         	if(sortingState.getCol() == -1){
         		retVal = o1.toString().compareTo(o2.toString());
@@ -156,24 +156,24 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
         		Object second;
         		switch(sortingState.getCol()){
     			case FILENAME:
-    				first = (((PdfSelectionTableItem)o1).getInputFile() != null)? ((PdfSelectionTableItem)o1).getInputFile().getName(): "";
-    				second = (((PdfSelectionTableItem)o2).getInputFile() != null)? ((PdfSelectionTableItem)o2).getInputFile().getName(): "";
+    				first = (o1.getInputFile() != null)? o1.getInputFile().getName(): "";
+    				second = (o2.getInputFile() != null)? o2.getInputFile().getName(): "";
     				break;
     			case PATH:
-    				first =  (((PdfSelectionTableItem)o1).getInputFile() != null)? ((PdfSelectionTableItem)o1).getInputFile().getAbsolutePath(): "";
-    				second = (((PdfSelectionTableItem)o2).getInputFile() != null)? ((PdfSelectionTableItem)o2).getInputFile().getAbsolutePath(): "";
+    				first =  (o1.getInputFile() != null)? o1.getInputFile().getAbsolutePath(): "";
+    				second = (o2.getInputFile() != null)? o2.getInputFile().getAbsolutePath(): "";
     				break;
     			case PAGES:
-    				first = (((PdfSelectionTableItem)o1).getPagesNumber() != null)? new Integer(((PdfSelectionTableItem)o1).getPagesNumber()): new Integer("0");
-    				second = (((PdfSelectionTableItem)o2).getPagesNumber() != null)? new Integer(((PdfSelectionTableItem)o2).getPagesNumber()): new Integer("0");
+    				first = (o1.getPagesNumber() != null)? new Integer(o1.getPagesNumber()): new Integer("0");
+    				second = (o2.getPagesNumber() != null)? new Integer(o2.getPagesNumber()): new Integer("0");
     				break;
     			case PDF_DOCUMENT_VERSION:
-    				first = new Character(((PdfSelectionTableItem)o1).getPdfVersion());
-    				second = new Character(((PdfSelectionTableItem)o2).getPdfVersion());
+    				first = new Character(o1.getPdfVersion());
+    				second = new Character(o2.getPdfVersion());
     				break;
     			case PAGESELECTION:
-    				first = (((PdfSelectionTableItem)o1).getPageSelection() != null)? ((PdfSelectionTableItem)o1).getPageSelection(): "";
-    				second = (((PdfSelectionTableItem)o2).getPageSelection() != null)? ((PdfSelectionTableItem)o2).getPageSelection(): "";
+    				first = (o1.getPageSelection() != null)? o1.getPageSelection(): "";
+    				second = (o2.getPageSelection() != null)? o2.getPageSelection(): "";
     				break;
     			default:
     				first = o1;

@@ -19,7 +19,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -43,7 +42,7 @@ public class  PlugInsLoader{
     private File[] pluginsList;
     private Configuration config;
     
-    private static final Class PLUGIN_SUPER_CLASS = org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel.class;
+    private static final Class<?> PLUGIN_SUPER_CLASS = org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel.class;
     /**
      * Constructor
      * @param pluginsDirectory Plug ins absolute path. If it's null or empty it tries to find the plugins dir.
@@ -100,8 +99,8 @@ public class  PlugInsLoader{
     public Hashtable<PluginDataModel, AbstractPlugablePanel> loadPlugins() throws PluginException {
     	Hashtable<PluginDataModel, AbstractPlugablePanel> retMap = new Hashtable<PluginDataModel, AbstractPlugablePanel>();
     	URLClassLoader urlClassLoader = null;
-    	ArrayList urlList = new ArrayList();
-    	ArrayList classList = new ArrayList();
+    	ArrayList<URL> urlList = new ArrayList<URL>();
+    	ArrayList<String> classList = new ArrayList<String>();
     	
     	//crates a list of URL and classes
     	for(int i=0; i<pluginsList.length; i++){
@@ -110,8 +109,8 @@ public class  PlugInsLoader{
     			try{
     				XMLConfig xmlConfigObject = new XMLConfig(currentDir.getAbsolutePath()); 
     				File[] fileList = currentDir.listFiles(new JarFilter(false));
-    				if(fileList.length == 1){
-    					urlList.add(fileList[0].toURL());
+    				if(fileList.length == 1){    					
+    					urlList.add(fileList[0].toURI().toURL());
     					classList.add(xmlConfigObject.getXMLConfigValue("/plugin/data/classname"));
     				}else{
     					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Found zero or many jars in plugin directory ")+currentDir.getAbsolutePath());
@@ -126,11 +125,9 @@ public class  PlugInsLoader{
     	
     	urlClassLoader = new URLClassLoader((URL[])urlList.toArray(new URL[urlList.size()]));
     	
-    	for (Iterator classesIterator=classList.iterator(); classesIterator.hasNext();) {
-    		String className = "";
+    	for(String className : classList){	
     		try{
-    			className = (String) classesIterator.next();
-    			Class currentClass = urlClassLoader.loadClass(className);
+    			Class<?> currentClass = urlClassLoader.loadClass(className);
     			if((currentClass.getSuperclass().isAssignableFrom(PLUGIN_SUPER_CLASS))){
     				AbstractPlugablePanel instance = (AbstractPlugablePanel) currentClass.newInstance();
     				PluginDataModel pluginDataModel = new PluginDataModel(instance.getPluginName(), instance.getVersion(), instance.getPluginAuthor());

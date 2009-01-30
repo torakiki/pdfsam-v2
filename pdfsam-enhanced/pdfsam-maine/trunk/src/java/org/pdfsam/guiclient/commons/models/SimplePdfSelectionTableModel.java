@@ -34,7 +34,7 @@ public class SimplePdfSelectionTableModel extends AbstractPdfSelectionTableModel
 
 
     //data array
-    protected Vector data = new Vector();
+    protected Vector<PdfSelectionTableItem> data = new Vector<PdfSelectionTableItem>();
 
     protected Configuration config;
     

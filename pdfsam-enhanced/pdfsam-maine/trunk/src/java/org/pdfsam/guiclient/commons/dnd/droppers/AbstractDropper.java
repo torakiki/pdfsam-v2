@@ -38,6 +38,7 @@ public abstract class AbstractDropper extends DropTargetAdapter {
 	/**
 	 * execute the drop
 	 */
+	@SuppressWarnings("unchecked")
 	public void drop(DropTargetDropEvent e)  {
 		try {
             DropTargetContext context = e.getDropTargetContext();

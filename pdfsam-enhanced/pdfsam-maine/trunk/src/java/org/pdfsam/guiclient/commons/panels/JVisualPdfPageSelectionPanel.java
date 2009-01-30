@@ -890,56 +890,62 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	/**
 	 * @return the clearButton
 	 */
-	protected JButton getClearButton() {
+	public JButton getClearButton() {
 		return clearButton;
 	}
 	/**
 	 * @return the zoomInButton
 	 */
-	protected JButton getZoomInButton() {
+	public JButton getZoomInButton() {
 		return zoomInButton;
 	}
 	/**
 	 * @return the zoomOutButton
 	 */
-	protected JButton getZoomOutButton() {
+	public JButton getZoomOutButton() {
 		return zoomOutButton;
 	}
 	/**
 	 * @return the undeleteButton
 	 */
-	protected JButton getUndeleteButton() {
+	public JButton getUndeleteButton() {
 		return undeleteButton;
 	}
 	/**
 	 * @return the removeButton
 	 */
-	protected JButton getRemoveButton() {
+	public JButton getRemoveButton() {
 		return removeButton;
 	}
 	/**
 	 * @return the moveUpButton
 	 */
-	protected JButton getMoveUpButton() {
+	public JButton getMoveUpButton() {
 		return moveUpButton;
 	}
 	/**
 	 * @return the moveDownButton
 	 */
-	protected JButton getMoveDownButton() {
+	public JButton getMoveDownButton() {
 		return moveDownButton;
 	}
 	/**
 	 * @return the rotateButton
 	 */
-	protected JButton getRotateButton() {
+	public JButton getRotateButton() {
 		return rotateButton;
 	}
 	/**
 	 * @return the rotateAntiButton
 	 */
-	protected JButton getRotateAntiButton() {
+	public JButton getRotateAntiButton() {
 		return rotateAntiButton;
+	}
+	/**
+	 * @return the loadFileButton
+	 */
+	public JButton getLoadFileButton() {
+		return loadFileButton;
 	}
  
     	
