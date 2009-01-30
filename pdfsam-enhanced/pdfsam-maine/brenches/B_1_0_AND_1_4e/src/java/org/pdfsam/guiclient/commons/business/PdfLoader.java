@@ -37,31 +37,17 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class PdfLoader {
 
+
 	private static final Logger log = Logger.getLogger(PdfLoader.class.getPackage().getName());
-	
-    //threshold to low priority addThread 
-    private static long LOW_PRIORITY_SIZE = 5*1024*1024; //5MB
-    
+	  
 	private JPdfSelectionPanel panel;
-    private JFileChooser fileChooser;
+    private JFileChooser fileChooser = null;
     private WorkQueue workQueue = null;
 	
 	public PdfLoader(JPdfSelectionPanel panel){
 		this.panel = panel;
-		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
-        fileChooser.setFileFilter(new PdfFilter());
-        fileChooser.setMultiSelectionEnabled(true);
-		//number of threads in workqueue based on the number of selectable documents
-		if(panel.getMaxSelectableFiles() <= 1){
-			workQueue = new WorkQueue(1, 1);
-		}else{
-			workQueue = new WorkQueue(10, 1);			
-//			fileChooser.setAccessory(CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.DONT_PRESERVER_ORDER_CHECKBOX_TYPE));
-		}
-        
-	}
-
-    
+		workQueue = new WorkQueue();
+	}    
     
     /**
      * adds a file or many files depending on the value of singleSelection
@@ -73,6 +59,7 @@ public class PdfLoader {
     				GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Table full"),
     				JOptionPane.INFORMATION_MESSAGE);
     	}else{
+    		lazyInitFileChooser();
 			if(singleSelection){
 				fileChooser.setMultiSelectionEnabled(false);
 			}else{
@@ -81,7 +68,7 @@ public class PdfLoader {
 			if(!(workQueue.getRunning()>0)){
 		        if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
 		            if(fileChooser.isMultiSelectionEnabled()){
-		            	addFiles(fileChooser.getSelectedFiles(),true);
+		            	addFiles(fileChooser.getSelectedFiles());
 		            }else{
 		            	addFile(fileChooser.getSelectedFile());
 		            }
@@ -98,6 +85,17 @@ public class PdfLoader {
     public void showFileChooserAndAddFiles(){
     	showFileChooserAndAddFiles(false);
     }
+    
+    /**
+     * Lazy JFileChooser initialization
+     */
+    private void lazyInitFileChooser(){
+    	if(fileChooser == null){
+    		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+            fileChooser.setFileFilter(new PdfFilter());
+            fileChooser.setMultiSelectionEnabled(true);
+    	}
+    }
     /**
      * add a file to the selectionTable
      * @param file input file
@@ -106,7 +104,7 @@ public class PdfLoader {
      */
     public synchronized void addFile(File file, String password, String pageSelection){
     	if (file != null){
-    		workQueue.execute(new AddThread(file, password, pageSelection), WorkQueue.SINGLE);
+    		workQueue.execute(new AddThread(file, password, pageSelection));
     	}
     }
     
@@ -134,7 +132,7 @@ public class PdfLoader {
      */
     public synchronized void reloadFile(File file, String password, String pageSelection, int index){
     	if (file != null){
-    		workQueue.execute(new ReloadThread(file, password, pageSelection, index), (file.length()<(LOW_PRIORITY_SIZE))? WorkQueue.HIGH: WorkQueue.LOW);
+    		workQueue.execute(new ReloadThread(file, password, pageSelection, index));
     	}
     }
     
@@ -161,22 +159,14 @@ public class PdfLoader {
      * @param ordered files are added keeping order
      */
     
-    public synchronized void addFiles(File[] files, boolean ordered){
+    public synchronized void addFiles(File[] files){
     	 if (files != null){
          	for (int i=0; i < files.length; i++){
-         		Integer priority = (ordered)?WorkQueue.SINGLE: (files[i].length()<(LOW_PRIORITY_SIZE))? WorkQueue.HIGH: WorkQueue.LOW;
-         		workQueue.execute(new AddThread(files[i]), priority);
+         		workQueue.execute(new AddThread(files[i]));
          	}
          }     
     }
     
-    /**
-     * Add files without keeping order
-     * @param files
-     */
-    public void addFiles(File[] files){
-    	addFiles(files, false);
-    }
     	
     /**
      * adds files to the selectionTable
@@ -185,7 +175,7 @@ public class PdfLoader {
      */
     public void addFiles(List files, boolean ordered){
     	if (files != null && !files.isEmpty()){
-    		addFiles((File[])files.toArray(new File[files.size()]), ordered);
+    		addFiles((File[])files.toArray(new File[files.size()]));
    	 	}     
     }
     
@@ -333,84 +323,36 @@ public class PdfLoader {
 	   			 log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "),e); 
 	   		 }	
 		 }    	
-    }
-    
+    }  
     /**
-     * Work queue used to manage concurrent pdf documents load. It loads concurrently small sized documents and one by one big sized ones  
+     * Work queue used to load documents  
      * @author Andrea Vacondio
      *
      */
     private static class WorkQueue{
-    	
-    	public static final Integer HIGH = new Integer(0);
-    	public static final Integer LOW = new Integer(1);
-    	public static final Integer SINGLE = new Integer(2);
         
-    	private final int highNThreads;
-    	private final int lowNThreads;
-    	
-        private final HighWorker[] highThreads;
-        private final LowWorker[] lowThreads;
         private final SingleWorker singleThread;
-        
-        private final LinkedList highQueue = new LinkedList();
-        private final LinkedList lowQueue = new LinkedList();
+
         private final LinkedList singleQueue = new LinkedList();
-        private int highRunning = 0;
         private int running = 0;
         
         private Object mutex = new Object();
         
-        /**
-         * @param highNThreads number of high priority thread
-         * @param lowNThreads number of low priority thread
-         */
-        public WorkQueue(int highNThreads, int lowNThreads){
-            this.highNThreads = highNThreads;
-            this.lowNThreads = lowNThreads;
-            
-            highThreads = new HighWorker[this.highNThreads];
-            lowThreads = new LowWorker[this.lowNThreads];
+        public WorkQueue(){
             singleThread = new SingleWorker();
             singleThread.start();
-            
-            for (int i=0; i<this.highNThreads; i++) {
-            	highThreads[i] = new HighWorker();
-            	highThreads[i].start();
-            }
-            for (int i=0; i<this.lowNThreads; i++) {
-            	lowThreads[i] = new LowWorker();
-            	lowThreads[i].start();
-            }            
         }
         
         /**
-         * Execute and addThread with the given priority
+         * Execute and addThread
          * @param r
-         * @param priority
          */
-        public void execute(Runnable r, Integer priority) {
-        	synchronized (mutex){
-	           	if(HIGH.equals(priority)){
-	           		highQueue.addLast(r); 
-	           	}else if(SINGLE.equals(priority)){	           		
-	           		singleQueue.addLast(r);
-	           	}else{
-	           		lowQueue.addLast(r);
-	           	}
+        public void execute(Runnable r) {
+        	synchronized (mutex){           		
+	           	singleQueue.addLast(r);
 	           	mutex.notifyAll();
            	}
-        }
-        
-        public synchronized void incHighRunningCounter(){
-        	highRunning++;
-        	incRunningCounter();
-        }
-        
-        public synchronized void deincHighRunningCounter(){
-        	highRunning--;  
-        	deincRunningCounter();
-        }
+        }        
         
         public synchronized void incRunningCounter(){
         	running++;
@@ -422,84 +364,7 @@ public class PdfLoader {
         
         public int getRunning(){
         	return running;
-        }
-        
-        /**
-         * High priority thread
-         * @author Andrea Vacondio
-         *
-         */
-        private class HighWorker extends Thread {
-        	
-        	public void run() {        		            
-        		Runnable r = null;
-        		
-                while (true) {
-                    synchronized(mutex) {
-                         while(highQueue.isEmpty()) {
-                        	 try{
-                        		 mutex.wait();
-                             }
-                             catch (InterruptedException ignored){}
-                         }
-                         r = (Runnable) highQueue.removeFirst();
-                     }
-
-                    if(r != null){
-                    	try {                    	
-                    		 incHighRunningCounter();
-                    		 r.run();                         		
-	                   }catch (RuntimeException e) {
-	                	   log.error(e);
-	                   }
-	                   finally{
-	                	   deincHighRunningCounter();                	  
-	                   }
-                    }                         
-                }
-        	}
-        }
-        
-        /**
-         * Low priority thread
-         * @author Andrea Vacondio
-         *
-         */
-        private class LowWorker extends Thread {
-        	
-        	public void run() {        		            
-        		Runnable r = null;
-        		
-                while (true) {
-                    synchronized(mutex) {
-                         while(lowQueue.isEmpty() || highRunning>0) {
-                        	 try{
-                        		 if(lowQueue.isEmpty()){
-                        			 mutex.wait();
-                        		 }else{
-                        			 mutex.wait(1000);
-                        		 }
-                        		 
-                             }
-                             catch (InterruptedException ignored){}
-                         }
-                         r = (Runnable) lowQueue.removeFirst();
-                     }
-
-                    if(r != null){
-                    	try {
-                    		incRunningCounter();
-                    		r.run();                         		
-                    	}catch (RuntimeException e) {
-                    		log.error(e);
-                    	}
-                    	finally{
-                    		deincRunningCounter();                	  
-                    	}
-               	 	} 
-                }
-        	}
-        }
+        }               
         
         /**
          * Single priority thread

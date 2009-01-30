@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 1.1.0
+!define VERSION 1.1.1
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -103,6 +103,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "PortugueseBR"
   !insertmacro MUI_LANGUAGE "Russian"
   !insertmacro MUI_LANGUAGE "Slovak"
+  !insertmacro MUI_LANGUAGE "Slovenian"
   !insertmacro MUI_LANGUAGE "Swedish"
   !insertmacro MUI_LANGUAGE "Thai"
   !insertmacro MUI_LANGUAGE "Turkish"
@@ -111,19 +112,19 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_1_0.exe
+OutFile pdfsam-win32inst-v1_1_1.exe
 InstallDir "$PROGRAMFILES\pdfsam"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 1.1.0.0
+VIProductVersion 1.1.1.0
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileDescription ""
-VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2008"
+VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2009"
 ;InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails hide
 
@@ -244,6 +245,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}                
         ${Case} ${LANG_UKRAINIAN}
             Push 'uk' 
+        ${Break}                
+        ${Case} ${LANG_SLOVENIAN}
+            Push 'sl' 
         ${Break}                
         ${Default}
             Push 'Default'
@@ -548,6 +552,8 @@ Function .onInit
     Push Croatian
     Push ${LANG_HEBREW}
     Push Hebrew  
+    Push ${LANG_SLOVENIAN}
+    Push Slovenian  
     Push A ; A means auto count languages
            ; for the auto count to work the first empty push (Push "") must remain
     LangDLL::LangDialog "Installer Language" "Please select the language of the installer"

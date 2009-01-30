@@ -44,4 +44,23 @@ public class DialogUtility {
 			    null,
 			    null);
 	}
+	
+	/**
+	 * Shows a yes/no/cancel dialog to ask the user about overwriting output file
+	 * @param comp parent component
+	 * @param filename suggested directory
+	 * @return
+	 */
+	public static int askForOverwriteOutputFileDialog(Component comp, String filename){
+
+		return JOptionPane.showOptionDialog(comp,
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Selected output file already exists ")+filename+"\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Would you like to overwrite it?"),
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Output location error"),
+		    JOptionPane.YES_NO_CANCEL_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,
+		    null,
+		    null);
+
+	}
 }

@@ -1,8 +1,15 @@
-1.5.1e ()
+1.5.2e ()
+===================================
+-Console: added the -d option to the concat command to merge all the documents in an input directory
+-Console: fixed bug #2540496 (unpack -d parameter)
+
+1.5.1e (25-Jan-2009)
 ===================================
 -Console: fixed bug #2464606 (bookmarks management in split command)
 -Console: added the split by bookmarks level
 -Split: added options to split by bookmarks level
+-Console: added pages rotation option to concat command
+-Updated langpack
 
 1.5.0e (23-Dec-2008)
 ===================================

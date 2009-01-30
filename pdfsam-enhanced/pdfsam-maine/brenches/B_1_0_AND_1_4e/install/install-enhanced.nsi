@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 1.5.0e
+!define VERSION 1.5.1e
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -103,6 +103,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "PortugueseBR"
   !insertmacro MUI_LANGUAGE "Russian"
   !insertmacro MUI_LANGUAGE "Slovak"
+  !insertmacro MUI_LANGUAGE "Slovenian"
   !insertmacro MUI_LANGUAGE "Swedish"
   !insertmacro MUI_LANGUAGE "Thai"
   !insertmacro MUI_LANGUAGE "Turkish"
@@ -111,19 +112,19 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_5_0e.exe
+OutFile pdfsam-win32inst-v1_5_1e.exe
 InstallDir "$PROGRAMFILES\pdfsam-enhanced"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 1.5.0.0
+VIProductVersion 1.5.1.0
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam enhanced"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileDescription ""
-VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2008"
+VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2009"
 ;InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails hide
 
@@ -244,6 +245,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}                
         ${Case} ${LANG_UKRAINIAN}
             Push 'uk' 
+        ${Break}                
+        ${Case} ${LANG_SLOVENIAN}
+            Push 'sl' 
         ${Break}                
         ${Default}
             Push 'Default'
@@ -548,6 +552,8 @@ Function .onInit
     Push Croatian
     Push ${LANG_HEBREW}
     Push Hebrew  
+    Push ${LANG_SLOVENIAN}
+    Push Slovenian  
     Push A ; A means auto count languages
            ; for the auto count to work the first empty push (Push "") must remain
     LangDLL::LangDialog "Installer Language" "Please select the language of the installer"
@@ -704,23 +710,23 @@ FunctionEnd
 # Installer Language Strings
 LangString ^UninstallLink ${LANG_ENGLISH} "Uninstall $(^Name)"
 LangString ^UninstallLink ${LANG_ITALIAN} "Disinstalla $(^Name)"
-LangString ^UninstallLink ${LANG_RUSSIAN} "Óä&àëèòü $(^Name)"
+LangString ^UninstallLink ${LANG_RUSSIAN} "ï¿½ï¿½&ï¿½ï¿½ï¿½ï¿½ï¿½ $(^Name)"
 LangString ^UninstallLink ${LANG_SWEDISH} "Avinstallera $(^Name)"
 LangString ^UninstallLink ${LANG_SPANISH} "Desinstalar $(^Name)"
 LangString ^UninstallLink ${LANG_PORTUGUESE} "Desinstalar $(^Name)"
 LangString ^UninstallLink ${LANG_DUTCH} "Verwijderen $(^Name)"
-LangString ^UninstallLink ${LANG_FRENCH} "Désinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_GREEK} "Áðå&ãêáôÜóô $(^Name)"
-LangString ^UninstallLink ${LANG_TURKISH} "Kaldýr $(^Name)"
+LangString ^UninstallLink ${LANG_FRENCH} "Dï¿½sinstaller $(^Name)"
+LangString ^UninstallLink ${LANG_GREEK} "ï¿½ï¿½ï¿½&ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ $(^Name)"
+LangString ^UninstallLink ${LANG_TURKISH} "Kaldï¿½r $(^Name)"
 LangString ^UninstallLink ${LANG_GERMAN} "Deinstallieren $(^Name)"
 LangString ^UninstallLink ${LANG_POLISH} "Odinstaluj $(^Name)"
 LangString ^UninstallLink ${LANG_FINNISH} "Poista $(^Name)"
-LangString ^UninstallLink ${LANG_SIMPCHINESE} "ÒÆ³ý(&U) $(^Name)"
-LangString ^UninstallLink ${LANG_HUNGARIAN} "Eltávolítás $(^Name)"
+LangString ^UninstallLink ${LANG_SIMPCHINESE} "ï¿½Æ³ï¿½(&U) $(^Name)"
+LangString ^UninstallLink ${LANG_HUNGARIAN} "Eltï¿½volï¿½tï¿½s $(^Name)"
 LangString ^UninstallLink ${LANG_DANISH} "Afinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_TRADCHINESE} "²¾°£(&U) $(^Name)"
+LangString ^UninstallLink ${LANG_TRADCHINESE} "ï¿½ï¿½ï¿½ï¿½(&U) $(^Name)"
 LangString ^UninstallLink ${LANG_INDONESIAN} "Uninstal $(^Name)"
 LangString ^UninstallLink ${LANG_CZECH} "Odinstalace $(^Name)"
-LangString ^UninstallLink ${LANG_SLOVAK} "Odinštalovanie $(^Name)"
+LangString ^UninstallLink ${LANG_SLOVAK} "Odinï¿½talovanie $(^Name)"
 LangString ^UninstallLink ${LANG_BOSNIAN} "Uklanjanje $(^Name)"
-LangString ^UninstallLink ${LANG_HEBREW} "îñéø $(^Name)"
+LangString ^UninstallLink ${LANG_HEBREW} "ï¿½ï¿½ï¿½ï¿½ $(^Name)"
