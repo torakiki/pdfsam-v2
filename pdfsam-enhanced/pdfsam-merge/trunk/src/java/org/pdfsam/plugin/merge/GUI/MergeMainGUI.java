@@ -108,7 +108,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.6.8";
+    private static final String PLUGIN_VERSION = "0.6.9";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -267,11 +267,11 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
                 final LinkedList args = new LinkedList();  
                 try{             	
                 	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	if(items != null && items.length >= 1){					
-		                args.add("-"+ConcatParsedCommand.O_ARG);
+                	if(items != null && items.length >= 1){
+                		String destination = "";
 	                    //if no extension given
 	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
-	                        destinationTextField.setText(destinationTextField.getText()+".pdf");
+	                        destinationTextField.setText(destinationTextField.getText()+"."+PDF_EXTENSION);
 	                    }                    
 	                    if(destinationTextField.getText().length()>0){
 	                    	File destinationDir = new File(destinationTextField.getText());
@@ -299,7 +299,22 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	                    		}
 	                    	}
 	                    }
-	                    args.add(destinationTextField.getText());
+	                    
+	                    destination = destinationTextField.getText();
+						
+						//check if the file already exists and the user didn't select to overwrite
+						File destFile = (destination!=null)? new File(destination):null;
+						if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
+							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
+                			if(JOptionPane.YES_OPTION == chosenOpt){
+                				overwriteCheckbox.setSelected(true);
+		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+		        				return;
+		        			}
+						}
+						
+		                args.add("-"+ConcatParsedCommand.O_ARG);
+	                    args.add(destination);
 	                    
 	                    PdfSelectionTableItem item = null;    
 	                	String pageSelectionString = "";
