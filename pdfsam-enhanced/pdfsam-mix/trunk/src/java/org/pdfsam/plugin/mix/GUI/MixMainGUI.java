@@ -104,7 +104,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.7e";
+	private static final String PLUGIN_VERSION = "0.1.8e";
 
 	
 	/**
@@ -276,7 +276,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 						}
 						args.add(f2);
 
-						args.add("-"+MixParsedCommand.O_ARG);
+						String destination = "";
 						//if no extension given
 	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
 							destinationTextField.setText(destinationTextField.getText()+".pdf");
@@ -304,7 +304,21 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	                    		}
 	                    	}
 	                    }
-						args.add(destinationTextField.getText());
+	                    
+	                    destination = destinationTextField.getText();
+						
+						//check if the file already exists and the user didn't select to overwrite
+						File destFile = (destination!=null)? new File(destination):null;
+						if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
+							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
+                			if(JOptionPane.YES_OPTION == chosenOpt){
+                				overwriteCheckbox.setSelected(true);
+		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
+		        				return;
+		        			}
+						}
+						args.add("-"+MixParsedCommand.O_ARG);
+						args.add(destination);
 
 						if (overwriteCheckbox.isSelected()) args.add("-"+MixParsedCommand.OVERWRITE_ARG);
 	                    if (outputCompressedCheck.isSelected()) args.add("-"+MixParsedCommand.COMPRESSED_ARG); 
