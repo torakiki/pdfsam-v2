@@ -1,0 +1,939 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pdfsam\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"PO-Revision-Date: 2008-12-31 19:02+0000\n"
+"Last-Translator: Luke M. <Unknown>\n"
+"Language-Team: <andrea.vacondio@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-Language: English\n"
+
+msgid "Merge options"
+msgstr "Merge options"
+
+msgid "PDF documents contain forms"
+msgstr "PDF documents contain forms"
+
+msgid "Merge type"
+msgstr "Merge type"
+
+msgid "Unchecked"
+msgstr "Unticked"
+
+msgid "Use this merge type for standard pdf documents"
+msgstr "Use this merge type for standard pdf documents"
+
+msgid "Checked"
+msgstr "Ticked"
+
+msgid "Use this merge type for pdf documents containing forms"
+msgstr "Use this merge type for pdf documents containing forms"
+
+msgid "Note"
+msgstr "Note"
+
+msgid "Setting this option the documents will be completely loaded in memory"
+msgstr ""
+"Selecting this option means the documents will be completely loaded in memory"
+
+msgid "Destination output file"
+msgstr "Destination output file"
+
+msgid "Error: "
+msgstr "Error: "
+
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Browse or enter the full path to the destination output file."
+
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr ""
+"Tick the box if you want to overwrite the output file if it already exists."
+
+msgid "Check the box if you want compressed output files."
+msgstr "Tick the box if you want compressed output files."
+
+msgid "PDF version 1.5 or above."
+msgstr "PDF version 1.5 or above."
+
+msgid "Set the pdf version of the ouput document."
+msgstr "Set the pdf version of the ouput document."
+
+msgid "Please wait while all files are processed.."
+msgstr "Please wait while all files are processed.."
+
+msgid "Found a password for input file."
+msgstr "Found a password for input file."
+
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Execute pdf merge"
+msgstr "Execute pdf merge"
+
+msgid "Merge/Extract"
+msgstr "Merge/Extract"
+
+msgid "Merge section loaded."
+msgstr "Merge section loaded."
+
+msgid "Export as xml"
+msgstr "Export as xml"
+
+msgid "Unable to save xml file."
+msgstr "Unable to save xml file."
+
+msgid "Ok"
+msgstr "Ok"
+
+msgid "File xml saved."
+msgstr "File xml saved."
+
+msgid "Error saving xml file, output file is null."
+msgstr "Error saving xml file, output file is null."
+
+msgid "Split options"
+msgstr "Split options"
+
+msgid "Burst (split into single pages)"
+msgstr "Burst (split into single pages)"
+
+msgid "Split every \"n\" pages"
+msgstr "Split every \"n\" pages"
+
+msgid "Split even pages"
+msgstr "Split even pages"
+
+msgid "Split odd pages"
+msgstr "Split odd pages"
+
+msgid "Split after these pages"
+msgstr "Split after these pages"
+
+msgid "Split at this size"
+msgstr "Split at this size"
+
+msgid "Split by bookmarks level"
+msgstr ""
+
+msgid "Burst"
+msgstr "Burst"
+
+msgid "Explode the pdf document into single pages"
+msgstr "Explode the pdf document into single pages"
+
+msgid "Split the document every \"n\" pages"
+msgstr "Split the document every \"n\" pages"
+
+msgid "Split the document every even page"
+msgstr "Split the document every even page"
+
+msgid "Split the document every odd page"
+msgstr "Split the document every odd page"
+
+msgid "Split the document after page numbers (num1-num2-num3..)"
+msgstr "Split the document after page numbers (num1-num2-num3..)"
+
+msgid "Split the document in files of the given size (roughly)"
+msgstr ""
+
+msgid "Split the document at pages referred by bookmarks of the given level"
+msgstr ""
+
+msgid "Destination folder"
+msgstr ""
+
+msgid "Same as source"
+msgstr "Same as source"
+
+msgid "Choose a folder"
+msgstr "Choose a folder"
+
+msgid "Destination output directory"
+msgstr "Destination output directory"
+
+msgid "Use the same output folder as the input file or choose a folder."
+msgstr "Use the same output folder as the input file or choose a folder."
+
+msgid ""
+"To choose a folder browse or enter the full path to the destination output "
+"directory."
+msgstr ""
+"To choose a folder browse or enter the full path to the destination output "
+"directory."
+
+msgid ""
+"Check the box if you want to overwrite the output files if they already "
+"exist."
+msgstr ""
+"Tick the box if you want to overwrite the output files if they already exist."
+
+msgid "Output options"
+msgstr ""
+
+msgid "Output file names prefix:"
+msgstr "Output file names prefix:"
+
+msgid "Output files prefix"
+msgstr "Output files prefix"
+
+msgid ""
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+"performs variable substitution."
+msgstr ""
+
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+
+msgid ""
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
+msgstr ""
+
+msgid ""
+"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgstr ""
+
+msgid "Invalid split size"
+msgstr "Invalid split size"
+
+msgid "The lowest available pdf version is "
+msgstr "The lowest available pdf version is "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "You selected a lower output pdf version, continue anyway ?"
+
+msgid "Pdf version conflict"
+msgstr "Pdf version conflict"
+
+msgid "Please select a pdf document."
+msgstr ""
+
+msgid "Split selected file"
+msgstr "Split selected file"
+
+msgid "Split"
+msgstr "Split"
+
+msgid "Split section loaded."
+msgstr "Split section loaded."
+
+msgid "Invalid unit: "
+msgstr "Invalid unit: "
+
+msgid "Fill from document"
+msgstr ""
+
+msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Cover pdf file"
+msgstr ""
+
+msgid "Footer pdf file"
+msgstr ""
+
+msgid "Select at least one cover or one footer"
+msgstr "Select at least one cover or one footer"
+
+msgid "Cover and Footer"
+msgstr "Cover and Footer"
+
+msgid "Cover And Footer section loaded."
+msgstr "Cover And Footer section loaded."
+
+msgid "Encrypt options"
+msgstr ""
+
+msgid "Owner password:"
+msgstr "Owner password:"
+
+msgid "Owner password (Max 32 chars long)"
+msgstr "Owner password (Max 32 chars long)"
+
+msgid "User password:"
+msgstr "User password:"
+
+msgid "User password (Max 32 chars long)"
+msgstr "User password (Max 32 chars long)"
+
+msgid "Encryption algorithm:"
+msgstr ""
+
+msgid "Allow all"
+msgstr "Allow all"
+
+msgid "Print"
+msgstr "Print"
+
+msgid "Low quality print"
+msgstr "Low quality print"
+
+msgid "Copy or extract"
+msgstr "Copy or extract"
+
+msgid "Modify"
+msgstr "Modify"
+
+msgid "Add or modify text annotations"
+msgstr "Add or modify text annotations"
+
+msgid "Fill form fields"
+msgstr "Fill form fields"
+
+msgid "Extract for use by accessibility dev."
+msgstr "Extract for use by accessibility dev."
+
+msgid "Manipulate pages and add bookmarks"
+msgstr "Manipulate pages and add bookmarks"
+
+msgid ""
+"Check the box if you want compressed output files (Pdf version 1.5 or "
+"higher)."
+msgstr ""
+"Tick the box if you want compressed output files (Pdf version 1.5 or higher)."
+
+msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
+msgstr "If it contains \"[TIMESTAMP]\" it performs variable substitution."
+
+msgid ""
+"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
+"FileName_prefix_20070517_113423471.pdf."
+msgstr ""
+"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
+"FileName_prefix_20070517_113423471.pdf."
+
+msgid ""
+"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
+"names."
+msgstr ""
+"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
+"names."
+
+msgid "Available variables: [TIMESTAMP], [BASENAME]."
+msgstr "Available variables: [TIMESTAMP], [BASENAME]."
+
+msgid "Encrypt selected files"
+msgstr "Encrypt selected files"
+
+msgid "Encrypt"
+msgstr "Encrypt"
+
+msgid "Encrypt section loaded."
+msgstr "Encrypt section loaded."
+
+msgid "Decrypt selected files"
+msgstr ""
+
+msgid "Decrypt"
+msgstr ""
+
+msgid "Decrypt section loaded."
+msgstr ""
+
+msgid "Mix options"
+msgstr ""
+
+msgid "Reverse first document"
+msgstr "Reverse first document"
+
+msgid "Reverse second document"
+msgstr "Reverse second document"
+
+msgid "Found a password for first file."
+msgstr "Found a password for first file."
+
+msgid "Found a password for second file."
+msgstr "Found a password for second file."
+
+msgid "Please select two pdf documents."
+msgstr "Please select two pdf documents."
+
+msgid "Execute pdf alternate mix"
+msgstr "Execute pdf alternate mix"
+
+msgid "Alternate Mix"
+msgstr "Alternate Mix"
+
+msgid "AlternateMix section loaded."
+msgstr "AlternateMix section loaded."
+
+msgid "Unpack selected files"
+msgstr "Unpack selected files"
+
+msgid "Unpack"
+msgstr "Unpack"
+
+msgid "Unpack section loaded."
+msgstr "Unpack section loaded."
+
+msgid "Set viewer options"
+msgstr ""
+
+msgid "Hide the menubar"
+msgstr ""
+
+msgid "Hide the toolbar"
+msgstr ""
+
+msgid "Hide user interface elements"
+msgstr ""
+
+msgid "Rezise the window to fit the page size"
+msgstr ""
+
+msgid "Center of the screen"
+msgstr ""
+
+msgid "Display document title as window title"
+msgstr ""
+
+msgid "Pdf version required:"
+msgstr ""
+
+msgid "No page scaling in print dialog"
+msgstr ""
+
+msgid "Viewer layout:"
+msgstr ""
+
+msgid "Viewer open mode:"
+msgstr ""
+
+msgid "Non fullscreen mode:"
+msgstr ""
+
+msgid "Direction:"
+msgstr ""
+
+msgid "Set options"
+msgstr ""
+
+msgid "Set viewer options for selected files"
+msgstr ""
+
+msgid "Left to right"
+msgstr ""
+
+msgid "Right to left"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Optional content group panel"
+msgstr ""
+
+msgid "Document outline"
+msgstr ""
+
+msgid "Thumbnail images"
+msgstr ""
+
+msgid "One page at a time"
+msgstr ""
+
+msgid "Pages in one column"
+msgstr ""
+
+msgid "Pages in two columns (odd on the left)"
+msgstr ""
+
+msgid "Pages in two columns (odd on the right)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the left)"
+msgstr ""
+
+msgid "Two pages at a time (odd on the right)"
+msgstr ""
+
+msgid "Viewer options"
+msgstr ""
+
+msgid "Viewer options section loaded."
+msgstr ""
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Save password information (they will be readable opening the output file)?"
+
+msgid "Confirm password saving"
+msgstr "Confirm password saving"
+
+msgid "Unknown action."
+msgstr "Unknown action."
+
+msgid "Log saved."
+msgstr "Log saved."
+
+msgid " node environment loaded."
+msgstr " node environment loaded."
+
+msgid "Environment saved."
+msgstr "Environment saved."
+
+msgid "Error saving environment, output file is null."
+msgstr "Error saving environment, output file is null."
+
+msgid "Error saving environment."
+msgstr "Error saving environment."
+
+msgid "Environment loaded."
+msgstr "Environment loaded."
+
+msgid "Error loading environment."
+msgstr "Error loading environment."
+
+msgid "Error loading environment from input file. "
+msgstr "Error loading environment from input file. "
+
+msgid "Selection table is full, please remove some pdf document."
+msgstr "Selection table is full, please remove some pdf document."
+
+msgid "Table full"
+msgstr "Table full"
+
+msgid "Please wait while reading"
+msgstr "Please wait while reading"
+
+msgid "Selected file is not a pdf document."
+msgstr "Selected file is not a pdf document."
+
+msgid "Error loading "
+msgstr "Error loading "
+
+msgid "Command validation returned an empty value."
+msgstr "Command validation returned an empty value."
+
+msgid "Command executed."
+msgstr "Command executed."
+
+msgid "Run"
+msgstr "Run"
+
+msgid "Browse"
+msgstr "Browse"
+
+msgid "Add"
+msgstr "Add"
+
+msgid "Compress output file/files"
+msgstr "Compress output file/files"
+
+msgid "Overwrite if already exists"
+msgstr "Overwrite if already exists"
+
+msgid "Don't preserve file order (fast load)"
+msgstr "Don't preserve file order (fast load)"
+
+msgid "Output document pdf version:"
+msgstr "Output document pdf version:"
+
+msgid "Same as input document"
+msgstr "Same as input document"
+
+msgid "File name"
+msgstr "File name"
+
+msgid "Path"
+msgstr "Path"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Page Selection"
+msgstr "Page Selection"
+
+msgid "Total pages of the document"
+msgstr "Total pages of the document"
+
+msgid "Password to open the document (if needed)"
+msgstr "Password to open the document (if needed)"
+
+msgid "Pdf version of the document"
+msgstr "Pdf version of the document"
+
+msgid ""
+"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+"7,12-)"
+msgstr ""
+"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+"7,12-)"
+
+msgid "Add a pdf to the list"
+msgstr "Add a pdf to the list"
+
+msgid "Remove a pdf from the list"
+msgstr "Remove a pdf from the list"
+
+msgid "(Canc)"
+msgstr "(Canc)"
+
+msgid "Remove"
+msgstr "Remove"
+
+msgid "Reload"
+msgstr "Reload"
+
+msgid "Error: Unable to reload the selected file/s."
+msgstr "Error: Unable to reload the selected file/s."
+
+msgid "Unable to remove JList text "
+msgstr "Unable to remove JList text "
+
+msgid "File selected: "
+msgstr "File selected: "
+
+msgid "File reloaded: "
+msgstr "File reloaded: "
+
+msgid "Move Up"
+msgstr "Move Up"
+
+msgid "Move up selected pdf file"
+msgstr "Move up selected pdf file"
+
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+ArrowUp)"
+
+msgid "Move Down"
+msgstr "Move Down"
+
+msgid "Move down selected pdf file"
+msgstr "Move down selected pdf file"
+
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+ArrowDown)"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Remove every pdf file from the merge list"
+msgstr "Remove every pdf file from the merge list"
+
+msgid "Set output file"
+msgstr "Set output file"
+
+msgid "Error: Unable to get the file path."
+msgstr "Error: Unable to get the file path."
+
+msgid "Unable to get the default environment informations."
+msgstr "Unable to get the default environment information."
+
+msgid "Setting look and feel..."
+msgstr "Setting look and feel..."
+
+msgid "Setting logging level..."
+msgstr "Setting logging level..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Unable to find log level, setting to default level (DEBUG)."
+
+msgid "Logging level set to "
+msgstr "Logging level set to "
+
+msgid "Unable to set logging level."
+msgstr "Unable to set logging level."
+
+msgid "Error getting plugins directory."
+msgstr "Error getting plugins directory."
+
+msgid "Cannot read plugins directory "
+msgstr "Cannot read plugins directory "
+
+msgid "Plugins directory is null."
+msgstr "Plugins directory is null."
+
+msgid "Found zero or many jars in plugin directory "
+msgstr "Found zero or many jars in plugin directory "
+
+msgid "Exception loading plugins."
+msgstr "Exception loading plugins."
+
+msgid "Cannot read plugin directory "
+msgstr "Cannot read plugin directory "
+
+msgid " plugin loaded."
+msgstr " plugin loaded."
+
+msgid "Unable to load a plugin that is not JPanel subclass."
+msgstr "Unable to load a plugin that is not JPanel subclass."
+
+msgid "Error loading class "
+msgstr "Error loading class "
+
+msgid "Copy"
+msgstr "Copy"
+
+msgid "Select all"
+msgstr "Select all"
+
+msgid "Save log"
+msgstr "Save log"
+
+msgid "File"
+msgstr "File"
+
+msgid "Save environment"
+msgstr "Save environment"
+
+msgid "Load environment"
+msgstr "Load environment"
+
+msgid "Exit"
+msgstr "Exit"
+
+msgid "Unable to initialize menu bar."
+msgstr "Unable to initialise menu bar."
+
+msgid "started in "
+msgstr "started in "
+
+msgid "Loading plugins.."
+msgstr "Loading plugins.."
+
+msgid "Building menus.."
+msgstr "Building menus.."
+
+msgid "Building buttons bar.."
+msgstr "Building buttons bar.."
+
+msgid "Building status bar.."
+msgstr "Building status bar.."
+
+msgid "Building tree.."
+msgstr "Building tree.."
+
+msgid "Loading default environment."
+msgstr "Loading default environment."
+
+msgid "Error starting pdfsam."
+msgstr "Error starting pdfsam."
+
+msgid "Clear log"
+msgstr "Clear log"
+
+msgid "Unable to initialize button bar."
+msgstr "Unable to initialise button bar."
+
+msgid "Version: "
+msgstr "Version: "
+
+msgid "Language: "
+msgstr "Language: "
+
+msgid "Author: "
+msgstr "Author: "
+
+msgid "Build date: "
+msgstr "Build date: "
+
+msgid "Java home: "
+msgstr "Java home: "
+
+msgid "Java version: "
+msgstr "Java version: "
+
+msgid "Max memory: "
+msgstr "Max memory: "
+
+msgid "Configuration file: "
+msgstr "Configuration file: "
+
+msgid "Website: "
+msgstr "Website: "
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Author"
+msgstr "Author"
+
+msgid "About"
+msgstr "About"
+
+msgid "Unimplemented method for JInfoPanel"
+msgstr "Unimplemented method for JInfoPanel"
+
+msgid "Contributes: "
+msgstr "Contributes: "
+
+msgid "Log level:"
+msgstr "Log level:"
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Look and feel:"
+msgstr "Look and feel:"
+
+msgid "Theme:"
+msgstr "Theme:"
+
+msgid "Language:"
+msgstr "Language:"
+
+msgid "Check for updates:"
+msgstr "Check for updates:"
+
+msgid "Load default environment at startup:"
+msgstr "Load default environment at startup:"
+
+msgid "Default working directory:"
+msgstr "Default working directory:"
+
+msgid "Error getting default environment."
+msgstr "Error getting default environment."
+
+msgid "Check now"
+msgstr "Check now"
+
+msgid "Play alert sounds"
+msgstr ""
+
+msgid "Settings "
+msgstr "Settings "
+
+msgid "Language"
+msgstr "Language"
+
+msgid "Set your preferred language (restart needed)"
+msgstr "Set your preferred language (restart needed)"
+
+msgid "Look and feel"
+msgstr "Look and feel"
+
+msgid ""
+"Set your preferred look and feel and your preferred theme (restart needed)"
+msgstr ""
+"Set your preferred look and feel and your preferred theme (restart needed)"
+
+msgid "Log level"
+msgstr "Log level"
+
+msgid "Set a log detail level (restart needed)"
+msgstr "Set a log detail level (restart needed)"
+
+msgid "Check for updates"
+msgstr "Check for updates"
+
+msgid "Set when new version availability should be checked (restart needed)"
+msgstr "Set when new version availability should be checked (restart needed)"
+
+msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Default env."
+msgstr "Default env."
+
+msgid ""
+"Select a previously saved env. file that will be automatically loaded at "
+"startup"
+msgstr ""
+"Select a previously saved env. file that will be automatically loaded at "
+"startup"
+
+msgid "Default working directory"
+msgstr "Default working directory"
+
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
+msgstr ""
+"Select a directory where documents will be saved and loaded by default"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Configuration saved."
+msgstr "Configuration saved."
+
+msgid "Unimplemented method for JSettingsPanel"
+msgstr "Unimplemented method for JSettingsPanel"
+
+msgid "New version available: "
+msgstr "New version available: "
+
+msgid "Plugins"
+msgstr "Plugins"
+
+msgid "Error getting pdf version description."
+msgstr "Error getting pdf version description."
+
+msgid "Version 1.2 (Acrobat 3)"
+msgstr "Version 1.2 (Acrobat 3)"
+
+msgid "Version 1.3 (Acrobat 4)"
+msgstr "Version 1.3 (Acrobat 4)"
+
+msgid "Version 1.4 (Acrobat 5)"
+msgstr "Version 1.4 (Acrobat 5)"
+
+msgid "Version 1.5 (Acrobat 6)"
+msgstr "Version 1.5 (Acrobat 6)"
+
+msgid "Version 1.6 (Acrobat 7)"
+msgstr "Version 1.6 (Acrobat 7)"
+
+msgid "Version 1.7 (Acrobat 8)"
+msgstr "Version 1.7 (Acrobat 8)"
+
+msgid "Never"
+msgstr "Never"
+
+msgid "pdfsam start up"
+msgstr "pdfsam start up"
+
+msgid "Output file location is not correct"
+msgstr "Output file location is not correct"
+
+msgid "Would you like to change it to"
+msgstr "Would you like to change it to"
+
+msgid "Output location error"
+msgstr "Output location error"
+
+msgid "Checking for a new version available."
+msgstr "Checking if a new version is available."
+
+msgid "Error checking for a new version available."
+msgstr "Error checking if a new version is available."
+
+msgid "Unable to get latest available version"
+msgstr "Unable to get latest available version"
+
+msgid "New version available."
+msgstr "New version available."
+
+msgid "No new version available."
+msgstr "No new version available."
+
+msgid "Cut"
+msgstr "Cut"
+
+msgid "Paste"
+msgstr "Paste"
