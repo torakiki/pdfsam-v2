@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-18 18:07+0100\n"
+"POT-Creation-Date: 2009-03-06 18:50+0100\n"
 "PO-Revision-Date: 2008-12-20 09:13+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -468,6 +468,32 @@ msgstr "Možnosti pregledovalnika"
 msgid "Viewer options section loaded."
 msgstr "Možnosti pregledovalnika naložene"
 
+msgid "Move on top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr ""
+
+msgid "Execute pages reorder"
+msgstr ""
+
+msgid "Visual document composer"
+msgstr ""
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Visual reorder"
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "Shrani podatke za geslo"
@@ -478,8 +504,38 @@ msgstr "Potrdi shranjevanje gesla"
 msgid "Unknown action."
 msgstr "Neznana operacija"
 
+msgid "New version available."
+msgstr "Nova verzija na voljo"
+
+msgid "No new version available."
+msgstr "Ni posodobitev -Laservis d.o.o."
+
 msgid "Log saved."
 msgstr "Zapis shranjen"
+
+msgid "Unable to save image"
+msgstr ""
+
+msgid "Unable to create image for a null input document"
+msgstr ""
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr ""
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document."
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
+
+msgid "Thumbnails generated in "
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
 
 msgid " node environment loaded."
 msgstr ""
@@ -502,6 +558,21 @@ msgstr "Napaka pri nalaganju okolja"
 msgid "Error loading environment from input file. "
 msgstr "Napaka pri nalaganju okolja "
 
+msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to open image preview"
+msgstr ""
+
+msgid "Unknown Action"
+msgstr ""
+
+msgid "Error playing sound:"
+msgstr ""
+
+msgid "Error playing sound"
+msgstr ""
+
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Izbira PDF dokumentov je prevelika, odstrani nekaj dokumentov"
 
@@ -522,6 +593,9 @@ msgstr "Napaka ukaza, ni podatka"
 
 msgid "Command executed."
 msgstr "Zahteva izvršena"
+
+msgid "Unable to clean pdf loader"
+msgstr ""
 
 msgid "Run"
 msgstr "START"
@@ -546,6 +620,15 @@ msgstr "Verzija PDF"
 
 msgid "Same as input document"
 msgstr "Isto kot izbrana datoteka"
+
+msgid "Copy"
+msgstr "Kopiraj"
+
+msgid "Cut"
+msgstr "Izreži"
+
+msgid "Paste"
+msgstr "Prilepi"
 
 msgid "File name"
 msgstr "Ime datoteke"
@@ -636,6 +719,123 @@ msgstr "Nastavi datoteko za shranjevanje"
 msgid "Error: Unable to get the file path."
 msgstr "Napaka. Ni poti do datoteke."
 
+msgid "Open"
+msgstr ""
+
+msgid "Load a pdf document"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Error setting zoom level."
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Undelete"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Move up selected pages"
+msgstr ""
+
+msgid "Move down selected pages"
+msgstr ""
+
+msgid "Delete selected pages"
+msgstr ""
+
+msgid "Undelete selected pages"
+msgstr ""
+
+msgid "(Ctrl+Z)"
+msgstr ""
+
+msgid "Rotate right"
+msgstr ""
+
+msgid "Rotate clockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowRight)"
+msgstr ""
+
+msgid "Rotate left"
+msgstr ""
+
+msgid "Rotate anticlockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "File: "
+msgstr ""
+
+msgid "Pages: "
+msgstr ""
+
+msgid "Pdf version: "
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "Author: "
+msgstr "Avtor MarkoV: "
+
+msgid "Creator: "
+msgstr ""
+
+msgid "Producer: "
+msgstr ""
+
+msgid "Encrypted: "
+msgstr ""
+
+msgid "File"
+msgstr "Datoteka"
+
+msgid "Save as"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Please select a single pdf document."
+msgstr ""
+
+msgid "File type not supported."
+msgstr ""
+
+msgid "Error during drag and drop."
+msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
 msgid "Unable to get the default environment informations."
 msgstr "Napaka privzetih informacij pri odpiranju"
 
@@ -653,6 +853,9 @@ msgstr "Nastavi nivo logiranja "
 
 msgid "Unable to set logging level."
 msgstr "Napaka nastavitve nivoja logiranja"
+
+msgid "Setting default working directory..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Napaka nalaganja vtičnikov"
@@ -681,17 +884,20 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-msgid "Copy"
-msgstr "Kopiraj"
+msgid "Unable to get latest available version"
+msgstr "Napaka pri nalaganju posodobitve"
+
+msgid "Checking for a new version available."
+msgstr "Preveri posodobitve"
+
+msgid "Error checking for a new version available."
+msgstr "Napaka pri preverjanju posodobitve"
 
 msgid "Select all"
 msgstr "Izberi vse"
 
 msgid "Save log"
 msgstr "Shrani dnevnik"
-
-msgid "File"
-msgstr "Datoteka"
 
 msgid "Save environment"
 msgstr "Shrani okolje"
@@ -737,12 +943,6 @@ msgstr ""
 
 msgid "Version: "
 msgstr "Verzija "
-
-msgid "Language: "
-msgstr "Jezik: "
-
-msgid "Author: "
-msgstr "Avtor MarkoV: "
 
 msgid "Build date: "
 msgstr "Datum izd: "
@@ -867,6 +1067,9 @@ msgstr ""
 msgid "New version available: "
 msgstr ""
 
+msgid "Unable to play sound."
+msgstr ""
+
 msgid "Plugins"
 msgstr "Vtičniki"
 
@@ -906,23 +1109,24 @@ msgstr "Ali želiš spremeniti v"
 msgid "Output location error"
 msgstr "Izhodna napaka"
 
-msgid "Checking for a new version available."
-msgstr "Preveri posodobitve"
+msgid "Selected output file already exists "
+msgstr ""
 
-msgid "Error checking for a new version available."
-msgstr "Napaka pri preverjanju posodobitve"
+msgid "Would you like to overwrite it?"
+msgstr ""
 
-msgid "Unable to get latest available version"
-msgstr "Napaka pri nalaganju posodobitve"
+msgid "Please provide the password to open the encrypted document"
+msgstr ""
 
-msgid "New version available."
-msgstr "Nova verzija na voljo"
+msgid "Password request"
+msgstr ""
 
-msgid "No new version available."
-msgstr "Ni posodobitev -Laservis d.o.o."
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
 
-msgid "Cut"
-msgstr "Izreži"
+msgid "List full"
+msgstr ""
 
-msgid "Paste"
-msgstr "Prilepi"
+#~ msgid "Language: "
+#~ msgstr "Jezik: "

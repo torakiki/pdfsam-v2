@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-06 18:50+0100\n"
 "PO-Revision-Date: 2008-05-29 10:01+0000\n"
 "Last-Translator: Uthen Phutneam <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -493,6 +493,32 @@ msgstr "ตัวเลือกของการรวมไฟล์"
 msgid "Viewer options section loaded."
 msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
 
+msgid "Move on top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr ""
+
+msgid "Execute pages reorder"
+msgstr ""
+
+msgid "Visual document composer"
+msgstr ""
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Visual reorder"
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -503,9 +529,39 @@ msgstr "ยึ่นยันการบันทึกรหัสผ่าน
 msgid "Unknown action."
 msgstr "การดำเนินการที่ไม่รู้จัก"
 
+msgid "New version available."
+msgstr "มีรุ่นใหม่แล้ว"
+
+msgid "No new version available."
+msgstr "ยังไม่มีรุ่นใหม่"
+
 #, fuzzy
 msgid "Log saved."
 msgstr "บันทึกปูม"
+
+msgid "Unable to save image"
+msgstr ""
+
+msgid "Unable to create image for a null input document"
+msgstr ""
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr ""
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document."
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
+
+msgid "Thumbnails generated in "
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
 
 msgid " node environment loaded."
 msgstr " โหลดโหนดสภาพแวดล้อมการทำงาน"
@@ -529,6 +585,21 @@ msgstr "เกิดความผิดพลาดขณะโหลดสภ
 msgid "Error loading environment from input file. "
 msgstr "เกิดความผิดพลาดขณะโหลดสภาพแวดล้อมการทำงานจากไฟล์นำเข้า "
 
+msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to open image preview"
+msgstr ""
+
+msgid "Unknown Action"
+msgstr ""
+
+msgid "Error playing sound:"
+msgstr ""
+
+msgid "Error playing sound"
+msgstr ""
+
 msgid "Selection table is full, please remove some pdf document."
 msgstr "ตารางที่เลือกเต็ม กรุณาลบเอกสาร pdf บางอันออก"
 
@@ -549,6 +620,9 @@ msgstr ""
 
 msgid "Command executed."
 msgstr "คำสั่งถูกเรียกใช้แล้ว"
+
+msgid "Unable to clean pdf loader"
+msgstr ""
 
 msgid "Run"
 msgstr "เรียกใช้งาน"
@@ -573,6 +647,16 @@ msgstr "รุ่น pdf ของเอกสารที่ทำเสร็�
 
 msgid "Same as input document"
 msgstr "ที่เดียวกับเอกสารนำเข้า"
+
+msgid "Copy"
+msgstr "คัดลอก"
+
+msgid "Cut"
+msgstr ""
+
+#, fuzzy
+msgid "Paste"
+msgstr "พาธ"
 
 msgid "File name"
 msgstr "ชื่อแฟ้ม"
@@ -663,6 +747,123 @@ msgstr "ตั้งค่าไฟล์ที่ทำเสร็จแล้
 msgid "Error: Unable to get the file path."
 msgstr "ผิดพลาด: ไม่สามารถหาที่อยู่ของไฟล์"
 
+msgid "Open"
+msgstr ""
+
+msgid "Load a pdf document"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Error setting zoom level."
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Undelete"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Move up selected pages"
+msgstr ""
+
+msgid "Move down selected pages"
+msgstr ""
+
+msgid "Delete selected pages"
+msgstr ""
+
+msgid "Undelete selected pages"
+msgstr ""
+
+msgid "(Ctrl+Z)"
+msgstr ""
+
+msgid "Rotate right"
+msgstr ""
+
+msgid "Rotate clockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowRight)"
+msgstr ""
+
+msgid "Rotate left"
+msgstr ""
+
+msgid "Rotate anticlockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "File: "
+msgstr ""
+
+msgid "Pages: "
+msgstr ""
+
+msgid "Pdf version: "
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "Author: "
+msgstr "ผู้สร้าง: "
+
+msgid "Creator: "
+msgstr ""
+
+msgid "Producer: "
+msgstr ""
+
+msgid "Encrypted: "
+msgstr ""
+
+msgid "File"
+msgstr "แฟ้ม"
+
+msgid "Save as"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Please select a single pdf document."
+msgstr ""
+
+msgid "File type not supported."
+msgstr ""
+
+msgid "Error during drag and drop."
+msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
 msgid "Unable to get the default environment informations."
 msgstr "ไม่สามารถเอาข้อมูลสภาพแวดล้อมการทำงานแบบปริยาย"
 
@@ -680,6 +881,9 @@ msgstr "ระดับการบันทึกปูมตั้งเป็
 
 msgid "Unable to set logging level."
 msgstr "ไม่สามารถตั้งระดับการบันทึกปูม"
+
+msgid "Setting default working directory..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "เกิดความผิดพลาดในการหาห้องเก็บโปรแกรมเสริม"
@@ -708,17 +912,20 @@ msgstr "ไม่สามารถโหลดโปรแกรมเสริ
 msgid "Error loading class "
 msgstr "เกิดความผิดพลาดในการโหลดคลาส "
 
-msgid "Copy"
-msgstr "คัดลอก"
+msgid "Unable to get latest available version"
+msgstr "ไม่สามารถได้รุ่นล่าสุด"
+
+msgid "Checking for a new version available."
+msgstr "กำลังตรวจสอบรุ่นใหม่อยู่"
+
+msgid "Error checking for a new version available."
+msgstr "เกิดความผิดพลาดขณะกำลังตรวจสอบรุ่นใหม่"
 
 msgid "Select all"
 msgstr "เลือกทั้งหมด"
 
 msgid "Save log"
 msgstr "บันทึกปูม"
-
-msgid "File"
-msgstr "แฟ้ม"
 
 msgid "Save environment"
 msgstr "บันทึกสภาพแวดล้อมการทำงาน"
@@ -764,12 +971,6 @@ msgstr "ไม่สามารถที่จะเริ่มแถบปุ
 
 msgid "Version: "
 msgstr "รุ่น: "
-
-msgid "Language: "
-msgstr "ภาษา "
-
-msgid "Author: "
-msgstr "ผู้สร้าง: "
 
 msgid "Build date: "
 msgstr "วันที่สร้าง "
@@ -896,6 +1097,9 @@ msgstr ""
 msgid "New version available: "
 msgstr "มีรุ่นใหม่แล้ว "
 
+msgid "Unable to play sound."
+msgstr ""
+
 msgid "Plugins"
 msgstr ""
 
@@ -935,27 +1139,27 @@ msgstr "คุณต้องการที่จะเปลี่ยนมั
 msgid "Output location error"
 msgstr "ที่เก็บไฟล์ที่เสร็จแล้วไม่ถูกต้อง"
 
-msgid "Checking for a new version available."
-msgstr "กำลังตรวจสอบรุ่นใหม่อยู่"
-
-msgid "Error checking for a new version available."
-msgstr "เกิดความผิดพลาดขณะกำลังตรวจสอบรุ่นใหม่"
-
-msgid "Unable to get latest available version"
-msgstr "ไม่สามารถได้รุ่นล่าสุด"
-
-msgid "New version available."
-msgstr "มีรุ่นใหม่แล้ว"
-
-msgid "No new version available."
-msgstr "ยังไม่มีรุ่นใหม่"
-
-msgid "Cut"
+msgid "Selected output file already exists "
 msgstr ""
 
-#, fuzzy
-msgid "Paste"
-msgstr "พาธ"
+msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid "Please provide the password to open the encrypted document"
+msgstr ""
+
+msgid "Password request"
+msgstr ""
+
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
+
+msgid "List full"
+msgstr ""
+
+#~ msgid "Language: "
+#~ msgstr "ภาษา "
 
 #~ msgid "Destination output file:"
 #~ msgstr "เลือกที่เก็บไฟล์ที่ส่งออก"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-06 18:50+0100\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -501,6 +501,32 @@ msgstr "Nastavení sloučení:"
 msgid "Viewer options section loaded."
 msgstr "Modul šifrování nahrán."
 
+msgid "Move on top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr ""
+
+msgid "Execute pages reorder"
+msgstr ""
+
+msgid "Visual document composer"
+msgstr ""
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Visual reorder"
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "Uložit informace o heslech (budou čitelná ve výstupním souboru)?"
@@ -511,8 +537,38 @@ msgstr "Potvrdit ukládání hesel."
 msgid "Unknown action."
 msgstr "Neznámá akce."
 
+msgid "New version available."
+msgstr "Je k dispozici nová verze."
+
+msgid "No new version available."
+msgstr "Žádná nová verze není k dispozici."
+
 msgid "Log saved."
 msgstr "Záznam uložen."
+
+msgid "Unable to save image"
+msgstr ""
+
+msgid "Unable to create image for a null input document"
+msgstr ""
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr ""
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document."
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
+
+msgid "Thumbnails generated in "
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
 
 msgid " node environment loaded."
 msgstr " prostředí nahráno."
@@ -535,6 +591,21 @@ msgstr "Chyba při nahrávání prostředí."
 msgid "Error loading environment from input file. "
 msgstr "Chyba při nahrávání prostředí ze vstupního souboru. "
 
+msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to open image preview"
+msgstr ""
+
+msgid "Unknown Action"
+msgstr ""
+
+msgid "Error playing sound:"
+msgstr ""
+
+msgid "Error playing sound"
+msgstr ""
+
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Tabulka pro výběr je plná, odstraňte nějaký pdf dokument."
 
@@ -555,6 +626,9 @@ msgstr "Ověření příkazu vrací prázdnou hodnotu."
 
 msgid "Command executed."
 msgstr "Příkaz proveden."
+
+msgid "Unable to clean pdf loader"
+msgstr ""
 
 msgid "Run"
 msgstr "Spustit"
@@ -579,6 +653,16 @@ msgstr "Verze výstupního pdf dokumentu:"
 
 msgid "Same as input document"
 msgstr "Stejná jako vstupní dokument"
+
+msgid "Copy"
+msgstr "Kopírovat"
+
+msgid "Cut"
+msgstr ""
+
+#, fuzzy
+msgid "Paste"
+msgstr "Umístění"
 
 msgid "File name"
 msgstr "Jméno souboru"
@@ -671,6 +755,123 @@ msgstr "Nastavení výstupního souboru"
 msgid "Error: Unable to get the file path."
 msgstr "Chyba: nelze najít cestu k souboru."
 
+msgid "Open"
+msgstr ""
+
+msgid "Load a pdf document"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Error setting zoom level."
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Undelete"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Move up selected pages"
+msgstr ""
+
+msgid "Move down selected pages"
+msgstr ""
+
+msgid "Delete selected pages"
+msgstr ""
+
+msgid "Undelete selected pages"
+msgstr ""
+
+msgid "(Ctrl+Z)"
+msgstr ""
+
+msgid "Rotate right"
+msgstr ""
+
+msgid "Rotate clockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowRight)"
+msgstr ""
+
+msgid "Rotate left"
+msgstr ""
+
+msgid "Rotate anticlockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "File: "
+msgstr ""
+
+msgid "Pages: "
+msgstr ""
+
+msgid "Pdf version: "
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "Author: "
+msgstr "Autor: "
+
+msgid "Creator: "
+msgstr ""
+
+msgid "Producer: "
+msgstr ""
+
+msgid "Encrypted: "
+msgstr ""
+
+msgid "File"
+msgstr "Soubor"
+
+msgid "Save as"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Please select a single pdf document."
+msgstr ""
+
+msgid "File type not supported."
+msgstr ""
+
+msgid "Error during drag and drop."
+msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
 msgid "Unable to get the default environment informations."
 msgstr "Nelze získat informace o původním přednastaveném prostředí."
 
@@ -688,6 +889,9 @@ msgstr "Úroveň záznamu nastavena na "
 
 msgid "Unable to set logging level."
 msgstr "Nelze nastavit úroveň záznamu."
+
+msgid "Setting default working directory..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Chyba při hledání složky s moduly."
@@ -716,17 +920,20 @@ msgstr "Nelze nahrát modul, který není JPabel subclass."
 msgid "Error loading class "
 msgstr "Chyba při nahrávání třídy "
 
-msgid "Copy"
-msgstr "Kopírovat"
+msgid "Unable to get latest available version"
+msgstr "Nelze stáhnout aktuální verzi"
+
+msgid "Checking for a new version available."
+msgstr "Zjištění dostupnosti nové verze."
+
+msgid "Error checking for a new version available."
+msgstr "Chyba při zjišťování dostupnosti nové verze."
 
 msgid "Select all"
 msgstr "Vybrat vše"
 
 msgid "Save log"
 msgstr "Uložit záznam"
-
-msgid "File"
-msgstr "Soubor"
 
 msgid "Save environment"
 msgstr "Uložit prostředí"
@@ -772,12 +979,6 @@ msgstr "Nelze spustit panel nástrojů."
 
 msgid "Version: "
 msgstr "Verze: "
-
-msgid "Language: "
-msgstr "Jazyk: "
-
-msgid "Author: "
-msgstr "Autor: "
 
 msgid "Build date: "
 msgstr "Datum sestavení: "
@@ -907,6 +1108,9 @@ msgstr "Neimplementovaná metoda pro JSettings Panel"
 msgid "New version available: "
 msgstr "Je dostupná nová verze: "
 
+msgid "Unable to play sound."
+msgstr ""
+
 msgid "Plugins"
 msgstr ""
 
@@ -946,27 +1150,27 @@ msgstr "Přejete si ji změnit na"
 msgid "Output location error"
 msgstr "Chyba výstupního umístění"
 
-msgid "Checking for a new version available."
-msgstr "Zjištění dostupnosti nové verze."
-
-msgid "Error checking for a new version available."
-msgstr "Chyba při zjišťování dostupnosti nové verze."
-
-msgid "Unable to get latest available version"
-msgstr "Nelze stáhnout aktuální verzi"
-
-msgid "New version available."
-msgstr "Je k dispozici nová verze."
-
-msgid "No new version available."
-msgstr "Žádná nová verze není k dispozici."
-
-msgid "Cut"
+msgid "Selected output file already exists "
 msgstr ""
 
-#, fuzzy
-msgid "Paste"
-msgstr "Umístění"
+msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid "Please provide the password to open the encrypted document"
+msgstr ""
+
+msgid "Password request"
+msgstr ""
+
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
+
+msgid "List full"
+msgstr ""
+
+#~ msgid "Language: "
+#~ msgstr "Jazyk: "
 
 #~ msgid "Destination output file:"
 #~ msgstr "Umístění výstupního souboru"

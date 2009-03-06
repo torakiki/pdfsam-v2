@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-06 18:50+0100\n"
 "PO-Revision-Date: 2008-12-07 15:32+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -475,6 +475,32 @@ msgstr "檢視器選項"
 msgid "Viewer options section loaded."
 msgstr "已載入檢視器選項區段。"
 
+msgid "Move on top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr ""
+
+msgid "Execute pages reorder"
+msgstr ""
+
+msgid "Visual document composer"
+msgstr ""
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Visual reorder"
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "您是否要儲存密碼（於開啟輸出檔時，程式可以讀取）？"
@@ -485,8 +511,38 @@ msgstr "請確認儲存密碼"
 msgid "Unknown action."
 msgstr "未知的動作。"
 
+msgid "New version available."
+msgstr "有新版本可用。"
+
+msgid "No new version available."
+msgstr "已為最新版本。"
+
 msgid "Log saved."
 msgstr "紀錄檔已儲存。"
+
+msgid "Unable to save image"
+msgstr ""
+
+msgid "Unable to create image for a null input document"
+msgstr ""
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr ""
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document."
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
+
+msgid "Thumbnails generated in "
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
 
 msgid " node environment loaded."
 msgstr " 節點環境變數已載入"
@@ -509,6 +565,21 @@ msgstr "無法載入環境變數。"
 msgid "Error loading environment from input file. "
 msgstr "無法從輸入檔載入環境變數。 "
 
+msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to open image preview"
+msgstr ""
+
+msgid "Unknown Action"
+msgstr ""
+
+msgid "Error playing sound:"
+msgstr ""
+
+msgid "Error playing sound"
+msgstr ""
+
 msgid "Selection table is full, please remove some pdf document."
 msgstr "選取清單已滿，請移除某個 PDF 文件。"
 
@@ -529,6 +600,9 @@ msgstr "指令檢查回傳一個空的值。"
 
 msgid "Command executed."
 msgstr "指令已執行。"
+
+msgid "Unable to clean pdf loader"
+msgstr ""
 
 msgid "Run"
 msgstr "執行"
@@ -553,6 +627,15 @@ msgstr "輸出文件的 PDF 版本："
 
 msgid "Same as input document"
 msgstr "與輸入文件相同"
+
+msgid "Copy"
+msgstr "複製"
+
+msgid "Cut"
+msgstr "剪下"
+
+msgid "Paste"
+msgstr "貼上"
 
 msgid "File name"
 msgstr "檔案名稱"
@@ -643,6 +726,123 @@ msgstr "設定輸出檔案"
 msgid "Error: Unable to get the file path."
 msgstr "錯誤：無法取得檔案路徑。"
 
+msgid "Open"
+msgstr ""
+
+msgid "Load a pdf document"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Error setting zoom level."
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Undelete"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Move up selected pages"
+msgstr ""
+
+msgid "Move down selected pages"
+msgstr ""
+
+msgid "Delete selected pages"
+msgstr ""
+
+msgid "Undelete selected pages"
+msgstr ""
+
+msgid "(Ctrl+Z)"
+msgstr ""
+
+msgid "Rotate right"
+msgstr ""
+
+msgid "Rotate clockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowRight)"
+msgstr ""
+
+msgid "Rotate left"
+msgstr ""
+
+msgid "Rotate anticlockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "File: "
+msgstr ""
+
+msgid "Pages: "
+msgstr ""
+
+msgid "Pdf version: "
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "Author: "
+msgstr "作者： "
+
+msgid "Creator: "
+msgstr ""
+
+msgid "Producer: "
+msgstr ""
+
+msgid "Encrypted: "
+msgstr ""
+
+msgid "File"
+msgstr "檔案"
+
+msgid "Save as"
+msgstr ""
+
+msgid "Close"
+msgstr "關閉"
+
+msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Please select a single pdf document."
+msgstr ""
+
+msgid "File type not supported."
+msgstr ""
+
+msgid "Error during drag and drop."
+msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
 msgid "Unable to get the default environment informations."
 msgstr "無法取得預設的環境變數資訊。"
 
@@ -660,6 +860,9 @@ msgstr "紀錄檔層級已設為 "
 
 msgid "Unable to set logging level."
 msgstr "無法設定紀錄檔層級。"
+
+msgid "Setting default working directory..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "無法取得增效模組目錄。"
@@ -688,17 +891,20 @@ msgstr "無法載入非 JPanel 子類別的增效模組。"
 msgid "Error loading class "
 msgstr "無法載入類別 "
 
-msgid "Copy"
-msgstr "複製"
+msgid "Unable to get latest available version"
+msgstr "無法取得最新的可用版本"
+
+msgid "Checking for a new version available."
+msgstr "正在確認是否有新版本可用。"
+
+msgid "Error checking for a new version available."
+msgstr "無法檢查是否有新版本。"
 
 msgid "Select all"
 msgstr "全部選取"
 
 msgid "Save log"
 msgstr "儲存紀錄"
-
-msgid "File"
-msgstr "檔案"
 
 msgid "Save environment"
 msgstr "儲存環境變數"
@@ -744,12 +950,6 @@ msgstr "無法初始化工具列。"
 
 msgid "Version: "
 msgstr "版本： "
-
-msgid "Language: "
-msgstr "程式語言： "
-
-msgid "Author: "
-msgstr "作者： "
 
 msgid "Build date: "
 msgstr "建立日期： "
@@ -874,6 +1074,9 @@ msgstr "尚未實作的 JSettingsPanel 方法"
 msgid "New version available: "
 msgstr "可用的新版本： "
 
+msgid "Unable to play sound."
+msgstr ""
+
 msgid "Plugins"
 msgstr "增效模組"
 
@@ -913,26 +1116,27 @@ msgstr "您是否要更改至"
 msgid "Output location error"
 msgstr "輸出檔位置錯誤"
 
-msgid "Checking for a new version available."
-msgstr "正在確認是否有新版本可用。"
+msgid "Selected output file already exists "
+msgstr ""
 
-msgid "Error checking for a new version available."
-msgstr "無法檢查是否有新版本。"
+msgid "Would you like to overwrite it?"
+msgstr ""
 
-msgid "Unable to get latest available version"
-msgstr "無法取得最新的可用版本"
+msgid "Please provide the password to open the encrypted document"
+msgstr ""
 
-msgid "New version available."
-msgstr "有新版本可用。"
+msgid "Password request"
+msgstr ""
 
-msgid "No new version available."
-msgstr "已為最新版本。"
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
 
-msgid "Cut"
-msgstr "剪下"
+msgid "List full"
+msgstr ""
 
-msgid "Paste"
-msgstr "貼上"
+#~ msgid "Language: "
+#~ msgstr "程式語言： "
 
 #~ msgid "Merge options:"
 #~ msgstr "合併選項："
@@ -1022,9 +1226,6 @@ msgstr "貼上"
 
 #~ msgid "Installed plugins:"
 #~ msgstr "已安裝的插件："
-
-#~ msgid "Close"
-#~ msgstr "關閉"
 
 #~ msgid "Check the box if you want a compressed output file."
 #~ msgstr "若您想要一個壓縮過的輸出檔，請勾選此選項。"

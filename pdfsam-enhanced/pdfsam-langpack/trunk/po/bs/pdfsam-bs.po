@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-06 18:50+0100\n"
 "PO-Revision-Date: 2008-11-25 20:55+0000\n"
 "Last-Translator: Amicus <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -479,6 +479,32 @@ msgstr ""
 msgid "Viewer options section loaded."
 msgstr ""
 
+msgid "Move on top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr ""
+
+msgid "Execute pages reorder"
+msgstr ""
+
+msgid "Visual document composer"
+msgstr ""
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Visual reorder"
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "Snimi šifre (biće čitljive pri otvaranju izlaznog dokumenta)?"
@@ -489,8 +515,38 @@ msgstr "Potvrdite snimanje šifre"
 msgid "Unknown action."
 msgstr "Nepoznata akcija"
 
+msgid "New version available."
+msgstr "Dostupna nova verzija."
+
+msgid "No new version available."
+msgstr "Nema nove dostupne verzije."
+
 msgid "Log saved."
 msgstr "Sačuvan zapis"
+
+msgid "Unable to save image"
+msgstr ""
+
+msgid "Unable to create image for a null input document"
+msgstr ""
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr ""
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document."
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
+
+msgid "Thumbnails generated in "
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
 
 msgid " node environment loaded."
 msgstr " učitano okruženje čvora."
@@ -513,6 +569,21 @@ msgstr "Greška učitavanja okruženja."
 msgid "Error loading environment from input file. "
 msgstr "Greška učitavanja okruženja iz ulaznog dokumenta. "
 
+msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to open image preview"
+msgstr ""
+
+msgid "Unknown Action"
+msgstr ""
+
+msgid "Error playing sound:"
+msgstr ""
+
+msgid "Error playing sound"
+msgstr ""
+
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Tabela za izbor je puna. Molimo uklonite neke PDF dokumente."
 
@@ -533,6 +604,9 @@ msgstr "Potvrda komande je vratila praznu vrijednost."
 
 msgid "Command executed."
 msgstr "Komanda je izvršena."
+
+msgid "Unable to clean pdf loader"
+msgstr ""
 
 msgid "Run"
 msgstr "Pokreni"
@@ -557,6 +631,15 @@ msgstr "PDF verzija izlaznog dokumenta:"
 
 msgid "Same as input document"
 msgstr "Isti kao ulazni dokument"
+
+msgid "Copy"
+msgstr "Kopiraj"
+
+msgid "Cut"
+msgstr "Isijeci"
+
+msgid "Paste"
+msgstr "Nalijepi"
 
 msgid "File name"
 msgstr "Ime dokumenta"
@@ -649,6 +732,123 @@ msgstr "Podesi izlazni dokument"
 msgid "Error: Unable to get the file path."
 msgstr "Greška: Nije moguće dobiti putanju do dokumenta"
 
+msgid "Open"
+msgstr ""
+
+msgid "Load a pdf document"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Error setting zoom level."
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Undelete"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Move up selected pages"
+msgstr ""
+
+msgid "Move down selected pages"
+msgstr ""
+
+msgid "Delete selected pages"
+msgstr ""
+
+msgid "Undelete selected pages"
+msgstr ""
+
+msgid "(Ctrl+Z)"
+msgstr ""
+
+msgid "Rotate right"
+msgstr ""
+
+msgid "Rotate clockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowRight)"
+msgstr ""
+
+msgid "Rotate left"
+msgstr ""
+
+msgid "Rotate anticlockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "File: "
+msgstr ""
+
+msgid "Pages: "
+msgstr ""
+
+msgid "Pdf version: "
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "Author: "
+msgstr "Autor: "
+
+msgid "Creator: "
+msgstr ""
+
+msgid "Producer: "
+msgstr ""
+
+msgid "Encrypted: "
+msgstr ""
+
+msgid "File"
+msgstr "Dokument"
+
+msgid "Save as"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Please select a single pdf document."
+msgstr ""
+
+msgid "File type not supported."
+msgstr ""
+
+msgid "Error during drag and drop."
+msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
 msgid "Unable to get the default environment informations."
 msgstr "Nije moguće dobiti informacije o unaprijed podešenom okruženju."
 
@@ -666,6 +866,9 @@ msgstr "Nivo zapisa postavljen na "
 
 msgid "Unable to set logging level."
 msgstr "Nije moguće postaviti nivo zapisa."
+
+msgid "Setting default working directory..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Greška pronalaženja direktorija sa dodacima."
@@ -694,17 +897,20 @@ msgstr "Nije moguće učitati dodatak koji nije JPanel podklasa."
 msgid "Error loading class "
 msgstr "Greška učitavanja klase "
 
-msgid "Copy"
-msgstr "Kopiraj"
+msgid "Unable to get latest available version"
+msgstr "Nije moguće dobiti najnoviju dostupnu verziju"
+
+msgid "Checking for a new version available."
+msgstr "Provjera postojanja nove dostupne verzije"
+
+msgid "Error checking for a new version available."
+msgstr "Greška tokom provjere postojanja nove verzije."
 
 msgid "Select all"
 msgstr "Selektuj sve"
 
 msgid "Save log"
 msgstr "Sačuvaj zapis"
-
-msgid "File"
-msgstr "Dokument"
 
 msgid "Save environment"
 msgstr "Sačuvaj okruženje"
@@ -750,12 +956,6 @@ msgstr "Nije moguće inicijalizirati traku s adugmadima."
 
 msgid "Version: "
 msgstr "Verzija: "
-
-msgid "Language: "
-msgstr "Jezik: "
-
-msgid "Author: "
-msgstr "Autor: "
 
 msgid "Build date: "
 msgstr "Datum izrade: "
@@ -888,6 +1088,9 @@ msgstr "Neimplementiran metod za JSettingPanel"
 msgid "New version available: "
 msgstr "Dostupna nova verzija: "
 
+msgid "Unable to play sound."
+msgstr ""
+
 msgid "Plugins"
 msgstr "Dodaci"
 
@@ -927,23 +1130,24 @@ msgstr "Želite li da je promijenite u"
 msgid "Output location error"
 msgstr "Greška izlazne lokacije"
 
-msgid "Checking for a new version available."
-msgstr "Provjera postojanja nove dostupne verzije"
+msgid "Selected output file already exists "
+msgstr ""
 
-msgid "Error checking for a new version available."
-msgstr "Greška tokom provjere postojanja nove verzije."
+msgid "Would you like to overwrite it?"
+msgstr ""
 
-msgid "Unable to get latest available version"
-msgstr "Nije moguće dobiti najnoviju dostupnu verziju"
+msgid "Please provide the password to open the encrypted document"
+msgstr ""
 
-msgid "New version available."
-msgstr "Dostupna nova verzija."
+msgid "Password request"
+msgstr ""
 
-msgid "No new version available."
-msgstr "Nema nove dostupne verzije."
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
 
-msgid "Cut"
-msgstr "Isijeci"
+msgid "List full"
+msgstr ""
 
-msgid "Paste"
-msgstr "Nalijepi"
+#~ msgid "Language: "
+#~ msgstr "Jezik: "

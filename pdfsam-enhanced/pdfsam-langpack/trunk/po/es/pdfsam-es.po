@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"POT-Creation-Date: 2009-03-06 18:50+0100\n"
 "PO-Revision-Date: 2009-01-15 11:08+0000\n"
 "Last-Translator: saigor <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -172,8 +172,7 @@ msgstr "Dividir el documento por páginas impares"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr ""
-"Dividir el documento después de números de página (num1-num2-num3...)"
+msgstr "Dividir el documento después de números de página (num1-num2-num3...)"
 
 msgid "Split the document in files of the given size (roughly)"
 msgstr ""
@@ -233,8 +232,7 @@ msgid ""
 "performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ej. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_NombreArvchivo_005.pdf."
 
@@ -539,6 +537,32 @@ msgstr ""
 msgid "Viewer options section loaded."
 msgstr ""
 
+msgid "Move on top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr ""
+
+msgid "Execute pages reorder"
+msgstr ""
+
+msgid "Visual document composer"
+msgstr ""
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Visual reorder"
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -553,8 +577,38 @@ msgstr "Confirmar la contraseña guardada"
 msgid "Unknown action."
 msgstr "Acción desconocida."
 
+msgid "New version available."
+msgstr "Nueva versión disponible."
+
+msgid "No new version available."
+msgstr "No hay nueva versión disponible."
+
 msgid "Log saved."
 msgstr "Registro guardado."
+
+msgid "Unable to save image"
+msgstr ""
+
+msgid "Unable to create image for a null input document"
+msgstr ""
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr ""
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document."
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
+
+msgid "Thumbnails generated in "
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
 
 msgid " node environment loaded."
 msgstr " ambiente de nodo cargado."
@@ -577,6 +631,21 @@ msgstr "Error al cargar el entorno."
 msgid "Error loading environment from input file. "
 msgstr "Error al cargar el ambiente desde el archivo de entrada. "
 
+msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to open image preview"
+msgstr ""
+
+msgid "Unknown Action"
+msgstr ""
+
+msgid "Error playing sound:"
+msgstr ""
+
+msgid "Error playing sound"
+msgstr ""
+
 msgid "Selection table is full, please remove some pdf document."
 msgstr ""
 "Tabla de selección está llena, por favor, remueva algunos documentos pdf."
@@ -598,6 +667,9 @@ msgstr "Validación de comando regresó un valor vacío."
 
 msgid "Command executed."
 msgstr "Comando ejecutado."
+
+msgid "Unable to clean pdf loader"
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:368
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
@@ -661,6 +733,17 @@ msgstr "Versión pdf del documento de salida"
 
 msgid "Same as input document"
 msgstr "Igual al documento de entrada"
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "copiar"
+
+msgid "Cut"
+msgstr "Cortar"
+
+msgid "Paste"
+msgstr "Pegar"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
@@ -808,6 +891,125 @@ msgstr "Definir archivo de destino"
 msgid "Error: Unable to get the file path."
 msgstr "Error: no se puede hallar la ruta del archivo."
 
+msgid "Open"
+msgstr ""
+
+msgid "Load a pdf document"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Error setting zoom level."
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Undelete"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Move up selected pages"
+msgstr ""
+
+msgid "Move down selected pages"
+msgstr ""
+
+msgid "Delete selected pages"
+msgstr ""
+
+msgid "Undelete selected pages"
+msgstr ""
+
+msgid "(Ctrl+Z)"
+msgstr ""
+
+msgid "Rotate right"
+msgstr ""
+
+msgid "Rotate clockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowRight)"
+msgstr ""
+
+msgid "Rotate left"
+msgstr ""
+
+msgid "Rotate anticlockwise selected pages"
+msgstr ""
+
+msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "File: "
+msgstr ""
+
+msgid "Pages: "
+msgstr ""
+
+msgid "Pdf version: "
+msgstr ""
+
+msgid "Title: "
+msgstr ""
+
+msgid "Author: "
+msgstr "Autor: "
+
+msgid "Creator: "
+msgstr ""
+
+msgid "Producer: "
+msgstr ""
+
+msgid "Encrypted: "
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+msgid "File"
+msgstr "Archivo"
+
+msgid "Save as"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Please select a single pdf document."
+msgstr ""
+
+msgid "File type not supported."
+msgstr ""
+
+msgid "Error during drag and drop."
+msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
 msgid "Unable to get the default environment informations."
 msgstr "Incapaz de obtener las informaciones del ambiente predefinido."
 
@@ -827,6 +1029,9 @@ msgstr "Nivel de registro establecido a "
 
 msgid "Unable to set logging level."
 msgstr "Incapaz de establecer nivel de registro."
+
+msgid "Setting default working directory..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Error al obtener el directorio de plugins"
@@ -855,10 +1060,14 @@ msgstr "Incapaz de cargar un plugin que no es una subclase de JPanel"
 msgid "Error loading class "
 msgstr "Error al cargar clase "
 
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "copiar"
+msgid "Unable to get latest available version"
+msgstr "Incapaz de conesguir la última versión disponible"
+
+msgid "Checking for a new version available."
+msgstr "Revisando si existe una nueva versión disponible"
+
+msgid "Error checking for a new version available."
+msgstr "Error al buscar una nueva version disponible."
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
@@ -867,11 +1076,6 @@ msgstr "Seleccionar Todo"
 
 msgid "Save log"
 msgstr "Guardar registro"
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-msgid "File"
-msgstr "Archivo"
 
 msgid "Save environment"
 msgstr "Guardar ambiente"
@@ -932,14 +1136,6 @@ msgstr "Incapaz de inicializar la barra de botones."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr "Versión: "
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-msgid "Language: "
-msgstr "Lenguaje: "
-
-msgid "Author: "
-msgstr "Autor: "
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
@@ -1073,8 +1269,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Direectorio de  trabajo predeterminado"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Selecciones un directorio donde los documentos serán guardados y cargados de "
 "forma predeterminada"
@@ -1090,6 +1285,9 @@ msgstr "Método no implementado de JSettingsPanel"
 
 msgid "New version available: "
 msgstr "Nueva versión disponible: "
+
+msgid "Unable to play sound."
+msgstr ""
 
 msgid "Plugins"
 msgstr "Complementos"
@@ -1130,26 +1328,29 @@ msgstr "Quisiera cambiarlo a"
 msgid "Output location error"
 msgstr "Error de ubicación de salida"
 
-msgid "Checking for a new version available."
-msgstr "Revisando si existe una nueva versión disponible"
+msgid "Selected output file already exists "
+msgstr ""
 
-msgid "Error checking for a new version available."
-msgstr "Error al buscar una nueva version disponible."
+msgid "Would you like to overwrite it?"
+msgstr ""
 
-msgid "Unable to get latest available version"
-msgstr "Incapaz de conesguir la última versión disponible"
+msgid "Please provide the password to open the encrypted document"
+msgstr ""
 
-msgid "New version available."
-msgstr "Nueva versión disponible."
+msgid "Password request"
+msgstr ""
 
-msgid "No new version available."
-msgstr "No hay nueva versión disponible."
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
 
-msgid "Cut"
-msgstr "Cortar"
+msgid "List full"
+msgstr ""
 
-msgid "Paste"
-msgstr "Pegar"
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
+#~ msgid "Language: "
+#~ msgstr "Lenguaje: "
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
