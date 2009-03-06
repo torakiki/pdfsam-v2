@@ -50,118 +50,118 @@
 	<!-- update po files -->
 	<target name="updatepo" description="updates po files">
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/bg/pdfsam-bg.po ${pot}"/>
+			<arg line="-N -U ${po}/bg/pdfsam-bg.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/bs/pdfsam-bs.po ${pot}"/>
+			<arg line="-N -U ${po}/bs/pdfsam-bs.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/ca/pdfsam-ca.po ${pot}"/>
+			<arg line="-N -U ${po}/ca/pdfsam-ca.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/cs/pdfsam-cs.po ${pot}"/>
+			<arg line="-N -U ${po}/cs/pdfsam-cs.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/da/pdfsam-da.po ${pot}"/>
+			<arg line="-N -U ${po}/da/pdfsam-da.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/de/pdfsam-de.po ${pot}"/>
+			<arg line="-N -U ${po}/de/pdfsam-de.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/el/pdfsam-el.po ${pot}"/>
+			<arg line="-N -U ${po}/el/pdfsam-el.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/en/pdfsam-en_GB.po ${pot}"/>
+			<arg line="-N -U ${po}/en/pdfsam-en_GB.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/es/pdfsam-es.po ${pot}"/>
+			<arg line="-N -U ${po}/es/pdfsam-es.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/fa/pdfsam-fa.po ${pot}"/>
+			<arg line="-N -U ${po}/fa/pdfsam-fa.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/fi/pdfsam-fi.po ${pot}"/>
+			<arg line="-N -U ${po}/fi/pdfsam-fi.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/fr/pdfsam-fr.po ${pot}"/>
+			<arg line="-N -U ${po}/fr/pdfsam-fr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/gl/pdfsam-gl.po ${pot}"/>
+			<arg line="-N -U ${po}/gl/pdfsam-gl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/he/pdfsam-he.po ${pot}"/>
+			<arg line="-N -U ${po}/he/pdfsam-he.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/hu/pdfsam-hu.po ${pot}"/>
+			<arg line="-N -U ${po}/hu/pdfsam-hu.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/hr/pdfsam-hr.po ${pot}"/>
+			<arg line="-N -U ${po}/hr/pdfsam-hr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/ja/pdfsam-ja.po ${pot}"/>
+			<arg line="-N -U ${po}/ja/pdfsam-ja.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/id/pdfsam-id.po ${pot}"/>
+			<arg line="-N -U ${po}/id/pdfsam-id.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/it/pdfsam-it.po ${pot}"/>
+			<arg line="-N -U ${po}/it/pdfsam-it.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/ko/pdfsam-ko.po ${pot}"/>
+			<arg line="-N -U ${po}/ko/pdfsam-ko.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/lt/pdfsam-lt.po ${pot}"/>
+			<arg line="-N -U ${po}/lt/pdfsam-lt.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/lv/pdfsam-lv.po ${pot}"/>
+			<arg line="-N -U ${po}/lv/pdfsam-lv.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/nb/pdfsam-nb.po ${pot}"/>
+			<arg line="-N -U ${po}/nb/pdfsam-nb.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/nl/pdfsam-nl.po ${pot}"/>
+			<arg line="-N -U ${po}/nl/pdfsam-nl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/pl/pdfsam-pl.po ${pot}"/>
+			<arg line="-N -U ${po}/pl/pdfsam-pl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/pt/pdfsam-pt.po ${pot}"/>
+			<arg line="-N -U ${po}/pt/pdfsam-pt.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/pt_BR/pdfsam-pt_BR.po ${pot}"/>
+			<arg line="-N -U ${po}/pt_BR/pdfsam-pt_BR.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/ru/pdfsam-ru.po ${pot}"/>
+			<arg line="-N -U ${po}/ru/pdfsam-ru.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/sk/pdfsam-sk.po ${pot}"/>
+			<arg line="-N -U ${po}/sk/pdfsam-sk.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/sl/pdfsam-sl.po ${pot}"/>
+			<arg line="-N -U ${po}/sl/pdfsam-sl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/sv/pdfsam-sv.po ${pot}"/>
+			<arg line="-N -U ${po}/sv/pdfsam-sv.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/th/pdfsam-th.po ${pot}"/>
+			<arg line="-N -U ${po}/th/pdfsam-th.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/tr/pdfsam-tr.po ${pot}"/>
+			<arg line="-N -U ${po}/tr/pdfsam-tr.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/uk/pdfsam-uk.po ${pot}"/>
+			<arg line="-N -U ${po}/uk/pdfsam-uk.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/vi/pdfsam-vi.po ${pot}"/>
+			<arg line="-N -U ${po}/vi/pdfsam-vi.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/zh_TW/pdfsam-zh_TW.po ${pot}"/>
+			<arg line="-N -U ${po}/zh_TW/pdfsam-zh_TW.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/zh_CN/pdfsam-zh_CN.po ${pot}"/>
+			<arg line="-N -U ${po}/zh_CN/pdfsam-zh_CN.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-U ${po}/zh_HK/pdfsam-zh_HK.po ${pot}"/>
+			<arg line="-N -U ${po}/zh_HK/pdfsam-zh_HK.po ${pot}"/>
 		</exec>
 	</target>
 
