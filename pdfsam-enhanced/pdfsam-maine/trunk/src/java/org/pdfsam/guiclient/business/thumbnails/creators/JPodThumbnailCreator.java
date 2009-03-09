@@ -217,8 +217,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 */
 	private void execute(Runnable r){
 		if(pool==null || pool.isShutdown()){
-			pool = Executors.newFixedThreadPool(3);			
-			//pool = Executors.newSingleThreadExecutor();
+			//pool = Executors.newFixedThreadPool(3);			
+			pool = Executors.newSingleThreadExecutor();
 		}
 		pool.execute(r);
 	}

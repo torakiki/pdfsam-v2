@@ -1,3 +1,8 @@
+2.0.0e-beta () (pdfsam-console )
+===================================
+-Launcher: pdfsam-starter.exe now can take -Xmx parameter as a value (can be set as a Windows shortcut parameter)
+-Esc key now closes the preview panel
+
 2.0.0e-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory

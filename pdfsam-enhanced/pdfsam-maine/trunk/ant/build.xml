@@ -329,13 +329,13 @@
 	  	
 	  	<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-template.zip">
 	  		<fileset dir="..">
-	  			<include name="template-${pdfsam.version}/**/*" />
+	  			<include name="template-${pdfsam.version}-${pdfsam.main.version}/**/*" />
 	  		</fileset>
 	  	</zip>
 
 	  	<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-libraries.zip">
 	  		<fileset dir="..">
-	  			<include name="libraries/**/*" />
+	  			<include name="libraries-${pdfsam.main.version}/**/*" />
 	  		</fileset>
 	  	</zip>
 	  	<!--emp4j-->

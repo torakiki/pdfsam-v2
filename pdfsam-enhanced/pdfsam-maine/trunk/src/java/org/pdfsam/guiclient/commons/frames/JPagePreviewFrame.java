@@ -20,6 +20,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.URL;
 
 import javax.swing.Box;
@@ -106,6 +107,25 @@ public class JPagePreviewFrame extends JFrame {
 			
 			getContentPane().add(mainScrollPanel,BorderLayout.CENTER);
 	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
+	        
+	        addKeyListener(new KeyListener(){
+
+				@Override
+				public void keyPressed(KeyEvent e) {
+					 if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+			               setVisible(false);
+			         }
+				}
+
+				@Override
+				public void keyReleased(KeyEvent e) {					
+				}
+
+				@Override
+				public void keyTyped(KeyEvent e) {
+				}
+	        });
+	        
 		}catch(Exception e){
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating preview panel."),e);
 		}
