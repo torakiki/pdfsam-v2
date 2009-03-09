@@ -70,7 +70,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
 	            new PdfFileParam(SetViewerParsedCommand.F_ARG,
 	                          "pdf files to set the viewer options: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
 	                          FileParam.IS_READABLE,
-	                          FileParam.REQUIRED, 
+	                          FileParam.OPTIONAL, 
 	                          FileParam.MULTI_VALUED),	 
                new StringParam(SetViewerParsedCommand.P_ARG,   
             		     	  "prefix for the output files name",
@@ -90,11 +90,16 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
                        		  new String[] { SetViewerParsedCommand.NFSM_NONE, SetViewerParsedCommand.NFSM_OCONTENT, SetViewerParsedCommand.NFSM_OUTLINES, SetViewerParsedCommand.NFSM_THUMBS},
                        		  StringParam.OPTIONAL, 
                        		  StringParam.SINGLE_VALUED),
-	          new StringParam(SetViewerParsedCommand.D_ARG,   
+	          new StringParam(SetViewerParsedCommand.DIRECTION_ARG,   
                        		  "direction {"+SetViewerParsedCommand.D_L2R+", "+SetViewerParsedCommand.D_R2L+"}. If omitted it uses "+SetViewerParsedCommand.D_L2R,
                        		  new String[] { SetViewerParsedCommand.D_L2R, SetViewerParsedCommand.D_R2L},
                        		  StringParam.OPTIONAL, 
                        		  StringParam.SINGLE_VALUED),
+              new FileParam(SetViewerParsedCommand.D_ARG,
+            		  		  "directory containing pdf files to set the viewer options.",
+			                  FileParam.IS_DIR & FileParam.IS_READABLE,
+			                  FileParam.OPTIONAL,
+			                  FileParam.SINGLE_VALUED),                                   		  
               new BooleanParam(SetViewerParsedCommand.HIDEMENU_ARG, "hide the menu bar"),
               new BooleanParam(SetViewerParsedCommand.HIDETOOLBAR_ARG, "hide the toolbar"),
               new BooleanParam(SetViewerParsedCommand.HIDEWINDOWUI_ARG, "hide user interface elements"),
@@ -116,6 +121,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
     "'-mode chosenmode' to set the viewer mode for the document. Possible values {"+SetViewerParsedCommand.M_ATTACHMENTS+", "+SetViewerParsedCommand.M_FULLSCREEN+", "+SetViewerParsedCommand.M_NONE+", "+SetViewerParsedCommand.M_OCONTENT+", "+SetViewerParsedCommand.M_OUTLINES+", "+SetViewerParsedCommand.M_THUMBS+"}. If omitted it uses "+SetViewerParsedCommand.M_NONE+"\n"+
     "'-nfsmode chosennonfullscreenmode' to set the viewer mode for the document when exiting full screen mode. Possible values {"+SetViewerParsedCommand.NFSM_NONE+", "+SetViewerParsedCommand.NFSM_OCONTENT+", "+SetViewerParsedCommand.NFSM_OUTLINES+", "+SetViewerParsedCommand.NFSM_THUMBS+"}. If omitted it uses "+SetViewerParsedCommand.NFSM_NONE+" \n"+
     "'-direction chosendirection' to set the viewer direction. Possible values {"+SetViewerParsedCommand.D_L2R+", "+SetViewerParsedCommand.D_R2L+"}\n"+
+    "'-d /tmp' a directory containing the pdf files to set the viewer options.\n"+
     "'-"+SetViewerParsedCommand.HIDEMENU_ARG+"' hide the menu bar.\n"+
     "'-"+SetViewerParsedCommand.HIDETOOLBAR_ARG+"' hide the toolbar.\n"+
     "'-"+SetViewerParsedCommand.HIDEWINDOWUI_ARG+"' hide the user interface elements (scrollbars, ...).\n"+

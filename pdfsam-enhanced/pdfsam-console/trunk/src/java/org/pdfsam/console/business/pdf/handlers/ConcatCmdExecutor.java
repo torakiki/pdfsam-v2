@@ -44,7 +44,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -66,8 +65,6 @@ import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
 import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
-import org.pdfsam.console.utils.FilenameComparator;
-import org.pdfsam.console.utils.PdfFilter;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfDictionary;
@@ -562,21 +559,6 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 			this.end = end;
 		}
     	    	
-    }
-    
-    /**
-	 * get an array of PdfFile in the input directory alphabetically ordered
-	 * @param directory
-	 * @return PdfFile array from the input directory
-	 */
-	private PdfFile[] getPdfFiles(File directory){
-		File[] fileList = directory.listFiles(new PdfFilter());
-		Arrays.sort(fileList, new FilenameComparator());
-		ArrayList list = new ArrayList();
-		for (int i=0; i<fileList.length; i++){
-			list.add(new PdfFile(fileList[i], null));
-		}
-		return (PdfFile[]) list.toArray(new PdfFile[list.size()]);
-	}
+    }    
 
 }

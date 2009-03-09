@@ -50,7 +50,6 @@ import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
-import org.pdfsam.console.exceptions.console.UnpackException;
 import org.pdfsam.console.utils.FileUtility;
 /**
  * CmdValidator for the unpack command
@@ -80,31 +79,31 @@ public class UnpackCmdValidator extends AbstractCmdValidator {
 			//-f and -d
 			PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(UnpackParsedCommand.F_ARG);
 	        FileParam dOption = (FileParam) cmdLineHandler.getOption(UnpackParsedCommand.D_ARG);
-	        if(fOption.isSet() || dOption.isSet()){
-		        //-f
-		        if(fOption.isSet()){
-					//validate file extensions
-		        	for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
-		        		PdfFile currentFile = (PdfFile) fIterator.next();
-		        		if (!((currentFile.getFile().getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile.getFile().getName().length()>PDF_EXTENSION.length()))){
-		        			throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{currentFile.getFile().getPath()});
-		        		}
-		        	}
-		        	parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
-		        }
-		        
-		        //-d
-				if ((dOption.isSet())){
-		            File inputDir = dOption.getFile();
-		            if (inputDir.isDirectory()){
-		            	parsedCommandDTO.setInputDirectory(inputDir);	
-		    		}           
-		            else{
-		            	throw new ParseException(ParseException.ERR_D_NOT_DIR, new String[]{inputDir.getAbsolutePath()});
-		            }
-		        }
-			}else{
-				throw new UnpackException(UnpackException.ERR_NO_D_OR_F);
+			if (fOption.isSet() || dOption.isSet()) {
+				// -f
+				if (fOption.isSet()) {
+					// validate file extensions
+					for (Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();) {
+						PdfFile currentFile = (PdfFile) fIterator.next();
+						if (!((currentFile.getFile().getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile
+								.getFile().getName().length() > PDF_EXTENSION.length()))) {
+							throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[] { currentFile
+									.getFile().getPath() });
+						}
+					}
+					parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
+				}
+				// -d
+				if ((dOption.isSet())) {
+					File inputDir = dOption.getFile();
+					if (inputDir.isDirectory()) {
+						parsedCommandDTO.setInputDirectory(inputDir);
+					} else {
+						throw new ParseException(ParseException.ERR_D_NOT_DIR, new String[] { inputDir.getAbsolutePath() });
+					}
+				}
+			} else {
+				throw new ParseException(ParseException.ERR_NO_F_OR_D);
 			}
 		}else{
 			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);

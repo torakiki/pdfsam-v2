@@ -74,7 +74,11 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 			PrefixParser prefixParser;
 			setPercentageOfWorkDone(0);
 			try{
-				PdfFile[] fileList = inputCommand.getInputFileList();
+				PdfFile[] fileList = arraysConcat(inputCommand.getInputFileList(), getPdfFiles(inputCommand.getInputDirectory()));
+				//no input file found
+				if (fileList== null || !(fileList.length >0)){
+					throw new SetViewerException(SetViewerException.CMD_NO_INPUT_FILE);
+				}
 				for(int i = 0; i<fileList.length; i++){
 					try{
 						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());

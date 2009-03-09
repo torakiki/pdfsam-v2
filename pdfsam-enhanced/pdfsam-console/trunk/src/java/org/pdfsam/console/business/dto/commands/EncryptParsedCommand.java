@@ -59,6 +59,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 	public static final String O_ARG = "o";
 	public static final String ALLOW_ARG = "allow";
 	public static final String ETYPE_ARG = "etype";
+	public static final String D_ARG = "d";
 	
 	//constants used to get the encrypt mode
     public static final String E_PRINT = "print";
@@ -82,14 +83,15 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
     private int permissions;
     private String encryptionType = E_RC4_40;    
     private PdfFile[] inputFileList;
-    
+	private File inputDirectory;
+   
     
     public EncryptParsedCommand(){    	
     }       
     
 	public EncryptParsedCommand(File outputFile, String outputFilesPrefix,
 			String ownerPwd, String userPwd, int permissions,
-			String encryptionType, PdfFile[] inputFileList) {
+			String encryptionType, PdfFile[] inputFileList, File inputDirectory) {
 		super();
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
@@ -98,11 +100,12 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 		this.permissions = permissions;
 		this.encryptionType = encryptionType;
 		this.inputFileList = inputFileList;
+		this.inputDirectory = inputDirectory;
 	}
 
 	public EncryptParsedCommand(File outputFile, String outputFilesPrefix,
 			String ownerPwd, String userPwd, int permissions,
-			String encryptionType, PdfFile[] inputFileList, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+			String encryptionType, PdfFile[] inputFileList, File inputDirectory, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
@@ -111,6 +114,7 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 		this.permissions = permissions;
 		this.encryptionType = encryptionType;
 		this.inputFileList = inputFileList;
+		this.inputDirectory = inputDirectory;
 	}
 
 	/**
@@ -229,8 +233,23 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 		retVal.append("[userPwd="+userPwd+"]");
 		retVal.append("[encryptionType="+encryptionType+"]");
 		retVal.append("[permissions="+permissions+"]");
+		retVal.append((inputDirectory== null)?"":"[inputDirectory="+inputDirectory.getAbsolutePath()+"]");		
 		retVal.append("[command="+getCommand()+"]");
 		return retVal.toString();
+	}
+
+	/**
+	 * @return the inputDirectory
+	 */
+	public File getInputDirectory() {
+		return inputDirectory;
+	}
+
+	/**
+	 * @param inputDirectory the inputDirectory to set
+	 */
+	public void setInputDirectory(File inputDirectory) {
+		this.inputDirectory = inputDirectory;
 	}
 
 }

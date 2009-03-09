@@ -41,8 +41,8 @@ package org.pdfsam.console.exceptions.console;
  * @author Andrea Vacondio
  */
 public class UnpackException extends ConsoleException {
-	
-	public final static int ERR_NO_D_OR_F = 0x01;
+
+	public final static int CMD_NO_INPUT_FILE = 0x01;
 	
 	private static final long serialVersionUID = 6507276853411967680L;
 

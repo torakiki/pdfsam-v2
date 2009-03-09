@@ -54,10 +54,12 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 	public static final String F_ARG = "f";
 	public static final String O_ARG = "o";
 	public static final String P_ARG = "p";
+	public static final String D_ARG = "d";
+
 	public static final String M_ARG = "mode";
 	public static final String NFSM_ARG = "nfsmode";
 	public static final String L_ARG = "layout";
-	public static final String D_ARG = "direction";
+	public static final String DIRECTION_ARG = "direction";
 	public static final String HIDETOOLBAR_ARG = "hidetoolbar";
 	public static final String HIDEMENU_ARG = "hidemenu";
 	public static final String HIDEWINDOWUI_ARG = "hidewindowui";
@@ -98,6 +100,7 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 	private int nfsmode = 0;
 	private int direction = 0;
     private PdfFile[] inputFileList;
+	private File inputDirectory;
 	private String outputFilesPrefix = "";
 	private boolean hideToolBar = false;   
 	private boolean hideMenu = false;   
@@ -113,7 +116,7 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
        
 	public SetViewerParsedCommand(File outputFile, int mode, int layout, int nfsmode, int direction, PdfFile[] inputFileList, String outputFilesPrefix,
 			boolean hideToolBar, boolean hideMenu, boolean hideWindowUI,boolean fitWindow, boolean centerWindow, boolean displayDocTitle,
-			boolean noPrintScaling) {
+			boolean noPrintScaling, File inputDirectory) {
 		super();
 		this.outputFile = outputFile;
 		this.mode = mode;
@@ -129,11 +132,12 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 		this.centerWindow = centerWindow;
 		this.displayDocTitle = displayDocTitle;
 		this.noPrintScaling = noPrintScaling;
+		this.inputDirectory = inputDirectory;
 	}
 
 	public SetViewerParsedCommand(File outputFile, int mode, int layout, int nfsmode, int direction, PdfFile[] inputFileList, String outputFilesPrefix,
 			boolean hideToolBar, boolean hideMenu, boolean hideWindowUI,boolean fitWindow, boolean centerWindow, boolean displayDocTitle,
-			boolean noPrintScaling, boolean overwrite, boolean compress,
+			boolean noPrintScaling, File inputDirectory, boolean overwrite, boolean compress,
 			File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
@@ -150,6 +154,8 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 		this.centerWindow = centerWindow;
 		this.displayDocTitle = displayDocTitle;
 		this.noPrintScaling = noPrintScaling;
+		this.inputDirectory = inputDirectory;
+
 	}
 
 	
@@ -373,8 +379,23 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 		retVal.append("[centerWindow="+centerWindow+"]");
 		retVal.append("[displayDocTitle="+displayDocTitle+"]");
 		retVal.append("[noPrintScaling="+noPrintScaling+"]");
+		retVal.append((inputDirectory== null)?"":"[inputDirectory="+inputDirectory.getAbsolutePath()+"]");
 		retVal.append("[command="+getCommand()+"]");
 		return retVal.toString();
+	}
+
+	/**
+	 * @return the inputDirectory
+	 */
+	public File getInputDirectory() {
+		return inputDirectory;
+	}
+
+	/**
+	 * @param inputDirectory the inputDirectory to set
+	 */
+	public void setInputDirectory(File inputDirectory) {
+		this.inputDirectory = inputDirectory;
 	}
 
 }

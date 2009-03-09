@@ -37,17 +37,26 @@
  */
 package org.pdfsam.console.business.pdf.handlers.interfaces;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 
+import org.apache.log4j.Logger;
+import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
+import org.pdfsam.console.utils.FilenameComparator;
+import org.pdfsam.console.utils.PdfFilter;
 /**
  * Abstract command executor
  * @author Andrea Vacondio
  *
  */
 public abstract class AbstractCmdExecutor extends Observable implements CmdExecutor {
+	
+	private final Logger log = Logger.getLogger(AbstractCmdExecutor.class.getPackage().getName());
 	
 	private WorkDoneDataModel workDone = null;
 	
@@ -88,4 +97,43 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 	}
 
 	public abstract void execute(AbstractParsedCommand parsedCommand) throws ConsoleException;
+	
+    /**
+	 * get an array of PdfFile in the input directory alphabetically ordered
+	 * @param directory
+	 * @return PdfFile array from the input directory
+	 */
+	protected PdfFile[] getPdfFiles(File directory){
+		File[] fileList = directory.listFiles(new PdfFilter());
+		Arrays.sort(fileList, new FilenameComparator());
+		ArrayList list = new ArrayList();
+		for (int i=0; i<fileList.length; i++){
+			list.add(new PdfFile(fileList[i], null));
+		}
+		if(list.size() <= 0){
+			log.warn("No pdf documents found in "+directory);
+		}
+		return (PdfFile[]) list.toArray(new PdfFile[list.size()]);
+	}
+	
+	/**
+	 * concat the two arrays
+	 * @param first
+	 * @param second
+	 * @return
+	 */
+	protected PdfFile[] arraysConcat(PdfFile[] first, PdfFile[] second) {
+		PdfFile[] retVal = null;
+		if(first != null && second != null){
+			retVal = new PdfFile[first.length + second.length];
+			System.arraycopy(first, 0, retVal, 0, first.length);
+			System.arraycopy(second, 0, retVal, first.length, second.length);
+		}else if (first!=null){
+			retVal = first;
+		}else{
+			retVal = second;
+		}
+		return retVal;
+	}
+
 }

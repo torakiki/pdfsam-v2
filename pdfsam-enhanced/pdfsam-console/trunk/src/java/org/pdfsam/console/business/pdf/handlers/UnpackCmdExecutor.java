@@ -44,18 +44,17 @@ package org.pdfsam.console.business.pdf.handlers;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PdfFile;
+import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.UnpackException;
-import org.pdfsam.console.utils.PdfFilter;
 
 import com.lowagie.text.pdf.PRStream;
 import com.lowagie.text.pdf.PdfArray;
@@ -78,63 +77,54 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 		if((parsedCommand != null) && (parsedCommand instanceof UnpackParsedCommand)){
 			
 			UnpackParsedCommand inputCommand = (UnpackParsedCommand) parsedCommand;
-			setWorkIndeterminate();
 			PdfReader pdfReader;
 			try{	
-				ArrayList fileLists = new ArrayList();
-				if(inputCommand.getInputFileList() != null){
-					fileLists.add(inputCommand.getInputFileList());
+				PdfFile[] fileList = arraysConcat(inputCommand.getInputFileList(), getPdfFiles(inputCommand.getInputDirectory()));
+				//check if empty
+				if (fileList== null || !(fileList.length >0)){
+					throw new UnpackException(UnpackException.CMD_NO_INPUT_FILE);
 				}
-				if(inputCommand.getInputDirectory() != null){
-					PdfFile[] foundFiles = getPdfFiles(inputCommand.getInputDirectory());
-					if(foundFiles != null){
-						fileLists.add(foundFiles);
-					}else{
-						log.warn("No pdf documents found in "+inputCommand.getInputDirectory());
-					}
-				}
-				for(Iterator listsIter = fileLists.iterator(); listsIter.hasNext();){
-					PdfFile[] fileList = (PdfFile[])listsIter.next();
-					for(int i = 0; i<fileList.length; i++){
-						int unpackedFiles = 0;
-						try{
-							pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
-							PdfDictionary catalog = pdfReader.getCatalog();
-							PdfDictionary names = (PdfDictionary) PdfReader.getPdfObject(catalog.get(PdfName.NAMES));
-							if (names != null) {
-								PdfDictionary embFiles = (PdfDictionary) PdfReader.getPdfObject(names.get(new PdfName("EmbeddedFiles")));
-								if (embFiles != null) {
-									HashMap embMap = PdfNameTree.readTree(embFiles);
-									for (Iterator iter = embMap.values().iterator(); iter.hasNext();) {
-										PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
+				
+				for(int i = 0; i<fileList.length; i++){
+					int unpackedFiles = 0;
+					try{
+						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						PdfDictionary catalog = pdfReader.getCatalog();
+						PdfDictionary names = (PdfDictionary) PdfReader.getPdfObject(catalog.get(PdfName.NAMES));
+						if (names != null) {
+							PdfDictionary embFiles = (PdfDictionary) PdfReader.getPdfObject(names.get(new PdfName("EmbeddedFiles")));
+							if (embFiles != null) {
+								HashMap embMap = PdfNameTree.readTree(embFiles);
+								for (Iterator iter = embMap.values().iterator(); iter.hasNext();) {
+									PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
+									unpackedFiles += unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+								}
+							}
+						}
+						for (int k = 1; k <= pdfReader.getNumberOfPages(); ++k) {
+							PdfArray annots = (PdfArray) PdfReader.getPdfObject(pdfReader.getPageN(k).get(PdfName.ANNOTS));
+							if (annots != null){
+								for (Iterator iter = annots.listIterator(); iter.hasNext();) {
+									PdfDictionary annot = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
+									PdfName subType = (PdfName) PdfReader.getPdfObject(annot.get(PdfName.SUBTYPE));
+									if (PdfName.FILEATTACHMENT.equals(subType)){
+										PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject(annot.get(PdfName.FS));
 										unpackedFiles += unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
 									}
 								}
 							}
-							for (int k = 1; k <= pdfReader.getNumberOfPages(); ++k) {
-								PdfArray annots = (PdfArray) PdfReader.getPdfObject(pdfReader.getPageN(k).get(PdfName.ANNOTS));
-								if (annots != null){
-									for (Iterator iter = annots.listIterator(); iter.hasNext();) {
-										PdfDictionary annot = (PdfDictionary) PdfReader.getPdfObject((PdfObject) iter.next());
-										PdfName subType = (PdfName) PdfReader.getPdfObject(annot.get(PdfName.SUBTYPE));
-										if (PdfName.FILEATTACHMENT.equals(subType)){
-											PdfDictionary filespec = (PdfDictionary) PdfReader.getPdfObject(annot.get(PdfName.FS));
-											unpackedFiles += unpackFile(filespec, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-										}
-									}
-								}
-							}
-							pdfReader.close();
-							if(unpackedFiles >0){
-								log.info("File "+fileList[i].getFile().getName()+" unpacked, found "+unpackedFiles+" attachments.");
-							}else{
-								log.info("No attachments in "+fileList[i].getFile().getName()+".");
-							}
-						}catch(Exception e){
-			    			log.error("Error unpacking file "+fileList[i].getFile().getName(), e);
-			    		}
-					}
-				}
+						}
+						pdfReader.close();
+						if(unpackedFiles >0){
+							log.info("File "+fileList[i].getFile().getName()+" unpacked, found "+unpackedFiles+" attachments.");
+						}else{
+							log.info("No attachments in "+fileList[i].getFile().getName()+".");
+						}
+						setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
+					}catch(Exception e){
+		    			log.error("Error unpacking file "+fileList[i].getFile().getName(), e);
+		    		}
+				}				
 			}catch(Exception e){    		
 				throw new UnpackException(e);
 			}finally{
@@ -191,18 +181,5 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 		}
 		return retVal;
 	}
-	
-	/**
-	 * get an array of PdfFile in the input directory
-	 * @param directory
-	 * @return PdfFile array from the input directory
-	 */
-	private PdfFile[] getPdfFiles(File directory){
-		File[] fileList = directory.listFiles(new PdfFilter());
-		ArrayList list = new ArrayList();
-		for (int i=0; i<fileList.length; i++){
-			list.add(new PdfFile(fileList[i], null));
-		}
-		return (PdfFile[]) list.toArray(new PdfFile[list.size()]);
-	}
+
 }

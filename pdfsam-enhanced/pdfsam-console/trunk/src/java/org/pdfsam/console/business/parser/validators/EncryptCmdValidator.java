@@ -67,7 +67,7 @@ public class EncryptCmdValidator extends AbstractCmdValidator {
 		
 		if(cmdLineHandler != null){
 			//-o
-			FileParam oOption = (FileParam) cmdLineHandler.getOption("o");
+			FileParam oOption = (FileParam) cmdLineHandler.getOption(EncryptParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            if (outFile.isDirectory()){
@@ -81,44 +81,60 @@ public class EncryptCmdValidator extends AbstractCmdValidator {
 	        }
 			
 			//-p
-	        StringParam pOption = (StringParam) cmdLineHandler.getOption("p");
+	        StringParam pOption = (StringParam) cmdLineHandler.getOption(EncryptParsedCommand.P_ARG);
 	        if(pOption.isSet()){
 	        	parsedCommandDTO.setOutputFilesPrefix(pOption.getValue());
 	        }
 	        
 	        //-apwd
-	        StringParam apwdOption = (StringParam) cmdLineHandler.getOption("apwd");
+	        StringParam apwdOption = (StringParam) cmdLineHandler.getOption(EncryptParsedCommand.APWD_ARG);
 	        if(apwdOption.isSet()){
 	        	parsedCommandDTO.setOwnerPwd(apwdOption.getValue());
 	        }
 	        
 	        //-upwd
-	        StringParam upwdOption = (StringParam) cmdLineHandler.getOption("upwd");
+	        StringParam upwdOption = (StringParam) cmdLineHandler.getOption(EncryptParsedCommand.UPWD_ARG);
 	        if(upwdOption.isSet()){
 	        	parsedCommandDTO.setUserPwd(upwdOption.getValue());
 	        }
 	        
 	        //-etype
-	        StringParam etypeOption = (StringParam) cmdLineHandler.getOption("etype");
+	        StringParam etypeOption = (StringParam) cmdLineHandler.getOption(EncryptParsedCommand.ETYPE_ARG);
 	        if(etypeOption.isSet()){
 	        	parsedCommandDTO.setEncryptionType(etypeOption.getValue());
 	        }
 	        
-	        //-f
-	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");
-	        if(fOption.isSet()){
-				//validate file extensions
-	        	for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
-	        		PdfFile currentFile = (PdfFile) fIterator.next();
-	        		if (!((currentFile.getFile().getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile.getFile().getName().length()>PDF_EXTENSION.length()))){
-	        			throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{currentFile.getFile().getPath()});
-	        		}
-	        	}
-	        	parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
-	        }
+	        //-f - d
+			PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(EncryptParsedCommand.F_ARG);
+			FileParam dOption = (FileParam) cmdLineHandler.getOption(EncryptParsedCommand.D_ARG);
+			if(fOption.isSet() || dOption.isSet()){
+				//-f
+		        if(fOption.isSet()){
+					//validate file extensions
+		        	for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
+		        		PdfFile currentFile = (PdfFile) fIterator.next();
+		        		if (!((currentFile.getFile().getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile.getFile().getName().length()>PDF_EXTENSION.length()))){
+		        			throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{currentFile.getFile().getPath()});
+		        		}
+		        	}
+		        	parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
+		        }
+		        //-d
+				if ((dOption.isSet())){
+		            File inputDir = dOption.getFile();
+		            if (inputDir.isDirectory()){
+		            	parsedCommandDTO.setInputDirectory(inputDir);	
+		    		}           
+		            else{
+		            	throw new ParseException(ParseException.ERR_D_NOT_DIR, new String[]{inputDir.getAbsolutePath()});
+		            }
+		        }
+			}else{
+				throw new ParseException(ParseException.ERR_NO_F_OR_D);
+			}
 	        
 	        //-allow
-	        StringParam allowOption = (StringParam) cmdLineHandler.getOption("allow");
+	        StringParam allowOption = (StringParam) cmdLineHandler.getOption(EncryptParsedCommand.ALLOW_ARG);
 	        if(allowOption.isSet()){
 	        	Hashtable permissionsMap = getPermissionsMap(parsedCommandDTO.getEncryptionType());
 	        	int permissions = 0;

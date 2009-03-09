@@ -69,7 +69,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	            new PdfFileParam(EncryptParsedCommand.F_ARG,
 	                          "pdf files to encrypt: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
 	                          FileParam.IS_READABLE,
-	                          FileParam.REQUIRED, 
+	                          FileParam.OPTIONAL, 
 	                          FileParam.MULTI_VALUED),
 	            new StringParam(EncryptParsedCommand.P_ARG,   
 	                          "prefix for the output files name",
@@ -79,17 +79,22 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	                            StringParam.OPTIONAL), 
 	            new StringParam(EncryptParsedCommand.UPWD_ARG,   
 	                            "user password for the document",
-	                            StringParam.OPTIONAL),                            
-	           new StringParam(EncryptParsedCommand.ALLOW_ARG,
-	                          "permissions: a list of permissions. { "+EncryptParsedCommand.E_PRINT+", "+EncryptParsedCommand.E_MODIFY+", "+EncryptParsedCommand.E_COPY+", "+EncryptParsedCommand.E_ANNOTATION+", "+EncryptParsedCommand.E_FILL+", "+EncryptParsedCommand.E_SCREEN+", "+EncryptParsedCommand.E_ASSEMBLY+", "+EncryptParsedCommand.E_DPRINT+"} ", 
-							  new String[] { EncryptParsedCommand.E_PRINT, EncryptParsedCommand.E_MODIFY, EncryptParsedCommand.E_COPY, EncryptParsedCommand.E_ANNOTATION, EncryptParsedCommand.E_FILL, EncryptParsedCommand.E_SCREEN, EncryptParsedCommand.E_ASSEMBLY, EncryptParsedCommand.E_DPRINT },
-							  StringParam.OPTIONAL, 
-							  StringParam.MULTI_VALUED),						   
-	           new StringParam(EncryptParsedCommand.ETYPE_ARG,   
-	                           "encryption angorithm {"+EncryptParsedCommand.E_RC4_40+", "+EncryptParsedCommand.E_RC4_128+", "+EncryptParsedCommand.E_AES_128+"}. If omitted it uses "+EncryptParsedCommand.E_RC4_128,
-	                           new String[] { EncryptParsedCommand.E_RC4_40, EncryptParsedCommand.E_RC4_128, EncryptParsedCommand.E_AES_128},
-	                           StringParam.OPTIONAL, 
-	                           StringParam.SINGLE_VALUED)
+	                            StringParam.OPTIONAL),       
+                new FileParam(EncryptParsedCommand.D_ARG,
+		      		  		    "directory containing pdf files to encrypt.",
+			                    FileParam.IS_DIR & FileParam.IS_READABLE,
+			                    FileParam.OPTIONAL,
+			                    FileParam.SINGLE_VALUED),                                   		  	                            
+	            new StringParam(EncryptParsedCommand.ALLOW_ARG,
+	                            "permissions: a list of permissions. { "+EncryptParsedCommand.E_PRINT+", "+EncryptParsedCommand.E_MODIFY+", "+EncryptParsedCommand.E_COPY+", "+EncryptParsedCommand.E_ANNOTATION+", "+EncryptParsedCommand.E_FILL+", "+EncryptParsedCommand.E_SCREEN+", "+EncryptParsedCommand.E_ASSEMBLY+", "+EncryptParsedCommand.E_DPRINT+"} ", 
+							    new String[] { EncryptParsedCommand.E_PRINT, EncryptParsedCommand.E_MODIFY, EncryptParsedCommand.E_COPY, EncryptParsedCommand.E_ANNOTATION, EncryptParsedCommand.E_FILL, EncryptParsedCommand.E_SCREEN, EncryptParsedCommand.E_ASSEMBLY, EncryptParsedCommand.E_DPRINT },
+							    StringParam.OPTIONAL, 
+							    StringParam.MULTI_VALUED),						   
+	            new StringParam(EncryptParsedCommand.ETYPE_ARG,   
+	                            "encryption angorithm {"+EncryptParsedCommand.E_RC4_40+", "+EncryptParsedCommand.E_RC4_128+", "+EncryptParsedCommand.E_AES_128+"}. If omitted it uses "+EncryptParsedCommand.E_RC4_128,
+	                            new String[] { EncryptParsedCommand.E_RC4_40, EncryptParsedCommand.E_RC4_128, EncryptParsedCommand.E_AES_128},
+	                            StringParam.OPTIONAL, 
+	                            StringParam.SINGLE_VALUED)
 	  })); 
 
 	 /**
@@ -110,6 +115,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to encrypt (use filename:password if the file is password protected).\n"+
     "'-apwd password' to set the owner password.\n"+
     "'-upwd password' to set the user password.\n"+
+    "'-d /tmp' a directory containing the pdf files to encrypt.\n"+    
     "'-allow permission' to set the permissions list. Possible values {["+EncryptParsedCommand.E_PRINT+"], ["+EncryptParsedCommand.E_ANNOTATION+"], ["+EncryptParsedCommand.E_ASSEMBLY+"], ["+EncryptParsedCommand.E_COPY+"], ["+EncryptParsedCommand.E_DPRINT+"], ["+EncryptParsedCommand.E_FILL+"], ["+EncryptParsedCommand.E_MODIFY+"], ["+EncryptParsedCommand.E_SCREEN+"]}\n"+
 	"'-p prefix_' to specify a prefix for output names of files. If it contains \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf)\n"+
 	"Available prefix variables: [TIMESTAMP], [BASENAME].\n"+

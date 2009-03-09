@@ -76,8 +76,12 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			PrefixParser prefixParser;
 			PdfReader pdfReader;
 			PdfStamper pdfStamper;
-			try{
-				PdfFile[] fileList = inputCommand.getInputFileList();
+			try{				
+				PdfFile[] fileList = arraysConcat(inputCommand.getInputFileList(), getPdfFiles(inputCommand.getInputDirectory()));
+				//check if empty
+				if (fileList== null || !(fileList.length >0)){
+					throw new EncryptException(EncryptException.CMD_NO_INPUT_FILE);
+				}			
 				for(int i = 0; i<fileList.length; i++){
 					try{
 						//set the encryption type
@@ -122,7 +126,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 		    		}
 				}
 				log.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
-				log.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");
+				log.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");				
 		}catch(Exception e){    		
 			throw new EncryptException(e);
 		}finally{
