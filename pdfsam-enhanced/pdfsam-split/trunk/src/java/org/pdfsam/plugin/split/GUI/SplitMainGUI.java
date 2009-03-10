@@ -139,7 +139,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.5.0";
+    private final String PLUGIN_VERSION = "0.5.1";
     
 /**
  * Constructor
@@ -513,8 +513,10 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 				splitSize.addAttribute("value", splitSizeCombo.getSelectedItem().toString());			
 
 				Element bookLevel = ((Element)arg0).addElement("bookmarkslevel");
-				bookLevel.addAttribute("value", bLevelCombo.getSelectedItem().toString());			
-
+				if(bLevelCombo.getSelectedItem() != null){
+					bookLevel.addAttribute("value", bLevelCombo.getSelectedItem().toString());			
+				}
+				
 				Element fileDestination = ((Element)arg0).addElement("destination");
 				fileDestination.addAttribute("value", destinationFolderText.getText());			
 				
