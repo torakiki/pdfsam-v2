@@ -63,7 +63,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 		
 		if(cmdLineHandler != null){
 			//-o
-			FileParam oOption = (FileParam) cmdLineHandler.getOption("o");
+			FileParam oOption = (FileParam) cmdLineHandler.getOption(MixParsedCommand.O_ARG);
 	        if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            //checking extension
@@ -78,7 +78,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        }
 	        
 	        //-f1
-			PdfFileParam f1Option = (PdfFileParam) cmdLineHandler.getOption("f1");           
+			PdfFileParam f1Option = (PdfFileParam) cmdLineHandler.getOption(MixParsedCommand.F1_ARG);           
 	        if(f1Option.isSet()){
 	        	PdfFile firstFile = f1Option.getPdfFile();
 	            if ((firstFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
@@ -91,7 +91,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        }
 	        
 	        //-f2
-	        PdfFileParam f2Option = (PdfFileParam) cmdLineHandler.getOption("f2");           
+	        PdfFileParam f2Option = (PdfFileParam) cmdLineHandler.getOption(MixParsedCommand.F2_ARG);           
 	        if(f2Option.isSet()){
 	        	PdfFile secondFile = f2Option.getPdfFile();
 	            if ((secondFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
@@ -104,9 +104,9 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        }           
 	
 	        //-reversefirst
-	        parsedCommandDTO.setReverseFirst(((BooleanParam) cmdLineHandler.getOption("reversefirst")).isTrue());
+	        parsedCommandDTO.setReverseFirst(((BooleanParam) cmdLineHandler.getOption(MixParsedCommand.REVERSE_FIRST_ARG)).isTrue());
 	        //-reversesecond
-	        parsedCommandDTO.setReverseSecond(((BooleanParam) cmdLineHandler.getOption("reversesecond")).isTrue());
+	        parsedCommandDTO.setReverseSecond(((BooleanParam) cmdLineHandler.getOption(MixParsedCommand.REVERSE_SECOND_ARG)).isTrue());	        	    
 		}else{
 			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}

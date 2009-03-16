@@ -79,7 +79,7 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	                   PdfFileParam.REQUIRED, 
 	                   PdfFileParam.SINGLE_VALUED),
 	            new BooleanParam(MixParsedCommand.REVERSE_FIRST_ARG, "reverse first input file"),
-	            new BooleanParam(MixParsedCommand.REVERSE_SECOND_ARG, "reverse second input file")
+	            new BooleanParam(MixParsedCommand.REVERSE_SECOND_ARG, "reverse second input file")                         	            
 	    }));  
 	
 	/**
