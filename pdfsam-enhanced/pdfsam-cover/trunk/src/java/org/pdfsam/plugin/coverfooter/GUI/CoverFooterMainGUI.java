@@ -111,7 +111,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.7e";
+    private static final String PLUGIN_VERSION = "0.2.8e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -530,7 +530,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
      * @return the Plugin name
      */    
     public String getPluginName(){
-        return GettextResource.gettext(config.getI18nResourceBundle(),"Cover and Footer");
+        return GettextResource.gettext(config.getI18nResourceBundle(),"Frontpage and Addendum");
     }
  
     /**
