@@ -40,7 +40,7 @@
 		<property name="unpack.dir" value="${workspace.dir}/pdfsam-unpack"/>
 		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
 	    <property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
-		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
+		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack-br1"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
 		
 		<!-- default values -->
@@ -218,6 +218,9 @@
 				<include name="*.*" />
 			</fileset>
 		</copy>
+		
+		<replace dir="${pdfsam.release.dist.dir}/bin" token="@PDFSAM_JAR_NAME" value="${pdfsam.jar.name}"/>
+		<replace dir="${pdfsam.release.dist.dir}/bin" token="@CONSOLE_JAR_NAME" value="${pdfsam-console.jar.name}"/>
 		
 		<copy todir="${pdfsam.release.dist.dir}/doc">				
 			<fileset dir="doc/${pdfsam.version}">

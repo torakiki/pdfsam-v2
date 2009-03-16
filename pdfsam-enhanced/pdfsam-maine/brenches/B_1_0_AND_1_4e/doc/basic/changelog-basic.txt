@@ -1,9 +1,15 @@
-1.1.2 ()
+1.1.2 () (pdfsam-console 2.0.3e)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory
 -Console: fixed bug #2540496 (unpack -d parameter)
+-Optimized PdfLoader
+-Merge, Mix: confirmation dialog if the output file already exists and the overwrite flag is false
+-Launcher: pdfsam-starter.exe now can take -Xmx parameter as a value (can be set as a Windows shortcut parameter)
+-Console: added the -d option to the setviewer command to set options to all the documents in an input directory
+-Console: added the -d option to the encrypt command to encrypt to all the documents in an input directory
+-Split: fixed bug #2679389 (broken "save environment" function)
 
-1.1.1 (25-Jan-2009)
+1.1.1 (25-Jan-2009) (pdfsam-console 2.0.1e)
 ===================================
 -Console: fixed bug #2464606 (bookmarks management in split command)
 -Console: added the split by bookmarks level
@@ -11,7 +17,7 @@
 -Console: added pages rotation option to concat command
 -Updated langpack
 
-1.1.0 (23-Dec-2008)
+1.1.0 (23-Dec-2008) (pdfsam-console 2.0.0e)
 ===================================
 -Merge: fixed a JFileChooser call
 -Lazy JFileChooser init when call environment load/save 
