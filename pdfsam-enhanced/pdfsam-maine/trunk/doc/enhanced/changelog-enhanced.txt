@@ -2,6 +2,10 @@
 ===================================
 -Launcher: pdfsam-starter.exe now can take -Xmx parameter as a value (can be set as a Windows shortcut parameter)
 -Esc key now closes the preview panel
+-Console: added the -d option to the setviewer command to set options to all the documents in an input directory
+-Console: added the -d option to the encrypt command to encrypt to all the documents in an input directory
+-Split: fixed bug #2679389 (broken "save environment" function)
+-Changed the "Cover and Footer" plugin name. The new name is "Frontpage and Addendum" as the user wbpdf suggested
 
 2.0.0e-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
 ===================================

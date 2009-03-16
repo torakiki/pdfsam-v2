@@ -16,7 +16,7 @@ die() {
 
 
 DIRNAME="../lib/"
-CONSOLEJAR="$DIRNAME/pdfsam-console-2.0.2e.jar"
+CONSOLEJAR="$DIRNAME/@CONSOLE_JAR_NAME.jar"
 
 # Setup the classpath
 if [ ! -f "$CONSOLEJAR" ]; then
