@@ -14,6 +14,8 @@
  */
 package org.pdfsam.plugin.vpagereorder.GUI;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.GridBagConstraints;
@@ -80,6 +82,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     private Configuration config;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
     private JVisualPdfPageSelectionPanel selectionPanel = new JVisualPdfPageSelectionPanel();
+    private final PageReorderPolicy pageReorderFocusPolicy = new PageReorderPolicy();
     
     //layouts
     private SpringLayout destinationPanelLayout;
@@ -108,10 +111,10 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	
   //radio
     private final JRadioButton sameAsSourceRadio = new JRadioButton();
-    private final JRadioButton chooseAFolderRadio = new JRadioButton();
+    private final JRadioButton chooseAFileRadio = new JRadioButton();
     
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.3";
+    private static final String PLUGIN_VERSION = "0.0.4";
     
     /**
      * Constructor
@@ -145,9 +148,9 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         sameAsSourceRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Same as source"));
         destinationPanel.add(sameAsSourceRadio);
 
-        chooseAFolderRadio.setSelected(true);
-        chooseAFolderRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Choose a folder"));
-        destinationPanel.add(chooseAFolderRadio);
+        chooseAFileRadio.setSelected(true);
+        chooseAFileRadio.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Choose a file"));
+        destinationPanel.add(chooseAFileRadio);
 //END_DESTINATION_RADIOS 
 
         destinationPanel.add(destinationFileText);
@@ -230,7 +233,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	    
         final ButtonGroup outputRadioGroup = new ButtonGroup();
         outputRadioGroup.add(sameAsSourceRadio);
-        outputRadioGroup.add(chooseAFolderRadio); 
+        outputRadioGroup.add(chooseAFileRadio); 
 	  //RADIO_LISTENERS
 		sameAsSourceRadio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -239,7 +242,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 			}
 		});
 
-		chooseAFolderRadio.addActionListener(new ActionListener() {
+		chooseAFileRadio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				destinationFileText.setEnabled(true);
 				browseDestButton.setEnabled(true);
@@ -322,7 +325,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 						}
 						//check if the file already exists and the user didn't select to overwrite
 						File destFile = (destination!=null)? new File(destination):null;
-						if(destFile!=null && destFile.exists()){
+						if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
 							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
                 			if(JOptionPane.YES_OPTION == chosenOpt){
                 				overwriteCheckbox.setSelected(true);
@@ -377,9 +380,9 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     	destinationPanelLayout.putConstraint(SpringLayout.SOUTH, sameAsSourceRadio, 25, SpringLayout.NORTH, sameAsSourceRadio);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, sameAsSourceRadio, 1, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, sameAsSourceRadio, 10, SpringLayout.WEST, destinationPanel);        
-        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, chooseAFolderRadio, 0, SpringLayout.SOUTH, sameAsSourceRadio);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, chooseAFolderRadio, 0, SpringLayout.NORTH, sameAsSourceRadio);
-        destinationPanelLayout.putConstraint(SpringLayout.WEST, chooseAFolderRadio, 20, SpringLayout.EAST, sameAsSourceRadio);
+        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, chooseAFileRadio, 0, SpringLayout.SOUTH, sameAsSourceRadio);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, chooseAFileRadio, 0, SpringLayout.NORTH, sameAsSourceRadio);
+        destinationPanelLayout.putConstraint(SpringLayout.WEST, chooseAFileRadio, 20, SpringLayout.EAST, sameAsSourceRadio);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationFileText, 50, SpringLayout.NORTH, destinationPanel);
         destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationFileText, 30, SpringLayout.NORTH, destinationPanel);
@@ -413,8 +416,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     }
     
 	public FocusTraversalPolicy getFocusPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+		return (FocusTraversalPolicy)pageReorderFocusPolicy;
 	}
 
 	public Node getJobNode(Node arg0, boolean savePasswords)
@@ -477,7 +479,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
 				if (fileDestination != null && fileDestination.getText().length()>0){
 					destinationFileText.setText(fileDestination.getText());
-					chooseAFolderRadio.doClick();
+					chooseAFileRadio.doClick();
 				}else{
 					sameAsSourceRadio.doClick();
 				}
@@ -526,4 +528,167 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 			destinationFileText.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
 		}		
 	}
+	
+	/**
+	 * Focus policy for the page reorder plugin
+	 * @author Andrea Vacondio
+	 *
+	 */
+    public class PageReorderPolicy extends FocusTraversalPolicy {
+        public PageReorderPolicy(){
+            super();
+        }
+        
+        public Component getComponentAfter(Container CycleRootComp, Component aComponent){            
+            if (aComponent.equals(selectionPanel.getLoadFileButton())){
+            	if(selectionPanel.getClearButton()!=null){
+            		return selectionPanel.getClearButton();
+            	}else{
+            		return selectionPanel.getZoomInButton();
+            	}
+            }
+            else if (aComponent.equals(selectionPanel.getClearButton())){
+                return selectionPanel.getZoomInButton();
+            }
+            else if (aComponent.equals(selectionPanel.getZoomInButton())){
+                return selectionPanel.getZoomOutButton();
+            }
+            else if (aComponent.equals(selectionPanel.getZoomOutButton())){
+                return selectionPanel.getMoveUpButton();
+            }        
+            else if (aComponent.equals(selectionPanel.getMoveUpButton())){
+                return selectionPanel.getMoveDownButton();
+            }        
+            else if (aComponent.equals(selectionPanel.getMoveDownButton())){
+                return selectionPanel.getRemoveButton();
+            }        
+            else if (aComponent.equals(selectionPanel.getRemoveButton())){
+            	if(selectionPanel.getUndeleteButton()!=null){
+            		return selectionPanel.getUndeleteButton();
+            	}else{
+            		return selectionPanel.getRotateButton();
+            	}
+            }
+            else if (aComponent.equals(selectionPanel.getUndeleteButton())){
+                return selectionPanel.getRotateButton();
+            }  
+            else if (aComponent.equals(selectionPanel.getRotateButton())){
+                return selectionPanel.getRotateAntiButton();
+            }  
+            else if (aComponent.equals(selectionPanel.getRotateAntiButton())){
+                return sameAsSourceRadio;
+            }  
+            else if (aComponent.equals(sameAsSourceRadio)){
+                return chooseAFileRadio;
+            }
+            else if (aComponent.equals(chooseAFileRadio)){
+                if (destinationFileText.isEnabled()){
+                    return destinationFileText;
+                }else{
+                    return overwriteCheckbox;
+                }                
+            }
+            else if (aComponent.equals(destinationFileText)){
+                return browseDestButton;
+            }
+            else if (aComponent.equals(browseDestButton)){
+                return overwriteCheckbox;
+            }   
+			else if (aComponent.equals(overwriteCheckbox)){
+				return outputCompressedCheck;
+			}
+			else if (aComponent.equals(outputCompressedCheck)){
+				return versionCombo;
+			}            
+			else if (aComponent.equals(versionCombo)){
+				return runButton;
+			}            
+            else if (aComponent.equals(runButton)){
+                return selectionPanel.getLoadFileButton();
+            }
+            return selectionPanel.getLoadFileButton();
+        }
+        
+        public Component getComponentBefore(Container CycleRootComp, Component aComponent){
+        	 if (aComponent.equals(selectionPanel.getLoadFileButton())){
+ 				return runButton;
+ 			 }
+             else if (aComponent.equals(selectionPanel.getClearButton())){
+                 return selectionPanel.getLoadFileButton();
+             }
+             else if (aComponent.equals(selectionPanel.getZoomInButton())){
+            	 if(selectionPanel.getClearButton()!=null){
+              		return selectionPanel.getClearButton();
+              	}else{
+              		return selectionPanel.getLoadFileButton();
+              	}
+             }
+             else if (aComponent.equals(selectionPanel.getZoomOutButton())){
+                 return selectionPanel.getZoomInButton();
+             }        
+             else if (aComponent.equals(selectionPanel.getMoveUpButton())){
+                 return selectionPanel.getZoomOutButton();
+             }        
+             else if (aComponent.equals(selectionPanel.getMoveDownButton())){
+                 return selectionPanel.getMoveUpButton();
+             }        
+             else if (aComponent.equals(selectionPanel.getRemoveButton())){
+           		return selectionPanel.getMoveDownButton();
+             }
+             else if (aComponent.equals(selectionPanel.getUndeleteButton())){
+                 return selectionPanel.getRemoveButton();
+             }  
+             else if (aComponent.equals(selectionPanel.getRotateButton())){
+            	 if(selectionPanel.getUndeleteButton()!=null){
+              		return selectionPanel.getUndeleteButton();
+              	}else{
+              		return selectionPanel.getRemoveButton();
+              	}
+             }  
+             else if (aComponent.equals(selectionPanel.getRotateAntiButton())){
+                 return selectionPanel.getRotateButton();
+             }  
+             else if (aComponent.equals(sameAsSourceRadio)){
+                 return selectionPanel.getRotateAntiButton();
+             }
+             else if (aComponent.equals(chooseAFileRadio)){
+            	 return sameAsSourceRadio;             
+             }
+             else if (aComponent.equals(destinationFileText)){
+                 return chooseAFileRadio;
+             }
+             else if (aComponent.equals(browseDestButton)){
+                 return destinationFileText;
+             }
+             else if (aComponent.equals(overwriteCheckbox)){
+            	  if (destinationFileText.isEnabled()){
+                      return browseDestButton;
+                  }else{
+                      return chooseAFileRadio;
+                  }   
+             }   
+             else if (aComponent.equals(outputCompressedCheck)){
+                 return overwriteCheckbox;
+             }   
+ 			else if (aComponent.equals(versionCombo)){
+ 				return outputCompressedCheck;
+ 			}
+ 			else if (aComponent.equals(runButton)){
+ 				return versionCombo;
+ 			}            
+            return selectionPanel.getLoadFileButton();
+        }
+        
+        public Component getDefaultComponent(Container CycleRootComp){
+            return selectionPanel.getLoadFileButton();
+        }
+
+        public Component getLastComponent(Container CycleRootComp){
+            return runButton;
+        }
+
+        public Component getFirstComponent(Container CycleRootComp){
+            return selectionPanel.getLoadFileButton();
+        }
+    }
 }
