@@ -111,7 +111,7 @@ public class  PlugInsLoader{
     				XMLConfig xmlConfigObject = new XMLConfig(currentDir.getAbsolutePath()); 
     				File[] fileList = currentDir.listFiles(new JarFilter(false));
     				if(fileList.length == 1){
-    					urlList.add(fileList[0].toURL());
+    					urlList.add(fileList[0].toURI().toURL());
     					classList.add(xmlConfigObject.getXMLConfigValue("/plugin/data/classname"));
     				}else{
     					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Found zero or many jars in plugin directory ")+currentDir.getAbsolutePath());

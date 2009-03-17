@@ -1,4 +1,4 @@
-1.5.2e ()
+1.5.2e (22-Mar-2009)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory
 -Console: fixed bug #2540496 (unpack -d parameter)

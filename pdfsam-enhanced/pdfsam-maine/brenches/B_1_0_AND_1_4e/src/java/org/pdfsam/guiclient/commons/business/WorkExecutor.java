@@ -34,6 +34,7 @@ public class WorkExecutor {
 	
 	private WorkExecutor(){
 		workQueue = new WorkQueue(1);
+		workQueue.startWorkQueue();
 		config = Configuration.getInstance();
 	}
 	
@@ -84,10 +85,18 @@ public class WorkExecutor {
             queue = new LinkedList();
             threads = new PoolWorker[nThreads];
 
-            for (int i=0; i<nThreads; i++) {
-                threads[i] = new PoolWorker();
-                threads[i].start();
-            }
+        }
+        
+        /**
+         * starts the work queue
+         */
+        public void startWorkQueue(){
+        	if (threads != null){
+	            for (int i=0; i<threads.length; i++) {
+	                threads[i] = new PoolWorker();
+	                threads[i].start();
+	            }
+        	}
         }
         
         public synchronized void incRunningCounter(){

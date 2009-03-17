@@ -1,4 +1,4 @@
-1.1.2 () (pdfsam-console 2.0.3e)
+1.1.2 (22-Mar-2009) (pdfsam-console 2.0.3e)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory
 -Console: fixed bug #2540496 (unpack -d parameter)
