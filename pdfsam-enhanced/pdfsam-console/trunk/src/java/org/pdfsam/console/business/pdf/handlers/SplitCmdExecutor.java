@@ -65,6 +65,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfSmartCopy;
+import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 import com.lowagie.text.pdf.SimpleBookmark;
 /**
@@ -137,6 +138,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             //set compressed
             if(inputCommand.isCompress()){
             	pdfWriter.setFullCompression();
+            	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
             }    
             
             //set pdf version
@@ -205,6 +207,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             	//set compressed
                 if(inputCommand.isCompress()){
                 	pdfWriter.setFullCompression();
+                	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
                 }
                 
                 //set pdf version
@@ -284,6 +287,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             	//compression
             	if(inputCommand.isCompress()){
                 	pdfWriter.setFullCompression();
+                	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
                 }
             	
             	//set pdf version
@@ -457,6 +461,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	        	//compression
 	        	if(inputCommand.isCompress()){
 	            	pdfWriter.setFullCompression();
+	            	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
 	            }
 	        	
 	        	//set pdf version

@@ -46,6 +46,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStream;
 
 /**
  * Simple concatenator. Uses PdfCopy.
@@ -70,6 +71,7 @@ public class PdfSimpleConcatenator implements PdfConcatenator {
 		this(document, os);
 		if(compressed){
 			writer.setFullCompression();
+			writer.setCompressionLevel(PdfStream.BEST_COMPRESSION);
 		}
 	}
 

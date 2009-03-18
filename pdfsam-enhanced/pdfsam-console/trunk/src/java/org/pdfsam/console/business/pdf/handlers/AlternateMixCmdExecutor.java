@@ -53,6 +53,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 /**
  * Command executor for the alternate mix command
@@ -94,6 +95,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				
 		        if(inputCommand.isCompress()){
 		        	pdfWriter.setFullCompression();
+		        	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
 		        }		
 		        
 				pdfDocument.addCreator(ConsoleServicesFacade.CREATOR);

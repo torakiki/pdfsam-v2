@@ -55,6 +55,7 @@ import org.pdfsam.console.utils.PrefixParser;
 
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 
 public class DecryptCmdExecutor extends AbstractCmdExecutor {
@@ -93,6 +94,7 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 						
 						if(inputCommand.isCompress()){
 							pdfStamper.setFullCompression();
+							pdfStamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
 				        }
 						
 						pdfStamper.setMoreInfo(meta);

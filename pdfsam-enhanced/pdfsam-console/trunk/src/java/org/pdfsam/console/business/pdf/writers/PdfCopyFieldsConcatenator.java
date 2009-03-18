@@ -45,6 +45,7 @@ import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfCopyFields;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStream;
 /**
  * Copy Fields concatenator. Uses PdfCopyFields.
  * @author a.vacondio
@@ -66,6 +67,7 @@ public class PdfCopyFieldsConcatenator implements PdfConcatenator {
 		this(os);
 		if(compressed){
 			writer.setFullCompression();
+			writer.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
 		}
 	}	
 		
