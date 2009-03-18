@@ -89,6 +89,9 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 					int unpackedFiles = 0;
 					try{
 						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						pdfReader.consolidateNamedDestinations();
+						pdfReader.removeUnusedObjects();
+						
 						PdfDictionary catalog = pdfReader.getCatalog();
 						PdfDictionary names = (PdfDictionary) PdfReader.getPdfObject(catalog.get(PdfName.NAMES));
 						if (names != null) {

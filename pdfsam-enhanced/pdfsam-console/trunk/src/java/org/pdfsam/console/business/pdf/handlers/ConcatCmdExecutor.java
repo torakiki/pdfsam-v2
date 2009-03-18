@@ -143,6 +143,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			for(int j=0; j<selectionGroups.length; j++){
 		    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
 						pdfReader.consolidateNamedDestinations();
+						pdfReader.removeUnusedObjects();
 						int pdfNumberOfPages = pdfReader.getNumberOfPages();
 						Bounds bonuds;
 		    			try{
@@ -252,6 +253,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		FileInputStream readerIs = new FileInputStream(inputFile);
 		PdfReader tmpPdfReader = new PdfReader(readerIs);
 		tmpPdfReader.consolidateNamedDestinations();
+		tmpPdfReader.removeUnusedObjects();
 		int pdfNumberOfPages = tmpPdfReader.getNumberOfPages();
 		PageRotation[] rotations = inputCommand.getRotations();
 		if(rotations!=null && rotations.length>0){

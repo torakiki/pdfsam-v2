@@ -95,6 +95,8 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
 						File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						pdfReader.consolidateNamedDestinations();
+						pdfReader.removeUnusedObjects();
 						
 						//version
 						log.debug("Creating a new document.");
