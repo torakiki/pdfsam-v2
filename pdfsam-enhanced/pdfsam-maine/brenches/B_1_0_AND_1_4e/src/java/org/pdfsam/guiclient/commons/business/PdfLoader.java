@@ -15,8 +15,11 @@
 package org.pdfsam.guiclient.commons.business;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -25,10 +28,13 @@ import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
+import org.pdfsam.guiclient.utils.EncryptionUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 
+import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 /**
  * Business class whose job is to load pdf file to PdfSelectionTableItem
@@ -37,9 +43,18 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class PdfLoader {
 
-
 	private static final Logger log = Logger.getLogger(PdfLoader.class.getPackage().getName());
-	  
+	
+	/*used to find the document data*/
+	private static String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
+	private static String PRODUCER = PdfName.decodeName(PdfName.PRODUCER.toString());
+	private static String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
+	private static String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
+	private static String CREATOR = PdfName.decodeName(PdfName.CREATOR.toString());
+	private static String MODDATE = PdfName.decodeName(PdfName.MODDATE.toString());
+	private static String CREATIONDATE = PdfName.decodeName(PdfName.CREATIONDATE.toString());
+	private static String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
+	
 	private JPdfSelectionPanel panel;
     private JFileChooser fileChooser = null;
     private WorkQueue workQueue = null;
@@ -254,9 +269,28 @@ public class PdfLoader {
                     //fix 04/11/08 for memory usage
                     pdfReader = new PdfReader(new RandomAccessFileOrArray(fileToAdd.getAbsolutePath()), (password != null)?password.getBytes():null);                	
                     tableItem.setEncrypted(pdfReader.isEncrypted());
+                    if(tableItem.isEncrypted()){
+                    	tableItem.setPermissions(getPermissionsVerbose(pdfReader.getPermissions()));
+                    	int cMode = pdfReader.getCryptoMode();
+                    	switch (cMode){
+                    	case PdfWriter.STANDARD_ENCRYPTION_40:
+                    		tableItem.setEncryptionAlgorithm(EncryptionUtility.RC4_40);
+                    		break;
+                    	case PdfWriter.STANDARD_ENCRYPTION_128:
+                    		tableItem.setEncryptionAlgorithm(EncryptionUtility.RC4_128);
+                    		break;
+                    	case PdfWriter.ENCRYPTION_AES_128:
+                    		tableItem.setEncryptionAlgorithm(EncryptionUtility.AES_128);
+                    		break;
+                    	default:
+                    		break;                    			
+                    	}
+                    }
                     tableItem.setPagesNumber(Integer.toString(pdfReader.getNumberOfPages()));
+                    tableItem.setFileSize(fileToAdd.length());
                     tableItem.setPdfVersion(pdfReader.getPdfVersion());
                     tableItem.setSyntaxErrors(pdfReader.isRebuilt());
+                    initTableItemDocumentData(pdfReader, tableItem);
                 }
                 catch (Exception e){
                 	tableItem.setLoadedWithErrors(true);
@@ -270,7 +304,61 @@ public class PdfLoader {
                 }               
             }
             return tableItem;    
-        }              
+        } 
+        
+        /**
+         * It gives a human readable version of the document permissions
+         * @param permissions
+         * @return
+         */
+        private String getPermissionsVerbose(int permissions) {
+        	StringBuffer buf = new StringBuffer();
+        	if ((PdfWriter.ALLOW_PRINTING & permissions) == PdfWriter.ALLOW_PRINTING) buf.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Print"));
+            if ((PdfWriter.ALLOW_MODIFY_CONTENTS & permissions) == PdfWriter.ALLOW_MODIFY_CONTENTS) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Modify"));
+            if ((PdfWriter.ALLOW_COPY & permissions) == PdfWriter.ALLOW_COPY) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Copy or extract"));
+            if ((PdfWriter.ALLOW_MODIFY_ANNOTATIONS & permissions) == PdfWriter.ALLOW_MODIFY_ANNOTATIONS) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Add or modify text annotations"));
+            if ((PdfWriter.ALLOW_FILL_IN & permissions) == PdfWriter.ALLOW_FILL_IN) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Fill form fields"));
+            if ((PdfWriter.ALLOW_SCREENREADERS & permissions) == PdfWriter.ALLOW_SCREENREADERS) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Extract for use by accessibility dev."));
+            if ((PdfWriter.ALLOW_ASSEMBLY & permissions) == PdfWriter.ALLOW_ASSEMBLY) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Manipulate pages and add bookmarks"));
+            if ((PdfWriter.ALLOW_DEGRADED_PRINTING & permissions) == PdfWriter.ALLOW_DEGRADED_PRINTING) buf.append(", "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Low quality print"));
+            return buf.toString();
+        }
+        /**
+         * initialization of the document data
+         * @param reader
+         * @param tableItem
+         */
+        private void initTableItemDocumentData(PdfReader reader, PdfSelectionTableItem tableItem){
+        	if(reader!=null && tableItem != null){
+        		HashMap info = reader.getInfo();
+        		if(info!=null && info.size()>0){
+        			for(Iterator entries = info.entrySet().iterator(); entries.hasNext();){
+        				Map.Entry entry = (Map.Entry) entries.next();
+        				if(entry != null){
+        					String key = (String)entry.getKey();
+        					String value = (entry.getValue()!=null)? (String)entry.getValue(): "";
+        					if(key.equals(TITLE)){
+        						tableItem.getDocumentInfo().setTitle(value);
+        					}else if(key.equals(PRODUCER)){
+        						tableItem.getDocumentInfo().setProducer(value);
+        					}else if(key.equals(AUTHOR)){
+        						tableItem.getDocumentInfo().setAuthor(value);
+        					}else if(key.equals(SUBJECT)){
+        						tableItem.getDocumentInfo().setSubject(value);
+        					}else if(key.equals(CREATOR)){
+        						tableItem.getDocumentInfo().setCreator(value);
+        					}else if(key.equals(MODDATE)){
+        						tableItem.getDocumentInfo().setModificationDate(value);
+        					}else if(key.equals(CREATIONDATE)){
+        						tableItem.getDocumentInfo().setCreationDate(value);
+        					}else if(key.equals(KEYWORDS)){
+        						tableItem.getDocumentInfo().setKeywords(value);
+        					}
+        				}
+        			}
+        		}
+        	}
+        }
     }
     
     /**
