@@ -55,6 +55,7 @@ import org.pdfsam.guiclient.commons.business.loaders.PdfLoader;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionTable;
 import org.pdfsam.guiclient.commons.components.JPdfSelectionToolTipHeader;
 import org.pdfsam.guiclient.commons.dnd.droppers.JPdfSelectionTableDropper;
+import org.pdfsam.guiclient.commons.frames.JDocumentPropertiesFrame;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SortablePdfSelectionTableModel;
@@ -297,8 +298,30 @@ public class JPdfSelectionPanel extends JPanel {
                 }
               }
         });
-		popupMenu.add(menuItemReload);
-		
+		popupMenu.add(menuItemReload);		
+
+		//file properties file popup
+		final JMenuItem menuItemProperties = new JMenuItem();
+		menuItemProperties.setIcon(new ImageIcon(this.getClass().getResource("/images/info.png")));
+		menuItemProperties.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Document properties"));
+		menuItemProperties.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+                if (mainTable.getSelectedRow() != -1){
+                    try{
+                    	int[] selectedRows = mainTable.getSelectedRows();
+                    	for(int i=0; i<selectedRows.length; i++){
+							PdfSelectionTableItem row = ((SimplePdfSelectionTableModel) mainTable.getModel()).getRow(selectedRows[i]);
+							JDocumentPropertiesFrame.getInstance().showProperties(row);
+							JDocumentPropertiesFrame.getInstance().requestFocus();
+						}
+                    }
+                    catch (Exception ex){
+                        log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: Unable to reload the selected file/s."), ex); 
+                    }
+                }
+              }
+        });
+		popupMenu.add(menuItemProperties);
 		
 		if(showEveryButton){
 			initMoveUpButton();

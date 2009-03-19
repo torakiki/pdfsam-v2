@@ -115,27 +115,26 @@ public class XMLConfig{
     }
 	
     /**
-     * Given a DOM object it sets the new tag value
-     * 
-     * @param xpath
-     * @param value new value of the xml tag
-     * @return true or false
-     */
-        public boolean setXMLConfigValue(String xpath, String value) throws Exception{
-            boolean retvalue = false;
-			Node node = document.selectSingleNode(xpath);
-			if (node == null){
-				node = document.selectSingleNode(xpath.substring(0, xpath.lastIndexOf("/")));
-                if (node != null){
-                     node = (Node) ((Element)node).addElement(xpath.substring(xpath.lastIndexOf("/")+1));
-                }else{
-                	log.warn("Unable to set "+value+" to "+xpath);
-                }
+	 * Given a DOM object it sets the new tag value
+	 * 
+	 * @param xpath
+	 * @param value
+	 *            new value of the xml tag
+	 */
+	public void setXMLConfigValue(String xpath, String value) throws Exception {
+		Node node = document.selectSingleNode(xpath);
+		if (node == null) {
+			node = document.selectSingleNode(xpath.substring(0, xpath.lastIndexOf("/")));
+			if (node != null) {
+				node = (Node) ((Element) node).addElement(xpath.substring(xpath.lastIndexOf("/") + 1));
 			}
+		}
+		if (node != null) {
 			node.setText(value);
-			retvalue = true;			
-			return retvalue;
-        }
+		} else {
+			log.warn("Unable to set " + value + " to " + xpath);
+		}
+	}
 
     /**
      * It saves any changes on the xml file
