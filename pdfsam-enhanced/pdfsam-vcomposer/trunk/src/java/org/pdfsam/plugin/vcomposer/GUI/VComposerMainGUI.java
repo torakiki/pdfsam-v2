@@ -346,7 +346,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 								
 								//check if the file already exists and the user didn't select to overwrite
 								File destFile = (destination!=null)? new File(destination):null;
-								if(destFile!=null && destFile.exists()){
+								if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
 									int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
 		                			if(JOptionPane.YES_OPTION == chosenOpt){
 		                				overwriteCheckbox.setSelected(true);
