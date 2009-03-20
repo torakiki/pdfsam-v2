@@ -65,6 +65,7 @@ import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
+import org.pdfsam.guiclient.utils.EncryptionUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.encrypt.listeners.EncryptionTypeComboActionListener;
 /** 
@@ -132,11 +133,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.7e";
-	
-    public final static String RC4_40 = "RC4-40b";
-	public final static String RC4_128 = "RC4-128b";
-	public final static String AES_128 = "AES-128b";
+    private final String PLUGIN_VERSION = "0.2.8e";
 	
 	public final static int DPRINT = 0;
 	public final static int PRINT = 1;
@@ -230,7 +227,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptTypeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Encryption algorithm:"));
         labelsPanel.add(encryptTypeLabel);		
 
-        String[] eTypes = {EncryptMainGUI.RC4_40, EncryptMainGUI.RC4_128, EncryptMainGUI.AES_128};
+        String[] eTypes = {EncryptionUtility.RC4_40, EncryptionUtility.RC4_128, EncryptionUtility.AES_128};
         encryptType = new JComboBox(eTypes);
         encryptType.setPreferredSize(new Dimension(140,20));
         fieldsPanel.add(encryptType);		       
@@ -286,7 +283,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 						}
 					}else{					
 						String encType = (String)encryptType.getSelectedItem();
-	        			if(encType.equals(EncryptMainGUI.RC4_40)){
+	        			if(encType.equals(EncryptionUtility.RC4_40)){
 	        		        permissionsCheck[EncryptMainGUI.PRINT].setEnabled(true);
 	        		        permissionsCheck[EncryptMainGUI.DPRINT].setEnabled(false);
 	        		        permissionsCheck[EncryptMainGUI.COPY].setEnabled(true);
@@ -444,7 +441,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	                    args.add(userPwdField.getText());
 	                    //check if is needed page option
 						args.add("-"+EncryptParsedCommand.ETYPE_ARG);
-						args.add(getEncAlg((String)encryptType.getSelectedItem()));
+						args.add(EncryptionUtility.getEncAlgorithm((String)encryptType.getSelectedItem()));
 	                    args.add("-"+EncryptParsedCommand.O_ARG);
 	                    
 	                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
@@ -735,24 +732,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
         encryptPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
 
-    }
-    
-	/**
-	*@return Console parameter for the selected encryption algorithm from the JComboBox
-	*/
-	private String getEncAlg(String comboEnc){
-		String retval = EncryptParsedCommand.E_RC4_40;
-		if(comboEnc != null){
-			if(comboEnc.equals(EncryptMainGUI.RC4_40)){
-				retval = EncryptParsedCommand.E_RC4_40;
-			}else if(comboEnc.equals(EncryptMainGUI.RC4_128)){
-				retval = EncryptParsedCommand.E_RC4_128;
-			}else if(comboEnc.equals(EncryptMainGUI.AES_128)){
-				retval = EncryptParsedCommand.E_AES_128;
-			}
-		}
-		return retval;			
-	}	
+    }	
 	
 	/**
 	*@return <code>LinkedList</code> containing permissions parameters
@@ -1007,7 +987,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destFolderText.setText("");
 		userPwdField.setText("");
 		outPrefixTextField.setText("");
-		encryptType.setSelectedItem(EncryptMainGUI.RC4_40);
+		encryptType.setSelectedItem(EncryptionUtility.RC4_40);
 		allowAllCheck.setSelected(false);
 		for(int i = 0; i<permissionsCheck.length; i++){
 			permissionsCheck[i].setSelected(false);

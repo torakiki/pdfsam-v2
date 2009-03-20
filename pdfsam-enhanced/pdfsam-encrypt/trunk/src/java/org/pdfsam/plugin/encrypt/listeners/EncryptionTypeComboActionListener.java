@@ -22,6 +22,7 @@ import javax.swing.JComboBox;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.utils.EncryptionUtility;
 import org.pdfsam.plugin.encrypt.GUI.EncryptMainGUI;
 /**
  * Listener to enable/disable versionCombo items depending on the encryption algorithm selected
@@ -49,7 +50,7 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 				Object source = e.getSource();
 				if(source instanceof JComboBox){
 					String encType = (String)e.getItem();
-					if(encType.equals(EncryptMainGUI.RC4_40)){
+					if(encType.equals(EncryptionUtility.RC4_40)){
 				        permissionsCheck[EncryptMainGUI.PRINT].setEnabled(true);
 				        permissionsCheck[EncryptMainGUI.DPRINT].setEnabled(false);
 				        permissionsCheck[EncryptMainGUI.COPY].setEnabled(true);
@@ -62,9 +63,9 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 						for(int i=0; i<permissionsCheck.length; i++){
 							permissionsCheck[i].setEnabled(true);
 						}
-						if(encType.equals(EncryptMainGUI.RC4_128)){
+						if(encType.equals(EncryptionUtility.RC4_128)){
 							versionCombo.addVersionFilter(rc4_128Filter);
-						}else if(encType.equals(EncryptMainGUI.AES_128)){
+						}else if(encType.equals(EncryptionUtility.AES_128)){
 							versionCombo.addVersionFilter(aesFilter);
 						}
 					}
@@ -74,9 +75,9 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 			Object source = e.getSource();
 			if(source instanceof JComboBox){
 				String encType = (String)e.getItem();
-				if(encType.equals(EncryptMainGUI.RC4_128)){
+				if(encType.equals(EncryptionUtility.RC4_128)){
 					versionCombo.removeVersionFilter(rc4_128Filter);
-				}else if(encType.equals(EncryptMainGUI.AES_128)){
+				}else if(encType.equals(EncryptionUtility.AES_128)){
 					versionCombo.removeVersionFilter(aesFilter);
 				}
 			}
