@@ -94,8 +94,8 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 				
 				pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
-				pdfReader.consolidateNamedDestinations();
 				pdfReader.removeUnusedObjects();
+				pdfReader.consolidateNamedDestinations();
 				
 				//version
 				log.debug("Creating a new document.");

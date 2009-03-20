@@ -142,8 +142,8 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			//i repeat the same file for every group matched on the selection string 
 	    			for(int j=0; j<selectionGroups.length; j++){
 		    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
-						pdfReader.consolidateNamedDestinations();
 						pdfReader.removeUnusedObjects();
+						pdfReader.consolidateNamedDestinations();
 						int pdfNumberOfPages = pdfReader.getNumberOfPages();
 						Bounds bonuds;
 		    			try{
@@ -252,8 +252,8 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	private File applyRotations(File inputFile, ConcatParsedCommand inputCommand) throws Exception{
 		FileInputStream readerIs = new FileInputStream(inputFile);
 		PdfReader tmpPdfReader = new PdfReader(readerIs);
-		tmpPdfReader.consolidateNamedDestinations();
 		tmpPdfReader.removeUnusedObjects();
+		tmpPdfReader.consolidateNamedDestinations();
 		int pdfNumberOfPages = tmpPdfReader.getNumberOfPages();
 		PageRotation[] rotations = inputCommand.getRotations();
 		if(rotations!=null && rotations.length>0){

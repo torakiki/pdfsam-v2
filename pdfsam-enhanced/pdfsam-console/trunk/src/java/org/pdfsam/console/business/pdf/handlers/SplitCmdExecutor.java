@@ -119,8 +119,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         int currentPage;
         Document currentDocument;
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
-        pdfReader.consolidateNamedDestinations();
 		pdfReader.removeUnusedObjects();
+        pdfReader.consolidateNamedDestinations();
 		
 		//we retrieve the total number of pages
         int n = pdfReader.getNumberOfPages();
@@ -172,8 +172,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      */
     private void executeSplitOddEven(SplitParsedCommand inputCommand) throws Exception{
          PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
-         pdfReader.consolidateNamedDestinations();
 		 pdfReader.removeUnusedObjects();
+         pdfReader.consolidateNamedDestinations();
 		
 		 //we retrieve the total number of pages
          int n = pdfReader.getNumberOfPages();
@@ -247,8 +247,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      */
     private void executeSplit(SplitParsedCommand inputCommand) throws Exception{
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
-        pdfReader.consolidateNamedDestinations();
 		pdfReader.removeUnusedObjects();
+        pdfReader.consolidateNamedDestinations();
 		
         int n = pdfReader.getNumberOfPages();
         int fileNum = 0;
@@ -348,8 +348,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		Integer[] numberPages = inputCommand.getSplitPageNumbers();
 		if(numberPages != null && numberPages.length == 1){
 			PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
-			pdfReader.consolidateNamedDestinations();
 			pdfReader.removeUnusedObjects();
+			pdfReader.consolidateNamedDestinations();			
 			int n = pdfReader.getNumberOfPages();
 			int numberPage = numberPages[0].intValue();
 			if (numberPage < 1 || numberPage > n) {
@@ -377,8 +377,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		int bLevel = inputCommand.getBookmarksLevel().intValue();
 		if(bLevel>0){
-			pdfReader.consolidateNamedDestinations();
 			pdfReader.removeUnusedObjects();
+			pdfReader.consolidateNamedDestinations();			
 			List bookmarks = SimpleBookmark.getBookmark(pdfReader);
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			SimpleBookmark.exportToXML(bookmarks, out, "UTF-8", false);
@@ -442,8 +442,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
    */
 	private void executeSizeSplit(SplitParsedCommand inputCommand) throws Exception{
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
-        pdfReader.consolidateNamedDestinations();
 		pdfReader.removeUnusedObjects();
+        pdfReader.consolidateNamedDestinations();
 		int n = pdfReader.getNumberOfPages();
         int fileNum = 0;
         log.info("Found "+n+" pages in input pdf document.");
