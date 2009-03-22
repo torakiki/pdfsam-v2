@@ -7,8 +7,12 @@
 -Split: fixed bug #2679389 (broken "save environment" function)
 -Console: set compression level to BEST_COMPRESSION when compression is on.
 -Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
+-Console: -help argument passed if no argument specified (Feature Request #2697689)
 -Added the document properties frame
 -VComposer: added a check on the "overwrite" flag
+-VPageReorderMainGUI: added focus policy and fixed a label
+-iText 2.1.5
+-Updated langpack
 
 2.0.0-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
 ===================================
