@@ -68,7 +68,7 @@
   <!-- Javadoc -->
   <target name="javadoc" depends="make-structure">
     <javadoc
-      packagenames="org.pdfsam.plugin.setviewer.*"
+      packagenames="org.pdfsam.plugin.decrypt.*"
       sourcepath="${pdfsam-decrypt.src.dir}"
       destdir="${pdfsam-decrypt.javadoc.dir}"
       author="true"
