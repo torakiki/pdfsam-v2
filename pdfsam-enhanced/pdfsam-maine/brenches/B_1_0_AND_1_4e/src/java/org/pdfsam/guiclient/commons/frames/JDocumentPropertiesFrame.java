@@ -52,6 +52,8 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	private static final long serialVersionUID = -3836869268177748519L;
 
 	private static final Logger log = Logger.getLogger(JDocumentPropertiesFrame.class.getPackage().getName());
+	private static final int HEIGHT = 480;
+	private static final int WIDTH = 640;
 	
 	private static JDocumentPropertiesFrame instance = null;
 	private final JPanel mainPanel = new JPanel();
@@ -59,6 +61,7 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	private JTextPane textInfoArea;
 	private JPopupMenu jPopupMenu = new JPopupMenu();
 	private EscapeKeyListener escapeListener = new EscapeKeyListener(this);
+		
 	private JDocumentPropertiesFrame(){
 		initialize();
 	}	
@@ -72,27 +75,27 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	
 	public synchronized void showProperties(PdfSelectionTableItem props){
 		if(props!=null){
-			String propsText = "<html><head></head><body>";
+			String propsText = "<html><head></head><body style=\"margin: 3\">";
 			propsText += 
-				"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File name")+":</b> "+props.getInputFile().getAbsolutePath()+"<br>"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Number of pages")+":</b> "+props.getPagesNumber()+"<br>"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File size")+":</b> "+props.getFileSize()+"B<br>"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Pdf version")+":</b> "+props.getPdfVersionDescription()+"<br>"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Encryption")+":</b> "+(props.isEncrypted()? props.getEncryptionAlgorithm(): GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not encrypted"))+"<br>";
+				"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File name")+":</b> "+props.getInputFile().getAbsolutePath()+"<br>\n"
+				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Number of pages")+":</b> "+props.getPagesNumber()+"<br>\n"
+				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File size")+":</b> "+props.getFileSize()+"B<br>\n"
+				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Pdf version")+":</b> "+props.getPdfVersionDescription()+"<br>\n"
+				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Encryption")+":</b> "+(props.isEncrypted()? props.getEncryptionAlgorithm(): GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not encrypted"))+"<br>\n";
 				if(props.isEncrypted()){
-					propsText +="<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Permissions")+":</b> "+props.getPermissions()+"<br>";
+					propsText +="<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Permissions")+":</b> "+props.getPermissions()+"<br>\n";
 				}
 			
 			if(props.getDocumentInfo() != null){
 				propsText += 
-					"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Title")+":</b> "+props.getDocumentInfo().getTitle()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Author")+":</b> "+props.getDocumentInfo().getAuthor()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Subject")+":</b> "+props.getDocumentInfo().getSubject()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Producer")+":</b> "+props.getDocumentInfo().getProducer()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creator")+":</b> "+props.getDocumentInfo().getCreator()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creation date")+":</b> "+props.getDocumentInfo().getCreationDate()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Modification date")+":</b> "+props.getDocumentInfo().getModificationDate()+"<br>"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Keywords")+":</b> "+props.getDocumentInfo().getKeywords()+"<br>";
+					"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Title")+":</b> "+props.getDocumentInfo().getTitle()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Author")+":</b> "+props.getDocumentInfo().getAuthor()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Subject")+":</b> "+props.getDocumentInfo().getSubject()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Producer")+":</b> "+props.getDocumentInfo().getProducer()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creator")+":</b> "+props.getDocumentInfo().getCreator()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creation date")+":</b> "+props.getDocumentInfo().getCreationDate()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Modification date")+":</b> "+props.getDocumentInfo().getModificationDate()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Keywords")+":</b> "+props.getDocumentInfo().getKeywords()+"<br>\n";
 			}
 			propsText += "</body></html>";
 			textInfoArea.setMargin(new Insets(5, 5, 5, 5));
@@ -106,7 +109,7 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 			URL iconUrl = this.getClass().getResource("/images/info.png");
 			setTitle(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Document properties"));
 			setIconImage(new ImageIcon(iconUrl).getImage());
-	        setSize(640, 480);
+	        setSize(WIDTH, HEIGHT);
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
@@ -151,8 +154,9 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	        Dimension screenSize = tk.getScreenSize();
 	        int screenHeight = screenSize.height;
 	        int screenWidth = screenSize.width;
-	        setSize(screenWidth / 2, screenHeight / 2);
-	        setLocation(screenWidth / 4, screenHeight / 4);
+	        if(screenWidth>WIDTH && screenHeight>HEIGHT){
+	        	setLocation((screenWidth - WIDTH)/ 2, (screenHeight -HEIGHT)/ 2);
+	        }
 	        
 	        textInfoArea.addKeyListener(escapeListener);
 	        addKeyListener(escapeListener);

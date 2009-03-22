@@ -1,4 +1,4 @@
-1.1.2 (22-Mar-2009) (pdfsam-console 2.0.3e)
+1.1.2 (29-Mar-2009) (pdfsam-console 2.0.3e)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory
 -Console: fixed bug #2540496 (unpack -d parameter)
@@ -11,6 +11,9 @@
 -Console: set compression level to BEST_COMPRESSION when compression is on.
 -Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
 -Added the document properties frame
+-Console: -help argument passed if no argument specified (Feature Request #2697689)
+-iText 2.1.5
+-Updated langpack
 
 1.1.1 (25-Jan-2009) (pdfsam-console 2.0.1e)
 ===================================
