@@ -126,12 +126,13 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     private final JPanel outputOptionsPanel = new JPanel();
     private final JPanel mainOptionsPanel = new JPanel();
     private final JPanel setviewerOptsCheckPanel = new JPanel();
+    private final JPanel setviewerOptsComboPanel = new JPanel();
         
     //labels    
     final JLabel outPrefixLabel = new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.0.1e";  
+    private final String PLUGIN_VERSION = "0.0.2e";  
     
     public SetViewerMainGUI(){
     	initialize();
@@ -213,30 +214,34 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         setviewerOptsCheckPanel.add(noPageScaling);
         setviewerOptionsPanel.add(setviewerOptsCheckPanel);
 //end_check
-//combos
+//combos        
+        setviewerOptsComboPanel.setLayout(new GridLayout(3,4,5,5));
+        
         viewerLayoutLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer layout:"));
-        setviewerOptionsPanel.add(viewerLayoutLabel);		
+        setviewerOptsComboPanel.add(viewerLayoutLabel);		
         viewerLayout = new JComboBox(getViewerLayoutItems());
-        setviewerOptionsPanel.add(viewerLayout);
+        setviewerOptsComboPanel.add(viewerLayout);
+        setviewerOptsComboPanel.add(new JLabel(""));
+        setviewerOptsComboPanel.add(new JLabel(""));
         
         viewerOpenModeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer open mode:"));
-        setviewerOptionsPanel.add(viewerOpenModeLabel);
+        setviewerOptsComboPanel.add(viewerOpenModeLabel);
         viewerOpenMode = new JComboBox(getViewerOpenModeItems());
-        setviewerOptionsPanel.add(viewerOpenMode);
+        setviewerOptsComboPanel.add(viewerOpenMode);
 
         nonFullScreenModeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Non fullscreen mode:"));
-        setviewerOptionsPanel.add(nonFullScreenModeLabel);
+        setviewerOptsComboPanel.add(nonFullScreenModeLabel);
         nonFullScreenMode = new JComboBox(getViewerNonFullScreenItems());
         nonFullScreenMode.setEnabled(false);
-        setviewerOptionsPanel.add(nonFullScreenMode);
+        setviewerOptsComboPanel.add(nonFullScreenMode);
         viewerOpenMode.addActionListener(new OpenModeComboListener(nonFullScreenMode));
 
         directionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Direction:"));
-        setviewerOptionsPanel.add(directionLabel);
+        setviewerOptsComboPanel.add(directionLabel);
         directionCombo = new JComboBox(getDirectionComboItems());
         directionCombo.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.3");
-        setviewerOptionsPanel.add(directionCombo);
-
+        setviewerOptsComboPanel.add(directionCombo);
+        setviewerOptionsPanel.add(setviewerOptsComboPanel);
 //end_combos       
 //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
@@ -574,75 +579,12 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
                 
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, viewerLayoutLabel, 20, SpringLayout.NORTH, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, viewerLayoutLabel, 160, SpringLayout.WEST, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, viewerLayoutLabel, 10, SpringLayout.NORTH, setviewerOptionsPanel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, viewerLayoutLabel, 10, SpringLayout.WEST, setviewerOptionsPanel);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, viewerLayout, 0, SpringLayout.SOUTH, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, viewerLayout, 200, SpringLayout.WEST, viewerLayout);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, viewerLayout, 0, SpringLayout.NORTH, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, viewerLayout, 5, SpringLayout.EAST, viewerLayoutLabel);
+        optionsPanelLayout.putConstraint(SpringLayout.NORTH, setviewerOptsComboPanel, 10, SpringLayout.NORTH, setviewerOptionsPanel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsComboPanel, 10, SpringLayout.WEST, setviewerOptionsPanel);
         
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, viewerOpenModeLabel, 20, SpringLayout.NORTH, viewerOpenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, viewerOpenModeLabel, 0, SpringLayout.EAST, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, viewerOpenModeLabel, 5, SpringLayout.SOUTH, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, viewerOpenModeLabel, 0, SpringLayout.WEST, viewerLayoutLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, viewerOpenMode, 0, SpringLayout.SOUTH, viewerOpenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, viewerOpenMode, 0, SpringLayout.EAST, viewerLayout);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, viewerOpenMode, 0, SpringLayout.NORTH, viewerOpenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, viewerOpenMode, 0, SpringLayout.WEST, viewerLayout);
+        optionsPanelLayout.putConstraint(SpringLayout.NORTH, setviewerOptsCheckPanel, 10, SpringLayout.SOUTH, setviewerOptsComboPanel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsCheckPanel, 0, SpringLayout.WEST, setviewerOptsComboPanel);
 
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, nonFullScreenModeLabel, 20, SpringLayout.NORTH, nonFullScreenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, nonFullScreenModeLabel, 160, SpringLayout.WEST, nonFullScreenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, nonFullScreenModeLabel, 0, SpringLayout.NORTH, viewerOpenMode);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, nonFullScreenModeLabel, 10, SpringLayout.EAST, viewerOpenMode);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, nonFullScreenMode, 0, SpringLayout.SOUTH, nonFullScreenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, nonFullScreenMode, 200, SpringLayout.WEST, nonFullScreenMode);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, nonFullScreenMode, 0, SpringLayout.NORTH, nonFullScreenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, nonFullScreenMode, 5, SpringLayout.EAST, nonFullScreenModeLabel);
-
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, directionLabel, 20, SpringLayout.NORTH, directionLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, directionLabel, 0, SpringLayout.EAST, viewerOpenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, directionLabel, 5, SpringLayout.SOUTH, viewerOpenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, directionLabel, 0, SpringLayout.WEST, viewerOpenModeLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, directionCombo, 0, SpringLayout.SOUTH, directionLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, directionCombo, 0, SpringLayout.EAST, viewerOpenMode);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, directionCombo, 0, SpringLayout.NORTH, directionLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, directionCombo, 0, SpringLayout.WEST, viewerOpenMode);
-        
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, setviewerOptsCheckPanel, 10, SpringLayout.SOUTH, directionLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsCheckPanel, 0, SpringLayout.WEST, directionLabel);
-
-      /*  optionsPanelLayout.putConstraint(SpringLayout.SOUTH, hideMenuBar, 20, SpringLayout.NORTH, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, hideMenuBar, 230, SpringLayout.WEST, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, hideMenuBar, 10, SpringLayout.SOUTH, directionLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, hideMenuBar, 0, SpringLayout.WEST, directionLabel);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, hideToolBar, 0, SpringLayout.SOUTH, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, hideToolBar, 230, SpringLayout.WEST, hideToolBar);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, hideToolBar, 0, SpringLayout.NORTH, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, hideToolBar, 5, SpringLayout.EAST, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, hideUIElements, 0, SpringLayout.SOUTH, hideToolBar);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, hideUIElements, 230, SpringLayout.WEST, hideUIElements);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, hideUIElements, 0, SpringLayout.NORTH, hideToolBar);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, hideUIElements, 0, SpringLayout.EAST, hideToolBar);
-        
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, centerScreen, 20, SpringLayout.NORTH, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, centerScreen, 0, SpringLayout.EAST, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, centerScreen, 0, SpringLayout.SOUTH, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, centerScreen, 0, SpringLayout.WEST, hideMenuBar);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, noPageScaling, 0, SpringLayout.SOUTH, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, noPageScaling, 0, SpringLayout.EAST, hideToolBar);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, noPageScaling, 0, SpringLayout.NORTH, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, noPageScaling, 5, SpringLayout.EAST, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, resizeToFit, 0, SpringLayout.SOUTH, noPageScaling);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, resizeToFit, 0, SpringLayout.EAST, hideUIElements);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, resizeToFit, 0, SpringLayout.NORTH, noPageScaling);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, resizeToFit, 0, SpringLayout.EAST, noPageScaling);
-        
-        optionsPanelLayout.putConstraint(SpringLayout.SOUTH, displayTitle, 20, SpringLayout.NORTH, displayTitle);
-        optionsPanelLayout.putConstraint(SpringLayout.EAST, displayTitle, 0, SpringLayout.EAST, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.NORTH, displayTitle, 0, SpringLayout.SOUTH, centerScreen);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, displayTitle, 0, SpringLayout.WEST, centerScreen);*/
 
 }
     
