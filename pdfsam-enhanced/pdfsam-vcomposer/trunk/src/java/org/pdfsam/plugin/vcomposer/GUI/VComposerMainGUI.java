@@ -117,7 +117,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 	
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.3";
+    private static final String PLUGIN_VERSION = "0.0.4";
     
     /**
      * Constructor
@@ -299,7 +299,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	            	  Collection<String> selectedFiles = composerPanel.getValidElementsFiles();
 	            	  if(selectionString.length()==0 || selectedFiles == null || selectedFiles.size()<=0){
 	            		  JOptionPane.showMessageDialog(getParent(),
-	            				  	GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document or undelete some page"),
+	            				  	GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document or undelete some pages"),
 									GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
 								    JOptionPane.WARNING_MESSAGE);
 	                  }else{                             
