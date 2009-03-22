@@ -7,6 +7,8 @@
 -Split: fixed bug #2679389 (broken "save environment" function)
 -Console: set compression level to BEST_COMPRESSION when compression is on.
 -Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
+-Added the document properties frame
+-VComposer: added a check on the "overwrite" flag
 
 2.0.0-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
 ===================================

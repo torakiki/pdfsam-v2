@@ -20,7 +20,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.net.URL;
 
 import javax.swing.Box;
@@ -38,6 +37,7 @@ import javax.swing.border.SoftBevelBorder;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.listeners.SaveImageActionListener;
+import org.pdfsam.guiclient.commons.business.listeners.EscapeKeyListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
 import org.pdfsam.i18n.GettextResource;
@@ -57,6 +57,7 @@ public class JPagePreviewFrame extends JFrame {
 	private final JLabel statusLabel = new JLabel();
 	private JScrollPane mainScrollPanel;
 	private final JPreviewImage pagePreview = new JPreviewImage();
+	private EscapeKeyListener escapeListener = new EscapeKeyListener(this);
 	
 	public JPagePreviewFrame(){
 		initialize();
@@ -69,8 +70,8 @@ public class JPagePreviewFrame extends JFrame {
 	        setSize(640, 480);
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-
-		JMenuBar menuBar = new JMenuBar();
+	        
+			JMenuBar menuBar = new JMenuBar();
 			JMenu menuFile = new JMenu();
 			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File"));
 			menuFile.setMnemonic(KeyEvent.VK_F);
@@ -108,23 +109,7 @@ public class JPagePreviewFrame extends JFrame {
 			getContentPane().add(mainScrollPanel,BorderLayout.CENTER);
 	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
 	        
-	        addKeyListener(new KeyListener(){
-
-				@Override
-				public void keyPressed(KeyEvent e) {
-					 if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
-			               setVisible(false);
-			         }
-				}
-
-				@Override
-				public void keyReleased(KeyEvent e) {					
-				}
-
-				@Override
-				public void keyTyped(KeyEvent e) {
-				}
-	        });
+	        addKeyListener(escapeListener);
 	        
 		}catch(Exception e){
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating preview panel."),e);
