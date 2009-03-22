@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-setviewer" default="build-jars" basedir="../">
+    <description>
+        SetViewer plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-setviewer.src.dir" location="src/java"/>
+  	<property name="pdfsam-setviewer.etc.dir" location="etc"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="pdfsam-setviewer.build.root" location="${build.dir}/pdfsam-setviewer"/>
+	  	<property name="pdfsam-setviewer.build.dir" location="${pdfsam-setviewer.build.root}/build"/>
+	  	<property name="pdfsam-setviewer.dist.dir"  location="${pdfsam-setviewer.build.root}/dist"/>
+	  	<property name="pdfsam-setviewer.javadoc.dir"  location="${pdfsam-setviewer.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-setviewer.build.dir}"/>
+		<mkdir dir="${pdfsam-setviewer.dist.dir}"/>
+	    <mkdir dir="${pdfsam-setviewer.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-setviewer.javadoc.dir}"/>
+	    <delete dir="${pdfsam-setviewer.dist.dir}"/>
+	    <delete dir="${pdfsam-setviewer.build.dir}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-setviewer " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-setviewer.classpath">
+    	<fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-setviewer.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-setviewer.src.dir}" destdir="${pdfsam-setviewer.build.dir}" debug="true">
+    	<classpath refid="pdfsam-setviewer.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-setviewer.dist.dir}/${pdfsam-setviewer.jar.name}.jar" basedir="${pdfsam-setviewer.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+    	<fileset dir=".">
+		    <include name="images/*.png"/>
+		</fileset>    	  	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.setviewer.*"
+      sourcepath="${pdfsam-setviewer.src.dir}"
+      destdir="${pdfsam-setviewer.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Set Viewer Plugin API"
+      doctitle="pdfsam Set Viewer Plugin API" >
+    <classpath refid="pdfsam-setviewer.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-setviewer.dist.dir}/${pdfsam-setviewer.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-setviewer/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-setviewer/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-setviewer/ant/**/*.*"/>
+    		<include name="pdfsam-setviewer/images**/*.png"/>
+    	</fileset>  
+    </zip>
+  </target>
+
+</project>
+
