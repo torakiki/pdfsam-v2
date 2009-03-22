@@ -14,12 +14,13 @@
  */
 package org.pdfsam.guiclient.commons.frames;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
@@ -37,6 +38,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultEditorKit;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.commons.business.listeners.EscapeKeyListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.i18n.GettextResource;
@@ -56,7 +58,7 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	private JScrollPane mainScrollPanel;
 	private JTextPane textInfoArea;
 	private JPopupMenu jPopupMenu = new JPopupMenu();
-	
+	private EscapeKeyListener escapeListener = new EscapeKeyListener(this);
 	private JDocumentPropertiesFrame(){
 		initialize();
 	}	
@@ -143,19 +145,17 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	        jPopupMenu.add(menuCopy);
 	        
 	        textInfoArea.addMouseListener(this);
-	        
-	        addKeyListener(new KeyListener(){
-				public void keyPressed(KeyEvent e) {
-					 if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
-			               setVisible(false);
-			         }
-				}
-				public void keyReleased(KeyEvent e) {					
-				}
 
-				public void keyTyped(KeyEvent e) {
-				}
-	        });
+	        //centered
+	        Toolkit tk = Toolkit.getDefaultToolkit();
+	        Dimension screenSize = tk.getScreenSize();
+	        int screenHeight = screenSize.height;
+	        int screenWidth = screenSize.width;
+	        setSize(screenWidth / 2, screenHeight / 2);
+	        setLocation(screenWidth / 4, screenHeight / 4);
+	        
+	        textInfoArea.addKeyListener(escapeListener);
+	        addKeyListener(escapeListener);
 	        
 		}catch(Exception e){
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating properties panel."),e);
