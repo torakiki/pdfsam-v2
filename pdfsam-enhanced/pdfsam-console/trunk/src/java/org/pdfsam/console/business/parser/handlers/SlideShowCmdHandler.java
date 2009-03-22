@@ -48,6 +48,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.Transition;
 import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
@@ -116,7 +117,7 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
      *  example text for the slide show handler
      */
     private static final String slideshowExample = 
-    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp/out.pdf -fullscreen -dt dissolve:1:5 -t wipel2r:1:5:20 -t wiper2l:1:5:21 -overwrite slideshow\n";
+    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp/out.pdf -fullscreen -dt dissolve:1:5 -t wipel2r:1:5:20 -t wiper2l:1:5:21 -overwrite slideshow\n";
 	
 	 /**
      * The arguments for slide show command

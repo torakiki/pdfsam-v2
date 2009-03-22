@@ -48,6 +48,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 
@@ -120,8 +121,8 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
      *  example text for the concat handler
      */
     private static final String concatExample = 
-    	"Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f /tmp/1.pdf:password -f /tmp/2.pdf concat\n"+
-        "Example: java -jar pdfsam-console-VERSION.jar -l c:\\docs\\list.csv concat";
+    	"Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -o /tmp/outfile.pdf -f /tmp/1.pdf:password -f /tmp/2.pdf concat\n"+
+        "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -l c:\\docs\\list.csv concat";
     
 	public Collection getArguments() {
 		return concatArguments;

@@ -48,6 +48,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 /**
@@ -95,7 +96,7 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	/**
 	 * example text for the mix handler
 	 */
-	private static final String mixExample = "Example: java -jar pdfsam-console-VERSION.jar -o /tmp/outfile.pdf -f1 /tmp/1.pdf -f2 /tmp/2.pdf:password -reversesecond mix\n";
+	private static final String mixExample = "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -o /tmp/outfile.pdf -f1 /tmp/1.pdf -f2 /tmp/2.pdf:password -reversesecond mix\n";
 	
 	/**
 	 * Arguments for the mix handler

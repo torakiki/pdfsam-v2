@@ -49,6 +49,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 /**
@@ -118,8 +119,8 @@ public class SplitCmdHandler extends AbstractCmdHandler {
      * Examples text for the split handler
      */
     public static final String splitExamples = 
-	    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
-	    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
+	    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
+	    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
     
 	public Collection getArguments() {
 		return splitArguments;

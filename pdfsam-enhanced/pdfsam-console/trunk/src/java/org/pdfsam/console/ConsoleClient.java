@@ -55,6 +55,9 @@ public class ConsoleClient {
 	 */
 	public static void main(String[] args) {
 		try{
+			if(args==null || args.length==0){
+				args = new String[]{"-help"};
+			}
 			serviceFacade = new ConsoleServicesFacade();
 			if (serviceFacade != null){
 				AbstractParsedCommand parsedCommand = serviceFacade.parseAndValidate(args);

@@ -48,6 +48,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 /**
@@ -134,7 +135,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
      *  example text for the setviewer handler
      */
     private static final String setviewerExample = 
-    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -layout onecolumn -mode fullscreen -nfsmode nfsoutlines -direction l2r -hidemenu -displaydoctitle -noprintscaling -overwrite setviewer\n";
+    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -layout onecolumn -mode fullscreen -nfsmode nfsoutlines -direction l2r -hidemenu -displaydoctitle -noprintscaling -overwrite setviewer\n";
 
 	 /**
      * The arguments for setviewer command

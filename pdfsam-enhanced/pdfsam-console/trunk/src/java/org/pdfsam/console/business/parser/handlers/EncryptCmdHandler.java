@@ -47,6 +47,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 /**
@@ -125,7 +126,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
      *  example text for the encrypt handler
      */
     private static final String encryptExample = 
-    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -apwd hello -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
+    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -apwd hello -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
  
 	
 	public Collection getArguments() {

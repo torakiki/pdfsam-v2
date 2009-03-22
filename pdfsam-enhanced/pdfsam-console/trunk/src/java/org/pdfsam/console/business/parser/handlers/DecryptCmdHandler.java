@@ -47,6 +47,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;
 /**
@@ -98,7 +99,7 @@ public class DecryptCmdHandler extends AbstractCmdHandler {
      *  example text for the decrypt handler
      */
     private static final String decryptExample = 
-    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -overwrite decrypt\n";
+    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -overwrite decrypt\n";
 
 	public Collection getArguments() {
 		return decryptArguments;

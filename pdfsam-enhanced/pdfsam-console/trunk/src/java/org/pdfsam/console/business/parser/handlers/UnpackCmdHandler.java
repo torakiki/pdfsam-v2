@@ -114,7 +114,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
      *  example text for the unpack handler
      */
     private static final String unpackExample = 
-    "Example: java -jar pdfsam-console-VERSION.jar -f /tmp/1.pdf -o /tmp -d /tmp/files -overwrite unpack\n";
+    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -d /tmp/files -overwrite unpack\n";
 
 	private VersionCmdLineHandler commandLineHandler = null;	
 	

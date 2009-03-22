@@ -39,6 +39,8 @@ package org.pdfsam.console.business.parser.handlers.interfaces;
 
 import java.util.Collection;
 
+import org.pdfsam.console.business.ConsoleServicesFacade;
+
 import jcmdline.CmdLineHandler;
 
 /**
@@ -48,7 +50,7 @@ import jcmdline.CmdLineHandler;
  */
 public interface CmdHandler {
 	
-	public static final String COMMAND = "java -jar pdfsam-console-VERSION.jar";
+	public static final String COMMAND = "java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar";
 	
 	/**
 	 * @return Help message for this handler
