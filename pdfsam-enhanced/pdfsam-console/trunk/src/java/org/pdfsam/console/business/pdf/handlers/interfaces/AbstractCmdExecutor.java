@@ -124,7 +124,7 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 	 * concat the two arrays
 	 * @param first
 	 * @param second
-	 * @return
+	 * @return concatenated array
 	 */
 	protected PdfFile[] arraysConcat(PdfFile[] first, PdfFile[] second) {
 		PdfFile[] retVal = null;
