@@ -104,16 +104,20 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 	 * @return PdfFile array from the input directory
 	 */
 	protected PdfFile[] getPdfFiles(File directory){
-		File[] fileList = directory.listFiles(new PdfFilter());
-		Arrays.sort(fileList, new FilenameComparator());
-		ArrayList list = new ArrayList();
-		for (int i=0; i<fileList.length; i++){
-			list.add(new PdfFile(fileList[i], null));
+		PdfFile[] retVal = null;
+		if(directory != null && directory.isDirectory()){
+			File[] fileList = directory.listFiles(new PdfFilter());
+			Arrays.sort(fileList, new FilenameComparator());
+			ArrayList list = new ArrayList();
+			for (int i=0; i<fileList.length; i++){
+				list.add(new PdfFile(fileList[i], null));
+			}
+			if(list.size() <= 0){
+				log.warn("No pdf documents found in "+directory);
+			}
+			retVal = (PdfFile[]) list.toArray(new PdfFile[list.size()]);
 		}
-		if(list.size() <= 0){
-			log.warn("No pdf documents found in "+directory);
-		}
-		return (PdfFile[]) list.toArray(new PdfFile[list.size()]);
+		return retVal;
 	}
 	
 	/**
