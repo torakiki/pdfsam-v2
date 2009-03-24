@@ -57,8 +57,9 @@ public class Environment {
 	 * saves and environment to the output file
 	 * @param outFile
 	 * @param savePasswords true save passwords informations
+	 * @param selection selection information
 	 */
-	public void saveEnvironment(File outFile, boolean savePasswords){
+	public void saveEnvironment(File outFile, boolean savePasswords, String selection){
 		try {
 			if (outFile != null){
 				synchronized(Environment.class){
@@ -66,6 +67,9 @@ public class Environment {
 					Element root = document.addElement("pdfsam_saved_jobs");
 					root.addAttribute("version", GuiClient.getVersion());
 					root.addAttribute("savedate", new SimpleDateFormat("dd-MMM-yyyy").format(new Date()));
+					if(selection != null && selection.length()>0){
+						root.addAttribute("selection", selection);
+					}
 					for (Iterator plugsIterator = plugins.values().iterator();plugsIterator.hasNext();) {
 						AbstractPlugablePanel plugablePanel = (AbstractPlugablePanel) plugsIterator.next();
 						Element node = (Element) root.addElement("plugin");
@@ -89,6 +93,10 @@ public class Environment {
 		} catch (Exception ex) {
 			log.error(GettextResource.gettext(i18nMessages, "Error saving environment."),ex);
 		}
+	}
+	
+	public void saveEnvironment(File outFile, boolean savePasswords){
+		saveEnvironment(outFile,false, "");
 	}
 	
 	/**

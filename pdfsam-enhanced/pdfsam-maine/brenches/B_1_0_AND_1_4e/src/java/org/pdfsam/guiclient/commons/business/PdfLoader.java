@@ -171,7 +171,6 @@ public class PdfLoader {
     /**
      * adds files to the selectionTable
      * @param files
-     * @param ordered files are added keeping order
      */
     
     public synchronized void addFiles(File[] files){

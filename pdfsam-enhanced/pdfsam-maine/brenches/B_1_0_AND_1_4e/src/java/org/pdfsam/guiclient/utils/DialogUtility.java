@@ -49,7 +49,7 @@ public class DialogUtility {
 	 * Shows a yes/no/cancel dialog to ask the user about overwriting output file
 	 * @param comp parent component
 	 * @param filename suggested directory
-	 * @return
+	 * @return an integer indicating the option chosen by the user
 	 */
 	public static int askForOverwriteOutputFileDialog(Component comp, String filename){
 

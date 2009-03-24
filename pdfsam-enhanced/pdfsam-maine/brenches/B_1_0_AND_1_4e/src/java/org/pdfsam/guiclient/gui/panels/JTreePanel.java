@@ -106,6 +106,18 @@ public class JTreePanel extends JScrollPane {
 	public DefaultMutableTreeNode getRootNode() {
 		return rootNode;
 	}
+	/**
+	 * @return the selected node
+	 */
+	public DefaultMutableTreeNode getSelectedNode(){
+		return (DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
+	}
 	
+	/**
+	 * @return the selection path
+	 */
+	public TreePath getSelectionPath(){
+		return tree.getSelectionPath();
+	}
 	
 }
