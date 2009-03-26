@@ -131,7 +131,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	        		throw new ParseException(ParseException.ERR_NO_BL);
 	        	}
 	        }else{
-	        	if(bOption.isSet()){
+	        	if(blOption.isSet()){
 	        		throw new ParseException(ParseException.ERR_BL_NOT_NEEDED);
 	            }
 	        }
