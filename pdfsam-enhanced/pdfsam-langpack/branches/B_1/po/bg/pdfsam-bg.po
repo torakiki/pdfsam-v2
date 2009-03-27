@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-10-19 22:52+0000\n"
 "Last-Translator: Mitko K. <heyho@mailinator.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -253,8 +253,8 @@ msgstr "PDF файл за долното поле"
 msgid "Select at least one cover or one footer"
 msgstr "Изберете поне един коричен или един  файл за Долното поле"
 
-msgid "Cover and Footer"
-msgstr "Коричен и за Долно поле"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Секциите за Коричен и за Долно поле заредени"
@@ -535,6 +535,66 @@ msgstr "Командното потвърждение върна празна с
 msgid "Command executed."
 msgstr "Командата изпълнена."
 
+msgid "File name"
+msgstr "Име на файл"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Автор"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Копиране"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Стартирай"
 
@@ -558,9 +618,6 @@ msgstr "Изходна PDF версия на документа:"
 
 msgid "Same as input document"
 msgstr "Същия както входния документ"
-
-msgid "File name"
-msgstr "Име на файл"
 
 msgid "Path"
 msgstr "Пътека"
@@ -696,17 +753,11 @@ msgstr "Не мога да заредя plugin, което не е JPanel subcla
 msgid "Error loading class "
 msgstr "Грешка при зареждане на class "
 
-msgid "Copy"
-msgstr "Копиране"
-
 msgid "Select all"
 msgstr "Избери всички"
 
 msgid "Save log"
 msgstr "Запазване на лога"
-
-msgid "File"
-msgstr "Файл"
 
 msgid "Save environment"
 msgstr "Запази средата"
@@ -779,9 +830,6 @@ msgstr "Website: "
 
 msgid "Name"
 msgstr "Име:"
-
-msgid "Author"
-msgstr "Автор"
 
 msgid "About"
 msgstr "За програмата"
@@ -926,6 +974,12 @@ msgstr "Желаете ли да го промените на"
 msgid "Output location error"
 msgstr "Грешна изходна локация"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Проверка за нова версия"
 
@@ -946,3 +1000,6 @@ msgstr "Изрежи"
 
 msgid "Paste"
 msgstr "Постави"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Коричен и за Долно поле"

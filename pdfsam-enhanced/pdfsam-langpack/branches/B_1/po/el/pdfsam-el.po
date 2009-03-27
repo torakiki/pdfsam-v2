@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-03-24 16:10+0000\n"
 "Last-Translator: dizzyk <hibaman@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -321,7 +321,7 @@ msgstr "Αρχείο .pdf ως υποσμείωση:"
 msgid "Select at least one cover or one footer"
 msgstr ""
 
-msgid "Cover and Footer"
+msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
@@ -648,6 +648,75 @@ msgstr ""
 msgid "Command executed."
 msgstr ""
 
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
+msgid "File name"
+msgstr "Όνομα αρχείου"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
+msgid "Author"
+msgstr "Δημιουργός"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:217
+msgid "File"
+msgstr "Αρχείο"
+
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
+msgid "Close"
+msgstr "Κλείσιμο"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:526
@@ -712,12 +781,6 @@ msgstr "Επιλογές εξόδου:"
 #, fuzzy
 msgid "Same as input document"
 msgstr "Δεύτερο pdf κείμενο:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-msgid "File name"
-msgstr "Όνομα αρχείου"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
@@ -923,21 +986,12 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "Αντιγραφή"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
 msgstr "Επιλογή όλων"
 
 msgid "Save log"
 msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:217
-msgid "File"
-msgstr "Αρχείο"
 
 msgid "Save environment"
 msgstr ""
@@ -1021,11 +1075,6 @@ msgstr ""
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Name"
 msgstr "'Όνομα"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "Δημιουργός"
 
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -1185,6 +1234,12 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -1281,7 +1336,3 @@ msgstr "Θέση"
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:118
 #~ msgid "Application version: "
 #~ msgstr "Έκδοση εφαρμογής: "
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
-#~ msgid "Close"
-#~ msgstr "Κλείσιμο"

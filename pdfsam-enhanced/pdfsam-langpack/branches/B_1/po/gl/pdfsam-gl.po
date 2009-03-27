@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-06-25 23:29+0000\n"
 "Last-Translator: Susana Sotelo Docío <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -276,8 +276,8 @@ msgstr "Ficheiro PDF para a portada:"
 msgid "Select at least one cover or one footer"
 msgstr ""
 
-msgid "Cover and Footer"
-msgstr "Portada e pé de páxina"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr ""
@@ -571,6 +571,66 @@ msgstr "A validación da orde devolveu un valor baleiro."
 msgid "Command executed."
 msgstr "A orde foi executada."
 
+msgid "File name"
+msgstr "Nome de ficheiro"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Ficheiro"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Executar"
 
@@ -594,9 +654,6 @@ msgstr "Versión de PDF do documento de saída:"
 
 msgid "Same as input document"
 msgstr "Igual que o documento de entrada"
-
-msgid "File name"
-msgstr "Nome de ficheiro"
 
 msgid "Path"
 msgstr "Ruta"
@@ -733,17 +790,11 @@ msgstr "Non se pode cargar un plugin que non estea na subclase JPanel."
 msgid "Error loading class "
 msgstr "Erro ao cargar a clase "
 
-msgid "Copy"
-msgstr "Copiar"
-
 msgid "Select all"
 msgstr "Seleccionar todo"
 
 msgid "Save log"
 msgstr "Gardar o rexistro"
-
-msgid "File"
-msgstr "Ficheiro"
 
 msgid "Save environment"
 msgstr "Gardar contorno"
@@ -816,9 +867,6 @@ msgstr "Sitio web: "
 
 msgid "Name"
 msgstr "Nome"
-
-msgid "Author"
-msgstr "Autor"
 
 msgid "About"
 msgstr ""
@@ -960,6 +1008,12 @@ msgstr "Desexaría cambialo a"
 msgid "Output location error"
 msgstr "Erro na ubicación de saída"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Combrobamos se hai dispoñíbel unha versión máis recente."
 
@@ -981,6 +1035,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Ruta"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Portada e pé de páxina"
 
 #~ msgid "Destination output file:"
 #~ msgstr "Ficheiro de saída:"

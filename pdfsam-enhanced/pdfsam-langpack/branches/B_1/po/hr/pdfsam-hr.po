@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-06-07 10:20+0000\n"
-"Last-Translator: Manic <Unknown>\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"PO-Revision-Date: 2009-01-27 22:56+0000\n"
+"Last-Translator: Ilija Pavlic <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "Mogućnosti spajanja:"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "PDF dokumenti sadrže formulare"
@@ -77,12 +76,11 @@ msgstr "Molimo pričekajte dok se datoteke ne obrade..."
 msgid "Found a password for input file."
 msgstr "Pronađena zaporka ulaznog dokumenta"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Molimo odaberite dva pdf dokumenta."
+msgstr "Molim odaberite barem jedan pdf dokument."
 
 msgid "Warning"
-msgstr ""
+msgstr "Upozorenje"
 
 msgid "Execute pdf merge"
 msgstr "Izvrši pdf spajanje"
@@ -150,17 +148,14 @@ msgstr "Razdvoji dokument na svakoj neparnoj stranici"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Razdvoji dokument poslije brojeva stranica (n1-n2-n3)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Razdvoji dokument na datoteke zadane veličine (približno)"
+msgstr "Podijeli dokument u datoteke dane veličine (ugrubo)"
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Razdvoji dokument na datoteke zadane veličine (približno)"
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "Odredišna mapa:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "Isto kao izvor"
@@ -187,9 +182,8 @@ msgid ""
 msgstr ""
 "Odaberite opciju ako želite prepisati izlaznu datoteku ako već postoji."
 
-#, fuzzy
 msgid "Output options"
-msgstr "Izlazne mogućnosti:"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "Prefiks imena izlazne datoteke:"
@@ -197,29 +191,23 @@ msgstr "Prefiks imena izlazne datoteke:"
 msgid "Output files prefix"
 msgstr "Prefiks izlaznih datoteka"
 
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"Ako sadrži \"[CURRENTPAGE]\" ili \"[TIMESTAMP]\" izvršava zamjenu varijable."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Npr. prefix_[BASENAME]_[CURRENTPAGE] generira prefix_ImeDatoteke_005.pdf."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Ako ne sadrži \"[CURRENTPAGE]\" ili \"[TIMESTAMP]\" generira imena izlazne "
-"datoteke u starom stilu."
 
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Dostupne varijable: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Neispravna veličina razdvajanja"
@@ -233,9 +221,8 @@ msgstr "Odabrali ste nižu izlaznu pdf inačicu. Nastaviti?"
 msgid "Pdf version conflict"
 msgstr "Sukob pdf inačice"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Molimo odaberite dva pdf dokumenta."
+msgstr ""
 
 msgid "Split selected file"
 msgstr "Razdijeli odabranu datoteku"
@@ -249,33 +236,29 @@ msgstr "Učitana razdijeljena sekcija"
 msgid "Invalid unit: "
 msgstr "Neispravna jedinica: "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Preokreni prvi dokument"
+msgstr "Popuni iz dokumenta"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "Naslovnica pdf datoteke"
+msgstr ""
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "Podnožje pdf dokumenta"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Odaberite najmanje jednu naslovnicu i jedno podnožje"
 
-msgid "Cover and Footer"
-msgstr "Naslovnica i podnožje"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Sekcija naslovnice i podnožja je učitana."
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Mogućnosti enkripcije"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "Vlasnička zaporka"
@@ -289,9 +272,8 @@ msgstr "Korisnička zaporka:"
 msgid "User password (Max 32 chars long)"
 msgstr "Korisnička zaporka (Maksimalno 32 znaka)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Algoritam enkripcije"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Dozvoli sve"
@@ -356,21 +338,17 @@ msgstr "Enkriptiraj"
 msgid "Encrypt section loaded."
 msgstr "Učitana enkriptirana sekcija."
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Enkriptiraj odabrane datoteke"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt"
-msgstr "Enkriptiraj"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Učitana enkriptirana sekcija."
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "Mogućnosti dijeljenja"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr "Preokreni prvi dokument"
@@ -405,9 +383,8 @@ msgstr "Raspakiraj"
 msgid "Unpack section loaded."
 msgstr "Učitana raspakirana sekcija."
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Mogućnosti dijeljenja"
+msgstr "Postavi opcije preglednika"
 
 msgid "Hide the menubar"
 msgstr ""
@@ -422,14 +399,13 @@ msgid "Rezise the window to fit the page size"
 msgstr ""
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Središte ekrana"
 
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Sukob pdf inačice"
+msgstr "Potrebna pdf verzija:"
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -444,25 +420,22 @@ msgid "Non fullscreen mode:"
 msgstr ""
 
 msgid "Direction:"
+msgstr "Smjer:"
+
+msgid "Set options"
 msgstr ""
 
-#, fuzzy
-msgid "Set options"
-msgstr "Mogućnosti dijeljenja"
-
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Enkriptiraj odabrane datoteke"
+msgstr ""
 
 msgid "Left to right"
-msgstr ""
+msgstr "Slijeva na desno"
 
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "Bilješka"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -473,9 +446,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "PDF dokumenti sadrže formulare"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -493,18 +465,16 @@ msgid "Pages in two columns (odd on the right)"
 msgstr ""
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Dvije stranice odjednom (neparne slijeva)"
 
 msgid "Two pages at a time (odd on the right)"
+msgstr "Dvije stranice odjednom (neparne zdesna)"
+
+msgid "Viewer options"
 msgstr ""
 
-#, fuzzy
-msgid "Viewer options"
-msgstr "Mogućnosti spajanja:"
-
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Učitana enkriptirana sekcija."
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -562,6 +532,66 @@ msgstr "Provjera komande je vratila praznu vrijednost."
 msgid "Command executed."
 msgstr "Izvršena komanda."
 
+msgid "File name"
+msgstr "Ime datoteke"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Datoteka"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopiraj"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Pokreni"
 
@@ -585,9 +615,6 @@ msgstr "Pdf inačica izlaznog dokumenta:"
 
 msgid "Same as input document"
 msgstr "Isto kao i ulazni dokument"
-
-msgid "File name"
-msgstr "Ime datoteke"
 
 msgid "Path"
 msgstr "Putanja"
@@ -723,17 +750,11 @@ msgstr "Ne mogu učitati dodatak koji nije JPanel podklasa."
 msgid "Error loading class "
 msgstr "Greška pri učitavanju klase "
 
-msgid "Copy"
-msgstr "Kopiraj"
-
 msgid "Select all"
 msgstr "Odaberi sve"
 
 msgid "Save log"
 msgstr "Spremi zapisnik."
-
-msgid "File"
-msgstr "Datoteka"
 
 msgid "Save environment"
 msgstr "Spremi okružje"
@@ -807,11 +828,8 @@ msgstr "Internet stranica: "
 msgid "Name"
 msgstr "Naziv"
 
-msgid "Author"
-msgstr "Autor"
-
 msgid "About"
-msgstr ""
+msgstr "O programu"
 
 msgid "Unimplemented method for JInfoPanel"
 msgstr "Neimplementirana metoda za JInfoPanel"
@@ -822,9 +840,8 @@ msgstr "Doprinijeli su: "
 msgid "Log level:"
 msgstr "Razina zapisnika:"
 
-#, fuzzy
 msgid "Settings"
-msgstr "Postavke "
+msgstr "Postavke"
 
 msgid "Look and feel:"
 msgstr "Izgled sučelja"
@@ -953,6 +970,12 @@ msgstr "Da li želiti promijeniti u"
 msgid "Output location error"
 msgstr "Greška odredišne lokacije"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Provjeravam dostupnost nove inačice."
 
@@ -969,20 +992,7 @@ msgid "No new version available."
 msgstr "Nije dostupna je nova inačica."
 
 msgid "Cut"
-msgstr ""
+msgstr "Izreži"
 
-#, fuzzy
 msgid "Paste"
-msgstr "Putanja"
-
-#~ msgid "Destination output file:"
-#~ msgstr "Odredište izlazne datoteke:"
-
-#~ msgid "Split options:"
-#~ msgstr "Mogućnosti razdvajanja:"
-
-#~ msgid "Select an input file"
-#~ msgstr "Odaberite ulaznu datoteku"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "Izlazna lokacija nije valjana"
+msgstr ""

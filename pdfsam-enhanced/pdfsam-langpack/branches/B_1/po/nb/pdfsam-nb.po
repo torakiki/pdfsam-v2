@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-07-21 14:47+0000\n"
-"Last-Translator: Gisle Aune <Unknown>\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"PO-Revision-Date: 2009-03-04 05:05+0000\n"
+"Last-Translator: hulkhaugen <haugen_b@hotmail.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-17 09:24+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "flette valg"
+msgstr "Flette alternativer"
 
 msgid "PDF documents contain forms"
 msgstr "PDF-dokumenter inneholder skjemaer"
@@ -28,13 +27,13 @@ msgid "Merge type"
 msgstr "Flette type"
 
 msgid "Unchecked"
-msgstr "Ikke avkrysset"
+msgstr "Ikke merket"
 
 msgid "Use this merge type for standard pdf documents"
 msgstr "Bruk denne flettetypen for standard pdf-dokumenter"
 
 msgid "Checked"
-msgstr "Avkrysset"
+msgstr "Merket"
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr "Benytte denne flettetypen for pdf-dokumenter som inneholder skjemaer"
@@ -48,49 +47,49 @@ msgstr ""
 "i minnet"
 
 msgid "Destination output file"
-msgstr "Destinasjonsutfil"
+msgstr "Destinasjon for fil"
 
 msgid "Error: "
 msgstr "Feil: "
 
 msgid "Browse or enter the full path to the destination output file."
-msgstr "Søk eller inngi full sti til destinasjonsutfil"
+msgstr "Søk eller angi full sti til destinasjonsfilen."
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
-"Avkryss om du ønsker å overskrive destinasjonsutfila dersom det alt "
-"eksisterer"
+"Merk av om du ønsker å overskrive destinasjonsfilen dersom den allerede "
+"eksisterer."
 
 msgid "Check the box if you want compressed output files."
-msgstr "Avkryss dersom du ønsker å komprimere utfilene"
+msgstr "Merk av dersom du ønsker å komprimere utfilene."
 
 msgid "PDF version 1.5 or above."
-msgstr "PDF versjon 1.5 eller høyere"
+msgstr "PDF versjon 1.5 eller høyere."
 
 msgid "Set the pdf version of the ouput document."
 msgstr "Sett hvilken PDF-versjon utfilen skal ha."
 
 msgid "Please wait while all files are processed.."
-msgstr "Vennligst vent mens filene blir behandlet"
+msgstr "Vennligst vent mens filene blir behandlet.."
 
 msgid "Found a password for input file."
-msgstr "Fant et passord for infila"
+msgstr "Fant et passord for inn filen."
 
 msgid "Please select at least one pdf document."
-msgstr ""
+msgstr "Vennligst velg minst ett pdf dokument."
 
 msgid "Warning"
-msgstr ""
+msgstr "Advarsel"
 
 msgid "Execute pdf merge"
-msgstr "Eksekver pdf fletting"
+msgstr "Start pdf fletting"
 
 msgid "Merge/Extract"
-msgstr "Flett/ekstraher"
+msgstr "Flett/Åpne"
 
 msgid "Merge section loaded."
-msgstr "Flettet seksjon lastet"
+msgstr "Flett merket seksjon."
 
 msgid "Export as xml"
 msgstr "Eksporter som XML"
@@ -99,23 +98,22 @@ msgid "Unable to save xml file."
 msgstr "Ikke i stand til å lagre XML-fil."
 
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 msgid "File xml saved."
-msgstr ""
+msgstr "xml fil lagret."
 
 msgid "Error saving xml file, output file is null."
-msgstr ""
+msgstr "Feil ved lagring av xml fil, utgangsfilen har verdien null."
 
 msgid "Split options"
 msgstr "Delingsvalg"
 
-#, fuzzy
 msgid "Burst (split into single pages)"
 msgstr "Spreng (del opp i enkelt sider)"
 
 msgid "Split every \"n\" pages"
-msgstr "Del hver n'te side"
+msgstr "Del hver \"n\" side"
 
 msgid "Split even pages"
 msgstr "Del partall-sider"
@@ -130,19 +128,19 @@ msgid "Split at this size"
 msgstr "Del ved denne størrelsen"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Del ved bokmerkenivå"
 
 msgid "Burst"
-msgstr ""
+msgstr "Serie"
 
 msgid "Explode the pdf document into single pages"
 msgstr "Del pdf dokumentet i enkelt sider"
 
 msgid "Split the document every \"n\" pages"
-msgstr "S"
+msgstr "Del dokumentet hver \"n\" sider"
 
 msgid "Split the document every even page"
-msgstr "Del dokumentet hvert partall side"
+msgstr "Del dokumentet hver partall side"
 
 msgid "Split the document every odd page"
 msgstr "Del dokumentet hvert oddetall side"
@@ -150,151 +148,137 @@ msgstr "Del dokumentet hvert oddetall side"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Del dokumenter etter sidenummerne (nr1-nr2,nr3...)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Del dokumentet i filer á størrelse (ca)"
+msgstr "Del dokumentet in i filer i den angitte størrelsen (ca)"
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Del dokumentet i filer á størrelse (ca)"
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "Målmappe:"
+msgstr "Destinasjonsmappe"
 
 msgid "Same as source"
 msgstr "Samme som kilde"
 
 msgid "Choose a folder"
-msgstr ""
-"Velg folderhttps://translations.launchpad.net/pdfsam/1.0/+pots/pdfsam/nb/"
-"+translate?show=untranslated&start=30"
+msgstr "Velg en mappe"
 
 msgid "Destination output directory"
-msgstr "Destinasjons utkatalog"
+msgstr "Destiansjon for utmappe"
 
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr "Benytt den samme utkatalog som infila eller velg katalog"
+msgstr "Bruk den samme utmappen som innfilen eller velg en mappe."
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
-"For å velge en folder, let eller inngi full sti til destinasjons katalog"
+"For å velge en mappe, bla igjennom eller angi fullstendig sti til "
+"destinasjonsmappen."
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr "Kryss av for om du ønsker å overskrive utfila dersom de alt eksisterer"
+msgstr ""
+"Merk av om du ønsker å overskrive utfilene dersom de allerede eksisterer."
 
-#, fuzzy
 msgid "Output options"
-msgstr "Output opsjoner"
+msgstr "Utgangsalternativer"
 
 msgid "Output file names prefix:"
-msgstr ""
+msgstr "Prefiks for utgangsfilnavn:"
 
 msgid "Output files prefix"
 msgstr "Prefiks for utfil"
 
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"Dersom det inneholder \"[CURRENTPAGE]\" eller \"[TIMESTAMP]\", vil det bli "
-"utført en variable erstatting"
+"Hvis den inneholder \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller \"[FILENUMBER]"
+"\" vil den utføre variable utbytter."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "F.eks. prefiks_[BASENAME]_[CURRENTPAGE], vil dette generere "
 "prefiks_Filnavn_005.pdf."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Dersom det ikke inneholder \"[CURRENTPAGE]\" eller \"[TIMESTAMP]\", blir det "
-"benytte den gamle stilen for navngiving av utfil"
 
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Tilgjengelig variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr ""
+"Tilgjengelige variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME], "
+"[FILENUMBER]."
 
 msgid "Invalid split size"
-msgstr "Ugyldig oppdelingsstørrelse"
+msgstr "Ugyldig delstørrelse"
 
 msgid "The lowest available pdf version is "
-msgstr "Den laveste versjonsnummer av pdf som er tilgjengelig "
+msgstr "Den laveste versjonsnummer av pdf som er tilgjengelig er "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Du valgte en lavere pdf versjon for utfila. Ønsker du å fortsette"
+msgstr "Du valgte en lavere pdf versjon for utfila. Ønsker du å fortsette?"
 
 msgid "Pdf version conflict"
 msgstr "Pdf versjonskonflikt"
 
 msgid "Please select a pdf document."
-msgstr ""
+msgstr "Vennligst velg et pdf dokument."
 
 msgid "Split selected file"
-msgstr "Del opp valgte fil"
+msgstr "Del opp valgt fil"
 
 msgid "Split"
 msgstr "Del opp"
 
 msgid "Split section loaded."
-msgstr "Oppdelt seksjon er lastet"
+msgstr "Oppdelt seksjon er lastet."
 
 msgid "Invalid unit: "
-msgstr "Ugyldig enhet "
+msgstr "Ugyldig enhet: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Fyll ut dokumentskjema"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "Omslag pdf fil"
+msgstr "Konverter pdf fil"
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "Bunntekst pdf fil"
+msgstr ""
 
-#, fuzzy
 msgid "Select at least one cover or one footer"
-msgstr "Velg minst et omslag eller en fotnote"
+msgstr ""
 
-#, fuzzy
-msgid "Cover and Footer"
-msgstr "Omslag eller fotnote"
+msgid "Frontpage and Addendum"
+msgstr ""
 
-#, fuzzy
 msgid "Cover And Footer section loaded."
-msgstr "Omslag eller fotnote seksjon er lastet"
+msgstr ""
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Krypteringsopsjoner"
+msgstr ""
 
 msgid "Owner password:"
-msgstr "Eierens passord"
+msgstr "Eiers passord:"
 
 msgid "Owner password (Max 32 chars long)"
-msgstr "Eierens passord (maks 32 tegn)"
+msgstr "Eiers passord (maks 32 tegn langt)"
 
 msgid "User password:"
-msgstr "Bruker passord"
+msgstr "Bruker passord:"
 
 msgid "User password (Max 32 chars long)"
-msgstr "Bruiker passord (maks 32 tegn)"
+msgstr "Bruker passord (maks 32 tegn langt)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Krypteringsalgoritme"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Tillat alt"
@@ -306,14 +290,13 @@ msgid "Low quality print"
 msgstr "Lav kvalitetsutskrift"
 
 msgid "Copy or extract"
-msgstr "Kopier eller ekstraher"
+msgstr "Kopier eller pakk ut"
 
 msgid "Modify"
 msgstr "Rediger"
 
-#, fuzzy
 msgid "Add or modify text annotations"
-msgstr "Legg til eller rediger tekst bemerkninger"
+msgstr "Legg til eller rediger tekskommentarer"
 
 msgid "Fill form fields"
 msgstr "Fyll ut feltene i skjemaet"
@@ -322,28 +305,33 @@ msgid "Extract for use by accessibility dev."
 msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
-msgstr "Endre sidene og legg til bokmerker"
+msgstr "Endre sidenr og legg til bokmerker"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
+"Merk av hvis du ønsker komprimerte utfiler (Pdf versjon 1.5 eller høyere)."
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr ""
+msgstr "Hvis det inneholder \"[TIMESTAMP]\" vil det utføre variable bytter."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
+"Eks. [BASENAME]_prefix_[TIMESTAMP] genererer "
+"FileName_prefix_20070517_113423471.pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr ""
+"Hvis det ikke inneholder \"[TIMESTAMP]\" vil det generere utfilnavn av eldre "
+"stil."
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr ""
+msgstr "Tilgjengelige variabler: [TIMESTAMP], [BASENAME]."
 
 msgid "Encrypt selected files"
 msgstr ""
@@ -354,20 +342,17 @@ msgstr ""
 msgid "Encrypt section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Del opp valgte fil"
+msgstr ""
 
 msgid "Decrypt"
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Flettet seksjon lastet"
+msgstr "Dekrypteringsdelen lastet."
 
-#, fuzzy
 msgid "Mix options"
-msgstr "Delingsvalg"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr ""
@@ -376,13 +361,13 @@ msgid "Reverse second document"
 msgstr ""
 
 msgid "Found a password for first file."
-msgstr ""
+msgstr "Fant et passord for første filen."
 
 msgid "Found a password for second file."
-msgstr ""
+msgstr "Fant et passord for andre filen."
 
 msgid "Please select two pdf documents."
-msgstr ""
+msgstr "Vennligst velg to dokumenter."
 
 msgid "Execute pdf alternate mix"
 msgstr ""
@@ -391,45 +376,43 @@ msgid "Alternate Mix"
 msgstr ""
 
 msgid "AlternateMix section loaded."
-msgstr ""
+msgstr "Vekslende miks del lastet."
 
 msgid "Unpack selected files"
-msgstr ""
+msgstr "Pakk ut valgte filer"
 
 msgid "Unpack"
-msgstr ""
+msgstr "Pakk ut"
 
 msgid "Unpack section loaded."
-msgstr ""
+msgstr "Pakk ut valgt del."
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Delingsvalg"
+msgstr "Sett visningsvalg"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Skjul menylinjen"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "Skjul verktøylinjen"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Skjul brukergrensesnitt elementer"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Tilpass vinduene til å passe sidestørrelsen"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Midten av skjermen"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Vis dokumenttittel som vindustittel"
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Pdf versjonskonflikt"
+msgstr "Pdf versjon kreves:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Ingen sideskalering i skriverdialog"
 
 msgid "Viewer layout:"
 msgstr ""
@@ -438,70 +421,64 @@ msgid "Viewer open mode:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Ikke fullskjermsmodus:"
 
 msgid "Direction:"
-msgstr ""
+msgstr "Retning:"
 
-#, fuzzy
 msgid "Set options"
-msgstr "Delingsvalg"
+msgstr "Sett valg"
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Del opp valgte fil"
+msgstr "Sett visningsvalg for valgte filer"
 
 msgid "Left to right"
-msgstr ""
+msgstr "Venstre til høyre"
 
 msgid "Right to left"
-msgstr ""
+msgstr "Høyre til venstre"
 
-#, fuzzy
 msgid "None"
-msgstr "Merknad"
+msgstr "Ingen"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fullskjerm"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Vedlegg"
 
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "PDF-dokumenter inneholder skjemaer"
+msgstr ""
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniatyrbilder"
 
 msgid "One page at a time"
-msgstr ""
+msgstr "En side om gangen"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Sider i en kolonne"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Sider i to kolonner (oddetallssider til venstre)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Sider i to kolonner (oddetallssider til høyre)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "To sider om gangen (oddetallssider til venstre)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "To sider om gangen (oddetallssider til høyre)"
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "flette valg"
+msgstr "Visningsalternativer"
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Flettet seksjon lastet"
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -511,10 +488,10 @@ msgid "Confirm password saving"
 msgstr ""
 
 msgid "Unknown action."
-msgstr ""
+msgstr "Ukjent handling."
 
 msgid "Log saved."
-msgstr ""
+msgstr "Logg lagret."
 
 msgid " node environment loaded."
 msgstr ""
@@ -541,7 +518,7 @@ msgid "Selection table is full, please remove some pdf document."
 msgstr ""
 
 msgid "Table full"
-msgstr ""
+msgstr "Tabell full"
 
 msgid "Please wait while reading"
 msgstr ""
@@ -550,28 +527,88 @@ msgid "Selected file is not a pdf document."
 msgstr ""
 
 msgid "Error loading "
-msgstr ""
+msgstr "Feil ved lasting "
 
 msgid "Command validation returned an empty value."
 msgstr ""
 
 msgid "Command executed."
+msgstr "Kommando utført."
+
+msgid "File name"
+msgstr "Filnavn"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopier"
+
+msgid "Error creating properties panel."
 msgstr ""
 
 msgid "Run"
-msgstr ""
+msgstr "Kjør"
 
 msgid "Browse"
-msgstr ""
+msgstr "Bla igjennom"
 
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 msgid "Compress output file/files"
-msgstr ""
+msgstr "Komprimer utfil(er)"
 
 msgid "Overwrite if already exists"
-msgstr "Overskriv dersom det alt eksisterer"
+msgstr "Overskriv dersom det allerede eksisterer"
 
 msgid "Don't preserve file order (fast load)"
 msgstr ""
@@ -582,26 +619,23 @@ msgstr ""
 msgid "Same as input document"
 msgstr ""
 
-msgid "File name"
-msgstr ""
-
 msgid "Path"
-msgstr ""
+msgstr "Sti"
 
 msgid "Pages"
-msgstr ""
+msgstr "Sider"
 
 msgid "Password"
-msgstr ""
+msgstr "Passord"
 
 msgid "Version"
-msgstr ""
+msgstr "Versjon"
 
 msgid "Page Selection"
-msgstr ""
+msgstr "Sidevalg"
 
 msgid "Total pages of the document"
-msgstr ""
+msgstr "Totalt antall sider i dokumentet"
 
 msgid "Password to open the document (if needed)"
 msgstr ""
@@ -618,16 +652,16 @@ msgid "Add a pdf to the list"
 msgstr ""
 
 msgid "Remove a pdf from the list"
-msgstr ""
+msgstr "Fjern en pdf fra listen"
 
 msgid "(Canc)"
 msgstr ""
 
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 msgid "Reload"
-msgstr ""
+msgstr "Last på nytt"
 
 msgid "Error: Unable to reload the selected file/s."
 msgstr ""
@@ -636,31 +670,31 @@ msgid "Unable to remove JList text "
 msgstr ""
 
 msgid "File selected: "
-msgstr ""
+msgstr "Fil valgt: "
 
 msgid "File reloaded: "
 msgstr ""
 
 msgid "Move Up"
-msgstr ""
+msgstr "Flytt opp"
 
 msgid "Move up selected pdf file"
 msgstr ""
 
 msgid "(Alt+ArrowUp)"
-msgstr ""
+msgstr "(Alt+PilOpp)"
 
 msgid "Move Down"
-msgstr ""
+msgstr "Flytt ned"
 
 msgid "Move down selected pdf file"
 msgstr ""
 
 msgid "(Alt+ArrowDown)"
-msgstr ""
+msgstr "(Alt+PilNed)"
 
 msgid "Clear"
-msgstr ""
+msgstr "Tøm"
 
 msgid "Remove every pdf file from the merge list"
 msgstr ""
@@ -716,16 +750,10 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-msgid "Copy"
-msgstr ""
-
 msgid "Select all"
-msgstr ""
+msgstr "Merk alt"
 
 msgid "Save log"
-msgstr ""
-
-msgid "File"
 msgstr ""
 
 msgid "Save environment"
@@ -735,7 +763,7 @@ msgid "Load environment"
 msgstr ""
 
 msgid "Exit"
-msgstr ""
+msgstr "Avslutt"
 
 msgid "Unable to initialize menu bar."
 msgstr ""
@@ -762,19 +790,19 @@ msgid "Loading default environment."
 msgstr ""
 
 msgid "Error starting pdfsam."
-msgstr ""
+msgstr "Feil ved oppstart av PDF SAM."
 
 msgid "Clear log"
-msgstr ""
+msgstr "Tøm logg"
 
 msgid "Unable to initialize button bar."
 msgstr ""
 
 msgid "Version: "
-msgstr ""
+msgstr "Versjon: "
 
 msgid "Language: "
-msgstr ""
+msgstr "Språk: "
 
 msgid "Author: "
 msgstr ""
@@ -786,73 +814,70 @@ msgid "Java home: "
 msgstr ""
 
 msgid "Java version: "
-msgstr ""
+msgstr "Java versjon: "
 
 msgid "Max memory: "
-msgstr ""
+msgstr "Maksimalt minne: "
 
 msgid "Configuration file: "
-msgstr ""
+msgstr "Konfigurasjonsfil: "
 
 msgid "Website: "
-msgstr ""
+msgstr "Internettside: "
 
 msgid "Name"
-msgstr ""
-
-msgid "Author"
-msgstr ""
+msgstr "Navn"
 
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 msgid "Unimplemented method for JInfoPanel"
 msgstr ""
 
 msgid "Contributes: "
-msgstr ""
+msgstr "Medvirkere: "
 
 msgid "Log level:"
 msgstr ""
 
 msgid "Settings"
-msgstr ""
+msgstr "Instillinger"
 
 msgid "Look and feel:"
 msgstr ""
 
 msgid "Theme:"
-msgstr ""
+msgstr "Tema:"
 
 msgid "Language:"
-msgstr ""
+msgstr "Språk:"
 
 msgid "Check for updates:"
-msgstr ""
+msgstr "Se etter oppdateringer:"
 
 msgid "Load default environment at startup:"
 msgstr ""
 
 msgid "Default working directory:"
-msgstr ""
+msgstr "Standard arbeidsmappe:"
 
 msgid "Error getting default environment."
 msgstr ""
 
 msgid "Check now"
-msgstr ""
+msgstr "Sjekk nå"
 
 msgid "Play alert sounds"
 msgstr ""
 
 msgid "Settings "
-msgstr ""
+msgstr "Alternativer: "
 
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 msgid "Set your preferred language (restart needed)"
-msgstr ""
+msgstr "Velg ditt foretrekkende språk (krever omstart)"
 
 msgid "Look and feel"
 msgstr ""
@@ -862,13 +887,13 @@ msgid ""
 msgstr ""
 
 msgid "Log level"
-msgstr ""
+msgstr "Loggnivå"
 
 msgid "Set a log detail level (restart needed)"
 msgstr ""
 
 msgid "Check for updates"
-msgstr ""
+msgstr "Se etter oppdateringer"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
@@ -891,7 +916,7 @@ msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "Lagre"
 
 msgid "Configuration saved."
 msgstr ""
@@ -900,7 +925,7 @@ msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
 
 msgid "New version available: "
-msgstr ""
+msgstr "Ny versjon tilgjengelig: "
 
 msgid "Plugins"
 msgstr ""
@@ -909,28 +934,28 @@ msgid "Error getting pdf version description."
 msgstr ""
 
 msgid "Version 1.2 (Acrobat 3)"
-msgstr ""
+msgstr "Versjon 1.2 (Acrobat 3)"
 
 msgid "Version 1.3 (Acrobat 4)"
-msgstr ""
+msgstr "Versjon 1.3 (Acrobat 4)"
 
 msgid "Version 1.4 (Acrobat 5)"
-msgstr ""
+msgstr "Versjon 1.4 (Acrobat 5)"
 
 msgid "Version 1.5 (Acrobat 6)"
-msgstr ""
+msgstr "Versjon 1.5 (Acrobat 6)"
 
 msgid "Version 1.6 (Acrobat 7)"
-msgstr ""
+msgstr "Versjon 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
-msgstr ""
+msgstr "Versjon 1.7 (Acrobat 8)"
 
 msgid "Never"
-msgstr ""
+msgstr "Aldri"
 
 msgid "pdfsam start up"
-msgstr ""
+msgstr "PDF SAM oppstart"
 
 msgid "Output file location is not correct"
 msgstr "Utfil-lagringssti er ikke korrekt"
@@ -941,8 +966,14 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
-msgid "Checking for a new version available."
+msgid "Selected output file already exists "
 msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid "Checking for a new version available."
+msgstr "Søker etter nye versjoner."
 
 msgid "Error checking for a new version available."
 msgstr ""
@@ -951,22 +982,13 @@ msgid "Unable to get latest available version"
 msgstr ""
 
 msgid "New version available."
-msgstr ""
+msgstr "Ny versjon tilgjengelig."
 
 msgid "No new version available."
-msgstr ""
+msgstr "Ingen nye versjoner tilgjengelig."
 
 msgid "Cut"
-msgstr ""
+msgstr "Klipp ut"
 
 msgid "Paste"
-msgstr ""
-
-#~ msgid "Destination output file:"
-#~ msgstr "Destinasjons utfil"
-
-#~ msgid "Split options:"
-#~ msgstr "Delingsopsjoner"
-
-#~ msgid "Select an input file"
-#~ msgstr "Velg infil"
+msgstr "Lim inn"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2009-01-01 18:45+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -189,8 +189,7 @@ msgid ""
 "performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "לדוגמא: קידומת_[BASENAME]_[CURRENTPAGE] תייצר קידומת_שםהקובץ_005.pdf"
 
 msgid ""
@@ -244,8 +243,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "בחר לפחות כריכה אחת וסיומת אחת"
 
-msgid "Cover and Footer"
-msgstr "כריכה וסיומת"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "חלקי הכריכה והסיומת נטענו."
@@ -518,6 +517,66 @@ msgstr ""
 msgid "Command executed."
 msgstr ""
 
+msgid "File name"
+msgstr ""
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr ""
 
@@ -540,9 +599,6 @@ msgid "Output document pdf version:"
 msgstr ""
 
 msgid "Same as input document"
-msgstr ""
-
-msgid "File name"
 msgstr ""
 
 msgid "Path"
@@ -676,16 +732,10 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-msgid "Copy"
-msgstr ""
-
 msgid "Select all"
 msgstr ""
 
 msgid "Save log"
-msgstr ""
-
-msgid "File"
 msgstr ""
 
 msgid "Save environment"
@@ -758,9 +808,6 @@ msgid "Website: "
 msgstr ""
 
 msgid "Name"
-msgstr ""
-
-msgid "Author"
 msgstr ""
 
 msgid "About"
@@ -847,8 +894,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr ""
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 msgid "Save"
@@ -902,6 +948,12 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -922,3 +974,6 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
+
+#~ msgid "Cover and Footer"
+#~ msgstr "כריכה וסיומת"

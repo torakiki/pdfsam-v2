@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
-"PO-Revision-Date: 2009-01-11 17:57+0000\n"
+"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"PO-Revision-Date: 2009-03-22 13:59+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: FRANCE\n"
 "X-Poedit-Language: French\n"
@@ -128,7 +128,7 @@ msgid "Split at this size"
 msgstr "En fichiers de"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Aux signets de niveau"
 
 msgid "Burst"
 msgstr "Par page"
@@ -149,10 +149,11 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Sectionne après chaque page indiquée (syntaxe : x-y-z...)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Scinde en fichiers de la taille indiquée (approximatif)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
+"Découpe le document aux pages comportant des signets du niveau indiqué"
 
 msgid "Destination folder"
 msgstr "Dossier de création"
@@ -244,10 +245,10 @@ msgid "Invalid unit: "
 msgstr "Unité de taille incorrecte : "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Analyse du document"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "Acquisition de la profondeur des signets"
 
 msgid "Cover pdf file"
 msgstr "Première de couverture"
@@ -258,7 +259,7 @@ msgstr "Quatrième de couverture"
 msgid "Select at least one cover or one footer"
 msgstr "Sélectionnez au moins un fichier de couverture"
 
-msgid "Cover and Footer"
+msgid "Frontpage and Addendum"
 msgstr "Couverture"
 
 msgid "Cover And Footer section loaded."
@@ -543,6 +544,70 @@ msgstr "La validation de commande a renvoyé une valeur nulle."
 msgid "Command executed."
 msgstr "Commande exécutée."
 
+msgid "File name"
+msgstr "Nom"
+
+msgid "Number of pages"
+msgstr "Nombre de pages"
+
+msgid "File size"
+msgstr "Taille du fichier"
+
+msgid "Pdf version"
+msgstr "Version pdf"
+
+msgid "Encryption"
+msgstr "Chiffrement"
+
+msgid "Not encrypted"
+msgstr "Non chiffré"
+
+msgid "Permissions"
+msgstr "Permissions"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Author"
+msgstr "Développeur"
+
+msgid "Subject"
+msgstr "Sujet"
+
+msgid "Producer"
+msgstr "Outil de conversion"
+
+msgid "Creator"
+msgstr "Application"
+
+msgid "Creation date"
+msgstr "Date de création"
+
+msgid "Modification date"
+msgstr "Date de modification"
+
+msgid "Keywords"
+msgstr "Mots-clés"
+
+msgid "Document properties"
+msgstr "Propriétés du document"
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+msgid "File"
+msgstr "Fichier"
+
+msgid "Close"
+msgstr "Fermer"
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "Copier"
+
+msgid "Error creating properties panel."
+msgstr "Erreur lors de la génération du panneau des propriétés"
+
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:368
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
@@ -575,9 +640,6 @@ msgstr "Version pdf du document à créer :"
 
 msgid "Same as input document"
 msgstr "Identique au fichier source"
-
-msgid "File name"
-msgstr "Nom"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:165
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
@@ -733,11 +795,6 @@ msgstr ""
 msgid "Error loading class "
 msgstr "Erreur de chargement de la classe "
 
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "Copier"
-
 msgid "Select all"
 msgstr "Tout sélectionner"
 
@@ -747,11 +804,6 @@ msgstr "Tout sélectionner"
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:121
 msgid "Save log"
 msgstr "Sauvegarder le journal"
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-msgid "File"
-msgstr "Fichier"
 
 msgid "Save environment"
 msgstr "Sauvegarder la configuration"
@@ -833,9 +885,6 @@ msgstr "Site Internet : "
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 msgid "Name"
 msgstr "Nom"
-
-msgid "Author"
-msgstr "Développeur"
 
 msgid "About"
 msgstr "À propos"
@@ -985,6 +1034,12 @@ msgstr "Voulez vous le remplacer par"
 
 msgid "Output location error"
 msgstr "Erreur de répertoire de création"
+
+msgid "Selected output file already exists "
+msgstr "Le fichier à créer existe déjà "
+
+msgid "Would you like to overwrite it?"
+msgstr "Voulez vous le remplacer ?"
 
 msgid "Checking for a new version available."
 msgstr "Recherche de mise à jour en cours..."

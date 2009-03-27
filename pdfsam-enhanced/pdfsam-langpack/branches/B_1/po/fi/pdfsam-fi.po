@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-03-25 18:57+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -409,8 +409,8 @@ msgstr "Pdf-alatunnistetiedosto:"
 msgid "Select at least one cover or one footer"
 msgstr "Valitse vähintään yksi kansilehti tai alatunniste"
 
-msgid "Cover and Footer"
-msgstr "Kansilehti ja alatunniste"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
 msgid "Cover And Footer section loaded."
@@ -748,6 +748,75 @@ msgstr "Komennon vahvistaminen palautti tyhjän arvon."
 msgid "Command executed."
 msgstr "Toiminto suoritettu."
 
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
+msgid "File name"
+msgstr "Tiedostonimi"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
+msgid "Author"
+msgstr "Tekijä"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:217
+msgid "File"
+msgstr "Tiedosto"
+
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
+msgid "Close"
+msgstr "Sulje"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "Kopioi"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:526
@@ -802,12 +871,6 @@ msgstr "Tulostustiedoston PDF-versio:"
 
 msgid "Same as input document"
 msgstr "Sama kuin syöttötiedosto"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-msgid "File name"
-msgstr "Tiedostonimi"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
@@ -996,10 +1059,6 @@ msgstr "Ei voitu ladata laajennusta, joka ei ole JPanelin alaluokka."
 msgid "Error loading class "
 msgstr "Luokan lataaminen epäonnistui "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "Kopioi"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
 msgstr "Valitse kaikki"
@@ -1008,11 +1067,6 @@ msgstr "Valitse kaikki"
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:121
 msgid "Save log"
 msgstr "Tallenna loki"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:217
-msgid "File"
-msgstr "Tiedosto"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
@@ -1108,11 +1162,6 @@ msgstr "Verkkosivu: "
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Name"
 msgstr "Nimi"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "Tekijä"
 
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -1286,6 +1335,12 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Tarkistetaan, onko uudempaa versiota saatavilla."
 
@@ -1310,6 +1365,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Polku"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Kansilehti ja alatunniste"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
@@ -1412,10 +1470,6 @@ msgstr "Polku"
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:140
 #~ msgid "Installed plugins:"
 #~ msgstr "Asennetut liitännäiset:"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
-#~ msgid "Close"
-#~ msgstr "Sulje"
 
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
 #~ msgid "Browse filesystem for a destination file"

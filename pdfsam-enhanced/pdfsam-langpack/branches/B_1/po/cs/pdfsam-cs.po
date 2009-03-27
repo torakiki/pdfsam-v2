@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -263,8 +263,8 @@ msgstr "PDF soubor zápatí:"
 msgid "Select at least one cover or one footer"
 msgstr "Vyber nejméně jeden titulek nebo jedno zápatí."
 
-msgid "Cover and Footer"
-msgstr "Titulek a zápatí"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Modul Titulek a zápatí nahrán."
@@ -556,6 +556,66 @@ msgstr "Ověření příkazu vrací prázdnou hodnotu."
 msgid "Command executed."
 msgstr "Příkaz proveden."
 
+msgid "File name"
+msgstr "Jméno souboru"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Soubor"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopírovat"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Spustit"
 
@@ -579,9 +639,6 @@ msgstr "Verze výstupního pdf dokumentu:"
 
 msgid "Same as input document"
 msgstr "Stejná jako vstupní dokument"
-
-msgid "File name"
-msgstr "Jméno souboru"
 
 msgid "Path"
 msgstr "Umístění"
@@ -716,17 +773,11 @@ msgstr "Nelze nahrát modul, který není JPabel subclass."
 msgid "Error loading class "
 msgstr "Chyba při nahrávání třídy "
 
-msgid "Copy"
-msgstr "Kopírovat"
-
 msgid "Select all"
 msgstr "Vybrat vše"
 
 msgid "Save log"
 msgstr "Uložit záznam"
-
-msgid "File"
-msgstr "Soubor"
 
 msgid "Save environment"
 msgstr "Uložit prostředí"
@@ -799,9 +850,6 @@ msgstr "Web: "
 
 msgid "Name"
 msgstr "Název"
-
-msgid "Author"
-msgstr "Autor"
 
 msgid "About"
 msgstr ""
@@ -946,6 +994,12 @@ msgstr "Přejete si ji změnit na"
 msgid "Output location error"
 msgstr "Chyba výstupního umístění"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Zjištění dostupnosti nové verze."
 
@@ -967,6 +1021,9 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Umístění"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Titulek a zápatí"
 
 #~ msgid "Destination output file:"
 #~ msgstr "Umístění výstupního souboru"

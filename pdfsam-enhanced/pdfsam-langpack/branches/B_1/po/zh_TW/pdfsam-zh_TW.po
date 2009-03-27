@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-12-07 15:32+0000\n"
+"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"PO-Revision-Date: 2009-01-27 15:09+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 14:48+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -124,7 +124,7 @@ msgid "Split at this size"
 msgstr "依指定的檔案大小分割"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "依書籤層級分割"
 
 msgid "Burst"
 msgstr "細分"
@@ -144,13 +144,11 @@ msgstr "分割出文件的奇數頁"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "分割出這些頁碼後面的部份（頁碼1-頁碼2-頁碼3...）"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "將文件（約略地）分割成指定大小的檔案"
+msgstr "將文件分割為指定的檔案大小（約略的）"
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "將文件（約略地）分割成指定大小的檔案"
+msgstr "依指定層級的書籤所涵蓋的頁數來分割文件"
 
 msgid "Destination folder"
 msgstr "目的地資料夾"
@@ -189,20 +187,17 @@ msgstr "輸出檔案名稱前綴"
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
-msgstr ""
-"若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行變"
-"數替換。"
+msgstr "若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行變數替換。"
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
-"例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"若不包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將產生"
-"舊式的輸出檔名稱。"
+"若不包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將產生舊式的輸出檔名稱。"
 
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
@@ -235,26 +230,23 @@ msgstr "分割已完成。"
 msgid "Invalid unit: "
 msgstr "無效的單位： "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "第一個PDF文件："
+msgstr "自文件填滿"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "取得書籤的最大層級"
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "作為封面的PDF檔："
+msgstr "封面 PDF 檔"
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "作為封底的PDF檔："
+msgstr "封底 PDF 檔"
 
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
 
-msgid "Cover and Footer"
-msgstr "封面與封底"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "新增封面和封底已完成。"
@@ -274,7 +266,6 @@ msgstr "使用者密碼："
 msgid "User password (Max 32 chars long)"
 msgstr "使用者密碼（最多32個字元）"
 
-#, fuzzy
 msgid "Encryption algorithm:"
 msgstr "加密演算法："
 
@@ -317,8 +308,7 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴"
-"_20070517_113423471.pdf\"。"
+"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴_20070517_113423471.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -530,6 +520,66 @@ msgstr "指令檢查回傳一個空的值。"
 msgid "Command executed."
 msgstr "指令已執行。"
 
+msgid "File name"
+msgstr "檔案名稱"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "開發者"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "檔案"
+
+msgid "Close"
+msgstr "關閉"
+
+msgid "Copy"
+msgstr "複製"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "執行"
 
@@ -553,9 +603,6 @@ msgstr "輸出文件的 PDF 版本："
 
 msgid "Same as input document"
 msgstr "與輸入文件相同"
-
-msgid "File name"
-msgstr "檔案名稱"
 
 msgid "Path"
 msgstr "路徑"
@@ -688,17 +735,11 @@ msgstr "無法載入非 JPanel 子類別的增效模組。"
 msgid "Error loading class "
 msgstr "無法載入類別 "
 
-msgid "Copy"
-msgstr "複製"
-
 msgid "Select all"
 msgstr "全部選取"
 
 msgid "Save log"
 msgstr "儲存紀錄"
-
-msgid "File"
-msgstr "檔案"
 
 msgid "Save environment"
 msgstr "儲存環境變數"
@@ -771,9 +812,6 @@ msgstr "網站： "
 
 msgid "Name"
 msgstr "程式名稱"
-
-msgid "Author"
-msgstr "開發者"
 
 msgid "About"
 msgstr "關於"
@@ -859,7 +897,8 @@ msgstr "請選取一個之前儲存的環境變數檔，啟動時會自動載入
 msgid "Default working directory"
 msgstr "預設的工作目錄"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr "請選擇一個用以儲存或載入文件的預設目錄"
 
 msgid "Save"
@@ -913,6 +952,12 @@ msgstr "您是否要更改至"
 msgid "Output location error"
 msgstr "輸出檔位置錯誤"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "正在確認是否有新版本可用。"
 
@@ -954,8 +999,7 @@ msgstr "貼上"
 #~ msgid ""
 #~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
 #~ "oldstyle output file names."
-#~ msgstr ""
-#~ "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
+#~ msgstr "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
 
 #~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 #~ msgstr "可用的變數：[CURRENTPAGE], [TIMESTAMP], [BASENAME]。"
@@ -968,6 +1012,12 @@ msgstr "貼上"
 
 #~ msgid "Destination output directory:"
 #~ msgstr "輸出檔存放路徑："
+
+#~ msgid "Cover pdf file:"
+#~ msgstr "作為封面的PDF檔："
+
+#~ msgid "Footer pdf file:"
+#~ msgstr "作為封底的PDF檔："
 
 #~ msgid "Browse filesystem for a cover file"
 #~ msgstr "在電腦裡選擇一個檔案作為封面"
@@ -987,6 +1037,9 @@ msgstr "貼上"
 #~ msgid "Select a PDF file to encrypt"
 #~ msgstr "請選取要加密的PDF檔"
 
+#~ msgid "Encryption angorithm:"
+#~ msgstr "加密演算法："
+
 #~ msgid "Encrypt options:"
 #~ msgstr "加密選項："
 
@@ -998,6 +1051,9 @@ msgstr "貼上"
 
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "在電腦中選取要交替合併的第二個檔案"
+
+#~ msgid "First pdf document:"
+#~ msgstr "第一個PDF文件："
 
 #~ msgid "Select a PDF file to split"
 #~ msgstr "請選取要分割的PDF檔"
@@ -1022,9 +1078,6 @@ msgstr "貼上"
 
 #~ msgid "Installed plugins:"
 #~ msgstr "已安裝的插件："
-
-#~ msgid "Close"
-#~ msgstr "關閉"
 
 #~ msgid "Check the box if you want a compressed output file."
 #~ msgstr "若您想要一個壓縮過的輸出檔，請勾選此選項。"

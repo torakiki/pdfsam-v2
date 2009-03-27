@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-18 18:07+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-12-20 09:13+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -246,8 +246,8 @@ msgstr "PDF datoteka za nogo"
 msgid "Select at least one cover or one footer"
 msgstr "Izberi vsaj eno platnico ali nogo"
 
-msgid "Cover and Footer"
-msgstr "Naslovnica in noga"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Naslovnica in noga naložena"
@@ -523,6 +523,66 @@ msgstr "Napaka ukaza, ni podatka"
 msgid "Command executed."
 msgstr "Zahteva izvršena"
 
+msgid "File name"
+msgstr "Ime datoteke"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Avtor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Datoteka"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopiraj"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "START"
 
@@ -546,9 +606,6 @@ msgstr "Verzija PDF"
 
 msgid "Same as input document"
 msgstr "Isto kot izbrana datoteka"
-
-msgid "File name"
-msgstr "Ime datoteke"
 
 msgid "Path"
 msgstr "Pot"
@@ -681,17 +738,11 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-msgid "Copy"
-msgstr "Kopiraj"
-
 msgid "Select all"
 msgstr "Izberi vse"
 
 msgid "Save log"
 msgstr "Shrani dnevnik"
-
-msgid "File"
-msgstr "Datoteka"
 
 msgid "Save environment"
 msgstr "Shrani okolje"
@@ -764,9 +815,6 @@ msgstr "Spletna stran: "
 
 msgid "Name"
 msgstr "Ime"
-
-msgid "Author"
-msgstr "Avtor"
 
 msgid "About"
 msgstr "O programu"
@@ -906,6 +954,12 @@ msgstr "Ali želiš spremeniti v"
 msgid "Output location error"
 msgstr "Izhodna napaka"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Preveri posodobitve"
 
@@ -926,3 +980,6 @@ msgstr "Izreži"
 
 msgid "Paste"
 msgstr "Prilepi"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Naslovnica in noga"

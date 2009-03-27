@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2009-01-17 12:54+0000\n"
 "Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -39,8 +39,7 @@ msgid "Checked"
 msgstr "Zaškrtnuté"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr ""
-"Použiť tento typ zlúčenia pre pdf dokumenty, ktoré obsahujú formuláre"
+msgstr "Použiť tento typ zlúčenia pre pdf dokumenty, ktoré obsahujú formuláre"
 
 msgid "Note"
 msgstr "Poznámka"
@@ -62,8 +61,7 @@ msgstr "Nájdite, alebo zadajte plnú cestu do cie+ového výstupného súboru."
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr ""
-"Zvoľte túto možnosť, pokiaľ si želáte prepísať súbor, ak už existuje."
+msgstr "Zvoľte túto možnosť, pokiaľ si želáte prepísať súbor, ak už existuje."
 
 msgid "Check the box if you want compressed output files."
 msgstr "Zašktnite, ak si želáte zkomprimovať výstupné súbory."
@@ -200,10 +198,8 @@ msgid ""
 "performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generuje prefix_FileName_005.pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
@@ -256,8 +252,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "Vyberte aspoň jedn prvú stranu, alebo jednu poslednú stranu"
 
-msgid "Cover and Footer"
-msgstr "Prvá a posledná strana"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Prvá a posledná strana nahratej sekcie."
@@ -535,6 +531,66 @@ msgstr "Overovanie príkazu vrátilo prázdnu hodnotu."
 msgid "Command executed."
 msgstr "Príkaz spustený."
 
+msgid "File name"
+msgstr "Názov súboru"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Súbor"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopírovať"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Spustiť"
 
@@ -558,9 +614,6 @@ msgstr "Verzia výstupného pdf dokumentu:"
 
 msgid "Same as input document"
 msgstr "Rovnaký ako vstupný dokument"
-
-msgid "File name"
-msgstr "Názov súboru"
 
 msgid "Path"
 msgstr "Cesta"
@@ -660,8 +713,7 @@ msgid "Setting logging level..."
 msgstr "Nastavenie prihlasovacej úrovne..."
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
+msgstr "Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
 
 msgid "Logging level set to "
 msgstr "Záznamová úroveň nastavená na "
@@ -696,17 +748,11 @@ msgstr "Nemôžem nahrať plugin, ktorý nie je JPabel subclass."
 msgid "Error loading class "
 msgstr "Chyba pri nahrávaní triedy "
 
-msgid "Copy"
-msgstr "Kopírovať"
-
 msgid "Select all"
 msgstr "Vybrať všetko"
 
 msgid "Save log"
 msgstr "Uložiť záznam"
-
-msgid "File"
-msgstr "Súbor"
 
 msgid "Save environment"
 msgstr "Uložiť prostredie"
@@ -779,9 +825,6 @@ msgstr "Web stránka: "
 
 msgid "Name"
 msgstr "Meno"
-
-msgid "Author"
-msgstr "Autor"
 
 msgid "About"
 msgstr "O aplikácii"
@@ -870,8 +913,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Predvolený pracovný priečinok"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Vyberte priečinok, v ktorom budú dokumenty ukladané a nahrávané"
 
 msgid "Save"
@@ -925,6 +967,12 @@ msgstr "Želáte si to zmeniť na"
 msgid "Output location error"
 msgstr "Chyba výstupného umiestnenia"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Kontrolujem nové verzie."
 
@@ -945,3 +993,6 @@ msgstr "Vystrihnúť"
 
 msgid "Paste"
 msgstr "Prilepiť"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Prvá a posledná strana"

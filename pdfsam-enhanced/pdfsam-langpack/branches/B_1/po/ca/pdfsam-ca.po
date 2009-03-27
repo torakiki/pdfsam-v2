@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -270,8 +270,8 @@ msgstr "Fitxer pdf del peu de pàgina:"
 msgid "Select at least one cover or one footer"
 msgstr "Selecciona com a mínim una pàgina de coberta i un peu de pàgina"
 
-msgid "Cover and Footer"
-msgstr "Pàgina de coberta i peu de pàgina"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Secció de pàgina de coberta i peu de pàgina carregats"
@@ -564,6 +564,66 @@ msgstr "L'ordre de validació ha tornat un valor nul."
 msgid "Command executed."
 msgstr "Ordre executada."
 
+msgid "File name"
+msgstr "Nom del fitxer"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor/a"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Fitxer"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Copia"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Executa"
 
@@ -587,9 +647,6 @@ msgstr "Versió pdf de document de sortida:"
 
 msgid "Same as input document"
 msgstr "Igual que el document d'entrada"
-
-msgid "File name"
-msgstr "Nom del fitxer"
 
 msgid "Path"
 msgstr "Camí"
@@ -726,17 +783,11 @@ msgstr "No s'ha pogut carregar un connector que no és una subclasse de JPanel."
 msgid "Error loading class "
 msgstr "Error en carregar una classe "
 
-msgid "Copy"
-msgstr "Copia"
-
 msgid "Select all"
 msgstr "Selecciona-ho tot"
 
 msgid "Save log"
 msgstr "Desa el registre"
-
-msgid "File"
-msgstr "Fitxer"
 
 msgid "Save environment"
 msgstr "Desa l'entorn"
@@ -809,9 +860,6 @@ msgstr "Lloc web: "
 
 msgid "Name"
 msgstr "Nom"
-
-msgid "Author"
-msgstr "Autor/a"
 
 msgid "About"
 msgstr "Quant a"
@@ -957,6 +1005,12 @@ msgstr "Voleu canviar-ho a"
 msgid "Output location error"
 msgstr "Error en la ubicació de sortida"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Comprovant si hi ha noves versions disponibles."
 
@@ -977,6 +1031,9 @@ msgstr "Retalla"
 
 msgid "Paste"
 msgstr "Enganxa"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Pàgina de coberta i peu de pàgina"
 
 #~ msgid "Destination output file:"
 #~ msgstr "Fitxer de destí:"

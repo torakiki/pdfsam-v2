@@ -7,21 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
-"PO-Revision-Date: 2008-04-26 10:16+0000\n"
-"Last-Translator: carson <Unknown>\n"
+"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"PO-Revision-Date: 2009-02-09 23:41+0000\n"
+"Last-Translator: Joergenr <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Merge options"
-msgstr "Fletteindstillinger:"
+msgstr "Egenskaber for fletning"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
@@ -58,10 +55,8 @@ msgstr "Anvend denne flettetype for pdf-dokumenter der indeholder formularer"
 msgid "Note"
 msgstr "Bemærkning"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "Ved denne indstilling hentes dokumentet fuldstændigt ind i hukommelsen"
+msgstr "Ved denne indstilling indlæses dokumentet fuldstændigt i hukommelsen"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
@@ -96,29 +91,17 @@ msgstr "Destinationsfil"
 msgid "Error: "
 msgstr "Fejl: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:445
 msgid "Browse or enter the full path to the destination output file."
-msgstr "Gennemse eller tast den fulde sti til destinationsfilen."
+msgstr "Gennemse eller indtast den fulde sti til destinationsfilen."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
-"Afkryds boks hvis du ønsker at overskrive destinationsfilen, hvis den "
+"Afkryds boksen hvis du ønsker at overskrive destinationsfilen, hvis den "
 "allerede eksisterer."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
-#, fuzzy
 msgid "Check the box if you want compressed output files."
-msgstr ""
-"Afkryds boks hvis du ønsker at overskrive destinationsfilen, hvis den "
-"allerede eksisterer."
+msgstr "Afkryds boksen hvis du ønsker at komprimere destinationsfilen."
 
 msgid "PDF version 1.5 or above."
 msgstr "PDF version 1.5 eller højere"
@@ -126,29 +109,17 @@ msgstr "PDF version 1.5 eller højere"
 msgid "Set the pdf version of the ouput document."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
 msgid "Please wait while all files are processed.."
-msgstr "Vent venligst mens der arbejdes på alle filer.."
+msgstr "Vent venligst mens alle filer behandles.."
 
 msgid "Found a password for input file."
-msgstr ""
+msgstr "Fandt en adgangskode til kildefil."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Andet pdf-dokument:"
+msgstr "Vælg mindst ét pdf-dokument."
 
 msgid "Warning"
-msgstr ""
+msgstr "Advarsel"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
@@ -158,12 +129,11 @@ msgstr "Udfør pdf-fletning"
 msgid "Merge/Extract"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
 msgid "Merge section loaded."
-msgstr "Flettesektion hentet."
+msgstr "Flettesektion indlæst."
 
 msgid "Export as xml"
-msgstr ""
+msgstr "Eksporter som xml"
 
 msgid "Unable to save xml file."
 msgstr "Kunne ikke gemme xml fil."
@@ -175,7 +145,7 @@ msgid "File xml saved."
 msgstr "Xml fil gemt."
 
 msgid "Error saving xml file, output file is null."
-msgstr ""
+msgstr "Fejl under gemning af xml-fil, destinationsfil er null."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
@@ -187,12 +157,8 @@ msgstr "Opdelingsindstillinger"
 msgid "Burst (split into single pages)"
 msgstr "Opdel (i enkelt sider)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:198
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:197
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
 msgid "Split every \"n\" pages"
-msgstr "Opdel hver »n« sider"
+msgstr "Opdel hver »n« side"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:206
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
@@ -215,65 +181,40 @@ msgstr "Opdel ved ulige sider"
 msgid "Split after these pages"
 msgstr "Opdel efter disse sider"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:211
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-#, fuzzy
 msgid "Split at this size"
-msgstr "Opdel efter disse sider"
+msgstr "Opdel ved denne størrelse"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Opdel ved bogmærkeniveau"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 msgid "Burst"
 msgstr "Opdel"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 msgid "Explode the pdf document into single pages"
-msgstr "Opdel pdf-dokument i enkel sider"
+msgstr "Opdel pdf-dokumentet i enkel sider"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:222
 msgid "Split the document every \"n\" pages"
-msgstr "Opdel dokument hver »n« sider"
+msgstr "Opdel dokumentet hver »n« side"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 msgid "Split the document every even page"
-msgstr "Opdel dokument ved lige sider"
+msgstr "Opdel dokumentet ved lige sider"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
 msgid "Split the document every odd page"
-msgstr "Opdel dokument ved ulige sider"
+msgstr "Opdel dokumentet ved ulige sider"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "Opdel dokument efter sidenumre (num1-num2-num3..)"
+msgstr "Opdel dokumentet efter sidenumre (num1-num2-num3..)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Opdel dokument ved lige sider"
+msgstr "Opdel dokumentet i filer af en given størrelse (cirka)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Opdel dokument ved lige sider"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#, fuzzy
 msgid "Destination folder"
-msgstr "Destinationsmappe:"
+msgstr "Destinationsmappe"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
@@ -321,12 +262,8 @@ msgstr ""
 "Afkryds denne boks hvis du ønsker at overskrive destinationsfilerne, hvis de "
 "allerede eksisterer."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output options"
-msgstr "Destinationsindstillinger:"
+msgstr "Output-indstillinger"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
@@ -340,58 +277,42 @@ msgstr "Præfiks for destinationsfilnavn:"
 msgid "Output files prefix"
 msgstr "Præfiks for destinationsfil"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-#, fuzzy
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
-"Hvis den indeholder »[CURRENTPAGE]« eller »[TIMESTAMP]« så udfører den "
-"variabel erstatning."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Eventuel præfiks_[BASENAME]_[CURRENTPAGE] giver præfiks_Filnavn_005.pdf"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Hvis den ikke indeholder »[CURRENTPAGE]« eller »[TIMESTAMP]« oprettes "
-"tidligere destinationsfilnavne."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-#, fuzzy
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Tilgængelige variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgstr ""
+"Tilgængelige variabler [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
-msgstr ""
+msgstr "Ugyldig opdelingsstørrelse"
 
 msgid "The lowest available pdf version is "
 msgstr "Den lavest tilgængelige PDF version er "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Du valgte en lavere output pdf-version. ønsker du at fortsætte?"
+
+msgid "Pdf version conflict"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
-msgid "Pdf version conflict"
-msgstr "Omdan dette dokument"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Andet pdf-dokument:"
+msgstr "Vælg et pdf-dokument."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -401,65 +322,50 @@ msgstr "Opdel valgt fil"
 msgid "Split"
 msgstr "Opdel"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
 msgid "Split section loaded."
-msgstr "Opdelt sektion hentet."
+msgstr "Opdelsektion indlæst."
 
 msgid "Invalid unit: "
-msgstr ""
+msgstr "Ugyldig enhed: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#, fuzzy
 msgid "Fill from document"
-msgstr "Første pdf-dokument:"
+msgstr "Hent fra dokument"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "Front pdf-fil:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "Sidefod pdf-fil:"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
 
-msgid "Cover and Footer"
+msgid "Frontpage and Addendum"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
-#, fuzzy
 msgid "Cover And Footer section loaded."
-msgstr "Front og sidefod sektion hentet."
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Krypteringsindstillinger:"
+msgstr "Krypteringsindstillinger"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
 msgstr "Adgangskode ejer:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:210
 msgid "Owner password (Max 32 chars long)"
-msgstr "Adgangskode ejer (maks 32 karakterer lang)"
+msgstr "Adgangskode ejer (maks 32 tegn lang)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
 msgid "User password:"
 msgstr "Adgangskode bruger:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
 msgid "User password (Max 32 chars long)"
-msgstr "Adgangskode bruger (maks 32 karakterer lang)"
+msgstr "Adgangskode bruger (maks 32 tegn lang)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#, fuzzy
 msgid "Encryption algorithm:"
 msgstr "Krypteringsalgoritme:"
 
@@ -479,9 +385,8 @@ msgstr "Udskriv i lav kvalitet"
 msgid "Copy or extract"
 msgstr "Kopier eller udtræk"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
 msgid "Modify"
-msgstr "Modificer"
+msgstr "Ændr"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
 msgid "Add or modify text annotations"
@@ -499,17 +404,12 @@ msgstr "Udtræk til brug for tilgængelighedsudvikling"
 msgid "Manipulate pages and add bookmarks"
 msgstr "Ændre sider og tilføje bogmærker"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-#, fuzzy
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
-"Afkryds denne boks hvis du ønsker at overskrive destinationsfilerne, hvis de "
-"allerede eksisterer."
+"Afkryds boksen hvis du ønsker at komprimere destinationsfiler (Pdf version "
+"1.5 eller højere)."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
@@ -535,118 +435,86 @@ msgstr ""
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "Tilgængelige variabler: [TIMESTAMP], [BASENAME]."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Encrypt selected files"
-msgstr "Krypter valgt fil"
+msgstr "Kryptér valgte filer"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt"
-msgstr "Krypteringsindstillinger:"
+msgstr "Kryptér"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
 msgid "Encrypt section loaded."
-msgstr "Krypteret sektion hentet."
+msgstr "Krypteringssektion indlæst."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Krypter valgt fil"
+msgstr "Dekryptér valgte filer"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Decrypt"
-msgstr "Krypteringsindstillinger:"
+msgstr "Dekryptér"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Krypteret sektion hentet."
+msgstr "Dekrypteringssektion indlæst."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Mix options"
-msgstr "Opdelingsindstillinger"
+msgstr "Indstillinger for sammensætning"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Reverse first document"
-msgstr "Omdan dette dokument"
+msgstr "Første dokument bagfra"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Reverse second document"
-msgstr "Omdan dette dokument"
+msgstr "Andet dokument bagfra"
 
 msgid "Found a password for first file."
-msgstr ""
+msgstr "Fandt en adgangskode til første fil."
 
 msgid "Found a password for second file."
-msgstr ""
+msgstr "Fandt en adgangskode til anden fil."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select two pdf documents."
-msgstr "Andet pdf-dokument:"
+msgstr "Vælg venligst to pdf-dokumenter."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
-msgstr "Udfør alternativ pdf-mix"
+msgstr "Udfør alternativ pdf-sammensætning"
 
 msgid "Alternate Mix"
-msgstr ""
+msgstr "Alternativ sammensætning"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
 msgid "AlternateMix section loaded."
-msgstr "Alternativ mix-sektion hentet."
+msgstr "Alternativ mix-sektion indlæst."
 
 msgid "Unpack selected files"
-msgstr ""
+msgstr "Udpak valgte filer"
 
 msgid "Unpack"
-msgstr ""
+msgstr "Udpak"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Unpack section loaded."
-msgstr "Krypteret sektion hentet."
+msgstr "Udpakningssektion indlæst."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Opdelingsindstillinger"
+msgstr "Sæt visningsindstillinger"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Skjul menulinjen"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "Skjul værtøjslinjen"
 
 msgid "Hide user interface elements"
 msgstr ""
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Tilpas vinduet til sidestørrelsen"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Centrer på skærmen"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Vis dokumenttitel som vinduestitel"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Omdan dette dokument"
+msgstr "Pdf-version kræves:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Ingen sideskalering i udskriftsvinduet"
 
 msgid "Viewer layout:"
 msgstr ""
@@ -655,87 +523,71 @@ msgid "Viewer open mode:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Ingen fuldskærmstilstand"
 
 msgid "Direction:"
+msgstr "Retning:"
+
+msgid "Set options"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
-msgid "Set options"
-msgstr "Opdelingsindstillinger"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Krypter valgt fil"
+msgstr ""
 
 msgid "Left to right"
-msgstr ""
+msgstr "Venstre til højre"
 
 msgid "Right to left"
-msgstr ""
+msgstr "Højre til venstre"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
-#, fuzzy
 msgid "None"
-msgstr "Bemærkning"
+msgstr ""
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fuldskærm"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Bilag"
 
 msgid "Optional content group panel"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
-#, fuzzy
 msgid "Document outline"
-msgstr "PDF-dokumenter indeholder formularer"
+msgstr ""
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniaturebilleder"
 
 msgid "One page at a time"
-msgstr ""
+msgstr "En side af gangen"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Sider i én kolonne"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Sider i to kolonner (ulige til venstre)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Sider i to kolonner (ulige til højre)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "To sider ad gangen (ulige til venstre)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "To sider ad gangen (ulige til højre)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Viewer options"
-msgstr "Fletteindstillinger:"
+msgstr "Visningsindstillinger"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Krypteret sektion hentet."
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
 
 msgid "Confirm password saving"
-msgstr ""
+msgstr "Bekræft gemning af adgangskode"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
 msgid "Unknown action."
@@ -745,37 +597,26 @@ msgstr "Ukendt handling."
 msgid "Log saved."
 msgstr "Log gemt."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid " node environment loaded."
-msgstr " Hent indstillinger"
+msgstr ""
 
 msgid "Environment saved."
-msgstr ""
+msgstr "Miljø gemt."
 
 msgid "Error saving environment, output file is null."
-msgstr ""
+msgstr "Fejl under gemning af miljø, destinationsfil er null."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-#, fuzzy
 msgid "Error saving environment."
-msgstr "Gem indstillinger"
+msgstr "Fejl under gemning af miljø."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Environment loaded."
-msgstr "Krypteret sektion hentet."
+msgstr "Miljø indlæst."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid "Error loading environment."
-msgstr "Hent indstillinger"
+msgstr "Fejl under indlæsning af miljø."
 
 msgid "Error loading environment from input file. "
-msgstr ""
+msgstr "Fejl under indlæsning af miljø fra kildefil. "
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr ""
@@ -783,30 +624,86 @@ msgstr ""
 msgid "Table full"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-#, fuzzy
 msgid "Please wait while reading"
-msgstr "Vent venligst"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Selected file is not a pdf document."
-msgstr "Andet pdf-dokument:"
+msgstr "Den valgte fil er ikke et pdf-dokument."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid "Error loading "
-msgstr "Hent indstillinger "
+msgstr "Fejl ved indlæsning af "
 
 msgid "Command validation returned an empty value."
 msgstr ""
 
 msgid "Command executed."
+msgstr "Kommando udført."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
+msgid "File name"
+msgstr "Filnavn"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
+msgid "Author"
+msgstr "Udvikler"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Filer"
+
+# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
+msgid "Close"
+msgstr "Luk"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "Kopier"
+
+msgid "Error creating properties panel."
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
@@ -843,12 +740,8 @@ msgstr "Gennemse"
 msgid "Add"
 msgstr "Tilføj"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
 msgid "Compress output file/files"
-msgstr "Opret destinationsfil"
+msgstr "Komprimer destinationsfiler"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
@@ -862,23 +755,11 @@ msgstr "Overskriv hvis eksisterende"
 msgid "Don't preserve file order (fast load)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output document pdf version:"
-msgstr "Destinationsindstillinger:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Same as input document"
-msgstr "Andet pdf-dokument:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-msgid "File name"
-msgstr "Filnavn"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
@@ -892,10 +773,8 @@ msgstr "Sti"
 msgid "Pages"
 msgstr "Sider"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
-#, fuzzy
 msgid "Password"
-msgstr "Adgangskode bruger:"
+msgstr "Adgangskode"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
@@ -909,21 +788,20 @@ msgid "Page Selection"
 msgstr "Sideudvalg"
 
 msgid "Total pages of the document"
-msgstr ""
+msgstr "Totale antal sider i dokumentet"
 
 msgid "Password to open the document (if needed)"
-msgstr ""
+msgstr "Adgangskode til åbning af dokumentet (hvis nødvendigt)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version of the document"
-msgstr "Omdan dette dokument"
+msgstr "Dokumentets pdf-version"
 
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 "7,12-)"
 msgstr ""
+"Dobbeltklik for at angive sider du ønsker at flette (fx. : 2 eller alle "
+"eller 5-23 eller 2,5-7,12-)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
@@ -938,7 +816,7 @@ msgid "Remove a pdf from the list"
 msgstr "Fjern en pdf fra listen"
 
 msgid "(Canc)"
-msgstr ""
+msgstr "(Annuller)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
@@ -952,15 +830,11 @@ msgstr "Fjern"
 msgid "Reload"
 msgstr "Genindlæs"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:353
-#, fuzzy
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Fejl: Ikke i stand til at finde filsti."
+msgstr "Fejl: Ikke i stand til at genindlæse de valgte filer."
 
 msgid "Unable to remove JList text "
-msgstr ""
+msgstr "Ikke i stand til at fjerne JList-tekst "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
@@ -970,14 +844,8 @@ msgstr ""
 msgid "File selected: "
 msgstr "Fil valgt: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:596
-#, fuzzy
 msgid "File reloaded: "
-msgstr "Fil valgt: "
+msgstr "Fil genindlæst: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
@@ -992,7 +860,7 @@ msgid "Move up selected pdf file"
 msgstr "Flyt valgt pdf-fil op"
 
 msgid "(Alt+ArrowUp)"
-msgstr ""
+msgstr "(Alt+Pil op)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
@@ -1007,19 +875,13 @@ msgid "Move down selected pdf file"
 msgstr "Flyt valgt pdf-fil ned"
 
 msgid "(Alt+ArrowDown)"
-msgstr ""
+msgstr "(Alt+Pil ned)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:297
 msgid "Clear"
-msgstr "Slet"
+msgstr "Ryd"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:298
 msgid "Remove every pdf file from the merge list"
-msgstr "Flyt alle pdf-filer fra flettelisten"
+msgstr "Fjern alle pdf-filer fra flettelisten"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
@@ -1034,13 +896,10 @@ msgid "Error: Unable to get the file path."
 msgstr "Fejl: Ikke i stand til at finde filsti."
 
 msgid "Unable to get the default environment informations."
-msgstr ""
+msgstr "Ikke i stand til at hente standard miljøinformationer."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
-#, fuzzy
 msgid "Setting look and feel..."
-msgstr "Se og føl"
+msgstr ""
 
 msgid "Setting logging level..."
 msgstr ""
@@ -1048,53 +907,38 @@ msgstr ""
 msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:143
-#, fuzzy
 msgid "Logging level set to "
-msgstr "Logniveau: "
+msgstr "Logniveau sat til "
 
 msgid "Unable to set logging level."
-msgstr ""
+msgstr "Ikke i stand til at sætte logniveau."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-#, fuzzy
 msgid "Error getting plugins directory."
-msgstr "Destinationsmappe"
+msgstr "Fejl under hentning af modulmappe."
 
 msgid "Cannot read plugins directory "
-msgstr ""
+msgstr "Kan ikke læse modulmappe "
 
 msgid "Plugins directory is null."
-msgstr ""
+msgstr "Modulmappe er null."
 
 msgid "Found zero or many jars in plugin directory "
-msgstr ""
+msgstr "Fandt ingen eller mange jars i modulmappe "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
-#, fuzzy
 msgid "Exception loading plugins."
-msgstr "Henter udvidelsesmoduler.."
+msgstr ""
 
 msgid "Cannot read plugin directory "
-msgstr ""
+msgstr "Kan ikke læse modulmappe "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
-#, fuzzy
 msgid " plugin loaded."
-msgstr " Opdelt sektion hentet."
+msgstr " modul indlæst."
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr ""
+msgstr "Ikke i stand til at indlæse et modul som ikke er JPanel subclass."
 
 msgid "Error loading class "
-msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "Kopier"
+msgstr "Fejl under indlæsning af class "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
@@ -1105,26 +949,14 @@ msgstr "Marker alt"
 msgid "Save log"
 msgstr "Gem log"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:217
-msgid "File"
-msgstr "Fil"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
 msgid "Save environment"
-msgstr "Gem indstillinger"
+msgstr "Gem miljø"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
 msgid "Load environment"
-msgstr "Hent indstillinger"
+msgstr "Indlæs miljø"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:237
 msgid "Exit"
-msgstr "Afslut programmet"
+msgstr "Afslut"
 
 msgid "Unable to initialize menu bar."
 msgstr ""
@@ -1132,28 +964,25 @@ msgstr ""
 msgid "started in "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
 msgid "Loading plugins.."
-msgstr "Henter udvidelsesmoduler.."
+msgstr "Indlæser moduler..."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
 msgid "Building menus.."
 msgstr "Opbygger menuer.."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
 msgid "Building buttons bar.."
-msgstr "Opbygger knapbjælke.."
+msgstr "Opbygger knaplinje.."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 msgid "Building status bar.."
-msgstr "Opbygger statusbjælke.."
+msgstr "Opbygger statuslinje.."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
 msgstr "Opbygger træ.."
 
 msgid "Loading default environment."
-msgstr ""
+msgstr "Indlæser standardmiljø."
 
 msgid "Error starting pdfsam."
 msgstr ""
@@ -1164,7 +993,7 @@ msgid "Clear log"
 msgstr "Ryd log"
 
 msgid "Unable to initialize button bar."
-msgstr ""
+msgstr "Kan ikke initialisere knaplinje."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
@@ -1176,7 +1005,7 @@ msgid "Language: "
 msgstr "Sprog: "
 
 msgid "Author: "
-msgstr "Forfatter: "
+msgstr "Udvikler: "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
@@ -1184,12 +1013,10 @@ msgid "Build date: "
 msgstr "Oprettelsesdato: "
 
 msgid "Java home: "
-msgstr ""
+msgstr "Java home: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-#, fuzzy
 msgid "Java version: "
-msgstr "Version: "
+msgstr "Java version: "
 
 msgid "Max memory: "
 msgstr "Maks hukommelse: "
@@ -1207,17 +1034,12 @@ msgstr "Netsted: "
 msgid "Name"
 msgstr "Navn"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "Udvikler"
-
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
 msgstr "Om"
 
 msgid "Unimplemented method for JInfoPanel"
-msgstr ""
+msgstr "Ikke implementeret metode for JInfoPanel"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:167
 msgid "Contributes: "
@@ -1227,16 +1049,11 @@ msgstr "Bidragydere: "
 msgid "Log level:"
 msgstr "Logniveau:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
-#, fuzzy
 msgid "Settings"
-msgstr "Opsætning "
+msgstr "Indstillinger"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:110
 msgid "Look and feel:"
-msgstr "Se og føl:"
+msgstr "Udseende:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:122
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:113
@@ -1251,31 +1068,23 @@ msgstr "Sprog:"
 msgid "Check for updates:"
 msgstr "Søg efter opdateringer:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
-msgstr "Hent standardindstillinger ved opstart:"
+msgstr "Indlæs standardindstillinger ved opstart:"
 
 msgid "Default working directory:"
-msgstr ""
+msgstr "Standard arbejdsmappe:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
-#, fuzzy
 msgid "Error getting default environment."
-msgstr "Hent standardindstillinger ved opstart:"
+msgstr "Fejl under hentning af standardmiljø."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-#, fuzzy
 msgid "Check now"
-msgstr "Afkrydset"
+msgstr "Kontroller nu"
 
 msgid "Play alert sounds"
-msgstr ""
+msgstr "Afspil lyd"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
 msgid "Settings "
-msgstr "Opsætning "
+msgstr "Indstillinger "
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
@@ -1287,17 +1096,12 @@ msgstr "Sprog"
 msgid "Set your preferred language (restart needed)"
 msgstr "Sæt dit ønskede sprog (genstart nødvendig)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
 msgid "Look and feel"
-msgstr "Se og føl"
+msgstr "Udseende"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
-msgstr ""
-"Vælg dit foretrukne se og føl og dit foretrukne tema (genstart nødvendig)"
+msgstr "Vælg det udseende og tema du foretrækker (genstart nødvendig)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
 msgid "Log level"
@@ -1314,25 +1118,22 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
-msgstr ""
+msgstr "Slå lyde til eller fra"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid "Default env."
-msgstr "Standardindstillinger"
+msgstr "Standardmiljø"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
-msgstr ""
-"Vælg en tidligere gemt indstillingsfil som automatisk skal indlæses ved "
-"opstart"
+msgstr "Vælg en tidligere gemt miljøfil som automatisk indlæses ved opstart"
 
 msgid "Default working directory"
-msgstr ""
+msgstr "Standard arbejdsmappe"
 
-msgid "Select a directory where documents will be saved and loaded by default"
-msgstr ""
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
+msgstr "Vælg en mappe hvorfra dokumenter som standard indlæses fra og til"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:241
@@ -1340,27 +1141,20 @@ msgstr ""
 msgid "Save"
 msgstr "Gem"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
-#, fuzzy
 msgid "Configuration saved."
-msgstr "Log gemt."
+msgstr "Indstillinger gemt."
 
 msgid "Unimplemented method for JSettingsPanel"
-msgstr ""
+msgstr "Ikke implementeret metode for JSettingsPanel"
 
 msgid "New version available: "
 msgstr "Ny version tilgængelig: "
 
 msgid "Plugins"
-msgstr ""
+msgstr "Moduler"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-#, fuzzy
 msgid "Error getting pdf version description."
-msgstr "Destinationsmappe"
+msgstr "Fejl ved hentning af pdf-versionsbeskrivelse."
 
 msgid "Version 1.2 (Acrobat 3)"
 msgstr "Version 1.2 (Acrobat 3)"
@@ -1381,25 +1175,31 @@ msgid "Version 1.7 (Acrobat 8)"
 msgstr "Version 1.7 (Acrobat 8)"
 
 msgid "Never"
-msgstr ""
+msgstr "Aldrig"
 
 msgid "pdfsam start up"
-msgstr ""
+msgstr "pdfsam opstart"
 
 msgid "Output file location is not correct"
-msgstr ""
+msgstr "Destinationsfil placering ikke korrekt"
 
 msgid "Would you like to change it to"
-msgstr ""
+msgstr "Ønsker du at ændre den til"
 
 msgid "Output location error"
 msgstr ""
 
-msgid "Checking for a new version available."
+msgid "Selected output file already exists "
 msgstr ""
 
-msgid "Error checking for a new version available."
+msgid "Would you like to overwrite it?"
 msgstr ""
+
+msgid "Checking for a new version available."
+msgstr "Checker om en ny version er tilgængelig."
+
+msgid "Error checking for a new version available."
+msgstr "Fejl ved check af om ny tilgængelig version."
 
 msgid "Unable to get latest available version"
 msgstr "Kunne ikke hente senest tilgængelige version"
@@ -1411,32 +1211,55 @@ msgid "No new version available."
 msgstr "Der er Ingen ny version tilgængelig."
 
 msgid "Cut"
-msgstr ""
+msgstr "Klip"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
-#, fuzzy
 msgid "Paste"
-msgstr "Sti"
+msgstr "Sæt ind"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-#~ msgid "Destination output file:"
-#~ msgstr "Destinationsfil:"
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
+#~ msgid "Merge options:"
+#~ msgstr "Fletteindstillinger:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
 #~ msgid "Split options:"
 #~ msgstr "Opdelingsindstillinger:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
-#~ msgid "Select an input file"
-#~ msgstr "Opret destinationsfil"
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
+#~ msgid "Destination folder:"
+#~ msgstr "Destinationsmappe:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
+#~ msgid "Output options:"
+#~ msgstr "Destinationsindstillinger:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
+#~ "substitution."
+#~ msgstr ""
+#~ "Hvis den indeholder »[CURRENTPAGE]« eller »[TIMESTAMP]« så udfører den "
+#~ "variabel erstatning."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
+#~ msgid ""
+#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
+#~ "oldstyle output file names."
+#~ msgstr ""
+#~ "Hvis den ikke indeholder »[CURRENTPAGE]« eller »[TIMESTAMP]« oprettes "
+#~ "tidligere destinationsfilnavne."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
+#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+#~ msgstr "Tilgængelige variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
@@ -1453,6 +1276,14 @@ msgstr "Sti"
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
 #~ msgid "Destination output directory:"
 #~ msgstr "Destinationsmappe:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
+#~ msgid "Cover pdf file:"
+#~ msgstr "Front pdf-fil:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
+#~ msgid "Footer pdf file:"
+#~ msgstr "Sidefod pdf-fil:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
 #~ msgid "Browse filesystem for a cover file"
@@ -1480,6 +1311,20 @@ msgstr "Sti"
 #~ msgid "Select a PDF file to encrypt"
 #~ msgstr "Vælg en pdf-fil som ønskes krypteret"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
+#~ msgid "Encryption angorithm:"
+#~ msgstr "Krypteringsalgoritme:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
+#~ msgid "Encrypt options:"
+#~ msgstr "Krypteringsindstillinger:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
+#~ msgid "Destination output file:"
+#~ msgstr "Destinationsfil:"
+
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
 #~ msgid "Browse filesystem for the first file to mix"
 #~ msgstr "Gennemse filsystem for den første fil til fletning"
@@ -1487,6 +1332,10 @@ msgstr "Sti"
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
 #~ msgid "Browse filesystem for the second file to mix"
 #~ msgstr "Gennemse filsystem for den anden fil til fletning"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
+#~ msgid "First pdf document:"
+#~ msgstr "Første pdf-dokument:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
@@ -1525,10 +1374,6 @@ msgstr "Sti"
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:140
 #~ msgid "Installed plugins:"
 #~ msgstr "Installerede udvidelsesmoduller:"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
-#~ msgid "Close"
-#~ msgstr "Luk"
 
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
 #~ msgid "Browse filesystem for a destination file"

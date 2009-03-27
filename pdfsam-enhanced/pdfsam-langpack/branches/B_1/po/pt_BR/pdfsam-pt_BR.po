@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2009-01-07 18:34+0000\n"
 "Last-Translator: Waldir Leoncio <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,16 +199,14 @@ msgstr ""
 "Se contêm \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" , processar "
 "a substituição de variáveis"
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ex: prefixo_[BASENAME]_[CURRENTPAGE] gera prefixo_NomeDoArquivo_005.pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
-msgstr ""
-"Se não contêm \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" ,"
+msgstr "Se não contêm \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" ,"
 
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
@@ -258,8 +256,8 @@ msgstr "rodapé do arquivo pdf"
 msgid "Select at least one cover or one footer"
 msgstr "Selecione ao menos uma capa ou um rodapé"
 
-msgid "Cover and Footer"
-msgstr "Capa e Rodapé"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Seção Capa e Rodapé carregada."
@@ -538,6 +536,66 @@ msgstr "Validação de comando retornou um valor vazio."
 msgid "Command executed."
 msgstr "Comando executado."
 
+msgid "File name"
+msgstr "Nome de arquivo"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Arquivo"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Executar"
 
@@ -561,9 +619,6 @@ msgstr "Versão pdf do documento de saída:"
 
 msgid "Same as input document"
 msgstr "Mesmo que documento de entrada"
-
-msgid "File name"
-msgstr "Nome de arquivo"
 
 msgid "Path"
 msgstr "Caminho"
@@ -695,23 +750,16 @@ msgid " plugin loaded."
 msgstr " plugin carregado."
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr ""
-"Não é possível carregar um plugin que não é uma sub-classe de JPanel."
+msgstr "Não é possível carregar um plugin que não é uma sub-classe de JPanel."
 
 msgid "Error loading class "
 msgstr "Erro carregando classes "
-
-msgid "Copy"
-msgstr "Copiar"
 
 msgid "Select all"
 msgstr "Selecionar tudo"
 
 msgid "Save log"
 msgstr "Salvar log"
-
-msgid "File"
-msgstr "Arquivo"
 
 msgid "Save environment"
 msgstr "Salvar ambiente"
@@ -784,9 +832,6 @@ msgstr "Website: "
 
 msgid "Name"
 msgstr "Nome"
-
-msgid "Author"
-msgstr "Autor"
 
 msgid "About"
 msgstr "Sobre"
@@ -874,10 +919,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Diretório padrão"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
-msgstr ""
-"Selecione o diretório onde os arquivos serão salvos e lidos por padrão"
+msgid "Select a directory where documents will be saved and loaded by default"
+msgstr "Selecione o diretório onde os arquivos serão salvos e lidos por padrão"
 
 msgid "Save"
 msgstr "Salvar"
@@ -930,6 +973,12 @@ msgstr "Você gostaria de alterá-lo para"
 msgid "Output location error"
 msgstr "Erro de local saída"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Verificando se há uma versão nova disponível."
 
@@ -951,6 +1000,9 @@ msgstr "Recortar"
 msgid "Paste"
 msgstr "Colar"
 
+#~ msgid "Cover and Footer"
+#~ msgstr "Capa e Rodapé"
+
 #~ msgid "Merge options:"
 #~ msgstr "Opções de mesclagem:"
 
@@ -970,8 +1022,8 @@ msgstr "Colar"
 #~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
 #~ "substitution."
 #~ msgstr ""
-#~ "Se possuir \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\" ele realiza a substituição "
-#~ "de variável."
+#~ "Se possuir \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\" ele realiza a "
+#~ "substituição de variável."
 
 #~ msgid ""
 #~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "

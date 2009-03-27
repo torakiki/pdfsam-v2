@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-09-11 11:48+0000\n"
 "Last-Translator: Сергій Дубик <dubyk@library.lviv.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr ""
 
-msgid "Cover and Footer"
+msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
@@ -527,6 +527,66 @@ msgstr ""
 msgid "Command executed."
 msgstr ""
 
+msgid "File name"
+msgstr ""
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr ""
 
@@ -549,9 +609,6 @@ msgid "Output document pdf version:"
 msgstr ""
 
 msgid "Same as input document"
-msgstr ""
-
-msgid "File name"
 msgstr ""
 
 msgid "Path"
@@ -685,16 +742,10 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-msgid "Copy"
-msgstr ""
-
 msgid "Select all"
 msgstr ""
 
 msgid "Save log"
-msgstr ""
-
-msgid "File"
 msgstr ""
 
 msgid "Save environment"
@@ -767,9 +818,6 @@ msgid "Website: "
 msgstr ""
 
 msgid "Name"
-msgstr ""
-
-msgid "Author"
 msgstr ""
 
 msgid "About"
@@ -908,6 +956,12 @@ msgid "Would you like to change it to"
 msgstr "Чи хочете Ви змінити це"
 
 msgid "Output location error"
+msgstr ""
+
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
 msgstr ""
 
 msgid "Checking for a new version available."

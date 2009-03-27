@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
-"PO-Revision-Date: 2009-01-14 09:58+0000\n"
+"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"PO-Revision-Date: 2009-02-25 15:49+0000\n"
 "Last-Translator: G.J. Werler <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -330,27 +330,30 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"Wanneer het geen \"[CURRENTPAGE]\", \"[TIMESTAMP]\" of \"[FILENUMBER]\" "
+"bevat worden bestandsnamen op de oude manier gegenereerd."
 
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr ""
+"Beschikbare variabelen: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
-msgstr "Ongeldige splitsingsgroote"
+msgstr "Ongeldige splitsingsgrootte"
 
 msgid "The lowest available pdf version is "
 msgstr "De laagst beschikbare pdf versie is "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
 msgstr ""
-"U hebt een lagere pdf versie voor de uitvoer gekozen! Wenst u toch verder te "
+"U hebt een lagere pdf versie voor de uitvoer gekozen, wenst u toch verder te "
 "gaan?"
 
 msgid "Pdf version conflict"
 msgstr "\"Pdf-versie\"-conflict"
 
 msgid "Please select a pdf document."
-msgstr ""
+msgstr "Selecteer een pdf document."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -360,36 +363,35 @@ msgstr "Splits geselecteerd bestand"
 msgid "Split"
 msgstr "Splitsen"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
 msgid "Split section loaded."
-msgstr "Splits-sectei geladen"
+msgstr "Splits-sectie geladen"
 
 msgid "Invalid unit: "
 msgstr "Ongeldige eenheid: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Vul vanuit document"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "Verkrijgen van de maximale diepte van de bladwijzers"
 
 msgid "Cover pdf file"
-msgstr ""
+msgstr "Voorblad pdf-file"
 
 msgid "Footer pdf file"
-msgstr ""
+msgstr "Bijlage pdf-file"
 
 msgid "Select at least one cover or one footer"
-msgstr ""
+msgstr "Selecteer minstens één voorblad of één bijlage"
 
-msgid "Cover and Footer"
+msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
-msgstr ""
+msgstr "Voorblad- en bijlage ingeladen."
 
 msgid "Encrypt options"
-msgstr ""
+msgstr "Versleutel opties"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
@@ -399,24 +401,21 @@ msgstr "Wachtwoord van de eigenaar:"
 msgid "Owner password (Max 32 chars long)"
 msgstr "Wachtwoord van de eigenaar (max. 32 karakters)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
 msgid "User password:"
-msgstr "Wachtwoord gebruiker:"
+msgstr "Gebruikerswachtwoord:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
 msgid "User password (Max 32 chars long)"
-msgstr "Wachtwoord gebruiker (max. 32 karakters)"
+msgstr "Gebruikerswachtwoord (max. 32 karakters)"
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "Versleutel argoritme:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
 msgid "Allow all"
 msgstr "Iedereen toelaten"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
 msgid "Print"
-msgstr "Afrdukken"
+msgstr "Afdrukken"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:232
 msgid "Low quality print"
@@ -434,9 +433,8 @@ msgstr "Bewerk"
 msgid "Add or modify text annotations"
 msgstr "Toevoegen of wijzigen van tekstannotaties"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
 msgid "Fill form fields"
-msgstr "Forumliervelden invullen"
+msgstr "Formuliervelden invullen"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
 msgid "Extract for use by accessibility dev."
@@ -489,22 +487,22 @@ msgid "Encrypt section loaded."
 msgstr "Versleutel-sectie geladen"
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "Ontsleutel de geselecteerde bestanden"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "Ontsleutelen"
 
 msgid "Decrypt section loaded."
-msgstr ""
+msgstr "Ontsleutel sectie geladen"
 
 msgid "Mix options"
-msgstr ""
+msgstr "Mix opties"
 
 msgid "Reverse first document"
-msgstr ""
+msgstr "Eerste document achterstevoren zetten"
 
 msgid "Reverse second document"
-msgstr ""
+msgstr "Tweede document achterstevoren zetten"
 
 msgid "Found a password for first file."
 msgstr "Een paswoord voor het eerste bestand gevonden."
@@ -520,7 +518,7 @@ msgid "Execute pdf alternate mix"
 msgstr "Om-en-om mix van pdf's uitvoeren"
 
 msgid "Alternate Mix"
-msgstr ""
+msgstr "Mix om en om"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
 msgid "AlternateMix section loaded."
@@ -536,31 +534,31 @@ msgid "Unpack section loaded."
 msgstr "Sectie \"uitpakken\" geladen."
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "Stel viewer opties in"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Verberg de menubalk"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "De werkbalk verbergen"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Verberg de gebruikersinterface elementen"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Schaal het venster zodat de pagina grootte past."
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Middelpunt van het scherm"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Toon de documenttitel als venstertitel"
 
 msgid "Pdf version required:"
-msgstr ""
+msgstr "Pdf versie is noodzakelijk:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Geen print verschaling in de printer dialoog"
 
 msgid "Viewer layout:"
 msgstr ""
@@ -572,7 +570,7 @@ msgid "Non fullscreen mode:"
 msgstr ""
 
 msgid "Direction:"
-msgstr ""
+msgstr "Richting:"
 
 msgid "Set options"
 msgstr ""
@@ -581,19 +579,19 @@ msgid "Set viewer options for selected files"
 msgstr ""
 
 msgid "Left to right"
-msgstr ""
+msgstr "Van links naar rechts"
 
 msgid "Right to left"
-msgstr ""
+msgstr "Van rechts naar links"
 
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Volledig scherm"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Bijlagen"
 
 msgid "Optional content group panel"
 msgstr ""
@@ -602,25 +600,25 @@ msgid "Document outline"
 msgstr ""
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniatuur weergave"
 
 msgid "One page at a time"
-msgstr ""
+msgstr "Een pagina gelijktijdig"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Pagina's in een kolom"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Pagina's in twee kolommen (oneven aan de linkerkant)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Pagina's in twee kolommen (oneven aan de rechterkant)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Twee pagina's gelijktijdig (oneven aan de linkerkant)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Twee pagina's gelijktijdig (oneven aan de rechterkant)"
 
 msgid "Viewer options"
 msgstr ""
@@ -689,6 +687,75 @@ msgstr "Validate gaf een lege waarde terug."
 msgid "Command executed."
 msgstr "Commando uitgevoerd."
 
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
+msgid "File name"
+msgstr "Bestandsnaam"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:217
+msgid "File"
+msgstr "Bestand"
+
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
+msgid "Close"
+msgstr "Afsluiten"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "Kopieëren"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Voer uit"
 
@@ -737,12 +804,6 @@ msgstr "Pdf-versie van het doelbestand:"
 msgid "Same as input document"
 msgstr "Gelijk aan het invoerbestand"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-msgid "File name"
-msgstr "Bestandsnaam"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
@@ -782,6 +843,8 @@ msgid ""
 "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 "7,12-)"
 msgstr ""
+"Dubbelklikken om de pagina's te selecteren om samen te voegen (bijv. 2 of "
+"All of 5-23 of 2,5-7,12-)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
@@ -928,10 +991,6 @@ msgstr "Kon een plugin niet laden. De plugin is geen JPanel subklasse."
 msgid "Error loading class "
 msgstr "Fout bij het laden van een klasse "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "Kopieëren"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
 msgstr "Alles selecteren"
@@ -940,11 +999,6 @@ msgstr "Alles selecteren"
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:121
 msgid "Save log"
 msgstr "Log opslaan"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:217
-msgid "File"
-msgstr "Bestand"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
@@ -1041,11 +1095,6 @@ msgstr "Website: "
 msgid "Name"
 msgstr "Naam"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "Auteur"
-
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
 msgstr "Info over"
@@ -1096,7 +1145,7 @@ msgid "Check now"
 msgstr "Nu controleren"
 
 msgid "Play alert sounds"
-msgstr ""
+msgstr "Geef een waarchuwingstoon"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:181
@@ -1143,7 +1192,7 @@ msgstr ""
 "gecontroleerd te worden. (Herstarten van de applicatie is noodzakelijk.)"
 
 msgid "Turn on or off alert sounds"
-msgstr ""
+msgstr "Schakel waarschuwingstonen aan of uit"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid "Default env."
@@ -1182,7 +1231,7 @@ msgid "New version available: "
 msgstr "Nieuwe versie beschikbaar: "
 
 msgid "Plugins"
-msgstr ""
+msgstr "Invoegtoepassingen"
 
 msgid "Error getting pdf version description."
 msgstr "Fotu bij het ophalen van de \"pdf-versie\"-omschrijving"
@@ -1219,6 +1268,12 @@ msgstr "Wenst u het te veranderen naar"
 
 msgid "Output location error"
 msgstr "Fout in de uitvoerlocatie"
+
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
 
 msgid "Checking for a new version available."
 msgstr "Beschikbaarheid van een nieuwe versie wordt afgetoetst."
@@ -1399,10 +1454,6 @@ msgstr "Plakken"
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:140
 #~ msgid "Installed plugins:"
 #~ msgstr "Geinstalleerde plugins:"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
-#~ msgid "Close"
-#~ msgstr "Afsluiten"
 
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
 #~ msgid "Browse filesystem for a destination file"

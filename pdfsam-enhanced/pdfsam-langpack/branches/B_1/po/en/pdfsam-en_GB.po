@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-12-31 19:02+0000\n"
 "Last-Translator: Luke M. <Unknown>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
@@ -191,10 +191,8 @@ msgid ""
 "performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
@@ -247,8 +245,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "Select at least one cover or one footer"
 
-msgid "Cover and Footer"
-msgstr "Cover and Footer"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Cover And Footer section loaded."
@@ -527,6 +525,66 @@ msgstr "Command validation returned an empty value."
 msgid "Command executed."
 msgstr "Command executed."
 
+msgid "File name"
+msgstr "File name"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Author"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "File"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Copy"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Run"
 
@@ -550,9 +608,6 @@ msgstr "Output document pdf version:"
 
 msgid "Same as input document"
 msgstr "Same as input document"
-
-msgid "File name"
-msgstr "File name"
 
 msgid "Path"
 msgstr "Path"
@@ -687,17 +742,11 @@ msgstr "Unable to load a plugin that is not JPanel subclass."
 msgid "Error loading class "
 msgstr "Error loading class "
 
-msgid "Copy"
-msgstr "Copy"
-
 msgid "Select all"
 msgstr "Select all"
 
 msgid "Save log"
 msgstr "Save log"
-
-msgid "File"
-msgstr "File"
 
 msgid "Save environment"
 msgstr "Save environment"
@@ -770,9 +819,6 @@ msgstr "Website: "
 
 msgid "Name"
 msgstr "Name"
-
-msgid "Author"
-msgstr "Author"
 
 msgid "About"
 msgstr "About"
@@ -861,10 +907,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Default working directory"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
-msgstr ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
+msgstr "Select a directory where documents will be saved and loaded by default"
 
 msgid "Save"
 msgstr "Save"
@@ -917,6 +961,12 @@ msgstr "Would you like to change it to"
 msgid "Output location error"
 msgstr "Output location error"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Checking if a new version is available."
 
@@ -937,3 +987,6 @@ msgstr "Cut"
 
 msgid "Paste"
 msgstr "Paste"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Cover and Footer"

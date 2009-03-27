@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-12-12 08:22+0000\n"
 "Last-Translator: parkmount <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -253,8 +253,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "最低1つの表紙書き、もしくは下欄書きを選択してください"
 
-msgid "Cover and Footer"
-msgstr "表紙書きと下欄書き"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "カバー/フッターセクションをロードしました。"
@@ -530,6 +530,66 @@ msgstr ""
 msgid "Command executed."
 msgstr ""
 
+msgid "File name"
+msgstr "ファイル名"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "作者"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "ファイル"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "コピー"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr ""
 
@@ -553,9 +613,6 @@ msgstr ""
 
 msgid "Same as input document"
 msgstr ""
-
-msgid "File name"
-msgstr "ファイル名"
 
 msgid "Path"
 msgstr "パス"
@@ -690,17 +747,11 @@ msgstr ""
 msgid "Error loading class "
 msgstr ""
 
-msgid "Copy"
-msgstr "コピー"
-
 msgid "Select all"
 msgstr "全てを選択"
 
 msgid "Save log"
 msgstr "ログの保存"
-
-msgid "File"
-msgstr "ファイル"
 
 msgid "Save environment"
 msgstr "環境を保存"
@@ -773,9 +824,6 @@ msgstr "Webサイト: "
 
 msgid "Name"
 msgstr "名前"
-
-msgid "Author"
-msgstr "作者"
 
 msgid "About"
 msgstr ""
@@ -915,6 +963,12 @@ msgstr "以下に変更してよろしいですか:"
 msgid "Output location error"
 msgstr "出力先エラー"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -935,3 +989,6 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
+
+#~ msgid "Cover and Footer"
+#~ msgstr "表紙書きと下欄書き"

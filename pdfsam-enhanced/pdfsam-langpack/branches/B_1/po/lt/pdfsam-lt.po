@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:06+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2008-12-11 15:19+0000\n"
 "Last-Translator: Simas J <simasj@gmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -261,8 +261,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "Pasirinkite bent vieną viršelį arba poraštę:"
 
-msgid "Cover and Footer"
-msgstr "Viršelis ir poraštė"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Viršelio ir poraštės dalis įkrauta"
@@ -542,6 +542,66 @@ msgstr "Komandos tikrinimas grąžino tuščią reikšmę"
 msgid "Command executed."
 msgstr "Komanda įvykdyta"
 
+msgid "File name"
+msgstr "Failo pavadinimas"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autorius"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "File"
+msgstr "Failas"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopijuoti"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 msgid "Run"
 msgstr "Vykdyti"
 
@@ -565,9 +625,6 @@ msgstr "Rezultato dokumento pdf versija:"
 
 msgid "Same as input document"
 msgstr "Tokia pati kaip šaltinio dokumento"
-
-msgid "File name"
-msgstr "Failo pavadinimas"
 
 msgid "Path"
 msgstr "Kelias"
@@ -703,17 +760,11 @@ msgstr "Naįmanoma įkelti papildinio kuris nėra JPanel klasės"
 msgid "Error loading class "
 msgstr "Klaida įkeliant klasę "
 
-msgid "Copy"
-msgstr "Kopijuoti"
-
 msgid "Select all"
 msgstr "Pažymėti viską"
 
 msgid "Save log"
 msgstr "Išsaugoti žurnalą"
-
-msgid "File"
-msgstr "Failas"
 
 msgid "Save environment"
 msgstr "Išsaugoti aplinką"
@@ -786,9 +837,6 @@ msgstr "Interneto puslapis: "
 
 msgid "Name"
 msgstr "Pavadinimas"
-
-msgid "Author"
-msgstr "Autorius"
 
 msgid "About"
 msgstr "Apie"
@@ -936,6 +984,12 @@ msgstr "Ar norėtumėte pakeisti ją į"
 msgid "Output location error"
 msgstr "Rezultato vietos klaida"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Tikrinti ar yra naujų versijų"
 
@@ -956,3 +1010,6 @@ msgstr "Iškirpti"
 
 msgid "Paste"
 msgstr "Įdėti"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Viršelis ir poraštė"

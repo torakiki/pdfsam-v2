@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
+"POT-Creation-Date: 2009-03-23 18:53+0100\n"
 "PO-Revision-Date: 2009-01-15 11:08+0000\n"
 "Last-Translator: saigor <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -172,8 +172,7 @@ msgstr "Dividir el documento por páginas impares"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr ""
-"Dividir el documento después de números de página (num1-num2-num3...)"
+msgstr "Dividir el documento después de números de página (num1-num2-num3...)"
 
 msgid "Split the document in files of the given size (roughly)"
 msgstr ""
@@ -233,8 +232,7 @@ msgid ""
 "performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Ej. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_NombreArvchivo_005.pdf."
 
@@ -293,8 +291,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "Seleccione al menos una portada o un pié de página"
 
-msgid "Cover and Footer"
-msgstr "Cubierta y pie"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Secciones Portada y Pié de Página cargadas."
@@ -599,6 +597,75 @@ msgstr "Validación de comando regresó un valor vacío."
 msgid "Command executed."
 msgstr "Comando ejecutado."
 
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+msgid "File name"
+msgstr "Nombre de archivo"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+msgid "File"
+msgstr "Archivo"
+
+msgid "Close"
+msgstr ""
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
+msgid "Copy"
+msgstr "copiar"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:368
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
@@ -661,12 +728,6 @@ msgstr "Versión pdf del documento de salida"
 
 msgid "Same as input document"
 msgstr "Igual al documento de entrada"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-msgid "File name"
-msgstr "Nombre de archivo"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:165
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
@@ -855,11 +916,6 @@ msgstr "Incapaz de cargar un plugin que no es una subclase de JPanel"
 msgid "Error loading class "
 msgstr "Error al cargar clase "
 
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
-msgid "Copy"
-msgstr "copiar"
-
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
@@ -867,11 +923,6 @@ msgstr "Seleccionar Todo"
 
 msgid "Save log"
 msgstr "Guardar registro"
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-msgid "File"
-msgstr "Archivo"
 
 msgid "Save environment"
 msgstr "Guardar ambiente"
@@ -967,11 +1018,6 @@ msgstr "Sitio web: "
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 msgid "Name"
 msgstr "Nombre"
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-msgid "Author"
-msgstr "Autor"
 
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -1073,8 +1119,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Direectorio de  trabajo predeterminado"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Selecciones un directorio donde los documentos serán guardados y cargados de "
 "forma predeterminada"
@@ -1130,6 +1175,12 @@ msgstr "Quisiera cambiarlo a"
 msgid "Output location error"
 msgstr "Error de ubicación de salida"
 
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Revisando si existe una nueva versión disponible"
 
@@ -1150,6 +1201,9 @@ msgstr "Cortar"
 
 msgid "Paste"
 msgstr "Pegar"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Cubierta y pie"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232

@@ -25,6 +25,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/business/listeners/PdfSelectionTableActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/business/listeners/CompressCheckBoxItemListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/business/listeners/PdfSelectionMouseHeaderAdapter.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/frames/JDocumentPropertiesFrame.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/components/CommonComponentsFactory.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/renderers/JPdfSelectionTableRenderer.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/components/JPdfSelectionTable.java

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 11:37+0100\n"
-"PO-Revision-Date: 2008-12-21 22:39+0000\n"
+"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"PO-Revision-Date: 2009-02-09 19:22+0000\n"
 "Last-Translator: Susanna Björverud <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -174,7 +174,7 @@ msgid "Split at this size"
 msgstr "Dela upp till denna storlek"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Dela efter bokmärkesnivå"
 
 msgid "Burst"
 msgstr "Gasa"
@@ -197,10 +197,12 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dela dokumentet efter sidnummer (sid1-sid2-sid3)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Dela upp dokumentet i filer av ungefär angiven storlek"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
+"Dela upp dokumentet efter de sidor som refereras till av bokmärken på "
+"angiven nivå"
 
 msgid "Destination folder"
 msgstr "Målmapp"
@@ -240,7 +242,7 @@ msgid ""
 msgstr "Markera för att skriva över filer som redan existerar."
 
 msgid "Output options"
-msgstr ""
+msgstr "Utdataalternativ"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:291
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
@@ -258,6 +260,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
 "performs variable substitution."
 msgstr ""
+"Om det innehåller \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller \"[FILENUMBER]\" "
+"så utförs variabelsubstituering."
 
 msgid ""
 "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -268,10 +272,13 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"Om det inte innehåller \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller "
+"\"[FILENUMBER]\" generar det den gamla sortens filnamn för utdata."
 
 msgid ""
 "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 msgstr ""
+"Tillgängliga variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
 msgstr "Ogiltig delningsstorlek."
@@ -310,7 +317,7 @@ msgid "Getting bookmarks max depth"
 msgstr ""
 
 msgid "Cover pdf file"
-msgstr ""
+msgstr "PDF-fil för omslag"
 
 msgid "Footer pdf file"
 msgstr ""
@@ -318,14 +325,14 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "Välj minst en omslags- eller sidfotspdf."
 
-msgid "Cover and Footer"
-msgstr "Omslag och Sidfot."
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Omslag och Sidfot laddad."
 
 msgid "Encrypt options"
-msgstr ""
+msgstr "Krypteringsalternativ"
 
 msgid "Owner password:"
 msgstr "Ägarens lösenord."
@@ -340,7 +347,7 @@ msgid "User password (Max 32 chars long)"
 msgstr "Användalösenord (Max32 tecken)"
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "Krypteringsalgoritm:"
 
 msgid "Allow all"
 msgstr "Tllåt alla"
@@ -403,13 +410,13 @@ msgid "Encrypt section loaded."
 msgstr "Krypterad sektion laddad."
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "Dekryptera valda filer"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "Dekryptera"
 
 msgid "Decrypt section loaded."
-msgstr ""
+msgstr "Dekryptera inläst avsnitt."
 
 msgid "Mix options"
 msgstr ""
@@ -448,49 +455,49 @@ msgid "Unpack section loaded."
 msgstr "Upppacknings-sektionen laddad."
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "Ange visningsalternativ"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Dölj menyraden"
 
 msgid "Hide the toolbar"
 msgstr "Göm verktygsraden"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Dölj delar av användargränssnittet"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Ändra storlek på fönstret så att det passar sidstorleken"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Mitten av skärmen"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Visa dokuementets titel som fönstertitel"
 
 msgid "Pdf version required:"
-msgstr ""
+msgstr "PDF-version som krävs:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Ingen sidskalning i utskriftsdialogen"
 
 msgid "Viewer layout:"
-msgstr ""
+msgstr "Visningslayout:"
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "Öppningsläge för visning:"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Icke-helskärmsläge:"
 
 msgid "Direction:"
-msgstr ""
+msgstr "Riktning:"
 
 msgid "Set options"
-msgstr ""
+msgstr "Ange alternativ"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "Ange visningsalternativ för valda filer"
 
 msgid "Left to right"
 msgstr "Vänster till höger"
@@ -499,46 +506,46 @@ msgid "Right to left"
 msgstr "Höger till vänster"
 
 msgid "None"
-msgstr ""
+msgstr "Inga"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Helskärm"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Bilagor"
 
 msgid "Optional content group panel"
 msgstr ""
 
 msgid "Document outline"
-msgstr ""
+msgstr "Dokumentdisposition"
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniatyrbilder"
 
 msgid "One page at a time"
 msgstr "En sida åt gången"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Sidor i en kolumn"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Sidor i två kolumner (udda till vänster)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Sidor i två kolumner (udda till höger)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Två sidor åt gången (udda till vänster)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Två sidor åt gången (udda till höger)"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "Visningsalternativ"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "Avsnittet för visningsalternativ inläst."
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -596,6 +603,73 @@ msgstr "Kommandovalidationen gav ett tomt värde."
 msgid "Command executed."
 msgstr "Kommandot genomfört."
 
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
+msgid "File name"
+msgstr "Filnamn"
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+msgid "Author"
+msgstr "Författare"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
+msgid "File"
+msgstr "Arkiv"
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy"
+msgstr "Kopiera"
+
+msgid "Error creating properties panel."
+msgstr ""
+
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:368
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
@@ -648,12 +722,6 @@ msgstr "Målfilens pdf-version:"
 
 msgid "Same as input document"
 msgstr "Samma som källdokument"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-msgid "File name"
-msgstr "Filnamn"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:165
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
@@ -725,7 +793,7 @@ msgid "Reload"
 msgstr "Uppdatera"
 
 msgid "Error: Unable to reload the selected file/s."
-msgstr ""
+msgstr "Fel: Kunde inte läsa om vald(a) fil(er)."
 
 msgid "Unable to remove JList text "
 msgstr "Går ej att ta bort JList text "
@@ -840,19 +908,11 @@ msgstr "Kan inte ladda plugin som inte är av typen JPanel"
 msgid "Error loading class "
 msgstr "Fel vid laddning av klassen "
 
-msgid "Copy"
-msgstr "Kopiera"
-
 msgid "Select all"
 msgstr "Markera alla"
 
 msgid "Save log"
 msgstr "Spara logg"
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-msgid "File"
-msgstr "Arkiv"
 
 msgid "Save environment"
 msgstr "Spara miljö"
@@ -941,11 +1001,6 @@ msgstr "Webbsida: "
 msgid "Name"
 msgstr "Namn"
 
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-msgid "Author"
-msgstr "Författare"
-
 msgid "About"
 msgstr "Om"
 
@@ -988,7 +1043,7 @@ msgid "Check now"
 msgstr "Kontrollera nu"
 
 msgid "Play alert sounds"
-msgstr ""
+msgstr "Spela varningsljud"
 
 msgid "Settings "
 msgstr "Inställningar "
@@ -1023,7 +1078,7 @@ msgstr ""
 "(omstart krävs)"
 
 msgid "Turn on or off alert sounds"
-msgstr ""
+msgstr "Sätt på eller av varningsljud"
 
 msgid "Default env."
 msgstr "Förvald miljö."
@@ -1089,6 +1144,12 @@ msgid "Would you like to change it to"
 msgstr "Vill du ändra det till"
 
 msgid "Output location error"
+msgstr ""
+
+msgid "Selected output file already exists "
+msgstr ""
+
+msgid "Would you like to overwrite it?"
 msgstr ""
 
 msgid "Checking for a new version available."
