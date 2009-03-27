@@ -13,8 +13,8 @@
 -Console: set compression level to BEST_COMPRESSION when compression is on.
 -Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
 -Console: -help argument passed if no argument specified (Feature Request #2697689)
+-Console: fixed bug #2715101 (Exception executing split by size)
 -Added the document properties frame
--iText 2.1.5
 -Updated langpack
 
 1.5.1e (25-Jan-2009) (pdfsam-console 2.0.1e)
