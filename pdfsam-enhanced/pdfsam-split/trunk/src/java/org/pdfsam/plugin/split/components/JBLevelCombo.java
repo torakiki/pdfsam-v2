@@ -150,7 +150,7 @@ public class JBLevelCombo extends JPanel {
 	}
 
 	/**
-	 * @return
+	 * @return selected index
 	 * @see javax.swing.JComboBox#getSelectedIndex()
 	 */
 	public int getSelectedIndex() {
@@ -158,7 +158,7 @@ public class JBLevelCombo extends JPanel {
 	}
 
 	/**
-	 * @return
+	 * @return selected item
 	 * @see javax.swing.JComboBox#getSelectedItem()
 	 */
 	public Object getSelectedItem() {
