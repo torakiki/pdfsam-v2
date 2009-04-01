@@ -26,16 +26,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.thumbnails.executors.JPodThumbnailsExecutor;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
-import org.pdfsam.guiclient.dto.Rotation;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
@@ -61,10 +58,9 @@ import de.intarsys.tools.locator.FileLocator;
  */
 public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
+	
+	public static final int JPOD_RESOLUTION = 72;
 	private static final Logger log = Logger.getLogger(JPodThumbnailCreator.class.getPackage().getName());
-	private static final int JPOD_RESOLUTION = 72;
-	private ExecutorService pool = null;
-	private Thread closer = null;
 	
 	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException {
 		return getPageImage(inputFile, password, page, 0);
@@ -131,7 +127,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		return retVal;
 	}
 
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel) {
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel,long id) {
 		String providedPwd = password;
 		try{			
 			PDDocument pdfDoc = null;
@@ -180,10 +176,9 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	            			}
 	            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
 	            			long startTime = System.currentTimeMillis();
-	            			initThumbnails(pdfDoc, pageTree, panel, modelList);
+	            			initThumbnails(pdfDoc, pageTree, panel, modelList, id);
 	            			pageTree = null;
-	            			closer = new Thread(new CreatorCloser(pool, pdfDoc, startTime));
-	            			closer.start();
+	            			JPodThumbnailsExecutor.getInstance().execute(new CreatorCloser(pdfDoc, startTime), id);
 	            		}	
 					}
         		}catch(Throwable t){
@@ -203,120 +198,14 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 * @param panel
 	 * @param modelList
 	 */
-	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final ArrayList<VisualPageListItem> modelList){	
+	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final ArrayList<VisualPageListItem> modelList, final long id){	
 		if(pageTree!=null && panel != null && modelList!=null && modelList.size()>0){
 			for(VisualPageListItem pageItem : modelList){
 				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
-				execute(new ThumnailCreator(pdPage, pageItem, panel));	
+				JPodThumbnailsExecutor.getInstance().execute(pdPage, pageItem, panel, id);	
 			}
 		}		 		
-	}
-	/**
-	 * executes r
-	 * @param r
-	 */
-	private void execute(Runnable r){
-		if(pool==null || pool.isShutdown()){
-			//pool = Executors.newFixedThreadPool(3);			
-			pool = Executors.newSingleThreadExecutor();
-		}
-		pool.execute(r);
-	}
-	
-	public void clean(){
-		if(pool!=null){
-			pool.shutdownNow();
-			pool = null;
-			if(closer != null){
-				closer = null;
-			}
-		}		
-	}
-	
-	/**
-	 * Creates the thumbnail
-	 * @author Andrea Vacondio
-	 *
-	 */
-	private class ThumnailCreator implements Runnable{
-		
-		private PDPage pdPage;
-		private JVisualPdfPageSelectionPanel panel;
-		private VisualPageListItem pageItem;
-			
-		/**
-		 * @param pdPage
-		 * @param pageItem
-		 * @param panel
-		 */
-		public ThumnailCreator(PDPage pdPage, VisualPageListItem pageItem, JVisualPdfPageSelectionPanel panel) {
-			super();
-			this.pdPage = pdPage;
-			this.pageItem = pageItem;
-			this.panel = panel;
-		}
-
-
-		public void run() {		
-			IGraphicsContext graphics = null;
-			try{
-				Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
-				double rectHeight = rect.getHeight();
-				double recWidth = rect.getWidth();				
-				double resizePercentage = getResizePercentage(rectHeight, recWidth);
-				
-				int height = Math.round(((int) rect.getHeight())*(float)resizePercentage);
-				int width = Math.round(((int) rect.getWidth())*(float)resizePercentage);
-				BufferedImage scaledInstance = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-
-				Graphics2D g2 = (Graphics2D) scaledInstance.getGraphics();
-				graphics = new CwtAwtGraphicsContext(g2);
-				// setup user space
-				AffineTransform imgTransform = graphics.getTransform();
-				imgTransform.scale(resizePercentage, -resizePercentage);
-				imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
-				graphics.setTransform(imgTransform);
-				graphics.setBackgroundColor(Color.WHITE);
-				graphics.fill(rect);
-				CSContent content = pdPage.getContentStream();
-				if (content != null) {
-					CSPlatformRenderer renderer = new CSPlatformRenderer(null,graphics);
-					renderer.process(content, pdPage.getResources());
-				}
-              	pageItem.setThumbnail(scaledInstance);
-              	pageItem.setPaperFormat(recWidth, rectHeight, JPOD_RESOLUTION);
-              	if(pdPage.getRotate()!=0){
-              		pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));
-              	}
-              	if(pageItem.isRotated() && pageItem.getThumbnail()!=null){
-              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getCompleteRotation()));	
-        		}
-            }catch (Throwable t) {
-            	pageItem.setThumbnail(ERROR_IMAGE);
-        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
-        	}finally{
-        		if(graphics!=null){
-        			graphics.dispose();
-        		}
-        		pdPage = null;
-        	}
-            ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
-		}
-		/**
-		 * @param height
-		 * @param width
-		 * @return percentage resize
-		 */
-		private double getResizePercentage(double height, double width){
-			double retVal = 0;
-			if(height>=width){
-				retVal = Math.round(((double)DEFAULT_SIZE/height)*100.0)/100.0;
-			}else{
-				retVal = Math.round(((double)DEFAULT_SIZE/width)*100.0)/100.0;
-			}
-			return retVal;
-		}
-	}
+	}	
 	
 	/**
 	 * Used to close the PdfDoc
@@ -326,29 +215,22 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	private class CreatorCloser implements Runnable{
 		
 		private PDDocument pdfDoc;
-		private ExecutorService pool;
 		private long startTime = 0;
 		
 		
-		public CreatorCloser(ExecutorService pool, PDDocument pdfDoc, long startTime) {
+		public CreatorCloser(PDDocument pdfDoc, long startTime) {
 			super();
 			this.pdfDoc = pdfDoc;
-			this.pool = pool;
 			this.startTime = startTime;
 		}
 		
 		public void run() {				
-			try{
-				if(pool!=null){
-					pool.shutdown();
-					if(pool.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS)){
-						if(pdfDoc!=null){
-							pdfDoc.close();
-							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
-							pdfDoc = null;
-						}
-					}
-				}
+			try{			
+				if(pdfDoc!=null){
+					pdfDoc.close();
+					log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
+					pdfDoc = null;
+				}					
             }catch (Exception e) {
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to close thumbnail creator"),e);
         	}				           
@@ -385,6 +267,11 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	
 	public int getResolution(){
 		return JPOD_RESOLUTION;
+	}
+
+	@Override
+	public void clean(long id) {
+		JPodThumbnailsExecutor.getInstance().cancelExecution(id);
 	}
 
 }

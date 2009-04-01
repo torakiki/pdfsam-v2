@@ -42,7 +42,7 @@ public class TreeMediator implements TreeSelectionListener {
 	public void valueChanged(TreeSelectionEvent e) {
 		JStatusPanel statusPanel = container.getStatusPanel();
 		JPanel plugsPanel = container.getMainPanel();
-		DefaultMutableTreeNode node = (DefaultMutableTreeNode)container.getTreePanel().getTree().getLastSelectedPathComponent();
+		DefaultMutableTreeNode node = container.getTreePanel().getSelectedNode();
 		if (node != null && node.isLeaf()) {
 			Object selectedObject = node.getUserObject();
 			if(selectedObject instanceof PluginDataModel){

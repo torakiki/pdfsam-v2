@@ -8,10 +8,12 @@
 -Console: set compression level to BEST_COMPRESSION when compression is on.
 -Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
 -Console: -help argument passed if no argument specified (Feature Request #2697689)
+-Console: fixed bug #2715101 (Exception executing split by size)
 -Added the document properties frame
 -VComposer: added a check on the "overwrite" flag
 -VPageReorderMainGUI: added focus policy and fixed a label
--iText 2.1.5
+-Shared thread pool for the thumbnails generation among panels. (number of threads now is fixed, configurable and doesn't depend on the number of panels opened).
+
 -Updated langpack
 
 2.0.0-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)

@@ -34,7 +34,7 @@ public interface ThumbnailsCreator {
 	/**
 	 * Error image
 	 */
-	Image ERROR_IMAGE =  new ImageIcon(PdfThumbnailsLoader.class.getResource("/images/thumbnailerror.png")).getImage();
+	public Image ERROR_IMAGE =  new ImageIcon(PdfThumbnailsLoader.class.getResource("/images/thumbnailerror.png")).getImage();
 	/**
 	 * Default resize percentage 20%
 	 */
@@ -79,8 +79,9 @@ public interface ThumbnailsCreator {
 	 * @param fileName
 	 * @param password document password or null if no password is needed
 	 * @param panel
+	 * @param id Id for this thumbnails generation
 	 */
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel);
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id);
 	
 	/**
 	 * 
@@ -116,15 +117,19 @@ public interface ThumbnailsCreator {
 	 * @param inputFile pdf document
 	 * @param password document password or null if no password is needed
 	 * @param panel
+	 * @param id Id for this thumbnails generation
 	 */
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel);
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id);
 	
 	/**
 	 * @return resolution of the created thumbnails
 	 */
 	public int getResolution();
+	
 	/**
-	 * Clean up
+	 * clean the thumbnails generation with the given id
+	 * @param id
 	 */
-	public void clean();
+	public void clean(long id);
+
 }

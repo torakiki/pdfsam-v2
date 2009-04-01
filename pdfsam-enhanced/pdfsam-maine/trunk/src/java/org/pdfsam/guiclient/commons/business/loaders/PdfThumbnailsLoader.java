@@ -79,7 +79,6 @@ public class PdfThumbnailsLoader {
     		if(JOptionPane.YES_OPTION == DialogUtility.askForEmptySelectionPanel(panel)){
     			//empty the model
     			panel.resetPanel(); 
-    			creator.clean();
 			}else{
 				retVal = false;
 			}
@@ -95,7 +94,8 @@ public class PdfThumbnailsLoader {
     public synchronized void addFile(final File file, final String password){
     	try{
     		creator = new JPodThumbnailCreator();
-			creator.initThumbnailsPanel(file, password, panel);					
+    		panel.generateNewId();
+			creator.initThumbnailsPanel(file, password, panel, panel.getId());					
     	}catch(Exception e){
         	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
         }
@@ -124,7 +124,7 @@ public class PdfThumbnailsLoader {
      * Clean creator
      */
     public void cleanCreator(){
-    	creator.clean();
+    	creator.clean(panel.getId());
     }
    
 }

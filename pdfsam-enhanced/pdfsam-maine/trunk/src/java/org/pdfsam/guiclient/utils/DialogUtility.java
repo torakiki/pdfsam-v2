@@ -33,7 +33,7 @@ public class DialogUtility {
 	 * Shows a yes/no/cancel dialog to ask for change the output directory
 	 * @param comp parent component
 	 * @param suggestedDir suggested directory
-	 * @return
+	 * @return an integer indicating the option chosen by the user
 	 */
 	public static int showConfirmOuputLocationDialog(Component comp, String suggestedDir){
 
@@ -50,7 +50,7 @@ public class DialogUtility {
 	 * Shows a yes/no/cancel dialog to ask the user about overwriting output file
 	 * @param comp parent component
 	 * @param filename suggested directory
-	 * @return
+	 * @return an integer indicating the option chosen by the user
 	 */
 	public static int askForOverwriteOutputFileDialog(Component comp, String filename){
 
@@ -67,7 +67,7 @@ public class DialogUtility {
 	/**
 	 * Show a dialog to ask the user for the document password
 	 * @param comp
-	 * @return
+	 * @return an integer indicating the option chosen by the user
 	 */
 	public static String askForDocumentPasswordDialog(Component comp, String filename){
 		String retVal = null;
@@ -83,7 +83,7 @@ public class DialogUtility {
 	/**
 	 * Shows a yes/no confirmation dialog to ask the user if he wants to empty the selection list
 	 * @param comp
-	 * @return
+	 * @return an integer indicating the option chosen by the user
 	 */
 	public static int askForEmptySelectionPanel(Component comp){
 		return  JOptionPane.showConfirmDialog(comp,
