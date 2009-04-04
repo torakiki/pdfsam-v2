@@ -51,24 +51,15 @@ public class JPodThumbnailsExecutor {
 	private static JPodThumbnailsExecutor instance = null;
 	
 	private static final Logger log = Logger.getLogger(JPodThumbnailsExecutor.class.getPackage().getName());
-	public static final String POOL_SIZE_PROPERTY = "pdfsam.config.thumb.poolsize";
-	public static final String DEFAULT_POOL_SIZE = "3";
 	
-	private int poolSize;
 	private  LinkedList<ExecutorService> pools = null;
 	private  HashSet<Long> cancelledExecutions = null;;
 	
 	private JPodThumbnailsExecutor(){
-		cancelledExecutions =  new HashSet<Long>();
+		cancelledExecutions =  new HashSet<Long>();				
 		pools = new LinkedList<ExecutorService>();
-		for(int i = 0; i<poolSize; i++){
+		for(int i = 0; i<Configuration.getInstance().getThumbCreatorPoolSize(); i++){
 			pools.add(i, Executors.newSingleThreadExecutor());
-		}
-		String poolSize = System.getProperty(POOL_SIZE_PROPERTY, DEFAULT_POOL_SIZE);
-		try{
-			this.poolSize = Integer.parseInt(poolSize);
-		}catch(NumberFormatException nfe){
-			this.poolSize = Integer.parseInt(DEFAULT_POOL_SIZE);
 		}
 	}
 
@@ -131,7 +122,7 @@ public class JPodThumbnailsExecutor {
 	 * @return the executor for the given ID
 	 */
 	private ExecutorService getExecutor(long id){
-		int index = (int) (id % poolSize);
+		int index = (int) (id % Configuration.getInstance().getThumbCreatorPoolSize());
 		ExecutorService executor = pools.get(index);
 		if(executor == null || executor.isShutdown()){
 			executor = Executors.newSingleThreadExecutor();

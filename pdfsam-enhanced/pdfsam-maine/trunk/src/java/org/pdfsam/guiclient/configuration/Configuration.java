@@ -33,14 +33,17 @@ import org.pdfsam.i18n.GettextResource;
 
 /**
  * Configuration Singleton
- * @author a.vacondio
+ * @author Andrea Vacondio
  *
  */
 public class Configuration{
 
 	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
-    
+	
+	public static final int DEFAULT_POOL_SIZE = 3;
+	
 	private static Configuration configObject;
+	
 	private ResourceBundle i18nMessages;
 	private XMLConfig xmlConfigObject;
 	private ConsoleServicesFacade servicesFacade;
@@ -50,6 +53,7 @@ public class Configuration{
 	private String mainJarPath = ""; 
 	private String defaultWorkingDir = null;
 	private int screenResolution = 0;
+	private int thumbCreatorPoolSize = DEFAULT_POOL_SIZE;
 	
 	private Configuration() {
 		init();
@@ -192,6 +196,8 @@ public class Configuration{
 			initDefaultWorkingDir();
 			//get the screen resolution
 			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
+			//pool size
+			 initPoolSize();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -299,10 +305,30 @@ public class Configuration{
 	}
 
 	/**
+	 * sets the thumbnails creator pool size
+	 */
+	private void initPoolSize(){
+		try{
+			String poolSizeString = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbpoolsize");		
+			if(poolSizeString != null && poolSizeString.length()>0){
+				thumbCreatorPoolSize = Integer.parseInt(poolSizeString);
+			}	
+		}catch(Exception nfe){
+			this.thumbCreatorPoolSize = DEFAULT_POOL_SIZE;
+		}
+	}
+	/**
 	 * @return the screenResolution
 	 */
 	public int getScreenResolution() {
 		return screenResolution;
+	}
+
+	/**
+	 * @return the thumbCreatorPoolSize
+	 */
+	public int getThumbCreatorPoolSize() {
+		return thumbCreatorPoolSize;
 	}
 	
 	

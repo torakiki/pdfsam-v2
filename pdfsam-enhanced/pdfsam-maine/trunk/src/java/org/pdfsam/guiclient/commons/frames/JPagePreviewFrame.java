@@ -122,6 +122,18 @@ public class JPagePreviewFrame extends JFrame {
 	 */
 	public void setPagePreview(Image image){
 		pagePreview.setImage(image);
+		statusLabel.setText("");
+		validate();
+        repaint();  
+	}
+	/**
+	 * sets the image to be displayed and the status bar message
+	 * @param image
+	 * @param statusMessage
+	 */
+	public void setPagePreview(Image image, String statusMessage){
+		pagePreview.setImage(image);
+		statusLabel.setText(statusMessage);
 		validate();
         repaint();  
 	}

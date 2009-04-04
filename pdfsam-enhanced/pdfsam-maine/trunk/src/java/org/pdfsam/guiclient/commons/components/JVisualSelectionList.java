@@ -32,7 +32,7 @@ public class JVisualSelectionList extends JList {
 	
 	public static final int DEFAULT_ZOOM_LEVEL = -2;
 	public static final int MIN_ZOOM_LEVEL = -4;
-	public static final int MAX_ZOOM_LEVEL = 0;
+	public static final int MAX_ZOOM_LEVEL = 3;
 
 	private int currentZoomLevel = DEFAULT_ZOOM_LEVEL;
 	private boolean drawDeletedItems = true;

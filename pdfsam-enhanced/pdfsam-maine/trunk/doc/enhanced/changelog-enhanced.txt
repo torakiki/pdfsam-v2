@@ -13,8 +13,12 @@
 -Console: fixed bug #2715101 (Exception executing split by size)
 -Added the document properties frame
 -VComposer: added a check on the "overwrite" flag
+-VComposer, VReorder: added 3 zoom levels
 -VPageReorderMainGUI: added focus policy and fixed a label
 -Shared thread pool for the thumbnails generation among panels. (number of threads now is fixed, configurable and doesn't depend on the number of panels opened).
+-Added the filename in the page viewer status bar
+-Console: added the -step option to the mix command
+-Mix: added field to set the step option
 -Updated langpack
 
 2.0.0e-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
