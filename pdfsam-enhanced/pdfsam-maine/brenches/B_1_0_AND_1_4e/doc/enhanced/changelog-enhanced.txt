@@ -1,3 +1,9 @@
+1.5.3e () (pdfsam-console )
+===================================
+-Document properties frame now opens in with normal size (not full screen)
+-Console: added the -step option to the mix command
+-Mix: added field to set the step option
+
 1.5.2e (29-Mar-2009) (pdfsam-console 2.0.3e)
 ===================================
 -Console: added the -d option to the concat command to merge all the documents in an input directory

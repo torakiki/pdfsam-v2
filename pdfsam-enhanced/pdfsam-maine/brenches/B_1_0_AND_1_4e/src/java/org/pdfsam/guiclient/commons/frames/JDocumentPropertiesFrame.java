@@ -110,7 +110,7 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 			setTitle(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Document properties"));
 			setIconImage(new ImageIcon(iconUrl).getImage());
 	        setSize(WIDTH, HEIGHT);
-			setExtendedState(JFrame.MAXIMIZED_BOTH);
+			setExtendedState(JFrame.NORMAL);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 			JMenuBar menuBar = new JMenuBar();

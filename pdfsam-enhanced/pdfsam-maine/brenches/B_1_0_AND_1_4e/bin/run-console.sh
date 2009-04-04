@@ -33,7 +33,7 @@ if [ "x$JAVA" = "x" ]; then
     fi
 fi
 
-# Setup JBoss sepecific properties
+# Setup sepecific properties
 JAVA_OPTS="-Dlog4j.configuration=console-log4j.xml"
 
 # Display our environment
