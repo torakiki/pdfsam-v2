@@ -44,6 +44,7 @@ import java.util.List;
 
 import jcmdline.BooleanParam;
 import jcmdline.FileParam;
+import jcmdline.IntParam;
 import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
@@ -80,7 +81,11 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	                   PdfFileParam.REQUIRED, 
 	                   PdfFileParam.SINGLE_VALUED),
 	            new BooleanParam(MixParsedCommand.REVERSE_FIRST_ARG, "reverse first input file"),
-	            new BooleanParam(MixParsedCommand.REVERSE_SECOND_ARG, "reverse second input file")                         	            
+	            new BooleanParam(MixParsedCommand.REVERSE_SECOND_ARG, "reverse second input file"),
+	            new IntParam(MixParsedCommand.STEP_ARG,
+	                    "step for the alternate mix (default is 1)" ,             
+	                    IntParam.OPTIONAL,
+	                    IntParam.SINGLE_VALUED) 	            
 	    }));  
 	
 	/**
@@ -91,7 +96,8 @@ public class MixCmdHandler extends AbstractCmdHandler {
     "You must specify '-f1 /home/user/infile1.pdf' option to set the first input file (use filename:password if the file is password protected).\n" +
     "You must specify '-f2 /home/user/infile2.pdf' option to set the second input file (use filename:password if the file is password protected).\n" +
     "'-reversefirst' reverse the first input file.\n"+
-    "'-reversesecond' reverse the second input file.\n";
+    "'-reversesecond' reverse the second input file.\n"+
+    "'-step' set the step at which the mix should switch from a document to the other.\n";
 
 	/**
 	 * example text for the mix handler

@@ -39,6 +39,7 @@
 		<exception errorcode="24" message="No -bl option given." />		
 		<exception errorcode="25" message="No -f or -d option given." />		
 		<exception errorcode="26" message="Too many options given, -f, -d." />		
+		<exception errorcode="27" message="Step value can't be negative or zero." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.SplitException" description="SPL">
 		<exception errorcode="1" message="Cannot find page limits, please check input value." />		

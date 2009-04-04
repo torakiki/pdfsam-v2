@@ -42,6 +42,7 @@ import java.io.File;
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
+import jcmdline.IntParam;
 import jcmdline.PdfFileParam;
 import jcmdline.dto.PdfFile;
 
@@ -103,6 +104,17 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        	throw new ParseException(ParseException.ERR_NO_F2);	
 	        }           
 	
+	        //-step
+	        IntParam stepOption = (IntParam) cmdLineHandler.getOption(MixParsedCommand.STEP_ARG);	        	        
+        	if(stepOption.isSet()){	  
+        		int step = stepOption.intValue();
+        		if(step>0){
+        			parsedCommandDTO.setStep(stepOption.intValue());
+        		}else{
+            		throw new ParseException(ParseException.ERR_STEP_ZERO_OR_NEGATIVE);
+            	}
+        	}
+	       	        
 	        //-reversefirst
 	        parsedCommandDTO.setReverseFirst(((BooleanParam) cmdLineHandler.getOption(MixParsedCommand.REVERSE_FIRST_ARG)).isTrue());
 	        //-reversesecond

@@ -50,38 +50,44 @@ public class MixParsedCommand extends AbstractParsedCommand {
 	
 	private static final long serialVersionUID = -2646601665244663267L;
 	
+	public static final int DEFAULT_STEP = 1;
+	
 	public static final String F1_ARG = "f1";
 	public static final String REVERSE_FIRST_ARG = "reversefirst";
 	public static final String F2_ARG = "f2";
 	public static final String REVERSE_SECOND_ARG = "reversesecond";
 	public static final String O_ARG = "o";
+	public static final String STEP_ARG = "step";
 	
 	private File outputFile;	
 	private PdfFile firstInputFile;	
 	private PdfFile secondInputFile;	
 	private boolean reverseFirst = false;
 	private boolean reverseSecond = false;
+	private int step = DEFAULT_STEP;
 	
 	public MixParsedCommand(){		
 	};
 	
 	public MixParsedCommand(File outputFile, PdfFile firstInputFile,
-			PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond) {
+			PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step) {
 		super();
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
 		this.secondInputFile = secondInputFile;
 		this.reverseFirst = reverseFirst;
 		this.reverseSecond = reverseSecond;
+		this.step = step;
 	}
 
-	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
+	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
 		this.secondInputFile = secondInputFile;
 		this.reverseFirst = reverseFirst;
 		this.reverseSecond = reverseSecond;
+		this.step = step;
 	}
 
 	/**
@@ -154,8 +160,23 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		this.reverseSecond = reverseSecond;
 	}
 
+	
 	public final String getCommand() {
 		return COMMAND_MIX;
+	}
+
+	/**
+	 * @return the step
+	 */
+	public int getStep() {
+		return step;
+	}
+
+	/**
+	 * @param step the step to set
+	 */
+	public void setStep(int step) {
+		this.step = step;
 	}
 	
 	public String toString(){
@@ -165,7 +186,9 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		retVal.append((secondInputFile== null)?"":"[secondInputFile="+secondInputFile.getFile().getAbsolutePath()+"]");
 		retVal.append("[reverseFirst="+reverseFirst+"]");
 		retVal.append("[reverseSecond="+reverseSecond+"]");
+		retVal.append("[step="+step+"]");
 		retVal.append("[command="+getCommand()+"]");
 		return retVal.toString();
 	}
+
 }

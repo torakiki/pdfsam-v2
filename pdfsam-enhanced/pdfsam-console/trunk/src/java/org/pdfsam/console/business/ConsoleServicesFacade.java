@@ -52,7 +52,7 @@ public class ConsoleServicesFacade {
 	
 	private final Logger log = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 	
-    public static final String VERSION = "2.0.3e"; 
+    public static final String VERSION = "2.0.4e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +ConsoleServicesFacade.VERSION+ ")";   
     public static final String LICENSE =
 		ConsoleServicesFacade.CREATOR+"  Copyright (C) 2007  Andrea Vacondio\n"+
@@ -92,7 +92,7 @@ public class ConsoleServicesFacade {
     /**
      * execute parsedCommand
      * @param parsedCommand
-     * @throws Exception. This way we don't have dependencies from emp4j client side
+     * @throws Exception. 
      */
 	public synchronized void execute(AbstractParsedCommand parsedCommand) throws Exception{
 		try{
@@ -106,7 +106,7 @@ public class ConsoleServicesFacade {
 	 * parse and validate the input arguments 
 	 * @param inputArguments input string arguments
 	 * @return the parsed command
-     * @throws Exception. This way we don't have dependencies from emp4j client side
+     * @throws Exception. 
 	 */
 	public synchronized AbstractParsedCommand parseAndValidate(String[] inputArguments) throws Exception{
 		try{

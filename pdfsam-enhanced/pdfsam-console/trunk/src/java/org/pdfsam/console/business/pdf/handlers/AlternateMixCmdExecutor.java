@@ -111,25 +111,29 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				int current2 = (inputCommand.isReverseSecond())? limits2[1] :limits2[0];
 				while(!finished1 || !finished2){
 					if(!finished1){
-						if(current1>=limits1[0] && current1<=limits1[1]){
-							page = pdfWriter.getImportedPage(pdfReader1, current1);
-							pdfWriter.addPage(page);
-							current1 = (inputCommand.isReverseFirst())? (current1-1) :(current1+1);
-						}else{
-							log.info("First file processed.");
-							pdfReader1.close();							
-							finished1 = true;
+						for(int i=0; (i<inputCommand.getStep() && !finished1); i++){
+							if(current1>=limits1[0] && current1<=limits1[1]){
+								page = pdfWriter.getImportedPage(pdfReader1, current1);
+								pdfWriter.addPage(page);
+								current1 = (inputCommand.isReverseFirst())? (current1-1) :(current1+1);
+							}else{
+								log.info("First file processed.");
+								pdfReader1.close();							
+								finished1 = true;								
+							}
 						}
 					}
 					if(!finished2){
-						if(current2>=limits2[0] && current2<=limits2[1] && !finished2){
-							page = pdfWriter.getImportedPage(pdfReader2, current2);
-							pdfWriter.addPage(page);
-							current2 = (inputCommand.isReverseSecond())? (current2-1) :(current2+1);
-						}else{
-							log.info("Second file processed.");
-							pdfReader2.close();
-							finished2 = true;
+						for(int i=0; (i<inputCommand.getStep() && !finished2); i++){
+							if(current2>=limits2[0] && current2<=limits2[1] && !finished2){
+								page = pdfWriter.getImportedPage(pdfReader2, current2);
+								pdfWriter.addPage(page);
+								current2 = (inputCommand.isReverseSecond())? (current2-1) :(current2+1);
+							}else{
+								log.info("Second file processed.");
+								pdfReader2.close();
+								finished2 = true;
+							}
 						}
 					}
 
@@ -142,7 +146,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 	    		if(FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite())){
                 	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
                 }  		
-				log.info("Alternate mix completed.");
+				log.info("Alternate mix with step "+inputCommand.getStep()+" completed.");
 			}catch(Exception e){    		
 				throw new MixException(e);
 			}finally{
