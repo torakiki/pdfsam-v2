@@ -39,7 +39,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
@@ -79,17 +78,22 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private static final String DEFAULT_OUPUT_NAME = "mixed_document.pdf";
 	
 	private SpringLayout destinationPanelLayout;
+	private SpringLayout mixOptionsPanelLayout;
 	private JPanel destinationPanel = new JPanel();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.DOUBLE_SELECTABLE_FILE, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER);
 	private JPanel topPanel = new JPanel();
 	private JPanel mixOptionsPanel = new JPanel();
+	private JPanel optionsChecksPanel = new JPanel();
+	private JPanel optionsFieldsPanel = new JPanel();
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
     private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
 	private final JCheckBox reverseFirstCheckbox = new JCheckBox();
 	private final JCheckBox reverseSecondCheckbox = new JCheckBox();
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
+	private JTextField stepTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.SIMPLE_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
+	private JHelpLabel optionsHelpLabel;
 	private Configuration config;
 	private JFileChooser browseFileChooser;
 
@@ -99,12 +103,13 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
 	
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
-
+	private final JLabel stepLabel = new JLabel();
+	
 	private final EnterDoClickListener runEnterkeyListener = new EnterDoClickListener(runButton);
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.8e";
+	private static final String PLUGIN_VERSION = "0.1.9e";
 
 	
 	/**
@@ -139,19 +144,31 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		
 //CHECK_BOX	
 		mixOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Mix options")));
-		mixOptionsPanel.setLayout(new BoxLayout(mixOptionsPanel, BoxLayout.LINE_AXIS));
-		mixOptionsPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		mixOptionsPanelLayout = new SpringLayout();
+		mixOptionsPanel.setLayout(mixOptionsPanelLayout);
+		mixOptionsPanel.setPreferredSize(new Dimension(200, 90));
+		mixOptionsPanel.setMinimumSize(new Dimension(160, 85));
+		optionsChecksPanel.setLayout(new BoxLayout(optionsChecksPanel, BoxLayout.LINE_AXIS));
+		optionsChecksPanel.add(Box.createRigidArea(new Dimension(5,0)));
 
 		reverseFirstCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse first document"));
 		reverseFirstCheckbox.setSelected(false);		
-		mixOptionsPanel.add(reverseFirstCheckbox);
-		mixOptionsPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		optionsChecksPanel.add(reverseFirstCheckbox);
+		optionsChecksPanel.add(Box.createRigidArea(new Dimension(10,0)));
 
 		reverseSecondCheckbox.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse second document"));
 		reverseSecondCheckbox.setSelected(true);
-		mixOptionsPanel.add(reverseSecondCheckbox);
-
-
+		optionsChecksPanel.add(reverseSecondCheckbox);
+		mixOptionsPanel.add(optionsChecksPanel);
+		
+		optionsFieldsPanel.setLayout(new BoxLayout(optionsFieldsPanel, BoxLayout.LINE_AXIS));
+		optionsFieldsPanel.add(Box.createRigidArea(new Dimension(5,0)));
+		
+		optionsFieldsPanel.add(stepLabel);
+		optionsFieldsPanel.add(Box.createRigidArea(new Dimension(10,0)));
+		optionsFieldsPanel.add(stepTextField);
+		mixOptionsPanel.add(optionsFieldsPanel);
+		
         topConst.fill = GridBagConstraints.HORIZONTAL;
         topConst.weightx = 0.0;
         topConst.weighty = 0.0;
@@ -162,7 +179,19 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
         topPanel.add(mixOptionsPanel, topConst);
 		
 //END_CHECK_BOX
+ 
+        stepLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Number of pages to switch document"));
+
+        String helpTextOptions = 
+    		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Mix options")+"</b>" +
+    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Tick the boxes if you want to reverse the first or the second document (or both).")+"</p>"+
+    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Set the number of pages to switch from a document to the other one (default is 1).")+"</p>"+
+    		"</body></html>";
+        optionsHelpLabel = new JHelpLabel(helpTextOptions, true);
+		mixOptionsPanel.add(optionsHelpLabel);
 		
+        stepTextField.setPreferredSize(new Dimension(50, 20));
+        
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.ipady = 5;
@@ -179,8 +208,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 //		DESTINATION_PANEL
 		destinationPanelLayout = new SpringLayout();
 		destinationPanel.setLayout(destinationPanelLayout);
-		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
-		destinationPanel.setBorder(titledBorder);
+		destinationPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file")));
 		destinationPanel.setPreferredSize(new Dimension(200, 160));
 		destinationPanel.setMinimumSize(new Dimension(160, 150));
 		
@@ -320,6 +348,11 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 						args.add("-"+MixParsedCommand.O_ARG);
 						args.add(destination);
 
+						if(stepTextField.getText()!=null && stepTextField.getText().length()>0){
+							args.add("-"+MixParsedCommand.STEP_ARG);
+							args.add(stepTextField.getText());
+						}
+						
 						if (overwriteCheckbox.isSelected()) args.add("-"+MixParsedCommand.OVERWRITE_ARG);
 	                    if (outputCompressedCheck.isSelected()) args.add("-"+MixParsedCommand.COMPRESSED_ARG); 
 						if (reverseFirstCheckbox.isSelected()) args.add("-"+MixParsedCommand.REVERSE_FIRST_ARG);
@@ -397,7 +430,16 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, browseButton, -88, SpringLayout.EAST, browseButton);        
 
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
-        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);                
+        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel); 
+        
+        mixOptionsPanelLayout.putConstraint(SpringLayout.NORTH, optionsChecksPanel, 0, SpringLayout.NORTH, mixOptionsPanel);
+        mixOptionsPanelLayout.putConstraint(SpringLayout.WEST, optionsChecksPanel, 5, SpringLayout.WEST, mixOptionsPanel);
+        
+        mixOptionsPanelLayout.putConstraint(SpringLayout.NORTH, optionsFieldsPanel, 5, SpringLayout.SOUTH, optionsChecksPanel);
+        mixOptionsPanelLayout.putConstraint(SpringLayout.WEST, optionsFieldsPanel, 0, SpringLayout.WEST, optionsChecksPanel);
+        
+        mixOptionsPanelLayout.putConstraint(SpringLayout.SOUTH, optionsHelpLabel, -1, SpringLayout.SOUTH, mixOptionsPanel);
+        mixOptionsPanelLayout.putConstraint(SpringLayout.EAST, optionsHelpLabel, -1, SpringLayout.EAST, mixOptionsPanel); 
 
 	}
 
@@ -453,6 +495,9 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 				Element fileDestination = ((Element)arg0).addElement("destination");
 				fileDestination.addAttribute("value", destinationTextField.getText());			
 
+				Element stepDestination = ((Element)arg0).addElement("step");
+				stepDestination.addAttribute("value", stepTextField.getText());
+				
 				Element reverseFirst = ((Element)arg0).addElement("reverse_first");
 				reverseFirst.addAttribute("value", reverseFirstCheckbox.isSelected()?TRUE:FALSE);
 
@@ -492,6 +537,10 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
 				if (fileDestination != null){
 					destinationTextField.setText(fileDestination.getText());
+				}
+				Node stepDestination = (Node) arg0.selectSingleNode("step/@value");
+				if (stepDestination != null){
+					stepTextField.setText(stepDestination.getText());
 				}
 				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
 				if (fileOverwrite != null){
@@ -560,6 +609,9 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 				return reverseSecondCheckbox;
 			}
 			else if (aComponent.equals(reverseSecondCheckbox)){
+				return stepTextField;
+			}
+			else if (aComponent.equals(stepTextField)){
 				return destinationTextField;
 			}
 			else if (aComponent.equals(destinationTextField)){
@@ -601,6 +653,9 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 				return destinationTextField;
 			}
 			else if (aComponent.equals(destinationTextField)){
+				return stepTextField;
+			}
+			else if (aComponent.equals(stepTextField)){
 				return reverseSecondCheckbox;
 			}
 			else if (aComponent.equals(reverseSecondCheckbox)){
@@ -663,6 +718,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		reverseFirstCheckbox.setSelected(false);
 		reverseSecondCheckbox.setSelected(true);
 		destinationTextField.setText("");
+		stepTextField.setText("");
 		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 	}
