@@ -139,7 +139,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.5.1";
+    private final String PLUGIN_VERSION = "0.5.2";
     
 /**
  * Constructor
@@ -325,7 +325,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 //HELP_LABEL_PREFIX       
         String helpTextPrefix = 
     		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Output files prefix")+"</b>" +
-    		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it performs variable substitution.")+"</p>"+
+    		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or \"[BOOKMARK_NAME]\" it performs variable substitution.")+"</p>"+
     		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf.")+"</p>"+
     		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it generates oldstyle output file names.")+"</p>"+
     		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER].")+"</p>"+
