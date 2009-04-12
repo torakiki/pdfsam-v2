@@ -35,7 +35,7 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.console.utils;
+package org.pdfsam.console.utils.perfix;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -60,26 +60,28 @@ public class PrefixParser {
 	private static final int TIMESTAMP = 0x02;
 	private static final int BASENAME = 0x04;
 	private static final int FILE_NUMBER = 0x08;
+	private static final int BOOKMARK_NAME = 0x10;
 	
-	private int currentPrefixType = SIMPLE_PREFIX;
 	private static final String PDF_EXTENSION = ".pdf";
 	
 	//regexp to match
 	private static final String CURRENT_PAGE_REGX = "(.)*(\\[CURRENTPAGE(#*)\\])+(.)*";
 	private static final String FILE_NUMBER_REGX = "(.)*(\\[FILENUMBER(#*)(\\d*)\\])+(.)*";
 	private static final String TIMESTAMP_STRING = "[TIMESTAMP]";
-	private static final String BASE_NAME_STRING  = "[BASENAME]";
+	private static final String BASENAME_STRING  = "[BASENAME]";
+	private static final String BOOKMARK_NAME_STRING  = "[BOOKMARK_NAME]";
 	
 	
 	//regexp to replace
 	private static final String CURRENT_PAGE_REPLACE_REGX = "\\[CURRENTPAGE(#+)*\\]";
 	private static final String FILE_NUMBER_REPLACE_REGX = "\\[FILENUMBER(#+)*(\\d+)*\\]";
 	private static final String TIMESTAMP_REPLACE_RGX = "\\[TIMESTAMP\\]";
-	private static final String BASE_NAME_REPLACE_REGX = "\\[BASENAME\\]";
+	private static final String BASENAME_REPLACE_REGX = "\\[BASENAME\\]";
+	private static final String BOOKMARK_NAME_REPLACE_REGX = "\\[BOOKMARK_NAME\\]";
 
 	private String prefix = "";
 	private String fileName = "";
-	
+	private int currentPrefixType = SIMPLE_PREFIX;
 	/**
 	 * 
 	 * @param prefix prefix to use. (Can be empty)
@@ -92,15 +94,18 @@ public class PrefixParser {
 			if(prefix.indexOf(TIMESTAMP_STRING) > -1){
 				currentPrefixType |= TIMESTAMP;
 			}
-			if(prefix.indexOf(BASE_NAME_STRING) > -1){
+			if(prefix.indexOf(BASENAME_STRING) > -1){
 				currentPrefixType |= BASENAME;
+			}
+			if(prefix.indexOf(BOOKMARK_NAME_STRING) > -1){
+				currentPrefixType |= BOOKMARK_NAME;
 			}
 			if(prefix.matches(CURRENT_PAGE_REGX)){
 				currentPrefixType |= CURRENT_PAGE;
 			}
 			if(prefix.matches(FILE_NUMBER_REGX)){
 				currentPrefixType |= FILE_NUMBER;
-			}
+			}			
 		}
 		if(fileName != null && fileName.length() > 0){
 			//check if the filename contains '.' and it's at least in second position (Ex. a.pdf)
@@ -113,101 +118,101 @@ public class PrefixParser {
 			throw new ConsoleException(ConsoleException.EMPTY_FILENAME);
 		}		
 	}
-	
 	/**
-	 * Generates the filename depending on the type of prefix. If it contains "[CURRENTPAGE]","[TIMESTAMP]" or "[FILENUMBER]" it performs variable substitution.
-	 * @param pageNumber The page number used in variable substitution or in simple prefix (can be null)
-	 * @param fileNumber The file number used in variable substitution or in simple prefix
+	 * Generates the filename depending on the type of prefix. If it contains "[CURRENTPAGE]","[TIMESTAMP]","[BOOKMARK_NAME]" or "[FILENUMBER]" it performs variable substitution.
+	 * @param request input parameter
 	 * @return filename generated 
 	 */
-	public String generateFileName(Integer pageNumber, Integer fileNumber){
+	public String generateFileName(FileNameRequest request){
 		String retVal = "";
-		if(pageNumber == null && fileNumber == null){
-			retVal = generateFileName();
-		}else if(fileNumber==null){
-			retVal = generateFileName(pageNumber);
-		}else if(pageNumber == null){
-			retVal = prefix;
-			if(((currentPrefixType & TIMESTAMP)==TIMESTAMP)||((currentPrefixType & FILE_NUMBER)==FILE_NUMBER)){
-				if((currentPrefixType & TIMESTAMP)==TIMESTAMP){
-					retVal = applyTimestamp(retVal);
+		if(request != null && !request.isEmpty()){
+			if(isComplexPrefix(request)){
+				retVal = generateSimpleFileName();
+				if((currentPrefixType & BOOKMARK_NAME)==BOOKMARK_NAME && (request.getBookmarkName()!=null) && (request.getBookmarkName().length()>0)){
+					retVal = applyBookmarkname(retVal, request.getBookmarkName());
 				}
-				if((currentPrefixType & FILE_NUMBER)==FILE_NUMBER){
-					retVal = applyFilenumber(retVal, fileNumber);
+				if((currentPrefixType & CURRENT_PAGE)==CURRENT_PAGE && request.getPageNumber()!=null){
+					retVal = applyPagenumber(retVal, request.getPageNumber());
 				}
-				if((currentPrefixType & BASENAME)==BASENAME){
-					retVal = applyFilename(retVal, fileName);
+				if((currentPrefixType & FILE_NUMBER)==FILE_NUMBER && request.getFileNumber()!=null){
+					retVal = applyFilenumber(retVal, request.getFileNumber());
 				}
-				retVal += PDF_EXTENSION;
 			}else{
-				retVal = retVal+fileName+".pdf";
-			}			
+				retVal = generateSimpleFileName(fileName);
+				if(request.getPageNumber()!=null){
+					retVal = getFileNumberFormatter(request.getPageNumber()).format(request.getPageNumber().intValue())+"_"+retVal;
+				}
+			}
 		}else{
-			retVal = prefix;
-			if(((currentPrefixType & TIMESTAMP)==TIMESTAMP)||((currentPrefixType & FILE_NUMBER)==FILE_NUMBER)||((currentPrefixType & CURRENT_PAGE)==CURRENT_PAGE)){
-				if((currentPrefixType & TIMESTAMP)==TIMESTAMP){
-					retVal = applyTimestamp(retVal);
-				}
-				if((currentPrefixType & FILE_NUMBER)==FILE_NUMBER){
-					retVal = applyFilenumber(retVal, fileNumber);
-				}
-				if((currentPrefixType & BASENAME)==BASENAME){
-					retVal = applyFilename(retVal, fileName);
-				}
-				if((currentPrefixType & CURRENT_PAGE)==CURRENT_PAGE){
-					retVal = applyPagenumber(retVal, pageNumber);
-				}
-				retVal += PDF_EXTENSION;
-			}else{
-				retVal = getFileNumberFormatter(pageNumber.intValue()).format(pageNumber.intValue())+"_"+retVal+PDF_EXTENSION;
-			}	
+			retVal = generateSimpleFileName(fileName);
 		}
-		return retVal;
+		return applyExtension(retVal);
 	}
-	
 	/**
-	 * Generates the filename depending on the type of prefix. If it contains "[CURRENTPAGE]" or "[TIMESTAMP]" it performs variable substitution.
-	 * @param pageNumber The page number used in variable substitution or in simple prefix
-	 * @return filename generated 
-	 */
-	public String generateFileName(Integer pageNumber){
-		String retVal = "";
-		if(pageNumber == null){
-			retVal = generateFileName();
-		}else{
-			retVal = prefix;
-			if(((currentPrefixType & TIMESTAMP)==TIMESTAMP)||((currentPrefixType & CURRENT_PAGE)==CURRENT_PAGE)){
-				if((currentPrefixType & TIMESTAMP)==TIMESTAMP){
-					retVal = applyTimestamp(retVal);
-				}
-				if((currentPrefixType & CURRENT_PAGE)==CURRENT_PAGE){
-					retVal = applyPagenumber(retVal, pageNumber);
-				}
-				if((currentPrefixType & BASENAME)==BASENAME){
-					retVal = applyFilename(retVal, fileName);
-				}
-				retVal += PDF_EXTENSION;
-			}else{
-				retVal = getFileNumberFormatter(pageNumber.intValue()).format(pageNumber.intValue())+"_"+retVal;
-			}		
-		}
-		return retVal;
-	}
-	
-	/**
-	 * Generates the filename depending on the type of prefix. If it contains "[TIMESTAMP]" it performs variable substitution.
+	 * Generates the filename depending on the type of prefix. If it contains "[TIMESTAMP]" or "[BASENAME]" it performs variable substitution.
 	 * @return filename generated 
 	 */
 	public String generateFileName(){
-		String retVal = "";
+		return generateFileName(new FileNameRequest());
+	}
+	
+	/**
+	 * If it contains "[CURRENTPAGE]" and request.getPageNumber()!=null or it contains "[TIMESTAMP]" or it contains "[BOOKMARK_NAME]" and
+	 * request.getBookmarkName()!=null or it contains "[FILENUMBER]" and request.getFileNumber()!=null it's a complex prefix.
+	 * @param request
+	 * @return true if it's a complex prefix
+	 */
+	private boolean isComplexPrefix(FileNameRequest request){
+		boolean retVal = false;
+		retVal = 
+			((currentPrefixType & BOOKMARK_NAME)==BOOKMARK_NAME && (request.getBookmarkName()!=null) && (request.getBookmarkName().length()>0))
+			||
+			((currentPrefixType & CURRENT_PAGE)==CURRENT_PAGE && request.getPageNumber()!=null)
+			||
+			((currentPrefixType & FILE_NUMBER)==FILE_NUMBER && request.getFileNumber()!=null)
+			||
+			((currentPrefixType & TIMESTAMP)==TIMESTAMP);
+		return retVal;
+	}	
+	
+	/**
+	 * Generates the filename depending on the type of prefix. 
+	 * If it contains "[TIMESTAMP]" or "[BASENAME]" it performs variable substitution, if not the returned value
+	 * is prefix+defaultPosponedName
+	 * @param defaultPostponedName 
+	 * @return filename generated 
+	 */
+	private String generateSimpleFileName(String defaultPostponedName){
+		String retVal = prefix;
 		if((currentPrefixType & TIMESTAMP)==TIMESTAMP){			
-			retVal = applyTimestamp(prefix);
+			retVal = applyTimestamp(retVal);
 			if((currentPrefixType & BASENAME)==BASENAME){
 				retVal = applyFilename(retVal, fileName);
-			}
-			retVal += PDF_EXTENSION;
+			}			
 		}else{
-			retVal = prefix+fileName+PDF_EXTENSION;
+			retVal += defaultPostponedName;
+		}
+		return retVal;
+	}
+	
+	/**
+	 * Generates the filename depending on the type of prefix. 
+	 * If it contains "[TIMESTAMP]" or "[BASENAME]" it performs variable substitution, if not the returned value
+	 * is {@link PrefixParser#prefix}
+	 * @return filename generated 
+	 */
+	private String generateSimpleFileName(){
+		return generateSimpleFileName("");
+	}
+	/**
+	 * Applies the PDF extension to the input string
+	 * @param arg0
+	 * @return
+	 */
+	private String applyExtension(String arg0){
+		String retVal = arg0;
+		if(arg0!=null && !arg0.endsWith(PDF_EXTENSION)){
+			retVal += PDF_EXTENSION;
 		}
 		return retVal;
 	}
@@ -271,7 +276,21 @@ public class PrefixParser {
 	}
 	
 	/**
-	 * Apply BASE_NAME_REPLACE_REGX variable substitution to the input argument 
+	 * Apply BOOKMARK_NAME_REPLACE_REGX variable substitution to the input argument 
+	 * @param arg0
+	 * @param bookmarkName
+	 * @return
+	 */
+	private String applyBookmarkname(String arg0, String bookmarkName){
+		String retVal = arg0;
+		if(bookmarkName!=null){
+			retVal = arg0.replaceAll(BOOKMARK_NAME_REPLACE_REGX, bookmarkName);
+		}
+		return retVal;	
+	}
+	
+	/**
+	 * Apply BASENAME_REPLACE_REGX variable substitution to the input argument 
 	 * @param arg0
 	 * @param fileName
 	 * @return
@@ -279,7 +298,7 @@ public class PrefixParser {
 	private String applyFilename(String arg0, String fileName){
 		String retVal = arg0;
 		if(fileName!=null){
-			retVal = arg0.replaceAll(BASE_NAME_REPLACE_REGX, fileName);
+			retVal = arg0.replaceAll(BASENAME_REPLACE_REGX, fileName);
 		}
 		return retVal;	
 	}
@@ -296,6 +315,20 @@ public class PrefixParser {
 		return retVal;
 	}	
 	
+	/**
+	 * @param n numbero of pages
+	 * @return
+	 */
+    private DecimalFormat getFileNumberFormatter(Integer n){
+    	DecimalFormat retVal = null;
+    	if(n!=null){
+    		retVal = getFileNumberFormatter(n.intValue());
+    	}else{
+    		retVal = new DecimalFormat();
+    		retVal.applyPattern("00000");
+    	}
+    	return retVal;
+    }
     /**
      * @param n number of pages
      * @return the DecimalFormat

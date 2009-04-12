@@ -11,6 +11,7 @@
 		<exception errorcode="5" message="Bad command." />		
 		<exception errorcode="6" message="Command line validator is null for the command {0}." />		
 		<exception errorcode="7" message="Input command is null." />		
+		<exception errorcode="8" message="Prefix request is null." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
 		<exception errorcode="1" message="Parse error. {0}" />		

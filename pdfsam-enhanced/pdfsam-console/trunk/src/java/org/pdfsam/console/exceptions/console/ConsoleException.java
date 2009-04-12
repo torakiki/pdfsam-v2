@@ -52,6 +52,7 @@ public class ConsoleException extends BasicPdfsamException {
 	public final static int ERR_BAD_COMMAND = 0x05;
 	public final static int CMD_LINE_EXECUTOR_NULL = 0x06;
 	public final static int CMD_LINE_NULL = 0x07;
+	public final static int PREFIX_REQUEST_NULL = 0x08;
 	
 	private static final long serialVersionUID = -853792961862291208L;
 

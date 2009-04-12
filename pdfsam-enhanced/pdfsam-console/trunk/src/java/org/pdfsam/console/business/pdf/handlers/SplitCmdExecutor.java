@@ -42,6 +42,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -59,7 +60,8 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SplitException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PdfUtility;
-import org.pdfsam.console.utils.PrefixParser;
+import org.pdfsam.console.utils.perfix.FileNameRequest;
+import org.pdfsam.console.utils.perfix.PrefixParser;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfImportedPage;
@@ -130,7 +132,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			log.debug("Creating a new document.");
 			fileNum++;
         	File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-        	File outFile = new File(inputCommand.getOutputFile().getCanonicalPath(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
+        	FileNameRequest request = new FileNameRequest(currentPage, fileNum, null);
+        	File outFile = new File(inputCommand.getOutputFile().getCanonicalPath(),prefixParser.generateFileName(request));
         	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
         	
             PdfSmartCopy pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
@@ -203,7 +206,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				log.debug("Creating a new document.");
 				fileNum++;
             	tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
+            	FileNameRequest request = new FileNameRequest(currentPage, fileNum, null);
+            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(request));
             	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
 
             	pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
@@ -241,11 +245,21 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
     }
     
     /**
-     * Execute the split of a pdf document when split type is S_SPLIT
+     * Execute the split of a pdf document when split type is S_SPLIT or S_NSPLIT
      * @param inputCommand
      * @throws Exception
      */
     private void executeSplit(SplitParsedCommand inputCommand) throws Exception{
+    	executeSplit(inputCommand, null);
+    }
+    
+    /**
+     * Execute the split of a pdf document when split type is S_BLEVEL
+     * @param inputCommand
+     * @param bookmarksTable bookmarks table. It's populated only when splitting by bookmarks. If null or empty it's ignored
+     * @throws Exception
+     */
+    private void executeSplit(SplitParsedCommand inputCommand, Hashtable bookmarksTable) throws Exception{
         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		pdfReader.removeUnusedObjects();
         pdfReader.consolidateNamedDestinations();
@@ -282,8 +296,13 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             if (relativeCurrentPage == 1){            	
 				log.debug("Creating a new document.");
             	fileNum++;
-				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());            	
-            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
+				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile()); 
+				String bookmark = null;
+				if(bookmarksTable!=null && bookmarksTable.size()>0){
+					bookmark = (String)bookmarksTable.get(new Integer(currentPage));
+				}
+				FileNameRequest request = new FileNameRequest(currentPage, fileNum, bookmark);
+            	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(request));
             	startPage = currentPage;
             	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
                 
@@ -376,6 +395,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	private void executeBookmarksSplit(SplitParsedCommand inputCommand) throws Exception {
 		PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		int bLevel = inputCommand.getBookmarksLevel().intValue();
+		Hashtable bookmarksTable = new Hashtable();
 		if(bLevel>0){
 			pdfReader.removeUnusedObjects();
 			pdfReader.consolidateNamedDestinations();			
@@ -387,7 +407,14 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			input.reset();
 			if(bLevel<=maxDepth){
 				SAXReader reader = new SAXReader();
-				org.dom4j.Document document = reader.read(input);					
+				org.dom4j.Document document = reader.read(input);
+				//head node
+				String headBookmarkXQuery = "/Bookmark/Title[@Action=\"GoTo\"]";
+				Node headNode = document.selectSingleNode(headBookmarkXQuery);
+				if(headNode!=null && headNode.getText()!=null && headNode.getText().trim().length()>0){
+					bookmarksTable.put(new Integer(1), headNode.getText().trim());
+				}
+				//bLevel nodes
 				String xQuery = "/Bookmark";
 				for(int i=0; i<bLevel; i++){
 					xQuery += "/Title[@Action=\"GoTo\"]";
@@ -408,6 +435,10 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 								//to split just before the given page
 								if((currentNumber.intValue()-1)>0){
 									pageSet.add(new Integer(currentNumber.intValue()-1));
+									String bookmarkText = currentNode.getText();
+									if(bookmarkText!=null && bookmarkText.trim().length()>0){
+										bookmarksTable.put(currentNumber, bookmarkText.trim());
+									}
 								}
 							}
 						}
@@ -432,7 +463,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			throw new SplitException(SplitException.ERR_NOT_VALID_BLEVEL, new String[] { "" + bLevel });				
 		}	
 		pdfReader.close();
-		executeSplit(inputCommand);
+		executeSplit(inputCommand, bookmarksTable);
 	}
 	
 	/**
@@ -464,7 +495,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				startPage = currentPage;
 				fileNum++;
 				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-	        	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(new Integer(currentPage), new Integer(fileNum)));
+				FileNameRequest request = new FileNameRequest(currentPage, fileNum, null);
+	        	outFile = new File(inputCommand.getOutputFile(),prefixParser.generateFileName(request));
 	        	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
 	        	baos = new ByteArrayOutputStream(); 
 	        	pdfWriter = new PdfSmartCopy(currentDocument, baos);

@@ -51,7 +51,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SetViewerException;
 import org.pdfsam.console.utils.FileUtility;
-import org.pdfsam.console.utils.PrefixParser;
+import org.pdfsam.console.utils.perfix.PrefixParser;
 
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
