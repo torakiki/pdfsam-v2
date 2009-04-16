@@ -55,7 +55,7 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 		if(!item.isDeleted() || (item.isDeleted() && ((JVisualSelectionList)list).isDrawDeletedItems())){		
 			if(item.getCurrentThumbnail()!= null){
 				image = new ImageIcon(item.getCurrentThumbnail());
-				setPreferredSize(getZoomedSize(image));
+				setPreferredSize(getZoomedSize());
 				drawRedCross = item.isDeleted();
 			}
 			String text = item.getPageNumber()+"";
@@ -80,16 +80,12 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 	}
 	
 	/**
-	 * @param image
-	 * @param list
 	 * @return the dimension of the image to be displayed according with the zoom level
 	 */
-	private Dimension getZoomedSize(ImageIcon image){
+	private Dimension getZoomedSize(){
 		Dimension retVal = null;
-		if(image != null){
-			int comSize = COMPONENT_SIZE+(int)(COMPONENT_SIZE*ZOOM_STEP*currentZoomLevel);
-			retVal = new Dimension(comSize+2, comSize+15);
-		}
+		int comSize = COMPONENT_SIZE+(int)(COMPONENT_SIZE*ZOOM_STEP*currentZoomLevel);
+		retVal = new Dimension(comSize+2, comSize+15);
 		return retVal;
 	}	
 

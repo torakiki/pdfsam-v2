@@ -73,7 +73,8 @@ public class DialogUtility {
 		String retVal = null;
 		JPasswordField passwordField= new JPasswordField();
 		Object[] message = new Object[] {GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please provide the password to open the encrypted document"), filename, passwordField};
-
+		passwordField.requestFocus();
+		
 		if(JOptionPane.showOptionDialog(comp, message, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password request"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == 0){
 			retVal= String.valueOf(passwordField.getPassword());
 		}

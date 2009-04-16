@@ -177,4 +177,12 @@ public class JVisualMultiSelectionPanel extends JPanel {
 			tabsAdder.setOutputPathPropertyChangeListener(propertyChangeListener);
 		}
 	}
+
+	/**
+	 * @return the openButton
+	 */
+	public JButton getOpenButton() {
+		return openButton;
+	}
+	
 }

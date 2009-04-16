@@ -148,11 +148,13 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 							throw ioe;
 						}
 					}
-					//require password if encrypted
-					if(pdfDoc.isEncrypted() && (providedPwd==null || providedPwd.length()==0)){
-						providedPwd = DialogUtility.askForDocumentPasswordDialog(panel, inputFile.getName());
-					}
 					if(pdfDoc != null){
+						//require password if encrypted
+						//I already opened the document in visual mode but if encrypted it will need 
+						//the password to manipulate
+						if(pdfDoc.isEncrypted() && (providedPwd==null || providedPwd.length()==0)){
+							providedPwd = DialogUtility.askForDocumentPasswordDialog(panel, inputFile.getName());
+						}
 						panel.setSelectedPdfDocument(inputFile);              	
 						panel.setSelectedPdfDocumentPassword(providedPwd);
 	                	//set file informations
