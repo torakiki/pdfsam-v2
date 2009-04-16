@@ -15,6 +15,7 @@
 package org.pdfsam.plugin.vcomposer.GUI;
 
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.GridBagConstraints;
@@ -97,6 +98,8 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	//button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
     private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
+	private final JButton moveToBottomButton = new JButton();
+	private final JButton moveOnTopButton = new JButton();
   
     //file_chooser    
     private JFileChooser browseDestFileChooser = null;    
@@ -115,7 +118,8 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
   
     //labels
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
-	
+	private final VisualComposerPolicy visualComposerFocusPolicy = new VisualComposerPolicy();
+	 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
     private static final String PLUGIN_VERSION = "0.0.4";
     
@@ -154,8 +158,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.LINE_AXIS));
-		
-        JButton moveOnTopButton = new JButton();
+
 		moveOnTopButton.setMargin(new Insets(2, 2, 2, 2));
 		moveOnTopButton.setIcon(new ImageIcon(this.getClass().getResource("/images/movetop.png")));
 		moveOnTopButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move on top"));
@@ -163,7 +166,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		moveOnTopButton.addKeyListener(new EnterDoClickListener(moveOnTopButton));
 		moveOnTopButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		moveOnTopButton.setMinimumSize(new Dimension(90, 25));
-		moveOnTopButton.setPreferredSize(new Dimension(110, 25));
+		moveOnTopButton.setPreferredSize(new Dimension(120, 25));
 		moveOnTopButton.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
             	 VisualPageListItem[] elements = inputPanel.getSelectedElements();
@@ -177,14 +180,13 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
              }
 		 });
         
-		JButton moveToBottomButton = new JButton();
 		moveToBottomButton.setMargin(new Insets(2, 2, 2, 2));
 		moveToBottomButton.setIcon(new ImageIcon(this.getClass().getResource("/images/movebottom.png")));
 		moveToBottomButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Move to bottom"));
 		moveToBottomButton.addKeyListener(new EnterDoClickListener(moveOnTopButton));
 		moveToBottomButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		moveToBottomButton.setMinimumSize(new Dimension(90, 25));
-		moveToBottomButton.setPreferredSize(new Dimension(110, 25));
+		moveToBottomButton.setPreferredSize(new Dimension(120, 25));
 		moveToBottomButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VisualPageListItem[] elements = inputPanel.getSelectedElements();
@@ -430,8 +432,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
     }
     
 	public FocusTraversalPolicy getFocusPolicy() {
-		// TODO Auto-generated method stub
-		return null;
+		return visualComposerFocusPolicy;
 	}
 
 	public Node getJobNode(Node arg0, boolean savePasswords)
@@ -540,4 +541,181 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 			destinationFileText.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
 		}		
 	}
+	
+	/**
+	 * Focus policy for the visual composer plugin
+	 * @author Andrea Vacondio
+	 *
+	 */
+    public class VisualComposerPolicy extends FocusTraversalPolicy {
+        public VisualComposerPolicy(){
+            super();
+        }
+        
+        public Component getComponentAfter(Container CycleRootComp, Component aComponent){ 
+        	JButton zoomIn = inputPanel.getCurrentZoomInButton();
+        	JButton zoomOut = inputPanel.getCurrentZoomOutButton();
+        	if (aComponent.equals(inputPanel.getOpenButton())){
+        		if(zoomIn!=null){
+        			return zoomIn;
+        		}else{
+            		return moveOnTopButton;             	        			
+        		}
+            }else if(zoomIn!=null &&  aComponent.equals(zoomIn)){
+            	return zoomOut;
+            }else if(zoomOut!=null &&  aComponent.equals(zoomOut)){
+	        	return moveOnTopButton;
+	        }
+        	else if (aComponent.equals(moveOnTopButton)){
+        		return moveToBottomButton; 
+        	}
+        	else if (aComponent.equals(moveToBottomButton)){
+        		if(composerPanel.getClearButton()!=null){
+            		return composerPanel.getClearButton();
+            	}else{
+            		return composerPanel.getZoomInButton();
+            	}
+        	}
+            else if (aComponent.equals(composerPanel.getClearButton())){
+                return composerPanel.getZoomInButton();
+            }
+            else if (aComponent.equals(composerPanel.getZoomInButton())){
+                return composerPanel.getZoomOutButton();
+            }
+            else if (aComponent.equals(composerPanel.getZoomOutButton())){
+                return composerPanel.getMoveUpButton();
+            }        
+            else if (aComponent.equals(composerPanel.getMoveUpButton())){
+                return composerPanel.getMoveDownButton();
+            }        
+            else if (aComponent.equals(composerPanel.getMoveDownButton())){
+                return composerPanel.getRemoveButton();
+            }        
+            else if (aComponent.equals(composerPanel.getRemoveButton())){
+            	if(composerPanel.getUndeleteButton()!=null){
+            		return composerPanel.getUndeleteButton();
+            	}else{
+            		return composerPanel.getRotateButton();
+            	}
+            }
+            else if (aComponent.equals(composerPanel.getUndeleteButton())){
+                return composerPanel.getRotateButton();
+            }  
+            else if (aComponent.equals(composerPanel.getRotateButton())){
+                return composerPanel.getRotateAntiButton();
+            }  
+            else if (aComponent.equals(composerPanel.getRotateAntiButton())){
+            	 return destinationFileText;
+            }
+            else if (aComponent.equals(destinationFileText)){
+                return browseDestButton;
+            }
+            else if (aComponent.equals(browseDestButton)){
+                return overwriteCheckbox;
+            }   
+			else if (aComponent.equals(overwriteCheckbox)){
+				return outputCompressedCheck;
+			}
+			else if (aComponent.equals(outputCompressedCheck)){
+				return versionCombo;
+			}            
+			else if (aComponent.equals(versionCombo)){
+				return runButton;
+			}            
+            else if (aComponent.equals(runButton)){
+                return inputPanel.getOpenButton();
+            }
+            return inputPanel.getOpenButton();
+        }
+        
+        public Component getComponentBefore(Container CycleRootComp, Component aComponent){
+        	JButton zoomIn = inputPanel.getCurrentZoomInButton();
+        	JButton zoomOut = inputPanel.getCurrentZoomOutButton();
+        	if (aComponent.equals(inputPanel.getOpenButton())){
+ 				return runButton;
+ 			 }
+             else if (aComponent.equals(composerPanel.getClearButton())){
+                 return moveToBottomButton;
+             }
+             else if (aComponent.equals(moveToBottomButton)){
+                 return moveOnTopButton;
+             }
+             else if (aComponent.equals(moveOnTopButton)){
+            	if(zoomOut!=null){
+         			return zoomOut;
+         		}else{
+         			return inputPanel.getOpenButton();
+                }
+             }    	
+		     else if(zoomOut!=null && aComponent.equals(zoomOut)){
+		    	return zoomIn;
+		     }
+		     else if(zoomIn!=null && aComponent.equals(zoomIn)){
+		     	return inputPanel.getOpenButton();
+		     }
+             else if (aComponent.equals(composerPanel.getZoomInButton())){
+            	 if(composerPanel.getClearButton()!=null){
+             		return composerPanel.getClearButton();
+             	}else{
+             		return moveToBottomButton;
+             	}
+             }
+             else if (aComponent.equals(composerPanel.getZoomOutButton())){
+                 return composerPanel.getZoomInButton();
+             }        
+             else if (aComponent.equals(composerPanel.getMoveUpButton())){
+                 return composerPanel.getZoomOutButton();
+             }        
+             else if (aComponent.equals(composerPanel.getMoveDownButton())){
+                 return composerPanel.getMoveUpButton();
+             }        
+             else if (aComponent.equals(composerPanel.getRemoveButton())){
+           		return composerPanel.getMoveDownButton();
+             }
+             else if (aComponent.equals(composerPanel.getUndeleteButton())){
+                 return composerPanel.getRemoveButton();
+             }  
+             else if (aComponent.equals(composerPanel.getRotateButton())){
+            	 if(composerPanel.getUndeleteButton()!=null){
+              		return composerPanel.getUndeleteButton();
+              	}else{
+              		return composerPanel.getRemoveButton();
+              	}
+             }  
+             else if (aComponent.equals(composerPanel.getRotateAntiButton())){
+                 return composerPanel.getRotateButton();
+             }  
+             else if (aComponent.equals(destinationFileText)){
+                 return composerPanel.getRotateAntiButton();
+             }            
+             else if (aComponent.equals(browseDestButton)){
+                 return destinationFileText;
+             }
+             else if (aComponent.equals(overwriteCheckbox)){
+            	  return browseDestButton; 
+             }  
+             else if (aComponent.equals(outputCompressedCheck)){
+                 return overwriteCheckbox;
+             }   
+ 			else if (aComponent.equals(versionCombo)){
+ 				return outputCompressedCheck;
+ 			}
+ 			else if (aComponent.equals(runButton)){
+ 				return versionCombo;
+ 			}            
+            return inputPanel.getOpenButton();
+        }
+        
+        public Component getDefaultComponent(Container CycleRootComp){
+            return inputPanel.getOpenButton();
+        }
+
+        public Component getLastComponent(Container CycleRootComp){
+            return runButton;
+        }
+
+        public Component getFirstComponent(Container CycleRootComp){
+            return inputPanel.getOpenButton();
+        }
+    }
 }
