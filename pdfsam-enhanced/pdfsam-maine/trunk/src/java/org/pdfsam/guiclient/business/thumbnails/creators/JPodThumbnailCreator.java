@@ -127,13 +127,11 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		return retVal;
 	}
 
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel,long id) {
-		String providedPwd = password;
-		try{			
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel,long id) throws ThumbnailCreationException{
+		String providedPwd = password;	
 			PDDocument pdfDoc = null;
 			if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
-				try {
-					//create doc
+				try{//create doc
 					try{
 						pdfDoc = openDoc(inputFile, providedPwd);
 					}catch(IOException ioe){
@@ -142,10 +140,10 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 							if(providedPwd != null && providedPwd.length()>0){
 								pdfDoc = openDoc(inputFile, providedPwd);
 							}else{
-								pdfDoc = null;
+								throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password not provided."));
 							}
 						}else{
-							throw ioe;
+							throw new ThumbnailCreationException(ioe);
 						}
 					}
 					if(pdfDoc != null){
@@ -182,16 +180,20 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	            			pageTree = null;
 	            			JPodThumbnailsExecutor.getInstance().execute(new CreatorCloser(pdfDoc, startTime), id);
 	            		}	
+					}else{
+						throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the document."));
 					}
-        		}catch(Throwable t){
-        			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document."), t);
-        		}
+				}catch(IOException ioe){
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), ioe);
+				}catch(COSLoadException cle){
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), cle);
+				}catch(OutOfMemoryError oom){
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not enough memory to create thumbnails")+" "+inputFile.getAbsolutePath(), oom);
+				}
     		}else{
 				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Input file doesn't exists or is a directory"));
 			}						
-        }catch(Exception e){
-        	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
-        }
+ 
 	}
 	
 	/**

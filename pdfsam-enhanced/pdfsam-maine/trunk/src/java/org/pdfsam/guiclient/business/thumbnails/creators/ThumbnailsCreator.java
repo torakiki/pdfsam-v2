@@ -80,8 +80,9 @@ public interface ThumbnailsCreator {
 	 * @param password document password or null if no password is needed
 	 * @param panel
 	 * @param id Id for this thumbnails generation
+	 * @throws ThumbnailCreationException
 	 */
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id);
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id) throws ThumbnailCreationException;	
 	
 	/**
 	 * 
@@ -118,8 +119,9 @@ public interface ThumbnailsCreator {
 	 * @param password document password or null if no password is needed
 	 * @param panel
 	 * @param id Id for this thumbnails generation
+	 * @throws ThumbnailCreationException
 	 */
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id);
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id) throws ThumbnailCreationException;	
 	
 	/**
 	 * @return resolution of the created thumbnails

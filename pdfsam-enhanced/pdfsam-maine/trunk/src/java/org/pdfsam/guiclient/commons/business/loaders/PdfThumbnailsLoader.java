@@ -19,22 +19,19 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
-import org.pdfsam.i18n.GettextResource;
 /**
  * Loads a document a create thumbnails
  * @author Andrea Vacondio
  *
  */
 public class PdfThumbnailsLoader {
-	
-	private static final Logger log = Logger.getLogger(PdfThumbnailsLoader.class.getPackage().getName());
 	
 	private JVisualPdfPageSelectionPanel panel;
 	private JFileChooser fileChooser = null;
@@ -48,7 +45,7 @@ public class PdfThumbnailsLoader {
     /**
      * adds a file to the JList
      */
-    public void showFileChooserAndAddFile(){ 
+    public void showFileChooserAndAddFile() throws ThumbnailCreationException{ 
     	lazyInitFileChooser();
 		if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
 			if(canLoad()){	    	
@@ -91,21 +88,17 @@ public class PdfThumbnailsLoader {
      * @param file input file
      * @param password password
      */
-    public synchronized void addFile(final File file, final String password){
-    	try{
-    		creator = new JPodThumbnailCreator();
-    		panel.generateNewId();
-			creator.initThumbnailsPanel(file, password, panel, panel.getId());					
-    	}catch(Exception e){
-        	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
-        }
+    public synchronized void addFile(final File file, final String password) throws ThumbnailCreationException{
+   		creator = new JPodThumbnailCreator();
+   		panel.generateNewId();
+		creator.initThumbnailsPanel(file, password, panel, panel.getId());					
     }
 
     /**
      * add a file to the JList
      * @param file input file
      */
-    public void addFile(File file){
+    public void addFile(File file) throws ThumbnailCreationException{
     	this.addFile(file, null);
     }
     
@@ -114,7 +107,7 @@ public class PdfThumbnailsLoader {
      * @param file
      * @param checkIfAlreadyAdded if true it checks if the list is already filled, if so it asks the user
      */
-    public void addFile(File file, boolean checkIfAlreadyAdded){
+    public void addFile(File file, boolean checkIfAlreadyAdded) throws ThumbnailCreationException{
     	if(!checkIfAlreadyAdded || (checkIfAlreadyAdded && canLoad())){	    	
 			addFile(file);
     	}

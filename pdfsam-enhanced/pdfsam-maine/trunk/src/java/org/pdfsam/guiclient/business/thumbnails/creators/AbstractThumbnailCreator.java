@@ -49,17 +49,13 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 		return getPageImage(fileName, password, page, 0);
 	}
 	
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id) {
-		try{
-			if(fileName != null && fileName.length()>0){
-	    		File inputFile = new File(fileName);
-	    		initThumbnailsPanel(inputFile, password, panel, id);			
-			}else{
-				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create thumbnails for a null input document"));
-			}
-        }catch(Exception e){
-        	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), e);
-        }
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id) throws ThumbnailCreationException {
+		if(fileName != null && fileName.length()>0){
+    		File inputFile = new File(fileName);
+    		initThumbnailsPanel(inputFile, password, panel, id);			
+		}else{
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create thumbnails for a null input document"));
+		}       
 	}
 	
 	

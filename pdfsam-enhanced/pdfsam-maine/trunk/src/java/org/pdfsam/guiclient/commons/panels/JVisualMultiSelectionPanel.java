@@ -50,7 +50,7 @@ import org.pdfsam.guiclient.utils.filters.PdfFilter;
 public class JVisualMultiSelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -1794723446687409093L;
-
+	
     private final JButton openButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.ADD_BUTTON_TYPE);       
     private final CloseableTabbedPane inputTabbedPanel = new CloseableTabbedPane();
     private final JPanel topPanel = new JPanel();
@@ -168,7 +168,35 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		}
 		return retVal;
 	}
-    
+	
+	/**
+     * @return current zoomin button or null if the tabbed panel is empty
+     */
+	public JButton getCurrentZoomOutButton(){
+		JButton retVal = null;
+		if(inputTabbedPanel!=null && inputTabbedPanel.getTabCount()>0){
+			Component currentTab = inputTabbedPanel.getSelectedComponent();
+			if(currentTab!=null){
+				retVal = ((JVisualPdfPageSelectionPanel)currentTab).getZoomOutButton();
+			}
+		}
+		return retVal;
+	}
+	
+    /**
+     * @return current zoomin button or null if the tabbed panel is empty
+     */
+	public JButton getCurrentZoomInButton(){
+		JButton retVal = null;
+		if(inputTabbedPanel!=null && inputTabbedPanel.getTabCount()>0){
+			Component currentTab = inputTabbedPanel.getSelectedComponent();
+			if(currentTab!=null){
+				retVal = ((JVisualPdfPageSelectionPanel)currentTab).getZoomInButton();
+			}
+		}
+		return retVal;
+	}
+	
 	/**
 	 * @param propertyChangeListener the propertyChangeListener to set, listen the JVisualPdfPageSelectionPanel.OUTPUT_PATH_PROPERTY changes
 	 */
@@ -183,6 +211,13 @@ public class JVisualMultiSelectionPanel extends JPanel {
 	 */
 	public JButton getOpenButton() {
 		return openButton;
+	}
+
+	/**
+	 * @return the currentTopPanel
+	 */
+	public JPanel getCurrentTopPanel() {
+		return currentTopPanel;
 	}
 	
 }
