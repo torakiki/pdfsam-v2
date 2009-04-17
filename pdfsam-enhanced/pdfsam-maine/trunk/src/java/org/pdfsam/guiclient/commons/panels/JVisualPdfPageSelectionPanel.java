@@ -106,9 +106,8 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	private int dndSupport = DND_SUPPORT_NONE;
 	private int selectionType = SINGLE_INTERVAL_SELECTION;
 	private final JMenuItem menuItemSetOutputPath = new JMenuItem();
-	
 	/**
-	 * if true deleted items appear with a red cross over 
+	 * if true, deleted items appear with a red cross over 
 	 */
 	private boolean drawDeletedItems = true;
 	//if the JList uses wrap

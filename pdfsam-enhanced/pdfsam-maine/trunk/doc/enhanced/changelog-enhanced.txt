@@ -14,6 +14,7 @@
 -Added the document properties frame
 -VComposer: added a check on the "overwrite" flag
 -VComposer, VReorder: added 3 zoom levels
+-VComposer: dropping on a populated thumbnail panel will result in a new tab added to the multitabbed panel
 -VPageReorderMainGUI: added focus policy and fixed a label
 -VComposer: added focus policy
 -Shared thread pool for the thumbnails generation among panels. (number of threads now is fixed, configurable and doesn't depend on the number of panels opened).

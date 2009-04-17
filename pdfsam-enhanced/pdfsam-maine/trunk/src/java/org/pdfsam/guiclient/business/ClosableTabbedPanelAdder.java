@@ -20,10 +20,12 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.business.listeners.CleanClosedTabbedPanelListener;
+import org.pdfsam.guiclient.commons.dnd.handlers.ClosableTabTransferHandler;
 import org.pdfsam.guiclient.commons.panels.CloseableTabbedPane;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
+import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Adds a tab to the CloseableTabbedPane
@@ -72,20 +74,23 @@ public class ClosableTabbedPanelAdder {
 	public void addTabs(File[] files){
 		for(int i =0; i<files.length; i++){
 			try{
-	    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, JVisualPdfPageSelectionPanel.DND_SUPPORT_FILES, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
-	    		if(outputPathPropertyChangeListener!=null){
-	    			inputPanel.enableSetOutputPathMenuItem();
-	    			inputPanel.addPropertyChangeListener(outputPathPropertyChangeListener);
-	    		}
-	    		File currFile = files[i];
-	    		inputPanel.setSelectedPdfDocument(currFile);
-	    		inputPanel.getPdfLoader().addFile(currFile);
-	    		String panelName = currFile.getName();
-	    		if(panelName.length()>16){
-	    			panelName = currFile.getName().substring(0, 14)+"..";
-	    		}
-	    		inputTabbedPanel.addTab(panelName, inputPanel, null, currFile.getName());
-	    		inputTabbedPanel.addCloseableTabbedPaneListener(new CleanClosedTabbedPanelListener(inputTabbedPanel));
+	    		File currFile = files[i];			
+				if (currFile!=null && new PdfFilter(false).accept(currFile)){
+		    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, JVisualPdfPageSelectionPanel.DND_SUPPORT_NONE, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
+		    		inputPanel.getThumbnailList().setTransferHandler(new ClosableTabTransferHandler(this));
+		    		if(outputPathPropertyChangeListener!=null){
+		    			inputPanel.enableSetOutputPathMenuItem();
+		    			inputPanel.addPropertyChangeListener(outputPathPropertyChangeListener);
+		    		}
+		    		inputPanel.setSelectedPdfDocument(currFile);
+		    		inputPanel.getPdfLoader().addFile(currFile);
+		    		String panelName = currFile.getName();
+		    		if(panelName.length()>16){
+		    			panelName = currFile.getName().substring(0, 14)+"..";
+		    		}
+		    		inputTabbedPanel.addTab(panelName, inputPanel, null, currFile.getName());
+		    		inputTabbedPanel.addCloseableTabbedPaneListener(new CleanClosedTabbedPanelListener(inputTabbedPanel));
+				}
 			}catch(ThumbnailCreationException tce){
 				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), tce);
 			}
