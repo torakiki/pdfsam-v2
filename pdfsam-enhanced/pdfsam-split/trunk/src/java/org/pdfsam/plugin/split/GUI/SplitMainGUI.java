@@ -328,7 +328,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or \"[BOOKMARK_NAME]\" it performs variable substitution.")+"</p>"+
     		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf.")+"</p>"+
     		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it generates oldstyle output file names.")+"</p>"+
-    		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER].")+"</p>"+
+    		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Available variables")+": [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER], [BOOKMARK_NAME].</p>"+
     		"</body></html>";
 	    prefixHelpLabel = new JHelpLabel(helpTextPrefix, true);
 	    outputOptionsPanel.add(prefixHelpLabel);
