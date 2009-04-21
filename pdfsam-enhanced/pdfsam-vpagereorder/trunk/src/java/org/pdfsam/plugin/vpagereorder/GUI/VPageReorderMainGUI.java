@@ -26,7 +26,9 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -53,16 +55,20 @@ import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.dto.StringItem;
+import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
+import org.pdfsam.guiclient.utils.xml.XmlUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Visual reorder plugin  main panel
@@ -213,7 +219,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION  
         
-	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,selectionPanel, destinationPanel);
+	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,selectionPanel, destinationPanel);	 
         splitPanel.setOneTouchExpandable(true);
         splitPanel.setResizeWeight(1.0);
 
@@ -416,7 +422,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     }
     
 	public FocusTraversalPolicy getFocusPolicy() {
-		return (FocusTraversalPolicy)pageReorderFocusPolicy;
+		return pageReorderFocusPolicy;
 	}
 
 	public Node getJobNode(Node arg0, boolean savePasswords)
@@ -429,6 +435,15 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 					fileSource.addAttribute("value",item.getAbsolutePath());
 					if(savePasswords){
 						fileSource.addAttribute("password",(selectionPanel.getSelectedPdfDocumentPassword()!=null?selectionPanel.getSelectedPdfDocumentPassword():""));
+						VisualPageListItem[] pages = ((VisualListModel)selectionPanel.getThumbnailList().getModel()).getElements();
+						if(pages!=null && pages.length>0){
+							for(VisualPageListItem page: pages){
+								Element currentPage = fileSource.addElement("page");
+								currentPage.addAttribute("number", Integer.toString(page.getPageNumber()));
+								currentPage.addAttribute("deleted", String.valueOf(page.isDeleted()));
+								currentPage.addAttribute("rotation", Integer.toString(page.getRotation().getDegrees()));
+							}
+						}
 					}
 				}
 				
@@ -462,6 +477,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 		return PLUGIN_VERSION;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {
 		if(arg0!=null){
 			try{
@@ -473,7 +489,20 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 					if (filePwd != null && filePwd.getText().length()>0){
 						password = filePwd.getText();
 					}
-					selectionPanel.getPdfLoader().addFile(new File(fileSource.getText()), password);
+					List<DocumentPage> template = null;
+					List<Node> pages = arg0.selectNodes("source/page");
+					if(pages!=null && pages.size()>0){
+						for(Node pageNode : pages){
+							DocumentPage currentPage = XmlUtility.getDocumentPage(pageNode);
+							if(currentPage != null){
+								if(template==null){
+									template = new ArrayList<DocumentPage>();
+								}
+								template.add(currentPage);
+							}
+						}
+					}
+					selectionPanel.getPdfLoader().addFile(new File(fileSource.getText()), password, template);
 				}
 				
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
