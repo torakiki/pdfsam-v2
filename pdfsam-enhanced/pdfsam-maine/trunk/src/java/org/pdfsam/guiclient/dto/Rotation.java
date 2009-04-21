@@ -58,6 +58,10 @@ public enum Rotation {
 	        case 0: 
 	        		retVal = DEGREES_0;
 	        		break;
+	        default:
+        			retVal = DEGREES_0;
+	        		break;
+	        	
 		}
 		return retVal;
 	}

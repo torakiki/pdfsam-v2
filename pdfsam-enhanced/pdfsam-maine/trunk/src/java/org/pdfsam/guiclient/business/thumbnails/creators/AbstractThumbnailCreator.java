@@ -18,10 +18,12 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.i18n.GettextResource;
 
@@ -49,10 +51,10 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 		return getPageImage(fileName, password, page, 0);
 	}
 	
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id) throws ThumbnailCreationException {
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException {
 		if(fileName != null && fileName.length()>0){
     		File inputFile = new File(fileName);
-    		initThumbnailsPanel(inputFile, password, panel, id);			
+    		initThumbnailsPanel(inputFile, password, panel, id, template);			
 		}else{
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create thumbnails for a null input document"));
 		}       

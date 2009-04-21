@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -33,6 +34,7 @@ import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
+import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
@@ -127,7 +129,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		return retVal;
 	}
 
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel,long id) throws ThumbnailCreationException{
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel,long id, List<DocumentPage> template) throws ThumbnailCreationException{
 		String providedPwd = password;	
 			PDDocument pdfDoc = null;
 			if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
@@ -171,8 +173,19 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	                	panel.setDocumentPropertiesVisible(true);
 	            		if(pages > 0){
 	            			ArrayList<VisualPageListItem> modelList = new ArrayList<VisualPageListItem>(pages);
-	            			for (int i = 1; i<=pages; i++){
-	            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), providedPwd));
+	            			if(template == null || template.size()<=0){
+		            			for (int i = 1; i<=pages; i++){
+		            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), providedPwd));
+		            			}
+	            			}else{
+	            				for(DocumentPage page: template){
+	            					if(page.getPageNumber()>0 && page.getPageNumber()<=pages){
+	            						VisualPageListItem currentItem =  new VisualPageListItem(page.getPageNumber(), inputFile.getCanonicalPath(), providedPwd);
+	            						currentItem.setDeleted(page.isDeleted());
+	            						currentItem.setRotation(page.getRotation());
+	            						modelList.add(currentItem);
+	            					}
+	            				}
 	            			}
 	            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
 	            			long startTime = System.currentTimeMillis();

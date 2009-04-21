@@ -17,11 +17,13 @@ package org.pdfsam.guiclient.business.thumbnails.creators;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
 import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
+import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 
 /**
@@ -80,9 +82,10 @@ public interface ThumbnailsCreator {
 	 * @param password document password or null if no password is needed
 	 * @param panel
 	 * @param id Id for this thumbnails generation
+	 * @param template template for the document pages (order, rotation infos..)
 	 * @throws ThumbnailCreationException
 	 */
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id) throws ThumbnailCreationException;	
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;	
 	
 	/**
 	 * 
@@ -119,9 +122,10 @@ public interface ThumbnailsCreator {
 	 * @param password document password or null if no password is needed
 	 * @param panel
 	 * @param id Id for this thumbnails generation
+	 * @param template template for the document pages (order, rotation infos..)
 	 * @throws ThumbnailCreationException
 	 */
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id) throws ThumbnailCreationException;	
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;	
 	
 	/**
 	 * @return resolution of the created thumbnails

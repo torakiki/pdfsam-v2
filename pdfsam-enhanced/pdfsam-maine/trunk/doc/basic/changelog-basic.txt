@@ -15,6 +15,7 @@
 -VComposer: dropping on a populated thumbnail panel will result in a new tab added to the multitabbed panel
 -VPageReorderMainGUI: added focus policy and fixed a label
 -VComposer: added focus policy
+-VReorder: fully working save/load environment
 -Shared thread pool for the thumbnails generation among panels. (number of threads now is fixed, configurable and doesn't depend on the number of panels opened).
 -Added the filename in the page viewer status bar
 -Console: added the -step option to the mix command

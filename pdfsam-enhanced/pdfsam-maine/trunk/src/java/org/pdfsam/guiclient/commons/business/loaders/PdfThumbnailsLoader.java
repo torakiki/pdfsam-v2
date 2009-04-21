@@ -15,6 +15,7 @@
 package org.pdfsam.guiclient.commons.business.loaders;
 
 import java.io.File;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -23,9 +24,11 @@ import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
+
 /**
  * Loads a document a create thumbnails
  * @author Andrea Vacondio
@@ -87,13 +90,24 @@ public class PdfThumbnailsLoader {
      * add a file to the JList
      * @param file input file
      * @param password password
+     * @param template pages template
      */
-    public synchronized void addFile(final File file, final String password) throws ThumbnailCreationException{
+    public synchronized void addFile(final File file, final String password, List<DocumentPage> template) throws ThumbnailCreationException{
    		creator = new JPodThumbnailCreator();
    		panel.generateNewId();
-		creator.initThumbnailsPanel(file, password, panel, panel.getId());					
+		creator.initThumbnailsPanel(file, password, panel, panel.getId(), template);					
     }
 
+    /**
+     * Add file without a template
+     * @param file
+     * @param password
+     * @throws ThumbnailCreationException
+     */
+    public void addFile(final File file, final String password) throws ThumbnailCreationException{
+    	this.addFile(file, password, null);
+    }
+    
     /**
      * add a file to the JList
      * @param file input file
