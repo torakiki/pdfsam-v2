@@ -39,6 +39,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -147,7 +148,6 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
 		destinationPanel.setBorder(titledBorder);
 		destinationPanel.setPreferredSize(new Dimension(180, 160));
-		destinationPanel.setMinimumSize(new Dimension(160, 150));
         add(destinationPanel);
 //END_DESTINATION_PANEL        
 //DESTINATION_RADIOS
@@ -219,7 +219,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION  
         
-	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,selectionPanel, destinationPanel);	 
+	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,selectionPanel, new JScrollPane(destinationPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));	 
         splitPanel.setOneTouchExpandable(true);
         splitPanel.setResizeWeight(1.0);
 
