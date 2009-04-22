@@ -41,6 +41,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -88,9 +89,9 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
     private JHelpLabel destinationHelpLabel;
     private Configuration config;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
-    private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, JVisualPdfPageSelectionPanel.DND_SUPPORT_JAVAOBJECTS, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);
-	private JPanel topPanel = new JPanel();
-    private JSplitPane splitPanel = null;
+    private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, JVisualPdfPageSelectionPanel.DND_SUPPORT_JAVAOBJECTS, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);	
+    private JSplitPane lowerSplitPanel = null;
+    private JSplitPane higherSplitPanel = null;
 	
     //layouts
     private SpringLayout destinationPanelLayout;
@@ -140,20 +141,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         setPreferredSize(new Dimension(500,700));
         
         setLayout(new GridBagLayout());
-        
-        
-        topPanel.setLayout(new GridBagLayout());
-        GridBagConstraints topConst = new GridBagConstraints();
-        topConst.fill = GridBagConstraints.BOTH;
-        topConst.ipady = 5;
-        topConst.weightx = 0.5;
-        topConst.weighty = 0.5;
-        topConst.gridwidth = 3;
-        topConst.gridheight = 1;
-        topConst.gridx = 0;
-        topConst.gridy = 0;
-		topPanel.add(inputPanel, topConst);
-        
+               
         inputPanel.setOutputPathPropertyChangeListener(this);
         
         JPanel buttonsPanel = new JPanel();
@@ -206,15 +194,10 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		
         composerPanel.addToTopPanel(buttonsPanel);
         composerPanel.disableSetOutputPathMenuItem();
-        
-        topConst.fill = GridBagConstraints.BOTH;
-        topConst.weightx = 0.5;
-        topConst.weighty = 0.5;
-        topConst.gridwidth = 3;
-        topConst.gridheight = 1;
-        topConst.gridx = 0;
-        topConst.gridy = 1;
-        topPanel.add(composerPanel, topConst);
+
+        higherSplitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,inputPanel, composerPanel);
+        higherSplitPanel.setDividerSize(2);
+        higherSplitPanel.setResizeWeight(0.5);
 		
       //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
@@ -222,7 +205,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		TitledBorder titledBorder = BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Destination output file"));
 		destinationPanel.setBorder(titledBorder);
 		destinationPanel.setPreferredSize(new Dimension(200, 160));
-		destinationPanel.setMinimumSize(new Dimension(160, 150));		
 		//END_DESTINATION_PANEL        
                 
         destinationPanel.add(destinationFileText);
@@ -273,10 +255,9 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 
-	  
-	    splitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,topPanel, destinationPanel);
-        splitPanel.setOneTouchExpandable(true);
-        splitPanel.setResizeWeight(1.0);
+	    lowerSplitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,higherSplitPanel, new JScrollPane(destinationPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
+        lowerSplitPanel.setOneTouchExpandable(true);
+        lowerSplitPanel.setResizeWeight(1.0);
 
 
         GridBagConstraints c = new GridBagConstraints();
@@ -290,7 +271,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         c.gridy = 0;
         c.insets = new Insets(0, 0, 10, 0);
         
-  		add(splitPanel, c);	 
+  		add(lowerSplitPanel, c);	 
 	  //ENTER_KEY_LISTENERS
 	          browseDestButton.addKeyListener(browsedEnterkeyListener);
 	          runButton.addKeyListener(runEnterkeyListener);
