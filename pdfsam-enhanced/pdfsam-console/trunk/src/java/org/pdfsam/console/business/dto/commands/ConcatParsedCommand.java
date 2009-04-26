@@ -38,6 +38,7 @@
 package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
+import java.util.Arrays;
 
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.PdfFile;

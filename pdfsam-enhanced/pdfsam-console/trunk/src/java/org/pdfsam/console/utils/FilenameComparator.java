@@ -38,13 +38,16 @@
 package org.pdfsam.console.utils;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Comparator;
 /**
  * Comparator for the file names
  * @author Andrea Vacondio
  *
  */
-public class FilenameComparator implements Comparator {
+public class FilenameComparator implements Comparator, Serializable {
+
+	private static final long serialVersionUID = 6767839068739066392L;
 
 	public int compare(Object arg0, Object arg1) {
         if (arg0 == null || arg1 == null) {
