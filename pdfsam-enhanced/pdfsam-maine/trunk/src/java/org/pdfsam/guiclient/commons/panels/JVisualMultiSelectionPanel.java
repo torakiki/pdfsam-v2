@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -40,6 +41,7 @@ import org.pdfsam.guiclient.business.ClosableTabbedPanelAdder;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.dnd.droppers.JVisualMultiSelectionDropper;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.PdfFile;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 /**
@@ -170,6 +172,20 @@ public class JVisualMultiSelectionPanel extends JPanel {
 	}
 	
 	/**
+	 * @return an array of the input documents opened in this panel
+	 */
+	public PdfFile[] getInputDocuments(){
+		PdfFile[] retVal = null;
+		if(inputTabbedPanel!=null && inputTabbedPanel.getTabCount()>0){
+			retVal = new PdfFile[inputTabbedPanel.getComponentCount()];
+			for(int i=0; i<inputTabbedPanel.getComponentCount(); i++){
+				JVisualPdfPageSelectionPanel currentPanel = (JVisualPdfPageSelectionPanel)inputTabbedPanel.getComponentAt(i);
+				retVal[i] = new PdfFile(currentPanel.getSelectedPdfDocument(), currentPanel.getSelectedPdfDocumentPassword());
+			}
+		}
+		return retVal;
+	}
+	/**
      * @return current zoomin button or null if the tabbed panel is empty
      */
 	public JButton getCurrentZoomOutButton(){
@@ -219,5 +235,31 @@ public class JVisualMultiSelectionPanel extends JPanel {
 	public JPanel getCurrentTopPanel() {
 		return currentTopPanel;
 	}
+	/**
+	 * add the files to the tabbed panel
+	 * @param fileList
+	 */
+	public void addTabs(List<File> fileList){
+		if(fileList!=null && fileList.size()>0){
+			tabsAdder.addTabs(fileList); 
+		}
+	}
+	/**
+	 * add a file to the tabbed panel
+	 * @param file
+	 * @param password file password
+	 */
+	public void addTab(File file, String password){
+		if(file!=null){			
+			tabsAdder.addTab(file, password); 
+		}
+	}
 	
+	/**
+	 * add a file to the tabbed panel
+	 * @param file
+	 */
+	public void addTab(File file){
+		addTab(file, null);
+	}
 }

@@ -35,6 +35,7 @@ public class PagesWorker {
     public static final String UNDELETE = "undelete";
     public static final String ROTATE_CLOCK = "rotateclock";
     public static final String ROTATE_ANTICLOCK = "rotateanticlock";
+    public static final String REVERSE = "reverse";
     
     private JVisualSelectionList list;
     
@@ -73,6 +74,8 @@ public class PagesWorker {
                 		((VisualListModel)list.getModel()).rotateClockwiseElements(selectedIndexes);
 		    	}else if (ROTATE_ANTICLOCK.equals(action)){
                 		((VisualListModel)list.getModel()).rotateAnticlockwiseElements(selectedIndexes);
+		    	}else if (REVERSE.equals(action)){
+            		((VisualListModel)list.getModel()).reverseElements(selectedIndexes);
 		    	}
 		    	else {
 		    	
