@@ -139,6 +139,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     private JButton moveDownButton;
     private JButton rotateButton;
     private JButton rotateAntiButton;
+    private JButton reverseButton;
 
     /**
      * default constructor
@@ -372,6 +373,13 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
     		menuItemAntiRotate.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.ROTATE_ANTICLOCK, pagesWorker));
     		popupMenu.add(menuItemAntiRotate);
     		
+    		//reverse item	
+    		final JMenuItem menuItemReverse = new JMenuItem();
+    		menuItemReverse.setIcon(new ImageIcon(this.getClass().getResource("/images/reverse.png")));
+    		menuItemReverse.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse"));
+    		menuItemReverse.addMouseListener(new VisualPdfSelectionMouseAdapter(PagesWorker.REVERSE, pagesWorker));
+    		popupMenu.add(menuItemReverse);
+    		
         	enableSetOutputPathMenuItem();
         	
         	addPopupShower();
@@ -502,7 +510,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 			undeleteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 			addButtonToButtonPanel(undeleteButton);
 		}
-
+		
 		//rotate button
 		rotateButton = new JButton();
 		rotateButton.addActionListener(pageActionListener);
@@ -526,6 +534,18 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		rotateAntiButton.addKeyListener(new EnterDoClickListener(rotateAntiButton));
 		rotateAntiButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		addButtonToButtonPanel(rotateAntiButton);
+
+		//reverse button
+		reverseButton = new JButton();
+		reverseButton.addActionListener(pageActionListener);
+		reverseButton.setIcon(new ImageIcon(this.getClass().getResource("/images/reverse.png")));
+		reverseButton.setActionCommand(PagesWorker.REVERSE);
+		reverseButton.setMargin(new Insets(2, 2, 2, 2));
+		reverseButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse"));
+		reverseButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Reverse pages order"));
+		reverseButton.addKeyListener(new EnterDoClickListener(reverseButton));
+		reverseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButtonToButtonPanel(reverseButton);
 	}
 	
 	private void initKeyListener(){

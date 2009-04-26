@@ -16,6 +16,7 @@ package org.pdfsam.guiclient.commons.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -84,7 +85,7 @@ public class VisualListModel extends AbstractListModel {
     	if(physicalDeletion){
     		data.remove(index);
     	}else{
-    		((VisualPageListItem)data.get(index)).setDeleted(true);
+    		(data.get(index)).setDeleted(true);
     	}
     	fireIntervalRemoved(this, index, index);
     }
@@ -102,7 +103,7 @@ public class VisualListModel extends AbstractListModel {
         		data.subList(rows[0], rows[rows.length-1]+1).clear();
         	}else{
         		for(int i=0; i<rows.length; i++){
-        			((VisualPageListItem)data.get(rows[i])).setDeleted(true);
+        			(data.get(rows[i])).setDeleted(true);
         		}
         	}
             this.fireIntervalRemoved(this, rows[0], rows[rows.length -1]);
@@ -122,7 +123,7 @@ public class VisualListModel extends AbstractListModel {
         		data.subList(fromIndex, toIndex+1).clear();
         	}else{
         		for(int i=fromIndex; i<toIndex; i++){
-        			((VisualPageListItem)data.get(i)).setDeleted(true);
+        			(data.get(i)).setDeleted(true);
         		}
         	}
             this.fireIntervalRemoved(this, fromIndex, toIndex);
@@ -291,12 +292,30 @@ public class VisualListModel extends AbstractListModel {
     public void undeleteElements(int[] indexes)throws IndexOutOfBoundsException{
         if (indexes.length>0 && indexes.length <= data.size()){
         	for (int i=0; i<indexes.length; i++){
-        		((VisualPageListItem)data.get(indexes[i])).setDeleted(false);
+        		(data.get(indexes[i])).setDeleted(false);
         	}  
         	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
         }
     }
     
+    /**
+     * Reverse the given elements
+     * @param indexes
+     * @throws IndexOutOfBoundsException
+     */
+    public void reverseElements(int[] indexes)throws IndexOutOfBoundsException{
+        if (indexes.length>0 && indexes.length <= data.size()){
+        	ArrayList<VisualPageListItem> items = new ArrayList<VisualPageListItem>(data.size());
+        	for (int i=0; i<indexes.length; i++){
+        		items.add(data.get(indexes[i]));
+        	}
+        	Collections.reverse(items);
+        	for (int i=0; i<indexes.length; i++){
+        		data.set(indexes[i], items.get(i));
+        	}
+        	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
+        }
+    }
     /**
      * rotates the given elements
      * @param indexes
@@ -305,7 +324,7 @@ public class VisualListModel extends AbstractListModel {
     public void rotateClockwiseElements(int[] indexes)throws IndexOutOfBoundsException{
         if (indexes.length>0 && indexes.length <= data.size()){
         	for (int i=0; i<indexes.length; i++){
-        		VisualPageListItem item = (VisualPageListItem)data.get(indexes[i]);
+        		VisualPageListItem item = data.get(indexes[i]);
         		item.rotateClockwise();
         		rotateItemThumnail(item);
         	}  
@@ -321,7 +340,7 @@ public class VisualListModel extends AbstractListModel {
     public void rotateAnticlockwiseElements(int[] indexes)throws IndexOutOfBoundsException{
         if (indexes.length>0 && indexes.length <= data.size()){
         	for (int i=0; i<indexes.length; i++){
-        		VisualPageListItem item = (VisualPageListItem)data.get(indexes[i]);
+        		VisualPageListItem item = data.get(indexes[i]);
         		item.rotateAnticlockwise();
         		rotateItemThumnail(item);
         	}  
@@ -348,7 +367,7 @@ public class VisualListModel extends AbstractListModel {
      */
     public void moveUpIndex(int index)throws IndexOutOfBoundsException{
             if (index >= 1 && index < (data.size())){
-            	VisualPageListItem tmpElement = (VisualPageListItem)data.get(index);
+            	VisualPageListItem tmpElement = data.get(index);
                 data.set(index, data.get((index-1)));
                 data.set((index-1), tmpElement);
                 fireContentsChanged(this,index-1, index);
@@ -363,7 +382,7 @@ public class VisualListModel extends AbstractListModel {
         if (indexes.length > 0 && indexes.length < data.size()){
            //no move up if i'm selecting the first element of the table
            if (indexes[0] > 0){
-        	   VisualPageListItem tmpElement = (VisualPageListItem)data.get(indexes[0]-1);
+        	   VisualPageListItem tmpElement = data.get(indexes[0]-1);
                for (int i=0; i<indexes.length; i++){    
                    if (indexes[i] > 0){
                            data.set(indexes[i]-1, data.get(indexes[i]));
@@ -381,7 +400,7 @@ public class VisualListModel extends AbstractListModel {
      */
     public void moveDownIndex(int index) throws IndexOutOfBoundsException{
             if (index >= 0 && index < (data.size()-1)){                
-            	VisualPageListItem tmpElement = (VisualPageListItem)data.get(index);
+            	VisualPageListItem tmpElement = data.get(index);
                 data.set(index, data.get((index+1)));
                 data.set((index+1), tmpElement);
                 fireContentsChanged(this,index, index+1);
@@ -396,7 +415,7 @@ public class VisualListModel extends AbstractListModel {
         if (indexes.length > 0 && indexes.length < data.size()){
             //no move down if i'm selecting the last element of the table
             if (indexes[indexes.length-1] < (data.size()-1)){
-            	VisualPageListItem tmpElement = (VisualPageListItem)data.get(indexes[indexes.length-1]+1);
+            	VisualPageListItem tmpElement = data.get(indexes[indexes.length-1]+1);
                 for (int i=(indexes.length-1); i>=0; i--){    
                     if (indexes[indexes.length-1] < (data.size()-1)){
                             data.set(indexes[i]+1, data.get(indexes[i]));
@@ -416,7 +435,7 @@ public class VisualListModel extends AbstractListModel {
     	if(data!=null && data.size()>0){
     		retVal = new ArrayList<VisualPageListItem>(data.size());
     		 for (int i=0; i<data.size(); i++){   
-    			 if(!((VisualPageListItem)data.get(i)).isDeleted()){
+    			 if(!(data.get(i)).isDeleted()){
     				 retVal.add(data.get(i));
     			 }
     		 }
