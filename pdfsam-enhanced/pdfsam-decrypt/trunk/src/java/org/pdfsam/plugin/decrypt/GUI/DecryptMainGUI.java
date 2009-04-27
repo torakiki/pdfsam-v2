@@ -46,6 +46,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -97,7 +98,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.1e";
+	private static final String PLUGIN_VERSION = "0.0.2e";
 	
 	/**
 	 * Constructor
@@ -255,8 +256,9 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
 							    JOptionPane.WARNING_MESSAGE);
 					}
-				}catch(Exception any_ex){   
-					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), any_ex);
+				}catch(Exception ex){   
+					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+					SoundPlayer.getInstance().playErrorSound();
 				} 
 
 			}
