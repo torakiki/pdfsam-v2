@@ -50,6 +50,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -133,7 +134,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.8e";
+    private final String PLUGIN_VERSION = "0.2.9e";
 	
 	public final static int DPRINT = 0;
 	public final static int PRINT = 1;
@@ -480,6 +481,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 					}
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+                	SoundPlayer.getInstance().playErrorSound();
                 }     
             }
         });
