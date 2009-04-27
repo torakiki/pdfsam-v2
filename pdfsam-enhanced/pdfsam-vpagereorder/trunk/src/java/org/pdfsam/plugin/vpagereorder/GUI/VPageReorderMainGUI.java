@@ -50,6 +50,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.guiclient.business.SoundPlayer;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
@@ -168,16 +169,6 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         outputCompressedCheck.setSelected(true);
         
         destinationPanel.add(versionCombo);
-		
-		/*c.fill = GridBagConstraints.HORIZONTAL;
-	    c.ipady = 5;
-	    c.weightx = 1.0;
-	    c.weighty = 0.0;
-	    c.gridwidth = 3;
-	    c.gridx = 0;
-	    c.gridy = 1;	
-	    c.insets = new Insets(0, 0, 0, 0);
-		add(destinationPanel, c);*/
 		
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
@@ -357,6 +348,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 						WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
 					} catch (Exception ex) {
 						log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
+						SoundPlayer.getInstance().playErrorSound();
 					}
 				}
 			}
