@@ -45,6 +45,7 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -432,6 +433,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 					}
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+                	SoundPlayer.getInstance().playErrorSound();
                 }      
             }
         });
