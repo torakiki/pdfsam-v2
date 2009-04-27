@@ -47,6 +47,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -132,7 +133,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     final JLabel outPrefixLabel = new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.0.2e";  
+    private final String PLUGIN_VERSION = "0.0.3e";  
     
     public SetViewerMainGUI(){
     	initialize();
@@ -439,6 +440,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 					}
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+                	SoundPlayer.getInstance().playErrorSound();
                 }     
             }
         });
