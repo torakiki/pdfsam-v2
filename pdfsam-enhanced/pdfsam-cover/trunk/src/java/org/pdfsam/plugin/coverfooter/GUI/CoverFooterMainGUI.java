@@ -47,6 +47,7 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
@@ -111,7 +112,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.8e";
+    private static final String PLUGIN_VERSION = "0.2.9e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -435,6 +436,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
                 	}					
                 }catch(Exception ex){    
                 	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+                	SoundPlayer.getInstance().playErrorSound();
                 }    
             }
         });
