@@ -28,6 +28,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.AbstractButton;
@@ -53,15 +54,18 @@ import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.commons.panels.JVisualMultiSelectionPanel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.PdfFile;
 import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
@@ -71,6 +75,8 @@ import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
+
+import com.lowagie.text.pdf.codec.Base64;
 
 /**
  * Visual document composer plugin  main panel
@@ -193,10 +199,13 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		buttonsPanel.add(moveToBottomButton);
 		
         composerPanel.addToTopPanel(buttonsPanel);
-        composerPanel.disableSetOutputPathMenuItem();
+        composerPanel.disableSetOutputPathMenuItem();        
+        JScrollPane composerScroll = new JScrollPane(composerPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        composerScroll.setSize(new Dimension(300, 250));
 
-        higherSplitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,inputPanel, composerPanel);
+        higherSplitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,inputPanel, composerScroll);
         higherSplitPanel.setDividerSize(2);
+        higherSplitPanel.setDividerLocation(0.5);
         higherSplitPanel.setResizeWeight(0.5);
 		
       //DESTINATION_PANEL
@@ -255,6 +264,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 
+	    
 	    lowerSplitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,higherSplitPanel, new JScrollPane(destinationPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
         lowerSplitPanel.setOneTouchExpandable(true);
         lowerSplitPanel.setResizeWeight(1.0);
@@ -356,6 +366,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	
 		                  }catch(Exception ex){    
 		                  	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
+		                  	SoundPlayer.getInstance().playErrorSound();
 		                  }  
 	                  }
 	              }
@@ -420,12 +431,42 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 			throws SaveJobException {
 		try {
 			if (arg0 != null) {
-				Element fileSource = ((Element)arg0).addElement("source");
-				File item = composerPanel.getSelectedPdfDocument();
-				if(item != null){
-					fileSource.addAttribute("value",item.getAbsolutePath());
-					if(savePasswords){
-						fileSource.addAttribute("password",(composerPanel.getSelectedPdfDocumentPassword()!=null?composerPanel.getSelectedPdfDocumentPassword():""));
+				Element inputDocuments = ((Element)arg0).addElement("input-documents");
+				PdfFile[] openFiles = inputPanel.getInputDocuments();
+				if(openFiles!=null && openFiles.length>0){
+					for(PdfFile openFile: openFiles){
+						if(openFile != null && openFile.getInputFile()!=null){
+							Element fileSource = ((Element)inputDocuments).addElement("source");							
+							fileSource.addAttribute("value",openFile.getInputFile().getAbsolutePath());
+							if(savePasswords){
+								fileSource.addAttribute("password",(openFile.getPassword()!=null?openFile.getPassword():""));
+							}
+						}
+					}
+				}
+				
+				Element outputDocument = ((Element)arg0).addElement("output-document");
+				VisualPageListItem[] pages = ((VisualListModel)composerPanel.getThumbnailList().getModel()).getElements();
+				if(pages!=null && pages.length>0){
+					
+					for(VisualPageListItem page: pages){
+						Element outputFile = ((Element)outputDocument).addElement("page");
+						outputFile.setText(Base64.encodeObject(page));
+						//
+						/*
+						if(currentFile!=page.getParentFileCanonicalPath()){
+							currentFile =page.getParentFileCanonicalPath();
+							outputFile = ((Element)outputDocument).addElement("source");							
+							outputFile.addAttribute("value",currentFile);
+							if(savePasswords){
+								outputFile.addAttribute("password",(page.getDocumentPassword()!=null?page.getDocumentPassword():""));
+							}
+						}
+						if(outputFile!=null){
+							Element currentPage = outputFile.addElement("page");
+							currentPage.addAttribute("number", Integer.toString(page.getPageNumber()));
+							currentPage.addAttribute("rotation", Integer.toString(page.getRotation().getDegrees()));
+						}*/
 					}
 				}
 				
@@ -459,18 +500,37 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 		return PLUGIN_VERSION;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {
 		if(arg0!=null){
 			try{
 				resetPanel();
-				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
-				if (fileSource != null && fileSource.getText().length()>0){
-					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
-					String password = null;
-					if (filePwd != null && filePwd.getText().length()>0){
-						password = filePwd.getText();
+				List<Node> filesSource = arg0.selectNodes("input-documents/source");
+				if(filesSource!=null && filesSource.size()>0){
+					for(Node fileNode : filesSource){
+						Node fileSource = (Node) fileNode.selectSingleNode("@value");
+						if (fileSource != null && fileSource.getText().length()>0){
+							Node filePwd = (Node) fileNode.selectSingleNode("@password");
+							String password = null;
+							if (filePwd != null && filePwd.getText().length()>0){
+								password = filePwd.getText();
+							}
+							inputPanel.addTab(new File(fileSource.getText()), password);
+						}
 					}
-					composerPanel.getPdfLoader().addFile(new File(fileSource.getText()), password);
+				}				
+				
+				List<Node> outputPages = arg0.selectNodes("output-document/page");
+				if(outputPages!=null && outputPages.size()>0){
+					for(Node pageNode : outputPages){
+						String serializedPage = pageNode.getText();
+						if(serializedPage!=null && serializedPage.length()>0){
+							Object pageObject = Base64.decodeToObject(serializedPage);
+							if(pageObject!=null){
+								((VisualListModel)composerPanel.getThumbnailList().getModel()).addElement((VisualPageListItem) pageObject);
+							}
+						}
+					}
 				}
 				
 				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
