@@ -35,7 +35,7 @@ import org.pdfsam.i18n.GettextResource;
 public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	
 	private static final Logger log = Logger.getLogger(AbstractThumbnailCreator.class.getPackage().getName());
-	
+
 	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		if(fileName != null && fileName.length()>0){
@@ -89,6 +89,4 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
         g2.drawImage(scaledInstance, 0, 0,null);
     	return retVal;
     }
-
-
 }

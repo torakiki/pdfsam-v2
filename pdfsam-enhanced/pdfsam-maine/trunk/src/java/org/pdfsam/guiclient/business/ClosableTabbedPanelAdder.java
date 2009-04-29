@@ -84,7 +84,7 @@ public class ClosableTabbedPanelAdder {
 	 */
 	public void addTab(File file, String password){
 		try{
-			if (file!=null && new PdfFilter(false).accept(file)){
+			if (file!=null && file.exists() && new PdfFilter(false).accept(file)){
 	    		JVisualPdfPageSelectionPanel inputPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, true, false, false, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_HIDE, JVisualPdfPageSelectionPanel.DND_SUPPORT_NONE, JVisualPdfPageSelectionPanel.MULTIPLE_INTERVAL_SELECTION);
 	    		inputPanel.getThumbnailList().setTransferHandler(new ClosableTabTransferHandler(this));
 	    		if(outputPathPropertyChangeListener!=null){

@@ -193,7 +193,7 @@ public class JPodThumbnailsExecutor {
 	              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getCompleteRotation()));	
 	        		}
 	            }catch (Throwable t) {
-	            	pageItem.setThumbnail(ThumbnailsCreator.ERROR_IMAGE);
+	            	pageItem.setThumbnail(ImageUtility.getErrorImage());
 	        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
 	        	}finally{
 	        		if(graphics!=null){

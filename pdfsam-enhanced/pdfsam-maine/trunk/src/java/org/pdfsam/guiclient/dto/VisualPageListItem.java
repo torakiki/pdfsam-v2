@@ -14,13 +14,13 @@
  */
 package org.pdfsam.guiclient.dto;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.Serializable;
-
-import javax.swing.ImageIcon;
 
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.utils.ConversionUtility;
+import org.pdfsam.guiclient.utils.ImageUtility;
 import org.pdfsam.guiclient.utils.paper.PaperFormatUtility;
 /**
  * DTO representing a page of a document 
@@ -31,10 +31,8 @@ public class VisualPageListItem implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 7598120284619680606L;
 	
-	public static final Image HOURGLASS =  new ImageIcon(VisualPageListItem.class.getResource("/images/hourglass.png")).getImage();
-
-	private Image thumbnail = HOURGLASS;
-	private Image rotatedThumbnail = null;
+	private BufferedImage thumbnail = ImageUtility.getHourglassImage();
+	private BufferedImage rotatedThumbnail = null;
 	private int pageNumber;
 	private boolean deleted = false;
 	private String parentFileCanonicalPath = "";
@@ -50,14 +48,14 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param pageNumber
 	 */
 	public VisualPageListItem(int pageNumber) {
-		this(HOURGLASS, pageNumber);
+		this(ImageUtility.getHourglassImage(), pageNumber);
 	}
 	/**
 	 * @param pageNumber
 	 * @param parentFileCanonicalPath
 	 */
 	public VisualPageListItem(int pageNumber, String parentFileCanonicalPath) {
-		this(HOURGLASS, pageNumber, false, parentFileCanonicalPath, null);
+		this(ImageUtility.getHourglassImage(), pageNumber, false, parentFileCanonicalPath, null);
 	}
 	/**
 	 * @param pageNumber
@@ -65,14 +63,14 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param documentPassword
 	 */
 	public VisualPageListItem(int pageNumber, String parentFileCanonicalPath, String documentPassword) {
-		this(HOURGLASS, pageNumber, false, parentFileCanonicalPath, documentPassword);
+		this(ImageUtility.getHourglassImage(), pageNumber, false, parentFileCanonicalPath, documentPassword);
 	}
 
 	/**
 	 * @param thumbnail
 	 * @param pageNumber
 	 */
-	public VisualPageListItem(Image thumbnail, int pageNumber) {
+	public VisualPageListItem(BufferedImage thumbnail, int pageNumber) {
 		this(thumbnail, pageNumber, false);
 	}
 	/**
@@ -80,7 +78,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param pageNumber
 	 * @param deleted
 	 */
-	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted){
+	public VisualPageListItem(BufferedImage thumbnail, int pageNumber, boolean deleted){
 		this(thumbnail, pageNumber, deleted, "", null);
 	}
 	/**
@@ -90,7 +88,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param parentFileCanonicalPath
 	 * @param documentPassword 
 	 */
-	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword) {
+	public VisualPageListItem(BufferedImage thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword) {
 		this(thumbnail, pageNumber, deleted, parentFileCanonicalPath, documentPassword, Rotation.DEGREES_0);
 	}
 	
@@ -102,7 +100,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * @param documentPassword
 	 * @param rotation
 	 */
-	public VisualPageListItem(Image thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword, Rotation rotation) {
+	public VisualPageListItem(BufferedImage thumbnail, int pageNumber, boolean deleted, String parentFileCanonicalPath, String documentPassword, Rotation rotation) {
 		super();
 		this.thumbnail = thumbnail;
 		this.pageNumber = pageNumber;
@@ -115,13 +113,13 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	/**
 	 * @return the thumbnail
 	 */
-	public Image getThumbnail() {
+	public BufferedImage getThumbnail() {
 		return thumbnail;
 	}
 	/**
 	 * @param thumbnail the thumbnails to set
 	 */
-	public void setThumbnail(Image thumbnail) {
+	public void setThumbnail(BufferedImage thumbnail) {
 		this.thumbnail = thumbnail;
 	}
 	/**
@@ -222,22 +220,22 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	/**
 	 * @return the rotatedThumbnail
 	 */
-	public Image getRotatedThumbnail() {
+	public BufferedImage getRotatedThumbnail() {
 		return rotatedThumbnail;
 	}
 
 	/**
 	 * @param rotatedThumbnail the rotatedThumbnail to set
 	 */
-	public void setRotatedThumbnail(Image rotatedThumbnail) {
+	public void setRotatedThumbnail(BufferedImage rotatedThumbnail) {
 		this.rotatedThumbnail = rotatedThumbnail;
 	}
 
 	/**
 	 * @return the current thumbnail based on the rotation
 	 */
-	public Image getCurrentThumbnail(){
-		Image retVal = null;
+	public BufferedImage getCurrentThumbnail(){
+		BufferedImage retVal = null;
 		if(isRotated() && rotatedThumbnail!=null){
 			retVal = rotatedThumbnail;
 		}else{
@@ -344,5 +342,30 @@ public class VisualPageListItem implements Serializable, Cloneable {
 		retVal = (retVal % 360);
 		return retVal;
 	}
+
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		out.writeInt(pageNumber);
+		out.writeBoolean(deleted);
+		out.writeObject(parentFileCanonicalPath);
+		out.writeObject(documentPassword);
+		out.writeObject(rotation);
+		out.writeObject(originalRotation);
+		out.writeObject(paperFormat);
+		out.writeObject(ImageUtility.toByteArray(thumbnail));
+		out.writeObject(ImageUtility.toByteArray(rotatedThumbnail));
+	}
+
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+		pageNumber = in.readInt();
+		deleted = in.readBoolean();
+		parentFileCanonicalPath = (String) in.readObject();
+		documentPassword = (String) in.readObject();
+		rotation = (Rotation) in.readObject();
+		originalRotation = (Rotation) in.readObject();
+		paperFormat = (String) in.readObject();
+		thumbnail = ImageUtility.fromByteArray((byte[]) in.readObject());
+		rotatedThumbnail = ImageUtility.fromByteArray((byte[]) in.readObject());
+	}
+
 
 }

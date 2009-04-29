@@ -14,14 +14,10 @@
  */
 package org.pdfsam.guiclient.business.thumbnails.creators;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
-import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
@@ -32,11 +28,6 @@ import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
  *
  */
 public interface ThumbnailsCreator {
-
-	/**
-	 * Error image
-	 */
-	public Image ERROR_IMAGE =  new ImageIcon(PdfThumbnailsLoader.class.getResource("/images/thumbnailerror.png")).getImage();
 	/**
 	 * Default resize percentage 20%
 	 */
@@ -44,7 +35,7 @@ public interface ThumbnailsCreator {
     /**
      * Default size in pixel
      */
-	public static final int DEFAULT_SIZE = 166;
+	public static final int DEFAULT_SIZE = 190;
 	
 	/**
 	 * 
