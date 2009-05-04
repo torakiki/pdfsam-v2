@@ -546,6 +546,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
+			chooseAFileRadio.doClick();
 			destinationFileText.setText(((String)evt.getNewValue())+File.separatorChar+DEFAULT_OUPUT_NAME);
 		}		
 	}
