@@ -64,6 +64,18 @@ public class DialogUtility {
 		    null);
 
 	}
+	
+	/**
+	 * Shows an error dialog
+	 * @param comp
+	 * @param bounds
+	 */
+	public static void errorValidatingBounds(Component comp, String bounds){
+		JOptionPane.showMessageDialog(comp, 
+			GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Provided pages selection is not valid")+" ("+bounds+")\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Limits must be a comma separated list of \"page_number\" or \"page_number-page_number\""),
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Limits are not valid"), 
+		    JOptionPane.ERROR_MESSAGE);
+	}
 	/**
 	 * Show a dialog to ask the user for the document password
 	 * @param comp

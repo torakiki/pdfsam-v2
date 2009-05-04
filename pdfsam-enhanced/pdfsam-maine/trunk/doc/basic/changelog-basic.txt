@@ -9,6 +9,7 @@
 -Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
 -Console: -help argument passed if no argument specified (Feature Request #2697689)
 -Console: fixed bug #2715101 (Exception executing split by size)
+-Console: optimized merge algorithm when merging a subset of a document.
 -Added the document properties frame
 -VComposer: added a check on the "overwrite" flag
 -VComposer, VReorder: added 3 zoom levels
@@ -23,6 +24,7 @@
 -Mix: added field to set the step option
 -Console: added complex prefix [BOOKMARK_NAME]
 -VReorder: added button and context menu to reverse pages order
+-Sound error in an Exception occurs before the execution of a command
 -iText 2.1.5
 -Updated langpack
 
