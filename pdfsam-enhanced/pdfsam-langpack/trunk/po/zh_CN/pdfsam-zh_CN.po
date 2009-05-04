@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-06 18:50+0100\n"
+"POT-Creation-Date: 2009-05-04 18:06+0200\n"
 "PO-Revision-Date: 2008-09-17 14:42+0000\n"
 "Last-Translator: luojie-dune <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -305,11 +305,10 @@ msgstr "输出文件名前缀："
 msgid "Output files prefix"
 msgstr "输出文件名前缀"
 
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
-msgstr "如果包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，就会进行变量替换。"
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
@@ -323,12 +322,8 @@ msgid ""
 msgstr ""
 "如果不包含\"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，就产生旧格式的输出文件名。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "可用变量：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME]。"
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "非法的分割大小"
@@ -380,8 +375,8 @@ msgstr "封底 PDF 文件："
 msgid "Select at least one cover or one footer"
 msgstr "至少选择一个封面或封底"
 
-msgid "Cover and Footer"
-msgstr "封面和封底"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
 msgid "Cover And Footer section loaded."
@@ -512,6 +507,19 @@ msgstr "反转第一个文档"
 
 msgid "Reverse second document"
 msgstr "反转第二个文档"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "第一个文件需要密码。"
@@ -664,7 +672,7 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Execute pages reorder"
@@ -673,7 +681,13 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Choose a file"
+msgstr ""
+
 msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid "Visual reorder"
@@ -712,16 +726,25 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
-msgid "Error opening pdf document."
+msgid "Password not provided."
 msgstr ""
 
-msgid "Unable to generate thumbnail"
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
 msgstr ""
 
 msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -921,6 +944,9 @@ msgstr "重新载入"
 msgid "Error: Unable to reload the selected file/s."
 msgstr "错误：无法读取选择的文件。"
 
+msgid "Document properties"
+msgstr ""
+
 msgid "Unable to remove JList text "
 msgstr "无法删除 JList 文本 "
 
@@ -1019,6 +1045,9 @@ msgstr ""
 msgid "Rotate anticlockwise"
 msgstr ""
 
+msgid "Reverse"
+msgstr ""
+
 msgid "Move up selected pages"
 msgstr ""
 
@@ -1050,6 +1079,9 @@ msgid "Rotate anticlockwise selected pages"
 msgstr ""
 
 msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Reverse pages order"
 msgstr ""
 
 msgid "Yes"
@@ -1095,6 +1127,53 @@ msgid "Close"
 msgstr "关闭"
 
 msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
+msgid "Author"
+msgstr "作者"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Error creating properties panel."
 msgstr ""
 
 msgid "Please select a single pdf document."
@@ -1259,11 +1338,6 @@ msgstr "网站： "
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Name"
 msgstr "名称"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "作者"
 
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
@@ -1434,6 +1508,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Please provide the password to open the encrypted document"
 msgstr ""
 
@@ -1446,6 +1531,25 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "Error retrieving page saved informations"
+msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr "如果包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，就会进行变量替换。"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
+# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr "可用变量：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME]。"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "封面和封底"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118

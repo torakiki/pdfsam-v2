@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-06 18:50+0100\n"
+"POT-Creation-Date: 2009-05-04 18:06+0200\n"
 "PO-Revision-Date: 2008-07-21 14:47+0000\n"
 "Last-Translator: Gisle Aune <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
@@ -197,13 +197,10 @@ msgstr ""
 msgid "Output files prefix"
 msgstr "Prefiks for utfil"
 
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Dersom det inneholder \"[CURRENTPAGE]\" eller \"[TIMESTAMP]\", vil det bli "
-"utført en variable erstatting"
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -218,10 +215,8 @@ msgstr ""
 "Dersom det ikke inneholder \"[CURRENTPAGE]\" eller \"[TIMESTAMP]\", blir det "
 "benytte den gamle stilen for navngiving av utfil"
 
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Tilgjengelig variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Ugyldig oppdelingsstørrelse"
@@ -268,9 +263,8 @@ msgstr "Bunntekst pdf fil"
 msgid "Select at least one cover or one footer"
 msgstr "Velg minst et omslag eller en fotnote"
 
-#, fuzzy
-msgid "Cover and Footer"
-msgstr "Omslag eller fotnote"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 #, fuzzy
 msgid "Cover And Footer section loaded."
@@ -373,6 +367,19 @@ msgid "Reverse first document"
 msgstr ""
 
 msgid "Reverse second document"
+msgstr ""
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
 msgstr ""
 
 msgid "Found a password for first file."
@@ -514,7 +521,7 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Execute pages reorder"
@@ -523,7 +530,13 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Choose a file"
+msgstr ""
+
 msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid "Visual reorder"
@@ -560,16 +573,25 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
-msgid "Error opening pdf document."
+msgid "Password not provided."
 msgstr ""
 
-msgid "Unable to generate thumbnail"
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
 msgstr ""
 
 msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -715,6 +737,9 @@ msgstr ""
 msgid "Error: Unable to reload the selected file/s."
 msgstr ""
 
+msgid "Document properties"
+msgstr ""
+
 msgid "Unable to remove JList text "
 msgstr ""
 
@@ -784,6 +809,9 @@ msgstr ""
 msgid "Rotate anticlockwise"
 msgstr ""
 
+msgid "Reverse"
+msgstr ""
+
 msgid "Move up selected pages"
 msgstr ""
 
@@ -815,6 +843,9 @@ msgid "Rotate anticlockwise selected pages"
 msgstr ""
 
 msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Reverse pages order"
 msgstr ""
 
 msgid "Yes"
@@ -857,6 +888,51 @@ msgid "Close"
 msgstr ""
 
 msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Error creating properties panel."
 msgstr ""
 
 msgid "Please select a single pdf document."
@@ -998,9 +1074,6 @@ msgid "Website: "
 msgstr ""
 
 msgid "Name"
-msgstr ""
-
-msgid "Author"
 msgstr ""
 
 msgid "About"
@@ -1150,6 +1223,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Please provide the password to open the encrypted document"
 msgstr ""
 
@@ -1162,6 +1246,26 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "Error retrieving page saved informations"
+msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Dersom det inneholder \"[CURRENTPAGE]\" eller \"[TIMESTAMP]\", vil det "
+#~ "bli utført en variable erstatting"
+
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr "Tilgjengelig variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+#, fuzzy
+#~ msgid "Cover and Footer"
+#~ msgstr "Omslag eller fotnote"
 
 #~ msgid "Destination output file:"
 #~ msgstr "Destinasjons utfil"

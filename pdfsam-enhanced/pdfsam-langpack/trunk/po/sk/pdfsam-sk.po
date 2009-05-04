@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-06 18:50+0100\n"
+"POT-Creation-Date: 2009-05-04 18:06+0200\n"
 "PO-Revision-Date: 2009-01-17 12:54+0000\n"
 "Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -194,8 +194,8 @@ msgid "Output files prefix"
 msgstr "Prefix výstupných súborov"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -206,8 +206,7 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
 
 msgid "Invalid split size"
@@ -252,8 +251,8 @@ msgstr ""
 msgid "Select at least one cover or one footer"
 msgstr "Vyberte aspoň jedn prvú stranu, alebo jednu poslednú stranu"
 
-msgid "Cover and Footer"
-msgstr "Prvá a posledná strana"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Prvá a posledná strana nahratej sekcie."
@@ -354,6 +353,19 @@ msgstr "Obrátiť prvý dokument"
 
 msgid "Reverse second document"
 msgstr "Obrátiť druhý dokument"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Nájdené heslo pre prvý súbor."
@@ -486,7 +498,7 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Execute pages reorder"
@@ -495,7 +507,13 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Choose a file"
+msgstr ""
+
 msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid "Visual reorder"
@@ -533,16 +551,25 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
-msgid "Error opening pdf document."
+msgid "Password not provided."
 msgstr ""
 
-msgid "Unable to generate thumbnail"
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
 msgstr ""
 
 msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -690,6 +717,9 @@ msgstr "Obnoviť"
 msgid "Error: Unable to reload the selected file/s."
 msgstr "Chyba: Nemôžem nájsť zadanú cestu k súboru/om."
 
+msgid "Document properties"
+msgstr ""
+
 msgid "Unable to remove JList text "
 msgstr "Nemôžem odobrať JList text "
 
@@ -759,6 +789,9 @@ msgstr ""
 msgid "Rotate anticlockwise"
 msgstr ""
 
+msgid "Reverse"
+msgstr ""
+
 msgid "Move up selected pages"
 msgstr ""
 
@@ -790,6 +823,9 @@ msgid "Rotate anticlockwise selected pages"
 msgstr ""
 
 msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Reverse pages order"
 msgstr ""
 
 msgid "Yes"
@@ -832,6 +868,51 @@ msgid "Close"
 msgstr ""
 
 msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Error creating properties panel."
 msgstr ""
 
 msgid "Please select a single pdf document."
@@ -974,9 +1055,6 @@ msgstr "Web stránka: "
 
 msgid "Name"
 msgstr "Meno"
-
-msgid "Author"
-msgstr "Autor"
 
 msgid "About"
 msgstr "O aplikácii"
@@ -1128,6 +1206,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Please provide the password to open the encrypted document"
 msgstr ""
 
@@ -1140,6 +1229,12 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "Error retrieving page saved informations"
+msgstr ""
+
+#~ msgid "Cover and Footer"
+#~ msgstr "Prvá a posledná strana"
 
 #~ msgid "Language: "
 #~ msgstr "Jazyk: "

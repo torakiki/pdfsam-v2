@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-06 18:50+0100\n"
+"POT-Creation-Date: 2009-05-04 18:06+0200\n"
 "PO-Revision-Date: 2008-12-07 15:32+0000\n"
 "Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -187,11 +187,9 @@ msgid "Output files prefix"
 msgstr "輸出檔案名稱前綴"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行變"
-"數替換。"
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -204,9 +202,8 @@ msgstr ""
 "若不包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將產生"
 "舊式的輸出檔名稱。"
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "可用的變數：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME] 及 [FILENUMBER]。"
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
@@ -253,8 +250,8 @@ msgstr "作為封底的PDF檔："
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
 
-msgid "Cover and Footer"
-msgstr "封面與封底"
+msgid "Frontpage and Addendum"
+msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "新增封面和封底已完成。"
@@ -354,6 +351,19 @@ msgstr "顛倒第一份文件的順序"
 
 msgid "Reverse second document"
 msgstr "顛倒第二份文件的順序"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "第一個檔案需要密碼"
@@ -486,7 +496,7 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Execute pages reorder"
@@ -495,7 +505,13 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Choose a file"
+msgstr ""
+
 msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid "Visual reorder"
@@ -532,16 +548,25 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
-msgid "Error opening pdf document."
+msgid "Password not provided."
 msgstr ""
 
-msgid "Unable to generate thumbnail"
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
 msgstr ""
 
 msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -687,6 +712,9 @@ msgstr "重新載入"
 msgid "Error: Unable to reload the selected file/s."
 msgstr "錯誤：無法重新載入所選的檔案。"
 
+msgid "Document properties"
+msgstr ""
+
 msgid "Unable to remove JList text "
 msgstr "無法移除 JList 文本 "
 
@@ -756,6 +784,9 @@ msgstr ""
 msgid "Rotate anticlockwise"
 msgstr ""
 
+msgid "Reverse"
+msgstr ""
+
 msgid "Move up selected pages"
 msgstr ""
 
@@ -787,6 +818,9 @@ msgid "Rotate anticlockwise selected pages"
 msgstr ""
 
 msgid "(Alt+ArrowLeft)"
+msgstr ""
+
+msgid "Reverse pages order"
 msgstr ""
 
 msgid "Yes"
@@ -829,6 +863,51 @@ msgid "Close"
 msgstr "關閉"
 
 msgid "Error creating preview panel."
+msgstr ""
+
+msgid "Number of pages"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "Pdf version"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Not encrypted"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "開發者"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Producer"
+msgstr ""
+
+msgid "Creator"
+msgstr ""
+
+msgid "Creation date"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Error creating properties panel."
 msgstr ""
 
 msgid "Please select a single pdf document."
@@ -971,9 +1050,6 @@ msgstr "網站： "
 
 msgid "Name"
 msgstr "程式名稱"
-
-msgid "Author"
-msgstr "開發者"
 
 msgid "About"
 msgstr "關於"
@@ -1122,6 +1198,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Please provide the password to open the encrypted document"
 msgstr ""
 
@@ -1134,6 +1221,24 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "Error retrieving page saved informations"
+msgstr ""
+
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行"
+#~ "變數替換。"
+
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr ""
+#~ "可用的變數：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME] 及 [FILENUMBER]。"
+
+#~ msgid "Cover and Footer"
+#~ msgstr "封面與封底"
 
 #~ msgid "Language: "
 #~ msgstr "程式語言： "
