@@ -65,11 +65,13 @@ import org.pdfsam.console.utils.FileUtility;
 public class ConcatCmdValidator extends AbstractCmdValidator {
 
 	private final Logger log = Logger.getLogger(ConcatCmdValidator.class.getPackage().getName());
-	
+		
 	private final static String ALL_STRING = "all";
 	private final static String ODD_STRING = "odd";
-	private final static String EVEN_STRING = "even";
+	private final static String EVEN_STRING = "even";	
 	
+	public static final String SELECTION_REGEXP = "(((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*[:])|("+ALL_STRING+":))+";
+
 	public AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ConsoleException {
 		ConcatParsedCommand parsedCommandDTO = new ConcatParsedCommand();
 		
@@ -132,7 +134,7 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 			StringParam uOption = (StringParam) cmdLineHandler.getOption(ConcatParsedCommand.U_ARG);            
 	        //if it's set we proceed with validation
 	        if (uOption.isSet()){
-	            Pattern p = Pattern.compile("(((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*[:])|("+ALL_STRING+":))+", Pattern.CASE_INSENSITIVE);
+	            Pattern p = Pattern.compile(SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
 	            if ((p.matcher(uOption.getValue()).matches())){
 	            	parsedCommandDTO.setPageSelection(uOption.getValue());
 	            }

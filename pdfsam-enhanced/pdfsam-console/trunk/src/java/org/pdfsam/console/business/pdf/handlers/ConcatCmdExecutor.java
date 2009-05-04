@@ -121,6 +121,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 				for(int i=0; i<fileList.length; i++){
 	    			//get page selection. If arrayoutofbounds default behaviour is "all" 
 					String currentPageSelection;
+					int currentDocumentPages = 0;
 	    			try{
 	    				currentPageSelection = ("".equals(pageSelection[i].toLowerCase()))? ALL_STRING: pageSelection[i].toLowerCase();
 	    			}catch(Exception e){
@@ -139,77 +140,86 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			}else{
 	    				selectionGroups = new String[]{currentPageSelection};
 	    			}
-	    			//i repeat the same file for every group matched on the selection string 
+	    			
+	    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+					pdfReader.removeUnusedObjects();
+					pdfReader.consolidateNamedDestinations();
+					int pdfNumberOfPages = pdfReader.getNumberOfPages();
+					String boundsString = "";
+					
+	    			//I manage bookmarks for every selection group 
 	    			for(int j=0; j<selectionGroups.length; j++){
-		    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
-						pdfReader.removeUnusedObjects();
-						pdfReader.consolidateNamedDestinations();
-						int pdfNumberOfPages = pdfReader.getNumberOfPages();
-						Bounds bonuds;
+
+						Bounds bounds;
 		    			try{
-		    				bonuds = getBounds(pdfNumberOfPages, selectionGroups[j]);
+		    				bounds = getBounds(pdfNumberOfPages, selectionGroups[j]);
 		    			}catch(ConcatException ce){
 		    				FileUtility.deleteFile(tmpFile);
 							throw new ConcatException(ce);
 		    			}
 		    			
+		    			boundsString += (boundsString.length()>0)? ","+bounds.toString() : bounds.toString();
+		    			
 		    			//bookmarks
 		    			List bookmarks = SimpleBookmark.getBookmark(pdfReader);
 		    			if (bookmarks != null) {
 		    				//if the end page is not the end of the doc, delete bookmarks after it
-		    				if (bonuds.getEnd() < pdfNumberOfPages){
-		    					SimpleBookmark.eliminatePages(bookmarks, new int[]{bonuds.getEnd()+1, pdfNumberOfPages});
+		    				if (bounds.getEnd() < pdfNumberOfPages){
+		    					SimpleBookmark.eliminatePages(bookmarks, new int[]{bounds.getEnd()+1, pdfNumberOfPages});
 		    				}
 		    				// if start page isn't the first page of the document, delete bookmarks before it
-		    				if (bonuds.getStart() > 1){
-		    					SimpleBookmark.eliminatePages(bookmarks, new int[]{1,bonuds.getStart()-1});
+		    				if (bounds.getStart() > 1){
+		    					SimpleBookmark.eliminatePages(bookmarks, new int[]{1,bounds.getStart()-1});
 		    					//bookmarks references must be taken back
-		    					SimpleBookmark.shiftPageNumbers(bookmarks, -(bonuds.getStart()-1), null);
+		    					SimpleBookmark.shiftPageNumbers(bookmarks, -(bounds.getStart()-1), null);
 		    				}
 		    				if (pageOffset != 0){
 		    					SimpleBookmark.shiftPageNumbers(bookmarks, pageOffset, null);
 		    				}
 		    				master.addAll(bookmarks);
 		    			}
-		    			int relativeOffset = (bonuds.getEnd() - bonuds.getStart())+1;
+		    			int relativeOffset = (bounds.getEnd() - bounds.getStart())+1;
+		    			currentDocumentPages += relativeOffset;
 		    			pageOffset += relativeOffset;
-		    			log.info(fileList[i].getFile().getAbsolutePath()+ ": " + relativeOffset + " pages to be added.");
-		    			if (pdfWriter == null) {
-		                    if(inputCommand.isCopyFields()){
-		                        // step 1: we create a writer 
-		                    	pdfWriter = new PdfCopyFieldsConcatenator(new FileOutputStream(tmpFile), inputCommand.isCompress());
-		                    	log.debug("PdfCopyFieldsConcatenator created.");
-		        				//output document version
-		        				if(inputCommand.getOutputPdfVersion() != null){
-		        					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
-		        				}
-		                    	HashMap meta = pdfReader.getInfo();
-		                    	meta.put("Creator", ConsoleServicesFacade.CREATOR);
-		                    }else{
-		                        // step 1: creation of a document-object
-		                        pdfDocument = new Document(pdfReader.getPageSizeWithRotation(1));
-		                        // step 2: we create a writer that listens to the document
-		                        pdfWriter = new PdfSimpleConcatenator(pdfDocument, new FileOutputStream(tmpFile), inputCommand.isCompress());
-		                    	log.debug("PdfSimpleConcatenator created.");
-		        				//output document version
-		                        if(inputCommand.getOutputPdfVersion() != null){
-		        					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
-		        				}
-		                        // step 3: we open the document
-		                        pdfDocument.addCreator(ConsoleServicesFacade.CREATOR);
-		                        pdfDocument.open();
-		                    }
-		                }
-		    			// step 4: we add content
-		    			pdfReader.selectPages(bonuds.getStart()+"-"+bonuds.getEnd());
-		    			pdfWriter.addDocument(pdfReader); 
-		    			//fix 03/07
-		    			//pdfReader = null;
-		    	        pdfReader.close();
-		    	        pdfWriter.freeReader(pdfReader);
-		    	        totalProcessedPages += relativeOffset;
-		    			log.info(relativeOffset + " pages processed correctly.");
 					}
+	    			
+	    			//add pages
+	    			log.info(fileList[i].getFile().getAbsolutePath()+ ": " + currentDocumentPages + " pages to be added.");
+	    			if (pdfWriter == null) {
+	                    if(inputCommand.isCopyFields()){
+	                        // step 1: we create a writer 
+	                    	pdfWriter = new PdfCopyFieldsConcatenator(new FileOutputStream(tmpFile), inputCommand.isCompress());
+	                    	log.debug("PdfCopyFieldsConcatenator created.");
+	        				//output document version
+	        				if(inputCommand.getOutputPdfVersion() != null){
+	        					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
+	        				}
+	                    	HashMap meta = pdfReader.getInfo();
+	                    	meta.put("Creator", ConsoleServicesFacade.CREATOR);
+	                    }else{
+	                        // step 1: creation of a document-object
+	                        pdfDocument = new Document(pdfReader.getPageSizeWithRotation(1));
+	                        // step 2: we create a writer that listens to the document
+	                        pdfWriter = new PdfSimpleConcatenator(pdfDocument, new FileOutputStream(tmpFile), inputCommand.isCompress());
+	                    	log.debug("PdfSimpleConcatenator created.");
+	        				//output document version
+	                        if(inputCommand.getOutputPdfVersion() != null){
+	        					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
+	        				}
+	                        // step 3: we open the document
+	                        pdfDocument.addCreator(ConsoleServicesFacade.CREATOR);
+	                        pdfDocument.open();
+	                    }
+	                }
+	    			// step 4: we add content
+	    			pdfReader.selectPages(boundsString);
+	    			pdfWriter.addDocument(pdfReader); 
+	    			//fix 03/07
+	    			//pdfReader = null;
+	    	        pdfReader.close();
+	    	        pdfWriter.freeReader(pdfReader);
+	    	        totalProcessedPages += currentDocumentPages;
+	    			log.info(currentDocumentPages + " pages processed correctly.");
     				setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);
 				}
 				if (master.size() > 0){
@@ -560,7 +570,10 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		public void setEnd(int end) {
 			this.end = end;
 		}
-    	    	
+    	
+		public String toString(){
+			return start+"-"+end;
+		}
     }    
 
 }
