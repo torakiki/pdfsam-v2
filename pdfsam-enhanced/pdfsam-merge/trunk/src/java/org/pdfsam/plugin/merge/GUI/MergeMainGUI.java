@@ -30,6 +30,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -46,6 +47,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
@@ -322,32 +324,24 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	                	for (int i = 0; i < items.length; i++){
 							item = items[i];
 							String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
-							if(pageSelection.trim().length()>0 && pageSelection.indexOf(",") != 0){
-	                            String[] selectionsArray = pageSelection.split(",");
-	                            for(int j = 0; j<selectionsArray.length; j++){
-	                                String tmpString = selectionsArray[j].trim();
-	                                if((tmpString != null)&&(!tmpString.equals(""))){
-		                                args.add("-"+ConcatParsedCommand.F_ARG);
-		                                String f = item.getInputFile().getAbsolutePath();
-		        						if((item.getPassword()) != null && (item.getPassword()).length()>0){
-		        							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-		        							f +=":"+item.getPassword();
-		        						}
-		        						args.add(f);
-		                                pageSelectionString += (tmpString.matches("[\\d]+"))? tmpString+"-"+tmpString+":" : tmpString+":";
-	                                }                                
-	                            }
-	                        
-	                        }else{
-	                        	args.add("-"+ConcatParsedCommand.F_ARG);
-	                            String f = item.getInputFile().getAbsolutePath();
-	    						if((item.getPassword()) != null && (item.getPassword()).length()>0){
-	    							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	    							f +=":"+item.getPassword();
-	    						}
-	    						args.add(f);
-	                            pageSelectionString += (pageSelection.matches("[\\d]+"))? pageSelection+"-"+pageSelection+":" : pageSelection+":";
-	                        }						
+							//add ":" at the end if necessary
+							if(!pageSelection.endsWith(":")){
+								pageSelection += ":";
+							}
+							Pattern p = Pattern.compile(ConcatCmdValidator.SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
+							if (!(p.matcher(pageSelection).matches())) {
+								DialogUtility.errorValidatingBounds(getParent(), pageSelection);
+								return;
+							} else {
+								args.add("-" + ConcatParsedCommand.F_ARG);
+								String f = item.getInputFile().getAbsolutePath();
+								if ((item.getPassword()) != null && (item.getPassword()).length() > 0) {
+									log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
+									f += ":" + item.getPassword();
+								}
+								args.add(f);
+								pageSelectionString += pageSelection;
+							}	                        					
 						}
 						                    
 	                    args.add("-"+ConcatParsedCommand.U_ARG);
