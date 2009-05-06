@@ -113,7 +113,8 @@ public class VisualListModel extends AbstractListModel {
     /**
      * <p>Remove a set of rows from the list data source and fire to Listeners
      * 
-     * @param rows rows number to remove from the data source
+     * @param fromIndex remove from the index (inclusive)
+     * @param toIndex remove to the index (inclusive)
      * @param physicalDeletion if true the element is removed, if false it's set as "deleted" (rendered with a red cross)
      * @throws Exception if an exception occurs
      * */   

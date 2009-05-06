@@ -63,7 +63,7 @@ public interface ThumbnailsCreator {
 	 * @param password
 	 * @param page
 	 * @param rotation page rotation in degrees
-	 * @return
+	 * @return the image
 	 * @throws ThumbnailCreationException
 	 */
 	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
@@ -103,7 +103,7 @@ public interface ThumbnailsCreator {
 	 * @param password
 	 * @param page
 	 * @param rotation page rotation in degrees
-	 * @return
+	 * @return the image
 	 * @throws ThumbnailCreationException
 	 */
 	public BufferedImage getPageImage(File fileName, String password, int page, int rotation) throws ThumbnailCreationException;	

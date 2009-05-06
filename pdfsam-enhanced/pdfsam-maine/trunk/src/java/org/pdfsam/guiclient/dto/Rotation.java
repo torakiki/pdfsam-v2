@@ -40,7 +40,7 @@ public enum Rotation {
 	}
 	
 	/**
-	 * @param input degrees
+	 * @param degrees rotation degrees
 	 * @return corresponding rotation
 	 */
 	public static Rotation getRotation(int degrees){

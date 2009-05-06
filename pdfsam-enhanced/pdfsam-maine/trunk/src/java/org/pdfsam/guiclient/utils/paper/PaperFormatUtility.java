@@ -29,7 +29,7 @@ public class PaperFormatUtility {
 	 * return the description of the given format
 	 * @param width
 	 * @param height
-	 * @return
+	 * @return a string representing the paper format
 	 */
 	public static String getFormat(double width, double height){
 		String retVal = Math.round(width)+"x"+Math.round(height);

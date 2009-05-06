@@ -36,9 +36,7 @@ public class VisualPageListTransferable implements Transferable {
 	private static DataFlavor visualListFlavor;
 	
 	/**
-	 * @param source
-	 * @param destination
-	 * @param dataList
+	 * @param data
 	 */
 	public VisualPageListTransferable(TransferableData data) {
 		super();

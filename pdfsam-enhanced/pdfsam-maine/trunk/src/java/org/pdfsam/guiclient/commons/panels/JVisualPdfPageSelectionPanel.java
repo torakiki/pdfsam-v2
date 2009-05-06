@@ -170,7 +170,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param orientation panel orientation
 	 * @param drawDeletedItems if true deleted items appear with a red cross over 
 	 * @param showButtonPanel true=shows button panel
-	 * @param acceptDropFromDifferentComponents if true accepts dropping items from other components
 	 * @param showContextMenu
 	 * @param topPanelStyle
 	 */
@@ -184,7 +183,6 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @param orientation panel orientation
 	 * @param drawDeletedItems if true deleted items appear with a red cross over 
 	 * @param showButtonPanel true=shows button panel
-	 * @param acceptDropFromDifferentComponents if true accepts dropping items from other components
 	 * @param showContextMenu
 	 * @param topPanelStyle top panel style
 	 * @param selectionType selection type
@@ -591,7 +589,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	/**
 	 * Set the document properties to be shown as a tooltip of the documentProperties JLabel
-	 * @param properties
+	 * @param documetnInfo bean containing document informations
 	 */	
 	
 	public void setDocumentProperties(DocumentInfo documetnInfo){

@@ -37,10 +37,12 @@ public class PaperFormat implements Serializable {
 		super();
 	}
 	/**
-	 * @param description
-	 * @param height
-	 * @param tolerance
+	 * 
 	 * @param width
+	 * @param height
+	 * @param description
+	 * @param horizontalTolerance
+	 * @param verticalTolerance
 	 */
 	public PaperFormat(double width, double height, String description, double horizontalTolerance, double verticalTolerance) {
 		super();

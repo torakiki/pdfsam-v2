@@ -28,7 +28,7 @@ public class JVisualMultiSelectionDropper extends AbstractDropper {
 	private ClosableTabbedPanelAdder adder;
 		
 	/**
-	 * @param inputTabbedPanel
+	 * @param adder tabs adder
 	 */
 	public JVisualMultiSelectionDropper(ClosableTabbedPanelAdder adder) {
 		super();

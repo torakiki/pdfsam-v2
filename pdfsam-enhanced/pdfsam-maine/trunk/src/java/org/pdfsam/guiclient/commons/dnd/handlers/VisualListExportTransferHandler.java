@@ -51,7 +51,7 @@ public class VisualListExportTransferHandler extends TransferHandler {
 	}
 
 	/**
-	 * @param if the loader is != null it can import files.
+	 * @param loader if the loader is != null it can import files.
 	 */
 	public VisualListExportTransferHandler(PdfThumbnailsLoader loader) {
 		super();
