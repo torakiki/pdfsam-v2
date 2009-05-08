@@ -577,6 +577,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		selectedPdfDocument = null;
 		selectedPdfDocumentPassword = "";
 		setDocumentPropertiesVisible(false);
+		getPdfLoader().cleanCreator();
 		
 	}
 	/**

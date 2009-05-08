@@ -66,6 +66,18 @@ public class VisualListModel extends AbstractListModel {
     }
    
     /**
+     * set data source for the model
+     * @param inputData Vector of VisualPageListItem
+     */
+    public void setData(Vector<VisualPageListItem> inputData){
+    	clearData();
+    	int inputDataSize = inputData.size();
+    	if (inputDataSize > 0) {
+	       this.data = inputData;
+	       fireIntervalAdded(this, 0, inputDataSize -1);	       
+    	}
+    }
+    /**
      * Removes any data source for the model
      */
     public void clearData(){

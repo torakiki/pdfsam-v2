@@ -23,10 +23,10 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.thumbnails.executors.JPodThumbnailsExecutor;
@@ -172,7 +172,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	                	panel.setDocumentProperties(documentInfo);		            		
 	                	panel.setDocumentPropertiesVisible(true);
 	            		if(pages > 0){
-	            			ArrayList<VisualPageListItem> modelList = new ArrayList<VisualPageListItem>(pages);
+	            			Vector<VisualPageListItem> modelList = new Vector<VisualPageListItem>(pages);
 	            			if(template == null || template.size()<=0){
 		            			for (int i = 1; i<=pages; i++){
 		            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), providedPwd));
@@ -187,11 +187,11 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	            					}
 	            				}
 	            			}
-	            			((VisualListModel)panel.getThumbnailList().getModel()).setData((VisualPageListItem[])modelList.toArray(new VisualPageListItem[modelList.size()]));                		
+	            			((VisualListModel)panel.getThumbnailList().getModel()).setData(modelList);                		
 	            			long startTime = System.currentTimeMillis();
 	            			initThumbnails(pdfDoc, pageTree, panel, modelList, id);
 	            			pageTree = null;
-	            			JPodThumbnailsExecutor.getInstance().execute(new CreatorCloser(pdfDoc, startTime), id);
+	            			JPodThumbnailsExecutor.getInstance().execute(new CreatorCloser(pdfDoc, startTime, id), id);
 	            		}	
 					}else{
 						throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the document."));
@@ -215,7 +215,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 * @param panel
 	 * @param modelList
 	 */
-	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final ArrayList<VisualPageListItem> modelList, final long id){	
+	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final List<VisualPageListItem> modelList, final long id){	
 		if(pageTree!=null && panel != null && modelList!=null && modelList.size()>0){
 			for(VisualPageListItem pageItem : modelList){
 				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
@@ -233,19 +233,22 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		
 		private PDDocument pdfDoc;
 		private long startTime = 0;
+		private long id = 0;
 		
-		
-		public CreatorCloser(PDDocument pdfDoc, long startTime) {
+		public CreatorCloser(PDDocument pdfDoc, long startTime, long id) {
 			super();
 			this.pdfDoc = pdfDoc;
 			this.startTime = startTime;
+			this.id = id;
 		}
 		
 		public void run() {				
 			try{			
 				if(pdfDoc!=null){
 					pdfDoc.close();
-					log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
+					if(!JPodThumbnailsExecutor.getInstance().isCancelledExecution(id)){
+						log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
+					}
 					pdfDoc = null;
 				}					
             }catch (Exception e) {
