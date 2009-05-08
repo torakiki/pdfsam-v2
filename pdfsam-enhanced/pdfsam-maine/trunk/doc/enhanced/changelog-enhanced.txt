@@ -21,6 +21,7 @@
 -VComposer, VReorder: fully working save/load environment
 -VComposer, VReorder: no minimum size for the destination panel put inside a scroll panel 
 -VComposer: composer and input panel are now divided by a JSplitPane
+-JVisualPdfPageSelectionPanel: fixed document info tooltip
 -Shared thread pool for the thumbnails generation among panels. (number of threads now is fixed, configurable and doesn't depend on the number of panels opened).
 -Added the filename in the page viewer status bar
 -Console: added the -step option to the mix command
