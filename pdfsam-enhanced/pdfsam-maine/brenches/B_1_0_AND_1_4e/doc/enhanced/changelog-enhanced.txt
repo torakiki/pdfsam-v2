@@ -3,6 +3,9 @@
 -Document properties frame now opens in with normal size (not full screen)
 -Console: added the -step option to the mix command
 -Mix: added field to set the step option
+-Console: added complex prefix [BOOKMARK_NAME]
+-Sound error in an Exception occurs before the execution of a command
+-Console: optimized merge algorithm when merging a subset of a document.
 
 1.5.2e (29-Mar-2009) (pdfsam-console 2.0.3e)
 ===================================
