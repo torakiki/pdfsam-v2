@@ -149,6 +149,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         setLayout(new GridBagLayout());
                
         inputPanel.setOutputPathPropertyChangeListener(this);
+        inputPanel.setPreferredSize(new Dimension(180, 180));
         
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.LINE_AXIS));
@@ -201,7 +202,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         composerPanel.addToTopPanel(buttonsPanel);
         composerPanel.disableSetOutputPathMenuItem();        
         JScrollPane composerScroll = new JScrollPane(composerPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        composerScroll.setSize(new Dimension(300, 250));
+        composerScroll.setPreferredSize(new Dimension(180, 180));
 
         higherSplitPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT,inputPanel, composerScroll);
         higherSplitPanel.setDividerSize(2);
