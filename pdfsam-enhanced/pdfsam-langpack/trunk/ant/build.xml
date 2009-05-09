@@ -50,6 +50,9 @@
 	<!-- update po files -->
 	<target name="updatepo" description="updates po files">
 		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-N -U ${po}/ar/pdfsam-ar.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-N -U ${po}/bg/pdfsam-bg.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
@@ -167,6 +170,9 @@
 
 	<!-- generete properties -->
 	<target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_ar.properties ${po}/ar/pdfsam-ar.po"/>
+		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_bg.properties ${po}/bg/pdfsam-bg.po"/>
 		</exec>

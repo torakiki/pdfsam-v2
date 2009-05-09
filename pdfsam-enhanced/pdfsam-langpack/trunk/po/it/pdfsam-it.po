@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2009-01-10 14:13+0000\n"
+"POT-Creation-Date: 2009-05-09 17:07+0200\n"
+"PO-Revision-Date: 2009-05-06 15:56+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -365,6 +365,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Se contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
+"\"[BOOKMARK_NAME]\" esegue la sostituzione delle variabili."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
@@ -380,7 +382,7 @@ msgstr ""
 "genera nomi di file normali."
 
 msgid "Available variables"
-msgstr ""
+msgstr "Variabili disponibili"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-split\src\java\org\pdfsam\plugin\split\GUI\SplitMainGUI.java:364
 msgid "Invalid split size"
@@ -433,7 +435,7 @@ msgid "Select at least one cover or one footer"
 msgstr "Seleziona almeno una copertina o un footer"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "Copertia e appendice"
 
 # F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:863
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
@@ -594,17 +596,21 @@ msgid "Reverse second document"
 msgstr "Inverti il secondo documento"
 
 msgid "Number of pages to switch document"
-msgstr ""
+msgstr "Numero di pagine a cui cambiare documento"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
+"Seleziona il box se vuoi invertire il primo o il secondo documento (o "
+"entrambi)."
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 msgstr ""
+"Imposta il numero di pagine per passare da un documento all'altro (default è "
+"1)"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-mix\src\java\org\pdfsam\plugin\mix\GUI\MixMainGUI.java:214
 msgid "Found a password for first file."
@@ -741,36 +747,40 @@ msgid "Viewer options section loaded."
 msgstr "Sezione opzioni visualizzatore caricata"
 
 msgid "Move on top"
-msgstr ""
+msgstr "Muovi in testa"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Muovi in fondo"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
+"Per selezionare un file, sfoglia o digita il percorso completo al file di "
+"destinazione."
 
 msgid "Please select a pdf document or undelete some pages"
-msgstr ""
+msgstr "Prego selezionare un documento pdf o ripristinare alcune pagine"
 
 msgid "Execute pages reorder"
-msgstr ""
+msgstr "Esegui il riordino delle pagine"
 
 msgid "Visual document composer"
-msgstr ""
+msgstr "Compositore visuale di documenti"
 
 msgid "Choose a file"
-msgstr ""
+msgstr "Scegli un file"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
+"Usa come file di destinazione lo stesso nome del file in input o scegli un "
+"file."
 
 msgid "Please select a pdf document or undelete some page"
-msgstr ""
+msgstr "Prego selezionare un documento pdf o ripristinare alcune pagine"
 
 msgid "Visual reorder"
-msgstr ""
+msgstr "Riordino visuale"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -798,37 +808,37 @@ msgid "Log saved."
 msgstr "Log salvato."
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "Impossibile salvare l'immagine"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "Impossibile creare un'immagine per un documento nullo"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr ""
+msgstr "Impossibile creare un'anteprima per un documento nullo"
 
 msgid "Input file doesn't exists or is a directory"
-msgstr ""
+msgstr "Il file in input non esiste o è una directory"
 
 msgid "Password not provided."
-msgstr ""
+msgstr "Password non fornita."
 
 msgid "Unable to open the document."
-msgstr ""
+msgstr "Impossibile aprire il documento"
 
 msgid "Error opening pdf document"
-msgstr ""
+msgstr "Errore aprendo il documento pdf"
 
 msgid "Not enough memory to create thumbnails"
-msgstr ""
+msgstr "Memora non sufficiente per creare le anteprime"
 
 msgid "Thumbnails generated in "
-msgstr ""
+msgstr "Anteprime generate in "
 
 msgid "Unable to close thumbnail creator"
-msgstr ""
+msgstr "Impossibile chiudere il creatore di anteprima"
 
 msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "Impossibile generare l'anteprima"
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
@@ -869,19 +879,19 @@ msgid "Error loading environment from input file. "
 msgstr "Errore caricando l'ambiente dal file in input. "
 
 msgid "Image viewer"
-msgstr ""
+msgstr "Visualizzatore immagine"
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "Impossibile aprire l'anteprima dell'immagine"
 
 msgid "Unknown Action"
-msgstr ""
+msgstr "Azione sconosciuta"
 
 msgid "Error playing sound:"
-msgstr ""
+msgstr "Errore eseguondo il suono:"
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "Errore eseguondo il suono"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\business\PdfLoader.java:110
 msgid "Selection table is full, please remove some pdf document."
@@ -921,7 +931,7 @@ msgid "Command executed."
 msgstr "Comando eseguito."
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "Impossibile chiudere il caricatore di pdf"
 
 # F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:532
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:403
@@ -1113,7 +1123,7 @@ msgid "Error: Unable to reload the selected file/s."
 msgstr "Errore: Impossibile ricaricare il file selezionato/i."
 
 msgid "Document properties"
-msgstr ""
+msgstr "Proprietà documento"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:414
 msgid "Unable to remove JList text "
@@ -1202,91 +1212,91 @@ msgid "Error: Unable to get the file path."
 msgstr "Errore: Impossibile recuperare il percorso del file."
 
 msgid "Open"
-msgstr ""
+msgstr "Apri"
 
 msgid "Load a pdf document"
-msgstr ""
+msgstr "Carica un documento pdf"
 
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom avanti"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "Errore impostando il livello di zoom."
 
 msgid "Zoom out"
-msgstr ""
+msgstr "Zoom indietro"
 
 msgid "Preview"
-msgstr ""
+msgstr "Anteprima"
 
 msgid "Delete"
-msgstr ""
+msgstr "Cancella"
 
 msgid "Undelete"
-msgstr ""
+msgstr "Ripristina"
 
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "Ruota in senso orario"
 
 msgid "Rotate anticlockwise"
-msgstr ""
+msgstr "Ruota in senso antiorario"
 
 msgid "Reverse"
-msgstr ""
+msgstr "Inverti"
 
 msgid "Move up selected pages"
-msgstr ""
+msgstr "Muovi su le pagine selezionate"
 
 msgid "Move down selected pages"
-msgstr ""
+msgstr "Muovi giù le pagine selezionate"
 
 msgid "Delete selected pages"
-msgstr ""
+msgstr "Cancella le pagine selezionate"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "Ripristina le pagine selezionate"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Ctrl+Z)"
 
 msgid "Rotate right"
-msgstr ""
+msgstr "Ruota a destra"
 
 msgid "Rotate clockwise selected pages"
-msgstr ""
+msgstr "Ruota in senso orario le pagine selezionate"
 
 msgid "(Alt+ArrowRight)"
-msgstr ""
+msgstr "(Alt+ArrowRight)"
 
 msgid "Rotate left"
-msgstr ""
+msgstr "Ruota a sinistra"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "Ruota in senso antiorario le pagine selezionate"
 
 msgid "(Alt+ArrowLeft)"
-msgstr ""
+msgstr "(Alt+ArrowLeft)"
 
 msgid "Reverse pages order"
-msgstr ""
+msgstr "Inverti l'ordine delle pagine"
 
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 msgid "No"
-msgstr ""
+msgstr "No"
 
 msgid "File: "
-msgstr ""
+msgstr "File: "
 
 msgid "Pages: "
-msgstr ""
+msgstr "Pagine: "
 
 msgid "Pdf version: "
-msgstr ""
+msgstr "Versione pdf: "
 
 msgid "Title: "
-msgstr ""
+msgstr "Titolo: "
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
@@ -1294,13 +1304,13 @@ msgid "Author: "
 msgstr "Autore: "
 
 msgid "Creator: "
-msgstr ""
+msgstr "Creatore: "
 
 msgid "Producer: "
-msgstr ""
+msgstr "Produttore: "
 
 msgid "Encrypted: "
-msgstr ""
+msgstr "Criptato: "
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
@@ -1308,34 +1318,34 @@ msgid "File"
 msgstr "File"
 
 msgid "Save as"
-msgstr ""
+msgstr "Salva come"
 
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 msgid "Error creating preview panel."
-msgstr ""
+msgstr "Errore creando il pannello di anteprima."
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Numero di pagine"
 
 msgid "File size"
-msgstr ""
+msgstr "Dimensione file"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "Versione pdf"
 
 msgid "Encryption"
-msgstr ""
+msgstr "Criptatura"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "Non criptato"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Permessi"
 
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
@@ -1343,37 +1353,37 @@ msgid "Author"
 msgstr "Autore"
 
 msgid "Subject"
-msgstr ""
+msgstr "Oggetto"
 
 msgid "Producer"
-msgstr ""
+msgstr "Produttore"
 
 msgid "Creator"
-msgstr ""
+msgstr "Creatore"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Data di creazione"
 
 msgid "Modification date"
-msgstr ""
+msgstr "Data di modifica"
 
 msgid "Keywords"
-msgstr ""
+msgstr "Parole chiave"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "Errore creando il pannello delle proprietà."
 
 msgid "Please select a single pdf document."
-msgstr ""
+msgstr "Prego selezionare un solo documento pdf."
 
 msgid "File type not supported."
-msgstr ""
+msgstr "Tipo di file non supportato"
 
 msgid "Error during drag and drop."
-msgstr ""
+msgstr "Errore duranto il drag and drop."
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "Impossibile inizializzare il supporto drag and drop."
 
 msgid "Unable to get the default environment informations."
 msgstr "Impossibile ottenere informazioni sull'ambiente di default."
@@ -1402,7 +1412,7 @@ msgid "Unable to set logging level."
 msgstr "Impostando il livello di log."
 
 msgid "Setting default working directory..."
-msgstr ""
+msgstr "Impostando la cartella di lavoro di default..."
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\plugins\PlugInsLoader.java:65
 msgid "Error getting plugins directory."
@@ -1722,7 +1732,7 @@ msgid "New version available: "
 msgstr "Nuova versione disponibile: "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "Impossibile eseguire il suono."
 
 msgid "Plugins"
 msgstr "Moduli"
@@ -1775,140 +1785,37 @@ msgid "Output location error"
 msgstr "Errore locazione output"
 
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "Il file selezionato esiste già "
 
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Vuoi sovrascriverlo?"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "La selezione di pagine fornita non è valida"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"I limiti devono essere una lista separata da virgola di \"numero_pagina\" o "
+"\"numero_pagina-numero_pagina\""
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "I limiti non sono validi"
 
 msgid "Please provide the password to open the encrypted document"
-msgstr ""
+msgstr "Prego fornire una password per aprire il documento criptato"
 
 msgid "Password request"
-msgstr ""
+msgstr "Richiesta password"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
 msgstr ""
+"La lista di selezione è piena, vuoi svuotarla e caricare il nuovo documento?"
 
 msgid "List full"
-msgstr ""
+msgstr "Lista piena"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
-
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "Se contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\" o \"[FILENUMBER]\" esegue "
-#~ "la sostituziuone di variabile"
-
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr ""
-#~ "Variabili disponibili: [CURRENTPAGE], [TIMESTAMP], [BASENAME], "
-#~ "[FILENUMBER]."
-
-#~ msgid "Cover and Footer"
-#~ msgstr "Copertina e Sommario"
-
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-#~ msgid "Language: "
-#~ msgstr "Linguaggio: "
-
-# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#~ msgid "Split the document in files of the given size (roughly)."
-#~ msgstr ""
-#~ "Divide il documento in file della dimensione data (approssimativamente)."
-
-# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:217
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#~ msgid "Split options:"
-#~ msgstr "Opzioni di divisione:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:278
-# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:238
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#~ msgid "Destination folder:"
-#~ msgstr "Directory di destinazione:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:328
-# F:\workspace_pdfsame_enanched\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:290
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-#~ msgid "Output options:"
-#~ msgstr "Opzioni di output:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-#~ "substitution."
-#~ msgstr ""
-#~ "se contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" esegue la sostituzione "
-#~ "delle variabili."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:341
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-#~ msgid ""
-#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-#~ "oldstyle output file names."
-#~ msgstr ""
-#~ "se non contiene \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera nomi dei file "
-#~ "di output col metodo standard."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:342
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-#~ msgstr "Variabili disponibili: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:304
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#~ msgid "Cover pdf file:"
-#~ msgstr "Copertina pdf:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:307
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#~ msgid "Footer pdf file:"
-#~ msgstr "Footer pdf:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#~ msgid "Encryption angorithm:"
-#~ msgstr "Algoritmo di crittografia:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#~ msgid "Encrypt options:"
-#~ msgstr "Opzioni di encrypt:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
-# F:\workspace_pdfsame_enanched\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:179
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-#~ msgid "Destination output file:"
-#~ msgstr "File di destinazione:"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:324
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:330
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-#~ msgid "Select an input file"
-#~ msgstr "Seleziona un file di input"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "La locazione dell'output non è corretta"
+msgstr "Errore ritrovando le informazioni della pagina salvate"

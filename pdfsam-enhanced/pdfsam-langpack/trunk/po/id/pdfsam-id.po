@@ -7,45 +7,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-03-24 16:12+0000\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2009-05-09 17:07+0200\n"
+"PO-Revision-Date: 2009-04-14 05:00+0000\n"
+"Last-Translator: BongJ <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
-msgstr ""
+msgstr "Pilihan Penggabungan"
 
 msgid "PDF documents contain forms"
-msgstr ""
+msgstr "Dokumen PDF mengandung isi"
 
 msgid "Merge type"
-msgstr ""
+msgstr "Tipe Penggabungan"
 
 msgid "Unchecked"
-msgstr ""
+msgstr "Tidak Contreng"
 
 msgid "Use this merge type for standard pdf documents"
 msgstr ""
 
 msgid "Checked"
-msgstr ""
+msgstr "Contreng"
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr ""
 
 msgid "Note"
-msgstr ""
+msgstr "Catatan"
 
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
 
 msgid "Destination output file"
-msgstr ""
+msgstr "Tujuan penyimpanan arsip"
 
 msgid "Error: "
 msgstr "Salah: "
@@ -150,9 +150,8 @@ msgstr ""
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "Direktori tujuan keluaran"
+msgstr ""
 
 msgid "Same as source"
 msgstr ""
@@ -234,13 +233,11 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "Halaman depan file pdf:"
+msgstr ""
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "Catatan kaki file pdf:"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -248,9 +245,8 @@ msgstr ""
 msgid "Frontpage and Addendum"
 msgstr ""
 
-#, fuzzy
 msgid "Cover And Footer section loaded."
-msgstr "Bagian SampulDanCatatankaki dimuat"
+msgstr ""
 
 msgid "Encrypt options"
 msgstr ""
@@ -297,11 +293,10 @@ msgstr ""
 msgid "Manipulate pages and add bookmarks"
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
-msgstr "Tandai kotak jika Anda ingin menimpa berkas keluaran jika sudah ada"
+msgstr ""
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr ""
@@ -334,9 +329,8 @@ msgstr ""
 msgid "Decrypt"
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Bagian SampulDanCatatankaki dimuat"
+msgstr ""
 
 msgid "Mix options"
 msgstr ""
@@ -384,9 +378,8 @@ msgstr ""
 msgid "Unpack"
 msgstr ""
 
-#, fuzzy
 msgid "Unpack section loaded."
-msgstr "Bagian SampulDanCatatankaki dimuat"
+msgstr ""
 
 msgid "Set viewer options"
 msgstr ""
@@ -427,9 +420,8 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "Tentukan file keluaran"
+msgstr ""
 
 msgid "Set viewer options for selected files"
 msgstr ""
@@ -479,9 +471,8 @@ msgstr ""
 msgid "Viewer options"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Bagian SampulDanCatatankaki dimuat"
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -609,9 +600,8 @@ msgstr ""
 msgid "Table full"
 msgstr ""
 
-#, fuzzy
 msgid "Please wait while reading"
-msgstr "Silahkan tunggu selama membaca"
+msgstr ""
 
 msgid "Selected file is not a pdf document."
 msgstr ""
@@ -637,9 +627,8 @@ msgstr "Rambah"
 msgid "Add"
 msgstr "Tambah"
 
-#, fuzzy
 msgid "Compress output file/files"
-msgstr "Tentukan file keluaran"
+msgstr ""
 
 msgid "Overwrite if already exists"
 msgstr "Ditimpa jika sudah ada"
@@ -659,9 +648,8 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
-#, fuzzy
 msgid "Paste"
-msgstr "Jalur"
+msgstr ""
 
 msgid "File name"
 msgstr "Nama berkas"
@@ -710,9 +698,8 @@ msgstr "Hapus"
 msgid "Reload"
 msgstr ""
 
-#, fuzzy
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Error: tidak dapat memperoleh jalur file"
+msgstr ""
 
 msgid "Document properties"
 msgstr ""
@@ -723,9 +710,8 @@ msgstr ""
 msgid "File selected: "
 msgstr "File terpilih: "
 
-#, fuzzy
 msgid "File reloaded: "
-msgstr "File terpilih: "
+msgstr ""
 
 msgid "Move Up"
 msgstr ""
@@ -946,9 +932,8 @@ msgstr ""
 msgid "Setting default working directory..."
 msgstr ""
 
-#, fuzzy
 msgid "Error getting plugins directory."
-msgstr "Direktori tujuan keluaran"
+msgstr ""
 
 msgid "Cannot read plugins directory "
 msgstr ""
@@ -1160,9 +1145,8 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-#, fuzzy
 msgid "Error getting pdf version description."
-msgstr "Direktori tujuan keluaran"
+msgstr ""
 
 msgid "Version 1.2 (Acrobat 3)"
 msgstr ""
@@ -1229,31 +1213,3 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Select an input file"
-#~ msgstr "Tentukan file keluaran"
-
-#~ msgid "Please wait while reading "
-#~ msgstr "Silahkan tunggu selama membaca "
-
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Hapus setiap file pdf dari daftar"
-
-#~ msgid "Destination output directory:"
-#~ msgstr "Direktori tujuan keluaran"
-
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Rambah filesystem untuk sebuah file halaman muka"
-
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "Rambah filesystem untuk sebuah file catatan kaki"
-
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Rambah atau masukkan jalur penuh ke direktori tujuan keluaran"
-
-#~ msgid "Execute pdf add cover footer"
-#~ msgstr "Eksekusi penambahan sampul dan catatan kaki dari pdf"
-
-#~ msgid "Source file:"
-#~ msgstr "File sumber:"

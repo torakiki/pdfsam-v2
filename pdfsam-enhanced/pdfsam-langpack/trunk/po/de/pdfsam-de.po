@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2009-01-18 00:44+0000\n"
+"POT-Creation-Date: 2009-05-09 17:07+0200\n"
+"PO-Revision-Date: 2009-05-05 20:57+0000\n"
 "Last-Translator: Marcel Mayr <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
 msgstr "Optionen"
 
 msgid "PDF documents contain forms"
-msgstr "PDF-Dokumente beinhalten Formulare"
+msgstr "PDF-Dokumente beinhalten Formularfelder"
 
 msgid "Merge type"
 msgstr "Art des Zusammenführens"
@@ -30,16 +30,16 @@ msgid "Unchecked"
 msgstr "Nicht ausgewählt"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr "Nutzen Sie diese Art des Zusammenführens für normale PDF-Dokumente."
+msgstr "Nutzen Sie diese Art des Zusammenführens für normale PDF-Dokumente"
 
 msgid "Checked"
 msgstr "Ausgewählt"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "Nutzen Sie diese Art des Zusammenführens für PDF-Formulare."
+msgstr "Nutzen Sie diese Art des Zusammenführens für PDF-Formulare"
 
 msgid "Note"
-msgstr "Anmerkung"
+msgstr "Hinweis"
 
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
@@ -59,8 +59,8 @@ msgstr ""
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
-"Markieren Sie das Kontrollkästchen, falls eine vorhandene Ausgabedatei "
-"überschrieben werden soll."
+"Markieren Sie das Kontrollkästchen, falls Sie vorhandene Ausgabedateien "
+"überschreiben möchten."
 
 msgid "Check the box if you want compressed output files."
 msgstr ""
@@ -76,7 +76,7 @@ msgid "Please wait while all files are processed.."
 msgstr "Bitte warten, Dateien werden verarbeitet ..."
 
 msgid "Found a password for input file."
-msgstr "Passwort für die Ursprungsdatei gefunden."
+msgstr "Die Quelldatei ist passwortgeschützt."
 
 msgid "Please select at least one pdf document."
 msgstr "Bitte wählen Sie zumindest ein PDF-Dokument aus."
@@ -91,7 +91,7 @@ msgid "Merge/Extract"
 msgstr "Zusammenführen/Extrahieren"
 
 msgid "Merge section loaded."
-msgstr "Verknüpfungsbereich geladen."
+msgstr "Bereich »Zusammenführen« geladen."
 
 msgid "Export as xml"
 msgstr "Als XML exportieren"
@@ -130,16 +130,16 @@ msgid "Split at this size"
 msgstr "Bei folgender Größe teilen"
 
 msgid "Split by bookmarks level"
-msgstr "Nach Lesezeichenebene teilen"
+msgstr "Anhand Lesezeichenebene teilen"
 
 msgid "Burst"
 msgstr "Trennen"
 
 msgid "Explode the pdf document into single pages"
-msgstr "Dokument in Einzelseiten aufteilen."
+msgstr "Dokument in Einzelseiten aufteilen"
 
 msgid "Split the document every \"n\" pages"
-msgstr "Dokument nach jeweils \"n\" Seiten teilen."
+msgstr "Dokument nach jeweils \"n\" Seiten teilen"
 
 msgid "Split the document every even page"
 msgstr "Dokument bei geraden Seiten teilen"
@@ -151,32 +151,35 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dokument nach Seitenzahlen trennen (Seite1-Seite2-Seite3...)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Dokument in Dateien folgender Größe zerlegen (näherungsweise)"
+msgstr "Dokument in Dateien der angegebenen Größe zerlegen (näherungsweise)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Seiten folgender Lesezeichenebene entnehmen"
+msgstr ""
+"Dokument an den Seiten auftrennen, auf die die angegebene Lesezeichenebene "
+"verweist"
 
 msgid "Destination folder"
 msgstr "Zielverzeichnis"
 
 msgid "Same as source"
-msgstr "Gleicher Ordner wie die Quelldatei"
+msgstr "Gleiches Verzeichnis wie Quelldatei"
 
 msgid "Choose a folder"
-msgstr "Ordner wählen"
+msgstr "Verzeichnis wählen"
 
 msgid "Destination output directory"
 msgstr "Zielverzeichnis für die Ausgabe"
 
 msgid "Use the same output folder as the input file or choose a folder."
 msgstr ""
-"Gleiches Verzeichnis wie Ursprungsdatei oder neues Verzeichnis auswählen"
+"Verwenden Sie als Ausgabeort das Verzeichnis der Quelldatei oder wählen Sie "
+"ein neues Verzeichnis."
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
-"Wählen Sie einen Ausgabeordner oder geben Sie den vollständigen Pfad ein."
+"Wählen Sie ein Ausgabeverzeichnis oder geben Sie den vollständigen Pfad ein."
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
@@ -189,30 +192,32 @@ msgid "Output options"
 msgstr "Ausgabeoptionen"
 
 msgid "Output file names prefix:"
-msgstr "Präfix für die Ausgabedateien:"
+msgstr "Ausgabedatei-Präfix:"
 
 msgid "Output files prefix"
-msgstr "Präfix für die Ausgabedateien:"
+msgstr "Ausgabedatei-Präfix"
 
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Sind »[CURRENTPAGE]«, »[TIMESTAMP]«, »[FILENUMBER]« oder »[BOOKMARK_NAME]« "
+"enthalten, erfolgt eine variable Benennung."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
-"Beispielsweise erzeugt prefix_[BASENAME]_[CURRENTPAGE] prefix_FileName_005."
+"Präfix_[BASENAME]_[CURRENTPAGE] erzeugt beispielsweise Präfix_Dateiname_005."
 "pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Sind \"[CURRENTPAGE]\", \"[TIMESTAMP]\" oder \"[FILENUMBER]\" nicht "
-"enthalten, erfolgt eine Benennung nach herkömmlichem Schema."
+"Sind »[CURRENTPAGE]«, »[TIMESTAMP]« oder »[FILENUMBER]« nicht enthalten, "
+"erfolgt eine Benennung nach herkömmlichem Schema."
 
 msgid "Available variables"
-msgstr ""
+msgstr "Verfügbare Variablen"
 
 msgid "Invalid split size"
 msgstr "Unzulässige Trenngröße"
@@ -222,14 +227,14 @@ msgstr "Die niedrigste verfügbare PDF-Version ist "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
 msgstr ""
-"Sie haben eine niedrigere PDF-Version zur Ausgabe gewählt, trotzdem "
-"fortfahren?"
+"Sie haben eine niedrigere PDF-Version für die Ausgabe gewählt, möchten Sie "
+"trotzdem fortfahren?"
 
 msgid "Pdf version conflict"
 msgstr "PDF-Versionskonflikt"
 
 msgid "Please select a pdf document."
-msgstr "PDF-Dokument wählen"
+msgstr "Bitte wählen Sie ein PDF-Dokument."
 
 msgid "Split selected file"
 msgstr "Ausgewählte Datei teilen"
@@ -238,7 +243,7 @@ msgid "Split"
 msgstr "Teilen"
 
 msgid "Split section loaded."
-msgstr "Zu teilender Bereich."
+msgstr "Bereich »Teilen« geladen."
 
 msgid "Invalid unit: "
 msgstr "Ungültige Einheit: "
@@ -247,7 +252,7 @@ msgid "Fill from document"
 msgstr "Aus Dokument einfügen"
 
 msgid "Getting bookmarks max depth"
-msgstr "Ermittle Lesezeichentiefe"
+msgstr "Maximale Lesezeichentiefe wird ermittelt"
 
 msgid "Cover pdf file"
 msgstr "PDF-Datei für Titelseite"
@@ -256,13 +261,13 @@ msgid "Footer pdf file"
 msgstr "PDF-Datei für Rückseite"
 
 msgid "Select at least one cover or one footer"
-msgstr "Wählen Sie mindestens ein PDF für Titel- oder Rückseite"
+msgstr "Wählen Sie zumindest ein PDF für Titel- oder Rückseite"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "Titel- und Rückseite"
 
 msgid "Cover And Footer section loaded."
-msgstr "Bereich Titel- und Rückseite geladen."
+msgstr "Bereich »Titel- und Rückseite« geladen."
 
 msgid "Encrypt options"
 msgstr "Verschlüsselungsoptionen"
@@ -317,7 +322,7 @@ msgstr ""
 "(PDF-Version 1.5 oder neuer)."
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr "Falls \"[TIMESTAMP]\" enthalten ist, erfolgt eine variable Benennung."
+msgstr "Falls »[TIMESTAMP]« enthalten ist, erfolgt eine variable Benennung."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
@@ -330,8 +335,8 @@ msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr ""
-"Ist \"[TIMESTAMP]\" nicht enthalten, erfolgt eine Benennung nach "
-"herkömmlichem Schema."
+"Ist »[TIMESTAMP]« nicht enthalten, erfolgt eine Benennung nach herkömmlichem "
+"Schema."
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "Verfügbare Variablen: [TIMESTAMP], [BASENAME]"
@@ -343,7 +348,7 @@ msgid "Encrypt"
 msgstr "Verschlüsseln"
 
 msgid "Encrypt section loaded."
-msgstr "Verschlüsselungsbereich geladen."
+msgstr "Bereich »Verschlüsseln« geladen."
 
 msgid "Decrypt selected files"
 msgstr "Ausgewählte Dateien entschlüsseln"
@@ -352,7 +357,7 @@ msgid "Decrypt"
 msgstr "Entschlüsseln"
 
 msgid "Decrypt section loaded."
-msgstr "Zu entschlüsselnder Bereich geladen."
+msgstr "Bereich »Entschlüsseln« geladen."
 
 msgid "Mix options"
 msgstr "Optionen"
@@ -364,23 +369,27 @@ msgid "Reverse second document"
 msgstr "Seitenreihenfolge des zweiten Dokuments umkehren"
 
 msgid "Number of pages to switch document"
-msgstr ""
+msgstr "Seitenanzahl bis Dokumentwechsel"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
+"Markieren Sie die Kontrollkästchen, um die Seitenreihenfolge des ersten oder "
+"zweiten Dokuments (oder beides) umzukehren."
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 msgstr ""
+"Legen Sie die Anzahl der Seiten fest, nach denen ein Wechsel zum anderen "
+"Dokument erfolgt (Vorgabewert ist 1)."
 
 msgid "Found a password for first file."
-msgstr "Passwort für die erste Datei gefunden."
+msgstr "Die erste Datei ist passwortgeschützt."
 
 msgid "Found a password for second file."
-msgstr "Passwort für die zweite Datei gefunden."
+msgstr "Die zweite Datei ist passwortgeschützt."
 
 msgid "Please select two pdf documents."
 msgstr "Bitte wählen Sie zwei PDF-Dokumente aus."
@@ -392,7 +401,7 @@ msgid "Alternate Mix"
 msgstr "Verschachteln"
 
 msgid "AlternateMix section loaded."
-msgstr "Zu verschachtelnder Bereich geladen."
+msgstr "Bereich »Verschachteln« geladen."
 
 msgid "Unpack selected files"
 msgstr "Ausgewählte Dateien entpacken"
@@ -401,7 +410,7 @@ msgid "Unpack"
 msgstr "Entpacken"
 
 msgid "Unpack section loaded."
-msgstr "Zu entpackender Bereich geladen."
+msgstr "Bereich »Entpacken« geladen."
 
 msgid "Set viewer options"
 msgstr "Anzeigeoptionen festlegen"
@@ -422,7 +431,7 @@ msgid "Center of the screen"
 msgstr "Bildschirmmittig ausrichten"
 
 msgid "Display document title as window title"
-msgstr "Titel anstatt Dateinamen im Fenster anzeigen"
+msgstr "Dokumenttitel anstatt Dateinamen anzeigen"
 
 msgid "Pdf version required:"
 msgstr "Erforderliche PDF-Version:"
@@ -449,10 +458,10 @@ msgid "Set viewer options for selected files"
 msgstr "Anzeigeoptionen für ausgewählte Dateien festlegen"
 
 msgid "Left to right"
-msgstr "Links nach rechts"
+msgstr "Von links nach rechts"
 
 msgid "Right to left"
-msgstr "Rechts nach links"
+msgstr "Von rechts nach links"
 
 msgid "None"
 msgstr "Keine"
@@ -494,44 +503,53 @@ msgid "Viewer options"
 msgstr "Anzeigeoptionen"
 
 msgid "Viewer options section loaded."
-msgstr "Bereich Anzeigeoptionen geladen."
+msgstr "Bereich »Anzeigeoptionen« geladen."
 
 msgid "Move on top"
-msgstr ""
+msgstr "An den Anfang"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Ans Ende"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
+"Um eine Datei auszuwählen, navigieren Sie zur Ausgabedatei oder geben Sie "
+"den vollständigen Pfad zu dieser ein."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr ""
+"Bitte wählen Sie ein PDF-Dokument oder machen Sie das Löschen einiger Seiten "
+"rückgängig"
 
 msgid "Execute pages reorder"
-msgstr ""
+msgstr "Seitenbearbeitung ausführen"
 
 msgid "Visual document composer"
-msgstr ""
+msgstr "Visuelle Dokumentzusammenstellung"
 
 msgid "Choose a file"
-msgstr ""
+msgstr "Wählen Sie eine Datei"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
+"Verwenden Sie den Dateinamen der Quelldatei für die Ausgabe oder wählen Sie "
+"eine Datei."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
+"Bitte wählen Sie ein PDF-Dokument oder machen Sie das Löschen einiger Seiten "
+"rückgängig"
 
 msgid "Visual reorder"
-msgstr ""
+msgstr "Visuelle Seitenbearbeitung"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
-"Passwortdaten speichern? (Diese werden in der Ausgabedatei lesbar sein.)"
+"Sollen die Passwortdaten gespeichert werden? (Diese werden in der "
+"Ausgabedatei lesbar sein.)"
 
 msgid "Confirm password saving"
 msgstr "Passwortspeicherung bestätigen"
@@ -546,46 +564,48 @@ msgid "No new version available."
 msgstr "Keine neue Version verfügbar."
 
 msgid "Log saved."
-msgstr "Protokoll gespeichert"
+msgstr "Protokoll wurde gespeichert"
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "Bild konnte nicht gespeichert werden"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "Bild konnte nicht erstellt werden, da Quelldokument ungültig ist"
 
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
+"Miniaturansichten konnten nicht erstellt werden, da Quelldokument ungültig "
+"ist"
 
 msgid "Input file doesn't exists or is a directory"
-msgstr ""
+msgstr "Quelldatei existiert nicht oder ist ein Verzeichnis"
 
 msgid "Password not provided."
-msgstr ""
+msgstr "Passwort fehlt."
 
 msgid "Unable to open the document."
-msgstr ""
+msgstr "Dokument konnte nicht geöffnet werden."
 
 msgid "Error opening pdf document"
-msgstr ""
+msgstr "Fehler beim Öffnen des PDF-Dokuments"
 
 msgid "Not enough memory to create thumbnails"
-msgstr ""
+msgstr "Nicht genug Speicher zum Erstellen der Miniaturansichten"
 
 msgid "Thumbnails generated in "
-msgstr ""
+msgstr "Miniaturansichten wurden erstellt in "
 
 msgid "Unable to close thumbnail creator"
-msgstr ""
+msgstr "Miniaturansichtenerstellung konnte nicht geschlossen werden"
 
 msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "Miniaturansicht konnte nicht erstellt werden"
 
 msgid " node environment loaded."
-msgstr " Umgebung geladen."
+msgstr " Umgebung wurde geladen."
 
 msgid "Environment saved."
-msgstr "Umgebung gespeichert."
+msgstr "Umgebung wurde gespeichert."
 
 msgid "Error saving environment, output file is null."
 msgstr "Fehler beim Speichern der Umgebung. Die Ausgabedatei ist ungültig."
@@ -594,7 +614,7 @@ msgid "Error saving environment."
 msgstr "Fehler beim Speichern der Umgebung."
 
 msgid "Environment loaded."
-msgstr "Umgebung geladen."
+msgstr "Umgebung wurde geladen."
 
 msgid "Error loading environment."
 msgstr "Fehler beim Laden der Umgebung."
@@ -603,19 +623,19 @@ msgid "Error loading environment from input file. "
 msgstr "Fehler beim Laden der Umgebung aus einer Datei "
 
 msgid "Image viewer"
-msgstr ""
+msgstr "Bildbetrachter"
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "Bildvorschau konnte nicht geöffnet werden"
 
 msgid "Unknown Action"
-msgstr ""
+msgstr "Unbekannte Aktion"
 
 msgid "Error playing sound:"
-msgstr ""
+msgstr "Fehler beim Abspielen des Klangs:"
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "Fehler beim Abspielen des Klangs"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Auswahltabelle ist voll. Bitte entfernen Sie einige PDF-Dateien."
@@ -636,10 +656,10 @@ msgid "Command validation returned an empty value."
 msgstr "Befehlsüberprüfung gab einen leeren Wert zurück."
 
 msgid "Command executed."
-msgstr "Befehl ausgeführt."
+msgstr "Befehl wurde ausgeführt."
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "PDF-Anzeige konnte nicht geleert werden"
 
 msgid "Run"
 msgstr "Ausführen"
@@ -693,7 +713,7 @@ msgid "Page Selection"
 msgstr "Seitenauswahl"
 
 msgid "Total pages of the document"
-msgstr "Anzahl aller Seiten des Dokuments"
+msgstr "Gesamtseitenzahl des Dokuments"
 
 msgid "Password to open the document (if needed)"
 msgstr "Passwort zum Öffnen des Dokuments (falls benötigt)"
@@ -705,8 +725,8 @@ msgid ""
 "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 "7,12-)"
 msgstr ""
-"Doppelklick, um die zu verbindenden Seiten festzulegen (z.B. 2 oder Alle "
-"oder 5-23 oder 2,5-7,12-)"
+"Doppelklicken Sie, um die zu verbindenden Seiten festzulegen (Syntax: 2 oder "
+"Alle oder 5-23 oder 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "PDF-Datei zur Liste hinzufügen"
@@ -724,19 +744,19 @@ msgid "Reload"
 msgstr "Neu laden"
 
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Fehler: Ausgewählte Dateien können nicht neu geladen werden"
+msgstr "Fehler: Ausgewählte Dateien konnten nicht neu geladen werden."
 
 msgid "Document properties"
-msgstr ""
+msgstr "Dokumenteigenschaften"
 
 msgid "Unable to remove JList text "
-msgstr "Kann JList-Text nicht entfernen "
+msgstr "JList-Text konnte nicht entfernt werden "
 
 msgid "File selected: "
 msgstr "Ausgewählte Datei: "
 
 msgid "File reloaded: "
-msgstr "Datei neu geladen: "
+msgstr "Datei wurde neu geladen: "
 
 msgid "Move Up"
 msgstr "Nach oben"
@@ -745,7 +765,7 @@ msgid "Move up selected pdf file"
 msgstr "Ausgewählte PDF-Datei nach oben verschieben"
 
 msgid "(Alt+ArrowUp)"
-msgstr "(Alt + Pfeil hoch)"
+msgstr "(Alt + Aufwärtspfeil)"
 
 msgid "Move Down"
 msgstr "Nach unten"
@@ -754,7 +774,7 @@ msgid "Move down selected pdf file"
 msgstr "Ausgewählte PDF-Datei nach unten verschieben"
 
 msgid "(Alt+ArrowDown)"
-msgstr "(Alt + Pfeil nach unten)"
+msgstr "(Alt + Abwärtspfeil)"
 
 msgid "Clear"
 msgstr "Leeren"
@@ -766,203 +786,204 @@ msgid "Set output file"
 msgstr "Ausgabedatei bestimmen"
 
 msgid "Error: Unable to get the file path."
-msgstr "Fehler: Dateipfad kann nicht ermittelt werden."
+msgstr "Fehler: Dateipfad konnte nicht ermittelt werden."
 
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 msgid "Load a pdf document"
-msgstr ""
+msgstr "Ein PDF-Dokument laden"
 
 msgid "Zoom in"
-msgstr ""
+msgstr "Vergrößern"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "Fehler beim Setzen des Vergrößerungsfaktors."
 
 msgid "Zoom out"
-msgstr ""
+msgstr "Verkleinern"
 
 msgid "Preview"
-msgstr ""
+msgstr "Vorschau"
 
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 msgid "Undelete"
-msgstr ""
+msgstr "Wiederherstellen"
 
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "Im Uhrzeigersinn drehen"
 
 msgid "Rotate anticlockwise"
-msgstr ""
+msgstr "Gegen den Uhrzeigersinn drehen"
 
 msgid "Reverse"
-msgstr ""
+msgstr "Umkehren"
 
 msgid "Move up selected pages"
-msgstr ""
+msgstr "Ausgewählte Seiten nach oben verschieben"
 
 msgid "Move down selected pages"
-msgstr ""
+msgstr "Ausgewählte Seiten nach unten verschieben"
 
 msgid "Delete selected pages"
-msgstr ""
+msgstr "Ausgewählte Seiten löschen"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "Ausgewählte Seiten wiederherstellen"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Strg+Z)"
 
 msgid "Rotate right"
-msgstr ""
+msgstr "Nach rechts drehen"
 
 msgid "Rotate clockwise selected pages"
-msgstr ""
+msgstr "Ausgewählte Seiten im Uhrzeigersinn drehen"
 
 msgid "(Alt+ArrowRight)"
-msgstr ""
+msgstr "(Alt+Rechtspfeil)"
 
 msgid "Rotate left"
-msgstr ""
+msgstr "Nach links drehen"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "Ausgewählte Seiten gegen den Uhrzeigersinn drehen"
 
 msgid "(Alt+ArrowLeft)"
-msgstr ""
+msgstr "(Alt+Linkspfeil)"
 
 msgid "Reverse pages order"
-msgstr ""
+msgstr "Seitenreihenfolge umkehren"
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 msgid "File: "
-msgstr ""
+msgstr "Datei: "
 
 msgid "Pages: "
-msgstr ""
+msgstr "Seiten: "
 
 msgid "Pdf version: "
-msgstr ""
+msgstr "PDF-Version: "
 
 msgid "Title: "
-msgstr ""
+msgstr "Titel: "
 
 msgid "Author: "
 msgstr "Autor: "
 
 msgid "Creator: "
-msgstr ""
+msgstr "Anwendung: "
 
 msgid "Producer: "
-msgstr ""
+msgstr "Ersteller: "
 
 msgid "Encrypted: "
-msgstr ""
+msgstr "Verschlüsselt: "
 
 msgid "File"
 msgstr "Datei"
 
 msgid "Save as"
-msgstr ""
+msgstr "Speichern unter"
 
 msgid "Close"
 msgstr "Schließen"
 
 msgid "Error creating preview panel."
-msgstr ""
+msgstr "Fehler beim Erstellen der Anzeigeleiste."
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Seitenanzahl"
 
 msgid "File size"
-msgstr ""
+msgstr "Dateigröße"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "PDF-Version"
 
 msgid "Encryption"
-msgstr ""
+msgstr "Verschlüsselung"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "Nicht verschlüsselt"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Berechtigungen"
 
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 msgid "Author"
 msgstr "Autor"
 
 msgid "Subject"
-msgstr ""
+msgstr "Thema"
 
 msgid "Producer"
-msgstr ""
+msgstr "Anwendung"
 
 msgid "Creator"
-msgstr ""
+msgstr "Ersteller"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Erstellt am"
 
 msgid "Modification date"
-msgstr ""
+msgstr "Geändert am"
 
 msgid "Keywords"
-msgstr ""
+msgstr "Stichwörter"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "Fehler beim Auslesen der Dokumenteigenschaften."
 
 msgid "Please select a single pdf document."
-msgstr ""
+msgstr "Bitte wählen Sie ein einzelnes PDF-Dokument."
 
 msgid "File type not supported."
-msgstr ""
+msgstr "Dateityp nicht unterstützt."
 
 msgid "Error during drag and drop."
-msgstr ""
+msgstr "Fehler beim Ziehen und Ablegen."
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "Unterstützung für Ziehen und Ablegen konnte nicht eingeleitet werden."
 
 msgid "Unable to get the default environment informations."
 msgstr "Die Umgebungsinformationen konnten nicht ermittelt werden."
 
 msgid "Setting look and feel..."
-msgstr "Setze Oberflächendesign ..."
+msgstr "Erscheinungsbild wird festgelegt ..."
 
 msgid "Setting logging level..."
-msgstr "Setze Protokollierungsstufe ..."
+msgstr "Protokollierungsstufe wird festgelegt ..."
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr ""
-"Kann Protokollierungsstufe nicht finden, benutze Standardlevel (DEBUG)."
+"Protokollierungsstufe konnte nicht gefunden werden, Standardstufe (DEBUG) "
+"wird genutzt."
 
 msgid "Logging level set to "
 msgstr "Protokollierungsstufe gesetzt auf "
 
 msgid "Unable to set logging level."
-msgstr "Kann Protokollierungsstufe nicht festlegen."
+msgstr "Protokollierungsstufe konnte nicht festlegt werden."
 
 msgid "Setting default working directory..."
-msgstr ""
+msgstr "Standard-Arbeitsverzeichnis wird festgelegt ..."
 
 msgid "Error getting plugins directory."
 msgstr "Fehler beim Ermitteln des Plugin-Verzeichnisses"
 
 msgid "Cannot read plugins directory "
-msgstr "Kann Plugin-Verzeichnis nicht lesen "
+msgstr "Plugin-Verzeichnis konnte nicht eingelesen werden "
 
 msgid "Plugins directory is null."
 msgstr "Plugin-Verzeichnis ist ungültig"
@@ -974,7 +995,7 @@ msgid "Exception loading plugins."
 msgstr "Ausnahmefehler beim Laden der Plugins."
 
 msgid "Cannot read plugin directory "
-msgstr "Kann Plugin-Verzeichnis nicht lesen "
+msgstr "Plugin-Verzeichnis konnte nicht eingelesen werden "
 
 msgid " plugin loaded."
 msgstr " Plugin geladen."
@@ -986,13 +1007,13 @@ msgid "Error loading class "
 msgstr "Fehler beim Laden der Klasse "
 
 msgid "Unable to get latest available version"
-msgstr "Kann neueste verfügbare Version nicht laden"
+msgstr "Neueste verfügbare Version konnte nicht geladen werden"
 
 msgid "Checking for a new version available."
-msgstr "Prüfe, ob neue Version verfügbar ist."
+msgstr "Prüfung auf Verfügbarkeit neuer Version wird durchgeführt."
 
 msgid "Error checking for a new version available."
-msgstr "Fehler beim Überprüfen auf neue Versionen."
+msgstr "Fehler beim Überprüfen auf neue Version."
 
 msgid "Select all"
 msgstr "Alles auswählen"
@@ -1010,28 +1031,28 @@ msgid "Exit"
 msgstr "Beenden"
 
 msgid "Unable to initialize menu bar."
-msgstr "Kann Menüleiste nicht initialisieren."
+msgstr "Menüleiste konnte nicht aufgebaut werden."
 
 msgid "started in "
 msgstr "gestartet in "
 
 msgid "Loading plugins.."
-msgstr "Lade Plugins ..."
+msgstr "Plugins werden geladen ..."
 
 msgid "Building menus.."
-msgstr "Erzeuge Menüs ..."
+msgstr "Menüs werden aufgebaut ..."
 
 msgid "Building buttons bar.."
-msgstr "Erzeuge Schaltflächen ..."
+msgstr "Schaltflächenleiste wird aufgebaut ..."
 
 msgid "Building status bar.."
-msgstr "Erzeuge Statusanzeige ..."
+msgstr "Statusleiste wird aufgebaut ..."
 
 msgid "Building tree.."
-msgstr "Erzeuge Baum ..."
+msgstr "Plugin-Baum wird aufgebaut ..."
 
 msgid "Loading default environment."
-msgstr "Lade Standardumgebung."
+msgstr "Standardumgebung wird geladen."
 
 msgid "Error starting pdfsam."
 msgstr "Fehler beim Starten von pdfsam"
@@ -1040,7 +1061,7 @@ msgid "Clear log"
 msgstr "Protokoll löschen"
 
 msgid "Unable to initialize button bar."
-msgstr "Kann Schaltflächenleiste nicht initialisieren."
+msgstr "Schaltflächenleiste konnte nicht aufgebaut werden."
 
 msgid "Version: "
 msgstr "Version: "
@@ -1082,7 +1103,7 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "Look and feel:"
-msgstr "Oberflächendesign:"
+msgstr "Erscheinungsbild:"
 
 msgid "Theme:"
 msgstr "Farbschema"
@@ -1118,12 +1139,12 @@ msgid "Set your preferred language (restart needed)"
 msgstr "Wählen Sie Ihre Sprache (Neustart notwendig)."
 
 msgid "Look and feel"
-msgstr "Oberflächendesign"
+msgstr "Erscheinungsbild"
 
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
 msgstr ""
-"Wählen Sie Ihr bevorzugtes Oberflächendesign und Farbschema (Neustart "
+"Wählen Sie Ihr bevorzugtes Erscheinungsbild und Farbschema (Neustart "
 "notwendig)."
 
 msgid "Log level"
@@ -1159,7 +1180,7 @@ msgstr "Standard-Arbeitsverzeichnis"
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Wählen Sie ein Verzeichnis, um dort Dokumente standardmäßig zu speichern und "
-"zu laden."
+"von dort zu laden."
 
 msgid "Save"
 msgstr "Speichern"
@@ -1174,7 +1195,7 @@ msgid "New version available: "
 msgstr "Neue Version verfügbar: "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "Klang konnte nicht abgespielt werden."
 
 msgid "Plugins"
 msgstr "Plugins"
@@ -1216,121 +1237,38 @@ msgid "Output location error"
 msgstr "Fehler im Zielpfad"
 
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "Ausgewählte Ausgabedatei ist bereits vorhanden "
 
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Möchten Sie sie überschreiben?"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "Angegebene Seitenauswahl ist ungültig"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Seitenauswahl muss eine mittels Komma getrennte Liste der Elemente »Seite« "
+"oder »Seite-Seite« sein"
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "Seitenauswahl ist ungültig"
 
 msgid "Please provide the password to open the encrypted document"
 msgstr ""
+"Bitte geben Sie zum Öffnen des verschlüsselten Dokuments das Passwort ein"
 
 msgid "Password request"
-msgstr ""
+msgstr "Passwortabfrage"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
 msgstr ""
+"Auswahltabelle ist voll, möchten Sie sie leeren und ein neues Dokument laden?"
 
 msgid "List full"
-msgstr ""
+msgstr "Tabelle voll"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
-
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "Falls  \"[CURRENTPAGE]\", \"[TIMESTAMP]\" oder \"[FILENUMBER]\" enthalten "
-#~ "sind, erfolgt eine variable Benennung."
-
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr ""
-#~ "Erlaubte Variablen: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-
-#~ msgid "Cover and Footer"
-#~ msgstr "Titel- und Rückseite"
-
-#~ msgid "Language: "
-#~ msgstr "Sprache: "
-
-#~ msgid "Split options:"
-#~ msgstr "Trennoptionen:"
-
-#~ msgid "Destination folder:"
-#~ msgstr "Ausgabeordner:"
-
-#~ msgid "Output options:"
-#~ msgstr "Ausgabeoptionen:"
-
-#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-#~ msgstr "Verwendbare Variablen: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-#~ msgid "Please wait while reading "
-#~ msgstr "Lesevorgang, bitte warten "
-
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Alle PDF-Dateien aus der Liste löschen"
-
-#~ msgid "Destination output directory:"
-#~ msgstr "Zielverzeichnis:"
-
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Titelseite suchen"
-
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "PDf für Fußzeile suchen"
-
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Zielverzeichnis suchen oder vollständigen Pfad eingeben"
-
-#~ msgid "Source file:"
-#~ msgstr "Quelldatei:"
-
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "PDF zm Verschlüsseln auswählen"
-
-#~ msgid "Encrypt options:"
-#~ msgstr "Verschlüsselungsoptionen:"
-
-#~ msgid "Browse filesystem for the first file to mix"
-#~ msgstr "Erste Datei suchen"
-
-#~ msgid "Browse filesystem for the second file to mix"
-#~ msgstr "Zweite Datei suchen"
-
-#~ msgid "First pdf document:"
-#~ msgstr "Erstes pdf-Dukument"
-
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Wählen Sie eine PDF-Datei zum Trennen aus"
-
-#~ msgid "RuntimeError:"
-#~ msgstr "Laufzeitfehler:"
-
-#~ msgid "Info"
-#~ msgstr "Info"
-
-#~ msgid "Informations:"
-#~ msgstr "Informationen:"
-
-#~ msgid "Application name: "
-#~ msgstr "Programmname: "
-
-#~ msgid "Application version: "
-#~ msgstr "Programmversion: "
-
-#~ msgid "Installed plugins:"
-#~ msgstr "Installierte Plugins:"
+msgstr "Fehler beim Einlesen der Seiteninformationen"

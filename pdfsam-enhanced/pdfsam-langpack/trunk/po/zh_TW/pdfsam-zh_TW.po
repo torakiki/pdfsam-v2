@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-12-07 15:32+0000\n"
-"Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
+"POT-Creation-Date: 2009-05-09 17:07+0200\n"
+"PO-Revision-Date: 2009-05-04 03:58+0000\n"
+"Last-Translator: ben <benjamin97.tw@yahoo.com.tw>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 14:48+0000\n"
+"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -61,16 +61,16 @@ msgid "Check the box if you want compressed output files."
 msgstr "若您想要一個壓縮過的輸出檔，請勾選此選項。"
 
 msgid "PDF version 1.5 or above."
-msgstr "PDF 1.5 或更新的版本"
+msgstr "PDF 1.5 或更新的版本。"
 
 msgid "Set the pdf version of the ouput document."
-msgstr "設定輸出文件的 PDF 版本"
+msgstr "設定輸出文件的 PDF 版本。"
 
 msgid "Please wait while all files are processed.."
 msgstr "檔案處理中請稍待..."
 
 msgid "Found a password for input file."
-msgstr "輸入檔需要密碼"
+msgstr "輸入檔需要密碼。"
 
 msgid "Please select at least one pdf document."
 msgstr "請至少選取一個 PDF 文件。"
@@ -124,7 +124,7 @@ msgid "Split at this size"
 msgstr "依指定的檔案大小分割"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "依書籤層級分割"
 
 msgid "Burst"
 msgstr "細分"
@@ -144,13 +144,11 @@ msgstr "分割出文件的奇數頁"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "分割出這些頁碼後面的部份（頁碼1-頁碼2-頁碼3...）"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "將文件（約略地）分割成指定大小的檔案"
+msgstr "指定（約略的）檔案大小來分割文件"
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "將文件（約略地）分割成指定大小的檔案"
+msgstr "依指定的書籤層級所指頁面來分割文件"
 
 msgid "Destination folder"
 msgstr "目的地資料夾"
@@ -232,20 +230,17 @@ msgstr "分割已完成。"
 msgid "Invalid unit: "
 msgstr "無效的單位： "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "第一個PDF文件："
+msgstr "從文件填滿"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "正在取得書籤最大層級"
 
-#, fuzzy
 msgid "Cover pdf file"
-msgstr "作為封面的PDF檔："
+msgstr "封面 PDF 檔"
 
-#, fuzzy
 msgid "Footer pdf file"
-msgstr "作為封底的PDF檔："
+msgstr "封底 PDF 檔"
 
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
@@ -271,7 +266,6 @@ msgstr "使用者密碼："
 msgid "User password (Max 32 chars long)"
 msgstr "使用者密碼（最多32個字元）"
 
-#, fuzzy
 msgid "Encryption algorithm:"
 msgstr "加密演算法："
 
@@ -486,36 +480,36 @@ msgid "Viewer options section loaded."
 msgstr "已載入檢視器選項區段。"
 
 msgid "Move on top"
-msgstr ""
+msgstr "移至最頂"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "移至最底"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
-msgstr ""
+msgstr "選擇檔案瀏覽或輸入輸出檔的完整路徑。"
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Execute pages reorder"
-msgstr ""
+msgstr "執行頁面記錄器"
 
 msgid "Visual document composer"
-msgstr ""
+msgstr "虛擬文件編輯器"
 
 msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
-msgstr ""
+msgstr "輸出檔名與輸入檔相同或選擇一個檔案。"
 
 msgid "Please select a pdf document or undelete some page"
-msgstr ""
+msgstr "請選擇一個 PDF 文件或復原（不刪除）某個頁面"
 
 msgid "Visual reorder"
-msgstr ""
+msgstr "虛擬記錄器"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -537,16 +531,16 @@ msgid "Log saved."
 msgstr "紀錄檔已儲存。"
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "無法儲存影像"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "無法為一個空的輸入文件建立影像"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr ""
+msgstr "無法為一個空的輸入文件建立縮圖"
 
 msgid "Input file doesn't exists or is a directory"
-msgstr ""
+msgstr "輸入檔不存在或是個資料夾"
 
 msgid "Password not provided."
 msgstr ""
@@ -561,13 +555,13 @@ msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
+msgstr "縮圖已產生於 "
 
 msgid "Unable to close thumbnail creator"
-msgstr ""
+msgstr "無法關閉縮圖產生器"
 
 msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "無法產生縮圖"
 
 msgid " node environment loaded."
 msgstr " 節點環境變數已載入"
@@ -591,19 +585,19 @@ msgid "Error loading environment from input file. "
 msgstr "無法從輸入檔載入環境變數。 "
 
 msgid "Image viewer"
-msgstr ""
+msgstr "影像檢視器"
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "無法開啟影像預覽"
 
 msgid "Unknown Action"
-msgstr ""
+msgstr "未知的動作"
 
 msgid "Error playing sound:"
-msgstr ""
+msgstr "播放音效時出錯："
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "播放音效時出錯"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "選取清單已滿，請移除某個 PDF 文件。"
@@ -627,7 +621,7 @@ msgid "Command executed."
 msgstr "指令已執行。"
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "無法清除 PDF 載入器"
 
 msgid "Run"
 msgstr "執行"
@@ -755,115 +749,115 @@ msgid "Error: Unable to get the file path."
 msgstr "錯誤：無法取得檔案路徑。"
 
 msgid "Open"
-msgstr ""
+msgstr "開啟"
 
 msgid "Load a pdf document"
-msgstr ""
+msgstr "載入一個 PDF 文件"
 
 msgid "Zoom in"
-msgstr ""
+msgstr "放大"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "設定縮放層級時出錯。"
 
 msgid "Zoom out"
-msgstr ""
+msgstr "縮小"
 
 msgid "Preview"
-msgstr ""
+msgstr "預覽"
 
 msgid "Delete"
-msgstr ""
+msgstr "刪除"
 
 msgid "Undelete"
-msgstr ""
+msgstr "復原（不刪除）"
 
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "順時針旋轉"
 
 msgid "Rotate anticlockwise"
-msgstr ""
+msgstr "逆時針旋轉"
 
 msgid "Reverse"
 msgstr ""
 
 msgid "Move up selected pages"
-msgstr ""
+msgstr "將所選頁面上移"
 
 msgid "Move down selected pages"
-msgstr ""
+msgstr "將所選頁面下移"
 
 msgid "Delete selected pages"
-msgstr ""
+msgstr "刪除所選頁面"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "復原（不刪除）所選頁面"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Ctrl+Z)"
 
 msgid "Rotate right"
-msgstr ""
+msgstr "向右旋轉"
 
 msgid "Rotate clockwise selected pages"
-msgstr ""
+msgstr "將所選頁面順時針旋轉"
 
 msgid "(Alt+ArrowRight)"
-msgstr ""
+msgstr "(Alt+向右方向鍵)"
 
 msgid "Rotate left"
-msgstr ""
+msgstr "向左旋轉"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "將所選頁面逆時針旋轉"
 
 msgid "(Alt+ArrowLeft)"
-msgstr ""
+msgstr "(Alt+向左方向鍵)"
 
 msgid "Reverse pages order"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 msgid "No"
-msgstr ""
+msgstr "否"
 
 msgid "File: "
-msgstr ""
+msgstr "檔案： "
 
 msgid "Pages: "
-msgstr ""
+msgstr "頁面： "
 
 msgid "Pdf version: "
-msgstr ""
+msgstr "PDF 版本： "
 
 msgid "Title: "
-msgstr ""
+msgstr "標題： "
 
 msgid "Author: "
 msgstr "作者： "
 
 msgid "Creator: "
-msgstr ""
+msgstr "建立者： "
 
 msgid "Producer: "
-msgstr ""
+msgstr "發行者： "
 
 msgid "Encrypted: "
-msgstr ""
+msgstr "加密： "
 
 msgid "File"
 msgstr "檔案"
 
 msgid "Save as"
-msgstr ""
+msgstr "另存新檔"
 
 msgid "Close"
 msgstr "關閉"
 
 msgid "Error creating preview panel."
-msgstr ""
+msgstr "建立預覽面板時出錯。"
 
 msgid "Number of pages"
 msgstr ""
@@ -911,16 +905,16 @@ msgid "Error creating properties panel."
 msgstr ""
 
 msgid "Please select a single pdf document."
-msgstr ""
+msgstr "請選擇單一個 PDF 文件。"
 
 msgid "File type not supported."
-msgstr ""
+msgstr "不支援此種檔案類型。"
 
 msgid "Error during drag and drop."
-msgstr ""
+msgstr "拖拉文件時出錯。"
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "無法初始化文件拖拉功能。"
 
 msgid "Unable to get the default environment informations."
 msgstr "無法取得預設的環境變數資訊。"
@@ -941,7 +935,7 @@ msgid "Unable to set logging level."
 msgstr "無法設定紀錄檔層級。"
 
 msgid "Setting default working directory..."
-msgstr ""
+msgstr "正在設定預設的工作目錄..."
 
 msgid "Error getting plugins directory."
 msgstr "無法取得增效模組目錄。"
@@ -1151,7 +1145,7 @@ msgid "New version available: "
 msgstr "可用的新版本： "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "無法播放音效。"
 
 msgid "Plugins"
 msgstr "增效模組"
@@ -1193,10 +1187,10 @@ msgid "Output location error"
 msgstr "輸出檔位置錯誤"
 
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "所選的輸出檔已存在 "
 
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "您要覆寫它嗎？"
 
 msgid "Provided pages selection is not valid"
 msgstr ""
@@ -1210,127 +1204,17 @@ msgid "Limits are not valid"
 msgstr ""
 
 msgid "Please provide the password to open the encrypted document"
-msgstr ""
+msgstr "請提供密碼來開啟已加密文件"
 
 msgid "Password request"
-msgstr ""
+msgstr "需要密碼"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
-msgstr ""
+msgstr "選擇清單已滿，您要清空它並載入新的文件嗎？"
 
 msgid "List full"
-msgstr ""
+msgstr "清單已滿"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行"
-#~ "變數替換。"
-
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr ""
-#~ "可用的變數：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME] 及 [FILENUMBER]。"
-
-#~ msgid "Cover and Footer"
-#~ msgstr "封面與封底"
-
-#~ msgid "Language: "
-#~ msgstr "程式語言： "
-
-#~ msgid "Merge options:"
-#~ msgstr "合併選項："
-
-#~ msgid "Split options:"
-#~ msgstr "分割選項："
-
-#~ msgid "Destination folder:"
-#~ msgstr "輸出檔存放路徑："
-
-#~ msgid "Output options:"
-#~ msgstr "輸出選項："
-
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-#~ "substitution."
-#~ msgstr "若包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，會顯示不同的替代文字。"
-
-#~ msgid ""
-#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-#~ "oldstyle output file names."
-#~ msgstr ""
-#~ "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
-
-#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-#~ msgstr "可用的變數：[CURRENTPAGE], [TIMESTAMP], [BASENAME]。"
-
-#~ msgid "Please wait while reading "
-#~ msgstr "讀取中請稍待... "
-
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "移除清單中所有PDF檔"
-
-#~ msgid "Destination output directory:"
-#~ msgstr "輸出檔存放路徑："
-
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "在電腦裡選擇一個檔案作為封面"
-
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "在電腦裡選擇一個檔案作為封底"
-
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "請瀏覽或輸入存放輸出檔的完整路徑"
-
-#~ msgid "Execute pdf add cover footer"
-#~ msgstr "執行新增封面和封底"
-
-#~ msgid "Source file:"
-#~ msgstr "原始檔案："
-
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "請選取要加密的PDF檔"
-
-#~ msgid "Encrypt options:"
-#~ msgstr "加密選項："
-
-#~ msgid "Destination output file:"
-#~ msgstr "輸出檔案："
-
-#~ msgid "Browse filesystem for the first file to mix"
-#~ msgstr "在電腦中選取要交替合併的第一個檔案"
-
-#~ msgid "Browse filesystem for the second file to mix"
-#~ msgstr "在電腦中選取要交替合併的第二個檔案"
-
-#~ msgid "Select a PDF file to split"
-#~ msgstr "請選取要分割的PDF檔"
-
-#~ msgid "Error:"
-#~ msgstr "錯誤："
-
-#~ msgid "RuntimeError:"
-#~ msgstr "執行時錯誤："
-
-#~ msgid "Info"
-#~ msgstr "資訊"
-
-#~ msgid "Informations:"
-#~ msgstr "資訊："
-
-#~ msgid "Application name: "
-#~ msgstr "應用程式名稱： "
-
-#~ msgid "Application version: "
-#~ msgstr "應用程式版本： "
-
-#~ msgid "Installed plugins:"
-#~ msgstr "已安裝的插件："
-
-#~ msgid "Check the box if you want a compressed output file."
-#~ msgstr "若您想要一個壓縮過的輸出檔，請勾選此選項。"
