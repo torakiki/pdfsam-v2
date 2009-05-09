@@ -109,7 +109,7 @@ public class JPodThumbnailsExecutor {
 	 * @param id
 	 * @return true if the execution is cancelled
 	 */
-	public synchronized boolean  isCancelledExecution(final long id){
+	public boolean  isCancelledExecution(final long id){
 		boolean retVal = false;
 		if(cancelledExecutions!=null && cancelledExecutions.size()>0){
 			retVal = cancelledExecutions.contains(id);
