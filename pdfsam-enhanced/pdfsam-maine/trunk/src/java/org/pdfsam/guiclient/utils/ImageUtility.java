@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.utils;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -21,6 +22,7 @@ import java.awt.image.renderable.ParameterBlock;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.media.jai.InterpolationNearest;
@@ -41,7 +43,7 @@ public class ImageUtility {
 	private static final Logger log = Logger.getLogger(ImageUtility.class.getPackage().getName());
 
 	private static BufferedImage ERROR_IMAGE = null;
-	public static  BufferedImage HOURGLASS = null;
+	private static BufferedImage HOURGLASS = null;
 	
 	static{
 		System.setProperty("com.sun.media.jai.disableMediaLib", "true");
@@ -52,7 +54,7 @@ public class ImageUtility {
 	 * @param degrees
 	 * @return rotated image
 	 */
-	public static synchronized BufferedImage rotateImage(Image inputImage, int degrees){
+	public static BufferedImage rotateImage(Image inputImage, int degrees){
 		BufferedImage retVal = null;
 		RenderedImage ri = JAI.create("awtImage", inputImage);
 		ParameterBlock pb = new ParameterBlock();
@@ -73,11 +75,18 @@ public class ImageUtility {
 	public static BufferedImage getErrorImage(){
 		try {
 			if(ERROR_IMAGE == null){
-				ERROR_IMAGE = ImageIO.read(ImageUtility.class.getResourceAsStream("/images/thumbnailerror.png"));
+				InputStream is = ImageUtility.class.getResourceAsStream("/images/thumbnailerror.png");
+				BufferedImage img = ImageIO.read(is);
+				is.close();
+				//convert to TYPE_INT_RGB
+				ERROR_IMAGE = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D g2d = (Graphics2D) ERROR_IMAGE.getGraphics();
+				g2d.drawImage(img, 0,0,img.getWidth(), img.getHeight(), null);
+				g2d.dispose();
 			}
 		} catch (IOException e) {
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create error image."));
-		};
+		}
 		return ERROR_IMAGE;
 	}
 	
@@ -87,7 +96,14 @@ public class ImageUtility {
 	public static BufferedImage getHourglassImage(){
 		try {
 			if(HOURGLASS == null){
-				HOURGLASS =  ImageIO.read(ImageUtility.class.getResourceAsStream("/images/hourglass.png"));
+				InputStream is = ImageUtility.class.getResourceAsStream("/images/hourglass.png");
+				BufferedImage img = ImageIO.read(is);
+				is.close();
+				//convert to TYPE_INT_RGB
+				HOURGLASS = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D g2d = (Graphics2D) HOURGLASS.getGraphics();
+				g2d.drawImage(img, 0,0,img.getWidth(), img.getHeight(), null);
+				g2d.dispose();			
 			}
 		} catch (IOException e) {
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create error image."));
@@ -102,7 +118,7 @@ public class ImageUtility {
 	 */
 	public static byte[] toByteArray(BufferedImage o) throws IOException {
 		if (o != null) {
-			BufferedImage image = (BufferedImage) o;
+			BufferedImage image = o;
 			ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
 			ImageIO.write(image, "jpeg", baos);
 			byte[] b = baos.toByteArray();

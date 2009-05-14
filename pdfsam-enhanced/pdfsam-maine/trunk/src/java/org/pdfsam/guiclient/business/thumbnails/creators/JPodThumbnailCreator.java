@@ -23,12 +23,16 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.IdManager;
+import org.pdfsam.guiclient.business.thumbnails.callables.JPodCreatorCloser;
+import org.pdfsam.guiclient.business.thumbnails.callables.JPodThmbnailCallable;
 import org.pdfsam.guiclient.business.thumbnails.executors.JPodThumbnailsExecutor;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
@@ -188,10 +192,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	            				}
 	            			}
 	            			((VisualListModel)panel.getThumbnailList().getModel()).setData(modelList);                		
-	            			long startTime = System.currentTimeMillis();
 	            			initThumbnails(pdfDoc, pageTree, panel, modelList, id);
 	            			pageTree = null;
-	            			JPodThumbnailsExecutor.getInstance().execute(new CreatorCloser(pdfDoc, startTime, id), id);
 	            		}	
 					}else{
 						throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the document."));
@@ -208,7 +210,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 			}						
  
 	}
-	
+
 	/**
 	 * Creates thumbnails
 	 * @param decoder
@@ -216,48 +218,19 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 * @param modelList
 	 */
 	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final List<VisualPageListItem> modelList, final long id){	
+		ArrayList<JPodThmbnailCallable> tasks = null;
+		JPodCreatorCloser closerTask = null;
 		if(pageTree!=null && panel != null && modelList!=null && modelList.size()>0){
+			tasks = new ArrayList<JPodThmbnailCallable>(modelList.size());
 			for(VisualPageListItem pageItem : modelList){
 				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
-				JPodThumbnailsExecutor.getInstance().execute(pdPage, pageItem, panel, id);	
+				tasks.add(new JPodThmbnailCallable(pdPage, pageItem, panel, id));
 			}
-		}		 		
-	}	
-	
-	/**
-	 * Used to close the PdfDoc
-	 * @author Andrea Vacondio
-	 *
-	 */
-	private class CreatorCloser implements Runnable{
-		
-		private PDDocument pdfDoc;
-		private long startTime = 0;
-		private long id = 0;
-		
-		public CreatorCloser(PDDocument pdfDoc, long startTime, long id) {
-			super();
-			this.pdfDoc = pdfDoc;
-			this.startTime = startTime;
-			this.id = id;
-		}
-		
-		public void run() {				
-			try{			
-				if(pdfDoc!=null){
-					pdfDoc.close();
-					if(!JPodThumbnailsExecutor.getInstance().isCancelledExecution(id)){
-						log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
-					}
-					pdfDoc = null;
-				}					
-            }catch (Exception e) {
-        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to close thumbnail creator"),e);
-        	}				           
-		}
+			closerTask = new JPodCreatorCloser(pdfDoc);
+		}	
+		JPodThumbnailsExecutor.getInstance().invokeAll(tasks, closerTask, id);
+	}		
 
-	}
-	
 	/**
 	 * Creates the PDDocument
 	 * @param inputFile
@@ -291,7 +264,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
 	@Override
 	public void clean(long id) {
-		JPodThumbnailsExecutor.getInstance().cancelExecution(id);
+		IdManager.getInstance().cancelExecution(id);
 	}
 
 }

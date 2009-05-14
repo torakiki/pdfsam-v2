@@ -45,7 +45,7 @@ import javax.swing.ListSelectionModel;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
-import org.pdfsam.guiclient.business.IdGenerator;
+import org.pdfsam.guiclient.business.IdManager;
 import org.pdfsam.guiclient.business.PagePreviewOpener;
 import org.pdfsam.guiclient.business.PagesWorker;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
@@ -972,7 +972,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * generates a new thumbnails generation ticket
 	 */
 	public void generateNewId(){
-		id = IdGenerator.getInstance().getNewId();
+		id = IdManager.getInstance().getNewId();
 	}
     
 	/**

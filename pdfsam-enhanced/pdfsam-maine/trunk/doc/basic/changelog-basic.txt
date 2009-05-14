@@ -1,4 +1,9 @@
-2.0.0-beta () (pdfsam-console 2.0.4e)
+2.0.0-beta2 () ()
+===================================
+-Fixed GUI interactivity when generating thumbnails.
+-Now concurrent thumbnails generation model. 
+
+2.0.0-beta (10-May-2009) (pdfsam-console 2.0.4e)
 ===================================
 -Launcher: pdfsam-starter.exe now can take -Xmx parameter as a value (can be set as a Windows shortcut parameter)
 -Esc key now closes the preview panel

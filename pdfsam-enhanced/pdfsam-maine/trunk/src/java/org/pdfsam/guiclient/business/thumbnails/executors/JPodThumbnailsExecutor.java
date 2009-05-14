@@ -14,32 +14,20 @@
  */
 package org.pdfsam.guiclient.business.thumbnails.executors;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.Collection;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
-import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
-import org.pdfsam.guiclient.commons.models.VisualListModel;
+import org.pdfsam.guiclient.business.IdManager;
+import org.pdfsam.guiclient.business.thumbnails.callables.JPodThmbnailCallable;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
-import org.pdfsam.guiclient.dto.Rotation;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
-import org.pdfsam.guiclient.utils.ImageUtility;
 import org.pdfsam.i18n.GettextResource;
 
-import de.intarsys.cwt.awt.environment.CwtAwtGraphicsContext;
-import de.intarsys.cwt.environment.IGraphicsContext;
-import de.intarsys.pdf.content.CSContent;
 import de.intarsys.pdf.pd.PDPage;
-import de.intarsys.pdf.platform.cwt.rendering.CSPlatformRenderer;
 
 /**
  * Singleton that executes the thumbnails creations
@@ -48,19 +36,14 @@ import de.intarsys.pdf.platform.cwt.rendering.CSPlatformRenderer;
  */
 public class JPodThumbnailsExecutor {
 
+	private static final Logger log = Logger.getLogger(JPodThumbnailsExecutor.class.getPackage().getName());
 	private static JPodThumbnailsExecutor instance = null;
 	
-	private static final Logger log = Logger.getLogger(JPodThumbnailsExecutor.class.getPackage().getName());
+	private  ExecutorService executor = null;
 	
-	private  LinkedList<ExecutorService> pools = null;
-	private  HashSet<Long> cancelledExecutions = null;;
 	
-	private JPodThumbnailsExecutor(){
-		cancelledExecutions =  new HashSet<Long>();				
-		pools = new LinkedList<ExecutorService>();
-		for(int i = 0; i<Configuration.getInstance().getThumbCreatorPoolSize(); i++){
-			pools.add(i, Executors.newSingleThreadExecutor());
-		}
+	private JPodThumbnailsExecutor(){	
+		executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
 	}
 
 	public static synchronized JPodThumbnailsExecutor getInstance() { 
@@ -75,149 +58,88 @@ public class JPodThumbnailsExecutor {
 	}
 	
 	/**
-	 * Executes the thumbnail creation
+	 * Submit the thumbnail creation
 	 * @param pdPage
 	 * @param pageItem
 	 * @param panel
 	 * @param id
 	 */
-	public synchronized void execute(PDPage pdPage, VisualPageListItem pageItem , final JVisualPdfPageSelectionPanel panel, final long id){
-		getExecutor(id).execute(new ThumnailCreator(pdPage, pageItem, panel, id));	
+	public synchronized void submit(PDPage pdPage, VisualPageListItem pageItem , final JVisualPdfPageSelectionPanel panel, final long id){
+		getExecutor().submit(new JPodThmbnailCallable(pdPage, pageItem, panel, id));	
 	}
 	
 	/**
 	 * Executes r
 	 * @param r
-	 * @param id
 	 */
-	public synchronized void execute(Runnable r, final long id){
-		getExecutor(id).execute(r);
+	public synchronized void execute(Runnable r){
+		getExecutor().execute(r);
 	}
 	
 	/**
-	 * Threads with the given id wont generate thumbnails
-	 * @param id
-	 */
-	public synchronized void cancelExecution(final long id){
-		if (cancelledExecutions == null){
-			cancelledExecutions =  new HashSet<Long>();
-		}
-		cancelledExecutions.add(id);
-	}
-	
-	/**
-	 * @param id
-	 * @return true if the execution is cancelled
-	 */
-	public boolean  isCancelledExecution(final long id){
-		boolean retVal = false;
-		if(cancelledExecutions!=null && cancelledExecutions.size()>0){
-			retVal = cancelledExecutions.contains(id);
-		}
-		return retVal;
-	}
-	
-	/**
-	 * @param id
 	 * @return the executor for the given ID
 	 */
-	private ExecutorService getExecutor(long id){
-		int index = (int) (id % Configuration.getInstance().getThumbCreatorPoolSize());
-		ExecutorService executor = pools.get(index);
+	private ExecutorService getExecutor(){
 		if(executor == null || executor.isShutdown()){
-			executor = Executors.newSingleThreadExecutor();
-			pools.set(index, executor);
+			executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
 		}
 		return executor;
-	}
+	}	
 	
 	/**
-	 * Creates the thumbnail
-	 * @author Andrea Vacondio
-	 *
+	 * run all the tasks and than the closeTask
+	 * @param tasks
+	 * @param closeTask
+	 * @param id
 	 */
-	private static class ThumnailCreator implements Runnable{
-		
-		private PDPage pdPage;
-		private JVisualPdfPageSelectionPanel panel;
-		private VisualPageListItem pageItem;
+    public void invokeAll(Collection<? extends Callable<Boolean>> tasks, Callable<Boolean> closeTask, long id){
+    	Thread t = new Thread(new Invoker(tasks, closeTask, id));
+    	t.start();
+	}
+	
+    /**
+     * Used to invoke the thumbnails generation
+     * @author Andrea Vacondio
+     *
+     */
+	private class Invoker implements Runnable{
+
+		private Collection<? extends Callable<Boolean>> tasks; 
+		private Callable<Boolean> closeTask;
 		private long id;
-			
+		
 		/**
-		 * @param pdPage
-		 * @param pageItem
-		 * @param panel
+		 * @param tasks
+		 * @param closeTask
+		 * @param id
 		 */
-		public ThumnailCreator(PDPage pdPage, VisualPageListItem pageItem, JVisualPdfPageSelectionPanel panel, long id) {
+		public Invoker(Collection<? extends Callable<Boolean>> tasks, Callable<Boolean> closeTask, long id) {
 			super();
-			this.pdPage = pdPage;
-			this.pageItem = pageItem;
-			this.panel = panel;
+			this.tasks = tasks;
+			this.closeTask = closeTask;
 			this.id = id;
 		}
 
-
-		public void run() {	
-			if(!getInstance().isCancelledExecution(id)){
-				IGraphicsContext graphics = null;
-				try{
-					Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
-					double rectHeight = rect.getHeight();
-					double recWidth = rect.getWidth();				
-					double resizePercentage = getResizePercentage(rectHeight, recWidth);
-					
-					int height = Math.round(((int) rect.getHeight())*(float)resizePercentage);
-					int width = Math.round(((int) rect.getWidth())*(float)resizePercentage);
-					BufferedImage scaledInstance = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-	
-					Graphics2D g2 = (Graphics2D) scaledInstance.getGraphics();
-					graphics = new CwtAwtGraphicsContext(g2);
-					// setup user space
-					AffineTransform imgTransform = graphics.getTransform();
-					imgTransform.scale(resizePercentage, -resizePercentage);
-					imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
-					graphics.setTransform(imgTransform);
-					graphics.setBackgroundColor(Color.WHITE);
-					graphics.fill(rect);
-					CSContent content = pdPage.getContentStream();
-					if (content != null) {
-						CSPlatformRenderer renderer = new CSPlatformRenderer(null,graphics);
-						renderer.process(content, pdPage.getResources());
+		@Override
+		public void run() {
+			try{
+				if(tasks != null && tasks.size()>0){
+					long startTime = System.currentTimeMillis();
+					getExecutor().invokeAll(tasks);
+					//close 
+					if(closeTask != null){
+						getExecutor().submit(closeTask);
 					}
-	              	pageItem.setThumbnail(scaledInstance);
-	              	pageItem.setPaperFormat(recWidth, rectHeight, JPodThumbnailCreator.JPOD_RESOLUTION);
-	              	if(pdPage.getRotate()!=0){
-	              		pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));
-	              	}
-	              	if(pageItem.isRotated() && pageItem.getThumbnail()!=null){
-	              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getCompleteRotation()));	
-	        		}
-	            }catch (Throwable t) {
-	            	pageItem.setThumbnail(ImageUtility.getErrorImage());
-	        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
-	        	}finally{
-	        		if(graphics!=null){
-	        			graphics.dispose();
-	        		}
-	        		pdPage = null;
-	        	}
-	            ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
+					if(!IdManager.getInstance().isCancelledExecution(id)){
+						log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
+					}
+					IdManager.getInstance().removeCancelledExecution(id);
+				}
+			}catch(InterruptedException ie){
+				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),ie);
 			}
+			
 		}
-		/**
-		 * @param height
-		 * @param width
-		 * @return percentage resize
-		 */
-		private double getResizePercentage(double height, double width){
-			double retVal = 0;
-			if(height>=width){
-				retVal = Math.round(((double)ThumbnailsCreator.DEFAULT_SIZE/height)*100.0)/100.0;
-			}else{
-				retVal = Math.round(((double)ThumbnailsCreator.DEFAULT_SIZE/width)*100.0)/100.0;
-			}
-			return retVal;
-		}
+		
 	}
-	
 }

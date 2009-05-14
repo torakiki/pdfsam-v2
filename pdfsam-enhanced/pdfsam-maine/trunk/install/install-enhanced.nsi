@@ -75,6 +75,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
 
 # Installer languages
   !insertmacro MUI_LANGUAGE "English" # first language is the default language
+  !insertmacro MUI_LANGUAGE "Arabic"
   !insertmacro MUI_LANGUAGE "Bosnian"
   !insertmacro MUI_LANGUAGE "Bulgarian"
   !insertmacro MUI_LANGUAGE "Croatian"
@@ -145,6 +146,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}
         ${Case} ${LANG_ITALIAN}
             Push 'it' 
+        ${Break}
+        ${Case} ${LANG_ARABIC}
+            Push 'ar' 
         ${Break}
         ${Case} ${LANG_BULGARIAN}
             Push 'bg' 
@@ -548,6 +552,8 @@ Function .onInit
     Push Croatian
     Push ${LANG_HEBREW}
     Push Hebrew  
+    Push ${LANG_ARABIC}
+    Push Arabic
     Push A ; A means auto count languages
            ; for the auto count to work the first empty push (Push "") must remain
     LangDLL::LangDialog "Installer Language" "Please select the language of the installer"
@@ -700,27 +706,3 @@ Function un.FinishPagePre
 
 FunctionEnd
 ;--------------------------
-
-# Installer Language Strings
-LangString ^UninstallLink ${LANG_ENGLISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_ITALIAN} "Disinstalla $(^Name)"
-LangString ^UninstallLink ${LANG_RUSSIAN} "��&����� $(^Name)"
-LangString ^UninstallLink ${LANG_SWEDISH} "Avinstallera $(^Name)"
-LangString ^UninstallLink ${LANG_SPANISH} "Desinstalar $(^Name)"
-LangString ^UninstallLink ${LANG_PORTUGUESE} "Desinstalar $(^Name)"
-LangString ^UninstallLink ${LANG_DUTCH} "Verwijderen $(^Name)"
-LangString ^UninstallLink ${LANG_FRENCH} "D�sinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_GREEK} "���&������� $(^Name)"
-LangString ^UninstallLink ${LANG_TURKISH} "Kald�r $(^Name)"
-LangString ^UninstallLink ${LANG_GERMAN} "Deinstallieren $(^Name)"
-LangString ^UninstallLink ${LANG_POLISH} "Odinstaluj $(^Name)"
-LangString ^UninstallLink ${LANG_FINNISH} "Poista $(^Name)"
-LangString ^UninstallLink ${LANG_SIMPCHINESE} "�Ƴ�(&U) $(^Name)"
-LangString ^UninstallLink ${LANG_HUNGARIAN} "Elt�vol�t�s $(^Name)"
-LangString ^UninstallLink ${LANG_DANISH} "Afinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_TRADCHINESE} "����(&U) $(^Name)"
-LangString ^UninstallLink ${LANG_INDONESIAN} "Uninstal $(^Name)"
-LangString ^UninstallLink ${LANG_CZECH} "Odinstalace $(^Name)"
-LangString ^UninstallLink ${LANG_SLOVAK} "Odin�talovanie $(^Name)"
-LangString ^UninstallLink ${LANG_BOSNIAN} "Uklanjanje $(^Name)"
-LangString ^UninstallLink ${LANG_HEBREW} "���� $(^Name)"

@@ -74,7 +74,7 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 		        setBorder(BorderFactory.createLineBorder(Color.red, 1));
 		    }else{
 		        setBorder(BorderFactory.createLineBorder(list.getBackground()));
-		    }	
+		    }
 		}	
 		return this;		
 	}
