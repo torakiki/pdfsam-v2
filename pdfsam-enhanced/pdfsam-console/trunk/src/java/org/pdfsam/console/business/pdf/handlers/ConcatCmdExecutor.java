@@ -303,7 +303,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 						int rotation = (pageRotation+tmpPdfReader.getPageRotation(i))%360;
 						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
 					}
-				}else if(rotations[0].getType() == PageRotation.ODD_PAGES){
+				}else if(rotations[0].getType() == PageRotation.EVEN_PAGES){
 					//even pages rotation
 					int pageRotation = rotations[0].getDegrees();
 					for(int i=2; i<=pdfNumberOfPages; i=i+2){

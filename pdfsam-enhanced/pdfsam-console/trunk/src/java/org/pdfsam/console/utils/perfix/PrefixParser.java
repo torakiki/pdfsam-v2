@@ -78,6 +78,8 @@ public class PrefixParser {
 	private static final String TIMESTAMP_REPLACE_RGX = "\\[TIMESTAMP\\]";
 	private static final String BASENAME_REPLACE_REGX = "\\[BASENAME\\]";
 	private static final String BOOKMARK_NAME_REPLACE_REGX = "\\[BOOKMARK_NAME\\]";
+	
+	private static final String INVALID_WIN_FILENAME_CHARS_REGEXP = "[\\\\/:*?\\\"<>|]";
 
 	private String prefix = "";
 	private String fileName = "";
@@ -276,7 +278,7 @@ public class PrefixParser {
 	}
 	
 	/**
-	 * Apply BOOKMARK_NAME_REPLACE_REGX variable substitution to the input argument 
+	 * Apply BOOKMARK_NAME_REPLACE_REGX variable substitution to the input argument. Some Win32 invalid chars are stripped by the bookmark name.
 	 * @param arg0
 	 * @param bookmarkName
 	 * @return
@@ -284,6 +286,8 @@ public class PrefixParser {
 	private String applyBookmarkname(String arg0, String bookmarkName){
 		String retVal = arg0;
 		if(bookmarkName!=null){
+			//fix #2789961
+			bookmarkName = bookmarkName.replaceAll(INVALID_WIN_FILENAME_CHARS_REGEXP, "");
 			retVal = arg0.replaceAll(BOOKMARK_NAME_REPLACE_REGX, bookmarkName);
 		}
 		return retVal;	

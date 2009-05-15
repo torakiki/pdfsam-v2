@@ -191,14 +191,14 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 								break;
 							}else if(ODD_STRING.equals(pageNumber)){
 								if(retVal.size()>0){
-									log.warn("Page rotation for even pages found, other rotations removed");
+									log.warn("Page rotation for odd pages found, other rotations removed");
 									retVal.clear();
 								}
 								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.ODD_PAGES));
 								break;
 							}else if(EVEN_STRING.equals(pageNumber)){
 								if(retVal.size()>0){
-									log.warn("Page rotation for odd pages found, other rotations removed");
+									log.warn("Page rotation for even pages found, other rotations removed");
 									retVal.clear();
 								}
 								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.EVEN_PAGES));
