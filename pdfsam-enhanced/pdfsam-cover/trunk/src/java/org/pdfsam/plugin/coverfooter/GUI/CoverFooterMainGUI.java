@@ -112,7 +112,7 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.2.9e";
+    private static final String PLUGIN_VERSION = "0.3.0e";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -154,13 +154,13 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         topConst.gridx = 0;
         topConst.gridy = 0;
         
-        coverSelectionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Cover pdf file")));
+        coverSelectionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Frontpage pdf file")));
         coverSelectionPanel.addPropertyChangeListener(this);
         topPanel.add(coverSelectionPanel, topConst);
         
         
         footerSelectionPanel.addPropertyChangeListener(this);
-        footerSelectionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Footer pdf file")));
+        footerSelectionPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Addendum pdf file")));
         topConst.gridy = 1;
         topPanel.add(footerSelectionPanel, topConst);
         
