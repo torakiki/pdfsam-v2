@@ -432,14 +432,17 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 							int blankIndex = attribute.indexOf(' ');
 							if(blankIndex>0){
 								Integer currentNumber = new Integer(attribute.substring(0, blankIndex));
-								//to split just before the given page
-								if((currentNumber.intValue()-1)>0){
-									pageSet.add(new Integer(currentNumber.intValue()-1));
+								//fix #2789963
+								if(currentNumber.intValue()>0){
+									//to split just before the given page
+									if((currentNumber.intValue())>1){
+										pageSet.add(new Integer(currentNumber.intValue()-1));										
+									}
 									String bookmarkText = currentNode.getText();
 									if(bookmarkText!=null && bookmarkText.trim().length()>0){
 										bookmarksTable.put(currentNumber, bookmarkText.trim());
 									}
-								}
+								}								
 							}
 						}
 					}
