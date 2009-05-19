@@ -94,7 +94,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
     private JTextField destinationFileText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
     private JHelpLabel destinationHelpLabel;
     private Configuration config;
-	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
+	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(false);
     private JVisualPdfPageSelectionPanel composerPanel = new JVisualPdfPageSelectionPanel(JVisualPdfPageSelectionPanel.HORIZONTAL_ORIENTATION, false, true, true, JVisualPdfPageSelectionPanel.STYLE_TOP_PANEL_MEDIUM, JVisualPdfPageSelectionPanel.DND_SUPPORT_JAVAOBJECTS, JVisualPdfPageSelectionPanel.SINGLE_INTERVAL_SELECTION);	
     private JSplitPane lowerSplitPanel = null;
     private JSplitPane higherSplitPanel = null;
@@ -128,7 +128,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final VisualComposerPolicy visualComposerFocusPolicy = new VisualComposerPolicy();
 	 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.4";
+    private static final String PLUGIN_VERSION = "0.0.5";
     
     /**
      * Constructor
