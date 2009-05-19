@@ -6,6 +6,7 @@
 -Console: fixed bug #2789961 (stripped invalid chars when applying bookmark name as output file name)
 -Console: fixed bug #2789961 (Level 2 Bookmark Name not used on first page)
 -VComposer: fixed bug #2793905 (Version combo showing "same as input document")
+-VComposer, VReorder: enlarge buttons to fit translations (feature request #2793954)
 
 2.0.0-beta (10-May-2009) (pdfsam-console 2.0.4e)
 ===================================
