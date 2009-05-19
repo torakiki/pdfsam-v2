@@ -116,6 +116,18 @@ public class JPagePreviewFrame extends JFrame {
 		}
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see java.awt.Window#setVisible(boolean)
+	 */
+	@Override
+	public void setVisible(boolean b) {
+		super.setVisible(b);
+		if(!b){
+			pagePreview.resetComponent();
+		}
+	}
+
 	/**
 	 * sets the image to be displayed
 	 * @param image

@@ -18,12 +18,20 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Collection;
 import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.Callable;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.IdManager;
+import org.pdfsam.guiclient.business.thumbnails.executors.ThumbnailsExecutor;
+import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.DocumentPage;
+import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.i18n.GettextResource;
 
@@ -36,6 +44,11 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	
 	private static final Logger log = Logger.getLogger(AbstractThumbnailCreator.class.getPackage().getName());
 
+	private String providedPassword = "";
+	private File inputFile = null;
+	private JVisualPdfPageSelectionPanel panel;
+	private long currentId = 0;
+	
 	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		if(fileName != null && fileName.length()>0){
@@ -50,17 +63,7 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException {
 		return getPageImage(fileName, password, page, 0);
 	}
-	
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException {
-		if(fileName != null && fileName.length()>0){
-    		File inputFile = new File(fileName);
-    		initThumbnailsPanel(inputFile, password, panel, id, template);			
-		}else{
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create thumbnails for a null input document"));
-		}       
-	}
-	
-	
+
 
 	public BufferedImage getThumbnail(String fileName, String password, int page, float resizePercentage, String quality) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
@@ -80,7 +83,7 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	 * @return a scaled version of the image
 	 * @throws Exception
 	 */
-    protected synchronized BufferedImage getScaledImage(BufferedImage page , int height) throws Exception{
+    protected BufferedImage getScaledImage(BufferedImage page , int height) throws Exception{
     	BufferedImage retVal = null;            	
     	Image scaledInstance = null;
     	scaledInstance = page.getScaledInstance(-1,height,BufferedImage.SCALE_SMOOTH);
@@ -89,4 +92,145 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
         g2.drawImage(scaledInstance, 0, 0,null);
     	return retVal;
     }
+    
+	@Override
+	public void clean(long id) {
+		IdManager.getInstance().cancelExecution(id);
+	}
+	
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException {
+		if(fileName != null && fileName.length()>0){
+    		File inputFile = new File(fileName);
+    		initThumbnailsPanel(inputFile, password, panel, id, template);			
+		}else{
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create thumbnails for a null input document"));
+		}       
+	}
+	
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException{
+		setProvidedPassword(password);
+		setInputFile(inputFile);
+		setPanel(panel);
+		setCurrentId(id);
+		initThumbnailsCreation();
+		if(openInputDocument()){
+			panel.setSelectedPdfDocument(inputFile);              	
+			panel.setSelectedPdfDocumentPassword(getProvidedPassword());
+			DocumentInfo documentInfo = getDocumentInfo();
+			if(documentInfo!=null){
+				panel.setDocumentProperties(documentInfo);		            		
+	        	panel.setDocumentPropertiesVisible(true);
+			}
+			Vector<VisualPageListItem> modelList = getDocumentModel(template);
+			if(modelList!=null && modelList.size()>0){
+				((VisualListModel)panel.getThumbnailList().getModel()).setData(modelList);				
+				ThumbnailsExecutor.getInstance().invokeAll(getGenerationTasks(modelList), getCloserTask(), id);
+			}
+		}
+	}	
+	
+	/**
+	 * initialization of the thumbnail creation process
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract void initThumbnailsCreation() throws ThumbnailCreationException;
+	
+	/**
+	 * Opens the input document
+	 * @return true if opened correctly 
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract boolean openInputDocument() throws ThumbnailCreationException;
+	
+	/**
+	 * @return the DocumentiInfo to set on the thumbnails panel
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract DocumentInfo getDocumentInfo() throws ThumbnailCreationException;
+	
+	/**
+	 * The model to set on thumbnails list before the thumbnails generation starts. This is used to show hourglasses images as thumbnails.
+	 * @param template Pages template. Used when loading an environment to set rotation and other informations
+	 * @return
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract Vector<VisualPageListItem> getDocumentModel(List<DocumentPage> template) throws ThumbnailCreationException;
+	
+	/**
+	 * @return The Collable that is submitted when all the thumbnails generation tasks are terminated. Used to close the document or other clean operations.
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract Callable<Boolean> getCloserTask() throws ThumbnailCreationException;
+	
+	/**
+	 * @param modelList the model list set on the Visual List Component
+	 * @return a Collection of tasks that will run the thumbnails generation
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract Collection<? extends Callable<Boolean>> getGenerationTasks(Vector<VisualPageListItem> modelList) throws ThumbnailCreationException;
+	
+	/**
+	 * generic finalization.
+	 * @throws ThumbnailCreationException
+	 */
+	protected abstract void finalizeThumbnailsCreation() throws ThumbnailCreationException;
+
+	/**
+	 * @return the providedPassword
+	 */
+	protected String getProvidedPassword() {
+		return providedPassword;
+	}
+
+	/**
+	 * @param providedPassword the providedPassword to set
+	 */
+	protected void setProvidedPassword(String providedPassword) {
+		this.providedPassword = providedPassword;
+	}
+
+	/**
+	 * @return the inputFile
+	 */
+	protected File getInputFile() {
+		return inputFile;
+	}
+
+	/**
+	 * @param inputFile the inputFile to set
+	 */
+	private void setInputFile(File inputFile) {
+		this.inputFile = inputFile;
+	}
+
+	/**
+	 * @return the panel
+	 */
+	protected JVisualPdfPageSelectionPanel getPanel() {
+		return panel;
+	}
+
+	/**
+	 * @param panel the panel to set
+	 */
+	private void setPanel(JVisualPdfPageSelectionPanel panel) {
+		this.panel = panel;
+	}
+
+	/**
+	 * @return the currentId
+	 */
+	protected long getCurrentId() {
+		return currentId;
+	}
+
+	/**
+	 * @param currentId the currentId to set
+	 */
+	private void setCurrentId(long currentId) {
+		this.currentId = currentId;
+	}
+	
+	
+	
 }

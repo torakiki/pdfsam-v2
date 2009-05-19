@@ -190,7 +190,7 @@ public class JPreviewImage extends JComponent {
 	/**
 	 * reset the component
 	 */
-	private void resetComponent(){
+	public void resetComponent(){
 		this.image = null;
 		this.bounds = null;
 		this.originalDimension=null;

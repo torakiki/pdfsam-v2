@@ -54,6 +54,7 @@ public class Configuration{
 	private String defaultWorkingDir = null;
 	private int screenResolution = 0;
 	private int thumbCreatorPoolSize = DEFAULT_POOL_SIZE;
+	private String thumbnailsCreatorIdentifier = "";
 	
 	private Configuration() {
 		init();
@@ -198,6 +199,8 @@ public class Configuration{
 			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
 			//pool size
 			 initPoolSize();
+			 //thumbnails creator
+			 initThumbnailsCreator();
 		}catch(Exception e){
 			log.fatal(e);
 		}
@@ -274,6 +277,21 @@ public class Configuration{
 	}
 	
 	/**
+	 * sets the thumbnails creator to use
+	 */
+	private void initThumbnailsCreator(){
+		log.info(GettextResource.gettext(i18nMessages,"Setting default thumbnails creator..."));
+		try {
+			String creator = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnails_creator");
+			if(creator != null && creator.length()>0){
+				thumbnailsCreatorIdentifier = creator;
+			}			
+		} catch (Exception e) {
+			//default
+			thumbnailsCreatorIdentifier = null;
+		}
+	}
+	/**
 	 * sets the configuration about the updates check
 	 */
 	private void initCheckForUpdates(){
@@ -329,6 +347,20 @@ public class Configuration{
 	 */
 	public int getThumbCreatorPoolSize() {
 		return thumbCreatorPoolSize;
+	}
+
+	/**
+	 * @return the thumbnailsCreatorIdentifier
+	 */
+	public String getThumbnailsCreatorIdentifier() {
+		return thumbnailsCreatorIdentifier;
+	}
+
+	/**
+	 * @param thumbnailsCreatorIdentifier the thumbnailsCreatorIdentifier to set
+	 */
+	public void setThumbnailsCreatorIdentifier(String thumbnailsCreatorIdentifier) {
+		this.thumbnailsCreatorIdentifier = thumbnailsCreatorIdentifier;
 	}
 	
 	

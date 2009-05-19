@@ -67,16 +67,6 @@ public interface ThumbnailsCreator {
 	 * @throws ThumbnailCreationException
 	 */
 	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
-	/**
-	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
-	 * @param fileName
-	 * @param password document password or null if no password is needed
-	 * @param panel
-	 * @param id Id for this thumbnails generation
-	 * @param template template for the document pages (order, rotation infos..)
-	 * @throws ThumbnailCreationException
-	 */
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;	
 	
 	/**
 	 * 
@@ -107,6 +97,7 @@ public interface ThumbnailsCreator {
 	 * @throws ThumbnailCreationException
 	 */
 	public BufferedImage getPageImage(File fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
+
 	/**
 	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
 	 * @param inputFile pdf document
@@ -116,7 +107,18 @@ public interface ThumbnailsCreator {
 	 * @param template template for the document pages (order, rotation infos..)
 	 * @throws ThumbnailCreationException
 	 */
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;	
+	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;
+	
+	/**
+	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
+	 * @param fileName
+	 * @param password document password or null if no password is needed
+	 * @param panel
+	 * @param id Id for this thumbnails generation
+	 * @param template template for the document pages (order, rotation infos..)
+	 * @throws ThumbnailCreationException
+	 */	
+	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;
 	
 	/**
 	 * @return resolution of the created thumbnails
@@ -128,5 +130,15 @@ public interface ThumbnailsCreator {
 	 * @param id
 	 */
 	public void clean(long id);
+	
+	/**
+	 * @return the Name of the creator
+	 */
+	public String getCreatorName();
+	
+	/**
+	 * @return a unique identifier for the creator.
+	 */
+	public String getCreatorIdentifier();
 
 }

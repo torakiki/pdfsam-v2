@@ -17,7 +17,7 @@ package org.pdfsam.guiclient.business;
 import java.io.File;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
+import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.frames.JPagePreviewFrame;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -90,7 +90,7 @@ public class PagePreviewOpener {
      * Page preview creator initialization
      */
     private ThumbnailsCreator getCreator(){
-    	return new JPodThumbnailCreator();
+    	return ThumbnailCreatorsRegisty.getCreator(Configuration.getInstance().getThumbnailsCreatorIdentifier());
     }
     
     /**
@@ -129,8 +129,13 @@ public class PagePreviewOpener {
 
 		public void run() {				
 			try{
-				frame.setPagePreview(getCreator().getPageImage(inputFile, password, page), inputFile.getAbsolutePath());
-				frame.setVisible(true);
+				ThumbnailsCreator creator = getCreator();
+				if(creator != null){
+					frame.setPagePreview(creator.getPageImage(inputFile, password, page), inputFile.getAbsolutePath());
+					frame.setVisible(true);
+				}else{
+		   			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initialize the thumbnails creation library."));
+		   		}
             }catch (Exception e) {
         		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open image preview"),e);
         	}				           

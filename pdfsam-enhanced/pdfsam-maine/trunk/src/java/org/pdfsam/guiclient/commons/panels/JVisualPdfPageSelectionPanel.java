@@ -45,7 +45,6 @@ import javax.swing.ListSelectionModel;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
-import org.pdfsam.guiclient.business.IdManager;
 import org.pdfsam.guiclient.business.PagePreviewOpener;
 import org.pdfsam.guiclient.business.PagesWorker;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
@@ -95,8 +94,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public static int DND_SUPPORT_FILES_AND_JAVAOBJECTS = 3;
 	
 	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";	
-	
-	private long id = 0;
+
 	private int orientation = HORIZONTAL_ORIENTATION;
 	private File selectedPdfDocument = null;
 	private String selectedPdfDocumentPassword = "";
@@ -968,19 +966,4 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 		return loadFileButton;
 	}
  
-	/**
-	 * generates a new thumbnails generation ticket
-	 */
-	public void generateNewId(){
-		id = IdManager.getInstance().getNewId();
-	}
-    
-	/**
-	 * 
-	 * @return current id
-	 */
-	public long getId(){
-		return id;
-	}
-	
 }

@@ -21,51 +21,43 @@ import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.IdManager;
-import org.pdfsam.guiclient.business.thumbnails.callables.JPodThmbnailCallable;
-import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
-import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.i18n.GettextResource;
-
-import de.intarsys.pdf.pd.PDPage;
 
 /**
  * Singleton that executes the thumbnails creations
  * @author Andrea Vacondio
  *
  */
-public class JPodThumbnailsExecutor {
+public class ThumbnailsExecutor {
 
-	private static final Logger log = Logger.getLogger(JPodThumbnailsExecutor.class.getPackage().getName());
-	private static JPodThumbnailsExecutor instance = null;
+	private static final Logger log = Logger.getLogger(ThumbnailsExecutor.class.getPackage().getName());
+	private static ThumbnailsExecutor instance = null;
 	
 	private  ExecutorService executor = null;
 	
 	
-	private JPodThumbnailsExecutor(){	
+	private ThumbnailsExecutor(){	
 		executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
 	}
 
-	public static synchronized JPodThumbnailsExecutor getInstance() { 
+	public static synchronized ThumbnailsExecutor getInstance() { 
 		if (instance == null){
-			instance = new JPodThumbnailsExecutor();
+			instance = new ThumbnailsExecutor();
 		}
 		return instance;
 	}
 	
 	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException("Cannot clone JPodThumbnailsExecutor object.");
+		throw new CloneNotSupportedException("Cannot clone ThumbnailsExecutor object.");
 	}
 	
 	/**
-	 * Submit the thumbnail creation
-	 * @param pdPage
-	 * @param pageItem
-	 * @param panel
-	 * @param id
+	 * submit c to the executor
+	 * @param c
 	 */
-	public synchronized void submit(PDPage pdPage, VisualPageListItem pageItem , final JVisualPdfPageSelectionPanel panel, final long id){
-		getExecutor().submit(new JPodThmbnailCallable(pdPage, pageItem, panel, id));	
+	public synchronized void submit(Callable<?> c){
+		getExecutor().submit(c);
 	}
 	
 	/**
@@ -77,7 +69,7 @@ public class JPodThumbnailsExecutor {
 	}
 	
 	/**
-	 * @return the executor for the given ID
+	 * @return the executor
 	 */
 	private ExecutorService getExecutor(){
 		if(executor == null || executor.isShutdown()){

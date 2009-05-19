@@ -46,6 +46,7 @@ import org.dom4j.Node;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
+import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
@@ -77,6 +78,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private JComboBox comboLaf;
     private JComboBox comboTheme;
     private JComboBox comboCheckNewVersion;
+    private JComboBox comboThumbnailsCreators;
     private JCheckBox playSounds;
     private JHelpLabel envHelpLabel;
 	private JFileChooser fileChooser ;
@@ -103,12 +105,13 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final JLabel languageLabel = new JLabel();
     private final JLabel logLabel = new JLabel();
     private final JLabel checkNewVersionLabel = new JLabel();
+    private final JLabel creatorLabel = new JLabel();
     private final JLabel loadDefaultEnvLabel = new JLabel();
     private final JLabel defaultDirLabel = new JLabel();
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private static final String PLUGIN_VERSION = "0.0.7e";
+    private static final String PLUGIN_VERSION = "0.0.8e";
     
 /**
  * Constructor
@@ -133,13 +136,14 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         settingsOptionsPanel.setLayout(grayBorderSettingsLayout);
         add(settingsOptionsPanel);
 		
-        gridOptionsPanel.setLayout(new GridLayout(4,4,3,3));
+        gridOptionsPanel.setLayout(new GridLayout(5,4,3,3));
 
 		themeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel:"));		
 		subThemeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Theme:"));		
 		languageLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Language:"));
 		logLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"));
-        checkNewVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates:"));       
+        checkNewVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates:"));
+        creatorLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails creator")+":");
 		loadDefaultEnvLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load default environment at startup:"));        
         defaultDirLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory:"));
         settingsOptionsPanel.add(loadDefaultEnvLabel);
@@ -241,6 +245,19 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
 	    }  
 
+	    comboThumbnailsCreators = new JComboBox(ThumbnailCreatorsRegisty.getInstalledCreators().toArray());
+	    comboThumbnailsCreators.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+	    try{
+	 		for (int i=0; i<comboThumbnailsCreators.getItemCount(); i++){
+	   			if (((StringItem)comboThumbnailsCreators.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/thumbnails_creator"))){
+	   				comboThumbnailsCreators.setSelectedItem(comboThumbnailsCreators.getItemAt(i));
+	             break;
+	   			}
+	 		}
+	    }catch (Exception e){
+	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
+	    }  
+	    
 	    //layout
         checkNowButton.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check now"));
         checkNowButton.setMargin(new Insets(2, 2, 2, 2));       
@@ -264,6 +281,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         gridOptionsPanel.add(comboCheckNewVersion);
         gridOptionsPanel.add(new JLabel());
         gridOptionsPanel.add(checkNowButton);
+                
+        gridOptionsPanel.add(creatorLabel);
+        gridOptionsPanel.add(comboThumbnailsCreators);
+        gridOptionsPanel.add(new JLabel());
+        gridOptionsPanel.add(new JLabel());
         
         settingsOptionsPanel.add(gridOptionsPanel);
         
@@ -278,6 +300,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set your preferred look and feel and your preferred theme (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Log level")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set a log detail level (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set when new version availability should be checked (restart needed)")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails creator")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set the thumbnails creation library")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Play alert sounds")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Turn on or off alert sounds")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default env.")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a previously saved env. file that will be automatically loaded at startup")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a directory where documents will be saved and loaded by default")+".</li>" +
@@ -334,6 +357,8 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/checkupdates", ((StringItem)comboCheckNewVersion.getSelectedItem()).getId());
+					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/thumbnails_creator", ((StringItem)comboThumbnailsCreators.getSelectedItem()).getId());
+					
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/playsounds", (playSounds.isSelected()? "1": "0"));
 					if (loadDefaultEnv != null){
 						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob", loadDefaultEnv.getText());
@@ -343,6 +368,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/default_working_dir", defaultDirectory.getText());
 					config.getXmlConfigObject().saveXMLfile();
 					config.setPlaySounds(playSounds.isSelected());
+					config.setThumbnailsCreatorIdentifier(((StringItem)comboThumbnailsCreators.getSelectedItem()).getId());
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
 				}
                 catch (Exception ex){
@@ -429,7 +455,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 310, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 330, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);

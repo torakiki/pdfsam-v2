@@ -20,7 +20,9 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
+import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.IdManager;
+import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -28,6 +30,7 @@ import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
+import org.pdfsam.i18n.GettextResource;
 
 /**
  * Loads a document a create thumbnails
@@ -36,9 +39,12 @@ import org.pdfsam.guiclient.utils.filters.PdfFilter;
  */
 public class PdfThumbnailsLoader {
 	
+	private static final Logger log = Logger.getLogger(PdfThumbnailsLoader.class.getPackage().getName());
+
 	private JVisualPdfPageSelectionPanel panel;
 	private JFileChooser fileChooser = null;
 	private ThumbnailsCreator creator;
+	private long id = 0;
 	
 	public PdfThumbnailsLoader(JVisualPdfPageSelectionPanel panel){
 		this.panel = panel;
@@ -93,9 +99,13 @@ public class PdfThumbnailsLoader {
      * @param template pages template
      */
     public synchronized void addFile(final File file, final String password, List<DocumentPage> template) throws ThumbnailCreationException{
-   		creator = new JPodThumbnailCreator();
-   		panel.generateNewId();
-		creator.initThumbnailsPanel(file, password, panel, panel.getId(), template);					
+   		creator = ThumbnailCreatorsRegisty.getCreator(Configuration.getInstance().getThumbnailsCreatorIdentifier());
+   		if(creator != null){
+	   		generateNewId();
+			creator.initThumbnailsPanel(file, password, panel, id, template);
+   		}else{
+   			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initialize the thumbnails creation library."));
+   		}
     }
 
     /**
@@ -132,8 +142,22 @@ public class PdfThumbnailsLoader {
      */
     public void cleanCreator(){
     	if(creator != null){
-        	creator.clean(panel.getId());    		
+        	creator.clean(id);    		
     	}
     }
-   
+	/**
+	 * generates a new thumbnails generation ticket
+	 */
+	private void generateNewId(){
+		id = IdManager.getInstance().getNewId();
+	}
+    
+	/**
+	 * 
+	 * @return current id
+	 */
+	public long getId(){
+		return id;
+	}
+	
 }

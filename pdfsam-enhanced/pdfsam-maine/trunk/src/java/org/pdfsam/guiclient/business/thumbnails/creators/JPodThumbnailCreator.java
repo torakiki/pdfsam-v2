@@ -24,18 +24,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.Callable;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.IdManager;
 import org.pdfsam.guiclient.business.thumbnails.callables.JPodCreatorCloser;
 import org.pdfsam.guiclient.business.thumbnails.callables.JPodThmbnailCallable;
-import org.pdfsam.guiclient.business.thumbnails.executors.JPodThumbnailsExecutor;
-import org.pdfsam.guiclient.commons.models.VisualListModel;
-import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.DocumentPage;
@@ -66,7 +64,12 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
 	
 	public static final int JPOD_RESOLUTION = 72;
+	private static final String  JPOD_CREATOR_NAME = "Itarsys JPodRenderer";
+	
 	private static final Logger log = Logger.getLogger(JPodThumbnailCreator.class.getPackage().getName());
+	
+	private PDDocument pdfDoc = null;
+	private PDPageTree pageTree = null;
 	
 	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException {
 		return getPageImage(inputFile, password, page, 0);
@@ -133,104 +136,6 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		return retVal;
 	}
 
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel,long id, List<DocumentPage> template) throws ThumbnailCreationException{
-		String providedPwd = password;	
-			PDDocument pdfDoc = null;
-			if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
-				try{//create doc
-					try{
-						pdfDoc = openDoc(inputFile, providedPwd);
-					}catch(IOException ioe){
-						if(ioe.getCause() instanceof COSSecurityException){
-							providedPwd = DialogUtility.askForDocumentPasswordDialog(panel, inputFile.getName());
-							if(providedPwd != null && providedPwd.length()>0){
-								pdfDoc = openDoc(inputFile, providedPwd);
-							}else{
-								throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password not provided."));
-							}
-						}else{
-							throw new ThumbnailCreationException(ioe);
-						}
-					}
-					if(pdfDoc != null){
-						//require password if encrypted
-						//I already opened the document in visual mode but if encrypted it will need 
-						//the password to manipulate
-						if(pdfDoc.isEncrypted() && (providedPwd==null || providedPwd.length()==0)){
-							providedPwd = DialogUtility.askForDocumentPasswordDialog(panel, inputFile.getName());
-						}
-						panel.setSelectedPdfDocument(inputFile);              	
-						panel.setSelectedPdfDocumentPassword(providedPwd);
-	                	//set file informations
-						PDPageTree pageTree = pdfDoc.getPageTree();
-						int pages = pageTree.getCount();
-	                	DocumentInfo documentInfo = new DocumentInfo();
-	            		documentInfo.setCreator(pdfDoc.getCreator());
-	                	documentInfo.setFileName(inputFile.getAbsolutePath());
-	                	documentInfo.setPages(pages);
-	        			documentInfo.setAuthor(pdfDoc.getAuthor());
-	               		documentInfo.setPdfVersion(pdfDoc.cosGetDoc().stGetDoc().getDocType().getVersion());
-	               		documentInfo.setEncrypted(pdfDoc.isEncrypted());
-	               		documentInfo.setTitle(pdfDoc.getTitle());
-	           			documentInfo.setProducer(pdfDoc.getProducer());
-	                	panel.setDocumentProperties(documentInfo);		            		
-	                	panel.setDocumentPropertiesVisible(true);
-	            		if(pages > 0){
-	            			Vector<VisualPageListItem> modelList = new Vector<VisualPageListItem>(pages);
-	            			if(template == null || template.size()<=0){
-		            			for (int i = 1; i<=pages; i++){
-		            				modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), providedPwd));
-		            			}
-	            			}else{
-	            				for(DocumentPage page: template){
-	            					if(page.getPageNumber()>0 && page.getPageNumber()<=pages){
-	            						VisualPageListItem currentItem =  new VisualPageListItem(page.getPageNumber(), inputFile.getCanonicalPath(), providedPwd);
-	            						currentItem.setDeleted(page.isDeleted());
-	            						currentItem.setRotation(page.getRotation());
-	            						modelList.add(currentItem);
-	            					}
-	            				}
-	            			}
-	            			((VisualListModel)panel.getThumbnailList().getModel()).setData(modelList);                		
-	            			initThumbnails(pdfDoc, pageTree, panel, modelList, id);
-	            			pageTree = null;
-	            		}	
-					}else{
-						throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the document."));
-					}
-				}catch(IOException ioe){
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), ioe);
-				}catch(COSLoadException cle){
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), cle);
-				}catch(OutOfMemoryError oom){
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not enough memory to create thumbnails")+" "+inputFile.getAbsolutePath(), oom);
-				}
-    		}else{
-				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Input file doesn't exists or is a directory"));
-			}						
- 
-	}
-
-	/**
-	 * Creates thumbnails
-	 * @param decoder
-	 * @param panel
-	 * @param modelList
-	 */
-	private void initThumbnails(final PDDocument pdfDoc, final PDPageTree pageTree, final JVisualPdfPageSelectionPanel panel,final List<VisualPageListItem> modelList, final long id){	
-		ArrayList<JPodThmbnailCallable> tasks = null;
-		JPodCreatorCloser closerTask = null;
-		if(pageTree!=null && panel != null && modelList!=null && modelList.size()>0){
-			tasks = new ArrayList<JPodThmbnailCallable>(modelList.size());
-			for(VisualPageListItem pageItem : modelList){
-				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
-				tasks.add(new JPodThmbnailCallable(pdPage, pageItem, panel, id));
-			}
-			closerTask = new JPodCreatorCloser(pdfDoc);
-		}	
-		JPodThumbnailsExecutor.getInstance().invokeAll(tasks, closerTask, id);
-	}		
-
 	/**
 	 * Creates the PDDocument
 	 * @param inputFile
@@ -263,8 +168,138 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	}
 
 	@Override
-	public void clean(long id) {
-		IdManager.getInstance().cancelExecution(id);
+	public String getCreatorName() {	
+		return JPOD_CREATOR_NAME;
 	}
 
+	@Override
+	public String getCreatorIdentifier(){
+		return JPodThumbnailCreator.class.getName();
+	}
+
+	@Override
+	protected void finalizeThumbnailsCreation() throws ThumbnailCreationException {
+		pageTree = null;
+	}
+
+	@Override
+	protected Callable<Boolean> getCloserTask() throws ThumbnailCreationException {
+		Callable<Boolean> retVal = null;
+		if(pdfDoc != null){
+			retVal =new JPodCreatorCloser(pdfDoc);
+		}
+		return retVal;
+	}
+
+	@Override
+	protected DocumentInfo getDocumentInfo() throws ThumbnailCreationException {
+		File inputFile = getInputFile();
+		DocumentInfo documentInfo = new DocumentInfo();
+		pageTree = pdfDoc.getPageTree();
+		documentInfo.setCreator(pdfDoc.getCreator());
+		documentInfo.setFileName(inputFile.getAbsolutePath());
+		documentInfo.setPages(pageTree.getCount());
+		documentInfo.setAuthor(pdfDoc.getAuthor());
+		documentInfo.setPdfVersion(pdfDoc.cosGetDoc().stGetDoc().getDocType().getVersion());
+		documentInfo.setEncrypted(pdfDoc.isEncrypted());
+		documentInfo.setTitle(pdfDoc.getTitle());
+		documentInfo.setProducer(pdfDoc.getProducer());
+		return documentInfo;
+	}
+
+	@Override
+	protected Vector<VisualPageListItem> getDocumentModel(List<DocumentPage> template) throws ThumbnailCreationException {
+		int pages = pageTree.getCount();
+		File inputFile = getInputFile();
+		Vector<VisualPageListItem> modelList = null;
+		try {
+			if (pages > 0 && inputFile != null) {
+				modelList = new Vector<VisualPageListItem>(pages);
+				if (template == null || template.size() <= 0) {
+					for (int i = 1; i <= pages; i++) {
+						modelList.add(new VisualPageListItem(i, inputFile.getCanonicalPath(), getProvidedPassword()));
+					}
+				} else {
+					for (DocumentPage page : template) {
+						if (page.getPageNumber() > 0 && page.getPageNumber() <= pages) {
+							VisualPageListItem currentItem = new VisualPageListItem(page.getPageNumber(), inputFile.getCanonicalPath(), getProvidedPassword());
+							currentItem.setDeleted(page.isDeleted());
+							currentItem.setRotation(page.getRotation());
+							modelList.add(currentItem);
+						}
+					}
+				}
+			}
+		} catch (IOException ioe) {
+			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error opening pdf document")
+					+ " " + inputFile.getAbsolutePath(), ioe);
+		}
+		return modelList;
+	}
+
+	@Override
+	protected Collection<? extends Callable<Boolean>> getGenerationTasks(Vector<VisualPageListItem> modelList) throws ThumbnailCreationException {
+		ArrayList<JPodThmbnailCallable> tasks = null;
+		if(pageTree!=null && modelList!=null && modelList.size()>0){
+			tasks = new ArrayList<JPodThmbnailCallable>(modelList.size());
+			for(VisualPageListItem pageItem : modelList){
+				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
+				tasks.add(new JPodThmbnailCallable(pdPage, pageItem, getPanel(), getCurrentId()));
+			}
+		}
+		return tasks;
+	}
+
+	@Override
+	protected void initThumbnailsCreation() throws ThumbnailCreationException {
+		pdfDoc = null;
+		pageTree = null;
+	}
+
+	@Override
+	protected boolean openInputDocument() throws ThumbnailCreationException {
+		boolean retVal = false;
+		String providedPwd = getProvidedPassword();
+		File inputFile = getInputFile();
+		if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
+			try{//create doc
+				try{
+					pdfDoc = openDoc(inputFile, providedPwd);
+				}catch(IOException ioe){
+					if(ioe.getCause() instanceof COSSecurityException){
+						providedPwd = DialogUtility.askForDocumentPasswordDialog(getPanel(), inputFile.getName());
+						if(providedPwd != null && providedPwd.length()>0){
+							setProvidedPassword(providedPwd);
+							pdfDoc = openDoc(inputFile, providedPwd);
+						}else{
+							throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password not provided."));
+						}
+					}else{
+						throw new ThumbnailCreationException(ioe);
+					}
+				}
+				if(pdfDoc != null){
+					//require password if encrypted
+					//I already opened the document in visual mode but if encrypted it will need 
+					//the password to manipulate
+					if(pdfDoc.isEncrypted() && (providedPwd==null || providedPwd.length()==0)){
+						providedPwd = DialogUtility.askForDocumentPasswordDialog(getPanel(), inputFile.getName());
+						setProvidedPassword(providedPwd);
+					}
+					retVal = true;
+				}else{
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the document."));
+				}
+				}catch(IOException ioe){
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), ioe);
+				}catch(COSLoadException cle){
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), cle);
+				}catch(OutOfMemoryError oom){
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not enough memory to create thumbnails")+" "+inputFile.getAbsolutePath(), oom);
+				}
+		}else{
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Input file doesn't exists or is a directory"));
+		}
+		return retVal;
+	}
 }
