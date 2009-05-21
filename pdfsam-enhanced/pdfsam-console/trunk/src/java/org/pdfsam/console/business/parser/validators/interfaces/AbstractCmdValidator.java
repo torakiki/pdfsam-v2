@@ -39,7 +39,6 @@ package org.pdfsam.console.business.parser.validators.interfaces;
 
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
-import jcmdline.FileParam;
 import jcmdline.StringParam;
 
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
@@ -60,12 +59,6 @@ public abstract class  AbstractCmdValidator implements CmdValidator{
 		if(cmdLineHandler.getOption(AbstractParsedCommand.COMPRESSED_ARG) != null){
 			parsedCommand.setCompress(((BooleanParam) cmdLineHandler.getOption(AbstractParsedCommand.COMPRESSED_ARG)).isTrue());
 		}
-		if(cmdLineHandler.getOption(AbstractParsedCommand.LOG_ARG) != null){
-	        FileParam logOption = (FileParam) cmdLineHandler.getOption(AbstractParsedCommand.LOG_ARG);
-	        if (logOption.isSet()){
-	        	parsedCommand.setLogFile(logOption.getFile());
-	        }
-        }
 		if(cmdLineHandler.getOption(AbstractParsedCommand.PDFVERSION_ARG) != null){
 	        StringParam pdfversionOption = (StringParam) cmdLineHandler.getOption(AbstractParsedCommand.PDFVERSION_ARG);
 	        if (pdfversionOption.isSet()){

@@ -1,7 +1,7 @@
 @echo off
 
 set DIRNAME=..\lib\
-set CONSOLEJAR=%DIRNAME%\pdfsam-console-2.0.0e.jar
+set CONSOLEJAR=%DIRNAME%\pdfsam-console-2.0.5e.jar
 
 if exist "%CONSOLEJAR%" goto FOUND_CONSOLE_JAR
 echo Could not locate %CONSOLEJAR%. Please check that you are in the
@@ -28,6 +28,11 @@ set CONSOLE_CLASSPATH=%CONSOLEJAR%
 echo ===============================================================================
 echo.
 echo   pdfsam console
+echo.
+echo   available properties:
+echo   pdfsam.log.console.level
+echo   pdfsam.log.file.level
+echo   pdfsam.log.file.filename
 echo.
 echo   JAVA: %JAVA%
 echo.

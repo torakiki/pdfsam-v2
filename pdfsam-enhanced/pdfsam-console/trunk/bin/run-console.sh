@@ -16,7 +16,7 @@ die() {
 
 
 DIRNAME="../lib/"
-CONSOLEJAR="$DIRNAME/pdfsam-console-2.0.0e.jar"
+CONSOLEJAR="$DIRNAME/pdfsam-console-2.0.5e.jar"
 
 # Setup the classpath
 if [ ! -f "$CONSOLEJAR" ]; then
@@ -40,6 +40,11 @@ JAVA_OPTS="-Dlog4j.configuration=console-log4j.xml"
 echo "========================================================================="
 echo ""
 echo " pdfsam console"
+echo ""
+echo " available properties:"
+echo " pdfsam.log.console.level"
+echo " pdfsam.log.file.level"
+echo " pdfsam.log.file.filename"
 echo ""
 echo "  JAVA: $JAVA"
 echo ""

@@ -82,12 +82,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
 			                      ((FileParam.IS_DIR & FileParam.EXISTS)),
 			                      FileParam.OPTIONAL, 
 			                      FileParam.SINGLE_VALUED),
-			      new BooleanParam(AbstractParsedCommand.OVERWRITE_ARG, "overwrite existing output file"),	
-			      new FileParam(AbstractParsedCommand.LOG_ARG,
-				                  "text file to log output messages",
-				                  ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
-				                  FileParam.OPTIONAL,
-				                  FileParam.SINGLE_VALUED)
+			      new BooleanParam(AbstractParsedCommand.OVERWRITE_ARG, "overwrite existing output file")
 	  })); 
 
 	 /**

@@ -90,12 +90,11 @@ public abstract class AbstractParsedCommand implements Serializable {
 	
 	
 	public AbstractParsedCommand(){		
-	};
+	}
 	
 	public AbstractParsedCommand(boolean overwrite, boolean compress,File logFile, char outputPdfVersion) {
 		this.overwrite = overwrite;
 		this.compress = compress;
-		this.logFile = logFile;
 		this.outputPdfVersion = new Character(outputPdfVersion);
 	}
 
@@ -129,6 +128,7 @@ public abstract class AbstractParsedCommand implements Serializable {
 
 	/**
 	 * @return the logFile
+	 * @deprecated -log option is no longer used
 	 */
 	public File getLogFile() {
 		return logFile;
@@ -136,6 +136,7 @@ public abstract class AbstractParsedCommand implements Serializable {
 
 	/**
 	 * @param logFile the logFile to set
+	 * @deprecated -log option is no longer used
 	 */
 	public void setLogFile(File logFile) {
 		this.logFile = logFile;

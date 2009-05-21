@@ -37,7 +37,11 @@
  */
 package org.pdfsam.console;
 
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 
@@ -49,11 +53,20 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 public class ConsoleClient {
 
 	private static final Logger log = Logger.getLogger(ConsoleClient.class.getPackage().getName());
+	
+	//config properties
+	private static final String consoleLogLevelProperty = "pdfsam.log.console.level";
+	private static final String fileLogLevelProperty = "pdfsam.log.file.level";
+	private static final String filenameLogLevelProperty = "pdfsam.log.file.filename";
+	
+	private static final String consoleAppenderName = "CONSOLE";
+	
 	private static ConsoleServicesFacade serviceFacade;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		initLoggingFramework();
 		try{
 			if(args==null || args.length==0){
 				args = new String[]{"-help"};
@@ -69,6 +82,36 @@ public class ConsoleClient {
 			}
 		}catch(Throwable t){
 			log.fatal("Error executing ConsoleClient", t);
+		}
+	}
+	
+	/**
+	 * initialization of the logging framework
+	 */
+	private static void initLoggingFramework(){
+		try{
+			String consoleLevel = System.getProperty(consoleLogLevelProperty, "DEBUG");
+			String fileLevel = System.getProperty(fileLogLevelProperty, "DEBUG");
+			String fileName = System.getProperty(filenameLogLevelProperty);
+			
+			//console appender level configuration
+			ConsoleAppender consoleAppender = (ConsoleAppender)Logger.getRootLogger().getAppender(consoleAppenderName);
+			if(consoleAppender != null){
+				Level consoleThreshold = Level.toLevel(consoleLevel,Level.DEBUG);
+				consoleAppender.setThreshold(consoleThreshold);
+				log.debug("Console log level set to "+consoleThreshold);
+			}
+			
+			if(fileName != null){
+				PatternLayout layout = new PatternLayout("%d{ABSOLUTE} %-5p %x %m%n");
+				FileAppender fileAppender = new FileAppender(layout, fileName, false);
+				Level fileThreshold = Level.toLevel(fileLevel,Level.DEBUG);
+				fileAppender.setThreshold(fileThreshold);
+				Logger.getRootLogger().addAppender(fileAppender);
+				log.debug("Added fileAppender ("+fileName+") at level "+fileThreshold);
+			}
+		}catch(Exception e){
+			System.err.println("Error configuring logging framework: "+e.getMessage());
 		}
 	}
 

@@ -44,7 +44,6 @@ import java.util.List;
 
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
-import jcmdline.FileParam;
 import jcmdline.HelpCmdLineHandler;
 import jcmdline.Parameter;
 import jcmdline.StringParam;
@@ -72,11 +71,6 @@ public abstract class AbstractCmdHandler implements CmdHandler{
 	 * options commonly used by any handler
 	 */
 	private final List commonOptions = new ArrayList(Arrays.asList(new Parameter[] {
-			new FileParam(AbstractParsedCommand.LOG_ARG,
-                    "text file to log output messages",
-                    ((FileParam.DOESNT_EXIST) | (FileParam.EXISTS & FileParam.IS_FILE & FileParam.IS_WRITEABLE)),
-                    FileParam.OPTIONAL,
-                    FileParam.SINGLE_VALUED),
             new StringParam(AbstractParsedCommand.PDFVERSION_ARG,   
                    "pdf version of the output document/s.",
                    new String[] { Character.toString(AbstractParsedCommand.VERSION_1_2), Character.toString(AbstractParsedCommand.VERSION_1_3), Character.toString(AbstractParsedCommand.VERSION_1_4), Character.toString(AbstractParsedCommand.VERSION_1_5), Character.toString(AbstractParsedCommand.VERSION_1_6), Character.toString(AbstractParsedCommand.VERSION_1_7)},
