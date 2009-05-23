@@ -103,7 +103,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
         textInfoArea.setContentType("text/html");   
         textInfoArea.setText("<html><head></head><body>"+applicationName+"<br><br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Version: ")+version+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+author+"<br>"
+        		+GettextResource.gettext(config.getI18nResourceBundle(),"Developed by: ")+author+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Build date: ")+buildDate+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java home: ")+javaHome+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java version: ")+javaVersion+"<br>"
