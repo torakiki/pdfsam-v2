@@ -102,11 +102,27 @@ public class EncryptParsedCommand extends AbstractParsedCommand {
 		this.inputFileList = inputFileList;
 		this.inputDirectory = inputDirectory;
 	}
-
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
 	public EncryptParsedCommand(File outputFile, String outputFilesPrefix,
 			String ownerPwd, String userPwd, int permissions,
 			String encryptionType, PdfFile[] inputFileList, File inputDirectory, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.outputFilesPrefix = outputFilesPrefix;
+		this.ownerPwd = ownerPwd;
+		this.userPwd = userPwd;
+		this.permissions = permissions;
+		this.encryptionType = encryptionType;
+		this.inputFileList = inputFileList;
+		this.inputDirectory = inputDirectory;
+	}
+	
+	public EncryptParsedCommand(File outputFile, String outputFilesPrefix,
+			String ownerPwd, String userPwd, int permissions,
+			String encryptionType, PdfFile[] inputFileList, File inputDirectory, boolean overwrite, boolean compress, char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
 		this.ownerPwd = ownerPwd;

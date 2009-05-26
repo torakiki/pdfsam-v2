@@ -81,10 +81,25 @@ public class SlideShowParsedCommand extends AbstractParsedCommand {
 		this.inputXmlFile = inputXmlFile;
 	}
 
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
 	public SlideShowParsedCommand(File outputFile, PdfFile inputFile, boolean fullScreen, Transition defaultTransition,
 			Transition[] transitions, File inputXmlFile, boolean overwrite, boolean compress,
 			File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.inputFile = inputFile;
+		this.fullScreen = fullScreen;
+		this.defaultTransition = defaultTransition;
+		this.transitions = transitions;
+		this.inputXmlFile = inputXmlFile;
+	}	
+	
+	public SlideShowParsedCommand(File outputFile, PdfFile inputFile, boolean fullScreen, Transition defaultTransition,
+			Transition[] transitions, File inputXmlFile, boolean overwrite, boolean compress,
+			char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.inputFile = inputFile;
 		this.fullScreen = fullScreen;

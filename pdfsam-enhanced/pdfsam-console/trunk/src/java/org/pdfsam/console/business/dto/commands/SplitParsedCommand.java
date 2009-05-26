@@ -90,10 +90,24 @@ public class SplitParsedCommand extends AbstractParsedCommand {
 		this.splitSize = splitSize;
 		this.bookmarksLevel = bookmarksLevel;
 	}
-	
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
 	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
 			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.outputFilesPrefix = outputFilesPrefix;
+		this.inputFile = inputFile;
+		this.splitType = splitType;
+		this.splitPageNumbers = splitPageNumbers;
+		this.splitSize = splitSize;
+		this.bookmarksLevel = bookmarksLevel;
+	}
+	
+	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
+			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, boolean overwrite, boolean compress , char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.outputFilesPrefix = outputFilesPrefix;
 		this.inputFile = inputFile;

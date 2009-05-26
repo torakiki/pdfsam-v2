@@ -135,11 +135,37 @@ public class SetViewerParsedCommand extends AbstractParsedCommand {
 		this.inputDirectory = inputDirectory;
 	}
 
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
 	public SetViewerParsedCommand(File outputFile, int mode, int layout, int nfsmode, int direction, PdfFile[] inputFileList, String outputFilesPrefix,
 			boolean hideToolBar, boolean hideMenu, boolean hideWindowUI,boolean fitWindow, boolean centerWindow, boolean displayDocTitle,
 			boolean noPrintScaling, File inputDirectory, boolean overwrite, boolean compress,
 			File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.mode = mode;
+		this.layout = layout;
+		this.nfsmode = nfsmode;
+		this.direction = direction;
+		this.inputFileList = inputFileList;
+		this.outputFilesPrefix = outputFilesPrefix;
+		this.hideToolBar = hideToolBar;
+		this.hideMenu = hideMenu;
+		this.hideWindowUI = hideWindowUI;
+		this.fitWindow = fitWindow;
+		this.centerWindow = centerWindow;
+		this.displayDocTitle = displayDocTitle;
+		this.noPrintScaling = noPrintScaling;
+		this.inputDirectory = inputDirectory;
+
+	}
+	
+	public SetViewerParsedCommand(File outputFile, int mode, int layout, int nfsmode, int direction, PdfFile[] inputFileList, String outputFilesPrefix,
+			boolean hideToolBar, boolean hideMenu, boolean hideWindowUI,boolean fitWindow, boolean centerWindow, boolean displayDocTitle,
+			boolean noPrintScaling, File inputDirectory, boolean overwrite, boolean compress,
+			char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.mode = mode;
 		this.layout = layout;

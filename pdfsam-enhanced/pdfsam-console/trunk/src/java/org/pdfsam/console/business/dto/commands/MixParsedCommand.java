@@ -79,9 +79,22 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		this.reverseSecond = reverseSecond;
 		this.step = step;
 	}
-
+	
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
 	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.firstInputFile = firstInputFile;
+		this.secondInputFile = secondInputFile;
+		this.reverseFirst = reverseFirst;
+		this.reverseSecond = reverseSecond;
+		this.step = step;
+	}
+	
+	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step, boolean overwrite, boolean compress, char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
 		this.secondInputFile = secondInputFile;

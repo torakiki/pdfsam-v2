@@ -78,6 +78,7 @@ public class DecryptParsedCommand extends AbstractParsedCommand {
 	 * @param inputFileList
 	 * @param outputFile
 	 * @param outputFilesPrefix
+	 * @deprecated use the constructor without the logFile parameter
 	 */
 	public DecryptParsedCommand(PdfFile[] inputFileList, File outputFile, String outputFilesPrefix, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
@@ -86,6 +87,12 @@ public class DecryptParsedCommand extends AbstractParsedCommand {
 		this.outputFilesPrefix = outputFilesPrefix;
 	}
 
+	public DecryptParsedCommand(PdfFile[] inputFileList, File outputFile, String outputFilesPrefix, boolean overwrite, boolean compress, char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
+		this.inputFileList = inputFileList;
+		this.outputFile = outputFile;
+		this.outputFilesPrefix = outputFilesPrefix;
+	}
 	/**
 	 * @return the outputFile
 	 */

@@ -92,7 +92,14 @@ public abstract class AbstractParsedCommand implements Serializable {
 	public AbstractParsedCommand(){		
 	}
 	
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
 	public AbstractParsedCommand(boolean overwrite, boolean compress,File logFile, char outputPdfVersion) {
+		this(overwrite, compress, outputPdfVersion);
+	}
+	
+	public AbstractParsedCommand(boolean overwrite, boolean compress, char outputPdfVersion) {
 		this.overwrite = overwrite;
 		this.compress = compress;
 		this.outputPdfVersion = new Character(outputPdfVersion);

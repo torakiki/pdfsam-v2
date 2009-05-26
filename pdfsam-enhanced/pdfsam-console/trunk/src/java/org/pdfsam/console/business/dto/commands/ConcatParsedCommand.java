@@ -84,6 +84,21 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
+			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, PageRotation[] rotations, File inputDirectory, boolean overwrite, boolean compress , char outputPdfVersion) {
+		super(overwrite, compress, outputPdfVersion);
+		this.outputFile = outputFile;
+		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
+		this.inputFileList = inputFileList;
+		this.pageSelection = pageSelection;
+		this.copyFields = copyFields;
+		this.rotations = rotations;
+		this.inputDirectory = inputDirectory;
+	}
+	
+	/**
+	 * @deprecated use the constructor without the logFile parameter
+	 */
+	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
 			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, PageRotation[] rotations, File inputDirectory, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		super(overwrite, compress, logFile, outputPdfVersion);
 		this.outputFile = outputFile;
