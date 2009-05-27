@@ -1,4 +1,4 @@
-2.0.0-beta2 () (pdfsam-console 2.0.5e)
+2.0.0-beta2 (31-May-2009) (pdfsam-console 2.0.5e)
 ===================================
 -Fixed GUI interactivity when generating thumbnails.
 -New concurrent thumbnails generation model.
@@ -6,8 +6,10 @@
 -Console: fixed bug #2789961 (stripped invalid chars when applying bookmark name as output file name)
 -Console: fixed bug #2789961 (Level 2 Bookmark Name not used on first page)
 -VComposer: fixed bug #2793905 (Version combo showing "same as input document")
--VComposer, VReorder: enlarge buttons to fit translations (feature request #2793954)
+-VComposer, VReorder: enlarged buttons to fit translations (feature request #2793954)
 -Console: fixed bug #2794818 (added system properties: pdfsam.log.console.level, pdfsam.log.file.level, pdfsam.log.file.filename)
+-Examples and xsd documents included within the distribution
+-Updated langpack
 
 2.0.0-beta (10-May-2009) (pdfsam-console 2.0.4e)
 ===================================
@@ -36,7 +38,7 @@
 -Mix: added field to set the step option
 -Console: added complex prefix [BOOKMARK_NAME]
 -VReorder: added button and context menu to reverse pages order
--Sound error in an Exception occurs before the execution of a command
+-Error sound if an Exception occurs before the execution of a command
 -iText 2.1.5
 -Updated langpack
 

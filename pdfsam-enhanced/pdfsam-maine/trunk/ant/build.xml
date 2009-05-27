@@ -245,13 +245,19 @@
 				<include name="*.pdf" />
 			</fileset>
 		</copy>
-
-		<copy todir="${pdfsam.release.dist.dir}/doc">
-			<fileset dir="doc">
-				<include name="/examples/**/*" />
+		
+		<copy todir="${pdfsam.release.dist.dir}/doc/examples">
+			<fileset dir="doc/examples">
+				<include name="**/*" />
 			</fileset>
 		</copy>
-
+		
+		<copy todir="${pdfsam.release.dist.dir}/doc/xsd">
+			<fileset dir="${console.dir}/xsd">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
 		<replace file="${pdfsam.release.dist.dir}/doc/readme.txt">
 			<replacefilter token="@VERSION" value="${pdfsam.jar.version}"/>
 			<replacefilter token="@PDFSAM_JAR_NAME" value="${pdfsam.jar.name}"/>
