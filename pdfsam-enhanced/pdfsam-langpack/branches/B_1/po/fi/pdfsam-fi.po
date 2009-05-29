@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-03-25 18:57+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -323,15 +323,10 @@ msgstr "Etuliite tallennettaville tiedostoille:"
 msgid "Output files prefix"
 msgstr "Tallennustiedoston etuliite"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Jos se sisältää \"[CURRENTPAGE]\" tai \"[TIMESTAMP]\", suoritetaan "
-"muuttujien korvaus."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
@@ -349,13 +344,8 @@ msgstr ""
 "Jos se ei sisällä muuttujia \"[CURRENTPAGE]\" tai \"[TIMESTAMP]\", luodaan "
 "vanhantyyliset tiedostonimet."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
-"Käytettävissä olevat muuttujat: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
 
 msgid "Invalid split size"
 msgstr "Kelvoton jakamiskoko."
@@ -396,15 +386,11 @@ msgstr "Ensimmäinen pdf-dokumentti:"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Pdf-kansitiedosto:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Pdf-alatunnistetiedosto:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Valitse vähintään yksi kansilehti tai alatunniste"
@@ -542,6 +528,19 @@ msgstr "Vaihda ensimmäisen dokumentin järjestys päinvastaiseksi"
 
 msgid "Reverse second document"
 msgstr "Vaihda toisen dokumentin järjestys päinvastaiseksi"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Ensimmäinen tiedosto on suojattu salasanalla."
@@ -908,11 +907,8 @@ msgid "Pdf version of the document"
 msgstr "Dokumentin pdf-versio"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Tuplaklikkaa määrittääksesi yhdistettävät sivut (esim. 2 tai All (suom. "
-"kaikki) tai 5-23 tai 2,5-7,12-)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
@@ -1133,7 +1129,7 @@ msgstr "Versio: "
 msgid "Language: "
 msgstr "Kieli: "
 
-msgid "Author: "
+msgid "Developed by: "
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
@@ -1341,6 +1337,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Tarkistetaan, onko uudempaa versiota saatavilla."
 
@@ -1365,6 +1372,41 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Polku"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Jos se sisältää \"[CURRENTPAGE]\" tai \"[TIMESTAMP]\", suoritetaan "
+#~ "muuttujien korvaus."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr ""
+#~ "Käytettävissä olevat muuttujat: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Pdf-kansitiedosto:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "Pdf-alatunnistetiedosto:"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Tuplaklikkaa määrittääksesi yhdistettävät sivut (esim. 2 tai All (suom. "
+#~ "kaikki) tai 5-23 tai 2,5-7,12-)"
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Kansilehti ja alatunniste"

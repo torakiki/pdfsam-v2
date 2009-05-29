@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-12-31 19:02+0000\n"
 "Last-Translator: Luke M. <Unknown>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
@@ -187,8 +187,8 @@ msgid "Output files prefix"
 msgstr "Output files prefix"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -199,8 +199,7 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
 
 msgid "Invalid split size"
@@ -236,10 +235,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -348,6 +347,19 @@ msgstr "Reverse first document"
 
 msgid "Reverse second document"
 msgstr "Reverse second document"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Found a password for first file."
@@ -634,11 +646,8 @@ msgid "Pdf version of the document"
 msgstr "Pdf version of the document"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Add a pdf to the list"
@@ -796,8 +805,8 @@ msgstr "Version: "
 msgid "Language: "
 msgstr "Language: "
 
-msgid "Author: "
-msgstr "Author: "
+msgid "Developed by: "
+msgstr ""
 
 msgid "Build date: "
 msgstr "Build date: "
@@ -967,6 +976,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Checking if a new version is available."
 
@@ -987,6 +1007,16 @@ msgstr "Cut"
 
 msgid "Paste"
 msgstr "Paste"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+
+#~ msgid "Author: "
+#~ msgstr "Author: "
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Cover and Footer"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2009-01-07 18:34+0000\n"
 "Last-Translator: Waldir Leoncio <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,11 +193,9 @@ msgid "Output files prefix"
 msgstr "Prefixos para os arquivos de saída"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Se contêm \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" , processar "
-"a substituição de variáveis"
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -208,10 +206,8 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr "Se não contêm \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" ,"
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
-"Variáveis disponíveis : [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
 msgstr "Tamanho de divisão inválido"
@@ -247,11 +243,11 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
-msgstr "Capa do arquivo pdf"
+msgid "Frontpage pdf file"
+msgstr ""
 
-msgid "Footer pdf file"
-msgstr "rodapé do arquivo pdf"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Selecione ao menos uma capa ou um rodapé"
@@ -359,6 +355,19 @@ msgstr "Inverter primeiro documento"
 
 msgid "Reverse second document"
 msgstr "Inverter segundo documento"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Encontrada uma senha para o primeiro arquivo."
@@ -645,11 +654,8 @@ msgid "Pdf version of the document"
 msgstr "Versão pdf do documento"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dê um clique duplo para definir as páginas que você deseja mesclar (ex: 2 ou "
-"All ou 5-23 ou 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Adicionar um pdf à lista"
@@ -809,8 +815,8 @@ msgstr "Versão: "
 msgid "Language: "
 msgstr "Idioma: "
 
-msgid "Author: "
-msgstr "Autor: "
+msgid "Developed by: "
+msgstr ""
 
 msgid "Build date: "
 msgstr "Data de compilação: "
@@ -979,6 +985,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Verificando se há uma versão nova disponível."
 
@@ -999,6 +1016,35 @@ msgstr "Recortar"
 
 msgid "Paste"
 msgstr "Colar"
+
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Se contêm \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" , "
+#~ "processar a substituição de variáveis"
+
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr ""
+#~ "Variáveis disponíveis : [CURRENTPAGE], [TIMESTAMP], [BASENAME], "
+#~ "[FILENUMBER]."
+
+#~ msgid "Cover pdf file"
+#~ msgstr "Capa do arquivo pdf"
+
+#~ msgid "Footer pdf file"
+#~ msgstr "rodapé do arquivo pdf"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Dê um clique duplo para definir as páginas que você deseja mesclar (ex: 2 "
+#~ "ou All ou 5-23 ou 2,5-7,12-)"
+
+#~ msgid "Author: "
+#~ msgstr "Autor: "
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Capa e Rodapé"

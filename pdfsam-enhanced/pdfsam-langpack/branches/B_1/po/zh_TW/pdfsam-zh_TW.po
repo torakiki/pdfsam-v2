@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-20 18:39+0100\n"
-"PO-Revision-Date: 2009-01-27 15:09+0000\n"
-"Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
+"POT-Creation-Date: 2009-05-29 16:50+0200\n"
+"PO-Revision-Date: 2009-05-06 04:37+0000\n"
+"Last-Translator: ngacf <Unknown>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
+"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -185,23 +185,23 @@ msgid "Output files prefix"
 msgstr "輸出檔案名稱前綴"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
-msgstr "若包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將進行變數替換。"
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
+msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr "例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr ""
+"例如：\"前綴_[BASENAME]_[CURRENTPAGE]\" 會變成 \"前綴_檔案名稱_005.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"若不包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將產生舊式的輸出檔名稱。"
+"若不包含 \"[CURRENTPAGE]\"、\"[TIMESTAMP]\" 或 \"[FILENUMBER]\" 字串，將產生"
+"舊式的輸出檔名稱。"
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "可用的變數：[CURRENTPAGE]、[TIMESTAMP]、[BASENAME] 及 [FILENUMBER]。"
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
@@ -236,17 +236,17 @@ msgstr "自文件填滿"
 msgid "Getting bookmarks max depth"
 msgstr "取得書籤的最大層級"
 
-msgid "Cover pdf file"
-msgstr "封面 PDF 檔"
+msgid "Frontpage pdf file"
+msgstr ""
 
-msgid "Footer pdf file"
-msgstr "封底 PDF 檔"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "前言與附錄"
 
 msgid "Cover And Footer section loaded."
 msgstr "新增封面和封底已完成。"
@@ -308,7 +308,8 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴_20070517_113423471.pdf\"。"
+"例如：\"[BASENAME]_前綴_[TIMESTAMP]\" 會變成 \"檔案名稱_前綴"
+"_20070517_113423471.pdf\"。"
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -344,6 +345,19 @@ msgstr "顛倒第一份文件的順序"
 
 msgid "Reverse second document"
 msgstr "顛倒第二份文件的順序"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "第一個檔案需要密碼"
@@ -524,49 +538,49 @@ msgid "File name"
 msgstr "檔案名稱"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "頁數"
 
 msgid "File size"
-msgstr ""
+msgstr "檔案大小"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "PDF 版本"
 
 msgid "Encryption"
-msgstr ""
+msgstr "加密"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "未加密"
 
 msgid "Permissions"
-msgstr ""
+msgstr "權限"
 
 msgid "Title"
-msgstr ""
+msgstr "標題"
 
 msgid "Author"
 msgstr "開發者"
 
 msgid "Subject"
-msgstr ""
+msgstr "主旨"
 
 msgid "Producer"
-msgstr ""
+msgstr "製作者"
 
 msgid "Creator"
-msgstr ""
+msgstr "建立者"
 
 msgid "Creation date"
-msgstr ""
+msgstr "建立日期"
 
 msgid "Modification date"
-msgstr ""
+msgstr "修改日期"
 
 msgid "Keywords"
-msgstr ""
+msgstr "關鍵字"
 
 msgid "Document properties"
-msgstr ""
+msgstr "文件屬性"
 
 msgid "File"
 msgstr "檔案"
@@ -578,7 +592,7 @@ msgid "Copy"
 msgstr "複製"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "建立屬性面板時發生錯誤。"
 
 msgid "Run"
 msgstr "執行"
@@ -629,9 +643,8 @@ msgid "Pdf version of the document"
 msgstr "文件的 PDF 版本"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
-msgstr "雙擊以設定您想合併的頁面（例如：2 或 All 或 5-23 或 2,5-7,12-）"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
+msgstr ""
 
 msgid "Add a pdf to the list"
 msgstr "新增PDF檔至清單中"
@@ -789,8 +802,8 @@ msgstr "版本： "
 msgid "Language: "
 msgstr "程式語言： "
 
-msgid "Author: "
-msgstr "作者： "
+msgid "Developed by: "
+msgstr ""
 
 msgid "Build date: "
 msgstr "建立日期： "
@@ -897,8 +910,7 @@ msgstr "請選取一個之前儲存的環境變數檔，啟動時會自動載入
 msgid "Default working directory"
 msgstr "預設的工作目錄"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "請選擇一個用以儲存或載入文件的預設目錄"
 
 msgid "Save"
@@ -953,9 +965,20 @@ msgid "Output location error"
 msgstr "輸出檔位置錯誤"
 
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "所選的輸出檔已存在 "
 
 msgid "Would you like to overwrite it?"
+msgstr "您要覆寫它嗎？"
+
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
 msgstr ""
 
 msgid "Checking for a new version available."
@@ -978,106 +1001,3 @@ msgstr "剪下"
 
 msgid "Paste"
 msgstr "貼上"
-
-#~ msgid "Merge options:"
-#~ msgstr "合併選項："
-
-#~ msgid "Split options:"
-#~ msgstr "分割選項："
-
-#~ msgid "Destination folder:"
-#~ msgstr "輸出檔存放路徑："
-
-#~ msgid "Output options:"
-#~ msgstr "輸出選項："
-
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-#~ "substitution."
-#~ msgstr "若包含 \"[CURRENTPAGE]\" 或 \"[TIMESTAMP]\"，會顯示不同的替代文字。"
-
-#~ msgid ""
-#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-#~ "oldstyle output file names."
-#~ msgstr "若不包含 \"[CURRENTPAGE]\" 和 \"[TIMESTAMP]\"，會變成典型的輸出檔案名稱。"
-
-#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-#~ msgstr "可用的變數：[CURRENTPAGE], [TIMESTAMP], [BASENAME]。"
-
-#~ msgid "Please wait while reading "
-#~ msgstr "讀取中請稍待... "
-
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "移除清單中所有PDF檔"
-
-#~ msgid "Destination output directory:"
-#~ msgstr "輸出檔存放路徑："
-
-#~ msgid "Cover pdf file:"
-#~ msgstr "作為封面的PDF檔："
-
-#~ msgid "Footer pdf file:"
-#~ msgstr "作為封底的PDF檔："
-
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "在電腦裡選擇一個檔案作為封面"
-
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "在電腦裡選擇一個檔案作為封底"
-
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "請瀏覽或輸入存放輸出檔的完整路徑"
-
-#~ msgid "Execute pdf add cover footer"
-#~ msgstr "執行新增封面和封底"
-
-#~ msgid "Source file:"
-#~ msgstr "原始檔案："
-
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "請選取要加密的PDF檔"
-
-#~ msgid "Encryption angorithm:"
-#~ msgstr "加密演算法："
-
-#~ msgid "Encrypt options:"
-#~ msgstr "加密選項："
-
-#~ msgid "Destination output file:"
-#~ msgstr "輸出檔案："
-
-#~ msgid "Browse filesystem for the first file to mix"
-#~ msgstr "在電腦中選取要交替合併的第一個檔案"
-
-#~ msgid "Browse filesystem for the second file to mix"
-#~ msgstr "在電腦中選取要交替合併的第二個檔案"
-
-#~ msgid "First pdf document:"
-#~ msgstr "第一個PDF文件："
-
-#~ msgid "Select a PDF file to split"
-#~ msgstr "請選取要分割的PDF檔"
-
-#~ msgid "Error:"
-#~ msgstr "錯誤："
-
-#~ msgid "RuntimeError:"
-#~ msgstr "執行時錯誤："
-
-#~ msgid "Info"
-#~ msgstr "資訊"
-
-#~ msgid "Informations:"
-#~ msgstr "資訊："
-
-#~ msgid "Application name: "
-#~ msgstr "應用程式名稱： "
-
-#~ msgid "Application version: "
-#~ msgstr "應用程式版本： "
-
-#~ msgid "Installed plugins:"
-#~ msgstr "已安裝的插件："
-
-#~ msgid "Check the box if you want a compressed output file."
-#~ msgstr "若您想要一個壓縮過的輸出檔，請勾選此選項。"

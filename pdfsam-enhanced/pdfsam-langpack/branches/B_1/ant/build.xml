@@ -13,7 +13,7 @@
 	<target name="init">
 		<property file="ant/build.properties" />
 
-		<property name="pdfsam-langpack.build.root" location="${build.dir}/pdfsam-langpack"/>
+		<property name="pdfsam-langpack.build.root" location="${build.dir}/pdfsam-langpack-br1"/>
 		<property name="pdfsam-langpack.build.dir" location="${pdfsam-langpack.build.root}/build"/>
 		<property name="pdfsam-langpack.dist.dir"  location="${pdfsam-langpack.build.root}/dist"/>
 	</target>
@@ -310,10 +310,10 @@
 	<target name="buildZipSrcPackage" description="generate build sources zip package" >
 		<zip destfile="${pdfsam-langpack.dist.dir}/${pdfsam-langpack.jar.name}-build-src.zip">
 			<fileset dir="..">
-				<include name="pdfsam-langpack/src/java/**/*"/>
+				<include name="pdfsam-langpack-br1/src/java/**/*"/>
 			</fileset>
 			<fileset dir="..">
-				<include name="pdfsam-langpack/ant/**/*.*"/>
+				<include name="pdfsam-langpack-br1/ant/**/*.*"/>
 			</fileset>
 		</zip>
 	</target>

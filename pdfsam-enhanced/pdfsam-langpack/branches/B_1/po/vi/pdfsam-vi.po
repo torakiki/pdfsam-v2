@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-03-24 16:15+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -192,8 +192,8 @@ msgid "Output files prefix"
 msgstr ""
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -204,8 +204,7 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
 
 msgid "Invalid split size"
@@ -241,10 +240,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -350,6 +349,19 @@ msgid "Reverse first document"
 msgstr ""
 
 msgid "Reverse second document"
+msgstr ""
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
 msgstr ""
 
 msgid "Found a password for first file."
@@ -643,8 +655,7 @@ msgid "Pdf version of the document"
 msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 msgid "Add a pdf to the list"
@@ -803,7 +814,7 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-msgid "Author: "
+msgid "Developed by: "
 msgstr ""
 
 msgid "Build date: "
@@ -970,6 +981,17 @@ msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
 msgstr ""
 
 msgid "Checking for a new version available."

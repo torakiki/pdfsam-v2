@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-07-10 08:52+0000\n"
 "Last-Translator: Kristaps <retail@inbox.lv>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -186,8 +186,8 @@ msgid "Output files prefix"
 msgstr ""
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -198,8 +198,7 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
 
 msgid "Invalid split size"
@@ -236,13 +235,11 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Pārvietot augšupizvēlēto pdf failu"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Pārvietot lejup izvēlēto pdf failu"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -345,6 +342,19 @@ msgid "Reverse first document"
 msgstr ""
 
 msgid "Reverse second document"
+msgstr ""
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
 msgstr ""
 
 msgid "Found a password for first file."
@@ -632,8 +642,7 @@ msgid "Pdf version of the document"
 msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 msgid "Add a pdf to the list"
@@ -792,7 +801,7 @@ msgstr ""
 msgid "Language: "
 msgstr ""
 
-msgid "Author: "
+msgid "Developed by: "
 msgstr ""
 
 msgid "Build date: "
@@ -960,6 +969,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -981,6 +1001,14 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Ceļš"
+
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Pārvietot augšupizvēlēto pdf failu"
+
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "Pārvietot lejup izvēlēto pdf failu"
 
 #~ msgid "Select an input file"
 #~ msgstr "Izvēlieties izejošo failu."

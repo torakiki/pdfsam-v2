@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-20 18:39+0100\n"
-"PO-Revision-Date: 2009-02-09 23:41+0000\n"
-"Last-Translator: Joergenr <Unknown>\n"
+"POT-Creation-Date: 2009-05-29 16:50+0200\n"
+"PO-Revision-Date: 2009-05-09 15:07+0000\n"
+"Last-Translator: Mads Boserup Lauritsen <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
+"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -107,7 +107,7 @@ msgid "PDF version 1.5 or above."
 msgstr "PDF version 1.5 eller højere"
 
 msgid "Set the pdf version of the ouput document."
-msgstr ""
+msgstr "Definer pdf-versionen for slutdokumentet"
 
 msgid "Please wait while all files are processed.."
 msgstr "Vent venligst mens alle filer behandles.."
@@ -127,7 +127,7 @@ msgid "Execute pdf merge"
 msgstr "Udfør pdf-fletning"
 
 msgid "Merge/Extract"
-msgstr ""
+msgstr "Flet / Tag ud"
 
 msgid "Merge section loaded."
 msgstr "Flettesektion indlæst."
@@ -139,7 +139,7 @@ msgid "Unable to save xml file."
 msgstr "Kunne ikke gemme xml fil."
 
 msgid "Ok"
-msgstr "OK"
+msgstr "O.k."
 
 msgid "File xml saved."
 msgstr "Xml fil gemt."
@@ -278,14 +278,13 @@ msgid "Output files prefix"
 msgstr "Præfiks for destinationsfil"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Eventuel præfiks_[BASENAME]_[CURRENTPAGE] giver præfiks_Filnavn_005.pdf"
 
@@ -294,10 +293,8 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr ""
-"Tilgængelige variabler [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
+msgstr "Tilgængelige variabler"
 
 msgid "Invalid split size"
 msgstr "Ugyldig opdelingsstørrelse"
@@ -309,7 +306,7 @@ msgid "You selected a lower output pdf version, continue anyway ?"
 msgstr "Du valgte en lavere output pdf-version. ønsker du at fortsætte?"
 
 msgid "Pdf version conflict"
-msgstr ""
+msgstr "Konflikt i pdf-versionen"
 
 msgid "Please select a pdf document."
 msgstr "Vælg et pdf-dokument."
@@ -334,14 +331,14 @@ msgstr "Hent fra dokument"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
-msgstr ""
+msgstr "Vælg mindst et omslag eller en fodnote"
 
 msgid "Frontpage and Addendum"
 msgstr ""
@@ -461,6 +458,19 @@ msgstr "Første dokument bagfra"
 
 msgid "Reverse second document"
 msgstr "Andet dokument bagfra"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Fandt en adgangskode til første fil."
@@ -797,11 +807,8 @@ msgid "Pdf version of the document"
 msgstr "Dokumentets pdf-version"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dobbeltklik for at angive sider du ønsker at flette (fx. : 2 eller alle "
-"eller 5-23 eller 2,5-7,12-)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
@@ -1004,8 +1011,8 @@ msgstr "Version: "
 msgid "Language: "
 msgstr "Sprog: "
 
-msgid "Author: "
-msgstr "Udvikler: "
+msgid "Developed by: "
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
@@ -1131,8 +1138,7 @@ msgstr "Vælg en tidligere gemt miljøfil som automatisk indlæses ved opstart"
 msgid "Default working directory"
 msgstr "Standard arbejdsmappe"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Vælg en mappe hvorfra dokumenter som standard indlæses fra og til"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
@@ -1195,6 +1201,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr "Grænser er ikke gyldige"
+
 msgid "Checking for a new version available."
 msgstr "Checker om en ny version er tilgængelig."
 
@@ -1215,166 +1232,3 @@ msgstr "Klip"
 
 msgid "Paste"
 msgstr "Sæt ind"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#~ msgid "Merge options:"
-#~ msgstr "Fletteindstillinger:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#~ msgid "Split options:"
-#~ msgstr "Opdelingsindstillinger:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#~ msgid "Destination folder:"
-#~ msgstr "Destinationsmappe:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#~ msgid "Output options:"
-#~ msgstr "Destinationsindstillinger:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable "
-#~ "substitution."
-#~ msgstr ""
-#~ "Hvis den indeholder »[CURRENTPAGE]« eller »[TIMESTAMP]« så udfører den "
-#~ "variabel erstatning."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-#~ msgid ""
-#~ "If it doesn't contain \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it generates "
-#~ "oldstyle output file names."
-#~ msgstr ""
-#~ "Hvis den ikke indeholder »[CURRENTPAGE]« eller »[TIMESTAMP]« oprettes "
-#~ "tidligere destinationsfilnavne."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-#~ msgid "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-#~ msgstr "Tilgængelige variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-#~ msgid "Please wait while reading "
-#~ msgstr "Vent venligst "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Fjern alle pdf-filer fra listen"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
-#~ msgid "Destination output directory:"
-#~ msgstr "Destinationsmappe:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#~ msgid "Cover pdf file:"
-#~ msgstr "Front pdf-fil:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#~ msgid "Footer pdf file:"
-#~ msgstr "Sidefod pdf-fil:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Gennemse filsystem for en frontfil"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "Gennemse filsystem for en sidefodfil"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Gennemse eller indtast fuld sti til destinationsmappen."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:540
-#~ msgid "Execute pdf add cover footer"
-#~ msgstr "Udfør pdf tilføj front sidefod"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:159
-#~ msgid "Source file:"
-#~ msgstr "Kildefil:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "Vælg en pdf-fil som ønskes krypteret"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#~ msgid "Encryption angorithm:"
-#~ msgstr "Krypteringsalgoritme:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#~ msgid "Encrypt options:"
-#~ msgstr "Krypteringsindstillinger:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-#~ msgid "Destination output file:"
-#~ msgstr "Destinationsfil:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
-#~ msgid "Browse filesystem for the first file to mix"
-#~ msgstr "Gennemse filsystem for den første fil til fletning"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
-#~ msgid "Browse filesystem for the second file to mix"
-#~ msgstr "Gennemse filsystem for den anden fil til fletning"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#~ msgid "First pdf document:"
-#~ msgstr "Første pdf-dokument:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Vælg en pdf-fil til opslitning"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-#~ msgid "Error:"
-#~ msgstr "Fejl:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:264
-#~ msgid "RuntimeError:"
-#~ msgstr "Kørselstidsfejl:"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:248
-#~ msgid "Info"
-#~ msgstr "Info"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:111
-#~ msgid "Informations:"
-#~ msgstr "Informationer:"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Application name: "
-#~ msgstr "Programnavn: "
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Application version: "
-#~ msgstr "Programversion: "
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:140
-#~ msgid "Installed plugins:"
-#~ msgstr "Installerede udvidelsesmoduller:"
-
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-#~ msgid "Browse filesystem for a destination file"
-#~ msgstr "Gennemse filsystem for en destinationsfil"

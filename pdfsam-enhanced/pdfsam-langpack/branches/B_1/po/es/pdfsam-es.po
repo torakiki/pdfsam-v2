@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
-"PO-Revision-Date: 2009-01-15 11:08+0000\n"
-"Last-Translator: saigor <Unknown>\n"
+"POT-Creation-Date: 2009-05-29 16:50+0200\n"
+"PO-Revision-Date: 2009-05-27 20:42+0000\n"
+"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -153,7 +153,7 @@ msgid "Split at this size"
 msgstr "Dividir en esta medida"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Dividir por nivel de marcador"
 
 msgid "Burst"
 msgstr "Ráfaga"
@@ -175,10 +175,11 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dividir el documento después de números de página (num1-num2-num3...)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Dividir el documento en archivos del tamaño dado (aproximadamente)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
+"Dividir el documento en páginas referidas por marcadores del nivel dado"
 
 msgid "Destination folder"
 msgstr "Carpeta de destino"
@@ -228,9 +229,11 @@ msgid "Output files prefix"
 msgstr "Prefijo de los archivos de salida"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Sustituir variables si contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", "
+"\"[FILENUMBER]\" o \"[BOOKMARK_NAME]\"."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -240,10 +243,11 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"Si no contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\" o \"[FILENUMBER]\" genera "
+"nombre de archivo antiguos."
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr ""
+msgid "Available variables"
+msgstr "Variables disponibles"
 
 msgid "Invalid split size"
 msgstr "Tamaño de división inválida"
@@ -277,22 +281,22 @@ msgid "Invalid unit: "
 msgstr "Unidad inválida: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Rellenar desde documento"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "Obtener profundid máxima de marcadores"
 
-msgid "Cover pdf file"
-msgstr ""
+msgid "Frontpage pdf file"
+msgstr "Portada del archivo pdf"
 
-msgid "Footer pdf file"
-msgstr ""
+msgid "Addendum pdf file"
+msgstr "Anexo al archivo pdf"
 
 msgid "Select at least one cover or one footer"
 msgstr "Seleccione al menos una portada o un pié de página"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "Primera página y apéndice"
 
 msgid "Cover And Footer section loaded."
 msgstr "Secciones Portada y Pié de Página cargadas."
@@ -406,7 +410,7 @@ msgid "Decrypt"
 msgstr "Desencriptar"
 
 msgid "Decrypt section loaded."
-msgstr ""
+msgstr "Descifrar sección cargada."
 
 msgid "Mix options"
 msgstr "Opciones de mezcla"
@@ -416,6 +420,23 @@ msgstr "Reverso del primer documento."
 
 msgid "Reverse second document"
 msgstr "Reverso del segundo documento"
+
+msgid "Number of pages to switch document"
+msgstr "Número de páginas a cambiar de documento"
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+"Marque las opciones si quiere invertir el primer o el segundo documento (o "
+"ambos)."
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
+"Seleccione el número de páginas para cambiar de un documento a otro (por "
+"defecto es 1)."
 
 msgid "Found a password for first file."
 msgstr "Buscar una contraseña para el primer archivo."
@@ -445,97 +466,97 @@ msgid "Unpack section loaded."
 msgstr "Sección de descompactar cargada."
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "Establecer opciones del visor"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Ocultar barra de menús"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "Ocultar barra de herramientas"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Ocultar elementos de interfaz de usuario"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Redimensionar ventana para ajustarse al tamaño de página"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Centro de la pantalla"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Mostrar título del documento como título de la ventana"
 
 msgid "Pdf version required:"
-msgstr ""
+msgstr "Version de PDF requerida:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Sin escalado de página en el diálogo de impresión"
 
 msgid "Viewer layout:"
-msgstr ""
+msgstr "Disposición del visor:"
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "Modo de apertura del visor:"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Sin modo pantalla completa"
 
 msgid "Direction:"
-msgstr ""
+msgstr "Dirección:"
 
 msgid "Set options"
-msgstr ""
+msgstr "Establecer opciones"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "Establecer opciones del visor para los archivos seleccionados"
 
 msgid "Left to right"
-msgstr ""
+msgstr "De izquierda a derecha"
 
 msgid "Right to left"
-msgstr ""
+msgstr "De derecha a izquierda"
 
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantalla completa"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Adjuntos"
 
 msgid "Optional content group panel"
-msgstr ""
+msgstr "Grupo de paneles de contenido opcional"
 
 msgid "Document outline"
-msgstr ""
+msgstr "Resumen del documento"
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniaturas de imágenes"
 
 msgid "One page at a time"
-msgstr ""
+msgstr "Páginas de una en una"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Páginas en una columna"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Páginas en dos columnas (impares a la izquierda)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Páginas en dos columnas (impares a la derecha)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Dos páginas a la vez (impares a la izquierda)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Dos páginas a la vez (impares a la derecha)"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "Opciones del visor"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "Sección de opciones del visor cargada."
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -604,25 +625,25 @@ msgid "File name"
 msgstr "Nombre de archivo"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Número de páginas"
 
 msgid "File size"
-msgstr ""
+msgstr "Tamaño de archivo"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "Versión PDF"
 
 msgid "Encryption"
-msgstr ""
+msgstr "Cifrado"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "Sin cifrar"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
@@ -630,25 +651,25 @@ msgid "Author"
 msgstr "Autor"
 
 msgid "Subject"
-msgstr ""
+msgstr "Tema"
 
 msgid "Producer"
-msgstr ""
+msgstr "Producido por"
 
 msgid "Creator"
-msgstr ""
+msgstr "Creador"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgid "Modification date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgid "Keywords"
-msgstr ""
+msgstr "Palabras clave"
 
 msgid "Document properties"
-msgstr ""
+msgstr "Propiedades del documento"
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
@@ -656,7 +677,7 @@ msgid "File"
 msgstr "Archivo"
 
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
@@ -664,7 +685,7 @@ msgid "Copy"
 msgstr "copiar"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "Error creando panel de propiedades."
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:368
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
@@ -765,11 +786,10 @@ msgid "Pdf version of the document"
 msgstr "Version pdf del documento"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Haga doble click para marcar las páginas que desea combinar (por ejemplo: 2 "
-"o Todas o 5-23 o 2,5-7,12-)"
+"Pulse dos veces para asignar las páginas que desea mezclar (ex: 2 o 5-23 o "
+"2,5-7,12-)"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:211
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -989,8 +1009,8 @@ msgstr "Versión: "
 msgid "Language: "
 msgstr "Lenguaje: "
 
-msgid "Author: "
-msgstr "Autor: "
+msgid "Developed by: "
+msgstr "Desarrollado por: "
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
@@ -1176,10 +1196,23 @@ msgid "Output location error"
 msgstr "Error de ubicación de salida"
 
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "El archivo de salida seleccionado ya existe "
 
 msgid "Would you like to overwrite it?"
+msgstr "¿Quiere sobreescribirlo?"
+
+msgid "Provided pages selection is not valid"
+msgstr "El orden de la selección de páginas no es válido"
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
 msgstr ""
+"Los límites han de ser una lista separada por comas de \"números_de_página\" "
+"o \"número_de_página-número_de_página\""
+
+msgid "Limits are not valid"
+msgstr "Los límites no son válidos"
 
 msgid "Checking for a new version available."
 msgstr "Revisando si existe una nueva versión disponible"
@@ -1201,112 +1234,3 @@ msgstr "Cortar"
 
 msgid "Paste"
 msgstr "Pegar"
-
-#~ msgid "Cover and Footer"
-#~ msgstr "Cubierta y pie"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#~ msgid "Split options:"
-#~ msgstr "Opciones de división:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#~ msgid "Destination folder:"
-#~ msgstr "Carpeta de destino:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:283
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-#~ msgid "Output options:"
-#~ msgstr "Opciones de destino"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-#~ msgid "Please wait while reading "
-#~ msgstr "Espere mientras el programa lee "
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:281
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Elimina todos los PDF de la lista"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:269
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#~ msgid "Footer pdf file:"
-#~ msgstr "Archivo de pie de página PDF"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:373
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Abrir archivo de portada"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:373
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "Abrir archivo de pie de página"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Busque o ingrese la ruta al directorio destino"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:146
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-#~ msgid "Source file:"
-#~ msgstr "Archivo de origen:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:152
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "Seleccionar un archivo PDF para encriptar"
-
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#~ msgid "Encryption angorithm:"
-#~ msgstr "Algoritmo de encriptación:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#~ msgid "Encrypt options:"
-#~ msgstr "Opciones de encriptación:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:152
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Selecciona un PDF para dividir"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-#~ msgid "Error:"
-#~ msgstr "Error:"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:248
-#~ msgid "Info"
-#~ msgstr "Información"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:373
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
-#~ msgid "Browse filesystem for a destination file"
-#~ msgstr "Busca un archivo de destino en su sistema"
-
-#~ msgid "Set a prefix for output files name"
-#~ msgstr "Define un prefijo para el nombre de los archivos de destino"
-
-#~ msgid "Split every ... pages"
-#~ msgstr "Divide cada ... páginas"
-
-#~ msgid "Page numbers you want to split after (num1-num2-num3..)"
-#~ msgstr "Números de página que desea dividir (num1-num2-num3...)"

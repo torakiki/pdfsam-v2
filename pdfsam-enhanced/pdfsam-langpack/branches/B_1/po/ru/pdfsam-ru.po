@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"POT-Creation-Date: 2009-05-29 16:50+0200\n"
 "PO-Revision-Date: 2009-03-21 08:57+0000\n"
 "Last-Translator: Maxim S. <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-23 17:32+0000\n"
+"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -36,8 +36,7 @@ msgid "Checked"
 msgstr "Проверено"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr ""
-"Использовать этот тип объединения для документов PDF, содержащих формы"
+msgstr "Использовать этот тип объединения для документов PDF, содержащих формы"
 
 msgid "Note"
 msgstr "Примечание"
@@ -228,12 +227,11 @@ msgid "Output files prefix"
 msgstr "Префикс конечных файлов"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Например: указав prefix_[BASENAME]_[CURRENTPAGE], будет создан "
 "prefix_FielName_005.pdf."
@@ -243,8 +241,7 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
 
 msgid "Invalid split size"
@@ -281,11 +278,11 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
-msgstr "Верхняя часть PDF-файла"
+msgid "Frontpage pdf file"
+msgstr ""
 
-msgid "Footer pdf file"
-msgstr "Нижняя часть PDF-файла"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Выберите хотябы одну верхнюю или нижнюю часть"
@@ -389,6 +386,19 @@ msgid "Reverse first document"
 msgstr ""
 
 msgid "Reverse second document"
+msgstr ""
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
 msgstr ""
 
 msgid "Found a password for first file."
@@ -716,8 +726,7 @@ msgid "Pdf version of the document"
 msgstr "Pdf версия документа"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:211
@@ -924,8 +933,8 @@ msgstr "Версия: "
 msgid "Language: "
 msgstr "Язык: "
 
-msgid "Author: "
-msgstr "Автор: "
+msgid "Developed by: "
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
@@ -1038,8 +1047,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Рабочий каталог по умолчанию:"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 msgid "Save"
@@ -1099,6 +1107,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -1119,51 +1138,3 @@ msgstr ""
 
 msgid "Paste"
 msgstr ""
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#~ msgid "Split options:"
-#~ msgstr "Параметры разбиения:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:283
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-#~ msgid "Output options:"
-#~ msgstr "Параметры вывода:"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-#~ msgid "Please wait while reading "
-#~ msgstr "Дождитесь завершения чтения "
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:146
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-#~ msgid "Source file:"
-#~ msgstr "Исходный файл:"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:289
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-#~ msgid "Destination output file:"
-#~ msgstr "Конечный файл:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:152
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Выберите файл PDF для разбиения"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-#~ msgid "Error:"
-#~ msgstr "Ошибка:"

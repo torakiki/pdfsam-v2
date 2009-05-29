@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -192,13 +192,10 @@ msgstr "Předpona výstupních souborů:"
 msgid "Output files prefix"
 msgstr "Předpona výstupních souborů"
 
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Pokud obsahuje \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" provede náhradu "
-"proměnných."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -212,10 +209,8 @@ msgstr ""
 "Pokud neobsahuje \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" generuje oldstyle "
 "názvy souborů."
 
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Dostupné proměnné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Chybná velikost rozdělování."
@@ -252,13 +247,11 @@ msgstr "Obrátit první dokument"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Titulní pdf soubor:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "PDF soubor zápatí:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Vyber nejméně jeden titulek nebo jedno zápatí."
@@ -372,6 +365,19 @@ msgstr "Obrátit první dokument"
 
 msgid "Reverse second document"
 msgstr "Obrátit druhý dokument"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Nalezeno heslo prvního souboru."
@@ -665,11 +671,8 @@ msgid "Pdf version of the document"
 msgstr "Verze pdf dokumentu"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dvojklikem nastavte stránky ke spojení (např. 2 nebo Vše nebo 5-23 nebo 2,5-"
-"7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Přidat PDF do seznamu"
@@ -827,8 +830,8 @@ msgstr "Verze: "
 msgid "Language: "
 msgstr "Jazyk: "
 
-msgid "Author: "
-msgstr "Autor: "
+msgid "Developed by: "
+msgstr ""
 
 msgid "Build date: "
 msgstr "Datum sestavení: "
@@ -1000,6 +1003,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Zjištění dostupnosti nové verze."
 
@@ -1021,6 +1035,37 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Umístění"
+
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Pokud obsahuje \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" provede náhradu "
+#~ "proměnných."
+
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr "Dostupné proměnné: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Titulní pdf soubor:"
+
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "PDF soubor zápatí:"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Dvojklikem nastavte stránky ke spojení (např. 2 nebo Vše nebo 5-23 nebo "
+#~ "2,5-7,12-)"
+
+#~ msgid "Author: "
+#~ msgstr "Autor: "
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Titulek a zápatí"

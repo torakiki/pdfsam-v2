@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -200,13 +200,10 @@ msgstr "Prefix dels fitxers de sortida:"
 msgid "Output files prefix"
 msgstr "Prefix dels fitxers de sortida"
 
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Si conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\"  efectua una substitució de "
-"variables."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_FileName_005.pdf."
@@ -219,10 +216,8 @@ msgstr ""
 "Si no conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera noms de fitxer de "
 "sortida de format antic."
 
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Variables disponibles: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Mida de divisió incorrecta"
@@ -259,13 +254,11 @@ msgstr "Inverteix el primer document"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Fitxer pdf de la pàgina coberta:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Fitxer pdf del peu de pàgina:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Selecciona com a mínim una pàgina de coberta i un peu de pàgina"
@@ -378,6 +371,19 @@ msgstr "Inverteix el primer document"
 
 msgid "Reverse second document"
 msgstr "Inverteix el segon document"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "S'ha trobat una contrassenya pel primer fitxer"
@@ -673,11 +679,8 @@ msgid "Pdf version of the document"
 msgstr "Versió pdf del document"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes o "
-"5-23 o 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Afegeix un pdf a la llista"
@@ -837,8 +840,8 @@ msgstr "Versió: "
 msgid "Language: "
 msgstr "Idioma: "
 
-msgid "Author: "
-msgstr "Autor/a: "
+msgid "Developed by: "
+msgstr ""
 
 msgid "Build date: "
 msgstr "Data de muntatge: "
@@ -1011,6 +1014,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Comprovant si hi ha noves versions disponibles."
 
@@ -1031,6 +1045,37 @@ msgstr "Retalla"
 
 msgid "Paste"
 msgstr "Enganxa"
+
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Si conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\"  efectua una substitució de "
+#~ "variables."
+
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr "Variables disponibles: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Fitxer pdf de la pàgina coberta:"
+
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "Fitxer pdf del peu de pàgina:"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes "
+#~ "o 5-23 o 2,5-7,12-)"
+
+#~ msgid "Author: "
+#~ msgstr "Autor/a: "
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Pàgina de coberta i peu de pàgina"

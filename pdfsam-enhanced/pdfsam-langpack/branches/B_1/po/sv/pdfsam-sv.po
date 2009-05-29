@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-20 18:39+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2009-02-09 19:22+0000\n"
 "Last-Translator: Susanna Björverud <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -257,14 +257,11 @@ msgid "Output files prefix"
 msgstr "Prefix på målfilnamn:"
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Om det innehåller \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller \"[FILENUMBER]\" "
-"så utförs variabelsubstituering."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Exempel. prefix_[BASENAME]_[CURRENTPAGE] skaparprefix_FileName_005.pdf."
 
@@ -275,10 +272,8 @@ msgstr ""
 "Om det inte innehåller \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller "
 "\"[FILENUMBER]\" generar det den gamla sortens filnamn för utdata."
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
-"Tillgängliga variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
 
 msgid "Invalid split size"
 msgstr "Ogiltig delningsstorlek."
@@ -287,8 +282,7 @@ msgid "The lowest available pdf version is "
 msgstr "Den lägsta tillgängliga versionen av pdf är "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-"Du har valt en lägre pdf-version på målfilen, vill du fortsätta ändå?"
+msgstr "Du har valt en lägre pdf-version på målfilen, vill du fortsätta ändå?"
 
 msgid "Pdf version conflict"
 msgstr "PDF-version konflikt"
@@ -316,10 +310,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
-msgstr "PDF-fil för omslag"
+msgid "Frontpage pdf file"
+msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -379,8 +373,7 @@ msgstr "Ända sidor och lägg till bokmärken"
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
-msgstr ""
-"Markera om du vill komprimera målfilerna (PDF version 1.5 eller högre)"
+msgstr "Markera om du vill komprimera målfilerna (PDF version 1.5 eller högre)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr "Om det innehåller \"[TIMESTAMP]\" blir ersättningen variabel."
@@ -426,6 +419,19 @@ msgstr "Vänd första dokumentet."
 
 msgid "Reverse second document"
 msgstr "Vänd andra dokumentet."
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Hittade ett lösenord för första filen."
@@ -549,8 +555,7 @@ msgstr "Avsnittet för visningsalternativ inläst."
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Spara lösenordsinformation (de blir läsbara vid öppning av målfilen)?"
+msgstr "Spara lösenordsinformation (de blir läsbara vid öppning av målfilen)?"
 
 msgid "Confirm password saving"
 msgstr "Bekräfta att lösenordet sparas."
@@ -759,11 +764,8 @@ msgid "Pdf version of the document"
 msgstr "Dokumentets pdf-version"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dubbelklicka för att välja sidor du vill slå samman (ex: 2 eller Alla eller "
-"5-23 eller 2,5-7,12-)"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:211
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -971,8 +973,8 @@ msgstr "Version: "
 msgid "Language: "
 msgstr "Språk: "
 
-msgid "Author: "
-msgstr "Upphovsman: "
+msgid "Developed by: "
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
@@ -1091,8 +1093,7 @@ msgstr "Välj en tidigare sparad miljö som laddas automatisk vid uppstart."
 msgid "Default working directory"
 msgstr "Förvald arbetsmapp"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Välj mapp där dokument ska sparas och laddas som standard"
 
 msgid "Save"
@@ -1152,6 +1153,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Söker efter nya uppdateringar."
 
@@ -1172,6 +1184,32 @@ msgstr "Klipp ut"
 
 msgid "Paste"
 msgstr "Klistra in"
+
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Om det innehåller \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller \"[FILENUMBER]"
+#~ "\" så utförs variabelsubstituering."
+
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr ""
+#~ "Tillgängliga variabler: [CURRENTPAGE], [TIMESTAMP], [BASENAME], "
+#~ "[FILENUMBER]."
+
+#~ msgid "Cover pdf file"
+#~ msgstr "PDF-fil för omslag"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Dubbelklicka för att välja sidor du vill slå samman (ex: 2 eller Alla "
+#~ "eller 5-23 eller 2,5-7,12-)"
+
+#~ msgid "Author: "
+#~ msgstr "Upphovsman: "
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386

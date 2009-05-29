@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-03-24 16:10+0000\n"
 "Last-Translator: dizzyk <hibaman@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -253,8 +253,8 @@ msgid "Output files prefix"
 msgstr ""
 
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
@@ -265,8 +265,7 @@ msgid ""
 "it generates oldstyle output file names."
 msgstr ""
 
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+msgid "Available variables"
 msgstr ""
 
 msgid "Invalid split size"
@@ -308,15 +307,11 @@ msgstr "Πρώτο pdf κείμενο:"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Αρχείο .pdf ως εξώφυλλο:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Αρχείο .pdf ως υποσμείωση:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -449,6 +444,19 @@ msgstr "Πρώτο pdf κείμενο:"
 #, fuzzy
 msgid "Reverse second document"
 msgstr "Δεύτερο pdf κείμενο:"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr ""
@@ -822,8 +830,7 @@ msgid "Pdf version of the document"
 msgstr "Πρώτο pdf κείμενο:"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -1048,7 +1055,7 @@ msgstr "Έκδοση: "
 msgid "Language: "
 msgstr "Γλώσσα: "
 
-msgid "Author: "
+msgid "Developed by: "
 msgstr ""
 
 msgid "Build date: "
@@ -1240,6 +1247,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -1264,6 +1282,16 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Θέση"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Αρχείο .pdf ως εξώφυλλο:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "Αρχείο .pdf ως υποσμείωση:"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-05-07 08:32+0000\n"
 "Last-Translator: Sefa Denizoğlu <denizoglu@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org.tr>\n"
@@ -299,12 +299,10 @@ msgstr "Çıktı dosyası adları ön eki:"
 msgid "Output files prefix"
 msgstr "Çıktı dosyaları ön eki"
 
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"\"[CURRENTPAGE]\" veya \"[TIMESTAMP]\" içeriyorsa değişken değeri kullanılır."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -318,10 +316,8 @@ msgid ""
 msgstr ""
 "\"[CURRENTPAGE]\" veya \"[TIMESTAMP]\" içermiyorsa eski usül dosya adı verir."
 
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Mevcut değişkenler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Geçersiz ayırma boyutu"
@@ -368,15 +364,11 @@ msgstr "İlk pdf belgesi:"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Kapak pdf dosyası:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Altlık pdf dosyası:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "En az bir başlık veya dipnot seçmelisiniz"
@@ -527,6 +519,19 @@ msgstr "Bu belgeyi tersine çevir"
 #, fuzzy
 msgid "Reverse second document"
 msgstr "Bu belgeyi tersine çevir"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr ""
@@ -926,8 +931,7 @@ msgid "Pdf version of the document"
 msgstr "Bu belgeyi tersine çevir"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -1171,7 +1175,7 @@ msgstr "Sürüm: "
 msgid "Language: "
 msgstr "Dil: "
 
-msgid "Author: "
+msgid "Developed by: "
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
@@ -1391,6 +1395,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr ""
 
@@ -1415,6 +1430,29 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Yol"
+
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "\"[CURRENTPAGE]\" veya \"[TIMESTAMP]\" içeriyorsa değişken değeri "
+#~ "kullanılır."
+
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr "Mevcut değişkenler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Kapak pdf dosyası:"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "Altlık pdf dosyası:"
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Başlık ve Dipnot"

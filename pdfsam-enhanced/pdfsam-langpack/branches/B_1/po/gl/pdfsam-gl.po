@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-23 18:53+0100\n"
+"POT-Creation-Date: 2009-05-23 18:24+0200\n"
 "PO-Revision-Date: 2008-06-25 23:29+0000\n"
 "Last-Translator: Susana Sotelo Docío <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -203,13 +203,10 @@ msgstr "Prefixo dos nomes de ficheiro de saída:"
 msgid "Output files prefix"
 msgstr "Prefixo dos ficheiros de saída"
 
-#, fuzzy
 msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-"performs variable substitution."
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Se contén \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\", realiza unha substitución de "
-"variabeis."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -223,10 +220,8 @@ msgstr ""
 "Se non contén \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\", xera ficheiros de saída "
 "con nomes co estilo vello."
 
-#, fuzzy
-msgid ""
-"Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-msgstr "Variábeis dispoñíbeis: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+msgid "Available variables"
+msgstr ""
 
 msgid "Invalid split size"
 msgstr "Tamaño de división non válido"
@@ -265,13 +260,11 @@ msgstr "Invertir o primeiro documento"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Ficheiro PDF para a portada:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Ficheiro PDF para a portada:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -386,6 +379,19 @@ msgstr "Invertir o primeiro documento"
 
 msgid "Reverse second document"
 msgstr "Invertir o segundo documento"
+
+msgid "Number of pages to switch document"
+msgstr ""
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
 
 msgid "Found a password for first file."
 msgstr "Atopouse un contrasinal para o primeiro ficheiro."
@@ -680,11 +686,8 @@ msgid "Pdf version of the document"
 msgstr "Versión do PDF do documento"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Faga dobre clic para escoller as páxinas que desexa unir (exemplo: 2 ou All "
-"ou 5-23 ou 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Engador un PDF á lista"
@@ -844,8 +847,8 @@ msgstr "Versión: "
 msgid "Language: "
 msgstr "Lingua: "
 
-msgid "Author: "
-msgstr "Autor: "
+msgid "Developed by: "
+msgstr ""
 
 msgid "Build date: "
 msgstr "Data de compilación: "
@@ -1014,6 +1017,17 @@ msgstr ""
 msgid "Would you like to overwrite it?"
 msgstr ""
 
+msgid "Provided pages selection is not valid"
+msgstr ""
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+
+msgid "Limits are not valid"
+msgstr ""
+
 msgid "Checking for a new version available."
 msgstr "Combrobamos se hai dispoñíbel unha versión máis recente."
 
@@ -1035,6 +1049,37 @@ msgstr ""
 #, fuzzy
 msgid "Paste"
 msgstr "Ruta"
+
+#, fuzzy
+#~ msgid ""
+#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
+#~ "performs variable substitution."
+#~ msgstr ""
+#~ "Se contén \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\", realiza unha substitución "
+#~ "de variabeis."
+
+#, fuzzy
+#~ msgid ""
+#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
+#~ msgstr "Variábeis dispoñíbeis: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
+
+#, fuzzy
+#~ msgid "Cover pdf file"
+#~ msgstr "Ficheiro PDF para a portada:"
+
+#, fuzzy
+#~ msgid "Footer pdf file"
+#~ msgstr "Ficheiro PDF para a portada:"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Faga dobre clic para escoller as páxinas que desexa unir (exemplo: 2 ou "
+#~ "All ou 5-23 ou 2,5-7,12-)"
+
+#~ msgid "Author: "
+#~ msgstr "Autor: "
 
 #~ msgid "Cover and Footer"
 #~ msgstr "Portada e pé de páxina"
