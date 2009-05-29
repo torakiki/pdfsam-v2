@@ -1,11 +1,18 @@
-1.1.3 () (pdfsam-console )
+1.1.3 (31-May-2009) (pdfsam-console 2.0.5e)
 ===================================
 -Document properties frame now opens in with normal size (not full screen)
 -Console: added the -step option to the mix command
 -Mix: added field to set the step option
 -Console: added complex prefix [BOOKMARK_NAME]
--Sound error in an Exception occurs before the execution of a command
+-Console: fixed rotation of even and odd pages in concat command.
+-Console: fixed bug #2789961 (stripped invalid chars when applying bookmark name as output file name)
+-Console: fixed bug #2789961 (Level 2 Bookmark Name not used on first page)
+-Error sound if an Exception occurs before the execution of a command
 -Console: optimized merge algorithm when merging a subset of a document.
+-Console: fixed bug #2794818 (added system properties: pdfsam.log.console.level, pdfsam.log.file.level, pdfsam.log.file.filename)
+-Examples and xsd documents included within the distribution
+-iText 2.1.5
+-Updated langpack
 
 1.1.2 (29-Mar-2009) (pdfsam-console 2.0.3e)
 ===================================

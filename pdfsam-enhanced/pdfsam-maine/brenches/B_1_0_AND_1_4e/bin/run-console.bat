@@ -21,13 +21,18 @@ goto SKIP_HOME_SET
 set JAVA=%JAVA_HOME%\bin\java
 
 :SKIP_HOME_SET
-set JAVA_OPTS= -Xmx256m -Dlog4j.configuration=console-log4j.xml
+set JAVA_OPTS=  -Xmx256m -Dlog4j.configuration=console-log4j.xml
 
 set CONSOLE_CLASSPATH=%CONSOLEJAR%
 
 echo ===============================================================================
 echo.
 echo   pdfsam console
+echo.
+echo   available properties:
+echo   pdfsam.log.console.level
+echo   pdfsam.log.file.level
+echo   pdfsam.log.file.filename
 echo.
 echo   JAVA: %JAVA%
 echo.
