@@ -97,6 +97,7 @@
     		<include name="pdfsam-console/ant/**/*.*"/>
     		<include name="pdfsam-console/etc/**/*.*"/>
     		<include name="pdfsam-console/bin/**/*.*"/>
+    		<include name="pdfsam-console/xsd/**/*.*"/>
     	</fileset>    	
     </zip>
   </target>
