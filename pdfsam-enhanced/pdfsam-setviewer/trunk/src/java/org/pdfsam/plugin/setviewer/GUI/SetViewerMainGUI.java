@@ -133,7 +133,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     final JLabel outPrefixLabel = new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.0.3e";  
+    private final String PLUGIN_VERSION = "0.0.4e";  
     
     public SetViewerMainGUI(){
     	initialize();
@@ -577,6 +577,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         setviewerOptionPanelLayout.putConstraint(SpringLayout.WEST, outPrefixLabel, 5, SpringLayout.WEST, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixTextField, 0, SpringLayout.SOUTH, outPrefixLabel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.WEST, outPrefixTextField, 10, SpringLayout.EAST, outPrefixLabel);
+        setviewerOptionPanelLayout.putConstraint(SpringLayout.EAST, outPrefixTextField, -30, SpringLayout.EAST, outputOptionsPanel);
         
         setviewerOptionPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
         setviewerOptionPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
