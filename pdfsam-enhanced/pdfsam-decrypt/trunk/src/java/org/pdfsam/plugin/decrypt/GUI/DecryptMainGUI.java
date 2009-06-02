@@ -45,6 +45,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
+import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
@@ -73,21 +74,26 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 
 	private static final long serialVersionUID = -3486940947325560929L;
 
-
-	private static final Logger log = Logger.getLogger(DecryptMainGUI.class.getPackage().getName());
-	
+	private static final Logger log = Logger.getLogger(DecryptMainGUI.class.getPackage().getName());	
 	
 	private SpringLayout destinationPanelLayout;
-	private JPanel destinationPanel = new JPanel();
+	private SpringLayout outputOptionsPanelLayout;
+	private final JPanel destinationPanel = new JPanel();
+	private final JPanel topPanel = new JPanel();
+	private final JPanel outputOptionsPanel = new JPanel();
 	private JPdfSelectionPanel selectionPanel = new JPdfSelectionPanel(JPdfSelectionPanel.UNLIMTED_SELECTABLE_FILE_NUMBER, AbstractPdfSelectionTableModel.DEFAULT_SHOWED_COLUMNS_NUMBER, true, false);
 	private final JCheckBox overwriteCheckbox = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.OVERWRITE_CHECKBOX_TYPE);
     private final JCheckBox outputCompressedCheck = CommonComponentsFactory.getInstance().createCheckBox(CommonComponentsFactory.COMPRESS_CHECKBOX_TYPE);
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
+	private JTextField outPrefixTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
+	private JHelpLabel prefixHelpLabel;
 	private Configuration config;
 	private JFileChooser browseDirChooser;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
+	
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
+    private final JLabel outPrefixLabel = new JLabel();
 
 	private final DecryptFocusPolicy decryptFocusPolicy = new DecryptFocusPolicy();
 	//buttons
@@ -98,7 +104,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.2e";
+	private static final String PLUGIN_VERSION = "0.0.3e";
 	
 	/**
 	 * Constructor
@@ -115,15 +121,17 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         
         setLayout(new GridBagLayout());
         
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.ipady = 5;
-        c.weightx = 1.0;
-        c.weighty = 1.0;
-        c.gridwidth = 3;
-        c.gridx = 0;
-        c.gridy = 0;
-		add(selectionPanel, c);
+        topPanel.setLayout(new GridBagLayout());
+        GridBagConstraints topConst = new GridBagConstraints();
+        topConst.fill = GridBagConstraints.BOTH;
+        topConst.ipady = 5;
+        topConst.weightx = 1.0;
+        topConst.weighty = 1.0;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 2;
+        topConst.gridx = 0;
+        topConst.gridy = 0;
+		topPanel.add(selectionPanel, topConst);
 		
 		selectionPanel.addPropertyChangeListener(this);
 		selectionPanel.enableSetOutputPathMenuItem();
@@ -136,19 +144,29 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanel.setBorder(titledBorder);
 		destinationPanel.setPreferredSize(new Dimension(200, 160));
 		destinationPanel.setMinimumSize(new Dimension(160, 150));
-		
-		c.fill = GridBagConstraints.HORIZONTAL;
-	    c.ipady = 5;
-	    c.weightx = 1.0;
-	    c.weighty = 0.0;
-	    c.gridwidth = 3;
-	    c.gridx = 0;
-	    c.gridy = 1;		
-		add(destinationPanel, c);
+
 //		END_DESTINATION_PANEL   
       
 		destinationPanel.add(destinationTextField);
+		topConst.fill = GridBagConstraints.HORIZONTAL;
+        topConst.weightx = 0.0;
+        topConst.weighty = 0.0;
+        topConst.gridwidth = 3;
+        topConst.gridheight = 1;
+        topConst.gridx = 0;
+        topConst.gridy = 2;
+        topPanel.add(destinationPanel, topConst);
+        
 		
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.ipady = 5;
+        c.weightx = 1.0;
+        c.weighty = 1.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+		add(topPanel, c);
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -197,6 +215,38 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 	
+	    outputOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Output options")));
+        outputOptionsPanel.setPreferredSize(new Dimension(200, 55));
+        outputOptionsPanel.setMinimumSize(new Dimension(160, 50));
+        outputOptionsPanelLayout = new SpringLayout();
+        outputOptionsPanel.setLayout(outputOptionsPanelLayout);
+        
+        outPrefixLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output file names prefix:"));
+        outputOptionsPanel.add(outPrefixLabel);
+        
+        outputOptionsPanel.add(outPrefixTextField);
+//END_S_PANEL
+//      HELP_LABEL_PREFIX       
+        String helpTextPrefix = 
+    		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Output files prefix")+"</b>" +
+    		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it contains \"[TIMESTAMP]\" it performs variable substitution.")+"</p>"+
+    		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf.")+"</p>"+
+    		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file names.")+"</p>"+
+    		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Available variables: [TIMESTAMP], [BASENAME].")+"</p>"+
+    		"</body></html>";
+	    prefixHelpLabel = new JHelpLabel(helpTextPrefix, true);
+	    outputOptionsPanel.add(prefixHelpLabel);
+//END_HELP_LABEL_PREFIX   
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 5;
+	    c.weightx = 1.0;
+	    c.weighty = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;		
+		add(outputOptionsPanel, c);
+		
 //		RUN_BUTTON
 		runButton.addActionListener(new ActionListener() {            
 			public void actionPerformed(ActionEvent e) {
@@ -242,7 +292,9 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	                    if (outputCompressedCheck.isSelected()) {
 	                    	args.add("-"+DecryptParsedCommand.COMPRESSED_ARG); 
 	                    }
-
+	                    
+	                    args.add("-"+EncryptParsedCommand.P_ARG);
+	                    args.add(outPrefixTextField.getText());
 	                    args.add("-"+DecryptParsedCommand.PDFVERSION_ARG);
 						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
 						
@@ -316,7 +368,17 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, browseButton, -88, SpringLayout.EAST, browseButton);        
 
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationHelpLabel, -1, SpringLayout.SOUTH, destinationPanel);
-        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);                
+        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationHelpLabel, -1, SpringLayout.EAST, destinationPanel);   
+        
+        outputOptionsPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixLabel, 20, SpringLayout.NORTH, outputOptionsPanel);
+        outputOptionsPanelLayout.putConstraint(SpringLayout.NORTH, outPrefixLabel, 5, SpringLayout.NORTH, outputOptionsPanel);
+        outputOptionsPanelLayout.putConstraint(SpringLayout.WEST, outPrefixLabel, 5, SpringLayout.WEST, outputOptionsPanel);
+        outputOptionsPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixTextField, 0, SpringLayout.SOUTH, outPrefixLabel);
+        outputOptionsPanelLayout.putConstraint(SpringLayout.WEST, outPrefixTextField, 10, SpringLayout.EAST, outPrefixLabel);
+        outputOptionsPanelLayout.putConstraint(SpringLayout.EAST, outPrefixTextField, -30, SpringLayout.EAST, outputOptionsPanel);
+        
+        outputOptionsPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
+        outputOptionsPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
 
 	}
 
