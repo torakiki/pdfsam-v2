@@ -1,3 +1,7 @@
+1.5.4e () ()
+===================================
+-Decrypt: added the prefix field.
+
 1.5.3e (31-May-2009) (pdfsam-console 2.0.5e)
 ===================================
 -Document properties frame now opens in with normal size (not full screen)

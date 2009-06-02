@@ -504,9 +504,8 @@ public class JPdfSelectionPanel extends JPanel {
      * @param button
      */
     private void addButtonToButtonPanel(JButton button){
-    	button.setMinimumSize(new Dimension(90, 25));
-    	button.setMaximumSize(new Dimension(100, 25));
-    	button.setPreferredSize(new Dimension(95, 25));
+    	button.setMinimumSize(new Dimension(110, 25));
+    	button.setMaximumSize(new Dimension(160, 25));
     	buttonPanel.add(button);
 		buttonPanel.add(Box.createRigidArea(new Dimension(0,5)));
     }
