@@ -27,12 +27,13 @@ import org.pdfsam.guiclient.utils.PdfVersionUtility;
  */
 public class PdfSelectionTableItem implements Serializable{
 
-	private static final long serialVersionUID = 2000606807163108571L;
+	private static final long serialVersionUID = 7190628784577648811L;
 
 	private File inputFile;
 	private String pagesNumber;
 	private String pageSelection;
 	private boolean encrypted;
+	private boolean fullPermission;
 	private String encryptionAlgorithm;
 	private String permissions;
 	private long fileSize = 0;
@@ -46,7 +47,7 @@ public class PdfSelectionTableItem implements Serializable{
 	 * Default values
 	 */
 	public PdfSelectionTableItem() {
-		this(null, "0", "All", false, ' ');
+		this(null, "0", "All", false, true, ' ');
 	}
 	
 	/**
@@ -54,11 +55,12 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param pagesNumber
 	 * @param pageSelection
 	 * @param encrypted
+	 * @param fullPermission
 	 * @param password
 	 * @param loadedWithErrors
 	 * @param syntaxErrors
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password, boolean loadedWithErrors, boolean syntaxErrors) {
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, boolean fullPermission, char pdfVersion, String password, boolean loadedWithErrors, boolean syntaxErrors) {
 		super();
 		this.inputFile = inputFile;
 		this.pagesNumber = pagesNumber;
@@ -69,6 +71,7 @@ public class PdfSelectionTableItem implements Serializable{
 		this.password = password;
 		this.loadedWithErrors = loadedWithErrors;
 		this.syntaxErrors = syntaxErrors;
+		this.fullPermission = fullPermission;
 	}
 
 	/**
@@ -79,8 +82,8 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param encrypted
 	 * @param password
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, char pdfVersion, String password) {
-		this(inputFile, pagesNumber, pageSelection, encrypted, pdfVersion, password, false, false);
+	public PdfSelectionTableItem(File inputFile, String pagesNumber, String pageSelection, boolean encrypted, boolean fullPermission, char pdfVersion, String password) {
+		this(inputFile, pagesNumber, pageSelection, encrypted, fullPermission, pdfVersion, password, false, false);
 	}
 	/**
 	 * No password given
@@ -90,8 +93,8 @@ public class PdfSelectionTableItem implements Serializable{
 	 * @param pageSelection
 	 * @param encrypted
 	 */
-	public PdfSelectionTableItem(File inputFile, String pagesNumber,String pageSelection, boolean encrypted, char pdfVersion) {
-		this(inputFile, pagesNumber, pageSelection, encrypted, pdfVersion, null);
+	public PdfSelectionTableItem(File inputFile, String pagesNumber,String pageSelection, boolean encrypted, boolean fullPermission, char pdfVersion) {
+		this(inputFile, pagesNumber, pageSelection, encrypted, fullPermission, pdfVersion, null);
 	}
 
 	/**
@@ -270,10 +273,26 @@ public class PdfSelectionTableItem implements Serializable{
 	public void setDocumentInfo(DocumentData documentInfo) {
 		this.documentInfo = documentInfo;
 	}
+		
 
+	/**
+	 * @return the fullPermission
+	 */
+	public boolean isFullPermission() {
+		return fullPermission;
+	}
+
+	/**
+	 * @param fullPermission the fullPermission to set
+	 */
+	public void setFullPermission(boolean fullPermission) {
+		this.fullPermission = fullPermission;
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -281,6 +300,7 @@ public class PdfSelectionTableItem implements Serializable{
 		result = prime * result + (encrypted ? 1231 : 1237);
 		result = prime * result + ((encryptionAlgorithm == null) ? 0 : encryptionAlgorithm.hashCode());
 		result = prime * result + (int) (fileSize ^ (fileSize >>> 32));
+		result = prime * result + (fullPermission ? 1231 : 1237);
 		result = prime * result + ((inputFile == null) ? 0 : inputFile.hashCode());
 		result = prime * result + (loadedWithErrors ? 1231 : 1237);
 		result = prime * result + ((pageSelection == null) ? 0 : pageSelection.hashCode());
@@ -296,6 +316,7 @@ public class PdfSelectionTableItem implements Serializable{
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -317,6 +338,8 @@ public class PdfSelectionTableItem implements Serializable{
 		} else if (!encryptionAlgorithm.equals(other.encryptionAlgorithm))
 			return false;
 		if (fileSize != other.fileSize)
+			return false;
+		if (fullPermission != other.fullPermission)
 			return false;
 		if (inputFile == null) {
 			if (other.inputFile != null)
@@ -356,9 +379,6 @@ public class PdfSelectionTableItem implements Serializable{
 			return false;
 		return true;
 	}
-	
-
-	
 
 	/**
 	 * Model for the document metadata

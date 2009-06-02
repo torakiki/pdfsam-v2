@@ -267,6 +267,7 @@ public class PdfLoader {
                     //fix 04/11/08 for memory usage
                 	 pdfReader = new PdfReader(new RandomAccessFileOrArray(fileToAdd.getAbsolutePath()), (password != null)?password.getBytes():null);                	
                      tableItem.setEncrypted(pdfReader.isEncrypted());
+                     tableItem.setFullPermission(pdfReader.isOpenedWithFullPermissions());
                      if(tableItem.isEncrypted()){
                      	tableItem.setPermissions(getPermissionsVerbose(pdfReader.getPermissions()));
                      	int cMode = pdfReader.getCryptoMode();

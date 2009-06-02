@@ -25,6 +25,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
 
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
+import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.i18n.GettextResource;
 /**
  * Renderer to show red background in rows loaded with errors
  * @author Andrea Vacondio
@@ -38,8 +40,11 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		setOpaque(true);
 		setIcon(null);
 		setFont(table.getFont());
+		setToolTipText("");
 		boolean loadedWithErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
 		boolean syntaxErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isSyntaxErrors();
+		boolean fullPermission = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isFullPermission();
+		boolean encrypted = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted();
 		//rowheader
 		if (column == AbstractPdfSelectionTableModel.ROW_NUM){
 			setFont(table.getTableHeader().getFont());
@@ -47,31 +52,21 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 			setForeground(table.getTableHeader().getForeground());			
 		}else{
 			if(isSelected){
-	          setForeground(table.getSelectionForeground());
-	          if(loadedWithErrors){
-	        	  setBackground(new Color(222,189,189));
-	        	  if (column == AbstractPdfSelectionTableModel.FILENAME){
-	        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
-	        	  }
-	          }else if(syntaxErrors){
-	        	  setBackground(Color.YELLOW);
-	          }else{
-	        	  setBackground(table.getSelectionBackground());
-	          }          
+	          setForeground(table.getSelectionForeground()); 
+	          setBackground(table.getSelectionBackground());
 	        }
 	        else{
 	          setForeground(table.getForeground());
-	          if(loadedWithErrors){
-	        	  setBackground(new Color(222,189,189));
-	        	  if (column == AbstractPdfSelectionTableModel.FILENAME){
-	        		  setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
-	        	  }
-	          }else if(syntaxErrors){
-	        	  setBackground(Color.YELLOW);
-	          }else{
-	        	  setBackground(table.getBackground());
-	          }
+	          setBackground(table.getBackground()); 
 	        }
+			if(loadedWithErrors){
+				setBackground(new Color(222,189,189));
+				if (column == AbstractPdfSelectionTableModel.FILENAME){
+					setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
+				}
+			}else if(syntaxErrors || !fullPermission){
+				setBackground(Color.YELLOW);
+			}
 		}
 		//value
 		if (column == AbstractPdfSelectionTableModel.PASSWORD){
@@ -89,7 +84,7 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		}
 		//encrypt icon
 		if (column == AbstractPdfSelectionTableModel.FILENAME){
-			if(((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isEncrypted()){
+			if(encrypted){
 			   setIcon(new ImageIcon(this.getClass().getResource("/images/encrypted.png")));
 		   	}
 		}
@@ -103,7 +98,23 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 			    setBorder(new EmptyBorder(1, 1, 1, 1));
 			}     
 		}   
-
+		
+		//tooltip messages
+		if(syntaxErrors || !fullPermission || loadedWithErrors){
+			String toolTip = "<html><body>";
+			if(syntaxErrors){
+				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The cross reference table cantained some error and has been rebuilt")+".";				
+			}
+			if(!fullPermission){
+				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The document has not been opened with the owner password. You must provide the owner password in order to manipulate the document")+".";							
+			}
+			if(loadedWithErrors){
+				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"An error occured while loading the document")+".";
+			}
+    		toolTip +="</body></html>";
+			setToolTipText(toolTip);
+		}
+		
         return this;		
 	}
 
