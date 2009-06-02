@@ -9,6 +9,7 @@
 -VComposer, VReorder: enlarged buttons to fit translations (feature request #2793954)
 -Console: fixed bug #2794818 (added system properties: pdfsam.log.console.level, pdfsam.log.file.level, pdfsam.log.file.filename)
 -Examples and xsd documents included within the distribution
+-Decrypt: added the prefix field.
 -Updated langpack
 
 2.0.0e-beta (10-May-2009) (pdfsam-console 2.0.4e)

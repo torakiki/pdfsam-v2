@@ -111,7 +111,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private Configuration config;
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private static final String PLUGIN_VERSION = "0.0.8e";
+    private static final String PLUGIN_VERSION = "0.0.9e";
     
 /**
  * Constructor
@@ -126,7 +126,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     	config = Configuration.getInstance();
     	fileChooser = new JFileChooser(config.getDefaultWorkingDir());
         setPanelIcon("/images/settings.png");
-        setPreferredSize(new Dimension(400,450));
+        setPreferredSize(new Dimension(400,460));
 
         settingsLayout = new SpringLayout();
         setLayout(settingsLayout);
@@ -455,7 +455,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
      */
     private void setLayout(){
 //      LAYOUT
-        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 330, SpringLayout.NORTH, this);
+        settingsLayout.putConstraint(SpringLayout.SOUTH, settingsOptionsPanel, 350, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.EAST, settingsOptionsPanel, -5, SpringLayout.EAST, this);
         settingsLayout.putConstraint(SpringLayout.NORTH, settingsOptionsPanel, 5, SpringLayout.NORTH, this);
         settingsLayout.putConstraint(SpringLayout.WEST, settingsOptionsPanel, 5, SpringLayout.WEST, this);
