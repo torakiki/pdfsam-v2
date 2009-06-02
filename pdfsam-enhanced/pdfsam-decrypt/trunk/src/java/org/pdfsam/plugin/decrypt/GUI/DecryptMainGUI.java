@@ -223,7 +223,8 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         
         outPrefixLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Output file names prefix:"));
         outputOptionsPanel.add(outPrefixLabel);
-        
+       
+        outPrefixTextField.setPreferredSize(new Dimension(180,20));
         outputOptionsPanel.add(outPrefixTextField);
 //END_S_PANEL
 //      HELP_LABEL_PREFIX       
@@ -437,6 +438,9 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				
 				Element pdfVersion = ((Element)arg0).addElement("pdfversion");
 				pdfVersion.addAttribute("value", ((StringItem)versionCombo.getSelectedItem()).getId());
+				
+				Element filePrefix = ((Element)arg0).addElement("prefix");
+				filePrefix.addAttribute("value", outPrefixTextField.getText());
 
 			}
 			return arg0;
@@ -474,6 +478,11 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
 			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
 				outputCompressedCheck.doClick();
+			}
+			
+			Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
+			if (filePrefix != null){
+				outPrefixTextField.setText(filePrefix.getText());
 			}
 			
 			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
@@ -526,6 +535,9 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				return versionCombo;
 			}            
 			else if (aComponent.equals(versionCombo)){
+				return outPrefixTextField;
+			}            
+			else if (aComponent.equals(outPrefixTextField)){
 				return runButton;
 			}            
 			else if (aComponent.equals(runButton)){
@@ -537,6 +549,9 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		public Component getComponentBefore(Container CycleRootComp, Component aComponent){
 
 			if (aComponent.equals(runButton)){
+				return outPrefixTextField;
+			}
+			else if (aComponent.equals(outPrefixTextField)){
 				return versionCombo;
 			}
 			else if (aComponent.equals(versionCombo)){
