@@ -1,6 +1,7 @@
 1.5.4e () ()
 ===================================
 -Decrypt: added the prefix field.
+-Row tool tip in pdf selection table in case of errors or warning
 
 1.5.3e (31-May-2009) (pdfsam-console 2.0.5e)
 ===================================

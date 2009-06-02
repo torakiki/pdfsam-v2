@@ -1,3 +1,7 @@
+1.1.4 () ()
+===================================
+-Row tool tip in pdf selection table in case of errors or warning
+
 1.1.3 (31-May-2009) (pdfsam-console 2.0.5e)
 ===================================
 -Document properties frame now opens in with normal size (not full screen)
