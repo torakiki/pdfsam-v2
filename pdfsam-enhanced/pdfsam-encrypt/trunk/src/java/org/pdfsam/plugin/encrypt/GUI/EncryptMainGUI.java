@@ -127,10 +127,10 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     private final JPanel fieldsPanel = new JPanel();
     
 //labels    
-    final JLabel outPrefixLabel = new JLabel();
-    final JLabel ownerPwdLabel = new JLabel();
-    final JLabel userPwdLabel = new JLabel();
-    final JLabel encryptTypeLabel = new JLabel();
+    private final JLabel outPrefixLabel = new JLabel();
+    private final JLabel ownerPwdLabel = new JLabel();
+    private final JLabel userPwdLabel = new JLabel();
+    private final JLabel encryptTypeLabel = new JLabel();
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
@@ -571,8 +571,8 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				Element fileDestination = ((Element)arg0).addElement("destination");
 				fileDestination.addAttribute("value", destFolderText.getText());				
 				
-				Element file_prefix = ((Element)arg0).addElement("prefix");
-				file_prefix.addAttribute("value", outPrefixTextField.getText());
+				Element filePrefix = ((Element)arg0).addElement("prefix");
+				filePrefix.addAttribute("value", outPrefixTextField.getText());
 				
 				Element fileOverwrite = ((Element)arg0).addElement("overwrite");
 				fileOverwrite.addAttribute("value", overwriteCheckbox.isSelected()?TRUE:FALSE);
@@ -730,6 +730,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptPanelLayout.putConstraint(SpringLayout.WEST, outPrefixLabel, 5, SpringLayout.WEST, outputOptionsPanel);
         encryptPanelLayout.putConstraint(SpringLayout.SOUTH, outPrefixTextField, 0, SpringLayout.SOUTH, outPrefixLabel);
         encryptPanelLayout.putConstraint(SpringLayout.WEST, outPrefixTextField, 10, SpringLayout.EAST, outPrefixLabel);
+        encryptPanelLayout.putConstraint(SpringLayout.EAST, outPrefixTextField, -30, SpringLayout.EAST, outputOptionsPanel);
         
         encryptPanelLayout.putConstraint(SpringLayout.SOUTH, prefixHelpLabel, -1, SpringLayout.SOUTH, outputOptionsPanel);
         encryptPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
