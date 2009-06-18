@@ -10,7 +10,8 @@
 -Console: fixed bug #2794818 (added system properties: pdfsam.log.console.level, pdfsam.log.file.level, pdfsam.log.file.filename)
 -Examples and xsd documents included within the distribution
 -Decrypt: added the prefix field.
--Row tool tip in pdf selection table in case of errors or warning
+-Row tool tip in pdf selection table in case of errors or warnings
+-iText 2.1.6
 -Updated langpack
 
 2.0.0e-beta (10-May-2009) (pdfsam-console 2.0.4e)

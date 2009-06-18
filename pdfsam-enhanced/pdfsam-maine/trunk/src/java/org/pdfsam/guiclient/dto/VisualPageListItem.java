@@ -31,8 +31,8 @@ public class VisualPageListItem implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 7598120284619680606L;
 	
-	private BufferedImage thumbnail = ImageUtility.getHourglassImage();
-	private BufferedImage rotatedThumbnail = null;
+	private transient BufferedImage thumbnail = ImageUtility.getHourglassImage();
+	private transient BufferedImage rotatedThumbnail = null;
 	private int pageNumber;
 	private boolean deleted = false;
 	private String parentFileCanonicalPath = "";
@@ -344,25 +344,13 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	}
 
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
-		out.writeInt(pageNumber);
-		out.writeBoolean(deleted);
-		out.writeObject(parentFileCanonicalPath);
-		out.writeObject(documentPassword);
-		out.writeObject(rotation);
-		out.writeObject(originalRotation);
-		out.writeObject(paperFormat);
+		out.defaultWriteObject();
 		out.writeObject(ImageUtility.toByteArray(thumbnail));
 		out.writeObject(ImageUtility.toByteArray(rotatedThumbnail));
 	}
 
 	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
-		pageNumber = in.readInt();
-		deleted = in.readBoolean();
-		parentFileCanonicalPath = (String) in.readObject();
-		documentPassword = (String) in.readObject();
-		rotation = (Rotation) in.readObject();
-		originalRotation = (Rotation) in.readObject();
-		paperFormat = (String) in.readObject();
+		in.defaultReadObject();
 		thumbnail = ImageUtility.fromByteArray((byte[]) in.readObject());
 		rotatedThumbnail = ImageUtility.fromByteArray((byte[]) in.readObject());
 	}
