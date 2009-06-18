@@ -91,7 +91,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.6e";
+	private static final String PLUGIN_VERSION = "0.0.7e";
 	
 	/**
 	 * Constructor
@@ -120,6 +120,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		
 		selectionPanel.addPropertyChangeListener(this);
 		selectionPanel.enableSetOutputPathMenuItem();
+		selectionPanel.setFullAccessRequired(false);
 		
 
 //		DESTINATION_PANEL
