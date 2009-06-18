@@ -36,11 +36,31 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 
 	private static final long serialVersionUID = -4780112050203181493L;
 
+	private boolean fullAccessRequired = true;
+	
+	public JPdfSelectionTableRenderer() {
+	}
+
+	/**
+	 * @param fullAccessRequired
+	 */
+	public JPdfSelectionTableRenderer(boolean fullAccessRequired) {
+		super();
+		this.fullAccessRequired = fullAccessRequired;
+	}
+
+	/**
+	 * @return the fullAccessRequired
+	 */
+	public boolean isFullAccessRequired() {
+		return fullAccessRequired;
+	}
+	
 	public Component getTableCellRendererComponent( JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
 		setOpaque(true);
 		setIcon(null);
 		setFont(table.getFont());
-		setToolTipText("");
+		setToolTipText(null);
 		boolean loadedWithErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isLoadedWithErrors();
 		boolean syntaxErrors = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isSyntaxErrors();
 		boolean fullPermission = ((AbstractPdfSelectionTableModel)table.getModel()).getRow(row).isFullPermission();
@@ -64,7 +84,7 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 				if (column == AbstractPdfSelectionTableModel.FILENAME){
 					setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
 				}
-			}else if(syntaxErrors || !fullPermission){
+			}else if(syntaxErrors || !(fullAccessRequired&&fullPermission)){
 				setBackground(Color.YELLOW);
 			}
 		}
@@ -100,12 +120,12 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		}   
 		
 		//tooltip messages
-		if(syntaxErrors || !fullPermission || loadedWithErrors){
+		if(syntaxErrors || !(fullAccessRequired&&fullPermission)  || loadedWithErrors){
 			String toolTip = "<html><body>";
 			if(syntaxErrors){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The cross reference table cantained some error and has been rebuilt")+".";				
 			}
-			if(!fullPermission){
+			if(!(fullAccessRequired&&fullPermission) ){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The document has not been opened with the owner password. You must provide the owner password in order to manipulate the document")+".";							
 			}
 			if(loadedWithErrors){

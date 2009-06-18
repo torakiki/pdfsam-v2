@@ -689,4 +689,12 @@ public class JPdfSelectionPanel extends JPanel {
     		popupMenu.add(menuItem);
     	}
     }
+    
+    /**
+     * If true, the selection table default renderer will show a tooltip message when the document is not opened with full permissions 
+     * @param required
+     */
+    public void setFullAccessRequired(boolean required){
+    	mainTable.setDefaultRenderer(String.class, new JPdfSelectionTableRenderer(required));
+    }
 }
