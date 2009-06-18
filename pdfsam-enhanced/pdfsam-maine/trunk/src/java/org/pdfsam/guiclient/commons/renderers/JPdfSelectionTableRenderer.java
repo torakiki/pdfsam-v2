@@ -92,7 +92,7 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 				if (column == AbstractPdfSelectionTableModel.FILENAME){
 					setIcon(new ImageIcon(this.getClass().getResource("/images/erroronload.png")));
 				}
-			}else if(syntaxErrors || !(fullAccessRequired&&fullPermission)){
+			}else if(syntaxErrors || (fullAccessRequired && !fullPermission)){
 				setBackground(Color.YELLOW);
 			}
 		}
@@ -128,12 +128,12 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		}   
 		
 		//tooltip messages
-		if(syntaxErrors || !(fullAccessRequired&&fullPermission) || loadedWithErrors){
+		if(syntaxErrors || (fullAccessRequired && !fullPermission) || loadedWithErrors){
 			String toolTip = "<html><body>";
 			if(syntaxErrors){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The cross reference table cantained some error and has been rebuilt")+".";				
 			}
-			if(!(fullAccessRequired&&fullPermission) ){
+			if((fullAccessRequired && !fullPermission) ){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The document has not been opened with the owner password. You must provide the owner password in order to manipulate the document")+".";							
 			}
 			if(loadedWithErrors){
