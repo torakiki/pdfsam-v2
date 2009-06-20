@@ -1,4 +1,4 @@
-2.0.0e-beta2 (31-May-2009) (pdfsam-console 2.0.5e)
+2.0.0e-release candidate 1 (21-Jun-2009) (pdfsam-console 2.0.5e)
 ===================================
 -Fixed GUI interactivity when generating thumbnails.
 -New concurrent thumbnails generation model. 
