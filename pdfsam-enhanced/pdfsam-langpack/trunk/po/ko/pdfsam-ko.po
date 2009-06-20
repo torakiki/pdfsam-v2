@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-06-24 09:30+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:30+0000\n"
 "Last-Translator: sanghyun lee <joohi@hanafos.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-17 09:24+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "Merge options:"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "폼을 포함한 PDF 문서"
@@ -70,9 +69,8 @@ msgstr "출력 문서의 PDF 버전 설정."
 msgid "Please wait while all files are processed.."
 msgstr "모든 파일이 처리될 동안 잠시 기다리세요."
 
-#, fuzzy
 msgid "Found a password for input file."
-msgstr "입력 파일 암호 발견."
+msgstr ""
 
 msgid "Please select at least one pdf document."
 msgstr ""
@@ -146,17 +144,14 @@ msgstr "문서를 각 홀수 페이지로 분할"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "문서를 페이지 번호이후 분할 (num1-num2-num3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "문서를 (대략의) 크기로 분할."
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "문서를 (대략의) 크기로 분할."
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "대상 폴더:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "원본과 동일"
@@ -180,9 +175,8 @@ msgid ""
 "exist."
 msgstr "출력 파일이 이미 있을 경우 덮어쓰기를 원하면 선택하세요."
 
-#, fuzzy
 msgid "Output options"
-msgstr "출력 옵션:"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "출력 파일명 접두어:"
@@ -199,13 +193,10 @@ msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "예. prefix_[BASENAME]_[CURRENTPAGE]는 prefix_FileName_005.pdf로 됩니다."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"\"[CURRENTPAGE]\" 또는 \"[TIMESTAMP]\"를 포함하고 있지 않으면 예전 스타일의 "
-"출력 파일 이름을 생성합니다."
 
 msgid "Available variables"
 msgstr ""
@@ -243,13 +234,11 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "표지 PDF 파일:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "표지 PDF 파일:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -260,9 +249,8 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "분할 옵션"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "소유자 암호:"
@@ -336,20 +324,17 @@ msgstr ""
 msgid "Encrypt section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "선택된 파일 분할"
+msgstr ""
 
 msgid "Decrypt"
 msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "읽은 영역 병합."
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "분할 옵션"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr ""
@@ -397,9 +382,8 @@ msgstr ""
 msgid "Unpack section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "분할 옵션"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -419,9 +403,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "PDF 버전 충돌"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -438,13 +421,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "분할 옵션"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "선택된 파일 분할"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -452,9 +433,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "노트"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -465,9 +445,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "폼을 포함한 PDF 문서"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -490,13 +469,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "Merge options:"
+msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "읽은 영역 병합."
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -561,22 +538,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -604,6 +578,9 @@ msgid "Error loading environment from input file. "
 msgstr ""
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -675,6 +652,17 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr ""
 
@@ -703,8 +691,7 @@ msgid "Pdf version of the document"
 msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 msgid "Add a pdf to the list"
@@ -956,6 +943,9 @@ msgstr ""
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr ""
 
@@ -1043,6 +1033,9 @@ msgstr ""
 msgid "Version: "
 msgstr ""
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr ""
 
@@ -1091,6 +1084,9 @@ msgstr ""
 msgid "Check for updates:"
 msgstr ""
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr ""
 
@@ -1132,6 +1128,9 @@ msgid "Check for updates"
 msgstr ""
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1237,25 +1236,3 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-#, fuzzy
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "\"[CURRENTPAGE]\" 또는 \"[TIMESTAMP]\"를 포함하고 있으면 변수 치환을 합니"
-#~ "다."
-
-#, fuzzy
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr "사용가능한 변수: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-#~ msgid "Destination output file:"
-#~ msgstr "출력 파일:"
-
-#~ msgid "Split options:"
-#~ msgstr "분할 옵션:"
-
-#~ msgid "Select an input file"
-#~ msgstr "입력 파일 선택"

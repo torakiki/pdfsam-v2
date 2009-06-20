@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-06-02 15:43+0000\n"
-"Last-Translator: lameiro <lameiro@macinhata.net>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:36+0000\n"
+"Last-Translator: lameiro <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "Opções de concatenação:"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "Documentos PDF contém formulários"
@@ -30,13 +29,11 @@ msgstr "Opções de concatenação"
 msgid "Unchecked"
 msgstr "desseleccionado"
 
-#, fuzzy
 msgid "Use this merge type for standard pdf documents"
-msgstr "Use este tipo de concatenação para documentos pdf standard"
+msgstr ""
 
-#, fuzzy
 msgid "Checked"
-msgstr "Seleccionado"
+msgstr ""
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr ""
@@ -45,11 +42,8 @@ msgstr ""
 msgid "Note"
 msgstr "Nota"
 
-#, fuzzy
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
-"Seleccionando esta opção os documentos serão carregados completamente para a "
-"memória"
 
 msgid "Destination output file"
 msgstr "Ficheiro de destino"
@@ -61,12 +55,9 @@ msgid "Browse or enter the full path to the destination output file."
 msgstr ""
 "Procure ou introduza o caminho absoluto (PATH) para o ficheiro de destino"
 
-#, fuzzy
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
-"Seleccione a caixa se quer substituir o ficheiro de saída no caso de já "
-"existir."
 
 msgid "Check the box if you want compressed output files."
 msgstr ""
@@ -75,9 +66,8 @@ msgstr ""
 msgid "PDF version 1.5 or above."
 msgstr "Versão PDF 1.5 ou superior"
 
-#, fuzzy
 msgid "Set the pdf version of the ouput document."
-msgstr "Defina a versão pdf do documento de saída."
+msgstr ""
 
 msgid "Please wait while all files are processed.."
 msgstr "Por favor espere enquanto todos os ficheiros são processados..."
@@ -85,9 +75,8 @@ msgstr "Por favor espere enquanto todos os ficheiros são processados..."
 msgid "Found a password for input file."
 msgstr "Foi encontrada uma palavra-chave pra o ficheiro de entrada"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Por favor seleccione dois documentos pdf."
+msgstr ""
 
 msgid "Warning"
 msgstr ""
@@ -140,13 +129,11 @@ msgstr "Dividir a este tamanho"
 msgid "Split by bookmarks level"
 msgstr ""
 
-#, fuzzy
 msgid "Burst"
-msgstr "Burst"
+msgstr ""
 
-#, fuzzy
 msgid "Explode the pdf document into single pages"
-msgstr "Explodir (dividir) o documento pdf para páginas únicas"
+msgstr ""
 
 msgid "Split the document every \"n\" pages"
 msgstr "Dividir o documento a cada \"n\" páginas"
@@ -157,25 +144,17 @@ msgstr "Dividir o documento a cada página par"
 msgid "Split the document every odd page"
 msgstr "Dividir o documento a cada página ímpar"
 
-#, fuzzy
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "Dividir o documento depois das páginas número (num1-num2-num3...)"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
 msgstr ""
-"Dividir o documento em ficheiros de um tamanho previamente especificado "
-"(apreoximadamente)."
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
-"Dividir o documento em ficheiros de um tamanho previamente especificado "
-"(apreoximadamente)."
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "Pasta de destino:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "Idêntico ao de origem"
@@ -186,29 +165,21 @@ msgstr "Seleccione uma pasta"
 msgid "Destination output directory"
 msgstr "Pasta de destino de saída"
 
-#, fuzzy
 msgid "Use the same output folder as the input file or choose a folder."
 msgstr ""
-"Use a mesma pasta de saída como o ficheiro original ou escolha uma pasta."
 
-#, fuzzy
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
-"Para escolher uma pasta procure ou digite o caminho completo (PATH) para a "
-"pasta de saída"
 
-#, fuzzy
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
 msgstr ""
-"Seleccione a caixa se quiser substituir o ficheiro no caso de já existir"
 
-#, fuzzy
 msgid "Output options"
-msgstr "Opções de saída:"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "Prefixo do nome do ficheiro de saída:"
@@ -221,18 +192,13 @@ msgid ""
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-#, fuzzy
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
-"Ex. : prefixo_[NOMEBASE]_[PAGINAACTUAL] gera prefixo_NomeDoFicheiro_005.pdf"
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Se contiver \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\" efectua uma substituição de "
-"variáveis."
 
 msgid "Available variables"
 msgstr ""
@@ -243,16 +209,14 @@ msgstr "Tamanho de divisão inválido"
 msgid "The lowest available pdf version is "
 msgstr "A versão mais baixa do pdf disponível é "
 
-#, fuzzy
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Seleccionou uma versão pdf de saída inferior, continuar mesmo assim?"
+msgstr ""
 
 msgid "Pdf version conflict"
 msgstr "Conflicto entre versões de pdf"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Por favor seleccione dois documentos pdf."
+msgstr ""
 
 msgid "Split selected file"
 msgstr "Dividir ficheiro seleccionado"
@@ -260,27 +224,23 @@ msgstr "Dividir ficheiro seleccionado"
 msgid "Split"
 msgstr "Dividir"
 
-#, fuzzy
 msgid "Split section loaded."
-msgstr "Dividir a seccão que esta carregada."
+msgstr ""
 
 msgid "Invalid unit: "
 msgstr "Unidade inválida: "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Inverter o primeiro documento"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Ficheiro pdf da capa:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Ficheiro pdf de rodapé"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Seleccionar pelo menos uma capa ou um rodapé"
@@ -291,9 +251,8 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr "Secção de Capa e Rodapé carregada."
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Opções de encriptação:"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "Password de proprietário"
@@ -307,9 +266,8 @@ msgstr "Password de utilizador"
 msgid "User password (Max 32 chars long)"
 msgstr "Password de utilizador (Máximo 32 caracteres de comprimento)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Algoritmo de encriptação:"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Permitir todos"
@@ -329,13 +287,11 @@ msgstr "Modificar"
 msgid "Add or modify text annotations"
 msgstr "Adicione ou modifique anotações de texto"
 
-#, fuzzy
 msgid "Fill form fields"
-msgstr "Preencha os campos dos formulários"
+msgstr ""
 
-#, fuzzy
 msgid "Extract for use by accessibility dev."
-msgstr "Extrair para uso do desnvolvimento de acessibilidade."
+msgstr ""
 
 msgid "Manipulate pages and add bookmarks"
 msgstr "Manipulação de páginas e adição de favoritos"
@@ -367,32 +323,26 @@ msgstr "Encriptar os ficheiros seleccionados"
 msgid "Encrypt"
 msgstr "Encriptar"
 
-#, fuzzy
 msgid "Encrypt section loaded."
-msgstr "Secção de encriptação carregada"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Encriptar os ficheiros seleccionados"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt"
-msgstr "Encriptar"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Secção de encriptação carregada"
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "opções de divisão"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr "Inverter o primeiro documento"
 
-#, fuzzy
 msgid "Reverse second document"
-msgstr "Invertir o segundo documento"
+msgstr ""
 
 msgid "Number of pages to switch document"
 msgstr ""
@@ -416,16 +366,14 @@ msgstr "Foi encontrada uma password para o segundo ficheiro."
 msgid "Please select two pdf documents."
 msgstr "Por favor seleccione dois documentos pdf."
 
-#, fuzzy
 msgid "Execute pdf alternate mix"
-msgstr "Executar mistura de pdf alternativa"
+msgstr ""
 
 msgid "Alternate Mix"
 msgstr "Mistura alternativa"
 
-#, fuzzy
 msgid "AlternateMix section loaded."
-msgstr "Secção \"AlternateMix\" carregada."
+msgstr ""
 
 msgid "Unpack selected files"
 msgstr "Descompactar os ficheiros seleccionados"
@@ -433,13 +381,11 @@ msgstr "Descompactar os ficheiros seleccionados"
 msgid "Unpack"
 msgstr "Descompactar"
 
-#, fuzzy
 msgid "Unpack section loaded."
-msgstr "Descompactar a secção que esta carregada."
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "opções de divisão"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -459,9 +405,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Conflicto entre versões de pdf"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -478,13 +423,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "opções de divisão"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Encriptar os ficheiros seleccionados"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -492,9 +435,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "Nota"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -505,9 +447,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "Documentos PDF contém formulários"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -530,13 +471,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "Opções de concatenação:"
+msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Secção de encriptação carregada"
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -574,9 +513,8 @@ msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
 
-#, fuzzy
 msgid "Confirm password saving"
-msgstr "Confirme gravar a password"
+msgstr ""
 
 msgid "Unknown action."
 msgstr "Acção desconhecida."
@@ -587,9 +525,8 @@ msgstr ""
 msgid "No new version available."
 msgstr ""
 
-#, fuzzy
 msgid "Log saved."
-msgstr "Ficheiro de log guardado"
+msgstr ""
 
 msgid "Unable to save image"
 msgstr ""
@@ -603,13 +540,13 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
-msgstr ""
-
-msgid "Error opening pdf document"
 msgstr ""
 
 msgid "Not enough memory to create thumbnails"
@@ -618,19 +555,14 @@ msgstr ""
 msgid "Thumbnails generated in "
 msgstr ""
 
-msgid "Unable to close thumbnail creator"
-msgstr ""
-
 msgid "Unable to generate thumbnail"
 msgstr ""
 
-#, fuzzy
 msgid " node environment loaded."
-msgstr " nodo ambiental carregado."
+msgstr ""
 
-#, fuzzy
 msgid "Environment saved."
-msgstr "Ambiente guardado."
+msgstr ""
 
 msgid "Error saving environment, output file is null."
 msgstr "Erro a salvar o ambiente, o ficheiro de saida não existe (null)."
@@ -650,6 +582,9 @@ msgstr "Erro a carregar ambiente do ficheiro de entrada. "
 msgid "Image viewer"
 msgstr ""
 
+msgid "Unable to initialize the thumbnails creation library."
+msgstr ""
+
 msgid "Unable to open image preview"
 msgstr ""
 
@@ -662,13 +597,11 @@ msgstr ""
 msgid "Error playing sound"
 msgstr ""
 
-#, fuzzy
 msgid "Selection table is full, please remove some pdf document."
-msgstr "A tabela de selecção está cheia, por favor remova algum documento pdf."
+msgstr ""
 
-#, fuzzy
 msgid "Table full"
-msgstr "Tabela cheia"
+msgstr ""
 
 msgid "Please wait while reading"
 msgstr "Por favor aguarde enquanto o ficheiro é lido"
@@ -718,16 +651,25 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
-#, fuzzy
 msgid "Paste"
-msgstr "Caminho(PATH)"
+msgstr ""
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 msgid "File name"
 msgstr "Nome do ficheiro"
 
-#, fuzzy
 msgid "Path"
-msgstr "Caminho(PATH)"
+msgstr ""
 
 msgid "Pages"
 msgstr "Páginas"
@@ -747,13 +689,11 @@ msgstr "Total de páginas do documento"
 msgid "Password to open the document (if needed)"
 msgstr "Password para abrir o documento (se necessária)"
 
-#, fuzzy
 msgid "Pdf version of the document"
-msgstr "Versão pdf do documento"
+msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 msgid "Add a pdf to the list"
@@ -771,9 +711,8 @@ msgstr "Remover"
 msgid "Reload"
 msgstr "Recarregar"
 
-#, fuzzy
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Erro: incapaz de recaregar o(s) ficheiro(s) seleccionado(s)."
+msgstr ""
 
 msgid "Document properties"
 msgstr ""
@@ -1006,6 +945,9 @@ msgstr ""
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr ""
 
@@ -1093,6 +1035,9 @@ msgstr ""
 msgid "Version: "
 msgstr ""
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr ""
 
@@ -1141,6 +1086,9 @@ msgstr ""
 msgid "Check for updates:"
 msgstr ""
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr ""
 
@@ -1182,6 +1130,9 @@ msgid "Check for updates"
 msgstr ""
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1252,9 +1203,8 @@ msgstr "A localização do ficheiro de saída não é correcta"
 msgid "Would you like to change it to"
 msgstr "Gostaria de mudá-lo para"
 
-#, fuzzy
 msgid "Output location error"
-msgstr "Erro de localização de saída"
+msgstr ""
 
 msgid "Selected output file already exists "
 msgstr ""
@@ -1288,32 +1238,3 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-#, fuzzy
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "Se contiver \"[CURRENTPAGE]\" ou \"[TIMESTAMP]\" efectua uma substituição "
-#~ "de variáveis."
-
-#, fuzzy
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr "Variáveis disponiveis: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-#~ msgid "Cover and Footer"
-#~ msgstr "Capa e Rodapé"
-
-#, fuzzy
-#~ msgid "Destination output file:"
-#~ msgstr "Destino do ficheiro de saída:"
-
-#~ msgid "Split options:"
-#~ msgstr "Opções de divisão:"
-
-#~ msgid "Select an input file"
-#~ msgstr "Seleccione um ficheiro de entrada"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "A localização de saída não é correcta"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-11-25 20:55+0000\n"
-"Last-Translator: Amicus <Unknown>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:27+0000\n"
+"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 14:48+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
 "X-Poedit-Language: Bosnian\n"
@@ -147,13 +147,11 @@ msgstr "Rastavi dokument na svakoj neparnoj stranici"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Rastavi dokument nakon brojeva stranica (br1-br2-br3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Rastavi dokument u dokumente date veličine (ugrubo)."
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Rastavi dokument u dokumente date veličine (ugrubo)."
+msgstr ""
 
 msgid "Destination folder"
 msgstr ""
@@ -196,6 +194,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Ako sadrži \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" ili "
+"\"[BOOKMARK_NAME]\" izvodi zamjenu varijabli."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -207,7 +207,7 @@ msgid ""
 msgstr ""
 
 msgid "Available variables"
-msgstr ""
+msgstr "Dostupne varijable"
 
 msgid "Invalid split size"
 msgstr "Pogrešna veličina dijeljenja"
@@ -236,20 +236,17 @@ msgstr "Sekcija dijeljenja učitanja."
 msgid "Invalid unit: "
 msgstr "Pogrešna jedinica: "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Obrni prvi dokument"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Naslovnica PDF dokumenta:"
+msgid "Frontpage pdf file"
+msgstr "Pdf dokument prve stranice"
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Podnožje PDF dokumenta:"
+msgid "Addendum pdf file"
+msgstr "Pdf dokument dodatak"
 
 msgid "Select at least one cover or one footer"
 msgstr "Izaberite barem jednu naslovnicu i jedno podnožje"
@@ -275,9 +272,8 @@ msgstr "Šifra korisnika:"
 msgid "User password (Max 32 chars long)"
 msgstr "Šifra korisnika (Max 32 znaka dužine)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Algoritam enkripcije:"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Dozvoli sve"
@@ -359,17 +355,21 @@ msgid "Reverse second document"
 msgstr "Obrni drugi dokument"
 
 msgid "Number of pages to switch document"
-msgstr ""
+msgstr "Broj stranica da zamijene dokument"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
+"Označite kućice ako želite da zamijenite redoslijed prvog ili drugog "
+"dokumenta (ili oba)."
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 msgstr ""
+"Izaberite broj stranica za zamjenu iz dokumenta u drugi (unaprijed podešeno "
+"je 1)."
 
 msgid "Found a password for first file."
 msgstr "Pronađena šifra za prvi dokument."
@@ -554,22 +554,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -597,6 +594,9 @@ msgid "Error loading environment from input file. "
 msgstr "Greška učitavanja okruženja iz ulaznog dokumenta. "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -668,6 +668,17 @@ msgstr "Isijeci"
 msgid "Paste"
 msgstr "Nalijepi"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr "Ime dokumenta"
 
@@ -696,11 +707,10 @@ msgid "Pdf version of the document"
 msgstr "PDF verzija dokumenta"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dvokliknite da izaberete stranice koje želite da združite (npr: 2 ili Sve "
-"ili 5-23 ili 2,5-7,12-)"
+"Dvokliknite da izaberete stranice koje želite da združite (npr.: 2 ili 5-23 "
+"ili 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Dodaj PDF u listu"
@@ -951,6 +961,9 @@ msgstr "Nije moguće postaviti nivo zapisa."
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "Greška pronalaženja direktorija sa dodacima."
 
@@ -1038,6 +1051,9 @@ msgstr "Nije moguće inicijalizirati traku s adugmadima."
 msgid "Version: "
 msgstr "Verzija: "
 
+msgid "Developed by: "
+msgstr "Razvio: "
+
 msgid "Build date: "
 msgstr "Datum izrade: "
 
@@ -1086,6 +1102,9 @@ msgstr "Jezik:"
 msgid "Check for updates:"
 msgstr "Provjeri ima li nadogradnji:"
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr "Učitaj default okruženje pri pokretanju:"
 
@@ -1132,6 +1151,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Podesi kada će biti provjeravana dostupnost nove verzije (potreban je "
 "restart)"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "Uključi ili isključi zvukve uzbune"
@@ -1215,15 +1237,17 @@ msgid "Would you like to overwrite it?"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "Napravljena selekcija stranica nije ispravna"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Granice moraju biti predstavljene listom odvojenom zarezima kao "
+"\"broj_stranice\" ili \"broj_stranice-broj_stranice\""
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "Granice nisu ispravne"
 
 msgid "Please provide the password to open the encrypted document"
 msgstr ""
@@ -1241,8 +1265,9 @@ msgstr ""
 msgid "Error retrieving page saved informations"
 msgstr ""
 
-#~ msgid "Cover and Footer"
-#~ msgstr "Naslovnica i Podnožje"
-
-#~ msgid "Language: "
-#~ msgstr "Jezik: "
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Dvokliknite da izaberete stranice koje želite da združite (npr: 2 ili Sve "
+#~ "ili 5-23 ili 2,5-7,12-)"

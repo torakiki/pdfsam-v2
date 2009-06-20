@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 17:07+0200\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
 "PO-Revision-Date: 2009-03-29 00:08+0000\n"
 "Last-Translator: sfbi <wonease@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: CHINA\n"
 "X-Poedit-Language: Chinese\n"
@@ -343,10 +343,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
-msgstr "封面pdf文件"
+msgid "Frontpage pdf file"
+msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -673,22 +673,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -716,6 +713,9 @@ msgid "Error loading environment from input file. "
 msgstr "从输入文件载入环境时出错。 "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -818,6 +818,17 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
@@ -860,9 +871,8 @@ msgid "Pdf version of the document"
 msgstr "文档的 PDF 版本号"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
-msgstr "双击以设定你需要合并的页面（如：2、全部、5-23、2,5-7,12-）"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
@@ -1156,6 +1166,9 @@ msgstr "无法设置日志级别。"
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "获取插件目录出错。"
 
@@ -1261,6 +1274,9 @@ msgstr "无法初始化按钮栏。"
 msgid "Version: "
 msgstr "版本： "
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr "构建日期: "
 
@@ -1317,6 +1333,9 @@ msgstr "语言:"
 msgid "Check for updates:"
 msgstr "检查更新："
 
+msgid "Thumbnails creator"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
 msgstr "启动时载入默认环境："
@@ -1372,6 +1391,9 @@ msgstr "检查更新"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "设置是否检测更新（需要重启）"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1481,3 +1503,8 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr "双击以设定你需要合并的页面（如：2、全部、5-23、2,5-7,12-）"

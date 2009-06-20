@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 17:07+0200\n"
-"PO-Revision-Date: 2009-04-28 17:38+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-05-23 21:02+0000\n"
 "Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -286,11 +286,11 @@ msgstr "Completar desde el documento"
 msgid "Getting bookmarks max depth"
 msgstr "Obtener profundidas máxima de marcadores"
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr "Portada del archivo pdf"
 
-msgid "Footer pdf file"
-msgstr "Pie del archivo pdf"
+msgid "Addendum pdf file"
+msgstr "Anexo al archivo pdf"
 
 msgid "Select at least one cover or one footer"
 msgstr "Seleccione al menos una portada o un pié de página"
@@ -630,23 +630,20 @@ msgstr "No se puede crear miniaturas para un documento de entrada vacío"
 msgid "Input file doesn't exists or is a directory"
 msgstr "El archivo de entrada no existe o es un directorio"
 
+msgid "Error opening pdf document"
+msgstr "Error abriendo documento pdf"
+
 msgid "Password not provided."
 msgstr "No se ha introducido la contraseña."
 
 msgid "Unable to open the document."
 msgstr "No se pudo abrir el documento."
 
-msgid "Error opening pdf document"
-msgstr "Error abriendo documento pdf"
-
 msgid "Not enough memory to create thumbnails"
 msgstr "No hay suficiente memoria para crear miniaturas"
 
 msgid "Thumbnails generated in "
 msgstr "Miniaturas generadas en "
-
-msgid "Unable to close thumbnail creator"
-msgstr "No se puede cerrar creador de miniaturas"
 
 msgid "Unable to generate thumbnail"
 msgstr "No se puede generar miniatura"
@@ -674,6 +671,9 @@ msgstr "Error al cargar el ambiente desde el archivo de entrada. "
 
 msgid "Image viewer"
 msgstr "Visor de imágenes"
+
+msgid "Unable to initialize the thumbnails creation library."
+msgstr "No se pudo inicializar la biblioteca de creación de miniaturas."
 
 msgid "Unable to open image preview"
 msgstr "No se puede abrir previsualización de imagen"
@@ -786,6 +786,17 @@ msgstr "Cortar"
 msgid "Paste"
 msgstr "Pegar"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
@@ -828,11 +839,10 @@ msgid "Pdf version of the document"
 msgstr "Version pdf del documento"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Haga doble click para marcar las páginas que desea combinar (por ejemplo: 2 "
-"o Todas o 5-23 o 2,5-7,12-)"
+"Pulse dos veces para asignar las páginas que desea mezclar (ex: 2 o 5-23 o "
+"2,5-7,12-)"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:211
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -966,7 +976,7 @@ msgid "Rotate anticlockwise"
 msgstr "Girar en sentido antihorario"
 
 msgid "Reverse"
-msgstr ""
+msgstr "Invertir"
 
 msgid "Move up selected pages"
 msgstr "Subir páginas seleccionadas"
@@ -1002,7 +1012,7 @@ msgid "(Alt+ArrowLeft)"
 msgstr "(Alt+ArrowLeft)"
 
 msgid "Reverse pages order"
-msgstr ""
+msgstr "Invertir el orden de páginas"
 
 msgid "Yes"
 msgstr "Sí"
@@ -1130,6 +1140,9 @@ msgstr "Incapaz de establecer nivel de registro."
 msgid "Setting default working directory..."
 msgstr "Asigando directorio de trabajo por defecto..."
 
+msgid "Setting default thumbnails creator..."
+msgstr "Asignando del creador de miniaturas por defecto..."
+
 msgid "Error getting plugins directory."
 msgstr "Error al obtener el directorio de plugins"
 
@@ -1234,6 +1247,9 @@ msgstr "Incapaz de inicializar la barra de botones."
 msgid "Version: "
 msgstr "Versión: "
 
+msgid "Developed by: "
+msgstr "Desarrollado por: "
+
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Build date: "
@@ -1297,6 +1313,9 @@ msgstr "Lenguaje:"
 msgid "Check for updates:"
 msgstr "Buscar actualizaciones:"
 
+msgid "Thumbnails creator"
+msgstr "Creador de miniaturas"
+
 msgid "Load default environment at startup:"
 msgstr "Cargar ambiente predeterminado al inicio:"
 
@@ -1344,6 +1363,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Establezca cuando la disponibilidad de una nueva versión debería ser "
 "revisada (necesita reiniciar)"
+
+msgid "Set the thumbnails creation library"
+msgstr "Asignar la biblioteca de creación de miniaturas"
 
 msgid "Turn on or off alert sounds"
 msgstr "Encender o apagar los sonidos de alerta"
@@ -1427,15 +1449,17 @@ msgid "Would you like to overwrite it?"
 msgstr "¿Quiere sobreescribirlo?"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "El orden de la selección de páginas no es válido"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Los límites han de ser una lista separada por comas de \"números_de_página\" "
+"o \"número_de_página-número_de_página\""
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "Los límites no son válidos"
 
 msgid "Please provide the password to open the encrypted document"
 msgstr "Por favor, proporcione una contraseña para abrir el documento cifrado"
@@ -1454,3 +1478,10 @@ msgstr "Lista llena"
 
 msgid "Error retrieving page saved informations"
 msgstr "Error obteniendo informaciones de página guardada"
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Haga doble click para marcar las páginas que desea combinar (por ejemplo: "
+#~ "2 o Todas o 5-23 o 2,5-7,12-)"

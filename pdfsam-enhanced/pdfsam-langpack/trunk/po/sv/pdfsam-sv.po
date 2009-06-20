@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-12-21 22:39+0000\n"
-"Last-Translator: Susanna Björverud <Unknown>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:37+0000\n"
+"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -306,10 +306,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -612,22 +612,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -655,6 +652,9 @@ msgid "Error loading environment from input file. "
 msgstr "Fel när miljön laddades från källfilen "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -755,6 +755,17 @@ msgstr "Klipp ut"
 msgid "Paste"
 msgstr "Klistra in"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:164
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
@@ -797,11 +808,8 @@ msgid "Pdf version of the document"
 msgstr "Dokumentets pdf-version"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dubbelklicka för att välja sidor du vill slå samman (ex: 2 eller Alla eller "
-"5-23 eller 2,5-7,12-)"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:211
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -1097,6 +1105,9 @@ msgstr "Gå ej att sätta loggningsnivå."
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "Fel vid läsning av pluginarkiv."
 
@@ -1191,6 +1202,9 @@ msgstr "Kan ej starta knapprad."
 msgid "Version: "
 msgstr "Version: "
 
+msgid "Developed by: "
+msgstr ""
+
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Build date: "
@@ -1247,6 +1261,9 @@ msgstr "Språk:"
 msgid "Check for updates:"
 msgstr "Sök efter uppdateringar:"
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr "Ladda standardmiljö vid uppstart:"
 
@@ -1293,6 +1310,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Ställ in när du vill att programmet ska söka efter nya uppdateringar "
 "(omstart krävs)"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1398,69 +1418,9 @@ msgstr ""
 msgid "Error retrieving page saved informations"
 msgstr ""
 
-#~ msgid "Cover and Footer"
-#~ msgstr "Omslag och Sidfot."
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-#~ msgid "Language: "
-#~ msgstr "Språk: "
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-#~ msgid "Merge options:"
-#~ msgstr "Uppdelningsalterantiv:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:210
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#~ msgid "Split options:"
-#~ msgstr "Uppdelningsalterantiv:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#~ msgid "Destination folder:"
-#~ msgstr "Målmapp:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:283
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-#~ msgid "Output options:"
-#~ msgstr "Utdataalternativ:"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-#~ msgid "Please wait while reading "
-#~ msgstr "Vänta med inläsning sker: "
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:146
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-#~ msgid "Source file:"
-#~ msgstr "Källfil:"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:289
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-#~ msgid "Destination output file:"
-#~ msgstr "Destination för målfil:"
-
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:152
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Välj en PDF-fil som skall delas upp"
-
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-#~ msgid "Error:"
-#~ msgstr "Fel:"
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Dubbelklicka för att välja sidor du vill slå samman (ex: 2 eller Alla "
+#~ "eller 5-23 eller 2,5-7,12-)"

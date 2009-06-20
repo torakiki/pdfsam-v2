@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 17:07+0200\n"
-"PO-Revision-Date: 2009-05-04 03:58+0000\n"
-"Last-Translator: ben <benjamin97.tw@yahoo.com.tw>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-06-03 04:56+0000\n"
+"Last-Translator: tulip0213 <Unknown>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -201,7 +201,7 @@ msgstr ""
 "舊式的輸出檔名稱。"
 
 msgid "Available variables"
-msgstr ""
+msgstr "可用變數"
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
@@ -236,11 +236,11 @@ msgstr "從文件填滿"
 msgid "Getting bookmarks max depth"
 msgstr "正在取得書籤最大層級"
 
-msgid "Cover pdf file"
-msgstr "封面 PDF 檔"
+msgid "Frontpage pdf file"
+msgstr ""
 
-msgid "Footer pdf file"
-msgstr "封底 PDF 檔"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
@@ -500,7 +500,7 @@ msgid "Visual document composer"
 msgstr "虛擬文件編輯器"
 
 msgid "Choose a file"
-msgstr ""
+msgstr "選取一個檔案"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr "輸出檔名與輸入檔相同或選擇一個檔案。"
@@ -542,23 +542,20 @@ msgstr "無法為一個空的輸入文件建立縮圖"
 msgid "Input file doesn't exists or is a directory"
 msgstr "輸入檔不存在或是個資料夾"
 
+msgid "Error opening pdf document"
+msgstr "開啟PDF文件錯誤"
+
 msgid "Password not provided."
-msgstr ""
+msgstr "密碼未提供"
 
 msgid "Unable to open the document."
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr ""
+msgstr "無法開啟該文件"
 
 msgid "Not enough memory to create thumbnails"
-msgstr ""
+msgstr "記憶體不足無法產生縮圖"
 
 msgid "Thumbnails generated in "
 msgstr "縮圖已產生於 "
-
-msgid "Unable to close thumbnail creator"
-msgstr "無法關閉縮圖產生器"
 
 msgid "Unable to generate thumbnail"
 msgstr "無法產生縮圖"
@@ -586,6 +583,9 @@ msgstr "無法從輸入檔載入環境變數。 "
 
 msgid "Image viewer"
 msgstr "影像檢視器"
+
+msgid "Unable to initialize the thumbnails creation library."
+msgstr "無法初始化縮圖產生函數庫"
 
 msgid "Unable to open image preview"
 msgstr "無法開啟影像預覽"
@@ -656,6 +656,17 @@ msgstr "剪下"
 msgid "Paste"
 msgstr "貼上"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr "檔案名稱"
 
@@ -684,9 +695,8 @@ msgid "Pdf version of the document"
 msgstr "文件的 PDF 版本"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
-msgstr "雙擊以設定您想合併的頁面（例如：2 或 All 或 5-23 或 2,5-7,12-）"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
+msgstr ""
 
 msgid "Add a pdf to the list"
 msgstr "新增PDF檔至清單中"
@@ -707,7 +717,7 @@ msgid "Error: Unable to reload the selected file/s."
 msgstr "錯誤：無法重新載入所選的檔案。"
 
 msgid "Document properties"
-msgstr ""
+msgstr "文件屬性"
 
 msgid "Unable to remove JList text "
 msgstr "無法移除 JList 文本 "
@@ -863,28 +873,28 @@ msgid "Number of pages"
 msgstr ""
 
 msgid "File size"
-msgstr ""
+msgstr "檔案大小"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "Pdf 版本"
 
 msgid "Encryption"
-msgstr ""
+msgstr "加密"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "不加密"
 
 msgid "Permissions"
 msgstr ""
 
 msgid "Title"
-msgstr ""
+msgstr "標題"
 
 msgid "Author"
 msgstr "開發者"
 
 msgid "Subject"
-msgstr ""
+msgstr "主旨"
 
 msgid "Producer"
 msgstr ""
@@ -893,13 +903,13 @@ msgid "Creator"
 msgstr ""
 
 msgid "Creation date"
-msgstr ""
+msgstr "建立日期"
 
 msgid "Modification date"
-msgstr ""
+msgstr "修改日期"
 
 msgid "Keywords"
-msgstr ""
+msgstr "關鍵字"
 
 msgid "Error creating properties panel."
 msgstr ""
@@ -936,6 +946,9 @@ msgstr "無法設定紀錄檔層級。"
 
 msgid "Setting default working directory..."
 msgstr "正在設定預設的工作目錄..."
+
+msgid "Setting default thumbnails creator..."
+msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "無法取得增效模組目錄。"
@@ -1024,6 +1037,9 @@ msgstr "無法初始化工具列。"
 msgid "Version: "
 msgstr "版本： "
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr "建立日期： "
 
@@ -1072,6 +1088,9 @@ msgstr "語系："
 msgid "Check for updates:"
 msgstr "檢查更新："
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr "啟動時載入預設環境變數："
 
@@ -1114,6 +1133,9 @@ msgstr "檢查更新"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "設定何時該檢查更新（需要重新啟動）"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "開啟或關閉警示音效"
@@ -1218,3 +1240,8 @@ msgstr "清單已滿"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr "雙擊以設定您想合併的頁面（例如：2 或 All 或 5-23 或 2,5-7,12-）"

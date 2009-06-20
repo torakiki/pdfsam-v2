@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 17:07+0200\n"
-"PO-Revision-Date: 2009-05-07 22:30+0000\n"
-"Last-Translator: Mads Boserup Lauritsen <Unknown>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-05-10 23:51+0000\n"
+"Last-Translator: Joergenr <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -55,10 +55,8 @@ msgstr "Anvend denne flettetype for pdf-dokumenter der indeholder formularer"
 msgid "Note"
 msgstr "Bemærkning"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "Ved denne indstilling hentes dokumentet fuldstændigt ind i hukommelsen"
+msgstr "Ved denne indstilling indlæses dokumentet fuldstændigt i hukommelsen"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
@@ -109,7 +107,7 @@ msgstr ""
 "allerede eksisterer."
 
 msgid "Check the box if you want compressed output files."
-msgstr "Afkryds feltet hvis du ønsker komprimerede outputfiler."
+msgstr "Afkryds boksen hvis du ønsker komprimerede outputfiler."
 
 msgid "PDF version 1.5 or above."
 msgstr "PDF version 1.5 eller højere"
@@ -274,14 +272,12 @@ msgid "Use the same output folder as the input file or choose a folder."
 msgstr ""
 "Anvend den samme destinationsmappe som originalfilen eller vælg en mappe."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:307
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
-"Gennemse eller indtast fuld sti til destinationsmappen for at vælge en mappe."
+"Gennemse eller indtast den fulde sti til destinationsmappen for at vælge en "
+"mappe."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
@@ -326,7 +322,7 @@ msgid ""
 msgstr ""
 
 msgid "Available variables"
-msgstr ""
+msgstr "Tilgængelige variabler"
 
 msgid "Invalid split size"
 msgstr "Ugyldig opdelingsstørrelse"
@@ -363,14 +359,14 @@ msgstr "Udfyld fra dokument"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
-msgstr ""
+msgstr "Vælg mindst et omslag eller en fodnote"
 
 msgid "Frontpage and Addendum"
 msgstr "Forside og appendix"
@@ -439,7 +435,7 @@ msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
-"Afkryds feltet hvis du ønsker komprimerede outputfiler (Pdf version 1.5 "
+"Afkryds boksen hvis du ønsker komprimerede outputfiler (Pdf version 1.5 "
 "eller højere)."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
@@ -485,7 +481,7 @@ msgid "Decrypt section loaded."
 msgstr "Dekrypteringssektion indlæst."
 
 msgid "Mix options"
-msgstr ""
+msgstr "Blandingsindstillinger"
 
 msgid "Reverse first document"
 msgstr "Første dokument bagfra"
@@ -559,7 +555,7 @@ msgid "Pdf version required:"
 msgstr "Pdf-version kræves:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Ingen sideskalering i udskriftsvinduet"
 
 msgid "Viewer layout:"
 msgstr "Visningslayout:"
@@ -637,9 +633,11 @@ msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
+"For at vælge en fil, gennemse eller indtast den fulde sti til "
+"destinationsfilen."
 
 msgid "Please select a pdf document or undelete some pages"
-msgstr ""
+msgstr "Vælg venligst et pdf-dokument eller gendan nogle sider"
 
 msgid "Execute pages reorder"
 msgstr ""
@@ -692,23 +690,20 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr "Inputfil eksisterer ikke eller er en mappe"
 
+msgid "Error opening pdf document"
+msgstr "Fejl i åbning af pdf-dokumentet"
+
 msgid "Password not provided."
 msgstr "Kodeord ikke tildelt"
 
 msgid "Unable to open the document."
 msgstr "Kan ikke åbne dokumentet"
 
-msgid "Error opening pdf document"
-msgstr "Fejl i åbning af pdf-dokumentet"
-
 msgid "Not enough memory to create thumbnails"
 msgstr "Ikke nok hukommelse til at genere miniaturebillede"
 
 msgid "Thumbnails generated in "
 msgstr "Miniaturer oprettet i "
-
-msgid "Unable to close thumbnail creator"
-msgstr ""
 
 msgid "Unable to generate thumbnail"
 msgstr "Ikke i stand til at oprette miniature"
@@ -737,6 +732,9 @@ msgstr "Fejl ved indlæsning af miljø fra inputfil. "
 msgid "Image viewer"
 msgstr "Billedfremviser"
 
+msgid "Unable to initialize the thumbnails creation library."
+msgstr ""
+
 msgid "Unable to open image preview"
 msgstr "Ikke i stand til at åbne miniaturebillede"
 
@@ -750,10 +748,10 @@ msgid "Error playing sound"
 msgstr "Fejl ved afspilning af lyd"
 
 msgid "Selection table is full, please remove some pdf document."
-msgstr ""
+msgstr "Udvalgstabel er fuld. Fjern venligst nogle pdf-dokumenter."
 
 msgid "Table full"
-msgstr ""
+msgstr "Fuld tabel"
 
 msgid "Please wait while reading"
 msgstr "Vent venligst under læsning"
@@ -838,6 +836,17 @@ msgstr "Klip"
 msgid "Paste"
 msgstr "Sæt ind"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
@@ -880,11 +889,8 @@ msgid "Pdf version of the document"
 msgstr "Dokumentets pdf-version"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dobbeltklik for at vælge de sidder du vil flette (eks. 2 eller alle eller 5-"
-"23 eller 2,5-7,12-)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
@@ -1182,6 +1188,9 @@ msgstr "Ikke i stand til at sætte logniveau."
 msgid "Setting default working directory..."
 msgstr "Indstiller standard arbejdsmappe.."
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "Fejl ved hentning af modulmappe."
 
@@ -1232,10 +1241,8 @@ msgstr "Gem log"
 msgid "Save environment"
 msgstr "Gem indstillinger"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
 msgid "Load environment"
-msgstr "Hent indstillinger"
+msgstr "Indlæs miljø"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
@@ -1249,9 +1256,8 @@ msgstr "Ikke i stand til at initialisere menulinjen."
 msgid "started in "
 msgstr "startet i "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
 msgid "Loading plugins.."
-msgstr "Henter udvidelsesmoduler.."
+msgstr "Indlæser moduler..."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
 msgid "Building menus.."
@@ -1286,6 +1292,9 @@ msgstr "Ikke i stand til at initialisere knaplinjen."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr "Version: "
+
+msgid "Developed by: "
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
@@ -1346,9 +1355,11 @@ msgstr "Sprog:"
 msgid "Check for updates:"
 msgstr "Søg efter opdateringer:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
-msgstr "Hent standardindstillinger ved opstart:"
+msgstr "Indlæs standardmiljø ved opstart:"
 
 msgid "Default working directory:"
 msgstr "Standard arbejdsmappe:"
@@ -1377,17 +1388,13 @@ msgstr "Sprog"
 msgid "Set your preferred language (restart needed)"
 msgstr "Sæt dit ønskede sprog (genstart nødvendig)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
 msgid "Look and feel"
-msgstr "Se og føl"
+msgstr "Udseende"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
 msgstr ""
-"Vælg dit foretrukne se og føl og dit foretrukne tema (genstart nødvendig)"
+"Vælg det foretrukne udseende og det foretrukne tema (genstart nødvendig)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
 msgid "Log level"
@@ -1401,6 +1408,9 @@ msgid "Check for updates"
 msgstr "Søg efter opdateringer"
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1508,7 +1518,7 @@ msgstr ""
 "Udvalgslisten er fuld, ønsker du at tømme den og indlæse det nye dokument?"
 
 msgid "List full"
-msgstr "List er fyldt"
+msgstr "Liste er fyldt"
 
 msgid "Error retrieving page saved informations"
 msgstr ""

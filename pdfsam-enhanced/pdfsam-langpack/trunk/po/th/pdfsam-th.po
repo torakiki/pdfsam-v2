@@ -7,38 +7,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-05-29 10:01+0000\n"
-"Last-Translator: Uthen Phutneam <Unknown>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:37+0000\n"
+"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "ตัวเลือกของการรวมไฟล์"
+msgstr ""
 
-#, fuzzy
 msgid "PDF documents contain forms"
-msgstr "เอกสาร PDF ประกอบด้วยฟอร์ม"
+msgstr ""
 
 msgid "Merge type"
 msgstr "ชนิดของการรวมไฟล์"
 
-#, fuzzy
 msgid "Unchecked"
-msgstr "ไม่เลือก"
+msgstr ""
 
-#, fuzzy
 msgid "Use this merge type for standard pdf documents"
-msgstr "ใช้ชนิดของการรวมไฟล์นี้สำหรับเอกสาร pfd มาตรฐาน"
+msgstr ""
 
-#, fuzzy
 msgid "Checked"
-msgstr "เลือก"
+msgstr ""
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr "ใช้ชนิดของการรวมไฟล์นี้สำหรับเอกสาร pfd ที่เป็นแบบฟอร์ม"
@@ -77,9 +72,8 @@ msgstr "กรุณารอขณะกำลังประมวณผล"
 msgid "Found a password for input file."
 msgstr "พบการตั้งค่ารหัสผ่านของไฟล์นำเข้า"
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "กรุณาเลือก pdf สองเอกสาร"
+msgstr ""
 
 msgid "Warning"
 msgstr ""
@@ -144,25 +138,20 @@ msgstr "แยกเอกสารทุกๆ \" \" หน้าเป็น�
 msgid "Split the document every even page"
 msgstr "แยกเอกสารทุกสองหน้าเป็นหนึ่งไฟล์"
 
-#, fuzzy
 msgid "Split the document every odd page"
-msgstr "แยกเอกสารทุกหน้าคี่เป็นหนึ่งไฟล์"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "แยกเอกสารถัดจากหน้าที่ (num1-num2-num3..)"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "แยกเอกสารตามขนาดไฟล์ที่กำหนดให้ (อย่างคร่าวๆ)"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "แยกเอกสารตามขนาดไฟล์ที่กำหนดให้ (อย่างคร่าวๆ)"
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "โฟลเดอร์ปลายทาง:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "ที่อยู่เดียวกันกับไฟล์นำเข้า"
@@ -186,9 +175,8 @@ msgid ""
 "exist."
 msgstr "เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
 
-#, fuzzy
 msgid "Output options"
-msgstr "ตัวเลือกของไฟล์ที่ทำเสร็จแล้ว"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "คำนำหน้าชื่อไฟล์ที่แยก"
@@ -224,9 +212,8 @@ msgstr "คุณได้เลือก pdf รุ่นต่ำกว่า,
 msgid "Pdf version conflict"
 msgstr "รุ่นของ pdf ขัดแย้งกัน"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "กรุณาเลือก pdf สองเอกสาร"
+msgstr ""
 
 msgid "Split selected file"
 msgstr "เลือกไฟล์ที่แยกแล้ว"
@@ -240,20 +227,17 @@ msgstr "หมวดการแยกไฟล์ถูกเรียกใช
 msgid "Invalid unit: "
 msgstr "หน่วยไม่ถูกต้อง "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "ถอยกลับไปเอกสารแรก"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "ปกไฟล์ pdf"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "ท้ายกระดาษไฟล์ pdf"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "เลือกอย่างน้อยหนึ่งปกหรือหนึ่งท้ายกระดาษ"
@@ -264,9 +248,8 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr "หมวดปกและท้ายกระดาษถูกเรียกใช้งานแล้ว"
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "ตัวเลือกการเข้ารหัส"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "รหัสผ่านของเจ้าของ"
@@ -340,29 +323,23 @@ msgstr "การเข้ารหัส"
 msgid "Encrypt section loaded."
 msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "เข้ารหัสไฟล์ที่ถูกเลือก"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt"
-msgstr "การเข้ารหัส"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "ตัวเลือกการแยกไฟล์"
+msgstr ""
 
-#, fuzzy
 msgid "Reverse first document"
-msgstr "ถอยกลับไปเอกสารแรก"
+msgstr ""
 
-#, fuzzy
 msgid "Reverse second document"
-msgstr "ถอยกลับไปเอกสารที่สอง"
+msgstr ""
 
 msgid "Number of pages to switch document"
 msgstr ""
@@ -404,9 +381,8 @@ msgstr "แยกออก"
 msgid "Unpack section loaded."
 msgstr "หมวดแยกออกถูกเรียกใช้งานแล้ว"
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "ตัวเลือกการแยกไฟล์"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -426,9 +402,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "รุ่นของ pdf ขัดแย้งกัน"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -445,13 +420,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "ตัวเลือกการแยกไฟล์"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "เข้ารหัสไฟล์ที่ถูกเลือก"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -459,9 +432,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "บันทึกย่อ"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -472,9 +444,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "เอกสาร PDF ประกอบด้วยฟอร์ม"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -497,13 +468,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "ตัวเลือกของการรวมไฟล์"
+msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -553,9 +522,8 @@ msgstr "มีรุ่นใหม่แล้ว"
 msgid "No new version available."
 msgstr "ยังไม่มีรุ่นใหม่"
 
-#, fuzzy
 msgid "Log saved."
-msgstr "บันทึกปูม"
+msgstr ""
 
 msgid "Unable to save image"
 msgstr ""
@@ -569,13 +537,13 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
-msgstr ""
-
-msgid "Error opening pdf document"
 msgstr ""
 
 msgid "Not enough memory to create thumbnails"
@@ -584,18 +552,14 @@ msgstr ""
 msgid "Thumbnails generated in "
 msgstr ""
 
-msgid "Unable to close thumbnail creator"
-msgstr ""
-
 msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
 msgstr " โหลดโหนดสภาพแวดล้อมการทำงาน"
 
-#, fuzzy
 msgid "Environment saved."
-msgstr "บันทึกสภาพแวดล้อมการทำงานแล้ว"
+msgstr ""
 
 msgid "Error saving environment, output file is null."
 msgstr "เกิดความผิดพลาดขณะบันทึกสภาพแวดล้อมการทำงาน, ไฟล์ที่บันทึกไม่มีข้อมูล"
@@ -613,6 +577,9 @@ msgid "Error loading environment from input file. "
 msgstr "เกิดความผิดพลาดขณะโหลดสภาพแวดล้อมการทำงานจากไฟล์นำเข้า "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -681,9 +648,19 @@ msgstr "คัดลอก"
 msgid "Cut"
 msgstr ""
 
-#, fuzzy
 msgid "Paste"
-msgstr "พาธ"
+msgstr ""
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 msgid "File name"
 msgstr "ชื่อแฟ้ม"
@@ -713,9 +690,8 @@ msgid "Pdf version of the document"
 msgstr "รุ่น pdf ของเอกสาร"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
-msgstr "ดับเบิลคลิกเพื่อตั้งหน้าที่ต้องการจะรวม (ex: 2 or All or 5-23 or 2,5-7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
+msgstr ""
 
 msgid "Add a pdf to the list"
 msgstr "เพิ่ม pdf ในรายการ"
@@ -966,6 +942,9 @@ msgstr "ไม่สามารถตั้งระดับการบัน
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "เกิดความผิดพลาดในการหาห้องเก็บโปรแกรมเสริม"
 
@@ -1053,6 +1032,9 @@ msgstr "ไม่สามารถที่จะเริ่มแถบปุ
 msgid "Version: "
 msgstr "รุ่น: "
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr "วันที่สร้าง "
 
@@ -1086,9 +1068,8 @@ msgstr "ให้ความช่วยเหลือ "
 msgid "Log level:"
 msgstr "ระดับการบันทึก:"
 
-#, fuzzy
 msgid "Settings"
-msgstr "ตั้งค่า "
+msgstr ""
 
 msgid "Look and feel:"
 msgstr "มุมมองและรูปแบบ:"
@@ -1101,6 +1082,9 @@ msgstr "ภาษา:"
 
 msgid "Check for updates:"
 msgstr "ตรวจสอบเพื่ออัพเดตโปรแกรม"
+
+msgid "Thumbnails creator"
+msgstr ""
 
 msgid "Load default environment at startup:"
 msgstr "โหลดสภาพแวดล้อมการทำงานปริยายตอนเริ่มใช้"
@@ -1142,9 +1126,11 @@ msgstr "ตั้งค่าระดับการบันทึกปูม
 msgid "Check for updates"
 msgstr "ตรวจสอบรายการอัพเดท"
 
-#, fuzzy
 msgid "Set when new version availability should be checked (restart needed)"
-msgstr "ตั้งค่าให้ตรวจสอบโปรแกรมรุ่นใหม่ (ต้องเรียกใช้งานโปรแกรมใหม่)"
+msgstr ""
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1250,20 +1236,7 @@ msgstr ""
 msgid "Error retrieving page saved informations"
 msgstr ""
 
-#~ msgid "Cover and Footer"
-#~ msgstr "ปกและท้ายกระดาษ"
-
-#~ msgid "Language: "
-#~ msgstr "ภาษา "
-
-#~ msgid "Destination output file:"
-#~ msgstr "เลือกที่เก็บไฟล์ที่ส่งออก"
-
-#~ msgid "Split options:"
-#~ msgstr "ตัวเลือกการแยกไฟล์"
-
-#~ msgid "Select an input file"
-#~ msgstr "เลือกไฟล์นำเข้า"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้วไม่ถูกต้อง"
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr "ดับเบิลคลิกเพื่อตั้งหน้าที่ต้องการจะรวม (ex: 2 or All or 5-23 or 2,5-7,12-)"

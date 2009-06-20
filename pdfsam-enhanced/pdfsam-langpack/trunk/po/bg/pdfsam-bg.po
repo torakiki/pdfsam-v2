@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-10-19 22:52+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:27+0000\n"
 "Last-Translator: Mitko K. <heyho@mailinator.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-12-08 14:48+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -146,13 +146,11 @@ msgstr "Разделяй документа на всяка нечетна ст�
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Разделяй документа след номер на страница (num1-num2-num3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Разделяй документа на файлове със зададена големина /грубо/"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Разделяй документа на файлове със зададена големина /грубо/"
+msgstr ""
 
 msgid "Destination folder"
 msgstr ""
@@ -234,20 +232,17 @@ msgstr "Раздели заредената част"
 msgid "Invalid unit: "
 msgstr "Невалидна единица "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Обърни първия документ"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Коричен PDF файл"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "PDF файл за долното поле"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Изберете поне един коричен или един  файл за Долното поле"
@@ -273,9 +268,8 @@ msgstr "Потребителска парола:"
 msgid "User password (Max 32 chars long)"
 msgstr "Потребителска парола /Макс. 32 знака/"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Алгоритъм за криптиране"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Разрешаване на всичко"
@@ -555,22 +549,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -598,6 +589,9 @@ msgid "Error loading environment from input file. "
 msgstr "Грешка при зареждане на средата от входен файл. "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -669,6 +663,17 @@ msgstr "Изрежи"
 msgid "Paste"
 msgstr "Постави"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr "Име на файл"
 
@@ -697,11 +702,8 @@ msgid "Pdf version of the document"
 msgstr "PDF версия на документа"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Двойно щракване за избор на страници за сливане (пр: 2 or All or 5-23 or 2,5-"
-"7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Добави PDF в листа"
@@ -953,6 +955,9 @@ msgstr "Не мога да настроя нивото на лога."
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "Грешка при получаване на директорията с допълнения /plugins/"
 
@@ -1040,6 +1045,9 @@ msgstr "Не можах да заредя лентата с бутони"
 msgid "Version: "
 msgstr "Версия: "
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr "Дата на създаване "
 
@@ -1088,6 +1096,9 @@ msgstr "Език:"
 msgid "Check for updates:"
 msgstr "Провери за осъвременявания:"
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr "Зареди среда по подразбиране при стартиране"
 
@@ -1132,6 +1143,9 @@ msgstr "Проверка за обновления"
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Настройте кога да се проверява за обновление на версията  /нужен е рестарт/"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "Изключи звуците - аман от дингдонг!"
@@ -1240,8 +1254,9 @@ msgstr ""
 msgid "Error retrieving page saved informations"
 msgstr ""
 
-#~ msgid "Cover and Footer"
-#~ msgstr "Коричен и за Долно поле"
-
-#~ msgid "Language: "
-#~ msgstr "Език: "
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Двойно щракване за избор на страници за сливане (пр: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"

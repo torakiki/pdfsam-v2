@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 17:07+0200\n"
-"PO-Revision-Date: 2009-05-06 15:56+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-05-23 18:54+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -425,11 +425,11 @@ msgstr "Ricava dal documento"
 msgid "Getting bookmarks max depth"
 msgstr "Ricavando la profondità massima dei segnalibri"
 
-msgid "Cover pdf file"
-msgstr "File pdf di copertina"
+msgid "Frontpage pdf file"
+msgstr "Documento pdf di copertina"
 
-msgid "Footer pdf file"
-msgstr "File pdf di sommario"
+msgid "Addendum pdf file"
+msgstr "Documento pdf di sommario"
 
 msgid "Select at least one cover or one footer"
 msgstr "Seleziona almeno una copertina o un footer"
@@ -819,23 +819,20 @@ msgstr "Impossibile creare un'anteprima per un documento nullo"
 msgid "Input file doesn't exists or is a directory"
 msgstr "Il file in input non esiste o è una directory"
 
+msgid "Error opening pdf document"
+msgstr "Errore aprendo il documento pdf"
+
 msgid "Password not provided."
 msgstr "Password non fornita."
 
 msgid "Unable to open the document."
 msgstr "Impossibile aprire il documento"
 
-msgid "Error opening pdf document"
-msgstr "Errore aprendo il documento pdf"
-
 msgid "Not enough memory to create thumbnails"
 msgstr "Memora non sufficiente per creare le anteprime"
 
 msgid "Thumbnails generated in "
 msgstr "Anteprime generate in "
-
-msgid "Unable to close thumbnail creator"
-msgstr "Impossibile chiudere il creatore di anteprima"
 
 msgid "Unable to generate thumbnail"
 msgstr "Impossibile generare l'anteprima"
@@ -880,6 +877,9 @@ msgstr "Errore caricando l'ambiente dal file in input. "
 
 msgid "Image viewer"
 msgstr "Visualizzatore immagine"
+
+msgid "Unable to initialize the thumbnails creation library."
+msgstr "Impossibile inizializzare la libreria di creazione delle anteprime."
 
 msgid "Unable to open image preview"
 msgstr "Impossibile aprire l'anteprima dell'immagine"
@@ -1024,6 +1024,17 @@ msgstr "Taglia"
 msgid "Paste"
 msgstr "Incolla"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 # F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:178
 # F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:170
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
@@ -1075,13 +1086,10 @@ msgstr "Password per aprire il documento (se necessaria)"
 msgid "Pdf version of the document"
 msgstr "Versione pdf del documento."
 
-# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\models\PdfSelectionTableModel.java:84
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Doppio click per impostare le pagine che vuoi unire (es: 2 o All o 5-23 or "
-"2,5-7,12-)"
+"Doppio click per impostare le pagine da unire (es:2 or 5-23 or 2,5-7,12-)"
 
 # F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:230
 # F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:217
@@ -1414,6 +1422,9 @@ msgstr "Impostando il livello di log."
 msgid "Setting default working directory..."
 msgstr "Impostando la cartella di lavoro di default..."
 
+msgid "Setting default thumbnails creator..."
+msgstr "Impostando il generatore di anteprime di default..."
+
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\plugins\PlugInsLoader.java:65
 msgid "Error getting plugins directory."
 msgstr "Errore ricavando la directory dei plugin."
@@ -1549,6 +1560,9 @@ msgstr "Impossibile inizializzare la barra dei bottoni."
 msgid "Version: "
 msgstr "Versione: "
 
+msgid "Developed by: "
+msgstr "Sviluppato da: "
+
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Build date: "
@@ -1618,6 +1632,9 @@ msgstr "Linguaggio:"
 msgid "Check for updates:"
 msgstr "Controlla aggiornamenti:"
 
+msgid "Thumbnails creator"
+msgstr "Generatore di anteprime"
+
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:129
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
@@ -1683,6 +1700,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Imposta quando controllare se disponibile una nuova versione (riavvio "
 "necessario)"
+
+msgid "Set the thumbnails creation library"
+msgstr "Imposta la libreria di creazione anteprime"
 
 msgid "Turn on or off alert sounds"
 msgstr "Attiva o disattiva suoni di allerta"
@@ -1819,3 +1839,17 @@ msgstr "Lista piena"
 
 msgid "Error retrieving page saved informations"
 msgstr "Errore ritrovando le informazioni della pagina salvate"
+
+#~ msgid "Cover pdf file"
+#~ msgstr "File pdf di copertina"
+
+#~ msgid "Footer pdf file"
+#~ msgstr "File pdf di sommario"
+
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\models\PdfSelectionTableModel.java:84
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Doppio click per impostare le pagine che vuoi unire (es: 2 o All o 5-23 "
+#~ "or 2,5-7,12-)"

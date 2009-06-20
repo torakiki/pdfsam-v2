@@ -7,21 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-03-24 16:12+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:29+0000\n"
 "Last-Translator: Srancsik <srancsik@apu.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-06-21 08:12+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Merge options"
-msgstr "Egyesítési beállítások"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 # F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
@@ -113,13 +110,8 @@ msgid ""
 msgstr ""
 "Jelölje ki ezt a dobozt, amennyiben felül akarja írni a már létező fájlt"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
-#, fuzzy
 msgid "Check the box if you want compressed output files."
 msgstr ""
-"Jelölje ki ezt a dobozt, amennyiben felül akarja írni a már létező fájlt"
 
 msgid "PDF version 1.5 or above."
 msgstr ""
@@ -143,10 +135,8 @@ msgstr "Kérem várjon, amíg minden fájl feldolgozásra kerül"
 msgid "Found a password for input file."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Második pdf dokumentum"
+msgstr ""
 
 msgid "Warning"
 msgstr ""
@@ -216,13 +206,8 @@ msgstr "Páratlan oldalak szétválasztása"
 msgid "Split after these pages"
 msgstr "Szétválasztás ezek az oldalak után"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:211
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-#, fuzzy
 msgid "Split at this size"
-msgstr "Szétválasztás ezek az oldalak után"
+msgstr ""
 
 msgid "Split by bookmarks level"
 msgstr ""
@@ -259,24 +244,14 @@ msgstr ""
 "A dokumentum szétválasztása a következő oldalszámoknál (1. szám- 2. szám - "
 "3. szám...)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "A dokumentum szétválasztása páros oldalanként"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "A dokumentum szétválasztása páros oldalanként"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#, fuzzy
 msgid "Destination folder"
-msgstr "Kimeneti könyvtár"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
@@ -325,12 +300,8 @@ msgid ""
 msgstr ""
 "Jelölje meg a nyomógombot, amennyiben felül akarja írni a már létező fájlokat"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output options"
-msgstr "Kimeneti lehetőségek"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
@@ -356,15 +327,10 @@ msgstr ""
 "Például: Előtag_alapnév_jelenlegi oldal a következőt hozza létre: "
 "előtag_fájl neve_005.pdf"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:339
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:334
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Ha nem tartalmazza a [Jelenlegi odlal] \"[Időbélyeg]\"-t akkor hagyományos "
-"fájlneveket készít"
 
 msgid "Available variables"
 msgstr ""
@@ -378,16 +344,11 @@ msgstr ""
 msgid "You selected a lower output pdf version, continue anyway ?"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version conflict"
-msgstr "Fordítsa meg ezt a dokumentumot"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Második pdf dokumentum"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -404,23 +365,17 @@ msgstr "A szétválasztptt rász megnyitva"
 msgid "Invalid unit: "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#, fuzzy
 msgid "Fill from document"
-msgstr "Első pdf dokumentum"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Fedlap PDF fájl"
+msgid "Frontpage pdf file"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Lábléc PDF file"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr ""
@@ -428,15 +383,11 @@ msgstr ""
 msgid "Frontpage and Addendum"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
-#, fuzzy
 msgid "Cover And Footer section loaded."
-msgstr "A fedlap és lábjegyzet rész betöltődött"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Kódolási lehetőségek"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
@@ -454,10 +405,8 @@ msgstr "A felhasználó jelszava"
 msgid "User password (Max 32 chars long)"
 msgstr "A felhasználó jelszava (Maximum 22 karakter hosszú)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Kódolási algoritmus"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
 msgid "Allow all"
@@ -487,25 +436,17 @@ msgstr "Magyarázó szöveg hozzáadása, vagy módosítása"
 msgid "Fill form fields"
 msgstr "Formanyomtatvány mezőinek kitöltése"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
-#, fuzzy
 msgid "Extract for use by accessibility dev."
-msgstr "Kinyerés a hozzáférhetőség javításáért"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
 msgid "Manipulate pages and add bookmarks"
 msgstr "Oldalak és könyvjelzők hozzáadása"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-#, fuzzy
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
-"Jelölje meg a nyomógombot, amennyiben felül akarja írni a már létező fájlokat"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
@@ -532,52 +473,33 @@ msgstr ""
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "Elérhető változók: Időbélyeg, Alapnév"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Encrypt selected files"
-msgstr "A kiválasztott fájl kódolása"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt"
-msgstr "Kódolási lehetőségek"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
 msgid "Encrypt section loaded."
 msgstr "A kiválasztott kódolási rész betöltődött"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "A kiválasztott fájl kódolása"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Decrypt"
-msgstr "Kódolási lehetőségek"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "A kiválasztott kódolási rész betöltődött"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Mix options"
-msgstr "Szétválasztási lehetőségek"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Reverse first document"
-msgstr "Fordítsa meg ezt a dokumentumot"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Reverse second document"
-msgstr "Fordítsa meg ezt a dokumentumot"
+msgstr ""
 
 msgid "Number of pages to switch document"
 msgstr ""
@@ -598,15 +520,11 @@ msgstr ""
 msgid "Found a password for second file."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select two pdf documents."
-msgstr "Második pdf dokumentum"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
-#, fuzzy
 msgid "Execute pdf alternate mix"
-msgstr "Váltakozó Pdf mix végrehajtása"
+msgstr ""
 
 msgid "Alternate Mix"
 msgstr ""
@@ -621,16 +539,11 @@ msgstr ""
 msgid "Unpack"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Unpack section loaded."
-msgstr "A kiválasztott kódolási rész betöltődött"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Szétválasztási lehetőségek"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -650,11 +563,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Fordítsa meg ezt a dokumentumot"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -671,16 +581,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-#, fuzzy
 msgid "Set options"
-msgstr "Szétválasztási lehetőségek"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "A kiválasztott fájl kódolása"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -688,11 +593,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
-#, fuzzy
 msgid "None"
-msgstr "Jegyzet"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -703,11 +605,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
-#, fuzzy
 msgid "Document outline"
-msgstr "A PDF dokumentumok tartalmaznak űrlapot"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -730,16 +629,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Viewer options"
-msgstr "Egyesítési beállítások"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "A kiválasztott kódolási rész betöltődött"
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -806,13 +700,13 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
-msgstr ""
-
-msgid "Error opening pdf document"
 msgstr ""
 
 msgid "Not enough memory to create thumbnails"
@@ -821,17 +715,11 @@ msgstr ""
 msgid "Thumbnails generated in "
 msgstr ""
 
-msgid "Unable to close thumbnail creator"
-msgstr ""
-
 msgid "Unable to generate thumbnail"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid " node environment loaded."
-msgstr " Környezet betöltése"
+msgstr ""
 
 msgid "Environment saved."
 msgstr ""
@@ -839,27 +727,22 @@ msgstr ""
 msgid "Error saving environment, output file is null."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-#, fuzzy
 msgid "Error saving environment."
-msgstr "Környezet elmentése"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Environment loaded."
-msgstr "A kiválasztott kódolási rész betöltődött"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid "Error loading environment."
-msgstr "Környezet betöltése"
+msgstr ""
 
 msgid "Error loading environment from input file. "
 msgstr ""
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -880,25 +763,14 @@ msgstr ""
 msgid "Table full"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-#, fuzzy
 msgid "Please wait while reading"
-msgstr "Várjon, amíg a beolvasás tart"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Selected file is not a pdf document."
-msgstr "Második pdf dokumentum"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid "Error loading "
-msgstr "Környezet betöltése "
+msgstr ""
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -943,12 +815,8 @@ msgstr "Tallóz"
 msgid "Add"
 msgstr "Hozzáadás"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
 msgid "Compress output file/files"
-msgstr "Kimeneti fájl beállítása"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
@@ -962,17 +830,11 @@ msgstr "Felülír, amennyiben létezik"
 msgid "Don't preserve file order (fast load)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output document pdf version:"
-msgstr "Kimeneti lehetőségek"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Same as input document"
-msgstr "Második pdf dokumentum"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
 msgid "Copy"
@@ -981,12 +843,19 @@ msgstr "Másol"
 msgid "Cut"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
-#, fuzzy
 msgid "Paste"
-msgstr "Útvonal"
+msgstr ""
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
@@ -1006,10 +875,8 @@ msgstr "Útvonal"
 msgid "Pages"
 msgstr "Oldalak"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
-#, fuzzy
 msgid "Password"
-msgstr "A felhasználó jelszava"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
@@ -1028,15 +895,11 @@ msgstr ""
 msgid "Password to open the document (if needed)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version of the document"
-msgstr "Fordítsa meg ezt a dokumentumot"
+msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -1066,12 +929,8 @@ msgstr "Eltávolitás"
 msgid "Reload"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:353
-#, fuzzy
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Hiba: A fájl helye (útvonala) nem meghatározható"
+msgstr ""
 
 msgid "Document properties"
 msgstr ""
@@ -1087,14 +946,8 @@ msgstr ""
 msgid "File selected: "
 msgstr "Kiválasztott fájl: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:596
-#, fuzzy
 msgid "File reloaded: "
-msgstr "Kiválasztott fájl: "
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
@@ -1326,11 +1179,8 @@ msgstr ""
 msgid "Unable to get the default environment informations."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
-#, fuzzy
 msgid "Setting look and feel..."
-msgstr "Lásd és érezd:"
+msgstr ""
 
 msgid "Setting logging level..."
 msgstr ""
@@ -1338,10 +1188,8 @@ msgstr ""
 msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:143
-#, fuzzy
 msgid "Logging level set to "
-msgstr "Naplózási szint "
+msgstr ""
 
 msgid "Unable to set logging level."
 msgstr ""
@@ -1349,13 +1197,11 @@ msgstr ""
 msgid "Setting default working directory..."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-#, fuzzy
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
-msgstr "Kimeneti könyvtár"
+msgstr ""
 
 msgid "Cannot read plugins directory "
 msgstr ""
@@ -1366,18 +1212,14 @@ msgstr ""
 msgid "Found zero or many jars in plugin directory "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
-#, fuzzy
 msgid "Exception loading plugins."
-msgstr "Pluginek betöltése"
+msgstr ""
 
 msgid "Cannot read plugin directory "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
-#, fuzzy
 msgid " plugin loaded."
-msgstr " A szétválasztptt rász megnyitva"
+msgstr ""
 
 msgid "Unable to load a plugin that is not JPanel subclass."
 msgstr ""
@@ -1437,10 +1279,8 @@ msgstr "Menü kialakítása"
 msgid "Building buttons bar.."
 msgstr "Nyomógombok kialakítása"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
-#, fuzzy
 msgid "Building status bar.."
-msgstr "Status bar építése"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
@@ -1464,6 +1304,9 @@ msgstr ""
 msgid "Version: "
 msgstr "Verzió: "
 
+msgid "Developed by: "
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
 msgid "Build date: "
@@ -1472,10 +1315,8 @@ msgstr "Létrehozás időpontja: "
 msgid "Java home: "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-#, fuzzy
 msgid "Java version: "
-msgstr "Verzió: "
+msgstr ""
 
 msgid "Max memory: "
 msgstr ""
@@ -1508,17 +1349,11 @@ msgstr "Közreműködők "
 msgid "Log level:"
 msgstr "Naplózási szint:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
-#, fuzzy
 msgid "Settings"
-msgstr "Beállítások: "
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:110
-#, fuzzy
 msgid "Look and feel:"
-msgstr "Lásd és érezd:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:122
 # F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:113
@@ -1533,6 +1368,9 @@ msgstr "Nyelv:"
 msgid "Check for updates:"
 msgstr ""
 
+msgid "Thumbnails creator"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
 msgstr "Az alap környezet betöltése a megnyitáskor"
@@ -1540,16 +1378,11 @@ msgstr "Az alap környezet betöltése a megnyitáskor"
 msgid "Default working directory:"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
-#, fuzzy
 msgid "Error getting default environment."
-msgstr "Az alap környezet betöltése a megnyitáskor"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-#, fuzzy
 msgid "Check now"
-msgstr "Kijelölve"
+msgstr ""
 
 msgid "Play alert sounds"
 msgstr ""
@@ -1596,6 +1429,9 @@ msgstr ""
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Turn on or off alert sounds"
 msgstr ""
 
@@ -1623,10 +1459,8 @@ msgstr ""
 msgid "Save"
 msgstr "Ment"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
-#, fuzzy
 msgid "Configuration saved."
-msgstr "Napló mentve"
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -1640,13 +1474,8 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-#, fuzzy
 msgid "Error getting pdf version description."
-msgstr "Kimeneti könyvtár"
+msgstr ""
 
 msgid "Version 1.2 (Acrobat 3)"
 msgstr ""
@@ -1713,136 +1542,3 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:337
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:332
-#, fuzzy
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "Ha tartalmazza a [Jelenlegi odlal] \"[Időbélyeg]\"-t akkor különböző "
-#~ "helyettesítéseket hajt végre"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:335
-#, fuzzy
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr ""
-#~ "Rendelkezésre álló változók: [Jelenlegi oldal], [Időbélyeg], [Alapnév]"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Language: "
-#~ msgstr "Nyelv: "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-#~ msgid "Destination output file:"
-#~ msgstr "Kimeneti fájl útvonala:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:232
-#~ msgid "Split options:"
-#~ msgstr "Szétválasztási lehetőségek"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
-#~ msgid "Select an input file"
-#~ msgstr "Kimeneti fájl beállítása"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-#~ msgid "Please wait while reading "
-#~ msgstr "Várjon, amíg a beolvasás tart "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Minden PDF eltávolítása a listából"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
-#~ msgid "Destination output directory:"
-#~ msgstr "A kimenő adatok könyvtára"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Tallózás a fájlrendszerben a fedlapért"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "Tallózás a fájlrendszerben a lábléc fájlért"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Válassza ki, vagy írja be a kimeneti könyvtár elérési útvonalát"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:540
-#~ msgid "Execute pdf add cover footer"
-#~ msgstr "Llábjegyzeti pdf hzzáadása"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:159
-#~ msgid "Source file:"
-#~ msgstr "Forrásfájl"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "Válasszon ki egy PDF fájl-t a kódoláshoz"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:128
-#~ msgid "Browse filesystem for the first file to mix"
-#~ msgstr "Válassza ki az első fájt"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:155
-#~ msgid "Browse filesystem for the second file to mix"
-#~ msgstr "Válassza ki a második fájt"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Válassza ki a pdf fájlt, amit szét kell válaszani"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-#~ msgid "Error:"
-#~ msgstr "Hiba:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:264
-#~ msgid "RuntimeError:"
-#~ msgstr "Futási hiba:"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:248
-#~ msgid "Info"
-#~ msgstr "Adatok"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:111
-#~ msgid "Informations:"
-#~ msgstr "Adatok"
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Application name: "
-#~ msgstr "Alkalmazás neve: "
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Application version: "
-#~ msgstr "Alkalmazás verziószáma: "
-
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:140
-#~ msgid "Installed plugins:"
-#~ msgstr "Telepített pluginek:"
-
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:412
-#~ msgid "Browse filesystem for a destination file"
-#~ msgstr "Tallózzon a fájl megtalálásához"

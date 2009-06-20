@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2009-01-17 12:54+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-01-18 15:08+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVAKIA\n"
 "X-Poedit-Language: Slovak\n"
@@ -242,10 +242,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -551,22 +551,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -594,6 +591,9 @@ msgid "Error loading environment from input file. "
 msgstr "Chyba pri nahrávaní prostredia zo vstupného súboru. "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -665,6 +665,17 @@ msgstr "Vystrihnúť"
 msgid "Paste"
 msgstr "Prilepiť"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr "Názov súboru"
 
@@ -693,11 +704,8 @@ msgid "Pdf version of the document"
 msgstr "Pdf verzia dokumentu"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dvojklikom nastavte stránky ktoré majú byť spojené (napr. 2 alebo Všetky "
-"alebo 5-23 alebo 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Pridať pdf do zoznamu"
@@ -948,6 +956,9 @@ msgstr "Nemôžem nastaviť úroveň záznamu."
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "Chyba pri čítaní adresáru plaginov"
 
@@ -1035,6 +1046,9 @@ msgstr "Nemôžem spustiť panel nástrojov."
 msgid "Version: "
 msgstr "Verzia: "
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr "Dátum dokončenia: "
 
@@ -1083,6 +1097,9 @@ msgstr "Jazyk:"
 msgid "Check for updates:"
 msgstr "Skontrolovať aktualizácie:"
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr "Nahrať pôvodné prostredie pri štarte:"
 
@@ -1126,6 +1143,9 @@ msgstr "Skontrolovať aktualizácie"
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Nastaviť kedy sa má kontrolovať dostupnosť novej verzie (vyžaduje reštart)"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1233,8 +1253,9 @@ msgstr ""
 msgid "Error retrieving page saved informations"
 msgstr ""
 
-#~ msgid "Cover and Footer"
-#~ msgstr "Prvá a posledná strana"
-
-#~ msgid "Language: "
-#~ msgstr "Jazyk: "
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Dvojklikom nastavte stránky ktoré majú byť spojené (napr. 2 alebo Všetky "
+#~ "alebo 5-23 alebo 2,5-7,12-)"

@@ -25,7 +25,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/AbstractThumbnailCreator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/JPodThumbnailCreator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/ThumbnailsCreator.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/executors/JPodThumbnailsExecutor.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/executors/ThumbnailsExecutor.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/PagePreviewOpener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/PagesWorker.java

@@ -7,22 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-05-07 08:32+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:45+0000\n"
 "Last-Translator: Sefa Denizoğlu <denizoglu@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-05-17 08:20+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Turkish\n"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Merge options"
-msgstr "Birleştirme seçenekleri:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
@@ -108,15 +105,8 @@ msgstr ""
 "Çıktı dosyası mevcut olması durumunda eğer üzerine yazmak istiyorsanız "
 "kutuyu işaretleyin."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-#, fuzzy
 msgid "Check the box if you want compressed output files."
 msgstr ""
-"Eğer zaten varsalar çıktı dosyalarının üzerine yazılmasını istiyorsanız bu "
-"kutuyu işaretleyin."
 
 msgid "PDF version 1.5 or above."
 msgstr "PDF 1.5 versiyonu veya üstü."
@@ -140,10 +130,8 @@ msgstr "Tüm dosyalar işlem görürken lütfen bekleyin..."
 msgid "Found a password for input file."
 msgstr "Açılacak dosya için şifre bulundu."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "İkinci pdf belgesi:"
+msgstr ""
 
 msgid "Warning"
 msgstr ""
@@ -153,14 +141,11 @@ msgstr ""
 msgid "Execute pdf merge"
 msgstr "Pdf birleşimini yap"
 
-#, fuzzy
 msgid "Merge/Extract"
-msgstr "Birleştir/Ayır"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
-#, fuzzy
 msgid "Merge section loaded."
-msgstr "Yüklenen bölümü birleştir."
+msgstr ""
 
 msgid "Export as xml"
 msgstr ""
@@ -201,8 +186,6 @@ msgstr "Bu boyutta parçalara ayır"
 msgid "Split by bookmarks level"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
 msgid "Burst"
 msgstr ""
 
@@ -221,20 +204,14 @@ msgstr "Dökümanı her tek numaralı sayfada ayır"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dökümanı şu sayfalarda böl (syf1-syf2-syf3...)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Dökümanı (yaklaşık) şu boyutlarda parçalara ayır"
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Dökümanı (yaklaşık) şu boyutlarda parçalara ayır"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:253
-#, fuzzy
 msgid "Destination folder"
-msgstr "Hedef klasör:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
@@ -280,12 +257,8 @@ msgstr ""
 "Eğer zaten varsalar çıktı dosyalarının üzerine yazılmasını istiyorsanız bu "
 "kutuyu işaretleyin."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output options"
-msgstr "Çıktı seçenekleri:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
@@ -309,12 +282,10 @@ msgstr ""
 "Örneğin, \"ÖnEk_[BASENAME]_[CURRENTPAGE]\" ifadesi \"ÖnEk_DosyaAdi_005.pdf\" "
 "gibi bir dosya oluşturur."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"\"[CURRENTPAGE]\" veya \"[TIMESTAMP]\" içermiyorsa eski usül dosya adı verir."
 
 msgid "Available variables"
 msgstr ""
@@ -322,24 +293,18 @@ msgstr ""
 msgid "Invalid split size"
 msgstr "Geçersiz ayırma boyutu"
 
-#, fuzzy
 msgid "The lowest available pdf version is "
-msgstr "Geçerli en düşük pdf sürümü "
+msgstr ""
 
 msgid "You selected a lower output pdf version, continue anyway ?"
 msgstr ""
 "Çıktı dosyası için eski bir pdf sürümü seçtiniz, yine de devam edilsin mi?"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version conflict"
-msgstr "Bu belgeyi tersine çevir"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "İkinci pdf belgesi:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
@@ -356,23 +321,17 @@ msgstr "Yüklenen bölümü böl."
 msgid "Invalid unit: "
 msgstr "Geçersiz birim: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:184
-#, fuzzy
 msgid "Fill from document"
-msgstr "İlk pdf belgesi:"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:306
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Kapak pdf dosyası:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:309
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Altlık pdf dosyası:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "En az bir başlık veya dipnot seçmelisiniz"
@@ -380,15 +339,11 @@ msgstr "En az bir başlık veya dipnot seçmelisiniz"
 msgid "Frontpage and Addendum"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
-#, fuzzy
 msgid "Cover And Footer section loaded."
-msgstr "CoverAndFooter bölümü yüklendi."
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Kodlama seçenekleri:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
@@ -406,10 +361,8 @@ msgstr "Kullanıcı parolası:"
 msgid "User password (Max 32 chars long)"
 msgstr "Kullanıcı parolası (En fazla 32 karekter uzunluğunda)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:222
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Kodlama algoritması:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
 msgid "Allow all"
@@ -423,10 +376,8 @@ msgstr "Yazdır"
 msgid "Low quality print"
 msgstr "Düşük kalite yazım"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:235
-#, fuzzy
 msgid "Copy or extract"
-msgstr "Kopyala ya da çıkart"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
 msgid "Modify"
@@ -439,90 +390,60 @@ msgstr "Yazı açıklamaları ve şerhi ekle/değiştir"
 msgid "Fill form fields"
 msgstr "Form alanlarını doldur"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
 msgid "Extract for use by accessibility dev."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
 msgid "Manipulate pages and add bookmarks"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
-#, fuzzy
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
-"Eğer zaten varsalar çıktı dosyalarının üzerine yazılmasını istiyorsanız bu "
-"kutuyu işaretleyin."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:397
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:398
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Encrypt selected files"
-msgstr "Seçilen dosyayı kodla"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Encrypt"
-msgstr "Kodlama seçenekleri:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
 msgid "Encrypt section loaded."
 msgstr "Yüklenen bölümü kodla."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Seçilen dosyayı kodla"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:256
-#, fuzzy
 msgid "Decrypt"
-msgstr "Kodlama seçenekleri:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Yüklenen bölümü kodla."
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "Ayırma seçenekleri"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Reverse first document"
-msgstr "Bu belgeyi tersine çevir"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Reverse second document"
-msgstr "Bu belgeyi tersine çevir"
+msgstr ""
 
 msgid "Number of pages to switch document"
 msgstr ""
@@ -543,19 +464,15 @@ msgstr ""
 msgid "Found a password for second file."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Please select two pdf documents."
-msgstr "İkinci pdf belgesi:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
 msgstr ""
 
 msgid "Alternate Mix"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
 msgid "AlternateMix section loaded."
 msgstr ""
 
@@ -565,14 +482,11 @@ msgstr ""
 msgid "Unpack"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Unpack section loaded."
-msgstr "Yüklenen bölümü kodla."
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Ayırma seçenekleri"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -592,11 +506,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Bu belgeyi tersine çevir"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -613,14 +524,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "Ayırma seçenekleri"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:463
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Seçilen dosyayı kodla"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -628,11 +536,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
-#, fuzzy
 msgid "None"
-msgstr "Not"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -643,11 +548,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
-#, fuzzy
 msgid "Document outline"
-msgstr "PDF belgelerinde formlar bulunur"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -670,16 +572,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:386
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-#, fuzzy
 msgid "Viewer options"
-msgstr "Birleştirme seçenekleri:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Yüklenen bölümü kodla."
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -746,13 +643,13 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
-msgstr ""
-
-msgid "Error opening pdf document"
 msgstr ""
 
 msgid "Not enough memory to create thumbnails"
@@ -761,17 +658,11 @@ msgstr ""
 msgid "Thumbnails generated in "
 msgstr ""
 
-msgid "Unable to close thumbnail creator"
-msgstr ""
-
 msgid "Unable to generate thumbnail"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid " node environment loaded."
-msgstr " Ortam yükle"
+msgstr ""
 
 msgid "Environment saved."
 msgstr ""
@@ -779,27 +670,22 @@ msgstr ""
 msgid "Error saving environment, output file is null."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-#, fuzzy
 msgid "Error saving environment."
-msgstr "Ortamı kaydet"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
-#, fuzzy
 msgid "Environment loaded."
-msgstr "Yüklenen bölümü kodla."
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid "Error loading environment."
-msgstr "Ortam yükle"
+msgstr ""
 
 msgid "Error loading environment from input file. "
 msgstr ""
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -820,25 +706,14 @@ msgstr ""
 msgid "Table full"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-#, fuzzy
 msgid "Please wait while reading"
-msgstr "Okurken lütfen bekleyin"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Selected file is not a pdf document."
-msgstr "İkinci pdf belgesi:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-#, fuzzy
 msgid "Error loading "
-msgstr "Ortam yükle "
+msgstr ""
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -883,12 +758,8 @@ msgstr "Gözat"
 msgid "Add"
 msgstr "Ekle"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
 msgid "Compress output file/files"
-msgstr "Çıktı dosyasını ayarla"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:452
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:315
@@ -902,17 +773,11 @@ msgstr "Eğer zaten varsa üzerine yaz"
 msgid "Don't preserve file order (fast load)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:353
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:314
-#, fuzzy
 msgid "Output document pdf version:"
-msgstr "Çıktı seçenekleri:"
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
-#, fuzzy
 msgid "Same as input document"
-msgstr "İkinci pdf belgesi:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
 msgid "Copy"
@@ -921,12 +786,19 @@ msgstr "Kopyala"
 msgid "Cut"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
-#, fuzzy
 msgid "Paste"
-msgstr "Yol"
+msgstr ""
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
@@ -946,10 +818,8 @@ msgstr "Yol"
 msgid "Pages"
 msgstr "Sayfalar"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
-#, fuzzy
 msgid "Password"
-msgstr "Kullanıcı parolası:"
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
@@ -968,15 +838,11 @@ msgstr ""
 msgid "Password to open the document (if needed)"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:191
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:195
-#, fuzzy
 msgid "Pdf version of the document"
-msgstr "Bu belgeyi tersine çevir"
+msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
@@ -1006,12 +872,8 @@ msgstr "Kaldır"
 msgid "Reload"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:353
-#, fuzzy
 msgid "Error: Unable to reload the selected file/s."
-msgstr "Hata: Dosya yolu alınamıyor."
+msgstr ""
 
 msgid "Document properties"
 msgstr ""
@@ -1027,14 +889,8 @@ msgstr ""
 msgid "File selected: "
 msgstr "Seçilen dosya: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:596
-#, fuzzy
 msgid "File reloaded: "
-msgstr "Seçilen dosya: "
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
@@ -1266,11 +1122,8 @@ msgstr ""
 msgid "Unable to get the default environment informations."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:183
-#, fuzzy
 msgid "Setting look and feel..."
-msgstr "Görünüm"
+msgstr ""
 
 msgid "Setting logging level..."
 msgstr ""
@@ -1278,10 +1131,8 @@ msgstr ""
 msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:143
-#, fuzzy
 msgid "Logging level set to "
-msgstr "Günlük düzeyi: "
+msgstr ""
 
 msgid "Unable to set logging level."
 msgstr ""
@@ -1289,13 +1140,11 @@ msgstr ""
 msgid "Setting default working directory..."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-#, fuzzy
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
-msgstr "Hedef çıktı dizini"
+msgstr ""
 
 msgid "Cannot read plugins directory "
 msgstr ""
@@ -1306,18 +1155,14 @@ msgstr ""
 msgid "Found zero or many jars in plugin directory "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
-#, fuzzy
 msgid "Exception loading plugins."
-msgstr "Eklentiler yükleniyor..."
+msgstr ""
 
 msgid "Cannot read plugin directory "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
-#, fuzzy
 msgid " plugin loaded."
-msgstr " Yüklenen bölümü böl."
+msgstr ""
 
 msgid "Unable to load a plugin that is not JPanel subclass."
 msgstr ""
@@ -1373,7 +1218,6 @@ msgstr "Eklentiler yükleniyor..."
 msgid "Building menus.."
 msgstr "Menüler hazırlanıyor..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
 msgid "Building buttons bar.."
 msgstr ""
 
@@ -1403,6 +1247,9 @@ msgstr ""
 msgid "Version: "
 msgstr "Sürüm: "
 
+msgid "Developed by: "
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:118
 msgid "Build date: "
@@ -1411,10 +1258,8 @@ msgstr "İnşaa tarihi: "
 msgid "Java home: "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-#, fuzzy
 msgid "Java version: "
-msgstr "Sürüm: "
+msgstr ""
 
 msgid "Max memory: "
 msgstr ""
@@ -1447,11 +1292,8 @@ msgstr "Katkıcılar: "
 msgid "Log level:"
 msgstr "Günlük düzeyi:"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:181
-#, fuzzy
 msgid "Settings"
-msgstr "Ayarlar: "
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:110
@@ -1471,6 +1313,9 @@ msgstr "Dil:"
 msgid "Check for updates:"
 msgstr ""
 
+msgid "Thumbnails creator"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
 msgstr "Başlangıçta öntanımlı ortamı yükle."
@@ -1478,16 +1323,11 @@ msgstr "Başlangıçta öntanımlı ortamı yükle."
 msgid "Default working directory:"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
-#, fuzzy
 msgid "Error getting default environment."
-msgstr "Başlangıçta öntanımlı ortamı yükle."
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
-#, fuzzy
 msgid "Check now"
-msgstr "İşaretlenmiş"
+msgstr ""
 
 msgid "Play alert sounds"
 msgstr ""
@@ -1533,15 +1373,15 @@ msgstr ""
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Turn on or off alert sounds"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
-#, fuzzy
 msgid "Default env."
-msgstr "Öntanımlı ort."
+msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
@@ -1559,10 +1399,8 @@ msgstr ""
 msgid "Save"
 msgstr "Kaydet"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
-#, fuzzy
 msgid "Configuration saved."
-msgstr "Günlük kaydedildi."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -1576,13 +1414,8 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-#, fuzzy
 msgid "Error getting pdf version description."
-msgstr "Hedef çıktı dizini"
+msgstr ""
 
 msgid "Version 1.2 (Acrobat 3)"
 msgstr ""
@@ -1649,117 +1482,3 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-#, fuzzy
-#~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
-#~ msgstr ""
-#~ "\"[CURRENTPAGE]\" veya \"[TIMESTAMP]\" içeriyorsa değişken değeri "
-#~ "kullanılır."
-
-#, fuzzy
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr "Mevcut değişkenler: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-#~ msgid "Cover and Footer"
-#~ msgstr "Başlık ve Dipnot"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Language: "
-#~ msgstr "Dil: "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:181
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:306
-#~ msgid "Destination output file:"
-#~ msgstr "Hedef çıktı dosyası:"
-
-#~ msgid "Split options:"
-#~ msgstr "Bölme ayarları:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
-#, fuzzy
-#~ msgid "Select an input file"
-#~ msgstr "Çıktı dosyasını ayarla"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-#~ msgid "Please wait while reading "
-#~ msgstr "Okurken lütfen bekleyin "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:285
-#~ msgid "Remove every pdf file from the list"
-#~ msgstr "Her pdf dosyasını listeden çıkart"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:303
-#~ msgid "Destination output directory:"
-#~ msgstr "Hedef çıktı dizini:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:399
-#~ msgid "Browse filesystem for a cover file"
-#~ msgstr "Bir kapak dosyası için dosya sistemine gözat"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:426
-#~ msgid "Browse filesystem for a footer file"
-#~ msgstr "Bir altlık dosyası için dosya sistemine gözat"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:459
-#~ msgid "Browse or enter the full path to the destination output directory."
-#~ msgstr "Gözatın ya da hedef çıktı dizinine giden tam yolu girin."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:171
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:160
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:159
-#~ msgid "Source file:"
-#~ msgstr "Kaynak dosya:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:177
-#~ msgid "Select a PDF file to encrypt"
-#~ msgstr "Kodlamak için bir PDF dosyası seçin"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:166
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:165
-#~ msgid "Select a PDF file to split"
-#~ msgstr "Bölmek için bir PDF dosyası seçin"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:65
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:79
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:92
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:91
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:268
-#~ msgid "Error:"
-#~ msgstr "Hata:"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:264
-#, fuzzy
-#~ msgid "RuntimeError:"
-#~ msgstr "ÇalışmaZamanıHatası:"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:248
-#~ msgid "Info"
-#~ msgstr "Bilgi"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:111
-#~ msgid "Informations:"
-#~ msgstr "Bilgiler:"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Application name: "
-#~ msgstr "Uygulama adı: "
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:118
-#~ msgid "Application version: "
-#~ msgstr "Uygulama sürümü: "
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:140
-#~ msgid "Installed plugins:"
-#~ msgstr "Kurulu eklentiler:"

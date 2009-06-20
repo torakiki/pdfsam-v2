@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-06-26 22:02+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:28+0000\n"
 "Last-Translator: iqson716 <m.jafaripour@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-08-17 09:24+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "ترکیب اختیارات"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "اسناد PDF محتوی فرم ها"
@@ -151,9 +150,8 @@ msgstr ""
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "پوشه‌ی مقصد:"
+msgstr ""
 
 msgid "Same as source"
 msgstr ""
@@ -235,10 +233,10 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-msgid "Cover pdf file"
+msgid "Frontpage pdf file"
 msgstr ""
 
-msgid "Footer pdf file"
+msgid "Addendum pdf file"
 msgstr ""
 
 msgid "Select at least one cover or one footer"
@@ -250,9 +248,8 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "ترکیب اختیارات"
+msgstr ""
 
 msgid "Owner password:"
 msgstr ""
@@ -335,9 +332,8 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "ترکیب اختیارات"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr ""
@@ -385,9 +381,8 @@ msgstr ""
 msgid "Unpack section loaded."
 msgstr ""
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "ترکیب اختیارات"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -425,9 +420,8 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "ترکیب اختیارات"
+msgstr ""
 
 msgid "Set viewer options for selected files"
 msgstr ""
@@ -438,9 +432,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "یادداشت"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -451,9 +444,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "اسناد PDF محتوی فرم ها"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -476,9 +468,8 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "ترکیب اختیارات"
+msgstr ""
 
 msgid "Viewer options section loaded."
 msgstr ""
@@ -546,22 +537,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -589,6 +577,9 @@ msgid "Error loading environment from input file. "
 msgstr ""
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -660,6 +651,17 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr ""
 
@@ -688,8 +690,7 @@ msgid "Pdf version of the document"
 msgstr ""
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
 msgid "Add a pdf to the list"
@@ -941,6 +942,9 @@ msgstr ""
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr ""
 
@@ -1028,6 +1032,9 @@ msgstr ""
 msgid "Version: "
 msgstr ""
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr ""
 
@@ -1076,6 +1083,9 @@ msgstr ""
 msgid "Check for updates:"
 msgstr ""
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr ""
 
@@ -1117,6 +1127,9 @@ msgid "Check for updates"
 msgstr ""
 
 msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+
+msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1222,6 +1235,3 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
-
-#~ msgid "Destination output file:"
-#~ msgstr "مقصد فایل خروجی:"

@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 18:06+0200\n"
-"PO-Revision-Date: 2008-10-14 06:34+0000\n"
-"Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-03-10 13:27+0000\n"
+"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-14 17:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#, fuzzy
 msgid "Merge options"
-msgstr "Opcions de combinació:"
+msgstr ""
 
 msgid "PDF documents contain forms"
 msgstr "Els documents PDF contenen formularis"
@@ -77,9 +76,8 @@ msgstr "Espereu mentre es processen tots els fitxers."
 msgid "Found a password for input file."
 msgstr "S'ha trobat una contrasenya pel fitxer d'entrada."
 
-#, fuzzy
 msgid "Please select at least one pdf document."
-msgstr "Si us  plau, seleccioneu dos documents pdf"
+msgstr ""
 
 msgid "Warning"
 msgstr ""
@@ -150,17 +148,14 @@ msgstr "Divideix el document en cada pàgina senar"
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Divideix el document després dels números de pàgina (num1-num2-num3..)"
 
-#, fuzzy
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Divideix el document en fitxers de la mida indicada (aproximadament)."
+msgstr ""
 
-#, fuzzy
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Divideix el document en fitxers de la mida indicada (aproximadament)."
+msgstr ""
 
-#, fuzzy
 msgid "Destination folder"
-msgstr "Carpeta de destí:"
+msgstr ""
 
 msgid "Same as source"
 msgstr "El mateix que la font"
@@ -190,9 +185,8 @@ msgstr ""
 "Marqueu la casella de selecció per sobreescriure els fitxers de sortida si "
 "ja existeixen."
 
-#, fuzzy
 msgid "Output options"
-msgstr "Opcions de sortida:"
+msgstr ""
 
 msgid "Output file names prefix:"
 msgstr "Prefix dels fitxers de sortida:"
@@ -208,13 +202,10 @@ msgstr ""
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_FileName_005.pdf."
 
-#, fuzzy
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
-"Si no conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\" genera noms de fitxer de "
-"sortida de format antic."
 
 msgid "Available variables"
 msgstr ""
@@ -231,9 +222,8 @@ msgstr "Heu triat una versió de sortida inferior de pdf, continuar?"
 msgid "Pdf version conflict"
 msgstr "Conflicte de versions de pdf"
 
-#, fuzzy
 msgid "Please select a pdf document."
-msgstr "Si us  plau, seleccioneu dos documents pdf"
+msgstr ""
 
 msgid "Split selected file"
 msgstr "Divideix el fitxer seleccionat"
@@ -247,20 +237,17 @@ msgstr "Divideix la secció carregada."
 msgid "Invalid unit: "
 msgstr "Unitat no vàlida: "
 
-#, fuzzy
 msgid "Fill from document"
-msgstr "Inverteix el primer document"
+msgstr ""
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
-#, fuzzy
-msgid "Cover pdf file"
-msgstr "Fitxer pdf de la pàgina coberta:"
+msgid "Frontpage pdf file"
+msgstr ""
 
-#, fuzzy
-msgid "Footer pdf file"
-msgstr "Fitxer pdf del peu de pàgina:"
+msgid "Addendum pdf file"
+msgstr ""
 
 msgid "Select at least one cover or one footer"
 msgstr "Selecciona com a mínim una pàgina de coberta i un peu de pàgina"
@@ -271,9 +258,8 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr "Secció de pàgina de coberta i peu de pàgina carregats"
 
-#, fuzzy
 msgid "Encrypt options"
-msgstr "Opcions de xifrat:"
+msgstr ""
 
 msgid "Owner password:"
 msgstr "Contrasenya del propietari:"
@@ -287,9 +273,8 @@ msgstr "Contrasenya d'usuari:"
 msgid "User password (Max 32 chars long)"
 msgstr "Contrasenya d'usuari (màxim 32 caràcters de longitud)"
 
-#, fuzzy
 msgid "Encryption algorithm:"
-msgstr "Algoritme d'encriptació:"
+msgstr ""
 
 msgid "Allow all"
 msgstr "Permetre'ls tots"
@@ -352,21 +337,17 @@ msgstr "Xifra"
 msgid "Encrypt section loaded."
 msgstr "Xifra la secció carregada."
 
-#, fuzzy
 msgid "Decrypt selected files"
-msgstr "Xifra els fitxers seleccionats"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt"
-msgstr "Xifra"
+msgstr ""
 
-#, fuzzy
 msgid "Decrypt section loaded."
-msgstr "Xifra la secció carregada."
+msgstr ""
 
-#, fuzzy
 msgid "Mix options"
-msgstr "Divideix les opcions"
+msgstr ""
 
 msgid "Reverse first document"
 msgstr "Inverteix el primer document"
@@ -414,9 +395,8 @@ msgstr "Descomprimeix"
 msgid "Unpack section loaded."
 msgstr "Descomprimeix la secció carregada."
 
-#, fuzzy
 msgid "Set viewer options"
-msgstr "Divideix les opcions"
+msgstr ""
 
 msgid "Hide the menubar"
 msgstr ""
@@ -436,9 +416,8 @@ msgstr ""
 msgid "Display document title as window title"
 msgstr ""
 
-#, fuzzy
 msgid "Pdf version required:"
-msgstr "Conflicte de versions de pdf"
+msgstr ""
 
 msgid "No page scaling in print dialog"
 msgstr ""
@@ -455,13 +434,11 @@ msgstr ""
 msgid "Direction:"
 msgstr ""
 
-#, fuzzy
 msgid "Set options"
-msgstr "Divideix les opcions"
+msgstr ""
 
-#, fuzzy
 msgid "Set viewer options for selected files"
-msgstr "Xifra els fitxers seleccionats"
+msgstr ""
 
 msgid "Left to right"
 msgstr ""
@@ -469,9 +446,8 @@ msgstr ""
 msgid "Right to left"
 msgstr ""
 
-#, fuzzy
 msgid "None"
-msgstr "Nota"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -482,9 +458,8 @@ msgstr ""
 msgid "Optional content group panel"
 msgstr ""
 
-#, fuzzy
 msgid "Document outline"
-msgstr "Els documents PDF contenen formularis"
+msgstr ""
 
 msgid "Thumbnail images"
 msgstr ""
@@ -507,13 +482,11 @@ msgstr ""
 msgid "Two pages at a time (odd on the right)"
 msgstr ""
 
-#, fuzzy
 msgid "Viewer options"
-msgstr "Opcions de combinació:"
+msgstr ""
 
-#, fuzzy
 msgid "Viewer options section loaded."
-msgstr "Xifra la secció carregada."
+msgstr ""
 
 msgid "Move on top"
 msgstr ""
@@ -580,22 +553,19 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
+msgid "Error opening pdf document"
+msgstr ""
+
 msgid "Password not provided."
 msgstr ""
 
 msgid "Unable to open the document."
 msgstr ""
 
-msgid "Error opening pdf document"
-msgstr ""
-
 msgid "Not enough memory to create thumbnails"
 msgstr ""
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to close thumbnail creator"
 msgstr ""
 
 msgid "Unable to generate thumbnail"
@@ -623,6 +593,9 @@ msgid "Error loading environment from input file. "
 msgstr "Error en carregar l'entorn del fitxer d'entrada. "
 
 msgid "Image viewer"
+msgstr ""
+
+msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
@@ -694,6 +667,17 @@ msgstr "Retalla"
 msgid "Paste"
 msgstr "Enganxa"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr "Nom del fitxer"
 
@@ -722,11 +706,8 @@ msgid "Pdf version of the document"
 msgstr "Versió pdf del document"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes o "
-"5-23 o 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Afegeix un pdf a la llista"
@@ -979,6 +960,9 @@ msgstr "No s'ha pogut definir el nivell de registre."
 msgid "Setting default working directory..."
 msgstr ""
 
+msgid "Setting default thumbnails creator..."
+msgstr ""
+
 msgid "Error getting plugins directory."
 msgstr "Error en obtenir el directori de connectors."
 
@@ -1066,6 +1050,9 @@ msgstr "No s'ha pogut inicialitzar la barra de botons."
 msgid "Version: "
 msgstr "Versió: "
 
+msgid "Developed by: "
+msgstr ""
+
 msgid "Build date: "
 msgstr "Data de muntatge: "
 
@@ -1114,6 +1101,9 @@ msgstr "Idioma:"
 msgid "Check for updates:"
 msgstr "Comprova les actualitzacions:"
 
+msgid "Thumbnails creator"
+msgstr ""
+
 msgid "Load default environment at startup:"
 msgstr "Carrega l'entorn predeterminat a l'arrencada:"
 
@@ -1158,6 +1148,9 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Definiu quan voleu comprovar la disponibilitat de noves versions (cal "
 "reiniciar)"
+
+msgid "Set the thumbnails creation library"
+msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1267,33 +1260,9 @@ msgstr ""
 msgid "Error retrieving page saved informations"
 msgstr ""
 
-#, fuzzy
 #~ msgid ""
-#~ "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" it "
-#~ "performs variable substitution."
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
 #~ msgstr ""
-#~ "Si conté \"[CURRENTPAGE]\" o \"[TIMESTAMP]\"  efectua una substitució de "
-#~ "variables."
-
-#, fuzzy
-#~ msgid ""
-#~ "Available variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME], [FILENUMBER]."
-#~ msgstr "Variables disponibles: [CURRENTPAGE], [TIMESTAMP], [BASENAME]."
-
-#~ msgid "Cover and Footer"
-#~ msgstr "Pàgina de coberta i peu de pàgina"
-
-#~ msgid "Language: "
-#~ msgstr "Idioma: "
-
-#~ msgid "Destination output file:"
-#~ msgstr "Fitxer de destí:"
-
-#~ msgid "Split options:"
-#~ msgstr "Divideix les opcions:"
-
-#~ msgid "Select an input file"
-#~ msgstr "Seleccioneu un fitxer d'entrada"
-
-#~ msgid "Output location is not correct"
-#~ msgstr "La ubicació de sortida no és correcte"
+#~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes "
+#~ "o 5-23 o 2,5-7,12-)"

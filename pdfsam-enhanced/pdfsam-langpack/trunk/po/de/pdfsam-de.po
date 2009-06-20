@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 17:07+0200\n"
-"PO-Revision-Date: 2009-05-05 20:57+0000\n"
+"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"PO-Revision-Date: 2009-05-24 08:44+0000\n"
 "Last-Translator: Marcel Mayr <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 14:52+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -115,7 +115,7 @@ msgid "Burst (split into single pages)"
 msgstr "In Einzelseiten zerlegen"
 
 msgid "Split every \"n\" pages"
-msgstr "Im Abstand von \"n\" Seiten trennen"
+msgstr "Im Abstand von »n« Seiten trennen"
 
 msgid "Split even pages"
 msgstr "Nach geraden Seitennummern trennen"
@@ -139,7 +139,7 @@ msgid "Explode the pdf document into single pages"
 msgstr "Dokument in Einzelseiten aufteilen"
 
 msgid "Split the document every \"n\" pages"
-msgstr "Dokument nach jeweils \"n\" Seiten teilen"
+msgstr "Dokument nach jeweils »n« Seiten teilen"
 
 msgid "Split the document every even page"
 msgstr "Dokument bei geraden Seiten teilen"
@@ -254,11 +254,11 @@ msgstr "Aus Dokument einfügen"
 msgid "Getting bookmarks max depth"
 msgstr "Maximale Lesezeichentiefe wird ermittelt"
 
-msgid "Cover pdf file"
-msgstr "PDF-Datei für Titelseite"
+msgid "Frontpage pdf file"
+msgstr "PDF für Titelseite"
 
-msgid "Footer pdf file"
-msgstr "PDF-Datei für Rückseite"
+msgid "Addendum pdf file"
+msgstr "PDF für Rückseite"
 
 msgid "Select at least one cover or one footer"
 msgstr "Wählen Sie zumindest ein PDF für Titel- oder Rückseite"
@@ -530,7 +530,7 @@ msgid "Visual document composer"
 msgstr "Visuelle Dokumentzusammenstellung"
 
 msgid "Choose a file"
-msgstr "Wählen Sie eine Datei"
+msgstr "Datei wählen"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
@@ -580,23 +580,20 @@ msgstr ""
 msgid "Input file doesn't exists or is a directory"
 msgstr "Quelldatei existiert nicht oder ist ein Verzeichnis"
 
+msgid "Error opening pdf document"
+msgstr "Fehler beim Öffnen des PDF-Dokuments"
+
 msgid "Password not provided."
 msgstr "Passwort fehlt."
 
 msgid "Unable to open the document."
 msgstr "Dokument konnte nicht geöffnet werden."
 
-msgid "Error opening pdf document"
-msgstr "Fehler beim Öffnen des PDF-Dokuments"
-
 msgid "Not enough memory to create thumbnails"
 msgstr "Nicht genug Speicher zum Erstellen der Miniaturansichten"
 
 msgid "Thumbnails generated in "
 msgstr "Miniaturansichten wurden erstellt in "
-
-msgid "Unable to close thumbnail creator"
-msgstr "Miniaturansichtenerstellung konnte nicht geschlossen werden"
 
 msgid "Unable to generate thumbnail"
 msgstr "Miniaturansicht konnte nicht erstellt werden"
@@ -624,6 +621,11 @@ msgstr "Fehler beim Laden der Umgebung aus einer Datei "
 
 msgid "Image viewer"
 msgstr "Bildbetrachter"
+
+msgid "Unable to initialize the thumbnails creation library."
+msgstr ""
+"Die für die Miniaturansichterstellung zuständige Bibliothek konnte nicht "
+"gestartet werden."
 
 msgid "Unable to open image preview"
 msgstr "Bildvorschau konnte nicht geöffnet werden"
@@ -694,6 +696,17 @@ msgstr "Ausschneiden"
 msgid "Paste"
 msgstr "Einfügen"
 
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
+
 msgid "File name"
 msgstr "Dateiname"
 
@@ -722,11 +735,10 @@ msgid "Pdf version of the document"
 msgstr "PDF-Version des Dokuments"
 
 msgid ""
-"Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-"7,12-)"
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Doppelklicken Sie, um die zu verbindenden Seiten festzulegen (Syntax: 2 oder "
-"Alle oder 5-23 oder 2,5-7,12-)"
+"Doppelklicken Sie, um die zusammenzuführenden Seiten festzulegen (Schema: 2 "
+"oder 5-23 oder 2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "PDF-Datei zur Liste hinzufügen"
@@ -837,7 +849,7 @@ msgid "(Ctrl+Z)"
 msgstr "(Strg+Z)"
 
 msgid "Rotate right"
-msgstr "Nach rechts drehen"
+msgstr "Rechts drehen"
 
 msgid "Rotate clockwise selected pages"
 msgstr "Ausgewählte Seiten im Uhrzeigersinn drehen"
@@ -846,7 +858,7 @@ msgid "(Alt+ArrowRight)"
 msgstr "(Alt+Rechtspfeil)"
 
 msgid "Rotate left"
-msgstr "Nach links drehen"
+msgstr "Links drehen"
 
 msgid "Rotate anticlockwise selected pages"
 msgstr "Ausgewählte Seiten gegen den Uhrzeigersinn drehen"
@@ -979,6 +991,9 @@ msgstr "Protokollierungsstufe konnte nicht festlegt werden."
 msgid "Setting default working directory..."
 msgstr "Standard-Arbeitsverzeichnis wird festgelegt ..."
 
+msgid "Setting default thumbnails creator..."
+msgstr "Standard-Miniaturansichtersteller wird festgelegt ..."
+
 msgid "Error getting plugins directory."
 msgstr "Fehler beim Ermitteln des Plugin-Verzeichnisses"
 
@@ -1010,7 +1025,7 @@ msgid "Unable to get latest available version"
 msgstr "Neueste verfügbare Version konnte nicht geladen werden"
 
 msgid "Checking for a new version available."
-msgstr "Prüfung auf Verfügbarkeit neuer Version wird durchgeführt."
+msgstr "Verfügbarkeit neuer Version wird überprüft."
 
 msgid "Error checking for a new version available."
 msgstr "Fehler beim Überprüfen auf neue Version."
@@ -1066,6 +1081,9 @@ msgstr "Schaltflächenleiste konnte nicht aufgebaut werden."
 msgid "Version: "
 msgstr "Version: "
 
+msgid "Developed by: "
+msgstr "Entwickelt von: "
+
 msgid "Build date: "
 msgstr "Erstellungsdatum: "
 
@@ -1114,8 +1132,11 @@ msgstr "Sprache:"
 msgid "Check for updates:"
 msgstr "Auf Updates prüfen:"
 
+msgid "Thumbnails creator"
+msgstr "Miniaturansichtersteller"
+
 msgid "Load default environment at startup:"
-msgstr "Lade Standardumgebung beim Start:"
+msgstr "Start-Standardumgebung:"
 
 msgid "Default working directory:"
 msgstr "Standard-Arbeitsverzeichnis"
@@ -1136,7 +1157,7 @@ msgid "Language"
 msgstr "Sprache"
 
 msgid "Set your preferred language (restart needed)"
-msgstr "Wählen Sie Ihre Sprache (Neustart notwendig)."
+msgstr "Wählen Sie Ihre Sprache (Neustart notwendig)"
 
 msgid "Look and feel"
 msgstr "Erscheinungsbild"
@@ -1145,7 +1166,7 @@ msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
 msgstr ""
 "Wählen Sie Ihr bevorzugtes Erscheinungsbild und Farbschema (Neustart "
-"notwendig)."
+"notwendig)"
 
 msgid "Log level"
 msgstr "Protokollierungsstufe"
@@ -1159,7 +1180,10 @@ msgstr "Nach Updates suchen"
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Legen Sie fest, wann auf Verfügbarkeit neuer Versionen geprüft werden soll "
-"(Neustart notwendig)."
+"(Neustart notwendig)"
+
+msgid "Set the thumbnails creation library"
+msgstr "Bibliothek für Miniaturansichterstellung"
 
 msgid "Turn on or off alert sounds"
 msgstr "Warnklänge an- oder ausschalten"
@@ -1172,7 +1196,7 @@ msgid ""
 "startup"
 msgstr ""
 "Wählen Sie eine gespeicherte Umgebung, die beim Start automatisch geladen "
-"wird."
+"wird"
 
 msgid "Default working directory"
 msgstr "Standard-Arbeitsverzeichnis"
@@ -1180,7 +1204,7 @@ msgstr "Standard-Arbeitsverzeichnis"
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Wählen Sie ein Verzeichnis, um dort Dokumente standardmäßig zu speichern und "
-"von dort zu laden."
+"von dort zu laden"
 
 msgid "Save"
 msgstr "Speichern"
@@ -1272,3 +1296,9 @@ msgstr "Tabelle voll"
 
 msgid "Error retrieving page saved informations"
 msgstr "Fehler beim Einlesen der Seiteninformationen"
+
+#~ msgid "Cover pdf file"
+#~ msgstr "PDF-Datei für Titelseite"
+
+#~ msgid "Footer pdf file"
+#~ msgstr "PDF-Datei für Rückseite"
