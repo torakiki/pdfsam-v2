@@ -129,7 +129,7 @@ public class PrefixParser {
 		String retVal = "";
 		if(request != null && !request.isEmpty()){
 			if(isComplexPrefix(request)){
-				retVal = generateSimpleFileName();
+				retVal = generateSimpleFileName(true);
 				if((currentPrefixType & BOOKMARK_NAME)==BOOKMARK_NAME && (request.getBookmarkName()!=null) && (request.getBookmarkName().length()>0)){
 					retVal = applyBookmarkname(retVal, request.getBookmarkName());
 				}
@@ -140,13 +140,13 @@ public class PrefixParser {
 					retVal = applyFilenumber(retVal, request.getFileNumber());
 				}
 			}else{
-				retVal = generateSimpleFileName(fileName);
+				retVal = generateSimpleFileName(fileName, false);
 				if(request.getPageNumber()!=null){
 					retVal = getFileNumberFormatter(request.getPageNumber()).format(request.getPageNumber().intValue())+"_"+retVal;
 				}
 			}
 		}else{
-			retVal = generateSimpleFileName(fileName);
+			retVal = generateSimpleFileName(fileName, isComplexPrefix());
 		}
 		return applyExtension(retVal);
 	}
@@ -173,21 +173,32 @@ public class PrefixParser {
 			||
 			((currentPrefixType & FILE_NUMBER)==FILE_NUMBER && request.getFileNumber()!=null)
 			||
-			((currentPrefixType & TIMESTAMP)==TIMESTAMP);
+			isComplexPrefix();
 		return retVal;
-	}	
+	}
+	
+	/**
+	 * 
+	 * @return true if the prefix contains "[TIMESTAMP]"
+	 */
+	private boolean isComplexPrefix(){
+		return ((currentPrefixType & TIMESTAMP)==TIMESTAMP);
+	}
 	
 	/**
 	 * Generates the filename depending on the type of prefix. 
-	 * If it contains "[TIMESTAMP]" or "[BASENAME]" it performs variable substitution, if not the returned value
+	 * If performSubstitution is true it performs variable substitution replacing [TIMESTAMP] and [BASENAME] when necessary, if not the returned value
 	 * is prefix+defaultPosponedName
 	 * @param defaultPostponedName 
+	 * @param performSubstitution if true perform substitution
 	 * @return filename generated 
 	 */
-	private String generateSimpleFileName(String defaultPostponedName){
+	private String generateSimpleFileName(String defaultPostponedName, boolean performSubstitution){
 		String retVal = prefix;
-		if((currentPrefixType & TIMESTAMP)==TIMESTAMP){			
-			retVal = applyTimestamp(retVal);
+		if(performSubstitution){
+			if((currentPrefixType & TIMESTAMP)==TIMESTAMP){			
+				retVal = applyTimestamp(retVal);
+			}
 			if((currentPrefixType & BASENAME)==BASENAME){
 				retVal = applyFilename(retVal, fileName);
 			}			
@@ -199,12 +210,13 @@ public class PrefixParser {
 	
 	/**
 	 * Generates the filename depending on the type of prefix. 
-	 * If it contains "[TIMESTAMP]" or "[BASENAME]" it performs variable substitution, if not the returned value
+	 * If performSubstitution is true it performs variable substitution replacing [TIMESTAMP] and [BASENAME] when necessary,  if not the returned value
 	 * is {@link PrefixParser#prefix}
+	 * @param performSubstitution if true perform substitution
 	 * @return filename generated 
 	 */
-	private String generateSimpleFileName(){
-		return generateSimpleFileName("");
+	private String generateSimpleFileName(boolean performSubstitution){
+		return generateSimpleFileName("", performSubstitution);
 	}
 	/**
 	 * Applies the PDF extension to the input string

@@ -38,6 +38,18 @@ public class PrefixParserTest extends TestCase {
 	/**
 	 * File number exceed the given patter
 	 */
+	public void testGenerateFileNameIntegerIntegerBASENAMEComplexFILENUMBERComplex() {
+		try{
+			PrefixParser parser = new PrefixParser("[BASENAME]_[FILENUMBER##]_test", "filename");
+			FileNameRequest request = new FileNameRequest(new Integer(20), new Integer(222), null);
+			String actual = parser.generateFileName(request);
+			assertNotNull("Actual is null", actual);
+			assertEquals("Actual is "+actual, "filename_222_test.pdf", actual);
+		}catch(Exception e){
+			fail(e.getMessage());
+		}
+	}
+
 	public void testGenerateFileNameIntegerIntegerCURRENTPAGEComplexFILENUMBERComplex2() {
 		try{
 			PrefixParser parser = new PrefixParser("[CURRENTPAGE###]_[FILENUMBER##]_test", "filename");
@@ -49,7 +61,7 @@ public class PrefixParserTest extends TestCase {
 			fail(e.getMessage());
 		}
 	}
-
+	
 	public void testGenerateFileNameIntegerIntegerCURRENTPAGEComplex() {
 		try{
 			PrefixParser parser = new PrefixParser("[CURRENTPAGE###]_[FILENUMBER]_test", "filename");
