@@ -53,6 +53,7 @@ import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import org.pdfsam.console.business.ConsoleServicesFacade;
+import org.pdfsam.console.business.dto.Bounds;
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
@@ -524,56 +525,6 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
             ext = s.substring(i+1).toLowerCase();
         }
         return ext;
-    }
-    
-    /**
-     * Maps the limit of the concat command, start and end
-     * @author Andrea Vacondio
-     *
-     */
-    private class Bounds{
-    	
-    	private int start;
-    	private int end;
-
-		public Bounds() {
-		}
-		/**
-		 * @param end
-		 * @param start
-		 */
-		public Bounds(int end, int start) {
-			this.end = end;
-			this.start = start;
-		}
-		/**
-		 * @return the start
-		 */
-		public int getStart() {
-			return start;
-		}
-		/**
-		 * @param start the start to set
-		 */
-		public void setStart(int start) {
-			this.start = start;
-		}
-		/**
-		 * @return the end
-		 */
-		public int getEnd() {
-			return end;
-		}
-		/**
-		 * @param end the end to set
-		 */
-		public void setEnd(int end) {
-			this.end = end;
-		}
-    	
-		public String toString(){
-			return start+"-"+end;
-		}
-    }    
+    }  
 
 }

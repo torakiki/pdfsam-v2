@@ -288,7 +288,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 	 * @author Andrea Vacondio
 	 *
 	 */
-	private class Transitions {
+	private static class Transitions {
 		
 		private Transition defaultTransition;
 		private List transitions;
