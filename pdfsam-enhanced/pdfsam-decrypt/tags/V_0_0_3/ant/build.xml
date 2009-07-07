@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-decrypt" default="build-jars" basedir="../">
+    <description>
+        Decrypt plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-decrypt.src.dir" location="src/java"/>
+  	<property name="pdfsam-decrypt.etc.dir" location="etc"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="pdfsam-decrypt.build.root" location="${build.dir}/pdfsam-decrypt"/>
+	  	<property name="pdfsam-decrypt.build.dir" location="${pdfsam-decrypt.build.root}/build"/>
+	  	<property name="pdfsam-decrypt.dist.dir"  location="${pdfsam-decrypt.build.root}/dist"/>
+	  	<property name="pdfsam-decrypt.javadoc.dir"  location="${pdfsam-decrypt.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-decrypt.build.dir}"/>
+		<mkdir dir="${pdfsam-decrypt.dist.dir}"/>
+	    <mkdir dir="${pdfsam-decrypt.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-decrypt.javadoc.dir}"/>
+	    <delete dir="${pdfsam-decrypt.dist.dir}"/>
+	    <delete dir="${pdfsam-decrypt.build.dir}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-decrypt " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-decrypt.classpath">
+    	<fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-decrypt.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-decrypt.src.dir}" destdir="${pdfsam-decrypt.build.dir}" debug="true">
+    	<classpath refid="pdfsam-decrypt.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-decrypt.dist.dir}/${pdfsam-decrypt.jar.name}.jar" basedir="${pdfsam-decrypt.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+    	<fileset dir=".">
+		    <include name="images/*.png"/>
+		</fileset>    	  	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.decrypt.*"
+      sourcepath="${pdfsam-decrypt.src.dir}"
+      destdir="${pdfsam-decrypt.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Decrypt Plugin API"
+      doctitle="pdfsam Decrypt Plugin API" >
+    <classpath refid="pdfsam-decrypt.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-decrypt.dist.dir}/${pdfsam-decrypt.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-decrypt/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-decrypt/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-decrypt/ant/**/*.*"/>
+    		<include name="pdfsam-decrypt/images**/*.png"/>
+    	</fileset>  
+    </zip>
+  </target>
+
+</project>
+
