@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-29 16:50+0200\n"
+"POT-Creation-Date: 2009-07-09 12:23+0200\n"
 "PO-Revision-Date: 2009-05-09 15:07+0000\n"
 "Last-Translator: Mads Boserup Lauritsen <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -766,6 +766,17 @@ msgid "Don't preserve file order (fast load)"
 msgstr ""
 
 msgid "Output document pdf version:"
+msgstr ""
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
 msgstr ""
 
 msgid "Same as input document"

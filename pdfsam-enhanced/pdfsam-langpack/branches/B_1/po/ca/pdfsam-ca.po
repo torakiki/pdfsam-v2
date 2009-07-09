@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-23 18:24+0200\n"
+"POT-Creation-Date: 2009-07-09 12:23+0200\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -650,6 +650,17 @@ msgstr "No conservar l'ordre dels fitxers (càrrega ràpida)"
 
 msgid "Output document pdf version:"
 msgstr "Versió pdf de document de sortida:"
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 msgid "Same as input document"
 msgstr "Igual que el document d'entrada"

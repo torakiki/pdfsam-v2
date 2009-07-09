@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-23 18:24+0200\n"
+"POT-Creation-Date: 2009-07-09 12:23+0200\n"
 "PO-Revision-Date: 2009-02-12 13:47+0000\n"
 "Last-Translator: cavacuz <cavacuz@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -613,6 +613,17 @@ msgstr "Não manter a ordem dos ficheiros (carregamento mais rápido)"
 
 msgid "Output document pdf version:"
 msgstr "Versão pdf do documento de saída:"
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 msgid "Same as input document"
 msgstr "Mesmo que o documento de entrada"

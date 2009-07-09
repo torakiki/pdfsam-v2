@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-29 16:50+0200\n"
+"POT-Creation-Date: 2009-07-09 12:23+0200\n"
 "PO-Revision-Date: 2009-05-29 14:32+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
+"X-Launchpad-Export-Date: 2009-07-09 10:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -366,7 +366,7 @@ msgid ""
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 "Se contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
-"\"[BOOKMARK_NAME]\" esegue la sostituzione delle variabili."
+"\"[BOOKMARK_NAME]\" esegue la sostituzione di variabile."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
@@ -602,15 +602,15 @@ msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
-"Seleziona il box se vuoi invertire il primo o il secondo documento (o "
-"entrambi)."
+"Seleziona i box se vuoi invertire l'ordine delle pagine del primo o del "
+"secondo documento (o entrambi)"
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 msgstr ""
-"Imposta il numero di pagine per passare da un documento all'altro (default è "
-"1)"
+"Imposta il numero di pagine per cui passare da un documento all'altro "
+"(default è 1)"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-mix\src\java\org\pdfsam\plugin\mix\GUI\MixMainGUI.java:214
 msgid "Found a password for first file."
@@ -984,6 +984,17 @@ msgstr "Non preservare l'ordine dei file (caricamento veloce)"
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:318
 msgid "Output document pdf version:"
 msgstr "Versione pdf del documento di output:"
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 # F:\workspace_pdfsame_enanched\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:185
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187

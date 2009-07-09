@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-29 16:50+0200\n"
+"POT-Creation-Date: 2009-07-09 12:23+0200\n"
 "PO-Revision-Date: 2009-04-22 16:30+0000\n"
 "Last-Translator: zhangmiao <mymzhang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -784,6 +784,17 @@ msgstr "不保留文件顺序（快速装载）"
 
 msgid "Output document pdf version:"
 msgstr "输出文档的 PDF 版本："
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr ""
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+
+msgid "An error occured while loading the document"
+msgstr ""
 
 msgid "Same as input document"
 msgstr "和输入文档相同"
