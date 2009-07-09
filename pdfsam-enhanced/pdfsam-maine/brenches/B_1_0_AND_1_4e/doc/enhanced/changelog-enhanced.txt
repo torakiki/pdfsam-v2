@@ -1,7 +1,10 @@
-1.5.4e () ()
+1.5.4e (12-Jul-2009) (pdfsam-console 2.0.6e)
 ===================================
 -Decrypt: added the prefix field.
 -Row tool tip in pdf selection table in case of errors or warnings
+-Fixed bug #2810982 ([BASENAME] prefix)
+-iText 2.1.7
+-Updated langpack
 
 1.5.3e (31-May-2009) (pdfsam-console 2.0.5e)
 ===================================
