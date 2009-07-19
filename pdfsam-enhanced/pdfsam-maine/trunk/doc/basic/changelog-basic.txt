@@ -1,3 +1,7 @@
+2.0.0-release candidate 2 () ()
+===================================
+-Fixed bug #2810982 
+
 2.0.0-release candidate 1 (21-Jun-2009) (pdfsam-console 2.0.5e)
 ===================================
 -Fixed GUI interactivity when generating thumbnails.

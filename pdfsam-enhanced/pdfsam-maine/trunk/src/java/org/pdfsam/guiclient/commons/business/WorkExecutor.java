@@ -51,10 +51,10 @@ public class WorkExecutor {
 	}
 
     /**
-     * Executes the input WorkThread
+     * Executes the input Runnable
      * @param r
      */
-    public void execute(WorkThread r){
+    public void execute(Runnable r){
     	workQueue.execute(r);
     }
     
