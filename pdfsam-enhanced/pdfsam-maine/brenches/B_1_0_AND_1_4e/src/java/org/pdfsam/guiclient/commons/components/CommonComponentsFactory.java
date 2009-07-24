@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
 import org.pdfsam.guiclient.commons.components.listeners.DefaultMouseListener;
+import org.pdfsam.guiclient.commons.components.listeners.PrefixMouseListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 
@@ -37,6 +38,7 @@ public class CommonComponentsFactory {
 	public static final int SIMPLE_TEXT_FIELD_TYPE = 0;
 	public static final int DESTINATION_TEXT_FIELD_TYPE = 1;
 	public static final int PREFIX_TEXT_FIELD_TYPE = 2;
+	public static final int PREFIX_TEXT_FIELD_TYPE_FULL_MENU = 3;
 	
 	public static final int RUN_BUTTON_TYPE = 1;
 	public static final int BROWSE_BUTTON_TYPE = 2;
@@ -159,22 +161,25 @@ public class CommonComponentsFactory {
 	 */
 	public synchronized JTextField createTextField(int textFieldType){
 		JTextField retVal = new JTextField();
+		retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		
 		switch(textFieldType){
 		
 		case SIMPLE_TEXT_FIELD_TYPE:
 		case DESTINATION_TEXT_FIELD_TYPE:
-			retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 			retVal.addMouseListener(new DefaultMouseListener());
 			break;		
 
 		case PREFIX_TEXT_FIELD_TYPE:
-			retVal.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 			retVal.addMouseListener(new DefaultMouseListener());
 			retVal.setText("pdfsam_");
 			break;		
 
-
+		case PREFIX_TEXT_FIELD_TYPE_FULL_MENU:
+			retVal.addMouseListener(new PrefixMouseListener(PrefixMouseListener.FULL_MENU, retVal));
+			retVal.setText("pdfsam_");
+			break;
+			
 		default:
 			break;
 		}
