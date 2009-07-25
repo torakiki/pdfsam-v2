@@ -56,6 +56,7 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.exceptions.console.SlideShowException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.ValidationUtility;
 
 /**
  * CmdValidator for the slideshow command
@@ -72,12 +73,8 @@ public class SlideShowCmdValidator extends AbstractCmdValidator {
 			FileParam oOption = (FileParam) cmdLineHandler.getOption(SlideShowParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
-	            if (outFile.isDirectory()){
-	            	parsedCommandDTO.setOutputFile(outFile);	
-	    		}           
-	            else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_DIR);
-	            }
+	            ValidationUtility.checkValidDirectory(outFile);
+	            parsedCommandDTO.setOutputFile(outFile);		    		
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
 	        }
@@ -91,11 +88,8 @@ public class SlideShowCmdValidator extends AbstractCmdValidator {
 	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(SlideShowParsedCommand.F_ARG);           
 	        if(fOption.isSet()){
 	        	PdfFile inputFile = fOption.getPdfFile();
-	            if ((inputFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
-	            	parsedCommandDTO.setInputFile(FileUtility.getPdfFile(inputFile));                  
-	            }else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{inputFile.getFile().getName()});
-	            }
+	        	ValidationUtility.checkValidPdfExtension(inputFile.getFile().getName());	
+	            parsedCommandDTO.setInputFile(FileUtility.getPdfFile(inputFile));                  
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F);	
 	        }

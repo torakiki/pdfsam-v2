@@ -58,6 +58,7 @@ public abstract class AbstractParsedCommand implements Serializable {
     public static final String COMMAND_UNPACK = "unpack"; 
     public static final String COMMAND_SETVIEWER = "setviewer"; 
     public static final String COMMAND_SLIDESHOW = "slideshow";
+    public static final String COMMAND_ROTATE = "rotate";
     
     public static final char VERSION_1_2 = PdfWriter.VERSION_1_2;
     public static final char VERSION_1_3 = PdfWriter.VERSION_1_3;
@@ -180,7 +181,6 @@ public abstract class AbstractParsedCommand implements Serializable {
 		retVal.append("[overwrite="+overwrite+"]");
 		retVal.append("[compress="+compress+"]");
 		retVal.append("[outputPdfVersion="+outputPdfVersion+"]");
-		retVal.append((logFile== null)?"":"[log="+logFile.getAbsolutePath()+"]");
 		return retVal.toString();
 	}
 }

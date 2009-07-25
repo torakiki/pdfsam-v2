@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.parser.validators;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
@@ -49,26 +48,21 @@ import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
 
-import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
-import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.ValidationUtility;
 /**
  * CmdValidator for the concat command
  * @author Andrea Vacondio
  */
 public class ConcatCmdValidator extends AbstractCmdValidator {
-
-	private final Logger log = Logger.getLogger(ConcatCmdValidator.class.getPackage().getName());
 		
 	private final static String ALL_STRING = "all";
-	private final static String ODD_STRING = "odd";
-	private final static String EVEN_STRING = "even";	
 	
 	public static final String SELECTION_REGEXP = "(((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*[:])|("+ALL_STRING+":))+";
 
@@ -81,12 +75,8 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            //checking extension
-	            if ((outFile.getName().toLowerCase().endsWith(PDF_EXTENSION)) && (outFile.getName().length()>PDF_EXTENSION.length())){
-	            	parsedCommandDTO.setOutputFile(outFile);	
-	    		}           
-	            else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{outFile.getPath()});
-	            }
+	            ValidationUtility.checkValidPdfExtension(outFile.getName());
+            	parsedCommandDTO.setOutputFile(outFile);	
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
 	        }
@@ -115,12 +105,8 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 					}else{
 						if ((dOption.isSet())){
 				            File inputDir = dOption.getFile();
-				            if (inputDir.isDirectory()){
-				            	parsedCommandDTO.setInputDirectory(inputDir);	
-				    		}           
-				            else{
-				            	throw new ParseException(ParseException.ERR_D_NOT_DIR, new String[]{inputDir.getAbsolutePath()});
-				            }
+				            ValidationUtility.checkValidDirectory(inputDir);
+				            parsedCommandDTO.setInputDirectory(inputDir);	
 				        }
 					}
 				}else{
@@ -149,75 +135,13 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	        //-r
 	        StringParam rOption = (StringParam) cmdLineHandler.getOption(ConcatParsedCommand.R_ARG);
 	        if(rOption.isSet()){
-	        	PageRotation[] rotations = getPagesRotation(rOption.getValue());
+	        	PageRotation[] rotations = ValidationUtility.getPagesRotation(rOption.getValue());
 	        	parsedCommandDTO.setRotations(rotations);
 	        }
 		}else{
 			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}
 		return parsedCommandDTO;
-	}
-
-
-	/**
-	 * all, odd and even pages rotation cannot be mixed together or with single pages rotations
-	 * @param inputString the input command line string for the -r param
-	 * @return the rotations array
-	 * @throws ConcatException
-	 */
-	private PageRotation[] getPagesRotation(String inputString) throws ConcatException{
-		ArrayList retVal = new ArrayList();
-		try{
-			if(inputString!= null && inputString.length()>0){
-				String[] rotateParams = inputString.split(",");
-				for(int i = 0; i<rotateParams.length; i++){
-					String currentRotation = rotateParams[i];
-					if(currentRotation.length()>3){
-						String[] rotationParams = currentRotation.split(":");
-						if(rotationParams.length == 2){
-							String pageNumber = rotationParams[0].trim();
-							int degrees = new Integer(rotationParams[1]).intValue()%360;
-							//must be a multiple of 90
-							if((degrees % 90)!=0){
-								throw new ConcatException(ConcatException.ERR_DEGREES_NOT_ALLOWED, new String[]{degrees+""});
-							}
-							//rotate all
-							if(ALL_STRING.equals(pageNumber)){
-								if(retVal.size()>0){
-									log.warn("Page rotation for every page found, other rotations removed");
-									retVal.clear();
-								}
-								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.ALL_PAGES));
-								break;
-							}else if(ODD_STRING.equals(pageNumber)){
-								if(retVal.size()>0){
-									log.warn("Page rotation for odd pages found, other rotations removed");
-									retVal.clear();
-								}
-								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.ODD_PAGES));
-								break;
-							}else if(EVEN_STRING.equals(pageNumber)){
-								if(retVal.size()>0){
-									log.warn("Page rotation for even pages found, other rotations removed");
-									retVal.clear();
-								}
-								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.EVEN_PAGES));
-								break;
-							}else{
-								retVal.add(new PageRotation(new Integer(pageNumber).intValue(), degrees));								
-							}
-						}else{
-							throw new ConcatException(ConcatException.ERR_PARAM_ROTATION, new String[]{currentRotation});
-						}
-					}else{
-						throw new ConcatException(ConcatException.ERR_PARAM_ROTATION, new String[]{currentRotation});
-					}
-				}
-			}
-		}catch(Exception e){
-			throw new ConcatException(ConcatException.ERR_WRONG_ROTATION,e);
-		}
-		return (PageRotation[])retVal.toArray(new PageRotation[retVal.size()]);		
 	}
 	
 }

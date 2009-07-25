@@ -49,10 +49,7 @@ public class ConcatException extends ConsoleException {
 	public final static int ERR_READING_CSV_OR_XML = 0x04;
 	public final static int ERR_CANNOT_MERGE = 0x05;
 	public final static int ERR_START_BIGGER_THAN_END = 0x06;
-	public final static int ERR_WRONG_ROTATION = 0x07;
-	public final static int ERR_DEGREES_NOT_ALLOWED = 0x08;
-	public final static int ERR_PARAM_ROTATION = 0x09;
-	public final static int CMD_NO_INPUT_FILE = 0x0A;
+	public final static int CMD_NO_INPUT_FILE = 0x07;
 	
     private static final long serialVersionUID = -8242739056279169571L;
 

@@ -52,6 +52,7 @@ import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValid
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.ValidationUtility;
 /**
  * CmdValidator for the decrypt command
  * @author Andrea Vacondio
@@ -67,12 +68,8 @@ public class DecryptCmdValidator extends AbstractCmdValidator {
 			FileParam oOption = (FileParam) cmdLineHandler.getOption("o");
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
-	            if (outFile.isDirectory()){
-	            	parsedCommandDTO.setOutputFile(outFile);	
-	    		}           
-	            else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_DIR);
-	            }
+	            ValidationUtility.checkValidDirectory(outFile);
+	            parsedCommandDTO.setOutputFile(outFile);		    		
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
 	        }
@@ -89,9 +86,8 @@ public class DecryptCmdValidator extends AbstractCmdValidator {
 				//validate file extensions
 	        	for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
 	        		PdfFile currentFile = (PdfFile) fIterator.next();
-	        		if (!((currentFile.getFile().getName().toLowerCase().endsWith(PDF_EXTENSION)) && (currentFile.getFile().getName().length()>PDF_EXTENSION.length()))){
-	        			throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{currentFile.getFile().getPath()});
-	        		}
+		            //checking extension
+		            ValidationUtility.checkValidPdfExtension(currentFile.getFile().getName());
 	        	}
 	        	parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
 	        }

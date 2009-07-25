@@ -52,6 +52,7 @@ import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValid
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.ValidationUtility;
 /**
  * CmdValidator for the mix command
  * @author Andrea Vacondio
@@ -68,12 +69,9 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            //checking extension
-	            if ((outFile.getName().toLowerCase().endsWith(PDF_EXTENSION)) && (outFile.getName().length()>PDF_EXTENSION.length())){
-	            	parsedCommandDTO.setOutputFile(outFile);	
-	    		}           
-	            else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{outFile.getPath()});
-	            }
+	            ValidationUtility.checkValidPdfExtension(outFile.getName());
+	            parsedCommandDTO.setOutputFile(outFile);	
+	    		
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
 	        }
@@ -82,11 +80,9 @@ public class MixCmdValidator extends AbstractCmdValidator {
 			PdfFileParam f1Option = (PdfFileParam) cmdLineHandler.getOption(MixParsedCommand.F1_ARG);           
 	        if(f1Option.isSet()){
 	        	PdfFile firstFile = f1Option.getPdfFile();
-	            if ((firstFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
-	            	parsedCommandDTO.setFirstInputFile(FileUtility.getPdfFile(firstFile));                  
-	            }else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{firstFile.getFile().getName()});
-	            }
+	        	 //checking extension
+	            ValidationUtility.checkValidPdfExtension(firstFile.getFile().getName());
+            	parsedCommandDTO.setFirstInputFile(FileUtility.getPdfFile(firstFile));                  	            
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F1);	
 	        }
@@ -95,11 +91,9 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        PdfFileParam f2Option = (PdfFileParam) cmdLineHandler.getOption(MixParsedCommand.F2_ARG);           
 	        if(f2Option.isSet()){
 	        	PdfFile secondFile = f2Option.getPdfFile();
-	            if ((secondFile.getFile().getPath().toLowerCase().endsWith(PDF_EXTENSION))){
-	            	parsedCommandDTO.setSecondInputFile(FileUtility.getPdfFile(secondFile));
-	            }else{
-	            	throw new ParseException(ParseException.ERR_OUT_NOT_PDF, new String[]{secondFile.getFile().getName()});
-	            }
+	        	 //checking extension
+	            ValidationUtility.checkValidPdfExtension(secondFile.getFile().getName());
+	           	parsedCommandDTO.setSecondInputFile(FileUtility.getPdfFile(secondFile));
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F2);	
 	        }           
