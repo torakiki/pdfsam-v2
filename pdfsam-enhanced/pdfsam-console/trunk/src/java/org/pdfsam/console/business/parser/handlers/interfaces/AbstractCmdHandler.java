@@ -123,7 +123,7 @@ public abstract class AbstractCmdHandler implements CmdHandler{
 				options.addAll(getOptions());
 			}
 			options.addAll(commonOptions); 
-			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+commonHelpText+getHelpExamples(),ConsoleServicesFacade.LICENSE,"",COMMAND,getCommandDescription(),options,getArguments()));
+			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+commonHelpText+getHelpExamples(),ConsoleServicesFacade.getLicense(),"",COMMAND,getCommandDescription(),options,getArguments()));
 			commandLineHandler.setDieOnParseError(false);
 		}
 		return commandLineHandler;

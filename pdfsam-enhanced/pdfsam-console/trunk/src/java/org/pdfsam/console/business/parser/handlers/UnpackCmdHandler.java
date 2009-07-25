@@ -139,7 +139,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
 	 */
 	public CmdLineHandler getCommandLineHandler() {
 		if(commandLineHandler == null){			
-			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+getHelpExamples(),ConsoleServicesFacade.LICENSE,"",COMMAND,getCommandDescription(),getOptions(),getArguments()));
+			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+getHelpExamples(),ConsoleServicesFacade.getLicense(),"",COMMAND,getCommandDescription(),getOptions(),getArguments()));
 			commandLineHandler.setDieOnParseError(false);
 		}
 		return commandLineHandler;

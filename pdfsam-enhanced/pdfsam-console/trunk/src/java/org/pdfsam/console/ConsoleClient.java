@@ -59,7 +59,8 @@ public class ConsoleClient {
 	private static final String fileLogLevelProperty = "pdfsam.log.file.level";
 	private static final String filenameLogLevelProperty = "pdfsam.log.file.filename";
 	
-	private static final String consoleAppenderName = "CONSOLE";
+	private static final String CONSOLE_APPENDER_NAME = "CONSOLE";
+	private static final String FILE_APPENDER_NAME = "FILE";
 	
 	private static ConsoleServicesFacade serviceFacade;
 	/**
@@ -95,7 +96,7 @@ public class ConsoleClient {
 			String fileName = System.getProperty(filenameLogLevelProperty);
 			
 			//console appender level configuration
-			ConsoleAppender consoleAppender = (ConsoleAppender)Logger.getRootLogger().getAppender(consoleAppenderName);
+			ConsoleAppender consoleAppender = (ConsoleAppender)Logger.getRootLogger().getAppender(CONSOLE_APPENDER_NAME);
 			if(consoleAppender != null){
 				Level consoleThreshold = Level.toLevel(consoleLevel,Level.DEBUG);
 				consoleAppender.setThreshold(consoleThreshold);
@@ -105,6 +106,7 @@ public class ConsoleClient {
 			if(fileName != null){
 				PatternLayout layout = new PatternLayout("%d{ABSOLUTE} %-5p %x %m%n");
 				FileAppender fileAppender = new FileAppender(layout, fileName, false);
+				fileAppender.setName(FILE_APPENDER_NAME);
 				Level fileThreshold = Level.toLevel(fileLevel,Level.DEBUG);
 				fileAppender.setThreshold(fileThreshold);
 				Logger.getRootLogger().addAppender(fileAppender);

@@ -100,7 +100,7 @@ public class DefaultCmdHandler implements CmdHandler {
 
 	public CmdLineHandler getCommandLineHandler() {
 		if(commandLineHandler == null){ 
-			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage(),ConsoleServicesFacade.LICENSE,"",COMMAND,getCommandDescription(),getOptions(),getArguments()));
+			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage(),ConsoleServicesFacade.getLicense(),"",COMMAND,getCommandDescription(),getOptions(),getArguments()));
 			commandLineHandler.setDieOnParseError(false);
 		}
 		return commandLineHandler;

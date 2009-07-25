@@ -293,29 +293,10 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 		private Transition defaultTransition;
 		private List transitions;
 		
-		/**
-		 * @param defaultTransition
-		 * @param transitions
-		 */
-		public Transitions(Transition defaultTransition,Transition[] transitions) {
-			this.defaultTransition = defaultTransition;
-			this.transitions = Arrays.asList(transitions);
-		}
-
 		public Transitions() {
 			this.defaultTransition = null;
 			this.transitions = null;
 		}				
-
-		/**
-		 * @param defaultTransition
-		 * @param transitions
-		 */
-		public Transitions(Transition defaultTransition, List transitions) {
-			super();
-			this.defaultTransition = defaultTransition;
-			this.transitions = transitions;
-		}
 
 		/**
 		 * @return the defaultTransition
@@ -351,13 +332,6 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 			}
 		}
 
-		/**
-		 * @param transitions the transitions to set
-		 */
-		public void setTransitions(List transitions) {
-			this.transitions = transitions;
-		}
-		
 		/**
 		 * add the transition to the list if not null
 		 * @param transition
