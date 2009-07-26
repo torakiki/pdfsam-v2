@@ -66,6 +66,7 @@ import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
 import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.ValidationUtility;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfDictionary;
@@ -73,17 +74,16 @@ import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfNumber;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 import com.lowagie.text.pdf.SimpleBookmark;
 /**
- * Command executor for the alternate concat command
+ * Command executor for the concat command
  * @author Andrea Vacondio
  */
 public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	
 	private final Logger log = Logger.getLogger(ConcatCmdExecutor.class.getPackage().getName());
-	
-	private final static String ALL_STRING = "all"; 
 	
 	private final static String FILESET_NODE = "fileset";
 	private final static String FILE_NODE = "file";
@@ -124,13 +124,13 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 					String currentPageSelection;
 					int currentDocumentPages = 0;
 	    			try{
-	    				currentPageSelection = ("".equals(pageSelection[i].toLowerCase()))? ALL_STRING: pageSelection[i].toLowerCase();
+	    				currentPageSelection = ("".equals(pageSelection[i].toLowerCase()))? ValidationUtility.ALL_STRING: pageSelection[i].toLowerCase();
 	    			}catch(Exception e){
-	    				currentPageSelection = ALL_STRING;
+	    				currentPageSelection = ValidationUtility.ALL_STRING;
 	    			}
 	    			//validation
 	    			//i'm sooo bad in regexp
-	    			if (!(Pattern.compile("((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*)|("+ALL_STRING+")", Pattern.CASE_INSENSITIVE).matcher(currentPageSelection).matches())){
+	    			if (!(Pattern.compile("((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*)|("+ValidationUtility.ALL_STRING+")", Pattern.CASE_INSENSITIVE).matcher(currentPageSelection).matches())){
 	    				FileUtility.deleteFile(tmpFile);
 						throw new ConcatException(ConcatException.ERR_SYNTAX, new String[]{""+currentPageSelection});
 					} 
@@ -261,10 +261,10 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	 * @return temporary file with pages rotation
 	 */
 	private File applyRotations(File inputFile, ConcatParsedCommand inputCommand) throws Exception{
-		FileInputStream readerIs = new FileInputStream(inputFile);
-		PdfReader tmpPdfReader = new PdfReader(readerIs);
+		PdfReader tmpPdfReader = new PdfReader(new FileInputStream(inputFile));
 		tmpPdfReader.removeUnusedObjects();
 		tmpPdfReader.consolidateNamedDestinations();
+    	
 		int pdfNumberOfPages = tmpPdfReader.getNumberOfPages();
 		PageRotation[] rotations = inputCommand.getRotations();
 		if(rotations!=null && rotations.length>0){
@@ -319,18 +319,33 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 			log.info("Pages rotation applied.");
 		}
 		File rotatedTmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-		FileOutputStream fos = new FileOutputStream(rotatedTmpFile);
-		PdfStamper stamper = new PdfStamper(tmpPdfReader, fos);
+		
+		Character pdfVersion = inputCommand.getOutputPdfVersion(); 
+		
+		PdfStamper stamper;
+		if(pdfVersion != null){
+			stamper = new PdfStamper(tmpPdfReader, new FileOutputStream(rotatedTmpFile), inputCommand.getOutputPdfVersion().charValue());
+		}else{
+			stamper = new PdfStamper(tmpPdfReader, new FileOutputStream(rotatedTmpFile), tmpPdfReader.getPdfVersion());
+		}
+		
+		HashMap meta = tmpPdfReader.getInfo();
+		meta.put("Creator", ConsoleServicesFacade.CREATOR);
+		
+		if(inputCommand.isCompress()){
+			stamper.setFullCompression();
+			stamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
+        }
+		
+		stamper.setMoreInfo(meta);
 		stamper.close();
-		fos.close();
-		readerIs.close();
 		tmpPdfReader.close();
 		return rotatedTmpFile;
 	}
 	
 	private Bounds getBounds(int pdfNumberOfPages, String currentPageSelection) throws ConcatException{
 		Bounds retVal = new Bounds(pdfNumberOfPages , 1);
-		if (!(ALL_STRING.equals(currentPageSelection))){
+		if (!(ValidationUtility.ALL_STRING.equals(currentPageSelection))){
         	boolean valid = true;
             String[] limits = currentPageSelection.split("-");
             try{
