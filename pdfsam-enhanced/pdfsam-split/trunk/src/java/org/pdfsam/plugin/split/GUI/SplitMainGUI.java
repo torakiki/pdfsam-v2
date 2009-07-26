@@ -79,7 +79,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 
 	private static final Logger log = Logger.getLogger(SplitMainGUI.class.getPackage().getName());
 	
-	private JTextField outPrefixText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE);
+	private JTextField outPrefixText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE_FULL_MENU);
     private SpringLayout outputPanelLayout;
     private SpringLayout destinationPanelLayout;
     private JTextField destinationFolderText = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
@@ -140,7 +140,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.5.3";
+    private final String PLUGIN_VERSION = "0.5.4";
     
 /**
  * Constructor
