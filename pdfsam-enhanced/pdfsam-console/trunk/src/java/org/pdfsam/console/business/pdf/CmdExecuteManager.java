@@ -23,6 +23,7 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
+import org.pdfsam.console.business.dto.commands.RotateParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
@@ -31,6 +32,7 @@ import org.pdfsam.console.business.pdf.handlers.AlternateMixCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.ConcatCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.DecryptCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.EncryptCmdExecutor;
+import org.pdfsam.console.business.pdf.handlers.RotateCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SetViewerCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SlideShowCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.SplitCmdExecutor;
@@ -100,6 +102,8 @@ public class CmdExecuteManager extends Observable implements Observer{
 			retVal = new SlideShowCmdExecutor();
 		}else if(DecryptParsedCommand.COMMAND_DECRYPT.equals(parsedCommand.getCommand())){
 			retVal = new DecryptCmdExecutor();
+		}else if(RotateParsedCommand.COMMAND_ROTATE.equals(parsedCommand.getCommand())){
+			retVal = new RotateCmdExecutor();
 		}else {
 			retVal = null;
 		}

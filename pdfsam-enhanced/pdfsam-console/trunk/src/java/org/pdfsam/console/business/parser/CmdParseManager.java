@@ -45,6 +45,7 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
+import org.pdfsam.console.business.dto.commands.RotateParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
@@ -54,6 +55,7 @@ import org.pdfsam.console.business.parser.handlers.DecryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.MixCmdHandler;
+import org.pdfsam.console.business.parser.handlers.RotateCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SetViewerCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SlideShowCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SplitCmdHandler;
@@ -63,6 +65,7 @@ import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.console.business.parser.validators.DecryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.EncryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.MixCmdValidator;
+import org.pdfsam.console.business.parser.validators.RotateCmdValidator;
 import org.pdfsam.console.business.parser.validators.SetViewerCmdValidator;
 import org.pdfsam.console.business.parser.validators.SlideShowCmdValidator;
 import org.pdfsam.console.business.parser.validators.SplitCmdValidator;
@@ -136,10 +139,16 @@ public class CmdParseManager {
 		else if(SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(inputCommand)){
 			cmdHandler = new SlideShowCmdHandler();
 			cmdValidator = new SlideShowCmdValidator();
-		}else if(DecryptParsedCommand.COMMAND_DECRYPT.equals(inputCommand)){
+		}
+		else if(DecryptParsedCommand.COMMAND_DECRYPT.equals(inputCommand)){
 			cmdHandler = new DecryptCmdHandler();
 			cmdValidator = new DecryptCmdValidator();
-		}else{
+		}
+		else if(RotateParsedCommand.COMMAND_ROTATE.equals(inputCommand)){
+			cmdHandler = new RotateCmdHandler();
+			cmdValidator = new RotateCmdValidator();
+		}
+		else{
 			cmdHandler = new DefaultCmdHandler();
 		}
 	}

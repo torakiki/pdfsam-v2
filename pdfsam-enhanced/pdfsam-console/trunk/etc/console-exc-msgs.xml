@@ -20,6 +20,9 @@
 		<exception errorcode="4" message="Given file not a pdf format. {0}" />		
 		<exception errorcode="5" message="{0} must be a directory." />
 	</type>
+	<type key="org.pdfsam.console.exceptions.console.RotationException" description="ROT">
+		<exception errorcode="1" message="The rotation string {0} is not a valid single rotation." />						
+	</type>
 	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
 		<exception errorcode="1" message="Parse error. {0}" />		
 		<exception errorcode="2" message="Output file not a pdf format. {0}" />		

@@ -126,6 +126,7 @@ public class ValidationUtility {
 	}
 	
 	/**
+	 * Overloaded {@link ValidationUtility#getPagesRotation(String, boolean)}. 
 	 * Allow single pages rotation.
 	 * @param inputString
 	 * @return the rotations array

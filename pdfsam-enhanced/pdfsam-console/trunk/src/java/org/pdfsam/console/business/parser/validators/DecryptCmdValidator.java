@@ -65,7 +65,7 @@ public class DecryptCmdValidator extends AbstractCmdValidator {
 		
 		if(cmdLineHandler != null){
 			//-o
-			FileParam oOption = (FileParam) cmdLineHandler.getOption("o");
+			FileParam oOption = (FileParam) cmdLineHandler.getOption(DecryptParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            ValidationUtility.checkValidDirectory(outFile);
@@ -75,13 +75,13 @@ public class DecryptCmdValidator extends AbstractCmdValidator {
 	        }
 			
 			//-p
-	        StringParam pOption = (StringParam) cmdLineHandler.getOption("p");
+	        StringParam pOption = (StringParam) cmdLineHandler.getOption(DecryptParsedCommand.P_ARG);
 	        if(pOption.isSet()){
 	        	parsedCommandDTO.setOutputFilesPrefix(pOption.getValue());
 	        }	        
 	        
 	        //-f
-	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");
+	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(DecryptParsedCommand.F_ARG);
 	        if(fOption.isSet()){
 				//validate file extensions
 	        	for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
