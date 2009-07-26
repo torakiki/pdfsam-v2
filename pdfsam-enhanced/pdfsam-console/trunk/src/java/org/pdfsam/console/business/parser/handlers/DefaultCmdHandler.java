@@ -68,8 +68,8 @@ public class DefaultCmdHandler implements CmdHandler {
      */
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ENCRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"], ["+AbstractParsedCommand.COMMAND_DECRYPT+"]}",
-                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ENCRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER , AbstractParsedCommand.COMMAND_DECRYPT },
+                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ENCRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"], ["+AbstractParsedCommand.COMMAND_DECRYPT+"], ["+AbstractParsedCommand.COMMAND_ROTATE+"]}",
+                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ENCRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER , AbstractParsedCommand.COMMAND_DECRYPT, AbstractParsedCommand.COMMAND_ROTATE },
                     StringParam.REQUIRED)
     }));
 	
