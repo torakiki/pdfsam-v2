@@ -15,6 +15,7 @@ Plugins included:
 	-@UNPACK_JAR_NAME *
 	-@VIEWER_JAR_NAME *
 	-@DECRYPT_JAR_NAME *
+	-@ROTATE_JAR_NAME *
 
 Linked libraries:
 	-@ITEXT_JAR_NAME

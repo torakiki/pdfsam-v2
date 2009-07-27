@@ -10,6 +10,7 @@ Plugins included:
 	-@MERGE_JAR_NAME *
 	-@SPLIT_JAR_NAME *
 	-@MIX_JAR_NAME *
+	-@ROTATE_JAR_NAME *
 
 Linked libraries:
 	-@ITEXT_JAR_NAME

@@ -171,7 +171,7 @@ public class CommonComponentsFactory {
 			break;		
 
 		case PREFIX_TEXT_FIELD_TYPE:
-			retVal.addMouseListener(new DefaultMouseListener());
+			retVal.addMouseListener(new PrefixMouseListener(PrefixMouseListener.BASIC_MENU, retVal));
 			retVal.setText("pdfsam_");
 			break;		
 

@@ -34,6 +34,7 @@
 	    <property name="split.dir" value="${workspace.dir}/pdfsam-split"/>
 	    <property name="merge.dir" value="${workspace.dir}/pdfsam-merge"/>
 	    <property name="mix.dir" value="${workspace.dir}/pdfsam-mix"/>
+	    <property name="rotate.dir" value="${workspace.dir}/pdfsam-rotate"/>
 		<property name="cover.dir" value="${workspace.dir}/pdfsam-cover"/>
 		<property name="encrypt.dir" value="${workspace.dir}/pdfsam-encrypt"/>
 		<property name="decrypt.dir" value="${workspace.dir}/pdfsam-decrypt"/>
@@ -163,6 +164,11 @@
 	  		<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.jar.dir}"/>
 	  	</ant>
 	  	
+	  	<!--rotate-->
+	  	<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="build-jars">
+	  		<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.jar.dir}"/>
+	  	</ant>
+
 	  	<antcall target="build-jars-enhanced" />
 	  </target>
 	
@@ -256,6 +262,7 @@
 			<replacefilter token="@MIX_JAR_NAME" value="${pdfsam-mix.jar.name}"/>
 			<replacefilter token="@UNPACK_JAR_NAME" value="${pdfsam-unpack.jar.name}"/>
 			<replacefilter token="@VIEWER_JAR_NAME" value="${pdfsam-setviewer.jar.name}"/>
+			<replacefilter token="@ROTATE_JAR_NAME" value="${pdfsam-rotate.jar.name}"/>
 		</replace>
 
 		<copy todir="${pdfsam.release.dist.dir}/doc/license">
@@ -266,6 +273,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-split.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/split" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-merge.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/merge" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-rotate.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/rotate" overwrite="true"/>
 		
 		<antcall target="dist-enhanced" />		
 	</target>
@@ -385,6 +393,11 @@
 	  		  	<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
 	  	</ant>
 	  	
+	  	<!--rotate-->
+	  	<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
+
 	  	<antcall target="buildZipSrcPackage-enhanced" />
 	  	
 	  	<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" >
