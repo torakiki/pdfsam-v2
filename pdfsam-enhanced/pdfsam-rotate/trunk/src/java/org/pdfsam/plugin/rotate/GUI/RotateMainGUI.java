@@ -91,7 +91,9 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private JTextField outPrefixTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.PREFIX_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
 	private JHelpLabel prefixHelpLabel;
+	private JHelpLabel rotateHelpLabel;
 	private JComboBox rotationBox;
+	private JComboBox rotationPagesBox;
 	private Configuration config;
 	private JFileChooser browseDirChooser;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
@@ -99,6 +101,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     private final JLabel outPrefixLabel = new JLabel();
     private final JLabel rotateComboLabel = new JLabel();
+    private final JLabel rotatePagesComboLabel = new JLabel();
 
 	private final RotateFocusPolicy rotateFocusPolicy = new RotateFocusPolicy();
 	//buttons
@@ -143,8 +146,8 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 
 //		ROTATION PANEL	
 		rotationPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Rotation")));
-		rotationPanel.setPreferredSize(new Dimension(200, 55));
-		rotationPanel.setMinimumSize(new Dimension(160, 50));
+		rotationPanel.setPreferredSize(new Dimension(200, 95));
+		rotationPanel.setMinimumSize(new Dimension(160, 90));
 		rotationPanelLayout = new SpringLayout();
 		rotationPanel.setLayout(rotationPanelLayout);
 		
@@ -152,10 +155,27 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 		rotationBox.addItem("90");
 		rotationBox.addItem("180");
 		rotationBox.addItem("270");
-		rotateComboLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clockwise rotation (degrees):"));
+		rotationPagesBox = new JComboBox();
+		rotationPagesBox.addItem(new StringItem(ValidationUtility.ALL_STRING, GettextResource.gettext(config.getI18nResourceBundle(),"All")));
+		rotationPagesBox.addItem(new StringItem(ValidationUtility.EVEN_STRING, GettextResource.gettext(config.getI18nResourceBundle(),"Even")));
+		rotationPagesBox.addItem(new StringItem(ValidationUtility.ODD_STRING, GettextResource.gettext(config.getI18nResourceBundle(),"Odd")));
 		
+		rotateComboLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Clockwise rotation (degrees):"));
+		rotatePagesComboLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Pages:"));
+		
+		StringBuffer sb1 = new StringBuffer();
+        sb1.append("<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Rotation")+"</b>");
+        sb1.append("<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set the rotation degrees (clockwise).")+"</p>");
+        sb1.append("<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set the pages that will be rotated.")+"</p>");
+        sb1.append("</body></html>");        
+	    rotateHelpLabel = new JHelpLabel(sb1.toString(), true);
+	    
+	    rotationPanel.add(rotateHelpLabel);
 		rotationPanel.add(rotateComboLabel);
 		rotationPanel.add(rotationBox);
+		rotationPanel.add(rotatePagesComboLabel);
+		rotationPanel.add(rotationPagesBox);
+		rotationPanel.add(rotateHelpLabel);
 
 		topConst.fill = GridBagConstraints.HORIZONTAL;
         topConst.weightx = 0.0;
@@ -257,14 +277,14 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
         outputOptionsPanel.add(outPrefixTextField);
 //END_S_PANEL
 //      HELP_LABEL_PREFIX       
-        String helpTextPrefix = 
-    		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Output files prefix")+"</b>" +
-    		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it contains \"[TIMESTAMP]\" it performs variable substitution.")+"</p>"+
-    		"<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf.")+"</p>"+
-    		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file names.")+"</p>"+
-    		"<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Available variables: [TIMESTAMP], [BASENAME].")+"</p>"+
-    		"</body></html>";
-	    prefixHelpLabel = new JHelpLabel(helpTextPrefix, true);
+        StringBuffer sb = new StringBuffer();
+        sb.append("<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Output files prefix")+"</b>");
+        sb.append("<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it contains \"[TIMESTAMP]\" it performs variable substitution.")+"</p>");
+        sb.append("<p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf.")+"</p>");
+        sb.append("<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file names.")+"</p>");
+        sb.append("<br><p> "+GettextResource.gettext(config.getI18nResourceBundle(),"Available variables: [TIMESTAMP], [BASENAME].")+"</p>");
+        sb.append("</body></html>");
+	    prefixHelpLabel = new JHelpLabel(sb.toString(), true);
 	    outputOptionsPanel.add(prefixHelpLabel);
 //END_HELP_LABEL_PREFIX   
 		
@@ -324,7 +344,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	                    }
 	                    
 	                    args.add("-"+RotateParsedCommand.R_ARG);
-	                    args.add(ValidationUtility.ALL_STRING+":"+rotationBox.getSelectedItem());
+	                    args.add(((StringItem)rotationPagesBox.getSelectedItem()).getId()+":"+rotationBox.getSelectedItem());
 	                    
 	                    args.add("-"+RotateParsedCommand.P_ARG);
 	                    args.add(outPrefixTextField.getText());
@@ -418,6 +438,14 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
         rotationPanelLayout.putConstraint(SpringLayout.WEST, rotateComboLabel, 5, SpringLayout.WEST, rotationPanel);
         rotationPanelLayout.putConstraint(SpringLayout.SOUTH, rotationBox, 0, SpringLayout.SOUTH, rotateComboLabel);
         rotationPanelLayout.putConstraint(SpringLayout.WEST, rotationBox, 10, SpringLayout.EAST, rotateComboLabel);
+        rotationPanelLayout.putConstraint(SpringLayout.SOUTH, rotatePagesComboLabel, 15, SpringLayout.NORTH, rotatePagesComboLabel);
+        rotationPanelLayout.putConstraint(SpringLayout.NORTH, rotatePagesComboLabel, 10, SpringLayout.SOUTH, rotateComboLabel);
+        rotationPanelLayout.putConstraint(SpringLayout.WEST, rotatePagesComboLabel, 0, SpringLayout.WEST, rotateComboLabel);
+        rotationPanelLayout.putConstraint(SpringLayout.SOUTH, rotationPagesBox, 0, SpringLayout.SOUTH, rotatePagesComboLabel);
+        rotationPanelLayout.putConstraint(SpringLayout.WEST, rotationPagesBox, 10, SpringLayout.EAST, rotatePagesComboLabel);
+        
+        rotationPanelLayout.putConstraint(SpringLayout.SOUTH, rotateHelpLabel, -1, SpringLayout.SOUTH, rotationPanel);
+        rotationPanelLayout.putConstraint(SpringLayout.EAST, rotateHelpLabel, -1, SpringLayout.EAST, rotationPanel);
 
 	}
 
@@ -468,6 +496,9 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 				Element rotationElement = ((Element)arg0).addElement("rotation");
 				rotationElement.addAttribute("value", rotationBox.getSelectedItem().toString());
 				
+				Element rotationPagesElement = ((Element)arg0).addElement("pages");
+				rotationPagesElement.addAttribute("value", ((StringItem)rotationPagesBox.getSelectedItem()).getId());
+				
 				Element fileDestination = ((Element)arg0).addElement("destination");
 				fileDestination.addAttribute("value", destinationTextField.getText());				
 				
@@ -508,6 +539,16 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 			Node rotationNode = (Node) arg0.selectSingleNode("rotation/@value");
 			if (rotationNode != null){
 				rotationBox.setSelectedItem((String)rotationNode.getText());
+			}
+			
+			Node rotationPageNode = (Node) arg0.selectSingleNode("pages/@value");
+			if (rotationPageNode != null){
+				for (int i = 0; i<rotationPagesBox.getItemCount(); i++){
+					if(((StringItem)rotationPagesBox.getItemAt(i)).getId().equals(rotationPageNode.getText())){
+						rotationPagesBox.setSelectedIndex(i);
+						break;
+					}
+				}
 			}
 			
 			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
@@ -563,10 +604,13 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 			else if (aComponent.equals(selectionPanel.getRemoveFileButton())){
 				return selectionPanel.getClearButton();
 			} 
-			else if (aComponent.equals(selectionPanel.getRemoveFileButton())){
+			else if (aComponent.equals(selectionPanel.getClearButton())){
 				return rotationBox;
 			} 
 			else if (aComponent.equals(rotationBox)){
+				return rotationPagesBox;
+			} 
+			else if (aComponent.equals(rotationPagesBox)){
 				return destinationTextField;
 			}
 			else if (aComponent.equals(destinationTextField)){
@@ -614,6 +658,9 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 				return destinationTextField;
 			}
 			else if (aComponent.equals(destinationTextField)){
+				return rotationPagesBox;
+			}
+			else if (aComponent.equals(rotationPagesBox)){
 				return rotationBox;
 			}
 			else if (aComponent.equals(rotationBox)){
