@@ -13,6 +13,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-unpack/src/java/org/pdfsam/plugin/unpack/GUI/UnpackMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-setviewer/src/java/org/pdfsam/plugin/setviewer/GUI/SetViewerMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-vcomposer/src/java/org/pdfsam/plugin/vcomposer/GUI/VComposerMainGUI.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-rotate/src/java/org/pdfsam/plugin/rotate/GUI/RotateMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-vpagereorder/src/java/org/pdfsam/plugin/vpagereorder/GUI/VPageReorderMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/TreeMediator.java
