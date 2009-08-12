@@ -31,6 +31,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
@@ -51,11 +52,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private JTable tablePlugins;
     private JTextPane textInfoArea;
     private final JScrollPane textInfoScrollPanel = new JScrollPane();
-    private String author = "";
-    private String version = "";
-    private String applicationName = "";
     private String language = "";
-    private String buildDate = "";
     private String javaHome = "";
     private String javaVersion = "";
     private String configPath = "";
@@ -65,7 +62,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private final InfoFocusPolicy infoFocusPolicy = new InfoFocusPolicy();
     
     private final static String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final static String PLUGIN_VERSION = "0.0.3e";
+    private final static String PLUGIN_VERSION = "0.0.4e";
 
     
     /**
@@ -81,11 +78,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
     	config = Configuration.getInstance();
     	setPanelIcon("/images/info.png");
     	 try{
-             author = GuiClient.AUTHOR;
-             version = GuiClient.getVersion();
-             applicationName = GuiClient.getApplicationName();
              language = config.getXmlConfigObject().getXMLConfigValue("/pdfsam/info/language");
-             buildDate = GuiClient.getBuildDate();
              javaHome = System.getProperty("java.home");
              javaVersion = System.getProperty("java.runtime.name")+" "+System.getProperty("java.runtime.version");
              configPath = config.getXmlConfigObject().getXMLConfigFile().getAbsolutePath();
@@ -102,11 +95,12 @@ public class JInfoPanel extends AbstractPlugablePanel{
         textInfoArea.setPreferredSize(new Dimension(300,100));
         textInfoArea.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         textInfoArea.setContentType("text/html");   
-        textInfoArea.setText("<html><head></head><body>"+applicationName+"<br><br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Version: ")+version+"<br>"
+        textInfoArea.setText("<html><head></head><body>"+GuiClient.getApplicationName()+"<br><br>"
+        		+GettextResource.gettext(config.getI18nResourceBundle(),"Version: ")+GuiClient.getVersion()+"<br>"
+        		+GettextResource.gettext(config.getI18nResourceBundle(),"Console version: ")+ConsoleServicesFacade.VERSION+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Language: ")+language+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Developed by: ")+author+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Build date: ")+buildDate+"<br>"
+        		+GettextResource.gettext(config.getI18nResourceBundle(),"Developed by: ")+GuiClient.AUTHOR+"<br>"
+        		+GettextResource.gettext(config.getI18nResourceBundle(),"Build date: ")+GuiClient.getBuildDate()+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java home: ")+javaHome+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Java version: ")+javaVersion+"<br>"
         		+GettextResource.gettext(config.getI18nResourceBundle(),"Max memory: ")+(Runtime.getRuntime().maxMemory()/1048576)+"Mb<br>"
@@ -171,7 +165,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
 	}
 
     protected String getThanksText(){
-        String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "Bigpapa", "Alberto Bortolotti", "dom4j", "jaxen", "log4j", "BouncyCastle", "All the donors and contributors"};
+        String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "Bigpapa", "Alberto Bortolotti", "Chiara Casamatti", "dom4j", "jaxen", "log4j", "BouncyCastle", "All the donors and contributors"};
         String contributes = GettextResource.gettext(config.getI18nResourceBundle(),"Contributes: ");
         for (int i=0; i<contributors.length; i++){
         	contributes += contributors[i]+" - ";

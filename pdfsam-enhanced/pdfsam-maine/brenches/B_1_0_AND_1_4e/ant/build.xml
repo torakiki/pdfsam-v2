@@ -243,6 +243,12 @@
 			</fileset>
 		</copy>
 		
+		<copy todir="${pdfsam.release.dist.dir}/doc/icons">
+			<fileset dir="doc/icons">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
 		<copy todir="${pdfsam.release.dist.dir}/doc/xsd">
 			<fileset dir="${console.dir}/xsd">
 				<include name="**/*" />
@@ -339,6 +345,7 @@
 	    		<include name="pdfsam-maine-br1/bin/**/*"/>
 	    		<include name="pdfsam-maine-br1/doc/licenses/**/*"/>
 	    		<include name="pdfsam-maine-br1/doc/examples/**/*"/>
+	    		<include name="pdfsam-maine-br1/doc/icons/**/*"/>
 	    		<include name="pdfsam-maine-br1/doc/${pdfsam.version}/**/*"/>
 	    		<include name="pdfsam-maine-br1/images/*.png"/>
 	    	</fileset>
