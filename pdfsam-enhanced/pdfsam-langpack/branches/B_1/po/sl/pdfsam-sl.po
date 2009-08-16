@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
 "PO-Revision-Date: 2008-12-20 09:13+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -480,6 +480,39 @@ msgstr "Možnosti pregledovalnika"
 msgid "Viewer options section loaded."
 msgstr "Možnosti pregledovalnika naložene"
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "Shrani podatke za geslo"
@@ -810,6 +843,9 @@ msgstr ""
 
 msgid "Version: "
 msgstr "Verzija "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Language: "
 msgstr "Jezik: "

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
-"PO-Revision-Date: 2009-05-27 20:42+0000\n"
-"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"PO-Revision-Date: 2009-07-31 22:54+0000\n"
+"Last-Translator: Feder Sáiz <federsaiz@googlemail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
+"X-Launchpad-Export-Date: 2009-08-16 14:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -232,8 +232,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
-"Sustituir variables si contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", "
-"\"[FILENUMBER]\" o \"[BOOKMARK_NAME]\"."
+"Si contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
+"\"[BOOKMARK_NAME]\" realiza una sustitución de variables."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -428,15 +428,15 @@ msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
-"Marque las opciones si quiere invertir el primer o el segundo documento (o "
+"Marque las opciones si quiere revertir el primer o el segundo documento (o "
 "ambos)."
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 msgstr ""
-"Seleccione el número de páginas para cambiar de un documento a otro (por "
-"defecto es 1)."
+"Asigne el número de páginas a cambiar de un documento a otro (por defecto es "
+"1)."
 
 msgid "Found a password for first file."
 msgstr "Buscar una contraseña para el primer archivo."
@@ -557,6 +557,39 @@ msgstr "Opciones del visor"
 
 msgid "Viewer options section loaded."
 msgstr "Sección de opciones del visor cargada."
+
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr "Establecer los grados de rotación (sentido de las agujas del reloj)."
+
+msgid "Set the pages that will be rotated."
+msgstr "Establecer las páginas que rotarán."
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -1014,6 +1047,9 @@ msgstr "Incapaz de inicializar la barra de botones."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr "Versión: "
+
+msgid "Console version: "
+msgstr ""
 
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107

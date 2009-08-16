@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
 "PO-Revision-Date: 2008-04-01 10:20+0000\n"
 "Last-Translator: egg8383 <egg8383@yahoo.com.hk>\n"
 "Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
@@ -486,6 +486,39 @@ msgstr "合拼選項"
 msgid "Viewer options section loaded."
 msgstr "合拼部份己載入"
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -815,6 +848,9 @@ msgid "Unable to initialize button bar."
 msgstr ""
 
 msgid "Version: "
+msgstr ""
+
+msgid "Console version: "
 msgstr ""
 
 msgid "Language: "

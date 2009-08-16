@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
 "PO-Revision-Date: 2009-06-14 10:53+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
@@ -497,6 +497,39 @@ msgstr "Options d'affichage"
 msgid "Viewer options section loaded."
 msgstr "Section \"Options d'affichage\" chargée."
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -873,6 +906,9 @@ msgstr "Initialisation de la barre d'icônes impossible."
 
 msgid "Version: "
 msgstr "Version : "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Language: "
 msgstr "Language de programmation : "

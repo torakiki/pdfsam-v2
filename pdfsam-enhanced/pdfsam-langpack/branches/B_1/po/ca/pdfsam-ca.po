@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
 "PO-Revision-Date: 2008-10-14 06:34+0000\n"
 "Last-Translator: Josep Lluís Amador Teruel <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -513,6 +513,39 @@ msgstr "Opcions de combinació:"
 msgid "Viewer options section loaded."
 msgstr "Xifra la secció carregada."
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -847,6 +880,9 @@ msgstr "No s'ha pogut inicialitzar la barra de botons."
 
 msgid "Version: "
 msgstr "Versió: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Language: "
 msgstr "Idioma: "

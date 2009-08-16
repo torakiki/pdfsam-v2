@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
 "PO-Revision-Date: 2009-01-17 12:54+0000\n"
 "Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -487,6 +487,39 @@ msgstr ""
 msgid "Viewer options section loaded."
 msgstr ""
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
@@ -818,6 +851,9 @@ msgstr "Nemôžem spustiť panel nástrojov."
 
 msgid "Version: "
 msgstr "Verzia: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Language: "
 msgstr "Jazyk: "

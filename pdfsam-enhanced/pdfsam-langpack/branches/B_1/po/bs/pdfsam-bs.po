@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
-"PO-Revision-Date: 2009-06-03 17:56+0000\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"PO-Revision-Date: 2009-08-07 11:10+0000\n"
 "Last-Translator: Amicus <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-09 10:20+0000\n"
+"X-Launchpad-Export-Date: 2009-08-16 14:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
 "X-Poedit-Language: Bosnian\n"
@@ -493,6 +493,39 @@ msgstr "Opcije preglednika"
 msgid "Viewer options section loaded."
 msgstr "Učitana skecija opcija preglednika."
 
+msgid "Rotation"
+msgstr "Rotacija"
+
+msgid "All"
+msgstr "Sve"
+
+msgid "Even"
+msgstr "Parne"
+
+msgid "Odd"
+msgstr "Neparne"
+
+msgid "Clockwise rotation (degrees):"
+msgstr "Rotacija u smjeru kazaljke na satu (stepeni):"
+
+msgid "Pages:"
+msgstr "Stranice:"
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr "Postavite iznos rotacije u stepenima (u smjeru kazaljke)"
+
+msgid "Set the pages that will be rotated."
+msgstr "Izaberite stranice koje će biti rotirane"
+
+msgid "Rotate selected files"
+msgstr "Rotiraj selektovane dokumente"
+
+msgid "Rotate"
+msgstr "Rotiraj"
+
+msgid "Rotate section loaded."
+msgstr "Učitana je sekcija za rotaciju."
+
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr "Snimi šifre (biće čitljive pri otvaranju izlaznog dokumenta)?"
@@ -630,15 +663,17 @@ msgid "Output document pdf version:"
 msgstr "PDF verzija izlaznog dokumenta:"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
-msgstr ""
+msgstr "Sadržaj sa linkovima je imao greške i ponovo je kreiran"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
 msgstr ""
+"Dokument nije otvoren sa šifrom vlasnika. Morate obezbijediti šifru vlasnika "
+"da biste manipulisali dokumentom."
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "Pojavila se greška u toku učitavanja dokumenta."
 
 msgid "Same as input document"
 msgstr "Isti kao ulazni dokument"
@@ -825,6 +860,9 @@ msgstr "Nije moguće inicijalizirati traku s adugmadima."
 
 msgid "Version: "
 msgstr "Verzija: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Language: "
 msgstr "Jezik: "

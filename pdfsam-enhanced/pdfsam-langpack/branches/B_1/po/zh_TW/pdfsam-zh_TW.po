@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 12:23+0200\n"
-"PO-Revision-Date: 2009-05-06 04:37+0000\n"
-"Last-Translator: ngacf <Unknown>\n"
+"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"PO-Revision-Date: 2009-07-16 17:51+0000\n"
+"Last-Translator: Chien Cheng Wei <e.cwchien@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-29 14:40+0000\n"
+"X-Launchpad-Export-Date: 2009-08-16 14:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -188,6 +188,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"若包括 \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" 或 "
+"\"[BOOKMARK_NAME]\" 將會作變數替換。"
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -201,7 +203,7 @@ msgstr ""
 "舊式的輸出檔名稱。"
 
 msgid "Available variables"
-msgstr ""
+msgstr "可用變數"
 
 msgid "Invalid split size"
 msgstr "無效的分割檔案大小"
@@ -237,10 +239,10 @@ msgid "Getting bookmarks max depth"
 msgstr "取得書籤的最大層級"
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "頭版 PDF 檔"
 
 msgid "Addendum pdf file"
-msgstr ""
+msgstr "附錄 PDF 檔"
 
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
@@ -347,17 +349,17 @@ msgid "Reverse second document"
 msgstr "顛倒第二份文件的順序"
 
 msgid "Number of pages to switch document"
-msgstr ""
+msgstr "要轉移文件的頁數"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
-msgstr ""
+msgstr "若您想顛倒第一或第二個文件（或兩者）的順序請勾選選項"
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
-msgstr ""
+msgstr "設定要從一個文件轉移至另一文件的頁數（預設值為 1）"
 
 msgid "Found a password for first file."
 msgstr "第一個檔案需要密碼"
@@ -478,6 +480,39 @@ msgstr "檢視器選項"
 
 msgid "Viewer options section loaded."
 msgstr "已載入檢視器選項區段。"
+
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -655,7 +690,7 @@ msgstr "文件的 PDF 版本"
 
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
-msgstr ""
+msgstr "請雙擊滑鼠左鍵以設定您想合併的頁面（例如：2 或 5-23 或 2,5-7,12-）"
 
 msgid "Add a pdf to the list"
 msgstr "新增PDF檔至清單中"
@@ -810,11 +845,14 @@ msgstr "無法初始化工具列。"
 msgid "Version: "
 msgstr "版本： "
 
+msgid "Console version: "
+msgstr ""
+
 msgid "Language: "
 msgstr "程式語言： "
 
 msgid "Developed by: "
-msgstr ""
+msgstr "程式開發者： "
 
 msgid "Build date: "
 msgstr "建立日期： "
@@ -982,15 +1020,15 @@ msgid "Would you like to overwrite it?"
 msgstr "您要覆寫它嗎？"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "您提供的頁面選擇無效"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
-msgstr ""
+msgstr "限制條件必須為逗點分隔的 \"頁數\" 或 \"頁數-頁數\" 清單"
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "限制條件無效"
 
 msgid "Checking for a new version available."
 msgstr "正在確認是否有新版本可用。"
