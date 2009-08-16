@@ -131,11 +131,11 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				}
 				
 				pdfStamper.close();
+				pdfReader.close();
+				
 				File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-	    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-	    			log.debug("File "+outFile.getCanonicalPath()+" created.");
-                } 
-	    		pdfReader.close();
+	    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+    			log.debug("File "+outFile.getCanonicalPath()+" created.");
 	    		log.info("Slide show options set.");
 			}catch(Exception e){    		
 				throw new SlideShowException(e);

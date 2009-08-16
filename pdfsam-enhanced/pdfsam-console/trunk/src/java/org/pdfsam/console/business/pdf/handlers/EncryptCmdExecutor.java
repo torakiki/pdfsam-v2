@@ -118,11 +118,10 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 						pdfStamper.setMoreInfo(meta);
 						pdfStamper.setEncryption(encType, inputCommand.getUserPwd(), inputCommand.getOwnerPwd(), inputCommand.getPermissions());
 						pdfStamper.close();
-						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-			    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-		                	log.debug("Encrypted file "+outFile.getCanonicalPath()+" created.");
-		                } 
 			    		pdfReader.close();
+						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
+			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+		                log.debug("Encrypted file "+outFile.getCanonicalPath()+" created.");
 			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 		    		}
 		    		catch(Exception e){

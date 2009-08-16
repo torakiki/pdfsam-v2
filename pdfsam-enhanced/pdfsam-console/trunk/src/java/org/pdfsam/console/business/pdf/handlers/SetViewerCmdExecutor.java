@@ -108,12 +108,11 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 						pdfStamper.setMoreInfo(meta);
 						pdfStamper.setViewerPreferences(inputCommand.getDirection() | inputCommand.getLayout() | inputCommand.getMode() | inputCommand.getNfsmode() | getVewerOptions(inputCommand));
 						pdfStamper.close();
+						pdfReader.close();
 						
 						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-			    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-		                	log.debug("File "+outFile.getCanonicalPath()+" created.");
-		                } 
-			    		pdfReader.close();
+			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+	                	log.debug("File "+outFile.getCanonicalPath()+" created.");
 						setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 					}
 		    		catch(Exception e){

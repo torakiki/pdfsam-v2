@@ -11,7 +11,10 @@
 		<exception errorcode="5" message="Bad command." />		
 		<exception errorcode="6" message="Command line validator is null for the command {0}." />		
 		<exception errorcode="7" message="Input command is null." />		
-		<exception errorcode="8" message="Prefix request is null." />		
+		<exception errorcode="8" message="Prefix request is null." />	
+		<exception errorcode="9" message="Unable to rename temporary file {0} to {1}." />	
+		<exception errorcode="10" message="Unable to overwrite output file, a temporary file has been created ({0})." />	
+		<exception errorcode="11" message="Cannot overwrite output file (overwrite is false), a temporary file has been created ({0})." />		
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ValidationException" description="VLD">
 		<exception errorcode="1" message="Error parsing rotations values." />				

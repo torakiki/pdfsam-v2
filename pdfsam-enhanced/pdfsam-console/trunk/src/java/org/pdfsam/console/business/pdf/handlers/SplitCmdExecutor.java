@@ -159,9 +159,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             PdfImportedPage importedPage = pdfWriter.getImportedPage(pdfReader, currentPage);
             pdfWriter.addPage(importedPage);
             currentDocument.close();
-            if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-            	log.debug("File "+outFile.getCanonicalPath()+" created.");
-            }
+            FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+           	log.debug("File "+outFile.getCanonicalPath()+" created.");
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
         pdfReader.close();
@@ -234,9 +233,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             //if it's time to close the document
             if ((isTimeToClose) || (currentPage == n) || ((currentPage==1) && (SplitParsedCommand.S_ODD.equals(inputCommand.getSplitType())))){
                 currentDocument.close();
-                if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-                	log.debug("File "+outFile.getCanonicalPath()+" created.");
-                }
+                FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+                log.debug("File "+outFile.getCanonicalPath()+" created.");
             }
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
@@ -347,9 +345,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                 }
                 relativeCurrentPage = 0;                    
                 currentDocument.close();
-                if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-                	log.debug("File "+outFile.getCanonicalPath()+" created.");
-                }
+                FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+                log.debug("File "+outFile.getCanonicalPath()+" created.");
                 endPage = (itr.hasNext())? ((Integer)itr.next()).intValue(): n;
 			}
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
@@ -546,9 +543,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				fos.close();
 				baos.close();				
                 log.info("Temporary document "+tmpFile.getName()+" done.");
-                if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-                	log.debug("File "+outFile.getCanonicalPath()+" created.");
-                }
+                FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+               	log.debug("File "+outFile.getCanonicalPath()+" created.");
 			}
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
 		}

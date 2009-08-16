@@ -49,6 +49,7 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PdfFile;
+import org.pdfsam.console.exceptions.console.ConsoleException;
 /**
  * Utility class for file handling
  * @author Andrea Vacondio
@@ -111,47 +112,37 @@ public class FileUtility {
      * @param outputFile file to rename to
      * @param overwrite overwrite existing file
      */
-    public static boolean renameTemporaryFile(File tmpFile, File outputFile, boolean overwrite){
-    	boolean retVal = false;
-    	if(tmpFile != null && outputFile != null){
-	    	try{
-			       if (outputFile.exists()){
-			          //check if overwrite is allowed
-			          if (overwrite){
-			                 if(outputFile.delete()){
-			                	 retVal = renameFile(tmpFile, outputFile);
-					    	 }else{
-					    		 log.error("Unable to overwrite output file, a temporary file has been created ("+tmpFile.getName()+").");
-					    	 }
-			          }else{
-			        	  log.error("Cannot overwrite output file (overwrite is false), a temporary file has been created ("+tmpFile.getName()+").");
-			          }		                
-			       }else{
-			    	  retVal = renameFile(tmpFile, outputFile);
-			       }
-		    	   
-	         }
-	         catch(Exception e){
-	        	 log.error("Exception renaming "+tmpFile.getName()+" to "+outputFile.getName(),e);
-	         }
-         }else{        	 
-        	 log.error("Exception renaming temporary file, source or destination are null.");
-         }
-    	return retVal;
+    public static void renameTemporaryFile(File tmpFile, File outputFile, boolean overwrite) throws ConsoleException{
+		if (tmpFile != null && outputFile != null) {
+			if (outputFile.exists()) {
+				// check if overwrite is allowed
+				if (overwrite) {
+					if (outputFile.delete()) {
+						renameFile(tmpFile, outputFile);
+					} else {
+						throw new ConsoleException(ConsoleException.UNABLE_TO_OVERWRITE, new String[]{tmpFile.getName()});
+					}
+				} else {
+					throw new ConsoleException(ConsoleException.OVERWRITE_IS_FALSE, new String[]{tmpFile.getName()});
+				}
+			} else {
+				renameFile(tmpFile, outputFile);
+			}
+		} else {
+			log.error("Exception renaming temporary file, source or destination are null.");
+		}
     }
     
-    /**
-     * Used to rename 
-     * @param tmpFile
-     * @param outputFile
-     * @return true if renamed correctly 
-     */
-    private static boolean renameFile(File tmpFile, File outputFile) throws Exception{
-    	boolean retVal = tmpFile.renameTo(outputFile);
-    	if(!retVal){
-  		   log.error("Unable to rename temporary file "+tmpFile.getName()+" to "+outputFile.getName()+".");
+   /**
+    * Rename the file
+    * @param tmpFile
+    * @param outputFile
+    * @throws ConsoleException if an error occur
+    */
+    private static void renameFile(File tmpFile, File outputFile) throws ConsoleException{
+    	if(!tmpFile.renameTo(outputFile)){
+    		throw new ConsoleException(ConsoleException.UNABLE_TO_RENAME, new String[]{tmpFile.getName(), outputFile.getName()});
 	    }
-    	return retVal;
     }
     
     /**

@@ -237,10 +237,10 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			log.info("Applying pages rotation.");
 	    			File rotatedTmpFile = applyRotations(tmpFile, inputCommand);
     				FileUtility.deleteFile(tmpFile);
-	    			if(FileUtility.renameTemporaryFile(rotatedTmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite())){
-	                	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
-	                }  	
-	    		}else if(FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite())){
+	    			FileUtility.renameTemporaryFile(rotatedTmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+                	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
+	    		}else{
+	    			FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
                 	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
                 }  		
 			}catch(Exception e){    		

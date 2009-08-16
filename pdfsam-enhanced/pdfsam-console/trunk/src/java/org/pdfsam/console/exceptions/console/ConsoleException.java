@@ -53,6 +53,9 @@ public class ConsoleException extends BasicPdfsamException {
 	public final static int CMD_LINE_EXECUTOR_NULL = 0x06;
 	public final static int CMD_LINE_NULL = 0x07;
 	public final static int PREFIX_REQUEST_NULL = 0x08;
+	public final static int UNABLE_TO_RENAME = 0x09;
+	public final static int UNABLE_TO_OVERWRITE = 0x0A;
+	public final static int OVERWRITE_IS_FALSE = 0x0B;
 	
 	private static final long serialVersionUID = -853792961862291208L;
 

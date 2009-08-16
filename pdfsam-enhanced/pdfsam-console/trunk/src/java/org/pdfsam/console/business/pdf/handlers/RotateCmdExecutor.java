@@ -144,11 +144,10 @@ private final Logger log = Logger.getLogger(RotateCmdExecutor.class.getPackage()
 						
 						pdfStamper.setMoreInfo(meta);
 						pdfStamper.close();
+						pdfReader.close();
 						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-			    		if(FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite())){
-		                	log.debug("Rotated file "+outFile.getCanonicalPath()+" created.");
-		                } 
-			    		pdfReader.close();
+			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+	                	log.debug("Rotated file "+outFile.getCanonicalPath()+" created.");
 			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 		    		}
 		    		catch(Exception e){
