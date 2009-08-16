@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-05-09 15:07+0000\n"
 "Last-Translator: Mads Boserup Lauritsen <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -813,6 +813,9 @@ msgid "An error occured while loading the document"
 msgstr ""
 
 msgid "Same as input document"
+msgstr ""
+
+msgid "Add prefix"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181

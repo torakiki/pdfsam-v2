@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2008-06-29 16:45+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -689,6 +689,9 @@ msgstr ""
 
 msgid "Same as input document"
 msgstr "Stejná jako vstupní dokument"
+
+msgid "Add prefix"
+msgstr ""
 
 msgid "Path"
 msgstr "Umístění"

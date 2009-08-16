@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2008-09-11 11:48+0000\n"
 "Last-Translator: Сергій Дубик <dubyk@library.lviv.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -665,6 +665,9 @@ msgid "An error occured while loading the document"
 msgstr ""
 
 msgid "Same as input document"
+msgstr ""
+
+msgid "Add prefix"
 msgstr ""
 
 msgid "Path"

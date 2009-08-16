@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-06-30 19:05+0000\n"
 "Last-Translator: Waldir Leoncio <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -676,6 +676,9 @@ msgstr ""
 
 msgid "Same as input document"
 msgstr "Mesmo que documento de entrada"
+
+msgid "Add prefix"
+msgstr ""
 
 msgid "Path"
 msgstr "Caminho"

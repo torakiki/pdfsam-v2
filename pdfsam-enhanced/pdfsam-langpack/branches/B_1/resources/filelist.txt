@@ -32,6 +32,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/components/JPdfSelectionTable.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/components/JPdfSelectionToolTipHeader.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/components/JPdfVersionCombo.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/components/listeners/PrefixMouseListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/models/SimplePdfSelectionTableModel.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/models/AbstractPdfSelectionTableModel.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine-br1/src/java/org/pdfsam/guiclient/commons/models/SortablePdfSelectionTableModel.java

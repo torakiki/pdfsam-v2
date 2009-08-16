@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:06+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-08-01 19:07+0000\n"
 "Last-Translator: bertu <Unknown>\n"
 "Language-Team: \n"
@@ -1037,6 +1037,9 @@ msgstr "C'è stato un errore mentre il docummento veniva aperto"
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
 msgid "Same as input document"
 msgstr "Uguale al documento in input"
+
+msgid "Add prefix"
+msgstr ""
 
 # F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:179
 # F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:171
