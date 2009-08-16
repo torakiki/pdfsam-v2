@@ -1,4 +1,4 @@
-1.5.5e () ()
+1.6.0e (16-Aug-2009) (pdfsam-console 2.1.0e)
 ===================================
 -Added context menu to add prefixes to the prefix JTextField
 -Fixed bug #2827318 (console concat command ignores 'pdfversion' and 'compressed' parameter if a rotation is set)

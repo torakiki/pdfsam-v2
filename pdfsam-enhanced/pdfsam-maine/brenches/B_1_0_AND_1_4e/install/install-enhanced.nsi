@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 1.5.4e
+!define VERSION 1.6.0e
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -81,6 +81,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Catalan"
   !insertmacro MUI_LANGUAGE "Czech"
   !insertmacro MUI_LANGUAGE "Danish"
+  !insertmacro MUI_LANGUAGE "Estonian"
   !insertmacro MUI_LANGUAGE "Galician"
   !insertmacro MUI_LANGUAGE "German"
   !insertmacro MUI_LANGUAGE "Greek"
@@ -112,12 +113,12 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v1_5_4e.exe
+OutFile pdfsam-win32inst-v1_6_0e.exe
 InstallDir "$PROGRAMFILES\pdfsam-enhanced"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 1.5.4.0
+VIProductVersion 1.6.0.0
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam enhanced"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
@@ -164,6 +165,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}
         ${Case} ${LANG_SLOVAK}
             Push 'sk' 
+        ${Break}
+        ${Case} ${LANG_ESTONIAN}
+            Push 'et' 
         ${Break}
         ${Case} ${LANG_ITALIAN}
             Push 'it' 
@@ -496,6 +500,8 @@ Function .onInit
     Push Swedish
     Push ${LANG_SPANISH}
     Push Spanish
+    Push ${LANG_ESTONIAN}
+    Push Estonian
     Push ${LANG_PORTUGUESE}
     Push Portuguese
     Push ${LANG_DUTCH}
@@ -707,26 +713,3 @@ Function un.FinishPagePre
 FunctionEnd
 ;--------------------------
 
-# Installer Language Strings
-LangString ^UninstallLink ${LANG_ENGLISH} "Uninstall $(^Name)"
-LangString ^UninstallLink ${LANG_ITALIAN} "Disinstalla $(^Name)"
-LangString ^UninstallLink ${LANG_RUSSIAN} "��&����� $(^Name)"
-LangString ^UninstallLink ${LANG_SWEDISH} "Avinstallera $(^Name)"
-LangString ^UninstallLink ${LANG_SPANISH} "Desinstalar $(^Name)"
-LangString ^UninstallLink ${LANG_PORTUGUESE} "Desinstalar $(^Name)"
-LangString ^UninstallLink ${LANG_DUTCH} "Verwijderen $(^Name)"
-LangString ^UninstallLink ${LANG_FRENCH} "D�sinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_GREEK} "���&������� $(^Name)"
-LangString ^UninstallLink ${LANG_TURKISH} "Kald�r $(^Name)"
-LangString ^UninstallLink ${LANG_GERMAN} "Deinstallieren $(^Name)"
-LangString ^UninstallLink ${LANG_POLISH} "Odinstaluj $(^Name)"
-LangString ^UninstallLink ${LANG_FINNISH} "Poista $(^Name)"
-LangString ^UninstallLink ${LANG_SIMPCHINESE} "�Ƴ�(&U) $(^Name)"
-LangString ^UninstallLink ${LANG_HUNGARIAN} "Elt�vol�t�s $(^Name)"
-LangString ^UninstallLink ${LANG_DANISH} "Afinstaller $(^Name)"
-LangString ^UninstallLink ${LANG_TRADCHINESE} "����(&U) $(^Name)"
-LangString ^UninstallLink ${LANG_INDONESIAN} "Uninstal $(^Name)"
-LangString ^UninstallLink ${LANG_CZECH} "Odinstalace $(^Name)"
-LangString ^UninstallLink ${LANG_SLOVAK} "Odin�talovanie $(^Name)"
-LangString ^UninstallLink ${LANG_BOSNIAN} "Uklanjanje $(^Name)"
-LangString ^UninstallLink ${LANG_HEBREW} "���� $(^Name)"
