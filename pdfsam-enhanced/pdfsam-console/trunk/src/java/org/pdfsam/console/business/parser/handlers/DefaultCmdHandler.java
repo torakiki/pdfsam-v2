@@ -61,7 +61,7 @@ public class DefaultCmdHandler implements CmdHandler {
 
 	private VersionCmdLineHandler commandLineHandler = null;
 	
-	private static final String commandDescription = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt.";
+	private static final String commandDescription = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt, rotate.";
 	
 	 /**
      * The default arguments 
