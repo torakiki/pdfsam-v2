@@ -70,7 +70,7 @@ public class DecryptCmdHandler extends AbstractCmdHandler {
 		          new PdfFileParam(DecryptParsedCommand.F_ARG,
 		                          "pdf files to decrypt: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
 		                          FileParam.IS_READABLE,
-		                          FileParam.OPTIONAL, 
+		                          FileParam.REQUIRED, 
 		                          FileParam.MULTI_VALUED),
                   new StringParam(DecryptParsedCommand.P_ARG,   
                           		  "prefix for the output files name",
