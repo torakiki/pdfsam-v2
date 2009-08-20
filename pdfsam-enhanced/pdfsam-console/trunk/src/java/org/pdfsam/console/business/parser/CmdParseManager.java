@@ -45,6 +45,7 @@ import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
+import org.pdfsam.console.business.dto.commands.PageLabelsParsedCommand;
 import org.pdfsam.console.business.dto.commands.RotateParsedCommand;
 import org.pdfsam.console.business.dto.commands.SetViewerParsedCommand;
 import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;
@@ -55,6 +56,7 @@ import org.pdfsam.console.business.parser.handlers.DecryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.MixCmdHandler;
+import org.pdfsam.console.business.parser.handlers.PageLabelsCmdHandler;
 import org.pdfsam.console.business.parser.handlers.RotateCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SetViewerCmdHandler;
 import org.pdfsam.console.business.parser.handlers.SlideShowCmdHandler;
@@ -65,6 +67,7 @@ import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.console.business.parser.validators.DecryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.EncryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.MixCmdValidator;
+import org.pdfsam.console.business.parser.validators.PageLabelsCmdValidator;
 import org.pdfsam.console.business.parser.validators.RotateCmdValidator;
 import org.pdfsam.console.business.parser.validators.SetViewerCmdValidator;
 import org.pdfsam.console.business.parser.validators.SlideShowCmdValidator;
@@ -147,6 +150,10 @@ public class CmdParseManager {
 		else if(RotateParsedCommand.COMMAND_ROTATE.equals(inputCommand)){
 			cmdHandler = new RotateCmdHandler();
 			cmdValidator = new RotateCmdValidator();
+		}
+		else if(PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(inputCommand)){
+			cmdHandler = new PageLabelsCmdHandler();
+			cmdValidator = new PageLabelsCmdValidator();
 		}
 		else{
 			cmdHandler = new DefaultCmdHandler();

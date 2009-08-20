@@ -71,13 +71,13 @@ public class RotateCmdHandler extends AbstractCmdHandler {
 		          new PdfFileParam(RotateParsedCommand.F_ARG,
 		                          "pdf files to rotate: a list of existing pdf files (EX. -f /tmp/file1.pdf -f /tmp/file2.pdf)",
 		                          FileParam.IS_READABLE,
-		                          FileParam.OPTIONAL, 
+		                          FileParam.REQUIRED, 
 		                          FileParam.MULTI_VALUED),
                   new StringParam(RotateParsedCommand.P_ARG,   
                           		  "prefix for the output files name",
                                   StringParam.OPTIONAL),
                   new StringParam(RotateParsedCommand.R_ARG,   
-            			  		  "pages rotation. You can set pages rotation. Accepted string is \"pages:rotationdegrees\" where pagenumber can be one among \"all\", \"odd\", \"even\" and where rotationdegrees can be \"90\", \"180\" or \"270\". Pages will be rotate clockwise",
+            			  		  "pages rotation. You can set pages rotation. Accepted string is \"pages:rotationdegrees\" where pages can be one among \"all\", \"odd\", \"even\" and where rotationdegrees can be \"90\", \"180\" or \"270\". Pages will be rotate clockwise",
             			  		  StringParam.REQUIRED),                                   
 	  })); 
 
@@ -86,7 +86,7 @@ public class RotateCmdHandler extends AbstractCmdHandler {
      */
 	private final List rotateArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[rotate]}",
+                    "command to execute {["+RotateParsedCommand.COMMAND_ROTATE +"]}",
                     new String[] { RotateParsedCommand.COMMAND_ROTATE },
                     StringParam.REQUIRED),
     }));

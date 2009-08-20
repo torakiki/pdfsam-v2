@@ -101,7 +101,7 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
 	 * Help text for the slide show command
 	 */
 	private static final String slideshowHelpText =  "Set slide show options for the pdf document. \n"+ 
-    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split (use filename:password if the file is password protected).\n" +
+    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to set transitions (use filename:password if the file is password protected).\n" +
 	"You must specify '-o /home/user/out.pdf' to set the output file.\n"+
     "'-t transition' to set the slide show transition options. Syntax: transitiontype:transitiondurationinsec:pagedisplaydurationinsec:pagenumber.\n"+
     "Possible transitiontype values { "+Transition.T_BLINDH+", "+Transition.T_BLINDV+", "+Transition.T_BTWIPE+", "+Transition.T_DGLITTER+", "+Transition.T_DISSOLVE+", "+Transition.T_INBOX+", "+Transition.T_LRGLITTER+", "+Transition.T_LRWIPE+", "+Transition.T_OUTBOX+", "+Transition.T_RLWIPE+", "+Transition.T_SPLITHIN+", "+Transition.T_SPLITHOUT+", "+Transition.T_SPLITVIN+", "+Transition.T_SPLITVOUT+", "+Transition.T_TBGLITTER+", "+Transition.T_TBWIPE+"} \n"+

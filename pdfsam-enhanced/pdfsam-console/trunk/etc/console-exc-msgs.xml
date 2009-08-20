@@ -22,6 +22,9 @@
 		<exception errorcode="3" message="Rotation parameter {0} incorrect." />	
 		<exception errorcode="4" message="Given file not a pdf format. {0}" />		
 		<exception errorcode="5" message="{0} must be a directory." />
+		<exception errorcode="6" message="Wrong value for the -l option {0}." />
+		<exception errorcode="7" message="Unknown page label style: {0}." />	
+		<exception errorcode="8" message="Not a valid page label prefix parameter: {0}." />	
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.RotationException" description="ROT">
 		<exception errorcode="1" message="The rotation string {0} is not a valid single rotation." />						
@@ -83,6 +86,9 @@
 	<type key="org.pdfsam.console.exceptions.console.SetViewerException" description="SVW">
 		<exception errorcode="1" message="No input file found." />					
 	</type>
+	<type key="org.pdfsam.console.exceptions.console.PageLabelsException" description="LAB">
+						
+	</type>	
 	<type key="org.pdfsam.console.exceptions.console.SlideShowException" description="SLS">
 		<exception errorcode="1" message="Empty input transition string." />	
 		<exception errorcode="2" message="Uncomplete input transition string {0}." />	

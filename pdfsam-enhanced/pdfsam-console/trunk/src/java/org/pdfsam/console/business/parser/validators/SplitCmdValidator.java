@@ -69,7 +69,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 		
 		if(cmdLineHandler != null){
 			//-o
-			FileParam oOption = (FileParam) cmdLineHandler.getOption("o");
+			FileParam oOption = (FileParam) cmdLineHandler.getOption(SplitParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            ValidationUtility.checkValidDirectory(outFile);
@@ -79,13 +79,13 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	        }
 	         
 			//-p
-	        StringParam pOption = (StringParam) cmdLineHandler.getOption("p");
+	        StringParam pOption = (StringParam) cmdLineHandler.getOption(SplitParsedCommand.P_ARG);
 	        if(pOption.isSet()){
 	        	parsedCommandDTO.setOutputFilesPrefix(pOption.getValue());
 	        }
 
 	        //-f
-	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption("f");           
+	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(SplitParsedCommand.F_ARG);           
 	        if(fOption.isSet()){
 	        	PdfFile inputFile = fOption.getPdfFile();
 	        	ValidationUtility.checkValidPdfExtension(inputFile.getFile().getName());
@@ -95,7 +95,7 @@ public class SplitCmdValidator extends AbstractCmdValidator {
 	        }
 
 	        //-s
-	        StringParam sOption = (StringParam) cmdLineHandler.getOption("s");
+	        StringParam sOption = (StringParam) cmdLineHandler.getOption(SplitParsedCommand.S_ARG);
 	        if(sOption.isSet()){
 	        	parsedCommandDTO.setSplitType(sOption.getValue());
 	        }else{

@@ -41,6 +41,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.console.business.dto.PageLabel;
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ValidationException;
@@ -123,6 +124,55 @@ public class ValidationUtility {
 			throw new ValidationException(ValidationException.ERR_WRONG_ROTATION,e);
 		}
 		return (PageRotation[])retVal.toArray(new PageRotation[retVal.size()]);		
+	}
+		
+	/**
+	 * 
+	 * @param inputString
+	 * @return the PageLabel object resulting by the -l option value
+	 */
+	public static PageLabel getPageLabel(String inputString) throws ValidationException{
+		PageLabel retVal = null;
+		if(inputString!= null && inputString.length()>0){
+			String[] values = inputString.split(":");
+			if(values.length >= 2){
+				try{
+					retVal = new PageLabel();
+					retVal.setPageNumber(Integer.parseInt(values[0]));					
+					if(values.length == 3){
+						retVal.setLogicalPageNumber(Integer.parseInt(values[2]));
+					}
+				}catch(Exception e){
+					throw new ValidationException(ValidationException.ERR_WRONG_PAGE_LABEL, new String[]{inputString}, e);
+				}
+				
+				//style
+				retVal.setStyle(getPageLabelStyle(values[1]));
+			}else{
+				throw new ValidationException(ValidationException.ERR_WRONG_PAGE_LABEL, new String[]{inputString});
+			}
+		}
+		return retVal;
+		
+	}
+	
+	/**
+	 * @param inputString
+	 * @return a valid page label style
+	 * @throws ValidationException if the input string is not a valid label style
+	 */
+	private static String getPageLabelStyle(String inputString)throws ValidationException{
+		String retVal = null;
+		if(inputString != null && inputString.length()>0){
+			if(PageLabel.ARABIC.equals(inputString) || PageLabel.EMPTY.equals(inputString) || PageLabel.LLETTER.equals(inputString) || PageLabel.LROMAN.equals(inputString) || PageLabel.ULETTER.equals(inputString) || PageLabel.UROMAN.equals(inputString)){
+				retVal = inputString;
+			}else{
+				throw new ValidationException(ValidationException.ERR_UNK_LABEL_STYLE, new String[]{inputString});
+			}
+		}else{
+			throw new ValidationException(ValidationException.ERR_UNK_LABEL_STYLE, new String[]{inputString});
+		}
+		return retVal;
 	}
 	
 	/**

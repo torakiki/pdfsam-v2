@@ -1,5 +1,5 @@
 /*
- * Created on 25-Jul-2009
+ * Created on 19-Aug-2009
  * Copyright (C) 2009 by Andrea Vacondio.
  *
  *
@@ -37,40 +37,31 @@
  */
 package org.pdfsam.console.exceptions.console;
 /**
- * Exception during parameters validation
+ * Exception used by the pagelabels command
  * @author Andrea Vacondio
  *
  */
-public class ValidationException extends ConsoleException {
+public class PageLabelsException extends ConsoleException {
 
-	public final static int ERR_WRONG_ROTATION = 0x01;
-	public final static int ERR_DEGREES_NOT_ALLOWED = 0x02;
-	public final static int ERR_PARAM_ROTATION = 0x03;
-	public final static int ERR_NOT_PDF = 0x04;	
-	public final static int ERR_NOT_DIR = 0x05;	
-	public final static int ERR_WRONG_PAGE_LABEL = 0x06;
-	public final static int ERR_UNK_LABEL_STYLE = 0x07;
-	public final static int ERR_NOT_VALID_LABEL_PREFIX = 0x08;
+	private static final long serialVersionUID = -2369222926421431125L;
 	
-	private static final long serialVersionUID = 8695556302543417406L;
-	
-	public ValidationException(int exceptionErrorCode, String[] args, Throwable e) {
+	public PageLabelsException(int exceptionErrorCode, String[] args, Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public ValidationException(int exceptionErrorCode, Throwable e) {
+	public PageLabelsException(int exceptionErrorCode, Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public ValidationException(int exceptionErrorCode) {
+	public PageLabelsException(int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public ValidationException(Throwable e) {
+	public PageLabelsException(Throwable e) {
 		super(e);
 	}
 
-	public ValidationException(int exceptionErrorCode, String[] args) {
+	public PageLabelsException(int exceptionErrorCode, String[] args) {
 		super(exceptionErrorCode, args);
 	}
 }
