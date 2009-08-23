@@ -17,7 +17,8 @@ Plugins included:
 	-@DECRYPT_JAR_NAME *
 	-@COMPOSER_JAR_NAME *
 	-@REORDER_JAR_NAME *
-
+	-@ROTATE_JAR_NAME *
+	
 Linked libraries:
 	-@ITEXT_JAR_NAME
 	-pdfsam-jcmdline-1.0.3

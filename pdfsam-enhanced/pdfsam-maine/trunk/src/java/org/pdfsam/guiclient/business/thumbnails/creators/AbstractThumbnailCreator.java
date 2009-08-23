@@ -151,7 +151,7 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	/**
 	 * The model to set on thumbnails list before the thumbnails generation starts. This is used to show hourglasses images as thumbnails.
 	 * @param template Pages template. Used when loading an environment to set rotation and other informations
-	 * @return
+	 * @return a Vector of VisualPageListItem
 	 * @throws ThumbnailCreationException
 	 */
 	protected abstract Vector<VisualPageListItem> getDocumentModel(List<DocumentPage> template) throws ThumbnailCreationException;

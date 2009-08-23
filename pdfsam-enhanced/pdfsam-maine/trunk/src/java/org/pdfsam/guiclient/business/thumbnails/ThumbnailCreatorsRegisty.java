@@ -32,7 +32,7 @@ public class ThumbnailCreatorsRegisty {
 	
 	/**
 	 * @param identifier
-	 * @return The requested {@link ThmbnailCreator} or the first available of the requested one is not available. Returns null if no {@link ThmbnailCreator} is available.
+	 * @return The requested {@link ThumbnailsCreator} or the first available of the requested one is not available. Returns null if no {@link ThumbnailsCreator} is available.
 	 */
 	public static ThumbnailsCreator getCreator(String identifier){
 		ThumbnailsCreator retVal = null;

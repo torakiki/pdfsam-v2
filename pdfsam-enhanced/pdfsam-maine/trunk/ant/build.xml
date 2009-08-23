@@ -41,6 +41,7 @@
 		<property name="setviewer.dir" value="${workspace.dir}/pdfsam-setviewer"/>
 		<property name="vpagereorder.dir" value="${workspace.dir}/pdfsam-vpagereorder"/>
 		<property name="vcomposer.dir" value="${workspace.dir}/pdfsam-vcomposer"/>
+	    <property name="rotate.dir" value="${workspace.dir}/pdfsam-rotate"/>
 		<property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
@@ -210,6 +211,11 @@
 			<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 
+		<!--rotate-->
+		<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="build-jars">
+			<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.jar.dir}"/>
+		</ant>
+
 	</target>
 
 	<!--creates the distribution of pdfsam-->
@@ -252,6 +258,12 @@
 			</fileset>
 		</copy>
 		
+		<copy todir="${pdfsam.release.dist.dir}/doc/icons">
+			<fileset dir="doc/icons">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
 		<copy todir="${pdfsam.release.dist.dir}/doc/xsd">
 			<fileset dir="${console.dir}/xsd">
 				<include name="**/*" />
@@ -271,6 +283,7 @@
 			<replacefilter token="@MIX_JAR_NAME" value="${pdfsam-mix.jar.name}"/>
 			<replacefilter token="@UNPACK_JAR_NAME" value="${pdfsam-unpack.jar.name}"/>
 			<replacefilter token="@VIEWER_JAR_NAME" value="${pdfsam-setviewer.jar.name}"/>
+			<replacefilter token="@ROTATE_JAR_NAME" value="${pdfsam-rotate.jar.name}"/>
 			<replacefilter token="@REORDER_JAR_NAME" value="${pdfsam-vpagereorder.jar.name}"/>
 			<replacefilter token="@COMPOSER_JAR_NAME" value="${pdfsam-vcomposer.jar.name}"/>
 		</replace>
@@ -285,6 +298,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-mix.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/mix" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-rotate.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/rotate" overwrite="true"/>
 
 		<antcall target="dist-enhanced" />
 	</target>
@@ -351,6 +365,7 @@
 				<include name="pdfsam-maine/bin/**/*"/>
 				<include name="pdfsam-maine/doc/licenses/**/*"/>
 				<include name="pdfsam-maine/doc/examples/**/*"/>
+				<include name="pdfsam-maine/doc/icons/**/*"/>
 				<include name="pdfsam-maine/doc/${pdfsam.version}/**/*"/>
 				<include name="pdfsam-maine/images/*.png"/>
 			</fileset>
@@ -404,6 +419,11 @@
 		<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="buildZipSrcPackage">
 			<property name="pdfsam-mix.dist.dir" value="${pdfsam.release.src.dir}"/>
 		</ant>
+
+	  	<!--rotate-->
+	  	<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="buildZipSrcPackage">
+	  		  	<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.src.dir}"/>
+	  	</ant>
 
 		<!--vpagereorder-->
 		<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="buildZipSrcPackage">
