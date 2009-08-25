@@ -108,29 +108,23 @@ public class PageLabel implements Serializable {
 		this.style = style;
 	}
 	
-	/**
-	 * Constructs a <code>String</code> with all attributes
-	 * in name = value format.
-	 *
-	 * @return a <code>String</code> representation 
-	 * of this object.
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
-	public String toString()
-	{
-	    final String OPEN = "[";
-	    final String CLOSE = "]";
-	    
-	    StringBuffer retValue = new StringBuffer();
-	    
-	    retValue.append("PageLabel ( ")
-	        .append(OPEN).append("pageNumber=").append(this.pageNumber).append(CLOSE)
-	        .append(OPEN).append("logicalPageNumber=").append(this.logicalPageNumber).append(CLOSE)	        
-	        .append(OPEN).append("prefix=").append(this.prefix).append(CLOSE)
-	        .append(OPEN).append("style=").append(this.style).append(CLOSE)
-	        .append(" )");
-	    
-	    return retValue.toString();
+	public String toString() {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("PageLabel [logicalPageNumber=");
+		buffer.append(logicalPageNumber);
+		buffer.append(", pageNumber=");
+		buffer.append(pageNumber);
+		buffer.append(", prefix=");
+		buffer.append(prefix);
+		buffer.append(", style=");
+		buffer.append(style);
+		buffer.append("]");
+		return buffer.toString();
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
