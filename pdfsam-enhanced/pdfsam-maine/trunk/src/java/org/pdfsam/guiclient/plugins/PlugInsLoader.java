@@ -18,7 +18,8 @@ import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -96,15 +97,14 @@ public class  PlugInsLoader{
      * @return a map(k,value) where k is the pluginDataModel and value is the instance
      * @throws PluginException
      */
-    public Hashtable<PluginDataModel, AbstractPlugablePanel> loadPlugins() throws PluginException {
-    	Hashtable<PluginDataModel, AbstractPlugablePanel> retMap = new Hashtable<PluginDataModel, AbstractPlugablePanel>();
+    public Map<PluginDataModel, AbstractPlugablePanel> loadPlugins() throws PluginException {
+    	Map<PluginDataModel, AbstractPlugablePanel> retMap = new TreeMap<PluginDataModel, AbstractPlugablePanel>();
     	URLClassLoader urlClassLoader = null;
     	ArrayList<URL> urlList = new ArrayList<URL>();
     	ArrayList<String> classList = new ArrayList<String>();
     	
     	//crates a list of URL and classes
-    	for(int i=0; i<pluginsList.length; i++){
-    		File currentDir = pluginsList[i];
+   		for(File currentDir : pluginsList){
     		if(currentDir != null && currentDir.isDirectory()){
     			try{
     				XMLConfig xmlConfigObject = new XMLConfig(currentDir.getAbsolutePath()); 

@@ -16,8 +16,7 @@
 package org.pdfsam.guiclient.plugins.models;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.Map;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -45,10 +44,10 @@ public class PluginsTableModel extends AbstractTableModel {
         this.pluginsData = pluginsData;
     }
     
-    public PluginsTableModel(Hashtable<PluginDataModel, AbstractPlugablePanel> pluginsData){
+    public PluginsTableModel(Map<PluginDataModel, AbstractPlugablePanel> pluginsData){
     	this.pluginsData = new ArrayList<PluginDataModel>();
-    	for (Enumeration<PluginDataModel> plugsEnumeration = pluginsData.keys();plugsEnumeration.hasMoreElements();) {
-			this.pluginsData.add((PluginDataModel) plugsEnumeration.nextElement());
+    	for (PluginDataModel item : pluginsData.keySet()) {
+			this.pluginsData.add(item);
     	}
         
     }

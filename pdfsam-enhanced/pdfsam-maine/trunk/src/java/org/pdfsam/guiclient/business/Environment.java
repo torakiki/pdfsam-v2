@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Hashtable;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
@@ -46,9 +46,9 @@ public class Environment {
 	
 	private ResourceBundle i18nMessages;
 
-	private Hashtable<PluginDataModel, AbstractPlugablePanel> plugins;
+	private Map<PluginDataModel, AbstractPlugablePanel> plugins;
 	
-	public Environment(Hashtable<PluginDataModel, AbstractPlugablePanel> plugins){
+	public Environment(Map<PluginDataModel, AbstractPlugablePanel> plugins){
 		this.plugins = plugins;
 		this.i18nMessages = Configuration.getInstance().getI18nResourceBundle();
 	}

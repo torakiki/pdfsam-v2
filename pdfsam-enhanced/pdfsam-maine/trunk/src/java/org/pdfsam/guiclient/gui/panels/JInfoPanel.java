@@ -21,7 +21,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.Font;
-import java.util.Hashtable;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -57,7 +57,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private String javaVersion = "";
     private String configPath = "";
     private Configuration config;
-    private Hashtable<PluginDataModel, AbstractPlugablePanel> plugins;
+    private Map<PluginDataModel, AbstractPlugablePanel> plugins;
     
     private final InfoFocusPolicy infoFocusPolicy = new InfoFocusPolicy();
     
@@ -69,7 +69,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
      * Constructor. It provides initialization.
      * @param plugins Informations about loaded plugins
      */
-    public JInfoPanel(Hashtable<PluginDataModel, AbstractPlugablePanel> plugins) {
+    public JInfoPanel(Map<PluginDataModel, AbstractPlugablePanel> plugins) {
         this.plugins = plugins;
         initialize();
     }

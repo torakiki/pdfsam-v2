@@ -5,6 +5,7 @@
 -Fixed bug #2827318 (console concat command ignores 'pdfversion' and 'compressed' parameter if a rotation is set)
 -Console: added the 'rotate' command to rotate multiple documents (feature request #2797066)
 -Console: added the 'pagelabels' command to set page labels on a pdf document
+-Plugins showed in alphabetical order
 
 2.0.0-release candidate 1 (21-Jun-2009) (pdfsam-console 2.0.5e)
 ===================================
