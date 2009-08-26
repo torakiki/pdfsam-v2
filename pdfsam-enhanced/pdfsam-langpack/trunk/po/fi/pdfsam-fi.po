@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-03-10 13:28+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -651,6 +651,39 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Choose a file"
 msgstr ""
 
@@ -847,6 +880,9 @@ msgid "Cut"
 msgstr ""
 
 msgid "Paste"
+msgstr ""
+
+msgid "Add prefix"
 msgstr ""
 
 msgid "The cross reference table cantained some error and has been rebuilt"
@@ -1309,6 +1345,9 @@ msgstr "Painikerivin alustaminen epäonnistui."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr "Versio: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Developed by: "
 msgstr ""

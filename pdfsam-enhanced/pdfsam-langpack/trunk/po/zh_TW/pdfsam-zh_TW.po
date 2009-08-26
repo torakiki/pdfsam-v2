@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-20 16:14+0200\n"
-"PO-Revision-Date: 2009-06-03 04:56+0000\n"
-"Last-Translator: tulip0213 <Unknown>\n"
+"POT-Creation-Date: 2009-08-26 16:22+0200\n"
+"PO-Revision-Date: 2009-08-20 09:56+0000\n"
+"Last-Translator: Glen Ng <pariahsoc@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-08-26 05:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -188,6 +188,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"若包括 \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" 或 "
+"\"[BOOKMARK_NAME]\" 將會作變數替換。"
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -237,16 +239,16 @@ msgid "Getting bookmarks max depth"
 msgstr "正在取得書籤最大層級"
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "頭版 PDF 檔"
 
 msgid "Addendum pdf file"
-msgstr ""
+msgstr "附錄 PDF 檔"
 
 msgid "Select at least one cover or one footer"
 msgstr "請至少選擇一個封面或封底"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "前言與附錄"
 
 msgid "Cover And Footer section loaded."
 msgstr "新增封面和封底已完成。"
@@ -347,17 +349,17 @@ msgid "Reverse second document"
 msgstr "顛倒第二份文件的順序"
 
 msgid "Number of pages to switch document"
-msgstr ""
+msgstr "要轉移文件的頁數"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
-msgstr ""
+msgstr "若您想顛倒第一或第二個文件（或兩者）的順序請勾選選項"
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
-msgstr ""
+msgstr "設定要從一個文件轉移至另一文件的頁數（預設值為 1）"
 
 msgid "Found a password for first file."
 msgstr "第一個檔案需要密碼"
@@ -498,6 +500,39 @@ msgstr "執行頁面記錄器"
 
 msgid "Visual document composer"
 msgstr "虛擬文件編輯器"
+
+msgid "Rotation"
+msgstr "旋轉"
+
+msgid "All"
+msgstr "全部"
+
+msgid "Even"
+msgstr "偶數"
+
+msgid "Odd"
+msgstr "奇數"
+
+msgid "Clockwise rotation (degrees):"
+msgstr "順時針旋轉"
+
+msgid "Pages:"
+msgstr "頁面："
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr "設定旋轉角度"
+
+msgid "Set the pages that will be rotated."
+msgstr "設定需要旋轉的頁面"
+
+msgid "Rotate selected files"
+msgstr "旋轉所選的檔案"
+
+msgid "Rotate"
+msgstr "旋轉"
+
+msgid "Rotate section loaded."
+msgstr ""
 
 msgid "Choose a file"
 msgstr "選取一個檔案"
@@ -656,16 +691,19 @@ msgstr "剪下"
 msgid "Paste"
 msgstr "貼上"
 
-msgid "The cross reference table cantained some error and has been rebuilt"
+msgid "Add prefix"
 msgstr ""
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr "參照表存有問題並已被重新建立"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
-msgstr ""
+msgstr "此文件開啟時未輸入擁有者密碼。你必須提供擁有者密碼才能操作本文件。"
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "載入文件時發生錯誤"
 
 msgid "File name"
 msgstr "檔案名稱"
@@ -696,7 +734,7 @@ msgstr "文件的 PDF 版本"
 
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
-msgstr ""
+msgstr "請雙擊滑鼠左鍵以設定您想合併的頁面（例如：2 或 5-23 或 2,5-7,12-）"
 
 msgid "Add a pdf to the list"
 msgstr "新增PDF檔至清單中"
@@ -789,7 +827,7 @@ msgid "Rotate anticlockwise"
 msgstr "逆時針旋轉"
 
 msgid "Reverse"
-msgstr ""
+msgstr "反轉"
 
 msgid "Move up selected pages"
 msgstr "將所選頁面上移"
@@ -825,7 +863,7 @@ msgid "(Alt+ArrowLeft)"
 msgstr "(Alt+向左方向鍵)"
 
 msgid "Reverse pages order"
-msgstr ""
+msgstr "反轉頁面順序"
 
 msgid "Yes"
 msgstr "是"
@@ -870,7 +908,7 @@ msgid "Error creating preview panel."
 msgstr "建立預覽面板時出錯。"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "總頁面數"
 
 msgid "File size"
 msgstr "檔案大小"
@@ -885,7 +923,7 @@ msgid "Not encrypted"
 msgstr "不加密"
 
 msgid "Permissions"
-msgstr ""
+msgstr "權限"
 
 msgid "Title"
 msgstr "標題"
@@ -897,10 +935,10 @@ msgid "Subject"
 msgstr "主旨"
 
 msgid "Producer"
-msgstr ""
+msgstr "製作者"
 
 msgid "Creator"
-msgstr ""
+msgstr "建立者"
 
 msgid "Creation date"
 msgstr "建立日期"
@@ -912,7 +950,7 @@ msgid "Keywords"
 msgstr "關鍵字"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "建立屬性面板時發生錯誤。"
 
 msgid "Please select a single pdf document."
 msgstr "請選擇單一個 PDF 文件。"
@@ -1037,8 +1075,11 @@ msgstr "無法初始化工具列。"
 msgid "Version: "
 msgstr "版本： "
 
-msgid "Developed by: "
+msgid "Console version: "
 msgstr ""
+
+msgid "Developed by: "
+msgstr "程式開發者： "
 
 msgid "Build date: "
 msgstr "建立日期： "
@@ -1089,7 +1130,7 @@ msgid "Check for updates:"
 msgstr "檢查更新："
 
 msgid "Thumbnails creator"
-msgstr ""
+msgstr "縮圖製作程式"
 
 msgid "Load default environment at startup:"
 msgstr "啟動時載入預設環境變數："
@@ -1215,15 +1256,15 @@ msgid "Would you like to overwrite it?"
 msgstr "您要覆寫它嗎？"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "您提供的頁面選擇無效"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
-msgstr ""
+msgstr "限制條件必須為逗點分隔的 \"頁數\" 或 \"頁數-頁數\" 清單"
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "限制條件無效"
 
 msgid "Please provide the password to open the encrypted document"
 msgstr "請提供密碼來開啟已加密文件"
@@ -1239,7 +1280,7 @@ msgid "List full"
 msgstr "清單已滿"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
+msgstr "存取頁面存檔資訊時發生錯誤。"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

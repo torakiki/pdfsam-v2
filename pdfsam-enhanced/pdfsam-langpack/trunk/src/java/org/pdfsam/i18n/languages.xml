@@ -10,7 +10,8 @@
     <language value="da" description="Danish" />  	
     <language value="nl" description="Dutch" />  	
     <language value="en_GB" description="English (UK)" />    
-    <language value="fa" description="Persian" />  	
+    <language value="fa" description="Persian" />  
+    <language value="et" description="Estonian" />  
     <language value="fi" description="Finnish" />  	
     <language value="fr" description="French" />    
     <language value="gl" description="Galician" />

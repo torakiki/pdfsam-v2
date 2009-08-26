@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-03-10 13:29+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -501,6 +501,39 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Choose a file"
 msgstr ""
 
@@ -656,6 +689,9 @@ msgid "Cut"
 msgstr ""
 
 msgid "Paste"
+msgstr ""
+
+msgid "Add prefix"
 msgstr ""
 
 msgid "The cross reference table cantained some error and has been rebuilt"
@@ -1038,6 +1074,9 @@ msgstr "ボタンバーの初期化に失敗しました。"
 
 msgid "Version: "
 msgstr "バージョン: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Developed by: "
 msgstr ""

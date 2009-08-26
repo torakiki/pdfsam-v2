@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 16:22+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-08-25 12:23+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
@@ -15,14 +15,64 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-msgid "Merge options"
-msgstr "Opzioni di unione"
-
 msgid "PDF documents contain forms"
 msgstr "I documenti PDF contengono dei form"
 
 msgid "Merge type"
 msgstr "Tipo di unione"
+
+msgid "Use this merge type for pdf documents containing forms"
+msgstr "Usa questo tipo di unione per i documenti pdf che contengono form"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
+msgid "Check the box if you want compressed output files."
+msgstr "Seleziona il box se vuoi file di output compressi."
+
+msgid ""
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
+msgstr ""
+"Se contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
+"\"[BOOKMARK_NAME]\" esegue la sostituzione delle variabili."
+
+# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:237
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
+msgid "Add or modify text annotations"
+msgstr "Aggiunti o modifica annotazioni"
+
+# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:240
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
+msgid "Fill form fields"
+msgstr "Riepi campi form"
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+"Seleziona il box se vuoi invertire il primo o il secondo documento (o "
+"entrambi)."
+
+msgid ""
+"Set the number of pages to switch from a document to the other one (default "
+"is 1)."
+msgstr ""
+"Imposta il numero di pagine per passare da un documento all'altro (default è "
+"1)"
+
+msgid "Unable to get the default environment informations."
+msgstr "Impossibile ottenere informazioni sull'ambiente di default."
+
+msgid "About"
+msgstr "Informazioni"
+
+msgid "Selected output file already exists "
+msgstr "Il file selezionato esiste già "
+
+msgid "Merge options"
+msgstr "Opzioni di unione"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
@@ -38,9 +88,6 @@ msgstr "Usa questo tipo di merge per documenti pdf standard"
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
 msgid "Checked"
 msgstr "Selezionato"
-
-msgid "Use this merge type for pdf documents containing forms"
-msgstr "Usa questo tipo di unione per i documenti pdf che contengono form"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
@@ -122,13 +169,6 @@ msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
 "Seleziona il box se vuoi sovrascrivere il file di output se esiste già."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-msgid "Check the box if you want compressed output files."
-msgstr "Seleziona il box se vuoi file di output compressi."
 
 # F:\pdfsam\workspace-enhanced\pdfsam-merge\src\java\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:214
 # F:\pdfsam\workspace-enhanced\pdfsam-split\src\java\org\pdfsam\plugin\split\GUI\SplitMainGUI.java:292
@@ -361,16 +401,10 @@ msgstr "Prefisso nomi file in output:"
 msgid "Output files prefix"
 msgstr "Prefisso nomi file in output"
 
-msgid ""
-"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
-"\"[BOOKMARK_NAME]\" it performs variable substitution."
-msgstr ""
-"Se contiene \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
-"\"[BOOKMARK_NAME]\" esegue la sostituzione delle variabili."
-
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:340
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Es. prefisso_[BASENAME]_[CURRENTPAGE] genera prefisso_FileName_005.pdf."
 
@@ -493,16 +527,6 @@ msgstr "Copia ed estrazione"
 msgid "Modify"
 msgstr "Modifica"
 
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:237
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
-msgid "Add or modify text annotations"
-msgstr "Aggiunti o modifica annotazioni"
-
-# F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:240
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
-msgid "Fill form fields"
-msgstr "Riepi campi form"
-
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:243
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
 msgid "Extract for use by accessibility dev."
@@ -597,20 +621,6 @@ msgstr "Inverti il secondo documento"
 
 msgid "Number of pages to switch document"
 msgstr "Numero di pagine a cui cambiare documento"
-
-msgid ""
-"Tick the boxes if you want to reverse the first or the second document (or "
-"both)."
-msgstr ""
-"Seleziona il box se vuoi invertire il primo o il secondo documento (o "
-"entrambi)."
-
-msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
-msgstr ""
-"Imposta il numero di pagine per passare da un documento all'altro (default è "
-"1)"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-mix\src\java\org\pdfsam\plugin\mix\GUI\MixMainGUI.java:214
 msgid "Found a password for first file."
@@ -928,7 +938,8 @@ msgstr "Errore eseguondo il suono"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\business\PdfLoader.java:110
 msgid "Selection table is full, please remove some pdf document."
-msgstr "La tabella di selezione è piena, prego rimuovere alcuni documenti pdf."
+msgstr ""
+"La tabella di selezione è piena, prego rimuovere alcuni documenti pdf."
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\business\PdfLoader.java:111
 msgid "Table full"
@@ -1434,9 +1445,6 @@ msgstr "Errore duranto il drag and drop."
 msgid "Unable to initializate drag and drop support."
 msgstr "Impossibile inizializzare il supporto drag and drop."
 
-msgid "Unable to get the default environment informations."
-msgstr "Impossibile ottenere informazioni sull'ambiente di default."
-
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:117
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
 msgid "Setting look and feel..."
@@ -1638,9 +1646,6 @@ msgstr "Sito web: "
 msgid "Name"
 msgstr "Nome"
 
-msgid "About"
-msgstr "Informazioni"
-
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\gui\panels\JInfoPanel.java:169
 msgid "Unimplemented method for JInfoPanel"
 msgstr "Metodo non implementato per JInfoPanel"
@@ -1772,7 +1777,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Directory di lavoro di default"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Seleziona una directory dove i documenti saranno salvati e caricati di "
 "default"
@@ -1848,9 +1854,6 @@ msgstr "Vuoi cambiarla in"
 msgid "Output location error"
 msgstr "Errore locazione output"
 
-msgid "Selected output file already exists "
-msgstr "Il file selezionato esiste già "
-
 msgid "Would you like to overwrite it?"
 msgstr "Vuoi sovrascriverlo?"
 
@@ -1889,8 +1892,8 @@ msgstr "Errore ritrovando le informazioni della pagina salvate"
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 #~ "7,12-)"
 #~ msgstr ""
-#~ "Doppio click per impostare le pagine che vuoi unire (es: 2 o All o 5-23 "
-#~ "or 2,5-7,12-)"
+#~ "Doppio click per impostare le pagine che vuoi unire (es: 2 o All o 5-23 or "
+#~ "2,5-7,12-)"
 
 #~ msgid "Cover pdf file"
 #~ msgstr "File pdf di copertina"

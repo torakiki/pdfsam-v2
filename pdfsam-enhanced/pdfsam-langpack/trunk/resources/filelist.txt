@@ -53,6 +53,7 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/JPdfVersionCombo.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/JVisualSelectionList.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/listeners/DefaultMouseListener.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/components/listeners/PrefixMouseListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/renderers/ArrowHeaderRenderer.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/renderers/JPdfSelectionTableRenderer.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/renderers/VisualListRenderer.java

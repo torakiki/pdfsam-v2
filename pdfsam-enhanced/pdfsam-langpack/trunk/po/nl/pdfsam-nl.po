@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-05-11 15:09+0000\n"
 "Last-Translator: G.J. Werler <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -667,6 +667,39 @@ msgstr "Voer het rangschikken van pagina's uit"
 msgid "Visual document composer"
 msgstr "Grafisch samenvoegen van documenten"
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Choose a file"
 msgstr "Kies een bestand"
 
@@ -856,6 +889,9 @@ msgstr "Knippen"
 
 msgid "Paste"
 msgstr "Plakken"
+
+msgid "Add prefix"
+msgstr ""
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr ""
@@ -1317,6 +1353,9 @@ msgstr "Kon de knoppenbalk niet initializeren."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr "Versie: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Developed by: "
 msgstr ""

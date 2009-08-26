@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-20 16:14+0200\n"
+"POT-Creation-Date: 2009-08-16 17:33+0200\n"
 "PO-Revision-Date: 2009-05-24 08:44+0000\n"
 "Last-Translator: Marcel Mayr <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -529,6 +529,39 @@ msgstr "Seitenbearbeitung ausführen"
 msgid "Visual document composer"
 msgstr "Visuelle Dokumentzusammenstellung"
 
+msgid "Rotation"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Even"
+msgstr ""
+
+msgid "Odd"
+msgstr ""
+
+msgid "Clockwise rotation (degrees):"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr ""
+
+msgid "Set the pages that will be rotated."
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Choose a file"
 msgstr "Datei wählen"
 
@@ -695,6 +728,9 @@ msgstr "Ausschneiden"
 
 msgid "Paste"
 msgstr "Einfügen"
+
+msgid "Add prefix"
+msgstr ""
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr ""
@@ -1080,6 +1116,9 @@ msgstr "Schaltflächenleiste konnte nicht aufgebaut werden."
 
 msgid "Version: "
 msgstr "Version: "
+
+msgid "Console version: "
+msgstr ""
 
 msgid "Developed by: "
 msgstr "Entwickelt von: "
