@@ -179,6 +179,11 @@
 			<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 
+		<!--rotate-->
+		<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="build-jars">
+			<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.jar.dir}"/>
+		</ant>
+		
 		<antcall target="build-jars-enhanced" />
 	</target>
 
@@ -209,11 +214,6 @@
 		<!--setviewer-->
 		<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="build-jars">
 			<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.jar.dir}"/>
-		</ant>
-
-		<!--rotate-->
-		<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="build-jars">
-			<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 
 	</target>
