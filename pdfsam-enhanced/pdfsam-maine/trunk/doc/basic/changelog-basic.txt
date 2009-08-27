@@ -1,4 +1,4 @@
-2.0.0 (30-Aug-2009) (pdfsam-console 2.1.1e)
+2.0.0 (27-Aug-2009) (pdfsam-console 2.1.1e)
 ===================================
 -Fixed bug #2810982 ([BASENAME] prefix) 
 -Added context menu to add prefixes to the prefix JTextField
@@ -6,6 +6,7 @@
 -Console: added the 'rotate' command to rotate multiple documents (feature request #2797066)
 -Console: added the 'pagelabels' command to set page labels on a pdf document
 -Plugins showed in alphabetical order
+-Thumbnails quality slightly improved
 
 2.0.0-release candidate 1 (21-Jun-2009) (pdfsam-console 2.0.5e)
 ===================================

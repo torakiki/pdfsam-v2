@@ -23,6 +23,7 @@ import java.util.concurrent.Callable;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.IdManager;
+import org.pdfsam.guiclient.business.thumbnails.JPodRenderer;
 import org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
@@ -37,7 +38,6 @@ import de.intarsys.cwt.awt.environment.CwtAwtGraphicsContext;
 import de.intarsys.cwt.environment.IGraphicsContext;
 import de.intarsys.pdf.content.CSContent;
 import de.intarsys.pdf.pd.PDPage;
-import de.intarsys.pdf.platform.cwt.rendering.CSPlatformRenderer;
 /**
  * Callable used to generate thumbnails wioth JPod
  * @author Andrea Vacondio
@@ -78,23 +78,23 @@ public class JPodThmbnailCallable implements Callable<Boolean> {
 				
 				int height = Math.round(((int) rect.getHeight())*(float)resizePercentage);
 				int width = Math.round(((int) rect.getWidth())*(float)resizePercentage);
-				BufferedImage scaledInstance = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-
+				BufferedImage scaledInstance = new BufferedImage((int)recWidth, (int)rectHeight, BufferedImage.TYPE_INT_RGB);
 				Graphics2D g2 = (Graphics2D) scaledInstance.getGraphics();
 				graphics = new CwtAwtGraphicsContext(g2);
 				// setup user space
 				AffineTransform imgTransform = graphics.getTransform();
-				imgTransform.scale(resizePercentage, -resizePercentage);
+				imgTransform.scale(1, -1);
 				imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
-				graphics.setTransform(imgTransform);
+				graphics.setTransform(imgTransform);				
 				graphics.setBackgroundColor(Color.WHITE);
 				graphics.fill(rect);
 				CSContent content = pdPage.getContentStream();
 				if (content != null) {
-					CSPlatformRenderer renderer = new CSPlatformRenderer(null,graphics);
+					JPodRenderer renderer = new JPodRenderer(null,graphics);
 					renderer.process(content, pdPage.getResources());
 				}
-              	pageItem.setThumbnail(scaledInstance);
+              //	pageItem.setThumbnail(scaledInstance);
+				pageItem.setThumbnail(ImageUtility.getScaledInstance(scaledInstance, width, height));
               	pageItem.setPaperFormat(recWidth, rectHeight, JPodThumbnailCreator.JPOD_RESOLUTION);
               	if(pdPage.getRotate()!=0){
               		pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));

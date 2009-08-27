@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 2.0.0-rc1
+!define VERSION 2.0.0
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -82,6 +82,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Catalan"
   !insertmacro MUI_LANGUAGE "Czech"
   !insertmacro MUI_LANGUAGE "Danish"
+  !insertmacro MUI_LANGUAGE "Estonian"
   !insertmacro MUI_LANGUAGE "Galician"
   !insertmacro MUI_LANGUAGE "German"
   !insertmacro MUI_LANGUAGE "Greek"
@@ -112,12 +113,12 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v2_0_0-rc1.exe
+OutFile pdfsam-win32inst-v2_0_0.exe
 InstallDir "$PROGRAMFILES\pdfsam"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 2.0.0.3
+VIProductVersion 2.0.0.4
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
@@ -167,6 +168,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}
         ${Case} ${LANG_SLOVAK}
             Push 'sk' 
+        ${Break}
+        ${Case} ${LANG_ESTONIAN}
+            Push 'et' 
         ${Break}
         ${Case} ${LANG_ITALIAN}
             Push 'it' 
@@ -542,6 +546,8 @@ Function .onInit
     Push Czech
     Push ${LANG_SLOVAK}
     Push Slovak
+    Push ${LANG_ESTONIAN}
+    Push Estonian
     Push ${LANG_THAI}
     Push Thai
     Push ${LANG_CATALAN}

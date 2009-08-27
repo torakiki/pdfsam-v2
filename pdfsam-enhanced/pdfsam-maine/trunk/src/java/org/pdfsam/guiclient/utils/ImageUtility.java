@@ -16,6 +16,7 @@ package org.pdfsam.guiclient.utils;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.awt.image.renderable.ParameterBlock;
@@ -138,5 +139,46 @@ public class ImageUtility {
 			retVal = ImageIO.read(new ByteArrayInputStream(imagebytes));
 		}
 		return retVal;
+	}
+	
+
+	/**
+	 * 
+	 * @param img input image
+	 * @param targetWidth 
+	 * @param targetHeight
+	 * @return a scaled image
+	 */
+	public static BufferedImage getScaledInstance(BufferedImage img, int targetWidth, int targetHeight) {
+		int type = (img.getTransparency() == java.awt.Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB: BufferedImage.TYPE_INT_ARGB;
+		BufferedImage ret = (BufferedImage) img;
+		int	w = img.getWidth();
+		int	h = img.getHeight();
+
+		do {
+			if (w > targetWidth) {
+				w /= 2;
+				if (w < targetWidth) {
+					w = targetWidth;
+				}
+			}
+
+			if (h > targetHeight) {
+				h /= 2;
+				if (h < targetHeight) {
+					h = targetHeight;
+				}
+			}
+
+			BufferedImage tmp = new BufferedImage(w, h, type);
+			Graphics2D g2 = tmp.createGraphics();
+			g2.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+			g2.drawImage(ret, 0, 0, w, h, null);
+			g2.dispose();
+
+			ret = tmp;
+		} while (w != targetWidth || h != targetHeight);
+
+		return ret;
 	}
 }

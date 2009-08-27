@@ -32,6 +32,7 @@ import java.util.Vector;
 import java.util.concurrent.Callable;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.thumbnails.JPodRenderer;
 import org.pdfsam.guiclient.business.thumbnails.callables.JPodCreatorCloser;
 import org.pdfsam.guiclient.business.thumbnails.callables.JPodThmbnailCallable;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -52,7 +53,6 @@ import de.intarsys.pdf.parser.COSLoadException;
 import de.intarsys.pdf.pd.PDDocument;
 import de.intarsys.pdf.pd.PDPage;
 import de.intarsys.pdf.pd.PDPageTree;
-import de.intarsys.pdf.platform.cwt.rendering.CSPlatformRenderer;
 import de.intarsys.tools.authenticate.IPasswordProvider;
 import de.intarsys.tools.locator.FileLocator;
 /**
@@ -97,7 +97,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				graphics.fill(rect);
 				CSContent content = pdPage.getContentStream();
 				if (content != null) {
-					CSPlatformRenderer renderer = new CSPlatformRenderer(null,graphics);
+					JPodRenderer renderer = new JPodRenderer(null,graphics);
 					renderer.process(content, pdPage.getResources());
 				}											
 				if(pdfDoc!=null){
@@ -129,7 +129,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		BufferedImage retVal = null;
 		BufferedImage tempImage = getPageImage(inputFile, password, page);
 		try {
-			retVal = getScaledImage(tempImage , Math.round(tempImage.getHeight(null)*resizePercentage));
+			retVal = ImageUtility.getScaledInstance(tempImage , Math.round(tempImage.getWidth(null)*resizePercentage), Math.round(tempImage.getHeight(null)*resizePercentage));
 		} catch (Exception e) {
 			throw new ThumbnailCreationException(e);
 		}

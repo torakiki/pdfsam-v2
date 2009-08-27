@@ -33,6 +33,7 @@ import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
+import org.pdfsam.guiclient.utils.ImageUtility;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -82,6 +83,7 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	 * @param height new height
 	 * @return a scaled version of the image
 	 * @throws Exception
+	 * @deprecated use the {@link ImageUtility#getScaledInstance(BufferedImage, int, int)}
 	 */
     protected BufferedImage getScaledImage(BufferedImage page , int height) throws Exception{
     	BufferedImage retVal = null;            	
