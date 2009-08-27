@@ -111,7 +111,7 @@ public class ConsoleServicesFacade {
 		StringBuffer sb = new StringBuffer();
 		
 		sb.append(ConsoleServicesFacade.CREATOR+"  Copyright (C) 2007  Andrea Vacondio\n");
-		sb.append("This library is provided under dual licenses.\n");
+		sb.append("This library is provided under dual license.\n");
 		sb.append("You may choose the terms of the Lesser General Public License version 2.1 or the General Public License version 2\n");
 		sb.append("License at your discretion.\n\n");
 		sb.append("This library is free software; you can redistribute it and/or\n");
