@@ -112,7 +112,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.1e";
+	private static final String PLUGIN_VERSION = "0.0.1";
 	
 	/**
 	 * Constructor
