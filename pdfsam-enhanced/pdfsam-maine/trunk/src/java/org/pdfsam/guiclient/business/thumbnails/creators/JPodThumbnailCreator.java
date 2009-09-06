@@ -70,16 +70,12 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	
 	private PDDocument pdfDoc = null;
 	private PDPageTree pageTree = null;
-	
-	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException {
-		return getPageImage(inputFile, password, page, 0);
-	}
 
 	public BufferedImage getPageImage(File inputFile, String password, int page, int rotation) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		IGraphicsContext graphics = null;
 		PDDocument pdfDoc = null;
-		if (inputFile.exists() && inputFile.isFile()){
+		if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
 			try {
 				pdfDoc = openDoc(inputFile, password);
 				PDPage pdPage = pdfDoc.getPageTree().getPageAt(page-1);			
@@ -125,7 +121,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		
 	}
 
-	public BufferedImage getThumbnail(File inputFile, String password, int page, float resizePercentage, String quality) throws ThumbnailCreationException {
+	public BufferedImage getThumbnail(File inputFile, String password, int page, float resizePercentage) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		BufferedImage tempImage = getPageImage(inputFile, password, page);
 		try {

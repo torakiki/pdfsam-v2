@@ -43,11 +43,10 @@ public interface ThumbnailsCreator {
 	 * @param password document password or null if no password is needed
 	 * @param page page nmber
 	 * @param resizePercentage resize level
-	 * @param quality quality of the thumbnail
 	 * @return a thumbnail of the given page
 	 * @throws ThumbnailCreationException
 	 */
-	public BufferedImage getThumbnail(String fileName, String password, int page , float resizePercentage, String quality) throws ThumbnailCreationException;
+	public BufferedImage getThumbnail(String fileName, String password, int page , float resizePercentage) throws ThumbnailCreationException;
 	/**
 	 * 
 	 * @param fileName pdf document
@@ -74,11 +73,10 @@ public interface ThumbnailsCreator {
 	 * @param password document password or null if no password is needed
 	 * @param page page nmber
 	 * @param resizePercentage resize level
-	 * @param quality quality of the thumbnail
 	 * @return a thumbnail of the given page
 	 * @throws ThumbnailCreationException
 	 */
-	public BufferedImage getThumbnail(File inputFile, String password, int page , float resizePercentage, String quality) throws ThumbnailCreationException;
+	public BufferedImage getThumbnail(File inputFile, String password, int page , float resizePercentage) throws ThumbnailCreationException;
 	/**
 	 * 
 	 * @param inputFile pdf document

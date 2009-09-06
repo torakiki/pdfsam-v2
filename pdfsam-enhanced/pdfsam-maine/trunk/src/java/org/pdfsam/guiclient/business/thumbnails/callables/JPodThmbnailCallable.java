@@ -39,7 +39,7 @@ import de.intarsys.cwt.environment.IGraphicsContext;
 import de.intarsys.pdf.content.CSContent;
 import de.intarsys.pdf.pd.PDPage;
 /**
- * Callable used to generate thumbnails wioth JPod
+ * Callable used to generate thumbnails with JPod
  * @author Andrea Vacondio
  *
  */

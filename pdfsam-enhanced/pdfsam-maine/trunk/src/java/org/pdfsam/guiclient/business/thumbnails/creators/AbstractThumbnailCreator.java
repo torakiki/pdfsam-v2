@@ -66,11 +66,11 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	}
 
 
-	public BufferedImage getThumbnail(String fileName, String password, int page, float resizePercentage, String quality) throws ThumbnailCreationException {
+	public BufferedImage getThumbnail(String fileName, String password, int page, float resizePercentage) throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		if(fileName != null && fileName.length()>0){
 			File inputFile = new File(fileName);
-    		retVal = getThumbnail(inputFile, password, page, resizePercentage, quality);
+    		retVal = getThumbnail(inputFile, password, page, resizePercentage);
 		}else{
 			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create image for a null input document"));
 		}
@@ -129,7 +129,13 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 				ThumbnailsExecutor.getInstance().invokeAll(getGenerationTasks(modelList), getCloserTask(), id);
 			}
 		}
+		finalizeThumbnailsCreation();
 	}	
+	
+	
+	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException {
+		return getPageImage(inputFile, password, page, 0);
+	}
 	
 	/**
 	 * initialization of the thumbnail creation process
@@ -172,7 +178,7 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 	protected abstract Collection<? extends Callable<Boolean>> getGenerationTasks(Vector<VisualPageListItem> modelList) throws ThumbnailCreationException;
 	
 	/**
-	 * generic finalization.
+	 * generic finalization. It shouldn't clean resources used by the Thumbnails Generation Tasks (Callable). 
 	 * @throws ThumbnailCreationException
 	 */
 	protected abstract void finalizeThumbnailsCreation() throws ThumbnailCreationException;
