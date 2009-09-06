@@ -38,7 +38,7 @@ public class ThumbnailCreatorsRegisty {
 		ThumbnailsCreator retVal = null;
 		if(creators!=null && identifier!=null && identifier.length()>0){
 			for(ThumbnailsCreator creator: creators){
-				if(identifier.equals(creator.getCreatorName())){
+				if(identifier.equals(creator.getCreatorIdentifier())){
 					retVal = creator;
 					break;
 				}				
