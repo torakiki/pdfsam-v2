@@ -20,7 +20,7 @@ import java.io.Serializable;
  * @author Andrea Vacondio
  *
  */
-public class PluginDataModel implements Serializable {
+public class PluginDataModel implements Serializable,Comparable {
 
 	private static final long serialVersionUID = -6370626489857359727L;
 	
@@ -119,4 +119,17 @@ public class PluginDataModel implements Serializable {
 		return name;
 	}
 
+	public int compareTo(Object o) {
+		int retVal = 1;
+		if(o instanceof PluginDataModel){
+			if(name != null){
+				retVal = name.compareTo(((PluginDataModel) o).getName());
+			}else{
+				throw new NullPointerException();
+			}
+		}else {
+			throw new ClassCastException();
+		}
+		return retVal;
+	}
 }

@@ -24,8 +24,8 @@ Linked libraries:
 	-jaxen-1.1
 	-dom4j-1.6.1
 	-log4j-1.2.15
-	-bcmail-jdk14-138.jar
-	-bcprov-jdk14-138.jar
+	-bcmail-jdk14-143.jar
+	-bcprov-jdk14-143.jar
 	-@CONSOLE_JAR_NAME *
 	-emp4j-1.0.1 *
 	-pdfsam-langpack *

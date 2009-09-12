@@ -21,9 +21,9 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.io.File;
 import java.net.URL;
-import java.util.Enumeration;
-import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -71,7 +71,7 @@ public class JMainFrame extends JFrame {
 	
 	private Configuration config;
 	private JSplashScreen screen;
-	private Hashtable pluginsMap;
+	private Map pluginsMap;
 	private EnvironmentMediator envMediator;
 	private UpdateCheckerMediator updateMediator;
 	private JStatusPanel statusPanel;
@@ -152,8 +152,9 @@ public class JMainFrame extends JFrame {
 	        //tree panel
 	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building tree.."));
 	        treePanel = new JTreePanel(new DefaultMutableTreeNode(GuiClient.UNIXNAME+" "+GuiClient.getVersion()));
-	        for (Enumeration enumeration = pluginsMap.keys(); enumeration.hasMoreElements();) {
-	        	treePanel.addToPlugsNode((PluginDataModel)enumeration.nextElement());
+	        Set keys = pluginsMap.keySet();
+	    	for(Iterator iter = keys.iterator(); iter.hasNext();){
+	        	treePanel.addToPlugsNode((PluginDataModel)iter.next());
 	        }
 	        treePanel.addToRootNode(settingsDataModel);
 	        treePanel.addToRootNode(infoDataModel);
@@ -275,7 +276,7 @@ public class JMainFrame extends JFrame {
 	/**
 	 * @return the pluginsMap
 	 */
-	public Hashtable getPluginsMap() {
+	public Map getPluginsMap() {
 		return pluginsMap;
 	}
 	/**

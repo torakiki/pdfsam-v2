@@ -20,6 +20,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -97,7 +98,7 @@ public class  PlugInsLoader{
      * @return a map(k,value) where k is the pluginDataModel and value is the instance
      * @throws PluginException
      */
-    public Hashtable loadPlugins() throws PluginException {
+    public Map loadPlugins() throws PluginException {
     	Hashtable retMap = new Hashtable();
     	URLClassLoader urlClassLoader = null;
     	ArrayList urlList = new ArrayList();

@@ -1,3 +1,8 @@
+1.2.1 () ()
+===================================
+-Console: added the 'pagelabels' command to set page labels on a pdf document
+-Plugins showed in alphabetical order
+
 1.2.0 (16-Aug-2009) (pdfsam-console 2.1.0e)
 ===================================
 -Added context menu to add prefixes to the prefix JTextField
