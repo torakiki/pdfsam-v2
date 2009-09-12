@@ -101,6 +101,7 @@ public class PdfThumbnailsLoader {
     public synchronized void addFile(final File file, final String password, List<DocumentPage> template) throws ThumbnailCreationException{
    		creator = ThumbnailCreatorsRegisty.getCreator(Configuration.getInstance().getThumbnailsCreatorIdentifier());
    		if(creator != null){
+   			log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Generating thumbnails using the following library:")+" "+creator.getCreatorName());
 	   		generateNewId();
 			creator.initThumbnailsPanel(file, password, panel, id, template);
    		}else{

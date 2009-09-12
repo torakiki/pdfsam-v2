@@ -1,6 +1,6 @@
 @echo off
 
-set DIRNAME=..\
+set DIRNAME=.\..\
 set PDFSAMJAR=%DIRNAME%\@PDFSAM_JAR_NAME.jar
 
 if exist "%PDFSAMJAR%" goto FOUND_PDFSAM_JAR

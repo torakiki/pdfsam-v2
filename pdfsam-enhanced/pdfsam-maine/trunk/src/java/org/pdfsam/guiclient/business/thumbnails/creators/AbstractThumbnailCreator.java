@@ -128,6 +128,8 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
 				((VisualListModel)panel.getThumbnailList().getModel()).setData(modelList);				
 				ThumbnailsExecutor.getInstance().invokeAll(getGenerationTasks(modelList), getCloserTask(), id);
 			}
+		}else{
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the input document"));			
 		}
 		finalizeThumbnailsCreation();
 	}	
