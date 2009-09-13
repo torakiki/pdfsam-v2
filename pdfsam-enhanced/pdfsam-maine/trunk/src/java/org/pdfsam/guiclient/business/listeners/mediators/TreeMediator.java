@@ -47,7 +47,7 @@ public class TreeMediator implements TreeSelectionListener {
 			Object selectedObject = node.getUserObject();
 			if(selectedObject instanceof PluginDataModel){
 				PluginDataModel selectedPlug = (PluginDataModel)selectedObject;
-				AbstractPlugablePanel panel = (AbstractPlugablePanel) container.getPluginsMap().get(selectedPlug);
+				AbstractPlugablePanel panel = container.getPluginsMap().get(selectedPlug);
 				statusPanel.setText(selectedPlug.getName());
 				statusPanel.setIcon(panel.getIcon());
 				CardLayout cl = (CardLayout)(plugsPanel.getLayout());

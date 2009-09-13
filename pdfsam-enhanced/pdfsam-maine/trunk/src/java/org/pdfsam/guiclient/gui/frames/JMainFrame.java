@@ -115,12 +115,12 @@ public class JMainFrame extends JFrame {
 			
 			//Info panel
 			JInfoPanel infoPanel = new JInfoPanel(pluginsMap);
-			PluginDataModel infoDataModel = new PluginDataModel(infoPanel.getPluginName(), infoPanel.getVersion(), infoPanel.getPluginAuthor());
+			PluginDataModel infoDataModel = new PluginDataModel(infoPanel.getPluginName(), infoPanel.getVersion(), infoPanel.getPluginAuthor(), infoPanel.getClass().getName());
 			mainPanel.add(infoPanel,infoPanel.getPluginName());
 			
 	        //Settings panel
 	        JSettingsPanel settingsPanel = new JSettingsPanel();
-			PluginDataModel settingsDataModel = new PluginDataModel(settingsPanel.getPluginName(), settingsPanel.getVersion(), settingsPanel.getPluginAuthor());
+			PluginDataModel settingsDataModel = new PluginDataModel(settingsPanel.getPluginName(), settingsPanel.getVersion(), settingsPanel.getPluginAuthor(), settingsPanel.getClass().getName());
 			mainPanel.add(settingsPanel,settingsPanel.getPluginName());
 			
 	        //sets main panel
@@ -128,17 +128,6 @@ public class JMainFrame extends JFrame {
 	        for(AbstractPlugablePanel instance: pluginsMap.values()){
 	        	mainPanel.add(instance,instance.getPluginName());
 	        }
-	        	        
-	        //menu
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building menus.."));        
-	        //env mediator
-	        envMediator = new EnvironmentMediator(new Environment(pluginsMap), this);
-	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator));
-	        
-	        //buttons bar
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building buttons bar.."));
-	        buttonsPanel = new JButtonsPanel(envMediator, new LogActionListener());
-	        getContentPane().add(buttonsPanel,BorderLayout.PAGE_START);  
 	        
 	        //status panel
 	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building status bar.."));
@@ -160,6 +149,17 @@ public class JMainFrame extends JFrame {
 	        //add info and settings to plugins map
 	        pluginsMap.put(settingsDataModel, settingsPanel);
 	        pluginsMap.put(infoDataModel, infoPanel);	        	      
+	        
+	        //menu
+	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building menus.."));        
+	        //env mediator
+	        envMediator = new EnvironmentMediator(new Environment(pluginsMap, treePanel), this);
+	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator));
+	        
+	        //buttons bar
+	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building buttons bar.."));
+	        buttonsPanel = new JButtonsPanel(envMediator, new LogActionListener());
+	        getContentPane().add(buttonsPanel,BorderLayout.PAGE_START);  
 	        
 	        //set up check for updates mediator
 	        updateMediator = new UpdateCheckerMediator(statusPanel);
@@ -199,23 +199,7 @@ public class JMainFrame extends JFrame {
 			log.fatal(GettextResource.gettext(config.getI18nResourceBundle(),"Error starting pdfsam."),e);
 		}
 		
-	}
-	
-	  /**
-     * Used to center the main window on the screen
-     * @param frame JFrame to center
-     * @param width 
-     * @param height
-     */
-    /*private void center(JFrame frame, int width, int height){
-        Dimension framedimension = new Dimension(width,height);        
-        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        Double centreX = new Double((screensize.getWidth() / 2) - (framedimension.getWidth()  / 2));
-        Double centreY = new Double((screensize.getHeight() / 2) - (framedimension.getHeight()  / 2));
-        
-        frame.setBounds(centreX.intValue(), centreY.intValue(), 640, 480);
-    }*/
+	}	
     
 	 /**
      * Run a splash screen

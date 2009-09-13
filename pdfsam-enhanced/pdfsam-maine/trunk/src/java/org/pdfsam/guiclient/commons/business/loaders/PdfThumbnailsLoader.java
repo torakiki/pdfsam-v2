@@ -141,7 +141,7 @@ public class PdfThumbnailsLoader {
     /**
      * Clean creator
      */
-    public void cleanCreator(){
+    public synchronized void cleanCreator(){
     	if(creator != null){
         	creator.clean(id);    		
     	}

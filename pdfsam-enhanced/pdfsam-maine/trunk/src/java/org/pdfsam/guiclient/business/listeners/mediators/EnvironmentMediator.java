@@ -92,7 +92,7 @@ public class EnvironmentMediator implements ActionListener {
 						    GettextResource.gettext(i18nMessages,"Save passwords informations (they will be readable opening the output file)?"),
 						    GettextResource.gettext(i18nMessages,"Confirm password saving"),
 						    JOptionPane.YES_NO_OPTION);
-					environment.saveEnvironment(selectedFile, (savePwd == JOptionPane.YES_OPTION), null);
+					environment.saveEnvironment(selectedFile, (savePwd == JOptionPane.YES_OPTION));
 				}else if(LOAD_ENV_ACTION.equals(e.getActionCommand())){
 					environment.loadJobs(selectedFile);
 				}else {

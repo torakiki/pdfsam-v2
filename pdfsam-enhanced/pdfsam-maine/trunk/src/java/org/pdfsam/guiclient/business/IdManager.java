@@ -58,9 +58,6 @@ public class IdManager {
 	 */
 	public void cancelExecution(final long id){
 		synchronized(cancelledExecutions){
-			if (cancelledExecutions == null){
-				cancelledExecutions =  new HashSet<Long>();
-			}
 			cancelledExecutions.add(id);
 		}
 	}
@@ -71,7 +68,7 @@ public class IdManager {
 	 */
 	public boolean  isCancelledExecution(final long id){
 		boolean retVal = false;
-		if(cancelledExecutions!=null && cancelledExecutions.size()>0){
+		if(cancelledExecutions.size()>0){
 			retVal = cancelledExecutions.contains(id);
 		}
 		return retVal;
@@ -83,7 +80,7 @@ public class IdManager {
 	 */
 	public void removeCancelledExecution(final long id){
 		synchronized(cancelledExecutions){
-			if(cancelledExecutions!=null && cancelledExecutions.size()>0 && cancelledExecutions.contains(id)){
+			if(cancelledExecutions.size()>0 && cancelledExecutions.contains(id)){
 				cancelledExecutions.remove(id);
 			}
 		}

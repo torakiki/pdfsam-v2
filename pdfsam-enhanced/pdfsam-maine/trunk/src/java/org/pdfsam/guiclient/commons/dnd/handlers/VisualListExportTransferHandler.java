@@ -143,17 +143,21 @@ public class VisualListExportTransferHandler extends TransferHandler {
 		if(loader != null && info.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
             try {
             	List<File> fileList = (List<File>)info.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
-            	if(fileList!=null && fileList.size()!=1){
-            		log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a single pdf document."));
-            	}else{
-            		File selectedFile = fileList.get(0);
-            		if (selectedFile!=null && new PdfFilter(false).accept(selectedFile)){
-            			loader.addFile(selectedFile, true);
-            			retVal = true;
-            		}else{
-            			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File type not supported."));
-            		}
-            	}
+				if (fileList != null) {
+					if (fileList.size() != 1) {
+						log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+								"Please select a single pdf document."));
+					} else {
+						File selectedFile = fileList.get(0);
+						if (selectedFile != null && new PdfFilter(false).accept(selectedFile)) {
+							loader.addFile(selectedFile, true);
+							retVal = true;
+						} else {
+							log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+									"File type not supported."));
+						}
+					}
+				}
             }catch(Exception e){
             	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error during drag and drop."), e);
             }

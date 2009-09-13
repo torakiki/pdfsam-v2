@@ -14,6 +14,8 @@
  */
 package org.pdfsam.guiclient.gui.panels;
 
+import java.util.Enumeration;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -79,6 +81,7 @@ public class JTreePanel extends JScrollPane {
 	public void expand(){
 		this.tree.expandPath(new TreePath(plugsNode.getPath()));
 	}
+	
 	/**
 	 * @return the tree
 	 */
@@ -106,6 +109,7 @@ public class JTreePanel extends JScrollPane {
 	public DefaultMutableTreeNode getRootNode() {
 		return rootNode;
 	}
+	
 	/**
 	 * @return the selected node
 	 */
@@ -120,4 +124,60 @@ public class JTreePanel extends JScrollPane {
 		return tree.getSelectionPath();
 	}	
 	
+	/**
+	 * set the selection path on the JTree
+	 * @param path
+	 */
+	public void setSelectionPath(TreePath path){
+		tree.setSelectionPath(path);
+	}
+	
+	/**
+	 * @param className
+	 * @return the TreePath for the input plugin className or null if not found
+	 */
+	public TreePath getPluginNodeTreePath(String className){
+		TreePath retVal = null;
+		if(plugsNode!=null && className!=null){
+			Enumeration<DefaultMutableTreeNode> plugsEnumeration = plugsNode.preorderEnumeration();
+			while(plugsEnumeration.hasMoreElements()){
+				DefaultMutableTreeNode currentNode = plugsEnumeration.nextElement();
+				if(currentNode.getUserObject() instanceof PluginDataModel){
+					PluginDataModel selectedPlug = (PluginDataModel)currentNode.getUserObject();
+					if(className.equals(selectedPlug.getClassName())){
+						retVal = new TreePath(currentNode.getPath());
+						break;
+					}
+				}
+			}
+		}
+		return retVal;
+	}
+	
+	/**
+	 * Set the selected plugin depending on the input class name
+	 * @param className
+	 */
+	public void setSelectedPlugin(String className){
+		TreePath path = getPluginNodeTreePath(className);
+		if(path!=null){
+			setSelectionPath(path);
+		}
+	}
+	
+	/**
+	 * @return class name of the selected plugin
+	 */
+	public String getSelectedPlugin(){
+		String retVal = null;
+		DefaultMutableTreeNode node = getSelectedNode();	
+		if (node != null && node.isLeaf()) {
+			Object selectedObject = node.getUserObject();
+			if(selectedObject instanceof PluginDataModel){
+				PluginDataModel selectedPlug = (PluginDataModel)selectedObject;
+				retVal = selectedPlug.getClassName();
+			}
+		}
+		return retVal;
+	}
 }

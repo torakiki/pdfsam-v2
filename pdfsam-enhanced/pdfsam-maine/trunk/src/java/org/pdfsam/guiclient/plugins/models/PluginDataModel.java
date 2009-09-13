@@ -27,14 +27,16 @@ public class PluginDataModel implements Serializable, Comparable<PluginDataModel
 	private String name;
 	private String version;
 	private String author;
+	private String className;
 	
 	public PluginDataModel() {
 	}
 	
-	public PluginDataModel(String name, String version, String author) {
+	public PluginDataModel(String name, String version, String author, String className) {
 		this.name = name;
 		this.version = version;
 		this.author = author;
+		this.className = className;
 	}
 	
 	/**
@@ -74,21 +76,40 @@ public class PluginDataModel implements Serializable, Comparable<PluginDataModel
 		this.version = version;
 	}
 
+	/**
+	 * @return the className
+	 */
+	public String getClassName() {
+		return className;
+	}
+
+	/**
+	 * @param className the className to set
+	 */
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
+	@Override
 	public int hashCode() {
-		final int PRIME = 31;
+		final int prime = 31;
 		int result = 1;
-		result = PRIME * result + ((author == null) ? 0 : author.hashCode());
-		result = PRIME * result + ((name == null) ? 0 : name.hashCode());
-		result = PRIME * result + ((version == null) ? 0 : version.hashCode());
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((className == null) ? 0 : className.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -96,11 +117,16 @@ public class PluginDataModel implements Serializable, Comparable<PluginDataModel
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final PluginDataModel other = (PluginDataModel) obj;
+		PluginDataModel other = (PluginDataModel) obj;
 		if (author == null) {
 			if (other.author != null)
 				return false;
 		} else if (!author.equals(other.author))
+			return false;
+		if (className == null) {
+			if (other.className != null)
+				return false;
+		} else if (!className.equals(other.className))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -122,7 +148,7 @@ public class PluginDataModel implements Serializable, Comparable<PluginDataModel
 	@Override
 	public int compareTo(PluginDataModel o) {
 		if(name != null){
-			return name.compareTo(((PluginDataModel) o).getName());
+			return name.compareTo(o.getName());
 		}else{
 			throw new NullPointerException();
 		}

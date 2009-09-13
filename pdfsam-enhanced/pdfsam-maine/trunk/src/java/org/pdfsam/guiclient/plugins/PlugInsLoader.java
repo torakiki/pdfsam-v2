@@ -130,7 +130,7 @@ public class  PlugInsLoader{
     			Class<?> currentClass = urlClassLoader.loadClass(className);
     			if((currentClass.getSuperclass().isAssignableFrom(PLUGIN_SUPER_CLASS))){
     				AbstractPlugablePanel instance = (AbstractPlugablePanel) currentClass.newInstance();
-    				PluginDataModel pluginDataModel = new PluginDataModel(instance.getPluginName(), instance.getVersion(), instance.getPluginAuthor());
+    				PluginDataModel pluginDataModel = new PluginDataModel(instance.getPluginName(), instance.getVersion(), instance.getPluginAuthor(), className);
     				retMap.put(pluginDataModel, instance);
     				log.info(pluginDataModel.getName()+GettextResource.gettext(config.getI18nResourceBundle()," plugin loaded."));
     			}else{
