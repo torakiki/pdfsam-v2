@@ -65,7 +65,7 @@ public class JPdfVersionCombo extends JComboBox {
 			addItem(new StringItem(SAME_AS_SOURCE, GettextResource.gettext(config.getI18nResourceBundle(),"Same as input document")));			
 		}
 		ArrayList values = PdfVersionUtility.getVersionsList();
-		Integer maxFilter = new Integer(-1);
+		Integer maxFilter = Integer.valueOf(-1);
 		if(checkFilters && !filterVersions.isEmpty()){
 			maxFilter = (Integer) Collections.max(filterVersions);
 		}

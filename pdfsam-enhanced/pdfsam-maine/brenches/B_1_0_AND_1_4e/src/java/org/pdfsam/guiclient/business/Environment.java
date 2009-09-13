@@ -33,6 +33,7 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.gui.panels.JTreePanel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.i18n.GettextResource;
 /**
@@ -47,9 +48,11 @@ public class Environment {
 	private ResourceBundle i18nMessages;
 
 	private Map plugins;
+	private JTreePanel treePanel;
 	
-	public Environment(Map plugins){
+	public Environment(Map plugins, JTreePanel treePanel){
 		this.plugins = plugins;
+		this.treePanel = treePanel;
 		this.i18nMessages = Configuration.getInstance().getI18nResourceBundle();
 	}
 	
@@ -57,9 +60,8 @@ public class Environment {
 	 * saves and environment to the output file
 	 * @param outFile
 	 * @param savePasswords true save passwords informations
-	 * @param selection selection information
 	 */
-	public void saveEnvironment(File outFile, boolean savePasswords, String selection){
+	public void saveEnvironment(File outFile, boolean savePasswords){
 		try {
 			if (outFile != null){
 				synchronized(Environment.class){
@@ -67,6 +69,7 @@ public class Environment {
 					Element root = document.addElement("pdfsam_saved_jobs");
 					root.addAttribute("version", GuiClient.getVersion());
 					root.addAttribute("savedate", new SimpleDateFormat("dd-MMM-yyyy").format(new Date()));
+					String selection = treePanel.getSelectedPlugin();
 					if(selection != null && selection.length()>0){
 						root.addAttribute("selection", selection);
 					}
@@ -93,10 +96,6 @@ public class Environment {
 		} catch (Exception ex) {
 			log.error(GettextResource.gettext(i18nMessages, "Error saving environment."),ex);
 		}
-	}
-	
-	public void saveEnvironment(File outFile, boolean savePasswords){
-		saveEnvironment(outFile,false, "");
 	}
 	
 	/**
@@ -128,6 +127,11 @@ public class Environment {
 						if(node != null){
 							plugablePanel.loadJobNode(node);
 						}
+					}
+					//set the selected plugin
+					Node node = document.selectSingleNode("/pdfsam_saved_jobs/@selection");
+					if(node!=null){
+						treePanel.setSelectedPlugin(node.getText());
 					}
 					log.info(GettextResource.gettext(i18nMessages, "Environment loaded."));
 				}

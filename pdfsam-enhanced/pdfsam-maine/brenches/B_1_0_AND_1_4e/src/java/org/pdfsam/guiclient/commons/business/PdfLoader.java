@@ -223,10 +223,6 @@ public class PdfLoader {
     		this(inputFile, null, null);
     	}
     	
-    	public AddThread(File inputFile, String password){
-    		this(inputFile, password, null);
-    	}
-    	
     	public AddThread(File inputFile, String password, String pageSelection){
     		this.inputFile = inputFile;
     		this.pageSelection = pageSelection;
@@ -378,21 +374,6 @@ public class PdfLoader {
 		public ReloadThread(File inputFile, String password, String pageSelection, int index) {
 			super(inputFile, password, pageSelection);
 			this.index = index;
-		}
-
-		/**
-		 * @param inputFile
-		 * @param password
-		 */
-		public ReloadThread(File inputFile, String password, int index) {
-			this(inputFile, password, null, index);			
-		}
-
-		/**
-		 * @param inputFile
-		 */
-		public ReloadThread(File inputFile, int index) {
-			this(inputFile, null, null, index);
 		}
 
 		public void run() {					

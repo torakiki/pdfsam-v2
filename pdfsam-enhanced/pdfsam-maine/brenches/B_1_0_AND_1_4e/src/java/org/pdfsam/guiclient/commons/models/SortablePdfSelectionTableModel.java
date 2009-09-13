@@ -168,8 +168,8 @@ public class SortablePdfSelectionTableModel extends SimplePdfSelectionTableModel
     				second = (((PdfSelectionTableItem)o2).getPagesNumber() != null)? new Integer(((PdfSelectionTableItem)o2).getPagesNumber()): new Integer("0");
     				break;
     			case PDF_DOCUMENT_VERSION:
-    				first = new Character(((PdfSelectionTableItem)o1).getPdfVersion());
-    				second = new Character(((PdfSelectionTableItem)o2).getPdfVersion());
+    				first = Character.valueOf(((PdfSelectionTableItem)o1).getPdfVersion());
+    				second = Character.valueOf(((PdfSelectionTableItem)o2).getPdfVersion());
     				break;
     			case PAGESELECTION:
     				first = (((PdfSelectionTableItem)o1).getPageSelection() != null)? ((PdfSelectionTableItem)o1).getPageSelection(): "";

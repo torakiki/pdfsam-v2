@@ -2,6 +2,7 @@
 ===================================
 -Console: added the 'pagelabels' command to set page labels on a pdf document
 -Plugins showed in alphabetical order
+-Saving/loading environment retains the selected plugin (feature request #2857938)
 
 1.6.0e (16-Aug-2009) (pdfsam-console 2.1.0e)
 ===================================
