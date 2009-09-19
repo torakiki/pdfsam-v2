@@ -14,6 +14,7 @@
  */
 package org.pdfsam.guiclient.commons.dnd.handlers;
 
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
@@ -28,7 +29,7 @@ import javax.swing.TransferHandler;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
-import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable;
+import org.pdfsam.guiclient.commons.dnd.DnDSupportUtility;
 import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable.TransferableData;
 import org.pdfsam.guiclient.commons.models.VisualListModel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -67,7 +68,7 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
 		if(action==MOVE){
 	    	try{
 	    		JVisualSelectionList listComponent = (JVisualSelectionList) source;
-	            TransferableData transferredData = (TransferableData)data.getTransferData(VisualPageListTransferable.getVisualListFlavor());
+	            TransferableData transferredData = (TransferableData)data.getTransferData(DnDSupportUtility.VISUAL_LIST_FLAVOR);
 	            if(transferredData != null && transferredData.getIndexesList()!=null){
 	            	int[] dataList = transferredData.getIndexesList();
 	            	int delta = (dataList[0] > addIndex)? dataList.length: 0;
@@ -86,11 +87,11 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
             try {        
 
             	Transferable t = info.getTransferable();
-            	if(hasFileFlavor(t)){
+            	if(t.isDataFlavorSupported(DataFlavor.javaFileListFlavor) || t.isDataFlavorSupported(DnDSupportUtility.URI_LIST_FLAVOR)){
             		retVal = super.importData(info);
-            	}else if (hasVisualListItemFlavor(t)) {
+            	}else if (t.isDataFlavorSupported(DnDSupportUtility.VISUAL_LIST_FLAVOR)) {
                    	retVal = importVisualListItems(info);                    	
-                } 
+                }
             }catch(Exception e){
             	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error during drag and drop."), e);
             }
@@ -114,7 +115,7 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
 	    		JList.DropLocation dropLocation = (JList.DropLocation)info.getDropLocation();
 	            int index = dropLocation.getIndex();
 	            VisualListModel destModel =  ((VisualListModel)((JVisualSelectionList)info.getComponent()).getModel());
-	            TransferableData transferredData = (TransferableData)transferable.getTransferData(VisualPageListTransferable.getVisualListFlavor());
+	            TransferableData transferredData = (TransferableData)transferable.getTransferData(DnDSupportUtility.VISUAL_LIST_FLAVOR);
 	            if(transferredData!=null){
 	            	VisualPageListItem[] dataList = transferredData.getDataList();
 			    	if(dataList!=null && dataList.length>0){
@@ -158,10 +159,10 @@ public class VisualListTransferHandler extends VisualListExportTransferHandler {
     		retVal = true;
     	}
     	else if(info.getComponent() instanceof JVisualSelectionList){
-			if(info.isDataFlavorSupported(VisualPageListTransferable.getVisualListFlavor())){
+			if(info.isDataFlavorSupported(DnDSupportUtility.VISUAL_LIST_FLAVOR)){
 				if(info.getSourceDropActions()==MOVE){
 					try{
-						TransferableData transferredData = (TransferableData)info.getTransferable().getTransferData(VisualPageListTransferable.getVisualListFlavor());
+						TransferableData transferredData = (TransferableData)info.getTransferable().getTransferData(DnDSupportUtility.VISUAL_LIST_FLAVOR);
 						JList.DropLocation dropLocation = (JList.DropLocation)info.getDropLocation();
 			            int index = dropLocation.getIndex();
 			            if(transferredData!=null){

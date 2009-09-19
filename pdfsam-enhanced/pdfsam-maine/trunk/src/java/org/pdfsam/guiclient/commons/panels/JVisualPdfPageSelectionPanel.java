@@ -79,19 +79,19 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public static final int HORIZONTAL_ORIENTATION = 1;
 	public static final int VERTICAL_ORIENTATION = 2;
 	
-	public static int SINGLE_INTERVAL_SELECTION = ListSelectionModel.SINGLE_INTERVAL_SELECTION;
-	public static int MULTIPLE_INTERVAL_SELECTION = ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
-	public static int SINGLE_SELECTION = ListSelectionModel.SINGLE_SELECTION;
+	public static final int SINGLE_INTERVAL_SELECTION = ListSelectionModel.SINGLE_INTERVAL_SELECTION;
+	public static final int MULTIPLE_INTERVAL_SELECTION = ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
+	public static final int SINGLE_SELECTION = ListSelectionModel.SINGLE_SELECTION;
 
-	public static int STYLE_TOP_PANEL_HIDE = 0;
-	public static int STYLE_TOP_PANEL_MINIMAL = 1;
-	public static int STYLE_TOP_PANEL_MEDIUM = 2;
-	public static int STYLE_TOP_PANEL_FULL = 3;
+	public static final int STYLE_TOP_PANEL_HIDE = 0;
+	public static final int STYLE_TOP_PANEL_MINIMAL = 1;
+	public static final int STYLE_TOP_PANEL_MEDIUM = 2;
+	public static final int STYLE_TOP_PANEL_FULL = 3;
 	
-	public static int DND_SUPPORT_NONE = 0;
-	public static int DND_SUPPORT_FILES = 1;
-	public static int DND_SUPPORT_JAVAOBJECTS = 2;
-	public static int DND_SUPPORT_FILES_AND_JAVAOBJECTS = 3;
+	public static final int DND_SUPPORT_NONE = 0;
+	public static final int DND_SUPPORT_FILES = 1;
+	public static final int DND_SUPPORT_JAVAOBJECTS = 2;
+	public static final int DND_SUPPORT_FILES_AND_JAVAOBJECTS = 3;
 	
 	public static final String OUTPUT_PATH_PROPERTY = "defaultOutputPath";	
 

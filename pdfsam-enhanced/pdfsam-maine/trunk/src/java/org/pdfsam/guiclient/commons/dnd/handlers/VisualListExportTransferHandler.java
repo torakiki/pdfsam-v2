@@ -25,6 +25,7 @@ import javax.swing.TransferHandler;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.business.loaders.PdfThumbnailsLoader;
 import org.pdfsam.guiclient.commons.components.JVisualSelectionList;
+import org.pdfsam.guiclient.commons.dnd.DnDSupportUtility;
 import org.pdfsam.guiclient.commons.dnd.transferables.VisualPageListTransferable;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
@@ -76,45 +77,10 @@ public class VisualListExportTransferHandler extends TransferHandler {
 		return retVal;
 	}
 	
-	/**
-	 * @param t
-	 * @return true if the flavor is visualListFlavor
-	 */
-    protected boolean hasVisualListItemFlavor(Transferable t) {
-    	 boolean retVal = false;
- 		 DataFlavor[] flavors = t.getTransferDataFlavors();
-         for (int i = 0; i < flavors.length; i++) {
-             if (flavors[i].equals(VisualPageListTransferable.getVisualListFlavor())) {
-             	retVal =  true;
-             }else{
-             	retVal = false;
-             	break;
-             }
-         }
-         return retVal;
-    }
-    
-    /**
-	 * @param t
-	 * @return true if it's a file flavor
-	 */
-	protected boolean hasFileFlavor(Transferable t) {
-		boolean retVal = false;
-		DataFlavor[] flavors;
-		flavors = t.getTransferDataFlavors();
-		for (int i = 0; i < flavors.length; i++) {
-			if (flavors[i].equals(DataFlavor.javaFileListFlavor)) {
-				retVal = true;
-				break;
-			}
-		}
-		return retVal;
-	}
-	
     public boolean canImport(TransferHandler.TransferSupport info) {
     	boolean retVal = false;
 		if(loader!=null && info.getComponent() instanceof JVisualSelectionList){
-			if(info.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){		
+			if(info.isDataFlavorSupported(DataFlavor.javaFileListFlavor) || info.isDataFlavorSupported(DnDSupportUtility.URI_LIST_FLAVOR)){		
 					retVal = true;
 			}else{
 				retVal = false;
@@ -140,21 +106,25 @@ public class VisualListExportTransferHandler extends TransferHandler {
 	@SuppressWarnings("unchecked")
 	public boolean importData(TransferHandler.TransferSupport info) {
 		boolean retVal = false;
-		if(loader != null && info.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+		if(loader != null){
+			List<File> fileList = null;
             try {
-            	List<File> fileList = (List<File>)info.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+            	if(info.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+            		fileList = (List<File>)info.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+            	}else if(info.isDataFlavorSupported(DnDSupportUtility.URI_LIST_FLAVOR)){
+            		fileList = DnDSupportUtility.textURIListToFileList((String)info.getTransferable().getTransferData(DnDSupportUtility.URI_LIST_FLAVOR));
+            	}
+
 				if (fileList != null) {
 					if (fileList.size() != 1) {
-						log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-								"Please select a single pdf document."));
+						log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a single pdf document."));
 					} else {
 						File selectedFile = fileList.get(0);
 						if (selectedFile != null && new PdfFilter(false).accept(selectedFile)) {
 							loader.addFile(selectedFile, true);
 							retVal = true;
 						} else {
-							log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-									"File type not supported."));
+							log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File type not supported."));
 						}
 					}
 				}

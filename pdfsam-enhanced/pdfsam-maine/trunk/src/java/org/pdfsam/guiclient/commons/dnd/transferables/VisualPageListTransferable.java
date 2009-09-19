@@ -19,10 +19,8 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.commons.dnd.DnDSupportUtility;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
-import org.pdfsam.i18n.GettextResource;
 /**
  * Transferable for the D&D support 
  * @author Andrea Vacondio
@@ -30,38 +28,19 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class VisualPageListTransferable implements Transferable {
 
-	private static final Logger log = Logger.getLogger(VisualPageListTransferable.class.getPackage().getName());
-	
 	private TransferableData data;
-	private static DataFlavor visualListFlavor;
-	
+
 	/**
 	 * @param data
 	 */
 	public VisualPageListTransferable(TransferableData data) {
 		super();
 		this.data = data;
-		init();
 	}
 	
 	public VisualPageListTransferable(VisualPageListItem[] dataList, int[] indexesList) {
 		super();
 		this.data = new TransferableData(dataList, indexesList);
-		init();
-	}
-
-	/**
-	 * initialization
-	 */
-	private static void init(){
-		try {
-			if(visualListFlavor == null){
-				visualListFlavor = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType);
-			}
-		} catch (ClassNotFoundException e) {
-			visualListFlavor = null;
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initializate drag and drop support."), e); 
-		}
 	}
 	
 	public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
@@ -72,19 +51,11 @@ public class VisualPageListTransferable implements Transferable {
 	}
 
 	public DataFlavor[] getTransferDataFlavors() {
-		  return new DataFlavor[] { visualListFlavor };
+		  return new DataFlavor[] { DnDSupportUtility.VISUAL_LIST_FLAVOR };
 	}
 
 	public boolean isDataFlavorSupported(DataFlavor flavor) {
-		return ((visualListFlavor!=null)&&(flavor!=null)&&(flavor.equals(visualListFlavor)));
-	}
-
-	/**
-	 * @return the visualListFlavor
-	 */
-	public static DataFlavor getVisualListFlavor() {
-		init();
-		return visualListFlavor;
+		return ((DnDSupportUtility.VISUAL_LIST_FLAVOR!=null)&&(flavor!=null)&&(flavor.equals(DnDSupportUtility.VISUAL_LIST_FLAVOR)));
 	}
 
 	/**

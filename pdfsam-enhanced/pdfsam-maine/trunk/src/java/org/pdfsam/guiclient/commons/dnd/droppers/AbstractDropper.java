@@ -24,6 +24,7 @@ import java.io.File;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.commons.dnd.DnDSupportUtility;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 /**
@@ -44,11 +45,16 @@ public abstract class AbstractDropper extends DropTargetAdapter {
             DropTargetContext context = e.getDropTargetContext();
             e.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
             Transferable t = e.getTransferable();
-            if(hasFileFlavor(t)){
-	            List<File> data = (List<File>)t.getTransferData(DataFlavor.javaFileListFlavor);
-	            if(data!=null){
-	            	executeDrop(data);
-	            }
+            List<File> data = null;           
+            
+            if(t.isDataFlavorSupported(DataFlavor.javaFileListFlavor)){
+	            data = (List<File>)t.getTransferData(DataFlavor.javaFileListFlavor);
+	            
+            }else if(t.isDataFlavorSupported(DnDSupportUtility.URI_LIST_FLAVOR)){
+            	data = DnDSupportUtility.textURIListToFileList((String)t.getTransferData(DnDSupportUtility.URI_LIST_FLAVOR));
+            }
+            if(data!=null){
+            	executeDrop(data);
             }
             context.dropComplete(true);
         }       
@@ -57,22 +63,6 @@ public abstract class AbstractDropper extends DropTargetAdapter {
         }	
     }
 	
-	/**
-	 * @param t
-	 * @return true if it's a file flavor
-	 */
-	private boolean hasFileFlavor(Transferable t) {
-		boolean retVal = false;
-		DataFlavor[] flavors;
-		flavors = t.getTransferDataFlavors();
-		for (int i = 0; i < flavors.length; i++) {
-			if (flavors[i].equals(DataFlavor.javaFileListFlavor)) {
-				retVal = true;
-				break;
-			}
-		}
-		return retVal;
-	}
 	   
 	/**
 	 * Executes the drop logic given the TransferData
