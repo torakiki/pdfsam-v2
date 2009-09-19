@@ -45,7 +45,7 @@ import java.util.Date;
  * @author torakiki
  *
  */
-public class TimeUtility {
+public final class TimeUtility {
 
 	private static final String MILLIS_FORMAT= "S'ms'";
 	private static final String SECONDS_FORMAT= "s's' S'ms'";
@@ -57,6 +57,10 @@ public class TimeUtility {
 	private static final long SECONDS= MILLIS*60;
 	private static final long MINUTES= SECONDS*60;
 	private static final long HOURS= MINUTES*24;
+	
+	private TimeUtility(){
+		//no constructor
+	}
 	
 	/**
 	 * formats the millis in human readable format

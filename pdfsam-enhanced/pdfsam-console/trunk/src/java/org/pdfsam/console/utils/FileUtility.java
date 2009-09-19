@@ -55,11 +55,15 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
  * @author Andrea Vacondio
  *
  */
-public class FileUtility {
+public final class FileUtility {
 
 	private static final Logger log = Logger.getLogger(FileUtility.class.getPackage().getName());
 	
 	public static final String BUFFER_NAME = "PDFsamTMPbuffer";
+	
+	private FileUtility(){
+		//no constructor
+	}
 	
     /**
      * Generates a not existing temporary file

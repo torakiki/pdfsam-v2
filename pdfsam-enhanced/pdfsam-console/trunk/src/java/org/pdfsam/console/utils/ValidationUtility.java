@@ -51,7 +51,7 @@ import org.pdfsam.console.exceptions.console.ValidationException;
  * @author Andrea Vacondio
  *
  */
-public class ValidationUtility {
+public final class ValidationUtility {
 
 
 	private final static Logger log = Logger.getLogger(ValidationUtility.class.getPackage().getName());
@@ -61,6 +61,10 @@ public class ValidationUtility {
 	public final static String EVEN_STRING = "even";	
 	
 	public static final String PDF_EXTENSION = ".pdf";
+	
+	private ValidationUtility(){
+		//no constructor
+	}
 	
 	/**
 	 * all, odd and even pages rotation cannot be mixed together or with single pages rotations

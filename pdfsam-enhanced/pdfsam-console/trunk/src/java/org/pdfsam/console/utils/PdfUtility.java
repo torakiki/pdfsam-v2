@@ -48,7 +48,11 @@ import org.dom4j.io.SAXReader;
  * @author Andrea Vacondio
  *
  */
-public class PdfUtility {
+public final class PdfUtility {
+	
+	private PdfUtility(){
+		//no contructor
+	}
 
 	/**
 	 * @param bookmarks the stream to read the xml. Stream is not closed. 
