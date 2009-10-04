@@ -15,8 +15,7 @@
 package org.pdfsam.guiclient.configuration;
 
 import java.awt.Toolkit;
-import java.io.File;
-import java.net.URLDecoder;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 import javax.swing.UIManager;
@@ -25,10 +24,9 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.guiclient.business.TextPaneAppender;
-import org.pdfsam.guiclient.exceptions.ConfigurationException;
-import org.pdfsam.guiclient.l10n.LanguageLoader;
+import org.pdfsam.guiclient.configuration.services.ConfigurationService;
+import org.pdfsam.guiclient.configuration.services.ConfigurationServiceLocator;
 import org.pdfsam.guiclient.utils.ThemeUtility;
-import org.pdfsam.guiclient.utils.xml.XMLConfig;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -43,21 +41,16 @@ public class Configuration{
 	public static final int DEFAULT_POOL_SIZE = 3;
 	
 	private static Configuration configObject;
+	private ConfigurationService configurationService;
 	
-	private ResourceBundle i18nMessages;
-	private XMLConfig xmlConfigObject;
-	private ConsoleServicesFacade servicesFacade;
-	private Level loggingLevel = Level.DEBUG;
-	private boolean checkForUpdates = true;
-	private boolean playSounds = true;
-	private String mainJarPath = ""; 
-	private String defaultWorkingDir = null;
 	private int screenResolution = 0;
-	private int thumbCreatorPoolSize = DEFAULT_POOL_SIZE;
-	private String thumbnailsCreatorIdentifier = "";
 	
 	private Configuration() {
-		init();
+		initialize();
+	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException("Cannot clone configuration object.");
 	}
 
 	public static synchronized Configuration getInstance() { 
@@ -68,273 +61,128 @@ public class Configuration{
 	}
 
 	/**
-	 * Sets the language ResourceBundle
-	 * @param i18nMessages ResourceBundle
+	 * Initialization
 	 */
-	public synchronized void setI18nResourceBundle(ResourceBundle i18nMessages){
-		this.i18nMessages = i18nMessages;
+	private void initialize(){
+		try{
+			configurationService = ConfigurationServiceLocator.getInstance().getConfigurationService();
+			
+			initializeLookAndFeel();
+			initializeLoggingLevel();
+			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
+		}catch(Exception e){
+			log.fatal(e);
+		}
 	}
 
+	/**
+	 * sets the look and feel
+	 * @throws Exception
+	 */
+	private void initializeLookAndFeel() throws Exception{
+		if (ThemeUtility.isPlastic(configurationService.getLookAndFeel())){            
+			ThemeUtility.setTheme(configurationService.getTheme());
+		}
+		UIManager.setLookAndFeel(ThemeUtility.getLAF(configurationService.getLookAndFeel()));
+	}	
+	
+	/**
+	 * sets the logging threshold for the appender
+	 */
+	private void initializeLoggingLevel(){
+		int logLevel = configurationService.getLoggingLevel();
+		try {
+			TextPaneAppender appender = (TextPaneAppender)Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
+			Level loggingLevel = Level.toLevel(logLevel,Level.DEBUG);
+			log.info(GettextResource.gettext(getI18nResourceBundle(),"Logging level set to ")+loggingLevel);
+			appender.setThreshold(loggingLevel);
+		} catch (Exception e) {
+			log.warn(GettextResource.gettext(getI18nResourceBundle(),"Unable to set logging level."), e);
+		}
+	}
+	
 	/**
 	 * @return the language ResourceBundle
 	 */
-	public synchronized ResourceBundle getI18nResourceBundle(){
-		return i18nMessages;
+	public ResourceBundle getI18nResourceBundle(){
+		return configurationService.getI18nResourceBundle();
 	}
 
 
 	/**
-	 * @return the XMLConfig
+	 * @return the default environment
 	 */
-	public synchronized XMLConfig getXmlConfigObject() {
-		return xmlConfigObject;
+	public String getDefaultEnvironment(){
+		return configurationService.getDefaultEnvironment();
 	}
-
+	
 	/**
-	 * sets the XMLConfig
-	 * @param xmlConfigObject
+	 * Set the default environment path
+	 * @param environmentPath
 	 */
-	public synchronized void setXmlConfigObject(XMLConfig xmlConfigObject) {
-		this.xmlConfigObject = xmlConfigObject;
+	public void setDefaultEnvironment(String environmentPath){
+		configurationService.setDefaultEnvironment(environmentPath);
 	}
-
-	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException("Cannot clone configuration object.");
-	}
-
+	
 	/**
-	 * @return the default environment file from the config.xml or null if nothing is set
-	 */
-	public File getDefaultEnv(){
-		File retVal = null;
-		try{
-			String defaultEnv = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/defaultjob");
-			if (defaultEnv != null && defaultEnv.length() > 0){
-				retVal = new File(defaultEnv);
-			}
-		}catch(Exception e){
-			log.warn(GettextResource.gettext(i18nMessages,"Unable to get the default environment informations."));
-		}
-		return retVal;
-	}
-	/**
+	 * 
 	 * @return the ConsoleServicesFacade
 	 */
 	public ConsoleServicesFacade getConsoleServicesFacade() {
-		return servicesFacade;
+		return configurationService.getConsoleServicesFacade();
 	}			
 	
 	/**
 	 * @return the loggingLevel
 	 */
-	public Level getLoggingLevel() {
-		return loggingLevel;
+	public int getLoggingLevel() {
+		return configurationService.getLoggingLevel();
 	}
 	
-	/**
-	 * @return the mainJarPath
-	 */
-	public String getMainJarPath() {
-		return mainJarPath;
-	}
-
 	/**
 	 * @return the checkForUpdates
 	 */
 	public boolean isCheckForUpdates() {
-		return checkForUpdates;
+		return configurationService.isCheckForUpdates();
 	}
 
 	/**
+	 * Set the check for updates
+	 * @param checkForUpdateds
+	 */
+	public void setCheckForUpdates(boolean checkForUpdateds){
+		configurationService.setCheckForUpdates(checkForUpdateds);
+	}
+	
+	/**
 	 * @return the defaultWorkingDir
 	 */
-	public String getDefaultWorkingDir() {
-		return defaultWorkingDir;
+	public String getDefaultWorkingDirectory() {
+		return configurationService.getDefaultWorkingDirectory();
 	}	
+	
+	/**
+	 * Set the default working directory
+	 * @param defaultDirectory
+	 */
+	public void setDefaultWorkingDirectory(String defaultDirectory) {
+		configurationService.setDefaultWorkingDirectory(defaultDirectory);
+	}
 	
 	/**
 	 * @return the playSounds
 	 */
 	public boolean isPlaySounds() {
-		return playSounds;
+		return configurationService.isPlaySounds();
 	}
 
 	/**
 	 * @param playSounds the playSounds to set
 	 */
 	public void setPlaySounds(boolean playSounds) {
-		this.playSounds = playSounds;
+		configurationService.setPlaySounds(playSounds);
 	}
 
-	private void init(){
-		try{
-			mainJarPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
-			log.info("Loading configuration..");
-			try{
-				xmlConfigObject = new XMLConfig(mainJarPath, true);
-			}catch(ConfigurationException ce){
-				/**
-				 * 18-Mar-2008
-				 * Bug fix #1909755 (not completely fixed)
-				 */
-				log.warn("Unable to find configuration file into "+mainJarPath);
-				mainJarPath = System.getProperty("user.dir");
-				log.info("Looking for configuration file into "+mainJarPath);
-				xmlConfigObject = new XMLConfig(mainJarPath, true);
-			}
-			servicesFacade = new ConsoleServicesFacade();
-			//language
-			initLanguage();
-			//look and feel
-			initLookAndFeel();
-			//log init
-			initLoggingLevel();
-			//check for updates init
-			initCheckForUpdates();
-			//check play sounds
-			initPlaySounds();
-			//default working dir
-			initDefaultWorkingDir();
-			//get the screen resolution
-			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
-			//pool size
-			 initPoolSize();
-			 //thumbnails creator
-			 initThumbnailsCreator();
-		}catch(Exception e){
-			log.fatal(e);
-		}
-	}
-	
-	/**
-	 * sets the look and feel
-	 * @throws Exception
-	 */
-	private void initLookAndFeel() throws Exception{
-		log.info(GettextResource.gettext(i18nMessages,"Setting look and feel..."));
-		int lookAndFeelIntValue = Integer.parseInt(xmlConfigObject.getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"));
-		String loogAndFeel = ThemeUtility.getLAF(lookAndFeelIntValue);            
-		if (ThemeUtility.isPlastic(lookAndFeelIntValue)){            
-			ThemeUtility.setTheme(Integer.parseInt(xmlConfigObject.getXMLConfigValue("/pdfsam/settings/lookAndfeel/theme")));
-		}
-		UIManager.setLookAndFeel(loogAndFeel);
-	}
-	
-	/**
-	 * sets the ResourceBoudle for the selected language
-	 */
-	private void initLanguage(){
-		log.info("Getting language...");
-		String language;
-		try{
-			language = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/i18n");
-		}catch(Exception e){
-			log.warn("Unable to get language ResourceBudle, setting the default language.", e);
-			language = LanguageLoader.DEFAULT_LANGUAGE;
-		}
-	
-		//get bundle
-		i18nMessages = (new LanguageLoader(language, "org.pdfsam.i18n.resources.Messages").getBundle());
-	}
-	
-	/**
-	 * sets the logging threshold for the appender
-	 */
-	private void initLoggingLevel(){
-		log.info(GettextResource.gettext(i18nMessages,"Setting logging level..."));
-		int logLevel;
-		try {
-			String logLev = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/loglevel");
-			if(logLev != null && logLev.length()>0){
-				logLevel = Integer.parseInt(logLev);
-			}else{
-				log.warn(GettextResource.gettext(i18nMessages,"Unable to find log level, setting to default level (DEBUG)."));
-				logLevel = Level.DEBUG_INT;
-			}
-			TextPaneAppender appender = (TextPaneAppender)Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
-			loggingLevel = Level.toLevel(logLevel,Level.DEBUG);
-			log.info(GettextResource.gettext(i18nMessages,"Logging level set to ")+loggingLevel);
-			appender.setThreshold(loggingLevel);
-		} catch (Exception e) {
-			log.warn(GettextResource.gettext(i18nMessages,"Unable to set logging level."), e);
-		}
-	}
-	
-	/**
-	 * sets the default working directory
-	 */
-	private void initDefaultWorkingDir(){
-		log.info(GettextResource.gettext(i18nMessages,"Setting default working directory..."));
-		try {
-			String defWorkingDir = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/default_working_dir");
-			if(defWorkingDir != null && defWorkingDir.length()>0){
-				defaultWorkingDir = defWorkingDir;
-			}			
-		} catch (Exception e) {
-			//default
-			defaultWorkingDir = null;
-		}
-	}
-	
-	/**
-	 * sets the thumbnails creator to use
-	 */
-	private void initThumbnailsCreator(){
-		log.info(GettextResource.gettext(i18nMessages,"Setting default thumbnails creator..."));
-		try {
-			String creator = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbnails_creator");
-			if(creator != null && creator.length()>0){
-				thumbnailsCreatorIdentifier = creator;
-			}			
-		} catch (Exception e) {
-			//default
-			thumbnailsCreatorIdentifier = null;
-		}
-	}
-	/**
-	 * sets the configuration about the updates check
-	 */
-	private void initCheckForUpdates(){
-		try {
-			String checkUpdates = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/checkupdates");
-			if(checkUpdates != null && checkUpdates.length()>0){
-				checkForUpdates = Integer.parseInt(checkUpdates)== 1;
-			}
-			
-		} catch (Exception e) {
-			//default
-			checkForUpdates = true;
-		}
-	}
-	
-	/**
-	 * sets the configuration about the play sounds
-	 */
-	private void initPlaySounds(){
-		try {
-			String sounds = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/playsounds");
-			if(sounds != null && sounds.length()>0){
-				playSounds = Integer.parseInt(sounds)== 1;
-			}			
-		} catch (Exception e) {
-			//default
-			playSounds = false;
-		}
-	}
-
-	/**
-	 * sets the thumbnails creator pool size
-	 */
-	private void initPoolSize(){
-		try{
-			String poolSizeString = xmlConfigObject.getXMLConfigValue("/pdfsam/settings/thumbpoolsize");		
-			if(poolSizeString != null && poolSizeString.length()>0){
-				thumbCreatorPoolSize = Integer.parseInt(poolSizeString);
-			}	
-		}catch(Exception nfe){
-			this.thumbCreatorPoolSize = DEFAULT_POOL_SIZE;
-		}
-	}
 	/**
 	 * @return the screenResolution
 	 */
@@ -346,22 +194,96 @@ public class Configuration{
 	 * @return the thumbCreatorPoolSize
 	 */
 	public int getThumbCreatorPoolSize() {
-		return thumbCreatorPoolSize;
+		return configurationService.getThumbCreatorPoolSize();
 	}
 
 	/**
 	 * @return the thumbnailsCreatorIdentifier
 	 */
 	public String getThumbnailsCreatorIdentifier() {
-		return thumbnailsCreatorIdentifier;
+		return configurationService.getThumbnailsCreatorIdentifier();
 	}
 
 	/**
 	 * @param thumbnailsCreatorIdentifier the thumbnailsCreatorIdentifier to set
 	 */
 	public void setThumbnailsCreatorIdentifier(String thumbnailsCreatorIdentifier) {
-		this.thumbnailsCreatorIdentifier = thumbnailsCreatorIdentifier;
+		configurationService.setThumbnailsCreatorIdentifier(thumbnailsCreatorIdentifier);
 	}
 	
+	/**
+	 * @return the selected language String representation 
+	 */
+	public String getSelectedLanguage(){
+		return configurationService.getLanguage();
+	}
+	
+	/**
+	 * Set the selected language
+	 * @param language
+	 */
+	public void setSelectedLanguage(String language){
+		configurationService.setLanguage(language);
+	}
+	
+	/**
+	 * @return informations to be displayed
+	 */
+	public String getConfigurationInformations(){
+		return configurationService.getConfigurationInformations();
+	}
+	
+	/**
+	 * @return the plugin absolute path 
+	 */
+	public String getPluginAbsolutePath(){
+		return configurationService.getPluginAbsolutePath();
+	}
+	
+	/**
+	 * @return the look and feel
+	 */
+	public int getLookAndFeel(){
+		return configurationService.getLookAndFeel();
+	}
+	
+	/**
+	 * Set the look and feel
+	 * @param lookAndFeel
+	 */
+	public void setLookAndFeel(int lookAndFeel){
+		configurationService.setLookAndFeel(lookAndFeel);
+	}
+	
+	/**
+	 * @return the theme
+	 */
+	public int getTheme(){
+		return configurationService.getTheme();
+	}
+	
+	/**
+	 * Set the theme
+	 * @param theme
+	 */
+	public void setTheme(int theme){
+		configurationService.setTheme(theme);
+	}
+	
+	/**
+	 * Set the logging level
+	 * @param level
+	 */
+	public void setLoggingLevel(int level){
+		configurationService.setLoggingLevel(level);
+	}
+	
+	/**
+	 * save the current configuration
+	 * @throws IOException 
+	 */
+	public void save() throws IOException{
+		configurationService.save(this);
+	}
 	
 }

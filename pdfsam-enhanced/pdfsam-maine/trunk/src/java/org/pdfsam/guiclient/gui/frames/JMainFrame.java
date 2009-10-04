@@ -67,7 +67,6 @@ public class JMainFrame extends JFrame {
 	private String DEFAULT_ICON = "/images/pdf.png";
 	private String DEFAULT_ICON_16 = "/images/pdf16.png";
 	
-	private Configuration config;
 	private JSplashScreen screen;
 	private Map<PluginDataModel, AbstractPlugablePanel> pluginsMap;
 	private EnvironmentMediator envMediator;
@@ -85,11 +84,10 @@ public class JMainFrame extends JFrame {
 		long start = System.currentTimeMillis();
 		log.info("Starting "+GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion());
 		runSplash();
-		config = Configuration.getInstance();
 		ToolTipManager.sharedInstance().setDismissDelay (300000);
 		initialize();
 		closeSplash();
-		log.info(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion()+" "+GettextResource.gettext(config.getI18nResourceBundle(),"started in ")+TimeUtility.format(System.currentTimeMillis()-start));
+		log.info(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion()+" "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"started in ")+TimeUtility.format(System.currentTimeMillis()-start));
 	}
 	/**
 	 * initialization
@@ -109,8 +107,8 @@ public class JMainFrame extends JFrame {
 	        setTitle(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion());
 	        
 	        //load plugins
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Loading plugins.."));
-	        PlugInsLoader pluginsLoader = new PlugInsLoader(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/plugs_absolute_dir"));
+	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Loading plugins.."));
+	        PlugInsLoader pluginsLoader = new PlugInsLoader(Configuration.getInstance().getPluginAbsolutePath());
 	        pluginsMap = pluginsLoader.loadPlugins();
 			
 			//Info panel
@@ -130,13 +128,13 @@ public class JMainFrame extends JFrame {
 	        }
 	        
 	        //status panel
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building status bar.."));
+	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building status bar.."));
 	        statusPanel = new JStatusPanel(new ImageIcon(iconUrl16),GuiClient.getApplicationName(),WorkDoneDataModel.MAX_PERGENTAGE);
 	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
-			config.getConsoleServicesFacade().addExecutionObserver(statusPanel);
+	        Configuration.getInstance().getConsoleServicesFacade().addExecutionObserver(statusPanel);
 			
 	        //tree panel
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building tree.."));
+	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building tree.."));
 	        treePanel = new JTreePanel(new DefaultMutableTreeNode(GuiClient.UNIXNAME+" "+GuiClient.getVersion()));
 	    	for (PluginDataModel item : pluginsMap.keySet()) {
 	    		treePanel.addToPlugsNode(item);
@@ -151,19 +149,19 @@ public class JMainFrame extends JFrame {
 	        pluginsMap.put(infoDataModel, infoPanel);	        	      
 	        
 	        //menu
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building menus.."));        
+	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building menus.."));        
 	        //env mediator
 	        envMediator = new EnvironmentMediator(new Environment(pluginsMap, treePanel), this);
 	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator));
 	        
 	        //buttons bar
-	        setSplashStep(GettextResource.gettext(config.getI18nResourceBundle(),"Building buttons bar.."));
+	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building buttons bar.."));
 	        buttonsPanel = new JButtonsPanel(envMediator, new LogActionListener());
 	        getContentPane().add(buttonsPanel,BorderLayout.PAGE_START);  
 	        
 	        //set up check for updates mediator
 	        updateMediator = new UpdateCheckerMediator(statusPanel);
-	        if(config.isCheckForUpdates()){
+	        if(Configuration.getInstance().isCheckForUpdates()){
 	        	updateMediator.checkForUpdates(5000, false);
 	        }
 	        settingsPanel.setCheckUpdateMediator(updateMediator);
@@ -184,10 +182,13 @@ public class JMainFrame extends JFrame {
 	        verticalSplitPane.setDividerLocation(0.75);
 	        
 	        //load the default env if set
-	        File defaultEnv = config.getDefaultEnv();
-	        if(defaultEnv != null && defaultEnv.exists() && defaultEnv.isFile()){
-	        	log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Loading default environment."));
-	        	envMediator.getEnvironment().loadJobs(defaultEnv);
+	        String defaultEnvString = Configuration.getInstance().getDefaultEnvironment();
+	        if(defaultEnvString!=null && defaultEnvString.length()>0){
+	        	File defaultEnv = new File(defaultEnvString);
+		        if(defaultEnv != null && defaultEnv.exists() && defaultEnv.isFile()){
+		        	log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Loading default environment."));
+		        	envMediator.getEnvironment().loadJobs(defaultEnv);
+		        }
 	        }
 	        getContentPane().add(verticalSplitPane,BorderLayout.CENTER);
 	        
@@ -195,7 +196,7 @@ public class JMainFrame extends JFrame {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		}catch(Exception e){
-			log.fatal(GettextResource.gettext(config.getI18nResourceBundle(),"Error starting pdfsam."),e);
+			log.fatal(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error starting pdfsam."),e);
 		}
 		
 	}	

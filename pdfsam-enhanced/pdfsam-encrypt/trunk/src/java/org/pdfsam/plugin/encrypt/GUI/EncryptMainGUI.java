@@ -134,7 +134,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.9e";
+    private final String PLUGIN_VERSION = "0.2.10e";
 	
 	public final static int DPRINT = 0;
 	public final static int PRINT = 1;
@@ -326,7 +326,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseDestFileChooser==null){
-    		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
     		        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
                 File chosenFile = null; 
@@ -446,7 +446,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	                    args.add("-"+EncryptParsedCommand.O_ARG);
 	                    
 	                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
 	                		if(suggestedDir != null){
 	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
 	                			if(JOptionPane.YES_OPTION == chosenOpt){

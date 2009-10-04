@@ -72,7 +72,7 @@ public class EnvironmentMediator implements ActionListener {
 	public void actionPerformed(ActionEvent e) {		
 		if(environment != null && e != null){
 			if(fileChooser==null){
-				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
 				fileChooser.setFileFilter(new XmlFilter());
 			}
 			int state = JFileChooser.CANCEL_OPTION;

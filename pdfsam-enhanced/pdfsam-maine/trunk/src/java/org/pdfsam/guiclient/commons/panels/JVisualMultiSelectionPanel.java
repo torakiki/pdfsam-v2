@@ -106,7 +106,7 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		openButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseOpenFileChooser==null){
-            		browseOpenFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
+            		browseOpenFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
             		browseOpenFileChooser.setFileFilter(new PdfFilter());
                     browseOpenFileChooser.setMultiSelectionEnabled(true);
             	}

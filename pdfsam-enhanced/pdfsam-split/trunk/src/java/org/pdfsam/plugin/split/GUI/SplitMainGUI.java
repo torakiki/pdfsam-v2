@@ -140,7 +140,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.5.4";
+    private final String PLUGIN_VERSION = "0.5.5";
     
 /**
  * Constructor
@@ -275,7 +275,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseDestFileChooser==null){
-                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
+                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
                     browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
                 File chosenFile = null;  
@@ -387,7 +387,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	                    	}
 	                    }else{
 	                    	if(destinationFolderText.getText()==null || destinationFolderText.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
 		                		if(suggestedDir != null){
 	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
 	                    			if(JOptionPane.YES_OPTION == chosenOpt){

@@ -110,7 +110,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.9e";
+	private static final String PLUGIN_VERSION = "0.1.10e";
 
 	
 	/**
@@ -230,7 +230,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {								
 				if(browseFileChooser==null){
-					browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+					browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
 					browseFileChooser.setFileFilter(new PdfFilter());
 				}
 				File chosenFile = null;   
@@ -315,8 +315,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	                    	File parent = destinationDir.getParentFile();
 	                    	if(!(parent!=null && parent.exists())){
 	                    		String suggestedDir = null;
-	                    		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
-	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
+	                    		if(Configuration.getInstance().getDefaultWorkingDirectory()!=null && Configuration.getInstance().getDefaultWorkingDirectory().length()>0){
+	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
 	                    		}else{	                    			
                     				PdfSelectionTableItem item = items[1];
                     				if(item!=null && item.getInputFile()!=null){

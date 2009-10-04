@@ -56,7 +56,6 @@ public class JInfoPanel extends AbstractPlugablePanel{
     private String javaHome = "";
     private String javaVersion = "";
     private String configPath = "";
-    private Configuration config;
     private Map<PluginDataModel, AbstractPlugablePanel> plugins;
     
     private final InfoFocusPolicy infoFocusPolicy = new InfoFocusPolicy();
@@ -75,12 +74,11 @@ public class JInfoPanel extends AbstractPlugablePanel{
     }
 
     private void initialize() {
-    	config = Configuration.getInstance();
     	setPanelIcon("/images/info.png");
     	 try{
              javaHome = System.getProperty("java.home");
              javaVersion = System.getProperty("java.runtime.name")+" "+System.getProperty("java.runtime.version");
-             configPath = config.getXmlConfigObject().getXMLConfigFile().getAbsolutePath();
+             configPath = Configuration.getInstance().getConfigurationInformations();
          }catch(Exception e){
         	 log.error("error:", e);  
          }
@@ -95,15 +93,15 @@ public class JInfoPanel extends AbstractPlugablePanel{
         textInfoArea.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         textInfoArea.setContentType("text/html");   
         textInfoArea.setText("<html><head></head><body>"+GuiClient.getApplicationName()+"<br><br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Version: ")+GuiClient.getVersion()+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Console version: ")+ConsoleServicesFacade.VERSION+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Developed by: ")+GuiClient.AUTHOR+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Build date: ")+GuiClient.getBuildDate()+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Java home: ")+javaHome+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Java version: ")+javaVersion+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Max memory: ")+(Runtime.getRuntime().maxMemory()/1048576)+"Mb<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Configuration file: ")+configPath+"<br>"
-        		+GettextResource.gettext(config.getI18nResourceBundle(),"Website: ")+"<a href=\"http://www.pdfsam.org\" title=\"pdfsam\">http://www.pdfsam.org</a>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Version: ")+GuiClient.getVersion()+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Console version: ")+ConsoleServicesFacade.VERSION+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Developed by: ")+GuiClient.AUTHOR+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Build date: ")+GuiClient.getBuildDate()+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Java home: ")+javaHome+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Java version: ")+javaVersion+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Max memory: ")+(Runtime.getRuntime().maxMemory()/1048576)+"Mb<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Configuration file: ")+configPath+"<br>"
+        		+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Website: ")+"<a href=\"http://www.pdfsam.org\" title=\"pdfsam\">http://www.pdfsam.org</a>"
         		+"<br><br>"+getThanksText()+"</body></html>");
         textInfoArea.setEditable(false);
         textInfoScrollPanel.setViewportView(textInfoArea);
@@ -115,7 +113,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
 
         tablePlugins = new JTable();
         PluginsTableModel tablePluginsModel = new PluginsTableModel(plugins);
-        String[] i18nColumnsName = {GettextResource.gettext(config.getI18nResourceBundle(),"Name"),GettextResource.gettext(config.getI18nResourceBundle(),"Version"),GettextResource.gettext(config.getI18nResourceBundle(),"Author")};
+        String[] i18nColumnsName = {GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Name"),GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Version"),GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Author")};
         tablePluginsModel.setColumnNames(i18nColumnsName);
         tablePlugins.setModel(tablePluginsModel);
         tablePlugins.setGridColor(Color.LIGHT_GRAY);
@@ -144,7 +142,7 @@ public class JInfoPanel extends AbstractPlugablePanel{
      * @return Returns the Plugin name.
      */
     public String getPluginName() {
-    	return GettextResource.gettext(config.getI18nResourceBundle(),"About");
+    	return GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"About");
     }
 
     /**
@@ -159,12 +157,12 @@ public class JInfoPanel extends AbstractPlugablePanel{
 	}
 
 	public void loadJobNode(org.dom4j.Node arg0) throws LoadJobException {
-		log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Unimplemented method for JInfoPanel"));
+		log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unimplemented method for JInfoPanel"));
 	}
 
     protected String getThanksText(){
         String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "Bigpapa", "Alberto Bortolotti", "Chiara Casamatti", "dom4j", "jaxen", "log4j", "BouncyCastle", "All the donors and contributors"};
-        String contributes = GettextResource.gettext(config.getI18nResourceBundle(),"Contributes: ");
+        String contributes = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Contributes: ");
         for (int i=0; i<contributors.length; i++){
         	contributes += contributors[i]+" - ";
         }

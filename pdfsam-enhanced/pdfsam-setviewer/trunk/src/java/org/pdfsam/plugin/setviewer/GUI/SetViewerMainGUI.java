@@ -133,7 +133,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     final JLabel outPrefixLabel = new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.0.4e";  
+    private final String PLUGIN_VERSION = "0.0.5e";  
     
     public SetViewerMainGUI(){
     	initialize();
@@ -268,7 +268,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(browseDestFileChooser==null){
-                	browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());      		
+                	browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());      		
                     browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
             	}
                 File chosenFile = null; 
@@ -367,7 +367,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 	                    args.add("-"+SetViewerParsedCommand.O_ARG);
 	                    
 	                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
 	                		if(suggestedDir != null){
 	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
 	                			if(JOptionPane.YES_OPTION == chosenOpt){

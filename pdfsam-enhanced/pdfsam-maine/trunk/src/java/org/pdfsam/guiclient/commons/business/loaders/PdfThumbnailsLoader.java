@@ -68,7 +68,7 @@ public class PdfThumbnailsLoader {
      */
     private void lazyInitFileChooser(){
     	if(fileChooser == null){
-    		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+    		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
             fileChooser.setFileFilter(new PdfFilter());
             fileChooser.setMultiSelectionEnabled(false); 
     	}

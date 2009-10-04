@@ -60,6 +60,7 @@ public class GuiClient extends JFrame {
 			loadApplicationProperties();
 			clientGUI = new JMainFrame();
 			clientGUI.setVisible(true);
+			clientGUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		} catch (Throwable t) {
 			log.fatal("Error:", t);
 		}

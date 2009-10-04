@@ -2,7 +2,7 @@
 ===================================
 -Fixed the selection of the thumbnails creator 
 -Saving/loading environment retains the selected plugin (feature request #2857938)
--Added DnD support for linux platform
+-Added DnD support for linux platform (feature request #2858074)
 
 2.0.0 (27-Aug-2009) (pdfsam-console 2.1.1e)
 ===================================

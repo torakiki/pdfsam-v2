@@ -43,7 +43,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.Node;
-import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
 import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
@@ -54,10 +53,10 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
+import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.ThemeUtility;
-import org.pdfsam.guiclient.utils.UpdatesUtility;
+import org.pdfsam.guiclient.utils.XmlUtility;
 import org.pdfsam.guiclient.utils.filters.XmlFilter;
-import org.pdfsam.guiclient.utils.xml.XMLParser;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -77,7 +76,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private JComboBox comboLog;	
     private JComboBox comboLaf;
     private JComboBox comboTheme;
-    private JComboBox comboCheckNewVersion;
+    private JCheckBox checkNewVersion;
     private JComboBox comboThumbnailsCreators;
     private JCheckBox playSounds;
     private JHelpLabel envHelpLabel;
@@ -104,7 +103,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private final JLabel subThemeLabel = new JLabel();
     private final JLabel languageLabel = new JLabel();
     private final JLabel logLabel = new JLabel();
-    private final JLabel checkNewVersionLabel = new JLabel();
     private final JLabel creatorLabel = new JLabel();
     private final JLabel loadDefaultEnvLabel = new JLabel();
     private final JLabel defaultDirLabel = new JLabel();
@@ -124,7 +122,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 
     private void initialize() {     
     	config = Configuration.getInstance();
-    	fileChooser = new JFileChooser(config.getDefaultWorkingDir());
+    	fileChooser = new JFileChooser(config.getDefaultWorkingDirectory());
         setPanelIcon("/images/settings.png");
         setPreferredSize(new Dimension(400,460));
 
@@ -142,24 +140,19 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 		subThemeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Theme:"));		
 		languageLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Language:"));
 		logLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:"));
-        checkNewVersionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates:"));
         creatorLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails creator")+":");
 		loadDefaultEnvLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load default environment at startup:"));        
         defaultDirLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory:"));
         settingsOptionsPanel.add(loadDefaultEnvLabel);
         settingsOptionsPanel.add(defaultDirLabel);
       
-        try{
-        	loadDefaultEnv= new JTextField();
-        	loadDefaultEnv.setText(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/defaultjob"));
-	    }catch (Exception e){
-	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error getting default environment."), e);
-	    }        
+       	loadDefaultEnv= new JTextField();
+       	loadDefaultEnv.setText(Configuration.getInstance().getDefaultEnvironment());      
         loadDefaultEnv.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         settingsOptionsPanel.add(loadDefaultEnv);
 		
         defaultDirectory= new JTextField();
-        defaultDirectory.setText(config.getDefaultWorkingDir());
+        defaultDirectory.setText(config.getDefaultWorkingDirectory());
         defaultDirectory.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         settingsOptionsPanel.add(defaultDirectory);
 
@@ -168,7 +161,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     	languageCombo.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         try{
 	 		for (int i=0; i<languageCombo.getItemCount(); i++){
-	   			if (((StringItem)languageCombo.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/i18n"))){
+	   			if (((StringItem)languageCombo.getItemAt(i)).getId().equals(config.getSelectedLanguage())){
 	   				languageCombo.setSelectedItem(languageCombo.getItemAt(i));
 	             break;
 	   			}
@@ -181,10 +174,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         comboLaf = new JComboBox(ThemeUtility.getLAFList().toArray());
         comboLaf.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
         try{
+        	String lookAndFeel = Integer.toString(Configuration.getInstance().getLookAndFeel());
 	 		for (int i=0; i<comboLaf.getItemCount(); i++){
-	   			if (((StringItem)comboLaf.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF"))){
-	   			 comboLaf.setSelectedItem(comboLaf.getItemAt(i));
-	             break;
+	   			if (((StringItem)comboLaf.getItemAt(i)).getId().equals(lookAndFeel)){
+	   				comboLaf.setSelectedItem(comboLaf.getItemAt(i));
+	   				break;
 	   			}
 	 		}
 	    }catch (Exception e){
@@ -194,8 +188,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         comboTheme = new JComboBox(ThemeUtility.getThemeList().toArray());
         comboTheme.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
         try{
+        	String theme = Integer.toString(Configuration.getInstance().getTheme());
         	for (int i=0; i<comboTheme.getItemCount(); i++){
-	            if (((StringItem)comboTheme.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/lookAndfeel/theme"))){
+	            if (((StringItem)comboTheme.getItemAt(i)).getId().equals(theme)){
 	                comboTheme.setSelectedItem(comboTheme.getItemAt(i));
 	                break;
 	            }
@@ -226,7 +221,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         comboLog.setBorder(new EtchedBorder(EtchedBorder.LOWERED));        
         try{
 	 		for (int i=0; i<comboLog.getItemCount(); i++){
-	   			if (((StringItem)comboLog.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/loglevel"))){
+	   			if (((StringItem)comboLog.getItemAt(i)).getId().equals(Integer.toString(Configuration.getInstance().getLoggingLevel()))){
 	   			 comboLog.setSelectedItem(comboLog.getItemAt(i));
 	             break;
 	   			}
@@ -235,21 +230,15 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
 	    }  
 	    
-	    comboCheckNewVersion = new JComboBox(UpdatesUtility.getCheckNewVersionItems().toArray());
-	    comboCheckNewVersion.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-        try{	 		
-   			if (config.isCheckForUpdates()){
-   				comboCheckNewVersion.setSelectedItem(comboCheckNewVersion.getItemAt(1));
-   			}	 		
-	    }catch (Exception e){
-	    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), e);
-	    }  
+	    checkNewVersion = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates at startup"));
+	    checkNewVersion.setSelected(config.isCheckForUpdates());
+	    settingsOptionsPanel.add(checkNewVersion); 
 
 	    comboThumbnailsCreators = new JComboBox(ThumbnailCreatorsRegisty.getInstalledCreators().toArray());
 	    comboThumbnailsCreators.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 	    try{
 	 		for (int i=0; i<comboThumbnailsCreators.getItemCount(); i++){
-	   			if (((StringItem)comboThumbnailsCreators.getItemAt(i)).getId().equals(config.getXmlConfigObject().getXMLConfigValue("/pdfsam/settings/thumbnails_creator"))){
+	   			if (((StringItem)comboThumbnailsCreators.getItemAt(i)).getId().equals(config.getThumbnailsCreatorIdentifier())){
 	   				comboThumbnailsCreators.setSelectedItem(comboThumbnailsCreators.getItemAt(i));
 	             break;
 	   			}
@@ -276,17 +265,17 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         gridOptionsPanel.add(comboLog);
         gridOptionsPanel.add(new JLabel());
         gridOptionsPanel.add(new JLabel());
-        
-        gridOptionsPanel.add(checkNewVersionLabel);
-        gridOptionsPanel.add(comboCheckNewVersion);
-        gridOptionsPanel.add(new JLabel());
-        gridOptionsPanel.add(checkNowButton);
-                
+                        
         gridOptionsPanel.add(creatorLabel);
         gridOptionsPanel.add(comboThumbnailsCreators);
         gridOptionsPanel.add(new JLabel());
         gridOptionsPanel.add(new JLabel());
         
+        gridOptionsPanel.add(checkNewVersion);
+        gridOptionsPanel.add(new JLabel());
+        gridOptionsPanel.add(checkNowButton);
+        gridOptionsPanel.add(new JLabel());
+
         settingsOptionsPanel.add(gridOptionsPanel);
         
 	    playSounds = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Play alert sounds"));
@@ -299,8 +288,8 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Language")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set your preferred language (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Look and feel")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set your preferred look and feel and your preferred theme (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Log level")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set a log detail level (restart needed)")+".</li>" +
-    		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set when new version availability should be checked (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Thumbnails creator")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set the thumbnails creation library")+".</li>" +
+    		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check for updates")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Set when new version availability should be checked (restart needed)")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Play alert sounds")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Turn on or off alert sounds")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default env.")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a previously saved env. file that will be automatically loaded at startup")+".</li>" +
     		"<li><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Default working directory")+":</b> "+GettextResource.gettext(config.getI18nResourceBundle(),"Select a directory where documents will be saved and loaded by default")+".</li>" +
@@ -351,28 +340,22 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 		saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 				try{
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/i18n", ((StringItem)languageCombo.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/LAF", ((StringItem)comboLaf.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/lookAndfeel/theme", ((StringItem)comboTheme.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/info/version", GuiClient.getApplicationName()+" "+GuiClient.getVersion());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/loglevel", ((StringItem)comboLog.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/checkupdates", ((StringItem)comboCheckNewVersion.getSelectedItem()).getId());
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/thumbnails_creator", ((StringItem)comboThumbnailsCreators.getSelectedItem()).getId());
 					
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/playsounds", (playSounds.isSelected()? "1": "0"));
-					if (loadDefaultEnv != null){
-						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob", loadDefaultEnv.getText());
-					}else{
-						config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/defaultjob","");
-					}
-					config.getXmlConfigObject().setXMLConfigValue("/pdfsam/settings/default_working_dir", defaultDirectory.getText());
-					config.getXmlConfigObject().saveXMLfile();
-					config.setPlaySounds(playSounds.isSelected());
-					config.setThumbnailsCreatorIdentifier(((StringItem)comboThumbnailsCreators.getSelectedItem()).getId());
+					Configuration.getInstance().setLoggingLevel(Integer.parseInt(((StringItem)comboLog.getSelectedItem()).getId()));
+					Configuration.getInstance().setLookAndFeel(Integer.parseInt(((StringItem)comboLaf.getSelectedItem()).getId()));
+					Configuration.getInstance().setTheme(Integer.parseInt(((StringItem)comboTheme.getSelectedItem()).getId()));
+					Configuration.getInstance().setSelectedLanguage(((StringItem)languageCombo.getSelectedItem()).getId());
+					Configuration.getInstance().setPlaySounds(playSounds.isSelected());
+					Configuration.getInstance().setCheckForUpdates(checkNewVersion.isSelected());
+					Configuration.getInstance().setDefaultEnvironment(loadDefaultEnv.getText());
+					Configuration.getInstance().setDefaultWorkingDirectory(defaultDirectory.getText());
+					Configuration.getInstance().setThumbnailsCreatorIdentifier(((StringItem)comboThumbnailsCreators.getSelectedItem()).getId());
+					Configuration.getInstance().save();
 					log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Configuration saved."));
 				}
                 catch (Exception ex){
-                    log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "),ex);                       
+                    log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "),ex); 
+                    DialogUtility.errorGenericDialog(JSettingsPanel.this, GettextResource.gettext(config.getI18nResourceBundle(),"Error saving configuration"), GettextResource.gettext(config.getI18nResourceBundle(),"An error occured saving the configuration, please look at the log panel to have more informations."));
                 }
 			}
         }); 
@@ -395,7 +378,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 	private Vector<StringItem> loadLanguages(){
     	Vector<StringItem> langs = new Vector<StringItem>(10,5);
     	try{
-			Document document = XMLParser.parseXmlFile(this.getClass().getResource("/org/pdfsam/i18n/languages.xml"));
+			Document document = XmlUtility.parseXmlFile(this.getClass().getResource("/org/pdfsam/i18n/languages.xml"));
 			List<Node> nodeList = document.selectNodes("/languages/language");
 			for (int i = 0; nodeList != null && i < nodeList.size(); i++){ 
 				Node langNode  =((Node) nodeList.get(i));
@@ -531,9 +514,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboLog;
             }
             else if (aComponent.equals(comboLog)){
-                return comboCheckNewVersion;
+                return checkNewVersion;
             }
-            else if (aComponent.equals(comboCheckNewVersion)){
+            else if (aComponent.equals(checkNewVersion)){
                 return checkNowButton;
             }
             else if (aComponent.equals(checkNowButton)){
@@ -572,9 +555,9 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return checkNowButton;
             }
             else if (aComponent.equals(checkNowButton)){
-                return comboCheckNewVersion;
+                return checkNewVersion;
             }
-            else if (aComponent.equals(comboCheckNewVersion)){
+            else if (aComponent.equals(checkNewVersion)){
                 return comboLog;
             }            
             else if (aComponent.equals(comboLog)){

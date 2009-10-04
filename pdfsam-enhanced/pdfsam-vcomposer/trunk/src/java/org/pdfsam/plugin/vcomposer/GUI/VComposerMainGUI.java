@@ -128,7 +128,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final VisualComposerPolicy visualComposerFocusPolicy = new VisualComposerPolicy();
 	 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.5";
+    private static final String PLUGIN_VERSION = "0.0.6";
     
     /**
      * Constructor
@@ -231,7 +231,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseDestFileChooser==null){
-                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
+                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
                     browseDestFileChooser.setFileFilter(new PdfFilter());
             	}
                 File chosenFile = null;      
@@ -320,9 +320,9 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 									File parent = destinationDir.getParentFile();
 									if (!(parent != null && parent.exists())) {
 										String suggestedDir = null;
-										if (Configuration.getInstance().getDefaultWorkingDir() != null
-												&& Configuration.getInstance().getDefaultWorkingDir().length() > 0) {
-											suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(),
+										if (Configuration.getInstance().getDefaultWorkingDirectory() != null
+												&& Configuration.getInstance().getDefaultWorkingDirectory().length() > 0) {
+											suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(),
 													destinationDir.getName()).getAbsolutePath();
 										}
 										if (suggestedDir != null) {

@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
+import org.apache.log4j.Level;
 import org.pdfsam.guiclient.business.TextPaneAppender;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JLogPopupMenu;
@@ -41,13 +42,11 @@ public class JLogPanel extends JPanel implements MouseListener{
 
 	private final JLabel logLevel = new JLabel();
     private JTextPane logTextPanel = null;
-    private Configuration config = null;
     private JLogPopupMenu popupMenu = null;
     private JScrollPane logPanel = new JScrollPane();
     
 
 	public JLogPanel() {
-		this.config = Configuration.getInstance();
 		init();
 		
 	}
@@ -65,7 +64,7 @@ public class JLogPanel extends JPanel implements MouseListener{
 		
 		logLevel.setIcon(new ImageIcon(this.getClass().getResource("/images/log.png")));
 		logLevel.setPreferredSize(new Dimension(0,25));
-		logLevel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Log level:")+" "+config.getLoggingLevel());
+		logLevel.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Log level:")+" "+Level.toLevel(Configuration.getInstance().getLoggingLevel(),Level.DEBUG));
 		
 		logPanel.setMinimumSize(new Dimension(0, 0));
 		logPanel.setViewportView(logTextPanel);

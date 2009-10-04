@@ -91,7 +91,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.7e";
+	private static final String PLUGIN_VERSION = "0.0.8e";
 	
 	/**
 	 * Constructor
@@ -148,7 +148,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
             	if(browseDirChooser==null){
-            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
     		        browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
                 File chosenFile = null; 
@@ -213,7 +213,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	                	
 	                    args.add("-"+UnpackParsedCommand.O_ARG);
 	                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
 	                		if(suggestedDir != null){
 	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
 	                			if(JOptionPane.YES_OPTION == chosenOpt){

@@ -69,8 +69,8 @@ import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
+import org.pdfsam.guiclient.utils.XmlUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
-import org.pdfsam.guiclient.utils.xml.XmlUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Visual reorder plugin  main panel
@@ -122,7 +122,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     private final JRadioButton chooseAFileRadio = new JRadioButton();
     
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.4";
+    private static final String PLUGIN_VERSION = "0.0.5";
     
     /**
      * Constructor
@@ -174,7 +174,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseDestFileChooser==null){
-                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());                    
+                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
                     browseDestFileChooser.setFileFilter(new PdfFilter());
             	}
                 File chosenFile = null;    
@@ -299,9 +299,9 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 								File parent = destinationDir.getParentFile();
 								if (!(parent != null && parent.exists())) {
 									String suggestedDir = null;
-									if (Configuration.getInstance().getDefaultWorkingDir() != null
-											&& Configuration.getInstance().getDefaultWorkingDir().length() > 0) {
-										suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(),
+									if (Configuration.getInstance().getDefaultWorkingDirectory() != null
+											&& Configuration.getInstance().getDefaultWorkingDirectory().length() > 0) {
+										suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(),
 												destinationDir.getName()).getAbsolutePath();
 									} else {
 										suggestedDir = new File(inputFile.getParent(), destinationDir.getName())

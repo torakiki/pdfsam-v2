@@ -86,7 +86,7 @@ public class LogActionListener implements ActionListener {
 	 */
 	private void saveLog(){
 		if(fileChooser==null){
-			fileChooser = new JFileChooser(config.getDefaultWorkingDir());
+			fileChooser = new JFileChooser(config.getDefaultWorkingDirectory());
 			fileChooser.setFileFilter(new TxtFilter(false));
 		}
 		File chosenFile = null;

@@ -76,6 +76,20 @@ public class DialogUtility {
 		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Limits are not valid"), 
 		    JOptionPane.ERROR_MESSAGE);
 	}
+	
+	/**
+	 * Generic error dialog
+	 * @param comp
+	 * @param title
+	 * @param message
+	 */
+	public static void errorGenericDialog(Component comp, String title, String message){
+		JOptionPane.showMessageDialog(comp, 
+			message,
+			title, 
+		    JOptionPane.ERROR_MESSAGE);
+	}
+	
 	/**
 	 * Show a dialog to ask the user for the document password
 	 * @param comp

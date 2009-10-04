@@ -111,7 +111,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.7.0";
+    private static final String PLUGIN_VERSION = "0.7.1";
 	private static final String ALL_STRING = "All";
 	
     /**
@@ -214,7 +214,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(browseDestFileChooser==null){
-            		 browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+            		 browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
             		 browseDestFileChooser.setFileFilter(new PdfFilter());
             	}
                 File chosenFile = null;
@@ -281,8 +281,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	                    	File parent = destinationDir.getParentFile();
 	                    	if(!(parent!=null && parent.exists())){
 	                    		String suggestedDir = null;
-	                    		if(Configuration.getInstance().getDefaultWorkingDir()!=null && Configuration.getInstance().getDefaultWorkingDir().length()>0){
-	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDir(), destinationDir.getName()).getAbsolutePath();
+	                    		if(Configuration.getInstance().getDefaultWorkingDirectory()!=null && Configuration.getInstance().getDefaultWorkingDirectory().length()>0){
+	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
 	                    		}else{
 	                    			if(items!=null & items.length>0){
 	                    				PdfSelectionTableItem item = items[items.length-1];

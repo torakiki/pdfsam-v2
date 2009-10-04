@@ -196,7 +196,6 @@ public class JMainFrame extends JFrame {
 	        getContentPane().add(verticalSplitPane,BorderLayout.CENTER);
 	        
 	        setSize(640, 480);
-			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		}catch(Exception e){

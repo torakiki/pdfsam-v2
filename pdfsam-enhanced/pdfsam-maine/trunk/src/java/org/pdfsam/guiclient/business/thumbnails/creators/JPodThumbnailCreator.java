@@ -55,32 +55,36 @@ import de.intarsys.pdf.pd.PDPage;
 import de.intarsys.pdf.pd.PDPageTree;
 import de.intarsys.tools.authenticate.IPasswordProvider;
 import de.intarsys.tools.locator.FileLocator;
+
 /**
  * Thumbnail creator using JPod
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
-	
 	public static final int JPOD_RESOLUTION = 72;
-	private static final String  JPOD_CREATOR_NAME = "Itarsys JPodRenderer";
-	
+
+	private static final String JPOD_CREATOR_NAME = "Itarsys JPodRenderer";
+
 	private static final Logger log = Logger.getLogger(JPodThumbnailCreator.class.getPackage().getName());
-	
+
 	private PDDocument pdfDoc = null;
+
 	private PDPageTree pageTree = null;
 
-	public BufferedImage getPageImage(File inputFile, String password, int page, int rotation) throws ThumbnailCreationException {
+	public BufferedImage getPageImage(File inputFile, String password, int page, int rotation)
+			throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		IGraphicsContext graphics = null;
 		PDDocument pdfDoc = null;
-		if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
+		if (inputFile != null && inputFile.exists() && inputFile.isFile()) {
 			try {
 				pdfDoc = openDoc(inputFile, password);
-				PDPage pdPage = pdfDoc.getPageTree().getPageAt(page-1);			
+				PDPage pdPage = pdfDoc.getPageTree().getPageAt(page - 1);
 				Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
-	
+
 				retVal = new BufferedImage((int) rect.getWidth(), (int) rect.getHeight(), BufferedImage.TYPE_INT_RGB);
 				Graphics2D g2 = (Graphics2D) retVal.getGraphics();
 				graphics = new CwtAwtGraphicsContext(g2);
@@ -93,39 +97,42 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				graphics.fill(rect);
 				CSContent content = pdPage.getContentStream();
 				if (content != null) {
-					JPodRenderer renderer = new JPodRenderer(null,graphics);
+					JPodRenderer renderer = new JPodRenderer(null, graphics);
 					renderer.process(content, pdPage.getResources());
-				}											
-				if(pdfDoc!=null){
+				}
+				if (pdfDoc != null) {
 					pdfDoc.close();
 				}
-				int totalRotation = (rotation+pdPage.getRotate())%360;
-				if(totalRotation!=0){
-              		Image rotated = ImageUtility.rotateImage(retVal, totalRotation);	
-              		retVal = new BufferedImage(rotated.getWidth(null), rotated.getHeight(null), BufferedImage.TYPE_INT_RGB);
-              		Graphics g = retVal.getGraphics();
-              		g.drawImage(rotated, 0, 0, null);
-        		}
-			}catch(Throwable t){
+				int totalRotation = (rotation + pdPage.getRotate()) % 360;
+				if (totalRotation != 0) {
+					Image rotated = ImageUtility.rotateImage(retVal, totalRotation);
+					retVal = new BufferedImage(rotated.getWidth(null), rotated.getHeight(null),
+							BufferedImage.TYPE_INT_RGB);
+					Graphics g = retVal.getGraphics();
+					g.drawImage(rotated, 0, 0, null);
+				}
+			} catch (Throwable t) {
 				throw new ThumbnailCreationException(t);
-			}		
-			finally {
+			} finally {
 				if (graphics != null) {
 					graphics.dispose();
-				}			
+				}
 			}
-		}else{
-			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Input file doesn't exists or is a directory"));
+		} else {
+			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance()
+					.getI18nResourceBundle(), "Input file doesn't exists or is a directory"));
 		}
 		return retVal;
-		
+
 	}
 
-	public BufferedImage getThumbnail(File inputFile, String password, int page, float resizePercentage) throws ThumbnailCreationException {
+	public BufferedImage getThumbnail(File inputFile, String password, int page, float resizePercentage)
+			throws ThumbnailCreationException {
 		BufferedImage retVal = null;
 		BufferedImage tempImage = getPageImage(inputFile, password, page);
 		try {
-			retVal = ImageUtility.getScaledInstance(tempImage , Math.round(tempImage.getWidth(null)*resizePercentage), Math.round(tempImage.getHeight(null)*resizePercentage));
+			retVal = ImageUtility.getScaledInstance(tempImage, Math.round(tempImage.getWidth(null) * resizePercentage),
+					Math.round(tempImage.getHeight(null) * resizePercentage));
 		} catch (Exception e) {
 			throw new ThumbnailCreationException(e);
 		}
@@ -134,6 +141,7 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 
 	/**
 	 * Creates the PDDocument
+	 * 
 	 * @param inputFile
 	 * @param password
 	 * @return
@@ -141,35 +149,35 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	 * @throws COSLoadException
 	 */
 	@SuppressWarnings("unchecked")
-	private PDDocument openDoc(File inputFile, String password) throws IOException, COSLoadException{
+	private PDDocument openDoc(File inputFile, String password) throws IOException, COSLoadException {
 		PDDocument retVal = null;
 		FileLocator locator = new FileLocator(inputFile);
-		if(password!=null){					
-			Map options = new HashMap();					
+		if (password != null) {
+			Map options = new HashMap();
 			final char[] pwd = password.toCharArray();
-			PasswordProvider.setPasswordProvider(options,new IPasswordProvider() {
+			PasswordProvider.setPasswordProvider(options, new IPasswordProvider() {
 				public char[] getPassword() {
 					return pwd;
 				}
 			});
 			retVal = PDDocument.createFromLocator(locator, options);
-		}else{
-			retVal = PDDocument.createFromLocator(locator);					
+		} else {
+			retVal = PDDocument.createFromLocator(locator);
 		}
 		return retVal;
 	}
-	
-	public int getResolution(){
+
+	public int getResolution() {
 		return JPOD_RESOLUTION;
 	}
 
 	@Override
-	public String getCreatorName() {	
+	public String getCreatorName() {
 		return JPOD_CREATOR_NAME;
 	}
 
 	@Override
-	public String getCreatorIdentifier(){
+	public String getCreatorIdentifier() {
 		return JPodThumbnailCreator.class.getName();
 	}
 
@@ -181,8 +189,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	@Override
 	protected Callable<Boolean> getCloserTask() throws ThumbnailCreationException {
 		Callable<Boolean> retVal = null;
-		if(pdfDoc != null){
-			retVal =new JPodCreatorCloser(pdfDoc);
+		if (pdfDoc != null) {
+			retVal = new JPodCreatorCloser(pdfDoc);
 		}
 		return retVal;
 	}
@@ -204,7 +212,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 	}
 
 	@Override
-	protected Vector<VisualPageListItem> getDocumentModel(List<DocumentPage> template) throws ThumbnailCreationException {
+	protected Vector<VisualPageListItem> getDocumentModel(List<DocumentPage> template)
+			throws ThumbnailCreationException {
 		int pages = pageTree.getCount();
 		File inputFile = getInputFile();
 		Vector<VisualPageListItem> modelList = null;
@@ -218,7 +227,8 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				} else {
 					for (DocumentPage page : template) {
 						if (page.getPageNumber() > 0 && page.getPageNumber() <= pages) {
-							VisualPageListItem currentItem = new VisualPageListItem(page.getPageNumber(), inputFile.getCanonicalPath(), getProvidedPassword());
+							VisualPageListItem currentItem = new VisualPageListItem(page.getPageNumber(), inputFile
+									.getCanonicalPath(), getProvidedPassword());
 							currentItem.setDeleted(page.isDeleted());
 							currentItem.setRotation(page.getRotation());
 							modelList.add(currentItem);
@@ -227,19 +237,21 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 				}
 			}
 		} catch (IOException ioe) {
-			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error opening pdf document")
+			throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance()
+					.getI18nResourceBundle(), "Error opening pdf document")
 					+ " " + inputFile.getAbsolutePath(), ioe);
 		}
 		return modelList;
 	}
 
 	@Override
-	protected Collection<? extends Callable<Boolean>> getGenerationTasks(Vector<VisualPageListItem> modelList) throws ThumbnailCreationException {
+	protected Collection<? extends Callable<Boolean>> getGenerationTasks(Vector<VisualPageListItem> modelList)
+			throws ThumbnailCreationException {
 		ArrayList<JPodThmbnailCallable> tasks = null;
-		if(pageTree!=null && modelList!=null && modelList.size()>0){
+		if (pageTree != null && modelList != null && modelList.size() > 0) {
 			tasks = new ArrayList<JPodThmbnailCallable>(modelList.size());
-			for(VisualPageListItem pageItem : modelList){
-				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber()-1);
+			for (VisualPageListItem pageItem : modelList) {
+				PDPage pdPage = pageTree.getPageAt(pageItem.getPageNumber() - 1);
 				tasks.add(new JPodThmbnailCallable(pdPage, pageItem, getPanel(), getCurrentId()));
 			}
 		}
@@ -257,44 +269,57 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		boolean retVal = false;
 		String providedPwd = getProvidedPassword();
 		File inputFile = getInputFile();
-		if (inputFile!=null && inputFile.exists() && inputFile.isFile()){
-			try{//create doc
-				try{
-					pdfDoc = openDoc(inputFile, providedPwd);
-				}catch(IOException ioe){
-					if(ioe.getCause() instanceof COSSecurityException){
-						providedPwd = DialogUtility.askForDocumentPasswordDialog(getPanel(), inputFile.getName());
-						if(providedPwd != null && providedPwd.length()>0){
-							setProvidedPassword(providedPwd);
-							pdfDoc = openDoc(inputFile, providedPwd);
-						}else{
-							throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Password not provided."));
+		if (inputFile != null) {
+			if (inputFile.exists() && inputFile.isFile()) {
+				try {// create doc
+					try {
+						pdfDoc = openDoc(inputFile, providedPwd);
+					} catch (IOException ioe) {
+						if (ioe.getCause() instanceof COSSecurityException) {
+							providedPwd = DialogUtility.askForDocumentPasswordDialog(getPanel(), inputFile.getName());
+							if (providedPwd != null && providedPwd.length() > 0) {
+								setProvidedPassword(providedPwd);
+								pdfDoc = openDoc(inputFile, providedPwd);
+							} else {
+								throw new ThumbnailCreationException(GettextResource.gettext(Configuration
+										.getInstance().getI18nResourceBundle(), "Password not provided."));
+							}
+						} else {
+							throw new ThumbnailCreationException(ioe);
 						}
-					}else{
-						throw new ThumbnailCreationException(ioe);
 					}
-				}
-				if(pdfDoc != null){
-					//require password if encrypted
-					//I already opened the document in visual mode but if encrypted it will need 
-					//the password to manipulate
-					if(pdfDoc.isEncrypted() && (providedPwd==null || providedPwd.length()==0)){
-						providedPwd = DialogUtility.askForDocumentPasswordDialog(getPanel(), inputFile.getName());
-						setProvidedPassword(providedPwd);
+					if (pdfDoc != null) {
+						// require password if encrypted
+						// I already opened the document in visual mode but if
+						// encrypted it will need
+						// the password to manipulate
+						if (pdfDoc.isEncrypted() && (providedPwd == null || providedPwd.length() == 0)) {
+							providedPwd = DialogUtility.askForDocumentPasswordDialog(getPanel(), inputFile.getName());
+							setProvidedPassword(providedPwd);
+						}
+						retVal = true;
+					} else {
+						throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance()
+								.getI18nResourceBundle(), "Unable to open the document."));
 					}
-					retVal = true;
-				}else{
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to open the document."));
+				} catch (IOException ioe) {
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance()
+							.getI18nResourceBundle(), "Error opening pdf document")
+							+ " " + inputFile.getAbsolutePath(), ioe);
+				} catch (COSLoadException cle) {
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance()
+							.getI18nResourceBundle(), "Error opening pdf document")
+							+ " " + inputFile.getAbsolutePath(), cle);
+				} catch (OutOfMemoryError oom) {
+					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance()
+							.getI18nResourceBundle(), "Not enough memory to create thumbnails")
+							+ " " + inputFile.getAbsolutePath(), oom);
 				}
-				}catch(IOException ioe){
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), ioe);
-				}catch(COSLoadException cle){
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error opening pdf document")+" "+inputFile.getAbsolutePath(), cle);
-				}catch(OutOfMemoryError oom){
-					throw new ThumbnailCreationException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not enough memory to create thumbnails")+" "+inputFile.getAbsolutePath(), oom);
-				}
-		}else{
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Input file doesn't exists or is a directory"));
+			} else {
+				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+						"Input file doesn't exists or is a directory")
+						+ " (" + inputFile.getAbsolutePath() + ")");
+			}
 		}
 		return retVal;
 	}

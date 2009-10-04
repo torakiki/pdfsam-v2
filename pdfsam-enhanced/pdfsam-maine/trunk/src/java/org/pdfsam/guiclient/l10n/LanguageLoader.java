@@ -24,7 +24,7 @@ public class LanguageLoader {
 
     //const
     public static final String DEFAULT_LANGUAGE = "en_GB";
-    public final Locale DEFAULT_LOCALE = Locale.UK;
+    public static final Locale DEFAULT_LOCALE = Locale.UK;
     //vars
     private String bundleName;
     private Locale currentLocale; 

@@ -57,7 +57,7 @@ public class SaveImageActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(previewImage!=null){
 			if(fileChooser==null){
-				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
 				String[] types = ImageIO.getWriterFormatNames();
 				HashSet<String> extensionsSet = new HashSet<String>();
 				for(final String type : types){

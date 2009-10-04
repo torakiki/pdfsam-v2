@@ -104,7 +104,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.3e";
+	private static final String PLUGIN_VERSION = "0.0.4e";
 	
 	/**
 	 * Constructor
@@ -171,7 +171,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
             	if(browseDirChooser==null){
-            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDir());
+            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
     		        browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             	}
                 File chosenFile = null; 
@@ -275,7 +275,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	                	
 	                    args.add("-"+DecryptParsedCommand.O_ARG);
 	                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDir();                    		
+	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
 	                		if(suggestedDir != null){
 	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
 	                			if(JOptionPane.YES_OPTION == chosenOpt){

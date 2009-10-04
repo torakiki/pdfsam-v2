@@ -17,17 +17,19 @@ package org.pdfsam.guiclient.plugins;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
+import org.dom4j.Document;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.exceptions.PluginException;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.plugins.models.PluginDataModel;
+import org.pdfsam.guiclient.utils.XmlUtility;
 import org.pdfsam.guiclient.utils.filters.JarFilter;
-import org.pdfsam.guiclient.utils.xml.XMLConfig;
 import org.pdfsam.i18n.GettextResource;
 
 
@@ -56,7 +58,8 @@ public class  PlugInsLoader{
         }
         else {
         	try{
-                this.pluginsDirectory = new File(config.getMainJarPath(), "plugins");
+        		String configSearchPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
+                this.pluginsDirectory = new File(configSearchPath, "plugins");
             }catch (Exception e){
                 throw new PluginException(GettextResource.gettext(config.getI18nResourceBundle(),"Error getting plugins directory."), e);
             }
@@ -107,11 +110,11 @@ public class  PlugInsLoader{
    		for(File currentDir : pluginsList){
     		if(currentDir != null && currentDir.isDirectory()){
     			try{
-    				XMLConfig xmlConfigObject = new XMLConfig(currentDir.getAbsolutePath()); 
+    				Document document = XmlUtility.parseXmlFile(new File(currentDir.getAbsolutePath(), "config.xml"));
     				File[] fileList = currentDir.listFiles(new JarFilter(false));
     				if(fileList.length == 1){    					
     					urlList.add(fileList[0].toURI().toURL());
-    					classList.add(xmlConfigObject.getXMLConfigValue("/plugin/data/classname"));
+    					classList.add(XmlUtility.getXmlValue(document, "/plugin/data/classname"));
     				}else{
     					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Found zero or many jars in plugin directory ")+currentDir.getAbsolutePath());
     				}
