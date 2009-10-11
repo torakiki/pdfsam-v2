@@ -14,19 +14,19 @@
  */
 package org.pdfsam.guiclient;
 
+import java.awt.Point;
 import java.io.InputStream;
 import java.util.Properties;
 
-import javax.swing.JFrame;
-
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.configuration.GuiConfiguration;
 import org.pdfsam.guiclient.gui.frames.JMainFrame;
 /**
  * GUI Client for the console
  * @author a.vacondio
  *
  */
-public class GuiClient extends JFrame {
+public class GuiClient {
 
 	private static final long serialVersionUID = -3608998690519362986L;
 
@@ -60,7 +60,7 @@ public class GuiClient extends JFrame {
 			loadApplicationProperties();
 			clientGUI = new JMainFrame();
 			clientGUI.setVisible(true);
-			clientGUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			initializeUserInterface();
 		} catch (Throwable t) {
 			log.fatal("Error:", t);
 		}
@@ -111,5 +111,40 @@ public class GuiClient extends JFrame {
 	 */
 	public static String getBranch(){
 		return defaultProps.getProperty(BRANCH_PROPERTY, BRANCH_DEFAULT);
+	}
+	
+	/**
+	 * User interface initialization
+	 */
+	private static void initializeUserInterface(){
+		clientGUI.setExtendedState(GuiConfiguration.getInstance().getExtendedState());
+		
+		if(GuiConfiguration.getInstance().getSize() != null){
+			clientGUI.setSize(GuiConfiguration.getInstance().getSize());
+		}
+		
+		Point locationOnScreen = GuiConfiguration.getInstance().getLocationOnScreen();
+		if(locationOnScreen != null){
+			clientGUI.setLocation(locationOnScreen);
+		}	
+		
+		//TODO find out why the split panels are not restored 
+		
+		if(GuiConfiguration.getInstance().getHorizontalDividerDimension() != null){
+			clientGUI.setHorizontalDividerDimension(GuiConfiguration.getInstance().getHorizontalDividerDimension());
+		}
+		if(GuiConfiguration.getInstance().getHorizontalDividerLocation()>0){
+			clientGUI.setHorizontalDividerLocation(GuiConfiguration.getInstance().getHorizontalDividerLocation());
+		}else{
+			clientGUI.setHorizontalDividerLocation(155);
+		}
+		
+		if(GuiConfiguration.getInstance().getVerticalDividerDimension() != null){
+			clientGUI.setVerticalDividerDimension(GuiConfiguration.getInstance().getVerticalDividerDimension());
+		}
+		if(GuiConfiguration.getInstance().getVerticalDividerLocation()>0){
+			clientGUI.setVerticalDividerLocation(GuiConfiguration.getInstance().getVerticalDividerLocation());
+		}
+
 	}
 }

@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 import org.pdfsam.console.business.ConsoleServicesFacade;
-import org.pdfsam.guiclient.configuration.Configuration;
 
 /**
  * configuration service
@@ -162,5 +161,5 @@ public interface ConfigurationService {
 	 * save the configuration
 	 * @throws IOException in case of error saving the configuration
 	 */
-	public void save(Configuration configuration)throws IOException ;
+	public void save()throws IOException ;
 }

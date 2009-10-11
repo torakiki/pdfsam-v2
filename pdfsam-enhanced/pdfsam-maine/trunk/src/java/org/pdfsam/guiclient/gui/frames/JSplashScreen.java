@@ -34,7 +34,7 @@ import javax.swing.border.EtchedBorder;
 
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.TextPaneAppender;
-import org.pdfsam.guiclient.business.listeners.ExitActionListener;
+import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
 import org.pdfsam.guiclient.gui.panels.JBackgroundedPanel;
 /**
  * 
@@ -71,11 +71,11 @@ public class JSplashScreen extends JFrame {
 		progressBar.setValue(0);	
 		progressBar.setAlignmentX(Component.LEFT_ALIGNMENT);
 		labelProgress.setFont(new Font("SansSerif", Font.PLAIN, 10));
-		labelProgress.setPreferredSize(new Dimension(300, 15));
+		labelProgress.setPreferredSize(new Dimension(350, 15));
 		labelProgress.setText(initMessage);
 		labelProgress.setAlignmentX(Component.LEFT_ALIGNMENT);
 		labelVersion.setText("pdfsam "+GuiClient.getVersion());
-		labelVersion.setPreferredSize(new Dimension(300, 15));
+		labelVersion.setPreferredSize(new Dimension(350, 15));
 		labelVersion.setFont(new Font("SansSerif", Font.BOLD, 10));
 		labelVersion.setAlignmentY(JLabel.BOTTOM_ALIGNMENT);
 		labelVersion.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -89,19 +89,19 @@ public class JSplashScreen extends JFrame {
 		bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		bottomPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		exitButton.setText("Exit");		
-		exitButton.setActionCommand(ExitActionListener.EXIT_COMMAND);
-		exitButton.addActionListener(new ExitActionListener());		
+		exitButton.setActionCommand(ApplicationExitMediator.EXIT_COMMAND);
+		exitButton.addActionListener(new ApplicationExitMediator());		
 		bottomPanel.add(Box.createHorizontalGlue());
 		bottomPanel.add(exitButton);
 
 		logPane.setViewportView(TextPaneAppender.getTextPaneInstance());
-		logPane.setPreferredSize(new Dimension(300, 65));
+		logPane.setPreferredSize(new Dimension(350, 65));
 		
 		getContentPane().add(topPanel, BorderLayout.PAGE_START);
 		getContentPane().add(bottomPanel, BorderLayout.PAGE_END);		
 		getContentPane().add(logPane, BorderLayout.CENTER);	
 		
-		center(this,300,200);
+		center(this,350,200);
 		
 	}
 	

@@ -15,6 +15,7 @@
 package org.pdfsam.guiclient.configuration.services;
 
 import org.pdfsam.guiclient.configuration.services.xml.XmlConfigurationService;
+import org.pdfsam.guiclient.configuration.services.xml.XmlGuiConfigurationService;
 import org.pdfsam.guiclient.exceptions.ConfigurationException;
 
 /**
@@ -45,5 +46,12 @@ public class ConfigurationServiceLocator {
 	 */
 	public ConfigurationService getConfigurationService() throws ConfigurationException{
 		return new XmlConfigurationService();
+	}
+	
+	/**
+	 * @return the GUI configuration service
+	 */
+	public GuiConfigurationService getGuiConfigurationService() {
+		return new XmlGuiConfigurationService();
 	}
 }

@@ -36,8 +36,11 @@ import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.utils.TimeUtility;
 import org.pdfsam.guiclient.GuiClient;
+import org.pdfsam.guiclient.business.ApplicationCloser;
 import org.pdfsam.guiclient.business.Environment;
 import org.pdfsam.guiclient.business.listeners.LogActionListener;
+import org.pdfsam.guiclient.business.listeners.MainWindowListener;
+import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.TreeMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
@@ -70,6 +73,7 @@ public class JMainFrame extends JFrame {
 	private JSplashScreen screen;
 	private Map<PluginDataModel, AbstractPlugablePanel> pluginsMap;
 	private EnvironmentMediator envMediator;
+	private ApplicationExitMediator exitMediator;
 	private UpdateCheckerMediator updateMediator;
 	private JStatusPanel statusPanel;
 	private JTreePanel treePanel;
@@ -152,11 +156,12 @@ public class JMainFrame extends JFrame {
 	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building menus.."));        
 	        //env mediator
 	        envMediator = new EnvironmentMediator(new Environment(pluginsMap, treePanel), this);
-	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator));
+	        exitMediator = new ApplicationExitMediator(new ApplicationCloser(this));
+	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator, exitMediator));
 	        
 	        //buttons bar
 	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building buttons bar.."));
-	        buttonsPanel = new JButtonsPanel(envMediator, new LogActionListener());
+	        buttonsPanel = new JButtonsPanel(envMediator, exitMediator, new LogActionListener());
 	        getContentPane().add(buttonsPanel,BorderLayout.PAGE_START);  
 	        
 	        //set up check for updates mediator
@@ -193,7 +198,8 @@ public class JMainFrame extends JFrame {
 	        getContentPane().add(verticalSplitPane,BorderLayout.CENTER);
 	        
 	        setSize(640, 480);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			addWindowListener(new MainWindowListener(this));
 
 		}catch(Exception e){
 			log.fatal(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error starting pdfsam."),e);
@@ -273,4 +279,67 @@ public class JMainFrame extends JFrame {
 	public void setMainPanelPreferredSize(Dimension d){
 		mainPanel.setPreferredSize(d);
 	}
+	
+	/**
+	 * @return
+	 * @see javax.swing.JSplitPane#getDividerLocation()
+	 */
+	public int getVerticalDividerLocation() {
+		return verticalSplitPane.getDividerLocation();
+	}
+	
+	/**
+	 * @param location
+	 * @see javax.swing.JSplitPane#setDividerLocation(int)
+	 */
+	public void setVerticalDividerLocation(int location) {
+		verticalSplitPane.setDividerLocation(location);
+	}
+	
+	/**
+	 * @return
+	 * @see javax.swing.JSplitPane#getDividerLocation()
+	 */
+	public int getHorizontalDividerLocation() {
+		return horizSplitPane.getDividerLocation();
+	}
+	
+	/**
+	 * @param location
+	 * @see javax.swing.JSplitPane#setDividerLocation(int)
+	 */
+	public void setHorizontalDividerLocation(int location) {
+		horizSplitPane.setDividerLocation(location);
+	}
+	/**
+	 * @return
+	 * @see java.awt.Component#getSize()
+	 */
+	public Dimension getHorizontalDividerDimension() {
+		return horizSplitPane.getSize();
+	}
+	/**
+	 * @param d
+	 * @see java.awt.Component#setSize(java.awt.Dimension)
+	 */
+	public void setHorizontalDividerDimension(Dimension d) {
+		horizSplitPane.setSize(d);
+	}
+	/**
+	 * @return
+	 * @see java.awt.Component#getSize()
+	 */
+	public Dimension getVerticalDividerDimension() {
+		return verticalSplitPane.getSize();
+	}
+	/**
+	 * @param d
+	 * @see java.awt.Component#setSize(java.awt.Dimension)
+	 */
+	public void setVerticalDividerDimension(Dimension d) {
+		verticalSplitPane.setSize(d);
+	}
+	
+	
+	
 }

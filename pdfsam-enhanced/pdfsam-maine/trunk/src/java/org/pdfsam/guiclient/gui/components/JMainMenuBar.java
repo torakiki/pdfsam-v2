@@ -24,7 +24,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.listeners.ExitActionListener;
+import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
@@ -39,16 +39,16 @@ public class JMainMenuBar extends JMenuBar {
 
 	private static final Logger log = Logger.getLogger(JMainMenuBar.class.getPackage().getName());
 	
-	private Configuration config;
 	private final JMenu menuFile = new JMenu();
 	private final JMenuItem saveEnvItem = new JMenuItem();
 	private final JMenuItem loadEnvItem = new JMenuItem();
 	private final JMenuItem exitItem = new JMenuItem();
 	private EnvironmentMediator envMediator;
+	private ApplicationExitMediator exitMediator;
 
-	public JMainMenuBar(EnvironmentMediator envMediator){
-		config = Configuration.getInstance();
+	public JMainMenuBar(EnvironmentMediator envMediator, ApplicationExitMediator exitMediator){
 		this.envMediator = envMediator;
+		this.exitMediator = exitMediator;
 		init();
 	}
 	
@@ -58,36 +58,36 @@ public class JMainMenuBar extends JMenuBar {
 	private void init(){
 		try{
 			add(menuFile);
-			menuFile.setText(GettextResource.gettext(config.getI18nResourceBundle(),"File"));
+			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File"));
 			menuFile.setMnemonic(KeyEvent.VK_F);
 	
-			saveEnvItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Save environment"));
+			saveEnvItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save environment"));
 			saveEnvItem.setAccelerator(KeyStroke.getKeyStroke(
 			        KeyEvent.VK_S, ActionEvent.ALT_MASK));
 			saveEnvItem.setActionCommand(EnvironmentMediator.SAVE_ENV_ACTION);
 			saveEnvItem.setIcon(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
 			saveEnvItem.addActionListener(envMediator);
 			
-			loadEnvItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Load environment"));
+			loadEnvItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Load environment"));
 			loadEnvItem.setAccelerator(KeyStroke.getKeyStroke(
 			        KeyEvent.VK_L, ActionEvent.ALT_MASK));
 			loadEnvItem.setActionCommand(EnvironmentMediator.LOAD_ENV_ACTION);
 			loadEnvItem.setIcon(new ImageIcon(this.getClass().getResource("/images/fileopen.png")));
 			loadEnvItem.addActionListener(envMediator);
 			
-			exitItem.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Exit"));
+			exitItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Exit"));
 			exitItem.setAccelerator(KeyStroke.getKeyStroke(
 			        KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-			exitItem.setActionCommand(ExitActionListener.EXIT_COMMAND);
+			exitItem.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
 			exitItem.setIcon(new ImageIcon(this.getClass().getResource("/images/exit.png")));
-			exitItem.addActionListener(new ExitActionListener());
+			exitItem.addActionListener(exitMediator);
 			
 			menuFile.add(saveEnvItem);
 			menuFile.add(loadEnvItem);
 			menuFile.addSeparator();
 			menuFile.add(exitItem);
 		}catch(Exception e){
-			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to initialize menu bar."), e);
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initialize menu bar."), e);
 		}	
 	}
 }

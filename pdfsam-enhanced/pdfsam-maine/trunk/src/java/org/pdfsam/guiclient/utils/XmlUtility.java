@@ -23,6 +23,7 @@ import java.net.URL;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
@@ -152,5 +153,47 @@ public final class XmlUtility {
 		SAXReader reader = new SAXReader();
 		document = reader.read(url);
 		return document;
+	}
+	
+	/**
+	 * Adds the to rootElement the given xpath and, if the xpath contains an attribute, sets the attribute value. 
+	 * @param rootElement
+	 * @param xpath
+	 * @param attributeValue
+	 */
+	public static void processXPath(Element rootElement, String xpath, String attributeValue){
+		String[] values = xpath.split("@");
+		if(values.length == 2){
+			addXmlNodeAndAttribute(rootElement, values[0], values[1], attributeValue);
+		}else{
+			addXmlNodeAndAttribute(rootElement, values[0], null, null);
+		}
+	}
+	
+	/**
+	 * Adds to the rootElement the nodes specified by nodeXPath. If not null it adds the attibuteName with the give Attribute Value
+	 * @param rootElement
+	 * @param nodeXPath
+	 * @param attributeName
+	 * @param AttributeValue
+	 */
+	public static void addXmlNodeAndAttribute(Element rootElement, String nodeXPath, String attributeName, String attributeValue){
+		String[] nodes = nodeXPath.split("/");
+		Element currentElement = rootElement;
+		
+		for(String node : nodes){
+			if(node!=null && node.length()>0){
+				Element tmpElement = (Element) currentElement.selectSingleNode(node);
+				if(tmpElement!=null){
+					currentElement = tmpElement;
+				}else{
+					currentElement = currentElement.addElement(node);
+				}
+			}
+		}
+		
+		if(attributeName != null && attributeValue!=null){
+			currentElement.addAttribute(attributeName, attributeValue);
+		}
 	}
 }

@@ -20,7 +20,7 @@ import java.io.IOException;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
-import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.configuration.services.ConfigurationService;
 import org.pdfsam.guiclient.utils.XmlUtility;
 
 /**
@@ -53,57 +53,57 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
 
 	@Override
 	public String getCheckForUpdatesValue() {
-		return getXmlValue(ROOT_NODE+CHECK_UPDATES_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+CHECK_UPDATES_XPATH);
 	}
 
 	@Override
 	public String getDefaultEnvironmentValue() {
-		return getXmlValue(ROOT_NODE+DEFAULT_ENVIRONMENT_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+DEFAULT_ENVIRONMENT_XPATH);
 	}
 
 	@Override
 	public String getDefaultWorkingDirectoryValue() {
-		return getXmlValue(ROOT_NODE+DEF_WORKING_DIR_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+DEF_WORKING_DIR_XPATH);
 	}
 
 	@Override
 	public String getLoggingLevelValue() {
-		return getXmlValue(ROOT_NODE+LOGGING_LEVEL_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+LOGGING_LEVEL_XPATH);
 	}
 
 	@Override
 	public String getPlaySoundsValue() {
-		return getXmlValue(ROOT_NODE+PLAYSOUNDS_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+PLAYSOUNDS_XPATH);
 	}
 
 	@Override
 	public String getThreadPoolSizeValue() {
-		return getXmlValue(ROOT_NODE+POOL_SIZE_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+POOL_SIZE_XPATH);
 	}
 
 	@Override
 	public String getThumbnailsCreatorIdentifierValue() {
-		return getXmlValue(ROOT_NODE+THUMBNAILS_CREATOR_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+THUMBNAILS_CREATOR_XPATH);
 	}
 
 	@Override
 	public String getLookAndFeelValue() {
-		return getXmlValue(ROOT_NODE+LAF_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+LAF_XPATH);
 	}
 
 	@Override
 	public String getThemeValue() {
-		return getXmlValue(ROOT_NODE+THEME_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+THEME_XPATH);
 	}
 
 	@Override
 	public String getLocaleValue() {
-		return getXmlValue(ROOT_NODE+LANGUAGE_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+LANGUAGE_XPATH);
 	}
 
 	@Override
 	public String getPluginAbsolutePath() {
-		return getXmlValue(ROOT_NODE+PLUGIN_ABSOLUTE_XPATH);
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+PLUGIN_ABSOLUTE_XPATH);
 	}
 
 	/**
@@ -114,63 +114,22 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
 	 * @param configuration
 	 * @throws IOException 
 	 */
-	public static void saveXmlConfigurationFile(File configurationFile, Configuration configuration) throws IOException {
+	public static void saveXmlConfigurationFile(File configurationFile, ConfigurationService configuration) throws IOException {
 		Document document = DocumentHelper.createDocument();
 		Element root = document.addElement(ROOT_NODE.replaceAll("/", ""));
 		root.addAttribute("config-version", "2");
-		processXPath(root, LAF_XPATH, Integer.toString(configuration.getLookAndFeel()));
-		processXPath(root, THEME_XPATH, Integer.toString(configuration.getTheme()));
-		processXPath(root, POOL_SIZE_XPATH, Integer.toString(configuration.getThumbCreatorPoolSize()));
-		processXPath(root, LOGGING_LEVEL_XPATH, Integer.toString(configuration.getLoggingLevel()));
-		processXPath(root, LANGUAGE_XPATH, configuration.getSelectedLanguage());
-		processXPath(root, DEF_WORKING_DIR_XPATH, configuration.getDefaultWorkingDirectory());
-		processXPath(root, THUMBNAILS_CREATOR_XPATH, configuration.getThumbnailsCreatorIdentifier());
-		processXPath(root, DEFAULT_ENVIRONMENT_XPATH, configuration.getDefaultEnvironment());
-		processXPath(root, PLUGIN_ABSOLUTE_XPATH, configuration.getPluginAbsolutePath());
-		processXPath(root, CHECK_UPDATES_XPATH, Boolean.toString(configuration.isCheckForUpdates()));
-		processXPath(root, PLAYSOUNDS_XPATH, Boolean.toString(configuration.isPlaySounds()));
+		XmlUtility.processXPath(root, LAF_XPATH, Integer.toString(configuration.getLookAndFeel()));
+		XmlUtility.processXPath(root, THEME_XPATH, Integer.toString(configuration.getTheme()));
+		XmlUtility.processXPath(root, POOL_SIZE_XPATH, Integer.toString(configuration.getThumbCreatorPoolSize()));
+		XmlUtility.processXPath(root, LOGGING_LEVEL_XPATH, Integer.toString(configuration.getLoggingLevel()));
+		XmlUtility.processXPath(root, LANGUAGE_XPATH, configuration.getLanguage());
+		XmlUtility.processXPath(root, DEF_WORKING_DIR_XPATH, configuration.getDefaultWorkingDirectory());
+		XmlUtility.processXPath(root, THUMBNAILS_CREATOR_XPATH, configuration.getThumbnailsCreatorIdentifier());
+		XmlUtility.processXPath(root, DEFAULT_ENVIRONMENT_XPATH, configuration.getDefaultEnvironment());
+		XmlUtility.processXPath(root, PLUGIN_ABSOLUTE_XPATH, configuration.getPluginAbsolutePath());
+		XmlUtility.processXPath(root, CHECK_UPDATES_XPATH, Boolean.toString(configuration.isCheckForUpdates()));
+		XmlUtility.processXPath(root, PLAYSOUNDS_XPATH, Boolean.toString(configuration.isPlaySounds()));
 		XmlUtility.writeXmlFile(document, configurationFile);
 	}
-	
-	/**
-	 * Adds the to rootElement the given xpath and, if the xpath contains an attribute, sets the attribute value. 
-	 * @param rootElement
-	 * @param xpath
-	 * @param attributeValue
-	 */
-	private static void processXPath(Element rootElement, String xpath, String attributeValue){
-		String[] values = xpath.split("@");
-		if(values.length == 2){
-			addXmlNodeAndAttribute(rootElement, values[0], values[1], attributeValue);
-		}else{
-			addXmlNodeAndAttribute(rootElement, values[0], null, null);
-		}
-	}
-	
-	/**
-	 * Adds to the rootElement the nodes specified by nodeXPath. If not null it adds the attibuteName with the give Attribute Value
-	 * @param rootElement
-	 * @param nodeXPath
-	 * @param attributeName
-	 * @param AttributeValue
-	 */
-	private static void addXmlNodeAndAttribute(Element rootElement, String nodeXPath, String attributeName, String attributeValue){
-		String[] nodes = nodeXPath.split("/");
-		Element currentElement = rootElement;
-		
-		for(String node : nodes){
-			if(node!=null && node.length()>0){
-				Element tmpElement = (Element) currentElement.selectSingleNode(node);
-				if(tmpElement!=null){
-					currentElement = tmpElement;
-				}else{
-					currentElement = currentElement.addElement(node);
-				}
-			}
-		}
-		
-		if(attributeName != null && attributeValue!=null){
-			currentElement.addAttribute(attributeName, attributeValue);
-		}
-	}
+
 }

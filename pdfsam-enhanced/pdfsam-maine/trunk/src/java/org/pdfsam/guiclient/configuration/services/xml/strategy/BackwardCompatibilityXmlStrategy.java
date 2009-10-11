@@ -15,6 +15,7 @@
 package org.pdfsam.guiclient.configuration.services.xml.strategy;
 
 import org.dom4j.Document;
+import org.pdfsam.guiclient.utils.XmlUtility;
 
 /**
  * Old xml strategy
@@ -45,56 +46,56 @@ public class BackwardCompatibilityXmlStrategy extends AbstractXmlConfigStrategy 
 
 	@Override
 	public String getCheckForUpdatesValue() {
-		return getXmlValue(CHECK_UPDATES_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), CHECK_UPDATES_XPATH);
 	}
 
 	@Override
 	public String getDefaultEnvironmentValue() {
-		return getXmlValue(DEFAULT_JOB_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), DEFAULT_JOB_XPATH);
 	}
 
 	@Override
 	public String getDefaultWorkingDirectoryValue() {
-		return getXmlValue(DEF_WORKING_DIR_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), DEF_WORKING_DIR_XPATH);
 	}
 
 	@Override
 	public String getLoggingLevelValue() {
-		return getXmlValue(LOGGING_LEVEL_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), LOGGING_LEVEL_XPATH);
 	}
 
 	@Override
 	public String getPlaySoundsValue() {
-		return getXmlValue(PLAYSOUNDS_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), PLAYSOUNDS_XPATH);
 	}
 
 	@Override
 	public String getThreadPoolSizeValue() {
-		return getXmlValue(POOL_SIZE_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), POOL_SIZE_XPATH);
 	}
 
 	@Override
 	public String getThumbnailsCreatorIdentifierValue() {
-		return getXmlValue(THUMBNAILS_CREATOR_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), THUMBNAILS_CREATOR_XPATH);
 	}
 
 	@Override
 	public String getLookAndFeelValue() {
-		return getXmlValue(LAF_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), LAF_XPATH);
 	}
 
 	@Override
 	public String getThemeValue() {
-		return getXmlValue(THEME_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), THEME_XPATH);
 	}
 
 	@Override
 	public String getLocaleValue() {
-		return getXmlValue(LANGUAGE_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), LANGUAGE_XPATH);
 	}
 
 	@Override
 	public String getPluginAbsolutePath() {
-		return getXmlValue(PLUGIN_ABSOLUTE_XPATH);
+		return XmlUtility.getXmlValue(getDocument(), PLUGIN_ABSOLUTE_XPATH);
 	}
 }

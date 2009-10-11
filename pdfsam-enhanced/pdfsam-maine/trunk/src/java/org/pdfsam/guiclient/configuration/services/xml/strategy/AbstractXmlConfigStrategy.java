@@ -15,7 +15,6 @@
 package org.pdfsam.guiclient.configuration.services.xml.strategy;
 
 import org.dom4j.Document;
-import org.dom4j.Node;
 
 /**
  * Abstract xml config strategy
@@ -34,19 +33,10 @@ public abstract class AbstractXmlConfigStrategy implements XmlConfigStrategy {
 		this.document = document;
 	}
 	
-	/**
-	 * @param xpath
-	 * @return the value or an empty string if no value is available
-	 */
-    String getXmlValue(String xpath){
-    	String retVal = "";
-    	Node node = document.selectSingleNode(xpath);
-    	if(node != null){
-    		retVal = node.getText().trim();
-    	}
-    	return retVal;
-    }
-    
+	public Document getDocument() {
+		return document;
+	}
+
 	@Override
 	public void close() {
 		document = null;		

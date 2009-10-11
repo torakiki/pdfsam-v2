@@ -31,30 +31,32 @@ import org.pdfsam.i18n.GettextResource;
 
 /**
  * Configuration Singleton
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
-public class Configuration{
+public class Configuration {
 
 	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
-	
+
 	public static final int DEFAULT_POOL_SIZE = 3;
-	
+
 	private static Configuration configObject;
+
 	private ConfigurationService configurationService;
-	
+
 	private int screenResolution = 0;
-	
+
 	private Configuration() {
 		initialize();
 	}
-	
+
 	public Object clone() throws CloneNotSupportedException {
 		throw new CloneNotSupportedException("Cannot clone configuration object.");
 	}
 
-	public static synchronized Configuration getInstance() { 
-		if (configObject == null){
+	public static synchronized Configuration getInstance() {
+		if (configObject == null) {
 			configObject = new Configuration();
 		}
 		return configObject;
@@ -63,82 +65,83 @@ public class Configuration{
 	/**
 	 * Initialization
 	 */
-	private void initialize(){
-		try{
+	private void initialize() {
+		try {
 			configurationService = ConfigurationServiceLocator.getInstance().getConfigurationService();
-			
+
 			initializeLookAndFeel();
 			initializeLoggingLevel();
 			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
-		}catch(Exception e){
-			log.fatal(e);
+		} catch (Exception e) {
+			log.fatal("Error loading configuration.",e);
 		}
 	}
 
 	/**
 	 * sets the look and feel
+	 * 
 	 * @throws Exception
 	 */
-	private void initializeLookAndFeel() throws Exception{
-		if (ThemeUtility.isPlastic(configurationService.getLookAndFeel())){            
+	private void initializeLookAndFeel() throws Exception {
+		if (ThemeUtility.isPlastic(configurationService.getLookAndFeel())) {
 			ThemeUtility.setTheme(configurationService.getTheme());
 		}
 		UIManager.setLookAndFeel(ThemeUtility.getLAF(configurationService.getLookAndFeel()));
-	}	
-	
+	}
+
 	/**
 	 * sets the logging threshold for the appender
 	 */
-	private void initializeLoggingLevel(){
+	private void initializeLoggingLevel() {
 		int logLevel = configurationService.getLoggingLevel();
 		try {
-			TextPaneAppender appender = (TextPaneAppender)Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
-			Level loggingLevel = Level.toLevel(logLevel,Level.DEBUG);
-			log.info(GettextResource.gettext(getI18nResourceBundle(),"Logging level set to ")+loggingLevel);
+			TextPaneAppender appender = (TextPaneAppender) Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
+			Level loggingLevel = Level.toLevel(logLevel, Level.DEBUG);
+			log.info(GettextResource.gettext(getI18nResourceBundle(), "Logging level set to ") + loggingLevel);
 			appender.setThreshold(loggingLevel);
 		} catch (Exception e) {
-			log.warn(GettextResource.gettext(getI18nResourceBundle(),"Unable to set logging level."), e);
+			log.warn(GettextResource.gettext(getI18nResourceBundle(), "Unable to set logging level."), e);
 		}
 	}
-	
+
 	/**
 	 * @return the language ResourceBundle
 	 */
-	public ResourceBundle getI18nResourceBundle(){
+	public ResourceBundle getI18nResourceBundle() {
 		return configurationService.getI18nResourceBundle();
 	}
-
 
 	/**
 	 * @return the default environment
 	 */
-	public String getDefaultEnvironment(){
+	public String getDefaultEnvironment() {
 		return configurationService.getDefaultEnvironment();
 	}
-	
+
 	/**
 	 * Set the default environment path
+	 * 
 	 * @param environmentPath
 	 */
-	public void setDefaultEnvironment(String environmentPath){
+	public void setDefaultEnvironment(String environmentPath) {
 		configurationService.setDefaultEnvironment(environmentPath);
 	}
-	
+
 	/**
 	 * 
 	 * @return the ConsoleServicesFacade
 	 */
 	public ConsoleServicesFacade getConsoleServicesFacade() {
 		return configurationService.getConsoleServicesFacade();
-	}			
-	
+	}
+
 	/**
 	 * @return the loggingLevel
 	 */
 	public int getLoggingLevel() {
 		return configurationService.getLoggingLevel();
 	}
-	
+
 	/**
 	 * @return the checkForUpdates
 	 */
@@ -148,27 +151,29 @@ public class Configuration{
 
 	/**
 	 * Set the check for updates
+	 * 
 	 * @param checkForUpdateds
 	 */
-	public void setCheckForUpdates(boolean checkForUpdateds){
+	public void setCheckForUpdates(boolean checkForUpdateds) {
 		configurationService.setCheckForUpdates(checkForUpdateds);
 	}
-	
+
 	/**
 	 * @return the defaultWorkingDir
 	 */
 	public String getDefaultWorkingDirectory() {
 		return configurationService.getDefaultWorkingDirectory();
-	}	
-	
+	}
+
 	/**
 	 * Set the default working directory
+	 * 
 	 * @param defaultDirectory
 	 */
 	public void setDefaultWorkingDirectory(String defaultDirectory) {
 		configurationService.setDefaultWorkingDirectory(defaultDirectory);
 	}
-	
+
 	/**
 	 * @return the playSounds
 	 */
@@ -177,7 +182,8 @@ public class Configuration{
 	}
 
 	/**
-	 * @param playSounds the playSounds to set
+	 * @param playSounds
+	 *            the playSounds to set
 	 */
 	public void setPlaySounds(boolean playSounds) {
 		configurationService.setPlaySounds(playSounds);
@@ -205,85 +211,91 @@ public class Configuration{
 	}
 
 	/**
-	 * @param thumbnailsCreatorIdentifier the thumbnailsCreatorIdentifier to set
+	 * @param thumbnailsCreatorIdentifier
+	 *            the thumbnailsCreatorIdentifier to set
 	 */
 	public void setThumbnailsCreatorIdentifier(String thumbnailsCreatorIdentifier) {
 		configurationService.setThumbnailsCreatorIdentifier(thumbnailsCreatorIdentifier);
 	}
-	
+
 	/**
-	 * @return the selected language String representation 
+	 * @return the selected language String representation
 	 */
-	public String getSelectedLanguage(){
+	public String getSelectedLanguage() {
 		return configurationService.getLanguage();
 	}
-	
+
 	/**
 	 * Set the selected language
+	 * 
 	 * @param language
 	 */
-	public void setSelectedLanguage(String language){
+	public void setSelectedLanguage(String language) {
 		configurationService.setLanguage(language);
 	}
-	
+
 	/**
 	 * @return informations to be displayed
 	 */
-	public String getConfigurationInformations(){
+	public String getConfigurationInformations() {
 		return configurationService.getConfigurationInformations();
 	}
-	
+
 	/**
-	 * @return the plugin absolute path 
+	 * @return the plugin absolute path
 	 */
-	public String getPluginAbsolutePath(){
+	public String getPluginAbsolutePath() {
 		return configurationService.getPluginAbsolutePath();
 	}
-	
+
 	/**
 	 * @return the look and feel
 	 */
-	public int getLookAndFeel(){
+	public int getLookAndFeel() {
 		return configurationService.getLookAndFeel();
 	}
-	
+
 	/**
 	 * Set the look and feel
+	 * 
 	 * @param lookAndFeel
 	 */
-	public void setLookAndFeel(int lookAndFeel){
+	public void setLookAndFeel(int lookAndFeel) {
 		configurationService.setLookAndFeel(lookAndFeel);
 	}
-	
+
 	/**
 	 * @return the theme
 	 */
-	public int getTheme(){
+	public int getTheme() {
 		return configurationService.getTheme();
 	}
-	
+
 	/**
 	 * Set the theme
+	 * 
 	 * @param theme
 	 */
-	public void setTheme(int theme){
+	public void setTheme(int theme) {
 		configurationService.setTheme(theme);
 	}
-	
+
 	/**
 	 * Set the logging level
+	 * 
 	 * @param level
 	 */
-	public void setLoggingLevel(int level){
+	public void setLoggingLevel(int level) {
 		configurationService.setLoggingLevel(level);
 	}
-	
+
 	/**
 	 * save the current configuration
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
-	public void save() throws IOException{
-		configurationService.save(this);
+	public void save() throws IOException {
+		configurationService.save();
 	}
-	
+
 }

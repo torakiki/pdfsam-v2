@@ -23,8 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.listeners.ExitActionListener;
 import org.pdfsam.guiclient.business.listeners.LogActionListener;
+import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
@@ -41,7 +41,6 @@ public class JButtonsPanel extends JPanel {
 	private static final Logger log = Logger.getLogger(JButtonsPanel.class.getPackage().getName());
 	
 	private JToolBar toolBar;
-	private Configuration config;
 	private JButton buttonSaveEnv;
 	private JButton buttonLoadEnv;
 	private JButton buttonSaveLog;
@@ -49,11 +48,12 @@ public class JButtonsPanel extends JPanel {
 	private JButton buttonExit;
 	private EnvironmentMediator envMediator;
 	private LogActionListener logActionListener;
+	private ApplicationExitMediator exitMediator;
 	
-	public JButtonsPanel(EnvironmentMediator envMediator, LogActionListener logActionListener){
+	public JButtonsPanel(EnvironmentMediator envMediator, ApplicationExitMediator exitMediator, LogActionListener logActionListener){
 		this.envMediator = envMediator;
 		this.logActionListener = logActionListener;
-		this.config = Configuration.getInstance();			
+		this.exitMediator = exitMediator;			
 		init();
 	}
 	
@@ -72,28 +72,28 @@ public class JButtonsPanel extends JPanel {
 	
 	        buttonSaveEnv = new JButton(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
 	        buttonSaveEnv.setActionCommand(EnvironmentMediator.SAVE_ENV_ACTION);
-	        buttonSaveEnv.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Save environment"));
+	        buttonSaveEnv.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save environment"));
 	        buttonSaveEnv.addActionListener(envMediator);
 	
 	        buttonLoadEnv = new JButton(new ImageIcon(this.getClass().getResource("/images/fileopen.png")));
 	        buttonLoadEnv.setActionCommand(EnvironmentMediator.LOAD_ENV_ACTION);
-	        buttonLoadEnv.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Load environment"));
+	        buttonLoadEnv.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Load environment"));
 	        buttonLoadEnv.addActionListener(envMediator);
 	        
 	        buttonSaveLog = new JButton(new ImageIcon(this.getClass().getResource("/images/edit-save.png")));
 	        buttonSaveLog.setActionCommand(LogActionListener.SAVE_LOG_ACTION);
-	        buttonSaveLog.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Save log"));
+	        buttonSaveLog.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save log"));
 	        buttonSaveLog.addActionListener(logActionListener);
 	        
 	        buttonClearLog = new JButton(new ImageIcon(this.getClass().getResource("/images/edit-clear.png")));
 	        buttonClearLog.setActionCommand(LogActionListener.CLEAR_LOG_ACTION);
-	        buttonClearLog.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Clear log"));
+	        buttonClearLog.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Clear log"));
 	        buttonClearLog.addActionListener(logActionListener);
 	        
 	        buttonExit = new JButton(new ImageIcon(this.getClass().getResource("/images/exit.png")));
-	        buttonExit.setActionCommand(ExitActionListener.EXIT_COMMAND);
-	        buttonExit.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Exit"));
-	        buttonExit.addActionListener(new ExitActionListener());
+	        buttonExit.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
+	        buttonExit.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Exit"));
+	        buttonExit.addActionListener(exitMediator);
 	        
 	        toolBar.add(buttonSaveEnv);
 	        toolBar.add(buttonLoadEnv);
@@ -104,7 +104,7 @@ public class JButtonsPanel extends JPanel {
 	        toolBar.add(buttonExit);
 	        add(toolBar);
 		}catch(Exception e){
-			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to initialize button bar."), e);
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initialize button bar."), e);
 		}
 	}	
 }
