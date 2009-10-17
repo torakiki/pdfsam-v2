@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 16:22+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-06-17 16:13+0000\n"
 "Last-Translator: le.woj <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -418,10 +418,10 @@ msgstr "Wymagana wersja PDF:"
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
+msgid "Viewer open mode:"
 msgstr ""
 
-msgid "Viewer open mode:"
+msgid "Viewer layout:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
@@ -577,6 +577,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -636,6 +639,9 @@ msgstr "Błąd odtwarzania dźwięku:"
 
 msgid "Error playing sound"
 msgstr "Błąd odtwarzania dźwięku"
+
+msgid "Generating thumbnails using the following library:"
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr ""
@@ -964,31 +970,10 @@ msgstr "Nie obsługiwany typu pliku."
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr ""
-
-msgid "Setting look and feel..."
-msgstr ""
-
-msgid "Setting logging level..."
-msgstr ""
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-
 msgid "Logging level set to "
 msgstr ""
 
 msgid "Unable to set logging level."
-msgstr ""
-
-msgid "Setting default working directory..."
-msgstr "Ustawianie domyślnego katalogu roboczego..."
-
-msgid "Setting default thumbnails creator..."
 msgstr ""
 
 msgid "Error getting plugins directory."
@@ -1051,17 +1036,17 @@ msgstr ""
 msgid "Loading plugins.."
 msgstr "Wczytywanie wtyczek.."
 
-msgid "Building menus.."
-msgstr "Tworzenie menu..."
-
-msgid "Building buttons bar.."
-msgstr "Tworzenie paska przycisków.."
-
 msgid "Building status bar.."
 msgstr "Tworzenie paska stanu.."
 
 msgid "Building tree.."
 msgstr "Tworzenie drzewa..."
+
+msgid "Building menus.."
+msgstr "Tworzenie menu..."
+
+msgid "Building buttons bar.."
+msgstr "Tworzenie paska przycisków.."
 
 msgid "Loading default environment."
 msgstr "Ładowanie środowiska domyślnego."
@@ -1129,9 +1114,6 @@ msgstr "Wystrój:"
 msgid "Language:"
 msgstr "Język:"
 
-msgid "Check for updates:"
-msgstr "Sprawdź aktualizacje:"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1141,7 +1123,7 @@ msgstr "Wczytaj domyślne środowisko przy stracie:"
 msgid "Default working directory:"
 msgstr "Domyślny katalog roboczy:"
 
-msgid "Error getting default environment."
+msgid "Check for updates at startup"
 msgstr ""
 
 msgid "Check now"
@@ -1173,13 +1155,13 @@ msgstr "Poziom logu"
 msgid "Set a log detail level (restart needed)"
 msgstr "Ustaw poziom szczegółowości logu (wymagany restart)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Sprawdź aktualizacje"
 
 msgid "Set when new version availability should be checked (restart needed)"
-msgstr ""
-
-msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1204,6 +1186,14 @@ msgstr "Zapisz dokument"
 
 msgid "Configuration saved."
 msgstr "Zapisano konfigurację."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -1237,12 +1227,6 @@ msgstr "Wersja 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Wersja 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Nigdy"
-
-msgid "pdfsam start up"
-msgstr ""
 
 msgid "Output file location is not correct"
 msgstr ""
@@ -1285,3 +1269,60 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr ""
+
+msgid "Setting logging level..."
+msgstr ""
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Setting default working directory..."
+#~ msgstr "Ustawianie domyślnego katalogu roboczego..."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Sprawdź aktualizacje:"
+
+#~ msgid "Never"
+#~ msgstr "Nigdy"

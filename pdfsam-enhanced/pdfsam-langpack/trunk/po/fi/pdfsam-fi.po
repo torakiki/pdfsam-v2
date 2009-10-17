@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-10 13:28+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -565,10 +565,10 @@ msgstr ""
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
+msgid "Viewer open mode:"
 msgstr ""
 
-msgid "Viewer open mode:"
+msgid "Viewer layout:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
@@ -727,6 +727,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -786,6 +789,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -1212,33 +1218,12 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr ""
-
-msgid "Setting look and feel..."
-msgstr "Määritetään ulkoasua..."
-
-msgid "Setting logging level..."
-msgstr "Asetetaan kirjaustaso..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "Kirjaustasoa ei löytynyt, asetetaan vakioksi (DEBUG)"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:143
 msgid "Logging level set to "
 msgstr "Lokitaso: "
 
 msgid "Unable to set logging level."
 msgstr "Kirjaustason asettaminen ei onnistunut."
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Laajennuksille varatun kansion avaaminen epäonnistui."
@@ -1312,14 +1297,6 @@ msgstr "Aloitettu "
 msgid "Loading plugins.."
 msgstr "Ladataan liitännäisiä."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
-msgid "Building menus.."
-msgstr "Koottaan valikkoja."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
-msgid "Building buttons bar.."
-msgstr "Kootaan työkalurivejä."
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 msgid "Building status bar.."
 msgstr "Kootaan tilariviä."
@@ -1327,6 +1304,14 @@ msgstr "Kootaan tilariviä."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
 msgstr "Kootaan puuta."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
+msgid "Building menus.."
+msgstr "Koottaan valikkoja."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
+msgid "Building buttons bar.."
+msgstr "Kootaan työkalurivejä."
 
 msgid "Loading default environment."
 msgstr ""
@@ -1412,9 +1397,6 @@ msgstr "Teema:"
 msgid "Language:"
 msgstr "Kieli:"
 
-msgid "Check for updates:"
-msgstr "Tarkista uudet päivitykset"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1425,8 +1407,8 @@ msgstr "Lataa oletusympäristö käynnistyksen yhteydessä:"
 msgid "Default working directory:"
 msgstr ""
 
-msgid "Error getting default environment."
-msgstr "Oletuskäyttöympäristön lataaminen epäonnistui."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Tarkista nyt"
@@ -1468,6 +1450,9 @@ msgstr "Lokitaso"
 msgid "Set a log detail level (restart needed)"
 msgstr "Valitse lokin tarkkuus (vaatii uudelleen käynnistyksen)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Tarkista uudet päivitykset"
 
@@ -1475,9 +1460,6 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Määritä, koska uudet päivitykset tarkistetaan (ohjelma pitää käynnistää "
 "uudelleen)"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1508,6 +1490,14 @@ msgstr "Tallenna"
 
 msgid "Configuration saved."
 msgstr "Asetukset tallennettu."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Toteuttamaton metodi JSettingsPanelille"
@@ -1541,12 +1531,6 @@ msgstr "Versio 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Versio 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Ei koskaan"
-
-msgid "pdfsam start up"
-msgstr "pdfsamin käynnistys"
 
 msgid "Output file location is not correct"
 msgstr ""
@@ -1589,6 +1573,66 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "Määritetään ulkoasua..."
+
+msgid "Setting logging level..."
+msgstr "Asetetaan kirjaustaso..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Kirjaustasoa ei löytynyt, asetetaan vakioksi (DEBUG)"
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Check for updates:"
+#~ msgstr "Tarkista uudet päivitykset"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Oletuskäyttöympäristön lataaminen epäonnistui."
+
+#~ msgid "Never"
+#~ msgstr "Ei koskaan"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsamin käynnistys"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

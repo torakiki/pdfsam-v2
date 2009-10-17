@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-05-23 20:42+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
@@ -423,11 +423,11 @@ msgstr "Pdf version required:"
 msgid "No page scaling in print dialog"
 msgstr "No page scaling in print dialog"
 
-msgid "Viewer layout:"
-msgstr "Viewer layout:"
-
 msgid "Viewer open mode:"
 msgstr "Viewer open mode:"
+
+msgid "Viewer layout:"
+msgstr "Viewer layout:"
 
 msgid "Non fullscreen mode:"
 msgstr "Non fullscreen mode:"
@@ -585,6 +585,9 @@ msgstr "Unable to create image for a null input document"
 msgid "Unable to create thumbnails for a null input document"
 msgstr "Unable to create thumbnails for a null input document"
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr "Input file doesn't exists or is a directory"
 
@@ -644,6 +647,9 @@ msgstr "Error playing sound:"
 
 msgid "Error playing sound"
 msgstr "Error playing sound"
+
+msgid "Generating thumbnails using the following library:"
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Selection table is full, please remove some pdf document."
@@ -973,32 +979,11 @@ msgstr "File type not supported."
 msgid "Error during drag and drop."
 msgstr "Error during drag and drop."
 
-msgid "Unable to initializate drag and drop support."
-msgstr "Unable to initializate drag and drop support."
-
-msgid "Unable to get the default environment informations."
-msgstr "Unable to get the default environment information."
-
-msgid "Setting look and feel..."
-msgstr "Setting look and feel..."
-
-msgid "Setting logging level..."
-msgstr "Setting logging level..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "Unable to find log level, setting to default level (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Logging level set to "
 
 msgid "Unable to set logging level."
 msgstr "Unable to set logging level."
-
-msgid "Setting default working directory..."
-msgstr "Setting default working directory..."
-
-msgid "Setting default thumbnails creator..."
-msgstr "Setting default thumbnails creator..."
 
 msgid "Error getting plugins directory."
 msgstr "Error getting plugins directory."
@@ -1060,17 +1045,17 @@ msgstr "started in "
 msgid "Loading plugins.."
 msgstr "Loading plugins.."
 
-msgid "Building menus.."
-msgstr "Building menus.."
-
-msgid "Building buttons bar.."
-msgstr "Building buttons bar.."
-
 msgid "Building status bar.."
 msgstr "Building status bar.."
 
 msgid "Building tree.."
 msgstr "Building tree.."
+
+msgid "Building menus.."
+msgstr "Building menus.."
+
+msgid "Building buttons bar.."
+msgstr "Building buttons bar.."
 
 msgid "Loading default environment."
 msgstr "Loading default environment."
@@ -1138,9 +1123,6 @@ msgstr "Theme:"
 msgid "Language:"
 msgstr "Language:"
 
-msgid "Check for updates:"
-msgstr "Check for updates:"
-
 msgid "Thumbnails creator"
 msgstr "Thumbnails creator"
 
@@ -1150,8 +1132,8 @@ msgstr "Load default environment at startup:"
 msgid "Default working directory:"
 msgstr "Default working directory:"
 
-msgid "Error getting default environment."
-msgstr "Error getting default environment."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Check now"
@@ -1182,14 +1164,14 @@ msgstr "Log level"
 msgid "Set a log detail level (restart needed)"
 msgstr "Set a log detail level (restart needed)"
 
+msgid "Set the thumbnails creation library"
+msgstr "Set the thumbnails creation library"
+
 msgid "Check for updates"
 msgstr "Check for updates"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "Set when new version availability should be checked (restart needed)"
-
-msgid "Set the thumbnails creation library"
-msgstr "Set the thumbnails creation library"
 
 msgid "Turn on or off alert sounds"
 msgstr "Turn on or off alert sounds"
@@ -1215,6 +1197,14 @@ msgstr "Save"
 
 msgid "Configuration saved."
 msgstr "Configuration saved."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Unimplemented method for JSettingsPanel"
@@ -1248,12 +1238,6 @@ msgstr "Version 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Version 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Never"
-
-msgid "pdfsam start up"
-msgstr "pdfsam start up"
 
 msgid "Output file location is not correct"
 msgstr "Output file location is not correct"
@@ -1299,6 +1283,75 @@ msgstr "List full"
 
 msgid "Error retrieving page saved informations"
 msgstr "Error retrieving page saved informations"
+
+msgid "Unable to initializate drag and drop support."
+msgstr "Unable to initializate drag and drop support."
+
+msgid "Setting look and feel..."
+msgstr "Setting look and feel..."
+
+msgid "Setting logging level..."
+msgstr "Setting logging level..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Unable to find log level, setting to default level (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Unable to get the default environment information."
+
+#~ msgid "Setting default working directory..."
+#~ msgstr "Setting default working directory..."
+
+#~ msgid "Setting default thumbnails creator..."
+#~ msgstr "Setting default thumbnails creator..."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Check for updates:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Error getting default environment."
+
+#~ msgid "Never"
+#~ msgstr "Never"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam start up"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-29 00:08+0000\n"
 "Last-Translator: sfbi <wonease@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -542,10 +542,10 @@ msgstr ""
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
+msgid "Viewer open mode:"
 msgstr ""
 
-msgid "Viewer open mode:"
+msgid "Viewer layout:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
@@ -703,6 +703,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -761,6 +764,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -1178,32 +1184,11 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr "无法获取默认环境设置信息。"
-
-msgid "Setting look and feel..."
-msgstr "设置外观和感觉..."
-
-msgid "Setting logging level..."
-msgstr "设置日志级别 ..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "无法获取日志级别，设置为默认级别 (DEBUG)。"
-
 msgid "Logging level set to "
 msgstr "日志级别设置为： "
 
 msgid "Unable to set logging level."
 msgstr "无法设置日志级别。"
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "获取插件目录出错。"
@@ -1276,14 +1261,6 @@ msgstr "开始于 "
 msgid "Loading plugins.."
 msgstr "载入插件..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
-msgid "Building menus.."
-msgstr "生成菜单..."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
-msgid "Building buttons bar.."
-msgstr "构建按钮栏..."
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 msgid "Building status bar.."
 msgstr "构建状态栏..."
@@ -1291,6 +1268,14 @@ msgstr "构建状态栏..."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
 msgstr "构建树形图..."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
+msgid "Building menus.."
+msgstr "生成菜单..."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
+msgid "Building buttons bar.."
+msgstr "构建按钮栏..."
 
 msgid "Loading default environment."
 msgstr "加载默认的环境设置"
@@ -1369,9 +1354,6 @@ msgstr "主题:"
 msgid "Language:"
 msgstr "语言:"
 
-msgid "Check for updates:"
-msgstr "检查更新："
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1382,8 +1364,8 @@ msgstr "启动时载入默认环境："
 msgid "Default working directory:"
 msgstr "默认工作目录："
 
-msgid "Error getting default environment."
-msgstr "获取默认环境失败."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "立即检查"
@@ -1425,14 +1407,14 @@ msgstr "日志级别"
 msgid "Set a log detail level (restart needed)"
 msgstr "设置日期详细级别（需要重新启动）"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "检查更新"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "设置是否检测更新（需要重启）"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1461,6 +1443,14 @@ msgstr "保存"
 
 msgid "Configuration saved."
 msgstr "配置已保存。"
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "JSettingsPanel 未实现的方法"
@@ -1494,12 +1484,6 @@ msgstr "1.6 版 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "1.7 版 (Acrobat 8)"
-
-msgid "Never"
-msgstr "从不"
-
-msgid "pdfsam start up"
-msgstr "pdfsam 开始运行"
 
 msgid "Output file location is not correct"
 msgstr "输出文件位置错误"
@@ -1542,6 +1526,69 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "设置外观和感觉..."
+
+msgid "Setting logging level..."
+msgstr "设置日志级别 ..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "无法获取日志级别，设置为默认级别 (DEBUG)。"
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "无法获取默认环境设置信息。"
+
+#~ msgid "Check for updates:"
+#~ msgstr "检查更新："
+
+#~ msgid "Error getting default environment."
+#~ msgstr "获取默认环境失败."
+
+#~ msgid "Never"
+#~ msgstr "从不"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam 开始运行"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

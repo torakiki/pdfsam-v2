@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 16:22+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-08-20 09:56+0000\n"
 "Last-Translator: Glen Ng <pariahsoc@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -415,11 +415,11 @@ msgstr "所需的 PDF 版本："
 msgid "No page scaling in print dialog"
 msgstr "列印對話框中未指定頁面的比例"
 
-msgid "Viewer layout:"
-msgstr "檢視器配置："
-
 msgid "Viewer open mode:"
 msgstr "以檢視器開啟模式："
+
+msgid "Viewer layout:"
+msgstr "檢視器配置："
 
 msgid "Non fullscreen mode:"
 msgstr "非全螢幕模式："
@@ -574,6 +574,9 @@ msgstr "無法為一個空的輸入文件建立影像"
 msgid "Unable to create thumbnails for a null input document"
 msgstr "無法為一個空的輸入文件建立縮圖"
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr "輸入檔不存在或是個資料夾"
 
@@ -633,6 +636,9 @@ msgstr "播放音效時出錯："
 
 msgid "Error playing sound"
 msgstr "播放音效時出錯"
+
+msgid "Generating thumbnails using the following library:"
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "選取清單已滿，請移除某個 PDF 文件。"
@@ -961,32 +967,11 @@ msgstr "不支援此種檔案類型。"
 msgid "Error during drag and drop."
 msgstr "拖拉文件時出錯。"
 
-msgid "Unable to initializate drag and drop support."
-msgstr "無法初始化文件拖拉功能。"
-
-msgid "Unable to get the default environment informations."
-msgstr "無法取得預設的環境變數資訊。"
-
-msgid "Setting look and feel..."
-msgstr "正在設定外觀..."
-
-msgid "Setting logging level..."
-msgstr "正在設定紀錄檔層級..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "無法找到紀錄檔層級，設定為預設層級（偵錯）。"
-
 msgid "Logging level set to "
 msgstr "紀錄檔層級已設為 "
 
 msgid "Unable to set logging level."
 msgstr "無法設定紀錄檔層級。"
-
-msgid "Setting default working directory..."
-msgstr "正在設定預設的工作目錄..."
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "無法取得增效模組目錄。"
@@ -1048,17 +1033,17 @@ msgstr "已啟動於 "
 msgid "Loading plugins.."
 msgstr "正在載入增效模組..."
 
-msgid "Building menus.."
-msgstr "正在建立選單..."
-
-msgid "Building buttons bar.."
-msgstr "正在建立工具列..."
-
 msgid "Building status bar.."
 msgstr "正在建立狀態列..."
 
 msgid "Building tree.."
 msgstr "正在建立樹狀目錄..."
+
+msgid "Building menus.."
+msgstr "正在建立選單..."
+
+msgid "Building buttons bar.."
+msgstr "正在建立工具列..."
 
 msgid "Loading default environment."
 msgstr "正在載入預設環境變數。"
@@ -1126,9 +1111,6 @@ msgstr "佈景主題："
 msgid "Language:"
 msgstr "語系："
 
-msgid "Check for updates:"
-msgstr "檢查更新："
-
 msgid "Thumbnails creator"
 msgstr "縮圖製作程式"
 
@@ -1138,8 +1120,8 @@ msgstr "啟動時載入預設環境變數："
 msgid "Default working directory:"
 msgstr "預設的工作目錄："
 
-msgid "Error getting default environment."
-msgstr "無法取得預設環境變數。"
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "立刻檢查"
@@ -1169,14 +1151,14 @@ msgstr "紀錄檔層級"
 msgid "Set a log detail level (restart needed)"
 msgstr "請設定一個紀錄檔細節層級（需要重新啟動）"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "檢查更新"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "設定何時該檢查更新（需要重新啟動）"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "開啟或關閉警示音效"
@@ -1200,6 +1182,14 @@ msgstr "儲存"
 
 msgid "Configuration saved."
 msgstr "設定已儲存。"
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "尚未實作的 JSettingsPanel 方法"
@@ -1233,12 +1223,6 @@ msgstr "1.6 版（Acrobat 7）"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "1.7 版（Acrobat 8）"
-
-msgid "Never"
-msgstr "從不"
-
-msgid "pdfsam start up"
-msgstr "pdfsam 啟動時"
 
 msgid "Output file location is not correct"
 msgstr "輸出檔位置並不正確"
@@ -1281,6 +1265,72 @@ msgstr "清單已滿"
 
 msgid "Error retrieving page saved informations"
 msgstr "存取頁面存檔資訊時發生錯誤。"
+
+msgid "Unable to initializate drag and drop support."
+msgstr "無法初始化文件拖拉功能。"
+
+msgid "Setting look and feel..."
+msgstr "正在設定外觀..."
+
+msgid "Setting logging level..."
+msgstr "正在設定紀錄檔層級..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "無法找到紀錄檔層級，設定為預設層級（偵錯）。"
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "無法取得預設的環境變數資訊。"
+
+#~ msgid "Setting default working directory..."
+#~ msgstr "正在設定預設的工作目錄..."
+
+#~ msgid "Check for updates:"
+#~ msgstr "檢查更新："
+
+#~ msgid "Error getting default environment."
+#~ msgstr "無法取得預設環境變數。"
+
+#~ msgid "Never"
+#~ msgstr "從不"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam 啟動時"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-05-23 20:29+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
@@ -429,11 +429,11 @@ msgstr "Version pdf requise :"
 msgid "No page scaling in print dialog"
 msgstr "Pas d'échelle dans la fenêtre d'impression"
 
-msgid "Viewer layout:"
-msgstr "Mode d'affichage des pages :"
-
 msgid "Viewer open mode:"
 msgstr "Mode d'ouverture de la fenêtre :"
+
+msgid "Viewer layout:"
+msgstr "Mode d'affichage des pages :"
 
 msgid "Non fullscreen mode:"
 msgstr "En sortie du plein écran :"
@@ -592,6 +592,9 @@ msgstr "Création d'image impossible à partir un document vide"
 msgid "Unable to create thumbnails for a null input document"
 msgstr "Création des miniatures impossible à partir un document vide"
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr "Le chemin désigne un fichier qui n'existe pas ou un dossier"
 
@@ -652,6 +655,9 @@ msgstr "Erreur lors de la lecture du son :"
 
 msgid "Error playing sound"
 msgstr "Erreur de lecture du son"
+
+msgid "Generating thumbnails using the following library:"
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Le tableau de sélection est complet, veuillez enlever des pdf."
@@ -1016,32 +1022,11 @@ msgstr "Type de fichier non supporté."
 msgid "Error during drag and drop."
 msgstr "Erreur lors du Glisser-Déposer."
 
-msgid "Unable to initializate drag and drop support."
-msgstr "Initialisation de la gestion du Glisser-Déposer Impossible."
-
-msgid "Unable to get the default environment informations."
-msgstr "Acquisition des informations de configuration par défaut impossible."
-
-msgid "Setting look and feel..."
-msgstr "Réglage de l'apparence..."
-
-msgid "Setting logging level..."
-msgstr "Réglage du journal..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "Niveau de journal introuvable, réglage au niveau par défaut (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Niveau du journal réglé sur "
 
 msgid "Unable to set logging level."
 msgstr "Réglage du niveau de journal impossible."
-
-msgid "Setting default working directory..."
-msgstr "Réglage du répertoire de travail par défaut..."
-
-msgid "Setting default thumbnails creator..."
-msgstr "Réglage du générateur de miniatures par défaut..."
 
 msgid "Error getting plugins directory."
 msgstr "Erreur d'accès au dossier des modules."
@@ -1110,17 +1095,17 @@ msgstr "démarré en "
 msgid "Loading plugins.."
 msgstr "Chargement des modules..."
 
-msgid "Building menus.."
-msgstr "Génération des menus..."
-
-msgid "Building buttons bar.."
-msgstr "Génération de la barre d'icônes..."
-
 msgid "Building status bar.."
 msgstr "Génération de la barre d'état..."
 
 msgid "Building tree.."
 msgstr "Génération de l'arborescence..."
+
+msgid "Building menus.."
+msgstr "Génération des menus..."
+
+msgid "Building buttons bar.."
+msgstr "Génération de la barre d'icônes..."
 
 msgid "Loading default environment."
 msgstr "Chargement de configuration par défaut."
@@ -1196,9 +1181,6 @@ msgstr "Thème :"
 msgid "Language:"
 msgstr "Langue :"
 
-msgid "Check for updates:"
-msgstr "Mises à jour :"
-
 msgid "Thumbnails creator"
 msgstr "Générateur de miniatures"
 
@@ -1208,8 +1190,8 @@ msgstr "Configuration par défaut :"
 msgid "Default working directory:"
 msgstr "Répertoire de travail par défaut :"
 
-msgid "Error getting default environment."
-msgstr "Erreur d'acquisition de configuration."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Vérifier maintenant"
@@ -1241,6 +1223,9 @@ msgid "Set a log detail level (restart needed)"
 msgstr ""
 "Choisissez le niveau de détail de la journalisation (redémarrage nécessaire)"
 
+msgid "Set the thumbnails creation library"
+msgstr "Sélectionnez la bibliothèque de création de miniatures"
+
 msgid "Check for updates"
 msgstr "Recherche de mises à jour"
 
@@ -1248,9 +1233,6 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Choisissez le moment de recherche d'une nouvelle version (redémarrage "
 "nécessaire)"
-
-msgid "Set the thumbnails creation library"
-msgstr "Sélectionnez la bibliothèque de création de miniatures"
 
 msgid "Turn on or off alert sounds"
 msgstr "Activez ou désactivez les alertes sonores"
@@ -1278,6 +1260,14 @@ msgstr "Enregistrer"
 
 msgid "Configuration saved."
 msgstr "Réglages enregistrés."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Méthode non implémentée pour JSettingsPanel"
@@ -1311,12 +1301,6 @@ msgstr "Version 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Version 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Ne jamais vérifier"
-
-msgid "pdfsam start up"
-msgstr "Vérifier au démarrage"
 
 msgid "Output file location is not correct"
 msgstr "Le chemin vers le fichier à créer n'est pas valide"
@@ -1363,6 +1347,76 @@ msgstr "Liste complète"
 
 msgid "Error retrieving page saved informations"
 msgstr "Erreur d'accès aux informations de la page"
+
+msgid "Unable to initializate drag and drop support."
+msgstr "Initialisation de la gestion du Glisser-Déposer Impossible."
+
+msgid "Setting look and feel..."
+msgstr "Réglage de l'apparence..."
+
+msgid "Setting logging level..."
+msgstr "Réglage du journal..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Niveau de journal introuvable, réglage au niveau par défaut (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr ""
+#~ "Acquisition des informations de configuration par défaut impossible."
+
+#~ msgid "Setting default working directory..."
+#~ msgstr "Réglage du répertoire de travail par défaut..."
+
+#~ msgid "Setting default thumbnails creator..."
+#~ msgstr "Réglage du générateur de miniatures par défaut..."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Mises à jour :"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Erreur d'acquisition de configuration."
+
+#~ msgid "Never"
+#~ msgstr "Ne jamais vérifier"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "Vérifier au démarrage"
 
 #~ msgid "Cover pdf file"
 #~ msgstr "Première de couverture"

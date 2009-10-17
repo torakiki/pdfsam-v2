@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-10 13:29+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -415,10 +415,10 @@ msgstr ""
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
+msgid "Viewer open mode:"
 msgstr ""
 
-msgid "Viewer open mode:"
+msgid "Viewer layout:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
@@ -574,6 +574,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -632,6 +635,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -961,32 +967,11 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr ""
-
-msgid "Setting look and feel..."
-msgstr "外観の設定..."
-
-msgid "Setting logging level..."
-msgstr "ログ記録レベルの設定..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-
 msgid "Logging level set to "
 msgstr "ログ記録レベルを設定: "
 
 msgid "Unable to set logging level."
 msgstr "ログ記録レベルを設定できませんでした。"
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "プラグインのディレクトリを取得できませんでした。"
@@ -1048,17 +1033,17 @@ msgstr ""
 msgid "Loading plugins.."
 msgstr "プラグインをロード中..."
 
-msgid "Building menus.."
-msgstr "メニューを構成中..."
-
-msgid "Building buttons bar.."
-msgstr "ボタンバーを構成中..."
-
 msgid "Building status bar.."
 msgstr "ステータスバーを構成中..."
 
 msgid "Building tree.."
 msgstr "ツリーを構成中..."
+
+msgid "Building menus.."
+msgstr "メニューを構成中..."
+
+msgid "Building buttons bar.."
+msgstr "ボタンバーを構成中..."
 
 msgid "Loading default environment."
 msgstr "デフォルト環境をロード中。"
@@ -1126,9 +1111,6 @@ msgstr "テーマ:"
 msgid "Language:"
 msgstr "言語："
 
-msgid "Check for updates:"
-msgstr "更新の確認:"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1138,7 +1120,7 @@ msgstr "開始時にデフォルト環境をロード:"
 msgid "Default working directory:"
 msgstr "デフォルトの作業ディレクトリ:"
 
-msgid "Error getting default environment."
+msgid "Check for updates at startup"
 msgstr ""
 
 msgid "Check now"
@@ -1169,13 +1151,13 @@ msgstr "ログレベル"
 msgid "Set a log detail level (restart needed)"
 msgstr ""
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "更新の確認"
 
 msgid "Set when new version availability should be checked (restart needed)"
-msgstr ""
-
-msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1199,6 +1181,14 @@ msgid "Save"
 msgstr "保存"
 
 msgid "Configuration saved."
+msgstr ""
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
 msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
@@ -1232,12 +1222,6 @@ msgid "Version 1.6 (Acrobat 7)"
 msgstr ""
 
 msgid "Version 1.7 (Acrobat 8)"
-msgstr ""
-
-msgid "Never"
-msgstr ""
-
-msgid "pdfsam start up"
 msgstr ""
 
 msgid "Output file location is not correct"
@@ -1281,6 +1265,57 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "外観の設定..."
+
+msgid "Setting logging level..."
+msgstr "ログ記録レベルの設定..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Check for updates:"
+#~ msgstr "更新の確認:"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

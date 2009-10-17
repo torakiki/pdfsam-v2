@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-05-23 21:02+0000\n"
 "Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -492,11 +492,11 @@ msgstr "Version de PDF requerida:"
 msgid "No page scaling in print dialog"
 msgstr "Sin escalado de página en el diálogo de impresión"
 
-msgid "Viewer layout:"
-msgstr "Disposición del visor:"
-
 msgid "Viewer open mode:"
 msgstr "Modo de apertura del visor:"
+
+msgid "Viewer layout:"
+msgstr "Disposición del visor:"
 
 msgid "Non fullscreen mode:"
 msgstr "Sin modo de pantalla completa:"
@@ -660,6 +660,9 @@ msgstr "No se puede crear la imagen para un documento de entrada vacío"
 msgid "Unable to create thumbnails for a null input document"
 msgstr "No se puede crear miniaturas para un documento de entrada vacío"
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr "El archivo de entrada no existe o es un directorio"
 
@@ -719,6 +722,9 @@ msgstr "Error reproduciendo sonido:"
 
 msgid "Error playing sound"
 msgstr "Error reproduciendo sonido"
+
+msgid "Generating thumbnails using the following library:"
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr ""
@@ -1150,34 +1156,11 @@ msgstr "Tipo de archivo no soportado."
 msgid "Error during drag and drop."
 msgstr "Error al arrastrar y soltar."
 
-msgid "Unable to initializate drag and drop support."
-msgstr "No se puede inicializar el soporte para arrastrar y soltar."
-
-msgid "Unable to get the default environment informations."
-msgstr "Incapaz de obtener las informaciones del ambiente predefinido."
-
-msgid "Setting look and feel..."
-msgstr "Estableciendo apariencia..."
-
-msgid "Setting logging level..."
-msgstr "Estableciendo nivel de ingreso..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Incapaz de encontrar nivel de registro, estableciendo el nivel "
-"predeterminado (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Nivel de registro establecido a "
 
 msgid "Unable to set logging level."
 msgstr "Incapaz de establecer nivel de registro."
-
-msgid "Setting default working directory..."
-msgstr "Asigando directorio de trabajo por defecto..."
-
-msgid "Setting default thumbnails creator..."
-msgstr "Asignando del creador de miniaturas por defecto..."
 
 msgid "Error getting plugins directory."
 msgstr "Error al obtener el directorio de plugins"
@@ -1246,14 +1229,6 @@ msgstr "comenzado en "
 msgid "Loading plugins.."
 msgstr "Cargando complementos..."
 
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:169
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
-msgid "Building menus.."
-msgstr "Creando menús..."
-
-msgid "Building buttons bar.."
-msgstr "Construyendo barra de botones.."
-
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 msgid "Building status bar.."
@@ -1263,6 +1238,14 @@ msgstr "Creando barra de estado..."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
 msgstr "Creando árbol..."
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:169
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
+msgid "Building menus.."
+msgstr "Creando menús..."
+
+msgid "Building buttons bar.."
+msgstr "Construyendo barra de botones.."
 
 msgid "Loading default environment."
 msgstr "Cargando ambiente predeterminado."
@@ -1349,9 +1332,6 @@ msgstr "Tema:"
 msgid "Language:"
 msgstr "Lenguaje:"
 
-msgid "Check for updates:"
-msgstr "Buscar actualizaciones:"
-
 msgid "Thumbnails creator"
 msgstr "Creador de miniaturas"
 
@@ -1361,8 +1341,8 @@ msgstr "Cargar ambiente predeterminado al inicio:"
 msgid "Default working directory:"
 msgstr "Direectorio de trabajo predeterminado:"
 
-msgid "Error getting default environment."
-msgstr "Error al obtener el ambiente predeterminado."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Revisar ahora"
@@ -1395,6 +1375,9 @@ msgstr "Nivel de registro"
 msgid "Set a log detail level (restart needed)"
 msgstr "Establezca un nivel de detalle de registro (necesario reiniciar)"
 
+msgid "Set the thumbnails creation library"
+msgstr "Asignar la biblioteca de creación de miniaturas"
+
 msgid "Check for updates"
 msgstr "Comprobar actualizaciones"
 
@@ -1402,9 +1385,6 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Establezca cuando la disponibilidad de una nueva versión debería ser "
 "revisada (necesita reiniciar)"
-
-msgid "Set the thumbnails creation library"
-msgstr "Asignar la biblioteca de creación de miniaturas"
 
 msgid "Turn on or off alert sounds"
 msgstr "Encender o apagar los sonidos de alerta"
@@ -1432,6 +1412,14 @@ msgstr "Guardar"
 
 msgid "Configuration saved."
 msgstr "Configuración guardada."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Método no implementado de JSettingsPanel"
@@ -1465,12 +1453,6 @@ msgstr "Versión 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Versión 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Nunca"
-
-msgid "pdfsam start up"
-msgstr "Inicio de pdfsam"
 
 msgid "Output file location is not correct"
 msgstr "La ubicación  del archivo no es correcta"
@@ -1517,6 +1499,77 @@ msgstr "Lista llena"
 
 msgid "Error retrieving page saved informations"
 msgstr "Error obteniendo informaciones de página guardada"
+
+msgid "Unable to initializate drag and drop support."
+msgstr "No se puede inicializar el soporte para arrastrar y soltar."
+
+msgid "Setting look and feel..."
+msgstr "Estableciendo apariencia..."
+
+msgid "Setting logging level..."
+msgstr "Estableciendo nivel de ingreso..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+"Incapaz de encontrar nivel de registro, estableciendo el nivel "
+"predeterminado (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Incapaz de obtener las informaciones del ambiente predefinido."
+
+#~ msgid "Setting default working directory..."
+#~ msgstr "Asigando directorio de trabajo por defecto..."
+
+#~ msgid "Setting default thumbnails creator..."
+#~ msgstr "Asignando del creador de miniaturas por defecto..."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Buscar actualizaciones:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Error al obtener el ambiente predeterminado."
+
+#~ msgid "Never"
+#~ msgstr "Nunca"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "Inicio de pdfsam"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

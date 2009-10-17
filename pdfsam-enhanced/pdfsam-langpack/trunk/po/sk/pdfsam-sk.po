@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -421,10 +421,10 @@ msgstr ""
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
+msgid "Viewer open mode:"
 msgstr ""
 
-msgid "Viewer open mode:"
+msgid "Viewer layout:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
@@ -581,6 +581,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -639,6 +642,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -968,32 +974,11 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr "Nemôžem získať predvolené informácie o prostredí."
-
-msgid "Setting look and feel..."
-msgstr "Nastavenie vzhľadu..."
-
-msgid "Setting logging level..."
-msgstr "Nastavenie prihlasovacej úrovne..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Záznamová úroveň nastavená na "
 
 msgid "Unable to set logging level."
 msgstr "Nemôžem nastaviť úroveň záznamu."
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Chyba pri čítaní adresáru plaginov"
@@ -1055,17 +1040,17 @@ msgstr "spustený v "
 msgid "Loading plugins.."
 msgstr "Nahrávam pluginy..."
 
-msgid "Building menus.."
-msgstr "Vytváram menu..."
-
-msgid "Building buttons bar.."
-msgstr "Vytváram panel nástrojov..."
-
 msgid "Building status bar.."
 msgstr "Vytváram stavový riadok..."
 
 msgid "Building tree.."
 msgstr "Vytváram strom..."
+
+msgid "Building menus.."
+msgstr "Vytváram menu..."
+
+msgid "Building buttons bar.."
+msgstr "Vytváram panel nástrojov..."
 
 msgid "Loading default environment."
 msgstr "Nahrávam predvolené prostredie."
@@ -1133,9 +1118,6 @@ msgstr "Motív:"
 msgid "Language:"
 msgstr "Jazyk:"
 
-msgid "Check for updates:"
-msgstr "Skontrolovať aktualizácie:"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1145,8 +1127,8 @@ msgstr "Nahrať pôvodné prostredie pri štarte:"
 msgid "Default working directory:"
 msgstr "Predvolený pracovný priečinok:"
 
-msgid "Error getting default environment."
-msgstr "Chyba pri nastavení pôvodného prostredia."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Zaškrtnúť teraz"
@@ -1176,15 +1158,15 @@ msgstr "Úroveň záznamu"
 msgid "Set a log detail level (restart needed)"
 msgstr "Nastav úroveň záznamu (vyžaduje reštart)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Skontrolovať aktualizácie"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Nastaviť kedy sa má kontrolovať dostupnosť novej verzie (vyžaduje reštart)"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1210,6 +1192,14 @@ msgstr "Uložiť"
 
 msgid "Configuration saved."
 msgstr "Konfigurácia uložená."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Neimplementovaná metóda pre JSettings Panel"
@@ -1243,12 +1233,6 @@ msgstr "Verzia 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Verzia 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Nikdy"
-
-msgid "pdfsam start up"
-msgstr "spustenie pdfsam"
 
 msgid "Output file location is not correct"
 msgstr "Nesprávne umiestnenie výstupu"
@@ -1291,6 +1275,69 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "Nastavenie vzhľadu..."
+
+msgid "Setting logging level..."
+msgstr "Nastavenie prihlasovacej úrovne..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Nemôžem nájsť úroveň záznamu, nastavujem na predvolenú úroveň (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Nemôžem získať predvolené informácie o prostredí."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Skontrolovať aktualizácie:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Chyba pri nastavení pôvodného prostredia."
+
+#~ msgid "Never"
+#~ msgstr "Nikdy"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "spustenie pdfsam"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

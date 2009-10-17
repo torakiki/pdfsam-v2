@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -425,11 +425,11 @@ msgstr "Versão de Pdf requerida"
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
-msgstr "Layout do Visualizador"
-
 msgid "Viewer open mode:"
 msgstr ""
+
+msgid "Viewer layout:"
+msgstr "Layout do Visualizador"
 
 msgid "Non fullscreen mode:"
 msgstr ""
@@ -585,6 +585,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -643,6 +646,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -974,34 +980,11 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr "Incapaz de obter as informações do ambiente padrão."
-
-msgid "Setting look and feel..."
-msgstr "Definindo aparência..."
-
-msgid "Setting logging level..."
-msgstr "Definindo nível de log..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Não foi possível carregar o log do nível, configurando para nível padrão "
-"(DEBUG)"
-
 msgid "Logging level set to "
 msgstr "Nível do log definido para "
 
 msgid "Unable to set logging level."
 msgstr "Não foi possível definir o nível de log."
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Erro ao recuperar diretório de plugins."
@@ -1063,17 +1046,17 @@ msgstr "iniciado em "
 msgid "Loading plugins.."
 msgstr "Carregando plugins.."
 
-msgid "Building menus.."
-msgstr "Construindo menus.."
-
-msgid "Building buttons bar.."
-msgstr "Construindo barra de botões.."
-
 msgid "Building status bar.."
 msgstr "Construindo barra de status.."
 
 msgid "Building tree.."
 msgstr "Construindo árvore.."
+
+msgid "Building menus.."
+msgstr "Construindo menus.."
+
+msgid "Building buttons bar.."
+msgstr "Construindo barra de botões.."
 
 msgid "Loading default environment."
 msgstr "Carregando ambiente padrão."
@@ -1141,9 +1124,6 @@ msgstr "Tema:"
 msgid "Language:"
 msgstr "Linguagem:"
 
-msgid "Check for updates:"
-msgstr "Verificar se há atualizações"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1153,8 +1133,8 @@ msgstr "Carregar ambiente padrão ao iniciar:"
 msgid "Default working directory:"
 msgstr "Diretório padrão:"
 
-msgid "Error getting default environment."
-msgstr "Erro ao recuperar ambiente padrão."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Verificar agora"
@@ -1184,14 +1164,14 @@ msgstr "Nível de log"
 msgid "Set a log detail level (restart needed)"
 msgstr "Define o nível de detalhamento do log (reinício necessário)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Verificar se há atualizações"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr "Define quando procurar por nova versão (é necessário reiniciar)"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "Ligar ou desligar alert sonoros"
@@ -1217,6 +1197,14 @@ msgstr "Salvar"
 
 msgid "Configuration saved."
 msgstr "Configuração salva."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Método não implementado para JSettingsPanel"
@@ -1250,12 +1238,6 @@ msgstr "Versão 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Versão 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Jamais"
-
-msgid "pdfsam start up"
-msgstr "inicialização do pdfsam"
 
 msgid "Output file location is not correct"
 msgstr "O local do arquivo de saída está incorreto"
@@ -1300,6 +1282,71 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "Definindo aparência..."
+
+msgid "Setting logging level..."
+msgstr "Definindo nível de log..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+"Não foi possível carregar o log do nível, configurando para nível padrão "
+"(DEBUG)"
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Incapaz de obter as informações do ambiente padrão."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Verificar se há atualizações"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Erro ao recuperar ambiente padrão."
+
+#~ msgid "Never"
+#~ msgstr "Jamais"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "inicialização do pdfsam"
 
 #~ msgid "Cover pdf file"
 #~ msgstr "Capa do arquivo pdf"

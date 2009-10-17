@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-10 13:37+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -483,10 +483,10 @@ msgstr ""
 msgid "No page scaling in print dialog"
 msgstr ""
 
-msgid "Viewer layout:"
+msgid "Viewer open mode:"
 msgstr ""
 
-msgid "Viewer open mode:"
+msgid "Viewer layout:"
 msgstr ""
 
 msgid "Non fullscreen mode:"
@@ -642,6 +642,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -700,6 +703,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -1117,32 +1123,11 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr "Kunde ej hämta den förvalda omgivningsinormationen"
-
-msgid "Setting look and feel..."
-msgstr "Bestämmer utseende..."
-
-msgid "Setting logging level..."
-msgstr "Sätter loggningsnivå..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr "Gick inte att sätta loggningsnivå, använder normalnivå (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Loggningsnivå satt till "
 
 msgid "Unable to set logging level."
 msgstr "Gå ej att sätta loggningsnivå."
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Fel vid läsning av pluginarkiv."
@@ -1207,17 +1192,17 @@ msgstr "startad i "
 msgid "Loading plugins.."
 msgstr "Laddar plugin.."
 
-msgid "Building menus.."
-msgstr "Bygger menyer.."
-
-msgid "Building buttons bar.."
-msgstr "Bygger knapprader..."
-
 msgid "Building status bar.."
 msgstr "Bygger statusrad..."
 
 msgid "Building tree.."
 msgstr "Bygger träd..."
+
+msgid "Building menus.."
+msgstr "Bygger menyer.."
+
+msgid "Building buttons bar.."
+msgstr "Bygger knapprader..."
 
 msgid "Loading default environment."
 msgstr "Laddar förvald omgivning"
@@ -1297,9 +1282,6 @@ msgstr "Tema:"
 msgid "Language:"
 msgstr "Språk:"
 
-msgid "Check for updates:"
-msgstr "Sök efter uppdateringar:"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1309,8 +1291,8 @@ msgstr "Ladda standardmiljö vid uppstart:"
 msgid "Default working directory:"
 msgstr "Förvald arbetsmapp:"
 
-msgid "Error getting default environment."
-msgstr "Fel vid laddning av standardmiljö:"
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Kontrollera nu"
@@ -1342,6 +1324,9 @@ msgstr "Loggningsnivå"
 msgid "Set a log detail level (restart needed)"
 msgstr "Sätt loggen detaljnivå (omstart krävs)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Sök efter uppdateringar"
 
@@ -1349,9 +1334,6 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Ställ in när du vill att programmet ska söka efter nya uppdateringar "
 "(omstart krävs)"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr ""
@@ -1375,6 +1357,14 @@ msgstr "Spara"
 
 msgid "Configuration saved."
 msgstr "Konfiguration sparad."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Ej införd metod för JSettingsPanel"
@@ -1408,12 +1398,6 @@ msgstr "Version 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Version 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Aldrig"
-
-msgid "pdfsam start up"
-msgstr "pdfsam uppstart"
 
 msgid "Output file location is not correct"
 msgstr "Sökvägen till målfilen är felaktig"
@@ -1456,6 +1440,69 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "Bestämmer utseende..."
+
+msgid "Setting logging level..."
+msgstr "Sätter loggningsnivå..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr "Gick inte att sätta loggningsnivå, använder normalnivå (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Kunde ej hämta den förvalda omgivningsinormationen"
+
+#~ msgid "Check for updates:"
+#~ msgstr "Sök efter uppdateringar:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Fel vid laddning av standardmiljö:"
+
+#~ msgid "Never"
+#~ msgstr "Aldrig"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam uppstart"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

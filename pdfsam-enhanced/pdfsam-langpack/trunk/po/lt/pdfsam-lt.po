@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-03-10 13:30+0000\n"
 "Last-Translator: Simas J <simasj@gmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -425,11 +425,11 @@ msgstr "Reikalinga pdf versija:"
 msgid "No page scaling in print dialog"
 msgstr "Nerodyti puslapio dydžio keitimo spausdinimo dialoge"
 
-msgid "Viewer layout:"
-msgstr "Žiūryklės išdėstymas"
-
 msgid "Viewer open mode:"
 msgstr "Žiūryklės atidarymo režimas"
+
+msgid "Viewer layout:"
+msgstr "Žiūryklės išdėstymas"
 
 msgid "Non fullscreen mode:"
 msgstr "Vaizdas ne viso ekrano režimu"
@@ -586,6 +586,9 @@ msgstr ""
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
@@ -644,6 +647,9 @@ msgid "Error playing sound:"
 msgstr ""
 
 msgid "Error playing sound"
+msgstr ""
+
+msgid "Generating thumbnails using the following library:"
 msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
@@ -973,33 +979,11 @@ msgstr ""
 msgid "Error during drag and drop."
 msgstr ""
 
-msgid "Unable to initializate drag and drop support."
-msgstr ""
-
-msgid "Unable to get the default environment informations."
-msgstr "Nepavyko gauti aplinkos nustatymų pagal nutylėjimą"
-
-msgid "Setting look and feel..."
-msgstr "Nustatyti išvaizdą"
-
-msgid "Setting logging level..."
-msgstr "Nustatomas žurnalo lygis..."
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Nepavyko rasti žurnalo lygio, nustatomas lygis pagal nutylėjimą (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Nustatytas žurnalo lygis: "
 
 msgid "Unable to set logging level."
 msgstr "Nepavyko nustatyti žurnalo lygio"
-
-msgid "Setting default working directory..."
-msgstr ""
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Nepayvko gauti papildinių aplanko"
@@ -1061,17 +1045,17 @@ msgstr "paleista "
 msgid "Loading plugins.."
 msgstr "Įkeliami papildiniai..."
 
-msgid "Building menus.."
-msgstr "Surenkami meniu..."
-
-msgid "Building buttons bar.."
-msgstr "Surenkama mygtukų juosta..."
-
 msgid "Building status bar.."
 msgstr "Surenkama statuso juosta..."
 
 msgid "Building tree.."
 msgstr "Surenkamas katalogų medis..."
+
+msgid "Building menus.."
+msgstr "Surenkami meniu..."
+
+msgid "Building buttons bar.."
+msgstr "Surenkama mygtukų juosta..."
 
 msgid "Loading default environment."
 msgstr "Įkeliama aplinka pagal nutylėjimą."
@@ -1139,9 +1123,6 @@ msgstr "Tema:"
 msgid "Language:"
 msgstr "Kalba:"
 
-msgid "Check for updates:"
-msgstr "Tikrinti ar yra atnaujinimų:"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1151,8 +1132,8 @@ msgstr "Įkelti aplinką pagal nutylėjimą:"
 msgid "Default working directory:"
 msgstr "Darbinis aplankas pagal nutylėjimą:"
 
-msgid "Error getting default environment."
-msgstr "Klaida gaunant aplinką pagal nutylėjimą."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Tikrinti dabar"
@@ -1184,6 +1165,9 @@ msgstr "Žurnalo lygis"
 msgid "Set a log detail level (restart needed)"
 msgstr "Nustatyti žurnalo detalumo lygį (reikės paleisti prigramą iš naujo)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Ieškoti atnaujinimų"
 
@@ -1191,9 +1175,6 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 "Nustatyti, kada tikrinama ar yra nauja versija (reikės paleisti programą iš "
 "naujo)"
-
-msgid "Set the thumbnails creation library"
-msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "Nenaudoji įspėjamųjų garsų"
@@ -1221,6 +1202,14 @@ msgstr "Išsaugoti"
 
 msgid "Configuration saved."
 msgstr "Konfigūracija išsaugota"
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Neįgyvendintas metodas JSettingsPanel"
@@ -1254,12 +1243,6 @@ msgstr "Versija 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Versija 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Niekada"
-
-msgid "pdfsam start up"
-msgstr "pdfsam pradžia"
 
 msgid "Output file location is not correct"
 msgstr "Bloga rezultatų failo vieta"
@@ -1302,6 +1285,70 @@ msgstr ""
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr ""
+
+msgid "Setting look and feel..."
+msgstr "Nustatyti išvaizdą"
+
+msgid "Setting logging level..."
+msgstr "Nustatomas žurnalo lygis..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+"Nepavyko rasti žurnalo lygio, nustatomas lygis pagal nutylėjimą (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Nepavyko gauti aplinkos nustatymų pagal nutylėjimą"
+
+#~ msgid "Check for updates:"
+#~ msgstr "Tikrinti ar yra atnaujinimų:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Klaida gaunant aplinką pagal nutylėjimą."
+
+#~ msgid "Never"
+#~ msgstr "Niekada"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam pradžia"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"

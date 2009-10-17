@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-16 17:33+0200\n"
+"POT-Creation-Date: 2009-10-17 12:55+0200\n"
 "PO-Revision-Date: 2009-05-10 23:51+0000\n"
 "Last-Translator: Joergenr <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -557,11 +557,11 @@ msgstr "Pdf-version kræves:"
 msgid "No page scaling in print dialog"
 msgstr "Ingen sideskalering i udskriftsvinduet"
 
-msgid "Viewer layout:"
-msgstr "Visningslayout:"
-
 msgid "Viewer open mode:"
 msgstr ""
+
+msgid "Viewer layout:"
+msgstr "Visningslayout:"
 
 msgid "Non fullscreen mode:"
 msgstr "Ingen fuldskærmstilstand:"
@@ -720,6 +720,9 @@ msgstr "Kan ikke danne billede for et ikke valgt dokument"
 msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
+msgid "Unable to open the input document"
+msgstr ""
+
 msgid "Input file doesn't exists or is a directory"
 msgstr "Inputfil eksisterer ikke eller er en mappe"
 
@@ -779,6 +782,9 @@ msgstr "Fejl ved afspilning af lyd:"
 
 msgid "Error playing sound"
 msgstr "Fejl ved afspilning af lyd"
+
+msgid "Generating thumbnails using the following library:"
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Udvalgstabel er fuld. Fjern venligst nogle pdf-dokumenter."
@@ -1199,33 +1205,11 @@ msgstr "Filtype ikke understøttet."
 msgid "Error during drag and drop."
 msgstr "Fejl under træk og slip."
 
-msgid "Unable to initializate drag and drop support."
-msgstr "Ikke i stand til at initialisere træk og slip -support."
-
-msgid "Unable to get the default environment informations."
-msgstr "Ikke i stand til at hente standard miljøinformationer."
-
-msgid "Setting look and feel..."
-msgstr "Indstiller udseende..."
-
-msgid "Setting logging level..."
-msgstr "Indstiller logningsniveau"
-
-msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Ikke i stand til at finde logniveau, sætter til standardniveau (DEBUG)."
-
 msgid "Logging level set to "
 msgstr "Logniveau sat til "
 
 msgid "Unable to set logging level."
 msgstr "Ikke i stand til at sætte logniveau."
-
-msgid "Setting default working directory..."
-msgstr "Indstiller standard arbejdsmappe.."
-
-msgid "Setting default thumbnails creator..."
-msgstr ""
 
 msgid "Error getting plugins directory."
 msgstr "Fejl ved hentning af modulmappe."
@@ -1295,14 +1279,6 @@ msgstr "startet i "
 msgid "Loading plugins.."
 msgstr "Indlæser moduler..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
-msgid "Building menus.."
-msgstr "Opbygger menuer.."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
-msgid "Building buttons bar.."
-msgstr "Opbygger knapbjælke.."
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 msgid "Building status bar.."
 msgstr "Opbygger statusbjælke.."
@@ -1310,6 +1286,14 @@ msgstr "Opbygger statusbjælke.."
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
 msgstr "Opbygger træ.."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
+msgid "Building menus.."
+msgstr "Opbygger menuer.."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
+msgid "Building buttons bar.."
+msgstr "Opbygger knapbjælke.."
 
 msgid "Loading default environment."
 msgstr "Indlæser standardmiljø."
@@ -1391,9 +1375,6 @@ msgstr "Tema:"
 msgid "Language:"
 msgstr "Sprog:"
 
-msgid "Check for updates:"
-msgstr "Søg efter opdateringer:"
-
 msgid "Thumbnails creator"
 msgstr ""
 
@@ -1403,8 +1384,8 @@ msgstr "Indlæs standardmiljø ved opstart:"
 msgid "Default working directory:"
 msgstr "Standard arbejdsmappe:"
 
-msgid "Error getting default environment."
-msgstr "Fejl ved hentning af standardmiljø."
+msgid "Check for updates at startup"
+msgstr ""
 
 msgid "Check now"
 msgstr "Tjek nu"
@@ -1443,13 +1424,13 @@ msgstr "Logniveau"
 msgid "Set a log detail level (restart needed)"
 msgstr "Ændr niveau for logdetaljer (genstart nødvendig)"
 
+msgid "Set the thumbnails creation library"
+msgstr ""
+
 msgid "Check for updates"
 msgstr "Søg efter opdateringer"
 
 msgid "Set when new version availability should be checked (restart needed)"
-msgstr ""
-
-msgid "Set the thumbnails creation library"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
@@ -1479,6 +1460,14 @@ msgstr "Gem"
 
 msgid "Configuration saved."
 msgstr "Konfiguration gemt."
+
+msgid "Error saving configuration"
+msgstr ""
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr ""
@@ -1512,12 +1501,6 @@ msgstr "Version 1.6 (Acrobat 7)"
 
 msgid "Version 1.7 (Acrobat 8)"
 msgstr "Version 1.7 (Acrobat 8)"
-
-msgid "Never"
-msgstr "Aldrig"
-
-msgid "pdfsam start up"
-msgstr "pdfsam opstart"
 
 msgid "Output file location is not correct"
 msgstr ""
@@ -1561,3 +1544,70 @@ msgstr "Liste er fyldt"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
+
+msgid "Unable to initializate drag and drop support."
+msgstr "Ikke i stand til at initialisere træk og slip -support."
+
+msgid "Setting look and feel..."
+msgstr "Indstiller udseende..."
+
+msgid "Setting logging level..."
+msgstr "Indstiller logningsniveau"
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+"Ikke i stand til at finde logniveau, sætter til standardniveau (DEBUG)."
+
+msgid "Loading user interface configuration"
+msgstr ""
+
+msgid "Unable to find configuration file for the user interface"
+msgstr ""
+
+msgid "Error reading the configuration file for the user interface"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr ""
+
+msgid "Error initializing the user interface extended state"
+msgstr ""
+
+msgid "Error initializing the user interface size"
+msgstr ""
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+
+msgid "Error initializing the user interface location"
+msgstr ""
+
+msgid "Saving GUI configuration"
+msgstr ""
+
+msgid "Unable to save user interface status."
+msgstr ""
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Ikke i stand til at hente standard miljøinformationer."
+
+#~ msgid "Setting default working directory..."
+#~ msgstr "Indstiller standard arbejdsmappe.."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Søg efter opdateringer:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Fejl ved hentning af standardmiljø."
+
+#~ msgid "Never"
+#~ msgstr "Aldrig"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam opstart"
