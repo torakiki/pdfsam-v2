@@ -48,6 +48,8 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 
 	private static final String EXTENDED_STATE_XPATH = "/gui-settings/extended-state/@value";
 
+	private static final String SELECTED_PLUGIN_XPATH = "/gui-settings/selected-plugin/@class";
+
 	private static final String LOCATION_X_XPATH = "/gui-settings/location/@xvalue";
 
 	private static final String LOCATION_Y_XPATH = "/gui-settings/location/@yvalue";
@@ -83,8 +85,10 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 	private Dimension horizontalDividerDimension;
 
 	private int verticalDividerLocation;
-	
+
 	private Dimension verticalDividerDimension;
+
+	private String selectedPlugin;
 
 	public XmlGuiConfigurationService() {
 		initializeService();
@@ -108,6 +112,7 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 				document = XmlUtility.parseXmlFile(configurationFile);
 				if (document != null) {
 					iniExtendedState();
+					selectedPlugin = XmlUtility.getXmlValue(document, ROOT_NODE + SELECTED_PLUGIN_XPATH);
 					initDimension();
 					initLocationOnScreen();
 					initDividersLocation();
@@ -177,7 +182,7 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 			}
 		}
 	}
-	
+
 	/**
 	 * Initialization of the horizontal divider dimension
 	 */
@@ -209,6 +214,7 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 			}
 		}
 	}
+
 	/**
 	 * Initialization of the location
 	 */
@@ -278,9 +284,17 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 	}
 
 	public void setVerticalDividerDimension(Dimension verticalDividerDimension) {
-		this.verticalDividerDimension = verticalDividerDimension;		
+		this.verticalDividerDimension = verticalDividerDimension;
 	}
-	
+
+	public String getSelectedPlugin() {
+		return selectedPlugin;
+	}
+
+	public void setSelectedPlugin(String selectedPlugin) {
+		this.selectedPlugin = selectedPlugin;
+	}
+
 	@Override
 	public void save() throws IOException {
 		if (configurationFile != null) {
@@ -292,6 +306,7 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 			Document document = DocumentHelper.createDocument();
 			Element root = document.addElement(ROOT_NODE.replaceAll("/", ""));
 			XmlUtility.processXPath(root, EXTENDED_STATE_XPATH, Integer.toString(extendedState));
+			XmlUtility.processXPath(root, SELECTED_PLUGIN_XPATH, selectedPlugin);
 
 			if (size != null) {
 				XmlUtility.processXPath(root, SIZE_WIDTH_XPATH, Integer.toString((int) size.getWidth()));
@@ -316,9 +331,10 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 			}
 
 			if (verticalDividerLocation > 0) {
-				XmlUtility.processXPath(root, VERTICAL_DIVIDER_LOCATION_XPATH, Integer.toString(verticalDividerLocation));
+				XmlUtility.processXPath(root, VERTICAL_DIVIDER_LOCATION_XPATH, Integer
+						.toString(verticalDividerLocation));
 			}
-			
+
 			if (verticalDividerDimension != null) {
 				XmlUtility.processXPath(root, VERTICAL_DIVIDER_WIDTH_XPATH, Integer
 						.toString((int) verticalDividerDimension.getWidth()));
@@ -332,6 +348,5 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 			XmlUtility.writeXmlFile(document, configurationFile);
 		}
 	}
-
 
 }

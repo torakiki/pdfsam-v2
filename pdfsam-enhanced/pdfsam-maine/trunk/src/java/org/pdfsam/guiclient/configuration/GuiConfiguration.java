@@ -176,5 +176,21 @@ public class GuiConfiguration {
 		guiConfigurationService.setVerticalDividerDimension(verticalDividerDimension);
 	}
 
+	/**
+	 * @return
+	 * @see org.pdfsam.guiclient.configuration.services.GuiConfigurationService#getSelectedPlugin()
+	 */
+	public String getSelectedPlugin() {
+		return guiConfigurationService.getSelectedPlugin();
+	}
+
+	/**
+	 * @param selectedPlugin
+	 * @see org.pdfsam.guiclient.configuration.services.GuiConfigurationService#setSelectedPlugin(java.lang.String)
+	 */
+	public void setSelectedPlugin(String selectedPlugin) {
+		guiConfigurationService.setSelectedPlugin(selectedPlugin);
+	}
+
 	
 }

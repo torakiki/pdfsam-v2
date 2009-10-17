@@ -52,6 +52,7 @@ public class ApplicationCloser {
 		GuiConfiguration.getInstance().setVerticalDividerDimension(mainFrame.getVerticalDividerDimension());
 		GuiConfiguration.getInstance().setHorizontalDividerLocation(mainFrame.getHorizontalDividerLocation());
 		GuiConfiguration.getInstance().setHorizontalDividerDimension(mainFrame.getHorizontalDividerDimension());
+		GuiConfiguration.getInstance().setSelectedPlugin(mainFrame.getTreePanel().getSelectedPlugin());
 		
 		try {
 			GuiConfiguration.getInstance().save();

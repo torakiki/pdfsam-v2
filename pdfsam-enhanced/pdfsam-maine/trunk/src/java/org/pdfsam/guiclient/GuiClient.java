@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.configuration.GuiConfiguration;
 import org.pdfsam.guiclient.gui.frames.JMainFrame;
 /**
@@ -144,6 +145,15 @@ public class GuiClient {
 		}
 		if(GuiConfiguration.getInstance().getVerticalDividerLocation()>0){
 			clientGUI.setVerticalDividerLocation(GuiConfiguration.getInstance().getVerticalDividerLocation());
+		}
+		
+		String selectedPlugin = GuiConfiguration.getInstance().getSelectedPlugin();
+		if(selectedPlugin!=null && selectedPlugin.length()>0){
+			//If a default environment is set, the plugin set on it has precedence
+			String defaultEnv = Configuration.getInstance().getDefaultEnvironment();
+			if(defaultEnv == null || defaultEnv.length()<=0){
+				clientGUI.getTreePanel().setSelectedPlugin(selectedPlugin);
+			}
 		}
 
 	}

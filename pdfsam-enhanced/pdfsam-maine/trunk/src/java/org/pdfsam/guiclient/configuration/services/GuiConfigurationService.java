@@ -115,6 +115,17 @@ public interface GuiConfigurationService {
 	 * @param verticalDividerDimension
 	 */
 	void setVerticalDividerDimension(Dimension verticalDividerDimension);
+	
+	/**
+	 * set the selected plugin
+	 * @param selectedPlugin
+	 */
+	void setSelectedPlugin(String selectedPlugin);
+	
+	/**
+	 * @return the selected plugin
+	 */
+	String getSelectedPlugin();
 
 	/**
 	 * saves the current gui configuration
