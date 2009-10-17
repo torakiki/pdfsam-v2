@@ -140,7 +140,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.5.5";
+    private final String PLUGIN_VERSION = "0.5.6";
     
 /**
  * Constructor
@@ -672,7 +672,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destinationFolderText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 0, SpringLayout.SOUTH, destinationFolderText);

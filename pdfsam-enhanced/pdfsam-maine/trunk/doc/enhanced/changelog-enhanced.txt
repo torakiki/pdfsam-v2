@@ -4,6 +4,7 @@
 -Saving/loading environment retains the selected plugin (feature request #2857938)
 -Added DnD support for linux platform (feature request #2858074)
 -Saving/loading user interface settings when closing/opening pdfsam (feature request #2857941)
+-Fixed bug #2877986 layout for the Set Viewer Options plugin.
 
 2.0.0e (27-Aug-2009) (pdfsam-console 2.1.1e)
 ===================================

@@ -134,7 +134,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.10e";
+    private final String PLUGIN_VERSION = "0.2.11e";
 	
 	public final static int DPRINT = 0;
 	public final static int PRINT = 1;
@@ -695,7 +695,6 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destFolderText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 25, SpringLayout.NORTH, browseDestButton);

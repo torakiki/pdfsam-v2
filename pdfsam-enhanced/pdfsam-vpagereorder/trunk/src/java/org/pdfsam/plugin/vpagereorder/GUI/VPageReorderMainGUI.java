@@ -122,7 +122,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
     private final JRadioButton chooseAFileRadio = new JRadioButton();
     
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.5";
+    private static final String PLUGIN_VERSION = "0.0.6";
     
     /**
      * Constructor
@@ -400,7 +400,6 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destinationFileText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 0, SpringLayout.SOUTH, destinationFileText);

@@ -110,7 +110,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.10e";
+	private static final String PLUGIN_VERSION = "0.1.11e";
 
 	
 	/**
@@ -423,7 +423,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destinationTextField);
         
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
 
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseButton, 25, SpringLayout.NORTH, browseButton);

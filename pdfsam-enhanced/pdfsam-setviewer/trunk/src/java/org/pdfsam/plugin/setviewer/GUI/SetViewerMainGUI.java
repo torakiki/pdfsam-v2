@@ -20,7 +20,6 @@ import java.awt.Dimension;
 import java.awt.FocusTraversalPolicy;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,8 +28,8 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.Vector;
-
 import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -40,7 +39,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
@@ -133,7 +131,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     final JLabel outPrefixLabel = new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.0.5e";  
+    private final String PLUGIN_VERSION = "0.0.6e";  
     
     public SetViewerMainGUI(){
     	initialize();
@@ -145,7 +143,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/setviewer.png");
-        setPreferredSize(new Dimension(700,700));  
+        setPreferredSize(new Dimension(1000,700));  
         setLayout(new GridBagLayout());
         
         GridBagConstraints c = new GridBagConstraints();
@@ -177,72 +175,119 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         optionsPanelLayout = new SpringLayout();
         setviewerOptionsPanel.setLayout(optionsPanelLayout);
 		setviewerOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Set viewer options")));
-		setviewerOptionsPanel.setMinimumSize(new Dimension(330, 195));
-		setviewerOptionsPanel.setPreferredSize(new Dimension(400, 215));
 //checks     
-		setviewerOptsCheckPanel.setLayout(new GridLayout(3,3,5,5));
-		
+        GroupLayout checksLayout = new GroupLayout(setviewerOptsCheckPanel);
+        setviewerOptsCheckPanel.setLayout(checksLayout);
+
+        checksLayout.setAutoCreateGaps(true);
+     
         hideMenuBar.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Hide the menubar"));
         hideMenuBar.setSelected(false);
-        setviewerOptsCheckPanel.add(hideMenuBar);
         
         hideToolBar.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Hide the toolbar"));
         hideToolBar.setSelected(false);
-        setviewerOptsCheckPanel.add(hideToolBar);
 
         hideUIElements.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Hide user interface elements"));
         hideUIElements.setSelected(false);
-        setviewerOptsCheckPanel.add(hideUIElements);
 
         resizeToFit.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Rezise the window to fit the page size"));
         resizeToFit.setSelected(false);
-        setviewerOptsCheckPanel.add(resizeToFit);
 
         centerScreen.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Center of the screen"));
         centerScreen.setSelected(false);
-        setviewerOptsCheckPanel.add(centerScreen);
 
         displayTitle.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Display document title as window title"));
         displayTitle.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.4");
         displayTitle.addItemListener(new VersionFilterCheckBoxItemListener(versionCombo, new Integer(""+AbstractParsedCommand.VERSION_1_4)));
         displayTitle.setSelected(false);
-        setviewerOptsCheckPanel.add(displayTitle);
 
         noPageScaling.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"No page scaling in print dialog"));
         noPageScaling.setSelected(false);
         noPageScaling.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.6");
         noPageScaling.addItemListener(new VersionFilterCheckBoxItemListener(versionCombo, new Integer(""+AbstractParsedCommand.VERSION_1_6)));
-        setviewerOptsCheckPanel.add(noPageScaling);
+        
+        checksLayout.setHorizontalGroup(
+        		checksLayout.createSequentialGroup()      		      
+        		      .addGroup(checksLayout.createParallelGroup()
+        		           .addComponent(hideMenuBar)
+        		           .addComponent(resizeToFit)
+        		           .addComponent(noPageScaling))
+         		      .addGroup(checksLayout.createParallelGroup()
+           		           .addComponent(hideToolBar)
+           		           .addComponent(centerScreen))
+         		      .addGroup(checksLayout.createParallelGroup()
+           		           .addComponent(hideUIElements)
+           		           .addComponent(displayTitle))       		          
+        		);
+        checksLayout.setVerticalGroup(
+        		checksLayout.createSequentialGroup()
+        		      .addGroup(checksLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        		           .addComponent(hideMenuBar)
+        		           .addComponent(hideToolBar)
+        		           .addComponent(hideUIElements))
+        		      .addGroup(checksLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        		           .addComponent(resizeToFit)
+        		           .addComponent(centerScreen)
+        		           .addComponent(displayTitle))
+        		      .addGroup(checksLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        		           .addComponent(noPageScaling))        		           
+        		);        
+		
         setviewerOptionsPanel.add(setviewerOptsCheckPanel);
 //end_check
 //combos        
-        setviewerOptsComboPanel.setLayout(new GridLayout(3,4,5,5));
-        
-        viewerLayoutLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer layout:"));
-        setviewerOptsComboPanel.add(viewerLayoutLabel);		
-        viewerLayout = new JComboBox(getViewerLayoutItems());
-        setviewerOptsComboPanel.add(viewerLayout);
-        setviewerOptsComboPanel.add(new JLabel(""));
-        setviewerOptsComboPanel.add(new JLabel(""));
         
         viewerOpenModeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer open mode:"));
-        setviewerOptsComboPanel.add(viewerOpenModeLabel);
-        viewerOpenMode = new JComboBox(getViewerOpenModeItems());
-        setviewerOptsComboPanel.add(viewerOpenMode);
-
+        viewerLayoutLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer layout:"));
         nonFullScreenModeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Non fullscreen mode:"));
-        setviewerOptsComboPanel.add(nonFullScreenModeLabel);
-        nonFullScreenMode = new JComboBox(getViewerNonFullScreenItems());
-        nonFullScreenMode.setEnabled(false);
-        setviewerOptsComboPanel.add(nonFullScreenMode);
-        viewerOpenMode.addActionListener(new OpenModeComboListener(nonFullScreenMode));
-
         directionLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Direction:"));
-        setviewerOptsComboPanel.add(directionLabel);
+
+        viewerLayout = new JComboBox(getViewerLayoutItems());
         directionCombo = new JComboBox(getDirectionComboItems());
         directionCombo.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version required:")+" 1.3");
-        setviewerOptsComboPanel.add(directionCombo);
+        viewerOpenMode = new JComboBox(getViewerOpenModeItems());
+        nonFullScreenMode = new JComboBox(getViewerNonFullScreenItems());
+        nonFullScreenMode.setEnabled(false);
+        viewerOpenMode.addActionListener(new OpenModeComboListener(nonFullScreenMode));
+       
+        GroupLayout combosLayout = new GroupLayout(setviewerOptsComboPanel);
+        setviewerOptsComboPanel.setLayout(combosLayout);
+
+        combosLayout.setAutoCreateGaps(true);
+        
+        combosLayout.setHorizontalGroup(
+        		combosLayout.createSequentialGroup()        		      
+        		      .addGroup(combosLayout.createParallelGroup()
+        		           .addComponent(viewerLayoutLabel)
+        		           .addComponent(directionLabel))
+         		      .addGroup(combosLayout.createParallelGroup()
+           		           .addComponent(viewerLayout)
+           		           .addComponent(directionCombo))
+         		      .addGroup(combosLayout.createParallelGroup()
+           		           .addComponent(viewerOpenModeLabel)
+           		           .addComponent(nonFullScreenModeLabel))
+       		          .addGroup(combosLayout.createParallelGroup()
+           		           .addComponent(viewerOpenMode)
+           		           .addComponent(nonFullScreenMode))
+        		);
+        combosLayout.setVerticalGroup(
+        		combosLayout.createSequentialGroup()
+        		      .addGroup(combosLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        		           .addComponent(viewerLayoutLabel)
+        		           .addComponent(viewerLayout)
+        		           .addComponent(viewerOpenModeLabel)
+        		           .addComponent(viewerOpenMode))
+        		      .addGroup(combosLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        		           .addComponent(directionLabel)
+        		           .addComponent(directionCombo)
+        		           .addComponent(nonFullScreenModeLabel)
+        		           .addComponent(nonFullScreenMode))
+        		);
+        
         setviewerOptionsPanel.add(setviewerOptsComboPanel);
+		setviewerOptionsPanel.setMinimumSize(new Dimension(330, 175));
+		setviewerOptionsPanel.setPreferredSize(new Dimension(400, 195));
+
 //end_combos       
 //DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
@@ -344,7 +389,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
                     log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
                     return;
                 }      
-				final LinkedList args = new LinkedList();
+				final LinkedList<String> args = new LinkedList<String>();
                 //validation and permission check are demanded to the CmdParser object
                 try{
 					PdfSelectionTableItem item = null;
@@ -487,8 +532,8 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     /**
      * @return the direction combo items
      */
-    private Vector getDirectionComboItems(){
-    	Vector retVal = new Vector(3);
+    private Vector<StringItem> getDirectionComboItems(){
+    	Vector<StringItem> retVal = new Vector<StringItem>(3);
     	retVal.add(new StringItem("", ""));
     	retVal.add(new StringItem(SetViewerParsedCommand.D_L2R, GettextResource.gettext(config.getI18nResourceBundle(),"Left to right")));
     	retVal.add(new StringItem(SetViewerParsedCommand.D_R2L, GettextResource.gettext(config.getI18nResourceBundle(),"Right to left")));
@@ -498,8 +543,8 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     /**
      * @return the viewer open mode combo items
      */
-    private Vector getViewerOpenModeItems(){
-    	Vector retVal = new Vector(6);
+    private Vector<StringItem> getViewerOpenModeItems(){
+    	Vector<StringItem> retVal = new Vector<StringItem>(6);
     	retVal.add(new StringItem(SetViewerParsedCommand.M_NONE, GettextResource.gettext(config.getI18nResourceBundle(),"None")));
     	retVal.add(new StringItem(SetViewerParsedCommand.M_FULLSCREEN, GettextResource.gettext(config.getI18nResourceBundle(),"Fullscreen")));
     	retVal.add(new StringItem(SetViewerParsedCommand.M_ATTACHMENTS, GettextResource.gettext(config.getI18nResourceBundle(),"Attachments")));
@@ -512,8 +557,8 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     /**
      * @return the non full screen combo items
      */
-    private Vector getViewerNonFullScreenItems(){
-    	Vector retVal = new Vector(4);
+    private Vector<StringItem> getViewerNonFullScreenItems(){
+    	Vector<StringItem> retVal = new Vector<StringItem>(4);
     	retVal.add(new StringItem(SetViewerParsedCommand.NFSM_NONE, GettextResource.gettext(config.getI18nResourceBundle(),"None")));
     	retVal.add(new StringItem(SetViewerParsedCommand.NFSM_OCONTENT, GettextResource.gettext(config.getI18nResourceBundle(),"Optional content group panel")));
     	retVal.add(new StringItem(SetViewerParsedCommand.NFSM_OUTLINES, GettextResource.gettext(config.getI18nResourceBundle(),"Document outline")));
@@ -524,8 +569,8 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     /**
      * @return the viewer layout combo items
      */
-    private Vector getViewerLayoutItems(){
-    	Vector retVal = new Vector(6);
+    private Vector<StringItem> getViewerLayoutItems(){
+    	Vector<StringItem> retVal = new Vector<StringItem>(6);
     	retVal.add(new StringItem(SetViewerParsedCommand.L_SINGLEPAGE, GettextResource.gettext(config.getI18nResourceBundle(),"One page at a time")));
     	retVal.add(new StringItem(SetViewerParsedCommand.L_ONECOLUMN, GettextResource.gettext(config.getI18nResourceBundle(),"Pages in one column")));
     	retVal.add(new StringItem(SetViewerParsedCommand.L_TWOCOLUMNLEFT, GettextResource.gettext(config.getI18nResourceBundle(),"Pages in two columns (odd on the left)")));
@@ -561,7 +606,6 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destFolderText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 25, SpringLayout.NORTH, browseDestButton);
@@ -583,7 +627,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         setviewerOptionPanelLayout.putConstraint(SpringLayout.EAST, prefixHelpLabel, -1, SpringLayout.EAST, outputOptionsPanel);
                 
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, setviewerOptsComboPanel, 10, SpringLayout.NORTH, setviewerOptionsPanel);
-        optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsComboPanel, 10, SpringLayout.WEST, setviewerOptionsPanel);
+        optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsComboPanel, 5, SpringLayout.WEST, setviewerOptionsPanel);
         
         optionsPanelLayout.putConstraint(SpringLayout.NORTH, setviewerOptsCheckPanel, 10, SpringLayout.SOUTH, setviewerOptsComboPanel);
         optionsPanelLayout.putConstraint(SpringLayout.WEST, setviewerOptsCheckPanel, 0, SpringLayout.WEST, setviewerOptsComboPanel);

@@ -128,7 +128,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final VisualComposerPolicy visualComposerFocusPolicy = new VisualComposerPolicy();
 	 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.6";
+    private static final String PLUGIN_VERSION = "0.0.7";
     
     /**
      * Constructor
@@ -412,7 +412,6 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destinationFileText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, versionCombo, 0, SpringLayout.NORTH, outputVersionLabel);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, versionCombo, 2, SpringLayout.EAST, outputVersionLabel);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, browseDestButton, 0, SpringLayout.SOUTH, destinationFileText);
