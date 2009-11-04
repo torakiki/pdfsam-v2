@@ -60,8 +60,9 @@ public class GuiClient {
 		try {
 			loadApplicationProperties();
 			clientGUI = new JMainFrame();
-			clientGUI.setVisible(true);
 			initializeUserInterface();
+			clientGUI.setVisible(true);
+			initializeExtendedState();
 		} catch (Throwable t) {
 			log.fatal("Error:", t);
 		}
@@ -113,12 +114,16 @@ public class GuiClient {
 	public static String getBranch(){
 		return defaultProps.getProperty(BRANCH_PROPERTY, BRANCH_DEFAULT);
 	}
-	
+
+	private static void initializeExtendedState() {
+		clientGUI.setExtendedState(GuiConfiguration.getInstance().getExtendedState());
+	}
+
 	/**
 	 * User interface initialization
 	 */
 	private static void initializeUserInterface(){
-		clientGUI.setExtendedState(GuiConfiguration.getInstance().getExtendedState());
+		
 		
 		if(GuiConfiguration.getInstance().getSize() != null){
 			clientGUI.setSize(GuiConfiguration.getInstance().getSize());

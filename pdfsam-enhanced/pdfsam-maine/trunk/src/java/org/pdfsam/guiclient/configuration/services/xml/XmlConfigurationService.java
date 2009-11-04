@@ -48,7 +48,8 @@ public class XmlConfigurationService implements ConfigurationService {
 	private static final Logger log = Logger.getLogger(XmlConfigurationService.class.getPackage().getName());
 
 	private static final String VERSION_XPATH = "/pdfsam/@config-version";
-	public static final String CONFIGURATION_FILE_NAME = "config.xml";
+	public static final String OLD_CONFIGURATION_FILE_NAME = "config.xml";
+	public static final String CONFIGURATION_FILE_NAME = "pdfsam-config.xml";
 	public static final int DEFAULT_POOL_SIZE = 3;
 	public static final String DEFAULT_CONFIG_DIRECTORY = System.getProperty("user.home") + "/.pdfsam";
 
@@ -93,7 +94,13 @@ public class XmlConfigurationService implements ConfigurationService {
 		log.info("Loading configuration..");
 		File configurationFile = null;
 		try {
-			configurationFile = getConfigurationXmlFile();
+			configurationFile = getConfigurationXmlFile(CONFIGURATION_FILE_NAME);
+			if(configurationFile == null){
+				configurationFile = getConfigurationXmlFile(OLD_CONFIGURATION_FILE_NAME);
+				if(configurationFile == null){
+					throw new ConfigurationException("Unable to find configuration file");
+				}
+			}
 			configurationFilePath = configurationFile.getAbsolutePath();
 			Document document = XmlUtility.parseXmlFile(configurationFile);
 			if (document != null) {
@@ -213,21 +220,22 @@ public class XmlConfigurationService implements ConfigurationService {
 	 * <li>the second try uses secondaryPath=System.getProperty("user.dir")</li>
 	 * </ul>
 	 * 
+	 * @param configurationFileName file name to search
 	 * @return the configuration file
 	 * @throws UnsupportedEncodingException
 	 * @throws ConfigurationException
 	 */
-	private File getConfigurationXmlFile() throws UnsupportedEncodingException, ConfigurationException {
+	private File getConfigurationXmlFile(String configurationFileName) throws UnsupportedEncodingException, ConfigurationException {
 		File retVal = null;
 		String configSearchPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource()
 				.getLocation().getPath(), "UTF-8")).getParent();
-		try {
-			retVal = searchConfigurationFile(configSearchPath);
-		} catch (ConfigurationException e) {
-			log.warn("Unable to find configuration file into " + configSearchPath);
+			
+		retVal = searchConfigurationFile(configSearchPath, configurationFileName);
+		if(retVal == null){
+			log.warn("Unable to find "+configurationFileName+" into " + configSearchPath);
 			configSearchPath = System.getProperty("user.dir");
-			log.info("Looking for configuration file into " + configSearchPath);
-			retVal = searchConfigurationFile(configSearchPath);
+			log.info("Looking for "+configurationFileName+" into " + configSearchPath);
+			retVal = searchConfigurationFile(configSearchPath, configurationFileName);
 		}
 		return retVal;
 	}
@@ -244,18 +252,19 @@ public class XmlConfigurationService implements ConfigurationService {
 	 * @param searchPathIfFails
 	 *            the path to search the configuration file if not found in the
 	 *            default path
+	 * @param configurationFileName file name to search
 	 * @return the path of the configuration file
 	 * @throws ConfigurationException
 	 */
-	private File searchConfigurationFile(String searchPathIfFails) throws ConfigurationException {
-		File retVal = new File(DEFAULT_CONFIG_DIRECTORY, CONFIGURATION_FILE_NAME);
+	private File searchConfigurationFile(String searchPathIfFails, String configurationFileName) throws ConfigurationException {
+		File retVal = new File(DEFAULT_CONFIG_DIRECTORY, configurationFileName);
 		if (!(retVal.exists() && retVal.canWrite())) {
-			File secondaryPath = new File(searchPathIfFails, CONFIGURATION_FILE_NAME);
+			File secondaryPath = new File(searchPathIfFails, configurationFileName);
 			if (secondaryPath.exists()) {
 				if (!secondaryPath.canWrite()) {
 					File defaultPath = new File(DEFAULT_CONFIG_DIRECTORY);
 					if (defaultPath.mkdirs()) {
-						log.info("Copying " + CONFIGURATION_FILE_NAME + " from " + secondaryPath.getPath() + " to "
+						log.info("Copying " + configurationFileName + " from " + secondaryPath.getPath() + " to "
 								+ defaultPath.getPath());
 						FileUtility.copyFile(secondaryPath, retVal);
 					} else {
@@ -265,7 +274,7 @@ public class XmlConfigurationService implements ConfigurationService {
 					retVal = secondaryPath;
 				}
 			} else {
-				throw new ConfigurationException("Unable to find configuration file.");
+				retVal = null;
 			}
 		}
 		return retVal;
@@ -368,7 +377,11 @@ public class XmlConfigurationService implements ConfigurationService {
 	}
 
 	public void save() throws IOException {
-		DefaultXmlStrategy.saveXmlConfigurationFile(new File(configurationFilePath), this);
+		File defaultPath = new File(DEFAULT_CONFIG_DIRECTORY);
+		if (!defaultPath.exists() || !defaultPath.isDirectory()) {
+			defaultPath.mkdirs();
+		}
+		DefaultXmlStrategy.saveXmlConfigurationFile(new File(defaultPath, CONFIGURATION_FILE_NAME), this);
 	}
 
 }
