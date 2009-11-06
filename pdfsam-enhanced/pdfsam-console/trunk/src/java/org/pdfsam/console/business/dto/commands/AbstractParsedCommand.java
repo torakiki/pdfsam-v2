@@ -60,6 +60,7 @@ public abstract class AbstractParsedCommand implements Serializable {
     public static final String COMMAND_SLIDESHOW = "slideshow";
     public static final String COMMAND_ROTATE = "rotate";
     public static final String COMMAND_PAGELABELS = "pagelabels";
+    public static final String COMMAND_SETDOCINFO = "setdocinfo";
     
     public static final char VERSION_1_2 = PdfWriter.VERSION_1_2;
     public static final char VERSION_1_3 = PdfWriter.VERSION_1_3;

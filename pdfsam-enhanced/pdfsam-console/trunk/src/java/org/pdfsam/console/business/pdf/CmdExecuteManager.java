@@ -16,11 +16,11 @@ package org.pdfsam.console.business.pdf;
 
 import java.util.Observable;
 import java.util.Observer;
-
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
+import org.pdfsam.console.business.dto.commands.DocumentInfoParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.PageLabelsParsedCommand;
@@ -32,6 +32,7 @@ import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.AlternateMixCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.ConcatCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.DecryptCmdExecutor;
+import org.pdfsam.console.business.pdf.handlers.DocumentInfoCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.EncryptCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.PageLabelsCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.RotateCmdExecutor;
@@ -108,6 +109,8 @@ public class CmdExecuteManager extends Observable implements Observer{
 			retVal = new RotateCmdExecutor();
 		}else if(PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(parsedCommand.getCommand())){
 			retVal = new PageLabelsCmdExecutor();
+		}else if(DocumentInfoParsedCommand.COMMAND_SETDOCINFO.equals(parsedCommand.getCommand())){
+			retVal = new DocumentInfoCmdExecutor();
 		}else {
 			retVal = null;
 		}

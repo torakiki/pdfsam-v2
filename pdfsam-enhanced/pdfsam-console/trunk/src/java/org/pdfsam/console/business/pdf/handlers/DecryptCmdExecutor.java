@@ -40,7 +40,6 @@ package org.pdfsam.console.business.pdf.handlers;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.HashMap;
-
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.PdfFile;
@@ -49,10 +48,8 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
-import org.pdfsam.console.exceptions.console.EncryptException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
-
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.PdfStream;
@@ -112,8 +109,6 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 		    		}
 				}
 				log.info("Pdf files decrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
-			}catch(Exception e){    		
-				throw new EncryptException(e);
 			}finally{
 				setWorkCompleted();
 			}

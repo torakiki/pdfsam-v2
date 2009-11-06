@@ -98,7 +98,7 @@ public class SplitCmdHandler extends AbstractCmdHandler {
      */
 	private final List splitArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {[split]}",
+                    "command to execute {["+SplitParsedCommand.COMMAND_SPLIT+"]}",
                     new String[] { SplitParsedCommand.COMMAND_SPLIT },
                     StringParam.REQUIRED),              
 	}));

@@ -38,11 +38,11 @@
 package org.pdfsam.console.business.parser;
 
 import jcmdline.CmdLineHandler;
-
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
+import org.pdfsam.console.business.dto.commands.DocumentInfoParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.PageLabelsParsedCommand;
@@ -54,6 +54,7 @@ import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.parser.handlers.ConcatCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DecryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.DefaultCmdHandler;
+import org.pdfsam.console.business.parser.handlers.DocumentInfoCmdHandler;
 import org.pdfsam.console.business.parser.handlers.EncryptCmdHandler;
 import org.pdfsam.console.business.parser.handlers.MixCmdHandler;
 import org.pdfsam.console.business.parser.handlers.PageLabelsCmdHandler;
@@ -65,6 +66,7 @@ import org.pdfsam.console.business.parser.handlers.UnpackCmdHandler;
 import org.pdfsam.console.business.parser.handlers.interfaces.CmdHandler;
 import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.console.business.parser.validators.DecryptCmdValidator;
+import org.pdfsam.console.business.parser.validators.DocumentInfoCmdValidator;
 import org.pdfsam.console.business.parser.validators.EncryptCmdValidator;
 import org.pdfsam.console.business.parser.validators.MixCmdValidator;
 import org.pdfsam.console.business.parser.validators.PageLabelsCmdValidator;
@@ -154,6 +156,10 @@ public class CmdParseManager {
 		else if(PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(inputCommand)){
 			cmdHandler = new PageLabelsCmdHandler();
 			cmdValidator = new PageLabelsCmdValidator();
+		}
+		else if(DocumentInfoParsedCommand.COMMAND_SETDOCINFO.equals(inputCommand)){
+			cmdHandler = new DocumentInfoCmdHandler();
+			cmdValidator = new DocumentInfoCmdValidator();
 		}
 		else{
 			cmdHandler = new DefaultCmdHandler();
