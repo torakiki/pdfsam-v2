@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
-import java.util.Date;
 import org.pdfsam.console.business.dto.PdfFile;
 
 /**
@@ -55,8 +54,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 	public static final String AUTHOR_ARG = "author";
 	public static final String SUBJECT_ARG = "subject";
 	public static final String KEYWORDS_ARG = "keywords";
-	public static final String CREATION_DATE_ARG = "cdate";
-	public static final String MODIFICATION_DATE_ARG = "mdate";
 
 	private File outputFile;
 	private PdfFile inputFile;
@@ -64,8 +61,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 	private String author;
 	private String subject;
 	private String keywords;
-	private Date creationDate;
-	private Date modificationDate;
 
 	public DocumentInfoParsedCommand() {
 		super();
@@ -81,8 +76,7 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 	 * @param creationDate
 	 * @param modificationDate
 	 */
-	public DocumentInfoParsedCommand(File outputFile, PdfFile inputFile, String title, String author, String subject, String keywords,
-			Date creationDate, Date modificationDate) {
+	public DocumentInfoParsedCommand(File outputFile, PdfFile inputFile, String title, String author, String subject, String keywords) {
 		super();
 		this.outputFile = outputFile;
 		this.inputFile = inputFile;
@@ -90,8 +84,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 		this.author = author;
 		this.subject = subject;
 		this.keywords = keywords;
-		this.creationDate = creationDate;
-		this.modificationDate = modificationDate;
 	}
 
 	/**
@@ -102,14 +94,12 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 	 * @param author
 	 * @param subject
 	 * @param keywords
-	 * @param creationDate
-	 * @param modificationDate
 	 * @param overwrite
 	 * @param compress
 	 * @param outputPdfVersion
 	 */
 	public DocumentInfoParsedCommand(File outputFile, PdfFile inputFile, String title, String author, String subject, String keywords,
-			Date creationDate, Date modificationDate, boolean overwrite, boolean compress, char outputPdfVersion) {
+			boolean overwrite, boolean compress, char outputPdfVersion) {
 		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.inputFile = inputFile;
@@ -117,8 +107,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 		this.author = author;
 		this.subject = subject;
 		this.keywords = keywords;
-		this.creationDate = creationDate;
-		this.modificationDate = modificationDate;
 	}
 
 	/**
@@ -211,36 +199,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 		this.keywords = keywords;
 	}
 
-	/**
-	 * @return the creationDate
-	 */
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	/**
-	 * @param creationDate
-	 *        the creationDate to set
-	 */
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	/**
-	 * @return the modificationDate
-	 */
-	public Date getModificationDate() {
-		return modificationDate;
-	}
-
-	/**
-	 * @param modificationDate
-	 *        the modificationDate to set
-	 */
-	public void setModificationDate(Date modificationDate) {
-		this.modificationDate = modificationDate;
-	}
-
 	public String getCommand() {
 		return COMMAND_SETDOCINFO;
 	}
@@ -258,8 +216,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 		retVal.append((author == null) ? "" : "[author=" + author + "]");
 		retVal.append((subject == null) ? "" : "[subject=" + subject + "]");
 		retVal.append((keywords == null) ? "" : "[keywords=" + keywords + "]");
-		retVal.append((creationDate == null) ? "" : "[creationDate=" + creationDate + "]");
-		retVal.append((modificationDate == null) ? "" : "[modificationDate=" + modificationDate + "]");
 		retVal.append("[command=" + getCommand() + "]");
 		return retVal.toString();
 	}

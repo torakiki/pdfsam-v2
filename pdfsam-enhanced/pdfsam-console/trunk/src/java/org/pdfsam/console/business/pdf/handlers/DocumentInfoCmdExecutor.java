@@ -39,6 +39,7 @@ package org.pdfsam.console.business.pdf.handlers;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
@@ -47,6 +48,7 @@ import org.pdfsam.console.business.dto.commands.DocumentInfoParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
+import com.lowagie.text.pdf.PdfDate;
 import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
@@ -64,8 +66,6 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 	private static String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
 	private static String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
 	private static String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
-	private static String MODDATE = PdfName.decodeName(PdfName.MODDATE.toString());
-	private static String CREATIONDATE = PdfName.decodeName(PdfName.CREATIONDATE.toString());
 	private static String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
 
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {

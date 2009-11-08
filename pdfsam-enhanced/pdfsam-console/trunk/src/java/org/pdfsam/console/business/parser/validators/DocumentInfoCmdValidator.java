@@ -39,7 +39,6 @@ package org.pdfsam.console.business.parser.validators;
 
 import java.io.File;
 import jcmdline.CmdLineHandler;
-import jcmdline.DateTimeParam;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
@@ -109,17 +108,6 @@ public class DocumentInfoCmdValidator extends AbstractCmdValidator {
 	        	parsedCommandDTO.setKeywords(keywordsOption.getValue());		     
 	        }
 	        
-	        //-cdate
-	        DateTimeParam cdateOption = (DateTimeParam) cmdLineHandler.getOption(DocumentInfoParsedCommand.CREATION_DATE_ARG);
-	        if(cdateOption.isSet()){
-	        	parsedCommandDTO.setCreationDate(cdateOption.getDate());
-	        }
-	        
-	        //-mdate
-	        DateTimeParam mdateOption = (DateTimeParam) cmdLineHandler.getOption(DocumentInfoParsedCommand.MODIFICATION_DATE_ARG);
-	        if(mdateOption.isSet()){
-	        	parsedCommandDTO.setCreationDate(mdateOption.getDate());
-	        }
 		} else {
 			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 		}

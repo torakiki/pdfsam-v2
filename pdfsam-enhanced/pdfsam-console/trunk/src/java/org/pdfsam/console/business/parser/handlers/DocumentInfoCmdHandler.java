@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import jcmdline.DateTimeParam;
 import jcmdline.FileParam;
 import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
@@ -79,12 +78,6 @@ public class DocumentInfoCmdHandler extends AbstractCmdHandler {
                     StringParam.OPTIONAL),
             new StringParam(DocumentInfoParsedCommand.KEYWORDS_ARG,
                     "document keywords",             
-                    StringParam.OPTIONAL),
-            new DateTimeParam(DocumentInfoParsedCommand.CREATION_DATE_ARG,
-                    "creation date of the document (pattern DD/MM/yyyy HH:mm:ss)",             
-                    StringParam.OPTIONAL),
-            new DateTimeParam(DocumentInfoParsedCommand.MODIFICATION_DATE_ARG,
-                    "modification date of the document (pattern DD/MM/yyyy HH:mm:ss)",             
                     StringParam.OPTIONAL)
 	}));
     	
@@ -97,8 +90,6 @@ public class DocumentInfoCmdHandler extends AbstractCmdHandler {
 	    "'-title string' to specify the document title to set.\n"+
 	    "'-subject string' to specify the document subject to set.\n"+
 	    "'-keywords string' to specify the document keywords to set.\n"+
-	    "'-cdate 10/25/2009 18:20:00' to specify the document creation to set.\n"+
-	    "'-mdate 10/25/2009 18:24:10' to specify the document modification to set.\n"+
     	"'-author string' to specify the document author to set.\n";
     
 	/**
