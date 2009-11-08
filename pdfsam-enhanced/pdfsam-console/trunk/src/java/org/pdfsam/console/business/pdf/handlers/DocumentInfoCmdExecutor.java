@@ -39,7 +39,6 @@ package org.pdfsam.console.business.pdf.handlers;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Calendar;
 import java.util.HashMap;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
@@ -48,7 +47,6 @@ import org.pdfsam.console.business.dto.commands.DocumentInfoParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
-import com.lowagie.text.pdf.PdfDate;
 import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
