@@ -134,8 +134,6 @@ public class GuiClient {
 			clientGUI.setLocation(locationOnScreen);
 		}	
 		
-		//TODO find out why the split panels are not restored 
-		
 		if(GuiConfiguration.getInstance().getHorizontalDividerDimension() != null){
 			clientGUI.setHorizontalDividerDimension(GuiConfiguration.getInstance().getHorizontalDividerDimension());
 		}

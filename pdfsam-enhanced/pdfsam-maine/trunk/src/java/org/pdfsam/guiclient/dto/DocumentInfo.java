@@ -33,7 +33,6 @@ public class DocumentInfo implements Serializable {
 	private String producer;
 	private boolean isEncrypted;
 	
-	
 	/**
 	 * 
 	 */

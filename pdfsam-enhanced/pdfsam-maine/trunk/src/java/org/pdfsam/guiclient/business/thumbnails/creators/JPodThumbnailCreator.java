@@ -171,12 +171,10 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		return JPOD_RESOLUTION;
 	}
 
-	@Override
 	public String getCreatorName() {
 		return JPOD_CREATOR_NAME;
 	}
 
-	@Override
 	public String getCreatorIdentifier() {
 		return JPodThumbnailCreator.class.getName();
 	}

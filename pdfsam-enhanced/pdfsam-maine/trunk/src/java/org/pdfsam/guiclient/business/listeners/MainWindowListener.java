@@ -37,38 +37,31 @@ public class MainWindowListener implements WindowListener {
 		this.closer = new ApplicationCloser(mainFrame);
 	}
 
-	@Override
 	public void windowActivated(WindowEvent e) {
 			//empty on purpose
 	}
 
-	@Override
 	public void windowClosed(WindowEvent e) {
 		//empty on purpose
 	}
 
-	@Override
 	public void windowClosing(WindowEvent e) {
 		closer.saveGuiConfiguration();
 		System.exit(0);
 	}
 
-	@Override
 	public void windowDeactivated(WindowEvent e) {
 		//empty on purpose
 	}
 
-	@Override
 	public void windowDeiconified(WindowEvent e) {
 		//empty on purpose
 	}
 
-	@Override
 	public void windowIconified(WindowEvent e) {
 		//empty on purpose
 	}
 
-	@Override
 	public void windowOpened(WindowEvent e) {
 		//empty on purpose
 	}

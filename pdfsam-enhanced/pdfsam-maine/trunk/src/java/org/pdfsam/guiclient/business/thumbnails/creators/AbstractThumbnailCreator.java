@@ -95,7 +95,6 @@ public abstract class AbstractThumbnailCreator implements ThumbnailsCreator {
     	return retVal;
     }
     
-	@Override
 	public void clean(long id) {
 		IdManager.getInstance().cancelExecution(id);
 	}

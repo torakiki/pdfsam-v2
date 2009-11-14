@@ -145,7 +145,6 @@ public class PluginDataModel implements Serializable, Comparable<PluginDataModel
 		return name;
 	}
 
-	@Override
 	public int compareTo(PluginDataModel o) {
 		if(name != null){
 			return name.compareTo(o.getName());

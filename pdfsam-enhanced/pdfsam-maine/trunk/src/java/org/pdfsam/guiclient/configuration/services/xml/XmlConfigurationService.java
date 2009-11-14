@@ -60,6 +60,8 @@ public class XmlConfigurationService implements ConfigurationService {
 	private boolean checkForUpdates = true;
 
 	private boolean playSounds = true;
+	
+	private boolean askOverwriteConfirmation = true;
 
 	private String defaultWorkingDirectory = null;
 
@@ -124,6 +126,7 @@ public class XmlConfigurationService implements ConfigurationService {
 				checkForUpdates = isValidTrueValue(strategy.getCheckForUpdatesValue());
 				playSounds = isValidTrueValue(strategy.getPlaySoundsValue());
 				pluginAbsolutePath = strategy.getPluginAbsolutePath();
+				askOverwriteConfirmation = isValidTrueValue(strategy.getAskOverwriteConfirmation());
 
 				consoleServicesFacade = new ConsoleServicesFacade();
 				strategy.close();
@@ -374,6 +377,14 @@ public class XmlConfigurationService implements ConfigurationService {
 
 	public String getPluginAbsolutePath() {
 		return pluginAbsolutePath;
+	}
+
+	public boolean isAskOverwriteConfirmation() {
+		return askOverwriteConfirmation;
+	}
+
+	public void setAskOverwriteConfirmation(boolean askOverwriteConfirmation) {
+		this.askOverwriteConfirmation = askOverwriteConfirmation;
 	}
 
 	public void save() throws IOException {

@@ -43,7 +43,6 @@ public class  PlugInsLoader{
 	
     private File pluginsDirectory;
     private File[] pluginsList;
-    private Configuration config;
     
     private static final Class<?> PLUGIN_SUPER_CLASS = org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel.class;
     /**
@@ -52,7 +51,6 @@ public class  PlugInsLoader{
      * @throws PluginLoadException 
      */
     public PlugInsLoader(String pluginsDirectory) throws PluginException {
-    	config = Configuration.getInstance();
         if (pluginsDirectory != null && pluginsDirectory.length() >0){
         	this.pluginsDirectory = new File(pluginsDirectory);                
         }
@@ -61,7 +59,7 @@ public class  PlugInsLoader{
         		String configSearchPath = new File(URLDecoder.decode(getClass().getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8")).getParent();
                 this.pluginsDirectory = new File(configSearchPath, "plugins");
             }catch (Exception e){
-                throw new PluginException(GettextResource.gettext(config.getI18nResourceBundle(),"Error getting plugins directory."), e);
+                throw new PluginException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error getting plugins directory."), e);
             }
         }
         pluginsList = getPlugInsList();
@@ -87,10 +85,10 @@ public class  PlugInsLoader{
     	            throw new PluginException("Error getting plugins list",e);
     	        }
     		}else{
-        		throw new PluginException(GettextResource.gettext(config.getI18nResourceBundle(),"Cannot read plugins directory ")+pluginsDirectory.getAbsolutePath());
+        		throw new PluginException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Cannot read plugins directory ")+pluginsDirectory.getAbsolutePath());
         	}
     	}else{
-    		throw new PluginException(GettextResource.gettext(config.getI18nResourceBundle(),"Plugins directory is null."));
+    		throw new PluginException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Plugins directory is null."));
     	}       
         return (File[])retVal.toArray(new File[retVal.size()]);
     }
@@ -116,13 +114,13 @@ public class  PlugInsLoader{
     					urlList.add(fileList[0].toURI().toURL());
     					classList.add(XmlUtility.getXmlValue(document, "/plugin/data/classname"));
     				}else{
-    					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Found zero or many jars in plugin directory ")+currentDir.getAbsolutePath());
+    					log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Found zero or many jars in plugin directory ")+currentDir.getAbsolutePath());
     				}
     			}catch (Exception e){
-    				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Exception loading plugins."), e);
+    				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Exception loading plugins."), e);
     	        }
     		}else{
-    			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Cannot read plugin directory ")+currentDir);
+    			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Cannot read plugin directory ")+currentDir);
     		}
     	}
     	
@@ -135,12 +133,12 @@ public class  PlugInsLoader{
     				AbstractPlugablePanel instance = (AbstractPlugablePanel) currentClass.newInstance();
     				PluginDataModel pluginDataModel = new PluginDataModel(instance.getPluginName(), instance.getVersion(), instance.getPluginAuthor(), className);
     				retMap.put(pluginDataModel, instance);
-    				log.info(pluginDataModel.getName()+GettextResource.gettext(config.getI18nResourceBundle()," plugin loaded."));
+    				log.info(pluginDataModel.getName()+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle()," plugin loaded."));
     			}else{
-    				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Unable to load a plugin that is not JPanel subclass."));
+    				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to load a plugin that is not JPanel subclass."));
     			}
     		}catch(Exception e){
-    			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error loading class ")+className, e);
+    			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error loading class ")+className, e);
     		}
     	}
     	return retMap;

@@ -112,7 +112,6 @@ public class ThumbnailsExecutor {
 			this.id = id;
 		}
 
-		@Override
 		public void run() {
 			try{
 				if(tasks != null && tasks.size()>0){

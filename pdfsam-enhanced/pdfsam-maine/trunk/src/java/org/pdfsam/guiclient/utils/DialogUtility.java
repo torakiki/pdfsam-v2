@@ -47,6 +47,17 @@ public class DialogUtility {
 	}
 	
 	/**
+	 * Shows a warning dialog telling the user that at least one document should be selected
+	 * @param comp
+	 */
+	public static void showWarningNoDocsSelected(Component comp){
+		JOptionPane.showMessageDialog(comp, 
+									  GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Please select at least one pdf document."), 
+									  GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Warning"), 
+									  JOptionPane.WARNING_MESSAGE);
+	}
+	
+	/**
 	 * Shows a yes/no/cancel dialog to ask the user about overwriting output file
 	 * @param comp parent component
 	 * @param filename suggested directory
@@ -62,7 +73,23 @@ public class DialogUtility {
 		    null,
 		    null,
 		    null);
+	}
+	
+	/**
+	 * Shows a yes/no/cancel asking the user for a confirmation about the overwrite check
+	 * @param comp
+	 * @return
+	 */
+	public static int askForOverwriteConfirmation(Component comp){
 
+		return JOptionPane.showOptionDialog(comp,
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please note that output files will overwrite existing files of the same name without warning.")+"\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Do you confirm to overwrite?"),
+		    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Confirm overwrite"),
+		    JOptionPane.YES_NO_CANCEL_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,
+		    null,
+		    null);
 	}
 	
 	/**

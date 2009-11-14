@@ -50,7 +50,6 @@ public class PrefixMenuActionListener implements ActionListener {
 	}
 
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals(PrefixMenuActionListener.INSERT_BASENAME_ACTION)){
 			insertTextAtCaret(BASENAME_STRING);

@@ -40,6 +40,7 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
 	private static final String THUMBNAILS_CREATOR_XPATH = "/settings/thumbnails_creator/@class";
 	private static final String CHECK_UPDATES_XPATH = "/settings/checkupdates/@value";
 	private static final String PLAYSOUNDS_XPATH = "/settings/playsounds/@value";
+	private static final String ASK_OVERWRITE_XPATH = "/settings/overwrite_confirmation/@value";
 	private static final String POOL_SIZE_XPATH = "/settings/thumbpoolsize/@value";
 	private static final String DEFAULT_ENVIRONMENT_XPATH = "/settings/default_environment/@value";
 	private static final String PLUGIN_ABSOLUTE_XPATH = "/settings/plugs_absolute_path/@value";
@@ -51,61 +52,54 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
 		super(document);
 	}
 
-	@Override
 	public String getCheckForUpdatesValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+CHECK_UPDATES_XPATH);
 	}
 
-	@Override
 	public String getDefaultEnvironmentValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+DEFAULT_ENVIRONMENT_XPATH);
 	}
 
-	@Override
 	public String getDefaultWorkingDirectoryValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+DEF_WORKING_DIR_XPATH);
 	}
 
-	@Override
 	public String getLoggingLevelValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+LOGGING_LEVEL_XPATH);
 	}
 
-	@Override
 	public String getPlaySoundsValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+PLAYSOUNDS_XPATH);
 	}
 
-	@Override
 	public String getThreadPoolSizeValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+POOL_SIZE_XPATH);
 	}
 
-	@Override
 	public String getThumbnailsCreatorIdentifierValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+THUMBNAILS_CREATOR_XPATH);
 	}
 
-	@Override
 	public String getLookAndFeelValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+LAF_XPATH);
 	}
 
-	@Override
 	public String getThemeValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+THEME_XPATH);
 	}
 
-	@Override
 	public String getLocaleValue() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+LANGUAGE_XPATH);
 	}
 
-	@Override
 	public String getPluginAbsolutePath() {
 		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+PLUGIN_ABSOLUTE_XPATH);
 	}
 
+	public String getAskOverwriteConfirmation() {
+		return XmlUtility.getXmlValue(getDocument(),ROOT_NODE+ASK_OVERWRITE_XPATH);
+	}
+	
 	/**
 	 * Saves the configuration on the configuration xml file. The configuration
 	 * file content is replaced.
@@ -129,6 +123,7 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
 		XmlUtility.processXPath(root, PLUGIN_ABSOLUTE_XPATH, configuration.getPluginAbsolutePath());
 		XmlUtility.processXPath(root, CHECK_UPDATES_XPATH, Boolean.toString(configuration.isCheckForUpdates()));
 		XmlUtility.processXPath(root, PLAYSOUNDS_XPATH, Boolean.toString(configuration.isPlaySounds()));
+		XmlUtility.processXPath(root, ASK_OVERWRITE_XPATH, Boolean.toString(configuration.isAskOverwriteConfirmation()));
 		XmlUtility.writeXmlFile(document, configurationFile);
 	}
 

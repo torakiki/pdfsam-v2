@@ -37,7 +37,6 @@ public abstract class AbstractXmlConfigStrategy implements XmlConfigStrategy {
 		return document;
 	}
 
-	@Override
 	public void close() {
 		document = null;		
 	}

@@ -78,6 +78,11 @@ public interface XmlConfigStrategy {
 	String getPluginAbsolutePath();
 	
 	/**
+	 * @return the ask overwrite confirmation value
+	 */
+	String getAskOverwriteConfirmation();
+	
+	/**
 	 * close resources if necessary
 	 */
 	void close();

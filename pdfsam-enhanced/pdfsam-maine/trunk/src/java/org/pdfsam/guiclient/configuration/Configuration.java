@@ -290,6 +290,21 @@ public class Configuration {
 	}
 
 	/**
+	 * @return the ask overwrite confirmation flag
+	 */
+	public boolean isAskOverwriteConfirmation() {
+		return configurationService.isAskOverwriteConfirmation();
+	}
+
+	/**
+	 * set the ask overwrite confirmation flag
+	 * @param askOverwriteConfirmation
+	 */
+	public void setAskOverwriteConfirmation(boolean askOverwriteConfirmation) {
+		configurationService.setAskOverwriteConfirmation(askOverwriteConfirmation);
+	}
+	
+	/**
 	 * save the current configuration
 	 * 
 	 * @throws IOException

@@ -295,7 +295,6 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
 		this.selectedPlugin = selectedPlugin;
 	}
 
-	@Override
 	public void save() throws IOException {
 		if (configurationFile != null) {
 			File parentDirectory = new File(XmlConfigurationService.DEFAULT_CONFIG_DIRECTORY);

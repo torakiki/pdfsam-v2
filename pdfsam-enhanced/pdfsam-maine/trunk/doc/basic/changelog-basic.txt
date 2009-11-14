@@ -4,6 +4,11 @@
 -Saving/loading environment retains the selected plugin (feature request #2857938)
 -Added DnD support for linux platform (feature request #2858074)
 -Saving/loading user interface settings when closing/opening pdfsam (feature request #2857941)
+-Console: added the 'setdocinfo' command to set metadata on a pdf document
+-looks 2.3.0
+-JPodRenderer 5.2
+-bcmail 1.44
+-bcprov 1.44
 
 2.0.0 (27-Aug-2009) (pdfsam-console 2.1.1e)
 ===================================
@@ -14,6 +19,7 @@
 -Console: added the 'pagelabels' command to set page labels on a pdf document
 -Plugins showed in alphabetical order
 -Thumbnails quality slightly improved
+-iText 2.1.7
 
 2.0.0-release candidate 1 (21-Jun-2009) (pdfsam-console 2.0.5e)
 ===================================

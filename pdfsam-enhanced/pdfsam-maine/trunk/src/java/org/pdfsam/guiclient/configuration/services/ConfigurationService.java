@@ -158,6 +158,17 @@ public interface ConfigurationService {
 	String getPluginAbsolutePath();
 	
 	/**
+	 * @return true to ask for confirmation when overwriting check box is selected
+	 */
+	boolean isAskOverwriteConfirmation();
+
+	/**
+	 * set the ask for confirmation flag
+	 * @param askConfirmation
+	 */
+	void setAskOverwriteConfirmation(boolean askConfirmation);
+	
+	/**
 	 * save the configuration
 	 * @throws IOException in case of error saving the configuration
 	 */
