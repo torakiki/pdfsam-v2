@@ -47,7 +47,7 @@
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac compiler="javac1.6" target="1.6" source="1.6" srcdir="${pdfsam-vpagereorder.src.dir}" destdir="${pdfsam-vpagereorder.build.dir}" debug="true">
+    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-vpagereorder.src.dir}" destdir="${pdfsam-vpagereorder.build.dir}" debug="true">
     	<classpath refid="pdfsam-vpagereorder.classpath"/>
     </javac>
   </target>
