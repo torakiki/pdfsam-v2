@@ -48,7 +48,6 @@ public class IcePdfThumbnailCallable implements Callable<Boolean> {
 	
 	/**
 	 * @param pdfDocument document
-	 * @param pageNumber page to render
 	 * @param panel
 	 * @param pageItem
 	 * @param id
