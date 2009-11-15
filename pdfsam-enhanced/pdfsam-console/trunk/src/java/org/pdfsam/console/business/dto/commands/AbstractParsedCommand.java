@@ -39,7 +39,6 @@ package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
 import java.io.Serializable;
-
 import com.lowagie.text.pdf.PdfWriter;
 /**
  * Abstract parsed command dto filled by parsing service and used by worker service

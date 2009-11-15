@@ -42,27 +42,27 @@ package org.pdfsam.console.exceptions.console;
  */
 public class UnpackException extends ConsoleException {
 
-	public final static int CMD_NO_INPUT_FILE = 0x01;
+	public static final int CMD_NO_INPUT_FILE = 0x01;
 	
 	private static final long serialVersionUID = 6507276853411967680L;
 
-	public UnpackException(int exceptionErrorCode, String[] args, Throwable e) {
+	public UnpackException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public UnpackException(int exceptionErrorCode, Throwable e) {
+	public UnpackException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public UnpackException(int exceptionErrorCode) {
+	public UnpackException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public UnpackException(Throwable e) {
+	public UnpackException(final Throwable e) {
 		super(e);
 	}
 
-	public UnpackException(int exceptionErrorCode, String[] args) {
+	public UnpackException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 }

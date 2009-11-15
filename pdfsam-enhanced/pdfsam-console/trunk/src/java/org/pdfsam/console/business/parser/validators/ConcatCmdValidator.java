@@ -40,14 +40,12 @@ package org.pdfsam.console.business.parser.validators;
 import java.io.File;
 import java.util.Iterator;
 import java.util.regex.Pattern;
-
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
-
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
@@ -62,9 +60,9 @@ import org.pdfsam.console.utils.ValidationUtility;
  */
 public class ConcatCmdValidator extends AbstractCmdValidator {
 		
-	private final static String ALL_STRING = "all";
+	private static final String ALL_STRING = "all";
 	
-	public static final String SELECTION_REGEXP = "(((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*[:])|("+ALL_STRING+":))+";
+	public static final String SELECTION_REGEXP = "(((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*[:])|(" + ALL_STRING + ":))+";
 
 	public AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ConsoleException {
 		ConcatParsedCommand parsedCommandDTO = new ConcatParsedCommand();

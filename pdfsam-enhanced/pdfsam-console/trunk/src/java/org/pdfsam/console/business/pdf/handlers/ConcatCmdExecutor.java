@@ -48,7 +48,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -67,7 +66,6 @@ import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.ValidationUtility;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfDictionary;
 import com.lowagie.text.pdf.PdfName;
@@ -85,8 +83,8 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	
 	private final Logger log = Logger.getLogger(ConcatCmdExecutor.class.getPackage().getName());
 	
-	private final static String FILESET_NODE = "fileset";
-	private final static String FILE_NODE = "file";
+	private static final String FILESET_NODE = "fileset";
+	private static final String FILE_NODE = "file";
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof ConcatParsedCommand)){
@@ -513,9 +511,9 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
     private PdfFile[] parseListFile(File listFile) throws ConcatException{
     	PdfFile[] retVal = new PdfFile[0];
     	if(listFile != null && listFile.exists()){
-    		if (getExtension(listFile).equals("xml")){
+    		if ("xml".equals(getExtension(listFile))){
     			retVal = parseXmlFile(listFile);
-			}else if (getExtension(listFile).equals("csv")){
+			}else if ("csv".equals(getExtension(listFile))){
 				retVal = parseCsvFile(listFile);
 			}else {
 				throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[]{"Unsupported extension."});

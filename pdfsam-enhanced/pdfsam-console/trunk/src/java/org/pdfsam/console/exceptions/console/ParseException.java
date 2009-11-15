@@ -43,53 +43,53 @@ package org.pdfsam.console.exceptions.console;
  */
 public class ParseException extends ConsoleException {
 
-	public final static int ERR_PARSE = 0x01;
-	//public final static int ERR_OUT_NOT_PDF = 0x02;
-	public final static int ERR_NO_OUT = 0x03;
-	public final static int ERR_NO_F_OR_L_OR_D = 0x04;
-	public final static int ERR_BOTH_F_OR_L_OR_D = 0x05;
-	public final static int ERR_NOT_CSV_OR_XML = 0x06;
-	public final static int ERR_IN_NOT_PDF = 0x07;
-	public final static int ERR_ILLEGAL_U = 0x08;
-	//public final static int ERR_OUT_NOT_DIR = 0x09;
-	public final static int ERR_NO_S = 0x0A;
-	public final static int ERR_N_NOT_NUM = 0x0B;
-	public final static int ERR_N_NOT_NUM_OR_SEQ = 0x0C;
-	public final static int ERR_NO_N = 0x0D;
-	public final static int ERR_N_NOT_NEEDED = 0x0E;
-	public final static int ERR_NO_O = 0x0F;
-	public final static int ERR_NO_F1 = 0x10;
-	public final static int ERR_NO_F2 = 0x11;
-	public final static int ERR_B_NOT_NEEDED = 0x12;
-	public final static int ERR_NO_B = 0x13;
-	public final static int ERR_NO_F = 0x14;
-	//public final static int ERR_D_NOT_DIR = 0x15;
-	public final static int ERR_NOT_XML = 0x16;
-	public final static int ERR_BL_NOT_NEEDED = 0x17;
-	public final static int ERR_NO_BL = 0x18;
-	public final static int ERR_NO_F_OR_D = 0x19;
-	public final static int ERR_BOTH_F_OR_D = 0x1A;
-	public final static int ERR_STEP_ZERO_OR_NEGATIVE = 0x1B;
+	public static final int ERR_PARSE = 0x01;
+	//public static final int ERR_OUT_NOT_PDF = 0x02;
+	public static final int ERR_NO_OUT = 0x03;
+	public static final int ERR_NO_F_OR_L_OR_D = 0x04;
+	public static final int ERR_BOTH_F_OR_L_OR_D = 0x05;
+	public static final int ERR_NOT_CSV_OR_XML = 0x06;
+	public static final int ERR_IN_NOT_PDF = 0x07;
+	public static final int ERR_ILLEGAL_U = 0x08;
+	//public static final int ERR_OUT_NOT_DIR = 0x09;
+	public static final int ERR_NO_S = 0x0A;
+	public static final int ERR_N_NOT_NUM = 0x0B;
+	public static final int ERR_N_NOT_NUM_OR_SEQ = 0x0C;
+	public static final int ERR_NO_N = 0x0D;
+	public static final int ERR_N_NOT_NEEDED = 0x0E;
+	public static final int ERR_NO_O = 0x0F;
+	public static final int ERR_NO_F1 = 0x10;
+	public static final int ERR_NO_F2 = 0x11;
+	public static final int ERR_B_NOT_NEEDED = 0x12;
+	public static final int ERR_NO_B = 0x13;
+	public static final int ERR_NO_F = 0x14;
+	//public static final int ERR_D_NOT_DIR = 0x15;
+	public static final int ERR_NOT_XML = 0x16;
+	public static final int ERR_BL_NOT_NEEDED = 0x17;
+	public static final int ERR_NO_BL = 0x18;
+	public static final int ERR_NO_F_OR_D = 0x19;
+	public static final int ERR_BOTH_F_OR_D = 0x1A;
+	public static final int ERR_STEP_ZERO_OR_NEGATIVE = 0x1B;
 	
     private static final long serialVersionUID = -3982153307443637295L;
 
-	public ParseException(int exceptionErrorCode, String[] args, Throwable e) {
+	public ParseException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public ParseException(int exceptionErrorCode, Throwable e) {
+	public ParseException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public ParseException(int exceptionErrorCode) {
+	public ParseException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public ParseException(Throwable e) {
+	public ParseException(final Throwable e) {
 		super(e);
 	}
 	
-	public ParseException(int exceptionErrorCode, String[] args) {
+	public ParseException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 

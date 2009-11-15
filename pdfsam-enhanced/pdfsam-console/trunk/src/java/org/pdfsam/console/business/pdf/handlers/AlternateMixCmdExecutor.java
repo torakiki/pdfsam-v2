@@ -39,7 +39,6 @@ package org.pdfsam.console.business.pdf.handlers;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
@@ -48,7 +47,6 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.MixException;
 import org.pdfsam.console.utils.FileUtility;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;

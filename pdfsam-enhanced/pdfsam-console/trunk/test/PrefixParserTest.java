@@ -1,7 +1,6 @@
+import junit.framework.TestCase;
 import org.pdfsam.console.utils.perfix.FileNameRequest;
 import org.pdfsam.console.utils.perfix.PrefixParser;
-
-import junit.framework.TestCase;
 
 /**
  * Test unit for the prefix parser

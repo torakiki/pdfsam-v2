@@ -39,9 +39,7 @@ package org.pdfsam.console.business.pdf.writers;
 
 import java.io.OutputStream;
 import java.util.List;
-
 import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfCopy;

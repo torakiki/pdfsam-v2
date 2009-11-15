@@ -44,28 +44,28 @@ import org.pdfsam.emp4j.exceptions.ClassNameKeyException;
  * @author Andrea Vacondio
  */
 public class BasicPdfsamException extends ClassNameKeyException {
-	
-	public final static int ERR_UNKNOWN = 0x01;
-	
+
+	public static final int ERR_UNKNOWN = 0x01;
+
 	private static final long serialVersionUID = -4603132507348839358L;
 
-	public BasicPdfsamException(int exceptionErrorCode, String[] args, Throwable e) {
+	public BasicPdfsamException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public BasicPdfsamException(int exceptionErrorCode, Throwable e) {
+	public BasicPdfsamException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public BasicPdfsamException(int exceptionErrorCode) {
+	public BasicPdfsamException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public BasicPdfsamException(Throwable e) {
+	public BasicPdfsamException(final Throwable e) {
 		super(e);
 	}
 
-	public BasicPdfsamException(int exceptionErrorCode, String[] args) {
+	public BasicPdfsamException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 

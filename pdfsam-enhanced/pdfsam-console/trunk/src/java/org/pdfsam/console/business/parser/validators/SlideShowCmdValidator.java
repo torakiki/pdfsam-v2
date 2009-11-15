@@ -40,14 +40,12 @@ package org.pdfsam.console.business.parser.validators;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
-
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
-
 import org.pdfsam.console.business.dto.Transition;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SlideShowParsedCommand;

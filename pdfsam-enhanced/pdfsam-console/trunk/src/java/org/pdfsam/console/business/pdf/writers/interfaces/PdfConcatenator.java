@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.pdf.writers.interfaces;
 
 import java.util.List;
-
 import com.lowagie.text.pdf.PdfReader;
 /**
  * Interface for the writers used to concat pdf files
@@ -52,32 +51,32 @@ public interface PdfConcatenator {
 	 * @param ranges Pages range (Ex. 2-23)
 	 * @throws Exception
 	 */
-	public void addDocument(PdfReader reader, String ranges) throws Exception;
+	void addDocument(PdfReader reader, String ranges) throws Exception;
 	/**
 	 * Concatenates a PDF document.
 	 * @param reader
 	 * @throws Exception
 	 */
-	public void addDocument(PdfReader reader) throws Exception;
+	void addDocument(PdfReader reader) throws Exception;
 	
 	/**
 	 * 
 	 * @param reader
 	 * @throws Exception
 	 */
-	public void freeReader(PdfReader reader) throws Exception;
+	void freeReader(PdfReader reader) throws Exception;
 	/**
 	 * Sets the bookmarks
 	 * @param outlines
 	 */
-	public void setOutlines(List outlines);
+	void setOutlines(List outlines);
 	/**
 	 * Sets the output document pdf version
 	 * @param pdfVersion
 	 */
-	public void setPdfVersion(char pdfVersion);
+	void setPdfVersion(char pdfVersion);
 	/**
 	 * close
 	 */
-	public void close();
+	void close();
 }

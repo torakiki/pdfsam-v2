@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
-
 import org.pdfsam.console.business.dto.PdfFile;
 /**
  * Unpack parsed command dto filled by parsing service and used by worker service

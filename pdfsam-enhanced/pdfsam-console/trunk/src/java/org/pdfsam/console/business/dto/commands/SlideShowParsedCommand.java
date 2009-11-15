@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
-
 import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.Transition;
 
@@ -214,8 +213,10 @@ public class SlideShowParsedCommand extends AbstractParsedCommand {
 		StringBuffer retVal = new StringBuffer();
 		retVal.append(super.toString());
 		retVal.append((outputFile== null)?"":"[outputFile="+outputFile.getAbsolutePath()+"]");
-		retVal.append((inputFile== null)?"":"[outputFile="+outputFile.getAbsolutePath()+"]");		
-		retVal.append("[transitions="+transitions+"]");
+		retVal.append((inputFile== null)?"":"[outputFile="+outputFile.getAbsolutePath()+"]");
+		if(transitions!=null){
+		retVal.append("[transitions.length="+transitions.length+"]");
+		}
 		retVal.append("[defaultTransition="+defaultTransition+"]");
 		retVal.append("[fullScreen="+fullScreen+"]");
 		retVal.append("[inputXmlFile="+inputXmlFile+"]");

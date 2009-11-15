@@ -40,13 +40,11 @@ package org.pdfsam.console.business.parser.validators;
 import java.io.File;
 import java.util.Hashtable;
 import java.util.Iterator;
-
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;
@@ -54,7 +52,6 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.ValidationUtility;
-
 import com.lowagie.text.pdf.PdfWriter;
 /**
  * CmdValidator for the encrypt command

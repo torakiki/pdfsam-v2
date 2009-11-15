@@ -40,13 +40,11 @@ package org.pdfsam.console.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
-
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.exceptions.console.ConsoleException;
@@ -170,7 +168,6 @@ public final class FileUtility {
      * copy source to dest
      * @param source
      * @param dest
-     * @throws IOException
      */
     public static void copyFile(File source, File dest) {
         FileChannel in = null;

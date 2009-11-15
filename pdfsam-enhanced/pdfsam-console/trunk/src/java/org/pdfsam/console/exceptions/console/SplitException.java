@@ -43,33 +43,33 @@ package org.pdfsam.console.exceptions.console;
  */
 public class SplitException extends ConsoleException {
 
-	public final static int ERR_NO_PAGE_LIMITS = 0x01;
-	public final static int ERR_NO_SUCH_PAGE = 0x02;
-	public final static int ERR_NOT_VALID_SPLIT_TYPE = 0x03;
-	public final static int ERR_NOT_VALID_BLEVEL = 0x04;
-	public final static int ERR_BLEVEL_OUTOFBOUNDS = 0x05;
-	public final static int ERR_BLEVEL = 0x06;
-	public final static int ERR_BLEVEL_NO_DEST = 0x06;
+	public static final int ERR_NO_PAGE_LIMITS = 0x01;
+	public static final int ERR_NO_SUCH_PAGE = 0x02;
+	public static final int ERR_NOT_VALID_SPLIT_TYPE = 0x03;
+	public static final int ERR_NOT_VALID_BLEVEL = 0x04;
+	public static final int ERR_BLEVEL_OUTOFBOUNDS = 0x05;
+	public static final int ERR_BLEVEL = 0x06;
+	public static final int ERR_BLEVEL_NO_DEST = 0x06;
 	
     private static final long serialVersionUID = -2125271375075332148L;
 
-	public SplitException(int exceptionErrorCode, String[] args, Throwable e) {
+	public SplitException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public SplitException(int exceptionErrorCode, Throwable e) {
+	public SplitException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public SplitException(int exceptionErrorCode) {
+	public SplitException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public SplitException(Throwable e) {
+	public SplitException(final Throwable e) {
 		super(e);
 	}
 
-	public SplitException(int exceptionErrorCode, String[] args) {
+	public SplitException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 

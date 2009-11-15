@@ -43,27 +43,27 @@ package org.pdfsam.console.exceptions.console;
 
 public class EncryptException extends ConsoleException {
 	
-	public final static int CMD_NO_INPUT_FILE = 0x01;
+	public static final int CMD_NO_INPUT_FILE = 0x01;
 	
 	private static final long serialVersionUID = 7272105858262362686L;
 	
-	public EncryptException(int exceptionErrorCode, String[] args, Throwable e) {
+	public EncryptException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public EncryptException(int exceptionErrorCode, Throwable e) {
+	public EncryptException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public EncryptException(int exceptionErrorCode) {
+	public EncryptException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public EncryptException(Throwable e) {
+	public EncryptException(final Throwable e) {
 		super(e);
 	}
 
-	public EncryptException(int exceptionErrorCode, String[] args) {
+	public EncryptException(final int exceptionErrorCode, String[] args) {
 		super(exceptionErrorCode, args);
 	}
 

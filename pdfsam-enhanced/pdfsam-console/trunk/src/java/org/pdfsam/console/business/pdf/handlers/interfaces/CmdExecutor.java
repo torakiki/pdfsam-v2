@@ -50,5 +50,5 @@ public interface CmdExecutor {
 	 * @param parsedCommand command to be executed
 	 * @throws ConsoleException
 	 */
-    public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException;
+    void execute(AbstractParsedCommand parsedCommand) throws ConsoleException;
 }

@@ -42,33 +42,33 @@ package org.pdfsam.console.exceptions.console;
  */
 public class SlideShowException extends ConsoleException {
 
-	public final static int ERR_EMPTY_INPUT_STRING = 0x01;
-	public final static int ERR_UNCOMPLETE_INPUT_STRING = 0x02;
-	public final static int ERR_BAD_INPUT_STRING = 0x03;
-	public final static int UNABLE_TO_ADD_TRANSITION = 0x04;
-	public final static int ERR_READING_XML_TRANSITIONS_FILE = 0x05;
-	public final static int ERR_DEFAULT_TRANSITION_ALREADY_SET = 0x06;
-	public final static int ERR_READING_TRANSITION = 0x07;
+	public static final int ERR_EMPTY_INPUT_STRING = 0x01;
+	public static final int ERR_UNCOMPLETE_INPUT_STRING = 0x02;
+	public static final int ERR_BAD_INPUT_STRING = 0x03;
+	public static final int UNABLE_TO_ADD_TRANSITION = 0x04;
+	public static final int ERR_READING_XML_TRANSITIONS_FILE = 0x05;
+	public static final int ERR_DEFAULT_TRANSITION_ALREADY_SET = 0x06;
+	public static final int ERR_READING_TRANSITION = 0x07;
 	
 	private static final long serialVersionUID = 6955483593054182431L;
 
-	public SlideShowException(int exceptionErrorCode, String[] args, Throwable e) {
+	public SlideShowException(final int exceptionErrorCode, String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public SlideShowException(int exceptionErrorCode, Throwable e) {
+	public SlideShowException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public SlideShowException(int exceptionErrorCode) {
+	public SlideShowException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public SlideShowException(Throwable e) {
+	public SlideShowException(final Throwable e) {
 		super(e);
 	}
 
-	public SlideShowException(int exceptionErrorCode, String[] args) {
+	public SlideShowException(final int exceptionErrorCode, String[] args) {
 		super(exceptionErrorCode, args);
 	}
 }

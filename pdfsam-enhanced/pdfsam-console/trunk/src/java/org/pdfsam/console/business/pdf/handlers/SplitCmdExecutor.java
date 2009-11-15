@@ -47,7 +47,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.TreeSet;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -62,7 +61,6 @@ import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.perfix.FileNameRequest;
 import org.pdfsam.console.utils.perfix.PrefixParser;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
@@ -412,10 +410,11 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 					bookmarksTable.put(new Integer(1), headNode.getText().trim());
 				}
 				//bLevel nodes
-				String xQuery = "/Bookmark";
+				StringBuffer buffer = new StringBuffer("/Bookmark");
 				for(int i=0; i<bLevel; i++){
-					xQuery += "/Title[@Action=\"GoTo\"]";
+					buffer.append("/Title[@Action=\"GoTo\"]");
 				}
+				String xQuery = buffer.toString();
 				List nodes = document.selectNodes(xQuery);
 				input.close();
 				input = null;

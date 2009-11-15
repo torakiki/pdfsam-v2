@@ -44,27 +44,27 @@ package org.pdfsam.console.exceptions.console;
  */
 public class RotateException extends ConsoleException {
 
-	public final static int ERR_NOT_SINGLE_ROTATION = 0x01;
+	public static final int ERR_NOT_SINGLE_ROTATION = 0x01;
 
 	private static final long serialVersionUID = -6918907542949293013L;
 	
-	public RotateException(int exceptionErrorCode, String[] args, Throwable e) {
+	public RotateException(final int exceptionErrorCode, String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public RotateException(int exceptionErrorCode, Throwable e) {
+	public RotateException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public RotateException(int exceptionErrorCode) {
+	public RotateException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public RotateException(Throwable e) {
+	public RotateException(final Throwable e) {
 		super(e);
 	}
 
-	public RotateException(int exceptionErrorCode, String[] args) {
+	public RotateException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 }

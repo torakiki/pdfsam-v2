@@ -43,34 +43,34 @@ package org.pdfsam.console.exceptions.console;
  */
 public class ValidationException extends ConsoleException {
 
-	public final static int ERR_WRONG_ROTATION = 0x01;
-	public final static int ERR_DEGREES_NOT_ALLOWED = 0x02;
-	public final static int ERR_PARAM_ROTATION = 0x03;
-	public final static int ERR_NOT_PDF = 0x04;	
-	public final static int ERR_NOT_DIR = 0x05;	
-	public final static int ERR_WRONG_PAGE_LABEL = 0x06;
-	public final static int ERR_UNK_LABEL_STYLE = 0x07;
-	public final static int ERR_NOT_VALID_LABEL_PREFIX = 0x08;
+	public static final int ERR_WRONG_ROTATION = 0x01;
+	public static final int ERR_DEGREES_NOT_ALLOWED = 0x02;
+	public static final int ERR_PARAM_ROTATION = 0x03;
+	public static final int ERR_NOT_PDF = 0x04;	
+	public static final int ERR_NOT_DIR = 0x05;	
+	public static final int ERR_WRONG_PAGE_LABEL = 0x06;
+	public static final int ERR_UNK_LABEL_STYLE = 0x07;
+	public static final int ERR_NOT_VALID_LABEL_PREFIX = 0x08;
 	
 	private static final long serialVersionUID = 8695556302543417406L;
 	
-	public ValidationException(int exceptionErrorCode, String[] args, Throwable e) {
+	public ValidationException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public ValidationException(int exceptionErrorCode, Throwable e) {
+	public ValidationException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public ValidationException(int exceptionErrorCode) {
+	public ValidationException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public ValidationException(Throwable e) {
+	public ValidationException(final Throwable e) {
 		super(e);
 	}
 
-	public ValidationException(int exceptionErrorCode, String[] args) {
+	public ValidationException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 }

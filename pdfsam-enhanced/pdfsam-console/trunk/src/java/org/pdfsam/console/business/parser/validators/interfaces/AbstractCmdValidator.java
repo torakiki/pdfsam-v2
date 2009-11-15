@@ -40,7 +40,6 @@ package org.pdfsam.console.business.parser.validators.interfaces;
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.StringParam;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 /**

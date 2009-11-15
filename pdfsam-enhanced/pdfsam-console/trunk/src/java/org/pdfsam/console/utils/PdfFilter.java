@@ -45,7 +45,7 @@ import java.io.FileFilter;
  */
 public class PdfFilter implements FileFilter {
 
-	private static String EXTENSION = "pdf";
+	private static final String EXTENSION = "pdf";
 	
 	public boolean accept(File arg0) {
 		boolean retVal = false;

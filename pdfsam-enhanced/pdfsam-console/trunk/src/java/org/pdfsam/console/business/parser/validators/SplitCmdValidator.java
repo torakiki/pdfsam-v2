@@ -40,7 +40,6 @@ package org.pdfsam.console.business.parser.validators;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
-
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.IntParam;
@@ -48,7 +47,6 @@ import jcmdline.LongParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;

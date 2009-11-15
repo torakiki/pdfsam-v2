@@ -39,7 +39,6 @@ package org.pdfsam.console.utils;
 
 import java.io.InputStream;
 import java.util.List;
-
 import org.dom4j.io.SAXReader;
 
 
@@ -63,12 +62,12 @@ public final class PdfUtility {
 		if(bookmarks!=null){
 			SAXReader reader = new SAXReader();
 			org.dom4j.Document document = reader.read(bookmarks);
-			String xQuery = "/Bookmark/Title[@Action=\"GoTo\"]";
-			List nodes = document.selectNodes(xQuery);
+			StringBuffer buffer = new StringBuffer("/Bookmark/Title[@Action=\"GoTo\"]");
+			List nodes = document.selectNodes(buffer.toString());
 			while((nodes!=null && nodes.size()>0)){
 				retVal++;
-				xQuery += "/Title[@Action=\"GoTo\"]";
-				nodes = document.selectNodes(xQuery);
+				buffer.append("/Title[@Action=\"GoTo\"]");
+				nodes = document.selectNodes(buffer.toString());
 			}
 			
 		}

@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
-
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.PdfFile;
 
@@ -229,7 +228,9 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 				retVal.append((inputFileList[i]== null)?"":"[inputFileList["+i+"]="+inputFileList[i].getFile().getAbsolutePath()+"]");				
 			}
 		}
-		retVal.append("[rotations="+rotations+"]");
+		if(rotations!=null){
+			retVal.append("[rotations.length="+rotations.length+"]");
+		}
 		retVal.append((inputCvsOrXmlFile== null)?"":"[inputCvsOrXmlFile="+inputCvsOrXmlFile.getAbsolutePath()+"]");
 		retVal.append("[pageSelection="+pageSelection+"]");
 		retVal.append("[copyFields="+copyFields+"]");

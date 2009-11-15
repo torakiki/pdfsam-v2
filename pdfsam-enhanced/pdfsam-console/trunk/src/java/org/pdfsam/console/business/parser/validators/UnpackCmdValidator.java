@@ -39,12 +39,10 @@ package org.pdfsam.console.business.parser.validators;
 
 import java.io.File;
 import java.util.Iterator;
-
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.dto.PdfFile;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.parser.validators.interfaces.AbstractCmdValidator;

@@ -42,27 +42,27 @@ package org.pdfsam.console.exceptions.console;
  */
 public class SetViewerException extends ConsoleException {
 
-	public final static int CMD_NO_INPUT_FILE = 0x01;
+	public static final int CMD_NO_INPUT_FILE = 0x01;
 	
 	private static final long serialVersionUID = -5870074661855916725L;
 
-	public SetViewerException(int exceptionErrorCode, String[] args, Throwable e) {
+	public SetViewerException(final int exceptionErrorCode, String[] args, Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public SetViewerException(int exceptionErrorCode, Throwable e) {
+	public SetViewerException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public SetViewerException(int exceptionErrorCode) {
+	public SetViewerException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public SetViewerException(Throwable e) {
+	public SetViewerException(final Throwable e) {
 		super(e);
 	}
 
-	public SetViewerException(int exceptionErrorCode, String[] args) {
+	public SetViewerException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 }

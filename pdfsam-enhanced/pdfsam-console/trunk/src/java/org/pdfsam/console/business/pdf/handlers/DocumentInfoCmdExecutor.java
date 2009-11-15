@@ -61,10 +61,10 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 
 	private final Logger log = Logger.getLogger(DocumentInfoCmdExecutor.class.getPackage().getName());
 
-	private static String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
-	private static String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
-	private static String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
-	private static String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
+	private static final String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
+	private static final String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
+	private static final String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
+	private static final String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
 
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if ((parsedCommand != null) && (parsedCommand instanceof DocumentInfoParsedCommand)) {

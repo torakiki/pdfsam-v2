@@ -1,5 +1,4 @@
 import junit.framework.TestCase;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.business.parser.CmdParseManager;

@@ -38,7 +38,6 @@
 package org.pdfsam.console.business.parser.validators.interfaces;
 
 import jcmdline.CmdLineHandler;
-
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 
@@ -49,14 +48,14 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
  */
 public interface CmdValidator {
 	
-	public static final String PDF_EXTENSION = ".pdf";
-	public static final String XML_EXTENSION = ".xml";	
-	public static final String CSV_EXTENSION = ".csv";	
+	String PDF_EXTENSION = ".pdf";
+	String XML_EXTENSION = ".xml";	
+	String CSV_EXTENSION = ".csv";	
 	
 	/**
 	 * called by the Manager to validate input arguments for this validator.
 	 * @return the dto containing parsed command
 	 * @throws ConsoleException
 	 */
-	public AbstractParsedCommand validate(CmdLineHandler cmdLineHandler) throws ConsoleException;
+	AbstractParsedCommand validate(CmdLineHandler cmdLineHandler) throws ConsoleException;
 }

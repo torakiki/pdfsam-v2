@@ -43,33 +43,33 @@ package org.pdfsam.console.exceptions.console;
  */
 public class ConcatException extends ConsoleException {
 
-	public final static int ERR_SYNTAX = 0x01;
-	public final static int ERR_DEL_TEMP_FILE = 0x02;
-	public final static int ERR_NOT_POSITIVE = 0x03;
-	public final static int ERR_READING_CSV_OR_XML = 0x04;
-	public final static int ERR_CANNOT_MERGE = 0x05;
-	public final static int ERR_START_BIGGER_THAN_END = 0x06;
-	public final static int CMD_NO_INPUT_FILE = 0x07;
+	public static final int ERR_SYNTAX = 0x01;
+	public static final int ERR_DEL_TEMP_FILE = 0x02;
+	public static final int ERR_NOT_POSITIVE = 0x03;
+	public static final int ERR_READING_CSV_OR_XML = 0x04;
+	public static final int ERR_CANNOT_MERGE = 0x05;
+	public static final int ERR_START_BIGGER_THAN_END = 0x06;
+	public static final int CMD_NO_INPUT_FILE = 0x07;
 	
     private static final long serialVersionUID = -8242739056279169571L;
 
-	public ConcatException(int exceptionErrorCode, String[] args, Throwable e) {
+	public ConcatException(final int exceptionErrorCode, final String[] args, final Throwable e) {
 		super(exceptionErrorCode, args, e);
 	}
 
-	public ConcatException(int exceptionErrorCode, Throwable e) {
+	public ConcatException(final int exceptionErrorCode, final Throwable e) {
 		super(exceptionErrorCode, e);
 	}
 
-	public ConcatException(int exceptionErrorCode) {
+	public ConcatException(final int exceptionErrorCode) {
 		super(exceptionErrorCode);
 	}
 
-	public ConcatException(Throwable e) {
+	public ConcatException(final Throwable e) {
 		super(e);
 	}
 
-	public ConcatException(int exceptionErrorCode, String[] args) {
+	public ConcatException(final int exceptionErrorCode, final String[] args) {
 		super(exceptionErrorCode, args);
 	}
 	
