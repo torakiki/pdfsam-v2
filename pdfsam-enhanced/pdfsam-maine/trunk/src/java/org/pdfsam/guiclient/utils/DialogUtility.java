@@ -29,6 +29,9 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class DialogUtility {
 
+	public static final int AT_LEAST_ONE_DOC = 0;
+	public static final int TWO_DOC = 1;
+
 	/**
 	 * Shows a yes/no/cancel dialog to ask for change the output directory
 	 * @param comp parent component
@@ -49,10 +52,15 @@ public class DialogUtility {
 	/**
 	 * Shows a warning dialog telling the user that at least one document should be selected
 	 * @param comp
+	 * @param msgType the type of the message
 	 */
-	public static void showWarningNoDocsSelected(Component comp){
+	public static void showWarningNoDocsSelected(Component comp, int msgType){
+		String msg = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Please select at least one pdf document.");
+		if(TWO_DOC == msgType){
+			msg = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select two pdf documents.");
+		}
 		JOptionPane.showMessageDialog(comp, 
-									  GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Please select at least one pdf document."), 
+									  msg, 
 									  GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Warning"), 
 									  JOptionPane.WARNING_MESSAGE);
 	}

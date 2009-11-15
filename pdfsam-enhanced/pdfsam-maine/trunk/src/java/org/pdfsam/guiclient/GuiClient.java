@@ -15,13 +15,20 @@
 package org.pdfsam.guiclient;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.configuration.GuiConfiguration;
 import org.pdfsam.guiclient.gui.frames.JMainFrame;
+import org.pdfsam.guiclient.utils.filters.JarFilter;
 /**
  * GUI Client for the console
  * @author a.vacondio
@@ -59,6 +66,7 @@ public class GuiClient {
 	public static void main(String[] args) {
 		try {
 			loadApplicationProperties();
+			loadExtendedLibraries();
 			clientGUI = new JMainFrame();
 			initializeUserInterface();
 			clientGUI.setVisible(true);
@@ -77,6 +85,29 @@ public class GuiClient {
 			defaultProps.load(is);
 		}catch(Exception e){
 			log.error("Unable to load pdfsam properties.", e);
+		}
+	}
+	
+	/**
+	 * Loads the libraries in the "ext" subdirectory
+	 */
+	private static void loadExtendedLibraries() {
+		try {
+			String configSearchPath = new File(URLDecoder.decode(GuiClient.class.getProtectionDomain().getCodeSource()
+					.getLocation().getPath(), "UTF-8")).getParent();
+			File currentDir = new File(configSearchPath, "ext");
+			File[] fileList = currentDir.listFiles(new JarFilter(false));
+			if (fileList.length > 0) {
+				ArrayList<URL> urlList = new ArrayList<URL>();
+				for (File currentFile : fileList) {
+					urlList.add(currentFile.toURI().toURL());
+				}
+
+				URLClassLoader urlClassLoader = new URLClassLoader((URL[]) urlList.toArray(new URL[urlList.size()]));
+				ThumbnailCreatorsRegisty.reload(urlClassLoader);
+			}
+		} catch (Exception e) {
+			log.error("Unable to load extended libraries.", e);
 		}
 	}
 	

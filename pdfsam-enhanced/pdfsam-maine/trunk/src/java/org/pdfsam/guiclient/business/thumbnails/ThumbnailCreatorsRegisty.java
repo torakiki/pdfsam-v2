@@ -28,7 +28,7 @@ import org.pdfsam.guiclient.dto.StringItem;
  */
 public class ThumbnailCreatorsRegisty {
 
-	private static ServiceLoader<ThumbnailsCreator> creators = ServiceLoader.load(ThumbnailsCreator.class);
+	private static ServiceLoader<ThumbnailsCreator> CREATORS = ServiceLoader.load(ThumbnailsCreator.class);
 	
 	/**
 	 * @param identifier
@@ -36,8 +36,8 @@ public class ThumbnailCreatorsRegisty {
 	 */
 	public static ThumbnailsCreator getCreator(String identifier){
 		ThumbnailsCreator retVal = null;
-		if(creators!=null && identifier!=null && identifier.length()>0){
-			for(ThumbnailsCreator creator: creators){
+		if(CREATORS!=null && identifier!=null && identifier.length()>0){
+			for(ThumbnailsCreator creator: CREATORS){
 				if(identifier.equals(creator.getCreatorIdentifier())){
 					retVal = creator;
 					break;
@@ -46,7 +46,7 @@ public class ThumbnailCreatorsRegisty {
 		}
 		//set the default one
 		if(retVal == null){
-			for(ThumbnailsCreator creator: creators){
+			for(ThumbnailsCreator creator: CREATORS){
 				retVal = creator;
 				break;
 			}
@@ -55,13 +55,20 @@ public class ThumbnailCreatorsRegisty {
 	}
 
 	/**
-	 * @return a list of the available creators
+	 * @return a list of the available CREATORS
 	 */
 	public static List<StringItem> getInstalledCreators(){
 		List<StringItem> retVal = new ArrayList<StringItem>();
-		for(ThumbnailsCreator creator: creators){
+		for(ThumbnailsCreator creator: CREATORS){
 			retVal.add(new StringItem(creator.getCreatorIdentifier(), creator.getCreatorName()));
 		}
 		return retVal;
+	}
+	
+	/**
+	 * Creates the services from the given class loader. Useful when new jars/classes are loaded at runtime
+	 */
+	public static void reload(ClassLoader cl) {
+		CREATORS = ServiceLoader.load(ThumbnailsCreator.class, cl);
 	}
 }
