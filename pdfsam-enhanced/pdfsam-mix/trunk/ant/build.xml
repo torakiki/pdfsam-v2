@@ -47,7 +47,7 @@
     </path>
 
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-mix.src.dir}" destdir="${pdfsam-mix.build.dir}" debug="true">
+    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-mix.src.dir}" destdir="${pdfsam-mix.build.dir}" debug="true">
     	<classpath refid="pdfsam-mix.classpath"/>
     </javac>
   </target>

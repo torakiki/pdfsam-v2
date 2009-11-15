@@ -30,7 +30,8 @@ import org.pdfsam.i18n.GettextResource;
 public class DialogUtility {
 
 	public static final int AT_LEAST_ONE_DOC = 0;
-	public static final int TWO_DOC = 1;
+	public static final int ONE_DOC = 1;
+	public static final int TWO_DOC = 2;
 
 	/**
 	 * Shows a yes/no/cancel dialog to ask for change the output directory
@@ -58,6 +59,8 @@ public class DialogUtility {
 		String msg = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Please select at least one pdf document.");
 		if(TWO_DOC == msgType){
 			msg = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select two pdf documents.");
+		}else if(ONE_DOC == msgType){
+			msg = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a pdf document.");
 		}
 		JOptionPane.showMessageDialog(comp, 
 									  msg, 

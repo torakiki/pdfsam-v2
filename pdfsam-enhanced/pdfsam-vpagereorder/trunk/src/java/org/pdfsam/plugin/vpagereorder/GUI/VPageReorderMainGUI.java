@@ -27,16 +27,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -44,16 +41,10 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -68,10 +59,10 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.XmlUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.vpagereorder.listeners.RunButtonActionListener;
 /**
  * Visual reorder plugin  main panel
  * @author Andrea Vacondio
@@ -250,109 +241,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 		browseDestButton.addKeyListener(browsedEnterkeyListener);
 		runButton.addKeyListener(runEnterkeyListener);
 		// END_ENTER_KEY_LISTENERS
-		runButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				File inputFile = selectionPanel.getSelectedPdfDocument();
-				String selectionString = selectionPanel.getValidElementsString();
-				if (inputFile == null || selectionString.length() == 0) {
-					  JOptionPane.showMessageDialog(getParent(),
-          				  	GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document or undelete some page"),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-				}else{
-					final LinkedList<String> args = new LinkedList<String>();
-					try {
-	
-						args.add("-" + ConcatParsedCommand.F_ARG);
-						String f = inputFile.getAbsolutePath();
-						if ((selectionPanel.getSelectedPdfDocumentPassword()) != null
-								&& selectionPanel.getSelectedPdfDocumentPassword().length() > 0) {
-							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),
-									"Found a password for input file."));
-							f += ":" + selectionPanel.getSelectedPdfDocumentPassword();
-						}
-						args.add(f);
-	
-						args.add("-" + ConcatParsedCommand.U_ARG);
-						args.add(selectionString);
-						
-						//rotation
-						String rotation = selectionPanel.getRotatedElementsString();
-						if(rotation!=null && rotation.length()>0){
-							args.add("-" + ConcatParsedCommand.R_ARG);
-							args.add(rotation);
-						}
-						
-						String destination = "";
-						// check radio for output options
-						if (sameAsSourceRadio.isSelected()) {
-							if (inputFile != null) {
-								destination = inputFile.getAbsolutePath();
-							}
-						} else {
-							 //if no extension given
-		                    if ((destinationFileText.getText().length() > 0) && !(destinationFileText.getText().matches(PDF_EXTENSION_REGEXP))){
-		                    	destinationFileText.setText(destinationFileText.getText()+"."+PDF_EXTENSION);
-		                    } 
-							if (destinationFileText.getText().length() > 0) {
-								File destinationDir = new File(destinationFileText.getText());
-								File parent = destinationDir.getParentFile();
-								if (!(parent != null && parent.exists())) {
-									String suggestedDir = null;
-									if (Configuration.getInstance().getDefaultWorkingDirectory() != null
-											&& Configuration.getInstance().getDefaultWorkingDirectory().length() > 0) {
-										suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(),
-												destinationDir.getName()).getAbsolutePath();
-									} else {
-										suggestedDir = new File(inputFile.getParent(), destinationDir.getName())
-												.getAbsolutePath();
-									}
-									if (suggestedDir != null) {
-		                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-		                    			if(JOptionPane.YES_OPTION == chosenOpt){
-		                    				destinationFileText.setText(suggestedDir);
-					        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-					        				return;
-					        			}
-	
-									}
-								}
-							}
-							destination = destinationFileText.getText();
-						}
-						//check if the file already exists and the user didn't select to overwrite
-						File destFile = (destination!=null)? new File(destination):null;
-						if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
-							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
-                			if(JOptionPane.YES_OPTION == chosenOpt){
-                				overwriteCheckbox.setSelected(true);
-		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-		        				return;
-		        			}
-						}
-						
-						args.add("-" + ConcatParsedCommand.O_ARG);						
-						args.add(destination);
-						
-						if (overwriteCheckbox.isSelected())
-							args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
-						if (outputCompressedCheck.isSelected())
-							args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
-						
-						args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
-						args.add(((StringItem) versionCombo.getSelectedItem()).getId());
-	
-						args.add(AbstractParsedCommand.COMMAND_CONCAT);
-	
-						final String[] myStringArray = (String[]) args.toArray(new String[args.size()]);
-						WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
-					} catch (Exception ex) {
-						log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
-						SoundPlayer.getInstance().playErrorSound();
-					}
-				}
-			}
-		});
+		runButton.addActionListener(new RunButtonActionListener(this));
 		runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(), "Execute pages reorder"));
 	    runButton.setSize(new Dimension(88,25));
         
@@ -712,4 +601,48 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
             return selectionPanel.getLoadFileButton();
         }
     }
+
+	/**
+	 * @return the destinationFileText
+	 */
+	public JTextField getDestinationFileText() {
+		return destinationFileText;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
+	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JVisualPdfPageSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
+	}
+
+	/**
+	 * @return the sameAsSourceRadio
+	 */
+	public JRadioButton getSameAsSourceRadio() {
+		return sameAsSourceRadio;
+	}
+    
+    
 }

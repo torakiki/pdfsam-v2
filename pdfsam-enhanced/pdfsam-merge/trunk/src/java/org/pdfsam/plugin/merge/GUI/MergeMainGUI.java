@@ -28,30 +28,19 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Pattern;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
-import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -64,10 +53,10 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.merge.components.JSaveListAsXmlMenuItem;
+import org.pdfsam.plugin.merge.listeners.RunButtonActionListener;
 /**
  * Plugable JPanel provides a GUI for merge functions.
  * @author Andrea Vacondio
@@ -111,8 +100,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.7.2";
-	private static final String ALL_STRING = "All";
+    private static final String PLUGIN_VERSION = "0.7.3";
+	public static final String ALL_STRING = "All";
 	
     /**
      * Constructor
@@ -261,115 +250,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION        
 //RUN_BUTTON
-	    runButton.addActionListener(new ActionListener() {            
-            public void actionPerformed(ActionEvent e) {
-            	if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }                             
-                final LinkedList args = new LinkedList();  
-                try{             	
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	if(items != null && items.length >= 1){
-                		String destination = "";
-	                    //if no extension given
-	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
-	                        destinationTextField.setText(destinationTextField.getText()+"."+PDF_EXTENSION);
-	                    }                    
-	                    if(destinationTextField.getText().length()>0){
-	                    	File destinationDir = new File(destinationTextField.getText());
-	                    	File parent = destinationDir.getParentFile();
-	                    	if(!(parent!=null && parent.exists())){
-	                    		String suggestedDir = null;
-	                    		if(Configuration.getInstance().getDefaultWorkingDirectory()!=null && Configuration.getInstance().getDefaultWorkingDirectory().length()>0){
-	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
-	                    		}else{
-	                    			if(items!=null & items.length>0){
-	                    				PdfSelectionTableItem item = items[items.length-1];
-	                    				if(item!=null && item.getInputFile()!=null){
-	                    					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
-	                    				}
-	                    			}
-	                    		}
-	                    		if(suggestedDir != null){
-	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                    			if(JOptionPane.YES_OPTION == chosenOpt){
-	                    				destinationTextField.setText(suggestedDir);
-				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-				        				return;
-				        			}
-	
-	                    		}
-	                    	}
-	                    }
-	                    
-	                    destination = destinationTextField.getText();
-						
-						//check if the file already exists and the user didn't select to overwrite
-						File destFile = (destination!=null)? new File(destination):null;
-						if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
-							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
-                			if(JOptionPane.YES_OPTION == chosenOpt){
-                				overwriteCheckbox.setSelected(true);
-		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-		        				return;
-		        			}
-						}
-						
-		                args.add("-"+ConcatParsedCommand.O_ARG);
-	                    args.add(destination);
-	                    
-	                    PdfSelectionTableItem item = null;    
-	                	String pageSelectionString = "";
-	                	for (int i = 0; i < items.length; i++){
-							item = items[i];
-							String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():ALL_STRING;
-							//add ":" at the end if necessary
-							if(!pageSelection.endsWith(":")){
-								pageSelection += ":";
-							}
-							Pattern p = Pattern.compile(ConcatCmdValidator.SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
-							if (!(p.matcher(pageSelection).matches())) {
-								DialogUtility.errorValidatingBounds(getParent(), pageSelection);
-								return;
-							} else {
-								args.add("-" + ConcatParsedCommand.F_ARG);
-								String f = item.getInputFile().getAbsolutePath();
-								if ((item.getPassword()) != null && (item.getPassword()).length() > 0) {
-									log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-									f += ":" + item.getPassword();
-								}
-								args.add(f);
-								pageSelectionString += pageSelection;
-							}	                        					
-						}
-						                    
-	                    args.add("-"+ConcatParsedCommand.U_ARG);
-	                    args.add(pageSelectionString);
-	                    
-	                    if (overwriteCheckbox.isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
-	                    if (outputCompressedCheck.isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
-	                    if (mergeTypeCheck.isSelected()) args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
-		
-	                    args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
-						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-	
-						args.add (AbstractParsedCommand.COMMAND_CONCAT);
-	                
-		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray)); 
-					}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-                }catch(Exception ex){    
-                	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-                	SoundPlayer.getInstance().playErrorSound();
-                }    
-            }
-        });
+	    runButton.addActionListener(new RunButtonActionListener(this));
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf merge"));
 	    runButton.setSize(new Dimension(88,25));
         
@@ -507,7 +388,8 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
         }
 	}
 
-    public void loadJobNode(Node arg0) throws LoadJobException {
+    @SuppressWarnings("unchecked")
+	public void loadJobNode(Node arg0) throws LoadJobException {
     	if(arg0 != null){
 			try{
 				resetPanel();
@@ -687,6 +569,48 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 		mergeTypeCheck.setSelected(false);
+	}
+
+	/**
+	 * @return the destinationTextField
+	 */
+	public JTextField getDestinationTextField() {
+		return destinationTextField;
+	}
+
+	/**
+	 * @return the mergeTypeCheck
+	 */
+	public JCheckBox getMergeTypeCheck() {
+		return mergeTypeCheck;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
+	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
 	}
   
 }

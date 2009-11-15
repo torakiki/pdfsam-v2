@@ -26,8 +26,6 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.LinkedList;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -35,20 +33,13 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -61,9 +52,9 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.mix.listeners.RunButtonActionListener;
 
 /** 
  * Plugable JPanel provides a GUI for alternate mix functions.
@@ -110,7 +101,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.11e";
+	private static final String PLUGIN_VERSION = "0.1.12e";
 
 	
 	/**
@@ -278,106 +269,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 		
 //		RUN_BUTTON
-		runButton.addActionListener(new ActionListener() {            
-			public void actionPerformed(ActionEvent e) {
-				if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }
-				final LinkedList args = new LinkedList(); 
-				try{
-					PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-					if(items != null && items.length == 2){
-
-						args.add("-"+MixParsedCommand.F1_ARG);
-						String f1 = items[0].getInputFile().getAbsolutePath();
-						if((items[0].getPassword()) != null && (items[0].getPassword()).length()>0){
-							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for first file."));
-							f1 +=":"+items[0].getPassword();
-						}
-						args.add(f1);
-						
-						args.add("-"+MixParsedCommand.F2_ARG);
-						String f2 = items[1].getInputFile().getAbsolutePath();
-						if((items[1].getPassword()) != null && (items[1].getPassword()).length()>0){
-							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for second file."));
-							f2 +=":"+items[1].getPassword();
-						}
-						args.add(f2);
-
-						String destination = "";
-						//if no extension given
-	                    if ((destinationTextField.getText().length() > 0) && !(destinationTextField.getText().matches(PDF_EXTENSION_REGEXP))){
-							destinationTextField.setText(destinationTextField.getText()+".pdf");
-						}
-	                    if(destinationTextField.getText().length()>0){
-	                    	File destinationDir = new File(destinationTextField.getText());
-	                    	File parent = destinationDir.getParentFile();
-	                    	if(!(parent!=null && parent.exists())){
-	                    		String suggestedDir = null;
-	                    		if(Configuration.getInstance().getDefaultWorkingDirectory()!=null && Configuration.getInstance().getDefaultWorkingDirectory().length()>0){
-	                    			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
-	                    		}else{	                    			
-                    				PdfSelectionTableItem item = items[1];
-                    				if(item!=null && item.getInputFile()!=null){
-                    					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
-                    				}	                    			
-	                    		}
-	                    		if(suggestedDir != null){
-	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                    			if(JOptionPane.YES_OPTION == chosenOpt){
-	                    				destinationTextField.setText(suggestedDir);
-				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-				        				return;
-				        			}
-	                    		}
-	                    	}
-	                    }
-	                    
-	                    destination = destinationTextField.getText();
-						
-						//check if the file already exists and the user didn't select to overwrite
-						File destFile = (destination!=null)? new File(destination):null;
-						if(destFile!=null && destFile.exists() && !overwriteCheckbox.isSelected()){
-							int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(getParent(),destFile.getName());
-                			if(JOptionPane.YES_OPTION == chosenOpt){
-                				overwriteCheckbox.setSelected(true);
-		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-		        				return;
-		        			}
-						}
-						args.add("-"+MixParsedCommand.O_ARG);
-						args.add(destination);
-
-						if(stepTextField.getText()!=null && stepTextField.getText().length()>0){
-							args.add("-"+MixParsedCommand.STEP_ARG);
-							args.add(stepTextField.getText());
-						}
-						
-						if (overwriteCheckbox.isSelected()) args.add("-"+MixParsedCommand.OVERWRITE_ARG);
-	                    if (outputCompressedCheck.isSelected()) args.add("-"+MixParsedCommand.COMPRESSED_ARG); 
-						if (reverseFirstCheckbox.isSelected()) args.add("-"+MixParsedCommand.REVERSE_FIRST_ARG);
-						if (reverseSecondCheckbox.isSelected()) args.add("-"+MixParsedCommand.REVERSE_SECOND_ARG);
-						
-						args.add("-"+MixParsedCommand.PDFVERSION_ARG);
-						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-						
-						args.add (AbstractParsedCommand.COMMAND_MIX);
-						final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-						WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
-					}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select two pdf documents."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-				}catch(Exception ex){   
-					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-					SoundPlayer.getInstance().playErrorSound();
-				} 
-
-			}
-		});
+		runButton.addActionListener(new RunButtonActionListener(this));
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Execute pdf alternate mix"));
 	    runButton.setSize(new Dimension(88,25));
         
@@ -724,4 +616,61 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		overwriteCheckbox.setSelected(false);
 	}
 
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
+	}
+
+	/**
+	 * @return the reverseFirstCheckbox
+	 */
+	public JCheckBox getReverseFirstCheckbox() {
+		return reverseFirstCheckbox;
+	}
+
+	/**
+	 * @return the reverseSecondCheckbox
+	 */
+	public JCheckBox getReverseSecondCheckbox() {
+		return reverseSecondCheckbox;
+	}
+
+	/**
+	 * @return the destinationTextField
+	 */
+	public JTextField getDestinationTextField() {
+		return destinationTextField;
+	}
+
+	/**
+	 * @return the stepTextField
+	 */
+	public JTextField getStepTextField() {
+		return stepTextField;
+	}
+
+	
 }

@@ -26,30 +26,20 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
-import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -62,8 +52,8 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.decrypt.listeners.RunButtonActionListener;
 /** 
  * Plugable JPanel provides a GUI for decrypt functions.
  * @author Andrea Vacondio
@@ -104,7 +94,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.5e";
+	private static final String PLUGIN_VERSION = "0.0.6e";
 	
 	/**
 	 * Constructor
@@ -249,73 +239,7 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		add(outputOptionsPanel, c);
 		
 //		RUN_BUTTON
-		runButton.addActionListener(new ActionListener() {            
-			public void actionPerformed(ActionEvent e) {
-				if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }      
-				final LinkedList args = new LinkedList();
-                //validation and permission check are demanded to the CmdParser object
-                try{					
-
-					PdfSelectionTableItem item = null;
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	if(items != null && items.length >= 1){	
-	                	for (int i = 0; i < items.length; i++){
-							item = items[i];
-							args.add("-"+DecryptParsedCommand.F_ARG);
-	                        String f = item.getInputFile().getAbsolutePath();
-	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
-	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	    						f +=":"+item.getPassword();
-	    					}
-	    					args.add(f);                        						
-						}
-	                	
-	                    args.add("-"+DecryptParsedCommand.O_ARG);
-	                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
-	                		if(suggestedDir != null){
-	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                			if(JOptionPane.YES_OPTION == chosenOpt){
-	                				destinationTextField.setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
-	                		}                    	
-	                    }
-	                    args.add(destinationTextField.getText());
-	
-	                    if (overwriteCheckbox.isSelected()) {
-							args.add("-"+DecryptParsedCommand.OVERWRITE_ARG);
-						}
-	                    if (outputCompressedCheck.isSelected()) {
-	                    	args.add("-"+DecryptParsedCommand.COMPRESSED_ARG); 
-	                    }
-	                    
-	                    args.add("-"+EncryptParsedCommand.P_ARG);
-	                    args.add(outPrefixTextField.getText());
-	                    args.add("-"+DecryptParsedCommand.PDFVERSION_ARG);
-						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-						
-						args.add (AbstractParsedCommand.COMMAND_DECRYPT);
-	
-		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));     
-                	}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-				}catch(Exception ex){   
-					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-					SoundPlayer.getInstance().playErrorSound();
-				} 
-
-			}
-		});
+		runButton.addActionListener(new RunButtonActionListener(this));
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Decrypt selected files"));
         runButton.setSize(new Dimension(88,25));
         
@@ -449,7 +373,8 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         }
 	}
     
-    public void loadJobNode(Node arg0) throws LoadJobException {		
+    @SuppressWarnings("unchecked")
+	public void loadJobNode(Node arg0) throws LoadJobException {		
 		try{	
 			selectionPanel.getClearButton().doClick();
 			List fileList = arg0.selectNodes("filelist/file");
@@ -609,6 +534,48 @@ public class DecryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
+	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
+	}
+
+	/**
+	 * @return the destinationTextField
+	 */
+	public JTextField getDestinationTextField() {
+		return destinationTextField;
+	}
+
+	/**
+	 * @return the outPrefixTextField
+	 */
+	public JTextField getOutPrefixTextField() {
+		return outPrefixTextField;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
 	}
 
 }

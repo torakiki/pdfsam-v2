@@ -26,28 +26,19 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
@@ -57,8 +48,8 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.unpack.listeners.RunButtonActionListener;
 /** 
  * Plugable JPanel provides a GUI for unpack functions.
  * @author Andrea Vacondio
@@ -91,7 +82,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.8e";
+	private static final String PLUGIN_VERSION = "0.0.9e";
 	
 	/**
 	 * Constructor
@@ -187,65 +178,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 	
 //		RUN_BUTTON
-		runButton.addActionListener(new ActionListener() {            
-			public void actionPerformed(ActionEvent e) {
-				if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }      
-				final LinkedList args = new LinkedList();
-                //validation and permission check are demanded to the CmdParser object
-                try{					
-
-					PdfSelectionTableItem item = null;
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	if(items != null && items.length >= 1){	
-	                	for (int i = 0; i < items.length; i++){
-							item = items[i];
-							args.add("-"+UnpackParsedCommand.F_ARG);
-	                        String f = item.getInputFile().getAbsolutePath();
-	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
-	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	    						f +=":"+item.getPassword();
-	    					}
-	    					args.add(f);                        						
-						}
-	                	
-	                    args.add("-"+UnpackParsedCommand.O_ARG);
-	                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
-	                		if(suggestedDir != null){
-	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                			if(JOptionPane.YES_OPTION == chosenOpt){
-	                				destinationTextField.setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
-	                		}                    	
-	                    }
-	                    args.add(destinationTextField.getText());
-	
-	                    if (overwriteCheckbox.isSelected()) {
-							args.add("-"+UnpackParsedCommand.OVERWRITE_ARG);
-						}
-	
-						args.add (AbstractParsedCommand.COMMAND_UNPACK);
-	
-		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));     
-                	}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-				}catch(Exception any_ex){   
-					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), any_ex);
-					SoundPlayer.getInstance().playErrorSound();
-				} 
-
-			}
-		});
+		runButton.addActionListener(new RunButtonActionListener(this));
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Unpack selected files"));
         runButton.setSize(new Dimension(88,25));
         
@@ -350,7 +283,8 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
         }
 	}
     
-    public void loadJobNode(Node arg0) throws LoadJobException {		
+    @SuppressWarnings("unchecked")
+	public void loadJobNode(Node arg0) throws LoadJobException {		
 		try{	
 			selectionPanel.getClearButton().doClick();
 			List fileList = arg0.selectNodes("filelist/file");
@@ -471,4 +405,27 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 		destinationTextField.setText("");
 		overwriteCheckbox.setSelected(false);
 	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the destinationTextField
+	 */
+	public JTextField getDestinationTextField() {
+		return destinationTextField;
+	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+	
+	
 }

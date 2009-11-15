@@ -553,7 +553,7 @@ public class BasicCmdLineHandler implements CmdLineHandler {
      *                      or of 0 length
      */
     public void setCmdName(String cmdName) {
-        if (cmdName == null && cmdName.length() <= 0) {
+        if (cmdName == null || cmdName.length() <= 0) {
             throw new IllegalArgumentException(Strings.get(
                     "BasicCmdLineHandler.cmdNameTooShort", 
                     new Object[] { cmdName }));

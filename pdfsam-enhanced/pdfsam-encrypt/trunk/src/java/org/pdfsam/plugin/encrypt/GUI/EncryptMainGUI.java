@@ -27,9 +27,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -38,21 +36,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EtchedBorder;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -65,10 +56,10 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.EncryptionUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.encrypt.listeners.EncryptionTypeComboActionListener;
+import org.pdfsam.plugin.encrypt.listeners.RunButtonActionListener;
 /** 
  * Plugable JPanel provides a GUI for encrypt functions.
  * @author Andrea Vacondio
@@ -134,7 +125,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.2.11e";
+    private final String PLUGIN_VERSION = "0.3.0e";
 	
 	public final static int DPRINT = 0;
 	public final static int PRINT = 1;
@@ -409,82 +400,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 //END_HELP_LABEL_PREFIX        
 //RUN_BUTTON
         //listener
-	    runButton.addActionListener(new ActionListener() {            
-            public void actionPerformed(ActionEvent e) {
-            	if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }      
-				final LinkedList args = new LinkedList();
-                //validation and permission check are demanded to the CmdParser object
-                try{
-					PdfSelectionTableItem item = null;
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	if(items != null && items.length >= 1){	
-						args.addAll(getEncPermissions(permissionsCheck, allowAllCheck));
-	
-	                	for (int i = 0; i < items.length; i++){
-							item = items[i];
-							args.add("-"+EncryptParsedCommand.F_ARG);
-	                        String f = item.getInputFile().getAbsolutePath();
-	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
-	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	    						f +=":"+item.getPassword();
-	    					}
-	    					args.add(f);                        						
-						}
-	                	
-	                    args.add("-"+EncryptParsedCommand.P_ARG);
-	                    args.add(outPrefixTextField.getText());
-	                    args.add("-"+EncryptParsedCommand.APWD_ARG);
-	                    args.add(ownerPwdField.getText());
-	                    args.add("-"+EncryptParsedCommand.UPWD_ARG);
-	                    args.add(userPwdField.getText());
-	                    //check if is needed page option
-						args.add("-"+EncryptParsedCommand.ETYPE_ARG);
-						args.add(EncryptionUtility.getEncAlgorithm((String)encryptType.getSelectedItem()));
-	                    args.add("-"+EncryptParsedCommand.O_ARG);
-	                    
-	                    if(destFolderText.getText()==null || destFolderText.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
-	                		if(suggestedDir != null){
-	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                			if(JOptionPane.YES_OPTION == chosenOpt){
-	                				destFolderText.setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
-	
-	                		}                    	
-	                    }
-	                    args.add(destFolderText.getText());
-	
-	                    if (overwriteCheckbox.isSelected()) {
-							args.add("-"+EncryptParsedCommand.OVERWRITE_ARG);
-						}
-	                    if (outputCompressedCheck.isSelected()) {
-							args.add("-"+EncryptParsedCommand.COMPRESSED_ARG);
-						} 
-	
-	                    args.add("-"+EncryptParsedCommand.PDFVERSION_ARG);
-						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-	
-						args.add (AbstractParsedCommand.COMMAND_ENCRYPT);
-	
-		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));  
-                	}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-                }catch(Exception ex){    
-                	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-                	SoundPlayer.getInstance().playErrorSound();
-                }     
-            }
-        });
+	    runButton.addActionListener(new RunButtonActionListener(this));
 	    runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Encrypt selected files"));
         runButton.setSize(new Dimension(88,25));
         
@@ -590,7 +506,8 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         }
 	}
 
-    public void loadJobNode(Node arg0) throws LoadJobException {		
+    @SuppressWarnings("unchecked")
+	public void loadJobNode(Node arg0) throws LoadJobException {		
 			try{
 				resetPanel();
 				List fileList = arg0.selectNodes("filelist/file");
@@ -736,66 +653,6 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 
     }	
 	
-	/**
-	*@return <code>LinkedList</code> containing permissions parameters
-	*/
-	private LinkedList getEncPermissions(JCheckBox[] pChecks, JCheckBox allowAll){
-		LinkedList ret = new LinkedList();
-		if(allowAll.isSelected()){
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_PRINT);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_MODIFY);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_COPY);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_ANNOTATION);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_SCREEN);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_FILL);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_ASSEMBLY);
-			ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-			ret.add(EncryptParsedCommand.E_DPRINT);
-		}
-		else{
-			if(	pChecks[EncryptMainGUI.PRINT].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_PRINT);
-			}
-			if(	pChecks[EncryptMainGUI.DPRINT].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_DPRINT);
-			}
-			if(	pChecks[EncryptMainGUI.COPY].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_COPY);
-			}
-			if(	pChecks[EncryptMainGUI.MODIFY].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_MODIFY);
-			}
-			if(	pChecks[EncryptMainGUI.FILL].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_FILL);
-			}
-			if(	pChecks[EncryptMainGUI.SCREEN].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_SCREEN);
-			}
-			if(	pChecks[EncryptMainGUI.ASSEMBLY].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_ASSEMBLY);
-			}
-			if(	pChecks[EncryptMainGUI.ANNOTATION].isSelected()){
-				ret.add("-"+EncryptParsedCommand.ALLOW_ARG);
-				ret.add(EncryptParsedCommand.E_ANNOTATION);
-			}
-		}
-		return ret;
-	}
-    
     public FocusTraversalPolicy getFocusPolicy(){
         return encryptfocusPolicy;
         
@@ -995,4 +852,83 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 			permissionsCheck[i].setSelected(false);
 		}
 	}
+
+	/**
+	 * @return the outPrefixTextField
+	 */
+	public JTextField getOutPrefixTextField() {
+		return outPrefixTextField;
+	}
+
+	/**
+	 * @return the destFolderText
+	 */
+	public JTextField getDestFolderText() {
+		return destFolderText;
+	}
+
+	/**
+	 * @return the userPwdField
+	 */
+	public JTextField getUserPwdField() {
+		return userPwdField;
+	}
+
+	/**
+	 * @return the ownerPwdField
+	 */
+	public JTextField getOwnerPwdField() {
+		return ownerPwdField;
+	}
+
+	/**
+	 * @return the encryptType
+	 */
+	public JComboBox getEncryptType() {
+		return encryptType;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
+	}
+
+	/**
+	 * @return the permissionsCheck
+	 */
+	public JCheckBox[] getPermissionsCheck() {
+		return permissionsCheck;
+	}
+
+	/**
+	 * @return the allowAllCheck
+	 */
+	public JCheckBox getAllowAllCheck() {
+		return allowAllCheck;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
+	}
+	
+	
 }

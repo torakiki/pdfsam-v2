@@ -26,31 +26,22 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.RotateParsedCommand;
 import org.pdfsam.console.utils.ValidationUtility;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -63,8 +54,8 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
+import org.pdfsam.plugin.rotate.listeners.RunButtonActionListener;
 /** 
  * Plugable JPanel provides a GUI for rotate functions.
  * @author Andrea Vacondio
@@ -112,7 +103,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.3";
+	private static final String PLUGIN_VERSION = "0.0.4";
 	
 	/**
 	 * Constructor
@@ -298,76 +289,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 		add(outputOptionsPanel, c);
 		
 //		RUN_BUTTON
-		runButton.addActionListener(new ActionListener() {            
-			public void actionPerformed(ActionEvent e) {
-				if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }      
-				final LinkedList args = new LinkedList();
-                //validation and permission check are demanded to the CmdParser object
-                try{					
-
-					PdfSelectionTableItem item = null;
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-                	if(items != null && items.length >= 1){	
-	                	for (int i = 0; i < items.length; i++){
-							item = items[i];
-							args.add("-"+RotateParsedCommand.F_ARG);
-	                        String f = item.getInputFile().getAbsolutePath();
-	                        if((item.getPassword()) != null && (item.getPassword()).length()>0){
-	    						log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-	    						f +=":"+item.getPassword();
-	    					}
-	    					args.add(f);                        						
-						}
-	                	
-	                    args.add("-"+RotateParsedCommand.O_ARG);
-	                    if(destinationTextField.getText()==null || destinationTextField.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
-	                		if(suggestedDir != null){
-	                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                			if(JOptionPane.YES_OPTION == chosenOpt){
-	                				destinationTextField.setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
-	                		}                    	
-	                    }
-	                    args.add(destinationTextField.getText());
-	
-	                    if (overwriteCheckbox.isSelected()) {
-							args.add("-"+RotateParsedCommand.OVERWRITE_ARG);
-						}
-	                    if (outputCompressedCheck.isSelected()) {
-	                    	args.add("-"+RotateParsedCommand.COMPRESSED_ARG); 
-	                    }
-	                    
-	                    args.add("-"+RotateParsedCommand.R_ARG);
-	                    args.add(((StringItem)rotationPagesBox.getSelectedItem()).getId()+":"+rotationBox.getSelectedItem());
-	                    
-	                    args.add("-"+RotateParsedCommand.P_ARG);
-	                    args.add(outPrefixTextField.getText());
-	                    args.add("-"+RotateParsedCommand.PDFVERSION_ARG);
-						args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-						
-						args.add (AbstractParsedCommand.COMMAND_ROTATE);
-	
-		                final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-		                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));     
-                	}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select at least one pdf document."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-				}catch(Exception ex){   
-					log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-					SoundPlayer.getInstance().playErrorSound();
-				} 
-
-			}
-		});
+		runButton.addActionListener(new RunButtonActionListener(this));
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate selected files"));
         runButton.setSize(new Dimension(88,25));
         
@@ -521,7 +443,8 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
         }
 	}
     
-    public void loadJobNode(Node arg0) throws LoadJobException {		
+    @SuppressWarnings("unchecked")
+	public void loadJobNode(Node arg0) throws LoadJobException {		
 		try{	
 			selectionPanel.getClearButton().doClick();
 			List fileList = arg0.selectNodes("filelist/file");
@@ -707,5 +630,62 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
 	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
+	}
+
+	/**
+	 * @return the destinationTextField
+	 */
+	public JTextField getDestinationTextField() {
+		return destinationTextField;
+	}
+
+	/**
+	 * @return the outPrefixTextField
+	 */
+	public JTextField getOutPrefixTextField() {
+		return outPrefixTextField;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
+	}
+
+	/**
+	 * @return the rotationBox
+	 */
+	public JComboBox getRotationBox() {
+		return rotationBox;
+	}
+
+	/**
+	 * @return the rotationPagesBox
+	 */
+	public JComboBox getRotationPagesBox() {
+		return rotationPagesBox;
+	}
+
 
 }

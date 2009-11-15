@@ -23,8 +23,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.LinkedList;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
@@ -32,22 +30,15 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
-import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
-import org.pdfsam.guiclient.commons.business.SoundPlayer;
-import org.pdfsam.guiclient.commons.business.WorkExecutor;
-import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -61,13 +52,13 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.split.components.JBLevelCombo;
 import org.pdfsam.plugin.split.components.JSplitRadioButton;
 import org.pdfsam.plugin.split.components.JSplitRadioButtonModel;
 import org.pdfsam.plugin.split.components.JSplitSizeCombo;
 import org.pdfsam.plugin.split.listeners.RadioListener;
+import org.pdfsam.plugin.split.listeners.RunButtonActionListener;
 /**
  * Plugable JPanel provides a GUI for split functions.
  * @author Andrea Vacondio
@@ -336,107 +327,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 //END_HELP_LABEL_PREFIX
 //RUN_BUTTON
         //listener
-        runButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (WorkExecutor.getInstance().getRunningThreads() > 0 || selectionPanel.isAdding()){
-                    log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Please wait while all files are processed.."));
-                    return;
-                }
-                final LinkedList args = new LinkedList();
-                try{
-                	PdfSelectionTableItem item = null;
-                	PdfSelectionTableItem[] items = selectionPanel.getTableRows();
-					if(items != null && items.length == 1){
-						item = items[0];
-						args.add("-"+SplitParsedCommand.F_ARG);
-						String f = item.getInputFile().getAbsolutePath();
-						if((item.getPassword()) != null && (item.getPassword()).length()>0){
-							log.debug(GettextResource.gettext(config.getI18nResourceBundle(),"Found a password for input file."));
-							f +=":"+item.getPassword();
-						}
-						args.add(f);
-					
-	                    args.add("-"+SplitParsedCommand.P_ARG);
-	                    args.add(outPrefixText.getText());
-	                    args.add("-"+SplitParsedCommand.S_ARG);
-	                    args.add(splitType);
-	                    //check if is needed page option
-	                    if (splitType.equals(SplitParsedCommand.S_SPLIT)){
-	                        args.add("-"+SplitParsedCommand.N_ARG);
-	                        args.add(thisPageTextField.getText());                        
-	                    }else if (splitType.equals(SplitParsedCommand.S_NSPLIT)){
-	                        args.add("-"+SplitParsedCommand.N_ARG);
-	                        args.add(nPagesTextField.getText());                        
-	                    }else if (splitType.equals(SplitParsedCommand.S_SIZE)){
-	                        args.add("-"+SplitParsedCommand.B_ARG);
-	                        if(splitSizeCombo.isSelectedItem() && splitSizeCombo.isValidSelectedItem()){
-	                        	args.add(Long.toString(splitSizeCombo.getSelectedBytes()));                        
-	                        }else{
-	                        	throw new Exception(GettextResource.gettext(config.getI18nResourceBundle(),"Invalid split size"));
-	                        }
-	                    } else if (splitType.equals(SplitParsedCommand.S_BLEVEL)){
-	                    	 args.add("-"+SplitParsedCommand.BL_ARG);
-	                    	 args.add((String)bLevelCombo.getSelectedItem()); 
-	                    }
-	                                        
-	                    args.add("-"+SplitParsedCommand.O_ARG);
-	                    //check radio for output options
-	                    if (sameAsSourceRadio.isSelected()){
-	                    	if(item != null){
-	                    		args.add(item.getInputFile().getParent());
-	                    	}
-	                    }else{
-	                    	if(destinationFolderText.getText()==null || destinationFolderText.getText().length()==0){                    
-	                		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
-		                		if(suggestedDir != null){
-	                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(getParent(),suggestedDir);
-	                    			if(JOptionPane.YES_OPTION == chosenOpt){
-	                    				destinationFolderText.setText(suggestedDir);
-				        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-				        				return;
-				        			}
-	
-		                		}                    	
-		                    }
-	                        args.add(destinationFolderText.getText());
-	                    }
-	                    if (overwriteCheckbox.isSelected()) args.add("-"+SplitParsedCommand.OVERWRITE_ARG);
-	                    if (outputCompressedCheck.isSelected()) args.add("-"+SplitParsedCommand.COMPRESSED_ARG); 
-	                    args.add("-"+MixParsedCommand.PDFVERSION_ARG);
-	                    if(JPdfVersionCombo.SAME_AS_SOURCE.equals(((StringItem)versionCombo.getSelectedItem()).getId())){
-	                    	StringItem minItem = versionCombo.getMinItem();
-	                    	String currentPdfVersion = Character.toString(item.getPdfVersion());
-	                    	if(minItem != null){
-	                    		if(Integer.parseInt(currentPdfVersion) < Integer.parseInt(minItem.getId())){
-	                    			if(JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(getParent(),
-				            						    GettextResource.gettext(config.getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n"+GettextResource.gettext(config.getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
-				            						    GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version conflict"),
-				            						    JOptionPane.YES_NO_OPTION,
-				            						    JOptionPane.WARNING_MESSAGE)){
-	                    				return;
-	                    			}
-	                    		}
-	                    	}
-	                    	args.add(currentPdfVersion);                    	
-	                    }else{
-	                    	args.add(((StringItem)versionCombo.getSelectedItem()).getId());
-	                    }
-	                    args.add(AbstractParsedCommand.COMMAND_SPLIT); 
-	                    
-			        	final String[] myStringArray = (String[])args.toArray(new String[args.size()]);
-			        	WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
-					}else{
-						JOptionPane.showMessageDialog(getParent(),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Please select a pdf document."),
-								GettextResource.gettext(config.getI18nResourceBundle(),"Warning"),
-							    JOptionPane.WARNING_MESSAGE);
-					}
-                }catch(Exception ex){    
-                	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-                	SoundPlayer.getInstance().playErrorSound();
-                }      
-            }
-        });
+        runButton.addActionListener(new RunButtonActionListener(this));
         runButton.setToolTipText(GettextResource.gettext(config.getI18nResourceBundle(),"Split selected file"));
         runButton.setMargin(new Insets(5, 5, 5, 5));
         runButton.setSize(new Dimension(88,25));
@@ -956,4 +847,97 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	    }	   
 	    chooseAFolderRadio.setSelected(true);
 	}
+
+	/**
+	 * @return the outPrefixText
+	 */
+	public JTextField getOutPrefixText() {
+		return outPrefixText;
+	}
+
+	/**
+	 * @return the destinationFolderText
+	 */
+	public JTextField getDestinationFolderText() {
+		return destinationFolderText;
+	}
+
+	/**
+	 * @return the thisPageTextField
+	 */
+	public JTextField getThisPageTextField() {
+		return thisPageTextField;
+	}
+
+	/**
+	 * @return the versionCombo
+	 */
+	public JPdfVersionCombo getVersionCombo() {
+		return versionCombo;
+	}
+
+	/**
+	 * @return the selectionPanel
+	 */
+	public JPdfSelectionPanel getSelectionPanel() {
+		return selectionPanel;
+	}
+
+	/**
+	 * @return the splitSizeCombo
+	 */
+	public JSplitSizeCombo getSplitSizeCombo() {
+		return splitSizeCombo;
+	}
+
+	/**
+	 * @return the bLevelCombo
+	 */
+	public JBLevelCombo getbLevelCombo() {
+		return bLevelCombo;
+	}
+
+	/**
+	 * @return the bookmarksLevel
+	 */
+	public JSplitRadioButton getBookmarksLevel() {
+		return bookmarksLevel;
+	}
+
+	/**
+	 * @return the overwriteCheckbox
+	 */
+	public JCheckBox getOverwriteCheckbox() {
+		return overwriteCheckbox;
+	}
+
+	/**
+	 * @return the splitType
+	 */
+	public String getSplitType() {
+		return splitType;
+	}
+
+	/**
+	 * @return the sameAsSourceRadio
+	 */
+	public JRadioButton getSameAsSourceRadio() {
+		return sameAsSourceRadio;
+	}
+
+	/**
+	 * @return the outputCompressedCheck
+	 */
+	public JCheckBox getOutputCompressedCheck() {
+		return outputCompressedCheck;
+	}
+
+	/**
+	 * @return the nPagesTextField
+	 */
+	public JTextField getnPagesTextField() {
+		return nPagesTextField;
+	}
+    
+    
 }
