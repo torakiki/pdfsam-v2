@@ -47,7 +47,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Pattern;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -64,6 +65,7 @@ import org.pdfsam.console.business.pdf.writers.PdfSimpleConcatenator;
 import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
 import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ConsoleException;
+import org.pdfsam.console.exceptions.console.ValidationException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.ValidationUtility;
 import com.lowagie.text.Document;
@@ -111,51 +113,34 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
             Document pdfDocument = null;
             PdfConcatenator  pdfWriter = null;
             int totalProcessedPages = 0;        
-            PdfReader pdfReader;
+            PdfReader pdfReader = null;
             
 			try{
-	            String[] pageSelection = inputCommand.getPageSelection().split(":");
-				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-				
-				for(int i=0; i<fileList.length; i++){
-	    			//get page selection. If arrayoutofbounds default behaviour is "all" 
-					String currentPageSelection;
+	            String[] pageSelections = inputCommand.getPageSelections();
+	            File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
+				int length = ArrayUtils.getLength(pageSelections);
+
+				for (int i = 0; i < fileList.length; i++) {
+
+					String currentPageSelection = ValidationUtility.ALL_STRING;
 					int currentDocumentPages = 0;
-	    			try{
-	    				currentPageSelection = ("".equals(pageSelection[i].toLowerCase()))? ValidationUtility.ALL_STRING: pageSelection[i].toLowerCase();
-	    			}catch(Exception e){
-	    				currentPageSelection = ValidationUtility.ALL_STRING;
-	    			}
-	    			//validation
-	    			//i'm sooo bad in regexp
-	    			if (!(Pattern.compile("((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*)|("+ValidationUtility.ALL_STRING+")", Pattern.CASE_INSENSITIVE).matcher(currentPageSelection).matches())){
-	    				FileUtility.deleteFile(tmpFile);
-						throw new ConcatException(ConcatException.ERR_SYNTAX, new String[]{""+currentPageSelection});
-					} 
-	    			
-	    			String[] selectionGroups = null;
-	    			if(currentPageSelection.indexOf(",") != 0){
-	    				selectionGroups = currentPageSelection.split(",");
-	    			}else{
-	    				selectionGroups = new String[]{currentPageSelection};
-	    			}
+					if (!ArrayUtils.isEmpty(pageSelections) && i <= length) {
+						currentPageSelection = pageSelections[i].toLowerCase();
+					}
+
+					String[] selectionGroups = StringUtils.split(currentPageSelection, ",");
 	    			
 	    			pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
 					pdfReader.removeUnusedObjects();
 					pdfReader.consolidateNamedDestinations();
 					int pdfNumberOfPages = pdfReader.getNumberOfPages();
+					
+					List boundsList = getBounds(pdfNumberOfPages, selectionGroups);
 					String boundsString = "";
 					
 	    			//I manage bookmarks for every selection group 
-	    			for(int j=0; j<selectionGroups.length; j++){
-
-						Bounds bounds;
-		    			try{
-		    				bounds = getBounds(pdfNumberOfPages, selectionGroups[j]);
-		    			}catch(ConcatException ce){
-		    				FileUtility.deleteFile(tmpFile);
-							throw new ConcatException(ce);
-		    			}
+	    			for(Iterator iter = boundsList.iterator(); iter.hasNext();){				
+		    			Bounds bounds = (Bounds) iter.next();
 		    			
 		    			boundsString += (boundsString.length()>0)? ","+bounds.toString() : bounds.toString();
 		    			
@@ -241,9 +226,15 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
                 	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
                 }  		
-			}catch(Exception e){    		
+			}catch(ConsoleException ce){    		
+				throw ce;
+			}
+			catch(Exception e){    		
 				throw new ConcatException(e);
 			}finally{
+				if(pdfReader!=null){
+					pdfReader.close();
+				}
 				setWorkCompleted();
 			}
 		}else{
@@ -341,10 +332,26 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		return rotatedTmpFile;
 	}
 	
+	/**
+	 * 
+	 * @param pdfNumberOfPages
+	 * @param selections
+	 * @return a list of valid bounds
+	 * @throws ConcatException
+	 */
+	private List getBounds(int pdfNumberOfPages, String[] selections) throws ValidationException, ConcatException{
+		ArrayList retVal = new ArrayList();
+		for(int i=0; i<selections.length; i++){
+			Bounds bounds = getBounds(pdfNumberOfPages, selections[i]);
+			ValidationUtility.assertValidBounds(bounds, pdfNumberOfPages);
+			retVal.add(bounds);
+		}
+		return retVal;
+	}
+	
 	private Bounds getBounds(int pdfNumberOfPages, String currentPageSelection) throws ConcatException{
 		Bounds retVal = new Bounds(pdfNumberOfPages , 1);
 		if (!(ValidationUtility.ALL_STRING.equals(currentPageSelection))){
-        	boolean valid = true;
             String[] limits = currentPageSelection.split("-");
             try{
             	retVal.setStart(Integer.parseInt(limits[0]));
@@ -361,18 +368,6 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
                 }
             }catch(NumberFormatException nfe){
 				throw new ConcatException(ConcatException.ERR_SYNTAX, new String[]{""+currentPageSelection},nfe);							
-            }
-            if(valid){
-                //validation
-                if (retVal.getStart() <= 0){
-					throw new ConcatException(ConcatException.ERR_NOT_POSITIVE, new String[]{""+retVal.getStart(), ""+currentPageSelection});
-                }
-                else if (retVal.getEnd() > pdfNumberOfPages){
-					throw new ConcatException(ConcatException.ERR_CANNOT_MERGE, new String[]{""+retVal.getEnd()});
-                }
-                else if (retVal.getStart() > retVal.getEnd()){
-					throw new ConcatException(ConcatException.ERR_START_BIGGER_THAN_END, new String[]{""+retVal.getStart(),""+retVal.getEnd(),""+currentPageSelection});
-                }
             }
 		}
 		return retVal;

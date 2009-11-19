@@ -51,6 +51,11 @@ public class ValidationException extends ConsoleException {
 	public static final int ERR_WRONG_PAGE_LABEL = 0x06;
 	public static final int ERR_UNK_LABEL_STYLE = 0x07;
 	public static final int ERR_NOT_VALID_LABEL_PREFIX = 0x08;
+	public static final int ERR_ILLEGAL_U = 0x09;
+	public static final int ERR_NOT_POSITIVE = 0x0A;
+	public static final int ERR_CANNOT_MERGE = 0x0B;
+	public static final int ERR_START_BIGGER_THAN_END = 0x0C;
+;
 	
 	private static final long serialVersionUID = 8695556302543417406L;
 	

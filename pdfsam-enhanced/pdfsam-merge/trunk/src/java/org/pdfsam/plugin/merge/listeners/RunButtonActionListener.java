@@ -18,12 +18,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.LinkedList;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
-import org.pdfsam.console.business.parser.validators.ConcatCmdValidator;
+import org.pdfsam.console.utils.ValidationUtility;
 import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
@@ -126,12 +126,8 @@ public class RunButtonActionListener implements ActionListener {
             	for (int i = 0; i < items.length; i++){
 					item = items[i];
 					String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():MergeMainGUI.ALL_STRING;
-					//add ":" at the end if necessary
-					if(!pageSelection.endsWith(":")){
-						pageSelection += ":";
-					}
-					Pattern p = Pattern.compile(ConcatCmdValidator.SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
-					if (!(p.matcher(pageSelection).matches())) {
+					String[] selections = StringUtils.split(pageSelection, ":");
+					if (!ValidationUtility.isValidPageSelectionsArray(selections)) {
 						DialogUtility.errorValidatingBounds(panel, pageSelection);
 						return;
 					} else {

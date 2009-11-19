@@ -67,7 +67,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            //checking extension
-	            ValidationUtility.checkValidPdfExtension(outFile.getName());
+	            ValidationUtility.assertValidPdfExtension(outFile.getName());
 	            parsedCommandDTO.setOutputFile(outFile);	
 	    		
 	        }else{
@@ -79,7 +79,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        if(f1Option.isSet()){
 	        	PdfFile firstFile = f1Option.getPdfFile();
 	        	 //checking extension
-	            ValidationUtility.checkValidPdfExtension(firstFile.getFile().getName());
+	            ValidationUtility.assertValidPdfExtension(firstFile.getFile().getName());
             	parsedCommandDTO.setFirstInputFile(FileUtility.getPdfFile(firstFile));                  	            
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F1);	
@@ -90,7 +90,7 @@ public class MixCmdValidator extends AbstractCmdValidator {
 	        if(f2Option.isSet()){
 	        	PdfFile secondFile = f2Option.getPdfFile();
 	        	 //checking extension
-	            ValidationUtility.checkValidPdfExtension(secondFile.getFile().getName());
+	            ValidationUtility.assertValidPdfExtension(secondFile.getFile().getName());
 	           	parsedCommandDTO.setSecondInputFile(FileUtility.getPdfFile(secondFile));
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F2);	

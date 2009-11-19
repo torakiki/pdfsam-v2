@@ -16,6 +16,8 @@ package org.pdfsam.console.business.pdf;
 
 import java.util.Observable;
 import java.util.Observer;
+import org.apache.commons.lang.time.DurationFormatUtils;
+import org.apache.commons.lang.time.StopWatch;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
@@ -42,7 +44,6 @@ import org.pdfsam.console.business.pdf.handlers.SplitCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.UnpackCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
-import org.pdfsam.console.utils.TimeUtility;
 /**
  * Manager for the commands execution 
  * @author Andrea Vacondio
@@ -53,26 +54,32 @@ public class CmdExecuteManager extends Observable implements Observer{
 	private final Logger log = Logger.getLogger(CmdExecuteManager.class.getPackage().getName());
 	
 	private AbstractCmdExecutor cmdExecutor = null;
+	private final StopWatch stopWatch = new StopWatch();
 	
 	/**
 	 * Executes the input parsed command
 	 * @param parsedCommand
 	 * @throws ConsoleException
 	 */
-	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException{
-		if(parsedCommand != null){
-			long start = System.currentTimeMillis();
-			cmdExecutor = getExecutor(parsedCommand);
-	
-			if(cmdExecutor != null){
-				cmdExecutor.addObserver(this);
-				cmdExecutor.execute(parsedCommand);
-				log.info("Command '"+parsedCommand.getCommand()+"' executed in "+TimeUtility.format(System.currentTimeMillis()-start));
-			}else{
-				throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[]{""+parsedCommand.getCommand()});
+	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
+		stopWatch.reset();
+		stopWatch.start();
+		try {
+			if (parsedCommand != null) {
+				cmdExecutor = getExecutor(parsedCommand);
+				if (cmdExecutor != null) {
+					cmdExecutor.addObserver(this);
+					cmdExecutor.execute(parsedCommand);
+				} else {
+					throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[] { "" + parsedCommand.getCommand() });
+				}
+			} else {
+				throw new ConsoleException(ConsoleException.CMD_LINE_NULL);
 			}
-		}else{
-			throw new ConsoleException(ConsoleException.CMD_LINE_NULL);
+		} finally {
+			stopWatch.stop();
+			log.info("Command '" + parsedCommand.getCommand() + "' executed in "
+					+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 		}
 	}	
 	 /**

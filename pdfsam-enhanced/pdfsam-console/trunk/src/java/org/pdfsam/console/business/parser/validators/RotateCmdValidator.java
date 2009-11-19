@@ -68,7 +68,7 @@ protected AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler)
 			FileParam oOption = (FileParam) cmdLineHandler.getOption(RotateParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
-	            ValidationUtility.checkValidDirectory(outFile);
+	            ValidationUtility.assertValidDirectory(outFile);
 	            parsedCommandDTO.setOutputFile(outFile);		    		
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
@@ -87,7 +87,7 @@ protected AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler)
 	        	for(Iterator fIterator = fOption.getPdfFiles().iterator(); fIterator.hasNext();){
 	        		PdfFile currentFile = (PdfFile) fIterator.next();
 		            //checking extension
-		            ValidationUtility.checkValidPdfExtension(currentFile.getFile().getName());
+		            ValidationUtility.assertValidPdfExtension(currentFile.getFile().getName());
 	        	}
 	        	parsedCommandDTO.setInputFileList(FileUtility.getPdfFiles(fOption.getPdfFiles()));
 	        }

@@ -39,13 +39,13 @@ package org.pdfsam.console.business.parser.validators;
 
 import java.io.File;
 import java.util.Iterator;
-import java.util.regex.Pattern;
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
+import org.apache.commons.lang.StringUtils;
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
@@ -60,10 +60,6 @@ import org.pdfsam.console.utils.ValidationUtility;
  */
 public class ConcatCmdValidator extends AbstractCmdValidator {
 		
-	private static final String ALL_STRING = "all";
-	
-	public static final String SELECTION_REGEXP = "(((([\\d]+[-][\\d]*)|([\\d]+))(,(([\\d]+[-][\\d]*)|([\\d]+)))*[:])|(" + ALL_STRING + ":))+";
-
 	public AbstractParsedCommand validateArguments(CmdLineHandler cmdLineHandler) throws ConsoleException {
 		ConcatParsedCommand parsedCommandDTO = new ConcatParsedCommand();
 		
@@ -73,7 +69,7 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
 	            //checking extension
-	            ValidationUtility.checkValidPdfExtension(outFile.getName());
+	            ValidationUtility.assertValidPdfExtension(outFile.getName());
             	parsedCommandDTO.setOutputFile(outFile);	
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
@@ -103,7 +99,7 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 					}else{
 						if ((dOption.isSet())){
 				            File inputDir = dOption.getFile();
-				            ValidationUtility.checkValidDirectory(inputDir);
+				            ValidationUtility.assertValidDirectory(inputDir);
 				            parsedCommandDTO.setInputDirectory(inputDir);	
 				        }
 					}
@@ -118,13 +114,9 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 			StringParam uOption = (StringParam) cmdLineHandler.getOption(ConcatParsedCommand.U_ARG);            
 	        //if it's set we proceed with validation
 	        if (uOption.isSet()){
-	            Pattern p = Pattern.compile(SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
-	            if ((p.matcher(uOption.getValue()).matches())){
-	            	parsedCommandDTO.setPageSelection(uOption.getValue());
-	            }
-	            else{
-	            	throw new ParseException(ParseException.ERR_ILLEGAL_U, new String[]{uOption.getValue()});
-	            }
+	        	String[] selections = StringUtils.split(uOption.getValue(), ":");
+	            ValidationUtility.assertValidPageSelectionsArray(selections);
+	            parsedCommandDTO.setPageSelections(selections);
 	        }
 	
 	        //-copyfields

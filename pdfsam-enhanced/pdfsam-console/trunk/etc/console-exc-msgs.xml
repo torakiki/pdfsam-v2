@@ -20,25 +20,26 @@
 		<exception errorcode="1" message="Error parsing rotations values." />				
 		<exception errorcode="2" message="The given degrees value {0} is not allowed. Only multiple of 90 allowed." />				
 		<exception errorcode="3" message="Rotation parameter {0} incorrect." />	
-		<exception errorcode="4" message="Given file not a pdf format. {0}" />		
+		<exception errorcode="4" message="The given file is not a pdf document. {0}" />		
 		<exception errorcode="5" message="{0} must be a directory." />
 		<exception errorcode="6" message="Wrong value for the -l option {0}." />
 		<exception errorcode="7" message="Unknown page label style: {0}." />	
 		<exception errorcode="8" message="Not a valid page label prefix parameter: {0}." />	
+		<exception errorcode="9" message="-u value parsing error. The selection string must be 'all' or a comma separated list of values like 'num', 'num-' and 'num1-num2'." />
+		<exception errorcode="10" message="Syntax error. {0} must be positive in {1}." />	
+		<exception errorcode="11" message="Cannot merge at page {0}. No such page." />				
+		<exception errorcode="12" message="Syntax error. {0} is bigger than {1} in {2}." />				
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.RotationException" description="ROT">
 		<exception errorcode="1" message="The rotation string {0} is not a valid single rotation." />						
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.ParseException" description="PRS">
 		<exception errorcode="1" message="Parse error. {0}" />		
-		<exception errorcode="2" message="Output file not a pdf format. {0}" />		
 		<exception errorcode="3" message="No output file name." />		
 		<exception errorcode="4" message="No -f or -l or -d option given." />		
 		<exception errorcode="5" message="Too many options given, -f, -l, -d." />		
 		<exception errorcode="6" message="Input list file not a csv or xml format" />		
 		<exception errorcode="7" message="Input file {0} is not a pdf format." />		
-		<exception errorcode="8" message="-u value parsing error. The string must be 'all:' or a comma separated value of 'num' and 'num1-num2' termnated by ':' repeated for each pdf file in input." />		
-		<exception errorcode="9" message="Output is not a directory." />		
 		<exception errorcode="10" message="Not -s option given." />		
 		<exception errorcode="11" message="-n option not a numeric value." />		
 		<exception errorcode="12" message="-n option must be a number or a sequence number-number-number..." />		
@@ -50,7 +51,6 @@
 		<exception errorcode="18" message="Unnecessary option -b for the selected split mode." />		
 		<exception errorcode="19" message="No -b option given." />		
 		<exception errorcode="20" message="No -f option given." />	
-		<exception errorcode="21" message="-d {0} must be a directory." />
 		<exception errorcode="22" message="Input file not an xml format." />
 		<exception errorcode="23" message="Unnecessary option -bl for the selected split mode." />
 		<exception errorcode="24" message="No -bl option given." />		
@@ -70,10 +70,7 @@
 	<type key="org.pdfsam.console.exceptions.console.ConcatException" description="MRG">
 		<exception errorcode="1" message="Syntax error on {0}." />	
 		<exception errorcode="2" message="Unable to delete temporary file." />	
-		<exception errorcode="3" message="Syntax error. {0} must be positive in {1}." />				
 		<exception errorcode="4" message="Error reading csv or xml input file. {0}" />				
-		<exception errorcode="5" message="Cannot merge at page {0}. No such page." />				
-		<exception errorcode="6" message="Syntax error. {0} is bigger than {1} in {2}." />				
 		<exception errorcode="7" message="No input file found." />					
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.EncryptException" description="ENC">

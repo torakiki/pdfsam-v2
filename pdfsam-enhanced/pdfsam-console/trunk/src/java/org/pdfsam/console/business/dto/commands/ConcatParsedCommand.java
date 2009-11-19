@@ -63,7 +63,7 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	private File inputCvsOrXmlFile;
 	private File inputDirectory;
 	private PdfFile[] inputFileList;
-	private String pageSelection = "";
+	private String[] pageSelections;
 	private PageRotation[] rotations = null;
 	private boolean copyFields = false;
 
@@ -71,24 +71,24 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			PdfFile[] inputFileList, String pageSelection, boolean copyFields, PageRotation[] rotations, File inputDirectory) {
+			PdfFile[] inputFileList, String[] pageSelections, boolean copyFields, PageRotation[] rotations, File inputDirectory) {
 		super();
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
 		this.inputFileList = inputFileList;
-		this.pageSelection = pageSelection;
+		this.pageSelections = pageSelections;
 		this.copyFields = copyFields;
 		this.rotations = rotations;
 		this.inputDirectory = inputDirectory;
 	}
 	
 	public ConcatParsedCommand(File outputFile, File inputCvsOrXmlFile,
-			PdfFile[] inputFileList, String pageSelection,  boolean copyFields, PageRotation[] rotations, File inputDirectory, boolean overwrite, boolean compress , char outputPdfVersion) {
+			PdfFile[] inputFileList, String pageSelections[],  boolean copyFields, PageRotation[] rotations, File inputDirectory, boolean overwrite, boolean compress , char outputPdfVersion) {
 		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
 		this.inputFileList = inputFileList;
-		this.pageSelection = pageSelection;
+		this.pageSelections = pageSelections;
 		this.copyFields = copyFields;
 		this.rotations = rotations;
 		this.inputDirectory = inputDirectory;
@@ -103,7 +103,6 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 		this.outputFile = outputFile;
 		this.inputCvsOrXmlFile = inputCvsOrXmlFile;
 		this.inputFileList = inputFileList;
-		this.pageSelection = pageSelection;
 		this.copyFields = copyFields;
 		this.rotations = rotations;
 		this.inputDirectory = inputDirectory;
@@ -158,18 +157,18 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 
 
 	/**
-	 * @return the pageSelection
+	 * @return the pageSelections
 	 */
-	public String getPageSelection() {
-		return pageSelection;
+	public String[] getPageSelections() {
+		return pageSelections;
 	}
 
 
 	/**
-	 * @param pageSelection the pageSelection to set
+	 * @param pageSelections the pageSelection to set
 	 */
-	public void setPageSelection(String pageSelection) {
-		this.pageSelection = pageSelection;
+	public void setPageSelections(String[] pageSelections) {
+		this.pageSelections = pageSelections;
 	}
 
 	/**
@@ -232,7 +231,9 @@ public class ConcatParsedCommand extends AbstractParsedCommand {
 			retVal.append("[rotations.length="+rotations.length+"]");
 		}
 		retVal.append((inputCvsOrXmlFile== null)?"":"[inputCvsOrXmlFile="+inputCvsOrXmlFile.getAbsolutePath()+"]");
-		retVal.append("[pageSelection="+pageSelection+"]");
+		if(pageSelections != null){
+			retVal.append("[pageSelections="+pageSelections+"]");
+		}
 		retVal.append("[copyFields="+copyFields+"]");
 		retVal.append("[command="+getCommand()+"]");
 		return retVal.toString();

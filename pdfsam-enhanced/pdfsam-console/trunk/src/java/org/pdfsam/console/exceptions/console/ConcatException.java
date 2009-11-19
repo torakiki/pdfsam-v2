@@ -45,10 +45,7 @@ public class ConcatException extends ConsoleException {
 
 	public static final int ERR_SYNTAX = 0x01;
 	public static final int ERR_DEL_TEMP_FILE = 0x02;
-	public static final int ERR_NOT_POSITIVE = 0x03;
 	public static final int ERR_READING_CSV_OR_XML = 0x04;
-	public static final int ERR_CANNOT_MERGE = 0x05;
-	public static final int ERR_START_BIGGER_THAN_END = 0x06;
 	public static final int CMD_NO_INPUT_FILE = 0x07;
 	
     private static final long serialVersionUID = -8242739056279169571L;

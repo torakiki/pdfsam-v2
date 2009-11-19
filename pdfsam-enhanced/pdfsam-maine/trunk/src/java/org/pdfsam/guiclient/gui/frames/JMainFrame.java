@@ -32,9 +32,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import org.apache.commons.lang.time.DurationFormatUtils;
+import org.apache.commons.lang.time.StopWatch;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
-import org.pdfsam.console.utils.TimeUtility;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.ApplicationCloser;
 import org.pdfsam.guiclient.business.Environment;
@@ -85,13 +86,15 @@ public class JMainFrame extends JFrame {
 	private JLogPanel logPanel;
 	
 	public JMainFrame(){
-		long start = System.currentTimeMillis();
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
 		log.info("Starting "+GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion());
 		runSplash();
 		ToolTipManager.sharedInstance().setDismissDelay (300000);
 		initialize();
 		closeSplash();
-		log.info(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion()+" "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"started in ")+TimeUtility.format(System.currentTimeMillis()-start));
+		stopWatch.stop();
+		log.info(GuiClient.getApplicationName()+" Ver. "+GuiClient.getVersion()+" "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"started in ")+DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 	}
 	/**
 	 * initialization

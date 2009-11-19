@@ -50,7 +50,7 @@ public class ParseException extends ConsoleException {
 	public static final int ERR_BOTH_F_OR_L_OR_D = 0x05;
 	public static final int ERR_NOT_CSV_OR_XML = 0x06;
 	public static final int ERR_IN_NOT_PDF = 0x07;
-	public static final int ERR_ILLEGAL_U = 0x08;
+	//public static final int ERR_ILLEGAL_U = 0x08;
 	//public static final int ERR_OUT_NOT_DIR = 0x09;
 	public static final int ERR_NO_S = 0x0A;
 	public static final int ERR_N_NOT_NUM = 0x0B;

@@ -39,7 +39,10 @@ package org.pdfsam.console.utils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
+import org.pdfsam.console.business.dto.Bounds;
 import org.pdfsam.console.business.dto.PageLabel;
 import org.pdfsam.console.business.dto.PageRotation;
 import org.pdfsam.console.exceptions.console.ValidationException;
@@ -55,6 +58,8 @@ public final class ValidationUtility {
 	public static final String ALL_STRING = "all";
 	public static final String ODD_STRING = "odd";
 	public static final String EVEN_STRING = "even";
+
+	private static final String SELECTION_REGEXP = "(?:(?:[\\d]+[-]?[\\d]*)(?:,(?:[\\d]+[-]?[\\d]*))*)+";
 
 	public static final String PDF_EXTENSION = ".pdf";
 
@@ -195,7 +200,7 @@ public final class ValidationUtility {
 	 * @throws ValidationException
 	 *         if not a pdf format
 	 */
-	public static void checkValidPdfExtension(String inputFileName) throws ValidationException {
+	public static void assertValidPdfExtension(String inputFileName) throws ValidationException {
 		if (!((inputFileName.toLowerCase().endsWith(PDF_EXTENSION)) && (inputFileName.length() > PDF_EXTENSION.length()))) {
 			throw new ValidationException(ValidationException.ERR_NOT_PDF, new String[] { inputFileName });
 		}
@@ -207,9 +212,59 @@ public final class ValidationUtility {
 	 * @throws ValidationException
 	 *         if not a directory
 	 */
-	public static void checkValidDirectory(File inputDir) throws ValidationException {
+	public static void assertValidDirectory(File inputDir) throws ValidationException {
 		if (!inputDir.isDirectory()) {
 			throw new ValidationException(ValidationException.ERR_NOT_DIR, new String[] { inputDir.getAbsolutePath() });
+		}
+	}
+
+	/**
+	 * validates the selections array
+	 * @param selections
+	 * @throws ValidationException
+	 */
+	public static void assertValidPageSelectionsArray(String[] selections) throws ValidationException {
+		if(!isValidPageSelectionsArray(selections)){
+			throw new ValidationException(ValidationException.ERR_ILLEGAL_U);
+		}
+	}
+	
+	/**
+	 * validates the selections array
+	 * @param selections
+	 * @return true if the array is valid
+	 */
+	public static boolean isValidPageSelectionsArray(String[] selections){
+		boolean retVal = true;
+		if (!ArrayUtils.isEmpty(selections)) {
+			Pattern p = Pattern.compile(SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
+			for (int i = 0; i < selections.length; i++) {
+				String currentSelection = selections[i];
+				if(!ALL_STRING.equalsIgnoreCase(currentSelection)){
+					if (!(p.matcher(currentSelection).matches())) {
+						retVal = false;
+						break;
+					}
+				}
+			}
+		}
+		return retVal;
+	}
+	
+	/**
+	 * validates the input Bounds object
+	 * @param bounds
+	 * @param pdfNumberOfPages number of total pages
+	 * @throws ValidationException
+	 */
+	public static void assertValidBounds(Bounds bounds, int pdfNumberOfPages) throws ValidationException {
+		if (bounds.getStart() <= 0) {
+			throw new ValidationException(ValidationException.ERR_NOT_POSITIVE, new String[] { "" + bounds.getStart(), bounds.toString() });
+		} else if (bounds.getEnd() > pdfNumberOfPages) {
+			throw new ValidationException(ValidationException.ERR_CANNOT_MERGE, new String[] { "" + bounds.getEnd() });
+		} else if (bounds.getStart() > bounds.getEnd()) {
+			throw new ValidationException(ValidationException.ERR_START_BIGGER_THAN_END, new String[] { "" + bounds.getStart(), "" + bounds.getEnd(),
+					bounds.toString() });
 		}
 	}
 }

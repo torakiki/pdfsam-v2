@@ -71,7 +71,7 @@ public class SlideShowCmdValidator extends AbstractCmdValidator {
 			FileParam oOption = (FileParam) cmdLineHandler.getOption(SlideShowParsedCommand.O_ARG);
 			if ((oOption.isSet())){
 	            File outFile = oOption.getFile();
-	            ValidationUtility.checkValidDirectory(outFile);
+	            ValidationUtility.assertValidDirectory(outFile);
 	            parsedCommandDTO.setOutputFile(outFile);		    		
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_O);
@@ -86,7 +86,7 @@ public class SlideShowCmdValidator extends AbstractCmdValidator {
 	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(SlideShowParsedCommand.F_ARG);           
 	        if(fOption.isSet()){
 	        	PdfFile inputFile = fOption.getPdfFile();
-	        	ValidationUtility.checkValidPdfExtension(inputFile.getFile().getName());	
+	        	ValidationUtility.assertValidPdfExtension(inputFile.getFile().getName());	
 	            parsedCommandDTO.setInputFile(FileUtility.getPdfFile(inputFile));                  
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F);	

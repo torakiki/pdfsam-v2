@@ -38,6 +38,8 @@
 package org.pdfsam.console.business.parser;
 
 import jcmdline.CmdLineHandler;
+import org.apache.commons.lang.time.DurationFormatUtils;
+import org.apache.commons.lang.time.StopWatch;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
@@ -78,7 +80,6 @@ import org.pdfsam.console.business.parser.validators.UnpackCmdValidator;
 import org.pdfsam.console.business.parser.validators.interfaces.CmdValidator;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ParseException;
-import org.pdfsam.console.utils.TimeUtility;
 
 /**
  * Main command parser
@@ -92,6 +93,7 @@ public class CmdParseManager {
 	private String[] inputArguments;
 	private CmdHandler cmdHandler;
 	private CmdValidator cmdValidator;
+	private final StopWatch stopWatch = new StopWatch();
 
 	public CmdParseManager() {
 		setInputArguments(null);		
@@ -168,27 +170,33 @@ public class CmdParseManager {
 
 	/**
 	 * Perform command line parsing
-	 * @return true if parsed correctely
+	 * @return true if parsed correctly
 	 * @throws ConsoleException
 	 */
-	public boolean parse() throws ConsoleException{
-		long start = System.currentTimeMillis();
+	public boolean parse() throws ConsoleException {
+		stopWatch.reset();
+		stopWatch.start();
 		boolean retVal = false;
-		if(cmdHandler != null){
-			CmdLineHandler cmdLineHandler = cmdHandler.getCommandLineHandler();
-			log.debug("Starting arguments parsing.");
-			if(cmdLineHandler != null){
-				retVal = cmdLineHandler.parse(inputArguments);
-				if(!retVal){
-					throw new ParseException(ParseException.ERR_PARSE, new String[]{cmdLineHandler.getParseError()});				
+		try {
+			if (cmdHandler != null) {
+				CmdLineHandler cmdLineHandler = cmdHandler.getCommandLineHandler();
+				log.debug("Starting arguments parsing.");
+				if (cmdLineHandler != null) {
+					retVal = cmdLineHandler.parse(inputArguments);
+					if (!retVal) {
+						throw new ParseException(ParseException.ERR_PARSE, new String[] { cmdLineHandler.getParseError() });
+					}
+				} else {
+					throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 				}
-			}else{
+			} else {
 				throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 			}
-		}else{
-			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
+		} finally {
+			stopWatch.stop();
+			log.debug("Command '" + getInputCommand() + "' parsed in "
+					+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 		}
-		log.debug("Command '"+getInputCommand()+"' parsed in "+TimeUtility.format(System.currentTimeMillis()-start));
 		return retVal;
 	}
 	
@@ -206,25 +214,31 @@ public class CmdParseManager {
 	 * @return parsed command
 	 * @throws ConsoleException
 	 */
-	public AbstractParsedCommand validate() throws ConsoleException{
-		long start = System.currentTimeMillis();
+	public AbstractParsedCommand validate() throws ConsoleException {
+		stopWatch.reset();
+		stopWatch.start();
 		AbstractParsedCommand retVal = null;
-		if(cmdHandler != null){
-			CmdLineHandler cmdLineHandler = cmdHandler.getCommandLineHandler();
-			log.debug("Starting arguments validation.");
-			if(cmdLineHandler != null){
-				if(cmdValidator != null){
-					retVal = cmdValidator.validate(cmdLineHandler);
-				}else{
-					throw new ConsoleException(ConsoleException.CMD_LINE_VALIDATOR_NULL);
+		try {
+			if (cmdHandler != null) {
+				CmdLineHandler cmdLineHandler = cmdHandler.getCommandLineHandler();
+				log.debug("Starting arguments validation.");
+				if (cmdLineHandler != null) {
+					if (cmdValidator != null) {
+						retVal = cmdValidator.validate(cmdLineHandler);
+					} else {
+						throw new ConsoleException(ConsoleException.CMD_LINE_VALIDATOR_NULL);
+					}
+				} else {
+					throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 				}
-			}else{
+			} else {
 				throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
 			}
-		}else{
-			throw new ConsoleException(ConsoleException.CMD_LINE_HANDLER_NULL);
+		} finally {
+			stopWatch.stop();
+			log.debug("Command '" + getInputCommand() + "' validated in "
+					+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 		}
-		log.debug("Command '"+getInputCommand()+"' validated in "+TimeUtility.format(System.currentTimeMillis()-start));
 		return retVal;
 	}
 }

@@ -67,7 +67,7 @@ public class DocumentInfoCmdValidator extends AbstractCmdValidator {
 			if ((oOption.isSet())) {
 				File outFile = oOption.getFile();
 				// checking extension
-				ValidationUtility.checkValidPdfExtension(outFile.getName());
+				ValidationUtility.assertValidPdfExtension(outFile.getName());
 				parsedCommandDTO.setOutputFile(outFile);
 
 			} else {
@@ -78,7 +78,7 @@ public class DocumentInfoCmdValidator extends AbstractCmdValidator {
 	        PdfFileParam fOption = (PdfFileParam) cmdLineHandler.getOption(DocumentInfoParsedCommand.F_ARG);           
 	        if(fOption.isSet()){
 	        	PdfFile inputFile = fOption.getPdfFile();
-	        	ValidationUtility.checkValidPdfExtension(inputFile.getFile().getName());
+	        	ValidationUtility.assertValidPdfExtension(inputFile.getFile().getName());
 	            parsedCommandDTO.setInputFile(FileUtility.getPdfFile(inputFile));                  
 	        }else{
 	        	throw new ParseException(ParseException.ERR_NO_F);	
