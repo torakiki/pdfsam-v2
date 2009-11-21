@@ -29,6 +29,7 @@
 		<exception errorcode="10" message="Syntax error. {0} must be positive in {1}." />	
 		<exception errorcode="11" message="Cannot merge at page {0}. No such page." />				
 		<exception errorcode="12" message="Syntax error. {0} is bigger than {1} in {2}." />				
+		<exception errorcode="13" message="Not valid subset of pages selected. The following bounds have an intersections : {0}, {1}." />				
 	</type>
 	<type key="org.pdfsam.console.exceptions.console.RotationException" description="ROT">
 		<exception errorcode="1" message="The rotation string {0} is not a valid single rotation." />						

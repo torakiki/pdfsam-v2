@@ -55,7 +55,7 @@ public class ValidationException extends ConsoleException {
 	public static final int ERR_NOT_POSITIVE = 0x0A;
 	public static final int ERR_CANNOT_MERGE = 0x0B;
 	public static final int ERR_START_BIGGER_THAN_END = 0x0C;
-;
+    public static final int ERR_BOUNDS_INTERSECTS = 0x0D;
 	
 	private static final long serialVersionUID = 8695556302543417406L;
 	

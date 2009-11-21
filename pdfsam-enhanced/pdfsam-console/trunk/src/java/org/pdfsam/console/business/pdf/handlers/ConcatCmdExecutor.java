@@ -136,6 +136,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 					int pdfNumberOfPages = pdfReader.getNumberOfPages();
 					
 					List boundsList = getBounds(pdfNumberOfPages, selectionGroups);
+					ValidationUtility.assertNotIntersectedBoundsList(boundsList);
 					String boundsString = "";
 					
 	    			//I manage bookmarks for every selection group 
@@ -350,7 +351,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	}
 	
 	private Bounds getBounds(int pdfNumberOfPages, String currentPageSelection) throws ConcatException{
-		Bounds retVal = new Bounds(pdfNumberOfPages , 1);
+		Bounds retVal = new Bounds(1, pdfNumberOfPages);
 		if (!(ValidationUtility.ALL_STRING.equals(currentPageSelection))){
             String[] limits = currentPageSelection.split("-");
             try{

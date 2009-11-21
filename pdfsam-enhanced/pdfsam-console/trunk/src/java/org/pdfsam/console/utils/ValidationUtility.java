@@ -39,6 +39,7 @@ package org.pdfsam.console.utils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
@@ -219,28 +220,28 @@ public final class ValidationUtility {
 	}
 
 	/**
-	 * validates the selections array
+	 * validates the selections array. Every array item must be a valid selection string.
 	 * @param selections
 	 * @throws ValidationException
 	 */
 	public static void assertValidPageSelectionsArray(String[] selections) throws ValidationException {
-		if(!isValidPageSelectionsArray(selections)){
+		if (!isValidPageSelectionsArray(selections)) {
 			throw new ValidationException(ValidationException.ERR_ILLEGAL_U);
 		}
 	}
-	
+
 	/**
 	 * validates the selections array
 	 * @param selections
 	 * @return true if the array is valid
 	 */
-	public static boolean isValidPageSelectionsArray(String[] selections){
+	public static boolean isValidPageSelectionsArray(String[] selections) {
 		boolean retVal = true;
 		if (!ArrayUtils.isEmpty(selections)) {
 			Pattern p = Pattern.compile(SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
 			for (int i = 0; i < selections.length; i++) {
 				String currentSelection = selections[i];
-				if(!ALL_STRING.equalsIgnoreCase(currentSelection)){
+				if (!ALL_STRING.equalsIgnoreCase(currentSelection)) {
 					if (!(p.matcher(currentSelection).matches())) {
 						retVal = false;
 						break;
@@ -250,11 +251,12 @@ public final class ValidationUtility {
 		}
 		return retVal;
 	}
-	
+
 	/**
 	 * validates the input Bounds object
 	 * @param bounds
-	 * @param pdfNumberOfPages number of total pages
+	 * @param pdfNumberOfPages
+	 *        number of total pages
 	 * @throws ValidationException
 	 */
 	public static void assertValidBounds(Bounds bounds, int pdfNumberOfPages) throws ValidationException {
@@ -263,8 +265,25 @@ public final class ValidationUtility {
 		} else if (bounds.getEnd() > pdfNumberOfPages) {
 			throw new ValidationException(ValidationException.ERR_CANNOT_MERGE, new String[] { "" + bounds.getEnd() });
 		} else if (bounds.getStart() > bounds.getEnd()) {
-			throw new ValidationException(ValidationException.ERR_START_BIGGER_THAN_END, new String[] { "" + bounds.getStart(), "" + bounds.getEnd(),
-					bounds.toString() });
+			throw new ValidationException(ValidationException.ERR_START_BIGGER_THAN_END, new String[] { "" + bounds.getStart(),
+					"" + bounds.getEnd(), bounds.toString() });
+		}
+	}
+
+	/**
+	 * validates the input bounds list ensuring that there is no intersections between the objects of the input list
+	 * @param bounds
+	 */
+	public static void assertNotIntersectedBoundsList(List bounds) throws ValidationException {
+		for (int i = 0; i < bounds.size(); i++) {
+			Bounds victim = (Bounds) bounds.get(i);
+			for (int j = i + 1; j < bounds.size(); j++) {
+				Bounds current = (Bounds) bounds.get(j);
+				if (victim.intersects(current)) {
+					throw new ValidationException(ValidationException.ERR_BOUNDS_INTERSECTS, new String[] { victim.toString(),
+							current.toString() });
+				}
+			}
 		}
 	}
 }
