@@ -83,7 +83,7 @@ import com.lowagie.text.pdf.SimpleBookmark;
  */
 public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	
-	private final Logger log = Logger.getLogger(ConcatCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(ConcatCmdExecutor.class.getPackage().getName());
 	
 	private static final String FILESET_NODE = "fileset";
 	private static final String FILE_NODE = "file";
@@ -169,12 +169,12 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 					}
 	    			
 	    			//add pages
-	    			log.info(fileList[i].getFile().getAbsolutePath()+ ": " + currentDocumentPages + " pages to be added.");
+	    			LOG.info(fileList[i].getFile().getAbsolutePath()+ ": " + currentDocumentPages + " pages to be added.");
 	    			if (pdfWriter == null) {
 	                    if(inputCommand.isCopyFields()){
 	                        // step 1: we create a writer 
 	                    	pdfWriter = new PdfCopyFieldsConcatenator(new FileOutputStream(tmpFile), inputCommand.isCompress());
-	                    	log.debug("PdfCopyFieldsConcatenator created.");
+	                    	LOG.debug("PdfCopyFieldsConcatenator created.");
 	        				//output document version
 	        				if(inputCommand.getOutputPdfVersion() != null){
 	        					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
@@ -186,7 +186,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	                        pdfDocument = new Document(pdfReader.getPageSizeWithRotation(1));
 	                        // step 2: we create a writer that listens to the document
 	                        pdfWriter = new PdfSimpleConcatenator(pdfDocument, new FileOutputStream(tmpFile), inputCommand.isCompress());
-	                    	log.debug("PdfSimpleConcatenator created.");
+	                    	LOG.debug("PdfSimpleConcatenator created.");
 	        				//output document version
 	                        if(inputCommand.getOutputPdfVersion() != null){
 	        					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
@@ -204,13 +204,13 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    	        pdfReader.close();
 	    	        pdfWriter.freeReader(pdfReader);
 	    	        totalProcessedPages += currentDocumentPages;
-	    			log.info(currentDocumentPages + " pages processed correctly.");
+	    			LOG.info(currentDocumentPages + " pages processed correctly.");
     				setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);
 				}
 				if (master.size() > 0){
 	    			pdfWriter.setOutlines(master);
 	    		}
-	    		log.info("Total processed pages: " + totalProcessedPages + ".");
+	    		LOG.info("Total processed pages: " + totalProcessedPages + ".");
 	    		// step 5: we close the document
 	    		if(pdfDocument != null){
 	    			pdfDocument.close();        	
@@ -218,14 +218,14 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    		pdfWriter.close();
 	    		//rotations
 	    		if(inputCommand.getRotations()!=null && inputCommand.getRotations().length>0){
-	    			log.info("Applying pages rotation.");
+	    			LOG.info("Applying pages rotation.");
 	    			File rotatedTmpFile = applyRotations(tmpFile, inputCommand);
     				FileUtility.deleteFile(tmpFile);
 	    			FileUtility.renameTemporaryFile(rotatedTmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-                	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
+                	LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
 	    		}else{
 	    			FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-                	log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
+                	LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
                 }  		
 			}catch(ConsoleException ce){    		
 				throw ce;
@@ -265,7 +265,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 						int rotation = (rotations[i].getDegrees() + tmpPdfReader.getPageRotation(rotations[i].getPageNumber()))%360;
 						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
 					}else{
-						log.warn("Rotation for page "+rotations[i].getPageNumber()+" ignored.");
+						LOG.warn("Rotation for page "+rotations[i].getPageNumber()+" ignored.");
 					}
 				}
 			}else{
@@ -284,7 +284,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 						int rotation = (rotations[0].getDegrees()+tmpPdfReader.getPageRotation(rotations[0].getPageNumber()))%360;
 						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
 					}else{
-						log.warn("Rotation for page "+rotations[0].getPageNumber()+" ignored.");
+						LOG.warn("Rotation for page "+rotations[0].getPageNumber()+" ignored.");
 					}
 				}else if(rotations[0].getType() == PageRotation.ODD_PAGES){
 					//odd pages rotation
@@ -303,10 +303,10 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
 					}
 				}else{
-					log.warn("Unable to find the rotation type. "+rotations[0]);
+					LOG.warn("Unable to find the rotation type. "+rotations[0]);
 				}
 			}
-			log.info("Pages rotation applied.");
+			LOG.info("Pages rotation applied.");
 		}
 		File rotatedTmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 		
@@ -382,7 +382,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
     private PdfFile[] parseCsvFile(File inputFile)throws ConcatException{
         ArrayList retVal = new ArrayList();
         try {
-        	log.debug("Parsing CSV file "+inputFile.getAbsolutePath());
+        	LOG.debug("Parsing CSV file "+inputFile.getAbsolutePath());
             BufferedReader bufferReader = new BufferedReader(new FileReader(inputFile));
             String temp = "";
             //read file
@@ -411,7 +411,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 		List fileList = new ArrayList();
 		String parentPath = null;
         try {
-        	log.debug("Parsing xml file "+inputFile.getAbsolutePath());
+        	LOG.debug("Parsing xml file "+inputFile.getAbsolutePath());
 			SAXReader reader = new SAXReader();
 			org.dom4j.Document document = reader.read(inputFile);        
 			List nodes = document.selectNodes("/filelist/*");
@@ -425,7 +425,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 				}else if (FILE_NODE.equals(nodeName)){
 					fileList.add(getPdfFileFromNode(domNode, null));
 				}else{
-					log.warn("Node type not supported: "+nodeName);
+					LOG.warn("Node type not supported: "+nodeName);
 				}
 			}
         }catch (Exception e) {
@@ -504,21 +504,21 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
      * @param listFile XML or CSV input file 
      * @return File[] of files
      */
-    private PdfFile[] parseListFile(File listFile) throws ConcatException{
-    	PdfFile[] retVal = new PdfFile[0];
-    	if(listFile != null && listFile.exists()){
-    		if ("xml".equals(getExtension(listFile))){
-    			retVal = parseXmlFile(listFile);
-			}else if ("csv".equals(getExtension(listFile))){
+	private PdfFile[] parseListFile(File listFile) throws ConcatException {
+		PdfFile[] retVal = null;
+		if (listFile != null && listFile.exists()) {
+			if ("xml".equals(getExtension(listFile))) {
+				retVal = parseXmlFile(listFile);
+			} else if ("csv".equals(getExtension(listFile))) {
 				retVal = parseCsvFile(listFile);
-			}else {
-				throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[]{"Unsupported extension."});
+			} else {
+				throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[] { "Unsupported extension." });
 			}
-    	}else{
-    		throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[]{"Input file doesn't exists."});
-    	}
-    	return retVal;
-    }
+		} else {
+			throw new ConcatException(ConcatException.ERR_READING_CSV_OR_XML, new String[] { "Input file doesn't exists." });
+		}
+		return retVal;
+	}
     
     /**
      * get the extension of the input file

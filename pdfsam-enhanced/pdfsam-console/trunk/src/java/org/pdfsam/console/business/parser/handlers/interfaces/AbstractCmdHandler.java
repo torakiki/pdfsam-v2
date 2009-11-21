@@ -59,7 +59,7 @@ public abstract class AbstractCmdHandler implements CmdHandler{
     /**
      * help text commonly used by any handler
      */
-	private static final String commonHelpText =
+	private static final String COMMON_HELP_TEXT =
 		"'-log' to set a log file.\n"+
     	"'-overwrite' to overwrite output file if already exists.\n"+
         "'-pdfversion version' to set the output document pdf version. Possible values {["+AbstractParsedCommand.VERSION_1_2+"], ["+AbstractParsedCommand.VERSION_1_3+"], ["+AbstractParsedCommand.VERSION_1_4+"], ["+AbstractParsedCommand.VERSION_1_5+"], ["+AbstractParsedCommand.VERSION_1_6+"], ["+AbstractParsedCommand.VERSION_1_7+"]}\n"+
@@ -121,7 +121,7 @@ public abstract class AbstractCmdHandler implements CmdHandler{
 				options.addAll(getOptions());
 			}
 			options.addAll(commonOptions); 
-			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+commonHelpText+getHelpExamples(),ConsoleServicesFacade.getLicense(),"",COMMAND,getCommandDescription(),options,getArguments()));
+			commandLineHandler = new VersionCmdLineHandler(ConsoleServicesFacade.CREATOR,new HelpCmdLineHandler(getHelpMessage()+COMMON_HELP_TEXT+getHelpExamples(),ConsoleServicesFacade.getLicense(),"",COMMAND,getCommandDescription(),options,getArguments()));
 			commandLineHandler.setDieOnParseError(false);
 		}
 		return commandLineHandler;

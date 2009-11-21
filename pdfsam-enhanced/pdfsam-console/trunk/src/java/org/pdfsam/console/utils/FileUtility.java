@@ -55,7 +55,7 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
  */
 public final class FileUtility {
 
-	private static final Logger log = Logger.getLogger(FileUtility.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(FileUtility.class.getPackage().getName());
 	
 	public static final String BUFFER_NAME = "PDFsamTMPbuffer";
 	
@@ -69,7 +69,7 @@ public final class FileUtility {
      * @return a temporary file
      */
      public static File generateTmpFile(String filePath){
-    	log.debug("Creating temporary file..");
+    	LOG.debug("Creating temporary file..");
     	File retVal = null;
     	boolean alreadyExists = true;
         int enthropy = 0;
@@ -131,7 +131,7 @@ public final class FileUtility {
 				renameFile(tmpFile, outputFile);
 			}
 		} else {
-			log.error("Exception renaming temporary file, source or destination are null.");
+			LOG.error("Exception renaming temporary file, source or destination are null.");
 		}
     }
     
@@ -156,10 +156,10 @@ public final class FileUtility {
     	boolean retVal = false;
     	try{
     		if(!tmpFile.delete()){
-    			log.error("Unable to delete file "+tmpFile.getName());
+    			LOG.error("Unable to delete file "+tmpFile.getName());
     		}
     	}catch(Exception e){
-    		log.error("Unable to delete file "+tmpFile.getName(), e);
+    		LOG.error("Unable to delete file "+tmpFile.getName(), e);
     	}
     	return retVal;
     }
@@ -189,7 +189,7 @@ public final class FileUtility {
              }
     
         } catch(Exception e){
-        	log.error("Unable to copy "+source+" to "+dest);
+        	LOG.error("Unable to copy "+source+" to "+dest);
         }
    }
     

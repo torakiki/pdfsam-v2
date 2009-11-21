@@ -55,7 +55,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class SetViewerCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Set vewer options for the pdf documents.";
+	private static final String COMMAND_DESCRIPTION = "Set vewer options for the pdf documents.";
 	
 	/**
 	 * Options for the setviewer handler
@@ -111,7 +111,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
 	/**
 	 * Help text for the setviewer command
 	 */
-	private static final String setviewerHelpText =  "Set vewer options for the pdf documents. \n"+ 
+	private static final String SET_VIEWER_HELP_TEXT =  "Set vewer options for the pdf documents. \n"+ 
     "You must specify '-o /home/user' to set the output directory.\n"+
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list do apply the viewer options (use filename:password if the file is password protected).\n"+
 	"'-p prefix_' to specify a prefix for output names of files. If it contains \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf)\n"+
@@ -132,7 +132,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
 	 /**
      *  example text for the setviewer handler
      */
-    private static final String setviewerExample = 
+    private static final String SET_VIEWER_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -layout onecolumn -mode fullscreen -nfsmode nfsoutlines -direction l2r -hidemenu -displaydoctitle -noprintscaling -overwrite setviewer\n";
 
 	 /**
@@ -150,11 +150,11 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return setviewerExample;
+		return SET_VIEWER_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -162,7 +162,7 @@ public class SetViewerCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return setviewerHelpText;
+		return SET_VIEWER_HELP_TEXT;
 	}
 
 }

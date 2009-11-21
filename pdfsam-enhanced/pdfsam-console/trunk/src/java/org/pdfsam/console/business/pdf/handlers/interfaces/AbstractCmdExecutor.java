@@ -102,7 +102,7 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 	 * @param directory
 	 * @return PdfFile array from the input directory
 	 */
-	protected PdfFile[] getPdfFiles(File directory){
+	protected PdfFile[] getPdfFiles(final File directory){
 		PdfFile[] retVal = null;
 		if(directory != null && directory.isDirectory()){
 			File[] fileList = directory.listFiles(new PdfFilter());
@@ -125,15 +125,15 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 	 * @param second
 	 * @return concatenated array
 	 */
-	protected PdfFile[] arraysConcat(PdfFile[] first, PdfFile[] second) {
+	protected PdfFile[] arraysConcat(final PdfFile[] first, final PdfFile[] second) {
 		PdfFile[] retVal = null;
-		if(first != null && second != null){
+		if (first != null && second != null) {
 			retVal = new PdfFile[first.length + second.length];
 			System.arraycopy(first, 0, retVal, 0, first.length);
 			System.arraycopy(second, 0, retVal, first.length, second.length);
-		}else if (first!=null){
+		} else if (first != null) {
 			retVal = first;
-		}else{
+		} else {
 			retVal = second;
 		}
 		return retVal;

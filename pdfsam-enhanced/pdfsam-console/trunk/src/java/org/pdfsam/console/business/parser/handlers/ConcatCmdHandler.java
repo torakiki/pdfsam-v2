@@ -57,7 +57,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class ConcatCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Merge together pdf documents.";
+	private static final String COMMAND_DESCRIPTION = "Merge together pdf documents.";
 	/**
 	 * options for the concat handler
 	 */
@@ -104,7 +104,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
     /**
      * The help text for the concat handler
      */
-    private static final String concatHelpText = "Concatenate pdf files. \n"+
+    private static final String CONCAT_HELP_TEXT = "Concatenate pdf files. \n"+
         "you must specify the '-o /home/user/outfile.pdf' option to set the output file and the source file list:\n"+
         "'-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list or at least one file to concat (use filename:password if the file is password protected).\n"+
         "'-l /tmp/list.csv' a csv file containing the list of files to concat, separated by a comma.\n"+
@@ -118,7 +118,7 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
     /**
      *  example text for the concat handler
      */
-    private static final String concatExample = 
+    private static final String CONCAT_EXAMPLE = 
     	"Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -o /tmp/outfile.pdf -f /tmp/1.pdf:password -f /tmp/2.pdf concat\n"+
         "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -l c:\\docs\\list.csv concat";
     
@@ -127,11 +127,11 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpExamples() {
-		return concatExample;
+		return CONCAT_EXAMPLE;
 	}
 
 	public String getHelpMessage() {
-		return concatHelpText;
+		return CONCAT_HELP_TEXT;
 	}
 
 	public Collection getOptions() {
@@ -139,6 +139,6 @@ public class ConcatCmdHandler extends AbstractCmdHandler {
 	}
 	
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 }

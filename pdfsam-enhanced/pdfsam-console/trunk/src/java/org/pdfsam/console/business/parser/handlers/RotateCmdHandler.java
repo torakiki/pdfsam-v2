@@ -55,7 +55,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class RotateCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Rotate pdf documents.";
+	private static final String COMMAND_DESCRIPTION = "Rotate pdf documents.";
 
 	/**
 	 * Options for the rotate handler
@@ -92,7 +92,7 @@ public class RotateCmdHandler extends AbstractCmdHandler {
 	/**
 	 * help text for the rotate handler
 	 */
-	private static final String rotateHelpText = "Rotate pdf files. \n"+ 
+	private static final String ROTATE_HELP_TEXT = "Rotate pdf files. \n"+ 
     "You must specify '-o /home/user' to set the output directory.\n"+
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to rotate (use filename:password if the file is password protected).\n"+
     "You must specify '-r all:90' to set pages rotation. (EX. -r all:90 will rotate all pages of 90 degrees clockwise. -r even:270 will rotate even pages of 170 degrees clockwise.)\n"+
@@ -101,7 +101,7 @@ public class RotateCmdHandler extends AbstractCmdHandler {
    /**
      *  example text for the rotate handler
      */
-    private static final String rotateExample = 
+    private static final String ROTATE_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -r odd:180 -overwrite rotate\n";
 
 	public Collection getArguments() {
@@ -109,11 +109,11 @@ public class RotateCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return rotateExample;
+		return ROTATE_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -121,7 +121,7 @@ public class RotateCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return rotateHelpText;
+		return ROTATE_HELP_TEXT;
 	}
 
 }

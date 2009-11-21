@@ -54,7 +54,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class DecryptCmdHandler extends AbstractCmdHandler {
 	
-	private static final String commandDescription = "Decrypt pdf documents.";
+	private static final String COMMAND_DESCRIPTION = "Decrypt pdf documents.";
 
 	/**
 	 * Options for the decrypt handler
@@ -88,7 +88,7 @@ public class DecryptCmdHandler extends AbstractCmdHandler {
 	/**
 	 * help text for the decrypt handler
 	 */
-	private static final String decryptHelpText = "Decrypt pdf files. \n"+ 
+	private static final String DECRYPT_HELP_TEXT = "Decrypt pdf files. \n"+ 
     "You must specify '-o /home/user' to set the output directory.\n"+
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to decrypt (use filename:password if the file is password protected).\n"+
 	"'-p prefix_' to specify a prefix for output names of files. If it contains \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[TIMESTAMP] generates FileName_prefix_20070517_113423471.pdf)\n";
@@ -96,7 +96,7 @@ public class DecryptCmdHandler extends AbstractCmdHandler {
    /**
      *  example text for the decrypt handler
      */
-    private static final String decryptExample = 
+    private static final String DECRYPT_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -overwrite decrypt\n";
 
 	public Collection getArguments() {
@@ -104,11 +104,11 @@ public class DecryptCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return decryptExample;
+		return DECRYPT_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -116,7 +116,7 @@ public class DecryptCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return decryptHelpText;
+		return DECRYPT_HELP_TEXT;
 	}
 
 }

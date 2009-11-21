@@ -59,7 +59,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class UnpackCmdHandler extends AbstractCmdHandler {
 	
-	private static final String commandDescription = "Extract attachments from pdf documents.";
+	private static final String COMMAND_DESCRIPTION = "Extract attachments from pdf documents.";
 
 	/**
 	 * Options for the unpack handler
@@ -96,7 +96,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
 	/**
 	 * help text for the unpack handler
 	 */
-	private static final String unpackHelpText = "Extract attachments from pdf documents. \n"+
+	private static final String UNPACK_HELP_TEXT = "Extract attachments from pdf documents. \n"+
     "You must specify '-o /home/user' to set the output directory.\n"+
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to unpack (use filename:password if the file is password protected).\n"+
     "'-d /home/filedir' to set a input directory. Every pdf document wil be unpacked.\n"+
@@ -106,7 +106,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
    /**
      *  example text for the unpack handler
      */
-    private static final String unpackExample = 
+    private static final String UNPACK_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -d /tmp/files -overwrite unpack\n";
 
 	private VersionCmdLineHandler commandLineHandler = null;	
@@ -116,11 +116,11 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return unpackExample;
+		return UNPACK_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -128,7 +128,7 @@ public class UnpackCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return unpackHelpText;
+		return UNPACK_HELP_TEXT;
 	}
 
 	/**

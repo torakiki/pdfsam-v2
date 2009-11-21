@@ -74,7 +74,7 @@ import com.lowagie.text.pdf.SimpleBookmark;
  */
 public class SplitCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(SplitCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(SplitCmdExecutor.class.getPackage().getName());
 	private PrefixParser prefixParser;
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
@@ -125,9 +125,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		//we retrieve the total number of pages
         int n = pdfReader.getNumberOfPages();
         int fileNum = 0;
-        log.info("Found "+n+" pages in input pdf document.");
+        LOG.info("Found "+n+" pages in input pdf document.");
         for (currentPage = 1; currentPage <= n; currentPage++) {
-			log.debug("Creating a new document.");
+			LOG.debug("Creating a new document.");
 			fileNum++;
         	File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
         	FileNameRequest request = new FileNameRequest(currentPage, fileNum, null);
@@ -158,11 +158,11 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             pdfWriter.addPage(importedPage);
             currentDocument.close();
             FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-           	log.debug("File "+outFile.getCanonicalPath()+" created.");
+           	LOG.debug("File "+outFile.getCanonicalPath()+" created.");
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
         pdfReader.close();
-        log.info("Burst done.");
+        LOG.info("Burst done.");
     }
     
     /**
@@ -178,7 +178,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		 //we retrieve the total number of pages
          int n = pdfReader.getNumberOfPages();
          int fileNum = 0;
-         log.info("Found "+n+" pages in input pdf document.");
+         LOG.info("Found "+n+" pages in input pdf document.");
          int currentPage;
          Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
          boolean isTimeToClose = false;
@@ -200,7 +200,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             
            
             if (!isTimeToClose){
-				log.debug("Creating a new document.");
+				LOG.debug("Creating a new document.");
 				fileNum++;
             	tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
             	FileNameRequest request = new FileNameRequest(currentPage, fileNum, null);
@@ -232,12 +232,12 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             if ((isTimeToClose) || (currentPage == n) || ((currentPage==1) && (SplitParsedCommand.S_ODD.equals(inputCommand.getSplitType())))){
                 currentDocument.close();
                 FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-                log.debug("File "+outFile.getCanonicalPath()+" created.");
+                LOG.debug("File "+outFile.getCanonicalPath()+" created.");
             }
             setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
         }
         pdfReader.close();
-        log.info("Split "+inputCommand.getSplitType()+" done.");
+        LOG.info("Split "+inputCommand.getSplitType()+" done.");
     }
     
     /**
@@ -262,7 +262,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		
         int n = pdfReader.getNumberOfPages();
         int fileNum = 0;
-        log.info("Found "+n+" pages in input pdf document.");
+        LOG.info("Found "+n+" pages in input pdf document.");
         
         Integer[] limits = inputCommand.getSplitPageNumbers();
 		// limits list validation end clean
@@ -290,7 +290,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			relativeCurrentPage++;
             //check if i've to read one more page or to open a new doc
             if (relativeCurrentPage == 1){            	
-				log.debug("Creating a new document.");
+				LOG.debug("Creating a new document.");
             	fileNum++;
 				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile()); 
 				String bookmark = null;
@@ -328,7 +328,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             
 			// if it's time to close the document
 			if (currentPage == endPage) {
-                log.info("Temporary document "+tmpFile.getName()+" done, now adding bookmarks...");
+                LOG.info("Temporary document "+tmpFile.getName()+" done, now adding bookmarks...");
                 //manage bookmarks
                 ArrayList master = new ArrayList();
                 List thisBook = SimpleBookmark.getBookmark(pdfReader);
@@ -344,13 +344,13 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                 relativeCurrentPage = 0;                    
                 currentDocument.close();
                 FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-                log.debug("File "+outFile.getCanonicalPath()+" created.");
+                LOG.debug("File "+outFile.getCanonicalPath()+" created.");
                 endPage = (itr.hasNext())? ((Integer)itr.next()).intValue(): n;
 			}
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
 		}
 		pdfReader.close();
-		log.info("Split "+inputCommand.getSplitType()+" done.");
+		LOG.info("Split "+inputCommand.getSplitType()+" done.");
     }
     
   /**
@@ -443,7 +443,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 						}
 					}
 					if(pageSet.size()>0){
-						log.debug("Found "+pageSet.size()+" destination pages at level "+bLevel);
+						LOG.debug("Found "+pageSet.size()+" destination pages at level "+bLevel);
 						inputCommand.setSplitPageNumbers((Integer[])pageSet.toArray(new Integer[pageSet.size()]));
 					}else{
 						throw new SplitException(SplitException.ERR_BLEVEL_NO_DEST, new String[] { "" + bLevel });	
@@ -476,7 +476,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         pdfReader.consolidateNamedDestinations();
 		int n = pdfReader.getNumberOfPages();
         int fileNum = 0;
-        log.info("Found "+n+" pages in input pdf document.");
+        LOG.info("Found "+n+" pages in input pdf document.");
         int currentPage;        
 		Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
         PdfSmartCopy pdfWriter = null;
@@ -490,7 +490,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			relativeCurrentPage++;
 			//time to open a new document?
 			if (relativeCurrentPage == 1){
-				log.debug("Creating a new document.");
+				LOG.debug("Creating a new document.");
 				startPage = currentPage;
 				fileNum++;
 				tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
@@ -522,7 +522,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             pdfWriter.addPage(importedPage);            
             //if it's time to close the document
 			if ((currentPage == n) || ((relativeCurrentPage>1) && ((baos.size()/relativeCurrentPage)*(1+relativeCurrentPage) > inputCommand.getSplitSize().longValue()))){
-				log.debug("Current stream size: "+baos.size()+" bytes.");
+				LOG.debug("Current stream size: "+baos.size()+" bytes.");
                 //manage bookmarks
                 ArrayList master = new ArrayList();
                 List thisBook = SimpleBookmark.getBookmark(pdfReader);
@@ -541,14 +541,14 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 				baos.writeTo(fos);
 				fos.close();
 				baos.close();				
-                log.info("Temporary document "+tmpFile.getName()+" done.");
+                LOG.info("Temporary document "+tmpFile.getName()+" done.");
                 FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-               	log.debug("File "+outFile.getCanonicalPath()+" created.");
+               	LOG.debug("File "+outFile.getCanonicalPath()+" created.");
 			}
 			setPercentageOfWorkDone((currentPage*WorkDoneDataModel.MAX_PERGENTAGE)/n);
 		}
 		pdfReader.close();  
-		log.info("Split "+inputCommand.getSplitType()+" done.");
+		LOG.info("Split "+inputCommand.getSplitType()+" done.");
 	}
 
     /**
@@ -566,10 +566,10 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		 */
 		for (int j = 0; j < limits.length; j++) {
 			if ((limits[j].intValue() <= 0) || (limits[j].intValue() >= upperLimit)) {
-				log.warn("Cannot split before page number " + limits[j].intValue()+ ", limit removed.");
+				LOG.warn("Cannot split before page number " + limits[j].intValue()+ ", limit removed.");
 			} else{
 					if(!limitsList.add(limits[j])){
-						log.warn(limits[j].intValue()+ " found more than once in the page limits list, limit removed.");
+						LOG.warn(limits[j].intValue()+ " found more than once in the page limits list, limit removed.");
 					}				
 			}
 		}

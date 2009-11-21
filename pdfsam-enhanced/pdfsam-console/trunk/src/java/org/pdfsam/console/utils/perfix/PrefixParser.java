@@ -249,7 +249,7 @@ public class PrefixParser {
 			int fileNum = 0;
 			//user entered a starting number
 			if(startingValue!=null && startingValue.length()>0){
-				fileNum = new Integer(startingValue).intValue();
+				fileNum = Integer.parseInt(startingValue);
 			}
 			fileNum += fileNumber.intValue();
 			String replacement = "";

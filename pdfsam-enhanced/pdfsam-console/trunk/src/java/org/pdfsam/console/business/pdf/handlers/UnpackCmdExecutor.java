@@ -69,7 +69,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class UnpackCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(UnpackCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(UnpackCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof UnpackParsedCommand)){
@@ -117,13 +117,13 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 						}
 						pdfReader.close();
 						if(unpackedFiles >0){
-							log.info("File "+fileList[i].getFile().getName()+" unpacked, found "+unpackedFiles+" attachments.");
+							LOG.info("File "+fileList[i].getFile().getName()+" unpacked, found "+unpackedFiles+" attachments.");
 						}else{
-							log.info("No attachments in "+fileList[i].getFile().getName()+".");
+							LOG.info("No attachments in "+fileList[i].getFile().getName()+".");
 						}
 						setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 					}catch(Exception e){
-		    			log.error("Error unpacking file "+fileList[i].getFile().getName(), e);
+		    			LOG.error("Error unpacking file "+fileList[i].getFile().getName(), e);
 		    		}
 				}				
 			}catch(Exception e){    		
@@ -154,17 +154,17 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 				PdfDictionary ef = (PdfDictionary) PdfReader.getPdfObject(filespec.get(PdfName.EF));
 				PdfString fn = (PdfString) PdfReader.getPdfObject(filespec.get(PdfName.F));
 				if (fn != null && ef != null){
-					log.debug("Unpacking file " + fn + " to " + outPath);
+					LOG.debug("Unpacking file " + fn + " to " + outPath);
 					File fLast = new File(fn.toUnicodeString());
 					File fullPath = new File(outPath, fLast.getName());
 					if (fullPath.exists()){
 				          //check if overwrite is allowed
 				          if (overwrite){
 				              if(!fullPath.delete()){
-						    	 log.warn("Unable to overwrite "+fullPath.getAbsolutePath()+", unable to unpack.");
+						    	 LOG.warn("Unable to overwrite "+fullPath.getAbsolutePath()+", unable to unpack.");
 				              }
 				          }else{
-				        	  log.warn("Cannot overwrite "+fullPath.getAbsolutePath()+" (overwrite is false), unable to unpack.");
+				        	  LOG.warn("Cannot overwrite "+fullPath.getAbsolutePath()+" (overwrite is false), unable to unpack.");
 				          }		
 				    }        
 					else{

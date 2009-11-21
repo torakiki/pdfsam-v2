@@ -44,18 +44,18 @@ import org.pdfsam.console.business.pdf.handlers.SplitCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.UnpackCmdExecutor;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
+
 /**
- * Manager for the commands execution 
+ * Manager for the commands execution
  * @author Andrea Vacondio
- *
  */
-public class CmdExecuteManager extends Observable implements Observer{
+public class CmdExecuteManager extends Observable implements Observer {
 
 	private final Logger log = Logger.getLogger(CmdExecuteManager.class.getPackage().getName());
-	
+
 	private AbstractCmdExecutor cmdExecutor = null;
 	private final StopWatch stopWatch = new StopWatch();
-	
+
 	/**
 	 * Executes the input parsed command
 	 * @param parsedCommand
@@ -70,6 +70,8 @@ public class CmdExecuteManager extends Observable implements Observer{
 				if (cmdExecutor != null) {
 					cmdExecutor.addObserver(this);
 					cmdExecutor.execute(parsedCommand);
+					log.info("Command '" + parsedCommand.getCommand() + "' executed in "
+							+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 				} else {
 					throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[] { "" + parsedCommand.getCommand() });
 				}
@@ -78,13 +80,12 @@ public class CmdExecuteManager extends Observable implements Observer{
 			}
 		} finally {
 			stopWatch.stop();
-			log.info("Command '" + parsedCommand.getCommand() + "' executed in "
-					+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 		}
-	}	
-	 /**
-	  * forward the WorkDoneDataModel to the observers
-	  */
+	}
+
+	/**
+	 * forward the WorkDoneDataModel to the observers
+	 */
 	public void update(Observable arg0, Object arg1) {
 		setChanged();
 		notifyObservers(arg1);
@@ -93,32 +94,32 @@ public class CmdExecuteManager extends Observable implements Observer{
 	/**
 	 * @param parsedCommand
 	 * @return an instance of the proper executor for the parsed command
-	 */	
-	private AbstractCmdExecutor getExecutor(AbstractParsedCommand parsedCommand){
+	 */
+	private AbstractCmdExecutor getExecutor(AbstractParsedCommand parsedCommand) {
 		AbstractCmdExecutor retVal;
-		if(MixParsedCommand.COMMAND_MIX.equals(parsedCommand.getCommand())){
+		if (MixParsedCommand.COMMAND_MIX.equals(parsedCommand.getCommand())) {
 			retVal = new AlternateMixCmdExecutor();
-		}else if(SplitParsedCommand.COMMAND_SPLIT.equals(parsedCommand.getCommand())){
+		} else if (SplitParsedCommand.COMMAND_SPLIT.equals(parsedCommand.getCommand())) {
 			retVal = new SplitCmdExecutor();
-		}else if(EncryptParsedCommand.COMMAND_ENCRYPT.equals(parsedCommand.getCommand())){
+		} else if (EncryptParsedCommand.COMMAND_ENCRYPT.equals(parsedCommand.getCommand())) {
 			retVal = new EncryptCmdExecutor();
-		}else if(ConcatParsedCommand.COMMAND_CONCAT.equals(parsedCommand.getCommand())){
+		} else if (ConcatParsedCommand.COMMAND_CONCAT.equals(parsedCommand.getCommand())) {
 			retVal = new ConcatCmdExecutor();
-		}else if(UnpackParsedCommand.COMMAND_UNPACK.equals(parsedCommand.getCommand())){
+		} else if (UnpackParsedCommand.COMMAND_UNPACK.equals(parsedCommand.getCommand())) {
 			retVal = new UnpackCmdExecutor();
-		}else if(SetViewerParsedCommand.COMMAND_SETVIEWER.equals(parsedCommand.getCommand())){
+		} else if (SetViewerParsedCommand.COMMAND_SETVIEWER.equals(parsedCommand.getCommand())) {
 			retVal = new SetViewerCmdExecutor();
-		}else if(SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(parsedCommand.getCommand())){
+		} else if (SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(parsedCommand.getCommand())) {
 			retVal = new SlideShowCmdExecutor();
-		}else if(DecryptParsedCommand.COMMAND_DECRYPT.equals(parsedCommand.getCommand())){
+		} else if (DecryptParsedCommand.COMMAND_DECRYPT.equals(parsedCommand.getCommand())) {
 			retVal = new DecryptCmdExecutor();
-		}else if(RotateParsedCommand.COMMAND_ROTATE.equals(parsedCommand.getCommand())){
+		} else if (RotateParsedCommand.COMMAND_ROTATE.equals(parsedCommand.getCommand())) {
 			retVal = new RotateCmdExecutor();
-		}else if(PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(parsedCommand.getCommand())){
+		} else if (PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(parsedCommand.getCommand())) {
 			retVal = new PageLabelsCmdExecutor();
-		}else if(DocumentInfoParsedCommand.COMMAND_SETDOCINFO.equals(parsedCommand.getCommand())){
+		} else if (DocumentInfoParsedCommand.COMMAND_SETDOCINFO.equals(parsedCommand.getCommand())) {
 			retVal = new DocumentInfoCmdExecutor();
-		}else {
+		} else {
 			retVal = null;
 		}
 		return retVal;

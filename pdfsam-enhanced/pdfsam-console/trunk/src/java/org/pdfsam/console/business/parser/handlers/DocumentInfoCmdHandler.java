@@ -51,7 +51,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
 
 public class DocumentInfoCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Set the pdf document info.";
+	private static final String COMMAND_DESCRIPTION = "Set the pdf document info.";
 	
 	/**
 	 * Options for the doc info handler
@@ -84,7 +84,7 @@ public class DocumentInfoCmdHandler extends AbstractCmdHandler {
     /**
      * Help text for the doc info handler
      */
-    private static final String docinfoHelpText = "Set the pdf document info. \n"+ 
+    private static final String DOCINFO_HELP_TEXT = "Set the pdf document info. \n"+ 
 	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to set the attibutes (use filename:password if the file is password protected).\n" +
         "you must specify the '-o /home/user/outfile.pdf' option to set the output file\n"+
 	    "'-title string' to specify the document title to set.\n"+
@@ -105,7 +105,7 @@ public class DocumentInfoCmdHandler extends AbstractCmdHandler {
     /**
      * Examples text for the split handler
      */
-    public static final String docinfoExamples = 
+    public static final String DOCINFO_EXAMPLE = 
 	    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /out.pdf -title \"The title\" -author John -keywords \"some keyword here\" "+DocumentInfoParsedCommand.COMMAND_SETDOCINFO+"\n";
     
 	public Collection getArguments() {
@@ -113,11 +113,11 @@ public class DocumentInfoCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return docinfoExamples;
+		return DOCINFO_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -125,7 +125,7 @@ public class DocumentInfoCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return docinfoHelpText;
+		return DOCINFO_HELP_TEXT;
 	}
 
 }

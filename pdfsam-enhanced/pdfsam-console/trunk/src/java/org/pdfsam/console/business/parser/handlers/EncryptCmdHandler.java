@@ -54,7 +54,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class EncryptCmdHandler extends AbstractCmdHandler {
 	
-	private static final String commandDescription = "Encrypt pdf documents.";
+	private static final String COMMAND_DESCRIPTION = "Encrypt pdf documents.";
 	
 	/**
 	 * Options for the encrypt handler
@@ -109,7 +109,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	/**
 	 * Help text for the encrypt command
 	 */
-	private static final String encryptHelpText =  "Encrypt pdf files. \n"+ 
+	private static final String ENCRYPT_HELP_TEXT =  "Encrypt pdf files. \n"+ 
     "You must specify '-o /home/user' to set the output directory.\n"+
     "You must specify '-f /tmp/file1.pdf /tmp/file2.pdf:password -f /tmp/file3.pdf [...]' to specify a file list to encrypt (use filename:password if the file is password protected).\n"+
     "'-apwd password' to set the owner password.\n"+
@@ -123,7 +123,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
     /**
      *  example text for the encrypt handler
      */
-    private static final String encryptExample = 
+    private static final String ENCRYPT_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -apwd hello -upwd word -allow print -allow fill -etype rc4_128 -p encrypted_ encrypt\n";
  
 	
@@ -132,11 +132,11 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return encryptExample;
+		return ENCRYPT_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -144,7 +144,7 @@ public class EncryptCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return encryptHelpText;
+		return ENCRYPT_HELP_TEXT;
 	}
 
 }

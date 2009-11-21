@@ -62,7 +62,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(SetViewerCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(SetViewerCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof SetViewerParsedCommand)){
@@ -87,7 +87,7 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 						pdfReader.consolidateNamedDestinations();
 						
 						//version
-						log.debug("Creating a new document.");
+						LOG.debug("Creating a new document.");
 						Character pdfVersion = inputCommand.getOutputPdfVersion(); 
 						if(pdfVersion != null){
 							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
@@ -110,14 +110,14 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 						
 						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
 			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-	                	log.debug("File "+outFile.getCanonicalPath()+" created.");
+	                	LOG.debug("File "+outFile.getCanonicalPath()+" created.");
 						setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 					}
 		    		catch(Exception e){
-		    			log.error("Error setting options for file "+fileList[i].getFile().getName(), e);
+		    			LOG.error("Error setting options for file "+fileList[i].getFile().getName(), e);
 		    		}
 				}
-				log.info("Viewer options set. Pdf files created in "+inputCommand.getOutputFile().getAbsolutePath()+".");
+				LOG.info("Viewer options set. Pdf files created in "+inputCommand.getOutputFile().getAbsolutePath()+".");
 			}catch(Exception e){    		
 				throw new SetViewerException(e);
 			}finally{

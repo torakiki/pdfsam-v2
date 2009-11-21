@@ -59,7 +59,7 @@ public class DefaultCmdHandler implements CmdHandler {
 
 	private VersionCmdLineHandler commandLineHandler = null;
 	
-	private static final String commandDescription = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt, rotate, pagelabels.";
+	private static final String COMMAND_DESCRIPTION = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt, rotate, pagelabels.";
 	
 	 /**
      * The default arguments 
@@ -74,14 +74,14 @@ public class DefaultCmdHandler implements CmdHandler {
 	/**
 	 * default help text 
 	 */
-    private static final String helpText = COMMAND+" -h [command] for commands help. ";
+    private static final String HELP_TEXT = COMMAND+" -h [command] for commands help. ";
     
 	public Collection getArguments() {
 		return concatArguments;
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
@@ -89,7 +89,7 @@ public class DefaultCmdHandler implements CmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return helpText;
+		return HELP_TEXT;
 	}
 
 	public Collection getOptions() {

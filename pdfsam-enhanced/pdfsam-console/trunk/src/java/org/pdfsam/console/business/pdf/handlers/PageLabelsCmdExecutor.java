@@ -62,7 +62,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(PageLabelsCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(PageLabelsCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof PageLabelsParsedCommand)){
@@ -73,7 +73,7 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 			Document currentDocument;
 			try{		       							       
 				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-				log.debug("Opening "+inputCommand.getInputFile().getFile().getAbsolutePath());
+				LOG.debug("Opening "+inputCommand.getInputFile().getFile().getAbsolutePath());
 				pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 				pdfReader.removeUnusedObjects();
 			    pdfReader.consolidateNamedDestinations();
@@ -114,7 +114,7 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 					if(labels[i].getPageNumber()<=n){
 						pageLabels.addPageLabel(labels[i].getPageNumber(), getPageLabelStyle(labels[i].getStyle()), labels[i].getPrefix(), labels[i].getLogicalPageNumber());
 					}else{
-						log.warn("Page number out of range, label starting at page "+labels[i].getPageNumber()+" will be ignored");
+						LOG.warn("Page number out of range, label starting at page "+labels[i].getPageNumber()+" will be ignored");
 					}
 					setPercentageOfWorkDone((i*WorkDoneDataModel.MAX_PERGENTAGE)/stepsNumber);
 				}				
@@ -123,7 +123,7 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
     			currentDocument.close();        	
 	    		pdfWriter.close();
 	            FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-            	log.debug("Page labels set on file "+inputCommand.getOutputFile());
+            	LOG.debug("Page labels set on file "+inputCommand.getOutputFile());
 			}catch(Exception e){   
 				throw new PageLabelsException(e);
 			}finally{

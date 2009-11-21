@@ -52,7 +52,7 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
  */
 public class ConsoleClient {
 
-	private static final Logger log = Logger.getLogger(ConsoleClient.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(ConsoleClient.class.getPackage().getName());
 	
 	//config properties
 	private static final String consoleLogLevelProperty = "pdfsam.log.console.level";
@@ -79,10 +79,10 @@ public class ConsoleClient {
 					serviceFacade.execute(parsedCommand);
 				}
 			}else{
-				log.fatal("Unable to reach services, service facade is null.");
+				LOG.fatal("Unable to reach services, service facade is null.");
 			}
 		}catch(Throwable t){
-			log.fatal("Error executing ConsoleClient", t);
+			LOG.fatal("Error executing ConsoleClient", t);
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class ConsoleClient {
 			if(consoleAppender != null){
 				Level consoleThreshold = Level.toLevel(consoleLevel,Level.DEBUG);
 				consoleAppender.setThreshold(consoleThreshold);
-				log.debug("Console log level set to "+consoleThreshold);
+				LOG.debug("Console LOG level set to "+consoleThreshold);
 			}
 			
 			if(fileName != null){
@@ -110,7 +110,7 @@ public class ConsoleClient {
 				Level fileThreshold = Level.toLevel(fileLevel,Level.DEBUG);
 				fileAppender.setThreshold(fileThreshold);
 				Logger.getRootLogger().addAppender(fileAppender);
-				log.debug("Added fileAppender ("+fileName+") at level "+fileThreshold);
+				LOG.debug("Added fileAppender ("+fileName+") at level "+fileThreshold);
 			}
 		}catch(Exception e){
 			System.err.println("Error configuring logging framework: "+e.getMessage());

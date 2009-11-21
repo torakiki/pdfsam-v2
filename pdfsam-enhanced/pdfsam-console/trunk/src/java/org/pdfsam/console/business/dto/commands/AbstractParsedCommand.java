@@ -39,40 +39,41 @@ package org.pdfsam.console.business.dto.commands;
 
 import java.io.File;
 import java.io.Serializable;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import com.lowagie.text.pdf.PdfWriter;
+
 /**
  * Abstract parsed command dto filled by parsing service and used by worker service
  * @author Andrea Vacondio
- *
  */
 public abstract class AbstractParsedCommand implements Serializable {
 
 	private static final long serialVersionUID = -7162638813535213378L;
-	
+
 	public static final String COMMAND_CONCAT = "concat";
-    public static final String COMMAND_SPLIT = "split";    
-    public static final String COMMAND_ENCRYPT = "encrypt";  
-    public static final String COMMAND_DECRYPT = "decrypt";  
-    public static final String COMMAND_MIX = "mix"; 
-    public static final String COMMAND_UNPACK = "unpack"; 
-    public static final String COMMAND_SETVIEWER = "setviewer"; 
-    public static final String COMMAND_SLIDESHOW = "slideshow";
-    public static final String COMMAND_ROTATE = "rotate";
-    public static final String COMMAND_PAGELABELS = "pagelabels";
-    public static final String COMMAND_SETDOCINFO = "setdocinfo";
-    
-    public static final char VERSION_1_2 = PdfWriter.VERSION_1_2;
-    public static final char VERSION_1_3 = PdfWriter.VERSION_1_3;
-    public static final char VERSION_1_4 = PdfWriter.VERSION_1_4;
-    public static final char VERSION_1_5 = PdfWriter.VERSION_1_5;
-    public static final char VERSION_1_6 = PdfWriter.VERSION_1_6;    
-    public static final char VERSION_1_7 = PdfWriter.VERSION_1_7;
-    
+	public static final String COMMAND_SPLIT = "split";
+	public static final String COMMAND_ENCRYPT = "encrypt";
+	public static final String COMMAND_DECRYPT = "decrypt";
+	public static final String COMMAND_MIX = "mix";
+	public static final String COMMAND_UNPACK = "unpack";
+	public static final String COMMAND_SETVIEWER = "setviewer";
+	public static final String COMMAND_SLIDESHOW = "slideshow";
+	public static final String COMMAND_ROTATE = "rotate";
+	public static final String COMMAND_PAGELABELS = "pagelabels";
+	public static final String COMMAND_SETDOCINFO = "setdocinfo";
+
+	public static final char VERSION_1_2 = PdfWriter.VERSION_1_2;
+	public static final char VERSION_1_3 = PdfWriter.VERSION_1_3;
+	public static final char VERSION_1_4 = PdfWriter.VERSION_1_4;
+	public static final char VERSION_1_5 = PdfWriter.VERSION_1_5;
+	public static final char VERSION_1_6 = PdfWriter.VERSION_1_6;
+	public static final char VERSION_1_7 = PdfWriter.VERSION_1_7;
+
 	public static final String PDFVERSION_ARG = "pdfversion";
 	public static final String OVERWRITE_ARG = "overwrite";
 	public static final String COMPRESSED_ARG = "compressed";
 	public static final String LOG_ARG = "log";
-	
+
 	/**
 	 * <code>true</code> if output file overwrite is enabled
 	 */
@@ -80,7 +81,7 @@ public abstract class AbstractParsedCommand implements Serializable {
 	/**
 	 * <code>true</code> if output file must be compressed
 	 */
-	private boolean compress = false; 
+	private boolean compress = false;
 	/**
 	 * log file
 	 */
@@ -89,18 +90,17 @@ public abstract class AbstractParsedCommand implements Serializable {
 	 * Version of the output document/documents
 	 */
 	private Character outputPdfVersion = null;
-	
-	
-	public AbstractParsedCommand(){		
+
+	public AbstractParsedCommand() {
 	}
-	
+
 	/**
 	 * @deprecated use the constructor without the logFile parameter
 	 */
-	public AbstractParsedCommand(boolean overwrite, boolean compress,File logFile, char outputPdfVersion) {
+	public AbstractParsedCommand(boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
 		this(overwrite, compress, outputPdfVersion);
 	}
-	
+
 	public AbstractParsedCommand(boolean overwrite, boolean compress, char outputPdfVersion) {
 		this.overwrite = overwrite;
 		this.compress = compress;
@@ -115,7 +115,8 @@ public abstract class AbstractParsedCommand implements Serializable {
 	}
 
 	/**
-	 * @param overwrite the overwrite to set
+	 * @param overwrite
+	 *        the overwrite to set
 	 */
 	public void setOverwrite(boolean overwrite) {
 		this.overwrite = overwrite;
@@ -129,7 +130,8 @@ public abstract class AbstractParsedCommand implements Serializable {
 	}
 
 	/**
-	 * @param compress the compress to set
+	 * @param compress
+	 *        the compress to set
 	 */
 	public void setCompress(boolean compress) {
 		this.compress = compress;
@@ -144,13 +146,14 @@ public abstract class AbstractParsedCommand implements Serializable {
 	}
 
 	/**
-	 * @param logFile the logFile to set
+	 * @param logFile
+	 *        the logFile to set
 	 * @deprecated -log option is no longer used
 	 */
 	public void setLogFile(File logFile) {
 		this.logFile = logFile;
 	}
-	
+
 	/**
 	 * @return the outputPdfVersion
 	 */
@@ -159,14 +162,16 @@ public abstract class AbstractParsedCommand implements Serializable {
 	}
 
 	/**
-	 * @param outputPdfVersion the outputPdfVersion to set
+	 * @param outputPdfVersion
+	 *        the outputPdfVersion to set
 	 */
 	public void setOutputPdfVersion(char outputPdfVersion) {
 		this.outputPdfVersion = new Character(outputPdfVersion);
 	}
 
 	/**
-	 * @param outputPdfVersion the outputPdfVersion to set
+	 * @param outputPdfVersion
+	 *        the outputPdfVersion to set
 	 */
 	public void setOutputPdfVersion(Character outputPdfVersion) {
 		this.outputPdfVersion = outputPdfVersion;
@@ -177,11 +182,7 @@ public abstract class AbstractParsedCommand implements Serializable {
 	 */
 	public abstract String getCommand();
 
-	public String toString(){
-		StringBuffer retVal = new StringBuffer();
-		retVal.append("[overwrite="+overwrite+"]");
-		retVal.append("[compress="+compress+"]");
-		retVal.append("[outputPdfVersion="+outputPdfVersion+"]");
-		return retVal.toString();
+	public String toString() {
+		return new ToStringBuilder(this).append(overwrite).append(compress).append(outputPdfVersion).toString();
 	}
 }

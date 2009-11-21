@@ -57,7 +57,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
 
 public class DecryptCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(DecryptCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(DecryptCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
@@ -80,7 +80,7 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 						pdfReader.consolidateNamedDestinations();
 						
 						//version
-						log.debug("Creating a new document.");
+						LOG.debug("Creating a new document.");
 						Character pdfVersion = inputCommand.getOutputPdfVersion(); 
 						if(pdfVersion != null){
 							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
@@ -101,14 +101,14 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 						pdfReader.close();
 						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
 			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-	                	log.debug("Decrypted file "+outFile.getCanonicalPath()+" created.");			    		
+	                	LOG.debug("Decrypted file "+outFile.getCanonicalPath()+" created.");			    		
 			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 		    		}
 		    		catch(Exception e){
-		    			log.error("Error decrypting file "+fileList[i].getFile().getName(), e);
+		    			LOG.error("Error decrypting file "+fileList[i].getFile().getName(), e);
 		    		}
 				}
-				log.info("Pdf files decrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
+				LOG.info("Pdf files decrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
 			}finally{
 				setWorkCompleted();
 			}

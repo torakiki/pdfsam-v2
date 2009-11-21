@@ -59,7 +59,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 
-	private final Logger log = Logger.getLogger(AlternateMixCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(AlternateMixCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof MixParsedCommand)){
@@ -86,7 +86,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 
 
 				pdfDocument = new Document(pdfReader1.getPageSizeWithRotation(1));
-				log.debug("Creating a new document.");
+				LOG.debug("Creating a new document.");
 				pdfWriter = new PdfCopy(pdfDocument, new FileOutputStream(tmpFile));
 				
 				if(inputCommand.getOutputPdfVersion() != null){
@@ -115,7 +115,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 								pdfWriter.addPage(page);
 								current1 = (inputCommand.isReverseFirst())? (current1-1) :(current1+1);
 							}else{
-								log.info("First file processed.");
+								LOG.info("First file processed.");
 								pdfReader1.close();							
 								finished1 = true;								
 							}
@@ -128,7 +128,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 								pdfWriter.addPage(page);
 								current2 = (inputCommand.isReverseSecond())? (current2-1) :(current2+1);
 							}else{
-								log.info("Second file processed.");
+								LOG.info("Second file processed.");
 								pdfReader2.close();
 								finished2 = true;
 							}
@@ -142,8 +142,8 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 
 				pdfDocument.close();
 	    		FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-                log.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
-				log.info("Alternate mix with step "+inputCommand.getStep()+" completed.");
+                LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
+				LOG.info("Alternate mix with step "+inputCommand.getStep()+" completed.");
 			}catch(Exception e){    		
 				throw new MixException(e);
 			}finally{

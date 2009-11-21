@@ -54,7 +54,7 @@ import org.pdfsam.console.exceptions.console.ValidationException;
  */
 public final class ValidationUtility {
 
-	private static final Logger log = Logger.getLogger(ValidationUtility.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(ValidationUtility.class.getPackage().getName());
 
 	public static final String ALL_STRING = "all";
 	public static final String ODD_STRING = "odd";
@@ -77,7 +77,7 @@ public final class ValidationUtility {
 	 * @return the rotations array
 	 * @throws ValidationException
 	 */
-	public static PageRotation[] getPagesRotation(final String inputString, boolean allowSinglePagesRotation) throws ValidationException {
+	public static PageRotation[] getPagesRotation(final String inputString, final boolean allowSinglePagesRotation) throws ValidationException {
 		ArrayList retVal = new ArrayList();
 		try {
 			if (inputString != null && inputString.length() > 0) {
@@ -88,36 +88,36 @@ public final class ValidationUtility {
 						String[] rotationParams = currentRotation.split(":");
 						if (rotationParams.length == 2) {
 							String pageNumber = rotationParams[0].trim();
-							int degrees = new Integer(rotationParams[1]).intValue() % 360;
+							int degrees = Integer.parseInt(rotationParams[1]) % 360;
 							// must be a multiple of 90
 							if ((degrees % 90) != 0) {
-								throw new ValidationException(ValidationException.ERR_DEGREES_NOT_ALLOWED, new String[] { degrees + "" });
+								throw new ValidationException(ValidationException.ERR_DEGREES_NOT_ALLOWED, new String[] { Integer.toString(degrees) });
 							}
 							// rotate all
 							if (ALL_STRING.equals(pageNumber)) {
-								if (retVal.size() > 0) {
-									log.warn("Page rotation for every page found, other rotations removed");
+								if (!retVal.isEmpty()) {
+									LOG.warn("Page rotation for every page found, other rotations removed");
 									retVal.clear();
 								}
 								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.ALL_PAGES));
 								break;
 							} else if (ODD_STRING.equals(pageNumber)) {
-								if (retVal.size() > 0) {
-									log.warn("Page rotation for odd pages found, other rotations removed");
+								if (!retVal.isEmpty()) {
+									LOG.warn("Page rotation for odd pages found, other rotations removed");
 									retVal.clear();
 								}
 								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.ODD_PAGES));
 								break;
 							} else if (EVEN_STRING.equals(pageNumber)) {
-								if (retVal.size() > 0) {
-									log.warn("Page rotation for even pages found, other rotations removed");
+								if (!retVal.isEmpty()) {
+									LOG.warn("Page rotation for even pages found, other rotations removed");
 									retVal.clear();
 								}
 								retVal.add(new PageRotation(PageRotation.NO_PAGE, degrees, PageRotation.EVEN_PAGES));
 								break;
 							} else {
 								if (allowSinglePagesRotation) {
-									retVal.add(new PageRotation(new Integer(pageNumber).intValue(), degrees));
+									retVal.add(new PageRotation(Integer.parseInt(pageNumber), degrees));
 								}
 							}
 						} else {
@@ -138,7 +138,7 @@ public final class ValidationUtility {
 	 * @param inputString
 	 * @return the PageLabel object resulting by the -l option value
 	 */
-	public static PageLabel getPageLabel(String inputString) throws ValidationException {
+	public static PageLabel getPageLabel(final String inputString) throws ValidationException {
 		PageLabel retVal = null;
 		if (inputString != null && inputString.length() > 0) {
 			String[] values = inputString.split(":");
@@ -169,7 +169,7 @@ public final class ValidationUtility {
 	 * @throws ValidationException
 	 *         if the input string is not a valid label style
 	 */
-	private static String getPageLabelStyle(String inputString) throws ValidationException {
+	private static String getPageLabelStyle(final String inputString) throws ValidationException {
 		String retVal = null;
 		if (inputString != null && inputString.length() > 0) {
 			if (PageLabel.ARABIC.equals(inputString) || PageLabel.EMPTY.equals(inputString) || PageLabel.LLETTER.equals(inputString)
@@ -191,7 +191,7 @@ public final class ValidationUtility {
 	 * @throws ValidationException
 	 * @see {@link ValidationUtility#getPagesRotation(String, boolean)}
 	 */
-	public static PageRotation[] getPagesRotation(String inputString) throws ValidationException {
+	public static PageRotation[] getPagesRotation(final String inputString) throws ValidationException {
 		return getPagesRotation(inputString, true);
 	}
 
@@ -201,7 +201,7 @@ public final class ValidationUtility {
 	 * @throws ValidationException
 	 *         if not a pdf format
 	 */
-	public static void assertValidPdfExtension(String inputFileName) throws ValidationException {
+	public static void assertValidPdfExtension(final String inputFileName) throws ValidationException {
 		if (!((inputFileName.toLowerCase().endsWith(PDF_EXTENSION)) && (inputFileName.length() > PDF_EXTENSION.length()))) {
 			throw new ValidationException(ValidationException.ERR_NOT_PDF, new String[] { inputFileName });
 		}
@@ -238,11 +238,11 @@ public final class ValidationUtility {
 	public static boolean isValidPageSelectionsArray(String[] selections) {
 		boolean retVal = true;
 		if (!ArrayUtils.isEmpty(selections)) {
-			Pattern p = Pattern.compile(SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
+			Pattern pattern = Pattern.compile(SELECTION_REGEXP, Pattern.CASE_INSENSITIVE);
 			for (int i = 0; i < selections.length; i++) {
 				String currentSelection = selections[i];
 				if (!ALL_STRING.equalsIgnoreCase(currentSelection)) {
-					if (!(p.matcher(currentSelection).matches())) {
+					if (!(pattern.matcher(currentSelection).matches())) {
 						retVal = false;
 						break;
 					}
@@ -261,12 +261,12 @@ public final class ValidationUtility {
 	 */
 	public static void assertValidBounds(Bounds bounds, int pdfNumberOfPages) throws ValidationException {
 		if (bounds.getStart() <= 0) {
-			throw new ValidationException(ValidationException.ERR_NOT_POSITIVE, new String[] { "" + bounds.getStart(), bounds.toString() });
+			throw new ValidationException(ValidationException.ERR_NOT_POSITIVE, new String[] { Integer.toString(bounds.getStart()), bounds.toString() });
 		} else if (bounds.getEnd() > pdfNumberOfPages) {
-			throw new ValidationException(ValidationException.ERR_CANNOT_MERGE, new String[] { "" + bounds.getEnd() });
+			throw new ValidationException(ValidationException.ERR_CANNOT_MERGE, new String[] { Integer.toString(bounds.getEnd()) });
 		} else if (bounds.getStart() > bounds.getEnd()) {
-			throw new ValidationException(ValidationException.ERR_START_BIGGER_THAN_END, new String[] { "" + bounds.getStart(),
-					"" + bounds.getEnd(), bounds.toString() });
+			throw new ValidationException(ValidationException.ERR_START_BIGGER_THAN_END, new String[] { Integer.toString(bounds.getStart()),
+					Integer.toString(bounds.getEnd()), bounds.toString() });
 		}
 	}
 

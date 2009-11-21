@@ -63,7 +63,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class EncryptCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(EncryptCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(EncryptCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
@@ -97,7 +97,7 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 						pdfReader.consolidateNamedDestinations();
 						
 						//version
-						log.debug("Creating a new document.");
+						LOG.debug("Creating a new document.");
 						Character pdfVersion = inputCommand.getOutputPdfVersion(); 
 						if(pdfVersion != null){
 							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
@@ -119,15 +119,15 @@ public class EncryptCmdExecutor extends AbstractCmdExecutor {
 			    		pdfReader.close();
 						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
 			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-		                log.debug("Encrypted file "+outFile.getCanonicalPath()+" created.");
+		                LOG.debug("Encrypted file "+outFile.getCanonicalPath()+" created.");
 			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
 		    		}
 		    		catch(Exception e){
-		    			log.error("Error encrypting file "+fileList[i].getFile().getName(), e);
+		    			LOG.error("Error encrypting file "+fileList[i].getFile().getName(), e);
 		    		}
 				}
-				log.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
-				log.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");				
+				LOG.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
+				LOG.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");				
 		}catch(Exception e){    		
 			throw new EncryptException(e);
 		}finally{

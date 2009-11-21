@@ -70,7 +70,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(SlideShowCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(SlideShowCmdExecutor.class.getPackage().getName());
 	
 	private Hashtable transitionsMappingMap = null;
 	
@@ -96,7 +96,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				pdfReader.consolidateNamedDestinations();
 				
 				//version
-				log.debug("Creating a new document.");
+				LOG.debug("Creating a new document.");
 				Character pdfVersion = inputCommand.getOutputPdfVersion(); 
 				if(pdfVersion != null){
 					pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
@@ -133,8 +133,8 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				
 				File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
 	    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-    			log.debug("File "+outFile.getCanonicalPath()+" created.");
-	    		log.info("Slide show options set.");
+    			LOG.debug("File "+outFile.getCanonicalPath()+" created.");
+	    		LOG.info("Slide show options set.");
 			}catch(Exception e){    		
 				throw new SlideShowException(e);
 			}finally{
@@ -153,7 +153,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 	 * @param pdfStamper
 	 */
 	private void setTransitionsWithDefault(Transitions transitions, int totalPages, PdfStamper pdfStamper){
-		log.debug("Setting transitions with a default value.");
+		LOG.debug("Setting transitions with a default value.");
 		Transition[] trans = transitions.getTransitions();
 		
 		Hashtable transitionsMap = new Hashtable(0) ;
@@ -185,7 +185,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 	 * @param pdfStamper
 	 */
 	private void setTransitionsWithoutDefault(Transitions transitions, PdfStamper pdfStamper){
-		log.debug("Setting transitions without a default value.");
+		LOG.debug("Setting transitions without a default value.");
 		Transition[] trans = transitions.getTransitions();
 		if(trans!=null && trans.length>0){
 			for(int i=0; i<trans.length; i++){
@@ -194,7 +194,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/trans.length);
 			}		
 		}else{
-			log.warn("No transition to set.");
+			LOG.warn("No transition to set.");
 		}
 	}
 
@@ -242,7 +242,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 		Transitions retVal = transitions;
 		if(inputFile!=null){
 			try{
-				log.debug("Parsing xml transitions file "+inputFile.getAbsolutePath());		
+				LOG.debug("Parsing xml transitions file "+inputFile.getAbsolutePath());		
 				SAXReader reader = new SAXReader();
 				Document document = reader.read(inputFile);
 				Node rootNode = document.selectSingleNode("/transitions");

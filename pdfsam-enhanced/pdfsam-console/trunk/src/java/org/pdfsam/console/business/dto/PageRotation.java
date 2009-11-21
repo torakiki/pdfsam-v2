@@ -38,6 +38,7 @@
 package org.pdfsam.console.business.dto;
 
 import java.io.Serializable;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * Model for a page rotation
@@ -129,30 +130,10 @@ public class PageRotation implements Serializable {
 	public void setType(int type) {
 		this.type = type;
 	}
-	/**
-	 * Constructs a <code>String</code> with all attributes
-	 * in name = value format.
-	 *
-	 * @return a <code>String</code> representation 
-	 * of this object.
-	 */
-	public String toString()
-	{
-	    final String OPEN = "[";
-	    final String CLOSE = "]";
-	    
-	    StringBuffer retValue = new StringBuffer();
-	    
-	    retValue.append("PageRotation ( ")
-	        .append(super.toString())
-	        .append(OPEN).append("pageNumber=").append(this.pageNumber).append(CLOSE)
-	        .append(OPEN).append("degrees=").append(this.degrees).append(CLOSE)
-	        .append(OPEN).append("type=").append(this.type).append(CLOSE)
-	        .append(" )");
-	    
-	    return retValue.toString();
-	}
 	
+	public String toString() {
+		return new ToStringBuilder(this).append(pageNumber).append(degrees).append(type).toString();
+	}
 	
 	
 }

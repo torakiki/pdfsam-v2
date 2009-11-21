@@ -56,7 +56,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class SlideShowCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Set slide show options.";
+	private static final String COMMAND_DESCRIPTION = "Set slide show options.";
 
 	/**
 	 * Options for the slide show handler
@@ -98,7 +98,7 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
 	/**
 	 * Help text for the slide show command
 	 */
-	private static final String slideshowHelpText =  "Set slide show options for the pdf document. \n"+ 
+	private static final String SLIDE_SHOW_HELP_TEXT =  "Set slide show options for the pdf document. \n"+ 
     "You must specify '-f /home/user/infile.pdf' option to set the input file you want to set transitions (use filename:password if the file is password protected).\n" +
 	"You must specify '-o /home/user/out.pdf' to set the output file.\n"+
     "'-t transition' to set the slide show transition options. Syntax: transitiontype:transitiondurationinsec:pagedisplaydurationinsec:pagenumber.\n"+
@@ -114,7 +114,7 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
 	 /**
      *  example text for the slide show handler
      */
-    private static final String slideshowExample = 
+    private static final String SLIDE_SHOW_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp/out.pdf -fullscreen -dt dissolve:1:5 -t wipel2r:1:5:20 -t wiper2l:1:5:21 -overwrite slideshow\n";
 	
 	 /**
@@ -132,11 +132,11 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return slideshowExample;
+		return SLIDE_SHOW_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -144,7 +144,7 @@ public class SlideShowCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return slideshowHelpText;
+		return SLIDE_SHOW_HELP_TEXT;
 	}
 
 }

@@ -59,7 +59,7 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 
-	private final Logger log = Logger.getLogger(DocumentInfoCmdExecutor.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(DocumentInfoCmdExecutor.class.getPackage().getName());
 
 	private static final String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
 	private static final String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
@@ -80,7 +80,7 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 				pdfReader.consolidateNamedDestinations();
 
 				// version
-				log.debug("Creating a new document.");
+				LOG.debug("Creating a new document.");
 				Character pdfVersion = inputCommand.getOutputPdfVersion();
 				if (pdfVersion != null) {
 					pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
@@ -113,7 +113,7 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 				pdfReader.close();
 
 				FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-				log.debug("File " + inputCommand.getOutputFile().getCanonicalPath() + " created.");
+				LOG.debug("File " + inputCommand.getOutputFile().getCanonicalPath() + " created.");
 
 			} catch (Exception e) {
 				throw new ConsoleException(e);

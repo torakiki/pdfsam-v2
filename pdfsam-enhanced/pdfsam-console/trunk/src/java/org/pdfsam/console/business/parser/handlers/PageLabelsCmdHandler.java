@@ -56,7 +56,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class PageLabelsCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Set page labels for a pdf document.";
+	private static final String COMMAND_DESCRIPTION = "Set page labels for a pdf document.";
 
 	/**
 	 * Options for the page labels handler
@@ -99,7 +99,7 @@ public class PageLabelsCmdHandler extends AbstractCmdHandler {
 	/**
 	 * help text for the page labels handler
 	 */
-	private static final String pageLabelsHelpText = "Set page labels for a pdf file. \n"+ 
+	private static final String PAGE_LABELS_HELP_TEXT = "Set page labels for a pdf file. \n"+ 
     "You must specify '-f /home/user/infile.pdf' option to set the input file you want to set page labels (use filename:password if the file is password protected).\n" +
 	"You must specify '-o /home/user/out.pdf' to set the output file.\n"+
     "You must specify '-l 1:arabic' to set pages labels. (EX. -l 1:arabic -l 5:uroman:1  will number the document pages starting from the first page with arabic numbers and starting from the fifth page (first logical page) with upper case roman numbers\n"+
@@ -111,7 +111,7 @@ public class PageLabelsCmdHandler extends AbstractCmdHandler {
    /**
      *  example text for the page labels handler
      */
-    private static final String pageLabelsExample = 
+    private static final String PAGE_LABELS_EXAMPLE = 
     "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -r odd:180 -overwrite rotate\n";
     
 	public Collection getArguments() {
@@ -119,11 +119,11 @@ public class PageLabelsCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return pageLabelsExample;
+		return PAGE_LABELS_EXAMPLE;
 	}
 
 	public Collection getOptions() {
@@ -131,7 +131,7 @@ public class PageLabelsCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getHelpMessage() {
-		return pageLabelsHelpText;
+		return PAGE_LABELS_HELP_TEXT;
 	}
 
 }

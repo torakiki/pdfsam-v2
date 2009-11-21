@@ -57,7 +57,7 @@ import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler
  */
 public class SplitCmdHandler extends AbstractCmdHandler {
 
-	private static final String commandDescription = "Split a pdf document.";
+	private static final String COMMAND_DESCRIPTION = "Split a pdf document.";
 	
 	/**
 	 * Options for the split handler
@@ -104,7 +104,7 @@ public class SplitCmdHandler extends AbstractCmdHandler {
     /**
      * Help text for the split handler
      */
-    private static final String splitHelpText = "Split pdf file. \n"+ 
+    private static final String SPLIT_HELP_TEXT = "Split pdf file. \n"+ 
 	    "You must specify '-f /home/user/infile.pdf' option to set the input file you want to split (use filename:password if the file is password protected).\n" +
 	    "You must specify '-o /home/user' to set the output directory.\n"+
 	    "You must specify '-s split_type' to set the split type. Possible values: {["+SplitParsedCommand.S_BURST+"], ["+SplitParsedCommand.S_ODD+"], ["+SplitParsedCommand.S_EVEN+"], ["+SplitParsedCommand.S_SPLIT+"], ["+SplitParsedCommand.S_NSPLIT+"], ["+SplitParsedCommand.S_BLEVEL+"]}\n"+
@@ -116,7 +116,7 @@ public class SplitCmdHandler extends AbstractCmdHandler {
     /**
      * Examples text for the split handler
      */
-    public static final String splitExamples = 
+    public static final String SPLIT_EXAMPLES = 
 	    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -s BURST -p splitted_ split\n"+
 	    "Example: java -jar pdfsam-console-"+ConsoleServicesFacade.VERSION+".jar -f /tmp/1.pdf -o /tmp -s NSPLIT -n 4 split\n";
     
@@ -125,15 +125,15 @@ public class SplitCmdHandler extends AbstractCmdHandler {
 	}
 
 	public String getCommandDescription() {
-		return commandDescription;
+		return COMMAND_DESCRIPTION;
 	}
 
 	public String getHelpExamples() {
-		return splitExamples;
+		return SPLIT_EXAMPLES;
 	}
 
 	public String getHelpMessage() {
-		return splitHelpText;
+		return SPLIT_HELP_TEXT;
 	}
 
 	public Collection getOptions() {
