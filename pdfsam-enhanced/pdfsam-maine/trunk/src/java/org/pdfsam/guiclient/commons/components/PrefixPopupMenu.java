@@ -12,7 +12,7 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.components.listeners;
+package org.pdfsam.guiclient.commons.components;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -23,20 +23,22 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 
 /**
- * Listener to show default menu plus prefix menu items
+ * Popup menu to show default menu plus prefix menu items
  * @author Andrea Vacondio
  *
  */
-public class PrefixMouseListener extends DefaultMouseListener {
+public class PrefixPopupMenu extends DefaultPopupMenu {
+
+	private static final long serialVersionUID = -9202595588797924181L;
 
 	public static final int BASIC_MENU = 0;
 	public static final int FULL_MENU = 1;
 	
-	public PrefixMouseListener(int menuType, JTextField textField) {
+	public PrefixPopupMenu(int menuType, JTextField textField) {
 		
 		PrefixMenuActionListener listener = new PrefixMenuActionListener(textField);
 		
-		popup.addSeparator();
+		addSeparator();
 		JMenu prefixMenu = new JMenu(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Add prefix"));
 
 		JMenuItem menuTimestamp = new JMenuItem();
@@ -71,8 +73,6 @@ public class PrefixMouseListener extends DefaultMouseListener {
 			prefixMenu.add(menuBookmark);
 		}
 
-		popup.add(prefixMenu);
+		add(prefixMenu);
 	}
-
-	
 }

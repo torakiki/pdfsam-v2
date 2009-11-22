@@ -23,8 +23,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
-import org.pdfsam.guiclient.commons.components.listeners.DefaultMouseListener;
-import org.pdfsam.guiclient.commons.components.listeners.PrefixMouseListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 
@@ -167,16 +165,16 @@ public class CommonComponentsFactory {
 		
 		case SIMPLE_TEXT_FIELD_TYPE:
 		case DESTINATION_TEXT_FIELD_TYPE:
-			retVal.addMouseListener(new DefaultMouseListener());
+			retVal.setComponentPopupMenu(new DefaultPopupMenu());
 			break;		
 
 		case PREFIX_TEXT_FIELD_TYPE:
-			retVal.addMouseListener(new PrefixMouseListener(PrefixMouseListener.BASIC_MENU, retVal));
+			retVal.setComponentPopupMenu(new PrefixPopupMenu(PrefixPopupMenu.BASIC_MENU, retVal));
 			retVal.setText("pdfsam_");
 			break;		
 
 		case PREFIX_TEXT_FIELD_TYPE_FULL_MENU:
-			retVal.addMouseListener(new PrefixMouseListener(PrefixMouseListener.FULL_MENU, retVal));
+			retVal.setComponentPopupMenu(new PrefixPopupMenu(PrefixPopupMenu.FULL_MENU, retVal));
 			retVal.setText("pdfsam_");
 			break;		
 

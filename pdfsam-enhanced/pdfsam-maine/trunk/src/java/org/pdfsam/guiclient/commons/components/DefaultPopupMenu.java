@@ -12,10 +12,7 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.commons.components.listeners;
-
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+package org.pdfsam.guiclient.commons.components;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -25,52 +22,29 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 
 /**
- * Default listener that shows a popup menu with copy/cut/paste items
+ * Default popup menu that shows copy/cut/paste items
  * 
  * @author Andrea Vacondio
  * 
  */
-public class DefaultMouseListener implements MouseListener {
+public class DefaultPopupMenu extends JPopupMenu {
 
-	JPopupMenu popup;
+	private static final long serialVersionUID = -1644484001468307286L;
 
-	public DefaultMouseListener() {
-		popup = new JPopupMenu();
+	public DefaultPopupMenu() {
+		super();
 		
 		JMenuItem menuCopy = new JMenuItem(new DefaultEditorKit.CopyAction());
         menuCopy.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Copy"));
-		popup.add(menuCopy);
+		add(menuCopy);
 		
 		JMenuItem menuCut = new JMenuItem(new DefaultEditorKit.CutAction());
 		menuCut.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Cut"));
-		popup.add(menuCut);
+		add(menuCut);
 
 		JMenuItem menuPaste = new JMenuItem(new DefaultEditorKit.PasteAction());
 		menuPaste.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Paste"));
-		popup.add(menuPaste);
-	}
-
-	private void checkForPopup(MouseEvent e) {
-		if (e.isPopupTrigger()) {
-			popup.show(e.getComponent(), e.getX(), e.getY());
-		}
-	}
-
-	public void mouseClicked(MouseEvent e) {
-	}
-
-	public void mouseEntered(MouseEvent e) {
-	}
-
-	public void mouseExited(MouseEvent e) {
-	}
-
-	public void mousePressed(MouseEvent e) {
-		checkForPopup(e);
-	}
-
-	public void mouseReleased(MouseEvent e) {
-		checkForPopup(e);
+		add(menuPaste);
 	}
 
 }

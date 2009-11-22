@@ -21,8 +21,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -47,7 +45,7 @@ import org.pdfsam.i18n.GettextResource;
  * @author Andrea Vacondio
  *
  */
-public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
+public class JDocumentPropertiesFrame extends JFrame{
 
 	private static final long serialVersionUID = -3836869268177748519L;
 
@@ -147,7 +145,7 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 	        menuCopy.setIcon(new ImageIcon(this.getClass().getResource("/images/edit-copy.png")));
 	        jPopupMenu.add(menuCopy);
 	        
-	        textInfoArea.addMouseListener(this);
+	        textInfoArea.setComponentPopupMenu(jPopupMenu);
 
 	        //centered
 	        Toolkit tk = Toolkit.getDefaultToolkit();
@@ -165,18 +163,5 @@ public class JDocumentPropertiesFrame extends JFrame  implements MouseListener{
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating properties panel."),e);
 		}
 	}
-	
-	 public void mouseReleased(MouseEvent e){
-			if(e.isPopupTrigger()){
-				jPopupMenu.show(e.getComponent(), e.getX(), e.getY());
-			}		
-		}
-		public void mouseClicked(MouseEvent arg0) {}
-		public void mouseEntered(MouseEvent arg0) {}
-		public void mouseExited(MouseEvent arg0) {}
-		public void mousePressed(MouseEvent e) {
-			if(e.isPopupTrigger()){
-				jPopupMenu.show(e.getComponent(), e.getX(), e.getY());
-			}
-		}
+
 }

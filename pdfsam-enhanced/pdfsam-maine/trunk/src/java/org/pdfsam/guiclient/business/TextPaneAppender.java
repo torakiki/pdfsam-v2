@@ -19,6 +19,7 @@ import java.util.Hashtable;
 
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -47,6 +48,8 @@ public class TextPaneAppender extends AppenderSkeleton {
 			logTextArea = new JTextPane();
 			logTextArea.setEditable(false);
 			logTextArea.setDragEnabled(true);
+			DefaultCaret caret = (DefaultCaret)logTextArea.getCaret();
+			caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 			styledDocument = logTextArea.getStyledDocument();
 			createTextAttributes();
 		}
@@ -85,7 +88,6 @@ public class TextPaneAppender extends AppenderSkeleton {
 			}catch(BadLocationException e){
 				logTextArea.setText(logTextArea.getText()+this.layout.format(arg0));
 			}
-			logTextArea.setCaretPosition(logTextArea.getDocument().getLength());
 		}
 	}
 
