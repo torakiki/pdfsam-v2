@@ -190,7 +190,7 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 	 * @param pdfWriter
 	 */
 	protected void setPdfVersionSettingOnWriter(AbstractParsedCommand inputCommand, PdfWriter pdfWriter){
-		setPdfVersionSettingOnWriter(inputCommand, pdfWriter);
+		setPdfVersionSettingOnWriter(inputCommand, pdfWriter, null);
 	}
 	
 	/**
