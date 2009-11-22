@@ -63,12 +63,14 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 
 	private static final Logger LOG = Logger.getLogger(SetViewerCmdExecutor.class.getPackage().getName());
 	
+	private PdfReader pdfReader = null;
+	private PdfStamper pdfStamper = null;
+	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof SetViewerParsedCommand)){
 			
 			SetViewerParsedCommand inputCommand = (SetViewerParsedCommand) parsedCommand;
-			PdfReader pdfReader;
-			PdfStamper pdfStamper;
+
 			PrefixParser prefixParser;
 			setPercentageOfWorkDone(0);
 			try{
@@ -155,4 +157,8 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 		return retVal;
 	}
 
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfStamper(pdfStamper);
+	}
 }

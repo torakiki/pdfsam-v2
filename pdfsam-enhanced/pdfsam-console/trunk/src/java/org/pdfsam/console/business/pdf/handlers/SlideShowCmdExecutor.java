@@ -72,14 +72,14 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 	private static final Logger LOG = Logger.getLogger(SlideShowCmdExecutor.class.getPackage().getName());
 	
 	private Hashtable transitionsMappingMap = null;
+	private PdfReader pdfReader = null;	
+	private PdfStamper pdfStamper = null;
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
 		if((parsedCommand != null) && (parsedCommand instanceof SlideShowParsedCommand)){	
 			
 			SlideShowParsedCommand inputCommand = (SlideShowParsedCommand) parsedCommand;
-			PdfReader pdfReader;	
-			PdfStamper pdfStamper;
 			PrefixParser prefixParser;
 			setPercentageOfWorkDone(0);			
 			Transitions transitions = new Transitions();
@@ -118,10 +118,10 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				
 				//sets transitions
 				if(transitions.getDefaultTransition()==null){
-					setTransitionsWithoutDefault(transitions, pdfStamper);				
+					setTransitionsWithoutDefault(transitions);				
 				}else{
 					int totalPages = pdfReader.getNumberOfPages();
-					setTransitionsWithDefault(transitions, totalPages, pdfStamper);
+					setTransitionsWithDefault(transitions, totalPages);
 				}
 				
 				pdfStamper.close();
@@ -146,9 +146,8 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 	 * @param defaultTransition
 	 * @param totalPages
 	 * @param transitions
-	 * @param pdfStamper
 	 */
-	private void setTransitionsWithDefault(Transitions transitions, int totalPages, PdfStamper pdfStamper){
+	private void setTransitionsWithDefault(Transitions transitions, int totalPages){
 		LOG.debug("Setting transitions with a default value.");
 		Transition[] trans = transitions.getTransitions();
 		
@@ -178,9 +177,8 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 	 * sets the transitions on the stamper when no default transition is set
 	 * @param defaultTransition
 	 * @param transitions
-	 * @param pdfStamper
 	 */
-	private void setTransitionsWithoutDefault(Transitions transitions, PdfStamper pdfStamper){
+	private void setTransitionsWithoutDefault(Transitions transitions){
 		LOG.debug("Setting transitions without a default value.");
 		Transition[] trans = transitions.getTransitions();
 		if(trans!=null && trans.length>0){
@@ -275,6 +273,11 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 			}
 		}
 		return retVal;
+	}
+	
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfStamper(pdfStamper);
 	}
 	
 	/**

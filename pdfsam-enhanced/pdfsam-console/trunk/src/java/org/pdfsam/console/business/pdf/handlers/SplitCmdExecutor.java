@@ -75,6 +75,8 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 
 	private static final Logger LOG = Logger.getLogger(SplitCmdExecutor.class.getPackage().getName());
 	private PrefixParser prefixParser;
+	private PdfSmartCopy pdfWriter = null;
+	private PdfReader pdfReader = null;
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
@@ -117,7 +119,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
     private void executeBurst(SplitParsedCommand inputCommand) throws Exception{
         int currentPage;
         Document currentDocument;
-        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+        pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		pdfReader.removeUnusedObjects();
         pdfReader.consolidateNamedDestinations();
 		
@@ -133,7 +135,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         	File outFile = new File(inputCommand.getOutputFile().getCanonicalPath(),prefixParser.generateFileName(request));
         	currentDocument = new Document(pdfReader.getPageSizeWithRotation(currentPage));
         	
-            PdfSmartCopy pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
+            pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
 
         	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 			setCompressionSettingOnWriter(inputCommand, pdfWriter);	  
@@ -159,7 +161,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      * @throws Exception
      */
     private void executeSplitOddEven(SplitParsedCommand inputCommand) throws Exception{
-         PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+         pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		 pdfReader.removeUnusedObjects();
          pdfReader.consolidateNamedDestinations();
 		
@@ -170,7 +172,6 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
          int currentPage;
          Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
          boolean isTimeToClose = false;
-         PdfSmartCopy pdfWriter = null;
          PdfImportedPage importedPage;
          File tmpFile = null;
          File outFile = null;
@@ -234,7 +235,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
      * @throws Exception
      */
     private void executeSplit(SplitParsedCommand inputCommand, Hashtable bookmarksTable) throws Exception{
-        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+        pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		pdfReader.removeUnusedObjects();
         pdfReader.consolidateNamedDestinations();
 		
@@ -255,7 +256,6 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		int relativeCurrentPage = 0;
 		int endPage = n;
 		int startPage = 1;
-        PdfSmartCopy pdfWriter = null;
         PdfImportedPage importedPage;
         File tmpFile = null;
         File outFile = null;
@@ -329,7 +329,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	private void executeNSplit(SplitParsedCommand inputCommand) throws Exception {
 		Integer[] numberPages = inputCommand.getSplitPageNumbers();
 		if(numberPages != null && numberPages.length == 1){
-			PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+			pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 			pdfReader.removeUnusedObjects();
 			pdfReader.consolidateNamedDestinations();			
 			int n = pdfReader.getNumberOfPages();
@@ -356,7 +356,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	 * @throws Exception
 	 */
 	private void executeBookmarksSplit(SplitParsedCommand inputCommand) throws Exception {
-		PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+		pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		int bLevel = inputCommand.getBookmarksLevel().intValue();
 		Hashtable bookmarksTable = new Hashtable();
 		if(bLevel>0){
@@ -439,7 +439,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
    * @throws Exception
    */
 	private void executeSizeSplit(SplitParsedCommand inputCommand) throws Exception{
-        PdfReader pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+        pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
 		pdfReader.removeUnusedObjects();
         pdfReader.consolidateNamedDestinations();
 		int n = pdfReader.getNumberOfPages();
@@ -447,7 +447,6 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         LOG.info("Found "+n+" pages in input pdf document.");
         int currentPage;        
 		Document currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
-        PdfSmartCopy pdfWriter = null;
         PdfImportedPage importedPage;
         File tmpFile = null;
         File outFile = null;
@@ -532,5 +531,11 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			}
 		}
 		return limitsList;
+	}
+	
+	
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfWriter(pdfWriter);
 	}
 }

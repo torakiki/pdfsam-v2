@@ -70,12 +70,12 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
 public class UnpackCmdExecutor extends AbstractCmdExecutor {
 
 	private static final Logger LOG = Logger.getLogger(UnpackCmdExecutor.class.getPackage().getName());
+	private PdfReader pdfReader = null;
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof UnpackParsedCommand)){
 			
 			UnpackParsedCommand inputCommand = (UnpackParsedCommand) parsedCommand;
-			PdfReader pdfReader;
 			try{	
 				PdfFile[] fileList = arraysConcat(inputCommand.getInputFileList(), getPdfFiles(inputCommand.getInputDirectory()));
 				//check if empty
@@ -137,6 +137,10 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 		}
 	}
 
+
+	public void clean(){
+		closePdfReader(pdfReader);
+	}
 
 	/**
 	 * Unpack

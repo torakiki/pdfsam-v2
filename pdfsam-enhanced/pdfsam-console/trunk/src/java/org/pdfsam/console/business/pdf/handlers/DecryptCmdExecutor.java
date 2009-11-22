@@ -58,6 +58,9 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 
 	private static final Logger LOG = Logger.getLogger(DecryptCmdExecutor.class.getPackage().getName());
 	
+	private PdfReader pdfReader = null;
+	private PdfStamper pdfStamper = null;
+	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
 		if((parsedCommand != null) && (parsedCommand instanceof DecryptParsedCommand)){
@@ -65,8 +68,6 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 			DecryptParsedCommand inputCommand = (DecryptParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
 			PrefixParser prefixParser;
-			PdfReader pdfReader;
-			PdfStamper pdfStamper;
 			try{
 				PdfFile[] fileList = inputCommand.getInputFileList();
 				for(int i = 0; i<fileList.length; i++){
@@ -113,4 +114,9 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 		}
 	}
 
+	
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfStamper(pdfStamper);
+	}
 }

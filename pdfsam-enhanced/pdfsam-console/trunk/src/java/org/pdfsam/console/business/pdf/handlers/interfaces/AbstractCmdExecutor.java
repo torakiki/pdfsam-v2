@@ -48,6 +48,7 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FilenameComparator;
 import org.pdfsam.console.utils.PdfFilter;
+import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.PdfWriter;
@@ -58,7 +59,7 @@ import com.lowagie.text.pdf.PdfWriter;
  */
 public abstract class AbstractCmdExecutor extends Observable implements CmdExecutor {
 	
-	private final Logger log = Logger.getLogger(AbstractCmdExecutor.class.getPackage().getName());
+	private final Logger LOG = Logger.getLogger(AbstractCmdExecutor.class.getPackage().getName());
 	
 	private WorkDoneDataModel workDone = null;
 	
@@ -115,7 +116,7 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 				list.add(new PdfFile(fileList[i], null));
 			}
 			if(list.size() <= 0){
-				log.warn("No pdf documents found in "+directory);
+				LOG.warn("No pdf documents found in "+directory);
 			}
 			retVal = (PdfFile[]) list.toArray(new PdfFile[list.size()]);
 		}
@@ -192,4 +193,40 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 		setPdfVersionSettingOnWriter(inputCommand, pdfWriter);
 	}
 	
+	/**
+	 * Close the @lonk {@link PdfReader} if not null.
+	 * @param pdfReader
+	 */
+	protected void closePdfReader(PdfReader pdfReader) {
+		if (pdfReader != null) {
+			pdfReader.close();
+			pdfReader = null;
+		}
+	}
+	
+	/**
+	 * Close the @link {@link PdfStamper} if not null.
+	 * @param pdfStamper
+	 */
+	protected void closePdfStamper(PdfStamper pdfStamper) {
+		if (pdfStamper != null) {
+			try {
+				pdfStamper.close();
+			} catch (Exception e) {
+				LOG.error("An error occured closing the PdfStamper.", e);
+			}
+			pdfStamper = null;
+		}
+	}
+	
+	/**
+	 * Close the @lonk {@link PdfWriter} if not null.
+	 * @param pdfWriter
+	 */
+	protected void closePdfWriter(PdfWriter pdfWriter) {
+		if (pdfWriter != null) {
+			pdfWriter.close();
+			pdfWriter = null;
+		}
+	}
 }

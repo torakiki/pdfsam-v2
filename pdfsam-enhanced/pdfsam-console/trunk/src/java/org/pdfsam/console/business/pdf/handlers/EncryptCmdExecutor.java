@@ -56,6 +56,7 @@ import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
+
 /**
  * Command executor for the encrypt command
  * @author Andrea Vacondio
@@ -63,76 +64,81 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
 public class EncryptCmdExecutor extends AbstractCmdExecutor {
 
 	private static final Logger LOG = Logger.getLogger(EncryptCmdExecutor.class.getPackage().getName());
-	
+
+	private PdfReader pdfReader = null;
+	private PdfStamper pdfStamper = null;
+
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
-		
-		if((parsedCommand != null) && (parsedCommand instanceof EncryptParsedCommand)){
-			
+
+		if ((parsedCommand != null) && (parsedCommand instanceof EncryptParsedCommand)) {
+
 			EncryptParsedCommand inputCommand = (EncryptParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
 			int encType = PdfWriter.STANDARD_ENCRYPTION_40;
 			PrefixParser prefixParser;
-			PdfReader pdfReader;
-			PdfStamper pdfStamper;
-			try{				
+			try {
 				PdfFile[] fileList = arraysConcat(inputCommand.getInputFileList(), getPdfFiles(inputCommand.getInputDirectory()));
-				//check if empty
-				if (fileList== null || !(fileList.length >0)){
+				// check if empty
+				if (fileList == null || !(fileList.length > 0)) {
 					throw new EncryptException(EncryptException.CMD_NO_INPUT_FILE);
-				}			
-				for(int i = 0; i<fileList.length; i++){
-					try{
-						//set the encryption type
-			        	if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())){
-				        	encType = PdfWriter.ENCRYPTION_AES_128;
-				        }else if (EncryptParsedCommand.E_RC4_128.equals(inputCommand.getEncryptionType())){
-				        	encType = PdfWriter.STANDARD_ENCRYPTION_128;
-				        }	
-			        	
+				}
+				for (int i = 0; i < fileList.length; i++) {
+					try {
+						// set the encryption type
+						if (EncryptParsedCommand.E_AES_128.equals(inputCommand.getEncryptionType())) {
+							encType = PdfWriter.ENCRYPTION_AES_128;
+						} else if (EncryptParsedCommand.E_RC4_128.equals(inputCommand.getEncryptionType())) {
+							encType = PdfWriter.STANDARD_ENCRYPTION_128;
+						}
+
 						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
 						File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()), fileList[i]
+								.getPasswordBytes());
 						pdfReader.removeUnusedObjects();
 						pdfReader.consolidateNamedDestinations();
-						
-						//version
+
+						// version
 						LOG.debug("Creating a new document.");
-						Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-						if(pdfVersion != null){
+						Character pdfVersion = inputCommand.getOutputPdfVersion();
+						if (pdfVersion != null) {
 							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
-						}else{
+						} else {
 							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader.getPdfVersion());
 						}
-	
+
 						HashMap meta = pdfReader.getInfo();
 						meta.put("Creator", ConsoleServicesFacade.CREATOR);
-						
+
 						setCompressionSettingOnStamper(inputCommand, pdfStamper);
-						
+
 						pdfStamper.setMoreInfo(meta);
 						pdfStamper.setEncryption(encType, inputCommand.getUserPwd(), inputCommand.getOwnerPwd(), inputCommand.getPermissions());
 						pdfStamper.close();
-			    		pdfReader.close();
-						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-		                LOG.debug("Encrypted file "+outFile.getCanonicalPath()+" created.");
-			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
-		    		}
-		    		catch(Exception e){
-		    			LOG.error("Error encrypting file "+fileList[i].getFile().getName(), e);
-		    		}
+						pdfReader.close();
+						File outFile = new File(inputCommand.getOutputFile(), prefixParser.generateFileName());
+						FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+						LOG.debug("Encrypted file " + outFile.getCanonicalPath() + " created.");
+						setPercentageOfWorkDone(((i + 1) * WorkDoneDataModel.MAX_PERGENTAGE) / fileList.length);
+					} catch (Exception e) {
+						LOG.error("Error encrypting file " + fileList[i].getFile().getName(), e);
+					}
 				}
-				LOG.info("Pdf files encrypted in "+inputCommand.getOutputFile().getAbsolutePath()+".");
-				LOG.info("Permissions: "+PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions())+".");				
-		}catch(Exception e){    		
-			throw new EncryptException(e);
-		}finally{
-			setWorkCompleted();
+				LOG.info("Pdf files encrypted in " + inputCommand.getOutputFile().getAbsolutePath() + ".");
+				LOG.info("Permissions: " + PdfEncryptor.getPermissionsVerbose(inputCommand.getPermissions()) + ".");
+			} catch (Exception e) {
+				throw new EncryptException(e);
+			} finally {
+				setWorkCompleted();
+			}
+		} else {
+			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 		}
-	}else{
-		throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 	}
 
+	public void clean() {
+		closePdfReader(pdfReader);
+		closePdfStamper(pdfStamper);
 	}
 
 }

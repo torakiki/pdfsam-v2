@@ -58,6 +58,10 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
  */
 public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 
+	private PdfReader pdfReader1 = null;
+	private PdfReader pdfReader2 = null;
+	private PdfCopy  pdfWriter = null;
+	
 	private static final Logger LOG = Logger.getLogger(AlternateMixCmdExecutor.class.getPackage().getName());
 	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
@@ -65,9 +69,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 			MixParsedCommand inputCommand = (MixParsedCommand) parsedCommand;
 			setWorkIndeterminate();
 			Document pdfDocument = null;
-			PdfCopy  pdfWriter = null;
-			PdfReader pdfReader1;
-			PdfReader pdfReader2;
+			
 		    int[] limits1 = {1,1};
 		    int[] limits2 = {1,1};
 			try{
@@ -144,7 +146,12 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 		}else{
 			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
 		}
-		
+	}
+	
+	public void clean(){
+		closePdfReader(pdfReader1);
+		closePdfReader(pdfReader2);
+		closePdfWriter(pdfWriter);
 	}
 
 }

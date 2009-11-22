@@ -51,4 +51,9 @@ public interface CmdExecutor {
 	 * @throws ConsoleException
 	 */
     void execute(AbstractParsedCommand parsedCommand) throws ConsoleException;
+    
+    /**
+     * Called after the execute to perform close/clean operations
+     */
+    void clean();
 }

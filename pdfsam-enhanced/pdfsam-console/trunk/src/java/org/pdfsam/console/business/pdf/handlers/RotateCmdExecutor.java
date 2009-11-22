@@ -67,6 +67,9 @@ public class RotateCmdExecutor extends AbstractCmdExecutor {
 	
 	private static final Logger LOG = Logger.getLogger(RotateCmdExecutor.class.getPackage().getName());
 	
+	private PdfReader pdfReader = null;
+	private PdfStamper pdfStamper = null;
+	
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		
 		if((parsedCommand != null) && (parsedCommand instanceof RotateParsedCommand)){
@@ -74,8 +77,7 @@ public class RotateCmdExecutor extends AbstractCmdExecutor {
 			RotateParsedCommand inputCommand = (RotateParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
 			PrefixParser prefixParser;
-			PdfReader pdfReader;
-			PdfStamper pdfStamper;
+
 			try{
 				PdfFile[] fileList = inputCommand.getInputFileList();
 				for(int i = 0; i<fileList.length; i++){
@@ -159,4 +161,8 @@ public class RotateCmdExecutor extends AbstractCmdExecutor {
 		}
 	}
 
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfStamper(pdfStamper);
+	}
 }

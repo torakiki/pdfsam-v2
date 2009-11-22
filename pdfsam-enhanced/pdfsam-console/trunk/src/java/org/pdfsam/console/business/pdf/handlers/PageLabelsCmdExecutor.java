@@ -62,13 +62,15 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
 public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 
 	private static final Logger LOG = Logger.getLogger(PageLabelsCmdExecutor.class.getPackage().getName());
-	
+
+	private PdfReader pdfReader = null;
+	private PdfCopy pdfWriter = null;
+
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if((parsedCommand != null) && (parsedCommand instanceof PageLabelsParsedCommand)){
 
 			PageLabelsParsedCommand inputCommand = (PageLabelsParsedCommand) parsedCommand;
 			setPercentageOfWorkDone(0);
-			PdfReader pdfReader;
 			Document currentDocument;
 			try{		       							       
 				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
@@ -79,7 +81,7 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 			    int n = pdfReader.getNumberOfPages();
 	        	currentDocument = new Document(pdfReader.getPageSizeWithRotation(1));
 	        	
-	            PdfCopy pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
+	            pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
 	          
 	            //set compressed
 				setCompressionSettingOnWriter(inputCommand, pdfWriter);	   
@@ -148,5 +150,10 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 			retVal = PdfPageLabels.UPPERCASE_ROMAN_NUMERALS;
 		}
 		return retVal;
+	}
+	
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfWriter(pdfWriter);
 	}
 }

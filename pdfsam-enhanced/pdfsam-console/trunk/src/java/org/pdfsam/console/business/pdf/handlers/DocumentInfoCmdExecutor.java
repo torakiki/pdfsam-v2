@@ -65,11 +65,12 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 	private static final String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
 	private static final String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
 
+	private PdfReader pdfReader = null;
+	private PdfStamper pdfStamper = null;
+
 	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
 		if ((parsedCommand != null) && (parsedCommand instanceof DocumentInfoParsedCommand)) {
 			DocumentInfoParsedCommand inputCommand = (DocumentInfoParsedCommand) parsedCommand;
-			PdfReader pdfReader;
-			PdfStamper pdfStamper;
 			setPercentageOfWorkDone(0);
 			try {
 				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
@@ -122,4 +123,8 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 
 	}
 
+	public void clean(){
+		closePdfReader(pdfReader);
+		closePdfStamper(pdfStamper);
+	}
 }
