@@ -51,7 +51,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 /**
  * Command executor for the alternate mix command
@@ -84,19 +83,12 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				pdfReader2.consolidateNamedDestinations();
 				limits2[1] = pdfReader2.getNumberOfPages();
 
-
 				pdfDocument = new Document(pdfReader1.getPageSizeWithRotation(1));
 				LOG.debug("Creating a new document.");
 				pdfWriter = new PdfCopy(pdfDocument, new FileOutputStream(tmpFile));
-				
-				if(inputCommand.getOutputPdfVersion() != null){
-					pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
-				}
-				
-		        if(inputCommand.isCompress()){
-		        	pdfWriter.setFullCompression();
-		        	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-		        }		
+
+				setPdfVersionSettingOnWriter(inputCommand, pdfWriter);	
+				setCompressionSettingOnWriter(inputCommand, pdfWriter);		
 		        
 				pdfDocument.addCreator(ConsoleServicesFacade.CREATOR);
 				pdfDocument.open();

@@ -139,6 +139,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 					ValidationUtility.assertNotIntersectedBoundsList(boundsList);
 					String boundsString = "";
 					
+					//TODO I don't like this, should be improved 
 	    			//I manage bookmarks for every selection group 
 	    			for(Iterator iter = boundsList.iterator(); iter.hasNext();){				
 		    			Bounds bounds = (Bounds) iter.next();
@@ -211,7 +212,6 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			pdfWriter.setOutlines(master);
 	    		}
 	    		LOG.info("Total processed pages: " + totalProcessedPages + ".");
-	    		// step 5: we close the document
 	    		if(pdfDocument != null){
 	    			pdfDocument.close();        	
 	            }
@@ -222,15 +222,13 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    			File rotatedTmpFile = applyRotations(tmpFile, inputCommand);
     				FileUtility.deleteFile(tmpFile);
 	    			FileUtility.renameTemporaryFile(rotatedTmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-                	LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
 	    		}else{
 	    			FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-                	LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
                 }  		
-			}catch(ConsoleException ce){    		
-				throw ce;
-			}
-			catch(Exception e){    		
+            	LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
+			}catch(ConsoleException consoleException){    		
+				throw consoleException;
+			}catch(Exception e){    		
 				throw new ConcatException(e);
 			}finally{
 				if(pdfReader!=null){
@@ -250,87 +248,92 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	 * @param inputCommand
 	 * @return temporary file with pages rotation
 	 */
-	private File applyRotations(File inputFile, ConcatParsedCommand inputCommand) throws Exception{
+	private File applyRotations(File inputFile, ConcatParsedCommand inputCommand) throws Exception {
 		PdfReader tmpPdfReader = new PdfReader(new FileInputStream(inputFile));
-		tmpPdfReader.removeUnusedObjects();
-		tmpPdfReader.consolidateNamedDestinations();
-    	
-		int pdfNumberOfPages = tmpPdfReader.getNumberOfPages();
-		PageRotation[] rotations = inputCommand.getRotations();
-		if(rotations!=null && rotations.length>0){
-			if(rotations.length>1){
-				for(int i=0; i<rotations.length; i++){
-					if(pdfNumberOfPages>=rotations[i].getPageNumber() && rotations[i].getPageNumber()>0){
-						PdfDictionary dictionary = tmpPdfReader.getPageN(rotations[i].getPageNumber());
-						int rotation = (rotations[i].getDegrees() + tmpPdfReader.getPageRotation(rotations[i].getPageNumber()))%360;
-						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
-					}else{
-						LOG.warn("Rotation for page "+rotations[i].getPageNumber()+" ignored.");
+		PdfStamper stamper = null;
+		try {
+			tmpPdfReader.removeUnusedObjects();
+			tmpPdfReader.consolidateNamedDestinations();
+
+			int pdfNumberOfPages = tmpPdfReader.getNumberOfPages();
+			PageRotation[] rotations = inputCommand.getRotations();
+			if (rotations != null && rotations.length > 0) {
+				if (rotations.length > 1) {
+					for (int i = 0; i < rotations.length; i++) {
+						if (pdfNumberOfPages >= rotations[i].getPageNumber() && rotations[i].getPageNumber() > 0) {
+							PdfDictionary dictionary = tmpPdfReader.getPageN(rotations[i].getPageNumber());
+							int rotation = (rotations[i].getDegrees() + tmpPdfReader.getPageRotation(rotations[i].getPageNumber())) % 360;
+							dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
+						} else {
+							LOG.warn("Rotation for page " + rotations[i].getPageNumber() + " ignored.");
+						}
+					}
+				} else {
+					// rotate all
+					if (rotations[0].getType() == PageRotation.ALL_PAGES) {
+						int pageRotation = rotations[0].getDegrees();
+						for (int i = 1; i <= pdfNumberOfPages; i++) {
+							PdfDictionary dictionary = tmpPdfReader.getPageN(i);
+							int rotation = (pageRotation + tmpPdfReader.getPageRotation(i)) % 360;
+							dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
+						}
+					} else if (rotations[0].getType() == PageRotation.SINGLE_PAGE) {
+						// single page rotation
+						if (pdfNumberOfPages >= rotations[0].getPageNumber() && rotations[0].getPageNumber() > 0) {
+							PdfDictionary dictionary = tmpPdfReader.getPageN(rotations[0].getPageNumber());
+							int rotation = (rotations[0].getDegrees() + tmpPdfReader.getPageRotation(rotations[0].getPageNumber())) % 360;
+							dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
+						} else {
+							LOG.warn("Rotation for page " + rotations[0].getPageNumber() + " ignored.");
+						}
+					} else if (rotations[0].getType() == PageRotation.ODD_PAGES) {
+						// odd pages rotation
+						int pageRotation = rotations[0].getDegrees();
+						for (int i = 1; i <= pdfNumberOfPages; i = i + 2) {
+							PdfDictionary dictionary = tmpPdfReader.getPageN(i);
+							int rotation = (pageRotation + tmpPdfReader.getPageRotation(i)) % 360;
+							dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
+						}
+					} else if (rotations[0].getType() == PageRotation.EVEN_PAGES) {
+						// even pages rotation
+						int pageRotation = rotations[0].getDegrees();
+						for (int i = 2; i <= pdfNumberOfPages; i = i + 2) {
+							PdfDictionary dictionary = tmpPdfReader.getPageN(i);
+							int rotation = (pageRotation + tmpPdfReader.getPageRotation(i)) % 360;
+							dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
+						}
+					} else {
+						LOG.warn("Unable to find the rotation type. " + rotations[0]);
 					}
 				}
-			}else{
-				//rotate all
-				if(rotations[0].getType() == PageRotation.ALL_PAGES){
-					int pageRotation = rotations[0].getDegrees();
-					for(int i=1; i<=pdfNumberOfPages; i++){
-						PdfDictionary dictionary = tmpPdfReader.getPageN(i);
-						int rotation = (pageRotation+tmpPdfReader.getPageRotation(i))%360;
-						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));				
-					}
-				}else if(rotations[0].getType() == PageRotation.SINGLE_PAGE){
-					//single page rotation
-					if(pdfNumberOfPages>=rotations[0].getPageNumber() && rotations[0].getPageNumber()>0){
-						PdfDictionary dictionary = tmpPdfReader.getPageN(rotations[0].getPageNumber());
-						int rotation = (rotations[0].getDegrees()+tmpPdfReader.getPageRotation(rotations[0].getPageNumber()))%360;
-						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
-					}else{
-						LOG.warn("Rotation for page "+rotations[0].getPageNumber()+" ignored.");
-					}
-				}else if(rotations[0].getType() == PageRotation.ODD_PAGES){
-					//odd pages rotation
-					int pageRotation = rotations[0].getDegrees();
-					for(int i=1; i<=pdfNumberOfPages; i=i+2){
-						PdfDictionary dictionary = tmpPdfReader.getPageN(i);
-						int rotation = (pageRotation+tmpPdfReader.getPageRotation(i))%360;
-						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
-					}
-				}else if(rotations[0].getType() == PageRotation.EVEN_PAGES){
-					//even pages rotation
-					int pageRotation = rotations[0].getDegrees();
-					for(int i=2; i<=pdfNumberOfPages; i=i+2){
-						PdfDictionary dictionary = tmpPdfReader.getPageN(i);
-						int rotation = (pageRotation+tmpPdfReader.getPageRotation(i))%360;
-						dictionary.put(PdfName.ROTATE, new PdfNumber(rotation));
-					}
-				}else{
-					LOG.warn("Unable to find the rotation type. "+rotations[0]);
-				}
+				LOG.info("Pages rotation applied.");
 			}
-			LOG.info("Pages rotation applied.");
+			File rotatedTmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
+
+			Character pdfVersion = inputCommand.getOutputPdfVersion();
+
+			if (pdfVersion != null) {
+				stamper = new PdfStamper(tmpPdfReader, new FileOutputStream(rotatedTmpFile), inputCommand.getOutputPdfVersion().charValue());
+			} else {
+				stamper = new PdfStamper(tmpPdfReader, new FileOutputStream(rotatedTmpFile), tmpPdfReader.getPdfVersion());
+			}
+
+			HashMap meta = tmpPdfReader.getInfo();
+			meta.put("Creator", ConsoleServicesFacade.CREATOR);
+
+			if (inputCommand.isCompress()) {
+				stamper.setFullCompression();
+				stamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
+			}
+
+			stamper.setMoreInfo(meta);
+			return rotatedTmpFile;
+		} finally {
+			if (stamper != null) {
+				stamper.close();
+			}
+			tmpPdfReader.close();
 		}
-		File rotatedTmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-		
-		Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-		
-		PdfStamper stamper;
-		if(pdfVersion != null){
-			stamper = new PdfStamper(tmpPdfReader, new FileOutputStream(rotatedTmpFile), inputCommand.getOutputPdfVersion().charValue());
-		}else{
-			stamper = new PdfStamper(tmpPdfReader, new FileOutputStream(rotatedTmpFile), tmpPdfReader.getPdfVersion());
-		}
-		
-		HashMap meta = tmpPdfReader.getInfo();
-		meta.put("Creator", ConsoleServicesFacade.CREATOR);
-		
-		if(inputCommand.isCompress()){
-			stamper.setFullCompression();
-			stamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
-        }
-		
-		stamper.setMoreInfo(meta);
-		stamper.close();
-		tmpPdfReader.close();
-		return rotatedTmpFile;
 	}
 	
 	/**

@@ -65,7 +65,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfSmartCopy;
-import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 import com.lowagie.text.pdf.SimpleBookmark;
 /**
@@ -136,22 +135,11 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         	
             PdfSmartCopy pdfWriter = new PdfSmartCopy(currentDocument, new FileOutputStream(tmpFile));
 
-        	//set creator
         	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
-
-            //set compressed
-            if(inputCommand.isCompress()){
-            	pdfWriter.setFullCompression();
-            	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-            }    
+			setCompressionSettingOnWriter(inputCommand, pdfWriter);	  
             
             //set pdf version
-            Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-			if(pdfVersion != null){
-				pdfWriter.setPdfVersion(pdfVersion.charValue());
-			}else{
-				pdfWriter.setPdfVersion(pdfReader.getPdfVersion());
-			}
+			setPdfVersionSettingOnWriter(inputCommand, pdfWriter, Character.valueOf(pdfReader.getPdfVersion()));
 
 			currentDocument.open();
             PdfImportedPage importedPage = pdfWriter.getImportedPage(pdfReader, currentPage);
@@ -211,19 +199,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             	//set creator
             	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 
-            	//set compressed
-                if(inputCommand.isCompress()){
-                	pdfWriter.setFullCompression();
-                	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-                }
-                
-                //set pdf version
-                Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-    			if(pdfVersion != null){
-    				pdfWriter.setPdfVersion(pdfVersion.charValue());
-    			}else{
-    				pdfWriter.setPdfVersion(pdfReader.getPdfVersion());
-    			}
+				setCompressionSettingOnWriter(inputCommand, pdfWriter);	
+				setPdfVersionSettingOnWriter(inputCommand, pdfWriter, Character.valueOf(pdfReader.getPdfVersion()));
+
                 currentDocument.open();
             }
             importedPage = pdfWriter.getImportedPage(pdfReader, currentPage);
@@ -307,19 +285,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
             	//set creator
             	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
                 
-            	//compression
-            	if(inputCommand.isCompress()){
-                	pdfWriter.setFullCompression();
-                	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-                }
-            	
-            	//set pdf version
-                Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-    			if(pdfVersion != null){
-    				pdfWriter.setPdfVersion(pdfVersion.charValue());
-    			}else{
-    				pdfWriter.setPdfVersion(pdfReader.getPdfVersion());
-    			}
+				setCompressionSettingOnWriter(inputCommand, pdfWriter);	
+				setPdfVersionSettingOnWriter(inputCommand, pdfWriter, Character.valueOf(pdfReader.getPdfVersion()));
+
                 currentDocument.open();           	 
             }
             
@@ -502,19 +470,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 	        	//set creator
 	        	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 	            
-	        	//compression
-	        	if(inputCommand.isCompress()){
-	            	pdfWriter.setFullCompression();
-	            	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-	            }
-	        	
-	        	//set pdf version
-	            Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-				if(pdfVersion != null){
-					pdfWriter.setPdfVersion(pdfVersion.charValue());
-				}else{
-					pdfWriter.setPdfVersion(pdfReader.getPdfVersion());
-				}
+				setCompressionSettingOnWriter(inputCommand, pdfWriter);	
+				setPdfVersionSettingOnWriter(inputCommand, pdfWriter, Character.valueOf(pdfReader.getPdfVersion()));
+
 	            currentDocument.open();  
 			}
 			

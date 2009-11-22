@@ -60,7 +60,6 @@ import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.PdfTransition;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
@@ -109,10 +108,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				meta.put("Creator", ConsoleServicesFacade.CREATOR);
 				
 				//compression
-				if(inputCommand.isCompress()){
-					pdfStamper.setFullCompression();
-					pdfStamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
-		        }				
+				setCompressionSettingOnStamper(inputCommand, pdfStamper);
 				pdfStamper.setMoreInfo(meta);
 				
 				//fullscreen

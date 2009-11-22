@@ -50,7 +50,6 @@ import org.pdfsam.console.utils.FileUtility;
 import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 
 /**
@@ -103,10 +102,7 @@ public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 					meta.put(KEYWORDS, inputCommand.getKeywords());
 				}
 
-				if (inputCommand.isCompress()) {
-					pdfStamper.setFullCompression();
-					pdfStamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
-				}
+				setCompressionSettingOnStamper(inputCommand, pdfStamper);
 
 				pdfStamper.setMoreInfo(meta);
 				pdfStamper.close();

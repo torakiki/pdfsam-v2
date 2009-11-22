@@ -58,7 +58,6 @@ import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfNumber;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfStream;
 /**
  * Executes the rotate command
  * @author Andrea Vacondio
@@ -135,10 +134,7 @@ public class RotateCmdExecutor extends AbstractCmdExecutor {
 						HashMap meta = pdfReader.getInfo();
 						meta.put("Creator", ConsoleServicesFacade.CREATOR);
 						
-						if(inputCommand.isCompress()){
-							pdfStamper.setFullCompression();
-							pdfStamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
-				        }
+						setCompressionSettingOnStamper(inputCommand, pdfStamper);
 						
 						pdfStamper.setMoreInfo(meta);
 						pdfStamper.close();

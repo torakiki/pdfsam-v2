@@ -53,7 +53,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfPageLabels;
 import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 /**
  * Executes the page labels command
@@ -83,18 +82,10 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
 	            PdfCopy pdfWriter = new PdfCopy(currentDocument, new FileOutputStream(tmpFile));
 	          
 	            //set compressed
-	            if(inputCommand.isCompress()){
-	            	pdfWriter.setFullCompression();
-	            	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-	            }    
-	            
+				setCompressionSettingOnWriter(inputCommand, pdfWriter);	   
 	            //set pdf version
-	            Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-				if(pdfVersion != null){
-					pdfWriter.setPdfVersion(pdfVersion.charValue());
-				}else{
-					pdfWriter.setPdfVersion(pdfReader.getPdfVersion());
-				}
+				setPdfVersionSettingOnWriter(inputCommand, pdfWriter, Character.valueOf(pdfReader.getPdfVersion()));
+	          
 				//set creator
 	        	currentDocument.addCreator(ConsoleServicesFacade.CREATOR);
 	        	currentDocument.open();

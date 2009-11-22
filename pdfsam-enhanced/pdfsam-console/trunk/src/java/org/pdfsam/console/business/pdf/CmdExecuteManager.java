@@ -80,6 +80,7 @@ public class CmdExecuteManager extends Observable implements Observer {
 			}
 		} finally {
 			stopWatch.stop();
+			cmdExecutor = null;
 		}
 	}
 

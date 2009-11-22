@@ -48,6 +48,9 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FilenameComparator;
 import org.pdfsam.console.utils.PdfFilter;
+import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.PdfStream;
+import com.lowagie.text.pdf.PdfWriter;
 /**
  * Abstract command executor
  * @author Andrea Vacondio
@@ -139,4 +142,54 @@ public abstract class AbstractCmdExecutor extends Observable implements CmdExecu
 		return retVal;
 	}
 
+	/**
+	 * Sets the compression settings on the pdf writer depending on the inputCommand
+	 * @param inputCommand
+	 * @param pdfWriter
+	 */
+	protected void setCompressionSettingOnWriter(AbstractParsedCommand inputCommand, PdfWriter pdfWriter){
+        if(inputCommand.isCompress()){
+        	pdfWriter.setFullCompression();
+        	pdfWriter.setCompressionLevel(PdfStream.BEST_COMPRESSION);
+        }
+	}
+	
+	/**
+	 * Sets the compression settings on the pdf stamper depending on the inputCommand
+	 * @param inputCommand
+	 * @param pdfWriter
+	 */
+	protected void setCompressionSettingOnStamper(AbstractParsedCommand inputCommand, PdfStamper pdfStamper){
+        if(inputCommand.isCompress()){
+			pdfStamper.setFullCompression();
+			pdfStamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
+        }
+	}
+	
+	/**
+	 * Sets the pdf version setting on the pdf writer depending on the inputCommand
+	 * @param inputCommand
+	 * @param pdfWriter
+	 * @param defaultVersion default version to apply if the inputCommand version is null
+	 */
+	protected void setPdfVersionSettingOnWriter(AbstractParsedCommand inputCommand, PdfWriter pdfWriter, Character defaultVersion){
+		if(inputCommand.getOutputPdfVersion() != null){
+			pdfWriter.setPdfVersion(inputCommand.getOutputPdfVersion().charValue());
+		}else{
+			if(defaultVersion!=null){
+				pdfWriter.setPdfVersion(defaultVersion.charValue());
+			}
+		}
+	}
+	
+	/**
+	 * Convenience method to set the pdf version settings on the writer without a default version
+	 * @see AbstractCmdExecutor#setPdfVersionSettingOnWriter(AbstractParsedCommand, PdfWriter, Character)
+	 * @param inputCommand
+	 * @param pdfWriter
+	 */
+	protected void setPdfVersionSettingOnWriter(AbstractParsedCommand inputCommand, PdfWriter pdfWriter){
+		setPdfVersionSettingOnWriter(inputCommand, pdfWriter);
+	}
+	
 }

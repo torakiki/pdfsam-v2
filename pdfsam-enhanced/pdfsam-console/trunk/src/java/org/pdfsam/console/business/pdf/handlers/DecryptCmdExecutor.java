@@ -52,7 +52,6 @@ import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfStream;
 import com.lowagie.text.pdf.RandomAccessFileOrArray;
 
 public class DecryptCmdExecutor extends AbstractCmdExecutor {
@@ -91,10 +90,7 @@ public class DecryptCmdExecutor extends AbstractCmdExecutor {
 						HashMap meta = pdfReader.getInfo();
 						meta.put("Creator", ConsoleServicesFacade.CREATOR);
 						
-						if(inputCommand.isCompress()){
-							pdfStamper.setFullCompression();
-							pdfStamper.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
-				        }
+						setCompressionSettingOnStamper(inputCommand, pdfStamper);
 						
 						pdfStamper.setMoreInfo(meta);
 						pdfStamper.close();
