@@ -54,8 +54,7 @@ public class RunButtonActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		File inputFile = panel.getSelectionPanel().getSelectedPdfDocument();
-		String selectionString = panel.getSelectionPanel().getValidElementsString();
-		if (inputFile == null || selectionString.length() == 0) {
+		if (inputFile == null || !panel.getSelectionPanel().hasValidElements()) {
 			  JOptionPane.showMessageDialog(panel,
   				  	GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a pdf document or undelete some page"),
 						GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Warning"),
@@ -74,18 +73,7 @@ public class RunButtonActionListener implements ActionListener {
 			LinkedList<String> args = new LinkedList<String>();
 			try {
 
-				args.add("-" + ConcatParsedCommand.F_ARG);
-				String f = inputFile.getAbsolutePath();
-				if ((panel.getSelectionPanel().getSelectedPdfDocumentPassword()) != null
-						&& panel.getSelectionPanel().getSelectedPdfDocumentPassword().length() > 0) {
-					log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-							"Found a password for input file."));
-					f += ":" + panel.getSelectionPanel().getSelectedPdfDocumentPassword();
-				}
-				args.add(f);
-
-				args.add("-" + ConcatParsedCommand.U_ARG);
-				args.add(selectionString);
+				args.addAll(panel.getSelectionPanel().getValidConsoleParameters());
 				
 				//rotation
 				String rotation = panel.getSelectionPanel().getRotatedElementsString();

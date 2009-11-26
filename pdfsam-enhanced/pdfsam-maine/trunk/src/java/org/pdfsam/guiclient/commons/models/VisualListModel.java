@@ -441,9 +441,9 @@ public class VisualListModel extends AbstractListModel {
     }
     
     /**
-     * @return a Collection<VisualPageListItem> of elements with the isDeleted=false, null if there are no elements
+     * @return a List<VisualPageListItem> of elements with the isDeleted=false, null if there are no elements
      */
-    public Collection<VisualPageListItem> getValidElements(){
+    public List<VisualPageListItem> getValidElements(){
     	ArrayList<VisualPageListItem> retVal = null;
     	if(data!=null && data.size()>0){
     		retVal = new ArrayList<VisualPageListItem>(data.size());

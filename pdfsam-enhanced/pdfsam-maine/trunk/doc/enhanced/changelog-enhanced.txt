@@ -1,9 +1,10 @@
-2.0.1e () (pdfsam-console 2.1.1e)
+2.1.0e () (pdfsam-console 2.2.0e)
 ===================================
 -Fixed the selection of the thumbnails creator 
 -Saving/loading environment retains the selected plugin (feature request #2857938)
 -Added DnD support for linux platform (feature request #2858074)
 -Saving/loading user interface settings when closing/opening pdfsam (feature request #2857941)
+-Alert message when "Overwrite existing files" is selected. Settings option to disable it.
 -Fixed bug #2877986 layout for the Set Viewer Options plugin.
 -Console: added the 'setdocinfo' command to set metadata on a pdf document
 -Fixed bug #2899253 stack overflow running  the console concat command with huge selection string (-u)

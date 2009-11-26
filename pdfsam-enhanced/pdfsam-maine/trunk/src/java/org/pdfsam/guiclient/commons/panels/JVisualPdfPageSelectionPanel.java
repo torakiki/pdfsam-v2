@@ -26,8 +26,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -43,6 +46,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.guiclient.business.PagePreviewOpener;
@@ -63,6 +68,7 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentInfo;
 import org.pdfsam.guiclient.dto.Rotation;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
+import org.pdfsam.guiclient.dto.VisualSelectedItem;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -668,89 +674,85 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public JPanel getTopPanel() {
 		return topPanel;
 	}
+	
+	/**
+	 * @param pages input selection set
+	 * @return a String version of the input Set, ready to be used as -u parameter for the console
+	 */
+	private String getSelectionString(Set<Integer> pages){
+		StringBuilder buffer = new StringBuilder();
+		for(Integer page : pages){
+			buffer.append(page.toString()).append(",");
+		}
+		return StringUtils.chomp(buffer.toString(), ",");
+    }
+
 	/**
 	 * 
-	 * @return valid elements as a String that can be used as "-u" parameter for the concat console command. Empty String if no valid elements.
+	 * @return an ordered List of {@link VisualSelectedItem} corresponding to the panel elements.
 	 */
-	public String getValidElementsString(){
-		String retVal = "";
-		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
-		if(validElements!=null && validElements.size()>0){
-			StringBuffer buffer = new StringBuffer();
-			VisualPageListItem startElement = null;
-			VisualPageListItem endElement = null;
-			VisualPageListItem previousElement = null;
-			for(VisualPageListItem currentElement : validElements){
-				if(previousElement == null){
-					previousElement = currentElement;
-				}
-				//time to start a new section
-				if(startElement==null){					
-					startElement = currentElement;
-					endElement = currentElement;
-				}else{
-					//let's check if it's the next number or not
-					if(currentElement.getPageNumber() == (endElement.getPageNumber()+1) && previousElement.getParentFileCanonicalPath().equals(currentElement.getParentFileCanonicalPath())){
-						endElement = currentElement;
-					}else{
-						if (buffer.length()>0 && !buffer.toString().endsWith(":")){
-							buffer = buffer.append(',');
-						}
-						if(startElement.getPageNumber() == endElement.getPageNumber()){
-							//just the page number
-							buffer = buffer.append(startElement.getPageNumber());
-						}else{
-							//page range
-							buffer = buffer.append(startElement.getPageNumber()).append('-').append(endElement.getPageNumber());
-						}
-						if(!previousElement.getParentFileCanonicalPath().equals(currentElement.getParentFileCanonicalPath())){
-							buffer = buffer.append(':');
-						}
-						startElement = currentElement;
-						endElement = currentElement;
-						previousElement = currentElement;
-					}
-				}
-			}
-			//check the last elements
-			if (buffer.length()>0 && !buffer.toString().endsWith(":")){
-				buffer = buffer.append(',');
-			}
-			if(startElement.getPageNumber() == endElement.getPageNumber()){
-				buffer = buffer.append(startElement.getPageNumber());
+    private List<VisualSelectedItem> getSelectedItemsList(){
+            List<VisualSelectedItem> retVal = new ArrayList<VisualSelectedItem>();
+            List<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
+            VisualSelectedItem tmpElement = null;
+            Set<Integer> pages = new LinkedHashSet<Integer>();
+            for(VisualPageListItem currentElement : validElements){
+                    //first element
+                    if(tmpElement == null){
+                    		tmpElement = new VisualSelectedItem(currentElement.getParentFileCanonicalPath(), currentElement.getDocumentPassword());
+                            pages.add(currentElement.getPageNumber());
+                    }else{
+                            //filename changed
+                            if(!tmpElement.getSelectedFile().equals(currentElement.getParentFileCanonicalPath())){
+                                    tmpElement.setPagesSelection(getSelectionString(pages));
+                                    retVal.add(tmpElement);
+                                    tmpElement = new VisualSelectedItem(currentElement.getParentFileCanonicalPath(), currentElement.getDocumentPassword());
+                                    pages.clear();
+                                    pages.add(currentElement.getPageNumber());
+                            }else{
+                                    //page already there
+                                    if(!pages.add(currentElement.getPageNumber())){
+                                            tmpElement.setPagesSelection(getSelectionString(pages));
+                                            retVal.add(tmpElement);
+                                            tmpElement = new VisualSelectedItem(currentElement.getParentFileCanonicalPath(), currentElement.getDocumentPassword());
+                                            pages.clear();
+                                            pages.add(currentElement.getPageNumber());
+                                    }
+                            }
+                    }
+            }
+            tmpElement.setPagesSelection(getSelectionString(pages));
+            retVal.add(tmpElement);
+            return retVal;
+    }
+   
+    /**
+     * A of String List that can be used as input for the console. It contains the -f and -u parameters for this panel
+     * @return
+     */
+	public List<String> getValidConsoleParameters(){
+		List<String> retVal = new ArrayList<String>();
+		StringBuilder builder = new StringBuilder();
+		for(VisualSelectedItem item : getSelectedItemsList()){
+			builder.append(item.getPagesSelection()).append(":");
+			retVal.add("-" + ConcatParsedCommand.F_ARG);
+			if(StringUtils.isEmpty(item.getPassword())){
+				retVal.add(item.getSelectedFile());
 			}else{
-				buffer = buffer.append(startElement.getPageNumber()).append('-').append(endElement.getPageNumber());
+				retVal.add(item.getSelectedFile()+":"+item.getPassword());
 			}
-			retVal = buffer.append(':').toString();
 		}
+		retVal.add("-"+ConcatParsedCommand.U_ARG);
+		retVal.add(builder.toString());
 		return retVal;
 	}
 	
 	/**
 	 * 
-	 * @return a Collection that can be used as -f parameters string 
+	 * @return true if the panel hase valid elements
 	 */
-	public Collection<String> getValidElementsFiles(){
-		LinkedList<String> retVal = new LinkedList<String>(); 
-		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
-		if(validElements!=null && validElements.size()>0){
-			VisualPageListItem previousElement = null;
-			for(VisualPageListItem currentElement : validElements){
-				if(previousElement == null){
-					previousElement = currentElement;
-				}
-				if(!currentElement.getParentFileCanonicalPath().equals(previousElement.getParentFileCanonicalPath())){
-					retVal.add("-" + ConcatParsedCommand.F_ARG);
-					String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword():previousElement.getParentFileCanonicalPath());
-					retVal.add(fileElem);
-					previousElement = currentElement;
-				}
-			}
-			retVal.add("-" + ConcatParsedCommand.F_ARG);
-			String fileElem =((previousElement.getDocumentPassword()!=null && previousElement.getDocumentPassword().length()>0)? previousElement.getParentFileCanonicalPath()+":"+previousElement.getDocumentPassword():previousElement.getParentFileCanonicalPath());
-			retVal.add(fileElem);
-		}
-		return retVal;
+	public boolean hasValidElements(){
+		return !((VisualListModel)thumbnailList.getModel()).getValidElements().isEmpty();
 	}
 	
 	/**

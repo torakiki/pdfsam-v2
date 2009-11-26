@@ -17,7 +17,6 @@ package org.pdfsam.plugin.vcomposer.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Collection;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
@@ -52,9 +51,7 @@ public class RunButtonActionListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		String selectionString = panel.getComposerPanel().getValidElementsString();
-		Collection<String> selectedFiles = panel.getComposerPanel().getValidElementsFiles();
-		if (selectionString.length() == 0 || selectedFiles == null || selectedFiles.size() <= 0) {
+		if (!panel.getComposerPanel().hasValidElements()) {
 			JOptionPane.showMessageDialog(panel, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
 					"Please select a pdf document or undelete some pages"), GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Warning"),
 					JOptionPane.WARNING_MESSAGE);
@@ -71,11 +68,8 @@ public class RunButtonActionListener implements ActionListener {
 			
 			LinkedList<String> args = new LinkedList<String>();
 			try {
-				args.addAll(selectedFiles);
-
-				args.add("-" + ConcatParsedCommand.U_ARG);
-				args.add(selectionString);
-
+				args.addAll(panel.getComposerPanel().getValidConsoleParameters());
+				
 				// rotation
 				String rotation = panel.getComposerPanel().getRotatedElementsString();
 				if (rotation != null && rotation.length() > 0) {
