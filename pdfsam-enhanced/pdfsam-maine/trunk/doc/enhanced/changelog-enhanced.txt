@@ -9,6 +9,7 @@
 -Console: added the 'setdocinfo' command to set metadata on a pdf document
 -Fixed bug #2899253 stack overflow running  the console concat command with huge selection string (-u)
 -Fixed bug #2899943 console concat command silently ignores double pages in the selection string (-u)
+-Plugins loader loads the most recent plugin if more than one is in the directory
 -looks 2.3.0
 -JPodRenderer 5.2
 -bcmail 1.44

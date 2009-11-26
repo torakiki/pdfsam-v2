@@ -93,6 +93,44 @@ public class  PlugInsLoader{
         return (File[])retVal.toArray(new File[retVal.size()]);
     }
     
+	/**
+	 * Print an error message if the input array is empty. Returns null if the
+	 * input array is empty, files[0] if the input array contains one element,
+	 * the file with the highest Last Modified Date if there are 2 or more
+	 * files.
+	 * 
+	 * @param files
+	 * @param parentDirectory
+	 * @return
+	 */
+	private File getMostRecent(File[] files, String parentDirectory) {
+		File retVal = null;
+		if (files.length > 0) {
+			if (files.length == 1) {
+				retVal = files[0];
+			} else {
+				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+						"Found many plugins in ")
+						+ parentDirectory + ".");
+				for (File currentFile : files) {
+					if (retVal == null || currentFile.lastModified() > retVal.lastModified()) {
+						retVal = currentFile;
+					}
+				}
+				log.warn(retVal.getAbsolutePath()
+						+ " "
+						+ GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+								"selected as the most recent plugin") + ".");
+			}
+
+		} else {
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"No plugin found in ")
+					+ parentDirectory);
+		}
+		return retVal;
+	}
+    
     /**
      * load the plugins and return 
      * @return a map(k,value) where k is the pluginDataModel and value is the instance
@@ -110,11 +148,10 @@ public class  PlugInsLoader{
     			try{
     				Document document = XmlUtility.parseXmlFile(new File(currentDir.getAbsolutePath(), "config.xml"));
     				File[] fileList = currentDir.listFiles(new JarFilter(false));
-    				if(fileList.length == 1){    					
-    					urlList.add(fileList[0].toURI().toURL());
+    				File selectedFile = getMostRecent(fileList, currentDir.getAbsolutePath());
+    				if(selectedFile != null){    					
+    					urlList.add(selectedFile.toURI().toURL());
     					classList.add(XmlUtility.getXmlValue(document, "/plugin/data/classname"));
-    				}else{
-    					log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Found zero or many jars in plugin directory ")+currentDir.getAbsolutePath());
     				}
     			}catch (Exception e){
     				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Exception loading plugins."), e);
