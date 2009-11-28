@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
@@ -86,7 +87,7 @@ public class RunButtonActionListener implements ActionListener {
                 		if(Configuration.getInstance().getDefaultWorkingDirectory()!=null && Configuration.getInstance().getDefaultWorkingDirectory().length()>0){
                 			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
                 		}else{
-                			if(items!=null & items.length>0){
+                			if(!ArrayUtils.isEmpty(items)){
                 				PdfSelectionTableItem item = items[items.length-1];
                 				if(item!=null && item.getInputFile()!=null){
                 					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
@@ -106,7 +107,7 @@ public class RunButtonActionListener implements ActionListener {
                 }
                 
                 destination = panel.getDestinationTextField().getText();
-				
+                
 				//check if the file already exists and the user didn't select to overwrite
 				File destFile = (destination!=null)? new File(destination):null;
 				if(destFile!=null && destFile.exists() && !panel.getOverwriteCheckbox().isSelected()){
@@ -121,29 +122,27 @@ public class RunButtonActionListener implements ActionListener {
                 args.add("-"+ConcatParsedCommand.O_ARG);
                 args.add(destination);
                 
-                PdfSelectionTableItem item = null;    
-            	String pageSelectionString = "";
-            	for (int i = 0; i < items.length; i++){
-					item = items[i];
-					String pageSelection = (item.getPageSelection()!=null && item.getPageSelection().length()>0)?item.getPageSelection():MergeMainGUI.ALL_STRING;
-					String[] selections = StringUtils.split(pageSelection, ":");
+            	StringBuilder psStringBuilder = new StringBuilder();
+            	for (PdfSelectionTableItem item : items){
+					String pageSelection = (!StringUtils.isEmpty(item.getPageSelection()))?item.getPageSelection():MergeMainGUI.ALL_STRING;
+					String[] selections = StringUtils.split(pageSelection, ",");
 					if (!ValidationUtility.isValidPageSelectionsArray(selections)) {
 						DialogUtility.errorValidatingBounds(panel, pageSelection);
 						return;
 					} else {
 						args.add("-" + ConcatParsedCommand.F_ARG);
 						String f = item.getInputFile().getAbsolutePath();
-						if ((item.getPassword()) != null && (item.getPassword()).length() > 0) {
+						if (!StringUtils.isEmpty(item.getPassword())) {
 							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Found a password for input file."));
 							f += ":" + item.getPassword();
 						}
 						args.add(f);
-						pageSelectionString += pageSelection;
+						psStringBuilder.append(pageSelection).append(":");
 					}	                        					
 				}
 				                    
                 args.add("-"+ConcatParsedCommand.U_ARG);
-                args.add(pageSelectionString);
+                args.add(psStringBuilder.toString());
                 
                 if (panel.getOverwriteCheckbox().isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
                 if (panel.getOutputCompressedCheck().isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
@@ -154,7 +153,7 @@ public class RunButtonActionListener implements ActionListener {
 
 				args.add (AbstractParsedCommand.COMMAND_CONCAT);
             
-                final String[] myStringArray = args.toArray(new String[args.size()]);
+                String[] myStringArray = args.toArray(new String[args.size()]);
                 WorkExecutor.getInstance().execute(new WorkThread(myStringArray)); 
 			}else{
 				DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.AT_LEAST_ONE_DOC);
