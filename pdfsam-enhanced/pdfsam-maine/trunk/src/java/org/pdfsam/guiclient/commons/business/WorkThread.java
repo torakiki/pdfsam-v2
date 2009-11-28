@@ -14,7 +14,9 @@
  */
 package org.pdfsam.guiclient.commons.business;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
@@ -28,23 +30,22 @@ public class WorkThread implements Runnable{
 	private static final Logger log = Logger.getLogger(WorkThread.class.getPackage().getName());
 	
 	private String[] myStringArray;
-	private Configuration config;
 	
 	public WorkThread(String[] myStringArray){
 		this.myStringArray = myStringArray;
-		config = Configuration.getInstance();
 	}
 					
 	public void run() {
     	 try{
-			AbstractParsedCommand cmd = config.getConsoleServicesFacade().parseAndValidate(myStringArray);
+    		ConsoleServicesFacade serviceFacade = Configuration.getInstance().getConsoleServicesFacade();
+			AbstractParsedCommand cmd = serviceFacade.parseAndValidate(myStringArray);
 			if(cmd != null){
-				config.getConsoleServicesFacade().execute(cmd);
+				serviceFacade.execute(cmd);
 				SoundPlayer.getInstance().playSound();
 			}else{
-				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Command validation returned an empty value."));
+				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Command validation returned an empty value."));
 			}
-			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Command executed."));
+			log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Command executed."));
 		}catch(Throwable t){    
 			log.error("Command Line: "+commandToString(), t);
 			SoundPlayer.getInstance().playErrorSound();
@@ -54,13 +55,11 @@ public class WorkThread implements Runnable{
 	/**
 	 * @return String representation of the input command
 	 */
-	public String commandToString() {
-		StringBuffer buf = new StringBuffer();
-		buf.append("[");
-		for(int i = 0; i<myStringArray.length; i++){
-			buf.append(myStringArray[i]+" ");
+	private String commandToString() {
+		String command = StringUtils.join(myStringArray, " ");
+		if(command.length() > 1000){
+			command = command.substring(0, 1000) +" ...";
 		}
-		buf.append("]");			
-		return buf.toString();
+		return command;
 	}
 }
