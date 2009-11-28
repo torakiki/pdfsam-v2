@@ -4,5 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/pdfsam-all-2"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pdfsam-maine"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="classes"/>
 </classpath>
