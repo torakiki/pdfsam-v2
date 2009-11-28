@@ -37,7 +37,7 @@ public class PdfSelectionTableItem implements Serializable{
 	private String encryptionAlgorithm;
 	private String permissions;
 	private long fileSize = 0;
-	private DocumentData documentInfo = new DocumentData();
+	private DocumentMetaData documentMetaData = new DocumentMetaData();
 	private String password;
 	private char pdfVersion;
 	private String pdfVersionDescription;
@@ -261,17 +261,17 @@ public class PdfSelectionTableItem implements Serializable{
 	}
 
 	/**
-	 * @return the documentInfo
+	 * @return the DocumentMetaData
 	 */
-	public DocumentData getDocumentInfo() { 
-		return documentInfo;
+	public DocumentMetaData getDocumentMetaData() { 
+		return documentMetaData;
 	}
 
 	/**
-	 * @param documentInfo the documentInfo to set
+	 * @param documentMetaData the DocumentMetaData to set
 	 */
-	public void setDocumentInfo(DocumentData documentInfo) {
-		this.documentInfo = documentInfo;
+	public void setDocumentInfo(DocumentMetaData documentMetaData) {
+		this.documentMetaData = documentMetaData;
 	}
 		
 
@@ -296,7 +296,7 @@ public class PdfSelectionTableItem implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((documentInfo == null) ? 0 : documentInfo.hashCode());
+		result = prime * result + ((documentMetaData == null) ? 0 : documentMetaData.hashCode());
 		result = prime * result + (encrypted ? 1231 : 1237);
 		result = prime * result + ((encryptionAlgorithm == null) ? 0 : encryptionAlgorithm.hashCode());
 		result = prime * result + (int) (fileSize ^ (fileSize >>> 32));
@@ -325,10 +325,10 @@ public class PdfSelectionTableItem implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		PdfSelectionTableItem other = (PdfSelectionTableItem) obj;
-		if (documentInfo == null) {
-			if (other.documentInfo != null)
+		if (documentMetaData == null) {
+			if (other.documentMetaData != null)
 				return false;
-		} else if (!documentInfo.equals(other.documentInfo))
+		} else if (!documentMetaData.equals(other.documentMetaData))
 			return false;
 		if (encrypted != other.encrypted)
 			return false;
@@ -378,198 +378,5 @@ public class PdfSelectionTableItem implements Serializable{
 		if (syntaxErrors != other.syntaxErrors)
 			return false;
 		return true;
-	}
-
-	/**
-	 * Model for the document metadata
-	 * @author Andrea Vacondio
-	 *
-	 */
-	public class DocumentData implements Serializable{
-
-		private static final long serialVersionUID = -8384507320222619396L;
-
-		private String author = "";
-		private String title = "";
-		private String modificationDate = "";
-		private String creationDate = "";
-		private String keywords = "";
-		private String producer = "";
-		private String creator = "";
-		private String subject = "";
-		/**
-		 * @return the author
-		 */
-		public String getAuthor() {
-			return author;
-		}
-		/**
-		 * @param author the author to set
-		 */
-		public void setAuthor(String author) {
-			this.author = author;
-		}
-		/**
-		 * @return the title
-		 */
-		public String getTitle() {
-			return title;
-		}
-		/**
-		 * @param title the title to set
-		 */
-		public void setTitle(String title) {
-			this.title = title;
-		}
-		/**
-		 * @return the modificationDate
-		 */
-		public String getModificationDate() {
-			return modificationDate;
-		}
-		/**
-		 * @param modificationDate the modificationDate to set
-		 */
-		public void setModificationDate(String modificationDate) {
-			this.modificationDate = modificationDate;
-		}
-		/**
-		 * @return the creationDate
-		 */
-		public String getCreationDate() {
-			return creationDate;
-		}
-		/**
-		 * @param creationDate the creationDate to set
-		 */
-		public void setCreationDate(String creationDate) {
-			this.creationDate = creationDate;
-		}
-		/**
-		 * @return the keywords
-		 */
-		public String getKeywords() {
-			return keywords;
-		}
-		/**
-		 * @param keywords the keywords to set
-		 */
-		public void setKeywords(String keywords) {
-			this.keywords = keywords;
-		}
-		/**
-		 * @return the producer
-		 */
-		public String getProducer() {
-			return producer;
-		}
-		/**
-		 * @param producer the producer to set
-		 */
-		public void setProducer(String producer) {
-			this.producer = producer;
-		}
-		/**
-		 * @return the creator
-		 */
-		public String getCreator() {
-			return creator;
-		}
-		/**
-		 * @param creator the creator to set
-		 */
-		public void setCreator(String creator) {
-			this.creator = creator;
-		}
-		/**
-		 * @return the subject
-		 */
-		public String getSubject() {
-			return subject;
-		}
-		/**
-		 * @param subject the subject to set
-		 */
-		public void setSubject(String subject) {
-			this.subject = subject;
-		}
-		/* (non-Javadoc)
-		 * @see java.lang.Object#hashCode()
-		 */
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + getOuterType().hashCode();
-			result = prime * result + ((author == null) ? 0 : author.hashCode());
-			result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
-			result = prime * result + ((creator == null) ? 0 : creator.hashCode());
-			result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
-			result = prime * result + ((modificationDate == null) ? 0 : modificationDate.hashCode());
-			result = prime * result + ((producer == null) ? 0 : producer.hashCode());
-			result = prime * result + ((subject == null) ? 0 : subject.hashCode());
-			result = prime * result + ((title == null) ? 0 : title.hashCode());
-			return result;
-		}
-		/* (non-Javadoc)
-		 * @see java.lang.Object#equals(java.lang.Object)
-		 */
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			DocumentData other = (DocumentData) obj;
-			if (!getOuterType().equals(other.getOuterType()))
-				return false;
-			if (author == null) {
-				if (other.author != null)
-					return false;
-			} else if (!author.equals(other.author))
-				return false;
-			if (creationDate == null) {
-				if (other.creationDate != null)
-					return false;
-			} else if (!creationDate.equals(other.creationDate))
-				return false;
-			if (creator == null) {
-				if (other.creator != null)
-					return false;
-			} else if (!creator.equals(other.creator))
-				return false;
-			if (keywords == null) {
-				if (other.keywords != null)
-					return false;
-			} else if (!keywords.equals(other.keywords))
-				return false;
-			if (modificationDate == null) {
-				if (other.modificationDate != null)
-					return false;
-			} else if (!modificationDate.equals(other.modificationDate))
-				return false;
-			if (producer == null) {
-				if (other.producer != null)
-					return false;
-			} else if (!producer.equals(other.producer))
-				return false;
-			if (subject == null) {
-				if (other.subject != null)
-					return false;
-			} else if (!subject.equals(other.subject))
-				return false;
-			if (title == null) {
-				if (other.title != null)
-					return false;
-			} else if (!title.equals(other.title))
-				return false;
-			return true;
-		}
-		private PdfSelectionTableItem getOuterType() {
-			return PdfSelectionTableItem.this;
-		}
-		
-		
-		
 	}
 }

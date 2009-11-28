@@ -198,14 +198,14 @@ public class JPodThumbnailCreator extends AbstractThumbnailCreator {
 		File inputFile = getInputFile();
 		DocumentInfo documentInfo = new DocumentInfo();
 		pageTree = pdfDoc.getPageTree();
-		documentInfo.setCreator(pdfDoc.getCreator());
+		documentInfo.getDocumentMetaData().setCreator(pdfDoc.getCreator());
 		documentInfo.setFileName(inputFile.getAbsolutePath());
 		documentInfo.setPages(pageTree.getCount());
-		documentInfo.setAuthor(pdfDoc.getAuthor());
+		documentInfo.getDocumentMetaData().setAuthor(pdfDoc.getAuthor());
 		documentInfo.setPdfVersion(pdfDoc.cosGetDoc().stGetDoc().getDocType().getVersion());
 		documentInfo.setEncrypted(pdfDoc.isEncrypted());
-		documentInfo.setTitle(pdfDoc.getTitle());
-		documentInfo.setProducer(pdfDoc.getProducer());
+		documentInfo.getDocumentMetaData().setTitle(pdfDoc.getTitle());
+		documentInfo.getDocumentMetaData().setProducer(pdfDoc.getProducer());
 		return documentInfo;
 	}
 

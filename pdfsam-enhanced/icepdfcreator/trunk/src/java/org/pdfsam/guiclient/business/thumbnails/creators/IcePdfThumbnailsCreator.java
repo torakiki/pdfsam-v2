@@ -79,10 +79,10 @@ public class IcePdfThumbnailsCreator extends AbstractThumbnailCreator {
 		documentInfo.setEncrypted(pdfDocument.getSecurityManager() != null);
 		PInfo info = pdfDocument.getInfo();
 		if(info!=null){
-			documentInfo.setAuthor(info.getAuthor());
-			documentInfo.setCreator(info.getCreator());
-			documentInfo.setTitle(info.getTitle());
-			documentInfo.setProducer(info.getProducer());
+			documentInfo.getDocumentMetaData().setAuthor(info.getAuthor());
+			documentInfo.getDocumentMetaData().setCreator(info.getCreator());
+			documentInfo.getDocumentMetaData().setTitle(info.getTitle());
+			documentInfo.getDocumentMetaData().setProducer(info.getProducer());
 		}
 		return documentInfo;
 	}

@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -74,11 +75,7 @@ public class PdfLoader {
     				JOptionPane.INFORMATION_MESSAGE);
     	}else{
     		lazyInitFileChooser();
-			if(singleSelection){
-				fileChooser.setMultiSelectionEnabled(false);
-			}else{
-				fileChooser.setMultiSelectionEnabled(true);
-			}
+			fileChooser.setMultiSelectionEnabled(!singleSelection);
 			if(!(workQueue.getRunning()>0)){
 		        if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
 		            if(fileChooser.isMultiSelectionEnabled()){
@@ -329,24 +326,24 @@ public class PdfLoader {
         		if(info!=null && info.size()>0){
         			for (Map.Entry<String, String> entry: info.entrySet()) {        				
         				if(entry != null){
-        					String key = (String)entry.getKey();
-        					String value = (entry.getValue()!=null)? (String)entry.getValue(): "";
+        					String key = entry.getKey();
+        					String value = StringUtils.trimToEmpty(entry.getValue());
         					if(key.equals(TITLE)){
-        						tableItem.getDocumentInfo().setTitle(value);
+        						tableItem.getDocumentMetaData().setTitle(value);
         					}else if(key.equals(PRODUCER)){
-        						tableItem.getDocumentInfo().setProducer(value);
+        						tableItem.getDocumentMetaData().setProducer(value);
         					}else if(key.equals(AUTHOR)){
-        						tableItem.getDocumentInfo().setAuthor(value);
+        						tableItem.getDocumentMetaData().setAuthor(value);
         					}else if(key.equals(SUBJECT)){
-        						tableItem.getDocumentInfo().setSubject(value);
+        						tableItem.getDocumentMetaData().setSubject(value);
         					}else if(key.equals(CREATOR)){
-        						tableItem.getDocumentInfo().setCreator(value);
+        						tableItem.getDocumentMetaData().setCreator(value);
         					}else if(key.equals(MODDATE)){
-        						tableItem.getDocumentInfo().setModificationDate(value);
+        						tableItem.getDocumentMetaData().setModificationDate(value);
         					}else if(key.equals(CREATIONDATE)){
-        						tableItem.getDocumentInfo().setCreationDate(value);
+        						tableItem.getDocumentMetaData().setCreationDate(value);
         					}else if(key.equals(KEYWORDS)){
-        						tableItem.getDocumentInfo().setKeywords(value);
+        						tableItem.getDocumentMetaData().setKeywords(value);
         					}
         				}
         			}

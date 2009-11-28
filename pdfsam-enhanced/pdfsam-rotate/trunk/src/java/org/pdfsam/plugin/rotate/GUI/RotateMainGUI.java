@@ -210,29 +210,22 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-            	if(browseDirChooser==null){
-            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-    		        browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            	}
-                File chosenFile = null; 
-                if(destinationTextField.getText().length()>0){
-                	browseDirChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-                }
-				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
-					chosenFile = browseDirChooser.getSelectedFile();
+				if (browseDirChooser == null) {
+					browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
+					browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				}
-				//write the destination in text field
-				if (chosenFile != null){
-					try{
+				if (destinationTextField.getText().length() > 0) {
+					browseDirChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+				}
+				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = browseDirChooser.getSelectedFile();
+					if (chosenFile != null) {
 						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}
-					catch (Exception ex){
-						log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-					}
-				}
 
+				}
 			}
-		});        
+		});       
 		destinationPanel.add(browseButton);
 //		END_BROWSE_BUTTON		
 
@@ -248,10 +241,12 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 		
 //      HELP_LABEL_DESTINATION        
         String helpTextDest = 
-    		"<html><body><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Destination output directory")+"</b>" +
-    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
-    		"<p>"+GettextResource.gettext(config.getI18nResourceBundle(),"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
-    		"</body></html>";
+    		"<html><body><b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Destination output directory")+"</b>" +
+    		"<p>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"To choose a folder browse or enter the full path to the destination output directory.")+"</p>"+
+    		"<p>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Check the box if you want to overwrite the output files if they already exist.")+"</p>"+
+    		"<p>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Check the box if you want compressed output files.")+" "+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"PDF version 1.5 or above.")+"</p>"+
+    		"<p>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Set the pdf version of the ouput document.")+"</p>"+    		
+   		"</body></html>";
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
 //END_HELP_LABEL_DESTINATION 	
@@ -629,6 +624,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
+		outPrefixTextField.setText("pdfsam_");
 	}
 
 	/**

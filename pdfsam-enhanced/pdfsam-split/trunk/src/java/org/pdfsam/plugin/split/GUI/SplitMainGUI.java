@@ -265,29 +265,21 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	if(browseDestFileChooser==null){
-                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
-                    browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            	}
-                File chosenFile = null;  
-                if(destinationFolderText.getText().length()>0){
-                	browseDestFileChooser.setCurrentDirectory(new File(destinationFolderText.getText()));
-                }
-                if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
-                    chosenFile = browseDestFileChooser.getSelectedFile();
-                }
-                //write the destination in text field
-                if (chosenFile != null && chosenFile.isDirectory()){
-                    try{
-                        destinationFolderText.setText(chosenFile.getAbsolutePath());
-                    }
-                    catch (Exception ex){
-                    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                        
-                    }
-                }
-                
-            }
-        });
+				if (browseDestFileChooser == null) {
+					browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
+					browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				}
+				if (destinationFolderText.getText().length() > 0) {
+					browseDestFileChooser.setCurrentDirectory(new File(destinationFolderText.getText()));
+				}
+				if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = browseDestFileChooser.getSelectedFile();
+					if (chosenFile != null) {
+						destinationFolderText.setText(chosenFile.getAbsolutePath());
+					}
+				}
+			}
+		});
         destinationPanel.add(browseDestButton);
 //HELP_LABEL_DESTINATION        
         String helpTextDest = 

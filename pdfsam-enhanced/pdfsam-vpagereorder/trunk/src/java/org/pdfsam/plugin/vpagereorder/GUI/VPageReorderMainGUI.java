@@ -162,31 +162,23 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
         destinationPanel.add(versionCombo);
 		
         destinationPanel.add(outputVersionLabel);
-        browseDestButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	if(browseDestFileChooser==null){
-                    browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
-                    browseDestFileChooser.setFileFilter(new PdfFilter());
-            	}
-                File chosenFile = null;    
-                if(destinationFileText.getText().length()>0){
-                	browseDestFileChooser.setCurrentDirectory(new File(destinationFileText.getText()));
-                }
-                if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
-                    chosenFile = browseDestFileChooser.getSelectedFile();
-                }
-                //write the destination in text field
-                if (chosenFile != null){
-                    try{
-                        destinationFileText.setText(chosenFile.getAbsolutePath());
-                    }
-                    catch (Exception ex){
-                    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                        
-                    }
-                }
-                
-            }
-        });
+		browseDestButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (browseDestFileChooser == null) {
+					browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
+					browseDestFileChooser.setFileFilter(new PdfFilter());
+				}
+				if (destinationFileText.getText().length() > 0) {
+					browseDestFileChooser.setCurrentDirectory(new File(destinationFileText.getText()));
+				}
+				if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = browseDestFileChooser.getSelectedFile();
+					if (chosenFile != null) {
+						destinationFileText.setText(chosenFile.getAbsolutePath());
+					}
+				}
+			}
+		});
         destinationPanel.add(browseDestButton);
 //HELP_LABEL_DESTINATION        
         String helpTextDest = 

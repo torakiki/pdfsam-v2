@@ -602,10 +602,10 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	    		"<html><body><b><p>"+GettextResource.gettext(config.getI18nResourceBundle(),"File: ")+"</b>"+documetnInfo.getFileName()+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pages: ")+"</b>"+documetnInfo.getPages()+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Pdf version: ")+"</b>"+(documetnInfo.getPdfVersion()!=null? documetnInfo.getPdfVersion():"")+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Title: ")+"</b>"+(documetnInfo.getTitle()!=null? documetnInfo.getTitle():"")+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+(documetnInfo.getAuthor()!=null? documetnInfo.getAuthor():"")+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+(documetnInfo.getCreator()!=null? documetnInfo.getCreator():"")+"</p>"+
-	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+(documetnInfo.getProducer()!=null? documetnInfo.getProducer():"")+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Title: ")+"</b>"+StringUtils.trimToEmpty(documetnInfo.getDocumentMetaData().getTitle())+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Author: ")+"</b>"+StringUtils.trimToEmpty(documetnInfo.getDocumentMetaData().getAuthor())+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Creator: ")+"</b>"+StringUtils.trimToEmpty(documetnInfo.getDocumentMetaData().getCreator())+"</p>"+
+	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Producer: ")+"</b>"+StringUtils.trimToEmpty(documetnInfo.getDocumentMetaData().getProducer())+"</p>"+
 	    		"<p><b>"+GettextResource.gettext(config.getI18nResourceBundle(),"Encrypted: ")+"</b>"+encrypted+"</p>"+
 	    		"</body></html>");
 		}

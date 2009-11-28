@@ -206,31 +206,23 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel implements Propert
         destinationPanel.add(destinationTextField);
 
 //BROWSE_BUTTON        
-        browseDestButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	if(browseDestFileChooser==null){
-    		        browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-    		        browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            	}
-                File chosenFile = null;   
-                if(destinationTextField.getText().length()>0){
-                	browseDestFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-                }                
-                if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION){
-                	chosenFile = browseDestFileChooser.getSelectedFile();
-                }
-                //write the destination in text field
-                if (chosenFile != null){
-                    try{
-                        destinationTextField.setText(chosenFile.getAbsolutePath());
-                    }
-                    catch (Exception ex){
-                    	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                        
-                    }
-                }
-                
-            }
-        });        
+		browseDestButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (browseDestFileChooser == null) {
+					browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
+					browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				}
+				if (destinationTextField.getText().length() > 0) {
+					browseDestFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+				}
+				if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = browseDestFileChooser.getSelectedFile();
+					if (chosenFile != null) {
+						destinationTextField.setText(chosenFile.getAbsolutePath());
+					}
+				}
+			}
+		});      
         destinationPanel.add(browseDestButton);
 //END_BROWSE_BUTTON
 //CHECK_BOX

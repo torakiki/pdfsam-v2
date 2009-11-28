@@ -138,27 +138,19 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-            	if(browseDirChooser==null){
-            		browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-    		        browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            	}
-                File chosenFile = null; 
-                if(destinationTextField.getText().length()>0){
-                	browseDirChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-                }
-				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
-					chosenFile = browseDirChooser.getSelectedFile();
+				if (browseDirChooser == null) {
+					browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
+					browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				}
-				//write the destination in text field
-				if (chosenFile != null){
-					try{
+				if (destinationTextField.getText().length() > 0) {
+					browseDirChooser.setCurrentDirectory(new File(destinationTextField.getText()));
+				}
+				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = browseDirChooser.getSelectedFile();
+					if (chosenFile != null) {
 						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}
-					catch (Exception ex){
-						log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-					}
 				}
-
 			}
 		});        
 		destinationPanel.add(browseButton);

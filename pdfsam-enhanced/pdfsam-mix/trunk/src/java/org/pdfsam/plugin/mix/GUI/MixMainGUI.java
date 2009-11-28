@@ -219,28 +219,20 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 		
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {								
-				if(browseFileChooser==null){
+			public void actionPerformed(ActionEvent e) {
+				if (browseFileChooser == null) {
 					browseFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
 					browseFileChooser.setFileFilter(new PdfFilter());
 				}
-				File chosenFile = null;   
-                if(destinationTextField.getText().length()>0){
-                	browseFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-                }
-				if (browseFileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
-					chosenFile = browseFileChooser.getSelectedFile();
+				if (destinationTextField.getText().length() > 0) {
+					browseFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
 				}
-				//write the destination in text field
-				if (chosenFile != null){
-					try{
+				if (browseFileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = browseFileChooser.getSelectedFile();
+					if (chosenFile != null) {
 						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}
-					catch (Exception ex){
-						log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);
-					}
 				}
-
 			}
 		});        
 		destinationPanel.add(browseButton);

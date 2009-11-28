@@ -84,16 +84,16 @@ public class JDocumentPropertiesFrame extends JFrame{
 					propsText +="<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Permissions")+":</b> "+props.getPermissions()+"<br>\n";
 				}
 			
-			if(props.getDocumentInfo() != null){
+			if(props.getDocumentMetaData() != null){
 				propsText += 
-					"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Title")+":</b> "+props.getDocumentInfo().getTitle()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Author")+":</b> "+props.getDocumentInfo().getAuthor()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Subject")+":</b> "+props.getDocumentInfo().getSubject()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Producer")+":</b> "+props.getDocumentInfo().getProducer()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creator")+":</b> "+props.getDocumentInfo().getCreator()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creation date")+":</b> "+props.getDocumentInfo().getCreationDate()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Modification date")+":</b> "+props.getDocumentInfo().getModificationDate()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Keywords")+":</b> "+props.getDocumentInfo().getKeywords()+"<br>\n";
+					"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Title")+":</b> "+props.getDocumentMetaData().getTitle()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Author")+":</b> "+props.getDocumentMetaData().getAuthor()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Subject")+":</b> "+props.getDocumentMetaData().getSubject()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Producer")+":</b> "+props.getDocumentMetaData().getProducer()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creator")+":</b> "+props.getDocumentMetaData().getCreator()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creation date")+":</b> "+props.getDocumentMetaData().getCreationDate()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Modification date")+":</b> "+props.getDocumentMetaData().getModificationDate()+"<br>\n"
+	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Keywords")+":</b> "+props.getDocumentMetaData().getKeywords()+"<br>\n";
 			}
 			propsText += "</body></html>";
 			textInfoArea.setMargin(new Insets(5, 5, 5, 5));
