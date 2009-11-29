@@ -42,6 +42,7 @@
 		<property name="vpagereorder.dir" value="${workspace.dir}/pdfsam-vpagereorder"/>
 		<property name="vcomposer.dir" value="${workspace.dir}/pdfsam-vcomposer"/>
 	    <property name="rotate.dir" value="${workspace.dir}/pdfsam-rotate"/>
+	    <property name="docinfo.dir" value="${workspace.dir}/pdfsam-docinfo"/>
 		<property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
@@ -216,6 +217,11 @@
 			<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 
+		<!--docinfo-->
+		<ant antfile="${docinfo.dir}/ant/build.xml" dir="${docinfo.dir}" target="build-jars">
+			<property name="pdfsam-docinfo.dist.dir" value="${pdfsam.release.jar.dir}"/>
+		</ant>
+
 	</target>
 
 	<!--creates the distribution of pdfsam-->
@@ -286,6 +292,7 @@
 			<replacefilter token="@ROTATE_JAR_NAME" value="${pdfsam-rotate.jar.name}"/>
 			<replacefilter token="@REORDER_JAR_NAME" value="${pdfsam-vpagereorder.jar.name}"/>
 			<replacefilter token="@COMPOSER_JAR_NAME" value="${pdfsam-vcomposer.jar.name}"/>
+			<replacefilter token="@DOCINFO_JAR_NAME" value="${pdfsam-docinfo.jar.name}"/>
 		</replace>
 
 		<copy todir="${pdfsam.release.dist.dir}/doc/license">
@@ -309,6 +316,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-decrypt.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/decrypt" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-unpack.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/unpack" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-setviewer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/setviewer" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${pdfsam-docinfo.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/docinfo" overwrite="true"/>
 	</target>
 
 	<!--deploy pdfsam-->
@@ -490,6 +498,11 @@
 		<!--setviewer-->
 		<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="buildZipSrcPackage">
 			<property name="pdfsam-setviewer.dist.dir" value="${pdfsam.release.src.dir}"/>
+		</ant>
+
+		<!--docinfo-->
+		<ant antfile="${docinfo.dir}/ant/build.xml" dir="${docinfo.dir}" target="buildZipSrcPackage">
+			<property name="pdfsam-docinfo.dist.dir" value="${pdfsam.release.src.dir}"/>
 		</ant>
 
 	</target>

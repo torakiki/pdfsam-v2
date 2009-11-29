@@ -18,6 +18,7 @@ Plugins included:
 	-@COMPOSER_JAR_NAME *
 	-@REORDER_JAR_NAME *
 	-@ROTATE_JAR_NAME *
+	-@DOCINFO_JAR_NAME *
 	
 Linked libraries:
 	-@ITEXT_JAR_NAME

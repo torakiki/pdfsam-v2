@@ -477,7 +477,7 @@ public class JPdfSelectionPanel extends JPanel {
      * @return true if some thread is loading a pdf document
      */
     public boolean isAdding(){
-    	return (loader.getRunningThreadsNumber()>0);
+    	return loader.isExecuting();
     }
     /**
      * adds a item to the table
