@@ -696,4 +696,11 @@ public class JPdfSelectionPanel extends JPanel {
     public void setFullAccessRequired(boolean required){
     	mainTable.setDefaultRenderer(String.class, new JPdfSelectionTableRenderer(required));
     }
+    
+    /**
+     * Clear the selection table
+     */
+    public void clearSelectionTable(){
+    	((AbstractPdfSelectionTableModel)getMainTable().getModel()).clearData();
+    }
 }

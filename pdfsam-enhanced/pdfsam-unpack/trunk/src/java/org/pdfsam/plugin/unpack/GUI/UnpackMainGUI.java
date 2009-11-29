@@ -278,7 +278,6 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
     @SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {		
 		try{	
-			selectionPanel.getClearButton().doClick();
 			List fileList = arg0.selectNodes("filelist/file");
 			for (int i = 0; fileList != null && i < fileList.size(); i++) {
 				Node fileNode = (Node) fileList.get(i);
@@ -393,7 +392,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	}
 	
 	public void resetPanel() {
-		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		selectionPanel.clearSelectionTable();	
 		destinationTextField.setText("");
 		overwriteCheckbox.setSelected(false);
 	}

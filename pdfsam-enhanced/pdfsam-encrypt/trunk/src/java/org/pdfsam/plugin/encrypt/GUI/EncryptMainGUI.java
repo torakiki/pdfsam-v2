@@ -501,7 +501,6 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     @SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {		
 			try{
-				resetPanel();
 				List fileList = arg0.selectNodes("filelist/file");
 				for (int i = 0; fileList != null && i < fileList.size(); i++) {
 					Node fileNode = (Node) fileList.get(i);
@@ -830,7 +829,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 	}
 	
 	public void resetPanel() {
-		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		selectionPanel.clearSelectionTable();	
 		destFolderText.setText("");
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);

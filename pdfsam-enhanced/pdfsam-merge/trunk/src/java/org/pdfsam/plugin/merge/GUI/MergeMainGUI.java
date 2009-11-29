@@ -382,58 +382,55 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 
     @SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {
-    	if(arg0 != null){
-			try{
-				resetPanel();
-				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-				if (fileDestination != null){
-					destinationTextField.setText(fileDestination.getText());
-				}
-				
-				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
-				}
-				
-				Node mergeType = (Node) arg0.selectSingleNode("merge_type/@value");
-				if (mergeType != null){
-					mergeTypeCheck.setSelected(TRUE.equals(mergeType.getText()));
-				}
-
-				List fileList = arg0.selectNodes("filelist/file");
-				for (int i = 0; fileList != null && i < fileList.size(); i++) {
-					Node fileNode = (Node) fileList.get(i);
-					if(fileNode != null){
-						Node fileName = (Node) fileNode.selectSingleNode("@name");
-						if (fileName != null && fileName.getText().length()>0){
-							Node pageSelection = (Node) fileNode.selectSingleNode("@pageselection");
-							Node filePwd = (Node) fileNode.selectSingleNode("@password");	
-							selectionPanel.getLoader().addFile(new File(fileName.getText()), (filePwd!=null)?filePwd.getText():null, (pageSelection!=null)?pageSelection.getText():null);							
-						}
-					}
-                }
-				
-				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
-					outputCompressedCheck.doClick();
-				}
-				
-				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
-				if (pdfVersion != null){
-					for (int i = 0; i<versionCombo.getItemCount(); i++){
-						if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
-							versionCombo.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-                log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Merge section loaded."));  
-            }
-			catch (Exception ex){
-				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                             
+		try {
+			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+			if (fileDestination != null) {
+				destinationTextField.setText(fileDestination.getText());
 			}
-		} 	
-    }			
+
+			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+			if (fileOverwrite != null) {
+				overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
+			}
+
+			Node mergeType = (Node) arg0.selectSingleNode("merge_type/@value");
+			if (mergeType != null) {
+				mergeTypeCheck.setSelected(TRUE.equals(mergeType.getText()));
+			}
+
+			List fileList = arg0.selectNodes("filelist/file");
+			for (int i = 0; fileList != null && i < fileList.size(); i++) {
+				Node fileNode = (Node) fileList.get(i);
+				if (fileNode != null) {
+					Node fileName = (Node) fileNode.selectSingleNode("@name");
+					if (fileName != null && fileName.getText().length() > 0) {
+						Node pageSelection = (Node) fileNode.selectSingleNode("@pageselection");
+						Node filePwd = (Node) fileNode.selectSingleNode("@password");
+						selectionPanel.getLoader().addFile(new File(fileName.getText()), (filePwd != null) ? filePwd.getText() : null,
+								(pageSelection != null) ? pageSelection.getText() : null);
+					}
+				}
+			}
+
+			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())) {
+				outputCompressedCheck.doClick();
+			}
+
+			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+			if (pdfVersion != null) {
+				for (int i = 0; i < versionCombo.getItemCount(); i++) {
+					if (((StringItem) versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())) {
+						versionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(), "Merge section loaded."));
+		} catch (Exception ex) {
+			log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
+		}
+	}		
 	     
     /**
      * 
@@ -555,7 +552,7 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	}
 	
 	public void resetPanel() {
-		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		selectionPanel.clearSelectionTable();
 		destinationTextField.setText("");
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);

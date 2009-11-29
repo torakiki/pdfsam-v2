@@ -384,67 +384,64 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 
 	@SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {
-		if(arg0!=null){
-			try{
-				resetPanel();
-				List<Node> filesSource = arg0.selectNodes("input-documents/source");
-				if(filesSource!=null && filesSource.size()>0){
-					for(Node fileNode : filesSource){
-						Node fileSource = (Node) fileNode.selectSingleNode("@value");
-						if (fileSource != null && fileSource.getText().length()>0){
-							Node filePwd = (Node) fileNode.selectSingleNode("@password");
-							String password = null;
-							if (filePwd != null && filePwd.getText().length()>0){
-								password = filePwd.getText();
-							}
-							inputPanel.addTab(new File(fileSource.getText()), password);
+		try{
+			List<Node> filesSource = arg0.selectNodes("input-documents/source");
+			if(filesSource!=null && filesSource.size()>0){
+				for(Node fileNode : filesSource){
+					Node fileSource = (Node) fileNode.selectSingleNode("@value");
+					if (fileSource != null && fileSource.getText().length()>0){
+						Node filePwd = (Node) fileNode.selectSingleNode("@password");
+						String password = null;
+						if (filePwd != null && filePwd.getText().length()>0){
+							password = filePwd.getText();
 						}
+						inputPanel.addTab(new File(fileSource.getText()), password);
 					}
-				}				
-				
-				List<Node> outputPages = arg0.selectNodes("output-document/page");
-				if(outputPages!=null && outputPages.size()>0){
-					for(Node pageNode : outputPages){
-						String serializedPage = pageNode.getText();
-						if(serializedPage!=null && serializedPage.length()>0){
-							Object pageObject = Base64.decodeToObject(serializedPage);
-							if(pageObject!=null){
-								((VisualListModel)composerPanel.getThumbnailList().getModel()).addElement((VisualPageListItem) pageObject);
-							}
+				}
+			}				
+			
+			List<Node> outputPages = arg0.selectNodes("output-document/page");
+			if(outputPages!=null && outputPages.size()>0){
+				for(Node pageNode : outputPages){
+					String serializedPage = pageNode.getText();
+					if(serializedPage!=null && serializedPage.length()>0){
+						Object pageObject = Base64.decodeToObject(serializedPage);
+						if(pageObject!=null){
+							((VisualListModel)composerPanel.getThumbnailList().getModel()).addElement((VisualPageListItem) pageObject);
 						}
 					}
 				}
-				
-				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-				if (fileDestination != null && fileDestination.getText().length()>0){
-					destinationFileText.setText(fileDestination.getText());
-				}
-				
-				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
-				}
-
-				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
-					outputCompressedCheck.doClick();
-				}								
-
-				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
-				if (pdfVersion != null){
-					for (int i = 0; i<versionCombo.getItemCount(); i++){
-						if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
-							versionCombo.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-				
-				log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Split section loaded."));  
-            }
-			catch (Exception ex){
-				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
 			}
+			
+			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+			if (fileDestination != null && fileDestination.getText().length()>0){
+				destinationFileText.setText(fileDestination.getText());
+			}
+			
+			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+			if (fileOverwrite != null){
+				overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
+			}
+
+			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+				outputCompressedCheck.doClick();
+			}								
+
+			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+			if (pdfVersion != null){
+				for (int i = 0; i<versionCombo.getItemCount(); i++){
+					if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+						versionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+			
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Split section loaded."));  
+        }
+		catch (Exception ex){
+			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
 		}
 	}
 

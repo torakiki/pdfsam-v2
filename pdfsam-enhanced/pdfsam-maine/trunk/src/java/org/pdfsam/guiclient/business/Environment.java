@@ -123,6 +123,7 @@ public class Environment {
 									+ plugablePanel.getClass().getName().replaceAll("^org.pdfsam", "it.pdfsam") + "\"]");
 						}
 						if(node != null){
+							plugablePanel.resetPanel();
 							plugablePanel.loadJobNode(node);
 						}
 					}

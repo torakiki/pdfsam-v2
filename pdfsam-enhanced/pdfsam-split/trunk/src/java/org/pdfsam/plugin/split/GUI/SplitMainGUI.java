@@ -42,7 +42,6 @@ import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
-import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.models.SimplePdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -426,9 +425,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	}
 
     public void loadJobNode(Node arg0) throws LoadJobException {
-    	if(arg0!=null){
 			try{
-				resetPanel();
 				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
 				if (fileSource != null && fileSource.getText().length()>0){
 					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
@@ -507,7 +504,6 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 			catch (Exception ex){
 				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
 			}
-		}			 				
 	}
 	  
     /**
@@ -824,7 +820,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     }
  
     public void resetPanel() {
-		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+    	selectionPanel.clearSelectionTable();
 		destinationFolderText.setText("");
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);

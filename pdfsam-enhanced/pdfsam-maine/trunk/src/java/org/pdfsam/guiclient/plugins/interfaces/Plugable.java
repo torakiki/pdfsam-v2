@@ -55,8 +55,11 @@ public interface Plugable{
 	public Node getJobNode(Node arg0, boolean savePasswords) throws SaveJobException ;
 
 	/**
-	*  @param arg0 to load job infos
-	*/
+	 * Loads the input job node in the panel.
+	 * @param arg0 the node to load, must be not null
+	 * @throws LoadJobException
+	 * @throws NullPointerException if arg0 is null
+	 */
 	public void loadJobNode(Node arg0) throws LoadJobException ;
     
 	/**

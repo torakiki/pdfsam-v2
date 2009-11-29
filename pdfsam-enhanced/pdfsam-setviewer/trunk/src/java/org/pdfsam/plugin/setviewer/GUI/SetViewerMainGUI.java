@@ -603,135 +603,131 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 	}
 
 	public void loadJobNode(Node arg0) throws LoadJobException {
-		if(arg0!=null){
-			try{
-				resetPanel();
-				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
-				if (fileSource != null && fileSource.getText().length()>0){
-					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
-					String password = null;
-					if (filePwd != null && filePwd.getText().length()>0){
-						password = filePwd.getText();
-					}
-					selectionPanel.getLoader().addFile(new File(fileSource.getText()), password);
+		try {
+			Node fileSource = (Node) arg0.selectSingleNode("source/@value");
+			if (fileSource != null && fileSource.getText().length() > 0) {
+				Node filePwd = (Node) arg0.selectSingleNode("source/@password");
+				String password = null;
+				if (filePwd != null && filePwd.getText().length() > 0) {
+					password = filePwd.getText();
 				}
-						
-				Node viewerLayoutNode = (Node) arg0.selectSingleNode("viewer-layout/@value");
-				if (viewerLayoutNode != null){
-					for (int i = 0; i<viewerLayout.getItemCount(); i++){
-						if(((StringItem)viewerLayout.getItemAt(i)).getId().equals(viewerLayoutNode.getText())){
-							viewerLayout.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-
-				Node viewerOpenModeNode = (Node) arg0.selectSingleNode("viewer-open-mode/@value");
-				if (viewerOpenModeNode != null){
-					for (int i = 0; i<viewerOpenMode.getItemCount(); i++){
-						if(((StringItem)viewerOpenMode.getItemAt(i)).getId().equals(viewerOpenModeNode.getText())){
-							viewerOpenMode.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-
-				Node nonFullScreenModeNode = (Node) arg0.selectSingleNode("non-fullscreen-mode/@value");
-				if (nonFullScreenModeNode != null){
-					for (int i = 0; i<nonFullScreenMode.getItemCount(); i++){
-						if(((StringItem)nonFullScreenMode.getItemAt(i)).getId().equals(nonFullScreenModeNode.getText())){
-							nonFullScreenMode.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-
-				Node directionComboNode = (Node) arg0.selectSingleNode("direction/@value");
-				if (directionComboNode != null){
-					for (int i = 0; i<directionCombo.getItemCount(); i++){
-						if(((StringItem)directionCombo.getItemAt(i)).getId().equals(directionComboNode.getText())){
-							directionCombo.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-				
-				Node hideMenuBarNode = (Node) arg0.selectSingleNode("hide-menu-bar/@value");
-				if (hideMenuBarNode != null){
-					hideMenuBar.setSelected(TRUE.equals(hideMenuBarNode.getText()));
-				}
-
-				Node hideToolBarNode = (Node) arg0.selectSingleNode("hide-tool-bar/@value");
-				if (hideToolBarNode != null){
-					hideToolBar.setSelected(TRUE.equals(hideToolBarNode.getText()));
-				}
-
-				Node hideUIElementsNode = (Node) arg0.selectSingleNode("hide-ui-elements/@value");
-				if (hideUIElementsNode != null){
-					hideUIElements.setSelected(TRUE.equals(hideUIElementsNode.getText()));
-				}
-
-				Node resizeNode = (Node) arg0.selectSingleNode("resize/@value");
-				if (resizeNode != null){
-					resizeToFit.setSelected(TRUE.equals(resizeNode.getText()));
-				}
-
-				Node centerScreenNode = (Node) arg0.selectSingleNode("center-screen/@value");
-				if (centerScreenNode != null){
-					centerScreen.setSelected(TRUE.equals(centerScreenNode.getText()));
-				}
-
-				Node displayTitleNode = (Node) arg0.selectSingleNode("display-title/@value");
-				if (displayTitleNode != null && TRUE.equals(displayTitleNode.getText())){
-					displayTitle.doClick();
-				}
-
-				Node noPageScalingNode = (Node) arg0.selectSingleNode("no-page-scaling/@value");
-				if (noPageScalingNode != null && TRUE.equals(noPageScalingNode.getText())){
-					noPageScaling.doClick();
-				}
-				
-				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-				if (fileDestination != null){
-					destFolderText.setText(fileDestination.getText());
-				}
-
-				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
-				}
-
-				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
-					outputCompressedCheck.doClick();
-				}
-				
-				Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
-				if (filePrefix != null){
-					outPrefixTextField.setText(filePrefix.getText());
-				}
-
-				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
-				if (pdfVersion != null){
-					for (int i = 0; i<versionCombo.getItemCount(); i++){
-						if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
-							versionCombo.setSelectedIndex(i);
-							break;
-						}
-					}
-				}
-				
-				log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Viewer options section loaded."));  
-            }
-			catch (Exception ex){
-				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
+				selectionPanel.getLoader().addFile(new File(fileSource.getText()), password);
 			}
-		}	
 
+			Node viewerLayoutNode = (Node) arg0.selectSingleNode("viewer-layout/@value");
+			if (viewerLayoutNode != null) {
+				for (int i = 0; i < viewerLayout.getItemCount(); i++) {
+					if (((StringItem) viewerLayout.getItemAt(i)).getId().equals(viewerLayoutNode.getText())) {
+						viewerLayout.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+
+			Node viewerOpenModeNode = (Node) arg0.selectSingleNode("viewer-open-mode/@value");
+			if (viewerOpenModeNode != null) {
+				for (int i = 0; i < viewerOpenMode.getItemCount(); i++) {
+					if (((StringItem) viewerOpenMode.getItemAt(i)).getId().equals(viewerOpenModeNode.getText())) {
+						viewerOpenMode.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+
+			Node nonFullScreenModeNode = (Node) arg0.selectSingleNode("non-fullscreen-mode/@value");
+			if (nonFullScreenModeNode != null) {
+				for (int i = 0; i < nonFullScreenMode.getItemCount(); i++) {
+					if (((StringItem) nonFullScreenMode.getItemAt(i)).getId().equals(nonFullScreenModeNode.getText())) {
+						nonFullScreenMode.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+
+			Node directionComboNode = (Node) arg0.selectSingleNode("direction/@value");
+			if (directionComboNode != null) {
+				for (int i = 0; i < directionCombo.getItemCount(); i++) {
+					if (((StringItem) directionCombo.getItemAt(i)).getId().equals(directionComboNode.getText())) {
+						directionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+
+			Node hideMenuBarNode = (Node) arg0.selectSingleNode("hide-menu-bar/@value");
+			if (hideMenuBarNode != null) {
+				hideMenuBar.setSelected(TRUE.equals(hideMenuBarNode.getText()));
+			}
+
+			Node hideToolBarNode = (Node) arg0.selectSingleNode("hide-tool-bar/@value");
+			if (hideToolBarNode != null) {
+				hideToolBar.setSelected(TRUE.equals(hideToolBarNode.getText()));
+			}
+
+			Node hideUIElementsNode = (Node) arg0.selectSingleNode("hide-ui-elements/@value");
+			if (hideUIElementsNode != null) {
+				hideUIElements.setSelected(TRUE.equals(hideUIElementsNode.getText()));
+			}
+
+			Node resizeNode = (Node) arg0.selectSingleNode("resize/@value");
+			if (resizeNode != null) {
+				resizeToFit.setSelected(TRUE.equals(resizeNode.getText()));
+			}
+
+			Node centerScreenNode = (Node) arg0.selectSingleNode("center-screen/@value");
+			if (centerScreenNode != null) {
+				centerScreen.setSelected(TRUE.equals(centerScreenNode.getText()));
+			}
+
+			Node displayTitleNode = (Node) arg0.selectSingleNode("display-title/@value");
+			if (displayTitleNode != null && TRUE.equals(displayTitleNode.getText())) {
+				displayTitle.doClick();
+			}
+
+			Node noPageScalingNode = (Node) arg0.selectSingleNode("no-page-scaling/@value");
+			if (noPageScalingNode != null && TRUE.equals(noPageScalingNode.getText())) {
+				noPageScaling.doClick();
+			}
+
+			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+			if (fileDestination != null) {
+				destFolderText.setText(fileDestination.getText());
+			}
+
+			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+			if (fileOverwrite != null) {
+				overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
+			}
+
+			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())) {
+				outputCompressedCheck.doClick();
+			}
+
+			Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
+			if (filePrefix != null) {
+				outPrefixTextField.setText(filePrefix.getText());
+			}
+
+			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+			if (pdfVersion != null) {
+				for (int i = 0; i < versionCombo.getItemCount(); i++) {
+					if (((StringItem) versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())) {
+						versionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(), "Viewer options section loaded."));
+		} catch (Exception ex) {
+			log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
+		}
 	}
 
+
 	public void resetPanel() {
-		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		selectionPanel.clearSelectionTable();	
 		destFolderText.setText("");
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);
@@ -750,7 +746,6 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 		directionCombo.setSelectedIndex(0);
 		destFolderText.setText("");
 		outPrefixTextField.setText("");
-
 	}
 	
 	   /**

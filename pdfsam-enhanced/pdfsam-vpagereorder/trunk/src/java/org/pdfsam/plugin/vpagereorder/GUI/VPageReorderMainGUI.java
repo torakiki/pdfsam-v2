@@ -351,65 +351,62 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 
 	@SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {
-		if(arg0!=null){
-			try{
-				resetPanel();
-				Node fileSource = (Node) arg0.selectSingleNode("source/@value");
-				if (fileSource != null && fileSource.getText().length()>0){
-					Node filePwd = (Node) arg0.selectSingleNode("source/@password");
-					String password = null;
-					if (filePwd != null && filePwd.getText().length()>0){
-						password = filePwd.getText();
-					}
-					List<DocumentPage> template = null;
-					List<Node> pages = arg0.selectNodes("source/page");
-					if(pages!=null && pages.size()>0){
-						for(Node pageNode : pages){
-							DocumentPage currentPage = XmlUtility.getDocumentPage(pageNode);
-							if(currentPage != null){
-								if(template==null){
-									template = new ArrayList<DocumentPage>();
-								}
-								template.add(currentPage);
+		try{
+			Node fileSource = (Node) arg0.selectSingleNode("source/@value");
+			if (fileSource != null && fileSource.getText().length()>0){
+				Node filePwd = (Node) arg0.selectSingleNode("source/@password");
+				String password = null;
+				if (filePwd != null && filePwd.getText().length()>0){
+					password = filePwd.getText();
+				}
+				List<DocumentPage> template = null;
+				List<Node> pages = arg0.selectNodes("source/page");
+				if(pages!=null && pages.size()>0){
+					for(Node pageNode : pages){
+						DocumentPage currentPage = XmlUtility.getDocumentPage(pageNode);
+						if(currentPage != null){
+							if(template==null){
+								template = new ArrayList<DocumentPage>();
 							}
-						}
-					}
-					selectionPanel.getPdfLoader().addFile(new File(fileSource.getText()), password, template);
-				}
-				
-				Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-				if (fileDestination != null && fileDestination.getText().length()>0){
-					destinationFileText.setText(fileDestination.getText());
-					chooseAFileRadio.doClick();
-				}else{
-					sameAsSourceRadio.doClick();
-				}
-
-				Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-				if (fileOverwrite != null){
-					overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
-				}
-
-				Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-				if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
-					outputCompressedCheck.doClick();
-				}								
-
-				Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
-				if (pdfVersion != null){
-					for (int i = 0; i<versionCombo.getItemCount(); i++){
-						if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
-							versionCombo.setSelectedIndex(i);
-							break;
+							template.add(currentPage);
 						}
 					}
 				}
-				
-				log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Split section loaded."));  
-            }
-			catch (Exception ex){
-				log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
+				selectionPanel.getPdfLoader().addFile(new File(fileSource.getText()), password, template);
 			}
+			
+			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
+			if (fileDestination != null && fileDestination.getText().length()>0){
+				destinationFileText.setText(fileDestination.getText());
+				chooseAFileRadio.doClick();
+			}else{
+				sameAsSourceRadio.doClick();
+			}
+
+			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
+			if (fileOverwrite != null){
+				overwriteCheckbox.setSelected(TRUE.equals(fileOverwrite.getText()));
+			}
+
+			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
+			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+				outputCompressedCheck.doClick();
+			}								
+
+			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
+			if (pdfVersion != null){
+				for (int i = 0; i<versionCombo.getItemCount(); i++){
+					if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+						versionCombo.setSelectedIndex(i);
+						break;
+					}
+				}
+			}
+			
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Split section loaded."));  
+        }
+		catch (Exception ex){
+			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
 		}
 	}
 

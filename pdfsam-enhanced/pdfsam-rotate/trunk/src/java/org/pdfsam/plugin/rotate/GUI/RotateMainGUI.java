@@ -440,70 +440,69 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
     
     @SuppressWarnings("unchecked")
 	public void loadJobNode(Node arg0) throws LoadJobException {		
-		try{	
-			selectionPanel.getClearButton().doClick();
+		try {
 			List fileList = arg0.selectNodes("filelist/file");
 			for (int i = 0; fileList != null && i < fileList.size(); i++) {
 				Node fileNode = (Node) fileList.get(i);
-				if(fileNode != null){
+				if (fileNode != null) {
 					Node fileName = (Node) fileNode.selectSingleNode("@name");
-					if (fileName != null && fileName.getText().length()>0){
-						Node filePwd = (Node) fileNode.selectSingleNode("@password");	
-						selectionPanel.getLoader().addFile(new File(fileName.getText()), (filePwd!=null)?filePwd.getText():null);							
+					if (fileName != null && fileName.getText().length() > 0) {
+						Node filePwd = (Node) fileNode.selectSingleNode("@password");
+						selectionPanel.getLoader().addFile(new File(fileName.getText()), (filePwd != null) ? filePwd.getText() : null);
 					}
 				}
-            }
-			Node rotationNode = (Node) arg0.selectSingleNode("rotation/@value");
-			if (rotationNode != null){
-				rotationBox.setSelectedItem((String)rotationNode.getText());
 			}
-			
+			Node rotationNode = (Node) arg0.selectSingleNode("rotation/@value");
+			if (rotationNode != null) {
+				rotationBox.setSelectedItem((String) rotationNode.getText());
+			}
+
 			Node rotationPageNode = (Node) arg0.selectSingleNode("pages/@value");
-			if (rotationPageNode != null){
-				for (int i = 0; i<rotationPagesBox.getItemCount(); i++){
-					if(((StringItem)rotationPagesBox.getItemAt(i)).getId().equals(rotationPageNode.getText())){
+			if (rotationPageNode != null) {
+				for (int i = 0; i < rotationPagesBox.getItemCount(); i++) {
+					if (((StringItem) rotationPagesBox.getItemAt(i)).getId().equals(rotationPageNode.getText())) {
 						rotationPagesBox.setSelectedIndex(i);
 						break;
 					}
 				}
 			}
-			
+
 			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-			if (fileDestination != null){
+			if (fileDestination != null) {
 				destinationTextField.setText(fileDestination.getText());
 			}
-							
+
 			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
-			if (fileOverwrite != null){
+			if (fileOverwrite != null) {
 				overwriteCheckbox.setSelected(fileOverwrite.getText().equals("true"));
 			}
 
 			Node fileCompressed = (Node) arg0.selectSingleNode("compressed/@value");
-			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())){
+			if (fileCompressed != null && TRUE.equals(fileCompressed.getText())) {
 				outputCompressedCheck.doClick();
 			}
-			
+
 			Node filePrefix = (Node) arg0.selectSingleNode("prefix/@value");
-			if (filePrefix != null){
+			if (filePrefix != null) {
 				outPrefixTextField.setText(filePrefix.getText());
 			}
-			
+
 			Node pdfVersion = (Node) arg0.selectSingleNode("pdfversion/@value");
-			if (pdfVersion != null){
-				for (int i = 0; i<versionCombo.getItemCount(); i++){
-					if(((StringItem)versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())){
+			if (pdfVersion != null) {
+				for (int i = 0; i < versionCombo.getItemCount(); i++) {
+					if (((StringItem) versionCombo.getItemAt(i)).getId().equals(pdfVersion.getText())) {
 						versionCombo.setSelectedIndex(i);
 						break;
 					}
 				}
 			}
-			
-			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Rotate section loaded."));  
-        }
-		catch (Exception ex){
-			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                             
-		}	 				
-}
+
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(), "Rotate section loaded."));
+		} catch (Exception ex) {
+			log.error(GettextResource.gettext(config.getI18nResourceBundle(), "Error: "), ex);
+		}
+	}
+    
 	/**
 	 * Focus policy for rotate panel
 	 * @author Andrea Vacondio
@@ -619,7 +618,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	}
 	
 	public void resetPanel() {
-		((AbstractPdfSelectionTableModel)selectionPanel.getMainTable().getModel()).clearData();	
+		selectionPanel.clearSelectionTable();	
 		destinationTextField.setText("");
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);
