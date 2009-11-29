@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-docinfo" default="build-jars" basedir="../">
+    <description>
+        DocInfo plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-docinfo.src.dir" location="src/java"/>
+  	<property name="pdfsam-docinfo.etc.dir" location="etc"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="pdfsam-docinfo.build.root" location="${build.dir}/pdfsam-docinfo"/>
+	  	<property name="pdfsam-docinfo.build.dir" location="${pdfsam-docinfo.build.root}/build"/>
+	  	<property name="pdfsam-docinfo.dist.dir"  location="${pdfsam-docinfo.build.root}/dist"/>
+	  	<property name="pdfsam-docinfo.javadoc.dir"  location="${pdfsam-docinfo.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-docinfo.build.dir}"/>
+		<mkdir dir="${pdfsam-docinfo.dist.dir}"/>
+	    <mkdir dir="${pdfsam-docinfo.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-docinfo.javadoc.dir}"/>
+	    <delete dir="${pdfsam-docinfo.dist.dir}"/>
+	    <delete dir="${pdfsam-docinfo.build.dir}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-docinfo " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-docinfo.classpath">
+    	<fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-docinfo.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-docinfo.src.dir}" destdir="${pdfsam-docinfo.build.dir}" debug="true">
+    	<classpath refid="pdfsam-docinfo.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-docinfo.dist.dir}/${pdfsam-docinfo.jar.name}.jar" basedir="${pdfsam-docinfo.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+    	<fileset dir=".">
+		    <include name="images/*.png"/>
+		</fileset>    	  	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.docinfo.*"
+      sourcepath="${pdfsam-docinfo.src.dir}"
+      destdir="${pdfsam-docinfo.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam DocInfo Plugin API"
+      doctitle="pdfsam DocInfo Plugin API" >
+    <classpath refid="pdfsam-docinfo.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-docinfo.dist.dir}/${pdfsam-docinfo.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-docinfo/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-docinfo/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-docinfo/ant/**/*.*"/>
+    		<include name="pdfsam-docinfo/images**/*.png"/>
+    	</fileset>  
+    </zip>
+  </target>
+
+</project>
+
