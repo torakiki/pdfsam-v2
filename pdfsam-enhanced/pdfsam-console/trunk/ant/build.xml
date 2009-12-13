@@ -60,7 +60,7 @@
 	    <manifest>
 			<attribute name="Built-By" value="${user.name}"/>
 			<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
-		    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar ${jcmdline.jar.name}.jar ${bcmail.jar.name}.jar ${bcprov.jar.name} ${commons-lang.jar.name}.jar"/>
+		    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar ${jcmdline.jar.name}.jar ${bcmail.jar.name}.jar ${bcprov.jar.name}.jar ${commons-lang.jar.name}.jar"/>
 	    </manifest>
 		<fileset dir="${pdfsam-console.etc.dir}">
 		    <include name="*.xml"/>
