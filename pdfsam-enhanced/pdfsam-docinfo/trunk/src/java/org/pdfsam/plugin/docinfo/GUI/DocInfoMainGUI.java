@@ -27,12 +27,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
@@ -85,7 +87,7 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 	private JHelpLabel destinationHelpLabel;
 	private JHelpLabel docInfoHelpLabel;
 	private JFileChooser browseDestChooser;
-	private JPdfVersionCombo versionCombo = new JPdfVersionCombo();
+	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
 	
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
     private final JLabel titleLabel = new JLabel();
@@ -93,7 +95,11 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
     private final JLabel subjectLabel = new JLabel();
     private final JLabel keywordsLabel = new JLabel();
 
-	private final RotateFocusPolicy rotateFocusPolicy = new RotateFocusPolicy();
+  //radio
+    private final JRadioButton sameAsSourceRadio = new JRadioButton();
+    private final JRadioButton chooseAFileRadio = new JRadioButton();
+    
+	private final DocInfoFocusPolicy docinfoFocusPolicy = new DocInfoFocusPolicy();
 	//buttons
 	private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
 	private final JButton browseButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);
@@ -220,7 +226,19 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 		destinationPanel.setMinimumSize(new Dimension(160, 150));
 
 //		END_DESTINATION_PANEL   
-      
+		
+//DESTINATION_RADIOS
+        sameAsSourceRadio.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Same as source"));
+        destinationPanel.add(sameAsSourceRadio);
+
+        chooseAFileRadio.setSelected(true);
+        chooseAFileRadio.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Choose a file"));
+        destinationPanel.add(chooseAFileRadio);
+        final ButtonGroup outputRadioGroup = new ButtonGroup();
+        outputRadioGroup.add(sameAsSourceRadio);
+        outputRadioGroup.add(chooseAFileRadio);
+//END_DESTINATION_RADIOS     
+        
 		destinationPanel.add(destinationTextField);
 		topConst.fill = GridBagConstraints.HORIZONTAL;
         topConst.weightx = 0.0;
@@ -304,7 +322,24 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 		
 		destinationTextField.addKeyListener(runEnterkeyListener);
 		runButton.addKeyListener(runEnterkeyListener);
-		browseButton.addKeyListener(browseEnterkeyListener);		
+		browseButton.addKeyListener(browseEnterkeyListener);	
+		
+		//RADIO_LISTENERS
+        sameAsSourceRadio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                destinationTextField.setEnabled(false);
+                browseButton.setEnabled(false);
+            }
+        });
+        
+        chooseAFileRadio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	destinationTextField.setEnabled(true);
+            	browseButton.setEnabled(true);
+            }
+        });
+//END_RADIO_LISTENERS
+        
 		setLayout();
 	}
 	
@@ -313,11 +348,18 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 	 *
 	 */
 	private void setLayout(){
-		destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
-		destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 10, SpringLayout.NORTH, destinationPanel);
-		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationTextField, 30, SpringLayout.NORTH, destinationPanel);
-		destinationPanelLayout.putConstraint(SpringLayout.WEST, destinationTextField, 5, SpringLayout.WEST, destinationPanel);
-
+        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, sameAsSourceRadio, 25, SpringLayout.NORTH, sameAsSourceRadio);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, sameAsSourceRadio, 0, SpringLayout.NORTH, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.WEST, sameAsSourceRadio, 10, SpringLayout.WEST, destinationPanel);        
+        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, chooseAFileRadio, 0, SpringLayout.SOUTH, sameAsSourceRadio);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, chooseAFileRadio, 0, SpringLayout.NORTH, sameAsSourceRadio);
+        destinationPanelLayout.putConstraint(SpringLayout.WEST, chooseAFileRadio, 20, SpringLayout.EAST, sameAsSourceRadio);
+        
+        destinationPanelLayout.putConstraint(SpringLayout.SOUTH, destinationTextField, 50, SpringLayout.NORTH, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, destinationTextField, 30, SpringLayout.NORTH, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.EAST, destinationTextField, -105, SpringLayout.EAST, destinationPanel);
+        destinationPanelLayout.putConstraint(SpringLayout.WEST, destinationTextField, 5, SpringLayout.WEST, destinationPanel);
+        
 		destinationPanelLayout.putConstraint(SpringLayout.SOUTH, overwriteCheckbox, 17, SpringLayout.NORTH, overwriteCheckbox);
 		destinationPanelLayout.putConstraint(SpringLayout.NORTH, overwriteCheckbox, 5, SpringLayout.SOUTH, destinationTextField);
 		destinationPanelLayout.putConstraint(SpringLayout.WEST, overwriteCheckbox, 0, SpringLayout.WEST, destinationTextField);
@@ -376,7 +418,7 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 	 * @return the FocusTraversalPolicy associated with the plugin
 	 */
 	public FocusTraversalPolicy getFocusPolicy(){
-		return (FocusTraversalPolicy)rotateFocusPolicy;
+		return (FocusTraversalPolicy)docinfoFocusPolicy;
 
 	}
 
@@ -457,8 +499,11 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 			}
 
 			Node fileDestination = (Node) arg0.selectSingleNode("destination/@value");
-			if (fileDestination != null){
+			if (fileDestination != null && fileDestination.getText().length()>0){
 				destinationTextField.setText(fileDestination.getText());
+				chooseAFileRadio.doClick();
+			}else{
+				sameAsSourceRadio.doClick();
 			}
 							
 			Node fileOverwrite = (Node) arg0.selectSingleNode("overwrite/@value");
@@ -488,12 +533,12 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 		}	 				
 }
 	/**
-	 * Focus policy for rotate panel
+	 * Focus policy for docinfo panel
 	 * @author Andrea Vacondio
 	 *
 	 */
-	public class RotateFocusPolicy extends FocusTraversalPolicy {
-		public RotateFocusPolicy(){
+	public class DocInfoFocusPolicy extends FocusTraversalPolicy {
+		public DocInfoFocusPolicy(){
 			super();
 		}
 
@@ -517,8 +562,18 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 				return keywordsTextField;
 			} 
 			else if (aComponent.equals(keywordsTextField)){
-				return destinationTextField;
+				return sameAsSourceRadio;
 			}
+			else if (aComponent.equals(sameAsSourceRadio)){
+                return chooseAFileRadio;
+            }
+			else if (aComponent.equals(chooseAFileRadio)){
+                if (destinationTextField.isEnabled()){
+                    return destinationTextField;
+                }else{
+                    return overwriteCheckbox;
+                }                
+            }
 			else if (aComponent.equals(destinationTextField)){
 				return browseButton;
 			}
@@ -551,13 +606,23 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 			else if (aComponent.equals(outputCompressedCheck)){
 				return overwriteCheckbox;
 			}
-			else if (aComponent.equals(overwriteCheckbox)){
-				return browseButton;
-			}
+		    else if (aComponent.equals(overwriteCheckbox)){
+	            if (browseButton.isEnabled()){
+	                return browseButton;
+	            }else{
+	                return chooseAFileRadio;
+	            }                
+	        }
 			else if (aComponent.equals(browseButton)){
 				return destinationTextField;
 			}
 			else if (aComponent.equals(destinationTextField)){
+                return chooseAFileRadio;
+            }
+            else if (aComponent.equals(chooseAFileRadio)){
+                return sameAsSourceRadio;
+            } 
+			else if (aComponent.equals(sameAsSourceRadio)){
 				return keywordsTextField;
 			}
 			else if (aComponent.equals(keywordsTextField)){
@@ -681,6 +746,13 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 	 */
 	public JTextField getKeywordsTextField() {
 		return keywordsTextField;
+	}
+
+	/**
+	 * @return the sameAsSourceRadio
+	 */
+	public JRadioButton getSameAsSourceRadio() {
+		return sameAsSourceRadio;
 	}
 
 }
