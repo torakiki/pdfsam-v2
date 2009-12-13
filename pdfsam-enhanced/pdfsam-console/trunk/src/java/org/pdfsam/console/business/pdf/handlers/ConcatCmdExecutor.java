@@ -218,7 +218,6 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 	    		if(pdfDocument != null){
 	    			pdfDocument.close();        	
 	            }
-	    		pdfWriter.close();
 	    		//rotations
 	    		if(inputCommand.getRotations()!=null && inputCommand.getRotations().length>0){
 	    			LOG.info("Applying pages rotation.");

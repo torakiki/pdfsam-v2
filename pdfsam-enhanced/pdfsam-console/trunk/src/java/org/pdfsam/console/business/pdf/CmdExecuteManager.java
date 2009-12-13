@@ -51,7 +51,7 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
  */
 public class CmdExecuteManager extends Observable implements Observer {
 
-	private final Logger log = Logger.getLogger(CmdExecuteManager.class.getPackage().getName());
+	private final Logger LOG = Logger.getLogger(CmdExecuteManager.class.getPackage().getName());
 
 	private AbstractCmdExecutor cmdExecutor = null;
 	private final StopWatch stopWatch = new StopWatch();
@@ -70,7 +70,7 @@ public class CmdExecuteManager extends Observable implements Observer {
 				if (cmdExecutor != null) {
 					cmdExecutor.addObserver(this);
 					cmdExecutor.execute(parsedCommand);
-					log.info("Command '" + parsedCommand.getCommand() + "' executed in "
+					LOG.info("Command '" + parsedCommand.getCommand() + "' executed in "
 							+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
 				} else {
 					throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[] { "" + parsedCommand.getCommand() });
@@ -80,13 +80,25 @@ public class CmdExecuteManager extends Observable implements Observer {
 			}
 		} finally {
 			stopWatch.stop();
-			if(cmdExecutor != null){
-				cmdExecutor.clean();
-			}
-			cmdExecutor = null;
+			cleanExecutor();
 		}
 	}
 
+	/**
+	 * Clean the executor
+	 */
+	private void cleanExecutor(){
+		if(cmdExecutor != null){
+			try{
+				cmdExecutor.clean();
+			}catch(Exception e){
+				LOG.warn("Error cleaning the command executor: "+e.getMessage());
+			}
+			
+		}
+		cmdExecutor = null;
+	}
+	
 	/**
 	 * forward the WorkDoneDataModel to the observers
 	 */
