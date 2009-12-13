@@ -134,11 +134,7 @@ public class RunButtonActionListener implements ActionListener {
                 	String currentPdfVersion = Character.toString(item.getPdfVersion());
                 	if(minItem != null){
                 		if(Integer.parseInt(currentPdfVersion) < Integer.parseInt(minItem.getId())){
-                			if(JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(panel,
-		            						    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The lowest available pdf version is ")+minItem.getDescription()+".\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
-		            						    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Pdf version conflict"),
-		            						    JOptionPane.YES_NO_OPTION,
-		            						    JOptionPane.WARNING_MESSAGE)){
+                			if(JOptionPane.YES_OPTION != DialogUtility.askForPdfVersionConfilct(panel,minItem.getDescription())){
                 				return;
                 			}
                 		}

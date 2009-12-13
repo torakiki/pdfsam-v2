@@ -33,8 +33,8 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
     private Configuration config;
     public static final String PDF_EXTENSION = "pdf";
     public static final String PDF_EXTENSION_REGEXP =  	"(?i)(.)+(\\."+PDF_EXTENSION+")$";
-    protected static final String TRUE = "true";
-    protected static final String FALSE = "false";
+    protected static final String TRUE = Boolean.TRUE.toString();
+    protected static final String FALSE = Boolean.FALSE.toString();
     
     public AbstractPlugablePanel(){
     	config = Configuration.getInstance(); 

@@ -10,7 +10,9 @@
 -Fixed bug #2899253 stack overflow running  the console concat command with huge selection string (-u)
 -Fixed bug #2899943 console concat command silently ignores double pages in the selection string (-u)
 -Fixed bug #2899713 Visual composer ignores pages if they are double in the selection string generated. 
--Plugins loader loads the most recent plugin if more than one is in the directory
+-Fixed bug #2913620 console gives an error opening encrypted documents. 
+-Plugins loader loads the most recent plugin if more than one is in the directory.
+-New doc info plugin to set metadata on the document.
 -looks 2.3.0
 -JPodRenderer 5.2
 -bcmail 1.44

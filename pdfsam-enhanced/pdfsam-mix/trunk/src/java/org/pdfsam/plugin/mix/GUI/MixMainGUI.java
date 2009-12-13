@@ -117,7 +117,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private void initialize() {
 		config = Configuration.getInstance();
 		setPanelIcon("/images/mix.png");
-        setPreferredSize(new Dimension(500,450));
+        setPreferredSize(new Dimension(500,500));
 		
         setLayout(new GridBagLayout());
         

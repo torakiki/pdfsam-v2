@@ -144,7 +144,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
     private void initialize() {
     	config = Configuration.getInstance();
         setPanelIcon("/images/split.png");
-        setPreferredSize(new Dimension(500,555));
+        setPreferredSize(new Dimension(500,570));
         
 //        
         splitSpringLayout = new SpringLayout();

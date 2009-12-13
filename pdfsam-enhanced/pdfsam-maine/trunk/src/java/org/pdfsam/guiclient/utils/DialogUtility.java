@@ -157,4 +157,18 @@ public class DialogUtility {
 			    JOptionPane.YES_NO_OPTION,
 			    JOptionPane.QUESTION_MESSAGE);
 	}
+	
+	/**
+	 * Shows a yes/no confirmation dialog to ask the user if he wants to continue even if the selected pdf version is lower than the lowest available
+	 * @param comp
+	 * @param lowestVersion
+	 * @return
+	 */
+	public static int askForPdfVersionConfilct(Component comp, String lowestVersion){
+		return JOptionPane.showConfirmDialog(comp,
+			    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The lowest available pdf version is ")+lowestVersion+".\n"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"You selected a lower output pdf version, continue anyway ?"),
+			    GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Pdf version conflict"),
+			    JOptionPane.YES_NO_OPTION,
+			    JOptionPane.WARNING_MESSAGE);
+	}
 }
