@@ -403,7 +403,7 @@ public class VPageReorderMainGUI extends AbstractPlugablePanel  implements Prope
 				}
 			}
 			
-			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Split section loaded."));  
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Visual Reorder section loaded."));  
         }
 		catch (Exception ex){
 			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
