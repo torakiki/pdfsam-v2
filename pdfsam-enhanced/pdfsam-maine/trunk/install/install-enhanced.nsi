@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 2.0.0e
+!define VERSION 2.1.0e
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -113,12 +113,12 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v2_0_0e.exe
+OutFile pdfsam-win32inst-v2_1_0e.exe
 InstallDir "$PROGRAMFILES\pdfsam-enhanced"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 2.0.0.14
+VIProductVersion 2.1.0.14
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam enhanced"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
@@ -308,14 +308,14 @@ SectionEnd
 
 Section "-Write XML" ;writes to XML file
     
-    ${xml::LoadFile} $INSTDIR\config.xml $0
+    ${xml::LoadFile} $INSTDIR\pdfsam-config.xml $0
     
     ${xml::GotoPath} "/pdfsam/settings/i18n" $0
     ${getLanguageName} $LANGUAGE
     
     ${xml::SetText} $LANG_NAME $1
     
-    ${xml::SaveFile} "$INSTDIR\config.xml" $0
+    ${xml::SaveFile} "$INSTDIR\pdfsam-config.xml" $0
     
        
 SectionEnd
@@ -330,6 +330,7 @@ Section "Uninstall"
 
   RMDir /r "$INSTDIR\lib"
   RMDir /r "$INSTDIR\bin"
+  RMDir /r "$INSTDIR\ext"
   RMDir /r "$INSTDIR\plugins"
   RMDir /r "$INSTDIR\doc"
   RMDir "$INSTDIR"

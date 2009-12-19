@@ -16,13 +16,14 @@ Plugins included:
 	
 Linked libraries:
 	-@ITEXT_JAR_NAME
-	-pdfsam-jcmdline-1.0.3
-	-looks-2.2.1
+	-pdfsam-jcmdline-1.0.4
+	-looks-2.3.0
 	-jaxen-1.1
 	-dom4j-1.6.1
 	-log4j-1.2.15
-	-bcmail-jdk14-143.jar
-	-bcprov-jdk14-143.jar
+	-bcmail-jdk14-144
+	-bcprov-jdk14-144
+	-commons-lang-2.4
 	-@CONSOLE_JAR_NAME *
 	-emp4j-1.0.1 *
 	-pdfsam-langpack *

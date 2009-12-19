@@ -965,5 +965,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public JButton getLoadFileButton() {
 		return loadFileButton;
 	}
+	/**
+	 * @return the reverseButton
+	 */
+	public JButton getReverseButton() {
+		return reverseButton;
+	}
  
 }

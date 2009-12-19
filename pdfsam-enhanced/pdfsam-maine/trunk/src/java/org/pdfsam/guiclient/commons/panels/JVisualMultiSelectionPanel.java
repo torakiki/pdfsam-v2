@@ -262,4 +262,11 @@ public class JVisualMultiSelectionPanel extends JPanel {
 	public void addTab(File file){
 		addTab(file, null);
 	}
+	
+	/**
+	 * Remove all tabs
+	 */
+	public void removeAllTabs(){
+		inputTabbedPanel.removeAll();
+	}
 }

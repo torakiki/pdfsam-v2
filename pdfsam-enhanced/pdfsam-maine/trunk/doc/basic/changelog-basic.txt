@@ -1,4 +1,4 @@
-2.1.0 () (pdfsam-console 2.2.0e)
+2.1.0 (20-Dec-2009) (pdfsam-console 2.2.0e)
 ===================================
 -Fixed the selection of the thumbnails creator 
 -Saving/loading environment retains the selected plugin (feature request #2857938)
@@ -10,6 +10,7 @@
 -Fixed bug #2899943 console concat command silently ignores double pages in the selection string (-u)
 -Fixed bug #2899713 Visual composer ignores pages if they are double in the selection string generated.
 -Fixed bug #2913620 console gives an error opening encrypted documents. 
+-Fixed bug #2917585 Visual composer input panel reset before loading the saved environment
 -Plugins loader loads the most recent plugin if more than one is in the directory.
 -looks 2.3.0
 -JPodRenderer 5.2
