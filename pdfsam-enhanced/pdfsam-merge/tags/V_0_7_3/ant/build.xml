@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-merge" default="build-jars" basedir="../">
+    <description>
+        Merge plugin for pdfsam 
+    </description>
+  
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-merge.src.dir" location="src/java"/>
+  	<property name="pdfsam-merge.etc.dir" location="etc"/>
+
+  
+  <target name="init">
+  	<property file="ant/build.properties" />
+  	  	
+  	<property name="pdfsam-merge.build.root" location="${build.dir}/pdfsam-merge"/>
+  	<property name="pdfsam-merge.build.dir" location="${pdfsam-merge.build.root}/build"/>
+  	<property name="pdfsam-merge.dist.dir"  location="${pdfsam-merge.build.root}/dist"/>
+  	<property name="pdfsam-merge.javadoc.dir"  location="${pdfsam-merge.build.root}/apidocs"/>   
+  </target>
+	
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-merge.build.dir}"/>
+		<mkdir dir="${pdfsam-merge.dist.dir}"/>
+	    <mkdir dir="${pdfsam-merge.javadoc.dir}"/>
+	</target>	
+
+	  <target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-merge.javadoc.dir}"/>
+	    <delete dir="${pdfsam-merge.dist.dir}"/>
+	    <delete dir="${pdfsam-merge.build.dir}"/>
+	  </target>
+	    	
+  <target name="compile" depends="make-structure" description="pdfsam-merge " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-merge.classpath">
+        <fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-merge.build.dir}"/>
+        <pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>    	
+    </path>
+	
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-merge.src.dir}" destdir="${pdfsam-merge.build.dir}" debug="true">
+    	<classpath refid="pdfsam-merge.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-merge.dist.dir}/${pdfsam-merge.jar.name}.jar" basedir="${pdfsam-merge.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+	<fileset dir=".">
+	    <include name="images/*.png"/>
+	</fileset>    	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.merge.*"
+      sourcepath="${pdfsam-merge.src.dir}"
+      destdir="${pdfsam-merge.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Merge Plugin API"
+      doctitle="pdfsam Merge Plugin API" >
+    <classpath refid="pdfsam-merge.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-merge.dist.dir}/${pdfsam-merge.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-merge/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-merge/apidocs/**/*.*"/>
+    	</fileset>
+    	<fileset dir="..">
+    		<include name="pdfsam-merge/ant/**/*.*"/>    		
+    		<include name="pdfsam-merge/images**/*.png"/>
+    	</fileset>
+    </zip>
+  </target>
+
+</project>
+
