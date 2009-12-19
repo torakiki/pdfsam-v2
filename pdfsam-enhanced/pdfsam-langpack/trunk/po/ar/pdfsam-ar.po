@@ -7,76 +7,63 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-03-27 20:21+0000\n"
-"Last-Translator: sunpark <Unknown>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-11-02 18:52+0000\n"
+"Last-Translator: Ahmed Khattab Shams <AhmedKhattabShams@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-09 15:04+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
 msgstr "خيارات الدمج"
 
 msgid "PDF documents contain forms"
-msgstr ""
+msgstr "ملفات البي دي أف تحتوي على نماذج"
 
 msgid "Merge type"
 msgstr "نوع الدمج"
 
 msgid "Unchecked"
-msgstr ""
+msgstr "غير مفحوص"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr ""
+msgstr "استخدم هذا النوع من الدمج لملفات \"بي دي إف\" القياسية"
 
 msgid "Checked"
-msgstr ""
+msgstr "مفحوص"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr ""
+msgstr "استخدم هذا النوع من الدمج لملفات \"بي دي إف التي تحتوي على نماذج"
 
 msgid "Note"
 msgstr "ملاحظة"
 
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr ""
+msgstr "سيتسبب تمكين هذا الإختيار في تحميل الوثائق بالكامل إلى الذاكرة"
 
 msgid "Destination output file"
-msgstr ""
-
-msgid "Error: "
-msgstr ""
+msgstr "وجهة الملف الصادر"
 
 msgid "Browse or enter the full path to the destination output file."
-msgstr ""
+msgstr "تصفح أو أدخِل المسار الكامل لملف الإخراج"
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
+"ضع علامة في المربع إذا كنت تريد الكتابة فوق ملف الإخراج , إذا كان موجوداً "
+"مسبقا."
 
 msgid "Check the box if you want compressed output files."
-msgstr ""
+msgstr "ضع علامة في هذا المربع إذا أردت أن تكون الملفات المخرجة مضغوطة."
 
 msgid "PDF version 1.5 or above."
-msgstr "PDF نسخة 1.5 أو أعلى"
+msgstr "إصدار PDF 1.5 أو أعلى."
 
 msgid "Set the pdf version of the ouput document."
-msgstr "اختر نسخة الPDF للملف المصدر"
-
-msgid "Please wait while all files are processed.."
-msgstr ""
-
-msgid "Found a password for input file."
-msgstr ""
-
-msgid "Please select at least one pdf document."
-msgstr "اختر ملف PDF واحد على الأقل"
-
-msgid "Warning"
-msgstr "تحذير"
+msgstr "إختر إصدار الPDF للملف المخرج."
 
 msgid "Execute pdf merge"
 msgstr ""
@@ -85,6 +72,15 @@ msgid "Merge/Extract"
 msgstr ""
 
 msgid "Merge section loaded."
+msgstr ""
+
+msgid "Error: "
+msgstr "خطأ: "
+
+msgid "Please wait while all files are processed.."
+msgstr "فضلا انتظر لحين الإنتهاء من معالجة جميع الملفات.."
+
+msgid "Found a password for input file."
 msgstr ""
 
 msgid "Export as xml"
@@ -200,21 +196,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr ""
-
-msgid "The lowest available pdf version is "
-msgstr ""
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-
-msgid "Pdf version conflict"
-msgstr ""
-
-msgid "Please select a pdf document."
-msgstr "اختر ملف PDF"
-
 msgid "Split selected file"
 msgstr "تقسيم الملف المختار"
 
@@ -224,11 +205,20 @@ msgstr "تقسيم"
 msgid "Split section loaded."
 msgstr ""
 
+msgid "Invalid split size"
+msgstr ""
+
 msgid "Invalid unit: "
 msgstr ""
 
 msgid "Fill from document"
 msgstr ""
+
+msgid "Please select a pdf document."
+msgstr "اختر ملف PDF"
+
+msgid "Warning"
+msgstr "تحذير"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -239,13 +229,13 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr ""
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
+msgstr ""
+
+msgid "Select at least one cover or one footer"
 msgstr ""
 
 msgid "Encrypt options"
@@ -332,6 +322,45 @@ msgstr "فك تشفير"
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -354,15 +383,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr ""
-
-msgid "Found a password for second file."
-msgstr ""
-
-msgid "Please select two pdf documents."
-msgstr ""
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -370,6 +390,12 @@ msgid "Alternate Mix"
 msgstr ""
 
 msgid "AlternateMix section loaded."
+msgstr ""
+
+msgid "Found a password for first file."
+msgstr ""
+
+msgid "Found a password for second file."
 msgstr ""
 
 msgid "Unpack selected files"
@@ -485,13 +511,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -518,25 +547,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -637,15 +660,6 @@ msgid "Selection table is full, please remove some pdf document."
 msgstr ""
 
 msgid "Table full"
-msgstr ""
-
-msgid "Please wait while reading"
-msgstr ""
-
-msgid "Selected file is not a pdf document."
-msgstr ""
-
-msgid "Error loading "
 msgstr ""
 
 msgid "Command validation returned an empty value."
@@ -924,15 +938,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr ""
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -943,9 +948,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -975,7 +977,13 @@ msgstr ""
 msgid "Plugins directory is null."
 msgstr ""
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1122,6 +1130,9 @@ msgstr ""
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -1154,6 +1165,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1226,10 +1245,27 @@ msgstr "هل تريد تغييرها إلى"
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr "اختر ملف PDF واحد على الأقل"
+
+msgid "Please select two pdf documents."
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1254,6 +1290,15 @@ msgid ""
 msgstr ""
 
 msgid "List full"
+msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr ""
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr ""
+
+msgid "Pdf version conflict"
 msgstr ""
 
 msgid "Error retrieving page saved informations"

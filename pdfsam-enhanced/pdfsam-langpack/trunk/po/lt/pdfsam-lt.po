@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:30+0000\n"
 "Last-Translator: Simas J <simasj@gmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -47,9 +47,6 @@ msgstr "Nustačius šį parametrą dokumentai bus įkraunami į atmintį"
 msgid "Destination output file"
 msgstr "Rezultato failas"
 
-msgid "Error: "
-msgstr "Klaida: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Norodykite pilną kelią iki katalogo, kuriame rašyti rezultatų failą"
 
@@ -68,18 +65,6 @@ msgstr "PDF versija 1.5 arba aukštesnė"
 msgid "Set the pdf version of the ouput document."
 msgstr "Nustatykite pdf versiją rezultatų dokumentui"
 
-msgid "Please wait while all files are processed.."
-msgstr "Palaukite kol failai apdorojami"
-
-msgid "Found a password for input file."
-msgstr "Įkeliamamas failas apsaugotas slaptažodžiu"
-
-msgid "Please select at least one pdf document."
-msgstr "Prašome pasirinkti bent vieną pdf dokumentą"
-
-msgid "Warning"
-msgstr "Įspėjimas"
-
 msgid "Execute pdf merge"
 msgstr "Įvykdyti pdf dokumentų sujungimą"
 
@@ -88,6 +73,15 @@ msgstr "Sujungti/Ištraukti"
 
 msgid "Merge section loaded."
 msgstr "Sujungimo dalis įkrauta"
+
+msgid "Error: "
+msgstr "Klaida: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Palaukite kol failai apdorojami"
+
+msgid "Found a password for input file."
+msgstr "Įkeliamamas failas apsaugotas slaptažodžiu"
 
 msgid "Export as xml"
 msgstr "Eksportuoti xml formatu"
@@ -126,7 +120,7 @@ msgid "Split at this size"
 msgstr "Atskirti pagal dydį"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Išskaidyti pagal turinio žymas"
 
 msgid "Burst"
 msgstr "Pliūpsnis"
@@ -210,22 +204,7 @@ msgstr ""
 "generuojami seno pavyzdžio failų pavadinimai"
 
 msgid "Available variables"
-msgstr ""
-
-msgid "Invalid split size"
-msgstr "Blogas skaidymo dydis"
-
-msgid "The lowest available pdf version is "
-msgstr "Žemiausia įmanoma pdf versija yra "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Rezultato failui Jūs pasirinkote žemesnę pdf versiją. Vis tiek tęsti?"
-
-msgid "Pdf version conflict"
-msgstr "Pdf versijų konfliktas"
-
-msgid "Please select a pdf document."
-msgstr "Pasirinkite pdf dokumentą"
+msgstr "Galimi kintamieji"
 
 msgid "Split selected file"
 msgstr "Išskaidyti pasirinktą failą"
@@ -236,11 +215,20 @@ msgstr "Suskaidyti"
 msgid "Split section loaded."
 msgstr "Skaidymo dalis įkrauta"
 
+msgid "Invalid split size"
+msgstr "Blogas skaidymo dydis"
+
 msgid "Invalid unit: "
 msgstr "Neteisingas matavimo vienetas: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Užpildyti iš dokumento"
+
+msgid "Please select a pdf document."
+msgstr "Pasirinkite pdf dokumentą"
+
+msgid "Warning"
+msgstr "Įspėjimas"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -251,14 +239,14 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr "Pasirinkite bent vieną viršelį arba poraštę:"
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Viršelio ir poraštės dalis įkrauta"
+
+msgid "Select at least one cover or one footer"
+msgstr "Pasirinkite bent vieną viršelį arba poraštę:"
 
 msgid "Encrypt options"
 msgstr "Kodavimo nustatymai"
@@ -349,6 +337,45 @@ msgstr "Iššifruoti"
 msgid "Decrypt section loaded."
 msgstr "Iššifravimo sekcija įkrauta"
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autorius"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr "Maišymo nustatytmai"
 
@@ -371,15 +398,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Pirmasis failas apsaugotas slaptažodžiu"
-
-msgid "Found a password for second file."
-msgstr "Antrasis failas apsaugotas slaptažodžiu"
-
-msgid "Please select two pdf documents."
-msgstr "Pasirinkite du pdf dokumentus"
-
 msgid "Execute pdf alternate mix"
 msgstr "Vykdyti pdf alternate mix"
 
@@ -388,6 +406,12 @@ msgstr "Alternate mix"
 
 msgid "AlternateMix section loaded."
 msgstr "AlternateMix dalis įkelta"
+
+msgid "Found a password for first file."
+msgstr "Pirmasis failas apsaugotas slaptažodžiu"
+
+msgid "Found a password for second file."
+msgstr "Antrasis failas apsaugotas slaptažodžiu"
 
 msgid "Unpack selected files"
 msgstr "Išskleisti pasirinktus failus"
@@ -502,13 +526,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -535,25 +562,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -657,15 +678,6 @@ msgstr "Pasirinkimų lentelė pilna, pašalinkite kurį nors pdf dokumentą."
 
 msgid "Table full"
 msgstr "Lentelė pilna"
-
-msgid "Please wait while reading"
-msgstr "Palaukite kol skaitoma"
-
-msgid "Selected file is not a pdf document."
-msgstr "Pasirinktas failas nėra pdf dokumentas"
-
-msgid "Error loading "
-msgstr "Klaida įkeliant "
 
 msgid "Command validation returned an empty value."
 msgstr "Komandos tikrinimas grąžino tuščią reikšmę"
@@ -943,15 +955,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr "Autorius"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -962,9 +965,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -994,8 +994,14 @@ msgstr "Nepavyko nuskaityti papildinių aplanko "
 msgid "Plugins directory is null."
 msgstr "Papildinių aplanko nėra"
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Rasta nulis arba daugybė jar failų papildinio kataloge "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "Klaida įkeliant papildinius"
@@ -1141,6 +1147,9 @@ msgstr "Tikrinti dabar"
 msgid "Play alert sounds"
 msgstr "Naudoti įspėjamuosius garsus"
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr "Nustatytmai "
 
@@ -1178,6 +1187,14 @@ msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "Nenaudoji įspėjamųjų garsų"
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
 
 msgid "Default env."
 msgstr "Aplinka pagal nutylėjimą"
@@ -1253,10 +1270,27 @@ msgstr "Ar norėtumėte pakeisti ją į"
 msgid "Output location error"
 msgstr "Rezultato vietos klaida"
 
+msgid "Please select at least one pdf document."
+msgstr "Prašome pasirinkti bent vieną pdf dokumentą"
+
+msgid "Please select two pdf documents."
+msgstr "Pasirinkite du pdf dokumentus"
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1282,6 +1316,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Žemiausia įmanoma pdf versija yra "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Rezultato failui Jūs pasirinkote žemesnę pdf versiją. Vis tiek tęsti?"
+
+msgid "Pdf version conflict"
+msgstr "Pdf versijų konfliktas"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1335,8 +1378,20 @@ msgstr ""
 msgid "Unable to save user interface status."
 msgstr ""
 
+#~ msgid "Error loading "
+#~ msgstr "Klaida įkeliant "
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Pasirinktas failas nėra pdf dokumentas"
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Palaukite kol skaitoma"
+
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Nepavyko gauti aplinkos nustatymų pagal nutylėjimą"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Rasta nulis arba daugybė jar failų papildinio kataloge "
 
 #~ msgid "Check for updates:"
 #~ msgstr "Tikrinti ar yra atnaujinimų:"
@@ -1344,15 +1399,15 @@ msgstr ""
 #~ msgid "Error getting default environment."
 #~ msgstr "Klaida gaunant aplinką pagal nutylėjimą."
 
-#~ msgid "Never"
-#~ msgstr "Niekada"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "pdfsam pradžia"
-
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 #~ "7,12-)"
 #~ msgstr ""
 #~ "Du kartus paspauskite pele norėdami nustatyti kuriuos puslapius norite "
 #~ "sujungti (pvz.: 2 arba \"Visus\" arba 5-23 arba 2,5-7,12-)"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam pradžia"
+
+#~ msgid "Never"
+#~ msgstr "Niekada"

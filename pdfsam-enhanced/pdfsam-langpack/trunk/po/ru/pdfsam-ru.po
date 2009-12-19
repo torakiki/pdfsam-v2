@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:45+0000\n"
 "Last-Translator: Alias Nameless <resetinbox@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -50,6 +50,31 @@ msgstr "Загружать документы полностью в память
 msgid "Destination output file"
 msgstr "Конечный файл:"
 
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Просмотреть или ввести полный путь к конечному файлу."
+
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr "Поставье отметку"
+
+msgid "Check the box if you want compressed output files."
+msgstr "Включите данную опцию для сжатия файлов, создаваемых программой."
+
+msgid "PDF version 1.5 or above."
+msgstr "Версия PDF 1.5 или выше."
+
+msgid "Set the pdf version of the ouput document."
+msgstr "Установить версию PDF в сохраняемом документе."
+
+msgid "Execute pdf merge"
+msgstr "Объединить файлы"
+
+msgid "Merge/Extract"
+msgstr "Объеденить/Извлечь"
+
+msgid "Merge section loaded."
+msgstr ""
+
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
@@ -77,42 +102,11 @@ msgstr "Конечный файл:"
 msgid "Error: "
 msgstr "Ошибка: "
 
-msgid "Browse or enter the full path to the destination output file."
-msgstr "Просмотреть или ввести полный путь к конечному файлу."
-
-msgid ""
-"Check the box if you want to overwrite the output file if it already exists."
-msgstr "Поставье отметку"
-
-msgid "Check the box if you want compressed output files."
-msgstr "Включите данную опцию для сжатия файлов, создаваемых программой."
-
-msgid "PDF version 1.5 or above."
-msgstr "Версия PDF 1.5 или выше."
-
-msgid "Set the pdf version of the ouput document."
-msgstr "Установить версию PDF в сохраняемом документе."
-
 msgid "Please wait while all files are processed.."
 msgstr "Дождитесь окончания обработки всех файлов.."
 
 msgid "Found a password for input file."
 msgstr "Пароль для загружаемого файла найден."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr "Внимание"
-
-msgid "Execute pdf merge"
-msgstr "Объединить файлы"
-
-msgid "Merge/Extract"
-msgstr "Объеденить/Извлечь"
-
-msgid "Merge section loaded."
-msgstr ""
 
 msgid "Export as xml"
 msgstr "Экспортировать как xml"
@@ -244,22 +238,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr "Неверный размер части"
-
-msgid "The lowest available pdf version is "
-msgstr "Младшая доступная версия PDF "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-"Для выходного файлв выбрана более рання версия pdf, все равно продолжить?"
-
-msgid "Pdf version conflict"
-msgstr "Конфликт версий PDF"
-
-msgid "Please select a pdf document."
-msgstr "Пожалуйста выберете документ pdf."
-
 msgid "Split selected file"
 msgstr "Разделить выделенный файл"
 
@@ -269,11 +247,20 @@ msgstr "Разделить"
 msgid "Split section loaded."
 msgstr "Секция файла загружена."
 
+msgid "Invalid split size"
+msgstr "Неверный размер части"
+
 msgid "Invalid unit: "
 msgstr "Неверная единица: "
 
 msgid "Fill from document"
 msgstr ""
+
+msgid "Please select a pdf document."
+msgstr "Пожалуйста выберете документ pdf."
+
+msgid "Warning"
+msgstr "Внимание"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -284,13 +271,13 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr ""
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
+msgstr ""
+
+msgid "Select at least one cover or one footer"
 msgstr ""
 
 msgid "Encrypt options"
@@ -379,6 +366,47 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+msgid "Author"
+msgstr "Автор"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -401,15 +429,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr ""
-
-msgid "Found a password for second file."
-msgstr ""
-
-msgid "Please select two pdf documents."
-msgstr "Пожалуйста выберите два pdf документа."
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -417,6 +436,12 @@ msgid "Alternate Mix"
 msgstr ""
 
 msgid "AlternateMix section loaded."
+msgstr ""
+
+msgid "Found a password for first file."
+msgstr ""
+
+msgid "Found a password for second file."
 msgstr ""
 
 msgid "Unpack selected files"
@@ -532,13 +557,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -565,25 +593,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -685,15 +707,6 @@ msgstr ""
 
 msgid "Table full"
 msgstr "Таблица полная"
-
-msgid "Please wait while reading"
-msgstr ""
-
-msgid "Selected file is not a pdf document."
-msgstr "Выбранный файл не является pdf документом"
-
-msgid "Error loading "
-msgstr ""
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -1051,17 +1064,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-msgid "Author"
-msgstr "Автор"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -1072,9 +1074,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -1104,7 +1103,13 @@ msgstr ""
 msgid "Plugins directory is null."
 msgstr ""
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1262,6 +1267,9 @@ msgstr "Проверить сейчас"
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr "Настройки "
 
@@ -1294,6 +1302,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1366,10 +1382,27 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Please select two pdf documents."
+msgstr "Пожалуйста выберите два pdf документа."
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1395,6 +1428,16 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Младшая доступная версия PDF "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr ""
+"Для выходного файлв выбрана более рання версия pdf, все равно продолжить?"
+
+msgid "Pdf version conflict"
+msgstr "Конфликт версий PDF"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1446,6 +1489,9 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Выбранный файл не является pdf документом"
 
 #~ msgid "Check for updates:"
 #~ msgstr "Проверить наличие обновлений:"

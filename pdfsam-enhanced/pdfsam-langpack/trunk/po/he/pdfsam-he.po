@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:29+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -47,9 +47,6 @@ msgstr "בחירה באפשרות זו תטען את המסמך כולו לזי�
 msgid "Destination output file"
 msgstr "קובץ יעד הפלט"
 
-msgid "Error: "
-msgstr "שגיאה: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "השתמש בסייר או הקלד את הכתובת המלאה לקובץ היעד"
 
@@ -66,18 +63,6 @@ msgstr "גרסת PDF 1.5 ומעלה"
 msgid "Set the pdf version of the ouput document."
 msgstr "הגדר את גירסת ה-PDF למסמך הפלט."
 
-msgid "Please wait while all files are processed.."
-msgstr "נא המתן במהלך עיבוד כל הקבצים.."
-
-msgid "Found a password for input file."
-msgstr "נמצאה הגנה בסיסמה עבור קובץ הקלט."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
 msgid "Execute pdf merge"
 msgstr "בצע מיזוג PDF"
 
@@ -86,6 +71,15 @@ msgstr "מזג/חלץ"
 
 msgid "Merge section loaded."
 msgstr "חלק המיזוג נטען."
+
+msgid "Error: "
+msgstr "שגיאה: "
+
+msgid "Please wait while all files are processed.."
+msgstr "נא המתן במהלך עיבוד כל הקבצים.."
+
+msgid "Found a password for input file."
+msgstr "נמצאה הגנה בסיסמה עבור קובץ הקלט."
 
 msgid "Export as xml"
 msgstr ""
@@ -200,21 +194,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr "גודל הפיצול שגוי"
-
-msgid "The lowest available pdf version is "
-msgstr "גירסת ה-PDF הנמוכה ביותר הזמינה היא "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "בחרת גירסת pdf נמוכה עבור הפלט, להמשיך בכל אופן?"
-
-msgid "Pdf version conflict"
-msgstr "התנגשות גירסאות pdf"
-
-msgid "Please select a pdf document."
-msgstr ""
-
 msgid "Split selected file"
 msgstr "פצל את הקובץ הנבחר"
 
@@ -224,10 +203,19 @@ msgstr "פיצול"
 msgid "Split section loaded."
 msgstr "חלק מהפיצול נבחר."
 
+msgid "Invalid split size"
+msgstr "גודל הפיצול שגוי"
+
 msgid "Invalid unit: "
 msgstr "יחידה שגויה: "
 
 msgid "Fill from document"
+msgstr ""
+
+msgid "Please select a pdf document."
+msgstr ""
+
+msgid "Warning"
 msgstr ""
 
 msgid "Getting bookmarks max depth"
@@ -239,14 +227,14 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr "בחר לפחות כריכה אחת וסיומת אחת"
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "חלקי הכריכה והסיומת נטענו."
+
+msgid "Select at least one cover or one footer"
+msgstr "בחר לפחות כריכה אחת וסיומת אחת"
 
 msgid "Encrypt options"
 msgstr ""
@@ -332,6 +320,45 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -354,15 +381,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr ""
-
-msgid "Found a password for second file."
-msgstr ""
-
-msgid "Please select two pdf documents."
-msgstr ""
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -370,6 +388,12 @@ msgid "Alternate Mix"
 msgstr ""
 
 msgid "AlternateMix section loaded."
+msgstr ""
+
+msgid "Found a password for first file."
+msgstr ""
+
+msgid "Found a password for second file."
 msgstr ""
 
 msgid "Unpack selected files"
@@ -485,13 +509,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -518,25 +545,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -637,15 +658,6 @@ msgid "Selection table is full, please remove some pdf document."
 msgstr ""
 
 msgid "Table full"
-msgstr ""
-
-msgid "Please wait while reading"
-msgstr ""
-
-msgid "Selected file is not a pdf document."
-msgstr ""
-
-msgid "Error loading "
 msgstr ""
 
 msgid "Command validation returned an empty value."
@@ -924,15 +936,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr ""
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -943,9 +946,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -975,7 +975,13 @@ msgstr ""
 msgid "Plugins directory is null."
 msgstr ""
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1122,6 +1128,9 @@ msgstr ""
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -1154,6 +1163,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1226,10 +1243,27 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Please select two pdf documents."
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1255,6 +1289,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "גירסת ה-PDF הנמוכה ביותר הזמינה היא "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "בחרת גירסת pdf נמוכה עבור הפלט, להמשיך בכל אופן?"
+
+msgid "Pdf version conflict"
+msgstr "התנגשות גירסאות pdf"
 
 msgid "Error retrieving page saved informations"
 msgstr ""

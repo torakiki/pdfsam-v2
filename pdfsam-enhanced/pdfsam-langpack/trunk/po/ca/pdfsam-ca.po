@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-03-10 13:27+0000\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-10-24 23:58+0000\n"
+"Last-Translator: Josep Sànchez <josep.sanchez@ubuntu.cat>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
-msgstr ""
+msgstr "Opcions de combinació"
 
 msgid "PDF documents contain forms"
 msgstr "Els documents PDF contenen formularis"
@@ -30,14 +30,14 @@ msgid "Unchecked"
 msgstr "Desmarcat"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr "Utilitza aquest tipus de combinació per documents pdf estàndards"
+msgstr "Utilitza aquest tipus de combinació per a documents pdf estàndard"
 
 msgid "Checked"
 msgstr "Marcat"
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr ""
-"Utilitza aquest tipus de combinació per documents pdf que continguin "
+"Utilitza aquest tipus de combinació per a documents pdf que continguin "
 "formularis"
 
 msgid "Note"
@@ -49,9 +49,6 @@ msgstr ""
 
 msgid "Destination output file"
 msgstr "Fitxer de destí"
-
-msgid "Error: "
-msgstr "S'ha produït un error: "
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Navegueu o introduïu el camí complet del fitxer de destí."
@@ -70,18 +67,6 @@ msgstr "Versió PDF 1.5 o superior."
 msgid "Set the pdf version of the ouput document."
 msgstr "Defineix la versió pdf del document de sortida."
 
-msgid "Please wait while all files are processed.."
-msgstr "Espereu mentre es processen tots els fitxers."
-
-msgid "Found a password for input file."
-msgstr "S'ha trobat una contrasenya pel fitxer d'entrada."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
 msgid "Execute pdf merge"
 msgstr "Executa la combinació de pdf"
 
@@ -90,6 +75,15 @@ msgstr "Combina/Extreu"
 
 msgid "Merge section loaded."
 msgstr "Combina la secció carregada."
+
+msgid "Error: "
+msgstr "S'ha produït un error: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Espereu mentre es processen tots els fitxers."
+
+msgid "Found a password for input file."
+msgstr "S'ha trobat una contrasenya pel fitxer d'entrada."
 
 msgid "Export as xml"
 msgstr "Exporta com a xml"
@@ -128,7 +122,7 @@ msgid "Split at this size"
 msgstr "Divideix en aquesta mida"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Separa per nivell de marcadors"
 
 msgid "Burst"
 msgstr "Explosió"
@@ -149,13 +143,15 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Divideix el document després dels números de pàgina (num1-num2-num3..)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Separa el document en fitxers d'una mida determinada (aproximadament)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
+"Separa el document per les pàgines referenciades pels marcadors d'un nivell "
+"determinat"
 
 msgid "Destination folder"
-msgstr ""
+msgstr "Carpeta destí"
 
 msgid "Same as source"
 msgstr "El mateix que la font"
@@ -186,7 +182,7 @@ msgstr ""
 "ja existeixen."
 
 msgid "Output options"
-msgstr ""
+msgstr "Opcions de sortida"
 
 msgid "Output file names prefix:"
 msgstr "Prefix dels fitxers de sortida:"
@@ -198,6 +194,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Si conté \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
+"\"[BOOKMARK_NAME]\" realitza una substitució de variables."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_FileName_005.pdf."
@@ -206,24 +204,11 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"Si no conté \"[CURRENTPAGE]\", \"[TIMESTAMP]\" o \"[FILENUMBER]\" genera una "
+"sortida amb format de nom tradicional."
 
 msgid "Available variables"
-msgstr ""
-
-msgid "Invalid split size"
-msgstr "Mida de divisió incorrecta"
-
-msgid "The lowest available pdf version is "
-msgstr "La versió inferior disponible de pdf és "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Heu triat una versió de sortida inferior de pdf, continuar?"
-
-msgid "Pdf version conflict"
-msgstr "Conflicte de versions de pdf"
-
-msgid "Please select a pdf document."
-msgstr ""
+msgstr "Variables disponibles"
 
 msgid "Split selected file"
 msgstr "Divideix el fitxer seleccionat"
@@ -234,32 +219,41 @@ msgstr "Divideix"
 msgid "Split section loaded."
 msgstr "Divideix la secció carregada."
 
+msgid "Invalid split size"
+msgstr "Mida de divisió incorrecta"
+
 msgid "Invalid unit: "
 msgstr "Unitat no vàlida: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Omplena des del document"
+
+msgid "Please select a pdf document."
+msgstr "Seleccioneu un document pdf."
+
+msgid "Warning"
+msgstr "Advertència"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "Màxima profunditat dels marcadors"
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "Fitxer pdf per la portada"
 
 msgid "Addendum pdf file"
-msgstr ""
-
-msgid "Select at least one cover or one footer"
-msgstr "Selecciona com a mínim una pàgina de coberta i un peu de pàgina"
+msgstr "Fitxer pdf d'apèndix"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "Portada i apèndix"
 
 msgid "Cover And Footer section loaded."
 msgstr "Secció de pàgina de coberta i peu de pàgina carregats"
 
+msgid "Select at least one cover or one footer"
+msgstr "Selecciona com a mínim una pàgina de coberta i un peu de pàgina"
+
 msgid "Encrypt options"
-msgstr ""
+msgstr "Opcions d'encriptació"
 
 msgid "Owner password:"
 msgstr "Contrasenya del propietari:"
@@ -274,7 +268,7 @@ msgid "User password (Max 32 chars long)"
 msgstr "Contrasenya d'usuari (màxim 32 caràcters de longitud)"
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "Algorisme d'encriptació:"
 
 msgid "Allow all"
 msgstr "Permetre'ls tots"
@@ -338,16 +332,55 @@ msgid "Encrypt section loaded."
 msgstr "Xifra la secció carregada."
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "Desxifra els fitxers seleccionats"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "Desxifra"
 
 msgid "Decrypt section loaded."
+msgstr "Desxifra la secció carregada."
+
+msgid "Document metadata"
 msgstr ""
 
-msgid "Mix options"
+msgid "Title"
+msgstr "Títol"
+
+msgid "Author"
+msgstr "Autor/a"
+
+msgid "Subject"
+msgstr "Assumpte"
+
+msgid "Keywords"
+msgstr "Paraules clau"
+
+msgid "Set the document title."
 msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr "Escolliu un fitxer"
+
+msgid "Rotate selected files"
+msgstr "Gira els fitxers seleccionats"
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr "Secció de gir carregada"
+
+msgid "Mix options"
+msgstr "Opcions de mescla"
 
 msgid "Reverse first document"
 msgstr "Inverteix el primer document"
@@ -356,26 +389,20 @@ msgid "Reverse second document"
 msgstr "Inverteix el segon document"
 
 msgid "Number of pages to switch document"
-msgstr ""
+msgstr "Nombre de pàgines per a intercanviar al document"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
+"Marqueu les caixes si voleu invertir el primer o segon document (o ambdós)."
 
 msgid ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 msgstr ""
-
-msgid "Found a password for first file."
-msgstr "S'ha trobat una contrassenya pel primer fitxer"
-
-msgid "Found a password for second file."
-msgstr "S'ha trobat una contrassenya pel segon fitxer"
-
-msgid "Please select two pdf documents."
-msgstr "Si us  plau, seleccioneu dos documents pdf"
+"Estableix el nombre de pàgines a intercanviar d'un document a un altre (per "
+"defecte és 1)."
 
 msgid "Execute pdf alternate mix"
 msgstr "Efectua barreja alterna de pdf"
@@ -385,6 +412,12 @@ msgstr "Barreja alterna"
 
 msgid "AlternateMix section loaded."
 msgstr "Carregada la secció de barreja alterna."
+
+msgid "Found a password for first file."
+msgstr "S'ha trobat una contrassenya pel primer fitxer"
+
+msgid "Found a password for second file."
+msgstr "S'ha trobat una contrassenya pel segon fitxer"
 
 msgid "Unpack selected files"
 msgstr "Descomprimeix els fitxers seleccionats"
@@ -396,162 +429,161 @@ msgid "Unpack section loaded."
 msgstr "Descomprimeix la secció carregada."
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "Estableix les opcions de visualització"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Amaga la barra de menú"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "Amaga la barra d'eines"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Amaga elements de l'interficie d'usuari"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Redimensiona la finestra per adaptar-la a la mida de la pàgina"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Centre de la pantalla"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Mostra el títol del document com a títol de la finestra"
 
 msgid "Pdf version required:"
-msgstr ""
+msgstr "Versió pdf requerida:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Sense escalat de pàgina al diàleg d'impressió"
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "Mode de visualització oberta"
 
 msgid "Viewer layout:"
-msgstr ""
+msgstr "Disposició de visualització:"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Mode sense pantalla completa"
 
 msgid "Direction:"
-msgstr ""
+msgstr "Direcció:"
 
 msgid "Set options"
-msgstr ""
+msgstr "Definiu les opcions"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "Definiu les accions del visor per als fitxers seleccionats"
 
 msgid "Left to right"
-msgstr ""
+msgstr "D'esquerra a dreta"
 
 msgid "Right to left"
-msgstr ""
+msgstr "De dreta a esquerra"
 
 msgid "None"
-msgstr ""
+msgstr "Cap"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantalla completa"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Adjuncions"
 
 msgid "Optional content group panel"
-msgstr ""
+msgstr "Grup de panels de contingut opcional"
 
 msgid "Document outline"
-msgstr ""
+msgstr "Esquema del document"
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniatures"
 
 msgid "One page at a time"
-msgstr ""
+msgstr "Una pàgina cada cop"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Pàgines en una columna"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Pàgines en dues columnes (senar a l'esquerra)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Pàgines en dues columnes (senar a la dreta)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Dos pàgines cada cop (senar a l'esquerra)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Dos pàgines cada cop (senar a la dreta)"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "Opcions de visualització"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "S'ha carregat la secció d'opcions del visualitzador"
 
 msgid "Move on top"
-msgstr ""
+msgstr "Vés a dalt de tot"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Vés a baix de tot"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
-
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
+"Trieu un navegador de fitxers o introduïu el camí sencer al fitxer destí"
 
 msgid "Execute pages reorder"
-msgstr ""
+msgstr "Executa la reordenació de pàgines"
 
 msgid "Visual document composer"
+msgstr "Editor visual de documents"
+
+msgid "Visual Composer section loaded."
 msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr "Seleccioneu un document pdf o desfeu la supressió d'algunes pàgines"
 
 msgid "Rotation"
-msgstr ""
+msgstr "Gir"
 
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgid "Even"
-msgstr ""
+msgstr "Parell"
 
 msgid "Odd"
-msgstr ""
+msgstr "Senar"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "Gir en sentit de les agulles del rellotge (graus):"
 
 msgid "Pages:"
-msgstr ""
+msgstr "Pàgines:"
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
+msgstr "Definiu els graus de gir (en sentit de les agulles del rellotge)"
 
 msgid "Set the pages that will be rotated."
-msgstr ""
-
-msgid "Rotate selected files"
-msgstr ""
+msgstr "Definiu les pàgines que seran girades"
 
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr ""
+msgstr "Gira"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
-
-msgid "Please select a pdf document or undelete some page"
-msgstr ""
+"Empreu el mateix nom del fitxer orígen pel fitxer destí o trieu un fitxer."
 
 msgid "Visual reorder"
+msgstr "Reordenació visual"
+
+msgid "Visual Reorder section loaded."
 msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr "Seleccioneu un document pdf o desfeu la supressió d'algunes pàgines"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -575,37 +607,37 @@ msgid "Log saved."
 msgstr "S'ha desat el registre."
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "No s'ha pogut desar la imatge"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "No s'ha pogut crear la imatge d'un document orígen nul"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr ""
+msgstr "No s'ha pogut crear la miniatura d'un document orígen nul"
 
 msgid "Unable to open the input document"
-msgstr ""
+msgstr "No s'ha pogut obrir el document orígen"
 
 msgid "Input file doesn't exists or is a directory"
-msgstr ""
+msgstr "No existeix el fitxer orígen o és un directori"
 
 msgid "Error opening pdf document"
-msgstr ""
+msgstr "S'ha produit un error en obrir el document pdf"
 
 msgid "Password not provided."
-msgstr ""
+msgstr "No s'ha proporcionat la contrasenya"
 
 msgid "Unable to open the document."
-msgstr ""
+msgstr "No s'ha pogut obrir el document"
 
 msgid "Not enough memory to create thumbnails"
-msgstr ""
+msgstr "No hi ha prou memòria per a crear les miniatures"
 
 msgid "Thumbnails generated in "
-msgstr ""
+msgstr "S'ha generat les miniatures a "
 
 msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "No s'ha pogut crear les miniatures"
 
 msgid " node environment loaded."
 msgstr " carregat el node d'entorn"
@@ -629,40 +661,31 @@ msgid "Error loading environment from input file. "
 msgstr "Error en carregar l'entorn del fitxer d'entrada. "
 
 msgid "Image viewer"
-msgstr ""
+msgstr "Visor d'imatges"
 
 msgid "Unable to initialize the thumbnails creation library."
-msgstr ""
+msgstr "No s'ha pogut inicialitzar la llibreria de creació de miniatures"
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "No s'ha pogut obrir la previsualització d'imatge"
 
 msgid "Unknown Action"
-msgstr ""
+msgstr "Acció desconeguda"
 
 msgid "Error playing sound:"
-msgstr ""
+msgstr "S'ha produït un error en reproduir àudio:"
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "S'ha produït un error en reproduir àudio"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "S'està generant les miniatures emprant la següent llibreria:"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "La taula de selecció és plena, si us plau, esborreu algun document pdf"
 
 msgid "Table full"
 msgstr "Taula plena"
-
-msgid "Please wait while reading"
-msgstr "Espereu mentre es llegeix"
-
-msgid "Selected file is not a pdf document."
-msgstr "El fitxer seleccionat no és un document pdf."
-
-msgid "Error loading "
-msgstr "S'ha produït un error en carregar "
 
 msgid "Command validation returned an empty value."
 msgstr "L'ordre de validació ha tornat un valor nul."
@@ -671,7 +694,7 @@ msgid "Command executed."
 msgstr "Ordre executada."
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "No s'ha pogut buidar el carregador de documents pdf"
 
 msgid "Run"
 msgstr "Executa"
@@ -707,18 +730,20 @@ msgid "Paste"
 msgstr "Enganxa"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "Afegiu un prefix"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
-msgstr ""
+msgstr "La taula de referència creuada conté algun error i s'ha reconstruit"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
 msgstr ""
+"Aquest document no s'ha obert amb la contrasenya del propietari. Heu de "
+"proporcionar la contrasenya del propietari a fi de poder manipular-lo"
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "S'ha produit un error en carregar el document"
 
 msgid "File name"
 msgstr "Nom del fitxer"
@@ -750,6 +775,8 @@ msgstr "Versió pdf del document"
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
+"Feu doble clic per definir les pàgines que voleu combinar (p. ex. 2 o 5-23 o "
+"2,5-7,12-)"
 
 msgid "Add a pdf to the list"
 msgstr "Afegeix un pdf a la llista"
@@ -770,7 +797,7 @@ msgid "Error: Unable to reload the selected file/s."
 msgstr "Error: No s'ha pogut recarregar els fitxers seleccionats."
 
 msgid "Document properties"
-msgstr ""
+msgstr "Propietats del document"
 
 msgid "Unable to remove JList text "
 msgstr "No s'ha pogut eliminar el text JList "
@@ -812,169 +839,157 @@ msgid "Error: Unable to get the file path."
 msgstr "Error: no s'ha pogut obtenir el camí del fitxer"
 
 msgid "Open"
-msgstr ""
+msgstr "Obre"
 
 msgid "Load a pdf document"
-msgstr ""
+msgstr "Carrega un document pdf"
 
 msgid "Zoom in"
-msgstr ""
+msgstr "Apropa"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "S'ha produit un error en definir el nivell de zoom"
 
 msgid "Zoom out"
-msgstr ""
+msgstr "Allunya"
 
 msgid "Preview"
-msgstr ""
+msgstr "Visualització prèvia"
 
 msgid "Delete"
-msgstr ""
+msgstr "Esborra"
 
 msgid "Undelete"
-msgstr ""
+msgstr "Desfès la supressió"
 
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "Gira en sentit horari"
 
 msgid "Rotate anticlockwise"
-msgstr ""
+msgstr "Gira en sentit anti-horari"
 
 msgid "Reverse"
-msgstr ""
+msgstr "Invers"
 
 msgid "Move up selected pages"
-msgstr ""
+msgstr "Puja les pàgines seleccionades"
 
 msgid "Move down selected pages"
-msgstr ""
+msgstr "Baixa les pàgines seleccionades"
 
 msgid "Delete selected pages"
-msgstr ""
+msgstr "Suprimeix les pàgines seleccionades"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "Desfés la supressió de les pàgines seleccionades"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Ctrl+Z)"
 
 msgid "Rotate right"
-msgstr ""
+msgstr "Gira a la dreta"
 
 msgid "Rotate clockwise selected pages"
-msgstr ""
+msgstr "Gira les pàgines seleccionades en sentit horari"
 
 msgid "(Alt+ArrowRight)"
-msgstr ""
+msgstr "(Alt+ArrowRight)"
 
 msgid "Rotate left"
-msgstr ""
+msgstr "Gira a l'esquerra"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "Gira les pàgines seleccionades en sentit anti-horari"
 
 msgid "(Alt+ArrowLeft)"
-msgstr ""
+msgstr "(Alt+Fletxa Esq.)"
 
 msgid "Reverse pages order"
-msgstr ""
+msgstr "Inverteix l'ordre de les pàgines"
 
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 msgid "No"
-msgstr ""
+msgstr "No"
 
 msgid "File: "
-msgstr ""
+msgstr "Fitxer: "
 
 msgid "Pages: "
-msgstr ""
+msgstr "Pàgines: "
 
 msgid "Pdf version: "
-msgstr ""
+msgstr "Versió Pdf: "
 
 msgid "Title: "
-msgstr ""
+msgstr "Títol: "
 
 msgid "Author: "
 msgstr "Autor/a: "
 
 msgid "Creator: "
-msgstr ""
+msgstr "Autor: "
 
 msgid "Producer: "
-msgstr ""
+msgstr "Fet per: "
 
 msgid "Encrypted: "
-msgstr ""
+msgstr "Xifrat: "
 
 msgid "File"
 msgstr "Fitxer"
 
 msgid "Save as"
-msgstr ""
+msgstr "Anomena i desa"
 
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 
 msgid "Error creating preview panel."
-msgstr ""
+msgstr "S'ha produit un error en crear el panell de visualització prèvia"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Nombre de pàgines"
 
 msgid "File size"
-msgstr ""
+msgstr "Mida del fitxer"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "Versió pdf"
 
 msgid "Encryption"
-msgstr ""
+msgstr "Xifrat"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "No està xifrat"
 
 msgid "Permissions"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr "Autor/a"
-
-msgid "Subject"
-msgstr ""
+msgstr "Permisos"
 
 msgid "Producer"
-msgstr ""
+msgstr "Productor"
 
 msgid "Creator"
-msgstr ""
+msgstr "Autor"
 
 msgid "Creation date"
-msgstr ""
+msgstr "Data de creació"
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
-msgstr ""
+msgstr "Data de modificació"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "S'ha produit un error en crear el panell de propietats"
 
 msgid "Please select a single pdf document."
-msgstr ""
+msgstr "Seleccioneu un únic document pdf"
 
 msgid "File type not supported."
-msgstr ""
+msgstr "Aquest tipus de fitxer no està suportat"
 
 msgid "Error during drag and drop."
-msgstr ""
+msgstr "S'ha produit un error en arrossegar i deixar anar"
 
 msgid "Logging level set to "
 msgstr "El nivell de registre està definit a "
@@ -991,8 +1006,14 @@ msgstr "No es pot llegir el directori de connectors "
 msgid "Plugins directory is null."
 msgstr "El directori de connectors és ple."
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "S'ha trobat molts o cap jar al directori de connectors "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "S'ha generat una excepció en carregar connectors."
@@ -1070,10 +1091,10 @@ msgid "Version: "
 msgstr "Versió: "
 
 msgid "Console version: "
-msgstr ""
+msgstr "Versió de la consola "
 
 msgid "Developed by: "
-msgstr ""
+msgstr "Desenvolupat per: "
 
 msgid "Build date: "
 msgstr "Data de muntatge: "
@@ -1121,7 +1142,7 @@ msgid "Language:"
 msgstr "Idioma:"
 
 msgid "Thumbnails creator"
-msgstr ""
+msgstr "Creador de les miniatures"
 
 msgid "Load default environment at startup:"
 msgstr "Carrega l'entorn predeterminat a l'arrencada:"
@@ -1130,12 +1151,15 @@ msgid "Default working directory:"
 msgstr "Directori de treball predeterminat:"
 
 msgid "Check for updates at startup"
-msgstr ""
+msgstr "Verifica les actualitzacions en iniciar"
 
 msgid "Check now"
 msgstr "Verifica-ho ara"
 
 msgid "Play alert sounds"
+msgstr "Reprodueix sons d'alerta"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
 msgstr ""
 
 msgid "Settings "
@@ -1161,7 +1185,7 @@ msgid "Set a log detail level (restart needed)"
 msgstr "Definiu el nivell de detall del registre (cal reiniciar)"
 
 msgid "Set the thumbnails creation library"
-msgstr ""
+msgstr "Defineix la llibreria de creació de miniatures"
 
 msgid "Check for updates"
 msgstr "Comprova si hi ha actualitzacions"
@@ -1172,6 +1196,14 @@ msgstr ""
 "reiniciar)"
 
 msgid "Turn on or off alert sounds"
+msgstr "Activa o desactiva els sons d'alerta"
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1199,12 +1231,14 @@ msgid "Configuration saved."
 msgstr "S'ha desat la configuració."
 
 msgid "Error saving configuration"
-msgstr ""
+msgstr "S'ha produit un error en desar la configuració"
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
 msgstr ""
+"S'ha produit un error en desar la configuració, reviseu el panell de "
+"registre per a més informació."
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Mètode per a JSettingsPanel no implementat"
@@ -1213,7 +1247,7 @@ msgid "New version available: "
 msgstr "Disponible nova versió: "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "No s'ha pogut reproduir el so"
 
 msgid "Plugins"
 msgstr "Connectors"
@@ -1248,41 +1282,70 @@ msgstr "Voleu canviar-ho a"
 msgid "Output location error"
 msgstr "Error en la ubicació de sortida"
 
+msgid "Please select at least one pdf document."
+msgstr "Seleccioneu, com a mínim, un document pdf"
+
+msgid "Please select two pdf documents."
+msgstr "Si us  plau, seleccioneu dos documents pdf"
+
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "El fitxer destí seleccionat ja existeix "
 
 msgid "Would you like to overwrite it?"
+msgstr "El voleu sobreescriure?"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "La selecció de pàgines proporcionada no és vàlida"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Els límits han de ser una llista separada per comes de \"núm. de pàgina\" o "
+"\"núm. de pàgina-núm. de pàgina\""
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "Els límits no són correctes"
 
 msgid "Please provide the password to open the encrypted document"
-msgstr ""
+msgstr "Proporcioneu la contrasenya per a obrir el document xifrat"
 
 msgid "Password request"
-msgstr ""
+msgstr "Petició de contrasenya"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
 msgstr ""
+"La llista de selecció és plena, voleu buidar-la i carregar un nou document?"
 
 msgid "List full"
-msgstr ""
+msgstr "Llista plena"
+
+msgid "The lowest available pdf version is "
+msgstr "La versió inferior disponible de pdf és "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Heu triat una versió de sortida inferior de pdf, continuar?"
+
+msgid "Pdf version conflict"
+msgstr "Conflicte de versions de pdf"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
+msgstr "S'ha produit un error en recuperar informació de les pàgines desades"
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "No s'hapogut inicialitzar el suport d'arrossega i deixa anar."
 
 msgid "Setting look and feel..."
 msgstr "Definint aparença..."
@@ -1296,55 +1359,64 @@ msgstr ""
 "predeterminat (DEBUG)."
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "S'està carregant la configuració de l'interfície d'usuari"
 
 msgid "Unable to find configuration file for the user interface"
-msgstr ""
+msgstr "No es troba el fitxer de configuració de l'interfície d'usuari"
 
 msgid "Error reading the configuration file for the user interface"
 msgstr ""
+"S'ha produit un error en llegir el fitxer de configuració de l'interfície "
+"d'usuari"
 
 msgid "Error initializing the user interface vertical divider location"
 msgstr ""
+"S'ha produit un error en inicialitzar el divisor vertical d'ubicacions de "
+"l'interfície d'usuari"
 
 msgid "Error initializing the user interface horizontal divider location"
 msgstr ""
+"S'ha produit un error en inicialitzar el divisor horitzontal d'ubicacions de "
+"l'interfície d'usuari"
 
 msgid "Error initializing the user interface extended state"
 msgstr ""
+"S'ha produit un error en inicialitzar l'estat estès de l'interfície d'usuari"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "S'ha produit un error en inicialitzar la mida de l'interfície d'usuari"
 
 msgid "Error initializing the user interface horizontal divider size"
 msgstr ""
+"S'ha produit un error en inicialitzar la mida del divisor horitzontal de "
+"l'interfície d'usuari"
 
 msgid "Error initializing the user interface vertical divider size"
 msgstr ""
+"S'ha produit un error en inicialitzar la mida del divisor vertical de "
+"l'interfície d'usuari"
 
 msgid "Error initializing the user interface location"
 msgstr ""
+"S'ha produit un error en inicialitzar la posició de l'interfície d'usuari"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "S'està desant la configuració de l'IGU"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "No s'ha pogut desar l'estat de l'interfície d'usuari"
 
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "No s'ha pogut obtenir la informació predeterminada de l'entorn"
+#~ msgid "Error loading "
+#~ msgstr "S'ha produït un error en carregar "
 
-#~ msgid "Check for updates:"
-#~ msgstr "Comprova les actualitzacions:"
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "El fitxer seleccionat no és un document pdf."
 
-#~ msgid "Error getting default environment."
-#~ msgstr "Error en obtenir l'entorn predeterminat."
+#~ msgid "Please wait while reading"
+#~ msgstr "Espereu mentre es llegeix"
 
 #~ msgid "Never"
 #~ msgstr "Mai"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "arrencada de pdfsam"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
@@ -1352,3 +1424,18 @@ msgstr ""
 #~ msgstr ""
 #~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes "
 #~ "o 5-23 o 2,5-7,12-)"
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "No s'ha pogut obtenir la informació predeterminada de l'entorn"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "S'ha trobat molts o cap jar al directori de connectors "
+
+#~ msgid "Check for updates:"
+#~ msgstr "Comprova les actualitzacions:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Error en obtenir l'entorn predeterminat."
+
+#~ msgid "pdfsam start up"
+#~ msgstr "arrencada de pdfsam"

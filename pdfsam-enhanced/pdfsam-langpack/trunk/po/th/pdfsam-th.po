@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-03-10 13:37+0000\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-11-03 07:52+0000\n"
+"Last-Translator: Krit Marukawisutthigul <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
-msgstr ""
+msgstr "ตัวเลือกของการรวม"
 
 msgid "PDF documents contain forms"
 msgstr ""
@@ -27,13 +27,13 @@ msgid "Merge type"
 msgstr "ชนิดของการรวมไฟล์"
 
 msgid "Unchecked"
-msgstr ""
+msgstr "ไม่เลือก"
 
 msgid "Use this merge type for standard pdf documents"
 msgstr ""
 
 msgid "Checked"
-msgstr ""
+msgstr "เลือก"
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr "ใช้ชนิดของการรวมไฟล์นี้สำหรับเอกสาร pfd ที่เป็นแบบฟอร์ม"
@@ -46,9 +46,6 @@ msgstr "ตั้งค่าตัวเลือกนี้เอกสาร
 
 msgid "Destination output file"
 msgstr "ที่เก็บไฟล์ที่ทำเสร็จแล้ว"
-
-msgid "Error: "
-msgstr "ข้อผิดพลาด: "
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "เลือกหรือป้อนที่เก็บไฟล์ที่ทำเสร็จแล้ว"
@@ -66,18 +63,6 @@ msgstr "เวอร์ชั่น 1.5 หรือใหม่กว่า"
 msgid "Set the pdf version of the ouput document."
 msgstr "ตั้งค่าเวอร์ชั่นของไฟล์ที่ทำเสร็จแล้ว"
 
-msgid "Please wait while all files are processed.."
-msgstr "กรุณารอขณะกำลังประมวณผล"
-
-msgid "Found a password for input file."
-msgstr "พบการตั้งค่ารหัสผ่านของไฟล์นำเข้า"
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
 msgid "Execute pdf merge"
 msgstr "ดำเนินงานรวม pdf"
 
@@ -86,6 +71,15 @@ msgstr "รวม/แตก"
 
 msgid "Merge section loaded."
 msgstr "หมวดการรวมไฟล์ถูกเรียกใช้แล้ว"
+
+msgid "Error: "
+msgstr "ข้อผิดพลาด: "
+
+msgid "Please wait while all files are processed.."
+msgstr "กรุณารอขณะกำลังประมวณผล"
+
+msgid "Found a password for input file."
+msgstr "พบการตั้งค่ารหัสผ่านของไฟล์นำเข้า"
 
 msgid "Export as xml"
 msgstr "ส่งออกเป็นไฟล์ xml"
@@ -151,7 +145,7 @@ msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
 msgid "Destination folder"
-msgstr ""
+msgstr "โฟลเดอร์เป้าหมาย"
 
 msgid "Same as source"
 msgstr "ที่อยู่เดียวกันกับไฟล์นำเข้า"
@@ -176,7 +170,7 @@ msgid ""
 msgstr "เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
 
 msgid "Output options"
-msgstr ""
+msgstr "ตัวเลือกของผลลัพธ์"
 
 msgid "Output file names prefix:"
 msgstr "คำนำหน้าชื่อไฟล์ที่แยก"
@@ -196,23 +190,10 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"ถ้ามันไม่ประกอบด้วย \"[CURRENTPAGE]\", \"[TIMESTAMP]\" หรือ \"[FILENUMBER]\" "
+"มันจะสร้างชื่อแฟ้มผลลัพธ์ในรูปแบบเดิม"
 
 msgid "Available variables"
-msgstr ""
-
-msgid "Invalid split size"
-msgstr "ขนาดไฟล์ที่แยกผิดพลาด"
-
-msgid "The lowest available pdf version is "
-msgstr "pdf รุ่นต่ำสุดที่มีอยู่คือ "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "คุณได้เลือก pdf รุ่นต่ำกว่า, ต้องการทำต่อหรือไม่"
-
-msgid "Pdf version conflict"
-msgstr "รุ่นของ pdf ขัดแย้งกัน"
-
-msgid "Please select a pdf document."
 msgstr ""
 
 msgid "Split selected file"
@@ -224,11 +205,20 @@ msgstr "แยก"
 msgid "Split section loaded."
 msgstr "หมวดการแยกไฟล์ถูกเรียกใช้แล้ว"
 
+msgid "Invalid split size"
+msgstr "ขนาดไฟล์ที่แยกผิดพลาด"
+
 msgid "Invalid unit: "
 msgstr "หน่วยไม่ถูกต้อง "
 
 msgid "Fill from document"
 msgstr ""
+
+msgid "Please select a pdf document."
+msgstr "โปรดเลือกเอกสาร pdf"
+
+msgid "Warning"
+msgstr "คำเตือน"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -239,17 +229,17 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr "เลือกอย่างน้อยหนึ่งปกหรือหนึ่งท้ายกระดาษ"
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "หมวดปกและท้ายกระดาษถูกเรียกใช้งานแล้ว"
 
+msgid "Select at least one cover or one footer"
+msgstr "เลือกอย่างน้อยหนึ่งปกหรือหนึ่งท้ายกระดาษ"
+
 msgid "Encrypt options"
-msgstr ""
+msgstr "ตัวเลือกการเข้ารหัส"
 
 msgid "Owner password:"
 msgstr "รหัสผ่านของเจ้าของ"
@@ -299,7 +289,7 @@ msgid ""
 msgstr "เลือกข้อนี้หากคุณต้องการให้ทำการบีบอัดไฟล์ที่ทำเสร็จแล้ว (pdf รุ่น 1.5 หรือใหม่กว่า)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr ""
+msgstr "ถ้ามันประกอบด้วย \"[TIMESTAMP]\" มันจะทำการแทนที่ตัวแปร"
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
@@ -309,10 +299,10 @@ msgstr ""
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
-msgstr ""
+msgstr "ถ้ามันไม่ประกอบด้วย \"[TIMESTAMP]\" มันจะสร้างแฟ้มผลลัพธ์รูปแบบเดิม"
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr ""
+msgstr "ตัวแปรที่มีอยู่: [TIMESTAMP], [BASENAME]"
 
 msgid "Encrypt selected files"
 msgstr "เข้ารหัสไฟล์ที่ถูกเลือก"
@@ -324,12 +314,51 @@ msgid "Encrypt section loaded."
 msgstr "หมวดเข้ารหัสถูกเเรียกใช้แล้ว"
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "ถอดรหัสแฟ้มที่เลือก"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "ถอดรหัส"
 
 msgid "Decrypt section loaded."
+msgstr ""
+
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "ผู้เขียน"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
 msgstr ""
 
 msgid "Mix options"
@@ -354,15 +383,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "พบรหัสผ่านของไฟล์แรก"
-
-msgid "Found a password for second file."
-msgstr "พบรหัสผ่านของไฟล์ที่สอง"
-
-msgid "Please select two pdf documents."
-msgstr "กรุณาเลือก pdf สองเอกสาร"
-
 msgid "Execute pdf alternate mix"
 msgstr "ดำเนินงาน pdf alternate mix"
 
@@ -371,6 +391,12 @@ msgstr "Alternate Mix"
 
 msgid "AlternateMix section loaded."
 msgstr "โหลดหมวด AlternateMix"
+
+msgid "Found a password for first file."
+msgstr "พบรหัสผ่านของไฟล์แรก"
+
+msgid "Found a password for second file."
+msgstr "พบรหัสผ่านของไฟล์ที่สอง"
 
 msgid "Unpack selected files"
 msgstr "แยกไฟล์ที่เลือกออก"
@@ -385,19 +411,19 @@ msgid "Set viewer options"
 msgstr ""
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "ซ่อนแถบเมนู่"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "ซ่อนแถบเครื่องมือ"
 
 msgid "Hide user interface elements"
 msgstr ""
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "ปรับขนาดหน้าต่างให้พอดีกับขนาดหน้า"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "จัดเข้ากึ่งกลางจอ"
 
 msgid "Display document title as window title"
 msgstr ""
@@ -421,22 +447,22 @@ msgid "Direction:"
 msgstr ""
 
 msgid "Set options"
-msgstr ""
+msgstr "ตั้งค่าตัวเลือก"
 
 msgid "Set viewer options for selected files"
 msgstr ""
 
 msgid "Left to right"
-msgstr ""
+msgstr "ซ้ายไปขวา"
 
 msgid "Right to left"
-msgstr ""
+msgstr "ขวาไปซ้าย"
 
 msgid "None"
-msgstr ""
+msgstr "ไม่มี"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "เต็มจอ"
 
 msgid "Attachments"
 msgstr ""
@@ -448,19 +474,19 @@ msgid "Document outline"
 msgstr ""
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "รูปย่อ"
 
 msgid "One page at a time"
 msgstr ""
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "หน้าใน 1 สดมภ์"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "หน้าใน 2 สดมภ์ (หน้าคี่อยู่ซ้าย)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "หน้าใน 2 สดมภ์ (หน้าคี่อยู่ขวา)"
 
 msgid "Two pages at a time (odd on the left)"
 msgstr ""
@@ -485,13 +511,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -518,25 +547,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -639,15 +662,6 @@ msgstr "ตารางที่เลือกเต็ม กรุณาล�
 msgid "Table full"
 msgstr "ตารางเต็ม"
 
-msgid "Please wait while reading"
-msgstr "กรุณารอขณะนี้กำลังอ่านอยู่"
-
-msgid "Selected file is not a pdf document."
-msgstr "ไฟล์ที่เลือกไม่ใช่เอกสาร pdf"
-
-msgid "Error loading "
-msgstr "เกิดความผิดพลาดขณะโหลด "
-
 msgid "Command validation returned an empty value."
 msgstr ""
 
@@ -685,10 +699,10 @@ msgid "Copy"
 msgstr "คัดลอก"
 
 msgid "Cut"
-msgstr ""
+msgstr "ตัด"
 
 msgid "Paste"
-msgstr ""
+msgstr "วาง"
 
 msgid "Add prefix"
 msgstr ""
@@ -924,15 +938,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr "ผู้เขียน"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -943,9 +948,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -975,8 +977,14 @@ msgstr "ไม่สามารถอ่านห้องเก็บโปร
 msgid "Plugins directory is null."
 msgstr "ห้องเก็บโปรแกรมเสริมว่างเปล่า"
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Found zero or many jars ในห้องเก็บโปรแกรมเสริม "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "โปรแกรมเสริมที่ไม่ต้องโหลด"
@@ -1081,7 +1089,7 @@ msgid "Name"
 msgstr "ชื่อ"
 
 msgid "About"
-msgstr ""
+msgstr "เกี่ยวกับ"
 
 msgid "Unimplemented method for JInfoPanel"
 msgstr ""
@@ -1093,7 +1101,7 @@ msgid "Log level:"
 msgstr "ระดับการบันทึก:"
 
 msgid "Settings"
-msgstr ""
+msgstr "การตั้งค่า"
 
 msgid "Look and feel:"
 msgstr "มุมมองและรูปแบบ:"
@@ -1120,6 +1128,9 @@ msgid "Check now"
 msgstr "ตรวจสอบทันที"
 
 msgid "Play alert sounds"
+msgstr "เล่นเสียงเตือน"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
 msgstr ""
 
 msgid "Settings "
@@ -1154,6 +1165,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr "เปิดหรือปิดเสียงเตือน"
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1194,7 +1213,7 @@ msgid "Unable to play sound."
 msgstr ""
 
 msgid "Plugins"
-msgstr ""
+msgstr "ปลั๊กอิน"
 
 msgid "Error getting pdf version description."
 msgstr "เกิดข้อผิดพลาดในการเรียกดูรายละเอียดของรุ่น pdf"
@@ -1226,10 +1245,27 @@ msgstr "คุณต้องการที่จะเปลี่ยนมั
 msgid "Output location error"
 msgstr "ที่เก็บไฟล์ที่เสร็จแล้วไม่ถูกต้อง"
 
+msgid "Please select at least one pdf document."
+msgstr "โปรดเลือกเอกสาร PDF อย่างน้อย 1 เอกสาร"
+
+msgid "Please select two pdf documents."
+msgstr "กรุณาเลือก pdf สองเอกสาร"
+
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "ข้อมูลที่เลือกมีอยู่แล้ว "
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1255,6 +1291,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "pdf รุ่นต่ำสุดที่มีอยู่คือ "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "คุณได้เลือก pdf รุ่นต่ำกว่า, ต้องการทำต่อหรือไม่"
+
+msgid "Pdf version conflict"
+msgstr "รุ่นของ pdf ขัดแย้งกัน"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1307,22 +1352,34 @@ msgstr ""
 msgid "Unable to save user interface status."
 msgstr ""
 
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "ไม่สามารถเอาข้อมูลสภาพแวดล้อมการทำงานแบบปริยาย"
+#~ msgid "Never"
+#~ msgstr "ไม่มีทาง"
+
+#~ msgid "Error loading "
+#~ msgstr "เกิดความผิดพลาดขณะโหลด "
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "ไฟล์ที่เลือกไม่ใช่เอกสาร pdf"
+
+#~ msgid "Please wait while reading"
+#~ msgstr "กรุณารอขณะนี้กำลังอ่านอยู่"
 
 #~ msgid "Check for updates:"
 #~ msgstr "ตรวจสอบเพื่ออัพเดตโปรแกรม"
 
+#~ msgid "pdfsam start up"
+#~ msgstr "เริ่มการทำงาน pdfsam"
+
 #~ msgid "Error getting default environment."
 #~ msgstr "เกิดข้อผิดพลาดในการใช้งานสภาพแวดล้อมการทำงานแบบปริยาย"
 
-#~ msgid "Never"
-#~ msgstr "ไม่มีทาง"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "เริ่มการทำงาน pdfsam"
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "ไม่สามารถเอาข้อมูลสภาพแวดล้อมการทำงานแบบปริยาย"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 #~ "7,12-)"
 #~ msgstr "ดับเบิลคลิกเพื่อตั้งหน้าที่ต้องการจะรวม (ex: 2 or All or 5-23 or 2,5-7,12-)"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Found zero or many jars ในห้องเก็บโปรแกรมเสริม "

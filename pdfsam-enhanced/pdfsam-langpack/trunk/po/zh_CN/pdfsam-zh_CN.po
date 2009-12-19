@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-03-29 00:08+0000\n"
-"Last-Translator: sfbi <wonease@gmail.com>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-10-28 11:07+0000\n"
+"Last-Translator: 王英华 <wantinghard@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: CHINA\n"
 "X-Poedit-Language: Chinese\n"
@@ -21,86 +21,36 @@ msgstr ""
 msgid "Merge options"
 msgstr "合并选项"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:392
 msgid "PDF documents contain forms"
 msgstr "PDF 文档包含表单"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:394
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 msgid "Merge type"
 msgstr "合并类型"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
 msgid "Unchecked"
 msgstr "未检查"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:398
 msgid "Use this merge type for standard pdf documents"
 msgstr "这种合并类型用于标准 PDF 文档"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
 msgid "Checked"
 msgstr "已检查"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
 msgid "Use this merge type for pdf documents containing forms"
 msgstr "这种合并类型用于包含表单的 PDF 文档"
 
 msgid "Note"
 msgstr "注"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "设置此选项，文档就会被完全载入内存"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:444
 msgid "Destination output file"
 msgstr "目标输出文件"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:441
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:599
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:619
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:649
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:879
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:983
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:616
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:423
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:588
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:608
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:638
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:861
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:977
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:143
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:170
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:237
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:498
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:539
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:256
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:427
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:599
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:907
-msgid "Error: "
-msgstr "错误： "
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:445
 msgid "Browse or enter the full path to the destination output file."
 msgstr "浏览或输入目标输出文件的完整路径。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr "如果向覆盖已存在的输出文件，就勾选此框。"
@@ -114,39 +64,23 @@ msgstr "PDF 版本1.5或更高。"
 msgid "Set the pdf version of the ouput document."
 msgstr "设置输出文档的 pdf 版本号。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
-msgid "Please wait while all files are processed.."
-msgstr "请等待所有的文件处理完毕..."
-
-msgid "Found a password for input file."
-msgstr "输入文件需要密码。"
-
-msgid "Please select at least one pdf document."
-msgstr "请选择至少一个pdf文档"
-
-msgid "Warning"
-msgstr "警告"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
 msgid "Execute pdf merge"
 msgstr "执行 PDF 合并"
 
 msgid "Merge/Extract"
 msgstr "合并/解压"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
 msgid "Merge section loaded."
 msgstr "合并部分已载入。"
+
+msgid "Error: "
+msgstr "错误： "
+
+msgid "Please wait while all files are processed.."
+msgstr "请等待所有的文件处理完毕..."
+
+msgid "Found a password for input file."
+msgstr "输入文件需要密码。"
 
 msgid "Export as xml"
 msgstr "导出为 xml"
@@ -163,8 +97,6 @@ msgstr "xml 文件已保存。"
 msgid "Error saving xml file, output file is null."
 msgstr "保存 xml 文件出错，没有输出。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:220
 msgid "Split options"
 msgstr "拆分选项"
 
@@ -174,24 +106,12 @@ msgstr "爆裂 (拆分为单页文件)"
 msgid "Split every \"n\" pages"
 msgstr "每\"n\"页分割一次"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:206
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:205
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 msgid "Split even pages"
 msgstr "拆分偶数页"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:209
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:208
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
 msgid "Split odd pages"
 msgstr "拆分奇数页"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:212
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:211
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Split after these pages"
 msgstr "在这些页面后拆分"
 
@@ -210,67 +130,41 @@ msgstr "将 PDF 文档分割为单页文件"
 msgid "Split the document every \"n\" pages"
 msgstr "每\"n\" 页就拆分一次文档"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 msgid "Split the document every even page"
 msgstr "每遇到偶数页就拆分文档"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:224
 msgid "Split the document every odd page"
 msgstr "每遇到奇数页就拆分文档"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:225
 msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "在页码（num1-num2-num3...）之后拆分文档"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "以指定大小分割文档"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr ""
+msgstr "在给定级别的书签指向的页面处分割文档"
 
 msgid "Destination folder"
 msgstr "目标文件夹"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
 msgid "Same as source"
 msgstr "和源相同"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:301
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:260
 msgid "Choose a folder"
 msgstr "选择文件夹"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:458
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:345
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:309
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
 msgid "Destination output directory"
 msgstr "目标输出目录"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:346
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:310
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:306
 msgid "Use the same output folder as the input file or choose a folder."
 msgstr "使用和输入文件相同的输出文件夹，或选择一个文件夹。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:347
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:311
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:307
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr "要选择文件夹，浏览或输入目标输出目录的完整路径。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:312
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:308
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
@@ -279,15 +173,9 @@ msgstr "如果想覆盖已存在的输出文件，就勾选此框。"
 msgid "Output options"
 msgstr "输出选项"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:326
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:322
 msgid "Output file names prefix:"
 msgstr "输出文件名前缀："
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:394
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:336
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:331
 msgid "Output files prefix"
 msgstr "输出文件名前缀"
 
@@ -296,8 +184,6 @@ msgid ""
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:333
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "例如，prefix_[BASENAME]_[CURRENTPAGE] 产生 prefix_FileName_005.pdf。"
 
@@ -307,22 +193,7 @@ msgid ""
 msgstr ""
 
 msgid "Available variables"
-msgstr ""
-
-msgid "Invalid split size"
-msgstr "非法的分割大小"
-
-msgid "The lowest available pdf version is "
-msgstr "最低的可用 pdf 版本号是 "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "你选择的 pdf 版本号过低，仍然继续？"
-
-msgid "Pdf version conflict"
-msgstr "PDF 版本冲突"
-
-msgid "Please select a pdf document."
-msgstr "请选择一个pdf文档"
+msgstr "可用变量"
 
 msgid "Split selected file"
 msgstr "分割选择的文件"
@@ -330,9 +201,11 @@ msgstr "分割选择的文件"
 msgid "Split"
 msgstr "分割"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:536
 msgid "Split section loaded."
 msgstr "拆分部分已载入。"
+
+msgid "Invalid split size"
+msgstr "非法的分割大小"
 
 msgid "Invalid unit: "
 msgstr "单位错误： "
@@ -340,17 +213,20 @@ msgstr "单位错误： "
 msgid "Fill from document"
 msgstr ""
 
+msgid "Please select a pdf document."
+msgstr "请选择一个pdf文档"
+
+msgid "Warning"
+msgstr "警告"
+
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "获取书签最大深度"
 
 msgid "Frontpage pdf file"
 msgstr ""
 
 msgid "Addendum pdf file"
-msgstr ""
-
-msgid "Select at least one cover or one footer"
-msgstr "至少选择一个封面或封底"
+msgstr "附录pdf文件"
 
 msgid "Frontpage and Addendum"
 msgstr ""
@@ -359,61 +235,51 @@ msgstr ""
 msgid "Cover And Footer section loaded."
 msgstr "封面和封底部分已载入。"
 
+msgid "Select at least one cover or one footer"
+msgstr "至少选择一个封面或封底"
+
 msgid "Encrypt options"
 msgstr "加密选项"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:206
 msgid "Owner password:"
 msgstr "所有者密码："
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:210
 msgid "Owner password (Max 32 chars long)"
 msgstr "所有者密码（最长 32 字符）"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
 msgid "User password:"
 msgstr "用户密码："
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:218
 msgid "User password (Max 32 chars long)"
 msgstr "用户密码（最长 32 字符）"
 
 msgid "Encryption algorithm:"
 msgstr "加密算法"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:253
 msgid "Allow all"
 msgstr "全部允许"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:229
 msgid "Print"
 msgstr "打印"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:232
 msgid "Low quality print"
 msgstr "低质量打印"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:235
 msgid "Copy or extract"
 msgstr "复制或提取"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
 msgid "Modify"
 msgstr "修改"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
 msgid "Add or modify text annotations"
 msgstr "添加或修改文本注释"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
 msgid "Fill form fields"
 msgstr "填写表单字段"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
 msgid "Extract for use by accessibility dev."
-msgstr "提取以用于可访问性开发。"
+msgstr "提取以用于无障碍设备。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:250
 msgid "Manipulate pages and add bookmarks"
 msgstr "操作页面和添加书签"
 
@@ -422,11 +288,9 @@ msgid ""
 "higher)."
 msgstr "如果希望覆盖已有文件，则勾选此项（ PDF 1.5 或更高版本)。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:395
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr "如果包含 \"[TIMESTAMP]\"，就会进行变量替换。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:396
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
@@ -434,13 +298,11 @@ msgstr ""
 "例如，[BASENAME]_prefix_[TIMESTAMP] 产生 FileName_prefix_20070517_113423471."
 "pdf。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:397
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr "如果不包含 \"[时间戳]\"，就产生旧格式的输出文件名。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:398
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "可用变量：[TIMESTAMP]、[BASENAME]。"
 
@@ -451,7 +313,6 @@ msgstr "加密选择的文件"
 msgid "Encrypt"
 msgstr "加密"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
 msgid "Encrypt section loaded."
 msgstr "加密部分已载入。"
 
@@ -462,10 +323,49 @@ msgid "Decrypt"
 msgstr "解码"
 
 msgid "Decrypt section loaded."
+msgstr "解密部分已经加载"
+
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr "标题"
+
+msgid "Author"
+msgstr "作者"
+
+msgid "Subject"
+msgstr "主题"
+
+msgid "Keywords"
+msgstr "关键词"
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr "选择一个文件"
+
+msgid "Rotate selected files"
+msgstr "旋转选定的文件"
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
 msgstr ""
 
 msgid "Mix options"
-msgstr ""
+msgstr "混合选项"
 
 msgid "Reverse first document"
 msgstr "反转第一个文档"
@@ -486,25 +386,20 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "第一个文件需要密码。"
-
-msgid "Found a password for second file."
-msgstr "第二个文件需要密码。"
-
-msgid "Please select two pdf documents."
-msgstr "请选择两个 PDF 文档。"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
 msgstr "执行 PDF 交替混合"
 
 msgid "Alternate Mix"
 msgstr "交替混合"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
 msgid "AlternateMix section loaded."
 msgstr "交替混合部分已载入。"
+
+msgid "Found a password for first file."
+msgstr "第一个文件需要密码。"
+
+msgid "Found a password for second file."
+msgstr "第二个文件需要密码。"
 
 msgid "Unpack selected files"
 msgstr "解包所选文件"
@@ -516,76 +411,76 @@ msgid "Unpack section loaded."
 msgstr "解包部分已载入。"
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "设置文档查看器选项"
 
 msgid "Hide the menubar"
 msgstr ""
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "隐藏工具栏"
 
 msgid "Hide user interface elements"
 msgstr ""
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "根据页面重排窗口"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "屏幕中间"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "显示文档标题作为窗口标题"
 
 msgid "Pdf version required:"
-msgstr ""
+msgstr "Pdf 版本需求"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "在打印对话中不可页面缩放"
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "视图模式"
 
 msgid "Viewer layout:"
-msgstr ""
+msgstr "视图层"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "非全屏模式"
 
 msgid "Direction:"
-msgstr ""
+msgstr "方向："
 
 msgid "Set options"
-msgstr ""
+msgstr "设置选项"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "为选定的文件设置视图选项"
 
 msgid "Left to right"
-msgstr ""
+msgstr "从左到右"
 
 msgid "Right to left"
-msgstr ""
+msgstr "从右到左"
 
 msgid "None"
-msgstr ""
+msgstr "无"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "全屏"
 
 msgid "Attachments"
-msgstr ""
+msgstr "附件"
 
 msgid "Optional content group panel"
 msgstr ""
 
 msgid "Document outline"
-msgstr ""
+msgstr "文档概要"
 
 msgid "Thumbnail images"
 msgstr ""
 
 msgid "One page at a time"
-msgstr ""
+msgstr "每次一页"
 
 msgid "Pages in one column"
 msgstr ""
@@ -597,10 +492,10 @@ msgid "Pages in two columns (odd on the right)"
 msgstr ""
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "每次两页（奇数页在左）"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "每次两页（奇数页在右）"
 
 msgid "Viewer options"
 msgstr ""
@@ -609,36 +504,39 @@ msgid "Viewer options section loaded."
 msgstr ""
 
 msgid "Move on top"
-msgstr ""
+msgstr "移至顶端"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "移至底端"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
 
+msgid "Execute pages reorder"
+msgstr "页面重新排序"
+
+msgid "Visual document composer"
+msgstr "可视化文档设计器"
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
 msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
-msgid "Execute pages reorder"
-msgstr ""
-
-msgid "Visual document composer"
-msgstr ""
-
 msgid "Rotation"
-msgstr ""
+msgstr "旋转"
 
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgid "Even"
-msgstr ""
+msgstr "偶数"
 
 msgid "Odd"
-msgstr ""
+msgstr "奇数"
 
 msgid "Clockwise rotation (degrees):"
 msgstr ""
@@ -652,25 +550,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr ""
+msgstr "旋转"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -680,7 +572,6 @@ msgstr "保存密码信息？（这些信息能在输出文件中查看）"
 msgid "Confirm password saving"
 msgstr "确认保存密码"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
 msgid "Unknown action."
 msgstr "未知操作。"
 
@@ -690,12 +581,11 @@ msgstr "检查到新版本。"
 msgid "No new version available."
 msgstr "没有检测到新的版本。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
 msgid "Log saved."
 msgstr "日志已保存。"
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "无法保存图像"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -704,19 +594,19 @@ msgid "Unable to create thumbnails for a null input document"
 msgstr ""
 
 msgid "Unable to open the input document"
-msgstr ""
+msgstr "无法打开输入文档"
 
 msgid "Input file doesn't exists or is a directory"
-msgstr ""
+msgstr "输入文件不存在或者是一个目录"
 
 msgid "Error opening pdf document"
-msgstr ""
+msgstr "打开pdf文档错误"
 
 msgid "Password not provided."
-msgstr ""
+msgstr "没有提供密码。"
 
 msgid "Unable to open the document."
-msgstr ""
+msgstr "无法打开文档。"
 
 msgid "Not enough memory to create thumbnails"
 msgstr ""
@@ -749,22 +639,22 @@ msgid "Error loading environment from input file. "
 msgstr "从输入文件载入环境时出错。 "
 
 msgid "Image viewer"
-msgstr ""
+msgstr "图像浏览器"
 
 msgid "Unable to initialize the thumbnails creation library."
 msgstr ""
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "无法打开图像预览"
 
 msgid "Unknown Action"
-msgstr ""
+msgstr "位置操作"
 
 msgid "Error playing sound:"
-msgstr ""
+msgstr "播放声音时发生错误："
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "播放声音时发生错误"
 
 msgid "Generating thumbnails using the following library:"
 msgstr ""
@@ -775,20 +665,6 @@ msgstr "备选表已满，请删除一些 pdf 文档"
 msgid "Table full"
 msgstr "备选表已满"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-msgid "Please wait while reading"
-msgstr "请稍候。正在读取"
-
-msgid "Selected file is not a pdf document."
-msgstr "选择的文件不是 PDF 文档。"
-
-msgid "Error loading "
-msgstr "载入环出错 "
-
 msgid "Command validation returned an empty value."
 msgstr "命令验证返回一个空值。"
 
@@ -798,37 +674,12 @@ msgstr "命令已执行。"
 msgid "Unable to clean pdf loader"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:526
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:320
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:410
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:530
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:408
 msgid "Run"
 msgstr "运行"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:394
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:421
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:448
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:175
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:340
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:430
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:150
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:177
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:244
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:164
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:304
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:233
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:434
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:163
-# F:\pdfsam\workspace-basic\pdfsam-split\src\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:300
 msgid "Browse"
 msgstr "浏览"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:264
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:257
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:260
 msgid "Add"
 msgstr "添加"
 
@@ -847,18 +698,17 @@ msgstr "输出文档的 PDF 版本："
 msgid "Same as input document"
 msgstr "和输入文档相同"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:99
 msgid "Copy"
 msgstr "复制"
 
 msgid "Cut"
-msgstr ""
+msgstr "剪切"
 
 msgid "Paste"
-msgstr ""
+msgstr "粘贴"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "添加前缀"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr ""
@@ -869,37 +719,23 @@ msgid ""
 msgstr ""
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "载入文档时有错误发生"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:180
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:178
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
 msgid "File name"
 msgstr "文件名"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:181
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:179
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:182
 msgid "Path"
 msgstr "路径"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:182
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:180
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:183
 msgid "Pages"
 msgstr "页数"
 
 msgid "Password"
 msgstr "口令"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Version"
 msgstr "版本"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:183
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:181
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:184
 msgid "Page Selection"
 msgstr "页面选择"
 
@@ -914,11 +750,8 @@ msgstr "文档的 PDF 版本号"
 
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
-msgstr ""
+msgstr "双击设置要合并的页面 （比如：2 或 5-23 或 2,5-7, 12-）"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:228
 msgid "Add a pdf to the list"
 msgstr "向列表添加 PDF 文件"
 
@@ -928,12 +761,6 @@ msgstr "从列表中移除 PDF 文件"
 msgid "(Canc)"
 msgstr "(取消)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:311
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:269
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:314
 msgid "Remove"
 msgstr "移除"
 
@@ -944,117 +771,88 @@ msgid "Error: Unable to reload the selected file/s."
 msgstr "错误：无法读取选择的文件。"
 
 msgid "Document properties"
-msgstr ""
+msgstr "文档属性"
 
 msgid "Unable to remove JList text "
 msgstr "无法删除 JList 文本 "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:596
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:646
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:585
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:635
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:596
 msgid "File selected: "
 msgstr "选择的文件： "
 
 msgid "File reloaded: "
 msgstr "重新载入的文件： "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:276
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:323
 msgid "Move Up"
 msgstr "上移"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:277
 msgid "Move up selected pdf file"
 msgstr "上移选择的 PDF 文件"
 
 msgid "(Alt+ArrowUp)"
 msgstr "(Alt+向上键)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:285
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:332
 msgid "Move Down"
 msgstr "下移"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
 msgid "Move down selected pdf file"
 msgstr "下移选择的 PDF 文件"
 
 msgid "(Alt+ArrowDown)"
 msgstr "(Alt+向下键)"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:297
 msgid "Clear"
 msgstr "清空"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:298
 msgid "Remove every pdf file from the merge list"
 msgstr "从合并列表移除全部 PDF 文件"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:341
 msgid "Set output file"
 msgstr "设置输出文件"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:353
 msgid "Error: Unable to get the file path."
 msgstr "错误：无法获取文件路径。"
 
 msgid "Open"
-msgstr ""
+msgstr "打开"
 
 msgid "Load a pdf document"
 msgstr ""
 
 msgid "Zoom in"
-msgstr ""
+msgstr "放大"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "设置缩放级别出错。"
 
 msgid "Zoom out"
-msgstr ""
+msgstr "缩小"
 
 msgid "Preview"
-msgstr ""
+msgstr "预览"
 
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 msgid "Undelete"
-msgstr ""
+msgstr "恢复"
 
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "顺时针旋转"
 
 msgid "Rotate anticlockwise"
-msgstr ""
+msgstr "逆时针旋转"
 
 msgid "Reverse"
-msgstr ""
+msgstr "反转"
 
 msgid "Move up selected pages"
-msgstr ""
+msgstr "上移选定页面"
 
 msgid "Move down selected pages"
-msgstr ""
+msgstr "下移选定页面"
 
 msgid "Delete selected pages"
-msgstr ""
+msgstr "删除选中的页面"
 
 msgid "Undelete selected pages"
 msgstr ""
@@ -1063,19 +861,19 @@ msgid "(Ctrl+Z)"
 msgstr ""
 
 msgid "Rotate right"
-msgstr ""
+msgstr "向右旋转"
 
 msgid "Rotate clockwise selected pages"
-msgstr ""
+msgstr "顺时针旋转选定的页面"
 
 msgid "(Alt+ArrowRight)"
 msgstr ""
 
 msgid "Rotate left"
-msgstr ""
+msgstr "向左旋转"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "逆时针旋转选定的页面"
 
 msgid "(Alt+ArrowLeft)"
 msgstr ""
@@ -1084,28 +882,28 @@ msgid "Reverse pages order"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 msgid "No"
-msgstr ""
+msgstr "否"
 
 msgid "File: "
-msgstr ""
+msgstr "文件： "
 
 msgid "Pages: "
 msgstr ""
 
 msgid "Pdf version: "
-msgstr ""
+msgstr "Pdf版本： "
 
 msgid "Title: "
-msgstr ""
+msgstr "标题： "
 
 msgid "Author: "
 msgstr "作者： "
 
 msgid "Creator: "
-msgstr ""
+msgstr "创建者： "
 
 msgid "Producer: "
 msgstr ""
@@ -1113,76 +911,59 @@ msgstr ""
 msgid "Encrypted: "
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:217
 msgid "File"
 msgstr "文件"
 
 msgid "Save as"
-msgstr ""
+msgstr "另存为"
 
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:150
 msgid "Close"
 msgstr "关闭"
 
 msgid "Error creating preview panel."
-msgstr ""
+msgstr "创建预览面板错误"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "页数"
 
 msgid "File size"
-msgstr ""
+msgstr "文件大小"
 
 msgid "Pdf version"
-msgstr ""
+msgstr "Pdf 版本"
 
 msgid "Encryption"
-msgstr ""
+msgstr "加密"
 
 msgid "Not encrypted"
-msgstr ""
+msgstr "未加密"
 
 msgid "Permissions"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "作者"
-
-msgid "Subject"
-msgstr ""
+msgstr "权限"
 
 msgid "Producer"
-msgstr ""
+msgstr "制作人"
 
 msgid "Creator"
-msgstr ""
+msgstr "创建者"
 
 msgid "Creation date"
-msgstr ""
+msgstr "创建日期"
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
-msgstr ""
+msgstr "修改日期"
 
 msgid "Error creating properties panel."
-msgstr ""
+msgstr "创建属性面板错误。"
 
 msgid "Please select a single pdf document."
-msgstr ""
+msgstr "请选择单个pdf文档"
 
 msgid "File type not supported."
-msgstr ""
+msgstr "文件类型不支持。"
 
 msgid "Error during drag and drop."
-msgstr ""
+msgstr "拖放过程中有错误发生。"
 
 msgid "Logging level set to "
 msgstr "日志级别设置为： "
@@ -1199,8 +980,14 @@ msgstr "无法读取插件目录 "
 msgid "Plugins directory is null."
 msgstr "插件目录为空。"
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "插件目录中的 Jar 不唯一 "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "排除插件载入。"
@@ -1226,28 +1013,18 @@ msgstr "检查新的版本。"
 msgid "Error checking for a new version available."
 msgstr "查找更新出错。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 msgid "Select all"
 msgstr "全选"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:117
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:121
 msgid "Save log"
 msgstr "保存日志"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
 msgid "Save environment"
 msgstr "保存环境"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
 msgid "Load environment"
 msgstr "载入环境"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:237
 msgid "Exit"
 msgstr "退出"
 
@@ -1257,23 +1034,18 @@ msgstr "未能初始化菜单栏。"
 msgid "started in "
 msgstr "开始于 "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:188
 msgid "Loading plugins.."
 msgstr "载入插件..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:259
 msgid "Building status bar.."
 msgstr "构建状态栏..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:231
 msgid "Building tree.."
 msgstr "构建树形图..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:167
 msgid "Building menus.."
 msgstr "生成菜单..."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\GUI\MainGUI.java:173
 msgid "Building buttons bar.."
 msgstr "构建按钮栏..."
 
@@ -1283,23 +1055,20 @@ msgstr "加载默认的环境设置"
 msgid "Error starting pdfsam."
 msgstr "启动 pdfsam 出错。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:121
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:226
 msgid "Clear log"
 msgstr "清空日志"
 
 msgid "Unable to initialize button bar."
 msgstr "无法初始化按钮栏。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
 msgid "Version: "
 msgstr "版本： "
 
 msgid "Console version: "
-msgstr ""
+msgstr "控制台版本： "
 
 msgid "Developed by: "
-msgstr ""
+msgstr "开发者： "
 
 msgid "Build date: "
 msgstr "构建日期: "
@@ -1316,17 +1085,12 @@ msgstr "最大内存： "
 msgid "Configuration file: "
 msgstr "配置文件： "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:107
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:118
 msgid "Website: "
 msgstr "网站： "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\InfoGUI.java:128
 msgid "Name"
 msgstr "名称"
 
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\GUI\MainGUI.java:222
 msgid "About"
 msgstr "关于"
 
@@ -1336,15 +1100,12 @@ msgstr "JInfoPanel 未实现的方法"
 msgid "Contributes: "
 msgstr "贡献： "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:128
 msgid "Log level:"
 msgstr "日志级别："
 
 msgid "Settings"
 msgstr "设置"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:119
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:110
 msgid "Look and feel:"
 msgstr "外观感觉："
 
@@ -1357,7 +1118,6 @@ msgstr "语言:"
 msgid "Thumbnails creator"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:131
 msgid "Load default environment at startup:"
 msgstr "启动时载入默认环境："
 
@@ -1365,45 +1125,36 @@ msgid "Default working directory:"
 msgstr "默认工作目录："
 
 msgid "Check for updates at startup"
-msgstr ""
+msgstr "启动时检查更新"
 
 msgid "Check now"
 msgstr "立即检查"
 
 msgid "Play alert sounds"
+msgstr "播放提示音"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:181
 msgid "Settings "
 msgstr "设置 "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
 msgid "Language"
 msgstr "语言"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:224
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:182
 msgid "Set your preferred language (restart needed)"
 msgstr "设置首选语言（需要重新启动）"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
 msgid "Look and feel"
 msgstr "外观感觉"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:183
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
 msgstr "设置首选外观感觉和首选主题（需要重新启动）"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
 msgid "Log level"
 msgstr "日志级别"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:226
 msgid "Set a log detail level (restart needed)"
 msgstr "设置日期详细级别（需要重新启动）"
 
@@ -1417,13 +1168,19 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr "设置是否检测更新（需要重启）"
 
 msgid "Turn on or off alert sounds"
+msgstr "开启或关闭提示音"
+
+msgid "Ask overwrite confirmation"
 msgstr ""
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
+
 msgid "Default env."
 msgstr "默认环境。"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
@@ -1435,9 +1192,6 @@ msgstr "默认工作目录"
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "设置默认的文档保存和加载路径"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:241
-# F:\pdfsam\workspace-basic\pdfsam-main\src\it\pdfsam\panels\JSettingsPanel.java:190
 msgid "Save"
 msgstr "保存"
 
@@ -1445,12 +1199,12 @@ msgid "Configuration saved."
 msgstr "配置已保存。"
 
 msgid "Error saving configuration"
-msgstr ""
+msgstr "保存配置时发生错误"
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
-msgstr ""
+msgstr "保存配置时有错误发生，详情参见日志面板。"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "JSettingsPanel 未实现的方法"
@@ -1459,7 +1213,7 @@ msgid "New version available: "
 msgstr "新版本可用： "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "无法播放声音。"
 
 msgid "Plugins"
 msgstr "插件"
@@ -1494,14 +1248,31 @@ msgstr "你是否希望更改为"
 msgid "Output location error"
 msgstr "输出位置错误"
 
+msgid "Please select at least one pdf document."
+msgstr "请选择至少一个pdf文档"
+
+msgid "Please select two pdf documents."
+msgstr "请选择两个 PDF 文档。"
+
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "所选的输出文件已存在 "
 
 msgid "Would you like to overwrite it?"
+msgstr "您想要覆盖此文件吗？"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "页面选择无效"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
@@ -1512,23 +1283,32 @@ msgid "Limits are not valid"
 msgstr ""
 
 msgid "Please provide the password to open the encrypted document"
-msgstr ""
+msgstr "请输入密码以打开此加密文档"
 
 msgid "Password request"
 msgstr ""
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
-msgstr ""
+msgstr "选择列表已满，您想清空列表并加载新文档吗？"
 
 msgid "List full"
-msgstr ""
+msgstr "列表已满"
+
+msgid "The lowest available pdf version is "
+msgstr "最低的可用 pdf 版本号是 "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "你选择的 pdf 版本号过低，仍然继续？"
+
+msgid "Pdf version conflict"
+msgstr "PDF 版本冲突"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "无法初始化拖放支持。"
 
 msgid "Setting look and feel..."
 msgstr "设置外观和感觉..."
@@ -1567,13 +1347,21 @@ msgid "Error initializing the user interface vertical divider size"
 msgstr ""
 
 msgid "Error initializing the user interface location"
-msgstr ""
+msgstr "初始化用户界面位置错误"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "保存GUI配置"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "无法保存用户界面状态。"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
+# F:\pdfsam\workspace-basic\pdfsam-merge\src\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
+#~ msgid "Please wait while reading"
+#~ msgstr "请稍候。正在读取"
 
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "无法获取默认环境设置信息。"
@@ -1581,16 +1369,25 @@ msgstr ""
 #~ msgid "Check for updates:"
 #~ msgstr "检查更新："
 
-#~ msgid "Error getting default environment."
-#~ msgstr "获取默认环境失败."
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam 开始运行"
 
 #~ msgid "Never"
 #~ msgstr "从不"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "pdfsam 开始运行"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 #~ "7,12-)"
 #~ msgstr "双击以设定你需要合并的页面（如：2、全部、5-23、2,5-7,12-）"
+
+#~ msgid "Error loading "
+#~ msgstr "载入环出错 "
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "选择的文件不是 PDF 文档。"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "插件目录中的 Jar 不唯一 "
+
+#~ msgid "Error getting default environment."
+#~ msgstr "获取默认环境失败."

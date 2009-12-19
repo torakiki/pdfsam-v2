@@ -53,6 +53,9 @@
 			<arg line="-N -U ${po}/ar/pdfsam-ar.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
+			<arg line="-N -U ${po}/ast/pdfsam-ast.po ${pot}"/>
+		</exec>
+		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-N -U ${po}/bg/pdfsam-bg.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
@@ -173,6 +176,9 @@
 
 	<!-- generete properties -->
 	<target name="genproperties" depends="clean,genpot,updatepo" description="generates new properties files">
+		<exec executable="${gettext.dir}/msguniq">
+			<arg line="-p -o ${resources.dir}/Messages_ast.properties ${po}/ast/pdfsam-ast.po"/>
+		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_ar.properties ${po}/ar/pdfsam-ar.po"/>
 		</exec>

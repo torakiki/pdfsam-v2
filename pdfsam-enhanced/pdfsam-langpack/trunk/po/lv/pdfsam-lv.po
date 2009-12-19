@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:30+0000\n"
 "Last-Translator: Kristaps <retail@inbox.lv>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -47,9 +47,6 @@ msgstr ""
 msgid "Destination output file"
 msgstr ""
 
-msgid "Error: "
-msgstr "Kļūda: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
 
@@ -66,18 +63,6 @@ msgstr "PDF versija 1.5 vai jaunāka."
 msgid "Set the pdf version of the ouput document."
 msgstr ""
 
-msgid "Please wait while all files are processed.."
-msgstr "Lūdzu uzgaidiet kamēr visi faili tiek apstrādāti..."
-
-msgid "Found a password for input file."
-msgstr "Atrasta parole priekš izejošā faila."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
 msgid "Execute pdf merge"
 msgstr ""
 
@@ -86,6 +71,15 @@ msgstr ""
 
 msgid "Merge section loaded."
 msgstr ""
+
+msgid "Error: "
+msgstr "Kļūda: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Lūdzu uzgaidiet kamēr visi faili tiek apstrādāti..."
+
+msgid "Found a password for input file."
+msgstr "Atrasta parole priekš izejošā faila."
 
 msgid "Export as xml"
 msgstr "Eksportēt kā xml"
@@ -200,21 +194,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr ""
-
-msgid "The lowest available pdf version is "
-msgstr "Zemākā pieejamā pdf versija ir "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-
-msgid "Pdf version conflict"
-msgstr ""
-
-msgid "Please select a pdf document."
-msgstr ""
-
 msgid "Split selected file"
 msgstr ""
 
@@ -224,10 +203,19 @@ msgstr ""
 msgid "Split section loaded."
 msgstr ""
 
+msgid "Invalid split size"
+msgstr ""
+
 msgid "Invalid unit: "
 msgstr ""
 
 msgid "Fill from document"
+msgstr ""
+
+msgid "Please select a pdf document."
+msgstr ""
+
+msgid "Warning"
 msgstr ""
 
 msgid "Getting bookmarks max depth"
@@ -239,13 +227,13 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr ""
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
+msgstr ""
+
+msgid "Select at least one cover or one footer"
 msgstr ""
 
 msgid "Encrypt options"
@@ -332,6 +320,45 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -354,15 +381,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Atrasta parole priekš pirmā faila."
-
-msgid "Found a password for second file."
-msgstr "Atrasta parole priekš otrā faila."
-
-msgid "Please select two pdf documents."
-msgstr "Lūdzu atlasiet divus pdf dokumentus."
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -371,6 +389,12 @@ msgstr ""
 
 msgid "AlternateMix section loaded."
 msgstr ""
+
+msgid "Found a password for first file."
+msgstr "Atrasta parole priekš pirmā faila."
+
+msgid "Found a password for second file."
+msgstr "Atrasta parole priekš otrā faila."
 
 msgid "Unpack selected files"
 msgstr ""
@@ -485,13 +509,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -518,25 +545,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -637,15 +658,6 @@ msgid "Selection table is full, please remove some pdf document."
 msgstr ""
 
 msgid "Table full"
-msgstr ""
-
-msgid "Please wait while reading"
-msgstr ""
-
-msgid "Selected file is not a pdf document."
-msgstr "Izvēlētais fails nav pdf dokuments"
-
-msgid "Error loading "
 msgstr ""
 
 msgid "Command validation returned an empty value."
@@ -924,15 +936,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr ""
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -943,9 +946,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -975,7 +975,13 @@ msgstr ""
 msgid "Plugins directory is null."
 msgstr ""
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1122,6 +1128,9 @@ msgstr ""
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -1154,6 +1163,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1226,10 +1243,27 @@ msgstr "Vai Jūs vēlaties mainīt to uz"
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Please select two pdf documents."
+msgstr "Lūdzu atlasiet divus pdf dokumentus."
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1254,6 +1288,15 @@ msgid ""
 msgstr ""
 
 msgid "List full"
+msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Zemākā pieejamā pdf versija ir "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr ""
+
+msgid "Pdf version conflict"
 msgstr ""
 
 msgid "Error retrieving page saved informations"
@@ -1306,3 +1349,6 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Izvēlētais fails nav pdf dokuments"

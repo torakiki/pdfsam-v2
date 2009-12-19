@@ -7,58 +7,55 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-08-20 09:56+0000\n"
-"Last-Translator: Glen Ng <pariahsoc@gmail.com>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-12-19 14:34+0000\n"
+"Last-Translator: Izumi Chen <Unknown>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-26 05:12+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 16:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
 msgstr "合併選項"
 
 msgid "PDF documents contain forms"
-msgstr "PDF文件包含表格"
+msgstr "包含表格的 PDF 文件"
 
 msgid "Merge type"
-msgstr "合併類別"
+msgstr "合併類型"
 
 msgid "Unchecked"
-msgstr "不勾選"
+msgstr "取消選取"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr "標準的PDF文件請使用這種合併類別"
+msgstr "使用這個合併類型作為標準 PDF 文件的預設值"
 
 msgid "Checked"
 msgstr "勾選"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "包含表格的PDF文件請使用這種合併類別"
+msgstr "使用這個合併類型作為包含表格 PDF 文件的預設值"
 
 msgid "Note"
-msgstr "注意"
+msgstr "註記"
 
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "一旦選擇這個選項，全部文件都會載入記憶體中"
+msgstr "選擇這個選項後，文件內容會全部載入到記憶體"
 
 msgid "Destination output file"
 msgstr "輸出檔案路徑"
 
-msgid "Error: "
-msgstr "錯誤： "
-
 msgid "Browse or enter the full path to the destination output file."
-msgstr "請瀏覽或輸入存放輸出檔的完整路徑。"
+msgstr "請選擇或直接鍵入存放輸出檔的完整路徑。"
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr "如果您想覆蓋舊的輸出檔，請勾選這個選項。"
+msgstr "若您要覆蓋已經存在的檔案，請勾選這個項目。"
 
 msgid "Check the box if you want compressed output files."
-msgstr "若您想要一個壓縮過的輸出檔，請勾選此選項。"
+msgstr "若您要壓縮輸出檔案，請勾選這個項目。"
 
 msgid "PDF version 1.5 or above."
 msgstr "PDF 1.5 或更新的版本。"
@@ -66,20 +63,8 @@ msgstr "PDF 1.5 或更新的版本。"
 msgid "Set the pdf version of the ouput document."
 msgstr "設定輸出文件的 PDF 版本。"
 
-msgid "Please wait while all files are processed.."
-msgstr "檔案處理中請稍待..."
-
-msgid "Found a password for input file."
-msgstr "輸入檔需要密碼。"
-
-msgid "Please select at least one pdf document."
-msgstr "請至少選取一個 PDF 文件。"
-
-msgid "Warning"
-msgstr "警告"
-
 msgid "Execute pdf merge"
-msgstr "執行PDF合併"
+msgstr "執行 PDF 合併"
 
 msgid "Merge/Extract"
 msgstr "合併/摘錄"
@@ -87,11 +72,20 @@ msgstr "合併/摘錄"
 msgid "Merge section loaded."
 msgstr "合併已完成。"
 
+msgid "Error: "
+msgstr "錯誤： "
+
+msgid "Please wait while all files are processed.."
+msgstr "檔案處理中請稍待..."
+
+msgid "Found a password for input file."
+msgstr "輸入檔需要密碼。"
+
 msgid "Export as xml"
 msgstr "輸出為 xml 格式"
 
 msgid "Unable to save xml file."
-msgstr "無法儲存 xml 檔。"
+msgstr "無法儲存 xml 檔案。"
 
 msgid "Ok"
 msgstr "確定"
@@ -100,16 +94,16 @@ msgid "File xml saved."
 msgstr "xml 檔已儲存。"
 
 msgid "Error saving xml file, output file is null."
-msgstr "無法儲存 xml 檔，輸出檔是空的。"
+msgstr "無法儲存 xml 檔，輸出的檔案是空的。"
 
 msgid "Split options"
 msgstr "分割選項"
 
 msgid "Burst (split into single pages)"
-msgstr "細分（分割成多個單頁）"
+msgstr "細分（每頁分割成一個單獨的檔案）"
 
 msgid "Split every \"n\" pages"
-msgstr "每隔 \"n\" 頁分割一次"
+msgstr "每 \"n\" 頁分割成一個檔案"
 
 msgid "Split even pages"
 msgstr "分割出偶數頁"
@@ -118,7 +112,7 @@ msgid "Split odd pages"
 msgstr "分割出奇數頁"
 
 msgid "Split after these pages"
-msgstr "分割出這些頁面之後的部份"
+msgstr "分割出此頁面之後的部份"
 
 msgid "Split at this size"
 msgstr "依指定的檔案大小分割"
@@ -130,10 +124,10 @@ msgid "Burst"
 msgstr "細分"
 
 msgid "Explode the pdf document into single pages"
-msgstr "將PDF文件拆成多個單頁"
+msgstr "將 PDF 文件拆成多個單頁"
 
 msgid "Split the document every \"n\" pages"
-msgstr "每隔 \"n\" 頁分割一次"
+msgstr "每 \"n\" 頁分割為一個檔案"
 
 msgid "Split the document every even page"
 msgstr "分割出文件的偶數頁"
@@ -154,16 +148,16 @@ msgid "Destination folder"
 msgstr "目的地資料夾"
 
 msgid "Same as source"
-msgstr "與原始檔案相同路徑"
+msgstr "使用與原始檔案相同路徑"
 
 msgid "Choose a folder"
-msgstr "請選取一個目錄"
+msgstr "選擇資料夾"
 
 msgid "Destination output directory"
 msgstr "輸出檔存放路徑"
 
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr "請指定和輸入檔相同的路徑或另外選取一個目錄。"
+msgstr "使用和輸入檔相同的路徑或另外選取一個目錄。"
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
@@ -205,21 +199,6 @@ msgstr ""
 msgid "Available variables"
 msgstr "可用變數"
 
-msgid "Invalid split size"
-msgstr "無效的分割檔案大小"
-
-msgid "The lowest available pdf version is "
-msgstr "可用的 PDF 版本至少為 "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "您已選擇了一個較舊的輸出 PDF 版本，確定要繼續嗎？"
-
-msgid "Pdf version conflict"
-msgstr "PDF版本衝突"
-
-msgid "Please select a pdf document."
-msgstr "請選取一個 PDF 文件。"
-
 msgid "Split selected file"
 msgstr "分割選取的檔案"
 
@@ -229,11 +208,20 @@ msgstr "分割"
 msgid "Split section loaded."
 msgstr "分割已完成。"
 
+msgid "Invalid split size"
+msgstr "無效的分割檔案大小"
+
 msgid "Invalid unit: "
 msgstr "無效的單位： "
 
 msgid "Fill from document"
 msgstr "從文件填滿"
+
+msgid "Please select a pdf document."
+msgstr "請選取一個 PDF 文件。"
+
+msgid "Warning"
+msgstr "警告"
 
 msgid "Getting bookmarks max depth"
 msgstr "正在取得書籤最大層級"
@@ -244,14 +232,14 @@ msgstr "頭版 PDF 檔"
 msgid "Addendum pdf file"
 msgstr "附錄 PDF 檔"
 
-msgid "Select at least one cover or one footer"
-msgstr "請至少選擇一個封面或封底"
-
 msgid "Frontpage and Addendum"
 msgstr "前言與附錄"
 
 msgid "Cover And Footer section loaded."
 msgstr "新增封面和封底已完成。"
+
+msgid "Select at least one cover or one footer"
+msgstr "請至少選擇一個封面或封底"
 
 msgid "Encrypt options"
 msgstr "加密選項"
@@ -339,6 +327,45 @@ msgstr "解密"
 msgid "Decrypt section loaded."
 msgstr "已載入解密的區段。"
 
+msgid "Document metadata"
+msgstr "檔案詮釋資料"
+
+msgid "Title"
+msgstr "標題"
+
+msgid "Author"
+msgstr "開發者"
+
+msgid "Subject"
+msgstr "主旨"
+
+msgid "Keywords"
+msgstr "關鍵字"
+
+msgid "Set the document title."
+msgstr "設定文件標題"
+
+msgid "Set the document author."
+msgstr "設定文件作者"
+
+msgid "Set the document subject."
+msgstr "設定文件主題"
+
+msgid "Set the document keywords."
+msgstr "設定文件關鍵字"
+
+msgid "Choose a file"
+msgstr "選取一個檔案"
+
+msgid "Rotate selected files"
+msgstr "旋轉所選的檔案"
+
+msgid "Document Info"
+msgstr "文件資訊"
+
+msgid "Rotate section loaded."
+msgstr "旋轉模組已載入"
+
 msgid "Mix options"
 msgstr "混合選項"
 
@@ -361,23 +388,20 @@ msgid ""
 "is 1)."
 msgstr "設定要從一個文件轉移至另一文件的頁數（預設值為 1）"
 
-msgid "Found a password for first file."
-msgstr "第一個檔案需要密碼"
-
-msgid "Found a password for second file."
-msgstr "第二個檔案需要密碼"
-
-msgid "Please select two pdf documents."
-msgstr "請選擇兩個 PDF 文件。"
-
 msgid "Execute pdf alternate mix"
-msgstr "執行PDF交替混合"
+msgstr "執行 PDF 交替合併"
 
 msgid "Alternate Mix"
 msgstr "交替合併"
 
 msgid "AlternateMix section loaded."
 msgstr "交替合併已完成。"
+
+msgid "Found a password for first file."
+msgstr "第一個檔案需要密碼"
+
+msgid "Found a password for second file."
+msgstr "第二個檔案需要密碼"
 
 msgid "Unpack selected files"
 msgstr "解開所選檔案"
@@ -492,14 +516,17 @@ msgid ""
 "file."
 msgstr "選擇檔案瀏覽或輸入輸出檔的完整路徑。"
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr "執行頁面記錄器"
 
 msgid "Visual document composer"
 msgstr "虛擬文件編輯器"
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr "請選擇一個PDF檔案或取消刪除部分頁面"
 
 msgid "Rotation"
 msgstr "旋轉"
@@ -525,26 +552,20 @@ msgstr "設定旋轉角度"
 msgid "Set the pages that will be rotated."
 msgstr "設定需要旋轉的頁面"
 
-msgid "Rotate selected files"
-msgstr "旋轉所選的檔案"
-
 msgid "Rotate"
 msgstr "旋轉"
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr "選取一個檔案"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr "輸出檔名與輸入檔相同或選擇一個檔案。"
 
-msgid "Please select a pdf document or undelete some page"
-msgstr "請選擇一個 PDF 文件或復原（不刪除）某個頁面"
-
 msgid "Visual reorder"
 msgstr "虛擬記錄器"
+
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr "請選擇一個 PDF 文件或復原（不刪除）某個頁面"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -575,7 +596,7 @@ msgid "Unable to create thumbnails for a null input document"
 msgstr "無法為一個空的輸入文件建立縮圖"
 
 msgid "Unable to open the input document"
-msgstr ""
+msgstr "無法開啟匯入檔案"
 
 msgid "Input file doesn't exists or is a directory"
 msgstr "輸入檔不存在或是個資料夾"
@@ -638,22 +659,13 @@ msgid "Error playing sound"
 msgstr "播放音效時出錯"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "使用下列資料庫產生縮圖："
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "選取清單已滿，請移除某個 PDF 文件。"
 
 msgid "Table full"
 msgstr "清單已滿"
-
-msgid "Please wait while reading"
-msgstr "讀取中請稍待..."
-
-msgid "Selected file is not a pdf document."
-msgstr "選取的檔案並非 PDF 文件。"
-
-msgid "Error loading "
-msgstr "無法載入 "
 
 msgid "Command validation returned an empty value."
 msgstr "指令檢查回傳一個空的值。"
@@ -698,7 +710,7 @@ msgid "Paste"
 msgstr "貼上"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "添加字首"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr "參照表存有問題並已被重新建立"
@@ -931,15 +943,6 @@ msgstr "不加密"
 msgid "Permissions"
 msgstr "權限"
 
-msgid "Title"
-msgstr "標題"
-
-msgid "Author"
-msgstr "開發者"
-
-msgid "Subject"
-msgstr "主旨"
-
 msgid "Producer"
 msgstr "製作者"
 
@@ -951,9 +954,6 @@ msgstr "建立日期"
 
 msgid "Modification date"
 msgstr "修改日期"
-
-msgid "Keywords"
-msgstr "關鍵字"
 
 msgid "Error creating properties panel."
 msgstr "建立屬性面板時發生錯誤。"
@@ -982,8 +982,14 @@ msgstr "無法讀取增效模組目錄 "
 msgid "Plugins directory is null."
 msgstr "增效模組目錄是空的。"
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "在增效模組目錄裡沒找到或找到多個 jar 檔 "
+msgid "Found many plugins in "
+msgstr "尋找到多個擴充套件於 "
+
+msgid "selected as the most recent plugin"
+msgstr "選擇為最近使用擴充套件"
+
+msgid "No plugin found in "
+msgstr "並未尋找到擴充套件於 "
 
 msgid "Exception loading plugins."
 msgstr "載入增效模組出現異常。"
@@ -1016,10 +1022,10 @@ msgid "Save log"
 msgstr "儲存紀錄"
 
 msgid "Save environment"
-msgstr "儲存環境變數"
+msgstr "儲存環境設定"
 
 msgid "Load environment"
-msgstr "載入環境變數"
+msgstr "載入環境設定"
 
 msgid "Exit"
 msgstr "結束"
@@ -1061,7 +1067,7 @@ msgid "Version: "
 msgstr "版本： "
 
 msgid "Console version: "
-msgstr ""
+msgstr "終端機版本 "
 
 msgid "Developed by: "
 msgstr "程式開發者： "
@@ -1109,25 +1115,28 @@ msgid "Theme:"
 msgstr "佈景主題："
 
 msgid "Language:"
-msgstr "語系："
+msgstr "語言："
 
 msgid "Thumbnails creator"
 msgstr "縮圖製作程式"
 
 msgid "Load default environment at startup:"
-msgstr "啟動時載入預設環境變數："
+msgstr "啟動時載入預設環境設定："
 
 msgid "Default working directory:"
 msgstr "預設的工作目錄："
 
 msgid "Check for updates at startup"
-msgstr ""
+msgstr "啟動時檢查更新"
 
 msgid "Check now"
 msgstr "立刻檢查"
 
 msgid "Play alert sounds"
 msgstr "播放警示音效"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr "當覆寫選項勾選時詢問確認"
 
 msgid "Settings "
 msgstr "設定 "
@@ -1152,7 +1161,7 @@ msgid "Set a log detail level (restart needed)"
 msgstr "請設定一個紀錄檔細節層級（需要重新啟動）"
 
 msgid "Set the thumbnails creation library"
-msgstr ""
+msgstr "設定縮圖製作函式庫"
 
 msgid "Check for updates"
 msgstr "檢查更新"
@@ -1163,8 +1172,16 @@ msgstr "設定何時該檢查更新（需要重新啟動）"
 msgid "Turn on or off alert sounds"
 msgstr "開啟或關閉警示音效"
 
+msgid "Ask overwrite confirmation"
+msgstr "覆寫檔案時詢問確認"
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr "當「覆寫」選項勾選時顯示確認對話框"
+
 msgid "Default env."
-msgstr "預設環境變數。"
+msgstr "預設環境設定"
 
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
@@ -1184,12 +1201,12 @@ msgid "Configuration saved."
 msgstr "設定已儲存。"
 
 msgid "Error saving configuration"
-msgstr ""
+msgstr "儲存設定錯誤。"
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
-msgstr ""
+msgstr "儲存設定時發生錯誤，請查看記錄檔獲得更多資訊。"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "尚未實作的 JSettingsPanel 方法"
@@ -1233,11 +1250,28 @@ msgstr "您是否要更改至"
 msgid "Output location error"
 msgstr "輸出檔位置錯誤"
 
+msgid "Please select at least one pdf document."
+msgstr "請至少選取一個 PDF 文件。"
+
+msgid "Please select two pdf documents."
+msgstr "請選擇兩個 PDF 文件。"
+
 msgid "Selected output file already exists "
 msgstr "所選的輸出檔已存在 "
 
 msgid "Would you like to overwrite it?"
 msgstr "您要覆寫它嗎？"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr "請注意輸出檔案將會無預警直接覆寫同名檔案。"
+
+msgid "Do you confirm to overwrite?"
+msgstr "您確定要覆寫檔案嘛？"
+
+msgid "Confirm overwrite"
+msgstr "覆寫確認"
 
 msgid "Provided pages selection is not valid"
 msgstr "您提供的頁面選擇無效"
@@ -1263,6 +1297,15 @@ msgstr "選擇清單已滿，您要清空它並載入新的文件嗎？"
 msgid "List full"
 msgstr "清單已滿"
 
+msgid "The lowest available pdf version is "
+msgstr "可用的 PDF 版本至少為 "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "您已選擇了一個較舊的輸出 PDF 版本，確定要繼續嗎？"
+
+msgid "Pdf version conflict"
+msgstr "PDF版本衝突"
+
 msgid "Error retrieving page saved informations"
 msgstr "存取頁面存檔資訊時發生錯誤。"
 
@@ -1279,52 +1322,57 @@ msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr "無法找到紀錄檔層級，設定為預設層級（偵錯）。"
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "載入使用者介面設定"
 
 msgid "Unable to find configuration file for the user interface"
-msgstr ""
+msgstr "無法尋找到使用者介面設定"
 
 msgid "Error reading the configuration file for the user interface"
-msgstr ""
+msgstr "讀取使用者介面設定時發生錯誤"
 
 msgid "Error initializing the user interface vertical divider location"
-msgstr ""
+msgstr "初始化使用者介面垂直分隔位置錯誤"
 
 msgid "Error initializing the user interface horizontal divider location"
-msgstr ""
+msgstr "初始化使用者介面水平分隔位置錯誤"
 
 msgid "Error initializing the user interface extended state"
-msgstr ""
+msgstr "初始化使用者介面擴展狀態錯誤"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "初始化使用者介面大小錯誤"
 
 msgid "Error initializing the user interface horizontal divider size"
-msgstr ""
+msgstr "初始化使用者介面水平分隔尺寸錯誤"
 
 msgid "Error initializing the user interface vertical divider size"
-msgstr ""
+msgstr "初始化使用者垂直分隔尺寸錯誤"
 
 msgid "Error initializing the user interface location"
-msgstr ""
+msgstr "初始化使用者介面位置錯誤"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "儲存圖形用戶介面設定"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "無法儲存使用者介面狀態"
 
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "無法取得預設的環境變數資訊。"
+#~ msgid "Please wait while reading"
+#~ msgstr "讀取中請稍待..."
 
-#~ msgid "Setting default working directory..."
-#~ msgstr "正在設定預設的工作目錄..."
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "選取的檔案並非 PDF 文件。"
+
+#~ msgid "Error loading "
+#~ msgstr "無法載入 "
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr "雙擊以設定您想合併的頁面（例如：2 或 All 或 5-23 或 2,5-7,12-）"
 
 #~ msgid "Check for updates:"
 #~ msgstr "檢查更新："
-
-#~ msgid "Error getting default environment."
-#~ msgstr "無法取得預設環境變數。"
 
 #~ msgid "Never"
 #~ msgstr "從不"
@@ -1332,7 +1380,11 @@ msgstr ""
 #~ msgid "pdfsam start up"
 #~ msgstr "pdfsam 啟動時"
 
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr "雙擊以設定您想合併的頁面（例如：2 或 All 或 5-23 或 2,5-7,12-）"
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "在增效模組目錄裡沒找到或找到多個 jar 檔 "
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "無法取得預設的環境變數資訊。"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "無法取得預設環境變數。"

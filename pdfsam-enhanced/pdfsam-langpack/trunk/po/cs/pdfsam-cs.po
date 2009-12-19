@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:27+0000\n"
 "Last-Translator: marker <markercz@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -47,9 +47,6 @@ msgstr "Výběrem této možnosti budou dokumenty kompletně nahrány do paměti
 msgid "Destination output file"
 msgstr "Umístění výstupního souboru"
 
-msgid "Error: "
-msgstr "Chyba: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Vyberte nebo napište úplné umístění cílového souboru."
 
@@ -66,18 +63,6 @@ msgstr "PDF verze 1.5 nebo novější"
 msgid "Set the pdf version of the ouput document."
 msgstr "Zadejte verzi výstupního PDF dokumentu."
 
-msgid "Please wait while all files are processed.."
-msgstr "Prosím čekejte dokud všechny soubory nebudou zpracovány..."
-
-msgid "Found a password for input file."
-msgstr "Nalezeno heslo vstupního souboru."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
 msgid "Execute pdf merge"
 msgstr "Provede sloučení souborů"
 
@@ -86,6 +71,15 @@ msgstr "Sloučit/Rozbalit"
 
 msgid "Merge section loaded."
 msgstr "Modul slučování nahrán."
+
+msgid "Error: "
+msgstr "Chyba: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Prosím čekejte dokud všechny soubory nebudou zpracovány..."
+
+msgid "Found a password for input file."
+msgstr "Nalezeno heslo vstupního souboru."
 
 msgid "Export as xml"
 msgstr "Exportovat jako XML"
@@ -203,21 +197,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr "Chybná velikost rozdělování."
-
-msgid "The lowest available pdf version is "
-msgstr "Nejnižší použitelná verze pdf je "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Pro výstup jste zvolili nižší verzi pdf, chcete přesto pokračovat?"
-
-msgid "Pdf version conflict"
-msgstr "Konflikt verzí pdf"
-
-msgid "Please select a pdf document."
-msgstr ""
-
 msgid "Split selected file"
 msgstr "Rozdělí vybraný soubor"
 
@@ -227,10 +206,19 @@ msgstr "Rozdělit"
 msgid "Split section loaded."
 msgstr "Modul Rozdělování nahrán."
 
+msgid "Invalid split size"
+msgstr "Chybná velikost rozdělování."
+
 msgid "Invalid unit: "
 msgstr "Nesprávná jednotka: "
 
 msgid "Fill from document"
+msgstr ""
+
+msgid "Please select a pdf document."
+msgstr ""
+
+msgid "Warning"
 msgstr ""
 
 msgid "Getting bookmarks max depth"
@@ -242,14 +230,14 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr "Vyber nejméně jeden titulek nebo jedno zápatí."
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Modul Titulek a zápatí nahrán."
+
+msgid "Select at least one cover or one footer"
+msgstr "Vyber nejméně jeden titulek nebo jedno zápatí."
 
 msgid "Encrypt options"
 msgstr ""
@@ -340,6 +328,45 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -362,15 +389,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Nalezeno heslo prvního souboru."
-
-msgid "Found a password for second file."
-msgstr "Nalezeno heslo druhého souboru."
-
-msgid "Please select two pdf documents."
-msgstr "Prosím vyber dva pdf dokumenty."
-
 msgid "Execute pdf alternate mix"
 msgstr "Spustit míchání souborů"
 
@@ -379,6 +397,12 @@ msgstr "Míchání souborů"
 
 msgid "AlternateMix section loaded."
 msgstr "Modul Míchání souborů nahrán."
+
+msgid "Found a password for first file."
+msgstr "Nalezeno heslo prvního souboru."
+
+msgid "Found a password for second file."
+msgstr "Nalezeno heslo druhého souboru."
 
 msgid "Unpack selected files"
 msgstr "Rozbalit zvolené soubory"
@@ -493,13 +517,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -526,25 +553,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -646,15 +667,6 @@ msgstr "Tabulka pro výběr je plná, odstraňte nějaký pdf dokument."
 
 msgid "Table full"
 msgstr "Tabulka je plná."
-
-msgid "Please wait while reading"
-msgstr "Prosím, počkejte na dokončení nahrávání."
-
-msgid "Selected file is not a pdf document."
-msgstr "Vybraný soubor není pdf dokument."
-
-msgid "Error loading "
-msgstr "Chyba při nahrávání "
 
 msgid "Command validation returned an empty value."
 msgstr "Ověření příkazu vrací prázdnou hodnotu."
@@ -932,15 +944,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr "Autor"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -951,9 +954,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -983,8 +983,14 @@ msgstr "Nemohu přečíst složku s moduly "
 msgid "Plugins directory is null."
 msgstr "Složka s moduly je prázdná."
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Nalezen žádný nebo mnoho jarů ve složce s moduly "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "Výjimka nahrávání modulů."
@@ -1130,6 +1136,9 @@ msgstr "Zkontrolovat nyní"
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr "Nastavení: "
 
@@ -1163,6 +1172,14 @@ msgstr ""
 "Nastavte, pokud je potřeba ověřit dostupnost nové verze (vyžaduje restart)"
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1238,10 +1255,27 @@ msgstr "Přejete si ji změnit na"
 msgid "Output location error"
 msgstr "Chyba výstupního umístění"
 
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Please select two pdf documents."
+msgstr "Prosím vyber dva pdf dokumenty."
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1267,6 +1301,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Nejnižší použitelná verze pdf je "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Pro výstup jste zvolili nižší verzi pdf, chcete přesto pokračovat?"
+
+msgid "Pdf version conflict"
+msgstr "Konflikt verzí pdf"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1318,6 +1361,18 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Prosím, počkejte na dokončení nahrávání."
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Vybraný soubor není pdf dokument."
+
+#~ msgid "Error loading "
+#~ msgstr "Chyba při nahrávání "
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Nalezen žádný nebo mnoho jarů ve složce s moduly "
 
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Nelze získat informace o původním přednastaveném prostředí."

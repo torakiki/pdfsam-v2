@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-05-23 20:42+0000\n"
-"Last-Translator: Bigpapa <Unknown>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-12-02 11:38+0000\n"
+"Last-Translator: Jonathon Fernyhough <j.fernyhough@gmail.com>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
 "X-Poedit-Language: English\n"
@@ -45,9 +45,6 @@ msgstr ""
 msgid "Destination output file"
 msgstr "Destination output file"
 
-msgid "Error: "
-msgstr "Error: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Browse or enter the full path to the destination output file."
 
@@ -65,18 +62,6 @@ msgstr "PDF version 1.5 or above."
 msgid "Set the pdf version of the ouput document."
 msgstr "Set the pdf version of the ouput document."
 
-msgid "Please wait while all files are processed.."
-msgstr "Please wait while all files are processed.."
-
-msgid "Found a password for input file."
-msgstr "Found a password for input file."
-
-msgid "Please select at least one pdf document."
-msgstr "Please select at least one pdf document."
-
-msgid "Warning"
-msgstr "Warning"
-
 msgid "Execute pdf merge"
 msgstr "Execute pdf merge"
 
@@ -85,6 +70,15 @@ msgstr "Merge/Extract"
 
 msgid "Merge section loaded."
 msgstr "Merge section loaded."
+
+msgid "Error: "
+msgstr "Error: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Please wait while all files are processed.."
+
+msgid "Found a password for input file."
+msgstr "Found a password for input file."
 
 msgid "Export as xml"
 msgstr "Export as xml"
@@ -206,21 +200,6 @@ msgstr ""
 msgid "Available variables"
 msgstr "Available variables"
 
-msgid "Invalid split size"
-msgstr "Invalid split size"
-
-msgid "The lowest available pdf version is "
-msgstr "The lowest available pdf version is "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "You selected a lower output pdf version, continue anyway ?"
-
-msgid "Pdf version conflict"
-msgstr "Pdf version conflict"
-
-msgid "Please select a pdf document."
-msgstr "Please select a pdf document."
-
 msgid "Split selected file"
 msgstr "Split selected file"
 
@@ -230,11 +209,20 @@ msgstr "Split"
 msgid "Split section loaded."
 msgstr "Split section loaded."
 
+msgid "Invalid split size"
+msgstr "Invalid split size"
+
 msgid "Invalid unit: "
 msgstr "Invalid unit: "
 
 msgid "Fill from document"
 msgstr "Fill from document"
+
+msgid "Please select a pdf document."
+msgstr "Please select a pdf document."
+
+msgid "Warning"
+msgstr "Warning"
 
 msgid "Getting bookmarks max depth"
 msgstr "Getting bookmarks max depth"
@@ -245,14 +233,14 @@ msgstr "Frontpage pdf file"
 msgid "Addendum pdf file"
 msgstr "Addendum pdf file"
 
-msgid "Select at least one cover or one footer"
-msgstr "Select at least one cover or one footer"
-
 msgid "Frontpage and Addendum"
 msgstr "Frontpage and Addendum"
 
 msgid "Cover And Footer section loaded."
 msgstr "Cover And Footer section loaded."
+
+msgid "Select at least one cover or one footer"
+msgstr "Select at least one cover or one footer"
 
 msgid "Encrypt options"
 msgstr "Encrypt options"
@@ -343,6 +331,45 @@ msgstr "Decrypt"
 msgid "Decrypt section loaded."
 msgstr "Decrypt section loaded."
 
+msgid "Document metadata"
+msgstr "Document metadata"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Author"
+msgstr "Author"
+
+msgid "Subject"
+msgstr "Subject"
+
+msgid "Keywords"
+msgstr "Keywords"
+
+msgid "Set the document title."
+msgstr "Set the document title."
+
+msgid "Set the document author."
+msgstr "Set the document author."
+
+msgid "Set the document subject."
+msgstr "Set the document subject."
+
+msgid "Set the document keywords."
+msgstr "Set the document keywords."
+
+msgid "Choose a file"
+msgstr "Choose a file"
+
+msgid "Rotate selected files"
+msgstr "Rotate selected files"
+
+msgid "Document Info"
+msgstr "Document Info"
+
+msgid "Rotate section loaded."
+msgstr "Rotate section loaded."
+
 msgid "Mix options"
 msgstr "Mix options"
 
@@ -369,15 +396,6 @@ msgstr ""
 "Set the number of pages to switch from a document to the other one (default "
 "is 1)."
 
-msgid "Found a password for first file."
-msgstr "Found a password for first file."
-
-msgid "Found a password for second file."
-msgstr "Found a password for second file."
-
-msgid "Please select two pdf documents."
-msgstr "Please select two pdf documents."
-
 msgid "Execute pdf alternate mix"
 msgstr "Execute pdf alternate mix"
 
@@ -386,6 +404,12 @@ msgstr "Alternate Mix"
 
 msgid "AlternateMix section loaded."
 msgstr "AlternateMix section loaded."
+
+msgid "Found a password for first file."
+msgstr "Found a password for first file."
+
+msgid "Found a password for second file."
+msgstr "Found a password for second file."
 
 msgid "Unpack selected files"
 msgstr "Unpack selected files"
@@ -502,59 +526,56 @@ msgstr ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr "Please select a pdf document or undelete some pages"
-
 msgid "Execute pages reorder"
 msgstr "Execute pages reorder"
 
 msgid "Visual document composer"
 msgstr "Visual document composer"
 
-msgid "Rotation"
+msgid "Visual Composer section loaded."
 msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr "Please select a pdf document or undelete some pages"
+
+msgid "Rotation"
+msgstr "Rotation"
 
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgid "Even"
-msgstr ""
+msgstr "Even"
 
 msgid "Odd"
-msgstr ""
+msgstr "Odd"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "Clockwise rotation (degrees):"
 
 msgid "Pages:"
-msgstr ""
+msgstr "Pages:"
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
+msgstr "Set the rotation amount (degrees clockwise)."
 
 msgid "Set the pages that will be rotated."
-msgstr ""
-
-msgid "Rotate selected files"
-msgstr ""
+msgstr "Set the pages that will be rotated."
 
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr "Choose a file"
+msgstr "Rotate"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr "Use the same output file name as the input file or choose a file."
 
-msgid "Please select a pdf document or undelete some page"
-msgstr "Please select a pdf document or undelete some page"
-
 msgid "Visual reorder"
 msgstr "Visual reorder"
+
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr "Please select a pdf document or undelete some page"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -586,7 +607,7 @@ msgid "Unable to create thumbnails for a null input document"
 msgstr "Unable to create thumbnails for a null input document"
 
 msgid "Unable to open the input document"
-msgstr ""
+msgstr "Unable to open the input document"
 
 msgid "Input file doesn't exists or is a directory"
 msgstr "Input file doesn't exists or is a directory"
@@ -649,22 +670,13 @@ msgid "Error playing sound"
 msgstr "Error playing sound"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "Generating thumbnails using the following library:"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Selection table is full, please remove some pdf document."
 
 msgid "Table full"
 msgstr "Table full"
-
-msgid "Please wait while reading"
-msgstr "Please wait while reading"
-
-msgid "Selected file is not a pdf document."
-msgstr "Selected file is not a pdf document."
-
-msgid "Error loading "
-msgstr "Error loading "
 
 msgid "Command validation returned an empty value."
 msgstr "Command validation returned an empty value."
@@ -709,18 +721,20 @@ msgid "Paste"
 msgstr "Paste"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "Add prefix"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
-msgstr ""
+msgstr "The cross reference table contained some errors and has been rebuilt"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
 msgstr ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "An error occured while loading the document"
 
 msgid "File name"
 msgstr "File name"
@@ -943,15 +957,6 @@ msgstr "Not encrypted"
 msgid "Permissions"
 msgstr "Permissions"
 
-msgid "Title"
-msgstr "Title"
-
-msgid "Author"
-msgstr "Author"
-
-msgid "Subject"
-msgstr "Subject"
-
 msgid "Producer"
 msgstr "Producer"
 
@@ -963,9 +968,6 @@ msgstr "Creation date"
 
 msgid "Modification date"
 msgstr "Modification date"
-
-msgid "Keywords"
-msgstr "Keywords"
 
 msgid "Error creating properties panel."
 msgstr "Error creating properties panel."
@@ -994,8 +996,14 @@ msgstr "Cannot read plugins directory "
 msgid "Plugins directory is null."
 msgstr "Plugins directory is null."
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr "Found many plugins in "
+
+msgid "selected as the most recent plugin"
+msgstr "selected as the most recent plugin"
+
+msgid "No plugin found in "
+msgstr "No plugin found in "
 
 msgid "Exception loading plugins."
 msgstr "Exception loading plugins."
@@ -1073,7 +1081,7 @@ msgid "Version: "
 msgstr "Version: "
 
 msgid "Console version: "
-msgstr ""
+msgstr "Console version: "
 
 msgid "Developed by: "
 msgstr "Developed by: "
@@ -1133,13 +1141,16 @@ msgid "Default working directory:"
 msgstr "Default working directory:"
 
 msgid "Check for updates at startup"
-msgstr ""
+msgstr "Check for updates at startup"
 
 msgid "Check now"
 msgstr "Check now"
 
 msgid "Play alert sounds"
 msgstr "Play alert sounds"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr "Ask for confirmation when overwrite checkbox is selected"
 
 msgid "Settings "
 msgstr "Settings "
@@ -1176,6 +1187,16 @@ msgstr "Set when new version availability should be checked (restart needed)"
 msgid "Turn on or off alert sounds"
 msgstr "Turn on or off alert sounds"
 
+msgid "Ask overwrite confirmation"
+msgstr "Ask for overwrite confirmation"
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
+"Show a dialogue box asking the user for confirmation when \"overwrite\" is "
+"selected"
+
 msgid "Default env."
 msgstr "Default env."
 
@@ -1199,12 +1220,14 @@ msgid "Configuration saved."
 msgstr "Configuration saved."
 
 msgid "Error saving configuration"
-msgstr ""
+msgstr "Error saving configuration"
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
 msgstr ""
+"An error occurred saving the configuration, please check the log panel for "
+"more information."
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Unimplemented method for JSettingsPanel"
@@ -1248,11 +1271,30 @@ msgstr "Would you like to change it to"
 msgid "Output location error"
 msgstr "Output location error"
 
+msgid "Please select at least one pdf document."
+msgstr "Please select at least one pdf document."
+
+msgid "Please select two pdf documents."
+msgstr "Please select two pdf documents."
+
 msgid "Selected output file already exists "
 msgstr "Selected output file already exists "
 
 msgid "Would you like to overwrite it?"
 msgstr "Would you like to overwrite it?"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+
+msgid "Do you confirm to overwrite?"
+msgstr "Do you confirm to overwrite?"
+
+msgid "Confirm overwrite"
+msgstr "Confirm overwrite"
 
 msgid "Provided pages selection is not valid"
 msgstr "Provided pages selection is not valid"
@@ -1281,6 +1323,15 @@ msgstr ""
 msgid "List full"
 msgstr "List full"
 
+msgid "The lowest available pdf version is "
+msgstr "The lowest available pdf version is "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "You selected a lower output pdf version, continue anyway ?"
+
+msgid "Pdf version conflict"
+msgstr "Pdf version conflict"
+
 msgid "Error retrieving page saved informations"
 msgstr "Error retrieving page saved informations"
 
@@ -1297,61 +1348,49 @@ msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr "Unable to find log level, setting to default level (DEBUG)."
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "Loading user interface configuration"
 
 msgid "Unable to find configuration file for the user interface"
-msgstr ""
+msgstr "Unable to find configuration file for the user interface"
 
 msgid "Error reading the configuration file for the user interface"
-msgstr ""
+msgstr "Error reading the configuration file for the user interface"
 
 msgid "Error initializing the user interface vertical divider location"
-msgstr ""
+msgstr "Error initialising the user interface vertical divider location"
 
 msgid "Error initializing the user interface horizontal divider location"
-msgstr ""
+msgstr "Error initialising the user interface horizontal divider location"
 
 msgid "Error initializing the user interface extended state"
-msgstr ""
+msgstr "Error initialising the user interface extended state"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "Error initialising the user interface size"
 
 msgid "Error initializing the user interface horizontal divider size"
-msgstr ""
+msgstr "Error initialising the user interface horizontal divider size"
 
 msgid "Error initializing the user interface vertical divider size"
-msgstr ""
+msgstr "Error initialising the user interface vertical divider size"
 
 msgid "Error initializing the user interface location"
-msgstr ""
+msgstr "Error initialising the user interface location"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "Saving GUI configuration"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "Unable to save user interface status."
 
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "Unable to get the default environment information."
+#~ msgid "Error loading "
+#~ msgstr "Error loading "
 
-#~ msgid "Setting default working directory..."
-#~ msgstr "Setting default working directory..."
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Selected file is not a pdf document."
 
-#~ msgid "Setting default thumbnails creator..."
-#~ msgstr "Setting default thumbnails creator..."
-
-#~ msgid "Check for updates:"
-#~ msgstr "Check for updates:"
-
-#~ msgid "Error getting default environment."
-#~ msgstr "Error getting default environment."
-
-#~ msgid "Never"
-#~ msgstr "Never"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "pdfsam start up"
+#~ msgid "Please wait while reading"
+#~ msgstr "Please wait while reading"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
@@ -1359,3 +1398,21 @@ msgstr ""
 #~ msgstr ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 #~ "7,12-)"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Found zero or many jars in plugin directory "
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Unable to get the default environment information."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Check for updates:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Error getting default environment."
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam start up"
+
+#~ msgid "Never"
+#~ msgstr "Never"

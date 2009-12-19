@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-05-23 20:29+0000\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-12-11 22:21+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: FRANCE\n"
 "X-Poedit-Language: French\n"
@@ -25,6 +25,7 @@ msgstr "Paramètres de fusion"
 msgid "PDF documents contain forms"
 msgstr "Documents pdf avec formulaires"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:394
 msgid "Merge type"
 msgstr "Type de fusion"
 
@@ -44,14 +45,13 @@ msgstr "Type de fusion à utiliser pour les documents contenant des formulaires"
 msgid "Note"
 msgstr "Remarque"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "Si coché, le document sera entièrement chargé en mémoire"
+msgstr ""
+"En choisissant cette option, le document sera chargé totalement en mémoire"
 
 msgid "Destination output file"
-msgstr "Fichier à créer"
-
-msgid "Error: "
-msgstr "Erreur : "
+msgstr "Emplacement du fichier à créer"
 
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Recherchez ou entrez le chemin complet des fichiers à créer."
@@ -69,18 +69,6 @@ msgstr "Version pdf 1.5 ou supérieure."
 msgid "Set the pdf version of the ouput document."
 msgstr "Sélectionnez la version pdf du document à créer."
 
-msgid "Please wait while all files are processed.."
-msgstr "Veuillez patienter pendant le traitement des fichiers..."
-
-msgid "Found a password for input file."
-msgstr "Mot de passe requis pour le fichier."
-
-msgid "Please select at least one pdf document."
-msgstr "Veuillez sélectionner au moins un document pdf."
-
-msgid "Warning"
-msgstr "Avertissement"
-
 msgid "Execute pdf merge"
 msgstr "Lancez la fusion des fichiers"
 
@@ -89,6 +77,15 @@ msgstr "Fusion"
 
 msgid "Merge section loaded."
 msgstr "Section \"Fusion\" chargée."
+
+msgid "Error: "
+msgstr "Erreur : "
+
+msgid "Please wait while all files are processed.."
+msgstr "Veuillez patienter pendant le traitement des fichiers..."
+
+msgid "Found a password for input file."
+msgstr "Mot de passe requis pour le fichier."
 
 msgid "Export as xml"
 msgstr "Exporter en fichier xml"
@@ -211,21 +208,6 @@ msgstr ""
 msgid "Available variables"
 msgstr "Variables disponibles"
 
-msgid "Invalid split size"
-msgstr "Taille indiquée incorrecte"
-
-msgid "The lowest available pdf version is "
-msgstr "La plus petite version pdf disponible est "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Vous avez sélectionné une version pdf inférieure, continuer ?"
-
-msgid "Pdf version conflict"
-msgstr "Conflit de version pdf"
-
-msgid "Please select a pdf document."
-msgstr "Veuillez sélectionner un document pdf."
-
 msgid "Split selected file"
 msgstr "Lancez le découpage du fichier"
 
@@ -235,11 +217,20 @@ msgstr "Découpage"
 msgid "Split section loaded."
 msgstr "Section \"Découpage\" chargée."
 
+msgid "Invalid split size"
+msgstr "Taille indiquée incorrecte"
+
 msgid "Invalid unit: "
 msgstr "Unité de taille incorrecte : "
 
 msgid "Fill from document"
 msgstr "Analyser le document"
+
+msgid "Please select a pdf document."
+msgstr "Veuillez sélectionner un document pdf."
+
+msgid "Warning"
+msgstr "Avertissement"
 
 msgid "Getting bookmarks max depth"
 msgstr "Acquisition de la profondeur des signets"
@@ -250,14 +241,14 @@ msgstr "Pdf de première de couverture"
 msgid "Addendum pdf file"
 msgstr "Pdf de quatrième de couverture"
 
-msgid "Select at least one cover or one footer"
-msgstr "Sélectionnez au moins un fichier de couverture"
-
 msgid "Frontpage and Addendum"
 msgstr "Couverture"
 
 msgid "Cover And Footer section loaded."
 msgstr "Section \"Couverture\" chargée."
+
+msgid "Select at least one cover or one footer"
+msgstr "Sélectionnez au moins un fichier de couverture"
 
 msgid "Encrypt options"
 msgstr "Options de chiffrement"
@@ -350,6 +341,47 @@ msgstr "Déchiffrement"
 msgid "Decrypt section loaded."
 msgstr "Section Déchiffrage chargée"
 
+msgid "Document metadata"
+msgstr "Métadonnées du document"
+
+msgid "Title"
+msgstr "Titre"
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Subject"
+msgstr "Sujet"
+
+msgid "Keywords"
+msgstr "Mots-clefs"
+
+msgid "Set the document title."
+msgstr "Définir le titre du document."
+
+msgid "Set the document author."
+msgstr "Définir l'auteur du document."
+
+msgid "Set the document subject."
+msgstr "Définir le sujet du document."
+
+msgid "Set the document keywords."
+msgstr "Définir les mots-clés du document."
+
+msgid "Choose a file"
+msgstr "Sélectionnez un fichier"
+
+msgid "Rotate selected files"
+msgstr "Pivoter les fichiers sélectionnés"
+
+msgid "Document Info"
+msgstr "Informations du document"
+
+msgid "Rotate section loaded."
+msgstr "Section \"Rotation\" chargée"
+
 msgid "Mix options"
 msgstr "Options d'assemblage"
 
@@ -375,15 +407,6 @@ msgstr ""
 "Indiquez le nombre de pages composant la séquence d'assemblage (1 par "
 "défaut)."
 
-msgid "Found a password for first file."
-msgstr "Mot de passe requis pour le premier document."
-
-msgid "Found a password for second file."
-msgstr "Mot de passe requis pour le second document."
-
-msgid "Please select two pdf documents."
-msgstr "Veuillez sélectionner deux documents pdf."
-
 msgid "Execute pdf alternate mix"
 msgstr "Lancez l'assemblage des fichiers"
 
@@ -392,6 +415,12 @@ msgstr "Assemblage"
 
 msgid "AlternateMix section loaded."
 msgstr "Section \"Assemblage\" chargée."
+
+msgid "Found a password for first file."
+msgstr "Mot de passe requis pour le premier document."
+
+msgid "Found a password for second file."
+msgstr "Mot de passe requis pour le second document."
 
 msgid "Unpack selected files"
 msgstr "Lancer l'extraction des fichiers"
@@ -508,59 +537,56 @@ msgstr ""
 "Pour sélectionner un fichier, recherchez ou entrez le chemin complet du "
 "fichier à créer."
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr "Veuillez sélectionner un document pdf ou restaurer des pages"
-
 msgid "Execute pages reorder"
 msgstr "Lancer le réagencement des pages"
 
 msgid "Visual document composer"
 msgstr "Composition visuelle"
 
-msgid "Rotation"
+msgid "Visual Composer section loaded."
 msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr "Veuillez sélectionner un document pdf ou restaurer des pages"
+
+msgid "Rotation"
+msgstr "Rotation"
 
 msgid "All"
-msgstr ""
+msgstr "Toutes"
 
 msgid "Even"
-msgstr ""
+msgstr "Paires"
 
 msgid "Odd"
-msgstr ""
+msgstr "Impaires"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "Rotation horaire (en degrés)"
 
 msgid "Pages:"
-msgstr ""
+msgstr "Pages :"
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
+msgstr "Choisissez l'angle de rotation (sens horaire)"
 
 msgid "Set the pages that will be rotated."
-msgstr ""
-
-msgid "Rotate selected files"
-msgstr ""
+msgstr "Sélectionnez les pages à faire pivoter"
 
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr "Sélectionnez un fichier"
+msgstr "Rotation"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr "Utilisez le nom du fichier source ou choisissez un autre fichier."
 
-msgid "Please select a pdf document or undelete some page"
-msgstr "Veuillez sélectionner un document pdf ou restaurer des pages"
-
 msgid "Visual reorder"
 msgstr "Agencement visuel"
+
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
+msgstr "Veuillez sélectionner un document pdf ou restaurer des pages"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -590,10 +616,10 @@ msgid "Unable to create image for a null input document"
 msgstr "Création d'image impossible à partir un document vide"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr "Création des miniatures impossible à partir un document vide"
+msgstr "Création des miniatures impossible à partir d'un document vide"
 
 msgid "Unable to open the input document"
-msgstr ""
+msgstr "Ouverture du document source impossible"
 
 msgid "Input file doesn't exists or is a directory"
 msgstr "Le chemin désigne un fichier qui n'existe pas ou un dossier"
@@ -605,7 +631,7 @@ msgid "Password not provided."
 msgstr "Mot de passe manquant."
 
 msgid "Unable to open the document."
-msgstr "Impossible d'ouvrir le document."
+msgstr "Ouverture du document impossible."
 
 msgid "Not enough memory to create thumbnails"
 msgstr "Mémoire insuffisante pour la création des miniatures"
@@ -657,22 +683,13 @@ msgid "Error playing sound"
 msgstr "Erreur de lecture du son"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "Génération des miniatures avec la bibliothèque suivante :"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Le tableau de sélection est complet, veuillez enlever des pdf."
 
 msgid "Table full"
 msgstr "Tableau complet"
-
-msgid "Please wait while reading"
-msgstr "Veuillez attendre la fin de la lecture de"
-
-msgid "Selected file is not a pdf document."
-msgstr "Le fichier sélectionné n'est pas un pdf."
-
-msgid "Error loading "
-msgstr "Erreur de chargement de "
 
 msgid "Command validation returned an empty value."
 msgstr "La validation de commande a renvoyé une valeur nulle."
@@ -728,18 +745,22 @@ msgid "Paste"
 msgstr "Coller"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "Ajouter un préfixe"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr ""
+"Le tableau de références croisées contenait une erreur et a dû être "
+"reconstruit."
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
 msgstr ""
+"Le document n'a pas été ouvert avec le mot de passe adéquat. Vous devez "
+"fournir le mot de passe Propriétaire pour pouvoir manipuler le document."
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "Une erreur s'est produite à l'ouverture du document"
 
 msgid "File name"
 msgstr "Nom"
@@ -986,15 +1007,6 @@ msgstr "Aucun"
 msgid "Permissions"
 msgstr "Permissions"
 
-msgid "Title"
-msgstr "Titre"
-
-msgid "Author"
-msgstr "Auteur"
-
-msgid "Subject"
-msgstr "Sujet"
-
 msgid "Producer"
 msgstr "Outil de conversion"
 
@@ -1006,9 +1018,6 @@ msgstr "Date de création"
 
 msgid "Modification date"
 msgstr "Date de modification"
-
-msgid "Keywords"
-msgstr "Mots-clefs"
 
 msgid "Error creating properties panel."
 msgstr "Erreur de génération du panneau des propriétés"
@@ -1037,8 +1046,14 @@ msgstr "Lecture impossible du dossier des modules "
 msgid "Plugins directory is null."
 msgstr "Le dossier des modules n'existe pas."
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Aucun ou trop de fichiers modules \"jar\" détectés dans le dossier "
+msgid "Found many plugins in "
+msgstr "Plusieurs modules trouvés dans "
+
+msgid "selected as the most recent plugin"
+msgstr "sélectionné comme module le plus récent"
+
+msgid "No plugin found in "
+msgstr "Aucun module trouvé dans "
 
 msgid "Exception loading plugins."
 msgstr "Exception lors du chargement des modules."
@@ -1125,7 +1140,7 @@ msgid "Version: "
 msgstr "Version : "
 
 msgid "Console version: "
-msgstr ""
+msgstr "Version de la console : "
 
 msgid "Developed by: "
 msgstr "Développé par : "
@@ -1191,13 +1206,18 @@ msgid "Default working directory:"
 msgstr "Répertoire de travail par défaut :"
 
 msgid "Check for updates at startup"
-msgstr ""
+msgstr "Recherche de mises à jour au démarrage"
 
 msgid "Check now"
 msgstr "Vérifier maintenant"
 
 msgid "Play alert sounds"
 msgstr "Jouer les alertes sonores"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+"Demande confirmation quand la case \"Remplacer le(s) fichier(s) existant(s)"
+"\" est cochée"
 
 msgid "Settings "
 msgstr "Réglages "
@@ -1208,6 +1228,7 @@ msgstr "Langue"
 msgid "Set your preferred language (restart needed)"
 msgstr "Sélectionnez votre langue favorite (redémarrage nécessaire)"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:225
 msgid "Look and feel"
 msgstr "Apparence"
 
@@ -1237,6 +1258,16 @@ msgstr ""
 msgid "Turn on or off alert sounds"
 msgstr "Activez ou désactivez les alertes sonores"
 
+msgid "Ask overwrite confirmation"
+msgstr "Demander confirmation de remplacement"
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
+"Affiche une boîte de dialogue demandant confirmation quand \"Remplacer le(s) "
+"fichier(s) existant(s)\" est coché"
+
 msgid "Default env."
 msgstr "Configuration par défaut"
 
@@ -1262,12 +1293,14 @@ msgid "Configuration saved."
 msgstr "Réglages enregistrés."
 
 msgid "Error saving configuration"
-msgstr ""
+msgstr "Erreur de sauvegarde de la configuration"
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
 msgstr ""
+"Une erreur s'est produite lors de la sauvegarde des réglages, veuillez vous "
+"reporter au panneau du journal pour de plus amples informations."
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Méthode non implémentée pour JSettingsPanel"
@@ -1311,11 +1344,30 @@ msgstr "Voulez-vous le remplacer par"
 msgid "Output location error"
 msgstr "Erreur de répertoire de création"
 
+msgid "Please select at least one pdf document."
+msgstr "Veuillez sélectionner au moins un document pdf."
+
+msgid "Please select two pdf documents."
+msgstr "Veuillez sélectionner deux documents pdf."
+
 msgid "Selected output file already exists "
 msgstr "Le fichier à créer existe déjà : "
 
 msgid "Would you like to overwrite it?"
 msgstr "Voulez-vous le remplacer ?"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+"Veuillez noter que les fichiers créés remplaceront ceux existants ayant le "
+"même nom sans avertissement !"
+
+msgid "Do you confirm to overwrite?"
+msgstr "Confirmez-vous le remplacement ?"
+
+msgid "Confirm overwrite"
+msgstr "Confirmer le remplacement"
 
 msgid "Provided pages selection is not valid"
 msgstr "La sélection de pages indiquée n'est pas valide"
@@ -1345,6 +1397,15 @@ msgstr ""
 msgid "List full"
 msgstr "Liste complète"
 
+msgid "The lowest available pdf version is "
+msgstr "La plus petite version pdf disponible est "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Vous avez sélectionné une version pdf inférieure, continuer ?"
+
+msgid "Pdf version conflict"
+msgstr "Conflit de version pdf"
+
 msgid "Error retrieving page saved informations"
 msgstr "Erreur d'accès aux informations de la page"
 
@@ -1361,68 +1422,53 @@ msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr "Niveau de journal introuvable, réglage au niveau par défaut (DEBUG)."
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "Chargement de la configuration de l'interface utilisateur"
 
 msgid "Unable to find configuration file for the user interface"
 msgstr ""
+"Acquisition du fichier de configuration de l'interface utilisateur impossible"
 
 msgid "Error reading the configuration file for the user interface"
 msgstr ""
+"Erreur de lecture du fichier de configuration de l'interface utilisateur"
 
 msgid "Error initializing the user interface vertical divider location"
 msgstr ""
+"Erreur d'initialisation de la position du séparateur vertical de l'interface "
+"utilisateur"
 
 msgid "Error initializing the user interface horizontal divider location"
 msgstr ""
+"Erreur d'initialisation de la position du séparateur horizontal de "
+"l'interface utilisateur"
 
 msgid "Error initializing the user interface extended state"
-msgstr ""
+msgstr "Erreur d'initialisation de l'état de l'interface utilisateur"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "Erreur d'initialisation de la taille de l'interface utilisateur"
 
 msgid "Error initializing the user interface horizontal divider size"
 msgstr ""
+"Erreur d'initialisation de la taille du séparateur horizontal de l'interface "
+"utilisateur"
 
 msgid "Error initializing the user interface vertical divider size"
 msgstr ""
+"Erreur d'initialisation de la taille du séparateur vertical de l'interface "
+"utilisateur"
 
 msgid "Error initializing the user interface location"
-msgstr ""
+msgstr "Erreur d'initialisation de la position de l'interface utilisateur"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "Sauvegarde de la configuration de l'interface utilisateur"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "Sauvegarde de l'état de l'interface utilisateur impossible."
 
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr ""
-#~ "Acquisition des informations de configuration par défaut impossible."
-
-#~ msgid "Setting default working directory..."
-#~ msgstr "Réglage du répertoire de travail par défaut..."
-
-#~ msgid "Setting default thumbnails creator..."
-#~ msgstr "Réglage du générateur de miniatures par défaut..."
-
-#~ msgid "Check for updates:"
-#~ msgstr "Mises à jour :"
-
-#~ msgid "Error getting default environment."
-#~ msgstr "Erreur d'acquisition de configuration."
-
-#~ msgid "Never"
-#~ msgstr "Ne jamais vérifier"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "Vérifier au démarrage"
-
-#~ msgid "Cover pdf file"
-#~ msgstr "Première de couverture"
-
-#~ msgid "Footer pdf file"
-#~ msgstr "Quatrième de couverture"
+#~ msgid "Please wait while reading"
+#~ msgstr "Veuillez attendre la fin de la lecture de"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
@@ -1430,3 +1476,34 @@ msgstr ""
 #~ msgstr ""
 #~ "Double-cliquez pour entrer les pages à fusionner (ex. : 2 ou All ou 5-23 "
 #~ "ou 2,5-7,12-)"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Aucun ou trop de fichiers modules \"jar\" détectés dans le dossier "
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Erreur d'acquisition de configuration."
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Le fichier sélectionné n'est pas un pdf."
+
+#~ msgid "Error loading "
+#~ msgstr "Erreur de chargement de "
+
+#~ msgid "pdfsam start up"
+#~ msgstr "Vérifier au démarrage"
+
+#~ msgid "Never"
+#~ msgstr "Ne jamais vérifier"
+
+#~ msgid "Check for updates:"
+#~ msgstr "Mises à jour :"
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr ""
+#~ "Acquisition des informations de configuration par défaut impossible."
+
+#~ msgid "Cover pdf file"
+#~ msgstr "Première de couverture"
+
+#~ msgid "Footer pdf file"
+#~ msgstr "Quatrième de couverture"

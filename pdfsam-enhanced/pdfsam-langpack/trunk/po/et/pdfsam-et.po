@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-07-15 18:54+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-10-03 18:58+0000\n"
+"Last-Translator: Maiko Mõtsar <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-26 05:12+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -47,9 +47,6 @@ msgstr "Selle valiku sättimisel laetakse dokumendid täielikult mällu"
 msgid "Destination output file"
 msgstr "Väljundfaili sihtkoht"
 
-msgid "Error: "
-msgstr "Viga: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Lehitse või sisesta täielik failitee väljundfaili sihtkohale."
 
@@ -68,18 +65,6 @@ msgstr "PDF versioon 1.5 või kõrgem."
 msgid "Set the pdf version of the ouput document."
 msgstr "Säti väljunddokumendi pdf versioon."
 
-msgid "Please wait while all files are processed.."
-msgstr "Palun oota kuna kõik failid on töödeldud.."
-
-msgid "Found a password for input file."
-msgstr "Sisendfaililt leitud salasõna."
-
-msgid "Please select at least one pdf document."
-msgstr "Palun vali vähemalt üks pdf dokument."
-
-msgid "Warning"
-msgstr "Hoiatus"
-
 msgid "Execute pdf merge"
 msgstr "Käivita pdf ühendamine"
 
@@ -88,6 +73,15 @@ msgstr "Ühenda/Eralda"
 
 msgid "Merge section loaded."
 msgstr "Ühendamise sektsioon laetud."
+
+msgid "Error: "
+msgstr "Viga: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Palun oota kuna kõik failid on töödeldud.."
+
+msgid "Found a password for input file."
+msgstr "Sisendfaililt leitud salasõna."
 
 msgid "Export as xml"
 msgstr "Ekspordi kui xml"
@@ -212,21 +206,6 @@ msgstr ""
 msgid "Available variables"
 msgstr "Saadaval muutujad"
 
-msgid "Invalid split size"
-msgstr "Vigane tükeldamise suurus"
-
-msgid "The lowest available pdf version is "
-msgstr "Madalaim saadaval pdf versioon on "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Valisid madalama väljund pdf versiooni, jätkan ikkagi?"
-
-msgid "Pdf version conflict"
-msgstr "Pdf versiooni konflikt"
-
-msgid "Please select a pdf document."
-msgstr "Palun vali pdf dokument."
-
 msgid "Split selected file"
 msgstr "Tükelda valitud fail"
 
@@ -236,11 +215,20 @@ msgstr "Tükelda"
 msgid "Split section loaded."
 msgstr "Tükeldamise sektsioon laetud."
 
+msgid "Invalid split size"
+msgstr "Vigane tükeldamise suurus"
+
 msgid "Invalid unit: "
 msgstr "Vigane ühik: "
 
 msgid "Fill from document"
 msgstr "Täidetavate vormiväljadega dokument"
+
+msgid "Please select a pdf document."
+msgstr "Palun vali pdf dokument."
+
+msgid "Warning"
+msgstr "Hoiatus"
 
 msgid "Getting bookmarks max depth"
 msgstr "Järjehoidjate max sügavuse hankimine"
@@ -251,14 +239,14 @@ msgstr "Esilehe pdf fail"
 msgid "Addendum pdf file"
 msgstr "Lisa pdf fail"
 
-msgid "Select at least one cover or one footer"
-msgstr "Vali vähemalt üks kaas või üks jalus"
-
 msgid "Frontpage and Addendum"
 msgstr "Esileht ja lisa"
 
 msgid "Cover And Footer section loaded."
 msgstr "Kaane ja jaluse sektsioon laetud."
+
+msgid "Select at least one cover or one footer"
+msgstr "Vali vähemalt üks kaas või üks jalus"
 
 msgid "Encrypt options"
 msgstr "Krüpteerimise valikud"
@@ -350,6 +338,45 @@ msgstr "Dekrüpti"
 msgid "Decrypt section loaded."
 msgstr "Dekrüptimise sektsioon laetud."
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr "Pealkiri"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr "Subjekt"
+
+msgid "Keywords"
+msgstr "Märksõnad"
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr "Faili valimine"
+
+msgid "Rotate selected files"
+msgstr "Pööra valitud failid"
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr "Pööramise valik laetud."
+
 msgid "Mix options"
 msgstr "Segu valikud"
 
@@ -376,15 +403,6 @@ msgstr ""
 "Sätib lehekülgede arvu, mille järel vahetatakse järgmisele dokumendile "
 "(vaikimisi 1)."
 
-msgid "Found a password for first file."
-msgstr "Leitud parool esimesel failil."
-
-msgid "Found a password for second file."
-msgstr "Leitud parool teisel failil."
-
-msgid "Please select two pdf documents."
-msgstr "Palun vali kaks pdf dokumenti."
-
 msgid "Execute pdf alternate mix"
 msgstr "Teosta pdf-i alternatiivne segamine"
 
@@ -393,6 +411,12 @@ msgstr "Alternatiivne segu"
 
 msgid "AlternateMix section loaded."
 msgstr "Alternatiivse segu sektsioon laetud."
+
+msgid "Found a password for first file."
+msgstr "Leitud parool esimesel failil."
+
+msgid "Found a password for second file."
+msgstr "Leitud parool teisel failil."
 
 msgid "Unpack selected files"
 msgstr "Valitud failide lahtipakkimine"
@@ -497,17 +521,14 @@ msgid "Viewer options section loaded."
 msgstr "Kuvarakenduse valikute sektsioon laetud."
 
 msgid "Move on top"
-msgstr ""
+msgstr "Liiguta üles"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Liiguta alla"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
-msgstr ""
-
-msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Execute pages reorder"
@@ -516,49 +537,49 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
-msgid "Rotation"
+msgid "Visual Composer section loaded."
 msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr ""
+
+msgid "Rotation"
+msgstr "Pööramine"
 
 msgid "All"
-msgstr ""
+msgstr "Kõik"
 
 msgid "Even"
-msgstr ""
+msgstr "Paaris"
 
 msgid "Odd"
-msgstr ""
+msgstr "Paaritu"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "Päripäeva pööramine (kraadides)"
 
 msgid "Pages:"
-msgstr ""
+msgstr "Lehed:"
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
+msgstr "Säti pööramisnurk (päripäeva)."
 
 msgid "Set the pages that will be rotated."
-msgstr ""
-
-msgid "Rotate selected files"
-msgstr ""
+msgstr "Säti leheküljed, mis keeratakse"
 
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr ""
+msgstr "Pööra"
 
 msgid "Use the same output file name as the input file or choose a file."
+msgstr "Kasuta väljundfailil sisendfaili nime või vali fail."
+
+msgid "Visual reorder"
+msgstr "Visuaalne järjestuse muutmine"
+
+msgid "Visual Reorder section loaded."
 msgstr ""
 
 msgid "Please select a pdf document or undelete some page"
-msgstr ""
-
-msgid "Visual reorder"
 msgstr ""
 
 msgid ""
@@ -582,7 +603,7 @@ msgid "Log saved."
 msgstr "Logi salvestatud"
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "Pildi salvestamine ebaõnnestus"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -597,7 +618,7 @@ msgid "Input file doesn't exists or is a directory"
 msgstr ""
 
 msgid "Error opening pdf document"
-msgstr ""
+msgstr "Viga pdf dokumendi avamisel"
 
 msgid "Password not provided."
 msgstr ""
@@ -662,15 +683,6 @@ msgstr "Valikutabel on täis, palun eemalda mõni pdf dokument."
 msgid "Table full"
 msgstr "Tabel täis"
 
-msgid "Please wait while reading"
-msgstr "Palun oota kuni loen"
-
-msgid "Selected file is not a pdf document."
-msgstr "Valitud fail ei ole pdf dokument"
-
-msgid "Error loading "
-msgstr "Viga laadimisel "
-
 msgid "Command validation returned an empty value."
 msgstr "Käsu valideerimine tagastas tühja väärtuse."
 
@@ -714,7 +726,7 @@ msgid "Paste"
 msgstr "Aseta"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "Lisa prefiks"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr ""
@@ -949,15 +961,6 @@ msgstr "Krüpteerimata"
 msgid "Permissions"
 msgstr "Õigused"
 
-msgid "Title"
-msgstr "Pealkiri"
-
-msgid "Author"
-msgstr "Autor"
-
-msgid "Subject"
-msgstr "Subjekt"
-
 msgid "Producer"
 msgstr "Valmistaja"
 
@@ -969,9 +972,6 @@ msgstr "Loomise kuupäev"
 
 msgid "Modification date"
 msgstr "Muutmise kuupäev"
-
-msgid "Keywords"
-msgstr "Märksõnad"
 
 msgid "Error creating properties panel."
 msgstr "Viga atribuutide paneeli loomisel."
@@ -1000,8 +1000,14 @@ msgstr "Pistikrakenduste kataloogi lugemise ebaõnnestumine "
 msgid "Plugins directory is null."
 msgstr "Pistikrakenduste kataloog on tühi."
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Pistikrakenduste kataloogist leitud null või palju jar'e. "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "Pistikprogrammide laadimise erandid."
@@ -1079,7 +1085,7 @@ msgid "Version: "
 msgstr "Versioon: "
 
 msgid "Console version: "
-msgstr ""
+msgstr "Konsooli versioon: "
 
 msgid "Developed by: "
 msgstr "Arendatud: "
@@ -1147,6 +1153,9 @@ msgstr "Kontrolli nüüd"
 msgid "Play alert sounds"
 msgstr "Mängi hoiatushelisid"
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr "Sätted "
 
@@ -1184,6 +1193,14 @@ msgstr ""
 
 msgid "Turn on or off alert sounds"
 msgstr "Lülita hoiatushelid sisse/välja"
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
 
 msgid "Default env."
 msgstr "Vaikimisi keskk."
@@ -1257,11 +1274,28 @@ msgstr "Kas soovid seda muuta"
 msgid "Output location error"
 msgstr "Väljundi asukoha viga"
 
+msgid "Please select at least one pdf document."
+msgstr "Palun vali vähemalt üks pdf dokument."
+
+msgid "Please select two pdf documents."
+msgstr "Palun vali kaks pdf dokumenti."
+
 msgid "Selected output file already exists "
 msgstr "Valitud väljundfail juba eksisteerib "
 
 msgid "Would you like to overwrite it?"
 msgstr "Kas sa soovid selle üle kirjutada?"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
+msgstr ""
 
 msgid "Provided pages selection is not valid"
 msgstr "Pakutud leheküljevalik ei ole korrektne"
@@ -1288,6 +1322,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Madalaim saadaval pdf versioon on "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Valisid madalama väljund pdf versiooni, jätkan ikkagi?"
+
+msgid "Pdf version conflict"
+msgstr "Pdf versiooni konflikt"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1341,18 +1384,3 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
-
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "Vaikimisi keskkonna informatsiooni hankimine ebaõnnestus."
-
-#~ msgid "Check for updates:"
-#~ msgstr "Kontrolli uuendusi:"
-
-#~ msgid "Error getting default environment."
-#~ msgstr "Viga vaikimisi keskkonna hankimisel."
-
-#~ msgid "Never"
-#~ msgstr "Mitte kunagi"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "pdfsam käivitumine"

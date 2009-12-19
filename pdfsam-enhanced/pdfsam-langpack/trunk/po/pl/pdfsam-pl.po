@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-06-17 16:13+0000\n"
 "Last-Translator: le.woj <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -47,9 +47,6 @@ msgstr "Po ustawieniu tej opcji dokumenty będą całkowicie ładowane do pamię
 msgid "Destination output file"
 msgstr "Docelowy plik wyjściowy"
 
-msgid "Error: "
-msgstr "Błąd: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Przeglądaj lub wpisz pełną ścieżkę docelowego pliku wyjściowego."
 
@@ -67,18 +64,6 @@ msgstr "Wersja PDF 1.5 lub wyższa"
 msgid "Set the pdf version of the ouput document."
 msgstr "Ustal wersję pdf dla dokumentu wyjściowego"
 
-msgid "Please wait while all files are processed.."
-msgstr "Czekaj, przetwarzanie wszystkich plików w toku"
-
-msgid "Found a password for input file."
-msgstr "Odnaleziono hasło dla pliku wejściowego"
-
-msgid "Please select at least one pdf document."
-msgstr "Proszę wybrać co najmniej jeden dokument PDF."
-
-msgid "Warning"
-msgstr "Ostrzeżenie"
-
 msgid "Execute pdf merge"
 msgstr "Łącz pliki PDF"
 
@@ -87,6 +72,15 @@ msgstr "Łącz/Dziel"
 
 msgid "Merge section loaded."
 msgstr "Wyczytano sekcję łączenia.l"
+
+msgid "Error: "
+msgstr "Błąd: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Czekaj, przetwarzanie wszystkich plików w toku"
+
+msgid "Found a password for input file."
+msgstr "Odnaleziono hasło dla pliku wejściowego"
 
 msgid "Export as xml"
 msgstr "Eksportuj jako xml"
@@ -206,21 +200,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr ""
-
-msgid "The lowest available pdf version is "
-msgstr "Najmniejsza dostępna wersja pdf to "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-
-msgid "Pdf version conflict"
-msgstr "Konflikt wersji PDF"
-
-msgid "Please select a pdf document."
-msgstr "Proszę wybrać dokument PDF."
-
 msgid "Split selected file"
 msgstr "Podziel wybrany plik"
 
@@ -230,11 +209,20 @@ msgstr "Dziel"
 msgid "Split section loaded."
 msgstr "Wczytano sekcję dzielenia."
 
+msgid "Invalid split size"
+msgstr ""
+
 msgid "Invalid unit: "
 msgstr "Nieprawidłowa jednostka: "
 
 msgid "Fill from document"
 msgstr ""
+
+msgid "Please select a pdf document."
+msgstr "Proszę wybrać dokument PDF."
+
+msgid "Warning"
+msgstr "Ostrzeżenie"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -245,13 +233,13 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr ""
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
+msgstr ""
+
+msgid "Select at least one cover or one footer"
 msgstr ""
 
 msgid "Encrypt options"
@@ -342,6 +330,45 @@ msgstr "Odszyfrowanie"
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr "Tytuł"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr "Temat"
+
+msgid "Keywords"
+msgstr "Słowa kluczowe"
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr "Wybierz plik"
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -364,15 +391,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Odnaleziono hasło dla pierwszego pliku"
-
-msgid "Found a password for second file."
-msgstr "Odnaleziono hasło dla drugiego pliku"
-
-msgid "Please select two pdf documents."
-msgstr "Proszę wybrać dwa dokumenty PDF."
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -381,6 +399,12 @@ msgstr ""
 
 msgid "AlternateMix section loaded."
 msgstr ""
+
+msgid "Found a password for first file."
+msgstr "Odnaleziono hasło dla pierwszego pliku"
+
+msgid "Found a password for second file."
+msgstr "Odnaleziono hasło dla drugiego pliku"
 
 msgid "Unpack selected files"
 msgstr "Rozpakuj wybrane pliki"
@@ -495,13 +519,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -528,25 +555,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
 msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr "Wybierz plik"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -648,15 +669,6 @@ msgstr ""
 
 msgid "Table full"
 msgstr "Tabela pełna"
-
-msgid "Please wait while reading"
-msgstr "Poszę czekać podczas odczytu"
-
-msgid "Selected file is not a pdf document."
-msgstr "Wskazany plik nie jest dokumentem PDF."
-
-msgid "Error loading "
-msgstr "Błąd ładowania "
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -934,15 +946,6 @@ msgstr "Nie zaszyfrowany"
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-msgid "Title"
-msgstr "Tytuł"
-
-msgid "Author"
-msgstr "Autor"
-
-msgid "Subject"
-msgstr "Temat"
-
 msgid "Producer"
 msgstr "Producent"
 
@@ -954,9 +957,6 @@ msgstr "Data utworzenia"
 
 msgid "Modification date"
 msgstr "Data modyfikacji"
-
-msgid "Keywords"
-msgstr "Słowa kluczowe"
 
 msgid "Error creating properties panel."
 msgstr ""
@@ -985,7 +985,13 @@ msgstr ""
 msgid "Plugins directory is null."
 msgstr "Katalog wtyczek jest pusty."
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1132,6 +1138,9 @@ msgstr "Sprawdź teraz"
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr "Ustawienia "
 
@@ -1165,6 +1174,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1237,11 +1254,28 @@ msgstr "Czy chcesz zmienić na"
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr "Proszę wybrać co najmniej jeden dokument PDF."
+
+msgid "Please select two pdf documents."
+msgstr "Proszę wybrać dwa dokumenty PDF."
+
 msgid "Selected output file already exists "
 msgstr "Wybrany plik wyjściowy już istnieje "
 
 msgid "Would you like to overwrite it?"
 msgstr "Czy chcesz nadpisać to?"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
+msgstr ""
 
 msgid "Provided pages selection is not valid"
 msgstr ""
@@ -1266,6 +1300,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Najmniejsza dostępna wersja pdf to "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr ""
+
+msgid "Pdf version conflict"
+msgstr "Konflikt wersji PDF"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1317,6 +1360,15 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Poszę czekać podczas odczytu"
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Wskazany plik nie jest dokumentem PDF."
+
+#~ msgid "Error loading "
+#~ msgstr "Błąd ładowania "
 
 #~ msgid "Setting default working directory..."
 #~ msgstr "Ustawianie domyślnego katalogu roboczego..."

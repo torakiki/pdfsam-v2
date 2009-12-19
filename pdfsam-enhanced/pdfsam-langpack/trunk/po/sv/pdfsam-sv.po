@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-03-10 13:37+0000\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-10-25 17:56+0000\n"
+"Last-Translator: Carl-Uno Olsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -50,6 +50,31 @@ msgstr "Markera detta val för att ladda hela dokumentet i arbetsminnet."
 msgid "Destination output file"
 msgstr "Destination för målfil:"
 
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Bläddra eller skriv sökvägen till målfilen."
+
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr "Markera för att skriva över fil som redan finns."
+
+msgid "Check the box if you want compressed output files."
+msgstr "Markera för att komprimera den skapade filen."
+
+msgid "PDF version 1.5 or above."
+msgstr "PDF version 1.5 eller högre."
+
+msgid "Set the pdf version of the ouput document."
+msgstr "Välj PDF-version för målfilen."
+
+msgid "Execute pdf merge"
+msgstr "Påbörja sammanslagning av PDF-filer"
+
+msgid "Merge/Extract"
+msgstr "Sätt samman/Dela"
+
+msgid "Merge section loaded."
+msgstr "Avsnitt att sätta samman laddat."
+
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
@@ -77,22 +102,6 @@ msgstr "Destination för målfil:"
 msgid "Error: "
 msgstr "Fel: "
 
-msgid "Browse or enter the full path to the destination output file."
-msgstr "Bläddra eller skriv sökvägen till målfilen."
-
-msgid ""
-"Check the box if you want to overwrite the output file if it already exists."
-msgstr "Markera för att skriva över fil som redan finns."
-
-msgid "Check the box if you want compressed output files."
-msgstr "Markera för att komprimera den skapade filen."
-
-msgid "PDF version 1.5 or above."
-msgstr "PDF version 1.5 eller högre."
-
-msgid "Set the pdf version of the ouput document."
-msgstr "Välj PDF-version för målfilen."
-
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
@@ -105,21 +114,6 @@ msgstr "Vänta medan alla filer behandlas..."
 
 msgid "Found a password for input file."
 msgstr "Fann lösenord för källfilen."
-
-msgid "Please select at least one pdf document."
-msgstr "Välj åtminstone ett pdf-dokument"
-
-msgid "Warning"
-msgstr "Varning"
-
-msgid "Execute pdf merge"
-msgstr "Påbörja sammanslagning av PDF-filer"
-
-msgid "Merge/Extract"
-msgstr "Sätt samman/Dela"
-
-msgid "Merge section loaded."
-msgstr "Avsnitt att sätta samman laddat."
 
 msgid "Export as xml"
 msgstr "Exportera som xml"
@@ -174,7 +168,7 @@ msgid "Split at this size"
 msgstr "Dela upp till denna storlek"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Dela efter bokmärkesnivå"
 
 msgid "Burst"
 msgstr "Gasa"
@@ -197,10 +191,12 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dela dokumentet efter sidnummer (sid1-sid2-sid3)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Dela upp dokumentet i filer av ungefär angiven storlek"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
+"Dela upp dokumentet efter de sidor som refereras till av bokmärken på "
+"angiven nivå"
 
 msgid "Destination folder"
 msgstr "Målmapp"
@@ -240,7 +236,7 @@ msgid ""
 msgstr "Markera för att skriva över filer som redan existerar."
 
 msgid "Output options"
-msgstr ""
+msgstr "Utdataalternativ"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:291
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:384
@@ -267,24 +263,11 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"Om det inte innehåller \"[CURRENTPAGE]\", \"[TIMESTAMP]\" eller "
+"\"[FILENUMBER]\" generar det den gamla sortens filnamn för utdata."
 
 msgid "Available variables"
-msgstr ""
-
-msgid "Invalid split size"
-msgstr "Ogiltig delningsstorlek."
-
-msgid "The lowest available pdf version is "
-msgstr "Den lägsta tillgängliga versionen av pdf är "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Du har valt en lägre pdf-version på målfilen, vill du fortsätta ändå?"
-
-msgid "Pdf version conflict"
-msgstr "PDF-version konflikt"
-
-msgid "Please select a pdf document."
-msgstr "Välj ett pdf-dokument"
+msgstr "Tillgängliga variabler"
 
 # G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:369
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
@@ -297,32 +280,41 @@ msgstr "Dela"
 msgid "Split section loaded."
 msgstr "Dela laddat urval."
 
+msgid "Invalid split size"
+msgstr "Ogiltig delningsstorlek."
+
 msgid "Invalid unit: "
 msgstr "Ogiltig enhet: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Fyll från dokument"
+
+msgid "Please select a pdf document."
+msgstr "Välj ett pdf-dokument"
+
+msgid "Warning"
+msgstr "Varning"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "Frontpage pdf-fil"
 
 msgid "Addendum pdf file"
-msgstr ""
-
-msgid "Select at least one cover or one footer"
-msgstr "Välj minst en omslags- eller sidfotspdf."
+msgstr "Addendum pdf-fil"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "Frontpage och Addendum"
 
 msgid "Cover And Footer section loaded."
 msgstr "Omslag och Sidfot laddad."
 
+msgid "Select at least one cover or one footer"
+msgstr "Välj minst en omslags- eller sidfotspdf."
+
 msgid "Encrypt options"
-msgstr ""
+msgstr "Krypteringsalternativ"
 
 msgid "Owner password:"
 msgstr "Ägarens lösenord."
@@ -337,7 +329,7 @@ msgid "User password (Max 32 chars long)"
 msgstr "Användalösenord (Max32 tecken)"
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "Krypteringsalgoritm:"
 
 msgid "Allow all"
 msgstr "Tllåt alla"
@@ -399,12 +391,53 @@ msgid "Encrypt section loaded."
 msgstr "Krypterad sektion laddad."
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "Dekryptera valda filer"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "Dekryptera"
 
 msgid "Decrypt section loaded."
+msgstr "Dekryptera inläst avsnitt."
+
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# G:\Documents\eclipse_workspace\PDF
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+msgid "Author"
+msgstr "Författare"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr "Välj en fil"
+
+msgid "Rotate selected files"
+msgstr "Rotera valda filer"
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
 msgstr ""
 
 msgid "Mix options"
@@ -429,15 +462,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Hittade ett lösenord för första filen."
-
-msgid "Found a password for second file."
-msgstr "Hittade ett lösenord för andra filen."
-
-msgid "Please select two pdf documents."
-msgstr "Välj två PDF-dokument"
-
 msgid "Execute pdf alternate mix"
 msgstr "Genomför pdf-alternativmix."
 
@@ -446,6 +470,12 @@ msgstr "Alternativ mix"
 
 msgid "AlternateMix section loaded."
 msgstr "Alternativ mixsektion laddad."
+
+msgid "Found a password for first file."
+msgstr "Hittade ett lösenord för första filen."
+
+msgid "Found a password for second file."
+msgstr "Hittade ett lösenord för andra filen."
 
 msgid "Unpack selected files"
 msgstr "Extrahera valda filer"
@@ -457,49 +487,49 @@ msgid "Unpack section loaded."
 msgstr "Upppacknings-sektionen laddad."
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "Ange visningsalternativ"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Dölj menyraden"
 
 msgid "Hide the toolbar"
 msgstr "Göm verktygsraden"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Dölj delar av användargränssnittet"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "Ändra storlek på fönstret så att det passar sidstorleken"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "Mitten av skärmen"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "Visa dokuementets titel som fönstertitel"
 
 msgid "Pdf version required:"
-msgstr ""
+msgstr "PDF-version som krävs:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Ingen sidskalning i utskriftsdialogen"
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "Öppningsläge för visning:"
 
 msgid "Viewer layout:"
-msgstr ""
+msgstr "Visningslayout:"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Icke-helskärmsläge:"
 
 msgid "Direction:"
-msgstr ""
+msgstr "Riktning:"
 
 msgid "Set options"
-msgstr ""
+msgstr "Ange alternativ"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "Ange visningsalternativ för valda filer"
 
 msgid "Left to right"
 msgstr "Vänster till höger"
@@ -508,110 +538,108 @@ msgid "Right to left"
 msgstr "Höger till vänster"
 
 msgid "None"
-msgstr ""
+msgstr "Inga"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Helskärm"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Bilagor"
 
 msgid "Optional content group panel"
 msgstr ""
 
 msgid "Document outline"
-msgstr ""
+msgstr "Dokumentdisposition"
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Miniatyrbilder"
 
 msgid "One page at a time"
 msgstr "En sida åt gången"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Sidor i en kolumn"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Sidor i två kolumner (udda till vänster)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Sidor i två kolumner (udda till höger)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Två sidor åt gången (udda till vänster)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Två sidor åt gången (udda till höger)"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "Visningsalternativ"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "Avsnittet för visningsalternativ inläst."
 
 msgid "Move on top"
-msgstr ""
+msgstr "Flytta överst"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Flytta längst ner"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
-
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
+"För att välja fil bläddra eller ange den kompletta sökvägen till målfilen."
 
 msgid "Execute pages reorder"
-msgstr ""
+msgstr "Verkställ sidomflyttningen"
 
 msgid "Visual document composer"
 msgstr ""
 
-msgid "Rotation"
+msgid "Visual Composer section loaded."
 msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr "Välj ett pdf-dokument eller ångra raderingen av några sidor"
+
+msgid "Rotation"
+msgstr "Rotation"
 
 msgid "All"
-msgstr ""
+msgstr "Allt"
 
 msgid "Even"
-msgstr ""
+msgstr "Jämna"
 
 msgid "Odd"
-msgstr ""
+msgstr "Udda"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "Medurs rotation (grader)"
 
 msgid "Pages:"
-msgstr ""
+msgstr "Sidor:"
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
+msgstr "Ange rotationsvinkeln (medurs grader)"
 
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
-msgstr ""
+msgstr "Rotera"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -713,15 +741,6 @@ msgstr "Urvalskolumnen är full, ta bort någa dokument"
 
 msgid "Table full"
 msgstr "Kolumn full"
-
-msgid "Please wait while reading"
-msgstr "Vänta medan inläsning sker"
-
-msgid "Selected file is not a pdf document."
-msgstr "Vald fil är inte av typen PDF"
-
-msgid "Error loading "
-msgstr "Fel vid laddning av "
 
 msgid "Command validation returned an empty value."
 msgstr "Kommandovalidationen gav ett tomt värde."
@@ -881,7 +900,7 @@ msgid "Reload"
 msgstr "Uppdatera"
 
 msgid "Error: Unable to reload the selected file/s."
-msgstr ""
+msgstr "Fel: Kunde inte läsa om vald(a) fil(er)."
 
 msgid "Document properties"
 msgstr ""
@@ -1085,17 +1104,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-# G:\Documents\eclipse_workspace\PDF
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-msgid "Author"
-msgstr "Författare"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -1106,9 +1114,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -1138,8 +1143,14 @@ msgstr "Kan inte läsa pluginbiblioteket "
 msgid "Plugins directory is null."
 msgstr "Pluginbiblioteket är noll."
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Fann noll eller många jars i pluginbiblioteket. "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "Undantag då pluginer laddades."
@@ -1298,6 +1309,9 @@ msgid "Check now"
 msgstr "Kontrollera nu"
 
 msgid "Play alert sounds"
+msgstr "Spela varningsljud"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
 msgstr ""
 
 msgid "Settings "
@@ -1336,6 +1350,14 @@ msgstr ""
 "(omstart krävs)"
 
 msgid "Turn on or off alert sounds"
+msgstr "Sätt på eller av varningsljud"
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1408,10 +1430,27 @@ msgstr "Vill du ändra det till"
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr "Välj åtminstone ett pdf-dokument"
+
+msgid "Please select two pdf documents."
+msgstr "Välj två PDF-dokument"
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1437,6 +1476,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Den lägsta tillgängliga versionen av pdf är "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Du har valt en lägre pdf-version på målfilen, vill du fortsätta ändå?"
+
+msgid "Pdf version conflict"
+msgstr "PDF-version konflikt"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1489,20 +1537,11 @@ msgstr ""
 msgid "Unable to save user interface status."
 msgstr ""
 
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "Kunde ej hämta den förvalda omgivningsinormationen"
+#~ msgid "Error loading "
+#~ msgstr "Fel vid laddning av "
 
-#~ msgid "Check for updates:"
-#~ msgstr "Sök efter uppdateringar:"
-
-#~ msgid "Error getting default environment."
-#~ msgstr "Fel vid laddning av standardmiljö:"
-
-#~ msgid "Never"
-#~ msgstr "Aldrig"
-
-#~ msgid "pdfsam start up"
-#~ msgstr "pdfsam uppstart"
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Vald fil är inte av typen PDF"
 
 #~ msgid ""
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
@@ -1510,3 +1549,24 @@ msgstr ""
 #~ msgstr ""
 #~ "Dubbelklicka för att välja sidor du vill slå samman (ex: 2 eller Alla "
 #~ "eller 5-23 eller 2,5-7,12-)"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Fann noll eller många jars i pluginbiblioteket. "
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Fel vid laddning av standardmiljö:"
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Vänta medan inläsning sker"
+
+#~ msgid "Check for updates:"
+#~ msgstr "Sök efter uppdateringar:"
+
+#~ msgid "Never"
+#~ msgstr "Aldrig"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam uppstart"
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Kunde ej hämta den förvalda omgivningsinormationen"

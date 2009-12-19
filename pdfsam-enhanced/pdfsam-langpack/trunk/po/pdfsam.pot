@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-15 17:11+0100\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,9 +46,6 @@ msgstr ""
 msgid "Destination output file"
 msgstr ""
 
-msgid "Error: "
-msgstr ""
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
 
@@ -72,6 +69,9 @@ msgid "Merge/Extract"
 msgstr ""
 
 msgid "Merge section loaded."
+msgstr ""
+
+msgid "Error: "
 msgstr ""
 
 msgid "Please wait while all files are processed.."
@@ -205,15 +205,6 @@ msgstr ""
 msgid "Invalid split size"
 msgstr ""
 
-msgid "The lowest available pdf version is "
-msgstr ""
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-
-msgid "Pdf version conflict"
-msgstr ""
-
 msgid "Invalid unit: "
 msgstr ""
 
@@ -326,6 +317,45 @@ msgid "Decrypt"
 msgstr ""
 
 msgid "Decrypt section loaded."
+msgstr ""
+
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
 msgstr ""
 
 msgid "Mix options"
@@ -484,6 +514,9 @@ msgstr ""
 msgid "Visual document composer"
 msgstr ""
 
+msgid "Visual Composer section loaded."
+msgstr ""
+
 msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
@@ -511,22 +544,16 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
 msgid "Visual reorder"
+msgstr ""
+
+msgid "Visual Reorder section loaded."
 msgstr ""
 
 msgid "Please select a pdf document or undelete some page"
@@ -630,15 +657,6 @@ msgid "Selection table is full, please remove some pdf document."
 msgstr ""
 
 msgid "Table full"
-msgstr ""
-
-msgid "Please wait while reading"
-msgstr ""
-
-msgid "Selected file is not a pdf document."
-msgstr ""
-
-msgid "Error loading "
 msgstr ""
 
 msgid "Command validation returned an empty value."
@@ -917,15 +935,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr ""
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -936,9 +945,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -968,7 +974,13 @@ msgstr ""
 msgid "Plugins directory is null."
 msgstr ""
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1275,6 +1287,15 @@ msgid ""
 msgstr ""
 
 msgid "List full"
+msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr ""
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr ""
+
+msgid "Pdf version conflict"
 msgstr ""
 
 msgid "Error retrieving page saved informations"

@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
-"PO-Revision-Date: 2009-03-10 13:29+0000\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"PO-Revision-Date: 2009-09-29 11:59+0000\n"
+"Last-Translator: Francisco Diéguez <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
-msgstr ""
+msgstr "Opciones de unión"
 
 msgid "PDF documents contain forms"
 msgstr "Os documentos PDF conteñen formularios"
@@ -48,9 +48,6 @@ msgstr ""
 msgid "Destination output file"
 msgstr "Ficheiro de saída"
 
-msgid "Error: "
-msgstr "Erro: "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr ""
 "Explore o sistema de arquivos ou introduza a ruta completa ao ficheiro de "
@@ -71,18 +68,6 @@ msgstr "PDF versión 1.5 ou posterior."
 msgid "Set the pdf version of the ouput document."
 msgstr "Estableza a versión de PDF do documento de saída."
 
-msgid "Please wait while all files are processed.."
-msgstr "Por favor, agarde mentras os ficheiros son procesados.."
-
-msgid "Found a password for input file."
-msgstr "Atopouse un contrasinal para o ficheiro de entrada."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
 msgid "Execute pdf merge"
 msgstr "Executar a unión de PDF"
 
@@ -91,6 +76,15 @@ msgstr "Unir/Extraer"
 
 msgid "Merge section loaded."
 msgstr "Cargada a sección de unión"
+
+msgid "Error: "
+msgstr "Erro: "
+
+msgid "Please wait while all files are processed.."
+msgstr "Por favor, agarde mentras os ficheiros son procesados.."
+
+msgid "Found a password for input file."
+msgstr "Atopouse un contrasinal para o ficheiro de entrada."
 
 msgid "Export as xml"
 msgstr "Exportar como xml"
@@ -129,10 +123,10 @@ msgid "Split at this size"
 msgstr "División a este tamaño"
 
 msgid "Split by bookmarks level"
-msgstr ""
+msgstr "Dividir por nivel de marcador"
 
 msgid "Burst"
-msgstr ""
+msgstr "Ráfaga"
 
 msgid "Explode the pdf document into single pages"
 msgstr "Separar o documento PDF en páxinas simples"
@@ -150,13 +144,13 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Dividir o documento logo dos números de páxina (núm1-núm2-núm3..)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Divide o documento en ficheiros do tamaño dado (aproximadamente)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
 msgid "Destination folder"
-msgstr ""
+msgstr "Cartafol de destino"
 
 msgid "Same as source"
 msgstr "Idéntico ao orixinal"
@@ -187,7 +181,7 @@ msgstr ""
 "que xa existan."
 
 msgid "Output options"
-msgstr ""
+msgstr "Opcións de saída"
 
 msgid "Output file names prefix:"
 msgstr "Prefixo dos nomes de ficheiro de saída:"
@@ -199,6 +193,8 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Se contén \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" ou "
+"\"[BOOKMARK_NAME]\" realiza unha sustitución de variábeis."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
@@ -212,23 +208,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr "Tamaño de división non válido"
-
-msgid "The lowest available pdf version is "
-msgstr "A versión de PDF máis antiga dispoñíbel é: "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-"Escolleu unha versión anterior para o PDF de saída, desexa continuar de "
-"tódolos xeitos?"
-
-msgid "Pdf version conflict"
-msgstr "Conflito na versión de PDF"
-
-msgid "Please select a pdf document."
-msgstr ""
-
 msgid "Split selected file"
 msgstr "Dividir o ficheiro seleccionado"
 
@@ -238,11 +217,20 @@ msgstr "Dividir"
 msgid "Split section loaded."
 msgstr "A sección de división foi cargada."
 
+msgid "Invalid split size"
+msgstr "Tamaño de división non válido"
+
 msgid "Invalid unit: "
 msgstr "Unidade non válida: "
 
 msgid "Fill from document"
 msgstr ""
+
+msgid "Please select a pdf document."
+msgstr ""
+
+msgid "Warning"
+msgstr "Aviso"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -253,13 +241,13 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr ""
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
+msgstr ""
+
+msgid "Select at least one cover or one footer"
 msgstr ""
 
 msgid "Encrypt options"
@@ -352,6 +340,45 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -374,15 +401,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Atopouse un contrasinal para o primeiro ficheiro."
-
-msgid "Found a password for second file."
-msgstr "Atopouse un contrasinal para o segundo ficheiro."
-
-msgid "Please select two pdf documents."
-msgstr "Por favor, escolla dous documentos PDF."
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -391,6 +409,12 @@ msgstr ""
 
 msgid "AlternateMix section loaded."
 msgstr ""
+
+msgid "Found a password for first file."
+msgstr "Atopouse un contrasinal para o primeiro ficheiro."
+
+msgid "Found a password for second file."
+msgstr "Atopouse un contrasinal para o segundo ficheiro."
 
 msgid "Unpack selected files"
 msgstr "Desempaquetar ficheiros seleccionados"
@@ -505,13 +529,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -538,25 +565,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -659,15 +680,6 @@ msgstr ""
 
 msgid "Table full"
 msgstr "Táboa chea"
-
-msgid "Please wait while reading"
-msgstr "Por favor, agarde durante a lectura"
-
-msgid "Selected file is not a pdf document."
-msgstr "O ficheiro seleccionado non é un documento PDF."
-
-msgid "Error loading "
-msgstr "Erro de carga "
 
 msgid "Command validation returned an empty value."
 msgstr "A validación da orde devolveu un valor baleiro."
@@ -945,15 +957,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr "Autor"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -964,9 +967,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -996,8 +996,14 @@ msgstr "Non foi posíbel acceder ao directorio de plugins "
 msgid "Plugins directory is null."
 msgstr ""
 
-msgid "Found zero or many jars in plugin directory "
-msgstr "Atopáronse cero ou demasiados jars no directorio de plugin "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr ""
@@ -1143,6 +1149,9 @@ msgstr "Verificar agora"
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr ""
 
@@ -1175,6 +1184,14 @@ msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 msgid "Default env."
@@ -1249,10 +1266,27 @@ msgstr "Desexaría cambialo a"
 msgid "Output location error"
 msgstr "Erro na ubicación de saída"
 
+msgid "Please select at least one pdf document."
+msgstr "Por favor, seleccione polo menos un documento pdf"
+
+msgid "Please select two pdf documents."
+msgstr "Por favor, escolla dous documentos PDF."
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1278,6 +1312,17 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "A versión de PDF máis antiga dispoñíbel é: "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr ""
+"Escolleu unha versión anterior para o PDF de saída, desexa continuar de "
+"tódolos xeitos?"
+
+msgid "Pdf version conflict"
+msgstr "Conflito na versión de PDF"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1332,6 +1377,22 @@ msgstr ""
 msgid "Unable to save user interface status."
 msgstr ""
 
+#~ msgid "Error loading "
+#~ msgstr "Erro de carga "
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "O ficheiro seleccionado non é un documento PDF."
+
+#~ msgid ""
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
+#~ "7,12-)"
+#~ msgstr ""
+#~ "Faga dobre clic para escoller as páxinas que desexa unir (exemplo: 2 ou "
+#~ "All ou 5-23 ou 2,5-7,12-)"
+
+#~ msgid "Never"
+#~ msgstr "Nunca"
+
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Foi imposíbel obter información sobre o contorno por defecto."
 
@@ -1341,15 +1402,11 @@ msgstr ""
 #~ msgid "Error getting default environment."
 #~ msgstr "Erro ao obter o contorno por defecto."
 
-#~ msgid "Never"
-#~ msgstr "Nunca"
+#~ msgid "Please wait while reading"
+#~ msgstr "Por favor, agarde durante a lectura"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Atopáronse cero ou demasiados jars no directorio de plugin "
 
 #~ msgid "pdfsam start up"
 #~ msgstr "inicio de pdfsam"
-
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "Faga dobre clic para escoller as páxinas que desexa unir (exemplo: 2 ou "
-#~ "All ou 5-23 ou 2,5-7,12-)"

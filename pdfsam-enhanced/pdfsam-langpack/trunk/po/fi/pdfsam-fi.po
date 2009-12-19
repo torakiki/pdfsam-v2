@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:28+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -66,6 +66,41 @@ msgstr "Kun tätä ominaisuutta käytetään, dokumentit ladataan kokonaan muist
 msgid "Destination output file"
 msgstr "Kohdetiedosto"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:445
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Selaa tai anna polku kohdetiedostoon."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr ""
+"Valitse tämä, jos haluat ylikirjoittaa tiedoston, jos se on jo olemassa"
+
+msgid "Check the box if you want compressed output files."
+msgstr "Valitse tämä, jos haluat tulostustiedostot pakattuina."
+
+msgid "PDF version 1.5 or above."
+msgstr "PDF-versio 1.5 tai uudempi"
+
+msgid "Set the pdf version of the ouput document."
+msgstr "Määritä tallennettavan tiedoston PDF-versio"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
+msgid "Execute pdf merge"
+msgstr "Suorita yhdistäminen"
+
+msgid "Merge/Extract"
+msgstr "Yhdistä/Pura"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
+msgid "Merge section loaded."
+msgstr "Yhdistämisosa ladattu."
+
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:441
@@ -93,29 +128,6 @@ msgstr "Kohdetiedosto"
 msgid "Error: "
 msgstr "Virhe: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:441
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:256
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:445
-msgid "Browse or enter the full path to the destination output file."
-msgstr "Selaa tai anna polku kohdetiedostoon."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:446
-msgid ""
-"Check the box if you want to overwrite the output file if it already exists."
-msgstr ""
-"Valitse tämä, jos haluat ylikirjoittaa tiedoston, jos se on jo olemassa"
-
-msgid "Check the box if you want compressed output files."
-msgstr "Valitse tämä, jos haluat tulostustiedostot pakattuina."
-
-msgid "PDF version 1.5 or above."
-msgstr "PDF-versio 1.5 tai uudempi"
-
-msgid "Set the pdf version of the ouput document."
-msgstr "Määritä tallennettavan tiedoston PDF-versio"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
@@ -131,24 +143,6 @@ msgstr "Ole hyvä ja odota kunnes kaikki tiedostot on käsitelty."
 
 msgid "Found a password for input file."
 msgstr "Syöttötiedosto on suojattu salasanalla."
-
-msgid "Please select at least one pdf document."
-msgstr ""
-
-msgid "Warning"
-msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:524
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:528
-msgid "Execute pdf merge"
-msgstr "Suorita yhdistäminen"
-
-msgid "Merge/Extract"
-msgstr "Yhdistä/Pura"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:858
-msgid "Merge section loaded."
-msgstr "Yhdistämisosa ladattu."
 
 msgid "Export as xml"
 msgstr ""
@@ -328,21 +322,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr "Kelvoton jakamiskoko."
-
-msgid "The lowest available pdf version is "
-msgstr "Vanhin saatavilla oleva PDF-versio on "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Valitsit vanhemman PDF-version kohdetiedostolle, jatketaanko?"
-
-msgid "Pdf version conflict"
-msgstr "PDF-versioiden ristiriita"
-
-msgid "Please select a pdf document."
-msgstr ""
-
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:411
 # F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:409
 msgid "Split selected file"
@@ -355,10 +334,19 @@ msgstr "Jaa kahtia"
 msgid "Split section loaded."
 msgstr "Jako-osa ladattu"
 
+msgid "Invalid split size"
+msgstr "Kelvoton jakamiskoko."
+
 msgid "Invalid unit: "
 msgstr "Kelvoton yksikkö: "
 
 msgid "Fill from document"
+msgstr ""
+
+msgid "Please select a pdf document."
+msgstr ""
+
+msgid "Warning"
 msgstr ""
 
 msgid "Getting bookmarks max depth"
@@ -370,15 +358,15 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr "Valitse vähintään yksi kansilehti tai alatunniste"
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
 msgid "Cover And Footer section loaded."
 msgstr "Kansi ja alatunniste -osa ladattu."
+
+msgid "Select at least one cover or one footer"
+msgstr "Valitse vähintään yksi kansilehti tai alatunniste"
 
 msgid "Encrypt options"
 msgstr ""
@@ -487,6 +475,47 @@ msgstr ""
 msgid "Decrypt section loaded."
 msgstr ""
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
+msgid "Author"
+msgstr "Tekijä"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr ""
 
@@ -509,15 +538,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Ensimmäinen tiedosto on suojattu salasanalla."
-
-msgid "Found a password for second file."
-msgstr "Toinen tiedosto on suojattu salasanalla."
-
-msgid "Please select two pdf documents."
-msgstr "Valitse kaksi pdf-dokumenttia."
-
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
 msgstr "Suorita pdf-sekoitus"
@@ -528,6 +548,12 @@ msgstr "Vaihtoehtoinen sekoittaminen"
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:495
 msgid "AlternateMix section loaded."
 msgstr "Sekoitusosa ladattu"
+
+msgid "Found a password for first file."
+msgstr "Ensimmäinen tiedosto on suojattu salasanalla."
+
+msgid "Found a password for second file."
+msgstr "Toinen tiedosto on suojattu salasanalla."
 
 msgid "Unpack selected files"
 msgstr ""
@@ -642,13 +668,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -675,25 +704,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -799,20 +822,6 @@ msgstr "Valintataulu on täynnä, poista joitakin PDF-dokumentteja."
 
 msgid "Table full"
 msgstr "Taulu on täynnä"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
-msgid "Please wait while reading"
-msgstr "Luetaan. Ole hyvä ja odota."
-
-msgid "Selected file is not a pdf document."
-msgstr "Valittu tiedosto ei ole PDF-dokumentti."
-
-msgid "Error loading "
-msgstr "Virhe ladattaessa "
 
 msgid "Command validation returned an empty value."
 msgstr "Komennon vahvistaminen palautti tyhjän arvon."
@@ -1180,17 +1189,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
-msgid "Author"
-msgstr "Tekijä"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -1201,9 +1199,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -1234,9 +1229,14 @@ msgstr "Laajennuksille varattua kansiota ei voida lukea. "
 msgid "Plugins directory is null."
 msgstr "Laajennuksille ei ole määritetty kansiota."
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
 msgstr ""
-"Ei yhtään (tai useita) jar-tiedostoja laajennuksille varatussa kansiossa "
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "Poikkeus laajennuksia ladattaessa."
@@ -1416,6 +1416,9 @@ msgstr "Tarkista nyt"
 msgid "Play alert sounds"
 msgstr ""
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\panels\JSettingsPanel.java:181
 msgid "Settings "
@@ -1462,6 +1465,14 @@ msgstr ""
 "uudelleen)"
 
 msgid "Turn on or off alert sounds"
+msgstr ""
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
@@ -1541,10 +1552,27 @@ msgstr ""
 msgid "Output location error"
 msgstr ""
 
+msgid "Please select at least one pdf document."
+msgstr ""
+
+msgid "Please select two pdf documents."
+msgstr "Valitse kaksi pdf-dokumenttia."
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1570,6 +1598,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Vanhin saatavilla oleva PDF-versio on "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Valitsit vanhemman PDF-version kohdetiedostolle, jatketaanko?"
+
+msgid "Pdf version conflict"
+msgstr "PDF-versioiden ristiriita"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1621,6 +1658,24 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:248
+#~ msgid "Please wait while reading"
+#~ msgstr "Luetaan. Ole hyvä ja odota."
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Valittu tiedosto ei ole PDF-dokumentti."
+
+#~ msgid "Error loading "
+#~ msgstr "Virhe ladattaessa "
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr ""
+#~ "Ei yhtään (tai useita) jar-tiedostoja laajennuksille varatussa kansiossa "
 
 #~ msgid "Check for updates:"
 #~ msgstr "Tarkista uudet päivitykset"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 12:55+0200\n"
+"POT-Creation-Date: 2009-12-19 17:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -47,9 +47,6 @@ msgstr "Z izbiro te možnosti bodo dokumenti shranjeni v spomin"
 msgid "Destination output file"
 msgstr "Mesto shranjevanja datoteke"
 
-msgid "Error: "
-msgstr "Napaka "
-
 msgid "Browse or enter the full path to the destination output file."
 msgstr "Poišči ali vpiši celo pot do datoteke"
 
@@ -66,18 +63,6 @@ msgstr "PDF verzija 1.5 in naprej"
 msgid "Set the pdf version of the ouput document."
 msgstr "Izberi PDF verzijo shranjene datoteke"
 
-msgid "Please wait while all files are processed.."
-msgstr "Prosim, počakaj...procesiram"
-
-msgid "Found a password for input file."
-msgstr "Najdeno geslo za izbrano datoteko"
-
-msgid "Please select at least one pdf document."
-msgstr "Izberi vsaj en PDF dokument"
-
-msgid "Warning"
-msgstr "Opozorilo"
-
 msgid "Execute pdf merge"
 msgstr "Začni PDF spajanje"
 
@@ -86,6 +71,15 @@ msgstr "Spajanje/razdruževanje"
 
 msgid "Merge section loaded."
 msgstr "Sektor  združevanja naložen"
+
+msgid "Error: "
+msgstr "Napaka "
+
+msgid "Please wait while all files are processed.."
+msgstr "Prosim, počakaj...procesiram"
+
+msgid "Found a password for input file."
+msgstr "Najdeno geslo za izbrano datoteko"
 
 msgid "Export as xml"
 msgstr "Izvozi kot xml"
@@ -203,21 +197,6 @@ msgstr ""
 msgid "Available variables"
 msgstr ""
 
-msgid "Invalid split size"
-msgstr "Nepravilna velikost razdružene datoteke"
-
-msgid "The lowest available pdf version is "
-msgstr "Najstarejša verzija PDF datoteke je "
-
-msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr "Izbrali ste najstarejšo verzijo PDF, ali nadaljujem?"
-
-msgid "Pdf version conflict"
-msgstr "Konflikt PDF verzije"
-
-msgid "Please select a pdf document."
-msgstr "Izberi PDF dokument"
-
 msgid "Split selected file"
 msgstr "Razdruži izbrano datoteko"
 
@@ -227,11 +206,20 @@ msgstr "Razdeli"
 msgid "Split section loaded."
 msgstr "Razdruženi del naložen"
 
+msgid "Invalid split size"
+msgstr "Nepravilna velikost razdružene datoteke"
+
 msgid "Invalid unit: "
 msgstr "Napaka, enota "
 
 msgid "Fill from document"
 msgstr ""
+
+msgid "Please select a pdf document."
+msgstr "Izberi PDF dokument"
+
+msgid "Warning"
+msgstr "Opozorilo"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -242,14 +230,14 @@ msgstr ""
 msgid "Addendum pdf file"
 msgstr ""
 
-msgid "Select at least one cover or one footer"
-msgstr "Izberi vsaj eno platnico ali nogo"
-
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
 msgstr "Naslovnica in noga naložena"
+
+msgid "Select at least one cover or one footer"
+msgstr "Izberi vsaj eno platnico ali nogo"
 
 msgid "Encrypt options"
 msgstr "Možnosti šifriranja"
@@ -338,6 +326,45 @@ msgstr "Dešifriraj"
 msgid "Decrypt section loaded."
 msgstr "Dešifriana datoteka naložena"
 
+msgid "Document metadata"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Author"
+msgstr "Avtor"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Keywords"
+msgstr ""
+
+msgid "Set the document title."
+msgstr ""
+
+msgid "Set the document author."
+msgstr ""
+
+msgid "Set the document subject."
+msgstr ""
+
+msgid "Set the document keywords."
+msgstr ""
+
+msgid "Choose a file"
+msgstr ""
+
+msgid "Rotate selected files"
+msgstr ""
+
+msgid "Document Info"
+msgstr ""
+
+msgid "Rotate section loaded."
+msgstr ""
+
 msgid "Mix options"
 msgstr "Mešane možnosti"
 
@@ -360,15 +387,6 @@ msgid ""
 "is 1)."
 msgstr ""
 
-msgid "Found a password for first file."
-msgstr "Najdeno geslo za prvo datoteko"
-
-msgid "Found a password for second file."
-msgstr "Najdeno geslo za drugo datoteko"
-
-msgid "Please select two pdf documents."
-msgstr "Izberi dva PDF dokumenta"
-
 msgid "Execute pdf alternate mix"
 msgstr ""
 
@@ -377,6 +395,12 @@ msgstr ""
 
 msgid "AlternateMix section loaded."
 msgstr ""
+
+msgid "Found a password for first file."
+msgstr "Najdeno geslo za prvo datoteko"
+
+msgid "Found a password for second file."
+msgstr "Najdeno geslo za drugo datoteko"
 
 msgid "Unpack selected files"
 msgstr "Razširi izbrane datoteke"
@@ -491,13 +515,16 @@ msgid ""
 "file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some pages"
-msgstr ""
-
 msgid "Execute pages reorder"
 msgstr ""
 
 msgid "Visual document composer"
+msgstr ""
+
+msgid "Visual Composer section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
@@ -524,25 +551,19 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
-msgid "Rotate selected files"
-msgstr ""
-
 msgid "Rotate"
-msgstr ""
-
-msgid "Rotate section loaded."
-msgstr ""
-
-msgid "Choose a file"
 msgstr ""
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
 
-msgid "Please select a pdf document or undelete some page"
+msgid "Visual reorder"
 msgstr ""
 
-msgid "Visual reorder"
+msgid "Visual Reorder section loaded."
+msgstr ""
+
+msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
 msgid ""
@@ -644,15 +665,6 @@ msgstr "Izbira PDF dokumentov je prevelika, odstrani nekaj dokumentov"
 
 msgid "Table full"
 msgstr "Tabela je polna"
-
-msgid "Please wait while reading"
-msgstr "Počakaj, berem"
-
-msgid "Selected file is not a pdf document."
-msgstr "Izbran dokument ni PDF"
-
-msgid "Error loading "
-msgstr "Error nalganje "
 
 msgid "Command validation returned an empty value."
 msgstr "Napaka ukaza, ni podatka"
@@ -930,15 +942,6 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-msgid "Title"
-msgstr ""
-
-msgid "Author"
-msgstr "Avtor"
-
-msgid "Subject"
-msgstr ""
-
 msgid "Producer"
 msgstr ""
 
@@ -949,9 +952,6 @@ msgid "Creation date"
 msgstr ""
 
 msgid "Modification date"
-msgstr ""
-
-msgid "Keywords"
 msgstr ""
 
 msgid "Error creating properties panel."
@@ -981,7 +981,13 @@ msgstr "Napaka vtičnikov, direktorij "
 msgid "Plugins directory is null."
 msgstr "Direktorij vtičnikov je prazen"
 
-msgid "Found zero or many jars in plugin directory "
+msgid "Found many plugins in "
+msgstr ""
+
+msgid "selected as the most recent plugin"
+msgstr ""
+
+msgid "No plugin found in "
 msgstr ""
 
 msgid "Exception loading plugins."
@@ -1128,6 +1134,9 @@ msgstr "Preveri zdaj"
 msgid "Play alert sounds"
 msgstr "Opozorilni ton"
 
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr ""
+
 msgid "Settings "
 msgstr "Nastavitve "
 
@@ -1161,6 +1170,14 @@ msgstr "Nastavi način posodobitev"
 
 msgid "Turn on or off alert sounds"
 msgstr "Vklop/izklop alarma"
+
+msgid "Ask overwrite confirmation"
+msgstr ""
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
 
 msgid "Default env."
 msgstr "Privzeto okloje"
@@ -1232,10 +1249,27 @@ msgstr "Ali želiš spremeniti v"
 msgid "Output location error"
 msgstr "Izhodna napaka"
 
+msgid "Please select at least one pdf document."
+msgstr "Izberi vsaj en PDF dokument"
+
+msgid "Please select two pdf documents."
+msgstr "Izberi dva PDF dokumenta"
+
 msgid "Selected output file already exists "
 msgstr ""
 
 msgid "Would you like to overwrite it?"
+msgstr ""
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+
+msgid "Do you confirm to overwrite?"
+msgstr ""
+
+msgid "Confirm overwrite"
 msgstr ""
 
 msgid "Provided pages selection is not valid"
@@ -1261,6 +1295,15 @@ msgstr ""
 
 msgid "List full"
 msgstr ""
+
+msgid "The lowest available pdf version is "
+msgstr "Najstarejša verzija PDF datoteke je "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Izbrali ste najstarejšo verzijo PDF, ali nadaljujem?"
+
+msgid "Pdf version conflict"
+msgstr "Konflikt PDF verzije"
 
 msgid "Error retrieving page saved informations"
 msgstr ""
@@ -1312,6 +1355,15 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Počakaj, berem"
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Izbran dokument ni PDF"
+
+#~ msgid "Error loading "
+#~ msgstr "Error nalganje "
 
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Napaka privzetih informacij pri odpiranju"

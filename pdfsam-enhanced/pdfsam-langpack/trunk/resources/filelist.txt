@@ -13,6 +13,8 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/listeners/RunButtonActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-decrypt/src/java/org/pdfsam/plugin/decrypt/GUI/DecryptMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-decrypt/src/java/org/pdfsam/plugin/decrypt/listeners/RunButtonActionListener.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-docinfo/src/java/org/pdfsam/plugin/docinfo/GUI/DocInfoMainGUI.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-docinfo/src/java/org/pdfsam/plugin/docinfo/listeners/RunButtonActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-encrypt/src/java/org/pdfsam/plugin/encrypt/listeners/EncryptionTypeComboActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/GUI/MixMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-mix/src/java/org/pdfsam/plugin/mix/listeners/RunButtonActionListener.java
