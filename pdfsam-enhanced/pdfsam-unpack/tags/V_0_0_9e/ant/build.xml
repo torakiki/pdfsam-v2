@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-unpack" default="build-jars" basedir="../">
+    <description>
+        Unpack plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-unpack.src.dir" location="src/java"/>
+  	<property name="pdfsam-unpack.etc.dir" location="etc"/>
+	 
+	  <target name="init">
+	  	<property file="ant/build.properties" />
+	  	  	
+	  	<property name="pdfsam-unpack.build.root" location="${build.dir}/pdfsam-unpack"/>
+	  	<property name="pdfsam-unpack.build.dir" location="${pdfsam-unpack.build.root}/build"/>
+	  	<property name="pdfsam-unpack.dist.dir"  location="${pdfsam-unpack.build.root}/dist"/>
+	  	<property name="pdfsam-unpack.javadoc.dir"  location="${pdfsam-unpack.build.root}/apidocs"/>  
+	  </target>
+	
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-unpack.build.dir}"/>
+		<mkdir dir="${pdfsam-unpack.dist.dir}"/>
+	    <mkdir dir="${pdfsam-unpack.javadoc.dir}"/>
+	</target>	
+
+	  <target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-unpack.javadoc.dir}"/>
+	    <delete dir="${pdfsam-unpack.dist.dir}"/>
+	    <delete dir="${pdfsam-unpack.build.dir}"/>
+	  </target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-unpack " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-unpack.classpath">
+        <fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-unpack.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-unpack.src.dir}" destdir="${pdfsam-unpack.build.dir}" debug="true">
+    	<classpath refid="pdfsam-unpack.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${pdfsam-unpack.dist.dir}/${pdfsam-unpack.jar.name}.jar" basedir="${pdfsam-unpack.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+	<fileset dir=".">
+	    <include name="images/*.png"/>
+	</fileset>    	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.unpack.*"
+      sourcepath="${pdfsam-unpack.src.dir}"
+      destdir="${pdfsam-unpack.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Unpack Plugin API"
+      doctitle="pdfsam Unpack Plugin API" >
+    <classpath refid="pdfsam-unpack.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-unpack.dist.dir}/${pdfsam-unpack.jar.name}-build-src.zip">	
+		<fileset dir="..">
+	    	<include name="pdfsam-unpack/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-unpack/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-unpack/ant/**/*.*"/>
+    		<include name="pdfsam-unpack/images**/*.png"/>
+    	</fileset>    	
+    </zip>
+  </target>
+
+</project>
+
