@@ -23,8 +23,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -63,12 +61,11 @@ import org.pdfsam.plugin.docinfo.listeners.RunButtonActionListener;
  * @author Andrea Vacondio
  * @see javax.swing.JPanel
  */
-public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyChangeListener{
+public class DocInfoMainGUI extends AbstractPlugablePanel {
 
 	private static final long serialVersionUID = 3187805591202436824L;
 
 	private static final Logger log = Logger.getLogger(DocInfoMainGUI.class.getPackage().getName());	
-	private static final String DEFAULT_OUPUT_NAME = "docinfo_file.pdf";
 	
 	private SpringLayout destinationPanelLayout;
 	private SpringLayout docInfoPanelLayout;
@@ -136,8 +133,6 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
         topConst.gridy = 0;
 		topPanel.add(selectionPanel, topConst);
 		
-		selectionPanel.addPropertyChangeListener(this);
-		selectionPanel.enableSetOutputPathMenuItem();
 		selectionPanel.getLoader().setHook(new SetMetaFieldsHook(this));
 
 //		DOCINFO PANEL	
@@ -662,20 +657,6 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 		}
 	}
 
-
-	/**
-	 * The menu item to set the output path has been clicked
-	 */
-	public void propertyChange(PropertyChangeEvent evt) {
-		if(JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())){
-			String newVal = (String)evt.getNewValue();
-			if(newVal.endsWith(File.separator)){
-				destinationTextField.setText(newVal+DEFAULT_OUPUT_NAME);
-			}else{
-				destinationTextField.setText(newVal+File.separator+DEFAULT_OUPUT_NAME);
-			}
-		}		
-	}
 	
 	public void resetPanel() {
 		selectionPanel.clearSelectionTable();	
@@ -683,6 +664,7 @@ public class DocInfoMainGUI extends AbstractPlugablePanel implements PropertyCha
 		versionCombo.resetComponent();
 		outputCompressedCheck.setSelected(false);
 		overwriteCheckbox.setSelected(false);
+		chooseAFileRadio.setSelected(true);
 	}
 
 	/**
