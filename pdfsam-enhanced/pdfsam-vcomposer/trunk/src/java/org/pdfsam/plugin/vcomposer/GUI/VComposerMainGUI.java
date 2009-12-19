@@ -305,7 +305,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputCompressedCheck, 0, SpringLayout.WEST, destinationFileText);
 		
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, outputVersionLabel, 17, SpringLayout.NORTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputVersionLabel, 5, SpringLayout.SOUTH, outputCompressedCheck);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputVersionLabel, 8, SpringLayout.SOUTH, outputCompressedCheck);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destinationFileText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
@@ -438,7 +438,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 				}
 			}
 			
-			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Visual composer section loaded."));  
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Visual Composer section loaded."));  
         }
 		catch (Exception ex){
 			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
@@ -446,6 +446,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	}
 
 	public void resetPanel() {
+		inputPanel.removeAllTabs();
 		composerPanel.resetPanel();
 		destinationFileText.setText("");
 		versionCombo.resetComponent();
