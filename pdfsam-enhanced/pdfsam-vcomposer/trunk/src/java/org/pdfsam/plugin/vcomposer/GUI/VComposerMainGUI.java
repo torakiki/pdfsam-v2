@@ -438,7 +438,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 				}
 			}
 			
-			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Split section loaded."));  
+			log.info(GettextResource.gettext(config.getI18nResourceBundle(),"Visual composer section loaded."));  
         }
 		catch (Exception ex){
 			log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                     
@@ -525,8 +525,11 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
                 return composerPanel.getRotateAntiButton();
             }  
             else if (aComponent.equals(composerPanel.getRotateAntiButton())){
-            	 return destinationFileText;
+            	 return composerPanel.getReverseButton();
             }
+            else if (aComponent.equals(composerPanel.getReverseButton())){
+           	 return destinationFileText;
+           }
             else if (aComponent.equals(destinationFileText)){
                 return browseDestButton;
             }
@@ -606,6 +609,9 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
                  return composerPanel.getRotateButton();
              }  
              else if (aComponent.equals(destinationFileText)){
+                 return composerPanel.getReverseButton();
+             }            
+             else if (aComponent.equals(composerPanel.getReverseButton())){
                  return composerPanel.getRotateAntiButton();
              }            
              else if (aComponent.equals(browseDestButton)){
