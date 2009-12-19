@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-rotate" default="build-jars" basedir="../">
+    <description>
+        Rotate plugin for pdfsam 
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="pdfsam-rotate.src.dir" location="src/java"/>
+  	<property name="pdfsam-rotate.etc.dir" location="etc"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="pdfsam-rotate.build.root" location="${build.dir}/pdfsam-rotate"/>
+	  	<property name="pdfsam-rotate.build.dir" location="${pdfsam-rotate.build.root}/build"/>
+	  	<property name="pdfsam-rotate.dist.dir"  location="${pdfsam-rotate.build.root}/dist"/>
+	  	<property name="pdfsam-rotate.javadoc.dir"  location="${pdfsam-rotate.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-rotate.build.dir}"/>
+		<mkdir dir="${pdfsam-rotate.dist.dir}"/>
+	    <mkdir dir="${pdfsam-rotate.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-rotate.javadoc.dir}"/>
+	    <delete dir="${pdfsam-rotate.dist.dir}"/>
+	    <delete dir="${pdfsam-rotate.build.dir}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="pdfsam-rotate " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-rotate.classpath">
+    	<fileset dir="${libs.dir}">
+          <include name="**/${log4j.jar.name}.jar"/>
+          <include name="**/${dom4j.jar.name}.jar"/>
+          <include name="**/${jaxen.jar.name}.jar"/>
+          <include name="**/${pdfsam-console.jar.name}.jar"/>
+          <include name="**/${pdfsam-langpack.jar.name}.jar"/>
+        </fileset> 	
+        <pathelement path="${pdfsam-rotate.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.5" target="1.5" source="1.5" srcdir="${pdfsam-rotate.src.dir}" destdir="${pdfsam-rotate.build.dir}" debug="true">
+    	<classpath refid="pdfsam-rotate.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-rotate.dist.dir}/${pdfsam-rotate.jar.name}.jar" basedir="${pdfsam-rotate.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+    </manifest>
+    	<fileset dir=".">
+		    <include name="images/*.png"/>
+		</fileset>    	  	  	
+    </jar>
+    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.plugin.rotate.*"
+      sourcepath="${pdfsam-rotate.src.dir}"
+      destdir="${pdfsam-rotate.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam Rotate Plugin API"
+      doctitle="pdfsam Rotate Plugin API" >
+    <classpath refid="pdfsam-rotate.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-rotate.dist.dir}/${pdfsam-rotate.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="pdfsam-rotate/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-rotate/apidocs/**/*.*"/>
+    	</fileset>
+		<fileset dir="..">
+    		<include name="pdfsam-rotate/ant/**/*.*"/>
+    		<include name="pdfsam-rotate/images**/*.png"/>
+    	</fileset>  
+    </zip>
+  </target>
+
+</project>
+
