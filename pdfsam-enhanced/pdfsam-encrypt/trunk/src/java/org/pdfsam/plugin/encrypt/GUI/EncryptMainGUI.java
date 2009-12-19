@@ -723,6 +723,9 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 				return versionCombo;
 			}            
 			else if (aComponent.equals(versionCombo)){
+				return outPrefixTextField;
+			}            
+			else if (aComponent.equals(outPrefixTextField)){
 				return runButton;
 			}            
             else if (aComponent.equals(runButton)){
