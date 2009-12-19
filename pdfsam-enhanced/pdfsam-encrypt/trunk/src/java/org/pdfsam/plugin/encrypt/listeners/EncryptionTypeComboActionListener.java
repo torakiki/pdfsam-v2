@@ -35,8 +35,8 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 	private JCheckBox[] permissionsCheck;
 	private JPdfVersionCombo versionCombo;
 	
-	private static final Integer aesFilter = new Integer(""+AbstractParsedCommand.VERSION_1_6);
-	private static final Integer rc4_128Filter = new Integer(""+AbstractParsedCommand.VERSION_1_4);
+	private static final Integer AES_FILTER = Integer.valueOf(Character.toString(AbstractParsedCommand.VERSION_1_6));
+	private static final Integer RC4_128_FILTER = Integer.valueOf(Character.toString(AbstractParsedCommand.VERSION_1_4));
 	
 	public EncryptionTypeComboActionListener(JCheckBox allowAllCheck, JCheckBox[] permissionsCheck, JPdfVersionCombo versionCombo){
 		this.allowAllCheck = allowAllCheck;
@@ -50,7 +50,9 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 				Object source = e.getSource();
 				if(source instanceof JComboBox){
 					String encType = (String)e.getItem();
-					if(encType.equals(EncryptionUtility.RC4_40)){
+					System.out.println("EncType: "+encType);
+					if(EncryptionUtility.RC4_40.equals(encType)){
+						System.out.println("Abilito solo RC4");
 				        permissionsCheck[EncryptMainGUI.PRINT].setEnabled(true);
 				        permissionsCheck[EncryptMainGUI.DPRINT].setEnabled(false);
 				        permissionsCheck[EncryptMainGUI.COPY].setEnabled(true);
@@ -60,13 +62,14 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 				        permissionsCheck[EncryptMainGUI.SCREEN].setEnabled(false);
 				        permissionsCheck[EncryptMainGUI.ASSEMBLY].setEnabled(false);
 					}else{
+						System.out.println("Altro enctype, abilito tutto");
 						for(int i=0; i<permissionsCheck.length; i++){
 							permissionsCheck[i].setEnabled(true);
 						}
 						if(encType.equals(EncryptionUtility.RC4_128)){
-							versionCombo.addVersionFilter(rc4_128Filter);
+							versionCombo.addVersionFilter(RC4_128_FILTER);
 						}else if(encType.equals(EncryptionUtility.AES_128)){
-							versionCombo.addVersionFilter(aesFilter);
+							versionCombo.addVersionFilter(AES_FILTER);
 						}
 					}
 				}
@@ -76,9 +79,9 @@ public class EncryptionTypeComboActionListener implements ItemListener {
 			if(source instanceof JComboBox){
 				String encType = (String)e.getItem();
 				if(encType.equals(EncryptionUtility.RC4_128)){
-					versionCombo.removeVersionFilter(rc4_128Filter);
+					versionCombo.removeVersionFilter(RC4_128_FILTER);
 				}else if(encType.equals(EncryptionUtility.AES_128)){
-					versionCombo.removeVersionFilter(aesFilter);
+					versionCombo.removeVersionFilter(AES_FILTER);
 				}
 			}
 		}

@@ -143,7 +143,6 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     public EncryptMainGUI() {
         super();
         initialize();
-        
     }
 
     private void initialize() {
@@ -217,18 +216,12 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 
         encryptTypeLabel.setPreferredSize(new Dimension(140,20));
         encryptTypeLabel.setText(GettextResource.gettext(config.getI18nResourceBundle(),"Encryption algorithm:"));
-        labelsPanel.add(encryptTypeLabel);		
-
-        String[] eTypes = {EncryptionUtility.RC4_40, EncryptionUtility.RC4_128, EncryptionUtility.AES_128};
-        encryptType = new JComboBox(eTypes);
-        encryptType.setPreferredSize(new Dimension(140,20));
-        fieldsPanel.add(encryptType);		       
+        labelsPanel.add(encryptTypeLabel);				       
         
         encryptPwdsPanel.add(labelsPanel);
         encryptPwdsPanel.add(Box.createRigidArea(new Dimension(5,0)));
         encryptPwdsPanel.add(fieldsPanel);
 
-        
 	    encryptOptsPanel.setLayout(new GridLayout(3,3,5,5));
 	    
 
@@ -239,6 +232,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptOptsPanel.add(permissionsCheck[EncryptMainGUI.PRINT]);
 
         permissionsCheck[EncryptMainGUI.DPRINT] = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Low quality print"));
+        permissionsCheck[EncryptMainGUI.DPRINT].setEnabled(false);
         encryptOptsPanel.add(permissionsCheck[EncryptMainGUI.DPRINT]);
 
         permissionsCheck[EncryptMainGUI.COPY] = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Copy or extract"));
@@ -251,12 +245,15 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         encryptOptsPanel.add(permissionsCheck[EncryptMainGUI.ANNOTATION]);
 
         permissionsCheck[EncryptMainGUI.FILL] = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Fill form fields"));
+        permissionsCheck[EncryptMainGUI.FILL].setEnabled(false);
         encryptOptsPanel.add(permissionsCheck[EncryptMainGUI.FILL]);
 
         permissionsCheck[EncryptMainGUI.SCREEN] = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Extract for use by accessibility dev."));
+        permissionsCheck[EncryptMainGUI.SCREEN].setEnabled(false);
         encryptOptsPanel.add(permissionsCheck[EncryptMainGUI.SCREEN]);
 
         permissionsCheck[EncryptMainGUI.ASSEMBLY] = new JCheckBox(GettextResource.gettext(config.getI18nResourceBundle(),"Manipulate pages and add bookmarks"));
+        permissionsCheck[EncryptMainGUI.ASSEMBLY].setEnabled(false);
         encryptOptsPanel.add(permissionsCheck[EncryptMainGUI.ASSEMBLY]);
         
         encryptOptionsPanel.setMinimumSize(new Dimension(200, 190));
@@ -342,9 +339,15 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
     		"</body></html>";
 	    destinationHelpLabel = new JHelpLabel(helpTextDest, true);
 	    destinationPanel.add(destinationHelpLabel);
-//END_HELP_LABEL_DESTINATION         
+//END_HELP_LABEL_DESTINATION 
+
+        String[] eTypes = {EncryptionUtility.RC4_40, EncryptionUtility.RC4_128, EncryptionUtility.AES_128};
+        encryptType = new JComboBox(eTypes);
         encryptType.addItemListener(new EncryptionTypeComboActionListener(allowAllCheck, permissionsCheck, versionCombo));    
+        encryptType.setPreferredSize(new Dimension(140,20));
         encryptType.setSelectedIndex(0);
+        fieldsPanel.add(encryptType);
+        
 //S_PANEL
         outputOptionsPanel.setBorder(BorderFactory.createTitledBorder(GettextResource.gettext(config.getI18nResourceBundle(),"Output options")));
         outputOptionsPanel.setPreferredSize(new Dimension(200, 55));
@@ -523,11 +526,12 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
 						for(int j=0; listEnab!= null && j<listEnab.size(); j++){
 							Node enabledNode = (Node) listEnab.get(j);
 							if(enabledNode != null){
-								permissionsCheck[Integer.parseInt(enabledNode.selectSingleNode("@value").getText())].doClick();
+								permissionsCheck[Integer.parseInt(enabledNode.selectSingleNode("@value").getText())].setSelected(true);
 							}
 						}
 					}
 				}				
+
 				Node encType = (Node) arg0.selectSingleNode("enctype/@value");
 				if (encType != null){
 					encryptType.setSelectedItem((String)encType.getText());
@@ -599,7 +603,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel implements PropertyCha
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputCompressedCheck, 0, SpringLayout.WEST, destFolderText);
 
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, outputVersionLabel, 17, SpringLayout.NORTH, outputVersionLabel);
-        destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputVersionLabel, 5, SpringLayout.SOUTH, outputCompressedCheck);
+        destinationPanelLayout.putConstraint(SpringLayout.NORTH, outputVersionLabel, 8, SpringLayout.SOUTH, outputCompressedCheck);
         destinationPanelLayout.putConstraint(SpringLayout.WEST, outputVersionLabel, 0, SpringLayout.WEST, destFolderText);
         
         destinationPanelLayout.putConstraint(SpringLayout.SOUTH, versionCombo, 0, SpringLayout.SOUTH, outputVersionLabel);
