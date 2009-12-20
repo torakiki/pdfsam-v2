@@ -137,6 +137,12 @@ ShowUninstDetails hide
     Call getLangName
 !macroend
 
+!macro CreateInternetShortcut FILENAME URL ICONFILE ICONINDEX
+WriteINIStr "${FILENAME}.url" "InternetShortcut" "URL" "${URL}"
+WriteINIStr "${FILENAME}.url" "InternetShortcut" "IconFile" "${ICONFILE}"
+WriteINIStr "${FILENAME}.url" "InternetShortcut" "IconIndex" "${ICONINDEX}"
+!macroend
+
 ;function that gets called by the above macro
 Function getLangName ;pretty sure there's a better way to do this...
    ClearErrors
@@ -289,7 +295,8 @@ Section -post SEC0001
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk" $INSTDIR\pdfsam-starter.exe
     SetOutPath $SMPROGRAMS\$StartMenuGroup
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Readme.lnk" $INSTDIR\doc\readme.txt
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.5.0e-tutorial.pdf
+	!insertmacro CreateInternetShortcut "$SMPROGRAMS\$StartMenuGroup\PdfsamWiki" "http://www.pdfsam.org/mediawiki/" "F:\pdfsam\workspace-enhanced\pdfsam-maine\install\install-data\wiki.ico" "0"
+	CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk" $INSTDIR\doc\pdfsam-1.5.0e-tutorial.pdf
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     
@@ -311,20 +318,21 @@ Section "-Write XML" ;writes to XML file
     ${xml::LoadFile} $INSTDIR\pdfsam-config.xml $0
     
     ${xml::GotoPath} "/pdfsam/settings/i18n" $0
+	${xml::GetAttribute} "value" $0 $1 
+	
     ${getLanguageName} $LANGUAGE
     
-    ${xml::SetText} $LANG_NAME $1
+    ${xml::SetAttribute} "value" $LANG_NAME $2
     
     ${xml::SaveFile} "$INSTDIR\pdfsam-config.xml" $0
-    
-       
+      
 SectionEnd
 
 # Uninstaller sections
 Section "Uninstall"
   
   Delete "$INSTDIR\uninstall.exe"
-  Delete "$INSTDIR\config.xml"
+  Delete "$INSTDIR\pdfsam-config.xml"
   Delete "$INSTDIR\pdfsam-starter.exe"
   Delete "$INSTDIR\*.jar"
 
@@ -655,8 +663,9 @@ Function un.RemoveStartmenu
   
   Delete "$SMPROGRAMS\$StartMenuGroup\Uninstall.lnk"
   Delete "$SMPROGRAMS\$StartMenuGroup\pdfsam.lnk"
+  Delete "$SMPROGRAMS\$StartMenuGroup\Tutorial.lnk"
+  Delete "$SMPROGRAMS\$StartMenuGroup\PdfsamWiki.url"
   Delete "$SMPROGRAMS\$StartMenuGroup\readme.lnk"
-  Delete "$SMPROGRAMS\$StartMenuGroup\tutorial.lnk"
   RMDir "$SMPROGRAMS\$StartMenuGroup"
 FunctionEnd
 
