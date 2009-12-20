@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-19 17:09+0100\n"
-"PO-Revision-Date: 2009-12-19 14:34+0000\n"
-"Last-Translator: Izumi Chen <Unknown>\n"
+"PO-Revision-Date: 2009-11-16 03:40+0000\n"
+"Last-Translator: Ethan Chang <ethan.chang@canonical.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 16:00+0000\n"
+"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -328,7 +328,7 @@ msgid "Decrypt section loaded."
 msgstr "已載入解密的區段。"
 
 msgid "Document metadata"
-msgstr "檔案詮釋資料"
+msgstr ""
 
 msgid "Title"
 msgstr "標題"
@@ -343,16 +343,16 @@ msgid "Keywords"
 msgstr "關鍵字"
 
 msgid "Set the document title."
-msgstr "設定文件標題"
+msgstr ""
 
 msgid "Set the document author."
-msgstr "設定文件作者"
+msgstr ""
 
 msgid "Set the document subject."
-msgstr "設定文件主題"
+msgstr ""
 
 msgid "Set the document keywords."
-msgstr "設定文件關鍵字"
+msgstr ""
 
 msgid "Choose a file"
 msgstr "選取一個檔案"
@@ -361,7 +361,7 @@ msgid "Rotate selected files"
 msgstr "旋轉所選的檔案"
 
 msgid "Document Info"
-msgstr "文件資訊"
+msgstr ""
 
 msgid "Rotate section loaded."
 msgstr "旋轉模組已載入"
@@ -526,7 +526,7 @@ msgid "Visual Composer section loaded."
 msgstr ""
 
 msgid "Please select a pdf document or undelete some pages"
-msgstr "請選擇一個PDF檔案或取消刪除部分頁面"
+msgstr ""
 
 msgid "Rotation"
 msgstr "旋轉"
@@ -596,7 +596,7 @@ msgid "Unable to create thumbnails for a null input document"
 msgstr "無法為一個空的輸入文件建立縮圖"
 
 msgid "Unable to open the input document"
-msgstr "無法開啟匯入檔案"
+msgstr ""
 
 msgid "Input file doesn't exists or is a directory"
 msgstr "輸入檔不存在或是個資料夾"
@@ -659,7 +659,7 @@ msgid "Error playing sound"
 msgstr "播放音效時出錯"
 
 msgid "Generating thumbnails using the following library:"
-msgstr "使用下列資料庫產生縮圖："
+msgstr ""
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "選取清單已滿，請移除某個 PDF 文件。"
@@ -983,13 +983,13 @@ msgid "Plugins directory is null."
 msgstr "增效模組目錄是空的。"
 
 msgid "Found many plugins in "
-msgstr "尋找到多個擴充套件於 "
+msgstr ""
 
 msgid "selected as the most recent plugin"
-msgstr "選擇為最近使用擴充套件"
+msgstr ""
 
 msgid "No plugin found in "
-msgstr "並未尋找到擴充套件於 "
+msgstr ""
 
 msgid "Exception loading plugins."
 msgstr "載入增效模組出現異常。"
@@ -1127,7 +1127,7 @@ msgid "Default working directory:"
 msgstr "預設的工作目錄："
 
 msgid "Check for updates at startup"
-msgstr "啟動時檢查更新"
+msgstr ""
 
 msgid "Check now"
 msgstr "立刻檢查"
@@ -1136,7 +1136,7 @@ msgid "Play alert sounds"
 msgstr "播放警示音效"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
-msgstr "當覆寫選項勾選時詢問確認"
+msgstr ""
 
 msgid "Settings "
 msgstr "設定 "
@@ -1173,12 +1173,12 @@ msgid "Turn on or off alert sounds"
 msgstr "開啟或關閉警示音效"
 
 msgid "Ask overwrite confirmation"
-msgstr "覆寫檔案時詢問確認"
+msgstr ""
 
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
-msgstr "當「覆寫」選項勾選時顯示確認對話框"
+msgstr ""
 
 msgid "Default env."
 msgstr "預設環境設定"
@@ -1201,12 +1201,12 @@ msgid "Configuration saved."
 msgstr "設定已儲存。"
 
 msgid "Error saving configuration"
-msgstr "儲存設定錯誤。"
+msgstr ""
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
-msgstr "儲存設定時發生錯誤，請查看記錄檔獲得更多資訊。"
+msgstr ""
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "尚未實作的 JSettingsPanel 方法"
@@ -1265,13 +1265,13 @@ msgstr "您要覆寫它嗎？"
 msgid ""
 "Please note that output files will overwrite existing files of the same name "
 "without warning."
-msgstr "請注意輸出檔案將會無預警直接覆寫同名檔案。"
+msgstr ""
 
 msgid "Do you confirm to overwrite?"
-msgstr "您確定要覆寫檔案嘛？"
+msgstr ""
 
 msgid "Confirm overwrite"
-msgstr "覆寫確認"
+msgstr ""
 
 msgid "Provided pages selection is not valid"
 msgstr "您提供的頁面選擇無效"
@@ -1322,40 +1322,40 @@ msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr "無法找到紀錄檔層級，設定為預設層級（偵錯）。"
 
 msgid "Loading user interface configuration"
-msgstr "載入使用者介面設定"
+msgstr ""
 
 msgid "Unable to find configuration file for the user interface"
-msgstr "無法尋找到使用者介面設定"
+msgstr ""
 
 msgid "Error reading the configuration file for the user interface"
-msgstr "讀取使用者介面設定時發生錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface vertical divider location"
-msgstr "初始化使用者介面垂直分隔位置錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface horizontal divider location"
-msgstr "初始化使用者介面水平分隔位置錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface extended state"
-msgstr "初始化使用者介面擴展狀態錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface size"
-msgstr "初始化使用者介面大小錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface horizontal divider size"
-msgstr "初始化使用者介面水平分隔尺寸錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface vertical divider size"
-msgstr "初始化使用者垂直分隔尺寸錯誤"
+msgstr ""
 
 msgid "Error initializing the user interface location"
-msgstr "初始化使用者介面位置錯誤"
+msgstr ""
 
 msgid "Saving GUI configuration"
-msgstr "儲存圖形用戶介面設定"
+msgstr ""
 
 msgid "Unable to save user interface status."
-msgstr "無法儲存使用者介面狀態"
+msgstr ""
 
 #~ msgid "Please wait while reading"
 #~ msgstr "讀取中請稍待..."
