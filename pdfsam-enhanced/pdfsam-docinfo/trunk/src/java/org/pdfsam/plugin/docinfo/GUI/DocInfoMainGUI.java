@@ -300,7 +300,7 @@ public class DocInfoMainGUI extends AbstractPlugablePanel {
 		
 //		RUN_BUTTON
 		runButton.addActionListener(new RunButtonActionListener(this));
-        runButton.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Rotate selected files"));
+        runButton.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Set metadata on the selected file"));
         runButton.setSize(new Dimension(88,25));
         
         c.fill = GridBagConstraints.NONE;
