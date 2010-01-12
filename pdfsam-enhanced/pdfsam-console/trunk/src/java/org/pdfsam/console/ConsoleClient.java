@@ -83,6 +83,7 @@ public class ConsoleClient {
 			}
 		}catch(Throwable t){
 			LOG.fatal("Error executing ConsoleClient", t);
+			System.exit(1);
 		}
 	}
 	
