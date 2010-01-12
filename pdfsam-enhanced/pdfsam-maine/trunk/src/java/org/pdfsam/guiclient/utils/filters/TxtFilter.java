@@ -13,13 +13,14 @@
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 package org.pdfsam.guiclient.utils.filters;
+
 /**
- * Filter for the JFileChooser 
+ * Filter for the JFileChooser
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class TxtFilter extends AbstractFileFilter {
-
 
 	private static final String FILE_EXTENSION = "txt";
 
@@ -32,11 +33,11 @@ public class TxtFilter extends AbstractFileFilter {
 	}
 
 	public String getAcceptedExtension() {
-    	return FILE_EXTENSION;
-    }
+		return FILE_EXTENSION;
+	}
 
-    public String getDescription() {
-        return "txt files";
-    }
+	public String getDescription() {
+		return "txt files";
+	}
 
 }

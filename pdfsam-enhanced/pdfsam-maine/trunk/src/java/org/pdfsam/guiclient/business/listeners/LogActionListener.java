@@ -40,12 +40,10 @@ public class LogActionListener implements ActionListener {
 	public static final String SAVE_LOG_ACTION = "savelog";
 	public static final String SELECTALL_LOG_ACTION = "selectalllog";
 	
-	private Configuration config;
 	private JTextPane logTextArea;
 	private JFileChooser fileChooser;
 	
 	public LogActionListener(JTextPane logTextArea){
-		this.config = Configuration.getInstance();
 		this.logTextArea = logTextArea;
 		
 	}
@@ -62,7 +60,7 @@ public class LogActionListener implements ActionListener {
 		}else if(arg0.getActionCommand().equals(LogActionListener.SAVE_LOG_ACTION)){
 			saveLog();
 		}else{
-			log.warn(GettextResource.gettext(config.getI18nResourceBundle(), "Unknown action."));
+			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Unknown action."));
 		}	
 	}
 	
@@ -86,8 +84,8 @@ public class LogActionListener implements ActionListener {
 	 */
 	private void saveLog(){
 		if(fileChooser==null){
-			fileChooser = new JFileChooser(config.getDefaultWorkingDirectory());
-			fileChooser.setFileFilter(new TxtFilter(false));
+			fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
+			fileChooser.setFileFilter(new TxtFilter());
 		}
 		File chosenFile = null;
 		if (fileChooser.showSaveDialog(logTextArea) == JFileChooser.APPROVE_OPTION) {
@@ -98,7 +96,7 @@ public class LogActionListener implements ActionListener {
 					fileWriter.write(logTextArea.getText());
 					fileWriter.flush();
 					fileWriter.close();
-					log.info(GettextResource.gettext(config.getI18nResourceBundle(), "Log saved."));								
+					log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Log saved."));								
 				} catch (Exception e) {
 					log.error("Error saving log file. ",e);
 				}
