@@ -54,6 +54,7 @@ import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.SplitParsedCommand;
+import org.pdfsam.console.business.pdf.bookmarks.BookmarksProcessor;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SplitException;
@@ -240,6 +241,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
         pdfReader.consolidateNamedDestinations();
 		
         int n = pdfReader.getNumberOfPages();
+        BookmarksProcessor bookmarkProcessor = new BookmarksProcessor(SimpleBookmark.getBookmark(pdfReader), n);
         int fileNum = 0;
         LOG.info("Found "+n+" pages in input pdf document.");
         
@@ -298,17 +300,10 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			if (currentPage == endPage) {
                 LOG.info("Temporary document "+tmpFile.getName()+" done, now adding bookmarks...");
                 //manage bookmarks
-                ArrayList master = new ArrayList();
-                List thisBook = SimpleBookmark.getBookmark(pdfReader);
-                if (thisBook != null) {
-                   SimpleBookmark.eliminatePages(thisBook, new int[]{endPage+1, n});
-                   if (startPage > 1){
-                       SimpleBookmark.eliminatePages(thisBook, new int[]{1,startPage-1});
-                       SimpleBookmark.shiftPageNumbers(thisBook, -(startPage-1), null);
-                   }
-                   master.addAll(thisBook);
-                   pdfWriter.setOutlines(master);
-                }
+                List bookmarks = bookmarkProcessor.processBookmarks(startPage, endPage);
+                if(bookmarks != null){
+                	pdfWriter.setOutlines(bookmarks);
+                }                
                 relativeCurrentPage = 0;                    
                 currentDocument.close();
                 FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
@@ -443,6 +438,7 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 		pdfReader.removeUnusedObjects();
         pdfReader.consolidateNamedDestinations();
 		int n = pdfReader.getNumberOfPages();
+		BookmarksProcessor bookmarkProcessor = new BookmarksProcessor(SimpleBookmark.getBookmark(pdfReader), n);
         int fileNum = 0;
         LOG.info("Found "+n+" pages in input pdf document.");
         int currentPage;        
@@ -481,16 +477,9 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
 			if ((currentPage == n) || ((relativeCurrentPage>1) && ((baos.size()/relativeCurrentPage)*(1+relativeCurrentPage) > inputCommand.getSplitSize().longValue()))){
 				LOG.debug("Current stream size: "+baos.size()+" bytes.");
                 //manage bookmarks
-                ArrayList master = new ArrayList();
-                List thisBook = SimpleBookmark.getBookmark(pdfReader);
-                if (thisBook != null) {
-                   SimpleBookmark.eliminatePages(thisBook, new int[]{currentPage+1, n});
-                   if (startPage > 1){
-                       SimpleBookmark.eliminatePages(thisBook, new int[]{1,startPage-1});
-                       SimpleBookmark.shiftPageNumbers(thisBook, -(startPage-1), null);
-                   }
-                   master.addAll(thisBook);
-                   pdfWriter.setOutlines(master);
+				List bookmarks = bookmarkProcessor.processBookmarks(startPage, currentPage);
+                if (bookmarks != null) {
+                   pdfWriter.setOutlines(bookmarks);
                 }
                 relativeCurrentPage = 0; 
                 currentDocument.close();

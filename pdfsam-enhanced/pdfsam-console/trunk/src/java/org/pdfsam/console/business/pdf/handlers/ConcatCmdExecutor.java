@@ -59,6 +59,7 @@ import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
+import org.pdfsam.console.business.pdf.bookmarks.BookmarksProcessor;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.business.pdf.writers.PdfCopyFieldsConcatenator;
 import org.pdfsam.console.business.pdf.writers.PdfSimpleConcatenator;
@@ -137,34 +138,19 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 					pdfReader.removeUnusedObjects();
 					pdfReader.consolidateNamedDestinations();
 					int pdfNumberOfPages = pdfReader.getNumberOfPages();
+					BookmarksProcessor bookmarkProcessor = new BookmarksProcessor(SimpleBookmark.getBookmark(pdfReader), pdfNumberOfPages);
 					
 					List boundsList = getBounds(pdfNumberOfPages, selectionGroups);
 					ValidationUtility.assertNotIntersectedBoundsList(boundsList);
 					String boundsString = "";
 					
-					//TODO I don't like this, should be improved 
-	    			//I manage bookmarks for every selection group 
 	    			for(Iterator iter = boundsList.iterator(); iter.hasNext();){				
 		    			Bounds bounds = (Bounds) iter.next();
-		    			
 		    			boundsString += (boundsString.length()>0)? ","+bounds.toString() : bounds.toString();
 		    			
 		    			//bookmarks
-		    			List bookmarks = SimpleBookmark.getBookmark(pdfReader);
+		    			List bookmarks = bookmarkProcessor.processBookmarks(bounds.getStart(), bounds.getEnd(), pageOffset);
 		    			if (bookmarks != null) {
-		    				//if the end page is not the end of the doc, delete bookmarks after it
-		    				if (bounds.getEnd() < pdfNumberOfPages){
-		    					SimpleBookmark.eliminatePages(bookmarks, new int[]{bounds.getEnd()+1, pdfNumberOfPages});
-		    				}
-		    				// if start page isn't the first page of the document, delete bookmarks before it
-		    				if (bounds.getStart() > 1){
-		    					SimpleBookmark.eliminatePages(bookmarks, new int[]{1,bounds.getStart()-1});
-		    					//bookmarks references must be taken back
-		    					SimpleBookmark.shiftPageNumbers(bookmarks, -(bounds.getStart()-1), null);
-		    				}
-		    				if (pageOffset != 0){
-		    					SimpleBookmark.shiftPageNumbers(bookmarks, pageOffset, null);
-		    				}
 		    				master.addAll(bookmarks);
 		    			}
 		    			int relativeOffset = (bounds.getEnd() - bounds.getStart())+1;

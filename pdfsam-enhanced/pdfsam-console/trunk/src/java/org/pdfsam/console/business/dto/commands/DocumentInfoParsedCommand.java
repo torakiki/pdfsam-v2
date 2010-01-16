@@ -73,8 +73,6 @@ public class DocumentInfoParsedCommand extends AbstractParsedCommand {
 	 * @param author
 	 * @param subject
 	 * @param keywords
-	 * @param creationDate
-	 * @param modificationDate
 	 */
 	public DocumentInfoParsedCommand(File outputFile, PdfFile inputFile, String title, String author, String subject, String keywords) {
 		super();
