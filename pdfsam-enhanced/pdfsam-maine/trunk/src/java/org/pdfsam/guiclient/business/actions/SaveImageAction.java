@@ -12,98 +12,92 @@
  * if not, write to the Free Software Foundation, Inc., 
  *  59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-package org.pdfsam.guiclient.business.listeners;
+package org.pdfsam.guiclient.business.actions;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.RenderedImage;
 import java.util.HashSet;
 
 import javax.imageio.ImageIO;
+import javax.swing.Action;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
 import org.pdfsam.guiclient.utils.filters.AbstractFileFilter;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Action listener for the save commands
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
-public class SaveImageActionListener implements ActionListener {
+public class SaveImageAction extends AbstractImageAction {
 
-	private static final Logger log = Logger.getLogger(SaveImageActionListener.class.getPackage().getName());
+	private static final long serialVersionUID = 136283111853869669L;
 
-	public static final String SAVE_AS_ACTION = "saveas";
-	
+	private static final Logger LOG = Logger.getLogger(SaveImageAction.class.getPackage().getName());
+
 	private JFileChooser fileChooser;
-	private JPreviewImage previewImage;
+
 	private JFrame parent;
-	
+
 	/**
+	 * 
 	 * @param previewImage
+	 * @param parent
 	 */
-	public SaveImageActionListener(JPreviewImage previewImage, JFrame parent) {
-		super();
-		this.previewImage = previewImage;
+	public SaveImageAction(JPreviewImage previewImage, JFrame parent) {
+		super(previewImage, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Save as"));
+		this.setEnabled(true);
+		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		this.putValue(Action.SHORT_DESCRIPTION, GettextResource.gettext(Configuration.getInstance()
+				.getI18nResourceBundle(), "Save the image"));
 		this.parent = parent;
 	}
 
-
 	public void actionPerformed(ActionEvent e) {
-		if(previewImage!=null){
-			if(fileChooser==null){
+		if (getPreviewImage() != null) {
+			if (fileChooser == null) {
 				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
 				String[] types = ImageIO.getWriterFormatNames();
 				HashSet<String> extensionsSet = new HashSet<String>();
-				for(final String type : types){
+				for (final String type : types) {
 					extensionsSet.add(type.toLowerCase());
 				}
-				if(extensionsSet.size()>0){
-					for(final String extension : extensionsSet){
-						fileChooser.addChoosableFileFilter(new AbstractFileFilter(){
+				if (extensionsSet.size() > 0) {
+					for (final String extension : extensionsSet) {
+						fileChooser.addChoosableFileFilter(new AbstractFileFilter() {
 							public String getAcceptedExtension() {
 								return extension;
 							}
-							public String getDescription() {							
+
+							public String getDescription() {
 								return extension;
 							}
-						});	
+						});
 					}
 				}
 			}
-			 if (fileChooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
-				 try {
-		                Image image = previewImage.getImage();
-		                if (image instanceof RenderedImage) {
-		                    ImageIO.write((RenderedImage)image,fileChooser.getFileFilter().getDescription(),fileChooser.getSelectedFile());
-		                }
-		            } catch (Exception ex) {
-		                log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Unable to save image"), ex);
-		            }
-			 }
+			if (fileChooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
+				try {
+					Image image = getPreviewImage().getImage();
+					if (image instanceof RenderedImage) {
+						ImageIO.write((RenderedImage) image, fileChooser.getFileFilter().getDescription(), fileChooser
+								.getSelectedFile());
+					}
+				} catch (Exception ex) {
+					LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+							"Unable to save image"), ex);
+				}
+			}
 		}
 	}
 
-
-	/**
-	 * @return the previewImage
-	 */
-	public JPreviewImage getPreviewImage() {
-		return previewImage;
-	}
-
-
-	/**
-	 * @param previewImage the previewImage to set
-	 */
-	public void setPreviewImage(JPreviewImage previewImage) {
-		this.previewImage = previewImage;
-	}
-
-	
 }

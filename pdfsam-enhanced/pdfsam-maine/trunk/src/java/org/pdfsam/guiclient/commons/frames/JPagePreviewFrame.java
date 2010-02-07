@@ -36,122 +36,149 @@ import javax.swing.border.SoftBevelBorder;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
-import org.pdfsam.guiclient.business.listeners.SaveImageActionListener;
+import org.pdfsam.guiclient.business.actions.SaveImageAction;
+import org.pdfsam.guiclient.business.actions.ZoomInImageAction;
+import org.pdfsam.guiclient.business.actions.ZoomOutImageAction;
+import org.pdfsam.guiclient.business.actions.ZoomResetImageAction;
 import org.pdfsam.guiclient.commons.business.listeners.EscapeKeyListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Frame to open the single page preview
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class JPagePreviewFrame extends JFrame {
 
 	private static final long serialVersionUID = -7352665495415591680L;
 
 	private static final Logger log = Logger.getLogger(JPagePreviewFrame.class.getPackage().getName());
-	
+
 	private final JPanel mainPanel = new JPanel();
+
 	private final JPanel statusPanel = new JPanel();
+
 	private final JLabel statusLabel = new JLabel();
+
 	private JScrollPane mainScrollPanel;
+
 	private final JPreviewImage pagePreview = new JPreviewImage();
+
 	private EscapeKeyListener escapeListener = new EscapeKeyListener(this);
-	
-	public JPagePreviewFrame(){
+
+	public JPagePreviewFrame() {
 		initialize();
 	}
-	
+
 	private void initialize() {
-		try{	
-			URL iconUrl = this.getClass().getResource("/images/pdf_"+GuiClient.getVersionType()+".png");
+		try {
+			URL iconUrl = this.getClass().getResource("/images/pdf_" + GuiClient.getVersionType() + ".png");
 			setIconImage(new ImageIcon(iconUrl).getImage());
-	        setSize(640, 480);
+			setSize(640, 480);
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-	        
+
 			JMenuBar menuBar = new JMenuBar();
 			JMenu menuFile = new JMenu();
-			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File"));
+			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File"));
 			menuFile.setMnemonic(KeyEvent.VK_F);
-			
+
 			JMenuItem saveAsItem = new JMenuItem();
-			saveAsItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save as"));
-			saveAsItem.setActionCommand(SaveImageActionListener.SAVE_AS_ACTION);
-			saveAsItem.addActionListener(new SaveImageActionListener(pagePreview, this));
-			
+			saveAsItem.setAction(new SaveImageAction(pagePreview, this));
+
 			JMenuItem closeItem = new JMenuItem();
-			closeItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Close"));
-			closeItem.addActionListener(new ActionListener(){
+			closeItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Close"));
+			closeItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					setVisible(false);					
-				}				
+					setVisible(false);
+				}
 			});
-			
-				
+
+			JMenu menuImage = new JMenu();
+			menuImage.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Image"));
+			menuImage.setMnemonic(KeyEvent.VK_I);
+
+			// zoom
+			JMenuItem zoomInItem = new JMenuItem();
+			zoomInItem.setAction(new ZoomInImageAction(pagePreview));
+			JMenuItem zoomOutItem = new JMenuItem();
+			zoomOutItem.setAction(new ZoomOutImageAction(pagePreview));
+			JMenuItem zoomNone = new JMenuItem();
+			zoomNone.setAction(new ZoomResetImageAction(pagePreview));
 
 			menuFile.add(saveAsItem);
-			menuFile.add(closeItem);			
+			menuFile.add(closeItem);
 			menuBar.add(menuFile);
+			menuImage.add(zoomInItem);
+			menuImage.add(zoomOutItem);
+			menuImage.add(zoomNone);
+			menuBar.add(menuImage);
 			getRootPane().setJMenuBar(menuBar);
-			
+
 			mainPanel.add(pagePreview);
 			mainScrollPanel = new JScrollPane(mainPanel);
-			
+
 			statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
-			statusPanel.setPreferredSize(new Dimension(600, 24));			
+			statusPanel.setPreferredSize(new Dimension(600, 24));
 			statusPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-			statusPanel.add(statusLabel);			
+			statusPanel.add(statusLabel);
 			statusPanel.add(Box.createHorizontalGlue());
 			statusPanel.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
-			
-			getContentPane().add(mainScrollPanel,BorderLayout.CENTER);
-	        getContentPane().add(statusPanel,BorderLayout.PAGE_END); 
-	        
-	        addKeyListener(escapeListener);
-	        
-		}catch(Exception e){
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating preview panel."),e);
+
+			getContentPane().add(mainScrollPanel, BorderLayout.CENTER);
+			getContentPane().add(statusPanel, BorderLayout.PAGE_END);
+
+			addKeyListener(escapeListener);
+
+		} catch (Exception e) {
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Error creating preview panel."), e);
 		}
 	}
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.Window#setVisible(boolean)
 	 */
 	@Override
 	public void setVisible(boolean b) {
 		super.setVisible(b);
-		if(!b){
+		if (!b) {
 			pagePreview.resetComponent();
 		}
 	}
 
 	/**
 	 * sets the image to be displayed
+	 * 
 	 * @param image
 	 */
-	public void setPagePreview(Image image){
+	public void setPagePreview(Image image) {
 		pagePreview.setImage(image);
 		statusLabel.setText("");
 		validate();
-        repaint();  
+		repaint();
 	}
+
 	/**
 	 * sets the image to be displayed and the status bar message
+	 * 
 	 * @param image
 	 * @param statusMessage
 	 */
-	public void setPagePreview(Image image, String statusMessage){
+	public void setPagePreview(Image image, String statusMessage) {
 		pagePreview.setImage(image);
 		statusLabel.setText(statusMessage);
 		validate();
-        repaint();  
+		repaint();
 	}
-	
+
 	@Override
-	public Dimension getPreferredSize(){
+	public Dimension getPreferredSize() {
 		return pagePreview.getPreferredSize();
 	}
 }
