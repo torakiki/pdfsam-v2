@@ -103,7 +103,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.0.4";
+	private static final String PLUGIN_VERSION = "0.0.5";
 	
 	/**
 	 * Constructor
@@ -116,7 +116,7 @@ public class RotateMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private void initialize() {
 		config = Configuration.getInstance();
 		setPanelIcon("/images/rotate.png");
-        setPreferredSize(new Dimension(500,450));
+        setPreferredSize(new Dimension(500,550));
         
         setLayout(new GridBagLayout());
         
