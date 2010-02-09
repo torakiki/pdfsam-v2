@@ -305,6 +305,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 //ENV_LABEL_PREFIX        
         browseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	fileChooser.resetChoosableFileFilters();
             	fileChooser.setFileFilter(new XmlFilter());
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                 if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
@@ -323,7 +324,7 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         
         browseDestDirButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	fileChooser.setFileFilter(null);
+            	fileChooser.resetChoosableFileFilters();
                 fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     if (fileChooser.getSelectedFile() != null){
