@@ -15,6 +15,7 @@
 package org.pdfsam.guiclient.business.actions;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
@@ -42,7 +43,7 @@ public class ZoomOutImageAction extends AbstractImageAction {
 	public ZoomOutImageAction(JPreviewImage previewImage) {
 		super(previewImage, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Zoom out"));
 		this.setEnabled(true);
-		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, ActionEvent.CTRL_MASK));
+		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, InputEvent.CTRL_DOWN_MASK));
 		this.putValue(Action.SHORT_DESCRIPTION, GettextResource.gettext(Configuration.getInstance()
 				.getI18nResourceBundle(), "Zoom out"));
 	}

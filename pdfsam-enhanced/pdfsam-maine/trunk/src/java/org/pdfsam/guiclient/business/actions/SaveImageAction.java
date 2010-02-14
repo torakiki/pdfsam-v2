@@ -16,15 +16,21 @@ package org.pdfsam.guiclient.business.actions;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.RenderedImage;
+import java.io.File;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
+import javax.imageio.ImageWriter;
 import javax.swing.Action;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileFilter;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -56,7 +62,7 @@ public class SaveImageAction extends AbstractImageAction {
 	public SaveImageAction(JPreviewImage previewImage, JFrame parent) {
 		super(previewImage, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Save as"));
 		this.setEnabled(true);
-		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
 		this.putValue(Action.SHORT_DESCRIPTION, GettextResource.gettext(Configuration.getInstance()
 				.getI18nResourceBundle(), "Save the image"));
 		this.parent = parent;
@@ -66,31 +72,43 @@ public class SaveImageAction extends AbstractImageAction {
 		if (getPreviewImage() != null) {
 			if (fileChooser == null) {
 				fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-				String[] types = ImageIO.getWriterFormatNames();
-				HashSet<String> extensionsSet = new HashSet<String>();
-				for (final String type : types) {
-					extensionsSet.add(type.toLowerCase());
-				}
-				if (extensionsSet.size() > 0) {
-					for (final String extension : extensionsSet) {
-						fileChooser.addChoosableFileFilter(new AbstractFileFilter() {
-							public String getAcceptedExtension() {
-								return extension;
-							}
+				fileChooser.setAcceptAllFileFilterUsed(false);
+				Set<String> types = unique(ImageIO.getWriterFileSuffixes());
+				for (final String extension : types) {
+					fileChooser.addChoosableFileFilter(new AbstractFileFilter() {
+						public String getAcceptedExtension() {
+							return extension;
+						}
 
-							public String getDescription() {
-								return extension;
-							}
-						});
-					}
+						public String getDescription() {
+							return extension;
+						}
+					});
 				}
 			}
 			if (fileChooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
 				try {
+					File selectedFile = fileChooser.getSelectedFile();
+					String extension = getExtension(selectedFile);
+					// no extension to the file or the user typed some custom
+					// extension non recognized. Apply the one on the filter.
+					if (extension == null || !accept(fileChooser.getChoosableFileFilters(), selectedFile)) {
+						extension = fileChooser.getFileFilter().getDescription();
+						selectedFile = new File(selectedFile.getAbsolutePath() + "." + extension);
+					}
+
 					Image image = getPreviewImage().getImage();
 					if (image instanceof RenderedImage) {
-						ImageIO.write((RenderedImage) image, fileChooser.getFileFilter().getDescription(), fileChooser
-								.getSelectedFile());
+						Iterator<ImageWriter> writers = ImageIO.getImageWritersBySuffix(extension);
+						if (writers.hasNext()) {
+							ImageWriter writer = writers.next();
+							writer.setOutput(ImageIO.createImageOutputStream(selectedFile));
+							writer.write((RenderedImage) image);
+						} else {
+							// should never happen
+							LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+									"Unable to save image"));
+						}
 					}
 				} catch (Exception ex) {
 					LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
@@ -100,4 +118,42 @@ public class SaveImageAction extends AbstractImageAction {
 		}
 	}
 
+	/**
+	 * 
+	 * @param filters
+	 * @param selectedFile
+	 * @return true if one of the filters accept the input file
+	 */
+	private boolean accept(FileFilter[] filters, File selectedFile) {
+		for (FileFilter filter : filters) {
+			if (filter.accept(selectedFile)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param f
+	 * @return the file extension
+	 */
+	private String getExtension(File f) {
+		String ext = null;
+		String s = f.getName();
+		int i = s.lastIndexOf('.');
+
+		if (i > 0 && i < s.length() - 1) {
+			ext = s.substring(i + 1).toLowerCase();
+		}
+		return ext;
+	}
+
+	private Set<String> unique(String[] strings) {
+		Set<String> set = new HashSet<String>();
+		for (String current : strings) {
+			set.add(current.toLowerCase());
+		}
+		return set;
+	}
 }

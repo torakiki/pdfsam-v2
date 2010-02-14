@@ -748,10 +748,11 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	
 	/**
 	 * 
-	 * @return true if the panel hase valid elements
+	 * @return true if the panel has valid elements
 	 */
 	public boolean hasValidElements(){
-		return !((VisualListModel)thumbnailList.getModel()).getValidElements().isEmpty();
+		List<VisualPageListItem> elements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
+		return (elements != null && !elements.isEmpty());
 	}
 	
 	/**
@@ -760,7 +761,7 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	public String getRotatedElementsString(){
 		String retVal = "";
 		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
-		if(validElements!=null && validElements.size()>0){
+		if(validElements!=null && !validElements.isEmpty()){
 			int i=0;
 			for(VisualPageListItem currentElement : validElements){
 				i++;

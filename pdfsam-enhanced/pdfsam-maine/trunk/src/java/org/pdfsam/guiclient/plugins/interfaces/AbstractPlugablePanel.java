@@ -17,51 +17,60 @@ package org.pdfsam.guiclient.plugins.interfaces;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
 import org.pdfsam.guiclient.configuration.Configuration;
+
 /**
  * Abstract class for plugin
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
-public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
+public abstract class AbstractPlugablePanel extends JPanel implements Plugable {
 
 	private static final long serialVersionUID = -3329925841681106750L;
 
 	private String panelIcon = "";
-    private Configuration config;
-    public static final String PDF_EXTENSION = "pdf";
-    public static final String PDF_EXTENSION_REGEXP =  	"(?i)(.)+(\\."+PDF_EXTENSION+")$";
-    protected static final String TRUE = Boolean.TRUE.toString();
-    protected static final String FALSE = Boolean.FALSE.toString();
-    
-    public AbstractPlugablePanel(){
-    	config = Configuration.getInstance(); 
+
+	private Configuration config;
+
+	public static final String PDF_EXTENSION = "pdf";
+
+	public static final String PDF_EXTENSION_REGEXP = "(?i)(.)+(\\." + PDF_EXTENSION + ")$";
+
+	protected static final String TRUE = Boolean.TRUE.toString();
+
+	protected static final String FALSE = Boolean.FALSE.toString();
+
+	public AbstractPlugablePanel() {
+		config = Configuration.getInstance();
 		init();
 	}
-    
-    public Icon getIcon() {
+
+	public Icon getIcon() {
 		ImageIcon icon = null;
-        try{
-            if(panelIcon != null && (panelIcon.trim().length() >0)){
-            	icon =  new ImageIcon(this.getClass().getResource(panelIcon));
-        	}
-        }catch (Exception e){
-            icon =  null;            
-        }
-        return icon;
-    }
-	
-    /**
-     * Sets the icon resource name for this plugin
-     * @param panelIcon
-     */
-    public void setPanelIcon(String panelIcon) {
+		try {
+			if (panelIcon != null && (panelIcon.trim().length() > 0)) {
+				icon = new ImageIcon(this.getClass().getResource(panelIcon));
+			}
+		} catch (Exception e) {
+			icon = null;
+		}
+		return icon;
+	}
+
+	/**
+	 * Sets the icon resource name for this plugin
+	 * 
+	 * @param panelIcon
+	 */
+	public void setPanelIcon(String panelIcon) {
 		this.panelIcon = panelIcon;
-	}        
-    
-    /**
+	}
+
+	/**
 	 * @return the config
 	 */
 	public Configuration getConfig() {
@@ -69,12 +78,23 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable{
 	}
 
 	/**
-     * Common initialization
-     */
-    private void init(){
-    	setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-		setFocusable(false);    	
-    }
-    
+	 * Common initialization
+	 */
+	private void init() {
+		setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+		setFocusable(false);
+	}
 
+	/**
+	 * Check if there is a text in the TextField and it has a pdf extension, if
+	 * not it adds the extension.
+	 * 
+	 * @param field
+	 */
+	public void ensurePdfExtensionOnTextField(JTextField field) {
+		String text = field.getText();
+		if (text.length() > 0 && !text.matches(AbstractPlugablePanel.PDF_EXTENSION_REGEXP)) {
+			field.setText(text + "." + AbstractPlugablePanel.PDF_EXTENSION);
+		}
+	}
 }

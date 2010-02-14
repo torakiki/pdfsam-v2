@@ -23,6 +23,8 @@ import java.awt.geom.AffineTransform;
 
 import javax.swing.JComponent;
 
+import org.pdfsam.guiclient.utils.ImageUtility;
+
 /**
  * Component used to display an image
  * 
@@ -169,10 +171,30 @@ public class JPreviewImage extends JComponent {
 		initRectangle();
 	}
 
+	/**
+	 * rotate clockwise
+	 */
+	public void rotateClockwise() {
+		image = ImageUtility.rotateImage(image, 90);
+		originalDimension = new Dimension(image.getWidth(this), image.getHeight(this));
+		initRectangle();
+	}
+
+	/**
+	 * rotate anti clockwise
+	 */
+	public void rotateAntiClockwise() {
+		image = ImageUtility.rotateImage(image, -90);
+		originalDimension = new Dimension(image.getWidth(this), image.getHeight(this));
+		initRectangle();
+	}
+
 	private void initRectangle() {
 		if (bounds != null) {
-			bounds = new Rectangle((int) (originalDimension.getWidth() * zoomLevel), (int) (originalDimension
-					.getHeight() * zoomLevel));
+
+			int width = (int) (originalDimension.getWidth() * zoomLevel);
+			int height = (int) (originalDimension.getHeight() * zoomLevel);
+			bounds = new Rectangle(width, height);
 			initTransformation();
 		}
 	}

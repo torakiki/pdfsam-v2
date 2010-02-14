@@ -1,5 +1,5 @@
 /*
- * Created on 7-Feb-2010 
+ * Created on 13-Feb-2010 
  * Copyright (C) 2010 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -26,32 +26,33 @@ import org.pdfsam.guiclient.gui.components.JPreviewImage;
 import org.pdfsam.i18n.GettextResource;
 
 /**
- * Action for the zoom in feature
+ * Action for the rotate anti clockwise function
  * 
  * @author Andrea Vacondio
  * 
  */
-public class ZoomInImageAction extends AbstractImageAction {
+public class RotateLeftImageAction extends AbstractImageAction {
 
-	private static final long serialVersionUID = -5740707303337872562L;
+	private static final long serialVersionUID = -5738720899007881368L;
 
 	/**
 	 * 
 	 * @param previewImage
 	 * @param parent
 	 */
-	public ZoomInImageAction(JPreviewImage previewImage) {
-		super(previewImage, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Zoom in"));
+	public RotateLeftImageAction(JPreviewImage previewImage) {
+		super(previewImage, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+				"Rotate anticlockwise"));
 		this.setEnabled(true);
-		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, InputEvent.CTRL_DOWN_MASK));
+		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
 		this.putValue(Action.SHORT_DESCRIPTION, GettextResource.gettext(Configuration.getInstance()
-				.getI18nResourceBundle(), "Zoom in"));
+				.getI18nResourceBundle(), "Rotate anticlockwise"));
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (getPreviewImage() != null) {
-			getPreviewImage().zoomIn();
+			getPreviewImage().rotateAntiClockwise();
 		}
 	}
 

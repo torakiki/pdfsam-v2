@@ -17,14 +17,13 @@ package org.pdfsam.guiclient.commons.frames;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -32,15 +31,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
 import javax.swing.border.SoftBevelBorder;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
+import org.pdfsam.guiclient.business.actions.HideFrameAction;
+import org.pdfsam.guiclient.business.actions.RotateLeftImageAction;
+import org.pdfsam.guiclient.business.actions.RotateRightImageAction;
 import org.pdfsam.guiclient.business.actions.SaveImageAction;
 import org.pdfsam.guiclient.business.actions.ZoomInImageAction;
 import org.pdfsam.guiclient.business.actions.ZoomOutImageAction;
 import org.pdfsam.guiclient.business.actions.ZoomResetImageAction;
-import org.pdfsam.guiclient.commons.business.listeners.EscapeKeyListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
 import org.pdfsam.i18n.GettextResource;
@@ -67,8 +69,6 @@ public class JPagePreviewFrame extends JFrame {
 
 	private final JPreviewImage pagePreview = new JPreviewImage();
 
-	private EscapeKeyListener escapeListener = new EscapeKeyListener(this);
-
 	public JPagePreviewFrame() {
 		initialize();
 	}
@@ -90,12 +90,7 @@ public class JPagePreviewFrame extends JFrame {
 			saveAsItem.setAction(new SaveImageAction(pagePreview, this));
 
 			JMenuItem closeItem = new JMenuItem();
-			closeItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Close"));
-			closeItem.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-				}
-			});
+			closeItem.setAction(new HideFrameAction(this));
 
 			JMenu menuImage = new JMenu();
 			menuImage.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Image"));
@@ -103,11 +98,22 @@ public class JPagePreviewFrame extends JFrame {
 
 			// zoom
 			JMenuItem zoomInItem = new JMenuItem();
-			zoomInItem.setAction(new ZoomInImageAction(pagePreview));
+			ZoomInImageAction zoomIn = new ZoomInImageAction(pagePreview);
+			ZoomOutImageAction zoomOut = new ZoomOutImageAction(pagePreview);
+			ZoomResetImageAction zoomReset = new ZoomResetImageAction(pagePreview);
+			zoomInItem.setAction(zoomIn);
 			JMenuItem zoomOutItem = new JMenuItem();
-			zoomOutItem.setAction(new ZoomOutImageAction(pagePreview));
+			zoomOutItem.setAction(zoomOut);
 			JMenuItem zoomNone = new JMenuItem();
-			zoomNone.setAction(new ZoomResetImageAction(pagePreview));
+			zoomNone.setAction(zoomReset);
+
+			// rotate
+			JMenuItem rotateRight = new JMenuItem();
+			RotateRightImageAction rotateRightAction = new RotateRightImageAction(pagePreview);
+			RotateLeftImageAction rotateLeftAction = new RotateLeftImageAction(pagePreview);
+			rotateRight.setAction(rotateRightAction);
+			JMenuItem rotateLeft = new JMenuItem();
+			rotateLeft.setAction(rotateLeftAction);
 
 			menuFile.add(saveAsItem);
 			menuFile.add(closeItem);
@@ -115,8 +121,44 @@ public class JPagePreviewFrame extends JFrame {
 			menuImage.add(zoomInItem);
 			menuImage.add(zoomOutItem);
 			menuImage.add(zoomNone);
+			menuImage.addSeparator();
+			menuImage.add(rotateRight);
+			menuImage.add(rotateLeft);
 			menuBar.add(menuImage);
 			getRootPane().setJMenuBar(menuBar);
+
+			JToolBar toolBar = new JToolBar("Toolbar", JToolBar.HORIZONTAL);
+			toolBar.setFloatable(true);
+			toolBar.setRollover(true);
+
+			// zoom buttons
+			JButton zoomInButton = new JButton(zoomIn);
+			zoomInButton.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomin.png")));
+			zoomInButton.setText("");
+			toolBar.add(zoomInButton);
+
+			JButton zoomOutButton = new JButton(zoomOut);
+			zoomOutButton.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomout.png")));
+			zoomOutButton.setText("");
+			toolBar.add(zoomOutButton);
+
+			JButton zoomNoneButton = new JButton(zoomReset);
+			zoomNoneButton.setIcon(new ImageIcon(this.getClass().getResource("/images/zoomnone.png")));
+			zoomNoneButton.setText("");
+			toolBar.add(zoomNoneButton);
+
+			toolBar.addSeparator();
+
+			// rotate buttons
+			JButton rotateRightButton = new JButton(rotateRightAction);
+			rotateRightButton.setIcon(new ImageIcon(this.getClass().getResource("/images/clockwise.png")));
+			rotateRightButton.setText("");
+			toolBar.add(rotateRightButton);
+
+			JButton rotateLeftButton = new JButton(rotateLeftAction);
+			rotateLeftButton.setIcon(new ImageIcon(this.getClass().getResource("/images/anticlockwise.png")));
+			rotateLeftButton.setText("");
+			toolBar.add(rotateLeftButton);
 
 			mainPanel.add(pagePreview);
 			mainScrollPanel = new JScrollPane(mainPanel);
@@ -128,10 +170,9 @@ public class JPagePreviewFrame extends JFrame {
 			statusPanel.add(Box.createHorizontalGlue());
 			statusPanel.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 
+			getContentPane().add(toolBar, BorderLayout.PAGE_START);
 			getContentPane().add(mainScrollPanel, BorderLayout.CENTER);
 			getContentPane().add(statusPanel, BorderLayout.PAGE_END);
-
-			addKeyListener(escapeListener);
 
 		} catch (Exception e) {
 			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),

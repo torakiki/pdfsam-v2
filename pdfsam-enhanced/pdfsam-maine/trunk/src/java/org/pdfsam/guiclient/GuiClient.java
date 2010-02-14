@@ -23,6 +23,7 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -97,7 +98,7 @@ public class GuiClient {
 					.getLocation().getPath(), "UTF-8")).getParent();
 			File currentDir = new File(configSearchPath, "ext");
 			File[] fileList = currentDir.listFiles(new JarFilter(false));
-			if (fileList.length > 0) {
+			if (!ArrayUtils.isEmpty(fileList)) {
 				ArrayList<URL> urlList = new ArrayList<URL>();
 				for (File currentFile : fileList) {
 					urlList.add(currentFile.toURI().toURL());
