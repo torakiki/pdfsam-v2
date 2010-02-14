@@ -31,6 +31,7 @@ import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.rotate.GUI.RotateMainGUI;
+import org.apache.commons.lang.StringUtils;
 /**
  * Action listener for the run button of the rotate plugin
  * @author Andrea Vacondio
@@ -75,9 +76,10 @@ public class RunButtonActionListener implements ActionListener {
 				args.addAll(getInputFilesArguments(items));
             	
                 args.add("-"+RotateParsedCommand.O_ARG);
-                if(panel.getDestinationTextField().getText()==null || panel.getDestinationTextField().getText().length()==0){                    
+                
+                if(StringUtils.isEmpty(panel.getDestinationTextField().getText())){                    
             		String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();                    		
-            		if(suggestedDir != null){
+            		if(StringUtils.isNotEmpty(suggestedDir)){
             			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel,suggestedDir);
             			if(JOptionPane.YES_OPTION == chosenOpt){
             				panel.getDestinationTextField().setText(suggestedDir);

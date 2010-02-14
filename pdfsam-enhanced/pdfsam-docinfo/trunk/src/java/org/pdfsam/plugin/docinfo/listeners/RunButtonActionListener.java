@@ -31,7 +31,6 @@ import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.guiclient.dto.StringItem;
-import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.docinfo.GUI.DocInfoMainGUI;
@@ -79,12 +78,9 @@ public class RunButtonActionListener implements ActionListener {
 						}
 					}
 
+					panel.ensurePdfExtensionOnTextField(panel.getDestinationTextField());
 					destination = panel.getDestinationTextField().getText();
 					if (!StringUtils.isEmpty(destination)) {
-						// if no extension given
-						if (!destination.matches(AbstractPlugablePanel.PDF_EXTENSION_REGEXP)) {
-							destination += "." + AbstractPlugablePanel.PDF_EXTENSION;
-						}
 						File destinationDir = new File(destination);
 						File parent = destinationDir.getParentFile();
 						if (!(parent != null && parent.exists())) {

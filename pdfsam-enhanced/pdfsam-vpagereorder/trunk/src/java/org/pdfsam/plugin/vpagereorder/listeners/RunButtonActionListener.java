@@ -27,21 +27,20 @@ import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
-import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.vpagereorder.GUI.VPageReorderMainGUI;
+
 /**
  * Action Listener for the run button of the Visual Page Reorder
  * @author Andrea Vacondio
- *
  */
 public class RunButtonActionListener implements ActionListener {
 
 	private static final Logger log = Logger.getLogger(RunButtonActionListener.class.getPackage().getName());
 
 	private VPageReorderMainGUI panel;
-	
+
 	/**
 	 * @param panel
 	 */
@@ -50,38 +49,36 @@ public class RunButtonActionListener implements ActionListener {
 		this.panel = panel;
 	}
 
-
 	public void actionPerformed(ActionEvent e) {
 
 		File inputFile = panel.getSelectionPanel().getSelectedPdfDocument();
 		if (inputFile == null || !panel.getSelectionPanel().hasValidElements()) {
-			  JOptionPane.showMessageDialog(panel,
-  				  	GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please select a pdf document or undelete some page"),
-						GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Warning"),
-					    JOptionPane.WARNING_MESSAGE);
-		}else{
-			//overwrite confirmation 
-			if(panel.getOverwriteCheckbox().isSelected() && Configuration.getInstance().isAskOverwriteConfirmation()){
+			JOptionPane.showMessageDialog(panel, GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Please select a pdf document or undelete some page"), GettextResource.gettext(Configuration.getInstance()
+					.getI18nResourceBundle(), "Warning"), JOptionPane.WARNING_MESSAGE);
+		} else {
+			// overwrite confirmation
+			if (panel.getOverwriteCheckbox().isSelected() && Configuration.getInstance().isAskOverwriteConfirmation()) {
 				int dialogRet = DialogUtility.askForOverwriteConfirmation(panel);
 				if (JOptionPane.NO_OPTION == dialogRet) {
 					panel.getOverwriteCheckbox().setSelected(false);
-				}else if (JOptionPane.CANCEL_OPTION == dialogRet) {
+				} else if (JOptionPane.CANCEL_OPTION == dialogRet) {
 					return;
 				}
 			}
-			
+
 			LinkedList<String> args = new LinkedList<String>();
 			try {
 
 				args.addAll(panel.getSelectionPanel().getValidConsoleParameters());
-				
-				//rotation
+
+				// rotation
 				String rotation = panel.getSelectionPanel().getRotatedElementsString();
-				if(rotation!=null && rotation.length()>0){
+				if (rotation != null && rotation.length() > 0) {
 					args.add("-" + ConcatParsedCommand.R_ARG);
 					args.add(rotation);
 				}
-				
+
 				String destination = "";
 				// check radio for output options
 				if (panel.getSameAsSourceRadio().isSelected()) {
@@ -89,10 +86,8 @@ public class RunButtonActionListener implements ActionListener {
 						destination = inputFile.getAbsolutePath();
 					}
 				} else {
-					 //if no extension given
-                    if ((panel.getDestinationFileText().getText().length() > 0) && !(panel.getDestinationFileText().getText().matches(AbstractPlugablePanel.PDF_EXTENSION_REGEXP))){
-                    	panel.getDestinationFileText().setText(panel.getDestinationFileText().getText()+"."+AbstractPlugablePanel.PDF_EXTENSION);
-                    } 
+					// if no extension given
+					panel.ensurePdfExtensionOnTextField(panel.getDestinationFileText());
 					if (panel.getDestinationFileText().getText().length() > 0) {
 						File destinationDir = new File(panel.getDestinationFileText().getText());
 						File parent = destinationDir.getParentFile();
@@ -100,44 +95,43 @@ public class RunButtonActionListener implements ActionListener {
 							String suggestedDir = null;
 							if (Configuration.getInstance().getDefaultWorkingDirectory() != null
 									&& Configuration.getInstance().getDefaultWorkingDirectory().length() > 0) {
-								suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(),
-										destinationDir.getName()).getAbsolutePath();
-							} else {
-								suggestedDir = new File(inputFile.getParent(), destinationDir.getName())
+								suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName())
 										.getAbsolutePath();
+							} else {
+								suggestedDir = new File(inputFile.getParent(), destinationDir.getName()).getAbsolutePath();
 							}
 							if (suggestedDir != null) {
-                    			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel,suggestedDir);
-                    			if(JOptionPane.YES_OPTION == chosenOpt){
-                    				panel.getDestinationFileText().setText(suggestedDir);
-			        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-			        				return;
-			        			}
+								int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel, suggestedDir);
+								if (JOptionPane.YES_OPTION == chosenOpt) {
+									panel.getDestinationFileText().setText(suggestedDir);
+								} else if (JOptionPane.CANCEL_OPTION == chosenOpt) {
+									return;
+								}
 
 							}
 						}
 					}
 					destination = panel.getDestinationFileText().getText();
 				}
-				//check if the file already exists and the user didn't select to overwrite
-				File destFile = (destination!=null)? new File(destination):null;
-				if(destFile!=null && destFile.exists() && !panel.getOverwriteCheckbox().isSelected()){
-					int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(panel,destFile.getName());
-        			if(JOptionPane.YES_OPTION == chosenOpt){
-        				panel.getOverwriteCheckbox().setSelected(true);
-        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-        				return;
-        			}
+				// check if the file already exists and the user didn't select to overwrite
+				File destFile = (destination != null) ? new File(destination) : null;
+				if (destFile != null && destFile.exists() && !panel.getOverwriteCheckbox().isSelected()) {
+					int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(panel, destFile.getName());
+					if (JOptionPane.YES_OPTION == chosenOpt) {
+						panel.getOverwriteCheckbox().setSelected(true);
+					} else if (JOptionPane.CANCEL_OPTION == chosenOpt) {
+						return;
+					}
 				}
-				
-				args.add("-" + ConcatParsedCommand.O_ARG);						
+
+				args.add("-" + ConcatParsedCommand.O_ARG);
 				args.add(destination);
-				
+
 				if (panel.getOverwriteCheckbox().isSelected())
 					args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
 				if (panel.getOutputCompressedCheck().isSelected())
 					args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
-				
+
 				args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
 				args.add(((StringItem) panel.getVersionCombo().getSelectedItem()).getId());
 

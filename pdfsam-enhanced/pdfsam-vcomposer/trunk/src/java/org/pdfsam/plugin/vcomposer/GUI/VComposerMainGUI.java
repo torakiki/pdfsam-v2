@@ -117,7 +117,7 @@ public class VComposerMainGUI extends AbstractPlugablePanel implements PropertyC
 	private final VisualComposerPolicy visualComposerFocusPolicy = new VisualComposerPolicy();
 	 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.0.7";
+    private static final String PLUGIN_VERSION = "0.0.8";
     
     /**
      * Constructor

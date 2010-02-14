@@ -27,7 +27,6 @@ import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
-import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.vcomposer.GUI.VComposerMainGUI;
@@ -78,9 +77,7 @@ public class RunButtonActionListener implements ActionListener {
 				}
 				String destination = "";
 				// if no extension given
-				if ((panel.getDestinationFileText().getText().length() > 0) && !(panel.getDestinationFileText().getText().matches(AbstractPlugablePanel.PDF_EXTENSION_REGEXP))) {
-					panel.getDestinationFileText().setText(panel.getDestinationFileText().getText() + "." + AbstractPlugablePanel.PDF_EXTENSION);
-				}
+				panel.ensurePdfExtensionOnTextField(panel.getDestinationFileText());
 				if (panel.getDestinationFileText().getText().length() > 0) {
 					File destinationDir = new File(panel.getDestinationFileText().getText());
 					File parent = destinationDir.getParentFile();

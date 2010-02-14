@@ -101,7 +101,7 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
 	private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
 	private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-	private static final String PLUGIN_VERSION = "0.1.12e";
+	private static final String PLUGIN_VERSION = "0.1.13e";
 
 	
 	/**

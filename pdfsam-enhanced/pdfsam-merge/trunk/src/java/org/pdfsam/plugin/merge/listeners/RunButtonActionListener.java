@@ -31,7 +31,6 @@ import org.pdfsam.guiclient.commons.business.WorkThread;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.guiclient.dto.StringItem;
-import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.merge.GUI.MergeMainGUI;
@@ -63,7 +62,7 @@ public class RunButtonActionListener implements ActionListener {
         LinkedList<String> args = new LinkedList<String>();  
         try{             	
         	PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
-        	if(items != null && items.length >= 1){
+        	if(!ArrayUtils.isEmpty(items)){
 				//overwrite confirmation 
 				if(panel.getOverwriteCheckbox().isSelected() && Configuration.getInstance().isAskOverwriteConfirmation()){
 					int dialogRet = DialogUtility.askForOverwriteConfirmation(panel);
@@ -75,26 +74,23 @@ public class RunButtonActionListener implements ActionListener {
 				}
         		
         		String destination = "";
-                //if no extension given
-                if ((panel.getDestinationTextField().getText().length() > 0) && !(panel.getDestinationTextField().getText().matches(AbstractPlugablePanel.PDF_EXTENSION_REGEXP))){
-                	panel.getDestinationTextField().setText(panel.getDestinationTextField().getText()+"."+AbstractPlugablePanel.PDF_EXTENSION);
-                }                    
+                //if no extension given  
+                panel.ensurePdfExtensionOnTextField(panel.getDestinationTextField());
                 if(panel.getDestinationTextField().getText().length()>0){
                 	File destinationDir = new File(panel.getDestinationTextField().getText());
                 	File parent = destinationDir.getParentFile();
+                	//only filename no dir
                 	if(!(parent!=null && parent.exists())){
                 		String suggestedDir = null;
-                		if(Configuration.getInstance().getDefaultWorkingDirectory()!=null && Configuration.getInstance().getDefaultWorkingDirectory().length()>0){
+                		if(StringUtils.isNotEmpty(Configuration.getInstance().getDefaultWorkingDirectory())){
                 			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
                 		}else{
-                			if(!ArrayUtils.isEmpty(items)){
-                				PdfSelectionTableItem item = items[items.length-1];
-                				if(item!=null && item.getInputFile()!=null){
-                					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
-                				}
-                			}
+            				PdfSelectionTableItem item = items[items.length-1];
+            				if(item!=null && item.getInputFile()!=null){
+            					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
+            				}
                 		}
-                		if(suggestedDir != null){
+                		if(StringUtils.isNotEmpty(suggestedDir)){
                 			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel,suggestedDir);
                 			if(JOptionPane.YES_OPTION == chosenOpt){
                 				panel.getDestinationTextField().setText(suggestedDir);

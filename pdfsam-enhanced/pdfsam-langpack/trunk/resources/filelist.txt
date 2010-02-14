@@ -33,7 +33,13 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/UpdateCheckerMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/EnterDoClickListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/LogActionListener.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/SaveImageActionListener.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/SaveImageAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/HideFrameAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/RotateLeftImageAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/RotateRightImageAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/ZoomInImageAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/ZoomOutImageAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/ZoomResetImageAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/ClosableTabbedPanelAdder.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/AbstractThumbnailCreator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/JPodThumbnailCreator.java
