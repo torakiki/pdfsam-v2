@@ -18,8 +18,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 
@@ -36,98 +34,147 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultEditorKit;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.commons.business.listeners.EscapeKeyListener;
+import org.pdfsam.guiclient.business.actions.HideFrameAction;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.i18n.GettextResource;
+
 /**
- * Frame that showes document properties
+ * Frame that shows document properties
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
-public class JDocumentPropertiesFrame extends JFrame{
+public class JDocumentPropertiesFrame extends JFrame {
 
 	private static final long serialVersionUID = -3836869268177748519L;
 
 	private static final Logger log = Logger.getLogger(JDocumentPropertiesFrame.class.getPackage().getName());
+
 	private static final int HEIGHT = 480;
+
 	private static final int WIDTH = 640;
-	
+
 	private static JDocumentPropertiesFrame instance = null;
+
 	private final JPanel mainPanel = new JPanel();
+
 	private JScrollPane mainScrollPanel;
+
 	private JTextPane textInfoArea;
+
 	private JPopupMenu jPopupMenu = new JPopupMenu();
-	private EscapeKeyListener escapeListener = new EscapeKeyListener(this);
-		
-	private JDocumentPropertiesFrame(){
+
+	private JDocumentPropertiesFrame() {
 		initialize();
-	}	
-	
-	public static synchronized JDocumentPropertiesFrame getInstance(){
-		if(instance == null){
+	}
+
+	public static synchronized JDocumentPropertiesFrame getInstance() {
+		if (instance == null) {
 			instance = new JDocumentPropertiesFrame();
 		}
 		return instance;
 	}
-	
-	public synchronized void showProperties(PdfSelectionTableItem props){
-		if(props!=null){
-			String propsText = "<html><head></head><body style=\"margin: 3\">";
-			propsText += 
-				"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File name")+":</b> "+props.getInputFile().getAbsolutePath()+"<br>\n"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Number of pages")+":</b> "+props.getPagesNumber()+"<br>\n"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File size")+":</b> "+props.getFileSize()+"B<br>\n"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Pdf version")+":</b> "+props.getPdfVersionDescription()+"<br>\n"
-				+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Encryption")+":</b> "+(props.isEncrypted()? props.getEncryptionAlgorithm(): GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Not encrypted"))+"<br>\n";
-				if(props.isEncrypted()){
-					propsText +="<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Permissions")+":</b> "+props.getPermissions()+"<br>\n";
-				}
-			
-			if(props.getDocumentMetaData() != null){
-				propsText += 
-					"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Title")+":</b> "+props.getDocumentMetaData().getTitle()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Author")+":</b> "+props.getDocumentMetaData().getAuthor()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Subject")+":</b> "+props.getDocumentMetaData().getSubject()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Producer")+":</b> "+props.getDocumentMetaData().getProducer()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creator")+":</b> "+props.getDocumentMetaData().getCreator()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Creation date")+":</b> "+props.getDocumentMetaData().getCreationDate()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Modification date")+":</b> "+props.getDocumentMetaData().getModificationDate()+"<br>\n"
-	        		+"<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Keywords")+":</b> "+props.getDocumentMetaData().getKeywords()+"<br>\n";
+
+	public synchronized void showProperties(PdfSelectionTableItem props) {
+		StringBuilder sb = new StringBuilder();
+		if (props != null) {
+			sb.append("<html><head></head><body style=\"margin: 3\"><b>");
+			sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File name"));
+			sb.append(":</b> ");
+			sb.append(props.getInputFile().getAbsolutePath());
+			sb.append("<br>\n<b>");
+			sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Number of pages"));
+			sb.append(":</b> ");
+			sb.append(props.getPagesNumber());
+			sb.append("<br>\n<b>");
+			sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File size"));
+			sb.append(":</b> ");
+			sb.append(props.getFileSize());
+			sb.append("B<br>\n<b>");
+			sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Pdf version"));
+			sb.append(":</b> ");
+			sb.append(props.getPdfVersionDescription());
+			sb.append("<br>\n<b>");
+			sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Encryption"));
+			sb.append(":</b> ");
+			sb.append((props.isEncrypted() ? props.getEncryptionAlgorithm() : GettextResource.gettext(Configuration
+					.getInstance().getI18nResourceBundle(), "Not encrypted")));
+			sb.append("<br>\n");
+			if (props.isEncrypted()) {
+				sb.append("<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Permissions"));
+				sb.append(":</b> ");
+				sb.append(props.getPermissions());
+				sb.append("<br>\n");
 			}
-			propsText += "</body></html>";
+
+			if (props.getDocumentMetaData() != null) {
+				sb.append("<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Title"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getTitle());
+				sb.append("<br>\n<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Author"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getAuthor());
+				sb.append("<br>\n<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Subject"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getSubject());
+				sb.append("<br>\n<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Producer"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getProducer());
+				sb.append("<br>\n<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Creator"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getCreator());
+				sb.append("<br>\n<b>");
+				sb
+						.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+								"Creation date"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getCreationDate());
+				sb.append("<br>\n<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+						"Modification date"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getModificationDate());
+				sb.append("<br>\n<b>");
+				sb.append(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Keywords"));
+				sb.append(":</b> ");
+				sb.append(props.getDocumentMetaData().getKeywords());
+				sb.append("<br>\n");
+			}
+			sb.append("</body></html>");
 			textInfoArea.setMargin(new Insets(5, 5, 5, 5));
-	        textInfoArea.setText(propsText);
+			textInfoArea.setText(sb.toString());
 			setVisible(true);
 		}
 	}
-	
+
 	private void initialize() {
-		try{	
+		try {
 			URL iconUrl = this.getClass().getResource("/images/info.png");
-			setTitle(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Document properties"));
+			setTitle(GettextResource
+					.gettext(Configuration.getInstance().getI18nResourceBundle(), "Document properties"));
 			setIconImage(new ImageIcon(iconUrl).getImage());
-	        setSize(WIDTH, HEIGHT);
+			setSize(WIDTH, HEIGHT);
 			setExtendedState(JFrame.NORMAL);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 			JMenuBar menuBar = new JMenuBar();
 			JMenu menuFile = new JMenu();
-			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File"));
+			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File"));
 			menuFile.setMnemonic(KeyEvent.VK_F);
-			
+
 			JMenuItem closeItem = new JMenuItem();
-			closeItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Close"));
-			closeItem.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);					
-				}				
-			});
-							
-			menuFile.add(closeItem);			
+			closeItem.setAction(new HideFrameAction(this));
+
+			menuFile.add(closeItem);
 			menuBar.add(menuFile);
 			getRootPane().setJMenuBar(menuBar);
-			
 
 			textInfoArea = new JTextPane();
 			textInfoArea.setFont(new Font("Dialog", Font.PLAIN, 9));
@@ -137,30 +184,28 @@ public class JDocumentPropertiesFrame extends JFrame{
 
 			mainPanel.add(textInfoArea);
 			mainScrollPanel = new JScrollPane(textInfoArea);
-			
-			getContentPane().add(mainScrollPanel);
-	        
-			JMenuItem menuCopy = new JMenuItem(new DefaultEditorKit.CopyAction());
-	        menuCopy.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Copy"));
-	        menuCopy.setIcon(new ImageIcon(this.getClass().getResource("/images/edit-copy.png")));
-	        jPopupMenu.add(menuCopy);
-	        
-	        textInfoArea.setComponentPopupMenu(jPopupMenu);
 
-	        //centered
-	        Toolkit tk = Toolkit.getDefaultToolkit();
-	        Dimension screenSize = tk.getScreenSize();
-	        int screenHeight = screenSize.height;
-	        int screenWidth = screenSize.width;
-	        if(screenWidth>WIDTH && screenHeight>HEIGHT){
-	        	setLocation((screenWidth - WIDTH)/ 2, (screenHeight -HEIGHT)/ 2);
-	        }
-	        
-	        textInfoArea.addKeyListener(escapeListener);
-	        addKeyListener(escapeListener);
-	        
-		}catch(Exception e){
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error creating properties panel."),e);
+			getContentPane().add(mainScrollPanel);
+
+			JMenuItem menuCopy = new JMenuItem(new DefaultEditorKit.CopyAction());
+			menuCopy.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Copy"));
+			menuCopy.setIcon(new ImageIcon(this.getClass().getResource("/images/edit-copy.png")));
+			jPopupMenu.add(menuCopy);
+
+			textInfoArea.setComponentPopupMenu(jPopupMenu);
+
+			// centered
+			Toolkit tk = Toolkit.getDefaultToolkit();
+			Dimension screenSize = tk.getScreenSize();
+			int screenHeight = screenSize.height;
+			int screenWidth = screenSize.width;
+			if (screenWidth > WIDTH && screenHeight > HEIGHT) {
+				setLocation((screenWidth - WIDTH) / 2, (screenHeight - HEIGHT) / 2);
+			}
+
+		} catch (Exception e) {
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Error creating properties panel."), e);
 		}
 	}
 
