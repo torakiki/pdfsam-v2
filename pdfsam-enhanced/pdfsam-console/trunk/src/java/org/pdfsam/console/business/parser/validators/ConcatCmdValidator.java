@@ -115,8 +115,12 @@ public class ConcatCmdValidator extends AbstractCmdValidator {
 	        //if it's set we proceed with validation
 	        if (uOption.isSet()){
 	        	String[] selections = StringUtils.split(uOption.getValue(), ":");
-	            ValidationUtility.assertValidPageSelectionsArray(selections);
-	            parsedCommandDTO.setPageSelections(selections);
+	        	String[] trimmedSelection = new String[selections.length];
+	        	for(int i = 0; i<selections.length; i++){
+	        		trimmedSelection[i] = selections[i].trim();
+	        	}
+	            ValidationUtility.assertValidPageSelectionsArray(trimmedSelection);
+	            parsedCommandDTO.setPageSelections(trimmedSelection);
 	        }
 	
 	        //-copyfields
