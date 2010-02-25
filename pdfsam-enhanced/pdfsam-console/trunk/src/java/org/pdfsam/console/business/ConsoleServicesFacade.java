@@ -49,7 +49,7 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
  */
 public class ConsoleServicesFacade {
 	
-	private final Logger log = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 	
     public static final String VERSION = "2.2.1e"; 
     public static final String CREATOR = "pdfsam-console (Ver. " +ConsoleServicesFacade.VERSION+ ")";      
@@ -86,7 +86,7 @@ public class ConsoleServicesFacade {
 			if (cmdParserManager.parse(inputArguments)){
 				retVal = cmdParserManager.validate();
 			}else{
-				log.error("Parse failed.");
+				LOG.error("Parse failed.");
 			}
 			return retVal;
 		}catch(ConsoleException ce){

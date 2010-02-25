@@ -57,6 +57,7 @@ public class MixParsedCommand extends AbstractParsedCommand {
 	public static final String REVERSE_SECOND_ARG = "reversesecond";
 	public static final String O_ARG = "o";
 	public static final String STEP_ARG = "step";
+	public static final String SECOND_STEP_ARG = "secondstep";
 	
 	private File outputFile;	
 	private PdfFile firstInputFile;	
@@ -64,12 +65,13 @@ public class MixParsedCommand extends AbstractParsedCommand {
 	private boolean reverseFirst = false;
 	private boolean reverseSecond = false;
 	private int step = DEFAULT_STEP;
+	private int secondStep = DEFAULT_STEP;
 	
 	public MixParsedCommand(){		
 	};
 	
 	public MixParsedCommand(File outputFile, PdfFile firstInputFile,
-			PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step) {
+			PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step, int secondStep) {
 		super();
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
@@ -77,6 +79,7 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		this.reverseFirst = reverseFirst;
 		this.reverseSecond = reverseSecond;
 		this.step = step;
+		this.secondStep = secondStep;
 	}
 	
 	/**
@@ -92,7 +95,7 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		this.step = step;
 	}
 	
-	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step, boolean overwrite, boolean compress, char outputPdfVersion) {
+	public MixParsedCommand(File outputFile, PdfFile firstInputFile,PdfFile secondInputFile, boolean reverseFirst, boolean reverseSecond, int step, int secondStep, boolean overwrite, boolean compress, char outputPdfVersion) {
 		super(overwrite, compress, outputPdfVersion);
 		this.outputFile = outputFile;
 		this.firstInputFile = firstInputFile;
@@ -100,6 +103,7 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		this.reverseFirst = reverseFirst;
 		this.reverseSecond = reverseSecond;
 		this.step = step;
+		this.secondStep = secondStep;
 	}
 
 	/**
@@ -191,6 +195,20 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		this.step = step;
 	}
 	
+	/**
+	 * @return the secondStep
+	 */
+	public int getSecondStep() {
+		return secondStep;
+	}
+
+	/**
+	 * @param secondStep the secondStep to set
+	 */
+	public void setSecondStep(int secondStep) {
+		this.secondStep = secondStep;
+	}
+
 	public String toString(){
 		StringBuffer retVal = new StringBuffer();
 		retVal.append(super.toString());
@@ -199,6 +217,7 @@ public class MixParsedCommand extends AbstractParsedCommand {
 		retVal.append("[reverseFirst="+reverseFirst+"]");
 		retVal.append("[reverseSecond="+reverseSecond+"]");
 		retVal.append("[step="+step+"]");
+		retVal.append("[secondStep="+secondStep+"]");
 		retVal.append("[command="+getCommand()+"]");
 		return retVal.toString();
 	}

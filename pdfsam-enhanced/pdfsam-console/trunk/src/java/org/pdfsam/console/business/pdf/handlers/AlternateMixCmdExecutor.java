@@ -116,7 +116,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 						}
 					}
 					if(!finished2){
-						for(int i=0; (i<inputCommand.getStep() && !finished2); i++){
+						for(int i=0; (i<inputCommand.getSecondStep() && !finished2); i++){
 							if(current2>=limits2[0] && current2<=limits2[1] && !finished2){
 								page = pdfWriter.getImportedPage(pdfReader2, current2);
 								pdfWriter.addPage(page);
@@ -137,7 +137,7 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor{
 				pdfDocument.close();
 	    		FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
                 LOG.debug("File "+inputCommand.getOutputFile().getCanonicalPath()+" created.");
-				LOG.info("Alternate mix with step "+inputCommand.getStep()+" completed.");
+				LOG.info("Alternate mix with step first document "+inputCommand.getStep()+" and step second document "+inputCommand.getSecondStep()+" completed.");
 			}catch(Exception e){    		
 				throw new MixException(e);
 			}finally{

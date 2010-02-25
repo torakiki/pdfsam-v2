@@ -81,9 +81,14 @@ public class MixCmdHandler extends AbstractCmdHandler {
 	            new BooleanParam(MixParsedCommand.REVERSE_FIRST_ARG, "reverse first input file"),
 	            new BooleanParam(MixParsedCommand.REVERSE_SECOND_ARG, "reverse second input file"),
 	            new IntParam(MixParsedCommand.STEP_ARG,
-	                    "step for the alternate mix (default is 1)" ,             
+	                    "step for the alternate mix (default is 1) or step for the first document if "+MixParsedCommand.SECOND_STEP_ARG+" is specified." ,             
+	                    IntParam.OPTIONAL,
+	                    IntParam.SINGLE_VALUED),
+	            new IntParam(MixParsedCommand.SECOND_STEP_ARG,
+	                    "step for second document during the alternate mix (default is 1)" ,             
 	                    IntParam.OPTIONAL,
 	                    IntParam.SINGLE_VALUED) 	            
+	                    
 	    }));  
 	
 	/**
@@ -95,7 +100,8 @@ public class MixCmdHandler extends AbstractCmdHandler {
     "You must specify '-f2 /home/user/infile2.pdf' option to set the second input file (use filename:password if the file is password protected).\n" +
     "'-reversefirst' reverse the first input file.\n"+
     "'-reversesecond' reverse the second input file.\n"+
-    "'-step' set the step at which the mix should switch from a document to the other.\n";
+    "'-step' set the step at which the mix should switch from a document to the other. This parameter is used as step for the first document if secondstep is specified. \n"+
+    "'-secondstep' set the step for the second document. \n";
 
 	/**
 	 * example text for the mix handler

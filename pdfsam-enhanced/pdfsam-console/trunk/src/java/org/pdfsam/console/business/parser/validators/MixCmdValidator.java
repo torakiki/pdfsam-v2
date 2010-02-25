@@ -105,6 +105,21 @@ public class MixCmdValidator extends AbstractCmdValidator {
         		}else{
             		throw new ParseException(ParseException.ERR_STEP_ZERO_OR_NEGATIVE);
             	}
+        	}else{
+        		parsedCommandDTO.setStep(MixParsedCommand.DEFAULT_STEP);
+        	}
+        	
+	        //-secondstep
+	        IntParam secondStepOption = (IntParam) cmdLineHandler.getOption(MixParsedCommand.SECOND_STEP_ARG);	        	        
+        	if(secondStepOption.isSet()){	  
+        		int step = secondStepOption.intValue();
+        		if(step>0){
+        			parsedCommandDTO.setSecondStep(secondStepOption.intValue());
+        		}else{
+            		throw new ParseException(ParseException.ERR_STEP_ZERO_OR_NEGATIVE);
+            	}
+        	}else{
+        		parsedCommandDTO.setSecondStep(parsedCommandDTO.getStep());
         	}
 	       	        
 	        //-reversefirst
