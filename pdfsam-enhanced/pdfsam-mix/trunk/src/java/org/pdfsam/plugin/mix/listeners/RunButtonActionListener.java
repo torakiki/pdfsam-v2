@@ -20,6 +20,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.commons.business.SoundPlayer;
@@ -116,11 +117,18 @@ public class RunButtonActionListener implements ActionListener {
 				args.add("-"+MixParsedCommand.O_ARG);
 				args.add(destination);
 
-				if(panel.getStepTextField().getText()!=null && panel.getStepTextField().getText().length()>0){
+				String step = panel.getStepTextField().getText();
+				if(StringUtils.isNotEmpty(step)){
 					args.add("-"+MixParsedCommand.STEP_ARG);
-					args.add(panel.getStepTextField().getText());
+					args.add(step);
 				}
-				
+
+				String secondStep = panel.getSecondStepTextField().getText();
+				if(StringUtils.isNotEmpty(secondStep)){
+					args.add("-"+MixParsedCommand.SECOND_STEP_ARG);
+					args.add(secondStep);
+				}
+
 				if (panel.getOverwriteCheckbox().isSelected()) args.add("-"+MixParsedCommand.OVERWRITE_ARG);
                 if (panel.getOutputCompressedCheck().isSelected()) args.add("-"+MixParsedCommand.COMPRESSED_ARG); 
 				if (panel.getReverseFirstCheckbox().isSelected()) args.add("-"+MixParsedCommand.REVERSE_FIRST_ARG);

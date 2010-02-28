@@ -5,6 +5,8 @@
 -Fixed bug #2947985 overlapping of the Selection Panel cause disappearing buttons in Rotate plugin
 -Fixed bug #2947979 browsing window in the Settings panel shows multiple "xml files" entries
 -Added support to zoom and rotate functions to the Image Viewer (feature request #2936227)
+-Console: added the -secondstep option to the mix command
+-Mix: added field to set the secondstep option (feature request #2958113)
 
 2.1.0e (20-Dec-2009) (pdfsam-console 2.2.0e)
 ===================================
