@@ -43,6 +43,8 @@ import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -52,7 +54,6 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.docinfo.listeners.RunButtonActionListener;
 
@@ -83,7 +84,6 @@ public class DocInfoMainGUI extends AbstractPlugablePanel {
 	private JTextField keywordsTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.SIMPLE_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
 	private JHelpLabel docInfoHelpLabel;
-	private JFileChooser browseDestChooser;
 	private JPdfVersionCombo versionCombo = new JPdfVersionCombo(true);
 	
 	private final JLabel outputVersionLabel = CommonComponentsFactory.getInstance().createLabel(CommonComponentsFactory.PDF_VERSION_LABEL);	
@@ -257,15 +257,9 @@ public class DocInfoMainGUI extends AbstractPlugablePanel {
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-            	if(browseDestChooser==null){
-            		browseDestChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-            		browseDestChooser.setFileFilter(new PdfFilter());
-            	}
-                if(destinationTextField.getText().length()>0){
-                	browseDestChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-                }
-				if (browseDestChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
-					File chosenFile = browseDestChooser.getSelectedFile();
+                JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.PDF_FILE, JFileChooser.FILES_ONLY, destinationTextField.getText());
+				if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
+					File chosenFile = fileChooser.getSelectedFile();
 					if (chosenFile != null){
 						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}

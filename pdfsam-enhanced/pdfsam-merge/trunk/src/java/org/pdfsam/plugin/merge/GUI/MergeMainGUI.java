@@ -44,6 +44,8 @@ import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -53,7 +55,6 @@ import org.pdfsam.guiclient.exceptions.LoadJobException;
 import org.pdfsam.guiclient.exceptions.SaveJobException;
 import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
-import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.merge.components.JSaveListAsXmlMenuItem;
 import org.pdfsam.plugin.merge.listeners.RunButtonActionListener;
@@ -70,7 +71,6 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 	private static final Logger log = Logger.getLogger(MergeMainGUI.class.getPackage().getName());
 
     private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
-    private JFileChooser browseDestFileChooser;
     private SpringLayout layoutDestinationPanel;
     private JPanel destinationPanel = new JPanel();
     private SpringLayout layoutOptionPanel;
@@ -202,15 +202,9 @@ public class MergeMainGUI extends AbstractPlugablePanel implements PropertyChang
 //BROWSE_BUTTON        
 		browseDestButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (browseDestFileChooser == null) {
-					browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-					browseDestFileChooser.setFileFilter(new PdfFilter());
-				}
-				if (destinationTextField.getText().length() > 0) {
-					browseDestFileChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-				}
-				if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
-					File chosenFile = browseDestFileChooser.getSelectedFile();
+                JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.PDF_FILE, JFileChooser.FILES_ONLY, destinationTextField.getText());
+				if (fileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = fileChooser.getSelectedFile();
 					if (chosenFile != null) {
 						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}

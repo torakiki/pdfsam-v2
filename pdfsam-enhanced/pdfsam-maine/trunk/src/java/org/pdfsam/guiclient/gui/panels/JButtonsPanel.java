@@ -23,11 +23,13 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.actions.LoadEnvironmentAction;
+import org.pdfsam.guiclient.business.actions.SaveEnvironmentAction;
 import org.pdfsam.guiclient.business.listeners.LogActionListener;
 import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
-import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Buttons bar for the main GUI
  * 
@@ -39,72 +41,80 @@ public class JButtonsPanel extends JPanel {
 	private static final long serialVersionUID = 203934401531647182L;
 
 	private static final Logger log = Logger.getLogger(JButtonsPanel.class.getPackage().getName());
-	
+
 	private JToolBar toolBar;
+
 	private JButton buttonSaveEnv;
+
 	private JButton buttonLoadEnv;
+
 	private JButton buttonSaveLog;
+
 	private JButton buttonClearLog;
+
 	private JButton buttonExit;
-	private EnvironmentMediator envMediator;
+
 	private LogActionListener logActionListener;
+
 	private ApplicationExitMediator exitMediator;
-	
-	public JButtonsPanel(EnvironmentMediator envMediator, ApplicationExitMediator exitMediator, LogActionListener logActionListener){
-		this.envMediator = envMediator;
+
+	public JButtonsPanel(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction,
+			ApplicationExitMediator exitMediator, LogActionListener logActionListener) {
 		this.logActionListener = logActionListener;
-		this.exitMediator = exitMediator;			
-		init();
+		this.exitMediator = exitMediator;
+		init(saveAction, loadAction);
 	}
-	
+
 	/**
 	 * Initialize the panel
 	 */
-	private void init(){
-		try{
+	private void init(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction) {
+		try {
 			setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			setPreferredSize(new Dimension(600, 30));
-	
-			toolBar = new JToolBar("Toolbar", JToolBar.HORIZONTAL);	
-	        toolBar.setFloatable(true);
-	        toolBar.setRollover(true);
-	        toolBar.setMaximumSize(new Dimension(Short.MAX_VALUE, Short.MAX_VALUE));
-	
-	        buttonSaveEnv = new JButton(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
-	        buttonSaveEnv.setActionCommand(EnvironmentMediator.SAVE_ENV_ACTION);
-	        buttonSaveEnv.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save environment"));
-	        buttonSaveEnv.addActionListener(envMediator);
-	
-	        buttonLoadEnv = new JButton(new ImageIcon(this.getClass().getResource("/images/fileopen.png")));
-	        buttonLoadEnv.setActionCommand(EnvironmentMediator.LOAD_ENV_ACTION);
-	        buttonLoadEnv.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Load environment"));
-	        buttonLoadEnv.addActionListener(envMediator);
-	        
-	        buttonSaveLog = new JButton(new ImageIcon(this.getClass().getResource("/images/edit-save.png")));
-	        buttonSaveLog.setActionCommand(LogActionListener.SAVE_LOG_ACTION);
-	        buttonSaveLog.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save log"));
-	        buttonSaveLog.addActionListener(logActionListener);
-	        
-	        buttonClearLog = new JButton(new ImageIcon(this.getClass().getResource("/images/edit-clear.png")));
-	        buttonClearLog.setActionCommand(LogActionListener.CLEAR_LOG_ACTION);
-	        buttonClearLog.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Clear log"));
-	        buttonClearLog.addActionListener(logActionListener);
-	        
-	        buttonExit = new JButton(new ImageIcon(this.getClass().getResource("/images/exit.png")));
-	        buttonExit.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
-	        buttonExit.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Exit"));
-	        buttonExit.addActionListener(exitMediator);
-	        
-	        toolBar.add(buttonSaveEnv);
-	        toolBar.add(buttonLoadEnv);
-	        toolBar.addSeparator();
-	        toolBar.add(buttonSaveLog);
-	        toolBar.add(buttonClearLog);
-	        toolBar.addSeparator();
-	        toolBar.add(buttonExit);
-	        add(toolBar);
-		}catch(Exception e){
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initialize button bar."), e);
+
+			toolBar = new JToolBar("Toolbar", JToolBar.HORIZONTAL);
+			toolBar.setFloatable(true);
+			toolBar.setRollover(true);
+			toolBar.setMaximumSize(new Dimension(Short.MAX_VALUE, Short.MAX_VALUE));
+
+			buttonSaveEnv = new JButton();
+			buttonSaveEnv.setAction(saveAction);
+			buttonSaveEnv.setText("");
+
+			buttonLoadEnv = new JButton();
+			buttonLoadEnv.setAction(loadAction);
+			buttonLoadEnv.setText("");
+
+			buttonSaveLog = new JButton(new ImageIcon(this.getClass().getResource("/images/edit-save.png")));
+			buttonSaveLog.setActionCommand(LogActionListener.SAVE_LOG_ACTION);
+			buttonSaveLog.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Save log"));
+			buttonSaveLog.addActionListener(logActionListener);
+
+			buttonClearLog = new JButton(new ImageIcon(this.getClass().getResource("/images/edit-clear.png")));
+			buttonClearLog.setActionCommand(LogActionListener.CLEAR_LOG_ACTION);
+			buttonClearLog.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Clear log"));
+			buttonClearLog.addActionListener(logActionListener);
+
+			buttonExit = new JButton(new ImageIcon(this.getClass().getResource("/images/exit.png")));
+			buttonExit.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
+			buttonExit.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Exit"));
+			buttonExit.addActionListener(exitMediator);
+
+			toolBar.add(buttonSaveEnv);
+			toolBar.add(buttonLoadEnv);
+			toolBar.addSeparator();
+			toolBar.add(buttonSaveLog);
+			toolBar.add(buttonClearLog);
+			toolBar.addSeparator();
+			toolBar.add(buttonExit);
+			add(toolBar);
+		} catch (Exception e) {
+			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Unable to initialize button bar."), e);
 		}
-	}	
+	}
 }

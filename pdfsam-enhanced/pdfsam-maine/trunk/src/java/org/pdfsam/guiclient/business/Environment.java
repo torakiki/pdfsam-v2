@@ -43,7 +43,7 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class Environment {
 	
-	private static final Logger log = Logger.getLogger(Environment.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(Environment.class.getPackage().getName());
 	
 	private ResourceBundle i18nMessages;
 
@@ -78,7 +78,7 @@ public class Environment {
 						node.addAttribute("class", plugablePanel.getClass().getName());
 						node.addAttribute("name", plugablePanel.getPluginName());
 						plugablePanel.getJobNode(node, savePasswords);
-						log.info(GettextResource.gettext(i18nMessages, plugablePanel.getPluginName()+ " node environment loaded."));
+						LOG.info(GettextResource.gettext(i18nMessages, plugablePanel.getPluginName()+ " node environment loaded."));
 					}
 					BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outFile));
 					OutputFormat format = OutputFormat.createPrettyPrint();
@@ -88,12 +88,12 @@ public class Environment {
 					xmlWriter.flush();
 					xmlWriter.close();
 				}
-				log.info(GettextResource.gettext(i18nMessages, "Environment saved."));
+				LOG.info(GettextResource.gettext(i18nMessages, "Environment saved."));
 			}else{
-				log.error(GettextResource.gettext(i18nMessages, "Error saving environment, output file is null."));
+				LOG.error(GettextResource.gettext(i18nMessages, "Error saving environment, output file is null."));
 			}
 		} catch (Exception ex) {
-			log.error(GettextResource.gettext(i18nMessages, "Error saving environment."),ex);
+			LOG.error(GettextResource.gettext(i18nMessages, "Error saving environment."),ex);
 		}
 	}
 	
@@ -132,13 +132,13 @@ public class Environment {
 					if(node!=null){
 						treePanel.setSelectedPlugin(node.getText());
 					}
-					log.info(GettextResource.gettext(i18nMessages, "Environment loaded."));
+					LOG.info(GettextResource.gettext(i18nMessages, "Environment loaded."));
 				}
 			} catch (Exception ex) {
-				log.error(GettextResource.gettext(i18nMessages, "Error loading environment."),ex);
+				LOG.error(GettextResource.gettext(i18nMessages, "Error loading environment."),ex);
 			}
 		} else {
-			log.error(GettextResource.gettext(i18nMessages, "Error loading environment from input file. "+inputFile));
+			LOG.error(GettextResource.gettext(i18nMessages, "Error loading environment from input file. "+inputFile));
 		}
 	}
 }

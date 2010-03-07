@@ -23,71 +23,55 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import org.apache.log4j.Logger;
+import org.pdfsam.guiclient.business.actions.LoadEnvironmentAction;
+import org.pdfsam.guiclient.business.actions.SaveEnvironmentAction;
 import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
-import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Menu bar
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class JMainMenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = -818197133636053691L;
 
-	private static final Logger log = Logger.getLogger(JMainMenuBar.class.getPackage().getName());
-	
-	private final JMenu menuFile = new JMenu();
-	private final JMenuItem saveEnvItem = new JMenuItem();
-	private final JMenuItem loadEnvItem = new JMenuItem();
-	private final JMenuItem exitItem = new JMenuItem();
-	private EnvironmentMediator envMediator;
 	private ApplicationExitMediator exitMediator;
 
-	public JMainMenuBar(EnvironmentMediator envMediator, ApplicationExitMediator exitMediator){
-		this.envMediator = envMediator;
+	public JMainMenuBar(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction,
+			ApplicationExitMediator exitMediator) {
 		this.exitMediator = exitMediator;
-		init();
+		init(saveAction, loadAction);
 	}
-	
+
 	/**
 	 * Initialize the bar
 	 */
-	private void init(){
-		try{
-			add(menuFile);
-			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"File"));
-			menuFile.setMnemonic(KeyEvent.VK_F);
-	
-			saveEnvItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Save environment"));
-			saveEnvItem.setAccelerator(KeyStroke.getKeyStroke(
-			        KeyEvent.VK_S, ActionEvent.ALT_MASK));
-			saveEnvItem.setActionCommand(EnvironmentMediator.SAVE_ENV_ACTION);
-			saveEnvItem.setIcon(new ImageIcon(this.getClass().getResource("/images/filesave.png")));
-			saveEnvItem.addActionListener(envMediator);
-			
-			loadEnvItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Load environment"));
-			loadEnvItem.setAccelerator(KeyStroke.getKeyStroke(
-			        KeyEvent.VK_L, ActionEvent.ALT_MASK));
-			loadEnvItem.setActionCommand(EnvironmentMediator.LOAD_ENV_ACTION);
-			loadEnvItem.setIcon(new ImageIcon(this.getClass().getResource("/images/fileopen.png")));
-			loadEnvItem.addActionListener(envMediator);
-			
-			exitItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Exit"));
-			exitItem.setAccelerator(KeyStroke.getKeyStroke(
-			        KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-			exitItem.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
-			exitItem.setIcon(new ImageIcon(this.getClass().getResource("/images/exit.png")));
-			exitItem.addActionListener(exitMediator);
-			
-			menuFile.add(saveEnvItem);
-			menuFile.add(loadEnvItem);
-			menuFile.addSeparator();
-			menuFile.add(exitItem);
-		}catch(Exception e){
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to initialize menu bar."), e);
-		}	
+	private void init(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction) {
+		JMenu menuFile = new JMenu();
+		menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File"));
+		menuFile.setMnemonic(KeyEvent.VK_F);
+
+		JMenuItem saveEnvItem = new JMenuItem();
+		saveEnvItem.setAction(saveAction);
+
+		JMenuItem loadEnvItem = new JMenuItem();
+		loadEnvItem.setAction(loadAction);
+
+		JMenuItem exitItem = new JMenuItem();
+		exitItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Exit"));
+		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+		exitItem.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
+		exitItem.setIcon(new ImageIcon(this.getClass().getResource("/images/exit.png")));
+		exitItem.addActionListener(exitMediator);
+
+		menuFile.add(saveEnvItem);
+		menuFile.add(loadEnvItem);
+		menuFile.addSeparator();
+		menuFile.add(exitItem);
+		add(menuFile);
 	}
 }

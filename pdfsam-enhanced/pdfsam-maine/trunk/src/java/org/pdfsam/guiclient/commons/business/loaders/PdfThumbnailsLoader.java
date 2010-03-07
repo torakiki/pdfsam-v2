@@ -24,12 +24,13 @@ import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.IdManager;
 import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.business.thumbnails.creators.ThumbnailsCreator;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.panels.JVisualPdfPageSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 import org.pdfsam.guiclient.utils.DialogUtility;
-import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -42,7 +43,6 @@ public class PdfThumbnailsLoader {
 	private static final Logger log = Logger.getLogger(PdfThumbnailsLoader.class.getPackage().getName());
 
 	private JVisualPdfPageSelectionPanel panel;
-	private JFileChooser fileChooser = null;
 	private ThumbnailsCreator creator;
 	private long id = 0;
 	
@@ -55,23 +55,12 @@ public class PdfThumbnailsLoader {
      * adds a file to the JList
      */
     public void showFileChooserAndAddFile() throws ThumbnailCreationException{ 
-    	lazyInitFileChooser();
+    	JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.PDF_FILE, JFileChooser.FILES_ONLY);
 		if (fileChooser.showOpenDialog(panel) == JFileChooser.APPROVE_OPTION){
 			if(canLoad()){	    	
 				addFile(fileChooser.getSelectedFile());
         	}
 		}
-    }
-    
-    /**
-     * Lazy JFileChooser initialization
-     */
-    private void lazyInitFileChooser(){
-    	if(fileChooser == null){
-    		fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-            fileChooser.setFileFilter(new PdfFilter());
-            fileChooser.setMultiSelectionEnabled(false); 
-    	}
     }
     
     /**

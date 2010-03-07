@@ -47,6 +47,8 @@ import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListe
 import org.pdfsam.guiclient.commons.business.listeners.VersionFilterCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -81,8 +83,6 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
 
     private Configuration config;
 
-    private JFileChooser browseDestFileChooser = null;
-	
     //button
     private final JButton browseDestButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.BROWSE_BUTTON_TYPE);       
     private final JButton runButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.RUN_BUTTON_TYPE);
@@ -307,15 +307,9 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
         destinationPanel.add(outputVersionLabel);
         browseDestButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (browseDestFileChooser == null) {
-					browseDestFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-					browseDestFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				}
-				if (destFolderText.getText().length() > 0) {
-					browseDestFileChooser.setCurrentDirectory(new File(destFolderText.getText()));
-				}
-				if (browseDestFileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
-					File chosenFile = browseDestFileChooser.getSelectedFile();
+				JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.NO_FILTER, JFileChooser.DIRECTORIES_ONLY, destFolderText.getText());
+				if (fileChooser.showOpenDialog(browseDestButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = fileChooser.getSelectedFile();
 					if (chosenFile != null) {
 						destFolderText.setText(chosenFile.getAbsolutePath());
 					}

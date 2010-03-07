@@ -7,6 +7,7 @@
 -Added support to zoom and rotate functions to the Image Viewer (feature request #2936227)
 -Console: added the -secondstep option to the mix command
 -Mix: added field to set the secondstep option (feature request #2958113)
+-JFileChooser remembers the last opened dir. (feature request #2965087)
 
 2.1.0e (20-Dec-2009) (pdfsam-console 2.2.0e)
 ===================================

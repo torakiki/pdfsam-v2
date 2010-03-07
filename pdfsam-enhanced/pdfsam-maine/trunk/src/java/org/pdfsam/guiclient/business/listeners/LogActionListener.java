@@ -24,8 +24,9 @@ import javax.swing.JTextPane;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.business.TextPaneAppender;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.configuration.Configuration;
-import org.pdfsam.guiclient.utils.filters.TxtFilter;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Listener to the log actions
@@ -41,7 +42,6 @@ public class LogActionListener implements ActionListener {
 	public static final String SELECTALL_LOG_ACTION = "selectalllog";
 	
 	private JTextPane logTextArea;
-	private JFileChooser fileChooser;
 	
 	public LogActionListener(JTextPane logTextArea){
 		this.logTextArea = logTextArea;
@@ -83,13 +83,9 @@ public class LogActionListener implements ActionListener {
 	 * Save log text to file
 	 */
 	private void saveLog(){
-		if(fileChooser==null){
-			fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-			fileChooser.setFileFilter(new TxtFilter());
-		}
-		File chosenFile = null;
+        JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.TXT_FILE, JFileChooser.FILES_ONLY);
 		if (fileChooser.showSaveDialog(logTextArea) == JFileChooser.APPROVE_OPTION) {
-			chosenFile = fileChooser.getSelectedFile();
+			File chosenFile = fileChooser.getSelectedFile();
 			if (chosenFile != null) {
 				try {						
 					FileWriter fileWriter = new FileWriter(chosenFile);

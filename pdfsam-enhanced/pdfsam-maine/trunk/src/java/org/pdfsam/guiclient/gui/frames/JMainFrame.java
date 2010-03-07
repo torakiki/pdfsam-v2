@@ -39,10 +39,11 @@ import org.pdfsam.console.business.dto.WorkDoneDataModel;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.business.ApplicationCloser;
 import org.pdfsam.guiclient.business.Environment;
+import org.pdfsam.guiclient.business.actions.LoadEnvironmentAction;
+import org.pdfsam.guiclient.business.actions.SaveEnvironmentAction;
 import org.pdfsam.guiclient.business.listeners.LogActionListener;
 import org.pdfsam.guiclient.business.listeners.MainWindowListener;
 import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
-import org.pdfsam.guiclient.business.listeners.mediators.EnvironmentMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.TreeMediator;
 import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -73,7 +74,6 @@ public class JMainFrame extends JFrame {
 	
 	private JSplashScreen screen;
 	private Map<PluginDataModel, AbstractPlugablePanel> pluginsMap;
-	private EnvironmentMediator envMediator;
 	private ApplicationExitMediator exitMediator;
 	private UpdateCheckerMediator updateMediator;
 	private JStatusPanel statusPanel;
@@ -157,14 +157,17 @@ public class JMainFrame extends JFrame {
 	        
 	        //menu
 	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building menus.."));        
-	        //env mediator
-	        envMediator = new EnvironmentMediator(new Environment(pluginsMap, treePanel), this);
+
+	        Environment environment = new Environment(pluginsMap, treePanel);
+			SaveEnvironmentAction saveAction = new SaveEnvironmentAction(environment, this);
+			LoadEnvironmentAction loadAction = new LoadEnvironmentAction(environment, this);
 	        exitMediator = new ApplicationExitMediator(new ApplicationCloser(this));
-	        getRootPane().setJMenuBar(new JMainMenuBar(envMediator, exitMediator));
-	        
+	        getRootPane().setJMenuBar(new JMainMenuBar(saveAction, loadAction, exitMediator));
+
+
 	        //buttons bar
 	        setSplashStep(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Building buttons bar.."));
-	        buttonsPanel = new JButtonsPanel(envMediator, exitMediator, new LogActionListener());
+	        buttonsPanel = new JButtonsPanel(saveAction, loadAction, exitMediator, new LogActionListener());
 	        getContentPane().add(buttonsPanel,BorderLayout.PAGE_START);  
 	        
 	        //set up check for updates mediator
@@ -195,7 +198,7 @@ public class JMainFrame extends JFrame {
 	        	File defaultEnv = new File(defaultEnvString);
 		        if(defaultEnv != null && defaultEnv.exists() && defaultEnv.isFile()){
 		        	log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Loading default environment."));
-		        	envMediator.getEnvironment().loadJobs(defaultEnv);
+		        	environment.loadJobs(defaultEnv);
 		        }
 	        }
 	        getContentPane().add(verticalSplitPane,BorderLayout.CENTER);

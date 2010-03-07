@@ -40,6 +40,8 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.models.AbstractPdfSelectionTableModel;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
@@ -71,7 +73,6 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 	private JTextField destinationTextField = CommonComponentsFactory.getInstance().createTextField(CommonComponentsFactory.DESTINATION_TEXT_FIELD_TYPE);
 	private JHelpLabel destinationHelpLabel;
 	private Configuration config;
-	private JFileChooser browseDirChooser;
 
 	private final UnpackFocusPolicy unpackFocusPolicy = new UnpackFocusPolicy();
 	//buttons
@@ -138,15 +139,9 @@ public class UnpackMainGUI extends AbstractPlugablePanel implements PropertyChan
 //		BROWSE_BUTTON        
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (browseDirChooser == null) {
-					browseDirChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-					browseDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				}
-				if (destinationTextField.getText().length() > 0) {
-					browseDirChooser.setCurrentDirectory(new File(destinationTextField.getText()));
-				}
-				if (browseDirChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION) {
-					File chosenFile = browseDirChooser.getSelectedFile();
+				JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.NO_FILTER, JFileChooser.DIRECTORIES_ONLY, destinationTextField.getText());
+				if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = fileChooser.getSelectedFile();
 					if (chosenFile != null) {
 						destinationTextField.setText(chosenFile.getAbsolutePath());
 					}

@@ -28,10 +28,11 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
-import org.pdfsam.guiclient.utils.filters.XmlFilter;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Menu item to add the "save as xml" capability to the JPdfSelectionPanel
@@ -44,7 +45,6 @@ public class JSaveListAsXmlMenuItem extends JMenuItem {
 	private static final Logger log = Logger.getLogger(JSaveListAsXmlMenuItem.class.getPackage().getName());
 	
 	private JPdfSelectionPanel selectionPanel;
-	private JFileChooser fileChooser = null;;
 
 	/**
 	 * @param selectionPanel
@@ -66,7 +66,7 @@ public class JSaveListAsXmlMenuItem extends JMenuItem {
             	PdfSelectionTableItem[] rows = selectionPanel.getTableRows();
                 if (rows != null && rows.length>0){
                     try{
-                    	lazyInitJFileChooser();
+                        JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.XML_FILE, JFileChooser.FILES_ONLY);
                     	if (fileChooser.showSaveDialog(selectionPanel) == JFileChooser.APPROVE_OPTION) {
 	                    	File selectedFile = fileChooser.getSelectedFile();	
 	        				if(selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1){
@@ -81,17 +81,6 @@ public class JSaveListAsXmlMenuItem extends JMenuItem {
                 }
               }
         });
-	}
-	
-	/**
-	 * lazily initialize the JFileChooser
-	 */
-	private void lazyInitJFileChooser(){
-		if(fileChooser == null){
-			fileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());
-			fileChooser.setFileFilter(new XmlFilter());
-			fileChooser.setApproveButtonText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Ok"));
-		}
 	}
 	
 	/**

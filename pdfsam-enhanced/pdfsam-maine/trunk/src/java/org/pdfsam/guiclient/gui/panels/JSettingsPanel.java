@@ -47,6 +47,8 @@ import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.business.listeners.mediators.UpdateCheckerMediator;
 import org.pdfsam.guiclient.business.thumbnails.ThumbnailCreatorsRegisty;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.exceptions.LoadJobException;
@@ -56,7 +58,6 @@ import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.guiclient.utils.ThemeUtility;
 import org.pdfsam.guiclient.utils.XmlUtility;
-import org.pdfsam.guiclient.utils.filters.XmlFilter;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -81,7 +82,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
     private JComboBox comboThumbnailsCreators;
     private JCheckBox playSounds;
     private JHelpLabel envHelpLabel;
-	private JFileChooser fileChooser ;
 
 	private SpringLayout settingsLayout;
     private SpringLayout grayBorderSettingsLayout;
@@ -123,7 +123,6 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 
     private void initialize() {     
     	config = Configuration.getInstance();
-    	fileChooser = new JFileChooser(config.getDefaultWorkingDirectory());
         setPanelIcon("/images/settings.png");
         setPreferredSize(new Dimension(400,480));
 
@@ -305,17 +304,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
 //ENV_LABEL_PREFIX        
         browseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	fileChooser.resetChoosableFileFilters();
-            	fileChooser.setFileFilter(new XmlFilter());
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.XML_FILE, JFileChooser.FILES_AND_DIRECTORIES, loadDefaultEnv.getText());
+            	
                 if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     if (fileChooser.getSelectedFile() != null){
-                        try{
-                        	loadDefaultEnv.setText(fileChooser.getSelectedFile().getAbsolutePath());
-                        }
-                        catch (Exception ex){
-                        	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                       
-                        }
+                       	loadDefaultEnv.setText(fileChooser.getSelectedFile().getAbsolutePath());
                     }
                 }              
             }
@@ -324,16 +317,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
         
         browseDestDirButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	fileChooser.resetChoosableFileFilters();
-                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.NO_FILTER, JFileChooser.DIRECTORIES_ONLY, defaultDirectory.getText());
+
                 if (fileChooser.showOpenDialog(browseButton.getParent()) == JFileChooser.APPROVE_OPTION){
                     if (fileChooser.getSelectedFile() != null){
-                        try{
-                        	defaultDirectory.setText(fileChooser.getSelectedFile().getAbsolutePath());
-                        }
-                        catch (Exception ex){
-                        	log.error(GettextResource.gettext(config.getI18nResourceBundle(),"Error: "), ex);                       
-                        }
+                       	defaultDirectory.setText(fileChooser.getSelectedFile().getAbsolutePath());
                     }
                 }              
             }

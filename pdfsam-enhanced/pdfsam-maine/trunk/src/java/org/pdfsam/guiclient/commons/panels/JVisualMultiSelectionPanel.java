@@ -39,11 +39,11 @@ import javax.swing.event.ChangeListener;
 
 import org.pdfsam.guiclient.business.ClosableTabbedPanelAdder;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
+import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.commons.dnd.droppers.JVisualMultiSelectionDropper;
-import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfFile;
 import org.pdfsam.guiclient.dto.VisualPageListItem;
-import org.pdfsam.guiclient.utils.filters.PdfFilter;
 /**
  * Panel to let the user select multiple pdf document and show thumbnails in a tabbed panel
  * @author Andrea Vacondio
@@ -56,7 +56,6 @@ public class JVisualMultiSelectionPanel extends JPanel {
     private final JButton openButton = CommonComponentsFactory.getInstance().createButton(CommonComponentsFactory.ADD_BUTTON_TYPE);       
     private final CloseableTabbedPane inputTabbedPanel = new CloseableTabbedPane();
     private final JPanel topPanel = new JPanel();
-    private JFileChooser browseOpenFileChooser = null;
     private JPanel currentTopPanel = new JPanel();
     private ClosableTabbedPanelAdder tabsAdder;
     private DropTarget tabbedPanelDropTarget;
@@ -105,14 +104,10 @@ public class JVisualMultiSelectionPanel extends JPanel {
 		
 		openButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	if(browseOpenFileChooser==null){
-            		browseOpenFileChooser = new JFileChooser(Configuration.getInstance().getDefaultWorkingDirectory());                    
-            		browseOpenFileChooser.setFileFilter(new PdfFilter());
-                    browseOpenFileChooser.setMultiSelectionEnabled(true);
-            	}
-                File[] chosenFiles = null;                
-                if (browseOpenFileChooser.showOpenDialog(browseOpenFileChooser.getParent()) == JFileChooser.APPROVE_OPTION){
-                    chosenFiles = browseOpenFileChooser.getSelectedFiles();
+                JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.PDF_FILE, JFileChooser.FILES_ONLY);
+                fileChooser.setMultiSelectionEnabled(true);
+                if (fileChooser.showOpenDialog(JVisualMultiSelectionPanel.this) == JFileChooser.APPROVE_OPTION){
+                	File[] chosenFiles = fileChooser.getSelectedFiles();
                     tabsAdder.addTabs(chosenFiles); 
                 }               
                 
