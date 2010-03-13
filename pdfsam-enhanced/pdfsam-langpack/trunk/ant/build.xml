@@ -26,8 +26,7 @@
 
 	<target name="clean" depends="init" description="clean up" >
 		<!-- Delete the ${dist} directory trees -->
-		<delete dir="${pdfsam-langpack.dist.dir}"/>
-		<delete dir="${pdfsam-langpack.build.dir}"/>
+		<delete dir="${pdfsam-langpack.build.root}"/>
 	</target>
 
 	<target name="compile" depends="make-structure" description="pdfsam-langpack " >

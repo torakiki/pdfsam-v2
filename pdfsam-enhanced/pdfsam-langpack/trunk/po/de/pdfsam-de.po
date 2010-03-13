@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-05 10:40+0000\n"
 "Last-Translator: Marcel Mayr <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -375,8 +375,8 @@ msgstr "Legen Sie Dokumentenschlüsselwörter fest."
 msgid "Choose a file"
 msgstr "Datei wählen"
 
-msgid "Rotate selected files"
-msgstr "Ausgewählte Seiten drehen"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Dokumentinfo"
@@ -578,6 +578,9 @@ msgstr "Drehungswinkel festlegen (im Uhrzeigersinn)."
 msgid "Set the pages that will be rotated."
 msgstr "Zu drehende Seiten festlegen."
 
+msgid "Rotate selected files"
+msgstr "Ausgewählte Seiten drehen"
+
 msgid "Rotate"
 msgstr "Drehen"
 
@@ -618,8 +621,38 @@ msgstr "Keine neue Version verfügbar."
 msgid "Log saved."
 msgstr "Protokoll wurde gespeichert"
 
+msgid "Save as"
+msgstr "Speichern unter"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Bild konnte nicht gespeichert werden"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Gegen den Uhrzeigersinn drehen"
+
+msgid "Rotate clockwise"
+msgstr "Im Uhrzeigersinn drehen"
+
+msgid "Zoom in"
+msgstr "Vergrößern"
+
+msgid "Zoom out"
+msgstr "Verkleinern"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Bild konnte nicht erstellt werden, da Quelldokument ungültig ist"
@@ -860,14 +893,8 @@ msgstr "Öffnen"
 msgid "Load a pdf document"
 msgstr "Ein PDF-Dokument laden"
 
-msgid "Zoom in"
-msgstr "Vergrößern"
-
 msgid "Error setting zoom level."
 msgstr "Fehler beim Setzen des Vergrößerungsfaktors."
-
-msgid "Zoom out"
-msgstr "Verkleinern"
 
 msgid "Preview"
 msgstr "Vorschau"
@@ -877,12 +904,6 @@ msgstr "Löschen"
 
 msgid "Undelete"
 msgstr "Wiederherstellen"
-
-msgid "Rotate clockwise"
-msgstr "Im Uhrzeigersinn drehen"
-
-msgid "Rotate anticlockwise"
-msgstr "Gegen den Uhrzeigersinn drehen"
 
 msgid "Reverse"
 msgstr "Umkehren"
@@ -956,11 +977,8 @@ msgstr "Verschlüsselt: "
 msgid "File"
 msgstr "Datei"
 
-msgid "Save as"
-msgstr "Speichern unter"
-
-msgid "Close"
-msgstr "Schließen"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Fehler beim Erstellen der Anzeigeleiste."

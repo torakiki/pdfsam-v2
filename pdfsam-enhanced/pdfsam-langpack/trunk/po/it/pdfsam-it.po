@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-15 22:05+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
@@ -598,8 +598,8 @@ msgstr "Imposta le parole chiave del documento."
 msgid "Choose a file"
 msgstr "Scegli un file"
 
-msgid "Rotate selected files"
-msgstr "Ruota i file selezionati"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Informazioni sul documento"
@@ -817,6 +817,9 @@ msgstr "Seleziona i gradi di rotazione (in senso orario)"
 msgid "Set the pages that will be rotated."
 msgstr "Seleziona le pagine che devono essere ruotate"
 
+msgid "Rotate selected files"
+msgstr "Ruota i file selezionati"
+
 msgid "Rotate"
 msgstr "Ruota"
 
@@ -859,8 +862,39 @@ msgstr "Nessuna nuova versione disponibile."
 msgid "Log saved."
 msgstr "Registro salvato."
 
+msgid "Save as"
+msgstr "Salva come"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Impossibile salvare l'immagine"
+
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
+msgid "Close"
+msgstr "Chiudi"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Ruota in senso antiorario"
+
+msgid "Rotate clockwise"
+msgstr "Ruota in senso orario"
+
+msgid "Zoom in"
+msgstr "Zoom avanti"
+
+msgid "Zoom out"
+msgstr "Zoom indietro"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Impossibile creare un'immagine per un documento nullo"
@@ -1266,14 +1300,8 @@ msgstr "Apri"
 msgid "Load a pdf document"
 msgstr "Carica un documento pdf"
 
-msgid "Zoom in"
-msgstr "Zoom avanti"
-
 msgid "Error setting zoom level."
 msgstr "Errore impostando il livello di zoom."
-
-msgid "Zoom out"
-msgstr "Zoom indietro"
 
 msgid "Preview"
 msgstr "Anteprima"
@@ -1283,12 +1311,6 @@ msgstr "Cancella"
 
 msgid "Undelete"
 msgstr "Ripristina"
-
-msgid "Rotate clockwise"
-msgstr "Ruota in senso orario"
-
-msgid "Rotate anticlockwise"
-msgstr "Ruota in senso antiorario"
 
 msgid "Reverse"
 msgstr "Inverti"
@@ -1366,12 +1388,8 @@ msgstr "Criptato: "
 msgid "File"
 msgstr "File"
 
-msgid "Save as"
-msgstr "Salva come"
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
-msgid "Close"
-msgstr "Chiudi"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Errore creando il pannello di anteprima."

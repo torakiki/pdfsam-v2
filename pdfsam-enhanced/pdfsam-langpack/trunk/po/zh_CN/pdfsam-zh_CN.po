@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-10-28 11:07+0000\n"
 "Last-Translator: 王英华 <wantinghard@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -355,8 +355,8 @@ msgstr ""
 msgid "Choose a file"
 msgstr "选择一个文件"
 
-msgid "Rotate selected files"
-msgstr "旋转选定的文件"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr ""
@@ -550,6 +550,9 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
+msgid "Rotate selected files"
+msgstr "旋转选定的文件"
+
 msgid "Rotate"
 msgstr "旋转"
 
@@ -584,8 +587,38 @@ msgstr "没有检测到新的版本。"
 msgid "Log saved."
 msgstr "日志已保存。"
 
+msgid "Save as"
+msgstr "另存为"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "无法保存图像"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "逆时针旋转"
+
+msgid "Rotate clockwise"
+msgstr "顺时针旋转"
+
+msgid "Zoom in"
+msgstr "放大"
+
+msgid "Zoom out"
+msgstr "缩小"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -818,14 +851,8 @@ msgstr "打开"
 msgid "Load a pdf document"
 msgstr ""
 
-msgid "Zoom in"
-msgstr "放大"
-
 msgid "Error setting zoom level."
 msgstr "设置缩放级别出错。"
-
-msgid "Zoom out"
-msgstr "缩小"
 
 msgid "Preview"
 msgstr "预览"
@@ -835,12 +862,6 @@ msgstr "删除"
 
 msgid "Undelete"
 msgstr "恢复"
-
-msgid "Rotate clockwise"
-msgstr "顺时针旋转"
-
-msgid "Rotate anticlockwise"
-msgstr "逆时针旋转"
 
 msgid "Reverse"
 msgstr "反转"
@@ -914,11 +935,8 @@ msgstr ""
 msgid "File"
 msgstr "文件"
 
-msgid "Save as"
-msgstr "另存为"
-
-msgid "Close"
-msgstr "关闭"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "创建预览面板错误"

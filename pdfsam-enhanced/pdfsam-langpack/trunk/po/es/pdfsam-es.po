@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-11 02:30+0000\n"
 "Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -432,8 +432,8 @@ msgstr "Establecer palabras claves del documento"
 msgid "Choose a file"
 msgstr "Elija un archivo"
 
-msgid "Rotate selected files"
-msgstr "Rotar archivos seleccionados"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Información del documento"
@@ -635,6 +635,9 @@ msgstr "Establecer los grados de rotación (sentido de las agujas del reloj)."
 msgid "Set the pages that will be rotated."
 msgstr "Establecer las páginas que rotarán."
 
+msgid "Rotate selected files"
+msgstr "Rotar archivos seleccionados"
+
 msgid "Rotate"
 msgstr "Rotar"
 
@@ -674,8 +677,38 @@ msgstr "No hay nueva versión disponible."
 msgid "Log saved."
 msgstr "Registro guardado."
 
+msgid "Save as"
+msgstr "Guardar como"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "No se puede guardar la imagen"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Girar en sentido antihorario"
+
+msgid "Rotate clockwise"
+msgstr "Girar en sentido horario"
+
+msgid "Zoom in"
+msgstr "Ampliar"
+
+msgid "Zoom out"
+msgstr "Alejar"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "No se puede crear la imagen para un documento de entrada vacío"
@@ -1011,14 +1044,8 @@ msgstr "Abrir"
 msgid "Load a pdf document"
 msgstr "Cargar un documento PDF"
 
-msgid "Zoom in"
-msgstr "Ampliar"
-
 msgid "Error setting zoom level."
 msgstr "Nivel de ampliación inválido."
-
-msgid "Zoom out"
-msgstr "Alejar"
 
 msgid "Preview"
 msgstr "Previsualización"
@@ -1028,12 +1055,6 @@ msgstr "Eliminar"
 
 msgid "Undelete"
 msgstr "Recuperar"
-
-msgid "Rotate clockwise"
-msgstr "Girar en sentido horario"
-
-msgid "Rotate anticlockwise"
-msgstr "Girar en sentido antihorario"
 
 msgid "Reverse"
 msgstr "Invertir"
@@ -1109,11 +1130,8 @@ msgstr "Cifrado: "
 msgid "File"
 msgstr "Archivo"
 
-msgid "Save as"
-msgstr "Guardar como"
-
-msgid "Close"
-msgstr "Cerrar"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Error creando panel de previsualización."

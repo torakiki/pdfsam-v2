@@ -8,6 +8,7 @@
 -Console: added the -secondstep option to the mix command
 -Mix: added field to set the secondstep option (feature request #2958113)
 -JFileChooser remembers the last opened dir. (feature request #2965087)
+-Split: split by bookmarks level now disable the input field while retrieving max depth
 
 2.1.0 (20-Dec-2009) (pdfsam-console 2.2.0e)
 ===================================

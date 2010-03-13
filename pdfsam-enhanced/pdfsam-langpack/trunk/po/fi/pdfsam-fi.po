@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-03-10 13:28+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Choose a file"
 msgstr ""
 
-msgid "Rotate selected files"
+msgid "Set metadata on the selected file"
 msgstr ""
 
 msgid "Document Info"
@@ -704,6 +704,9 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
+msgid "Rotate selected files"
+msgstr ""
+
 msgid "Rotate"
 msgstr ""
 
@@ -741,7 +744,38 @@ msgstr "Ei uusia versioita saatavilla."
 msgid "Log saved."
 msgstr "Loki tallennettu"
 
+msgid "Save as"
+msgstr ""
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
+msgstr ""
+
+# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
+msgid "Close"
+msgstr "Sulje"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
 msgstr ""
 
 msgid "Unable to create image for a null input document"
@@ -1063,13 +1097,7 @@ msgstr ""
 msgid "Load a pdf document"
 msgstr ""
 
-msgid "Zoom in"
-msgstr ""
-
 msgid "Error setting zoom level."
-msgstr ""
-
-msgid "Zoom out"
 msgstr ""
 
 msgid "Preview"
@@ -1079,12 +1107,6 @@ msgid "Delete"
 msgstr ""
 
 msgid "Undelete"
-msgstr ""
-
-msgid "Rotate clockwise"
-msgstr ""
-
-msgid "Rotate anticlockwise"
 msgstr ""
 
 msgid "Reverse"
@@ -1161,12 +1183,8 @@ msgstr ""
 msgid "File"
 msgstr "Tiedosto"
 
-msgid "Save as"
+msgid "Image"
 msgstr ""
-
-# F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:150
-msgid "Close"
-msgstr "Sulje"
 
 msgid "Error creating preview panel."
 msgstr ""

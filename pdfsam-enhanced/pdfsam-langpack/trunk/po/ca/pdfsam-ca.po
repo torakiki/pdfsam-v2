@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-10-24 23:58+0000\n"
 "Last-Translator: Josep Sànchez <josep.sanchez@ubuntu.cat>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -370,8 +370,8 @@ msgstr ""
 msgid "Choose a file"
 msgstr "Escolliu un fitxer"
 
-msgid "Rotate selected files"
-msgstr "Gira els fitxers seleccionats"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr ""
@@ -569,6 +569,9 @@ msgstr "Definiu els graus de gir (en sentit de les agulles del rellotge)"
 msgid "Set the pages that will be rotated."
 msgstr "Definiu les pàgines que seran girades"
 
+msgid "Rotate selected files"
+msgstr "Gira els fitxers seleccionats"
+
 msgid "Rotate"
 msgstr "Gira"
 
@@ -606,8 +609,38 @@ msgstr "No hi ha disponibles noves versions."
 msgid "Log saved."
 msgstr "S'ha desat el registre."
 
+msgid "Save as"
+msgstr "Anomena i desa"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "No s'ha pogut desar la imatge"
+
+msgid "Close"
+msgstr "Tanca"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Gira en sentit anti-horari"
+
+msgid "Rotate clockwise"
+msgstr "Gira en sentit horari"
+
+msgid "Zoom in"
+msgstr "Apropa"
+
+msgid "Zoom out"
+msgstr "Allunya"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "No s'ha pogut crear la imatge d'un document orígen nul"
@@ -844,14 +877,8 @@ msgstr "Obre"
 msgid "Load a pdf document"
 msgstr "Carrega un document pdf"
 
-msgid "Zoom in"
-msgstr "Apropa"
-
 msgid "Error setting zoom level."
 msgstr "S'ha produit un error en definir el nivell de zoom"
-
-msgid "Zoom out"
-msgstr "Allunya"
 
 msgid "Preview"
 msgstr "Visualització prèvia"
@@ -861,12 +888,6 @@ msgstr "Esborra"
 
 msgid "Undelete"
 msgstr "Desfès la supressió"
-
-msgid "Rotate clockwise"
-msgstr "Gira en sentit horari"
-
-msgid "Rotate anticlockwise"
-msgstr "Gira en sentit anti-horari"
 
 msgid "Reverse"
 msgstr "Invers"
@@ -940,11 +961,8 @@ msgstr "Xifrat: "
 msgid "File"
 msgstr "Fitxer"
 
-msgid "Save as"
-msgstr "Anomena i desa"
-
-msgid "Close"
-msgstr "Tanca"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "S'ha produit un error en crear el panell de visualització prèvia"

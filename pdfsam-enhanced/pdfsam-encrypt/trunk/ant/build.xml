@@ -33,9 +33,7 @@
 
   	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-encrypt.javadoc.dir}"/>
-	    <delete dir="${pdfsam-encrypt.dist.dir}"/>
-	    <delete dir="${pdfsam-encrypt.build.dir}"/>
+	    <delete dir="${pdfsam-encrypt.build.root}"/>
   	</target>
 
   <target name="compile" depends="make-structure" description="pdfsam-encrypt " >

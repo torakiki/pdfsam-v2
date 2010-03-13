@@ -27,9 +27,7 @@
 
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-vcomposer.javadoc.dir}"/>
-	    <delete dir="${pdfsam-vcomposer.dist.dir}"/>
-	    <delete dir="${pdfsam-vcomposer.build.dir}"/>
+	    <delete dir="${pdfsam-vcomposer.build.root}"/>
 	</target>
 
   <target name="compile" depends="make-structure" description="pdfsam-vcomposer " >

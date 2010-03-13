@@ -27,9 +27,7 @@
 
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-vpagereorder.javadoc.dir}"/>
-	    <delete dir="${pdfsam-vpagereorder.dist.dir}"/>
-	    <delete dir="${pdfsam-vpagereorder.build.dir}"/>
+	    <delete dir="${pdfsam-vpagereorder.build.root}"/>
 	</target>
 
   <target name="compile" depends="make-structure" description="pdfsam-vpagereorder " >

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-11 22:21+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
@@ -373,8 +373,8 @@ msgstr "Définir les mots-clés du document."
 msgid "Choose a file"
 msgstr "Sélectionnez un fichier"
 
-msgid "Rotate selected files"
-msgstr "Pivoter les fichiers sélectionnés"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Informations du document"
@@ -573,6 +573,9 @@ msgstr "Choisissez l'angle de rotation (sens horaire)"
 msgid "Set the pages that will be rotated."
 msgstr "Sélectionnez les pages à faire pivoter"
 
+msgid "Rotate selected files"
+msgstr "Pivoter les fichiers sélectionnés"
+
 msgid "Rotate"
 msgstr "Rotation"
 
@@ -609,8 +612,38 @@ msgstr "Aucune nouvelle version disponible."
 msgid "Log saved."
 msgstr "Sauvegarde du journal effectuée."
 
+msgid "Save as"
+msgstr "Enregistrer sous"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Enregistrement de l'image impossible"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Rotation antihoraire"
+
+msgid "Rotate clockwise"
+msgstr "Rotation horaire"
+
+msgid "Zoom in"
+msgstr "Agrandir"
+
+msgid "Zoom out"
+msgstr "Réduire"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Création d'image impossible à partir un document vide"
@@ -881,14 +914,8 @@ msgstr "Ouvrir"
 msgid "Load a pdf document"
 msgstr "Charger un document pdf"
 
-msgid "Zoom in"
-msgstr "Agrandir"
-
 msgid "Error setting zoom level."
 msgstr "Erreur de régglage du zoom"
-
-msgid "Zoom out"
-msgstr "Réduire"
 
 msgid "Preview"
 msgstr "Afficher l'aperçu"
@@ -898,12 +925,6 @@ msgstr "Supprimer"
 
 msgid "Undelete"
 msgstr "Restaurer"
-
-msgid "Rotate clockwise"
-msgstr "Rotation horaire"
-
-msgid "Rotate anticlockwise"
-msgstr "Rotation antihoraire"
 
 msgid "Reverse"
 msgstr "Inverser"
@@ -980,11 +1001,8 @@ msgstr "Protégé : "
 msgid "File"
 msgstr "Fichier"
 
-msgid "Save as"
-msgstr "Enregistrer sous"
-
-msgid "Close"
-msgstr "Fermer"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Erreur de génération de la fenêtre d'aperçu."

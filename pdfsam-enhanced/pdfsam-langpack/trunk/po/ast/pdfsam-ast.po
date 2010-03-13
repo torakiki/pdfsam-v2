@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-16 12:42+0000\n"
 "Last-Translator: Dangerous Piper <dangerous_piper@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
@@ -371,8 +371,8 @@ msgstr "Afitar les pallabres clave del documentu."
 msgid "Choose a file"
 msgstr "Escueyi un ficheru"
 
-msgid "Rotate selected files"
-msgstr "Voltiar los ficheros seleccionaos"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Información del documentu"
@@ -572,6 +572,9 @@ msgstr "determinar los graos pa voltiar (al sen de les aguyes del reló)"
 msgid "Set the pages that will be rotated."
 msgstr "Determinar les páxines que van voltiar"
 
+msgid "Rotate selected files"
+msgstr "Voltiar los ficheros seleccionaos"
+
 msgid "Rotate"
 msgstr "Voltiar"
 
@@ -610,8 +613,38 @@ msgstr "Nenguna versión nueva disponible"
 msgid "Log saved."
 msgstr "rexistru guardáu"
 
+msgid "Save as"
+msgstr "Guardar como"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Imposible guardar la imaxe"
+
+msgid "Close"
+msgstr "Zarrar"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "voltiar al sen contrariu de les aguyes del reló"
+
+msgid "Rotate clockwise"
+msgstr "voltiar al sen de les aguyes del reló"
+
+msgid "Zoom in"
+msgstr "averar zoom"
+
+msgid "Zoom out"
+msgstr "alloñar zoom"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Creación d'imaxe imposible a partir d'un documentu vacíu"
@@ -851,14 +884,8 @@ msgstr "Abrir"
 msgid "Load a pdf document"
 msgstr "cargar un documentu pdf"
 
-msgid "Zoom in"
-msgstr "averar zoom"
-
 msgid "Error setting zoom level."
 msgstr "Error al definir el nivel de zoom"
-
-msgid "Zoom out"
-msgstr "alloñar zoom"
 
 msgid "Preview"
 msgstr "previsualización"
@@ -868,12 +895,6 @@ msgstr "Desaniciar"
 
 msgid "Undelete"
 msgstr "recuperar"
-
-msgid "Rotate clockwise"
-msgstr "voltiar al sen de les aguyes del reló"
-
-msgid "Rotate anticlockwise"
-msgstr "voltiar al sen contrariu de les aguyes del reló"
 
 msgid "Reverse"
 msgstr "Invertir"
@@ -948,11 +969,8 @@ msgstr "Cifráu "
 msgid "File"
 msgstr "Ficheru"
 
-msgid "Save as"
-msgstr "Guardar como"
-
-msgid "Close"
-msgstr "Zarrar"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Error al crear el panel de previsualización"

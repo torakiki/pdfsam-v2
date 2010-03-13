@@ -20,16 +20,14 @@
 
 	<target name="make-structure" depends="init">  	
 		<!-- Create the build directory structure used by compile -->
-	    <mkdir dir="${pdfsam-rotate.build.dir}"/>
+		<mkdir dir="${pdfsam-rotate.build.dir}"/>
 		<mkdir dir="${pdfsam-rotate.dist.dir}"/>
-	    <mkdir dir="${pdfsam-rotate.javadoc.dir}"/>
+		<mkdir dir="${pdfsam-rotate.javadoc.dir}"/>
 	</target>	
 
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-rotate.javadoc.dir}"/>
-	    <delete dir="${pdfsam-rotate.dist.dir}"/>
-	    <delete dir="${pdfsam-rotate.build.dir}"/>
+	    <delete dir="${pdfsam-rotate.build.root}"/>
 	</target>
 
   <target name="compile" depends="make-structure" description="pdfsam-rotate " >

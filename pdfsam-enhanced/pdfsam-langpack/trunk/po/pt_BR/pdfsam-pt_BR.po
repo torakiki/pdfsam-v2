@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-15 20:49+0000\n"
 "Last-Translator: Heder Dorneles <heder.to@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -427,8 +427,8 @@ msgstr "Defina as palavras chave do documento."
 msgid "Choose a file"
 msgstr "Escolha um arquivo"
 
-msgid "Rotate selected files"
-msgstr "Rotacionar arquivos selecionados"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr ""
@@ -625,6 +625,9 @@ msgstr "Defina o grau de rotação (sentido horário)"
 msgid "Set the pages that will be rotated."
 msgstr "Defina as páginas que serão rotacionadas."
 
+msgid "Rotate selected files"
+msgstr "Rotacionar arquivos selecionados"
+
 msgid "Rotate"
 msgstr "Rotacionar"
 
@@ -666,8 +669,38 @@ msgstr "Nenhuma nova versão disponível."
 msgid "Log saved."
 msgstr "Log salvo."
 
+msgid "Save as"
+msgstr "Salvar como"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Não foi possível salvar a imagem"
+
+msgid "Close"
+msgstr "Fechar"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Rotacionar no sentido não-horário"
+
+msgid "Rotate clockwise"
+msgstr "Rotacionar no sentido horário"
+
+msgid "Zoom in"
+msgstr "Mais zoom"
+
+msgid "Zoom out"
+msgstr "Menos zoom"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Não é possível criar imagem para um arquivo de entrada nulo"
@@ -938,14 +971,8 @@ msgstr "Abrir"
 msgid "Load a pdf document"
 msgstr "Carregar um documento pdf"
 
-msgid "Zoom in"
-msgstr "Mais zoom"
-
 msgid "Error setting zoom level."
 msgstr "Erro ao definir nível de zoom."
-
-msgid "Zoom out"
-msgstr "Menos zoom"
 
 msgid "Preview"
 msgstr "Vizualização"
@@ -955,12 +982,6 @@ msgstr "Excluir"
 
 msgid "Undelete"
 msgstr "Recuperar"
-
-msgid "Rotate clockwise"
-msgstr "Rotacionar no sentido horário"
-
-msgid "Rotate anticlockwise"
-msgstr "Rotacionar no sentido não-horário"
 
 msgid "Reverse"
 msgstr "Inverter"
@@ -1036,11 +1057,8 @@ msgstr "Criptografado: "
 msgid "File"
 msgstr "Arquivo"
 
-msgid "Save as"
-msgstr "Salvar como"
-
-msgid "Close"
-msgstr "Fechar"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Erro ao criar painel de visualização."

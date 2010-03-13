@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-06-17 16:13+0000\n"
 "Last-Translator: le.woj <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -360,7 +360,7 @@ msgstr ""
 msgid "Choose a file"
 msgstr "Wybierz plik"
 
-msgid "Rotate selected files"
+msgid "Set metadata on the selected file"
 msgstr ""
 
 msgid "Document Info"
@@ -555,6 +555,9 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
+msgid "Rotate selected files"
+msgstr ""
+
 msgid "Rotate"
 msgstr ""
 
@@ -589,8 +592,38 @@ msgstr "Brak nowej wersji."
 msgid "Log saved."
 msgstr "Log zapisany."
 
+msgid "Save as"
+msgstr "Zapisz jako"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Nie można zapisać obrazu"
+
+msgid "Close"
+msgstr "Blisko"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Obróć przeciwnie do ruchu wskazówek zegara"
+
+msgid "Rotate clockwise"
+msgstr "Obróć zgodnie z ruchem wskazówek zegara"
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -823,13 +856,7 @@ msgstr "Otwórz"
 msgid "Load a pdf document"
 msgstr "Załaduj dokument PDF"
 
-msgid "Zoom in"
-msgstr ""
-
 msgid "Error setting zoom level."
-msgstr ""
-
-msgid "Zoom out"
 msgstr ""
 
 msgid "Preview"
@@ -840,12 +867,6 @@ msgstr "Skasuj"
 
 msgid "Undelete"
 msgstr ""
-
-msgid "Rotate clockwise"
-msgstr "Obróć zgodnie z ruchem wskazówek zegara"
-
-msgid "Rotate anticlockwise"
-msgstr "Obróć przeciwnie do ruchu wskazówek zegara"
 
 msgid "Reverse"
 msgstr ""
@@ -919,11 +940,8 @@ msgstr "Zaszyfrowany: "
 msgid "File"
 msgstr "Plik"
 
-msgid "Save as"
-msgstr "Zapisz jako"
-
-msgid "Close"
-msgstr "Blisko"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr ""

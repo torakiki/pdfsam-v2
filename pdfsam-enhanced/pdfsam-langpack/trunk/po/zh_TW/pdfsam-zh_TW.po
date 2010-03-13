@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-11-16 03:40+0000\n"
 "Last-Translator: Ethan Chang <ethan.chang@canonical.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -357,8 +357,8 @@ msgstr ""
 msgid "Choose a file"
 msgstr "選取一個檔案"
 
-msgid "Rotate selected files"
-msgstr "旋轉所選的檔案"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr ""
@@ -552,6 +552,9 @@ msgstr "設定旋轉角度"
 msgid "Set the pages that will be rotated."
 msgstr "設定需要旋轉的頁面"
 
+msgid "Rotate selected files"
+msgstr "旋轉所選的檔案"
+
 msgid "Rotate"
 msgstr "旋轉"
 
@@ -586,8 +589,38 @@ msgstr "已為最新版本。"
 msgid "Log saved."
 msgstr "紀錄檔已儲存。"
 
+msgid "Save as"
+msgstr "另存新檔"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "無法儲存影像"
+
+msgid "Close"
+msgstr "關閉"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "逆時針旋轉"
+
+msgid "Rotate clockwise"
+msgstr "順時針旋轉"
+
+msgid "Zoom in"
+msgstr "放大"
+
+msgid "Zoom out"
+msgstr "縮小"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "無法為一個空的輸入文件建立影像"
@@ -820,14 +853,8 @@ msgstr "開啟"
 msgid "Load a pdf document"
 msgstr "載入一個 PDF 文件"
 
-msgid "Zoom in"
-msgstr "放大"
-
 msgid "Error setting zoom level."
 msgstr "設定縮放層級時出錯。"
-
-msgid "Zoom out"
-msgstr "縮小"
 
 msgid "Preview"
 msgstr "預覽"
@@ -837,12 +864,6 @@ msgstr "刪除"
 
 msgid "Undelete"
 msgstr "復原（不刪除）"
-
-msgid "Rotate clockwise"
-msgstr "順時針旋轉"
-
-msgid "Rotate anticlockwise"
-msgstr "逆時針旋轉"
 
 msgid "Reverse"
 msgstr "反轉"
@@ -916,11 +937,8 @@ msgstr "加密： "
 msgid "File"
 msgstr "檔案"
 
-msgid "Save as"
-msgstr "另存新檔"
-
-msgid "Close"
-msgstr "關閉"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "建立預覽面板時出錯。"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-04 20:26+0000\n"
 "Last-Translator: Joergenr <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -364,8 +364,8 @@ msgstr "Definer dokumentets nøgleord"
 msgid "Choose a file"
 msgstr "Vælg en fil"
 
-msgid "Rotate selected files"
-msgstr "Roter valgte filer"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Dokumentinfo"
@@ -565,6 +565,9 @@ msgstr "Vælg rotation i grader (med uret)."
 msgid "Set the pages that will be rotated."
 msgstr "Vælg hvilke sider der skal roteres."
 
+msgid "Rotate selected files"
+msgstr "Roter valgte filer"
+
 msgid "Rotate"
 msgstr "Roter"
 
@@ -602,8 +605,38 @@ msgstr "Der er Ingen ny version tilgængelig."
 msgid "Log saved."
 msgstr "Log gemt."
 
+msgid "Save as"
+msgstr "Gem som"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Ikke i stand til at gemme billede"
+
+msgid "Close"
+msgstr "Luk"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Roter mod uret"
+
+msgid "Rotate clockwise"
+msgstr "Roter med uret"
+
+msgid "Zoom in"
+msgstr "Zoom ind"
+
+msgid "Zoom out"
+msgstr "Zoom ud"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Kan ikke danne billede for et ikke valgt dokument"
@@ -838,14 +871,8 @@ msgstr "Åbn"
 msgid "Load a pdf document"
 msgstr "Indlæs et pdf-dokument"
 
-msgid "Zoom in"
-msgstr "Zoom ind"
-
 msgid "Error setting zoom level."
 msgstr ""
-
-msgid "Zoom out"
-msgstr "Zoom ud"
 
 msgid "Preview"
 msgstr "Miniature"
@@ -855,12 +882,6 @@ msgstr "Slet"
 
 msgid "Undelete"
 msgstr "Fortryd sletning"
-
-msgid "Rotate clockwise"
-msgstr "Roter med uret"
-
-msgid "Rotate anticlockwise"
-msgstr "Roter mod uret"
 
 msgid "Reverse"
 msgstr "Byt om"
@@ -934,11 +955,8 @@ msgstr "Krypteret: "
 msgid "File"
 msgstr "Fil"
 
-msgid "Save as"
-msgstr "Gem som"
-
-msgid "Close"
-msgstr "Luk"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Fejl under oprettelse af visningspanel."

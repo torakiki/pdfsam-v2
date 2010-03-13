@@ -1,6 +1,6 @@
 /*
  * Created on 15-Apr-2008
- * Copyright (C) 20078 by Andrea Vacondio.
+ * Copyright (C) 2008 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
  * GNU General Public License as published by the Free Software Foundation; 
@@ -33,6 +33,7 @@ import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserT
 import org.pdfsam.guiclient.commons.panels.JPdfSelectionPanel;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
+import org.pdfsam.guiclient.utils.FileExtensionUtility;
 import org.pdfsam.i18n.GettextResource;
 /**
  * Menu item to add the "save as xml" capability to the JPdfSelectionPanel
@@ -68,10 +69,7 @@ public class JSaveListAsXmlMenuItem extends JMenuItem {
                     try{
                         JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.XML_FILE, JFileChooser.FILES_ONLY);
                     	if (fileChooser.showSaveDialog(selectionPanel) == JFileChooser.APPROVE_OPTION) {
-	                    	File selectedFile = fileChooser.getSelectedFile();	
-	        				if(selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1){
-	        					selectedFile = new File(selectedFile.getParent(), selectedFile.getName()+".xml");
-	        				}
+	                    	File selectedFile = FileExtensionUtility.ensureExtension(fileChooser.getSelectedFile(),FileExtensionUtility.XML_EXTENSION);	
 	        				writeXmlFile(rows, selectedFile);
 						}
                     }

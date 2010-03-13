@@ -62,23 +62,35 @@
 		<mkdir dir="${pdfsam.build.dir}"/>
 		<mkdir dir="${pdfsam.release.dir}"/>
 		<mkdir dir="${pdfsam.dist.dir}"/>
-		<mkdir dir="${pdfsam.javadoc.dir}"/>
+		<mkdir dir="${pdfsam.javadoc.dir}"/>		
+		<mkdir dir="${build.dir}"/>
 	</target>
 
 	<!-- clean -->
 	<target name="clean" depends="init" description="clean up" >
-		<!-- Delete the ${dist} directory trees -->
-		<delete dir="${pdfsam.javadoc.dir}"/>
-		<delete dir="${pdfsam.dist.dir}"/>
-		<delete dir="${pdfsam.build.dir}"/>
-		<delete dir="${pdfsam.release.dir}"/>
+		<delete dir="${pdfsam.build.root}"/>
 	</target>
 
 	<!-- clean all the build structure-->
-	<target name="cleanAll" depends="init" description="clean all the build dir" >
+	<target name="cleanAll" depends="init,clean" description="clean all the build dir" >
 		<!-- Delete the ${dist} directory trees -->
-		<delete dir="${build.dir}"/>
-		<mkdir dir="${build.dir}"/>
+		<delete dir="${pdfsam.build.root}"/>
+		<ant antfile="${emp4j.dir}/ant/build.xml" dir="${emp4j.dir}" target="clean" />
+		<ant antfile="${jcmdline.dir}/ant/build.xml" dir="${jcmdline.dir}" target="clean" />
+		<ant antfile="${console.dir}/ant/build.xml" dir="${console.dir}" target="clean" />
+		<ant antfile="${langpack.dir}/ant/build.xml" dir="${langpack.dir}" target="clean" />
+		<ant antfile="${split.dir}/ant/build.xml" dir="${split.dir}" target="clean" />
+		<ant antfile="${merge.dir}/ant/build.xml" dir="${merge.dir}" target="clean" />
+		<ant antfile="${mix.dir}/ant/build.xml" dir="${mix.dir}" target="clean" />
+		<ant antfile="${vpagereorder.dir}/ant/build.xml" dir="${vpagereorder.dir}" target="clean" />
+		<ant antfile="${vcomposer.dir}/ant/build.xml" dir="${vcomposer.dir}" target="clean" />
+		<ant antfile="${rotate.dir}/ant/build.xml" dir="${rotate.dir}" target="clean" />
+		<ant antfile="${cover.dir}/ant/build.xml" dir="${cover.dir}" target="clean" />
+		<ant antfile="${encrypt.dir}/ant/build.xml" dir="${encrypt.dir}" target="clean" />
+		<ant antfile="${decrypt.dir}/ant/build.xml" dir="${decrypt.dir}" target="clean" />
+		<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="clean" />
+		<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="clean" />
+		<ant antfile="${docinfo.dir}/ant/build.xml" dir="${docinfo.dir}" target="clean" />
 	</target>
 
 	<!-- compile -->

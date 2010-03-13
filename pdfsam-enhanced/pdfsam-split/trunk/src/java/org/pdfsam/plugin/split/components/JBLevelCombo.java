@@ -47,7 +47,7 @@ public class JBLevelCombo extends JPanel {
 	
 	private static final long serialVersionUID = -1413124292303614507L;
 	
-	private static final Logger log = Logger.getLogger(JBLevelCombo.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(JBLevelCombo.class.getPackage().getName());
 	
 	private JComboBox levelCombo;
 	private JButton fillCombo;
@@ -83,7 +83,7 @@ public class JBLevelCombo extends JPanel {
 											Configuration.getInstance().getI18nResourceBundle(), "Warning"), JOptionPane.WARNING_MESSAGE);
 						}
 				} catch (Exception ex) {
-					log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), ex);
+					LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), ex);
 				}
 			}
 		});
@@ -115,6 +115,7 @@ public class JBLevelCombo extends JPanel {
 
 		public void run() {
 			fillCombo.setEnabled(false);
+			levelCombo.setEnabled(false);
 			fillCombo.setToolTipText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Getting bookmarks max depth"));		
 			try {
 				levelCombo.removeAllItems();
@@ -133,9 +134,10 @@ public class JBLevelCombo extends JPanel {
 					levelCombo.addItem(i+"");
 				}
 			} catch (Throwable t) {
-				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), t);
+				LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Unable to retrieve bookmarks maximum depth."), t);
 			} finally {
 				fillCombo.setEnabled(true);
+				levelCombo.setEnabled(true);
 				fillCombo.setToolTipText(null);
 				filler = null;
 			}

@@ -27,9 +27,7 @@
 
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-setviewer.javadoc.dir}"/>
-	    <delete dir="${pdfsam-setviewer.dist.dir}"/>
-	    <delete dir="${pdfsam-setviewer.build.dir}"/>
+	    <delete dir="${pdfsam-setviewer.build.root}"/>
 	</target>
 
   <target name="compile" depends="make-structure" description="pdfsam-setviewer " >

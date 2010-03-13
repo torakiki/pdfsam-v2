@@ -191,7 +191,6 @@ public class JPreviewImage extends JComponent {
 
 	private void initRectangle() {
 		if (bounds != null) {
-
 			int width = (int) (originalDimension.getWidth() * zoomLevel);
 			int height = (int) (originalDimension.getHeight() * zoomLevel);
 			bounds = new Rectangle(width, height);

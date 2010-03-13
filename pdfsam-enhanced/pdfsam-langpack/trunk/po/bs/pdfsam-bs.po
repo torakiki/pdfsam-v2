@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-10-22 12:53+0000\n"
 "Last-Translator: Amicus <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -365,8 +365,8 @@ msgstr ""
 msgid "Choose a file"
 msgstr "Izaberite datoteku"
 
-msgid "Rotate selected files"
-msgstr "Rotiraj selektovane dokumente"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr ""
@@ -566,6 +566,9 @@ msgstr "Postavite iznos rotacije u stepenima (u smjeru kazaljke)"
 msgid "Set the pages that will be rotated."
 msgstr "Izaberite stranice koje će biti rotirane"
 
+msgid "Rotate selected files"
+msgstr "Rotiraj selektovane dokumente"
+
 msgid "Rotate"
 msgstr "Rotiraj"
 
@@ -600,8 +603,38 @@ msgstr "Nema nove dostupne verzije."
 msgid "Log saved."
 msgstr "Sačuvan zapis"
 
+msgid "Save as"
+msgstr "Spremi kao"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Nemoguće spremiti sliku"
+
+msgid "Close"
+msgstr "Zatvori"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Rotiraj suprotno smjeru kazaljke na satu"
+
+msgid "Rotate clockwise"
+msgstr "Rotiraj u smjeru kazaljke na satu"
+
+msgid "Zoom in"
+msgstr "Povećaj"
+
+msgid "Zoom out"
+msgstr "Smanji"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Nije moguće kreirati sliku za nepostojeći ulazni dokument"
@@ -839,14 +872,8 @@ msgstr "Otvori"
 msgid "Load a pdf document"
 msgstr "Učitaj pdf dokument"
 
-msgid "Zoom in"
-msgstr "Povećaj"
-
 msgid "Error setting zoom level."
 msgstr "Greška pri postavljanju nivoa uveličanja."
-
-msgid "Zoom out"
-msgstr "Smanji"
 
 msgid "Preview"
 msgstr "Pregled"
@@ -856,12 +883,6 @@ msgstr "Obriši"
 
 msgid "Undelete"
 msgstr "Vrati izbrisano"
-
-msgid "Rotate clockwise"
-msgstr "Rotiraj u smjeru kazaljke na satu"
-
-msgid "Rotate anticlockwise"
-msgstr "Rotiraj suprotno smjeru kazaljke na satu"
 
 msgid "Reverse"
 msgstr "Obrnuti redoslijed"
@@ -935,11 +956,8 @@ msgstr "Kriptovano: "
 msgid "File"
 msgstr "Dokument"
 
-msgid "Save as"
-msgstr "Spremi kao"
-
-msgid "Close"
-msgstr "Zatvori"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Greška pri kreiranju panela za pregled."

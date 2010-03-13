@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-07 09:02+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -356,7 +356,7 @@ msgstr ""
 msgid "Choose a file"
 msgstr "Pilih berkas"
 
-msgid "Rotate selected files"
+msgid "Set metadata on the selected file"
 msgstr ""
 
 msgid "Document Info"
@@ -551,6 +551,9 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
+msgid "Rotate selected files"
+msgstr ""
+
 msgid "Rotate"
 msgstr "Putar"
 
@@ -585,7 +588,37 @@ msgstr ""
 msgid "Log saved."
 msgstr ""
 
+msgid "Save as"
+msgstr "Simpan sebagai"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
+msgstr ""
+
+msgid "Close"
+msgstr "Tutup"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Putar kiri"
+
+msgid "Rotate clockwise"
+msgstr "Putar kanan"
+
+msgid "Zoom in"
+msgstr "Perbesar"
+
+msgid "Zoom out"
+msgstr "Perkecil"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
 msgstr ""
 
 msgid "Unable to create image for a null input document"
@@ -819,14 +852,8 @@ msgstr "Buka"
 msgid "Load a pdf document"
 msgstr ""
 
-msgid "Zoom in"
-msgstr "Perbesar"
-
 msgid "Error setting zoom level."
 msgstr ""
-
-msgid "Zoom out"
-msgstr "Perkecil"
 
 msgid "Preview"
 msgstr "Pratampilan"
@@ -836,12 +863,6 @@ msgstr "Hapus"
 
 msgid "Undelete"
 msgstr "Tak dihapus"
-
-msgid "Rotate clockwise"
-msgstr "Putar kanan"
-
-msgid "Rotate anticlockwise"
-msgstr "Putar kiri"
 
 msgid "Reverse"
 msgstr "Kebalikan"
@@ -915,11 +936,8 @@ msgstr ""
 msgid "File"
 msgstr "Berkas"
 
-msgid "Save as"
-msgstr "Simpan sebagai"
-
-msgid "Close"
-msgstr "Tutup"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr ""

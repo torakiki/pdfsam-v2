@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-12-02 11:38+0000\n"
 "Last-Translator: Jonathon Fernyhough <j.fernyhough@gmail.com>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
@@ -361,8 +361,8 @@ msgstr "Set the document keywords."
 msgid "Choose a file"
 msgstr "Choose a file"
 
-msgid "Rotate selected files"
-msgstr "Rotate selected files"
+msgid "Set metadata on the selected file"
+msgstr ""
 
 msgid "Document Info"
 msgstr "Document Info"
@@ -562,6 +562,9 @@ msgstr "Set the rotation amount (degrees clockwise)."
 msgid "Set the pages that will be rotated."
 msgstr "Set the pages that will be rotated."
 
+msgid "Rotate selected files"
+msgstr "Rotate selected files"
+
 msgid "Rotate"
 msgstr "Rotate"
 
@@ -597,8 +600,38 @@ msgstr "No new version available."
 msgid "Log saved."
 msgstr "Log saved."
 
+msgid "Save as"
+msgstr "Save as"
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
 msgstr "Unable to save image"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr "Rotate anticlockwise"
+
+msgid "Rotate clockwise"
+msgstr "Rotate clockwise"
+
+msgid "Zoom in"
+msgstr "Zoom in"
+
+msgid "Zoom out"
+msgstr "Zoom out"
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
+msgstr ""
 
 msgid "Unable to create image for a null input document"
 msgstr "Unable to create image for a null input document"
@@ -834,14 +867,8 @@ msgstr "Open"
 msgid "Load a pdf document"
 msgstr "Load a pdf document"
 
-msgid "Zoom in"
-msgstr "Zoom in"
-
 msgid "Error setting zoom level."
 msgstr "Error setting zoom level."
-
-msgid "Zoom out"
-msgstr "Zoom out"
 
 msgid "Preview"
 msgstr "Preview"
@@ -851,12 +878,6 @@ msgstr "Delete"
 
 msgid "Undelete"
 msgstr "Undelete"
-
-msgid "Rotate clockwise"
-msgstr "Rotate clockwise"
-
-msgid "Rotate anticlockwise"
-msgstr "Rotate anticlockwise"
 
 msgid "Reverse"
 msgstr "Reverse"
@@ -930,11 +951,8 @@ msgstr "Encrypted: "
 msgid "File"
 msgstr "File"
 
-msgid "Save as"
-msgstr "Save as"
-
-msgid "Close"
-msgstr "Close"
+msgid "Image"
+msgstr ""
 
 msgid "Error creating preview panel."
 msgstr "Error creating preview panel."

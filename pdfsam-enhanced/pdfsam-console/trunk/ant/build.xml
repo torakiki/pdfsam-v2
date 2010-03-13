@@ -28,9 +28,7 @@
 	
 	  <target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-console.javadoc.dir}"/>
-	    <delete dir="${pdfsam-console.dist.dir}"/>
-	    <delete dir="${pdfsam-console.build.dir}"/>
+	    <delete dir="${pdfsam-console.build.root}"/>
 	  </target>
 	
   <target name="compile" depends="make-structure" description="pdfsam-console " >

@@ -14,13 +14,17 @@
  */
 package org.pdfsam.guiclient.plugins.interfaces;
 
+import java.io.File;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
+import org.apache.commons.lang.StringUtils;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.utils.FileExtensionUtility;
 
 /**
  * Abstract class for plugin
@@ -92,9 +96,9 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable {
 	 * @param field
 	 */
 	public void ensurePdfExtensionOnTextField(JTextField field) {
-		String text = field.getText();
-		if (text.length() > 0 && !text.matches(AbstractPlugablePanel.PDF_EXTENSION_REGEXP)) {
-			field.setText(text + "." + AbstractPlugablePanel.PDF_EXTENSION);
+		String stringWithExtension = FileExtensionUtility.ensureExtension(field.getText(),FileExtensionUtility.PDF_EXTENSION);
+		if(!StringUtils.equalsIgnoreCase(stringWithExtension, field.getText())){
+			field.setText(stringWithExtension);
 		}
 	}
 }

@@ -31,6 +31,7 @@ import org.pdfsam.guiclient.business.Environment;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.utils.FileExtensionUtility;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -63,10 +64,7 @@ public class SaveEnvironmentAction extends AbstractAction {
 				JFileChooser.FILES_ONLY);
 
 		if (fileChooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fileChooser.getSelectedFile();
-			if (selectedFile.getName().toLowerCase().lastIndexOf(".xml") == -1) {
-				selectedFile = new File(selectedFile.getParent(), selectedFile.getName() + ".xml");
-			}
+			File selectedFile = FileExtensionUtility.ensureExtension(fileChooser.getSelectedFile(),FileExtensionUtility.XML_EXTENSION);
 			int savePwd = JOptionPane.showConfirmDialog(parent, GettextResource.gettext(Configuration.getInstance()
 					.getI18nResourceBundle(),
 					"Save passwords informations (they will be readable opening the output file)?"), GettextResource

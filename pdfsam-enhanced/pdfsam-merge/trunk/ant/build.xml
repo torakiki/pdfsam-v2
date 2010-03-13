@@ -29,9 +29,7 @@
 
 	  <target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${pdfsam-merge.javadoc.dir}"/>
-	    <delete dir="${pdfsam-merge.dist.dir}"/>
-	    <delete dir="${pdfsam-merge.build.dir}"/>
+	    <delete dir="${pdfsam-merge.build.root}"/>
 	  </target>
 	    	
   <target name="compile" depends="make-structure" description="pdfsam-merge " >

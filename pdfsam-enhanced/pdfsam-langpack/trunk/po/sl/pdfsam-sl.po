@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-19 17:09+0100\n"
+"POT-Creation-Date: 2010-02-14 17:23+0100\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -356,7 +356,7 @@ msgstr ""
 msgid "Choose a file"
 msgstr ""
 
-msgid "Rotate selected files"
+msgid "Set metadata on the selected file"
 msgstr ""
 
 msgid "Document Info"
@@ -551,6 +551,9 @@ msgstr ""
 msgid "Set the pages that will be rotated."
 msgstr ""
 
+msgid "Rotate selected files"
+msgstr ""
+
 msgid "Rotate"
 msgstr ""
 
@@ -585,7 +588,37 @@ msgstr "Ni posodobitev -Laservis d.o.o."
 msgid "Log saved."
 msgstr "Zapis shranjen"
 
+msgid "Save as"
+msgstr ""
+
+msgid "Save the image"
+msgstr ""
+
 msgid "Unable to save image"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Close panel"
+msgstr ""
+
+msgid "Rotate anticlockwise"
+msgstr ""
+
+msgid "Rotate clockwise"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "No zoom"
+msgstr ""
+
+msgid "No zoom applied"
 msgstr ""
 
 msgid "Unable to create image for a null input document"
@@ -819,13 +852,7 @@ msgstr ""
 msgid "Load a pdf document"
 msgstr ""
 
-msgid "Zoom in"
-msgstr ""
-
 msgid "Error setting zoom level."
-msgstr ""
-
-msgid "Zoom out"
 msgstr ""
 
 msgid "Preview"
@@ -835,12 +862,6 @@ msgid "Delete"
 msgstr ""
 
 msgid "Undelete"
-msgstr ""
-
-msgid "Rotate clockwise"
-msgstr ""
-
-msgid "Rotate anticlockwise"
 msgstr ""
 
 msgid "Reverse"
@@ -915,10 +936,7 @@ msgstr ""
 msgid "File"
 msgstr "Datoteka"
 
-msgid "Save as"
-msgstr ""
-
-msgid "Close"
+msgid "Image"
 msgstr ""
 
 msgid "Error creating preview panel."
