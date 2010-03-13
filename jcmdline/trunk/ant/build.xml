@@ -6,7 +6,7 @@
   
   <!-- set global properties for this build -->
   <property name="user.name" value="Andrea Vacondio"/>
-  <property name="jcmdline.src.dir" location="src/java"/>
+  <property name="jcmdline.src.dir" location="src/main/java"/>
 
   <target name="init">
   	<property file="ant/build.properties" />
@@ -27,9 +27,7 @@
 	
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the directory trees -->
-	    <delete dir="${jcmdline.javadoc.dir}"/>
-	    <delete dir="${jcmdline.dist.dir}"/>
-	    <delete dir="${jcmdline.build.dir}"/>
+	    <delete dir="${jcmdline.build.root}"/>
   	</target>
 	
   <target name="compile" depends="make-structure" description="jcmdline " >

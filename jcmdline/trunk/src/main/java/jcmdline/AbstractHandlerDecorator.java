@@ -168,7 +168,6 @@ public abstract class AbstractHandlerDecorator implements CmdLineHandler {
      *
      * @param handler       the CmdLineHandler to which most methods will be
      *                      delegated
-     * @param customOptions the custom options implemented by the subclass
      */
     protected AbstractHandlerDecorator(CmdLineHandler handler) {
         this.handler = handler;
