@@ -6,7 +6,7 @@
   
   <!-- set global properties for this build -->
   <property name="user.name" value="Andrea Vacondio"/>
-  <property name="emp4j.src.dir" location="src/java"/>	
+  <property name="emp4j.src.dir" location="src/main/java"/>	
   
   <target name="init">
   	<property file="ant/build.properties" />
@@ -27,9 +27,7 @@
 	
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${emp4j.javadoc.dir}"/>
-	    <delete dir="${emp4j.dist.dir}"/>
-	    <delete dir="${emp4j.build.dir}"/>
+	    <delete dir="${emp4j.build.root}"/>
 	</target>
 	
   <target name="compile" depends="make-structure" description="emp4j compile" >

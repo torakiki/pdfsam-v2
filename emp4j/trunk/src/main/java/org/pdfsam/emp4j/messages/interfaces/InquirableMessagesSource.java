@@ -49,7 +49,7 @@ public interface InquirableMessagesSource {
 	 * @return the localized exception message 
 	 * @throws Exception
 	 */
-	public String getLocalizedExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode, String[] args) throws Exception;
+	String getLocalizedExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode, String[] args) throws Exception;
 	
 	/**
 	 * @param exceptionTypeKey Exception type key
@@ -58,7 +58,7 @@ public interface InquirableMessagesSource {
 	 * @return the exception message 
 	 * @throws Exception
 	 */
-	public String getExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode, String[] args) throws Exception;
+	String getExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode, String[] args) throws Exception;
 	
 	/**
 	 * @param exceptionTypeKey Exception type key
@@ -66,7 +66,7 @@ public interface InquirableMessagesSource {
 	 * @return the localized exception message 
 	 * @throws Exception
 	 */
-	public String getLocalizedExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode) throws Exception;
+	String getLocalizedExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode) throws Exception;
 	
 	/**
 	 * @param exceptionTypeKey Exception type key
@@ -74,5 +74,5 @@ public interface InquirableMessagesSource {
 	 * @return the exception message 
 	 * @throws Exception
 	 */
-	public String getExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode) throws Exception;
+	String getExceptionMessage(Object exceptionTypeKey, int exceptionErrorCode) throws Exception;
 }
