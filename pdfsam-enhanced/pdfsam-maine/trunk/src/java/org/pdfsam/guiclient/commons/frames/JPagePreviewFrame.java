@@ -43,6 +43,7 @@ import org.pdfsam.guiclient.business.actions.SaveImageAction;
 import org.pdfsam.guiclient.business.actions.ZoomInImageAction;
 import org.pdfsam.guiclient.business.actions.ZoomOutImageAction;
 import org.pdfsam.guiclient.business.actions.ZoomResetImageAction;
+import org.pdfsam.guiclient.business.listeners.MouseWheelZoomListener;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.components.JPreviewImage;
 import org.pdfsam.i18n.GettextResource;
@@ -81,6 +82,8 @@ public class JPagePreviewFrame extends JFrame {
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
+			pagePreview.addMouseWheelListener(new MouseWheelZoomListener(pagePreview));
+			
 			JMenuBar menuBar = new JMenuBar();
 			JMenu menuFile = new JMenu();
 			menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File"));

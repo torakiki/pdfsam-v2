@@ -172,6 +172,17 @@ public class JPreviewImage extends JComponent {
 	}
 
 	/**
+	 * Perform a zoom multiplying the ZOOM_STEP by the input parameter.
+	 * 
+	 * @param numberOfSteps
+	 *            a positive number zooms in, a negative zooms out.
+	 */
+	public void zoom(int numberOfSteps) {
+		zoomLevel += (ZOOM_STEP * numberOfSteps);
+		initRectangle();
+	}
+
+	/**
 	 * rotate clockwise
 	 */
 	public void rotateClockwise() {
@@ -184,7 +195,7 @@ public class JPreviewImage extends JComponent {
 	 * rotate anti clockwise
 	 */
 	public void rotateAntiClockwise() {
-		image = ImageUtility.rotateImage(image, -90);
+		image = ImageUtility.rotateImage(image, 270);
 		originalDimension = new Dimension(image.getWidth(this), image.getHeight(this));
 		initRectangle();
 	}
