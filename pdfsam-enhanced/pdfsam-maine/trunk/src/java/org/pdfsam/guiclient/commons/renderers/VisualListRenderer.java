@@ -53,8 +53,8 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 		VisualPageListItem item = (VisualPageListItem)value;
 		currentZoomLevel = ((JVisualSelectionList)list).getCurrentZoomLevel();
 		if(!item.isDeleted() || (item.isDeleted() && ((JVisualSelectionList)list).isDrawDeletedItems())){		
-			if(item.getCurrentThumbnail()!= null){
-				image = new ImageIcon(item.getCurrentThumbnail());
+			if(item.getThumbnail()!= null){
+				image = new ImageIcon(item.getThumbnail());
 				setPreferredSize(getZoomedSize());
 				drawRedCross = item.isDeleted();
 			}

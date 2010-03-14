@@ -78,8 +78,8 @@ public class JPodThmbnailCallable implements Callable<Boolean> {
 				
 				int height = Math.round(((int) rect.getHeight())*(float)resizePercentage);
 				int width = Math.round(((int) rect.getWidth())*(float)resizePercentage);
-				BufferedImage scaledInstance = new BufferedImage((int)recWidth, (int)rectHeight, BufferedImage.TYPE_INT_RGB);
-				Graphics2D g2 = (Graphics2D) scaledInstance.getGraphics();
+				BufferedImage imageInstance = new BufferedImage((int)recWidth, (int)rectHeight, BufferedImage.TYPE_INT_RGB);
+				Graphics2D g2 = (Graphics2D) imageInstance.getGraphics();
 				graphics = new CwtAwtGraphicsContext(g2);
 				// setup user space
 				AffineTransform imgTransform = graphics.getTransform();
@@ -94,13 +94,16 @@ public class JPodThmbnailCallable implements Callable<Boolean> {
 					renderer.process(content, pdPage.getResources());
 				}
               //	pageItem.setThumbnail(scaledInstance);
-				pageItem.setThumbnail(ImageUtility.getScaledInstance(scaledInstance, width, height));
+				BufferedImage scaledInstance = ImageUtility.getScaledInstance(imageInstance, width, height);
               	pageItem.setPaperFormat(recWidth, rectHeight, JPodThumbnailCreator.JPOD_RESOLUTION);
               	if(pdPage.getRotate()!=0){
               		pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));
               	}
-              	if(pageItem.isRotated() && pageItem.getThumbnail()!=null){
-              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getCompleteRotation()));	
+              	if(pageItem.isRotated()){
+              		pageItem.setThumbnail(ImageUtility.rotateImage(scaledInstance, pageItem.getCompleteRotation()));	
+        		}else{
+    				pageItem.setThumbnail(scaledInstance);
+
         		}
               	retVal = Boolean.TRUE;
             }catch (Throwable t) {

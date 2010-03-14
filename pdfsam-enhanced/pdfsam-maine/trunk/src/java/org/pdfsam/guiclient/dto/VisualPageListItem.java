@@ -32,7 +32,6 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	private static final long serialVersionUID = 7598120284619680606L;
 	
 	private transient BufferedImage thumbnail = ImageUtility.getHourglassImage();
-	private transient BufferedImage rotatedThumbnail = null;
 	private int pageNumber;
 	private boolean deleted = false;
 	private String parentFileCanonicalPath = "";
@@ -108,7 +107,6 @@ public class VisualPageListItem implements Serializable, Cloneable {
 		this.parentFileCanonicalPath = parentFileCanonicalPath;
 		this.documentPassword = documentPassword;
 		this.rotation = rotation;
-		this.rotatedThumbnail = null;
 	}
 	/**
 	 * @return the thumbnail
@@ -193,7 +191,8 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 * rotate clockwise the item
 	 */
 	public void rotateClockwise(){
-		this.rotation = rotation.rotateClockwise();		
+		this.rotation = rotation.rotateClockwise();	
+		this.thumbnail = ImageUtility.rotateImage(thumbnail, 90);
 	}
 
 	/**
@@ -201,6 +200,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 */
 	public void rotateAnticlockwise(){
 		this.rotation = rotation.rotateAnticlockwise();
+		this.thumbnail = ImageUtility.rotateImage(thumbnail, 270);
 	}
 
 	/**
@@ -215,35 +215,7 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	 */
 	public boolean isFullyRotated(){
 		return (getCompleteRotation() == Rotation.DEGREES_180.getDegrees());
-	}
-	
-	/**
-	 * @return the rotatedThumbnail
-	 */
-	public BufferedImage getRotatedThumbnail() {
-		return rotatedThumbnail;
-	}
-
-	/**
-	 * @param rotatedThumbnail the rotatedThumbnail to set
-	 */
-	public void setRotatedThumbnail(BufferedImage rotatedThumbnail) {
-		this.rotatedThumbnail = rotatedThumbnail;
-	}
-
-	/**
-	 * @return the current thumbnail based on the rotation
-	 */
-	public BufferedImage getCurrentThumbnail(){
-		BufferedImage retVal = null;
-		if(isRotated() && rotatedThumbnail!=null){
-			retVal = rotatedThumbnail;
-		}else{
-			retVal = thumbnail;
-		}
-		return retVal;
 	}		
-	
 
 	/**
 	 * Set the paper format in a string format
@@ -266,39 +238,11 @@ public class VisualPageListItem implements Serializable, Cloneable {
 		setPaperFormat(width, height, Configuration.getInstance().getScreenResolution());
 	}
 
-	/**
-	 * Constructs a <code>String</code> with all attributes
-	 * in name = value format.
-	 *
-	 * @return a <code>String</code> representation 
-	 * of this object.
-	 */
-	public String toString()
-	{
-	    final String OPEN = "[";
-	    final String CLOSE = "]";
-	    
-	    StringBuffer retValue = new StringBuffer();
-	    
-	    retValue.append("VisualPageListItem ( ")
-	        .append(super.toString())
-	        .append(OPEN).append("thumbnail=").append(this.thumbnail).append(CLOSE)
-	        .append(OPEN).append("rotatedThumbnail=").append(this.rotatedThumbnail).append(CLOSE)
-	        .append(OPEN).append("pageNumber=").append(this.pageNumber).append(CLOSE)
-	        .append(OPEN).append("deleted=").append(this.deleted).append(CLOSE)
-	        .append(OPEN).append("parentFileCanonicalPath=").append(this.parentFileCanonicalPath).append(CLOSE)
-	        .append(OPEN).append("documentPassword=").append(this.documentPassword).append(CLOSE)
-	        .append(OPEN).append("rotation=").append(this.rotation).append(CLOSE)
-	        .append(OPEN).append("paperFormat=").append(this.paperFormat).append(CLOSE)
-	        .append(" )");
-	    
-	    return retValue.toString();
-	}
+
 	
 	public Object clone(){
 		VisualPageListItem retVal = new VisualPageListItem(thumbnail, pageNumber, deleted, parentFileCanonicalPath, documentPassword, rotation);
 		retVal.setPaperFormat(paperFormat);
-		retVal.setRotatedThumbnail(rotatedThumbnail);
 		retVal.setOriginalRotation(originalRotation);
 		return retVal;
 	}
@@ -346,13 +290,11 @@ public class VisualPageListItem implements Serializable, Cloneable {
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		out.defaultWriteObject();
 		out.writeObject(ImageUtility.toByteArray(thumbnail));
-		out.writeObject(ImageUtility.toByteArray(rotatedThumbnail));
 	}
 
 	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 		in.defaultReadObject();
 		thumbnail = ImageUtility.fromByteArray((byte[]) in.readObject());
-		rotatedThumbnail = ImageUtility.fromByteArray((byte[]) in.readObject());
 	}
 
 

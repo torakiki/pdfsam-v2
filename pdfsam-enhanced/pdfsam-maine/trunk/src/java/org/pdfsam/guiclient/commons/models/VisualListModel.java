@@ -23,7 +23,6 @@ import java.util.Vector;
 import javax.swing.AbstractListModel;
 
 import org.pdfsam.guiclient.dto.VisualPageListItem;
-import org.pdfsam.guiclient.utils.ImageUtility;
 /**
  * Model for the JList in the JVisualPdfPageSelectionPanel
  * @author Andrea Vacondio
@@ -339,7 +338,6 @@ public class VisualListModel extends AbstractListModel {
         	for (int i=0; i<indexes.length; i++){
         		VisualPageListItem item = data.get(indexes[i]);
         		item.rotateClockwise();
-        		rotateItemThumnail(item);
         	}  
         	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
         }
@@ -355,23 +353,9 @@ public class VisualListModel extends AbstractListModel {
         	for (int i=0; i<indexes.length; i++){
         		VisualPageListItem item = data.get(indexes[i]);
         		item.rotateAnticlockwise();
-        		rotateItemThumnail(item);
         	}  
         	fireContentsChanged(this,indexes[0]-1, indexes[indexes.length-1]);
         }
-    }
-    
-    /**
-     * set the thumbnail rotated
-     * @param item
-     */
-    private void rotateItemThumnail(VisualPageListItem item){
-    	//image rotation
-    	if(item.isRotated() && item.getThumbnail()!=null){
-			item.setRotatedThumbnail(ImageUtility.rotateImage(item.getThumbnail(), item.getCompleteRotation()));	
-		}else{
-			item.setRotatedThumbnail(null);
-		}
     }
     
     /**

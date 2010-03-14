@@ -71,14 +71,15 @@ public class IcePdfThumbnailCallable implements Callable<Boolean> {
 				float  resizePercentage = (float)getResizePercentage(rectHeight, recWidth);
 				
 				BufferedImage scaledInstance = (BufferedImage) pdfDocument.getPageImage(pageNumber, GraphicsRenderingHints.SCREEN,Page.BOUNDARY_CROPBOX, 0, resizePercentage);				
-				pageItem.setThumbnail(scaledInstance);				
               	pageItem.setPaperFormat(recWidth, rectHeight, IcePdfThumbnailsCreator.ICEPDF_RESOLUTION);
               	int rotation = (int)pdfDocument.getPageTree().getPage(pageNumber, this).getTotalRotation(0);
               	if(rotation!=0){
               		pageItem.setOriginalRotation(Rotation.getRotation(rotation));
               	}
-              	if(pageItem.isRotated() && pageItem.getThumbnail()!=null){
-              		pageItem.setRotatedThumbnail(ImageUtility.rotateImage(pageItem.getThumbnail(), pageItem.getCompleteRotation()));	
+              	if(pageItem.isRotated()){
+              		pageItem.setThumbnail(ImageUtility.rotateImage(scaledInstance, pageItem.getCompleteRotation()));	
+        		}else{
+        			pageItem.setThumbnail(scaledInstance);	
         		}
               	retVal = Boolean.TRUE;
             }catch (Throwable t) {

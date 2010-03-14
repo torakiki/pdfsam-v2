@@ -27,9 +27,7 @@
 
 	<target name="clean" depends="init" description="clean up" >
 	    <!-- Delete the ${dist} directory trees -->
-	    <delete dir="${icepdfcreator.javadoc.dir}"/>
-	    <delete dir="${icepdfcreator.dist.dir}"/>
-	    <delete dir="${icepdfcreator.build.dir}"/>
+	    <delete dir="${icepdfcreator.build.root}"/>
 	</target>
 
   <target name="compile" depends="make-structure" description="icepdfcreator " >

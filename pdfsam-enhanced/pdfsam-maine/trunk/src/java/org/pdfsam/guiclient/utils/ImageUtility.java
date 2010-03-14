@@ -30,84 +30,107 @@ import javax.media.jai.InterpolationNearest;
 import javax.media.jai.JAI;
 import javax.media.jai.PlanarImage;
 import javax.media.jai.RenderedOp;
+import javax.media.jai.operator.TransposeDescriptor;
+import javax.media.jai.operator.TransposeType;
 
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Image utility
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class ImageUtility {
 
-	private static final Logger log = Logger.getLogger(ImageUtility.class.getPackage().getName());
+	private static final Logger LOG = Logger.getLogger(ImageUtility.class.getPackage().getName());
 
 	private static BufferedImage ERROR_IMAGE = null;
+
 	private static BufferedImage HOURGLASS = null;
-	
-	static{
+
+	static {
 		System.setProperty("com.sun.media.jai.disableMediaLib", "true");
 	}
-	
+
 	/**
 	 * @param inputImage
 	 * @param degrees
 	 * @return rotated image
 	 */
-	public static BufferedImage rotateImage(Image inputImage, int degrees){
+	public static BufferedImage rotateImage(Image inputImage, int degrees) {
 		BufferedImage retVal = null;
 		RenderedImage ri = JAI.create("awtImage", inputImage);
 		ParameterBlock pb = new ParameterBlock();
 		pb.addSource(ri);
-		pb.add(ri.getWidth() / 2.0f);
-		pb.add(ri.getHeight() / 2.0f);
-		pb.add((float) Math.toRadians(degrees));
-		pb.add(new InterpolationNearest());
-		RenderedOp op = JAI.create("Rotate", pb, null);
+		TransposeType rotOp = null;
+		RenderedOp op = null;
+		if (degrees == 90) {
+			rotOp = TransposeDescriptor.ROTATE_90;
+		} else if (degrees == 180) {
+			rotOp = TransposeDescriptor.ROTATE_180;
+		} else if (degrees == 270) {
+			rotOp = TransposeDescriptor.ROTATE_270;
+		}
+		if (rotOp != null) {
+			// use Transpose operation
+			pb.add(rotOp);
+			op = JAI.create("transpose", pb);
+		} else {
+			// setup "normal" rotation
+			pb.add(ri.getWidth() / 2.0f);
+			pb.add(ri.getHeight() / 2.0f);
+			pb.add((float) Math.toRadians(degrees));
+			pb.add(new InterpolationNearest());
+			op = JAI.create("Rotate", pb, null);
+		}
 		PlanarImage myPlanar = op.createInstance();
 		retVal = myPlanar.getAsBufferedImage();
 		return retVal;
 	}
-	
+
 	/**
 	 * @return an image displaying an error message
 	 */
-	public static BufferedImage getErrorImage(){
+	public static BufferedImage getErrorImage() {
 		try {
-			if(ERROR_IMAGE == null){
+			if (ERROR_IMAGE == null) {
 				InputStream is = ImageUtility.class.getResourceAsStream("/images/thumbnailerror.png");
 				BufferedImage img = ImageIO.read(is);
 				is.close();
-				//convert to TYPE_INT_RGB
+				// convert to TYPE_INT_RGB
 				ERROR_IMAGE = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
 				Graphics2D g2d = (Graphics2D) ERROR_IMAGE.getGraphics();
-				g2d.drawImage(img, 0,0,img.getWidth(), img.getHeight(), null);
+				g2d.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
 				g2d.dispose();
 			}
 		} catch (IOException e) {
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create error image."));
+			LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Unable to create error image."));
 		}
 		return ERROR_IMAGE;
 	}
-	
+
 	/**
 	 * @return am image displaying an hourglass
 	 */
-	public static BufferedImage getHourglassImage(){
+	public static BufferedImage getHourglassImage() {
 		try {
-			if(HOURGLASS == null){
+			if (HOURGLASS == null) {
 				InputStream is = ImageUtility.class.getResourceAsStream("/images/hourglass.png");
 				BufferedImage img = ImageIO.read(is);
 				is.close();
-				//convert to TYPE_INT_RGB
+				// convert to TYPE_INT_RGB
 				HOURGLASS = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
 				Graphics2D g2d = (Graphics2D) HOURGLASS.getGraphics();
-				g2d.drawImage(img, 0,0,img.getWidth(), img.getHeight(), null);
-				g2d.dispose();			
+				g2d.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
+				g2d.dispose();
 			}
 		} catch (IOException e) {
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to create error image."));
+			LOG.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+					"Unable to create error image."));
 		}
 		return HOURGLASS;
 	}
@@ -140,20 +163,21 @@ public class ImageUtility {
 		}
 		return retVal;
 	}
-	
 
 	/**
 	 * 
-	 * @param img input image
-	 * @param targetWidth 
+	 * @param img
+	 *            input image
+	 * @param targetWidth
 	 * @param targetHeight
 	 * @return a scaled image
 	 */
 	public static BufferedImage getScaledInstance(BufferedImage img, int targetWidth, int targetHeight) {
-		int type = (img.getTransparency() == java.awt.Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB: BufferedImage.TYPE_INT_ARGB;
+		int type = (img.getTransparency() == java.awt.Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB
+				: BufferedImage.TYPE_INT_ARGB;
 		BufferedImage ret = (BufferedImage) img;
-		int	w = img.getWidth();
-		int	h = img.getHeight();
+		int w = img.getWidth();
+		int h = img.getHeight();
 
 		do {
 			if (w > targetWidth) {
