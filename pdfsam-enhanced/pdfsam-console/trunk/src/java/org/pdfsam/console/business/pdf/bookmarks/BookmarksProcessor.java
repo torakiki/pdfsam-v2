@@ -56,7 +56,9 @@ public class BookmarksProcessor {
 	 */
 	public BookmarksProcessor(List bookmarks, int numberOfPages) {
 		super();
-		this.bookmarks = Collections.unmodifiableList(bookmarks);
+		if (bookmarks != null) {
+			this.bookmarks = Collections.unmodifiableList(bookmarks);
+		}
 		this.numberOfPages = numberOfPages;
 	}
 
