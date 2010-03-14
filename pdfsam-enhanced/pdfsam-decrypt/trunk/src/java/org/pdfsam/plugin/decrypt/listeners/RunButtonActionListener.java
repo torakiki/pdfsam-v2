@@ -15,14 +15,18 @@
 package org.pdfsam.plugin.decrypt.listeners;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
+
 import javax.swing.JOptionPane;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.DecryptParsedCommand;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
+import org.pdfsam.guiclient.business.listeners.AbstractRunButtonActionListener;
 import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
@@ -33,102 +37,105 @@ import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.decrypt.GUI.DecryptMainGUI;
 
-public class RunButtonActionListener implements ActionListener {
+/**
+ * Implementation of the Run action listener for the decrypt plugin
+ * 
+ * @author Andrea Vacondio
+ * 
+ */
+public class RunButtonActionListener extends AbstractRunButtonActionListener {
 
-	private static final Logger log = Logger.getLogger(RunButtonActionListener.class.getPackage().getName());
+    private static final Logger log = Logger.getLogger(RunButtonActionListener.class.getPackage().getName());
 
-	private DecryptMainGUI panel;
+    private DecryptMainGUI panel;
 
-	/**
-	 * @param panel
-	 */
-	public RunButtonActionListener(DecryptMainGUI panel) {
-		super();
-		this.panel = panel;
-	}
+    /**
+     * @param panel
+     */
+    public RunButtonActionListener(DecryptMainGUI panel) {
+        super();
+        this.panel = panel;
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		if (WorkExecutor.getInstance().getRunningThreads() > 0 || panel.getSelectionPanel().isAdding()) {
-			log
-					.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-							"Please wait while all files are processed.."));
-			return;
-		}
-		final LinkedList<String> args = new LinkedList<String>();
-		try {
+    public void actionPerformed(ActionEvent e) {
+        if (WorkExecutor.getInstance().getRunningThreads() > 0 || panel.getSelectionPanel().isAdding()) {
+            DialogUtility.showWarningAddingDocument(panel);
+            return;
+        }
+        PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
+        if (ArrayUtils.isEmpty(items)) {
+            DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.AT_LEAST_ONE_DOC);
+            return;
+        }
 
-			PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
-			if (items != null && items.length >= 1) {
-				
-				//overwrite confirmation 
-				if(panel.getOverwriteCheckbox().isSelected() && Configuration.getInstance().isAskOverwriteConfirmation()){
-					int dialogRet = DialogUtility.askForOverwriteConfirmation(panel);
-					if (JOptionPane.NO_OPTION == dialogRet) {
-						panel.getOverwriteCheckbox().setSelected(false);
-					}else if (JOptionPane.CANCEL_OPTION == dialogRet) {
-						return;
-					}
-				}
-				
-				args.addAll(getInputFilesArguments(items));
-				
-				args.add("-" + DecryptParsedCommand.O_ARG);
-				if (panel.getDestinationTextField().getText() == null || panel.getDestinationTextField().getText().length() == 0) {
-					String suggestedDir = Configuration.getInstance().getDefaultWorkingDirectory();
-					if (suggestedDir != null) {
-						int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel, suggestedDir);
-						if (JOptionPane.YES_OPTION == chosenOpt) {
-							panel.getDestinationTextField().setText(suggestedDir);
-						} else if (JOptionPane.CANCEL_OPTION == chosenOpt) {
-							return;
-						}
-					}
-				}
-				args.add(panel.getDestinationTextField().getText());
+        final LinkedList<String> args = new LinkedList<String>();
+        try {
 
-				if (panel.getOverwriteCheckbox().isSelected()) {
-					args.add("-" + DecryptParsedCommand.OVERWRITE_ARG);
-				}
-				if (panel.getOutputCompressedCheck().isSelected()) {
-					args.add("-" + DecryptParsedCommand.COMPRESSED_ARG);
-				}
+            // overwrite confirmation
+            if (panel.getOverwriteCheckbox().isSelected() && Configuration.getInstance().isAskOverwriteConfirmation()) {
+                int dialogRet = DialogUtility.askForOverwriteConfirmation(panel);
+                if (JOptionPane.NO_OPTION == dialogRet) {
+                    panel.getOverwriteCheckbox().setSelected(false);
+                } else if (JOptionPane.CANCEL_OPTION == dialogRet) {
+                    return;
+                }
+            }
 
-				args.add("-" + EncryptParsedCommand.P_ARG);
-				args.add(panel.getOutPrefixTextField().getText());
-				args.add("-" + DecryptParsedCommand.PDFVERSION_ARG);
-				args.add(((StringItem) panel.getVersionCombo().getSelectedItem()).getId());
+            args.addAll(getInputFilesArguments(items));
 
-				args.add(AbstractParsedCommand.COMMAND_DECRYPT);
+            args.add("-" + DecryptParsedCommand.O_ARG);
+            if (StringUtils.isEmpty(panel.getDestinationTextField().getText())) {
+                String suggestedDir = getSuggestedDestinationDirectory(items[items.length - 1]);
+                int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel, suggestedDir);
+                if (JOptionPane.YES_OPTION == chosenOpt) {
+                    panel.getDestinationTextField().setText(suggestedDir);
+                } else if (JOptionPane.CANCEL_OPTION == chosenOpt) {
+                    return;
+                }
+            }
+            args.add(panel.getDestinationTextField().getText());
 
-				String[] myStringArray = args.toArray(new String[args.size()]);
-				WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
-			} else {
-				DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.AT_LEAST_ONE_DOC);
-			}
-		} catch (Exception ex) {
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), ex);
-			SoundPlayer.getInstance().playErrorSound();
-		}
+            if (panel.getOverwriteCheckbox().isSelected()) {
+                args.add("-" + DecryptParsedCommand.OVERWRITE_ARG);
+            }
+            if (panel.getOutputCompressedCheck().isSelected()) {
+                args.add("-" + DecryptParsedCommand.COMPRESSED_ARG);
+            }
 
-	}
-	
-	/**
-	 * @param items
-	 * @return the list of the -f arguments
-	 */
-	private List<String> getInputFilesArguments(PdfSelectionTableItem[] items){
-		List<String> retList = new LinkedList<String>();
-		for (PdfSelectionTableItem item : items) {
-			retList.add("-" + DecryptParsedCommand.F_ARG);
-			String f = item.getInputFile().getAbsolutePath();
-			if ((item.getPassword()) != null && (item.getPassword()).length() > 0) {
-				log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-						"Found a password for input file."));
-				f += ":" + item.getPassword();
-			}
-			retList.add(f);
-		}
-		return retList;
-	}
+            args.add("-" + EncryptParsedCommand.P_ARG);
+            args.add(panel.getOutPrefixTextField().getText());
+            args.add("-" + DecryptParsedCommand.PDFVERSION_ARG);
+            args.add(((StringItem) panel.getVersionCombo().getSelectedItem()).getId());
+
+            args.add(AbstractParsedCommand.COMMAND_DECRYPT);
+
+            String[] myStringArray = args.toArray(new String[args.size()]);
+            WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
+
+        } catch (Exception ex) {
+            log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), ex);
+            SoundPlayer.getInstance().playErrorSound();
+        }
+
+    }
+
+    /**
+     * @param items
+     * @return the list of the -f arguments
+     */
+    private List<String> getInputFilesArguments(PdfSelectionTableItem[] items) {
+        List<String> retList = new LinkedList<String>();
+        for (PdfSelectionTableItem item : items) {
+            retList.add("-" + DecryptParsedCommand.F_ARG);
+            String f = item.getInputFile().getAbsolutePath();
+            if ((item.getPassword()) != null && (item.getPassword()).length() > 0) {
+                log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Found a password for input file."));
+                f += ":" + item.getPassword();
+            }
+            retList.add(f);
+        }
+        return retList;
+    }
 
 }

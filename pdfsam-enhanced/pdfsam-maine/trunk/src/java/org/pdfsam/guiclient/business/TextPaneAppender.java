@@ -72,16 +72,16 @@ public class TextPaneAppender extends AppenderSkeleton {
 	protected void append(LoggingEvent arg0) {
 		if(this.layout != null){
 			String logText = this.layout.format(arg0);
-			String trace = "";
+			StringBuilder trace = new StringBuilder("");
 			try{
 				  if (arg0.getThrowableInformation() != null) {
 			            String[] throwableStrings = arg0.getThrowableInformation().getThrowableStrRep();			           
 			            for (int i = 0; i < throwableStrings.length; i++){
-			               trace += throwableStrings[i]+"\n";
+			               trace.append(throwableStrings[i]).append("\n");
 			            }
 			        }
 				    if(attributes.get(arg0.getLevel()) != null){
-				    	styledDocument.insertString(styledDocument.getLength(), logText+trace, (MutableAttributeSet)attributes.get(arg0.getLevel()));
+				    	styledDocument.insertString(styledDocument.getLength(), logText+trace.toString(), (MutableAttributeSet)attributes.get(arg0.getLevel()));
 				    }else{
 				    	styledDocument.insertString(styledDocument.getLength(), logText, null);
 				    }			

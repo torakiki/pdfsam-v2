@@ -9,6 +9,7 @@
 -Mix: added field to set the secondstep option (feature request #2958113)
 -JFileChooser remembers the last opened dir. (feature request #2965087)
 -Split: split by bookmarks level now disable the input field while retrieving max depth
+-Fixed bug #2930136 improved performances of bookmarks handling while splitting
 -Fixed bug #2969880 cleanAll ant target
 
 2.1.0e (20-Dec-2009) (pdfsam-console 2.2.0e)

@@ -759,18 +759,18 @@ public class JVisualPdfPageSelectionPanel extends JPanel {
 	 * @return a String that can be used as a -r param for the pdfsam-console
 	 */
 	public String getRotatedElementsString(){
-		String retVal = "";
+		StringBuilder retVal = new StringBuilder();
 		Collection<VisualPageListItem> validElements = ((VisualListModel)thumbnailList.getModel()).getValidElements();
 		if(validElements!=null && !validElements.isEmpty()){
 			int i=0;
 			for(VisualPageListItem currentElement : validElements){
 				i++;
 				if(!Rotation.DEGREES_0.equals(currentElement.getRotation())){
-					retVal += i+":"+currentElement.getRotation().getDegrees()+","; 
+					retVal.append(i).append(":").append(currentElement.getRotation().getDegrees()).append(","); 
 				}
 			}
 		}
-		return retVal;
+		return retVal.toString();
 	}
 	
 	/**

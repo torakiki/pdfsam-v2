@@ -162,11 +162,11 @@ public class JInfoPanel extends AbstractPlugablePanel{
 
     protected String getThanksText(){
         String[] contributors = new String[]{"SourceForge", "Freshmeat", "Launchpad", "Rosetta translators", "Ubuntu", "iText", "GNU", "OpenOffice", "jcmdline", "JGoodies", "Eclipse", "Xenoage Software", "Elisa Bortolotti", "Bigpapa", "Alberto Bortolotti", "Chiara Casamatti", "dom4j", "jaxen", "log4j", "BouncyCastle", "All the donors and contributors"};
-        String contributes = GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Contributes: ");
+        StringBuilder contributes = new StringBuilder(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Contributes: "));
         for (int i=0; i<contributors.length; i++){
-        	contributes += contributors[i]+" - ";
+        	contributes.append(contributors[i]).append(" - ");
         }
-        return contributes;
+        return contributes.toString();
     }
     public FocusTraversalPolicy getFocusPolicy(){
         return (FocusTraversalPolicy)infoFocusPolicy;

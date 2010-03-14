@@ -15,16 +15,18 @@
 package org.pdfsam.plugin.merge.listeners;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.LinkedList;
+
 import javax.swing.JOptionPane;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.ConcatParsedCommand;
 import org.pdfsam.console.utils.ValidationUtility;
+import org.pdfsam.guiclient.business.listeners.AbstractRunButtonActionListener;
 import org.pdfsam.guiclient.commons.business.SoundPlayer;
 import org.pdfsam.guiclient.commons.business.WorkExecutor;
 import org.pdfsam.guiclient.commons.business.WorkThread;
@@ -34,130 +36,129 @@ import org.pdfsam.guiclient.dto.StringItem;
 import org.pdfsam.guiclient.utils.DialogUtility;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.merge.GUI.MergeMainGUI;
+
 /**
  * Listener for the run button of the merge plugin
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
-public class RunButtonActionListener implements ActionListener {
+public class RunButtonActionListener extends AbstractRunButtonActionListener {
 
-	private static final Logger log = Logger.getLogger(RunButtonActionListener.class.getPackage().getName());
+    private static final Logger log = Logger.getLogger(RunButtonActionListener.class.getPackage().getName());
 
-	private MergeMainGUI panel;
-	
-	/**
-	 * @param panel
-	 */
-	public RunButtonActionListener(MergeMainGUI panel) {
-		super();
-		this.panel = panel;
-	}
+    private MergeMainGUI panel;
 
+    /**
+     * @param panel
+     */
+    public RunButtonActionListener(MergeMainGUI panel) {
+        super();
+        this.panel = panel;
+    }
 
-	public void actionPerformed(ActionEvent arg0) {
-		if (WorkExecutor.getInstance().getRunningThreads() > 0 || panel.getSelectionPanel().isAdding()){
-            log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Please wait while all files are processed.."));
+    public void actionPerformed(ActionEvent arg0) {
+        if (WorkExecutor.getInstance().getRunningThreads() > 0 || panel.getSelectionPanel().isAdding()) {
+            DialogUtility.showWarningAddingDocument(panel);
             return;
-        }                             
-        LinkedList<String> args = new LinkedList<String>();  
-        try{             	
-        	PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
-        	if(!ArrayUtils.isEmpty(items)){
-				//overwrite confirmation 
-				if(panel.getOverwriteCheckbox().isSelected() && Configuration.getInstance().isAskOverwriteConfirmation()){
-					int dialogRet = DialogUtility.askForOverwriteConfirmation(panel);
-					if (JOptionPane.NO_OPTION == dialogRet) {
-						panel.getOverwriteCheckbox().setSelected(false);
-					}else if (JOptionPane.CANCEL_OPTION == dialogRet) {
-						return;
-					}
-				}
-        		
-        		String destination = "";
-                //if no extension given  
-                panel.ensurePdfExtensionOnTextField(panel.getDestinationTextField());
-                if(panel.getDestinationTextField().getText().length()>0){
-                	File destinationDir = new File(panel.getDestinationTextField().getText());
-                	File parent = destinationDir.getParentFile();
-                	//only filename no dir
-                	if(!(parent!=null && parent.exists())){
-                		String suggestedDir = null;
-                		if(StringUtils.isNotEmpty(Configuration.getInstance().getDefaultWorkingDirectory())){
-                			suggestedDir = new File(Configuration.getInstance().getDefaultWorkingDirectory(), destinationDir.getName()).getAbsolutePath();
-                		}else{
-            				PdfSelectionTableItem item = items[items.length-1];
-            				if(item!=null && item.getInputFile()!=null){
-            					suggestedDir = new File(item.getInputFile().getParent(), destinationDir.getName()).getAbsolutePath();
-            				}
-                		}
-                		if(StringUtils.isNotEmpty(suggestedDir)){
-                			int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel,suggestedDir);
-                			if(JOptionPane.YES_OPTION == chosenOpt){
-                				panel.getDestinationTextField().setText(suggestedDir);
-		        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-		        				return;
-		        			}
-
-                		}
-                	}
+        }
+        PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
+        if (ArrayUtils.isEmpty(items)) {
+            DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.AT_LEAST_ONE_DOC);
+            return;
+        }
+        if(StringUtils.isEmpty(panel.getDestinationTextField().getText())){
+            DialogUtility.showWarningNoDestinationSelected(panel, DialogUtility.FILE_DESTINATION);
+            return;
+        }
+        LinkedList<String> args = new LinkedList<String>();
+        try {
+                // overwrite confirmation
+                if (panel.getOverwriteCheckbox().isSelected()
+                        && Configuration.getInstance().isAskOverwriteConfirmation()) {
+                    int dialogRet = DialogUtility.askForOverwriteConfirmation(panel);
+                    if (JOptionPane.NO_OPTION == dialogRet) {
+                        panel.getOverwriteCheckbox().setSelected(false);
+                    } else if (JOptionPane.CANCEL_OPTION == dialogRet) {
+                        return;
+                    }
                 }
+
+                // if no extension given
+                ensurePdfExtensionOnTextField(panel.getDestinationTextField());
                 
-                destination = panel.getDestinationTextField().getText();
-                
-				//check if the file already exists and the user didn't select to overwrite
-				File destFile = (destination!=null)? new File(destination):null;
-				if(destFile!=null && destFile.exists() && !panel.getOverwriteCheckbox().isSelected()){
-					int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(panel,destFile.getName());
-        			if(JOptionPane.YES_OPTION == chosenOpt){
-        				panel.getOverwriteCheckbox().setSelected(true);
-        			}else if(JOptionPane.CANCEL_OPTION == chosenOpt){
-        				return;
-        			}
-				}
-				
-                args.add("-"+ConcatParsedCommand.O_ARG);
+                File destinationDir = new File(panel.getDestinationTextField().getText());
+                File parent = destinationDir.getParentFile();
+                // only filename no dir
+                if (!(parent != null && parent.exists())) {
+                    String suggestedDir = getSuggestedOutputFile(items[items.length - 1], destinationDir.getName());
+                    int chosenOpt = DialogUtility.showConfirmOuputLocationDialog(panel, suggestedDir);
+                    if (JOptionPane.YES_OPTION == chosenOpt) {
+                        panel.getDestinationTextField().setText(suggestedDir);
+                    } else if (JOptionPane.CANCEL_OPTION == chosenOpt) {
+                        return;
+                    }
+                }
+
+                String destination = panel.getDestinationTextField().getText();
+
+                // check if the file already exists and the user didn't select to overwrite
+                File destFile = (destination != null) ? new File(destination) : null;
+                if (destFile != null && destFile.exists() && !panel.getOverwriteCheckbox().isSelected()) {
+                    int chosenOpt = DialogUtility.askForOverwriteOutputFileDialog(panel, destFile.getName());
+                    if (JOptionPane.YES_OPTION == chosenOpt) {
+                        panel.getOverwriteCheckbox().setSelected(true);
+                    } else if (JOptionPane.CANCEL_OPTION == chosenOpt) {
+                        return;
+                    }
+                }
+
+                args.add("-" + ConcatParsedCommand.O_ARG);
                 args.add(destination);
-                
-            	StringBuilder psStringBuilder = new StringBuilder();
-            	for (PdfSelectionTableItem item : items){
-					String pageSelection = (!StringUtils.isEmpty(item.getPageSelection()))?item.getPageSelection():MergeMainGUI.ALL_STRING;
-					String[] selections = StringUtils.split(pageSelection, ",");
-					if (!ValidationUtility.isValidPageSelectionsArray(selections)) {
-						DialogUtility.errorValidatingBounds(panel, pageSelection);
-						return;
-					} else {
-						args.add("-" + ConcatParsedCommand.F_ARG);
-						String f = item.getInputFile().getAbsolutePath();
-						if (!StringUtils.isEmpty(item.getPassword())) {
-							log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Found a password for input file."));
-							f += ":" + item.getPassword();
-						}
-						args.add(f);
-						psStringBuilder.append(pageSelection).append(":");
-					}	                        					
-				}
-				                    
-                args.add("-"+ConcatParsedCommand.U_ARG);
+
+                StringBuilder psStringBuilder = new StringBuilder();
+                for (PdfSelectionTableItem item : items) {
+                    String pageSelection = (!StringUtils.isEmpty(item.getPageSelection())) ? item.getPageSelection()
+                            : MergeMainGUI.ALL_STRING;
+                    String[] selections = StringUtils.split(pageSelection, ",");
+                    if (!ValidationUtility.isValidPageSelectionsArray(selections)) {
+                        DialogUtility.errorValidatingBounds(panel, pageSelection);
+                        return;
+                    } else {
+                        args.add("-" + ConcatParsedCommand.F_ARG);
+                        String f = item.getInputFile().getAbsolutePath();
+                        if (!StringUtils.isEmpty(item.getPassword())) {
+                            log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                                    "Found a password for input file."));
+                            f += ":" + item.getPassword();
+                        }
+                        args.add(f);
+                        psStringBuilder.append(pageSelection).append(":");
+                    }
+                }
+
+                args.add("-" + ConcatParsedCommand.U_ARG);
                 args.add(psStringBuilder.toString());
-                
-                if (panel.getOverwriteCheckbox().isSelected()) args.add("-"+ConcatParsedCommand.OVERWRITE_ARG);
-                if (panel.getOutputCompressedCheck().isSelected()) args.add("-"+ConcatParsedCommand.COMPRESSED_ARG); 
-                if (panel.getMergeTypeCheck().isSelected()) args.add("-"+ConcatParsedCommand.COPYFIELDS_ARG);
 
-                args.add("-"+ConcatParsedCommand.PDFVERSION_ARG);
-				args.add(((StringItem)panel.getVersionCombo().getSelectedItem()).getId());
+                if (panel.getOverwriteCheckbox().isSelected())
+                    args.add("-" + ConcatParsedCommand.OVERWRITE_ARG);
+                if (panel.getOutputCompressedCheck().isSelected())
+                    args.add("-" + ConcatParsedCommand.COMPRESSED_ARG);
+                if (panel.getMergeTypeCheck().isSelected())
+                    args.add("-" + ConcatParsedCommand.COPYFIELDS_ARG);
 
-				args.add (AbstractParsedCommand.COMMAND_CONCAT);
-            
+                args.add("-" + ConcatParsedCommand.PDFVERSION_ARG);
+                args.add(((StringItem) panel.getVersionCombo().getSelectedItem()).getId());
+
+                args.add(AbstractParsedCommand.COMMAND_CONCAT);
+
                 String[] myStringArray = args.toArray(new String[args.size()]);
-                WorkExecutor.getInstance().execute(new WorkThread(myStringArray)); 
-			}else{
-				DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.AT_LEAST_ONE_DOC);
-			}
-        }catch(Exception ex){    
-        	log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), ex);
-        	SoundPlayer.getInstance().playErrorSound();
-        }    
+                WorkExecutor.getInstance().execute(new WorkThread(myStringArray));
+           
+        } catch (Exception ex) {
+            log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), ex);
+            SoundPlayer.getInstance().playErrorSound();
+        }
     }
 
 }

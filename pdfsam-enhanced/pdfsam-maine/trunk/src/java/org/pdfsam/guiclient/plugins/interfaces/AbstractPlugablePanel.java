@@ -14,17 +14,12 @@
  */
 package org.pdfsam.guiclient.plugins.interfaces;
 
-import java.io.File;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
-import org.apache.commons.lang.StringUtils;
 import org.pdfsam.guiclient.configuration.Configuration;
-import org.pdfsam.guiclient.utils.FileExtensionUtility;
 
 /**
  * Abstract class for plugin
@@ -89,16 +84,6 @@ public abstract class AbstractPlugablePanel extends JPanel implements Plugable {
 		setFocusable(false);
 	}
 
-	/**
-	 * Check if there is a text in the TextField and it has a pdf extension, if
-	 * not it adds the extension.
-	 * 
-	 * @param field
-	 */
-	public void ensurePdfExtensionOnTextField(JTextField field) {
-		String stringWithExtension = FileExtensionUtility.ensureExtension(field.getText(),FileExtensionUtility.PDF_EXTENSION);
-		if(!StringUtils.equalsIgnoreCase(stringWithExtension, field.getText())){
-			field.setText(stringWithExtension);
-		}
-	}
+
+
 }

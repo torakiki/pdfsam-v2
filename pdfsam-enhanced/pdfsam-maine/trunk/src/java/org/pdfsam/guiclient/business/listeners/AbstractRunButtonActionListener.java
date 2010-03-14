@@ -17,9 +17,12 @@ package org.pdfsam.guiclient.business.listeners;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.JTextField;
+
 import org.apache.commons.lang.StringUtils;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
+import org.pdfsam.guiclient.utils.FileExtensionUtility;
 
 /**
  * Abstract class for the run buttons listeners
@@ -30,28 +33,57 @@ import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 public abstract class AbstractRunButtonActionListener implements ActionListener {
 
 	/**
+	 * If a default working directory is set it returns it as suggested
+	 * destination. If no default is set it returns the absolute path to the
+	 * directory where the input item is resides.
 	 * 
 	 * @param item
 	 * @return the suggested destination directory
 	 */
-	protected File getSiggestedDestinationDirectory(PdfSelectionTableItem item) {
-		File retVal = null;
+	protected String getSuggestedDestinationDirectory(PdfSelectionTableItem item) {
+		String retVal;
 		if (StringUtils.isNotEmpty(Configuration.getInstance().getDefaultWorkingDirectory())) {
-			retVal = new File(Configuration.getInstance().getDefaultWorkingDirectory());
+			retVal = Configuration.getInstance().getDefaultWorkingDirectory();
 		} else {
-			retVal = item.getInputFile().getParentFile();
-		}
-		return retVal;
-	}
-	
-	protected File getSiggestedOutputFile(PdfSelectionTableItem item) {
-		File retVal = null;
-		if (StringUtils.isNotEmpty(Configuration.getInstance().getDefaultWorkingDirectory())) {
-			retVal = new File(Configuration.getInstance().getDefaultWorkingDirectory());
-		} else {
-			retVal = item.getInputFile().getParentFile();
+			retVal = item.getInputFile().getParentFile().getAbsolutePath();
 		}
 		return retVal;
 	}
 
+	/**
+	 * If a default working directory is set it returns an absolute path for the
+	 * input fileName in the default working directory. If no default is set it
+	 * returns an absolute path placing the input fileName in the same directory
+	 * of the given {@link PdfSelectionTableItem}
+	 * 
+	 * @param item
+	 * @param fileName
+	 *            name of the output file
+	 * @return the suggested output file abstract path for the given fileName
+	 */
+	protected String getSuggestedOutputFile(PdfSelectionTableItem item, String fileName) {
+		File retVal = new File(fileName);
+		if (StringUtils.isNotEmpty(Configuration.getInstance().getDefaultWorkingDirectory())) {
+			retVal = new File(Configuration.getInstance().getDefaultWorkingDirectory(), fileName);
+		} else {
+			if (item != null) {
+				retVal = new File(item.getInputFile().getParentFile(), fileName);
+			}
+		}
+		return retVal.getAbsolutePath();
+	}
+
+	/**
+	 * Check if there is a text in the TextField and it has a pdf extension, if
+	 * not it adds the extension.
+	 * 
+	 * @param field
+	 */
+	public static void ensurePdfExtensionOnTextField(JTextField field) {
+		String stringWithExtension = FileExtensionUtility.ensureExtension(field.getText(),
+				FileExtensionUtility.PDF_EXTENSION);
+		if (!StringUtils.equalsIgnoreCase(stringWithExtension, field.getText())) {
+			field.setText(stringWithExtension);
+		}
+	}
 }

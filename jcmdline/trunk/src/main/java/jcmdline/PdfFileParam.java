@@ -455,7 +455,7 @@ public class PdfFileParam extends AbstractParameter {
 	    	PdfFile retVal = null;
 	    	int k = value.toLowerCase().lastIndexOf(".pdf:");
 	    	if (k < 0){
-	    		retVal =  new PdfFile(new File(value),"");
+	    		retVal =  new PdfFile(new File(value),null);
 	    	}else{
 	    		retVal =  new PdfFile(new File(value.substring(0, k+4)),value.substring(k+5, value.length()));
 	    	}

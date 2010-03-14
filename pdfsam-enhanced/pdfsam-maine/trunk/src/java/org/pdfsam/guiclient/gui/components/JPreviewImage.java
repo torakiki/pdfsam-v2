@@ -37,7 +37,7 @@ public class JPreviewImage extends JComponent {
 
 	private static final Double ZOOM_STEP = Double.valueOf("0.05");
 
-	private Image image;
+	private transient Image image;
 
 	private Rectangle bounds;
 
