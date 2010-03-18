@@ -51,12 +51,13 @@ public class SharedJFileChooser {
 		} else {
 			instance.resetChoosableFileFilters();
 			instance.setMultiSelectionEnabled(false);
+			instance.setSelectedFile(new File(""));
 		}
-		instance.setFileFilter(type.getFilter());
-		instance.setFileSelectionMode(mode);
 		if (StringUtils.isNotEmpty(currentDirectory)) {
 			instance.setCurrentDirectory(new File(currentDirectory));
 		}
+		instance.setFileFilter(type.getFilter());
+		instance.setFileSelectionMode(mode);
 		return instance;
 	}
 
