@@ -126,7 +126,7 @@ public class SetViewerMainGUI extends AbstractPlugablePanel implements PropertyC
     final JLabel outPrefixLabel = new JLabel();
     
 	private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.0.7e";  
+    private final String PLUGIN_VERSION = "0.0.8e";  
     
     public SetViewerMainGUI(){
     	initialize();

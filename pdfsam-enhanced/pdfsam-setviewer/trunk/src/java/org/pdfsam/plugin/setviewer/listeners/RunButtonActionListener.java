@@ -103,7 +103,7 @@ public class RunButtonActionListener extends AbstractRunButtonActionListener {
             }
 
             if (((StringItem) panel.getDirectionCombo().getSelectedItem()).getId().length() > 0) {
-                args.add("-" + SetViewerParsedCommand.D_ARG);
+                args.add("-" + SetViewerParsedCommand.DIRECTION_ARG);
                 args.add(((StringItem) panel.getDirectionCombo().getSelectedItem()).getId());
             }
 
