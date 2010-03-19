@@ -129,7 +129,7 @@ public class SplitMainGUI  extends AbstractPlugablePanel{
 	
   
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";    
-    private final String PLUGIN_VERSION = "0.5.6";
+    private final String PLUGIN_VERSION = "0.5.7";
     
 /**
  * Constructor

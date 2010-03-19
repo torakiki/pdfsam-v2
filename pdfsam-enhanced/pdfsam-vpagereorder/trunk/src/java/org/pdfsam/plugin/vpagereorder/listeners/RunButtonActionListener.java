@@ -63,7 +63,7 @@ public class RunButtonActionListener extends AbstractRunButtonActionListener {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (StringUtils.isEmpty(panel.getDestinationFileText().getText())) {
+        if (!panel.getSameAsSourceRadio().isSelected() && StringUtils.isEmpty(panel.getDestinationFileText().getText())) {
             DialogUtility.showWarningNoDestinationSelected(panel, DialogUtility.FILE_DESTINATION);
             return;
         }

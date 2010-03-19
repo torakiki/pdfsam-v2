@@ -61,6 +61,10 @@ public class RunButtonActionListener extends AbstractRunButtonActionListener {
             DialogUtility.showWarningAddingDocument(panel);
             return;
         }
+        if (!panel.getSameAsSourceRadio().isSelected() && StringUtils.isEmpty(panel.getDestinationFolderText().getText())) {
+            DialogUtility.showWarningNoDestinationSelected(panel, DialogUtility.DIRECTORY_DESTINATION);
+            return;
+        }
         PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
         if (items == null || items.length != 1) {
             DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.ONE_DOC);
