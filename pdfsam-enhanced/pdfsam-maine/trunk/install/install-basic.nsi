@@ -4,7 +4,7 @@ SetCompressor /SOLID zlib
 
 # Defines
 !define REGKEY "Software\$(^Name)"
-!define VERSION 2.1.0
+!define VERSION 2.2.0
 !define COMPANY "Andrea Vacondio"
 !define URL "http://www.pdfsam.org/"
 
@@ -113,19 +113,19 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "TradChinese"
 
 # Installer attributes
-OutFile pdfsam-win32inst-v2_1_0.exe
+OutFile pdfsam-win32inst-v2_2_0.exe
 InstallDir "$PROGRAMFILES\pdfsam"
 CRCCheck on
 XPStyle on
 ShowInstDetails show
-VIProductVersion 2.1.0.4
+VIProductVersion 2.2.0.4
 RequestExecutionLevel highest
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductName "pdfsam"
 VIAddVersionKey /LANG=${LANG_ENGLISH} ProductVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} CompanyName "${COMPANY}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} FileDescription ""
-VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2009"
+VIAddVersionKey /LANG=${LANG_ENGLISH} LegalCopyright "2010"
 ;InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails hide
 

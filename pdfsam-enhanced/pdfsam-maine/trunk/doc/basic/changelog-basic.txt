@@ -1,4 +1,4 @@
-2.1.1 () (pdfsam-console )
+2.2.0 (21-Mar-2010) (pdfsam-console 2.3.0e)
 ===================================
 -Fixed bug #2929876 browse of directories when saving the log file
 -ConsoleClient now exits with code 1 in case of error.
@@ -11,6 +11,7 @@
 -Split: split by bookmarks level now disable the input field while retrieving max depth
 -Fixed bug #2930136 improved performances of bookmarks handling while splitting
 -Fixed bug #2969880 cleanAll ant target
+-Fixed bug #2949383 Uniformed behaviour when destination text field is empty and run button is clicked
 
 2.1.0 (20-Dec-2009) (pdfsam-console 2.2.0e)
 ===================================
