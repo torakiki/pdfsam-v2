@@ -69,97 +69,100 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 
 /**
  * Manager for the commands execution
+ * 
  * @author Andrea Vacondio
  */
 public class CmdExecuteManager extends Observable implements Observer {
 
-	private final Logger LOG = Logger.getLogger(CmdExecuteManager.class.getPackage().getName());
+    private final Logger LOG = Logger.getLogger(CmdExecuteManager.class.getPackage().getName());
 
-	private AbstractCmdExecutor cmdExecutor = null;
-	private final StopWatch stopWatch = new StopWatch();
+    private AbstractCmdExecutor cmdExecutor = null;
+    private final StopWatch stopWatch = new StopWatch();
 
-	/**
-	 * Executes the input parsed command
-	 * @param parsedCommand
-	 * @throws ConsoleException
-	 */
-	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
-		stopWatch.reset();
-		stopWatch.start();
-		try {
-			if (parsedCommand != null) {
-				cmdExecutor = getExecutor(parsedCommand);
-				if (cmdExecutor != null) {
-					cmdExecutor.addObserver(this);
-					cmdExecutor.execute(parsedCommand);
-					LOG.info("Command '" + parsedCommand.getCommand() + "' executed in "
-							+ DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
-				} else {
-					throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[] { "" + parsedCommand.getCommand() });
-				}
-			} else {
-				throw new ConsoleException(ConsoleException.CMD_LINE_NULL);
-			}
-		} finally {
-			stopWatch.stop();
-			cleanExecutor();
-		}
-	}
+    /**
+     * Executes the input parsed command
+     * 
+     * @param parsedCommand
+     * @throws ConsoleException
+     */
+    public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
+        stopWatch.reset();
+        stopWatch.start();
+        try {
+            if (parsedCommand != null) {
+                cmdExecutor = getExecutor(parsedCommand);
+                if (cmdExecutor != null) {
+                    cmdExecutor.addObserver(this);
+                    cmdExecutor.execute(parsedCommand);
+                    LOG.info("Command '" + parsedCommand.getCommand() + "' executed in "
+                            + DurationFormatUtils.formatDurationWords(stopWatch.getTime(), true, true));
+                } else {
+                    throw new ConsoleException(ConsoleException.CMD_LINE_EXECUTOR_NULL, new String[] { ""
+                            + parsedCommand.getCommand() });
+                }
+            } else {
+                throw new ConsoleException(ConsoleException.CMD_LINE_NULL);
+            }
+        } finally {
+            stopWatch.stop();
+            cleanExecutor();
+        }
+    }
 
-	/**
-	 * Clean the executor
-	 */
-	private void cleanExecutor(){
-		if(cmdExecutor != null){
-			try{
-				cmdExecutor.clean();
-			}catch(Exception e){
-				LOG.warn("Error cleaning the command executor: "+e.getMessage());
-			}
-			
-		}
-		cmdExecutor = null;
-	}
-	
-	/**
-	 * forward the WorkDoneDataModel to the observers
-	 */
-	public void update(Observable arg0, Object arg1) {
-		setChanged();
-		notifyObservers(arg1);
-	}
+    /**
+     * Clean the executor
+     */
+    private void cleanExecutor() {
+        if (cmdExecutor != null) {
+            try {
+                cmdExecutor.clean();
+            } catch (Exception e) {
+                LOG.warn("Error cleaning the command executor: " + e.getMessage());
+            }
 
-	/**
-	 * @param parsedCommand
-	 * @return an instance of the proper executor for the parsed command
-	 */
-	private AbstractCmdExecutor getExecutor(AbstractParsedCommand parsedCommand) {
-		AbstractCmdExecutor retVal;
-		if (MixParsedCommand.COMMAND_MIX.equals(parsedCommand.getCommand())) {
-			retVal = new AlternateMixCmdExecutor();
-		} else if (SplitParsedCommand.COMMAND_SPLIT.equals(parsedCommand.getCommand())) {
-			retVal = new SplitCmdExecutor();
-		} else if (EncryptParsedCommand.COMMAND_ENCRYPT.equals(parsedCommand.getCommand())) {
-			retVal = new EncryptCmdExecutor();
-		} else if (ConcatParsedCommand.COMMAND_CONCAT.equals(parsedCommand.getCommand())) {
-			retVal = new ConcatCmdExecutor();
-		} else if (UnpackParsedCommand.COMMAND_UNPACK.equals(parsedCommand.getCommand())) {
-			retVal = new UnpackCmdExecutor();
-		} else if (SetViewerParsedCommand.COMMAND_SETVIEWER.equals(parsedCommand.getCommand())) {
-			retVal = new SetViewerCmdExecutor();
-		} else if (SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(parsedCommand.getCommand())) {
-			retVal = new SlideShowCmdExecutor();
-		} else if (DecryptParsedCommand.COMMAND_DECRYPT.equals(parsedCommand.getCommand())) {
-			retVal = new DecryptCmdExecutor();
-		} else if (RotateParsedCommand.COMMAND_ROTATE.equals(parsedCommand.getCommand())) {
-			retVal = new RotateCmdExecutor();
-		} else if (PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(parsedCommand.getCommand())) {
-			retVal = new PageLabelsCmdExecutor();
-		} else if (DocumentInfoParsedCommand.COMMAND_SETDOCINFO.equals(parsedCommand.getCommand())) {
-			retVal = new DocumentInfoCmdExecutor();
-		} else {
-			retVal = null;
-		}
-		return retVal;
-	}
+        }
+        cmdExecutor = null;
+    }
+
+    /**
+     * forward the WorkDoneDataModel to the observers
+     */
+    public void update(Observable arg0, Object arg1) {
+        setChanged();
+        notifyObservers(arg1);
+    }
+
+    /**
+     * @param parsedCommand
+     * @return an instance of the proper executor for the parsed command
+     */
+    private AbstractCmdExecutor getExecutor(AbstractParsedCommand parsedCommand) {
+        AbstractCmdExecutor retVal;
+        if (MixParsedCommand.COMMAND_MIX.equals(parsedCommand.getCommand())) {
+            retVal = new AlternateMixCmdExecutor();
+        } else if (SplitParsedCommand.COMMAND_SPLIT.equals(parsedCommand.getCommand())) {
+            retVal = new SplitCmdExecutor();
+        } else if (EncryptParsedCommand.COMMAND_ENCRYPT.equals(parsedCommand.getCommand())) {
+            retVal = new EncryptCmdExecutor();
+        } else if (ConcatParsedCommand.COMMAND_CONCAT.equals(parsedCommand.getCommand())) {
+            retVal = new ConcatCmdExecutor();
+        } else if (UnpackParsedCommand.COMMAND_UNPACK.equals(parsedCommand.getCommand())) {
+            retVal = new UnpackCmdExecutor();
+        } else if (SetViewerParsedCommand.COMMAND_SETVIEWER.equals(parsedCommand.getCommand())) {
+            retVal = new SetViewerCmdExecutor();
+        } else if (SlideShowParsedCommand.COMMAND_SLIDESHOW.equals(parsedCommand.getCommand())) {
+            retVal = new SlideShowCmdExecutor();
+        } else if (DecryptParsedCommand.COMMAND_DECRYPT.equals(parsedCommand.getCommand())) {
+            retVal = new DecryptCmdExecutor();
+        } else if (RotateParsedCommand.COMMAND_ROTATE.equals(parsedCommand.getCommand())) {
+            retVal = new RotateCmdExecutor();
+        } else if (PageLabelsParsedCommand.COMMAND_PAGELABELS.equals(parsedCommand.getCommand())) {
+            retVal = new PageLabelsCmdExecutor();
+        } else if (DocumentInfoParsedCommand.COMMAND_SETDOCINFO.equals(parsedCommand.getCommand())) {
+            retVal = new DocumentInfoCmdExecutor();
+        } else {
+            retVal = null;
+        }
+        return retVal;
+    }
 }

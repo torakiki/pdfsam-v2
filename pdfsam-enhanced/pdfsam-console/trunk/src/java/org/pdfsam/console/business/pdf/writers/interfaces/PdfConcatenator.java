@@ -39,44 +39,55 @@ package org.pdfsam.console.business.pdf.writers.interfaces;
 
 import java.util.List;
 import com.lowagie.text.pdf.PdfReader;
+
 /**
  * Interface for the writers used to concat pdf files
+ * 
  * @author Andrea Vacondio
  */
 public interface PdfConcatenator {
-	/**
-	 * Concatenates a PDF document selecting the pages to keep. The pages are described as
-     * ranges. 
-	 * @param reader PdfReader
-	 * @param ranges Pages range (Ex. 2-23)
-	 * @throws Exception
-	 */
-	void addDocument(PdfReader reader, String ranges) throws Exception;
-	/**
-	 * Concatenates a PDF document.
-	 * @param reader
-	 * @throws Exception
-	 */
-	void addDocument(PdfReader reader) throws Exception;
-	
-	/**
-	 * 
-	 * @param reader
-	 * @throws Exception
-	 */
-	void freeReader(PdfReader reader) throws Exception;
-	/**
-	 * Sets the bookmarks
-	 * @param outlines
-	 */
-	void setOutlines(List outlines);
-	/**
-	 * Sets the output document pdf version
-	 * @param pdfVersion
-	 */
-	void setPdfVersion(char pdfVersion);
-	/**
-	 * close
-	 */
-	void close();
+    /**
+     * Concatenates a PDF document selecting the pages to keep. The pages are described as ranges.
+     * 
+     * @param reader
+     *            PdfReader
+     * @param ranges
+     *            Pages range (Ex. 2-23)
+     * @throws Exception
+     */
+    void addDocument(PdfReader reader, String ranges) throws Exception;
+
+    /**
+     * Concatenates a PDF document.
+     * 
+     * @param reader
+     * @throws Exception
+     */
+    void addDocument(PdfReader reader) throws Exception;
+
+    /**
+     * 
+     * @param reader
+     * @throws Exception
+     */
+    void freeReader(PdfReader reader) throws Exception;
+
+    /**
+     * Sets the bookmarks
+     * 
+     * @param outlines
+     */
+    void setOutlines(List outlines);
+
+    /**
+     * Sets the output document pdf version
+     * 
+     * @param pdfVersion
+     */
+    void setPdfVersion(char pdfVersion);
+
+    /**
+     * close
+     */
+    void close();
 }

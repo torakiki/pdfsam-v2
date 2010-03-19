@@ -43,63 +43,64 @@ import com.lowagie.text.pdf.SimpleBookmark;
 
 /**
  * Helper class used to process bookmarks
+ * 
  * @author Andrea Vacondio
  */
 public class BookmarksProcessor {
 
-	private List bookmarks;
-	private int numberOfPages;
+    private List bookmarks;
+    private int numberOfPages;
 
-	/**
-	 * @param bookmarks
-	 * @param numberOfPages
-	 */
-	public BookmarksProcessor(List bookmarks, int numberOfPages) {
-		super();
-		if (bookmarks != null) {
-			this.bookmarks = Collections.unmodifiableList(bookmarks);
-		}
-		this.numberOfPages = numberOfPages;
-	}
+    /**
+     * @param bookmarks
+     * @param numberOfPages
+     */
+    public BookmarksProcessor(List bookmarks, int numberOfPages) {
+        super();
+        if (bookmarks != null) {
+            this.bookmarks = Collections.unmodifiableList(bookmarks);
+        }
+        this.numberOfPages = numberOfPages;
+    }
 
-	/**
-	 * Process the bookmarks returning a view of the whole list that contains only pages comprehended among the two
-	 * limits (included) with page number shifted if necessary.
-	 * @param startPage
-	 *        start page number
-	 * @param endPage
-	 *        end page number
-	 * @param pageOffset
-	 *        if not 0 pages are shifted of the given amount
-	 * @return
-	 */
-	public List processBookmarks(int startPage, int endPage, int pageOffset) {
-		List retVal = null;
-		if (bookmarks != null) {
-			retVal = new ArrayList(bookmarks.size());
-			retVal.addAll(bookmarks);
-			if (endPage < numberOfPages) {
-				SimpleBookmark.eliminatePages(retVal, new int[] { endPage + 1, numberOfPages });
-			}
-			if (startPage > 1) {
-				SimpleBookmark.eliminatePages(retVal, new int[] { 1, startPage - 1 });
-				SimpleBookmark.shiftPageNumbers(retVal, -(startPage - 1 + pageOffset), null);
-			}
-		}
-		return retVal;
-	}
+    /**
+     * Process the bookmarks returning a view of the whole list that contains only pages comprehended among the two limits (included) with page number shifted if necessary.
+     * 
+     * @param startPage
+     *            start page number
+     * @param endPage
+     *            end page number
+     * @param pageOffset
+     *            if not 0 pages are shifted of the given amount
+     * @return
+     */
+    public List processBookmarks(int startPage, int endPage, int pageOffset) {
+        List retVal = null;
+        if (bookmarks != null) {
+            retVal = new ArrayList(bookmarks.size());
+            retVal.addAll(bookmarks);
+            if (endPage < numberOfPages) {
+                SimpleBookmark.eliminatePages(retVal, new int[] { endPage + 1, numberOfPages });
+            }
+            if (startPage > 1) {
+                SimpleBookmark.eliminatePages(retVal, new int[] { 1, startPage - 1 });
+                SimpleBookmark.shiftPageNumbers(retVal, -(startPage - 1 + pageOffset), null);
+            }
+        }
+        return retVal;
+    }
 
-	/**
-	 * Process the bookmarks returning a view of the whole list that contains only pages comprehended among the two
-	 * limits (included) with page number shifted if necessary.
-	 * @param startPage
-	 *        start page number
-	 * @param endPage
-	 *        end page number
-	 * @return
-	 * @see BookmarksProcessor#processBookmarks(int, int, int)
-	 */
-	public List processBookmarks(int startPage, int endPage) {
-		return processBookmarks(startPage, endPage, 0);
-	}
+    /**
+     * Process the bookmarks returning a view of the whole list that contains only pages comprehended among the two limits (included) with page number shifted if necessary.
+     * 
+     * @param startPage
+     *            start page number
+     * @param endPage
+     *            end page number
+     * @return
+     * @see BookmarksProcessor#processBookmarks(int, int, int)
+     */
+    public List processBookmarks(int startPage, int endPage) {
+        return processBookmarks(startPage, endPage, 0);
+    }
 }

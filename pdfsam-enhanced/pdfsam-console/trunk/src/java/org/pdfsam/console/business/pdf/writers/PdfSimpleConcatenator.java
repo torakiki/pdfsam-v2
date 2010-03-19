@@ -48,66 +48,67 @@ import com.lowagie.text.pdf.PdfStream;
 
 /**
  * Simple concatenator. Uses PdfCopy.
+ * 
  * @author a.vacondio
  */
 public class PdfSimpleConcatenator implements PdfConcatenator {
-	
-	private PdfCopy writer;
-	
-	public PdfSimpleConcatenator(Document document, OutputStream os) throws DocumentException{
-		writer = new PdfCopy(document, os);
-	}
 
-	/**
-	 * 
-	 * @param document
-	 * @param os
-	 * @param compressed If true creates a compressed pdf document
-	 * @throws DocumentException
-	 */
-	public PdfSimpleConcatenator(Document document, OutputStream os, boolean compressed) throws DocumentException{
-		this(document, os);
-		if(compressed){
-			writer.setFullCompression();
-			writer.setCompressionLevel(PdfStream.BEST_COMPRESSION);
-		}
-	}
+    private PdfCopy writer;
 
-	public void addDocument(PdfReader reader, String ranges) throws Exception {
-		if(reader != null){
-			reader.selectPages(ranges);
-			addDocument(reader);
-		}else{
-			throw new DocumentException("Reader is null");
-		}
-	}
+    public PdfSimpleConcatenator(Document document, OutputStream os) throws DocumentException {
+        writer = new PdfCopy(document, os);
+    }
 
-	public void addDocument(PdfReader reader) throws Exception {
-		if(reader != null){
-			int numPages =  reader.getNumberOfPages();
-			for (int count = 1; count <= numPages; count++) {
-                writer.addPage(writer.getImportedPage(reader, count));                                
+    /**
+     * 
+     * @param document
+     * @param os
+     * @param compressed
+     *            If true creates a compressed pdf document
+     * @throws DocumentException
+     */
+    public PdfSimpleConcatenator(Document document, OutputStream os, boolean compressed) throws DocumentException {
+        this(document, os);
+        if (compressed) {
+            writer.setFullCompression();
+            writer.setCompressionLevel(PdfStream.BEST_COMPRESSION);
+        }
+    }
+
+    public void addDocument(PdfReader reader, String ranges) throws Exception {
+        if (reader != null) {
+            reader.selectPages(ranges);
+            addDocument(reader);
+        } else {
+            throw new DocumentException("Reader is null");
+        }
+    }
+
+    public void addDocument(PdfReader reader) throws Exception {
+        if (reader != null) {
+            int numPages = reader.getNumberOfPages();
+            for (int count = 1; count <= numPages; count++) {
+                writer.addPage(writer.getImportedPage(reader, count));
             }
-		}else{
-			throw new DocumentException("Reader is null");
-		}
-	}
+        } else {
+            throw new DocumentException("Reader is null");
+        }
+    }
 
-	public void freeReader(PdfReader reader) throws Exception{
-		writer.freeReader(reader);
-	}
+    public void freeReader(PdfReader reader) throws Exception {
+        writer.freeReader(reader);
+    }
 
-	public void setOutlines(List outlines) {
-		writer.setOutlines(outlines);
-	}
-	
-	public void close(){
-		writer.close();
-	}
+    public void setOutlines(List outlines) {
+        writer.setOutlines(outlines);
+    }
 
-	public void setPdfVersion(char pdfVersion) {
-		writer.setPdfVersion(pdfVersion);		
-	}
-	
+    public void close() {
+        writer.close();
+    }
+
+    public void setPdfVersion(char pdfVersion) {
+        writer.setPdfVersion(pdfVersion);
+    }
 
 }

@@ -44,59 +44,64 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfCopyFields;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStream;
+
 /**
  * Copy Fields concatenator. Uses PdfCopyFields.
+ * 
  * @author a.vacondio
  */
 public class PdfCopyFieldsConcatenator implements PdfConcatenator {
 
-	private PdfCopyFields writer;
-	
-	public PdfCopyFieldsConcatenator(OutputStream os) throws DocumentException{
-		writer = new PdfCopyFields(os);
-	}
-		
-	/**
-	 * @param os
-	 * @param compressed If true creates a compressed pdf document
-	 * @throws DocumentException
-	 */
-	public PdfCopyFieldsConcatenator(OutputStream os, boolean compressed) throws DocumentException{
-		this(os);
-		if(compressed){
-			writer.setFullCompression();
-			writer.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
-		}
-	}	
-		
-	public void addDocument(PdfReader reader, String ranges) throws Exception {
-		if(reader != null){
-			reader.selectPages(ranges);
-			writer.addDocument(reader);
-		}else{
-			throw new DocumentException("Reader is null");
-		}
-	}
+    private PdfCopyFields writer;
 
-	public void addDocument(PdfReader reader) throws Exception {
-		if(reader != null){
-			writer.addDocument(reader);
-		}else{
-			throw new DocumentException("Reader is null");
-		}
-	}
+    public PdfCopyFieldsConcatenator(OutputStream os) throws DocumentException {
+        writer = new PdfCopyFields(os);
+    }
 
-	public void freeReader(PdfReader reader) throws Exception {
-		writer.getWriter().freeReader(reader);
-	}
+    /**
+     * @param os
+     * @param compressed
+     *            If true creates a compressed pdf document
+     * @throws DocumentException
+     */
+    public PdfCopyFieldsConcatenator(OutputStream os, boolean compressed) throws DocumentException {
+        this(os);
+        if (compressed) {
+            writer.setFullCompression();
+            writer.getWriter().setCompressionLevel(PdfStream.BEST_COMPRESSION);
+        }
+    }
 
-	public void setOutlines(List outlines) {
-		writer.setOutlines(outlines);
-	}
-	public void setPdfVersion(char pdfVersion) {
-		writer.getWriter().setPdfVersion(pdfVersion);		
-	}
-	public void close(){
-		writer.close();
-	}
+    public void addDocument(PdfReader reader, String ranges) throws Exception {
+        if (reader != null) {
+            reader.selectPages(ranges);
+            writer.addDocument(reader);
+        } else {
+            throw new DocumentException("Reader is null");
+        }
+    }
+
+    public void addDocument(PdfReader reader) throws Exception {
+        if (reader != null) {
+            writer.addDocument(reader);
+        } else {
+            throw new DocumentException("Reader is null");
+        }
+    }
+
+    public void freeReader(PdfReader reader) throws Exception {
+        writer.getWriter().freeReader(reader);
+    }
+
+    public void setOutlines(List outlines) {
+        writer.setOutlines(outlines);
+    }
+
+    public void setPdfVersion(char pdfVersion) {
+        writer.getWriter().setPdfVersion(pdfVersion);
+    }
+
+    public void close() {
+        writer.close();
+    }
 }
