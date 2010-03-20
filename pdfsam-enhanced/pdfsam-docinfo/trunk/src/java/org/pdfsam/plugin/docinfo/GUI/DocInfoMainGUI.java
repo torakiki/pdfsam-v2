@@ -130,7 +130,7 @@ public class DocInfoMainGUI extends AbstractPlugablePanel {
     private void initialize() {
         setPanelIcon("/images/docinfo.png");
         setPreferredSize(new Dimension(500, 500));
-        
+
         setLayout(new GridBagLayout());
 
         topPanel.setLayout(new GridBagLayout());
@@ -585,8 +585,6 @@ public class DocInfoMainGUI extends AbstractPlugablePanel {
 
         public Component getComponentAfter(Container CycleRootComp, Component aComponent) {
             if (aComponent.equals(selectionPanel.getAddFileButton())) {
-                return selectionPanel.getRemoveFileButton();
-            } else if (aComponent.equals(selectionPanel.getRemoveFileButton())) {
                 return selectionPanel.getClearButton();
             } else if (aComponent.equals(selectionPanel.getClearButton())) {
                 return titleTextField;
@@ -653,8 +651,6 @@ public class DocInfoMainGUI extends AbstractPlugablePanel {
             } else if (aComponent.equals(titleTextField)) {
                 return selectionPanel.getClearButton();
             } else if (aComponent.equals(selectionPanel.getClearButton())) {
-                return selectionPanel.getRemoveFileButton();
-            } else if (aComponent.equals(selectionPanel.getRemoveFileButton())) {
                 return selectionPanel.getAddFileButton();
             } else if (aComponent.equals(selectionPanel.getAddFileButton())) {
                 return runButton;

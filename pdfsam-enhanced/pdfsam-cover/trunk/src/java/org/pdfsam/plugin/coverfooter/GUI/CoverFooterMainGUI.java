@@ -560,12 +560,12 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel {
 
         public Component getComponentAfter(Container CycleRootComp, Component aComponent) {
             if (aComponent.equals(coverSelectionPanel.getAddFileButton())) {
-                return coverSelectionPanel.getRemoveFileButton();
-            } else if (aComponent.equals(coverSelectionPanel.getRemoveFileButton())) {
+                return coverSelectionPanel.getClearButton();
+            } else if (aComponent.equals(coverSelectionPanel.getClearButton())) {
                 return footerSelectionPanel.getAddFileButton();
             } else if (aComponent.equals(footerSelectionPanel.getAddFileButton())) {
-                return footerSelectionPanel.getRemoveFileButton();
-            } else if (aComponent.equals(footerSelectionPanel.getRemoveFileButton())) {
+                return footerSelectionPanel.getClearButton();
+            } else if (aComponent.equals(footerSelectionPanel.getClearButton())) {
                 return selectionPanel.getAddFileButton();
             } else if (aComponent.equals(selectionPanel.getAddFileButton())) {
                 return selectionPanel.getRemoveFileButton();
@@ -612,12 +612,12 @@ public class CoverFooterMainGUI extends AbstractPlugablePanel {
             } else if (aComponent.equals(selectionPanel.getRemoveFileButton())) {
                 return selectionPanel.getAddFileButton();
             } else if (aComponent.equals(selectionPanel.getAddFileButton())) {
-                return footerSelectionPanel.getRemoveFileButton();
-            } else if (aComponent.equals(footerSelectionPanel.getRemoveFileButton())) {
+                return footerSelectionPanel.getClearButton();
+            } else if (aComponent.equals(footerSelectionPanel.getClearButton())) {
                 return footerSelectionPanel.getAddFileButton();
             } else if (aComponent.equals(footerSelectionPanel.getAddFileButton())) {
-                return coverSelectionPanel.getRemoveFileButton();
-            } else if (aComponent.equals(coverSelectionPanel.getRemoveFileButton())) {
+                return coverSelectionPanel.getClearButton();
+            } else if (aComponent.equals(coverSelectionPanel.getClearButton())) {
                 return coverSelectionPanel.getAddFileButton();
             } else if (aComponent.equals(coverSelectionPanel.getAddFileButton())) {
                 return runButton;
