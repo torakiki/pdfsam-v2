@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-11 02:30+0000\n"
 "Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -81,18 +81,6 @@ msgstr "Sección de combinación cargada."
 msgid "Error: "
 msgstr "Error "
 
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:407
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:453
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-msgid "Please wait while all files are processed.."
-msgstr "Espere mientras se procesan todos los archivos..."
-
 msgid "Found a password for input file."
 msgstr "Encuentra una contraseña para el archivo de salida"
 
@@ -101,9 +89,6 @@ msgstr "Exportar como xml"
 
 msgid "Unable to save xml file."
 msgstr "Imposible guardar archivo .xml"
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr "Archivo .xml guardado"
@@ -273,6 +258,9 @@ msgstr "Advertencia"
 
 msgid "Getting bookmarks max depth"
 msgstr "Obtener profundidas máxima de marcadores"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Portada del archivo pdf"
@@ -450,8 +438,11 @@ msgstr "Reverso del primer documento."
 msgid "Reverse second document"
 msgstr "Reverso del segundo documento"
 
-msgid "Number of pages to switch document"
-msgstr "Número de páginas a cambiar de documento"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -461,11 +452,14 @@ msgstr ""
 "ambos)."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Seleccione el número de páginas para cambiar de un documento a otro (por "
-"defecto es 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Ejecuatar mezcla alterna de pdf"
@@ -654,25 +648,16 @@ msgid "Please select a pdf document or undelete some page"
 msgstr ""
 "Por favor, seleccione un documento PDF o deshaga el borrado de alguna página"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"¿Guardar las informaciones de contraseñas (serán leibles al abrir el archivo "
-"de salida)?"
-
-msgid "Confirm password saving"
-msgstr "Confirmar la contraseña guardada"
-
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
-msgid "Unknown action."
-msgstr "Acción desconocida."
-
 msgid "New version available."
 msgstr "Nueva versión disponible."
 
 msgid "No new version available."
 msgstr "No hay nueva versión disponible."
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:231
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
+msgid "Unknown action."
+msgstr "Acción desconocida."
 
 msgid "Log saved."
 msgstr "Registro guardado."
@@ -709,6 +694,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Guardar ambiente"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"¿Guardar las informaciones de contraseñas (serán leibles al abrir el archivo "
+"de salida)?"
+
+msgid "Confirm password saving"
+msgstr "Confirmar la contraseña guardada"
+
+msgid "Load environment"
+msgstr "Cargar ambiente"
 
 msgid "Unable to create image for a null input document"
 msgstr "No se puede crear la imagen para un documento de entrada vacío"
@@ -788,6 +788,18 @@ msgstr ""
 
 msgid "Table full"
 msgstr "Tabla llena"
+
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:407
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:453
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
+msgid "Please wait while all files are processed.."
+msgstr "Espere mientras se procesan todos los archivos..."
 
 msgid "Command validation returned an empty value."
 msgstr "Validación de comando regresó un valor vacío."
@@ -1234,20 +1246,11 @@ msgstr "Seleccionar Todo"
 msgid "Save log"
 msgstr "Guardar registro"
 
-msgid "Save environment"
-msgstr "Guardar ambiente"
-
-msgid "Load environment"
-msgstr "Cargar ambiente"
-
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 msgid "Exit"
 msgstr "Salir"
-
-msgid "Unable to initialize menu bar."
-msgstr "Incapaz de inicializar la barra de menu."
 
 msgid "started in "
 msgstr "comenzado en "
@@ -1512,6 +1515,21 @@ msgstr "Por favor, seleccione al menos un documento pdf"
 msgid "Please select two pdf documents."
 msgstr "Seleccione dos documentos pdf"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "El archivo de salida seleccionado ya existe "
 
@@ -1625,6 +1643,22 @@ msgstr "Guardando la configuración de la Interfaz Gráfica de Usuario"
 
 msgid "Unable to save user interface status."
 msgstr "Imposible guardar el estado de la interfaz de usuario."
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Incapaz de inicializar la barra de menu."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Número de páginas a cambiar de documento"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Seleccione el número de páginas para cambiar de un documento a otro (por "
+#~ "defecto es 1)."
 
 #~ msgid "Error loading "
 #~ msgstr "Error al cargar "

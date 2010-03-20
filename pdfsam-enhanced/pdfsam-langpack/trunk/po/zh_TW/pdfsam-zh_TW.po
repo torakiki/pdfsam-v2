@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-11-16 03:40+0000\n"
 "Last-Translator: Ethan Chang <ethan.chang@canonical.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -75,9 +75,6 @@ msgstr "合併已完成。"
 msgid "Error: "
 msgstr "錯誤： "
 
-msgid "Please wait while all files are processed.."
-msgstr "檔案處理中請稍待..."
-
 msgid "Found a password for input file."
 msgstr "輸入檔需要密碼。"
 
@@ -86,9 +83,6 @@ msgstr "輸出為 xml 格式"
 
 msgid "Unable to save xml file."
 msgstr "無法儲存 xml 檔案。"
-
-msgid "Ok"
-msgstr "確定"
 
 msgid "File xml saved."
 msgstr "xml 檔已儲存。"
@@ -225,6 +219,9 @@ msgstr "警告"
 
 msgid "Getting bookmarks max depth"
 msgstr "正在取得書籤最大層級"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "頭版 PDF 檔"
@@ -375,8 +372,11 @@ msgstr "顛倒第一份文件的順序"
 msgid "Reverse second document"
 msgstr "顛倒第二份文件的順序"
 
-msgid "Number of pages to switch document"
-msgstr "要轉移文件的頁數"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -384,9 +384,14 @@ msgid ""
 msgstr "若您想顛倒第一或第二個文件（或兩者）的順序請勾選選項"
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
-msgstr "設定要從一個文件轉移至另一文件的頁數（預設值為 1）"
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "執行 PDF 交替合併"
@@ -570,21 +575,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "請選擇一個 PDF 文件或復原（不刪除）某個頁面"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr "您是否要儲存密碼（於開啟輸出檔時，程式可以讀取）？"
-
-msgid "Confirm password saving"
-msgstr "請確認儲存密碼"
-
-msgid "Unknown action."
-msgstr "未知的動作。"
-
 msgid "New version available."
 msgstr "有新版本可用。"
 
 msgid "No new version available."
 msgstr "已為最新版本。"
+
+msgid "Unknown action."
+msgstr "未知的動作。"
 
 msgid "Log saved."
 msgstr "紀錄檔已儲存。"
@@ -621,6 +619,19 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "儲存環境設定"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr "您是否要儲存密碼（於開啟輸出檔時，程式可以讀取）？"
+
+msgid "Confirm password saving"
+msgstr "請確認儲存密碼"
+
+msgid "Load environment"
+msgstr "載入環境設定"
 
 msgid "Unable to create image for a null input document"
 msgstr "無法為一個空的輸入文件建立影像"
@@ -699,6 +710,9 @@ msgstr "選取清單已滿，請移除某個 PDF 文件。"
 
 msgid "Table full"
 msgstr "清單已滿"
+
+msgid "Please wait while all files are processed.."
+msgstr "檔案處理中請稍待..."
 
 msgid "Command validation returned an empty value."
 msgstr "指令檢查回傳一個空的值。"
@@ -1039,17 +1053,8 @@ msgstr "全部選取"
 msgid "Save log"
 msgstr "儲存紀錄"
 
-msgid "Save environment"
-msgstr "儲存環境設定"
-
-msgid "Load environment"
-msgstr "載入環境設定"
-
 msgid "Exit"
 msgstr "結束"
-
-msgid "Unable to initialize menu bar."
-msgstr "無法初始化選單列。"
 
 msgid "started in "
 msgstr "已啟動於 "
@@ -1274,6 +1279,21 @@ msgstr "請至少選取一個 PDF 文件。"
 msgid "Please select two pdf documents."
 msgstr "請選擇兩個 PDF 文件。"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "所選的輸出檔已存在 "
 
@@ -1374,6 +1394,20 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "確定"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "無法初始化選單列。"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "要轉移文件的頁數"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr "設定要從一個文件轉移至另一文件的頁數（預設值為 1）"
 
 #~ msgid "Please wait while reading"
 #~ msgstr "讀取中請稍待..."

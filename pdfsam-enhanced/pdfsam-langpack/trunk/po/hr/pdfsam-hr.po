@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-03-10 13:29+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -79,9 +79,6 @@ msgstr "Sekcija za spajanje je učitana."
 msgid "Error: "
 msgstr "Greška: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Molimo pričekajte dok se datoteke ne obrade..."
-
 msgid "Found a password for input file."
 msgstr "Pronađena zaporka ulaznog dokumenta"
 
@@ -90,9 +87,6 @@ msgstr "Izvezi kao xml"
 
 msgid "Unable to save xml file."
 msgstr "Ne mogu spremiti xml datoteku"
-
-msgid "Ok"
-msgstr "U redu"
 
 msgid "File xml saved."
 msgstr "XML datoteka je spremljena."
@@ -227,6 +221,9 @@ msgid "Warning"
 msgstr ""
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -382,7 +379,10 @@ msgstr "Preokreni prvi dokument"
 msgid "Reverse second document"
 msgstr "Preokreni drugi dokument"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -391,8 +391,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -577,22 +582,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Spremi informacije zaporke (biti će čitljive pri otvaranju izlazne datoteke)?"
-
-msgid "Confirm password saving"
-msgstr "Potvrdi spremanje zaporke"
-
-msgid "Unknown action."
-msgstr "Nepoznata akcija"
-
 msgid "New version available."
 msgstr "Dostupna je nova inačica."
 
 msgid "No new version available."
 msgstr "Nije dostupna je nova inačica."
+
+msgid "Unknown action."
+msgstr "Nepoznata akcija"
 
 msgid "Log saved."
 msgstr "Zapisnik spremljen."
@@ -629,6 +626,20 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Spremi okružje"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Spremi informacije zaporke (biti će čitljive pri otvaranju izlazne datoteke)?"
+
+msgid "Confirm password saving"
+msgstr "Potvrdi spremanje zaporke"
+
+msgid "Load environment"
+msgstr "Učitaj okružje"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -707,6 +718,9 @@ msgstr "Tablica odabira je popunjena. Molimo uklonite neke pdf dokumente."
 
 msgid "Table full"
 msgstr "Tablica popunjena"
+
+msgid "Please wait while all files are processed.."
+msgstr "Molimo pričekajte dok se datoteke ne obrade..."
 
 msgid "Command validation returned an empty value."
 msgstr "Provjera komande je vratila praznu vrijednost."
@@ -1047,17 +1061,8 @@ msgstr "Odaberi sve"
 msgid "Save log"
 msgstr "Spremi zapisnik."
 
-msgid "Save environment"
-msgstr "Spremi okružje"
-
-msgid "Load environment"
-msgstr "Učitaj okružje"
-
 msgid "Exit"
 msgstr "Izlaz"
-
-msgid "Unable to initialize menu bar."
-msgstr "Ne mogu pokrenuti traku glavnog izbornika."
 
 msgid "started in "
 msgstr "pokrenut u "
@@ -1286,6 +1291,21 @@ msgstr ""
 msgid "Please select two pdf documents."
 msgstr "Molimo odaberite dva pdf dokumenta."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1387,6 +1407,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "U redu"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Ne mogu pokrenuti traku glavnog izbornika."
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Molimo pričekajte dok se dokument čita"

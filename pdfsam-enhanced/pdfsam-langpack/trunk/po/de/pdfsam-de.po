@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-05 10:40+0000\n"
 "Last-Translator: Marcel Mayr <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -81,9 +81,6 @@ msgstr "Bereich »Zusammenführen« geladen."
 msgid "Error: "
 msgstr "Fehler: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Bitte warten, Dateien werden verarbeitet ..."
-
 msgid "Found a password for input file."
 msgstr "Die Quelldatei ist passwortgeschützt."
 
@@ -92,9 +89,6 @@ msgstr "Als XML exportieren"
 
 msgid "Unable to save xml file."
 msgstr "XML-Datei konnte nicht gespeichert werden."
-
-msgid "Ok"
-msgstr "OK"
 
 msgid "File xml saved."
 msgstr "XML-Datei wurde gespeichert."
@@ -239,6 +233,9 @@ msgstr "Achtung"
 
 msgid "Getting bookmarks max depth"
 msgstr "Maximale Lesezeichentiefe wird ermittelt"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "PDF für Titelseite"
@@ -393,8 +390,11 @@ msgstr "Seitenreihenfolge des ersten Dokuments umkehren"
 msgid "Reverse second document"
 msgstr "Seitenreihenfolge des zweiten Dokuments umkehren"
 
-msgid "Number of pages to switch document"
-msgstr "Seitenanzahl bis Dokumentwechsel"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -404,11 +404,14 @@ msgstr ""
 "zweiten Dokuments (oder beides) umzukehren."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Legen Sie die Anzahl der Seiten fest, nach denen ein Wechsel zum anderen "
-"Dokument erfolgt (Vorgabewert ist 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Seiten zweier PDF-Dokumente verschachteln"
@@ -600,23 +603,14 @@ msgstr ""
 "Bitte wählen Sie ein PDF-Dokument oder machen Sie das Löschen einiger Seiten "
 "rückgängig"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Sollen die Passwortdaten gespeichert werden? (Diese werden in der "
-"Ausgabedatei lesbar sein.)"
-
-msgid "Confirm password saving"
-msgstr "Passwortspeicherung bestätigen"
-
-msgid "Unknown action."
-msgstr "Unbekannte Aktion."
-
 msgid "New version available."
 msgstr "Neue Version verfügbar."
 
 msgid "No new version available."
 msgstr "Keine neue Version verfügbar."
+
+msgid "Unknown action."
+msgstr "Unbekannte Aktion."
 
 msgid "Log saved."
 msgstr "Protokoll wurde gespeichert"
@@ -653,6 +647,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Umgebung speichern"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Sollen die Passwortdaten gespeichert werden? (Diese werden in der "
+"Ausgabedatei lesbar sein.)"
+
+msgid "Confirm password saving"
+msgstr "Passwortspeicherung bestätigen"
+
+msgid "Load environment"
+msgstr "Umgebung laden"
 
 msgid "Unable to create image for a null input document"
 msgstr "Bild konnte nicht erstellt werden, da Quelldokument ungültig ist"
@@ -735,6 +744,9 @@ msgstr "Auswahltabelle ist voll. Bitte entfernen Sie einige PDF-Dateien."
 
 msgid "Table full"
 msgstr "Tabelle voll."
+
+msgid "Please wait while all files are processed.."
+msgstr "Bitte warten, Dateien werden verarbeitet ..."
 
 msgid "Command validation returned an empty value."
 msgstr "Befehlsüberprüfung gab einen leeren Wert zurück."
@@ -1079,17 +1091,8 @@ msgstr "Alles auswählen"
 msgid "Save log"
 msgstr "Protokoll speichern"
 
-msgid "Save environment"
-msgstr "Umgebung speichern"
-
-msgid "Load environment"
-msgstr "Umgebung laden"
-
 msgid "Exit"
 msgstr "Beenden"
-
-msgid "Unable to initialize menu bar."
-msgstr "Menüleiste konnte nicht aufgebaut werden."
 
 msgid "started in "
 msgstr "gestartet in "
@@ -1326,6 +1329,21 @@ msgstr "Bitte wählen Sie zumindest ein PDF-Dokument aus."
 msgid "Please select two pdf documents."
 msgstr "Bitte wählen Sie zwei PDF-Dokumente aus."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Ausgewählte Ausgabedatei ist bereits vorhanden "
 
@@ -1435,6 +1453,22 @@ msgstr "Konfiguration der Benutzeroberfläche wird gespeichert"
 
 msgid "Unable to save user interface status."
 msgstr "Zustand der Benutzeroberfläche kann nicht gespeichert werden."
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Menüleiste konnte nicht aufgebaut werden."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Seitenanzahl bis Dokumentwechsel"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Legen Sie die Anzahl der Seiten fest, nach denen ein Wechsel zum anderen "
+#~ "Dokument erfolgt (Vorgabewert ist 1)."
 
 #~ msgid "Error loading "
 #~ msgstr "Fehler beim Laden "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-11-04 20:05+0000\n"
 "Last-Translator: WRdHat <wag.guillen@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -81,9 +81,6 @@ msgstr "Secção de concatenação carregada"
 msgid "Error: "
 msgstr "Erro: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Por favor espere enquanto todos os ficheiros são processados..."
-
 msgid "Found a password for input file."
 msgstr "Foi encontrada uma palavra-chave pra o ficheiro de entrada"
 
@@ -92,9 +89,6 @@ msgstr "Exportar como xml"
 
 msgid "Unable to save xml file."
 msgstr "Incapaz de gravar o ficheiro xml."
-
-msgid "Ok"
-msgstr "OK"
 
 msgid "File xml saved."
 msgstr "Ficheiro xml guardado."
@@ -234,6 +228,9 @@ msgid "Warning"
 msgstr "Atenção"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -383,7 +380,10 @@ msgstr "Inverter o primeiro documento"
 msgid "Reverse second document"
 msgstr "Invertir o segundo documento"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -392,8 +392,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -578,21 +583,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-
-msgid "Confirm password saving"
-msgstr "Confirmar gravação da palavra-passe"
-
-msgid "Unknown action."
-msgstr "Acção desconhecida."
-
 msgid "New version available."
 msgstr ""
 
 msgid "No new version available."
 msgstr ""
+
+msgid "Unknown action."
+msgstr "Acção desconhecida."
 
 msgid "Log saved."
 msgstr "Registo gravado."
@@ -628,6 +626,19 @@ msgid "No zoom"
 msgstr ""
 
 msgid "No zoom applied"
+msgstr ""
+
+msgid "Save environment"
+msgstr ""
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+
+msgid "Confirm password saving"
+msgstr "Confirmar gravação da palavra-passe"
+
+msgid "Load environment"
 msgstr ""
 
 msgid "Unable to create image for a null input document"
@@ -707,6 +718,9 @@ msgstr "A tabela de selecção está cheia, por favor remova algum documento pdf
 
 msgid "Table full"
 msgstr "Tabela cheia"
+
+msgid "Please wait while all files are processed.."
+msgstr "Por favor espere enquanto todos os ficheiros são processados..."
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -1047,17 +1061,8 @@ msgstr ""
 msgid "Save log"
 msgstr ""
 
-msgid "Save environment"
-msgstr ""
-
-msgid "Load environment"
-msgstr ""
-
 msgid "Exit"
 msgstr "Sair"
-
-msgid "Unable to initialize menu bar."
-msgstr ""
 
 msgid "started in "
 msgstr ""
@@ -1282,6 +1287,21 @@ msgstr "Por favor selecione pelo menos um documento pdf"
 msgid "Please select two pdf documents."
 msgstr "Por favor seleccione dois documentos pdf."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1382,6 +1402,9 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "OK"
 
 #~ msgid "Error loading "
 #~ msgstr "Erro a carregar "

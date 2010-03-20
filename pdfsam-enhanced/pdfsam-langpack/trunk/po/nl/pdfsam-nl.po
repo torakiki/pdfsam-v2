@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-02 13:23+0000\n"
 "Last-Translator: G.J. Werler <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -129,19 +129,6 @@ msgstr "Samenvoeg-sectie geladen"
 msgid "Error: "
 msgstr "Fout: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
-msgid "Please wait while all files are processed.."
-msgstr "Een moment geduld om alle bestanden te verwerken.."
-
 msgid "Found a password for input file."
 msgstr "Wachtwoord gevonden voor het input-bestand"
 
@@ -150,9 +137,6 @@ msgstr "Exporteren als xml"
 
 msgid "Unable to save xml file."
 msgstr "Kon het xml bestand niet wegschrijven!"
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr "XML bestand bewaard."
@@ -358,6 +342,9 @@ msgstr "Waarschuwing"
 msgid "Getting bookmarks max depth"
 msgstr "Verkrijgen van de maximale bladwijzer diepte"
 
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
+
 msgid "Frontpage pdf file"
 msgstr "Frontpage pdf bestand"
 
@@ -531,8 +518,11 @@ msgstr "Draai eerste document om"
 msgid "Reverse second document"
 msgstr "Draai tweede document om"
 
-msgid "Number of pages to switch document"
-msgstr "Aantal paginas waarna van document gewisseld moet worden"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -542,11 +532,14 @@ msgstr ""
 "beide)."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Stel het aantal pagina's in waarna gewisseld moet worden van document "
-"(standaar waarde is 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
@@ -738,24 +731,15 @@ msgstr ""
 "Selecteer een pdf document of maak het verwijderen van enkele pagina's "
 "ongedaan"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Wenst u de paswoorden te bewaren? (Opgepast, de paswoorden zullen leesbaar "
-"zijn in het uitvoerbestand!)"
-
-msgid "Confirm password saving"
-msgstr "Bevestig de keuze om paswoorden te bewaren."
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
-msgid "Unknown action."
-msgstr "Onbekende actie."
-
 msgid "New version available."
 msgstr "Nieuwe versie beschikbaar."
 
 msgid "No new version available."
 msgstr "Geen nieuwe versie beschikbaar."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
+msgid "Unknown action."
+msgstr "Onbekende actie."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
 msgid "Log saved."
@@ -794,6 +778,25 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
+msgid "Save environment"
+msgstr "Instellingen opslaan"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Wenst u de paswoorden te bewaren? (Opgepast, de paswoorden zullen leesbaar "
+"zijn in het uitvoerbestand!)"
+
+msgid "Confirm password saving"
+msgstr "Bevestig de keuze om paswoorden te bewaren."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
+msgid "Load environment"
+msgstr "Instellingen laden"
 
 msgid "Unable to create image for a null input document"
 msgstr "Kan afbeelding niet maken of geen gelding invoerbestand"
@@ -876,6 +879,19 @@ msgstr "Selectietabel is vol. Gelieve enkele pdf documenten te verwijderen."
 
 msgid "Table full"
 msgstr "Tabel vol"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
+msgid "Please wait while all files are processed.."
+msgstr "Een moment geduld om alle bestanden te verwerken.."
 
 msgid "Command validation returned an empty value."
 msgstr "Validate gaf een lege waarde terug."
@@ -1307,24 +1323,11 @@ msgstr "Alles selecteren"
 msgid "Save log"
 msgstr "Log opslaan"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-msgid "Save environment"
-msgstr "Instellingen opslaan"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-msgid "Load environment"
-msgstr "Instellingen laden"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:237
 msgid "Exit"
 msgstr "Afsluiten"
-
-msgid "Unable to initialize menu bar."
-msgstr "Kon het menu niet initializeren."
 
 msgid "started in "
 msgstr "gestart in "
@@ -1603,6 +1606,21 @@ msgstr "Selecteer minimaal één PDF document"
 msgid "Please select two pdf documents."
 msgstr "Gelieve 2 pdf bestanden te selecteren."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Het geselecteerde uitvoerbestand bestaat al "
 
@@ -1724,6 +1742,22 @@ msgstr "Opslaan van de GUI configuratie"
 
 msgid "Unable to save user interface status."
 msgstr "Fout tijdens het opslaan van de interface status."
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Kon het menu niet initializeren."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Aantal paginas waarna van document gewisseld moet worden"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Stel het aantal pagina's in waarna gewisseld moet worden van document "
+#~ "(standaar waarde is 1)."
 
 #~ msgid "Found zero or many jars in plugin directory "
 #~ msgstr "Geen of veel jars op het plugin-pad gevonden "

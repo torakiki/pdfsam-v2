@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-11-02 18:52+0000\n"
 "Last-Translator: Ahmed Khattab Shams <AhmedKhattabShams@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -77,9 +77,6 @@ msgstr ""
 msgid "Error: "
 msgstr "خطأ: "
 
-msgid "Please wait while all files are processed.."
-msgstr "فضلا انتظر لحين الإنتهاء من معالجة جميع الملفات.."
-
 msgid "Found a password for input file."
 msgstr ""
 
@@ -88,9 +85,6 @@ msgstr ""
 
 msgid "Unable to save xml file."
 msgstr ""
-
-msgid "Ok"
-msgstr "موافق"
 
 msgid "File xml saved."
 msgstr ""
@@ -221,6 +215,9 @@ msgid "Warning"
 msgstr "تحذير"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -370,7 +367,10 @@ msgstr ""
 msgid "Reverse second document"
 msgstr ""
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -379,8 +379,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -565,20 +570,13 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-
-msgid "Confirm password saving"
-msgstr ""
-
-msgid "Unknown action."
-msgstr ""
-
 msgid "New version available."
 msgstr ""
 
 msgid "No new version available."
+msgstr ""
+
+msgid "Unknown action."
 msgstr ""
 
 msgid "Log saved."
@@ -615,6 +613,19 @@ msgid "No zoom"
 msgstr ""
 
 msgid "No zoom applied"
+msgstr ""
+
+msgid "Save environment"
+msgstr ""
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+
+msgid "Confirm password saving"
+msgstr ""
+
+msgid "Load environment"
 msgstr ""
 
 msgid "Unable to create image for a null input document"
@@ -694,6 +705,9 @@ msgstr ""
 
 msgid "Table full"
 msgstr ""
+
+msgid "Please wait while all files are processed.."
+msgstr "فضلا انتظر لحين الإنتهاء من معالجة جميع الملفات.."
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -1034,16 +1048,7 @@ msgstr ""
 msgid "Save log"
 msgstr ""
 
-msgid "Save environment"
-msgstr ""
-
-msgid "Load environment"
-msgstr ""
-
 msgid "Exit"
-msgstr ""
-
-msgid "Unable to initialize menu bar."
 msgstr ""
 
 msgid "started in "
@@ -1269,6 +1274,21 @@ msgstr "اختر ملف PDF واحد على الأقل"
 msgid "Please select two pdf documents."
 msgstr ""
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1369,3 +1389,6 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "موافق"

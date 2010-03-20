@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-10-28 11:07+0000\n"
 "Last-Translator: 王英华 <wantinghard@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,9 +76,6 @@ msgstr "合并部分已载入。"
 msgid "Error: "
 msgstr "错误： "
 
-msgid "Please wait while all files are processed.."
-msgstr "请等待所有的文件处理完毕..."
-
 msgid "Found a password for input file."
 msgstr "输入文件需要密码。"
 
@@ -87,9 +84,6 @@ msgstr "导出为 xml"
 
 msgid "Unable to save xml file."
 msgstr "无法保存 xml 文件。"
-
-msgid "Ok"
-msgstr "确定"
 
 msgid "File xml saved."
 msgstr "xml 文件已保存。"
@@ -221,6 +215,9 @@ msgstr "警告"
 
 msgid "Getting bookmarks max depth"
 msgstr "获取书签最大深度"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr ""
@@ -373,7 +370,10 @@ msgstr "反转第一个文档"
 msgid "Reverse second document"
 msgstr "反转第二个文档"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -382,8 +382,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -568,21 +573,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr "保存密码信息？（这些信息能在输出文件中查看）"
-
-msgid "Confirm password saving"
-msgstr "确认保存密码"
-
-msgid "Unknown action."
-msgstr "未知操作。"
-
 msgid "New version available."
 msgstr "检查到新版本。"
 
 msgid "No new version available."
 msgstr "没有检测到新的版本。"
+
+msgid "Unknown action."
+msgstr "未知操作。"
 
 msgid "Log saved."
 msgstr "日志已保存。"
@@ -619,6 +617,19 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "保存环境"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr "保存密码信息？（这些信息能在输出文件中查看）"
+
+msgid "Confirm password saving"
+msgstr "确认保存密码"
+
+msgid "Load environment"
+msgstr "载入环境"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -697,6 +708,9 @@ msgstr "备选表已满，请删除一些 pdf 文档"
 
 msgid "Table full"
 msgstr "备选表已满"
+
+msgid "Please wait while all files are processed.."
+msgstr "请等待所有的文件处理完毕..."
 
 msgid "Command validation returned an empty value."
 msgstr "命令验证返回一个空值。"
@@ -1037,17 +1051,8 @@ msgstr "全选"
 msgid "Save log"
 msgstr "保存日志"
 
-msgid "Save environment"
-msgstr "保存环境"
-
-msgid "Load environment"
-msgstr "载入环境"
-
 msgid "Exit"
 msgstr "退出"
-
-msgid "Unable to initialize menu bar."
-msgstr "未能初始化菜单栏。"
 
 msgid "started in "
 msgstr "开始于 "
@@ -1272,6 +1277,21 @@ msgstr "请选择至少一个pdf文档"
 msgid "Please select two pdf documents."
 msgstr "请选择两个 PDF 文档。"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "所选的输出文件已存在 "
 
@@ -1372,6 +1392,12 @@ msgstr "保存GUI配置"
 
 msgid "Unable to save user interface status."
 msgstr "无法保存用户界面状态。"
+
+#~ msgid "Ok"
+#~ msgstr "确定"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "未能初始化菜单栏。"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869

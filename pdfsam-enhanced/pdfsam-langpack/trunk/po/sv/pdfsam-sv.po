@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-10-25 17:56+0000\n"
 "Last-Translator: Carl-Uno Olsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -102,16 +102,6 @@ msgstr "Avsnitt att sätta samman laddat."
 msgid "Error: "
 msgstr "Fel: "
 
-# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-msgid "Please wait while all files are processed.."
-msgstr "Vänta medan alla filer behandlas..."
-
 msgid "Found a password for input file."
 msgstr "Fann lösenord för källfilen."
 
@@ -120,9 +110,6 @@ msgstr "Exportera som xml"
 
 msgid "Unable to save xml file."
 msgstr "Kunde inte spara xml-filen."
-
-msgid "Ok"
-msgstr "OK"
 
 msgid "File xml saved."
 msgstr "Xml-filen har sparats."
@@ -298,6 +285,9 @@ msgstr "Varning"
 msgid "Getting bookmarks max depth"
 msgstr ""
 
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
+
 msgid "Frontpage pdf file"
 msgstr "Frontpage pdf-fil"
 
@@ -449,7 +439,10 @@ msgstr "Vänd första dokumentet."
 msgid "Reverse second document"
 msgstr "Vänd andra dokumentet."
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -458,8 +451,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -645,21 +643,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr "Spara lösenordsinformation (de blir läsbara vid öppning av målfilen)?"
-
-msgid "Confirm password saving"
-msgstr "Bekräfta att lösenordet sparas."
-
-msgid "Unknown action."
-msgstr "Okänd åtgärd."
-
 msgid "New version available."
 msgstr "Ny uppdatering tillgänglig."
 
 msgid "No new version available."
 msgstr "Ingen ny uppdatering tillgänglig."
+
+msgid "Unknown action."
+msgstr "Okänd åtgärd."
 
 msgid "Log saved."
 msgstr "Logg sparad"
@@ -696,6 +687,19 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Spara miljö"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr "Spara lösenordsinformation (de blir läsbara vid öppning av målfilen)?"
+
+msgid "Confirm password saving"
+msgstr "Bekräfta att lösenordet sparas."
+
+msgid "Load environment"
+msgstr "Ladda miljö"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -774,6 +778,16 @@ msgstr "Urvalskolumnen är full, ta bort någa dokument"
 
 msgid "Table full"
 msgstr "Kolumn full"
+
+# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:305
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
+msgid "Please wait while all files are processed.."
+msgstr "Vänta medan alla filer behandlas..."
 
 msgid "Command validation returned an empty value."
 msgstr "Kommandovalidationen gav ett tomt värde."
@@ -1200,20 +1214,11 @@ msgstr "Markera alla"
 msgid "Save log"
 msgstr "Spara logg"
 
-msgid "Save environment"
-msgstr "Spara miljö"
-
-msgid "Load environment"
-msgstr "Ladda miljö"
-
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 msgid "Exit"
 msgstr "Avsluta"
-
-msgid "Unable to initialize menu bar."
-msgstr "Kan ej starta menylisten."
 
 msgid "started in "
 msgstr "startad i "
@@ -1454,6 +1459,21 @@ msgstr "Välj åtminstone ett pdf-dokument"
 msgid "Please select two pdf documents."
 msgstr "Välj två PDF-dokument"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1554,6 +1574,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Kan ej starta menylisten."
 
 #~ msgid "Error loading "
 #~ msgstr "Fel vid laddning av "

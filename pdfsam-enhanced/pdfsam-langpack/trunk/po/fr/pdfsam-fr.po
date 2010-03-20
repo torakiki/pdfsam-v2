@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-11 22:21+0000\n"
 "Last-Translator: Bigpapa <Unknown>\n"
 "Language-Team: FRENCH <fr@li.org>\n"
@@ -81,9 +81,6 @@ msgstr "Section \"Fusion\" chargée."
 msgid "Error: "
 msgstr "Erreur : "
 
-msgid "Please wait while all files are processed.."
-msgstr "Veuillez patienter pendant le traitement des fichiers..."
-
 msgid "Found a password for input file."
 msgstr "Mot de passe requis pour le fichier."
 
@@ -92,9 +89,6 @@ msgstr "Exporter en fichier xml"
 
 msgid "Unable to save xml file."
 msgstr "Enregistrement du fichier xml impossible."
-
-msgid "Ok"
-msgstr "OK"
 
 msgid "File xml saved."
 msgstr "Fichier xml sauvegardé."
@@ -234,6 +228,9 @@ msgstr "Avertissement"
 
 msgid "Getting bookmarks max depth"
 msgstr "Acquisition de la profondeur des signets"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Pdf de première de couverture"
@@ -391,8 +388,11 @@ msgstr "Inverser l'ordre du premier document"
 msgid "Reverse second document"
 msgstr "Inverser l'ordre du second document"
 
-msgid "Number of pages to switch document"
-msgstr "Nombre de pages de la séquence"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -401,11 +401,14 @@ msgstr ""
 "Cochez la case du document dont vous voulez inverser l'ordre des pages."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Indiquez le nombre de pages composant la séquence d'assemblage (1 par "
-"défaut)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Lancez l'assemblage des fichiers"
@@ -591,23 +594,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "Veuillez sélectionner un document pdf ou restaurer des pages"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Conserver les mots de passe ? (Attention : ils seront accessibles en ouvrant "
-"le fichier de sauvegarde)"
-
-msgid "Confirm password saving"
-msgstr "Confirmer la sauvegarde du mot de passe"
-
-msgid "Unknown action."
-msgstr "Action invalide."
-
 msgid "New version available."
 msgstr "Une nouvelle version est disponible."
 
 msgid "No new version available."
 msgstr "Aucune nouvelle version disponible."
+
+msgid "Unknown action."
+msgstr "Action invalide."
 
 msgid "Log saved."
 msgstr "Sauvegarde du journal effectuée."
@@ -644,6 +638,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Sauvegarder la configuration"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Conserver les mots de passe ? (Attention : ils seront accessibles en ouvrant "
+"le fichier de sauvegarde)"
+
+msgid "Confirm password saving"
+msgstr "Confirmer la sauvegarde du mot de passe"
+
+msgid "Load environment"
+msgstr "Charger une configuration"
 
 msgid "Unable to create image for a null input document"
 msgstr "Création d'image impossible à partir un document vide"
@@ -723,6 +732,9 @@ msgstr "Le tableau de sélection est complet, veuillez enlever des pdf."
 
 msgid "Table full"
 msgstr "Tableau complet"
+
+msgid "Please wait while all files are processed.."
+msgstr "Veuillez patienter pendant le traitement des fichiers..."
 
 msgid "Command validation returned an empty value."
 msgstr "La validation de commande a renvoyé une valeur nulle."
@@ -1107,20 +1119,11 @@ msgstr "Tout sélectionner"
 msgid "Save log"
 msgstr "Sauvegarder le journal"
 
-msgid "Save environment"
-msgstr "Sauvegarder la configuration"
-
-msgid "Load environment"
-msgstr "Charger une configuration"
-
 # G:\Documents\eclipse_workspace\PDF
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 msgid "Exit"
 msgstr "Quitter"
-
-msgid "Unable to initialize menu bar."
-msgstr "Initialisation de la barre de menu impossible"
 
 msgid "started in "
 msgstr "démarré en "
@@ -1368,6 +1371,21 @@ msgstr "Veuillez sélectionner au moins un document pdf."
 msgid "Please select two pdf documents."
 msgstr "Veuillez sélectionner deux documents pdf."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Le fichier à créer existe déjà : "
 
@@ -1484,6 +1502,22 @@ msgstr "Sauvegarde de la configuration de l'interface utilisateur"
 
 msgid "Unable to save user interface status."
 msgstr "Sauvegarde de l'état de l'interface utilisateur impossible."
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Initialisation de la barre de menu impossible"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Nombre de pages de la séquence"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Indiquez le nombre de pages composant la séquence d'assemblage (1 par "
+#~ "défaut)."
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Veuillez attendre la fin de la lecture de"

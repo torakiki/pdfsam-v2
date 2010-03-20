@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -75,9 +75,6 @@ msgstr "Sektor  združevanja naložen"
 msgid "Error: "
 msgstr "Napaka "
 
-msgid "Please wait while all files are processed.."
-msgstr "Prosim, počakaj...procesiram"
-
 msgid "Found a password for input file."
 msgstr "Najdeno geslo za izbrano datoteko"
 
@@ -86,9 +83,6 @@ msgstr "Izvozi kot xml"
 
 msgid "Unable to save xml file."
 msgstr "Ne morem shraniti xml datoteke"
-
-msgid "Ok"
-msgstr "V redu"
 
 msgid "File xml saved."
 msgstr "xml datoteka shranjena"
@@ -222,6 +216,9 @@ msgid "Warning"
 msgstr "Opozorilo"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -374,7 +371,10 @@ msgstr "Prvi dokument obrnjeno"
 msgid "Reverse second document"
 msgstr "Drugi dokument obrnjeno"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -383,8 +383,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -569,21 +574,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr "Shrani podatke za geslo"
-
-msgid "Confirm password saving"
-msgstr "Potrdi shranjevanje gesla"
-
-msgid "Unknown action."
-msgstr "Neznana operacija"
-
 msgid "New version available."
 msgstr "Nova verzija na voljo"
 
 msgid "No new version available."
 msgstr "Ni posodobitev -Laservis d.o.o."
+
+msgid "Unknown action."
+msgstr "Neznana operacija"
 
 msgid "Log saved."
 msgstr "Zapis shranjen"
@@ -620,6 +618,19 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Shrani okolje"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr "Shrani podatke za geslo"
+
+msgid "Confirm password saving"
+msgstr "Potrdi shranjevanje gesla"
+
+msgid "Load environment"
+msgstr "Naloži okolje"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -698,6 +709,9 @@ msgstr "Izbira PDF dokumentov je prevelika, odstrani nekaj dokumentov"
 
 msgid "Table full"
 msgstr "Tabela je polna"
+
+msgid "Please wait while all files are processed.."
+msgstr "Prosim, počakaj...procesiram"
 
 msgid "Command validation returned an empty value."
 msgstr "Napaka ukaza, ni podatka"
@@ -1038,17 +1052,8 @@ msgstr "Izberi vse"
 msgid "Save log"
 msgstr "Shrani dnevnik"
 
-msgid "Save environment"
-msgstr "Shrani okolje"
-
-msgid "Load environment"
-msgstr "Naloži okolje"
-
 msgid "Exit"
 msgstr "Izhod"
-
-msgid "Unable to initialize menu bar."
-msgstr ""
 
 msgid "started in "
 msgstr "start   v "
@@ -1273,6 +1278,21 @@ msgstr "Izberi vsaj en PDF dokument"
 msgid "Please select two pdf documents."
 msgstr "Izberi dva PDF dokumenta"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1373,6 +1393,9 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "V redu"
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Počakaj, berem"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-03-10 13:30+0000\n"
 "Last-Translator: Simas J <simasj@gmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -77,9 +77,6 @@ msgstr "Sujungimo dalis įkrauta"
 msgid "Error: "
 msgstr "Klaida: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Palaukite kol failai apdorojami"
-
 msgid "Found a password for input file."
 msgstr "Įkeliamamas failas apsaugotas slaptažodžiu"
 
@@ -88,9 +85,6 @@ msgstr "Eksportuoti xml formatu"
 
 msgid "Unable to save xml file."
 msgstr "Neįmanoma išsaugoti xml failo"
-
-msgid "Ok"
-msgstr "Gerai"
 
 msgid "File xml saved."
 msgstr "xml failas išsaugotas"
@@ -231,6 +225,9 @@ msgid "Warning"
 msgstr "Įspėjimas"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -385,7 +382,10 @@ msgstr "Reversuoti pirmąjį dokumentą"
 msgid "Reverse second document"
 msgstr "Reversuoti antrąjį dokumentą"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -394,8 +394,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -580,23 +585,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Išsaugoti slaptažodžių informaciją (jie bus matomi atveriant rezultato "
-"failą)?"
-
-msgid "Confirm password saving"
-msgstr "Patvirtinti slaptažodžių išsaugojimą"
-
-msgid "Unknown action."
-msgstr "Nežinomas veiksmas"
-
 msgid "New version available."
 msgstr "Yra išėjusi nauja versija"
 
 msgid "No new version available."
 msgstr "Naujos versijos nėra"
+
+msgid "Unknown action."
+msgstr "Nežinomas veiksmas"
 
 msgid "Log saved."
 msgstr "Žurnalas išsaugotas"
@@ -633,6 +629,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Išsaugoti aplinką"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Išsaugoti slaptažodžių informaciją (jie bus matomi atveriant rezultato "
+"failą)?"
+
+msgid "Confirm password saving"
+msgstr "Patvirtinti slaptažodžių išsaugojimą"
+
+msgid "Load environment"
+msgstr "Įkelti aplinką"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -711,6 +722,9 @@ msgstr "Pasirinkimų lentelė pilna, pašalinkite kurį nors pdf dokumentą."
 
 msgid "Table full"
 msgstr "Lentelė pilna"
+
+msgid "Please wait while all files are processed.."
+msgstr "Palaukite kol failai apdorojami"
 
 msgid "Command validation returned an empty value."
 msgstr "Komandos tikrinimas grąžino tuščią reikšmę"
@@ -1051,17 +1065,8 @@ msgstr "Pažymėti viską"
 msgid "Save log"
 msgstr "Išsaugoti žurnalą"
 
-msgid "Save environment"
-msgstr "Išsaugoti aplinką"
-
-msgid "Load environment"
-msgstr "Įkelti aplinką"
-
 msgid "Exit"
 msgstr "Išeiti"
-
-msgid "Unable to initialize menu bar."
-msgstr "Nepavuko inicializuoti meniu juostos"
 
 msgid "started in "
 msgstr "paleista "
@@ -1294,6 +1299,21 @@ msgstr "Prašome pasirinkti bent vieną pdf dokumentą"
 msgid "Please select two pdf documents."
 msgstr "Pasirinkite du pdf dokumentus"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1395,6 +1415,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "Gerai"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Nepavuko inicializuoti meniu juostos"
 
 #~ msgid "Error loading "
 #~ msgstr "Klaida įkeliant "

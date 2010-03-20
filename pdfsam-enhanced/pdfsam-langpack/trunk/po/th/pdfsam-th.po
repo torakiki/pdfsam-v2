@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-11-03 07:52+0000\n"
 "Last-Translator: Krit Marukawisutthigul <Unknown>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -75,9 +75,6 @@ msgstr "หมวดการรวมไฟล์ถูกเรียกใช
 msgid "Error: "
 msgstr "ข้อผิดพลาด: "
 
-msgid "Please wait while all files are processed.."
-msgstr "กรุณารอขณะกำลังประมวณผล"
-
 msgid "Found a password for input file."
 msgstr "พบการตั้งค่ารหัสผ่านของไฟล์นำเข้า"
 
@@ -86,9 +83,6 @@ msgstr "ส่งออกเป็นไฟล์ xml"
 
 msgid "Unable to save xml file."
 msgstr "ไม่สามารถบันทึกเป็นไฟล์ xml ได้"
-
-msgid "Ok"
-msgstr "ตกลง"
 
 msgid "File xml saved."
 msgstr "บันทึกเป็นไฟล์ xml แล้ว"
@@ -221,6 +215,9 @@ msgid "Warning"
 msgstr "คำเตือน"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -370,7 +367,10 @@ msgstr ""
 msgid "Reverse second document"
 msgstr ""
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -379,8 +379,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -565,21 +570,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-
-msgid "Confirm password saving"
-msgstr "ยึ่นยันการบันทึกรหัสผ่าน"
-
-msgid "Unknown action."
-msgstr "การดำเนินการที่ไม่รู้จัก"
-
 msgid "New version available."
 msgstr "มีรุ่นใหม่แล้ว"
 
 msgid "No new version available."
 msgstr "ยังไม่มีรุ่นใหม่"
+
+msgid "Unknown action."
+msgstr "การดำเนินการที่ไม่รู้จัก"
 
 msgid "Log saved."
 msgstr ""
@@ -616,6 +614,19 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "บันทึกสภาพแวดล้อมการทำงาน"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+
+msgid "Confirm password saving"
+msgstr "ยึ่นยันการบันทึกรหัสผ่าน"
+
+msgid "Load environment"
+msgstr "โหลดสภาพแวดล้อมการทำงาน"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -694,6 +705,9 @@ msgstr "ตารางที่เลือกเต็ม กรุณาล�
 
 msgid "Table full"
 msgstr "ตารางเต็ม"
+
+msgid "Please wait while all files are processed.."
+msgstr "กรุณารอขณะกำลังประมวณผล"
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -1034,17 +1048,8 @@ msgstr "เลือกทั้งหมด"
 msgid "Save log"
 msgstr "บันทึกปูม"
 
-msgid "Save environment"
-msgstr "บันทึกสภาพแวดล้อมการทำงาน"
-
-msgid "Load environment"
-msgstr "โหลดสภาพแวดล้อมการทำงาน"
-
 msgid "Exit"
 msgstr "ออก"
-
-msgid "Unable to initialize menu bar."
-msgstr "ไม่สามารถเริ่มการทำงานของแถบเมนู"
 
 msgid "started in "
 msgstr "เริ่มใน "
@@ -1269,6 +1274,21 @@ msgstr "โปรดเลือกเอกสาร PDF อย่างน้�
 msgid "Please select two pdf documents."
 msgstr "กรุณาเลือก pdf สองเอกสาร"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "ข้อมูลที่เลือกมีอยู่แล้ว "
 
@@ -1369,6 +1389,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "ตกลง"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "ไม่สามารถเริ่มการทำงานของแถบเมนู"
 
 #~ msgid "Never"
 #~ msgstr "ไม่มีทาง"

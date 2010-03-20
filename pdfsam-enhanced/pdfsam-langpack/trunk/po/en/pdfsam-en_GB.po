@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-02 11:38+0000\n"
 "Last-Translator: Jonathon Fernyhough <j.fernyhough@gmail.com>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
@@ -74,9 +74,6 @@ msgstr "Merge section loaded."
 msgid "Error: "
 msgstr "Error: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Please wait while all files are processed.."
-
 msgid "Found a password for input file."
 msgstr "Found a password for input file."
 
@@ -85,9 +82,6 @@ msgstr "Export as xml"
 
 msgid "Unable to save xml file."
 msgstr "Unable to save xml file."
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr "File xml saved."
@@ -226,6 +220,9 @@ msgstr "Warning"
 
 msgid "Getting bookmarks max depth"
 msgstr "Getting bookmarks max depth"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Frontpage pdf file"
@@ -379,8 +376,11 @@ msgstr "Reverse first document"
 msgid "Reverse second document"
 msgstr "Reverse second document"
 
-msgid "Number of pages to switch document"
-msgstr "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -390,11 +390,14 @@ msgstr ""
 "both)."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Execute pdf alternate mix"
@@ -580,22 +583,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "Please select a pdf document or undelete some page"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Save password information (they will be readable opening the output file)?"
-
-msgid "Confirm password saving"
-msgstr "Confirm password saving"
-
-msgid "Unknown action."
-msgstr "Unknown action."
-
 msgid "New version available."
 msgstr "New version available."
 
 msgid "No new version available."
 msgstr "No new version available."
+
+msgid "Unknown action."
+msgstr "Unknown action."
 
 msgid "Log saved."
 msgstr "Log saved."
@@ -632,6 +627,20 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Save environment"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Save password information (they will be readable opening the output file)?"
+
+msgid "Confirm password saving"
+msgstr "Confirm password saving"
+
+msgid "Load environment"
+msgstr "Load environment"
 
 msgid "Unable to create image for a null input document"
 msgstr "Unable to create image for a null input document"
@@ -710,6 +719,9 @@ msgstr "Selection table is full, please remove some pdf document."
 
 msgid "Table full"
 msgstr "Table full"
+
+msgid "Please wait while all files are processed.."
+msgstr "Please wait while all files are processed.."
 
 msgid "Command validation returned an empty value."
 msgstr "Command validation returned an empty value."
@@ -1053,17 +1065,8 @@ msgstr "Select all"
 msgid "Save log"
 msgstr "Save log"
 
-msgid "Save environment"
-msgstr "Save environment"
-
-msgid "Load environment"
-msgstr "Load environment"
-
 msgid "Exit"
 msgstr "Exit"
-
-msgid "Unable to initialize menu bar."
-msgstr "Unable to initialise menu bar."
 
 msgid "started in "
 msgstr "started in "
@@ -1295,6 +1298,21 @@ msgstr "Please select at least one pdf document."
 msgid "Please select two pdf documents."
 msgstr "Please select two pdf documents."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Selected output file already exists "
 
@@ -1400,6 +1418,22 @@ msgstr "Saving GUI configuration"
 
 msgid "Unable to save user interface status."
 msgstr "Unable to save user interface status."
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Unable to initialise menu bar."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Number of pages to switch document"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
 
 #~ msgid "Error loading "
 #~ msgstr "Error loading "

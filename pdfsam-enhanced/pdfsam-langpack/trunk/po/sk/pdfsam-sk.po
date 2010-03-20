@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: Ankur Purecha <ankurquest21@gmail.com>\n"
 "Language-Team: Lukas Holcek <sk@li.org>\n"
@@ -81,9 +81,6 @@ msgstr "Spojiť nahratú sekciu."
 msgid "Error: "
 msgstr "Chyba: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Prosím čakajte než sa spracujú všetky súbory..."
-
 msgid "Found a password for input file."
 msgstr "Nájdené heslo pre vstupný súbor"
 
@@ -92,9 +89,6 @@ msgstr "Exportovať do xml"
 
 msgid "Unable to save xml file."
 msgstr "Nemôžem uložiť xml súor."
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr "xml súor uložený"
@@ -228,6 +222,9 @@ msgid "Warning"
 msgstr ""
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -381,7 +378,10 @@ msgstr "Obrátiť prvý dokument"
 msgid "Reverse second document"
 msgstr "Obrátiť druhý dokument"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -390,8 +390,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -576,22 +581,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Uložiť informácie o hesle (budú čitateľné pri otváraní výstupného súboru)?"
-
-msgid "Confirm password saving"
-msgstr "Potvrdiť uloženie hesla"
-
-msgid "Unknown action."
-msgstr "Neznáma činnosť."
-
 msgid "New version available."
 msgstr "Nová verzia dostupná."
 
 msgid "No new version available."
 msgstr "Žiadna nová verzia dostupná."
+
+msgid "Unknown action."
+msgstr "Neznáma činnosť."
 
 msgid "Log saved."
 msgstr "Záznam uložený."
@@ -628,6 +625,20 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Uložiť prostredie"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Uložiť informácie o hesle (budú čitateľné pri otváraní výstupného súboru)?"
+
+msgid "Confirm password saving"
+msgstr "Potvrdiť uloženie hesla"
+
+msgid "Load environment"
+msgstr "Nahrať prostredie"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -706,6 +717,9 @@ msgstr "Tabuľka výberu je plná, prosím odstráňte niektorý pdf dokument."
 
 msgid "Table full"
 msgstr "Tabuľka plná"
+
+msgid "Please wait while all files are processed.."
+msgstr "Prosím čakajte než sa spracujú všetky súbory..."
 
 msgid "Command validation returned an empty value."
 msgstr "Overovanie príkazu vrátilo prázdnu hodnotu."
@@ -1046,17 +1060,8 @@ msgstr "Vybrať všetko"
 msgid "Save log"
 msgstr "Uložiť záznam"
 
-msgid "Save environment"
-msgstr "Uložiť prostredie"
-
-msgid "Load environment"
-msgstr "Nahrať prostredie"
-
 msgid "Exit"
 msgstr "Ukončiť"
-
-msgid "Unable to initialize menu bar."
-msgstr "Nemôžem spustiť menu."
 
 msgid "started in "
 msgstr "spustený v "
@@ -1284,6 +1289,21 @@ msgstr ""
 msgid "Please select two pdf documents."
 msgstr "Prosím vyberte dva pdf dokumenty."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1384,6 +1404,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Nemôžem spustiť menu."
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Prosím čakajte počas čítania"

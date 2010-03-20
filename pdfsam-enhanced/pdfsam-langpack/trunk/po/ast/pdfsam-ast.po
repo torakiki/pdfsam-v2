@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-16 12:42+0000\n"
 "Last-Translator: Dangerous Piper <dangerous_piper@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
@@ -78,9 +78,6 @@ msgstr "Sección \"fusión\" cargada"
 msgid "Error: "
 msgstr "Error: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Espera que se procesen tolos ficheros"
-
 msgid "Found a password for input file."
 msgstr "Pon-y una contraseña al archivu de salida"
 
@@ -89,9 +86,6 @@ msgstr "Esportar como xml"
 
 msgid "Unable to save xml file."
 msgstr "Imposible de guardar el ficheru xml"
-
-msgid "Ok"
-msgstr "Aceutar"
 
 msgid "File xml saved."
 msgstr "Ficheru .xml guardáu"
@@ -236,6 +230,9 @@ msgstr "Cuidáu"
 
 msgid "Getting bookmarks max depth"
 msgstr "Fondura máxima de los marcadores"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Portada del ficheru pdf"
@@ -389,8 +386,11 @@ msgstr "Invertir l'orde del primer documentu"
 msgid "Reverse second document"
 msgstr "Invertir l'orde del segundu documentu"
 
-msgid "Number of pages to switch document"
-msgstr "Númberu de páxines a cambiar de documentu"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -400,11 +400,14 @@ msgstr ""
 "documentu (o entrambos)"
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Determinar el númberu de páxines a tresferir d'un documentu a otru (por "
-"defectu: 1)"
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Executar mezcla alterna de pdf"
@@ -592,23 +595,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "Selecciona un documentu pdf o restaura delles páxines"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"¿Guardar les informaciones de contraseñes (van poder lleese de la que "
-"s'abre'l ficheru de salida)?"
-
-msgid "Confirm password saving"
-msgstr "Confirmar el rexistru de la contraseña"
-
-msgid "Unknown action."
-msgstr "Acción desconocida"
-
 msgid "New version available."
 msgstr "Versión nueva disponible"
 
 msgid "No new version available."
 msgstr "Nenguna versión nueva disponible"
+
+msgid "Unknown action."
+msgstr "Acción desconocida"
 
 msgid "Log saved."
 msgstr "rexistru guardáu"
@@ -645,6 +639,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Guardar la configuración"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"¿Guardar les informaciones de contraseñes (van poder lleese de la que "
+"s'abre'l ficheru de salida)?"
+
+msgid "Confirm password saving"
+msgstr "Confirmar el rexistru de la contraseña"
+
+msgid "Load environment"
+msgstr "Cargar una configuración"
 
 msgid "Unable to create image for a null input document"
 msgstr "Creación d'imaxe imposible a partir d'un documentu vacíu"
@@ -725,6 +734,9 @@ msgstr ""
 
 msgid "Table full"
 msgstr "Tabala enllena"
+
+msgid "Please wait while all files are processed.."
+msgstr "Espera que se procesen tolos ficheros"
 
 msgid "Command validation returned an empty value."
 msgstr "La validación de comandu devolvió un valor nulu"
@@ -1072,17 +1084,8 @@ msgstr "Seleccionalo too"
 msgid "Save log"
 msgstr "Guardar rexistru"
 
-msgid "Save environment"
-msgstr "Guardar la configuración"
-
-msgid "Load environment"
-msgstr "Cargar una configuración"
-
 msgid "Exit"
 msgstr "Colar"
-
-msgid "Unable to initialize menu bar."
-msgstr "Imposible iniciar la barra de menú"
 
 msgid "started in "
 msgstr "entamáu en "
@@ -1315,6 +1318,21 @@ msgstr "Selecciona un documentu pdf polo menos"
 msgid "Please select two pdf documents."
 msgstr "Selecciona dos documentos pdf"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "el ficheru a crear yá esiste "
 
@@ -1427,3 +1445,19 @@ msgstr "Atroxando la configuración de la Interfaz Gráfica d'Usuariu"
 
 msgid "Unable to save user interface status."
 msgstr "Nun se puede atroxar l'estáu de la interfaz d'usuariu."
+
+#~ msgid "Ok"
+#~ msgstr "Aceutar"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Imposible iniciar la barra de menú"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Númberu de páxines a cambiar de documentu"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Determinar el númberu de páxines a tresferir d'un documentu a otru (por "
+#~ "defectu: 1)"

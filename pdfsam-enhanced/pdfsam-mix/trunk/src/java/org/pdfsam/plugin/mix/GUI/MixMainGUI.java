@@ -23,9 +23,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -37,11 +36,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.pdfsam.console.business.dto.commands.MixParsedCommand;
 import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
+import org.pdfsam.guiclient.commons.business.actions.SetOutputPathSelectionTableAction;
 import org.pdfsam.guiclient.commons.business.listeners.CompressCheckBoxItemListener;
 import org.pdfsam.guiclient.commons.components.CommonComponentsFactory;
 import org.pdfsam.guiclient.commons.components.JPdfVersionCombo;
@@ -66,7 +67,7 @@ import org.pdfsam.plugin.mix.listeners.RunButtonActionListener;
  * @see org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel
  * @see javax.swing.JPanel
  */
-public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeListener {
+public class MixMainGUI extends AbstractPlugablePanel {
 
     private static final long serialVersionUID = -4353488705164373490L;
 
@@ -234,7 +235,8 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
         c.insets = new Insets(0, 0, 10, 0);
         add(topPanel, c);
 
-        selectionPanel.addPropertyChangeListener(this);
+        selectionPanel.addPopupMenuAction(new SetOutputPathSelectionTableAction(selectionPanel, destinationTextField,
+                DEFAULT_OUPUT_NAME));
 
         // DESTINATION_PANEL
         destinationPanelLayout = new SpringLayout();
@@ -626,21 +628,6 @@ public class MixMainGUI extends AbstractPlugablePanel implements PropertyChangeL
         public Component getFirstComponent(Container CycleRootComp) {
             return selectionPanel.getAddFileButton();
         }
-    }
-
-    /**
-     * The menu item to set the output path has been clicked
-     */
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (JPdfSelectionPanel.OUTPUT_PATH_PROPERTY.equals(evt.getPropertyName())) {
-            String newVal = (String) evt.getNewValue();
-            if (newVal.endsWith(File.separator)) {
-                destinationTextField.setText(newVal + DEFAULT_OUPUT_NAME);
-            } else {
-                destinationTextField.setText(newVal + File.separator + DEFAULT_OUPUT_NAME);
-            }
-        }
-
     }
 
     public void resetPanel() {

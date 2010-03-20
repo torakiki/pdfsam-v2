@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-04 20:26+0000\n"
 "Last-Translator: Joergenr <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -77,9 +77,6 @@ msgstr "Flettesektion indlæst."
 msgid "Error: "
 msgstr "Fejl: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Vent venligst mens der arbejdes på alle filer.."
-
 msgid "Found a password for input file."
 msgstr "Fandt en adgangskode til inputfil."
 
@@ -88,9 +85,6 @@ msgstr "Eksporter som xml"
 
 msgid "Unable to save xml file."
 msgstr "Kunne ikke gemme xml fil."
-
-msgid "Ok"
-msgstr "OK"
 
 msgid "File xml saved."
 msgstr "Xml fil gemt."
@@ -227,6 +221,9 @@ msgid "Warning"
 msgstr "Advarsel"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -382,8 +379,11 @@ msgstr "Første dokument bagfra"
 msgid "Reverse second document"
 msgstr "Andet dokument bagfra"
 
-msgid "Number of pages to switch document"
-msgstr "Antal sider efter hvilket der skiftes dokument"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -393,11 +393,14 @@ msgstr ""
 "(eller begge)."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Sæt antallet af sider efter hvilket der skiftes fra et dokument til det "
-"andet (standard er 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Udfør alternativ pdf-mix"
@@ -584,23 +587,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "Vælg venligst et pdf-dokument eller fortryd sletningen af nogle sider"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Gem adgangskodeinformation (de vil være læselige ved åbning af den endelige "
-"fil)?"
-
-msgid "Confirm password saving"
-msgstr "Bekræft lagring af kodeord"
-
-msgid "Unknown action."
-msgstr "Ukendt handling."
-
 msgid "New version available."
 msgstr "Ny version tilgængelig."
 
 msgid "No new version available."
 msgstr "Der er Ingen ny version tilgængelig."
+
+msgid "Unknown action."
+msgstr "Ukendt handling."
 
 msgid "Log saved."
 msgstr "Log gemt."
@@ -637,6 +631,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Gem indstillinger"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Gem adgangskodeinformation (de vil være læselige ved åbning af den endelige "
+"fil)?"
+
+msgid "Confirm password saving"
+msgstr "Bekræft lagring af kodeord"
+
+msgid "Load environment"
+msgstr "Indlæs miljø"
 
 msgid "Unable to create image for a null input document"
 msgstr "Kan ikke danne billede for et ikke valgt dokument"
@@ -715,6 +724,9 @@ msgstr "Udvalgstabel er fuld. Fjern venligst nogle pdf-dokumenter."
 
 msgid "Table full"
 msgstr "Fuld tabel"
+
+msgid "Please wait while all files are processed.."
+msgstr "Vent venligst mens der arbejdes på alle filer.."
 
 msgid "Command validation returned an empty value."
 msgstr ""
@@ -1057,17 +1069,8 @@ msgstr "Marker alt"
 msgid "Save log"
 msgstr "Gem log"
 
-msgid "Save environment"
-msgstr "Gem indstillinger"
-
-msgid "Load environment"
-msgstr "Indlæs miljø"
-
 msgid "Exit"
 msgstr "Afslut programmet"
-
-msgid "Unable to initialize menu bar."
-msgstr "Ikke i stand til at initialisere menulinjen."
 
 msgid "started in "
 msgstr "Startet på "
@@ -1298,6 +1301,21 @@ msgstr "Vælg mindst et pdf-dokument"
 msgid "Please select two pdf documents."
 msgstr "Vælg venligst to pdf-dokumenter."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Den valgte outputfil findes allerede "
 
@@ -1402,6 +1420,22 @@ msgstr "Gemmer GUI-indstillinger"
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Ikke i stand til at initialisere menulinjen."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Antal sider efter hvilket der skiftes dokument"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Sæt antallet af sider efter hvilket der skiftes fra et dokument til det "
+#~ "andet (standard er 1)."
 
 #~ msgid "Check for updates:"
 #~ msgstr "Søg efter opdateringer:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-10-24 23:58+0000\n"
 "Last-Translator: Josep Sànchez <josep.sanchez@ubuntu.cat>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -79,9 +79,6 @@ msgstr "Combina la secció carregada."
 msgid "Error: "
 msgstr "S'ha produït un error: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Espereu mentre es processen tots els fitxers."
-
 msgid "Found a password for input file."
 msgstr "S'ha trobat una contrasenya pel fitxer d'entrada."
 
@@ -90,9 +87,6 @@ msgstr "Exporta com a xml"
 
 msgid "Unable to save xml file."
 msgstr "No s'ha pogut desar el fitxer xml."
-
-msgid "Ok"
-msgstr "D'acord"
 
 msgid "File xml saved."
 msgstr "S'ha desat el fitxer xml."
@@ -236,6 +230,9 @@ msgstr "Advertència"
 
 msgid "Getting bookmarks max depth"
 msgstr "Màxima profunditat dels marcadors"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Fitxer pdf per la portada"
@@ -388,8 +385,11 @@ msgstr "Inverteix el primer document"
 msgid "Reverse second document"
 msgstr "Inverteix el segon document"
 
-msgid "Number of pages to switch document"
-msgstr "Nombre de pàgines per a intercanviar al document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -398,11 +398,14 @@ msgstr ""
 "Marqueu les caixes si voleu invertir el primer o segon document (o ambdós)."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Estableix el nombre de pàgines a intercanviar d'un document a un altre (per "
-"defecte és 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Efectua barreja alterna de pdf"
@@ -588,23 +591,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "Seleccioneu un document pdf o desfeu la supressió d'algunes pàgines"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Desa informació de contrassenyes (seran llegibles en obrir el fitxer de "
-"sortida)?"
-
-msgid "Confirm password saving"
-msgstr "Confirmeu el desat de contrassenyes"
-
-msgid "Unknown action."
-msgstr "Acció desconeguda."
-
 msgid "New version available."
 msgstr "Disponible nova versió."
 
 msgid "No new version available."
 msgstr "No hi ha disponibles noves versions."
+
+msgid "Unknown action."
+msgstr "Acció desconeguda."
 
 msgid "Log saved."
 msgstr "S'ha desat el registre."
@@ -641,6 +635,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Desa l'entorn"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Desa informació de contrassenyes (seran llegibles en obrir el fitxer de "
+"sortida)?"
+
+msgid "Confirm password saving"
+msgstr "Confirmeu el desat de contrassenyes"
+
+msgid "Load environment"
+msgstr "Carrega l'entorn"
 
 msgid "Unable to create image for a null input document"
 msgstr "No s'ha pogut crear la imatge d'un document orígen nul"
@@ -719,6 +728,9 @@ msgstr "La taula de selecció és plena, si us plau, esborreu algun document pdf
 
 msgid "Table full"
 msgstr "Taula plena"
+
+msgid "Please wait while all files are processed.."
+msgstr "Espereu mentre es processen tots els fitxers."
 
 msgid "Command validation returned an empty value."
 msgstr "L'ordre de validació ha tornat un valor nul."
@@ -1063,17 +1075,8 @@ msgstr "Selecciona-ho tot"
 msgid "Save log"
 msgstr "Desa el registre"
 
-msgid "Save environment"
-msgstr "Desa l'entorn"
-
-msgid "Load environment"
-msgstr "Carrega l'entorn"
-
 msgid "Exit"
 msgstr "Surt"
-
-msgid "Unable to initialize menu bar."
-msgstr "No s'ha pogut inicialitzar la barra de menú."
 
 msgid "started in "
 msgstr "iniciat a "
@@ -1306,6 +1309,21 @@ msgstr "Seleccioneu, com a mínim, un document pdf"
 msgid "Please select two pdf documents."
 msgstr "Si us  plau, seleccioneu dos documents pdf"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "El fitxer destí seleccionat ja existeix "
 
@@ -1423,6 +1441,22 @@ msgstr "S'està desant la configuració de l'IGU"
 
 msgid "Unable to save user interface status."
 msgstr "No s'ha pogut desar l'estat de l'interfície d'usuari"
+
+#~ msgid "Ok"
+#~ msgstr "D'acord"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "No s'ha pogut inicialitzar la barra de menú."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Nombre de pàgines per a intercanviar al document"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Estableix el nombre de pàgines a intercanviar d'un document a un altre "
+#~ "(per defecte és 1)."
 
 #~ msgid "Error loading "
 #~ msgstr "S'ha produït un error en carregar "

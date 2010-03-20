@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-03-10 13:27+0000\n"
 "Last-Translator: Mitko K. <heyho@mailinator.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -77,9 +77,6 @@ msgstr "Секцията за сливане заредена"
 msgid "Error: "
 msgstr "Грешка: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Моля почакайте, докато се обработват файловете"
-
 msgid "Found a password for input file."
 msgstr "Има парола на входния файл"
 
@@ -88,9 +85,6 @@ msgstr "Експортирай като XML"
 
 msgid "Unable to save xml file."
 msgstr "В невъзможност да се запази XML файла"
-
-msgid "Ok"
-msgstr "ОК"
 
 msgid "File xml saved."
 msgstr "XML файла запазен"
@@ -224,6 +218,9 @@ msgid "Warning"
 msgstr "Предупреждение"
 
 msgid "Getting bookmarks max depth"
+msgstr ""
+
+msgid "Unable to retrieve bookmarks maximum depth."
 msgstr ""
 
 msgid "Frontpage pdf file"
@@ -378,7 +375,10 @@ msgstr "Обърни първия документ"
 msgid "Reverse second document"
 msgstr "Обърни втория документ"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -387,8 +387,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -573,23 +578,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Запомни информацията за паролите (Ще бъдат читаеми при отваряне на изходния "
-"файл)?"
-
-msgid "Confirm password saving"
-msgstr "Потвърди записа на паролата"
-
-msgid "Unknown action."
-msgstr "Незнайно действие."
-
 msgid "New version available."
 msgstr "Нова версия на разположение"
 
 msgid "No new version available."
 msgstr "Няма нова версия"
+
+msgid "Unknown action."
+msgstr "Незнайно действие."
 
 msgid "Log saved."
 msgstr "Логът запазен"
@@ -626,6 +622,21 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Запази средата"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Запомни информацията за паролите (Ще бъдат читаеми при отваряне на изходния "
+"файл)?"
+
+msgid "Confirm password saving"
+msgstr "Потвърди записа на паролата"
+
+msgid "Load environment"
+msgstr "Зареди средата"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -704,6 +715,9 @@ msgstr "Таблицата за избор пълна, моля, махнете 
 
 msgid "Table full"
 msgstr "Таблицата е пълна"
+
+msgid "Please wait while all files are processed.."
+msgstr "Моля почакайте, докато се обработват файловете"
 
 msgid "Command validation returned an empty value."
 msgstr "Командното потвърждение върна празна стойност."
@@ -1044,17 +1058,8 @@ msgstr "Избери всички"
 msgid "Save log"
 msgstr "Запазване на лога"
 
-msgid "Save environment"
-msgstr "Запази средата"
-
-msgid "Load environment"
-msgstr "Зареди средата"
-
 msgid "Exit"
 msgstr "Изход"
-
-msgid "Unable to initialize menu bar."
-msgstr "Не мога да инициализирам лентата на менюто"
 
 msgid "started in "
 msgstr "Стартиран в "
@@ -1284,6 +1289,21 @@ msgstr "Моля изберете поне един PDF документ"
 msgid "Please select two pdf documents."
 msgstr "Моля изберете два PDF документа"
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1385,6 +1405,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "ОК"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Не мога да инициализирам лентата на менюто"
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Моля почакайте докато прочитам"

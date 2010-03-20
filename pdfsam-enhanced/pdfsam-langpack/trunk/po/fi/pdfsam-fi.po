@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-03-10 13:28+0000\n"
 "Last-Translator: Teppo Koivula <teppo@piikkilanka.com>\n"
 "Language-Team: Finnish\n"
@@ -128,19 +128,6 @@ msgstr "Yhdistämisosa ladattu."
 msgid "Error: "
 msgstr "Virhe: "
 
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
-# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
-# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
-# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
-# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
-msgid "Please wait while all files are processed.."
-msgstr "Ole hyvä ja odota kunnes kaikki tiedostot on käsitelty."
-
 msgid "Found a password for input file."
 msgstr "Syöttötiedosto on suojattu salasanalla."
 
@@ -149,9 +136,6 @@ msgstr ""
 
 msgid "Unable to save xml file."
 msgstr ""
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr ""
@@ -352,6 +336,9 @@ msgstr ""
 msgid "Getting bookmarks max depth"
 msgstr ""
 
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
+
 msgid "Frontpage pdf file"
 msgstr ""
 
@@ -525,7 +512,10 @@ msgstr "Vaihda ensimmäisen dokumentin järjestys päinvastaiseksi"
 msgid "Reverse second document"
 msgstr "Vaihda toisen dokumentin järjestys päinvastaiseksi"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -534,8 +524,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
@@ -722,23 +717,15 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Tallennetaanko salasanojen tiedot (luettavissa tulostustiedostoa avattaessa)?"
-
-msgid "Confirm password saving"
-msgstr "Vahvista salasanan tallentaminen"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
-msgid "Unknown action."
-msgstr "Tuntematon toiminto."
-
 msgid "New version available."
 msgstr "Uusi versio saatavilla."
 
 msgid "No new version available."
 msgstr "Ei uusia versioita saatavilla."
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
+msgid "Unknown action."
+msgstr "Tuntematon toiminto."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
 msgid "Log saved."
@@ -777,6 +764,24 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
+msgid "Save environment"
+msgstr "Tallenna ympäristö"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Tallennetaanko salasanojen tiedot (luettavissa tulostustiedostoa avattaessa)?"
+
+msgid "Confirm password saving"
+msgstr "Vahvista salasanan tallentaminen"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
+msgid "Load environment"
+msgstr "Lataa ympäristö"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -856,6 +861,19 @@ msgstr "Valintataulu on täynnä, poista joitakin PDF-dokumentteja."
 
 msgid "Table full"
 msgstr "Taulu on täynnä"
+
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:469
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:408
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:451
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:509
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:511
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:350
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:455
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:514
+# F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:516
+# F:\workspace_pdfsam_basic\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:346
+msgid "Please wait while all files are processed.."
+msgstr "Ole hyvä ja odota kunnes kaikki tiedostot on käsitelty."
 
 msgid "Command validation returned an empty value."
 msgstr "Komennon vahvistaminen palautti tyhjän arvon."
@@ -1289,24 +1307,11 @@ msgstr "Valitse kaikki"
 msgid "Save log"
 msgstr "Tallenna loki"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-msgid "Save environment"
-msgstr "Tallenna ympäristö"
-
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-msgid "Load environment"
-msgstr "Lataa ympäristö"
-
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:125
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:237
 msgid "Exit"
 msgstr "Poistu"
-
-msgid "Unable to initialize menu bar."
-msgstr "Valikkopalkin alustaminen epäonnistui"
 
 msgid "started in "
 msgstr "Aloitettu "
@@ -1576,6 +1581,21 @@ msgstr ""
 msgid "Please select two pdf documents."
 msgstr "Valitse kaksi pdf-dokumenttia."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr ""
 
@@ -1676,6 +1696,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Valikkopalkin alustaminen epäonnistui"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869

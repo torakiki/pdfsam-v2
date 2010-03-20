@@ -1,6 +1,6 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/listeners/RunButtonActionListener.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/components/JSaveListAsXmlMenuItem.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/actions/SaveListAsXmlAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/GUI/SplitMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/listeners/RunButtonActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-split/src/java/org/pdfsam/plugin/split/components/JSplitRadioButton.java
@@ -28,7 +28,6 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-rotate/src/java/org/pdfsam/plugin/rotate/listeners/RunButtonActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-vpagereorder/src/java/org/pdfsam/plugin/vpagereorder/GUI/VPageReorderMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-vpagereorder/src/java/org/pdfsam/plugin/vpagereorder/listeners/RunButtonActionListener.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/EnvironmentMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/TreeMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/mediators/UpdateCheckerMediator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/listeners/EnterDoClickListener.java
@@ -40,6 +39,8 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/ZoomInImageAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/ZoomOutImageAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/ZoomResetImageAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/SaveEnvironmentAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/LoadEnvironmentAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/ClosableTabbedPanelAdder.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/AbstractThumbnailCreator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/JPodThumbnailCreator.java
@@ -54,9 +55,16 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/loaders/PdfLoader.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/WorkExecutor.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/WorkThread.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/AddSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/ClearSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/DocumentPropertiesSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/MoveDownSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/MoveUpSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/ReloadDocumentSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/RemoveSelectionTableAction.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/actions/SetOutputPathSelectionTableAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/listeners/CleanClosedTabbedPanelListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/listeners/CloseableTabbedPaneListener.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/listeners/PdfSelectionTableActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/listeners/VersionFilterCheckBoxItemListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/listeners/CompressCheckBoxItemListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/listeners/VisualPdfSelectionActionListener.java

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-12-15 20:49+0000\n"
 "Last-Translator: Heder Dorneles <heder.to@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,9 +109,6 @@ msgstr "Mesclar seção carregada."
 msgid "Error: "
 msgstr "Erro: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Por favor aguarde enquanto todos arquivos são processados.."
-
 msgid "Found a password for input file."
 msgstr "Foi encontrado uma senha para o arquivo de entrada."
 
@@ -120,9 +117,6 @@ msgstr "Exportar como xml"
 
 msgid "Unable to save xml file."
 msgstr "Incapaz de salvar como xml."
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr "Arquivo xml salvo."
@@ -267,6 +261,9 @@ msgstr "Aviso"
 
 msgid "Getting bookmarks max depth"
 msgstr "Recuperando nível máximo de marcadores"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Arquivo pdf de capa"
@@ -445,7 +442,10 @@ msgstr "Inverter primeiro documento"
 msgid "Reverse second document"
 msgstr "Inverter segundo documento"
 
-msgid "Number of pages to switch document"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
 msgstr ""
 
 msgid ""
@@ -455,8 +455,13 @@ msgstr ""
 "Marque as caixas se quiser reverter o primeiro documento, o segundo ou ambos."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
 msgstr ""
 
 msgid "Execute pdf alternate mix"
@@ -645,24 +650,16 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr "Por favor, selecione um documento pdf ou recupere alguma página"
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Salvar informações de senha (eles serão lidos ao abrir o arquivo de saída)?"
-
-msgid "Confirm password saving"
-msgstr "Confirmar senha"
-
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:231
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
-msgid "Unknown action."
-msgstr "Ação desconhecida."
-
 msgid "New version available."
 msgstr "Nova versão disponível."
 
 msgid "No new version available."
 msgstr "Nenhuma nova versão disponível."
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:231
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:233
+msgid "Unknown action."
+msgstr "Ação desconhecida."
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:251
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:253
@@ -701,6 +698,28 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
+msgid "Save environment"
+msgstr "Salvar ambiente"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Salvar informações de senha (eles serão lidos ao abrir o arquivo de saída)?"
+
+msgid "Confirm password saving"
+msgstr "Confirmar senha"
+
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
+msgid "Load environment"
+msgstr "Carregar ambiente"
 
 msgid "Unable to create image for a null input document"
 msgstr "Não é possível criar imagem para um arquivo de entrada nulo"
@@ -782,6 +801,9 @@ msgstr "Tabela de seleção está cheio, por favor, remova algum documento pdf."
 
 msgid "Table full"
 msgstr "Tabela cheia"
+
+msgid "Please wait while all files are processed.."
+msgstr "Por favor aguarde enquanto todos arquivos são processados.."
 
 msgid "Command validation returned an empty value."
 msgstr "Validação de comando retornou um valor vazio."
@@ -1163,25 +1185,8 @@ msgstr "Selecionar tudo"
 msgid "Save log"
 msgstr "Salvar log"
 
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
-msgid "Save environment"
-msgstr "Salvar ambiente"
-
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
-msgid "Load environment"
-msgstr "Carregar ambiente"
-
 msgid "Exit"
 msgstr "Sair"
-
-msgid "Unable to initialize menu bar."
-msgstr "Não foi possível inicializar a barra de menu."
 
 msgid "started in "
 msgstr "iniciado em "
@@ -1435,6 +1440,21 @@ msgstr "Por favor selecione ao menos um documento PDF"
 msgid "Please select two pdf documents."
 msgstr "Por favor, selecione dois documentos pdf."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Arquivo de saída já existente "
 
@@ -1550,6 +1570,12 @@ msgstr "Salvando configurações da GUI"
 
 msgid "Unable to save user interface status."
 msgstr "Não foi possível salvar estado da interface do usuário."
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Não foi possível inicializar a barra de menu."
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Por favor, aguarde a leitura"

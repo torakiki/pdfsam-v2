@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-14 17:23+0100\n"
+"POT-Creation-Date: 2010-03-14 19:32+0100\n"
 "PO-Revision-Date: 2009-10-03 18:58+0000\n"
 "Last-Translator: Maiko Mõtsar <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -77,9 +77,6 @@ msgstr "Ühendamise sektsioon laetud."
 msgid "Error: "
 msgstr "Viga: "
 
-msgid "Please wait while all files are processed.."
-msgstr "Palun oota kuna kõik failid on töödeldud.."
-
 msgid "Found a password for input file."
 msgstr "Sisendfaililt leitud salasõna."
 
@@ -88,9 +85,6 @@ msgstr "Ekspordi kui xml"
 
 msgid "Unable to save xml file."
 msgstr "Võimetu salvestama xml faili."
-
-msgid "Ok"
-msgstr "Ok"
 
 msgid "File xml saved."
 msgstr "Xml fail salvestatud."
@@ -232,6 +226,9 @@ msgstr "Hoiatus"
 
 msgid "Getting bookmarks max depth"
 msgstr "Järjehoidjate max sügavuse hankimine"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr ""
 
 msgid "Frontpage pdf file"
 msgstr "Esilehe pdf fail"
@@ -386,8 +383,11 @@ msgstr "Pööra ümber esimene dokumendi järjekord"
 msgid "Reverse second document"
 msgstr "Pööra ümber teise dokumendi järjekord"
 
-msgid "Number of pages to switch document"
-msgstr "Lehekülgede arv, mille järel dokumenti vahetada"
+msgid "Number of pages to switch from the first document to the other"
+msgstr ""
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr ""
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -397,11 +397,14 @@ msgstr ""
 "lehekülgede järjestus ümber pööratakse."
 
 msgid ""
-"Set the number of pages to switch from a document to the other one (default "
-"is 1)."
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
 msgstr ""
-"Sätib lehekülgede arvu, mille järel vahetatakse järgmisele dokumendile "
-"(vaikimisi 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
 
 msgid "Execute pdf alternate mix"
 msgstr "Teosta pdf-i alternatiivne segamine"
@@ -585,22 +588,14 @@ msgstr ""
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
 
-msgid ""
-"Save passwords informations (they will be readable opening the output file)?"
-msgstr ""
-"Salvestada paroolide informatsioon (need on väljundfaili avamisel loetavad)?"
-
-msgid "Confirm password saving"
-msgstr "Kinnita parooli salvestus"
-
-msgid "Unknown action."
-msgstr "Tundmatu tegevus."
-
 msgid "New version available."
 msgstr "Uus versioon saadaval."
 
 msgid "No new version available."
 msgstr "Uut versiooni ei ole saadaval."
+
+msgid "Unknown action."
+msgstr "Tundmatu tegevus."
 
 msgid "Log saved."
 msgstr "Logi salvestatud"
@@ -637,6 +632,20 @@ msgstr ""
 
 msgid "No zoom applied"
 msgstr ""
+
+msgid "Save environment"
+msgstr "Salvesta keskkond"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Salvestada paroolide informatsioon (need on väljundfaili avamisel loetavad)?"
+
+msgid "Confirm password saving"
+msgstr "Kinnita parooli salvestus"
+
+msgid "Load environment"
+msgstr "Lae keskkond"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -715,6 +724,9 @@ msgstr "Valikutabel on täis, palun eemalda mõni pdf dokument."
 
 msgid "Table full"
 msgstr "Tabel täis"
+
+msgid "Please wait while all files are processed.."
+msgstr "Palun oota kuna kõik failid on töödeldud.."
 
 msgid "Command validation returned an empty value."
 msgstr "Käsu valideerimine tagastas tühja väärtuse."
@@ -1057,17 +1069,8 @@ msgstr "Vali kõik"
 msgid "Save log"
 msgstr "Salvesta logi"
 
-msgid "Save environment"
-msgstr "Salvesta keskkond"
-
-msgid "Load environment"
-msgstr "Lae keskkond"
-
 msgid "Exit"
 msgstr "Välju"
-
-msgid "Unable to initialize menu bar."
-msgstr "Menüüriba initsialiseerimine ebaõnnestus."
 
 msgid "started in "
 msgstr "käivitatud "
@@ -1298,6 +1301,21 @@ msgstr "Palun vali vähemalt üks pdf dokument."
 msgid "Please select two pdf documents."
 msgstr "Palun vali kaks pdf dokumenti."
 
+msgid "Please wait while all files are processed."
+msgstr ""
+
+msgid "Still adding files"
+msgstr ""
+
+msgid "Please select a destination file."
+msgstr ""
+
+msgid "Please select a destination directory."
+msgstr ""
+
+msgid "No destination selected"
+msgstr ""
+
 msgid "Selected output file already exists "
 msgstr "Valitud väljundfail juba eksisteerib "
 
@@ -1402,3 +1420,19 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Menüüriba initsialiseerimine ebaõnnestus."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Lehekülgede arv, mille järel dokumenti vahetada"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Sätib lehekülgede arvu, mille järel vahetatakse järgmisele dokumendile "
+#~ "(vaikimisi 1)."
