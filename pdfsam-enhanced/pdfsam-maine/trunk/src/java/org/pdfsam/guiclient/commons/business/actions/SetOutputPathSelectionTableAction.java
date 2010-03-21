@@ -70,9 +70,8 @@ public class SetOutputPathSelectionTableAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JPdfSelectionTable mainTable = selectionPanel.getMainTable();
-		int selectedRow = mainTable.getSelectedRow();
-		if (selectedRow != -1) {
-			PdfSelectionTableItem item = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(selectedRow);
+		if (mainTable.getSelectedRowCount() == 1) {
+			PdfSelectionTableItem item = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow());
 			if (item != null) {
 				String defaultOutputPath = item.getInputFile().getParent();
 				if (!defaultOutputPath.endsWith(File.separator)) {

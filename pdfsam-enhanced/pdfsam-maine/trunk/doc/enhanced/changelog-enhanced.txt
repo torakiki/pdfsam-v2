@@ -12,7 +12,9 @@
 -Fixed bug #2930136 improved performances of bookmarks handling while splitting
 -Fixed bug #2969880 cleanAll ant target
 -Fixed bug #2949383 Uniformed behaviour when destination text field is empty and run button is clicked
--Fixed bug #2972752 Direction combo is mapped on a wrong option of the pdfsam console.
+-SetViewer: Fixed bug #2972752 Direction combo is mapped on a wrong option of the pdfsam console.
+-Added key bindings to all the action in the selection table
+
 
 2.1.0e (20-Dec-2009) (pdfsam-console 2.2.0e)
 ===================================

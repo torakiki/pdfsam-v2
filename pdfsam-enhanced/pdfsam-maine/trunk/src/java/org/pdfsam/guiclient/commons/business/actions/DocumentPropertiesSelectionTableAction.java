@@ -57,9 +57,8 @@ public class DocumentPropertiesSelectionTableAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int selectedRow = mainTable.getSelectedRow();
-		if (selectedRow != -1) {
-			PdfSelectionTableItem row = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(selectedRow);
+		if (mainTable.getSelectedRowCount() == 1) {
+			PdfSelectionTableItem row = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(mainTable.getSelectedRow());
 			JDocumentPropertiesFrame.getInstance().showProperties(row);
 			JDocumentPropertiesFrame.getInstance().requestFocus();
 		}

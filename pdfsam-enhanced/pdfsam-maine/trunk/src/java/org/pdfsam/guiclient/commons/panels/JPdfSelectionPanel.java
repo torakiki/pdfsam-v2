@@ -21,8 +21,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.dnd.DropTarget;
+import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -36,13 +38,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.Logger;
-import org.pdfsam.guiclient.business.listeners.EnterDoClickListener;
 import org.pdfsam.guiclient.commons.business.actions.AddSelectionTableAction;
 import org.pdfsam.guiclient.commons.business.actions.ClearSelectionTableAction;
 import org.pdfsam.guiclient.commons.business.actions.DocumentPropertiesSelectionTableAction;
@@ -127,17 +129,6 @@ public class JPdfSelectionPanel extends JPanel {
 	private final JButton clearButton = new JButton();
 
 	private boolean setOutputPathMenuItemEnabled = false;
-
-	// keylisteners
-	private final EnterDoClickListener addEnterKeyListener = new EnterDoClickListener(addFileButton);
-
-	private final EnterDoClickListener removeEnterKeyListener = new EnterDoClickListener(removeFileButton);
-
-	private final EnterDoClickListener moveuEnterKeyListener = new EnterDoClickListener(moveUpButton);
-
-	private final EnterDoClickListener movedEnterKeyListener = new EnterDoClickListener(moveDownButton);
-
-	private final EnterDoClickListener clearEnterKeyListener = new EnterDoClickListener(clearButton);
 
 	/**
 	 * default constructor shows every button and permits an unlimited number of
@@ -275,22 +266,17 @@ public class JPdfSelectionPanel extends JPanel {
 
 		initAddButton();
 
-		popupMenu.add(new JMenuItem(new ReloadDocumentSelectionTableAction(mainTable, loader)));
-		popupMenu.add(new JMenuItem(new DocumentPropertiesSelectionTableAction(mainTable)));
+		ReloadDocumentSelectionTableAction reloadAction = new ReloadDocumentSelectionTableAction(mainTable, loader);
+		popupMenu.add(new JMenuItem(reloadAction));
+		addToMainTableKeyBindings(reloadAction);
+		DocumentPropertiesSelectionTableAction documentPropertiesAction = new DocumentPropertiesSelectionTableAction(mainTable);
+		popupMenu.add(new JMenuItem(documentPropertiesAction));
+		addToMainTableKeyBindings(documentPropertiesAction);
 
 		if (showEveryButton) {
+			initRemoveButton();
 			initMoveUpButton();
 			initMoveDownButton();
-			initRemoveButton();
-			// key listener
-			/*
-			 * mainTable.addKeyListener(new KeyAdapter() { public void
-			 * keyPressed(KeyEvent e) { if ((e.isAltDown()) && (e.getKeyCode()
-			 * == KeyEvent.VK_UP)) { moveUpButton.doClick(); } else if
-			 * ((e.isAltDown()) && (e.getKeyCode() == KeyEvent.VK_DOWN)) {
-			 * moveDownButton.doClick(); } else if ((e.getKeyCode() ==
-			 * KeyEvent.VK_DELETE)) { removeFileButton.doClick(); } } });
-			 */
 		} else {
 			if (showRemoveButton) {
 				initRemoveButton();
@@ -299,16 +285,6 @@ public class JPdfSelectionPanel extends JPanel {
 				initMoveUpButton();
 				initMoveDownButton();
 			}
-			// key listener
-			/*
-			 * mainTable.addKeyListener(new KeyAdapter() { public void
-			 * keyPressed(KeyEvent e) { if ((e.getKeyCode() ==
-			 * KeyEvent.VK_DELETE)) { removeFileButton.doClick(); } else if
-			 * (showMoveButtons) { if ((e.isAltDown()) && (e.getKeyCode() ==
-			 * KeyEvent.VK_UP)) { moveUpButton.doClick(); } else if
-			 * ((e.isAltDown()) && (e.getKeyCode() == KeyEvent.VK_DOWN)) {
-			 * moveDownButton.doClick(); } } } });
-			 */
 		}
 
 		initClearButton();
@@ -445,8 +421,22 @@ public class JPdfSelectionPanel extends JPanel {
 		button.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button.setMinimumSize(new Dimension(120, 25));
 		button.setMaximumSize(new Dimension(160, 25));
+		addEnterKeyBinding(button);
 		buttonPanel.add(button);
 		buttonPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+	}
+
+	/**
+	 * binds the enter key to the action when the button has focus
+	 * 
+	 * @param button
+	 */
+	private void addEnterKeyBinding(JButton button) {
+		Action action = button.getAction();
+		if (action != null) {
+			button.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), action.getValue(Action.NAME));
+			button.getActionMap().put(action.getValue(Action.NAME), action);
+		}
 	}
 
 	/**
@@ -457,14 +447,30 @@ public class JPdfSelectionPanel extends JPanel {
 	}
 
 	/**
+	 * binds the accelerator key of the action to the main table
+	 * 
+	 * @param action
+	 */
+	private void addToMainTableKeyBindings(Action action) {
+		if (action != null) {
+			Object keyStroke = action.getValue(Action.ACCELERATOR_KEY);
+			if (keyStroke != null) {
+				KeyStroke stroke = (KeyStroke) keyStroke;
+				mainTable.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(stroke, action.getValue(Action.NAME));
+				mainTable.getActionMap().put(action.getValue(Action.NAME), action);
+			}
+		}
+	}
+
+	/**
 	 * initialize the remove button
 	 */
 	private void initRemoveButton() {
 		// remove button
 		RemoveSelectionTableAction removeAction = new RemoveSelectionTableAction(mainTable);
 		removeFileButton.setAction(removeAction);
-		removeFileButton.addKeyListener(removeEnterKeyListener);
 		addButtonToButtonPanel(removeFileButton);
+		addToMainTableKeyBindings(removeAction);
 		popupMenu.add(new JMenuItem(removeAction));
 	}
 
@@ -475,8 +481,9 @@ public class JPdfSelectionPanel extends JPanel {
 		// add button
 		AddSelectionTableAction addAction = new AddSelectionTableAction(loader, (maxSelectableFiles == 1));
 		addFileButton.setAction(addAction);
-		addFileButton.addKeyListener(addEnterKeyListener);
 		addButtonToButtonPanel(addFileButton);
+		addToMainTableKeyBindings(addAction);
+
 	}
 
 	/**
@@ -486,8 +493,8 @@ public class JPdfSelectionPanel extends JPanel {
 		// move up button
 		MoveUpSelectionTableAction moveUpAction = new MoveUpSelectionTableAction(mainTable);
 		moveUpButton.setAction(moveUpAction);
-		moveUpButton.addKeyListener(moveuEnterKeyListener);
 		addButtonToButtonPanel(moveUpButton);
+		addToMainTableKeyBindings(moveUpAction);
 		popupMenu.add(new JMenuItem(moveUpAction));
 	}
 
@@ -498,8 +505,8 @@ public class JPdfSelectionPanel extends JPanel {
 		// move down button
 		MoveDownSelectionTableAction moveDownAction = new MoveDownSelectionTableAction(mainTable);
 		moveDownButton.setAction(moveDownAction);
-		moveDownButton.addKeyListener(movedEnterKeyListener);
 		addButtonToButtonPanel(moveDownButton);
+		addToMainTableKeyBindings(moveDownAction);
 		popupMenu.add(new JMenuItem(moveDownAction));
 	}
 
@@ -510,8 +517,8 @@ public class JPdfSelectionPanel extends JPanel {
 		// clear button
 		ClearSelectionTableAction clearAction = new ClearSelectionTableAction(mainTable);
 		clearButton.setAction(clearAction);
-		clearButton.addKeyListener(clearEnterKeyListener);
 		addButtonToButtonPanel(clearButton);
+		addToMainTableKeyBindings(clearAction);
 	}
 
 	/**
@@ -591,6 +598,7 @@ public class JPdfSelectionPanel extends JPanel {
 	 */
 	public void addPopupMenuAction(AbstractAction action) {
 		if (action != null) {
+			addToMainTableKeyBindings(action);
 			popupMenu.add(new JMenuItem(action));
 		}
 	}

@@ -61,7 +61,7 @@ public class ReloadDocumentSelectionTableAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int selectedRow = mainTable.getSelectedRow();
-		if (selectedRow != -1) {
+		if (mainTable.getSelectedRowCount() == 1) {
 			PdfSelectionTableItem row = ((AbstractPdfSelectionTableModel) mainTable.getModel()).getRow(selectedRow);
 			loader.reloadFile(row.getInputFile(), row.getPassword(), row.getPageSelection(), selectedRow);
 		}
