@@ -39,7 +39,6 @@ package org.pdfsam.console.business.pdf.handlers;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -47,6 +46,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -69,6 +69,7 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ValidationException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.ValidationUtility;
+
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfDictionary;
 import com.lowagie.text.pdf.PdfName;
@@ -252,7 +253,8 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
      * @return temporary file with pages rotation
      */
     private File applyRotations(File inputFile, ConcatParsedCommand inputCommand) throws Exception {
-        rotationReader = new PdfReader(new FileInputStream(inputFile));
+
+        rotationReader = new PdfReader(inputFile.getAbsolutePath());
         rotationReader.removeUnusedObjects();
         rotationReader.consolidateNamedDestinations();
 

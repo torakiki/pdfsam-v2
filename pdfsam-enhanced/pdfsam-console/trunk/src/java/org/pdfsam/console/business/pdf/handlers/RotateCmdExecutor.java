@@ -58,111 +58,115 @@ import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfNumber;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
+
 /**
  * Executes the rotate command
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class RotateCmdExecutor extends AbstractCmdExecutor {
-	
-	private static final Logger LOG = Logger.getLogger(RotateCmdExecutor.class.getPackage().getName());
-	
-	private PdfReader pdfReader = null;
-	private PdfStamper pdfStamper = null;
-	
-	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
-		
-		if((parsedCommand != null) && (parsedCommand instanceof RotateParsedCommand)){
-			
-			RotateParsedCommand inputCommand = (RotateParsedCommand) parsedCommand;
-			setPercentageOfWorkDone(0);
-			PrefixParser prefixParser;
 
-			try{
-				PdfFile[] fileList = inputCommand.getInputFileList();
-				for(int i = 0; i<fileList.length; i++){
-					try{						
-			        	
-						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
-						File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-						LOG.debug("Opening "+fileList[i].getFile().getAbsolutePath());
-						pdfReader = new PdfReader(new FileInputStream(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
-						pdfReader.removeUnusedObjects();
-						pdfReader.consolidateNamedDestinations();
-													
-						int pdfNumberOfPages = pdfReader.getNumberOfPages();
-						PageRotation rotation = inputCommand.getRotation();
-						//rotate all
-						if(rotation.getType() == PageRotation.ALL_PAGES){
-							int pageRotation = rotation.getDegrees();
-							LOG.debug("Applying rotation of "+pageRotation+" for all pages");
-							for(int j=1; j<=pdfNumberOfPages; j++){
-								PdfDictionary dictionary = pdfReader.getPageN(j);
-								int rotationDegrees = (pageRotation+pdfReader.getPageRotation(j))%360;
-								dictionary.put(PdfName.ROTATE, new PdfNumber(rotationDegrees));				
-							}
-						}else if(rotation.getType() == PageRotation.ODD_PAGES){
-							//odd pages rotation
-							int pageRotation = rotation.getDegrees();
-							LOG.debug("Applying rotation of "+pageRotation+" for odd pages");
-							for(int j=1; j<=pdfNumberOfPages; j=j+2){
-								PdfDictionary dictionary = pdfReader.getPageN(j);
-								int rotationDegrees = (pageRotation+pdfReader.getPageRotation(j))%360;
-								dictionary.put(PdfName.ROTATE, new PdfNumber(rotationDegrees));
-							}
-						}else if(rotation.getType() == PageRotation.EVEN_PAGES){
-							//even pages rotation
-							int pageRotation = rotation.getDegrees();
-							LOG.debug("Applying rotation of "+pageRotation+" for even pages");
-							for(int j=2; j<=pdfNumberOfPages; j=j+2){
-								PdfDictionary dictionary = pdfReader.getPageN(j);
-								int rotationDegrees = (pageRotation+pdfReader.getPageRotation(j))%360;
-								dictionary.put(PdfName.ROTATE, new PdfNumber(rotationDegrees));
-							}
-						}else{
-							LOG.warn("Unable to find the rotation type. "+rotation);
-						}
-						
-						//version
-						LOG.debug("Creating a new document.");
-						Character pdfVersion = inputCommand.getOutputPdfVersion(); 
-						if(pdfVersion != null){
-							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
-						}else{
-							pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader.getPdfVersion());
-						}
-						
+    private static final Logger LOG = Logger.getLogger(RotateCmdExecutor.class.getPackage().getName());
 
-						HashMap meta = pdfReader.getInfo();
-						meta.put("Creator", ConsoleServicesFacade.CREATOR);
-						
-						setCompressionSettingOnStamper(inputCommand, pdfStamper);
-						
-						pdfStamper.setMoreInfo(meta);
-						pdfStamper.close();
-						pdfReader.close();
-						File outFile = new File(inputCommand.getOutputFile() ,prefixParser.generateFileName());
-			    		FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
-	                	LOG.debug("Rotated file "+outFile.getCanonicalPath()+" created.");
-			    		setPercentageOfWorkDone(((i+1)*WorkDoneDataModel.MAX_PERGENTAGE)/fileList.length);	
-		    		}
-		    		catch(Exception e){
-		    			LOG.error("Error rotating file "+fileList[i].getFile().getName(), e);
-		    		}
-				}
-				LOG.info("Pdf files rotated in "+inputCommand.getOutputFile().getAbsolutePath()+".");
-			}catch(Exception e){    		
-				throw new EncryptException(e);
-			}finally{
-				setWorkCompleted();
-			}
-		}else{
-			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
-		}
-	}
+    private PdfReader pdfReader = null;
+    private PdfStamper pdfStamper = null;
 
-	public void clean(){
-		closePdfReader(pdfReader);
-		closePdfStamper(pdfStamper);
-	}
+    public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
+
+        if ((parsedCommand != null) && (parsedCommand instanceof RotateParsedCommand)) {
+
+            RotateParsedCommand inputCommand = (RotateParsedCommand) parsedCommand;
+            setPercentageOfWorkDone(0);
+            PrefixParser prefixParser;
+
+            try {
+                PdfFile[] fileList = inputCommand.getInputFileList();
+                for (int i = 0; i < fileList.length; i++) {
+                    try {
+
+                        prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile()
+                                .getName());
+                        File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
+                        LOG.debug("Opening " + fileList[i].getFile().getAbsolutePath());
+                        pdfReader = new PdfReader(new FileInputStream(fileList[i].getFile().getAbsolutePath()),
+                                fileList[i].getPasswordBytes());
+                        pdfReader.removeUnusedObjects();
+                        pdfReader.consolidateNamedDestinations();
+
+                        int pdfNumberOfPages = pdfReader.getNumberOfPages();
+                        PageRotation rotation = inputCommand.getRotation();
+                        // rotate all
+                        if (rotation.getType() == PageRotation.ALL_PAGES) {
+                            int pageRotation = rotation.getDegrees();
+                            LOG.debug("Applying rotation of " + pageRotation + " for all pages");
+                            for (int j = 1; j <= pdfNumberOfPages; j++) {
+                                PdfDictionary dictionary = pdfReader.getPageN(j);
+                                int rotationDegrees = (pageRotation + pdfReader.getPageRotation(j)) % 360;
+                                dictionary.put(PdfName.ROTATE, new PdfNumber(rotationDegrees));
+                            }
+                        } else if (rotation.getType() == PageRotation.ODD_PAGES) {
+                            // odd pages rotation
+                            int pageRotation = rotation.getDegrees();
+                            LOG.debug("Applying rotation of " + pageRotation + " for odd pages");
+                            for (int j = 1; j <= pdfNumberOfPages; j = j + 2) {
+                                PdfDictionary dictionary = pdfReader.getPageN(j);
+                                int rotationDegrees = (pageRotation + pdfReader.getPageRotation(j)) % 360;
+                                dictionary.put(PdfName.ROTATE, new PdfNumber(rotationDegrees));
+                            }
+                        } else if (rotation.getType() == PageRotation.EVEN_PAGES) {
+                            // even pages rotation
+                            int pageRotation = rotation.getDegrees();
+                            LOG.debug("Applying rotation of " + pageRotation + " for even pages");
+                            for (int j = 2; j <= pdfNumberOfPages; j = j + 2) {
+                                PdfDictionary dictionary = pdfReader.getPageN(j);
+                                int rotationDegrees = (pageRotation + pdfReader.getPageRotation(j)) % 360;
+                                dictionary.put(PdfName.ROTATE, new PdfNumber(rotationDegrees));
+                            }
+                        } else {
+                            LOG.warn("Unable to find the rotation type. " + rotation);
+                        }
+
+                        // version
+                        LOG.debug("Creating a new document.");
+                        Character pdfVersion = inputCommand.getOutputPdfVersion();
+                        if (pdfVersion != null) {
+                            pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand
+                                    .getOutputPdfVersion().charValue());
+                        } else {
+                            pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader
+                                    .getPdfVersion());
+                        }
+
+                        HashMap meta = pdfReader.getInfo();
+                        meta.put("Creator", ConsoleServicesFacade.CREATOR);
+
+                        setCompressionSettingOnStamper(inputCommand, pdfStamper);
+
+                        pdfStamper.setMoreInfo(meta);
+                        pdfStamper.close();
+                        pdfReader.close();
+                        File outFile = new File(inputCommand.getOutputFile(), prefixParser.generateFileName());
+                        FileUtility.renameTemporaryFile(tmpFile, outFile, inputCommand.isOverwrite());
+                        LOG.debug("Rotated file " + outFile.getCanonicalPath() + " created.");
+                        setPercentageOfWorkDone(((i + 1) * WorkDoneDataModel.MAX_PERGENTAGE) / fileList.length);
+                    } catch (Exception e) {
+                        LOG.error("Error rotating file " + fileList[i].getFile().getName(), e);
+                    }
+                }
+                LOG.info("Pdf files rotated in " + inputCommand.getOutputFile().getAbsolutePath() + ".");
+            } catch (Exception e) {
+                throw new EncryptException(e);
+            } finally {
+                setWorkCompleted();
+            }
+        } else {
+            throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
+        }
+    }
+
+    public void clean() {
+        closePdfReader(pdfReader);
+        closePdfStamper(pdfStamper);
+    }
 }

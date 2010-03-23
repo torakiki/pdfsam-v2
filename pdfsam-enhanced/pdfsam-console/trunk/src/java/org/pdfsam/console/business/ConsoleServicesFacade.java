@@ -68,14 +68,10 @@ public class ConsoleServicesFacade {
      * execute parsedCommand
      * 
      * @param parsedCommand
-     * @throws Exception.
+     * @throws ConsoleException.
      */
-    public synchronized void execute(AbstractParsedCommand parsedCommand) throws Exception {
-        try {
-            cmdExecuteManager.execute(parsedCommand);
-        } catch (ConsoleException ce) {
-            throw new Exception(ce);
-        }
+    public synchronized void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
+        cmdExecuteManager.execute(parsedCommand);
     }
 
     /**
