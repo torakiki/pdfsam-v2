@@ -111,7 +111,8 @@ public class SplitCmdHandler extends AbstractCmdHandler {
 	    "'-p prefix_' to specify a prefix for output names of files. If it contains \"[CURRENTPAGE]\" or \"[TIMESTAMP]\" it performs variable substitution. (Ex. [BASENAME]_prefix_[CURRENTPAGE] generates FileName_prefix_005.pdf)\n"+
 	    "Available prefix variables: [CURRENTPAGE], [TIMESTAMP], [BASENAME].\n"+
 	    "'-n number' to specify a page number to split at if -s is SPLIT or NSPLIT.\n"+
-    	"'-b number' to specify a number of bytes to split at if -s is SIZE.\n";
+    	    "'-b number' to specify a number of bytes to split at if -s is SIZE.\n"+
+	    "'-bl number' to specify the bookmarks depth to split at if -s is BLEVEL.\n";
     
     /**
      * Examples text for the split handler
