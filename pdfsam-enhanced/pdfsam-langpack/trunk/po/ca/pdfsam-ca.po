@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
 "PO-Revision-Date: 2009-10-24 23:58+0000\n"
 "Last-Translator: Josep Sànchez <josep.sanchez@ubuntu.cat>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -84,6 +84,9 @@ msgstr "S'ha trobat una contrasenya pel fitxer d'entrada."
 
 msgid "Export as xml"
 msgstr "Exporta com a xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "No s'ha pogut desar el fitxer xml."
@@ -714,9 +717,6 @@ msgstr "No s'ha pogut obrir la previsualització d'imatge"
 msgid "Unknown Action"
 msgstr "Acció desconeguda"
 
-msgid "Error playing sound:"
-msgstr "S'ha produït un error en reproduir àudio:"
-
 msgid "Error playing sound"
 msgstr "S'ha produït un error en reproduir àudio"
 
@@ -738,6 +738,54 @@ msgstr "L'ordre de validació ha tornat un valor nul."
 msgid "Command executed."
 msgstr "Ordre executada."
 
+msgid "Add"
+msgstr "Afegeix"
+
+msgid "Add a pdf to the list"
+msgstr "Afegeix un pdf a la llista"
+
+msgid "Clear"
+msgstr "Buida"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "Propietats del document"
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr "Mou cap avall el fitxer pdf seleccionat"
+
+msgid "Move Up"
+msgstr "Mou cap amunt"
+
+msgid "Move up selected pdf file"
+msgstr "Mou cap amunt el fitxer pdf seleccionat"
+
+msgid "Reload"
+msgstr "Recarrega"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "Elimina"
+
+msgid "Remove a pdf from the list"
+msgstr "Elimina un pdf de la llista"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr "No s'ha pogut buidar el carregador de documents pdf"
 
@@ -746,9 +794,6 @@ msgstr "Executa"
 
 msgid "Browse"
 msgstr "Navega"
-
-msgid "Add"
-msgstr "Afegeix"
 
 msgid "Compress output file/files"
 msgstr "Comprimeix el/s fitxer/s de sortida"
@@ -823,27 +868,6 @@ msgstr ""
 "Feu doble clic per definir les pàgines que voleu combinar (p. ex. 2 o 5-23 o "
 "2,5-7,12-)"
 
-msgid "Add a pdf to the list"
-msgstr "Afegeix un pdf a la llista"
-
-msgid "Remove a pdf from the list"
-msgstr "Elimina un pdf de la llista"
-
-msgid "(Canc)"
-msgstr "(Cancel·lar)"
-
-msgid "Remove"
-msgstr "Elimina"
-
-msgid "Reload"
-msgstr "Recarrega"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr "Error: No s'ha pogut recarregar els fitxers seleccionats."
-
-msgid "Document properties"
-msgstr "Propietats del document"
-
 msgid "Unable to remove JList text "
 msgstr "No s'ha pogut eliminar el text JList "
 
@@ -852,36 +876,6 @@ msgstr "Fitxer seleccionat: "
 
 msgid "File reloaded: "
 msgstr "Fitxer recarregat: "
-
-msgid "Move Up"
-msgstr "Mou cap amunt"
-
-msgid "Move up selected pdf file"
-msgstr "Mou cap amunt el fitxer pdf seleccionat"
-
-msgid "(Alt+ArrowUp)"
-msgstr "(Alt+FletxaAmunt)"
-
-msgid "Move Down"
-msgstr "Mou cap avall"
-
-msgid "Move down selected pdf file"
-msgstr "Mou cap avall el fitxer pdf seleccionat"
-
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+FletxaAvall)"
-
-msgid "Clear"
-msgstr "Buida"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "Elimina cada fitxer pdf de la llista de combinació"
-
-msgid "Set output file"
-msgstr "Defineix el fitxer de sortida"
-
-msgid "Error: Unable to get the file path."
-msgstr "Error: no s'ha pogut obtenir el camí del fitxer"
 
 msgid "Open"
 msgstr "Obre"
@@ -895,6 +889,9 @@ msgstr "S'ha produit un error en definir el nivell de zoom"
 msgid "Preview"
 msgstr "Visualització prèvia"
 
+msgid "Move Down"
+msgstr "Mou cap avall"
+
 msgid "Delete"
 msgstr "Esborra"
 
@@ -907,11 +904,20 @@ msgstr "Invers"
 msgid "Move up selected pages"
 msgstr "Puja les pàgines seleccionades"
 
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+FletxaAmunt)"
+
 msgid "Move down selected pages"
 msgstr "Baixa les pàgines seleccionades"
 
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+FletxaAvall)"
+
 msgid "Delete selected pages"
 msgstr "Suprimeix les pàgines seleccionades"
+
+msgid "(Canc)"
+msgstr "(Cancel·lar)"
 
 msgid "Undelete selected pages"
 msgstr "Desfés la supressió de les pàgines seleccionades"
@@ -969,6 +975,12 @@ msgstr "Fet per: "
 
 msgid "Encrypted: "
 msgstr "Xifrat: "
+
+msgid "Set output file"
+msgstr "Defineix el fitxer de sortida"
+
+msgid "Error: Unable to get the file path."
+msgstr "Error: no s'ha pogut obtenir el camí del fitxer"
 
 msgid "File"
 msgstr "Fitxer"
@@ -1441,6 +1453,15 @@ msgstr "S'està desant la configuració de l'IGU"
 
 msgid "Unable to save user interface status."
 msgstr "No s'ha pogut desar l'estat de l'interfície d'usuari"
+
+#~ msgid "Error playing sound:"
+#~ msgstr "S'ha produït un error en reproduir àudio:"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Error: No s'ha pogut recarregar els fitxers seleccionats."
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Elimina cada fitxer pdf de la llista de combinació"
 
 #~ msgid "Ok"
 #~ msgstr "D'acord"

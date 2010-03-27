@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
-"PO-Revision-Date: 2009-12-04 20:26+0000\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"PO-Revision-Date: 2010-03-26 16:04+0000\n"
 "Last-Translator: Joergenr <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
+"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -82,6 +82,9 @@ msgstr "Fandt en adgangskode til inputfil."
 
 msgid "Export as xml"
 msgstr "Eksporter som xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "Kunne ikke gemme xml fil."
@@ -347,13 +350,13 @@ msgid "Keywords"
 msgstr "Nøgleord"
 
 msgid "Set the document title."
-msgstr ""
+msgstr "Angiv dokumentets titel"
 
 msgid "Set the document author."
-msgstr ""
+msgstr "Angiv dokumentets forfatter"
 
 msgid "Set the document subject."
-msgstr ""
+msgstr "Angiv dokumentets emne"
 
 msgid "Set the document keywords."
 msgstr "Definer dokumentets nøgleord"
@@ -517,7 +520,7 @@ msgid "Viewer options"
 msgstr "Visningsindstillinger"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "Viewer options-sektion indlæst."
 
 msgid "Move on top"
 msgstr "Flyt til toppen"
@@ -539,7 +542,7 @@ msgid "Visual document composer"
 msgstr "Visuel dokument værktøj"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "Visual Composer-sektion indlæst."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "Vælg venligst et pdf-dokument eller gendan nogle sider"
@@ -582,7 +585,7 @@ msgid "Visual reorder"
 msgstr "Visuel reorganisering"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "Visual Reorder-sektion indlæst."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "Vælg venligst et pdf-dokument eller fortryd sletningen af nogle sider"
@@ -603,7 +606,7 @@ msgid "Save as"
 msgstr "Gem som"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Gem billedet"
 
 msgid "Unable to save image"
 msgstr "Ikke i stand til at gemme billede"
@@ -612,7 +615,7 @@ msgid "Close"
 msgstr "Luk"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Luk panelet"
 
 msgid "Rotate anticlockwise"
 msgstr "Roter mod uret"
@@ -627,10 +630,10 @@ msgid "Zoom out"
 msgstr "Zoom ud"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Ingen zoom"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Zoom ikke anvendt"
 
 msgid "Save environment"
 msgstr "Gem indstillinger"
@@ -710,14 +713,11 @@ msgstr "Ikke i stand til at åbne miniaturebillede"
 msgid "Unknown Action"
 msgstr "Ukendt handling"
 
-msgid "Error playing sound:"
-msgstr "Fejl ved afspilning af lyd:"
-
 msgid "Error playing sound"
 msgstr "Fejl ved afspilning af lyd"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "Genererer miniaturebilleder ved hjælp af følgende bibliotek:"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Udvalgstabel er fuld. Fjern venligst nogle pdf-dokumenter."
@@ -734,6 +734,54 @@ msgstr ""
 msgid "Command executed."
 msgstr "Kommando udført."
 
+msgid "Add"
+msgstr "Tilføj"
+
+msgid "Add a pdf to the list"
+msgstr "Tilføj en pdf til listen"
+
+msgid "Clear"
+msgstr "Slet"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "Dokumentegenskaber"
+
+msgid "Show document properties"
+msgstr "Vis dokumentegenskaber"
+
+msgid "Move down"
+msgstr "Flyt ned"
+
+msgid "Move down selected pdf file"
+msgstr "Flyt valgt pdf-fil ned"
+
+msgid "Move Up"
+msgstr "Flyt op"
+
+msgid "Move up selected pdf file"
+msgstr "Flyt valgt pdf-fil op"
+
+msgid "Reload"
+msgstr "Genindlæs"
+
+msgid "Reload the selected document"
+msgstr "Genindlæs det valgte dokument"
+
+msgid "Remove"
+msgstr "Fjern"
+
+msgid "Remove a pdf from the list"
+msgstr "Fjern en pdf fra listen"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr ""
 
@@ -742,9 +790,6 @@ msgstr "Udfør"
 
 msgid "Browse"
 msgstr "Gennemse"
-
-msgid "Add"
-msgstr "Tilføj"
 
 msgid "Compress output file/files"
 msgstr "Komprimer outputfiler"
@@ -817,27 +862,6 @@ msgstr ""
 "Dobbeltklik for at angive sider du ønsker at flette (fx. 2 eller 5-23 eller "
 "2,5-7,12-)"
 
-msgid "Add a pdf to the list"
-msgstr "Tilføj en pdf til listen"
-
-msgid "Remove a pdf from the list"
-msgstr "Fjern en pdf fra listen"
-
-msgid "(Canc)"
-msgstr "(Annuller)"
-
-msgid "Remove"
-msgstr "Fjern"
-
-msgid "Reload"
-msgstr "Genindlæs"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr "Fejl: Ikke i stand til at genindlæse de valgte filer."
-
-msgid "Document properties"
-msgstr "Dokumentegenskaber"
-
 msgid "Unable to remove JList text "
 msgstr "Ikke i stand til at fjerne JList-tekst "
 
@@ -847,36 +871,6 @@ msgstr "Fil valgt: "
 msgid "File reloaded: "
 msgstr "Fil genindlæst: "
 
-msgid "Move Up"
-msgstr "Flyt op"
-
-msgid "Move up selected pdf file"
-msgstr "Flyt valgt pdf-fil op"
-
-msgid "(Alt+ArrowUp)"
-msgstr "(Alt+Pil op)"
-
-msgid "Move Down"
-msgstr "Flyt ned"
-
-msgid "Move down selected pdf file"
-msgstr "Flyt valgt pdf-fil ned"
-
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+Pil ned)"
-
-msgid "Clear"
-msgstr "Slet"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "Flyt alle pdf-filer fra flettelisten"
-
-msgid "Set output file"
-msgstr "Opret destinationsfil"
-
-msgid "Error: Unable to get the file path."
-msgstr "Fejl: Ikke i stand til at finde filsti."
-
 msgid "Open"
 msgstr "Åbn"
 
@@ -884,10 +878,13 @@ msgid "Load a pdf document"
 msgstr "Indlæs et pdf-dokument"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "Fejl under indstilling af zoomniveau."
 
 msgid "Preview"
 msgstr "Miniature"
+
+msgid "Move Down"
+msgstr "Flyt ned"
 
 msgid "Delete"
 msgstr "Slet"
@@ -901,11 +898,20 @@ msgstr "Byt om"
 msgid "Move up selected pages"
 msgstr "Flyt valgte filer op"
 
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+Pil op)"
+
 msgid "Move down selected pages"
 msgstr "Flyt valgte filer ned"
 
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+Pil ned)"
+
 msgid "Delete selected pages"
 msgstr "Slet valgte sider"
+
+msgid "(Canc)"
+msgstr "(Annuller)"
 
 msgid "Undelete selected pages"
 msgstr "Fortryd sletning af valgte filer"
@@ -964,11 +970,17 @@ msgstr "Producent: "
 msgid "Encrypted: "
 msgstr "Krypteret: "
 
+msgid "Set output file"
+msgstr "Opret destinationsfil"
+
+msgid "Error: Unable to get the file path."
+msgstr "Fejl: Ikke i stand til at finde filsti."
+
 msgid "File"
 msgstr "Fil"
 
 msgid "Image"
-msgstr ""
+msgstr "Billede"
 
 msgid "Error creating preview panel."
 msgstr "Fejl under oprettelse af visningspanel."
@@ -1034,7 +1046,7 @@ msgid "Found many plugins in "
 msgstr "Fandt mange plugins i "
 
 msgid "selected as the most recent plugin"
-msgstr ""
+msgstr "valgt som det seneste udvidelsesmodul"
 
 msgid "No plugin found in "
 msgstr "Ingen plugin fundet i "
@@ -1201,7 +1213,7 @@ msgid "Set a log detail level (restart needed)"
 msgstr "Ændr niveau for logdetaljer (genstart nødvendig)"
 
 msgid "Set the thumbnails creation library"
-msgstr ""
+msgstr "Angiv biblioteket til oprettelse af miniaturebilleder"
 
 msgid "Check for updates"
 msgstr "Søg efter opdateringer"
@@ -1302,10 +1314,10 @@ msgid "Please select two pdf documents."
 msgstr "Vælg venligst to pdf-dokumenter."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Vent venligst mens alle filerne behandles."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Tilføjer stadig filer"
 
 msgid "Please select a destination file."
 msgstr ""
@@ -1424,18 +1436,8 @@ msgstr ""
 #~ msgid "Ok"
 #~ msgstr "OK"
 
-#~ msgid "Unable to initialize menu bar."
-#~ msgstr "Ikke i stand til at initialisere menulinjen."
-
-#~ msgid "Number of pages to switch document"
-#~ msgstr "Antal sider efter hvilket der skiftes dokument"
-
-#~ msgid ""
-#~ "Set the number of pages to switch from a document to the other one "
-#~ "(default is 1)."
-#~ msgstr ""
-#~ "Sæt antallet af sider efter hvilket der skiftes fra et dokument til det "
-#~ "andet (standard er 1)."
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Flyt alle pdf-filer fra flettelisten"
 
 #~ msgid "Check for updates:"
 #~ msgstr "Søg efter opdateringer:"

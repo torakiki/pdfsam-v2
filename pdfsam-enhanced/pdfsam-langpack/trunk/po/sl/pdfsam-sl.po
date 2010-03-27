@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
 "PO-Revision-Date: 2009-03-10 13:36+0000\n"
 "Last-Translator: jure <jure1001@yahoo.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -80,6 +80,9 @@ msgstr "Najdeno geslo za izbrano datoteko"
 
 msgid "Export as xml"
 msgstr "Izvozi kot xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "Ne morem shraniti xml datoteke"
@@ -695,9 +698,6 @@ msgstr ""
 msgid "Unknown Action"
 msgstr ""
 
-msgid "Error playing sound:"
-msgstr ""
-
 msgid "Error playing sound"
 msgstr ""
 
@@ -719,6 +719,54 @@ msgstr "Napaka ukaza, ni podatka"
 msgid "Command executed."
 msgstr "Zahteva izvršena"
 
+msgid "Add"
+msgstr "Dodaj"
+
+msgid "Add a pdf to the list"
+msgstr "Dodaj PDF na listo"
+
+msgid "Clear"
+msgstr "Izbriši"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr ""
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr "Premakni izbrani PDF navzdol"
+
+msgid "Move Up"
+msgstr "Premakni gor"
+
+msgid "Move up selected pdf file"
+msgstr "Premakni izbrani PDF navzgor"
+
+msgid "Reload"
+msgstr "Ponovno naloži"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "Odstrani"
+
+msgid "Remove a pdf from the list"
+msgstr "Izbriši PDF iz liste"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr ""
 
@@ -727,9 +775,6 @@ msgstr "START"
 
 msgid "Browse"
 msgstr "Išči"
-
-msgid "Add"
-msgstr "Dodaj"
 
 msgid "Compress output file/files"
 msgstr "Stisni shranjene datoteke"
@@ -800,27 +845,6 @@ msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
-msgid "Add a pdf to the list"
-msgstr "Dodaj PDF na listo"
-
-msgid "Remove a pdf from the list"
-msgstr "Izbriši PDF iz liste"
-
-msgid "(Canc)"
-msgstr "Prekliči"
-
-msgid "Remove"
-msgstr "Odstrani"
-
-msgid "Reload"
-msgstr "Ponovno naloži"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr "Napaka pri ponovnem nalaganju"
-
-msgid "Document properties"
-msgstr ""
-
 msgid "Unable to remove JList text "
 msgstr "Napaka JList "
 
@@ -829,36 +853,6 @@ msgstr "Dat. izbrane.: "
 
 msgid "File reloaded: "
 msgstr "Dat. naložena: "
-
-msgid "Move Up"
-msgstr "Premakni gor"
-
-msgid "Move up selected pdf file"
-msgstr "Premakni izbrani PDF navzgor"
-
-msgid "(Alt+ArrowUp)"
-msgstr "Alt+ArrowUp)"
-
-msgid "Move Down"
-msgstr "Premakni dol"
-
-msgid "Move down selected pdf file"
-msgstr "Premakni izbrani PDF navzdol"
-
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+ArrowDown)"
-
-msgid "Clear"
-msgstr "Izbriši"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "Izbriši vse PDF datoteke iz liste"
-
-msgid "Set output file"
-msgstr "Nastavi datoteko za shranjevanje"
-
-msgid "Error: Unable to get the file path."
-msgstr "Napaka. Ni poti do datoteke."
 
 msgid "Open"
 msgstr ""
@@ -872,6 +866,9 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
+msgid "Move Down"
+msgstr "Premakni dol"
+
 msgid "Delete"
 msgstr ""
 
@@ -884,11 +881,20 @@ msgstr ""
 msgid "Move up selected pages"
 msgstr ""
 
+msgid "(Alt+ArrowUp)"
+msgstr "Alt+ArrowUp)"
+
 msgid "Move down selected pages"
 msgstr ""
 
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+ArrowDown)"
+
 msgid "Delete selected pages"
 msgstr ""
+
+msgid "(Canc)"
+msgstr "Prekliči"
 
 msgid "Undelete selected pages"
 msgstr ""
@@ -946,6 +952,12 @@ msgstr ""
 
 msgid "Encrypted: "
 msgstr ""
+
+msgid "Set output file"
+msgstr "Nastavi datoteko za shranjevanje"
+
+msgid "Error: Unable to get the file path."
+msgstr "Napaka. Ni poti do datoteke."
 
 msgid "File"
 msgstr "Datoteka"
@@ -1393,6 +1405,12 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Napaka pri ponovnem nalaganju"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Izbriši vse PDF datoteke iz liste"
 
 #~ msgid "Ok"
 #~ msgstr "V redu"

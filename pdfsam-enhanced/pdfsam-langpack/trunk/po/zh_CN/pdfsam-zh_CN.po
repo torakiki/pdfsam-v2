@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
 "PO-Revision-Date: 2009-10-28 11:07+0000\n"
 "Last-Translator: 王英华 <wantinghard@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,6 +81,9 @@ msgstr "输入文件需要密码。"
 
 msgid "Export as xml"
 msgstr "导出为 xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "无法保存 xml 文件。"
@@ -694,9 +697,6 @@ msgstr "无法打开图像预览"
 msgid "Unknown Action"
 msgstr "位置操作"
 
-msgid "Error playing sound:"
-msgstr "播放声音时发生错误："
-
 msgid "Error playing sound"
 msgstr "播放声音时发生错误"
 
@@ -718,6 +718,54 @@ msgstr "命令验证返回一个空值。"
 msgid "Command executed."
 msgstr "命令已执行。"
 
+msgid "Add"
+msgstr "添加"
+
+msgid "Add a pdf to the list"
+msgstr "向列表添加 PDF 文件"
+
+msgid "Clear"
+msgstr "清空"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "文档属性"
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr "下移选择的 PDF 文件"
+
+msgid "Move Up"
+msgstr "上移"
+
+msgid "Move up selected pdf file"
+msgstr "上移选择的 PDF 文件"
+
+msgid "Reload"
+msgstr "重新载入"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Remove a pdf from the list"
+msgstr "从列表中移除 PDF 文件"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr ""
 
@@ -726,9 +774,6 @@ msgstr "运行"
 
 msgid "Browse"
 msgstr "浏览"
-
-msgid "Add"
-msgstr "添加"
 
 msgid "Compress output file/files"
 msgstr "压缩输出文件"
@@ -799,27 +844,6 @@ msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr "双击设置要合并的页面 （比如：2 或 5-23 或 2,5-7, 12-）"
 
-msgid "Add a pdf to the list"
-msgstr "向列表添加 PDF 文件"
-
-msgid "Remove a pdf from the list"
-msgstr "从列表中移除 PDF 文件"
-
-msgid "(Canc)"
-msgstr "(取消)"
-
-msgid "Remove"
-msgstr "移除"
-
-msgid "Reload"
-msgstr "重新载入"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr "错误：无法读取选择的文件。"
-
-msgid "Document properties"
-msgstr "文档属性"
-
 msgid "Unable to remove JList text "
 msgstr "无法删除 JList 文本 "
 
@@ -828,36 +852,6 @@ msgstr "选择的文件： "
 
 msgid "File reloaded: "
 msgstr "重新载入的文件： "
-
-msgid "Move Up"
-msgstr "上移"
-
-msgid "Move up selected pdf file"
-msgstr "上移选择的 PDF 文件"
-
-msgid "(Alt+ArrowUp)"
-msgstr "(Alt+向上键)"
-
-msgid "Move Down"
-msgstr "下移"
-
-msgid "Move down selected pdf file"
-msgstr "下移选择的 PDF 文件"
-
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+向下键)"
-
-msgid "Clear"
-msgstr "清空"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "从合并列表移除全部 PDF 文件"
-
-msgid "Set output file"
-msgstr "设置输出文件"
-
-msgid "Error: Unable to get the file path."
-msgstr "错误：无法获取文件路径。"
 
 msgid "Open"
 msgstr "打开"
@@ -871,6 +865,9 @@ msgstr "设置缩放级别出错。"
 msgid "Preview"
 msgstr "预览"
 
+msgid "Move Down"
+msgstr "下移"
+
 msgid "Delete"
 msgstr "删除"
 
@@ -883,11 +880,20 @@ msgstr "反转"
 msgid "Move up selected pages"
 msgstr "上移选定页面"
 
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+向上键)"
+
 msgid "Move down selected pages"
 msgstr "下移选定页面"
 
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+向下键)"
+
 msgid "Delete selected pages"
 msgstr "删除选中的页面"
+
+msgid "(Canc)"
+msgstr "(取消)"
 
 msgid "Undelete selected pages"
 msgstr ""
@@ -945,6 +951,12 @@ msgstr ""
 
 msgid "Encrypted: "
 msgstr ""
+
+msgid "Set output file"
+msgstr "设置输出文件"
+
+msgid "Error: Unable to get the file path."
+msgstr "错误：无法获取文件路径。"
 
 msgid "File"
 msgstr "文件"
@@ -1392,6 +1404,15 @@ msgstr "保存GUI配置"
 
 msgid "Unable to save user interface status."
 msgstr "无法保存用户界面状态。"
+
+#~ msgid "Error playing sound:"
+#~ msgstr "播放声音时发生错误："
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "错误：无法读取选择的文件。"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "从合并列表移除全部 PDF 文件"
 
 #~ msgid "Ok"
 #~ msgstr "确定"

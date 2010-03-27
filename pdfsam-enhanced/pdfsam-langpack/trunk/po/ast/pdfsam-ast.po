@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
 "PO-Revision-Date: 2009-12-16 12:42+0000\n"
 "Last-Translator: Dangerous Piper <dangerous_piper@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
@@ -83,6 +83,9 @@ msgstr "Pon-y una contraseña al archivu de salida"
 
 msgid "Export as xml"
 msgstr "Esportar como xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "Imposible de guardar el ficheru xml"
@@ -718,9 +721,6 @@ msgstr "Imposible abrir la previsualización d'imaxe"
 msgid "Unknown Action"
 msgstr "Acción desconocida"
 
-msgid "Error playing sound:"
-msgstr "Error de reproducción del soníu"
-
 msgid "Error playing sound"
 msgstr "Error de reproducción del soníu"
 
@@ -744,6 +744,54 @@ msgstr "La validación de comandu devolvió un valor nulu"
 msgid "Command executed."
 msgstr "Comandu executáu"
 
+msgid "Add"
+msgstr "Amestar"
+
+msgid "Add a pdf to the list"
+msgstr "Amestar un pdf a la llista"
+
+msgid "Clear"
+msgstr "Llimpiar"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "propiedaes del documentu"
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr "Baxar el ficheru pdf seleccionáu"
+
+msgid "Move Up"
+msgstr "Xubir"
+
+msgid "Move up selected pdf file"
+msgstr "Xubir el ficheru pdf seleccionáu"
+
+msgid "Reload"
+msgstr "Recargar"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "Desaniciar"
+
+msgid "Remove a pdf from the list"
+msgstr "Desaniciar un pdf de la llista"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr "Imposible llimpiar el cargador de documentos pdf"
 
@@ -752,9 +800,6 @@ msgstr "Executar"
 
 msgid "Browse"
 msgstr "Restolar"
-
-msgid "Add"
-msgstr "Amestar"
 
 msgid "Compress output file/files"
 msgstr "Comprimir el ficheru creáu / los ficheros creaos"
@@ -830,27 +875,6 @@ msgstr ""
 "Fai un clic dobel pa determinar les páxines que quies fusionar (ex: 2 ó 5-23 "
 "o 2,5-7, 12-)"
 
-msgid "Add a pdf to the list"
-msgstr "Amestar un pdf a la llista"
-
-msgid "Remove a pdf from the list"
-msgstr "Desaniciar un pdf de la llista"
-
-msgid "(Canc)"
-msgstr "(supr)"
-
-msgid "Remove"
-msgstr "Desaniciar"
-
-msgid "Reload"
-msgstr "Recargar"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr "Error: imposible recargar los ficheros seleccionaos"
-
-msgid "Document properties"
-msgstr "propiedaes del documentu"
-
 msgid "Unable to remove JList text "
 msgstr "supresión imposible del testu Jlist "
 
@@ -859,36 +883,6 @@ msgstr "ficheru seleccionáu: "
 
 msgid "File reloaded: "
 msgstr "ficheru recargáu "
-
-msgid "Move Up"
-msgstr "Xubir"
-
-msgid "Move up selected pdf file"
-msgstr "Xubir el ficheru pdf seleccionáu"
-
-msgid "(Alt+ArrowUp)"
-msgstr "(Alt+FlechaArriba)"
-
-msgid "Move Down"
-msgstr "Baxar"
-
-msgid "Move down selected pdf file"
-msgstr "Baxar el ficheru pdf seleccionáu"
-
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+FlechaAbaxo)"
-
-msgid "Clear"
-msgstr "Llimpiar"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "Desanicia tolos ficheros pdf de la llista de fusión"
-
-msgid "Set output file"
-msgstr "Definir el ficheru de salida"
-
-msgid "Error: Unable to get the file path."
-msgstr "Error: imposible obtener el camín del ficheru"
 
 msgid "Open"
 msgstr "Abrir"
@@ -902,6 +896,9 @@ msgstr "Error al definir el nivel de zoom"
 msgid "Preview"
 msgstr "previsualización"
 
+msgid "Move Down"
+msgstr "Baxar"
+
 msgid "Delete"
 msgstr "Desaniciar"
 
@@ -914,11 +911,20 @@ msgstr "Invertir"
 msgid "Move up selected pages"
 msgstr "Xubir les páxines seleccionaes"
 
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+FlechaArriba)"
+
 msgid "Move down selected pages"
 msgstr "Baxar les páxines seleccionaes"
 
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+FlechaAbaxo)"
+
 msgid "Delete selected pages"
 msgstr "Desaniciar les páxines seleccionaes"
+
+msgid "(Canc)"
+msgstr "(supr)"
 
 msgid "Undelete selected pages"
 msgstr "Recuperar les páxines seleccionaes"
@@ -977,6 +983,12 @@ msgstr "Productor: "
 
 msgid "Encrypted: "
 msgstr "Cifráu "
+
+msgid "Set output file"
+msgstr "Definir el ficheru de salida"
+
+msgid "Error: Unable to get the file path."
+msgstr "Error: imposible obtener el camín del ficheru"
 
 msgid "File"
 msgstr "Ficheru"
@@ -1445,6 +1457,15 @@ msgstr "Atroxando la configuración de la Interfaz Gráfica d'Usuariu"
 
 msgid "Unable to save user interface status."
 msgstr "Nun se puede atroxar l'estáu de la interfaz d'usuariu."
+
+#~ msgid "Error playing sound:"
+#~ msgstr "Error de reproducción del soníu"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Error: imposible recargar los ficheros seleccionaos"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Desanicia tolos ficheros pdf de la llista de fusión"
 
 #~ msgid "Ok"
 #~ msgstr "Aceutar"

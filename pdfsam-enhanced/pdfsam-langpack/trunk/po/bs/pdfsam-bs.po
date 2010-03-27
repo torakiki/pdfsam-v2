@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
-"PO-Revision-Date: 2009-10-22 12:53+0000\n"
-"Last-Translator: Amicus <Unknown>\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"PO-Revision-Date: 2009-12-30 03:50+0000\n"
+"Last-Translator: Miro Glavić <glavicmiro@gmail.com>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
+"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
 "X-Poedit-Language: Bosnian\n"
@@ -83,6 +83,9 @@ msgstr "Pronađena je šifra za ulazni dokument."
 
 msgid "Export as xml"
 msgstr "Eksportuj kao xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "Nije moguće snimiti xml dokument."
@@ -185,7 +188,8 @@ msgstr ""
 "Ako sadrži \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" ili "
 "\"[BOOKMARK_NAME]\" izvodi zamjenu varijabli."
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Npr.  prefiks_[BASENAME]_[CURRENTPAGE] generiše prefiks_ImeDokumenta_005.pdf."
 
@@ -303,13 +307,15 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"Npr. [BASENAME]_prefix_[TIMESTAMP]"
-"generišeImeDokumenta_prefix_20070517_113423471.pdf."
+"Npr. "
+"[BASENAME]_prefix_[TIMESTAMP]generišeImeDokumenta_prefix_20070517_113423471.p"
+"df."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
-msgstr "Ako ne sadrži \"[TIMESTAMP]\" generiše imena dokumenata starog stila."
+msgstr ""
+"Ako ne sadrži \"[TIMESTAMP]\" generiše imena dokumenata starog stila."
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "Dostupne varijable su  [TIMESTAMP], [BASENAME]."
@@ -576,7 +582,8 @@ msgid "Rotate"
 msgstr "Rotiraj"
 
 msgid "Use the same output file name as the input file or choose a file."
-msgstr "Za izlazni dokument koristi isto ime kao ulazni ili izaberi dokument."
+msgstr ""
+"Za izlazni dokument koristi isto ime kao ulazni ili izaberi dokument."
 
 msgid "Visual reorder"
 msgstr "Vizualni preraspored"
@@ -655,13 +662,13 @@ msgid "Unable to open the input document"
 msgstr "Nije moguće otvoriti ulazni dokument"
 
 msgid "Input file doesn't exists or is a directory"
-msgstr "Ulaznna datoteka ne postoji ili je direktorij"
+msgstr "Ulazna datoteka ne postoji ili je direktorij"
 
 msgid "Error opening pdf document"
 msgstr "Greška kod otvaranja pdf dokumenta"
 
 msgid "Password not provided."
-msgstr "Šifra nije obezbijeđene"
+msgstr "Šifra nije obezbijeđena"
 
 msgid "Unable to open the document."
 msgstr "Nemoguće otvoriti dokument"
@@ -709,9 +716,6 @@ msgstr "Nemoguće otvoriti pregled slika"
 msgid "Unknown Action"
 msgstr "Nepoznata Akcija"
 
-msgid "Error playing sound:"
-msgstr "Greška reprodukcije zvuka:"
-
 msgid "Error playing sound"
 msgstr "Greška reprodukcije zvuka"
 
@@ -733,6 +737,54 @@ msgstr "Potvrda komande je vratila praznu vrijednost."
 msgid "Command executed."
 msgstr "Komanda je izvršena."
 
+msgid "Add"
+msgstr "Dodaj"
+
+msgid "Add a pdf to the list"
+msgstr "Dodaj PDF u listu"
+
+msgid "Clear"
+msgstr "Počisti"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "Karakteristike dokumenta"
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr "Pomakni dole selektovani PDF dokument"
+
+msgid "Move Up"
+msgstr "Pomakni Gore"
+
+msgid "Move up selected pdf file"
+msgstr "Pomakni gore izabrani PDF dokument"
+
+msgid "Reload"
+msgstr "Učitaj ponovo"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "Ukloni"
+
+msgid "Remove a pdf from the list"
+msgstr "Ukloni PDF iz liste"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr "Nije moguće očistiti učitavač pdf-a"
 
@@ -741,9 +793,6 @@ msgstr "Pokreni"
 
 msgid "Browse"
 msgstr "Prelistaj"
-
-msgid "Add"
-msgstr "Dodaj"
 
 msgid "Compress output file/files"
 msgstr "Kompresuj izlazni dokument/e"
@@ -818,27 +867,6 @@ msgstr ""
 "Dvokliknite da izaberete stranice koje želite da združite (npr.: 2 ili 5-23 "
 "ili 2,5-7,12-)"
 
-msgid "Add a pdf to the list"
-msgstr "Dodaj PDF u listu"
-
-msgid "Remove a pdf from the list"
-msgstr "Ukloni PDF iz liste"
-
-msgid "(Canc)"
-msgstr "(otkaži)"
-
-msgid "Remove"
-msgstr "Ukloni"
-
-msgid "Reload"
-msgstr "Učitaj ponovo"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr "Nije moguće ponovo učitati selektovani dokument(e)"
-
-msgid "Document properties"
-msgstr "Karakteristike dokumenta"
-
 msgid "Unable to remove JList text "
 msgstr "Nije moguć ukloniti JList tekst "
 
@@ -847,36 +875,6 @@ msgstr "Dokument je selektovan "
 
 msgid "File reloaded: "
 msgstr "Dokument je ponovo učitan "
-
-msgid "Move Up"
-msgstr "Pomakni Gore"
-
-msgid "Move up selected pdf file"
-msgstr "Pomakni gore izabrani PDF dokument"
-
-msgid "(Alt+ArrowUp)"
-msgstr "(Alt+StrelicaGore)"
-
-msgid "Move Down"
-msgstr "Pomakni Dole"
-
-msgid "Move down selected pdf file"
-msgstr "Pomakni dole selektovani PDF dokument"
-
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+StrelicaDole)"
-
-msgid "Clear"
-msgstr "Počisti"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "Ukloni sve PDF dokumente iz liste za sastavljanje"
-
-msgid "Set output file"
-msgstr "Podesi izlazni dokument"
-
-msgid "Error: Unable to get the file path."
-msgstr "Greška: Nije moguće dobiti putanju do dokumenta"
 
 msgid "Open"
 msgstr "Otvori"
@@ -890,6 +888,9 @@ msgstr "Greška pri postavljanju nivoa uveličanja."
 msgid "Preview"
 msgstr "Pregled"
 
+msgid "Move Down"
+msgstr "Pomakni Dole"
+
 msgid "Delete"
 msgstr "Obriši"
 
@@ -902,11 +903,20 @@ msgstr "Obrnuti redoslijed"
 msgid "Move up selected pages"
 msgstr "Pomjeri izabrane stranice gore"
 
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+StrelicaGore)"
+
 msgid "Move down selected pages"
 msgstr "Pomjeri izabrane stranice dole"
 
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+StrelicaDole)"
+
 msgid "Delete selected pages"
 msgstr "Obriši izabrane stranice"
+
+msgid "(Canc)"
+msgstr "(otkaži)"
 
 msgid "Undelete selected pages"
 msgstr "Vrati selektovane izbrisane stranice"
@@ -964,6 +974,12 @@ msgstr "Producent: "
 
 msgid "Encrypted: "
 msgstr "Kriptovano: "
+
+msgid "Set output file"
+msgstr "Podesi izlazni dokument"
+
+msgid "Error: Unable to get the file path."
+msgstr "Greška: Nije moguće dobiti putanju do dokumenta"
 
 msgid "File"
 msgstr "Dokument"
@@ -1237,7 +1253,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Unaprijed podešeni radni direktorij"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Izaberite unaprijed podešeni direktorij u kome će dokumenti biti snimani u "
 "učitavani"
@@ -1397,7 +1414,8 @@ msgid "Unable to find configuration file for the user interface"
 msgstr "Nije moguće pronaći konfiguracijski dokument za korisničko sučelje"
 
 msgid "Error reading the configuration file for the user interface"
-msgstr "Greška pri čitanju i konfiguracijskog dokumenta za korisničko sučelje"
+msgstr ""
+"Greška pri čitanju i konfiguracijskog dokumenta za korisničko sučelje"
 
 msgid "Error initializing the user interface vertical divider location"
 msgstr ""
@@ -1437,19 +1455,6 @@ msgstr "Nije moguće sačuvati status korisničkog sučelja."
 #~ msgid "Ok"
 #~ msgstr "Uredu"
 
-#~ msgid "Unable to initialize menu bar."
-#~ msgstr "Nije moguće inicijalizirati traku sa menijima."
-
-#~ msgid "Number of pages to switch document"
-#~ msgstr "Broj stranica da zamijene dokument"
-
-#~ msgid ""
-#~ "Set the number of pages to switch from a document to the other one "
-#~ "(default is 1)."
-#~ msgstr ""
-#~ "Izaberite broj stranica za zamjenu iz dokumenta u drugi (unaprijed "
-#~ "podešeno je 1)."
-
 #~ msgid "Error loading "
 #~ msgstr "Greška pri učitavanja "
 
@@ -1466,11 +1471,20 @@ msgstr "Nije moguće sačuvati status korisničkog sučelja."
 #~ "Dvokliknite da izaberete stranice koje želite da združite (npr: 2 ili Sve "
 #~ "ili 5-23 ili 2,5-7,12-)"
 
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Ukloni sve PDF dokumente iz liste za sastavljanje"
+
 #~ msgid "Found zero or many jars in plugin directory "
 #~ msgstr "Pronađeno nula ili puno jar-ova u direktoriju sa dodacima "
 
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Nije moguće inicijalizirati traku sa menijima."
+
 #~ msgid "Error getting default environment."
 #~ msgstr "Greška pri učitavanju default okruženja."
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Nije moguće ponovo učitati selektovani dokument(e)"
 
 #~ msgid "Check for updates:"
 #~ msgstr "Provjeri ima li nadogradnji:"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
-"PO-Revision-Date: 2009-12-15 22:05+0000\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"PO-Revision-Date: 2010-03-21 11:06+0000\n"
 "Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
+"X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -162,6 +162,9 @@ msgstr "Trovata una password per il file in input."
 
 msgid "Export as xml"
 msgstr "Esporta come XML"
+
+msgid "Export the selection list in xml format"
+msgstr "Esporta la lista in formato xml"
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\configuration\Configuration.java:165
 msgid "Unable to save xml file."
@@ -395,7 +398,7 @@ msgid "Getting bookmarks max depth"
 msgstr "Verifica profondità massima dei segnalibri..."
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Impossibile ritrovare la massima profondità dei segnalibri"
 
 msgid "Frontpage pdf file"
 msgstr "Documento PDF di copertina"
@@ -468,12 +471,12 @@ msgstr "Modifica"
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:237
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
 msgid "Add or modify text annotations"
-msgstr "Aggiunti o modifica annotazioni"
+msgstr "Aggiungi o modifica annotazioni"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:240
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
 msgid "Fill form fields"
-msgstr "Riepi campi form"
+msgstr "Riempi campi form"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:243
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
@@ -583,7 +586,7 @@ msgid "Choose a file"
 msgstr "Scegli un file"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Imposta i metadati sul file selezionato"
 
 msgid "Document Info"
 msgstr "Informazioni sul documento"
@@ -609,10 +612,10 @@ msgid "Reverse second document"
 msgstr "Inverti il secondo documento"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "Numero di pagine a cui passare dal primo documento all'altro"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Numero di pagine a cui passare dal secondo documento all'altro"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -625,11 +628,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Imposta il numero di pagine a cui passare dal primo documento all'altro "
+"(default è 1)"
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Imposta il numero di pagine a cui passare dal secondo documento all'altro "
+"(default è 1)"
 
 # F:\workspace_pdfsame_enanched\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:309
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
@@ -658,7 +665,7 @@ msgid "Unpack selected files"
 msgstr "Decomprimo i file selezionati"
 
 msgid "Unpack"
-msgstr "Decomprimi"
+msgstr "Spacchetta"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:546
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:613
@@ -778,7 +785,7 @@ msgid "Visual document composer"
 msgstr "Compositore visuale di documenti"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "Sezione compositore visuale caricata."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "Prego selezionare un documento pdf o ripristinare alcune pagine"
@@ -822,7 +829,7 @@ msgid "Visual reorder"
 msgstr "Riordino visuale"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "Sezione riordino visuale caricata."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "Prego selezionare un documento pdf o ripristinare alcune pagine"
@@ -847,7 +854,7 @@ msgid "Save as"
 msgstr "Salva come"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Salva l'immagine"
 
 msgid "Unable to save image"
 msgstr "Impossibile salvare l'immagine"
@@ -857,7 +864,7 @@ msgid "Close"
 msgstr "Chiudi"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Chiudi pannello"
 
 msgid "Rotate anticlockwise"
 msgstr "Ruota in senso antiorario"
@@ -872,10 +879,10 @@ msgid "Zoom out"
 msgstr "Zoom indietro"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Nessuno zoom"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Nessuno zoom applicato"
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
@@ -976,11 +983,8 @@ msgstr "Impossibile aprire l'anteprima dell'immagine"
 msgid "Unknown Action"
 msgstr "Azione sconosciuta"
 
-msgid "Error playing sound:"
-msgstr "Errore eseguondo il suono:"
-
 msgid "Error playing sound"
-msgstr "Errore eseguondo il suono"
+msgstr "Errore eseguendo il suono"
 
 msgid "Generating thumbnails using the following library:"
 msgstr "Generando le anteprime usando la seguente libreria:"
@@ -1016,6 +1020,88 @@ msgstr "La validazione del comando ha ritornato un valore vuoto."
 # F:\pdfsam\workspace-enhanced\pdfsam-mix\src\java\org\pdfsam\plugin\mix\GUI\MixMainGUI.java:258
 msgid "Command executed."
 msgstr "Comando eseguito."
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:262
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:249
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:264
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:257
+msgid "Add"
+msgstr "Aggiungi"
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:230
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:217
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
+msgid "Add a pdf to the list"
+msgstr "Aggiungi un PDF alla lista"
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:282
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
+# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
+msgid "Clear"
+msgstr "Pulisci"
+
+msgid "Remove every pdf file from the selection list"
+msgstr "Rimuovi tutti i pdf dalla lista di selezione"
+
+msgid "Document properties"
+msgstr "Proprietà documento"
+
+msgid "Show document properties"
+msgstr "Mostra proprietà documento"
+
+msgid "Move down"
+msgstr "Sposta Giù"
+
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:275
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
+msgid "Move down selected pdf file"
+msgstr "Sposta giù il file selezionato"
+
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:265
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:312
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
+msgid "Move Up"
+msgstr "Sposta su"
+
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
+msgid "Move up selected pdf file"
+msgstr "Sposta su il file selezionato"
+
+msgid "Reload"
+msgstr "Ricarica"
+
+msgid "Reload the selected document"
+msgstr "Ricarica il documento selezionato"
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:271
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:315
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:258
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:311
+msgid "Remove"
+msgstr "Rimuovi"
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:267
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:254
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:269
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:262
+msgid "Remove a pdf from the list"
+msgstr "Rimuovi un PDF dalla lista"
+
+msgid "Set destination"
+msgstr "Imposta destinazione"
+
+msgid "Set the destination path"
+msgstr "Imposta il path di destinazione"
 
 msgid "Unable to clean pdf loader"
 msgstr "Impossibile chiudere il caricatore di pdf"
@@ -1060,19 +1146,8 @@ msgstr "Esegui"
 msgid "Browse"
 msgstr "Sfoglia"
 
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:262
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:249
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:264
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:257
-msgid "Add"
-msgstr "Aggiungi"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:324
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:330
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
 msgid "Compress output file/files"
-msgstr "Comprimi file destnazione"
+msgstr "Comprimi file destinazione"
 
 # F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:451
 # F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:405
@@ -1185,48 +1260,6 @@ msgid ""
 msgstr ""
 "Doppio clic per impostare le pagine da unire (es:2 or 5-23 or 2,5-7,12-)"
 
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:230
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:217
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:232
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:225
-msgid "Add a pdf to the list"
-msgstr "Aggiungi un PDF alla lista"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:267
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:254
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:269
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:262
-msgid "Remove a pdf from the list"
-msgstr "Rimuovi un PDF dalla lista"
-
-# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:213
-msgid "(Canc)"
-msgstr "(Canc)"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:271
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:315
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:258
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:303
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:311
-msgid "Remove"
-msgstr "Rimuovi"
-
-msgid "Reload"
-msgstr "Ricarica"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:336
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:342
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-msgid "Error: Unable to reload the selected file/s."
-msgstr "Errore: impossibile ricaricare i/il file selezionato/i."
-
-msgid "Document properties"
-msgstr "Proprietà documento"
-
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:414
 msgid "Unable to remove JList text "
 msgstr "Impossibile rimuovere il testo nella JList "
@@ -1253,66 +1286,6 @@ msgstr "File selezionato: "
 msgid "File reloaded: "
 msgstr "File ricaricato: "
 
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:265
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:312
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:273
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:320
-msgid "Move Up"
-msgstr "Sposta su"
-
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:266
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
-msgid "Move up selected pdf file"
-msgstr "Sposta su il file selezionato"
-
-# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:240
-msgid "(Alt+ArrowUp)"
-msgstr "(Alt+FrecciaSu)"
-
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:321
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
-msgid "Move Down"
-msgstr "Sposta giù"
-
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:275
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
-msgid "Move down selected pdf file"
-msgstr "Sposta giù il file selezionato"
-
-# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:261
-msgid "(Alt+ArrowDown)"
-msgstr "(Alt+FrecciaGiu)"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:282
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
-# F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:284
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:294
-# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:105
-msgid "Clear"
-msgstr "Pulisci"
-
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:287
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
-msgid "Remove every pdf file from the merge list"
-msgstr "Rimuove ogni file PDF dalla lista"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:324
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:330
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
-msgid "Set output file"
-msgstr "Imposta il file di destinazione"
-
-# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:336
-# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:342
-# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
-msgid "Error: Unable to get the file path."
-msgstr "Errore: Impossibile recuperare il percorso del file."
-
 msgid "Open"
 msgstr "Apri"
 
@@ -1324,6 +1297,13 @@ msgstr "Errore impostando il livello di zoom."
 
 msgid "Preview"
 msgstr "Anteprima"
+
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:274
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:321
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:282
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:329
+msgid "Move Down"
+msgstr "Sposta giù"
 
 msgid "Delete"
 msgstr "Cancella"
@@ -1337,11 +1317,23 @@ msgstr "Inverti"
 msgid "Move up selected pages"
 msgstr "Muovi su le pagine selezionate"
 
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:240
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+FrecciaSu)"
+
 msgid "Move down selected pages"
 msgstr "Muovi giù le pagine selezionate"
 
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:261
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+FrecciaGiu)"
+
 msgid "Delete selected pages"
 msgstr "Cancella le pagine selezionate"
+
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\commons\panels\JPdfSelectionPanel.java:213
+msgid "(Canc)"
+msgstr "(Canc)"
 
 msgid "Undelete selected pages"
 msgstr "Ripristina le pagine selezionate"
@@ -1402,13 +1394,27 @@ msgstr "Produttore: "
 msgid "Encrypted: "
 msgstr "Criptato: "
 
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:324
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:330
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:326
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:338
+msgid "Set output file"
+msgstr "Imposta il file di destinazione"
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:336
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:342
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
+msgid "Error: Unable to get the file path."
+msgstr "Errore: Impossibile recuperare il percorso del file."
+
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:55
 msgid "File"
 msgstr "File"
 
 msgid "Image"
-msgstr ""
+msgstr "Immagine"
 
 msgid "Error creating preview panel."
 msgstr "Errore creando il pannello di anteprima."
@@ -1511,7 +1517,7 @@ msgid "Checking for a new version available."
 msgstr "Controllo disponibilità nuova versione..."
 
 msgid "Error checking for a new version available."
-msgstr "Errore durante il controllo delal disponibilità di una nuova versione."
+msgstr "Errore durante il controllo della disponibilità di una nuova versione."
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:112
@@ -1675,7 +1681,7 @@ msgid "Play alert sounds"
 msgstr "Riproduci suoni di allerta"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
-msgstr "Chede conferma quando l'opzione di sovrascrittura è selezionata"
+msgstr "Chiede conferma quando l'opzione di sovrascrittura è selezionata"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:223
@@ -1737,6 +1743,8 @@ msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
 msgstr ""
+"Mostra una finestra che chiede all'utente una conferma quando \"sovrascrivi"
+"\" è selezionato."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:227
@@ -1849,19 +1857,19 @@ msgid "Please select two pdf documents."
 msgstr "Selezionare due documenti PDF."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Prego attendere mentre tutti i file vengono processati."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Aggiungendo file"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Prego selezionare un file di destinazione."
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Prego selezionare una directory di destinazione."
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Nessuna destinazione selezionata"
 
 msgid "Selected output file already exists "
 msgstr "Il file selezionato esiste già "
@@ -1984,26 +1992,12 @@ msgstr "Salvando la configurazione dell'interfaccia grafica"
 msgid "Unable to save user interface status."
 msgstr "Impossibile salvare lo stato dell'interfaccia utente"
 
-# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\business\listeners\mediators\EnvironmentMediator.java:51
-#~ msgid "Ok"
-#~ msgstr "OK"
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Impossibile ottenere informazioni sull'ambiente di default."
 
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\gui\components\JMainMenuBar.java:90
 #~ msgid "Unable to initialize menu bar."
 #~ msgstr "Impossibile inizializzare la barra del menu."
-
-#~ msgid "Number of pages to switch document"
-#~ msgstr "Numero di pagine a cui cambiare documento"
-
-#~ msgid ""
-#~ "Set the number of pages to switch from a document to the other one "
-#~ "(default is 1)."
-#~ msgstr ""
-#~ "Imposta il numero di pagine per passare da un documento all'altro "
-#~ "(default è 1)"
-
-#~ msgid "Unable to get the default environment informations."
-#~ msgstr "Impossibile ottenere informazioni sull'ambiente di default."
 
 #~ msgid "Check for updates:"
 #~ msgstr "Controlla aggiornamenti:"

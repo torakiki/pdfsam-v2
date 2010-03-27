@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
 "PO-Revision-Date: 2009-12-07 09:02+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -81,6 +81,9 @@ msgstr "FIle sumber mengandung password"
 
 msgid "Export as xml"
 msgstr "Ekspor ke xml"
+
+msgid "Export the selection list in xml format"
+msgstr ""
 
 msgid "Unable to save xml file."
 msgstr "Tidak bisa menyimpan dalam berkas xml."
@@ -695,9 +698,6 @@ msgstr ""
 msgid "Unknown Action"
 msgstr ""
 
-msgid "Error playing sound:"
-msgstr ""
-
 msgid "Error playing sound"
 msgstr ""
 
@@ -719,6 +719,54 @@ msgstr ""
 msgid "Command executed."
 msgstr ""
 
+msgid "Add"
+msgstr "Tambah"
+
+msgid "Add a pdf to the list"
+msgstr "Tambahkan sebuah pdf ke dalam daftar"
+
+msgid "Clear"
+msgstr "Bersihkan"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "Properti dokumen"
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr ""
+
+msgid "Move Up"
+msgstr "Bergerak naik"
+
+msgid "Move up selected pdf file"
+msgstr ""
+
+msgid "Reload"
+msgstr "Muat ulang"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "Hapus"
+
+msgid "Remove a pdf from the list"
+msgstr "Hapus sebuah pdf dari daftar"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr ""
 
@@ -727,9 +775,6 @@ msgstr "Jalankan"
 
 msgid "Browse"
 msgstr "Rambah"
-
-msgid "Add"
-msgstr "Tambah"
 
 msgid "Compress output file/files"
 msgstr ""
@@ -800,27 +845,6 @@ msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
-msgid "Add a pdf to the list"
-msgstr "Tambahkan sebuah pdf ke dalam daftar"
-
-msgid "Remove a pdf from the list"
-msgstr "Hapus sebuah pdf dari daftar"
-
-msgid "(Canc)"
-msgstr ""
-
-msgid "Remove"
-msgstr "Hapus"
-
-msgid "Reload"
-msgstr "Muat ulang"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr ""
-
-msgid "Document properties"
-msgstr "Properti dokumen"
-
 msgid "Unable to remove JList text "
 msgstr ""
 
@@ -829,36 +853,6 @@ msgstr "File terpilih: "
 
 msgid "File reloaded: "
 msgstr ""
-
-msgid "Move Up"
-msgstr "Bergerak naik"
-
-msgid "Move up selected pdf file"
-msgstr ""
-
-msgid "(Alt+ArrowUp)"
-msgstr ""
-
-msgid "Move Down"
-msgstr "Bergerak turun"
-
-msgid "Move down selected pdf file"
-msgstr ""
-
-msgid "(Alt+ArrowDown)"
-msgstr ""
-
-msgid "Clear"
-msgstr "Bersihkan"
-
-msgid "Remove every pdf file from the merge list"
-msgstr ""
-
-msgid "Set output file"
-msgstr "Tentukan file keluaran"
-
-msgid "Error: Unable to get the file path."
-msgstr "Error: tidak dapat memperoleh jalur file"
 
 msgid "Open"
 msgstr "Buka"
@@ -872,6 +866,9 @@ msgstr ""
 msgid "Preview"
 msgstr "Pratampilan"
 
+msgid "Move Down"
+msgstr "Bergerak turun"
+
 msgid "Delete"
 msgstr "Hapus"
 
@@ -884,10 +881,19 @@ msgstr "Kebalikan"
 msgid "Move up selected pages"
 msgstr ""
 
+msgid "(Alt+ArrowUp)"
+msgstr ""
+
 msgid "Move down selected pages"
 msgstr ""
 
+msgid "(Alt+ArrowDown)"
+msgstr ""
+
 msgid "Delete selected pages"
+msgstr ""
+
+msgid "(Canc)"
 msgstr ""
 
 msgid "Undelete selected pages"
@@ -946,6 +952,12 @@ msgstr "Produksi dari: "
 
 msgid "Encrypted: "
 msgstr ""
+
+msgid "Set output file"
+msgstr "Tentukan file keluaran"
+
+msgid "Error: Unable to get the file path."
+msgstr "Error: tidak dapat memperoleh jalur file"
 
 msgid "File"
 msgstr "Berkas"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-14 19:32+0100\n"
-"PO-Revision-Date: 2009-06-17 16:13+0000\n"
-"Last-Translator: le.woj <Unknown>\n"
+"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"PO-Revision-Date: 2010-02-03 00:13+0000\n"
+"Last-Translator: luckynyc <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-26 05:12+0000\n"
+"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -82,6 +82,9 @@ msgstr "Odnaleziono hasło dla pliku wejściowego"
 msgid "Export as xml"
 msgstr "Eksportuj jako xml"
 
+msgid "Export the selection list in xml format"
+msgstr ""
+
 msgid "Unable to save xml file."
 msgstr "Zapisanie pliku xml było niemożliwe."
 
@@ -110,7 +113,7 @@ msgid "Split after these pages"
 msgstr "Podziel po tych stronach"
 
 msgid "Split at this size"
-msgstr ""
+msgstr "Dziel przy rozmiarze"
 
 msgid "Split by bookmarks level"
 msgstr ""
@@ -169,7 +172,7 @@ msgstr ""
 "istnieje."
 
 msgid "Output options"
-msgstr ""
+msgstr "Opcje wyjściowe"
 
 msgid "Output file names prefix:"
 msgstr "Przedrostek nazw plików wyjściwych:"
@@ -204,13 +207,13 @@ msgid "Split section loaded."
 msgstr "Wczytano sekcję dzielenia."
 
 msgid "Invalid split size"
-msgstr ""
+msgstr "Błędny rozmiar dzielenia"
 
 msgid "Invalid unit: "
 msgstr "Nieprawidłowa jednostka: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "Wypełnij z dokumentu"
 
 msgid "Please select a pdf document."
 msgstr "Proszę wybrać dokument PDF."
@@ -237,7 +240,7 @@ msgid "Cover And Footer section loaded."
 msgstr ""
 
 msgid "Select at least one cover or one footer"
-msgstr ""
+msgstr "Wybierz conajmniej jedną okładkę lub stopkę"
 
 msgid "Encrypt options"
 msgstr "Opcje szyfrowania"
@@ -288,6 +291,8 @@ msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
+"Zaznacz pole jeśli chcesz otrzymać plik skompresowany (wersja Pdf 1.5 lub "
+"wyższa)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr "Jeżeli zawiera \"[*TIMESTAMP*]\" to wypełnia zmienne zastępowanie."
@@ -319,7 +324,7 @@ msgid "Encrypt section loaded."
 msgstr "Rozdział szyfrowany załadowany."
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "Odszyfruj wybrane pliki"
 
 msgid "Decrypt"
 msgstr "Odszyfrowanie"
@@ -343,16 +348,16 @@ msgid "Keywords"
 msgstr "Słowa kluczowe"
 
 msgid "Set the document title."
-msgstr ""
+msgstr "Ustaw nazwę dokumentu"
 
 msgid "Set the document author."
-msgstr ""
+msgstr "Ustaw autora dokumentu"
 
 msgid "Set the document subject."
-msgstr ""
+msgstr "Ustaw przedmiot dokumentu"
 
 msgid "Set the document keywords."
-msgstr ""
+msgstr "Ustaw słowa kluczowe dokumentu"
 
 msgid "Choose a file"
 msgstr "Wybierz plik"
@@ -361,10 +366,10 @@ msgid "Set metadata on the selected file"
 msgstr ""
 
 msgid "Document Info"
-msgstr ""
+msgstr "Informacje o dokumencie"
 
 msgid "Rotate section loaded."
-msgstr ""
+msgstr "Obróć wczytaną sekcję"
 
 msgid "Mix options"
 msgstr ""
@@ -400,7 +405,7 @@ msgid "Execute pdf alternate mix"
 msgstr ""
 
 msgid "Alternate Mix"
-msgstr ""
+msgstr "Mieszanie stron"
 
 msgid "AlternateMix section loaded."
 msgstr ""
@@ -561,7 +566,7 @@ msgid "Set the pages that will be rotated."
 msgstr ""
 
 msgid "Rotate selected files"
-msgstr ""
+msgstr "Obróć wybrane pliki"
 
 msgid "Rotate"
 msgstr ""
@@ -699,9 +704,6 @@ msgstr ""
 msgid "Unknown Action"
 msgstr "Nieznana akcja"
 
-msgid "Error playing sound:"
-msgstr "Błąd odtwarzania dźwięku:"
-
 msgid "Error playing sound"
 msgstr "Błąd odtwarzania dźwięku"
 
@@ -723,6 +725,54 @@ msgstr ""
 msgid "Command executed."
 msgstr "Polecenie wykonane."
 
+msgid "Add"
+msgstr "Dodanie"
+
+msgid "Add a pdf to the list"
+msgstr "Dodaj plik PDF do listy"
+
+msgid "Clear"
+msgstr "Wyszyść"
+
+msgid "Remove every pdf file from the selection list"
+msgstr ""
+
+msgid "Document properties"
+msgstr "Właściwości dokumentu"
+
+msgid "Show document properties"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move down selected pdf file"
+msgstr "Przesuń wybrany plik PDF w dół"
+
+msgid "Move Up"
+msgstr "Przenieś do góry"
+
+msgid "Move up selected pdf file"
+msgstr "Przesuń wybrany plik PDF do góry"
+
+msgid "Reload"
+msgstr "Załaduj ponownie"
+
+msgid "Reload the selected document"
+msgstr ""
+
+msgid "Remove"
+msgstr "Usuń"
+
+msgid "Remove a pdf from the list"
+msgstr "Usuń plik PDF z listy"
+
+msgid "Set destination"
+msgstr ""
+
+msgid "Set the destination path"
+msgstr ""
+
 msgid "Unable to clean pdf loader"
 msgstr ""
 
@@ -731,9 +781,6 @@ msgstr "Wykonaj"
 
 msgid "Browse"
 msgstr "Przeglądaj"
-
-msgid "Add"
-msgstr "Dodanie"
 
 msgid "Compress output file/files"
 msgstr "Kompresuj plik/pliki wyjściowe"
@@ -804,27 +851,6 @@ msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
 
-msgid "Add a pdf to the list"
-msgstr "Dodaj plik PDF do listy"
-
-msgid "Remove a pdf from the list"
-msgstr "Usuń plik PDF z listy"
-
-msgid "(Canc)"
-msgstr ""
-
-msgid "Remove"
-msgstr "Usuń"
-
-msgid "Reload"
-msgstr "Załaduj ponownie"
-
-msgid "Error: Unable to reload the selected file/s."
-msgstr ""
-
-msgid "Document properties"
-msgstr "Właściwości dokumentu"
-
 msgid "Unable to remove JList text "
 msgstr ""
 
@@ -833,36 +859,6 @@ msgstr "Wybrano plik: "
 
 msgid "File reloaded: "
 msgstr ""
-
-msgid "Move Up"
-msgstr "Przenieś do góry"
-
-msgid "Move up selected pdf file"
-msgstr "Przesuń wybrany plik PDF do góry"
-
-msgid "(Alt+ArrowUp)"
-msgstr "Alt+Strzałka w górę"
-
-msgid "Move Down"
-msgstr "Przesuń niżej"
-
-msgid "Move down selected pdf file"
-msgstr "Przesuń wybrany plik PDF w dół"
-
-msgid "(Alt+ArrowDown)"
-msgstr "Alt+Strzałka w dół"
-
-msgid "Clear"
-msgstr "Wyszyść"
-
-msgid "Remove every pdf file from the merge list"
-msgstr "Usuń wszystkie pliki PDF z listy"
-
-msgid "Set output file"
-msgstr "Ustaw plik wyjściowy"
-
-msgid "Error: Unable to get the file path."
-msgstr "Błąd: Nie można odczytać ścieżki pliku"
 
 msgid "Open"
 msgstr "Otwórz"
@@ -876,6 +872,9 @@ msgstr ""
 msgid "Preview"
 msgstr "Podgląd"
 
+msgid "Move Down"
+msgstr "Przesuń niżej"
+
 msgid "Delete"
 msgstr "Skasuj"
 
@@ -888,11 +887,20 @@ msgstr ""
 msgid "Move up selected pages"
 msgstr ""
 
+msgid "(Alt+ArrowUp)"
+msgstr "Alt+Strzałka w górę"
+
 msgid "Move down selected pages"
 msgstr ""
 
+msgid "(Alt+ArrowDown)"
+msgstr "Alt+Strzałka w dół"
+
 msgid "Delete selected pages"
 msgstr "Skasuj zaznaczone strony"
+
+msgid "(Canc)"
+msgstr ""
 
 msgid "Undelete selected pages"
 msgstr ""
@@ -950,6 +958,12 @@ msgstr "Producent: "
 
 msgid "Encrypted: "
 msgstr "Zaszyfrowany: "
+
+msgid "Set output file"
+msgstr "Ustaw plik wyjściowy"
+
+msgid "Error: Unable to get the file path."
+msgstr "Błąd: Nie można odczytać ścieżki pliku"
 
 msgid "File"
 msgstr "Plik"
@@ -1399,23 +1413,8 @@ msgstr ""
 msgid "Unable to save user interface status."
 msgstr ""
 
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Usuń wszystkie pliki PDF z listy"
+
 #~ msgid "Ok"
 #~ msgstr "Ok"
-
-#~ msgid "Please wait while reading"
-#~ msgstr "Poszę czekać podczas odczytu"
-
-#~ msgid "Selected file is not a pdf document."
-#~ msgstr "Wskazany plik nie jest dokumentem PDF."
-
-#~ msgid "Error loading "
-#~ msgstr "Błąd ładowania "
-
-#~ msgid "Setting default working directory..."
-#~ msgstr "Ustawianie domyślnego katalogu roboczego..."
-
-#~ msgid "Check for updates:"
-#~ msgstr "Sprawdź aktualizacje:"
-
-#~ msgid "Never"
-#~ msgstr "Nigdy"
