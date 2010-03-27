@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exception-types>
+	<type key="org.pdfsam.emp4j.exceptions.ClassNameKeyException" description="TEST">
+		<exception errorcode="1" message="Unknown exception." />
+		<exception errorcode="2" message="Unknown exception {0}." />
+	</type>
+</exception-types>
