@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+	<groupId>org.pdfsam</groupId>
+	<artifactId>pdfsam-parent</artifactId>
+	<version>1.0</version>
+	<relativePath>../pdfsam-parent/pom.xml</relativePath>
+  </parent>
+
+  <artifactId>pdfsam-jcmdline</artifactId>
+  <version>1.0.4-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Custom version of jcmdline</name>
+  <developers>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+      <distribution>repo</distribution>
+      <comments>GNU LGPL 2.1</comments>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>pdfsam</name>
+    <url>http://www.pdfsam.org</url>
+  </organization>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.4</source>
+          <target>1.4</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+ 
+</project>
