@@ -381,6 +381,7 @@
 				<include name="pdfsam-maine/src/java/**/*"/>
 				<include name="pdfsam-maine/ant/**/*"/>
 				<include name="pdfsam-maine/etc/**/*"/>
+				<include name="pdfsam-maine/resources/**/*"/>
 				<include name="pdfsam-maine/META-INF/**/*"/>
 				<include name="pdfsam-maine/bin/**/*"/>
 				<include name="pdfsam-maine/doc/licenses/**/*"/>
