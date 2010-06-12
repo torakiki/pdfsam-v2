@@ -39,6 +39,7 @@ package org.pdfsam.console.business.pdf.bookmarks;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import com.lowagie.text.pdf.SimpleBookmark;
 
 /**
@@ -84,7 +85,10 @@ public class BookmarksProcessor {
             }
             if (startPage > 1) {
                 SimpleBookmark.eliminatePages(retVal, new int[] { 1, startPage - 1 });
-                SimpleBookmark.shiftPageNumbers(retVal, -(startPage - 1 + pageOffset), null);
+                SimpleBookmark.shiftPageNumbers(retVal, -(startPage - 1), null);
+            }
+            if (pageOffset != 0) {
+                SimpleBookmark.shiftPageNumbers(retVal, pageOffset, null);
             }
         }
         return retVal;
