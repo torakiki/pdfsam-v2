@@ -509,7 +509,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboLaf;
             }
             else if (aComponent.equals(comboLaf)){
-                return comboTheme;
+            	if(comboTheme.isEnabled()){
+            		return comboTheme;
+            	}else{
+            		return comboLog;
+            	}
             }
             else if (aComponent.equals(comboTheme)){
                 return comboLog;
@@ -574,7 +578,11 @@ public class JSettingsPanel extends AbstractPlugablePanel{
                 return comboLog;
             }            
             else if (aComponent.equals(comboLog)){
-                return comboTheme;
+            	if(comboTheme.isEnabled()){
+            		return comboTheme;
+            	}else{
+            		return comboLaf;
+            	}
             }
             else if (aComponent.equals(comboTheme)){
                     return comboLaf;
