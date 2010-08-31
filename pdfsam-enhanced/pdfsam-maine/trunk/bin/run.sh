@@ -14,8 +14,8 @@ die() {
     exit 1
 }
 
-
-DIRNAME="../"
+DIRNAME="`dirname $0`"
+DIRNAME="${DIRNAME%/bin}"
 PDFSAMJAR="$DIRNAME/@PDFSAM_JAR_NAME.jar"
 
 # Setup the classpath

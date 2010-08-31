@@ -1,6 +1,8 @@
 2.3.0e () (pdfsam-console )
 ===================================
 -Fixed bug #2995149 missing resource directory in source package
+-Fixed bug #3050730 pdfsam-starter for Windows 7
+-Accepted patch #3046378 run.sh can now be started from any directory
 
 2.2.0e (27-Mar-2010) (pdfsam-console 2.3.0e)
 ===================================
