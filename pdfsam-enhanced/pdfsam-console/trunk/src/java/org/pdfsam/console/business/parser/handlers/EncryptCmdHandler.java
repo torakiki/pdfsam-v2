@@ -41,10 +41,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
 import jcmdline.FileParam;
 import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
+
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.EncryptParsedCommand;
 import org.pdfsam.console.business.parser.handlers.interfaces.AbstractCmdHandler;

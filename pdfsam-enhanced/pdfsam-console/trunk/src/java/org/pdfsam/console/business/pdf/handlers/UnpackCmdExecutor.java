@@ -46,6 +46,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
+
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
@@ -54,15 +55,16 @@ import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.UnpackException;
-import com.lowagie.text.pdf.PRStream;
-import com.lowagie.text.pdf.PdfArray;
-import com.lowagie.text.pdf.PdfDictionary;
-import com.lowagie.text.pdf.PdfName;
-import com.lowagie.text.pdf.PdfNameTree;
-import com.lowagie.text.pdf.PdfObject;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfString;
-import com.lowagie.text.pdf.RandomAccessFileOrArray;
+
+import com.itextpdf.text.pdf.PRStream;
+import com.itextpdf.text.pdf.PdfArray;
+import com.itextpdf.text.pdf.PdfDictionary;
+import com.itextpdf.text.pdf.PdfName;
+import com.itextpdf.text.pdf.PdfNameTree;
+import com.itextpdf.text.pdf.PdfObject;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfString;
+import com.itextpdf.text.pdf.RandomAccessFileOrArray;
 /**
  * Command executor for the unpack command
  * @author Andrea Vacondio

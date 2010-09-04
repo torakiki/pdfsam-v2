@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
 import jcmdline.BooleanParam;
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
@@ -49,6 +50,7 @@ import jcmdline.Parameter;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.VersionCmdLineHandler;
+
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;

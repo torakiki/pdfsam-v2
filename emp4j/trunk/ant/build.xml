@@ -80,7 +80,7 @@
   <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${emp4j.dist.dir}/${emp4j.jar.name}-build-src.zip">
 		<fileset dir="..">
-	    	<include name="emp4j/src/java/**/*"/>
+	    	<include name="emp4j/src/main/java/**/*"/>
     	</fileset>
 		<fileset dir="${build.dir}">
 	    	<include name="emp4j/apidocs/**/*.*"/>

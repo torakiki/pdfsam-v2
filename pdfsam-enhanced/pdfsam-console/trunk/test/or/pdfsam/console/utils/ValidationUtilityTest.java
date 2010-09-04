@@ -39,8 +39,10 @@ package or.pdfsam.console.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
+
 import org.pdfsam.console.business.dto.Bounds;
 import org.pdfsam.console.exceptions.console.ValidationException;
 import org.pdfsam.console.utils.ValidationUtility;

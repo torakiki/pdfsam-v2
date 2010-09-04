@@ -41,6 +41,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
+
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PdfFile;
 import org.pdfsam.console.business.dto.WorkDoneDataModel;
@@ -48,10 +49,11 @@ import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FilenameComparator;
 import org.pdfsam.console.utils.PdfFilter;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfStream;
-import com.lowagie.text.pdf.PdfWriter;
+
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.pdf.PdfStream;
+import com.itextpdf.text.pdf.PdfWriter;
 
 /**
  * Abstract command executor

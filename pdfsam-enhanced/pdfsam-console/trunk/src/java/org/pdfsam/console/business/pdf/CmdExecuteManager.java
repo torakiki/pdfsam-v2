@@ -38,6 +38,7 @@ package org.pdfsam.console.business.pdf;
 
 import java.util.Observable;
 import java.util.Observer;
+
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.apache.commons.lang.time.StopWatch;
 import org.apache.log4j.Logger;

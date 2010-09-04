@@ -74,7 +74,7 @@
   <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${jcmdline.dist.dir}/${jcmdline.jar.name}-build-src.zip">
 		<fileset dir="..">
-	    	<include name="jcmdline/src/java/**/*"/>
+	    	<include name="jcmdline/src/main/java/**/*"/>
     	</fileset>
 		<fileset dir="${build.dir}">
 	    	<include name="jcmdline/apidocs/**/*.*"/>

@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.lowagie.text.pdf.SimpleBookmark;
+import com.itextpdf.text.pdf.SimpleBookmark;
 
 /**
  * Helper class used to process bookmarks

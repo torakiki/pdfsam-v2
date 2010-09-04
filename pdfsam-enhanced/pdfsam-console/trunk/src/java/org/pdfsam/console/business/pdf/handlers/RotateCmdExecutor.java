@@ -41,6 +41,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
+
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.PageRotation;
@@ -53,11 +54,12 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.EncryptException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
-import com.lowagie.text.pdf.PdfDictionary;
-import com.lowagie.text.pdf.PdfName;
-import com.lowagie.text.pdf.PdfNumber;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
+
+import com.itextpdf.text.pdf.PdfDictionary;
+import com.itextpdf.text.pdf.PdfName;
+import com.itextpdf.text.pdf.PdfNumber;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 
 /**
  * Executes the rotate command

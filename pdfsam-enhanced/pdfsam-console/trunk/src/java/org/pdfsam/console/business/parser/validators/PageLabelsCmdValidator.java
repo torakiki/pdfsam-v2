@@ -41,11 +41,13 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
+
 import jcmdline.CmdLineHandler;
 import jcmdline.FileParam;
 import jcmdline.PdfFileParam;
 import jcmdline.StringParam;
 import jcmdline.dto.PdfFile;
+
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.PageLabel;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;

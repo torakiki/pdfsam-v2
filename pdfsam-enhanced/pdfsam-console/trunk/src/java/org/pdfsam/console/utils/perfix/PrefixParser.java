@@ -42,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.pdfsam.console.exceptions.console.ConsoleException;
 /**
  * Used to parse the prefix and generate the output filename.

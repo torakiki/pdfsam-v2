@@ -38,6 +38,7 @@
 package org.pdfsam.console.business.parser;
 
 import jcmdline.CmdLineHandler;
+
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.apache.commons.lang.time.StopWatch;
 import org.apache.log4j.Logger;

@@ -38,6 +38,7 @@
 package org.pdfsam.console.business.parser.validators.interfaces;
 
 import jcmdline.CmdLineHandler;
+
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 

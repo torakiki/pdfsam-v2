@@ -39,6 +39,7 @@ package org.pdfsam.console.utils;
 
 import java.io.InputStream;
 import java.util.List;
+
 import org.dom4j.io.SAXReader;
 
 /**

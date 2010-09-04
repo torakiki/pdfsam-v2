@@ -38,7 +38,9 @@
 package org.pdfsam.console.business.parser.handlers.interfaces;
 
 import java.util.Collection;
+
 import jcmdline.CmdLineHandler;
+
 import org.pdfsam.console.business.ConsoleServicesFacade;
 
 /**

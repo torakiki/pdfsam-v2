@@ -40,6 +40,7 @@ package org.pdfsam.console.business.pdf.handlers;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.HashMap;
+
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.ConsoleServicesFacade;
 import org.pdfsam.console.business.dto.PdfFile;
@@ -51,11 +52,12 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.EncryptException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
-import com.lowagie.text.pdf.PdfEncryptor;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfWriter;
-import com.lowagie.text.pdf.RandomAccessFileOrArray;
+
+import com.itextpdf.text.pdf.PdfEncryptor;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.RandomAccessFileOrArray;
 
 /**
  * Command executor for the encrypt command

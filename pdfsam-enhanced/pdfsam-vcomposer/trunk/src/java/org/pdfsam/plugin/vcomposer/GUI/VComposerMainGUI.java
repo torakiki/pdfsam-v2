@@ -28,6 +28,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.List;
 import java.util.Vector;
+
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -43,6 +44,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.TitledBorder;
+
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import org.dom4j.Node;
@@ -66,7 +68,8 @@ import org.pdfsam.guiclient.gui.components.JHelpLabel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.vcomposer.listeners.RunButtonActionListener;
-import com.lowagie.text.pdf.codec.Base64;
+
+import com.itextpdf.text.pdf.codec.Base64;
 
 /**
  * Visual document composer plugin  main panel

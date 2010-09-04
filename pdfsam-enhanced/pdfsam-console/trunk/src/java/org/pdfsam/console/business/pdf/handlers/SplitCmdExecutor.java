@@ -47,6 +47,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.TreeSet;
+
 import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -62,12 +63,13 @@ import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.perfix.FileNameRequest;
 import org.pdfsam.console.utils.perfix.PrefixParser;
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfImportedPage;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfSmartCopy;
-import com.lowagie.text.pdf.RandomAccessFileOrArray;
-import com.lowagie.text.pdf.SimpleBookmark;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfImportedPage;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfSmartCopy;
+import com.itextpdf.text.pdf.RandomAccessFileOrArray;
+import com.itextpdf.text.pdf.SimpleBookmark;
 
 /**
  * Command executor for the split command

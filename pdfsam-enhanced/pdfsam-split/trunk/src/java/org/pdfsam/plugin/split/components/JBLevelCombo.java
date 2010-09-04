@@ -35,9 +35,9 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.dto.PdfSelectionTableItem;
 import org.pdfsam.i18n.GettextResource;
 
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.RandomAccessFileOrArray;
-import com.lowagie.text.pdf.SimpleBookmark;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.RandomAccessFileOrArray;
+import com.itextpdf.text.pdf.SimpleBookmark;
 /**
  * Panel with the bookmarks level combo and the button to fill it
  * @author Andrea Vacondio

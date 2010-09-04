@@ -38,6 +38,7 @@
 package org.pdfsam.console.business.dto;
 
 import java.io.Serializable;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**

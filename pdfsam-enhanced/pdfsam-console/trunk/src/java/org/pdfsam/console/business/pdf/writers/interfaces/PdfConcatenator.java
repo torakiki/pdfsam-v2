@@ -38,7 +38,8 @@
 package org.pdfsam.console.business.pdf.writers.interfaces;
 
 import java.util.List;
-import com.lowagie.text.pdf.PdfReader;
+
+import com.itextpdf.text.pdf.PdfReader;
 
 /**
  * Interface for the writers used to concat pdf files

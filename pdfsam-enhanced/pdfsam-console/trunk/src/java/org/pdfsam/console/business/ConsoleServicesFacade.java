@@ -37,6 +37,7 @@
 package org.pdfsam.console.business;
 
 import java.util.Observer;
+
 import org.apache.log4j.Logger;
 import org.pdfsam.console.business.dto.commands.AbstractParsedCommand;
 import org.pdfsam.console.business.parser.CmdParseManager;

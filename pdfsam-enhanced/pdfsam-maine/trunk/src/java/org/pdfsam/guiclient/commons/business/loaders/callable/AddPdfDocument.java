@@ -28,10 +28,10 @@ import org.pdfsam.guiclient.utils.EncryptionUtility;
 import org.pdfsam.guiclient.utils.filters.PdfFilter;
 import org.pdfsam.i18n.GettextResource;
 
-import com.lowagie.text.pdf.PdfName;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfWriter;
-import com.lowagie.text.pdf.RandomAccessFileOrArray;
+import com.itextpdf.text.pdf.PdfName;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.RandomAccessFileOrArray;
 /**
  * Callable to add a pdf document to the selection panel
  * @author Andrea Vacondio
