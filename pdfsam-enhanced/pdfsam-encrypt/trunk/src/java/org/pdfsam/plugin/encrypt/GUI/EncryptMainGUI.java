@@ -505,13 +505,17 @@ public class EncryptMainGUI extends AbstractPlugablePanel {
                 }
 
                 Element ownerPwd = ((Element) arg0).addElement("ownerpwd");
-                ownerPwd.addAttribute("value", ownerPwdField.getText());
+                if (savePasswords) {
+                    ownerPwd.addAttribute("value", ownerPwdField.getText());
+                }
 
                 Element encType = ((Element) arg0).addElement("enctype");
                 encType.addAttribute("value", (String) encryptType.getSelectedItem());
 
                 Element userPwd = ((Element) arg0).addElement("usrpwd");
-                userPwd.addAttribute("value", userPwdField.getText());
+                if (savePasswords) {
+                    userPwd.addAttribute("value", userPwdField.getText());
+                }
 
                 Element fileDestination = ((Element) arg0).addElement("destination");
                 fileDestination.addAttribute("value", destFolderText.getText());
