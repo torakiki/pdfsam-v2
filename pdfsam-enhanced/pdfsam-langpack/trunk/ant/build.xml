@@ -97,7 +97,7 @@
 			<arg line="-N -U ${po}/gl/pdfsam-gl.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
-			<arg line="-N -U ${po}/he/pdfsam-he.po ${pot}"/>
+			<arg line="-N -U ${po}/iw_IL/pdfsam-iw_IL.po ${pot}"/>
 		</exec>
 		<exec executable="${gettext.dir}/msgmerge">
 			<arg line="-N -U ${po}/hu/pdfsam-hu.po ${pot}"/>
@@ -224,7 +224,7 @@
 			<arg line="-p -o ${resources.dir}/Messages_gl.properties ${po}/gl/pdfsam-gl.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
-			<arg line="-p -o ${resources.dir}/Messages_he.properties ${po}/he/pdfsam-he.po"/>
+			<arg line="-p -o ${resources.dir}/Messages_iw_IL.properties ${po}/iw_IL/pdfsam-iw_IL.po"/>
 		</exec>
 		<exec executable="${gettext.dir}/msguniq">
 			<arg line="-p -o ${resources.dir}/Messages_hr.properties ${po}/hr/pdfsam-hr.po"/>
