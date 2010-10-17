@@ -54,7 +54,7 @@ public class ConsoleServicesFacade {
 
     private static final Logger LOG = Logger.getLogger(ConsoleServicesFacade.class.getPackage().getName());
 
-    public static final String VERSION = "2.3.0e";
+    public static final String VERSION = "2.4.0e";
     public static final String CREATOR = "pdfsam-console (Ver. " + ConsoleServicesFacade.VERSION + ")";
 
     private CmdParseManager cmdParserManager;

@@ -61,15 +61,15 @@ public class DefaultCmdHandler implements CmdHandler {
 
 	private VersionCmdLineHandler commandLineHandler = null;
 	
-	private static final String COMMAND_DESCRIPTION = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt, rotate, pagelabels.";
+	private static final String COMMAND_DESCRIPTION = "merge, split, mix, setviewer, unpack, encrypt, slideshow, decrypt, rotate, pagelabels, setdocinfo.";
 	
 	 /**
      * The default arguments 
      */
 	private final List concatArguments = new ArrayList(Arrays.asList(new Parameter[] {
             new StringParam("command",   
-                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ENCRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"], ["+AbstractParsedCommand.COMMAND_DECRYPT+"], ["+AbstractParsedCommand.COMMAND_ROTATE+"], ["+AbstractParsedCommand.COMMAND_PAGELABELS+"]}",
-                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ENCRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER , AbstractParsedCommand.COMMAND_DECRYPT, AbstractParsedCommand.COMMAND_ROTATE , AbstractParsedCommand.COMMAND_PAGELABELS },
+                    "command to execute {["+AbstractParsedCommand.COMMAND_CONCAT+"], ["+AbstractParsedCommand.COMMAND_SPLIT+"], ["+AbstractParsedCommand.COMMAND_ENCRYPT+"], ["+AbstractParsedCommand.COMMAND_MIX+"], ["+AbstractParsedCommand.COMMAND_UNPACK+"], ["+AbstractParsedCommand.COMMAND_SETVIEWER+"], ["+AbstractParsedCommand.COMMAND_SLIDESHOW+"], ["+AbstractParsedCommand.COMMAND_DECRYPT+"], ["+AbstractParsedCommand.COMMAND_ROTATE+"], ["+AbstractParsedCommand.COMMAND_PAGELABELS+"], ["+AbstractParsedCommand.COMMAND_SETDOCINFO+"]}",
+                    new String[] { AbstractParsedCommand.COMMAND_CONCAT, AbstractParsedCommand.COMMAND_SPLIT, AbstractParsedCommand.COMMAND_ENCRYPT, AbstractParsedCommand.COMMAND_MIX, AbstractParsedCommand.COMMAND_UNPACK, AbstractParsedCommand.COMMAND_SETVIEWER , AbstractParsedCommand.COMMAND_DECRYPT, AbstractParsedCommand.COMMAND_ROTATE , AbstractParsedCommand.COMMAND_PAGELABELS, AbstractParsedCommand.COMMAND_SETDOCINFO },
                     StringParam.REQUIRED)
     }));
 	
