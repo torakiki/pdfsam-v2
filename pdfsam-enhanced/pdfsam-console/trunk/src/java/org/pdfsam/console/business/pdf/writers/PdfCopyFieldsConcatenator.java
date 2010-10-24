@@ -42,10 +42,10 @@ import java.util.List;
 
 import org.pdfsam.console.business.pdf.writers.interfaces.PdfConcatenator;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfCopyFields;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStream;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.PdfCopyFields;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStream;
 
 /**
  * Copy Fields concatenator. Uses PdfCopyFields.

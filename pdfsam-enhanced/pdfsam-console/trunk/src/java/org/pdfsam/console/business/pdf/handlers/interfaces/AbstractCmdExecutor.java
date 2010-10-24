@@ -50,10 +50,10 @@ import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FilenameComparator;
 import org.pdfsam.console.utils.PdfFilter;
 
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
-import com.itextpdf.text.pdf.PdfStream;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.PdfStream;
+import com.lowagie.text.pdf.PdfWriter;
 
 /**
  * Abstract command executor

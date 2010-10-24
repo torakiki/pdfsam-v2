@@ -55,7 +55,7 @@ import org.pdfsam.console.exceptions.console.ParseException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.ValidationUtility;
 
-import com.itextpdf.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.PdfWriter;
 /**
  * CmdValidator for the setviewer command
  * @author Andrea Vacondio

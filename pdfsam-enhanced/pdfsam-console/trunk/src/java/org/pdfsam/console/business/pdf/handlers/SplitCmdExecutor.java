@@ -64,12 +64,12 @@ import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.perfix.FileNameRequest;
 import org.pdfsam.console.utils.perfix.PrefixParser;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfImportedPage;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfSmartCopy;
-import com.itextpdf.text.pdf.RandomAccessFileOrArray;
-import com.itextpdf.text.pdf.SimpleBookmark;
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfImportedPage;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfSmartCopy;
+import com.lowagie.text.pdf.RandomAccessFileOrArray;
+import com.lowagie.text.pdf.SimpleBookmark;
 
 /**
  * Command executor for the split command

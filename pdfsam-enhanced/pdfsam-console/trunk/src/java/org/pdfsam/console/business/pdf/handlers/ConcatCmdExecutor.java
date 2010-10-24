@@ -70,14 +70,14 @@ import org.pdfsam.console.exceptions.console.ValidationException;
 import org.pdfsam.console.utils.FileUtility;
 import org.pdfsam.console.utils.ValidationUtility;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfDictionary;
-import com.itextpdf.text.pdf.PdfName;
-import com.itextpdf.text.pdf.PdfNumber;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
-import com.itextpdf.text.pdf.RandomAccessFileOrArray;
-import com.itextpdf.text.pdf.SimpleBookmark;
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfDictionary;
+import com.lowagie.text.pdf.PdfName;
+import com.lowagie.text.pdf.PdfNumber;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.RandomAccessFileOrArray;
+import com.lowagie.text.pdf.SimpleBookmark;
 
 /**
  * Command executor for the concat command
