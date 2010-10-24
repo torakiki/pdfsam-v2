@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-02-24 15:12+0000\n"
-"Last-Translator: Emilien Klein <emilien+ubuntu@klein.st>\n"
+"POT-Creation-Date: 2010-10-03 18:04+0200\n"
+"PO-Revision-Date: 2010-08-26 09:25+0000\n"
+"Last-Translator: Bert de Bruijn <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -136,7 +136,7 @@ msgid "Export as xml"
 msgstr "Exporteren als xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Exporteer de selectielijst in xml-formaat"
 
 msgid "Unable to save xml file."
 msgstr "Kon het xml bestand niet wegschrijven!"
@@ -346,7 +346,7 @@ msgid "Getting bookmarks max depth"
 msgstr "Verkrijgen van de maximale bladwijzer diepte"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Niet in staat om de maximale diepte van de bladwijzers te verkrijgen."
 
 msgid "Frontpage pdf file"
 msgstr "Frontpage pdf bestand"
@@ -523,9 +523,13 @@ msgstr "Draai tweede document om"
 
 msgid "Number of pages to switch from the first document to the other"
 msgstr ""
+"Het aantal pagina's om van het eerste document naar het andere document te "
+"verplaatsen"
 
 msgid "Number of pages to switch from the second document to the other"
 msgstr ""
+"Het aantal pagina's om van het tweede document naar het andere document te "
+"verplaatsen"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -538,11 +542,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Kies het aantal pagina's om van het eerste document naar de andere te "
+"verplaatsen (standaard is 1)."
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Kies het aantal pagina's om van het tweede document naar de andere te "
+"verplaatsen (standaard is 1)."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:318
 msgid "Execute pdf alternate mix"
@@ -919,16 +927,16 @@ msgid "Clear"
 msgstr "Leegmaken"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Verwijder elk pdf-bestand van de selectielijst"
 
 msgid "Document properties"
 msgstr "Document eigenschappen"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Geef de eigenschappen van het document weer"
 
 msgid "Move down"
-msgstr ""
+msgstr "Verplaats omlaag"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:283
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:286
@@ -951,7 +959,7 @@ msgid "Reload"
 msgstr "Herladen"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Herlaad het geselecteerde document"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:273
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:317
@@ -969,10 +977,10 @@ msgid "Remove a pdf from the list"
 msgstr "Verwijder een pdf uit de lijst"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Kies bestemming"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Kies de doelmap"
 
 msgid "Unable to clean pdf loader"
 msgstr "Kan pdf lader niet opschonen"
@@ -1617,19 +1625,19 @@ msgid "Please select two pdf documents."
 msgstr "Gelieve 2 pdf bestanden te selecteren."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Een moment geduld aub terwijl alle bestanden worden verwerkt."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Nog steeds bezig met het toevoegen van bestanden"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Selecteer aub een doelbestand"
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Selecteer aub een doelmap"
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Geen doel geselecteerd"
 
 msgid "Selected output file already exists "
 msgstr "Het geselecteerde uitvoerbestand bestaat al "

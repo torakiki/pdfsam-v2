@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-02-01 18:02+0000\n"
-"Last-Translator: Aivaras Kivilius <Unknown>\n"
+"PO-Revision-Date: 2010-06-24 19:33+0000\n"
+"Last-Translator: ejs <Unknown>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -30,19 +30,19 @@ msgid "Unchecked"
 msgstr "Nepažymėta"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr "Naudoti šį sujungimo tipą standartiniams"
+msgstr "Naudoti šį sujungimo tipą standartiniams PDF dokumentams"
 
 msgid "Checked"
 msgstr "Pažymėtas"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "Naudoti šį sujungimo tipą pdf dokumentams turintiem formas"
+msgstr "Naudoti šį sujungimo tipą PDF dokumentams, turintiems formas"
 
 msgid "Note"
 msgstr "Pastaba"
 
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "Nustačius šį parametrą dokumentai bus įkraunami į atmintį"
+msgstr "Nustačius šį parametrą, dokumentai bus pilnai įkraunami į atmintį"
 
 msgid "Destination output file"
 msgstr "Rezultato failas"
@@ -52,12 +52,10 @@ msgstr "Norodykite pilną kelią iki katalogo, kuriame rašyti rezultatų failą
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr ""
-"Pažymėkite langelį jei norite perrašyti rezultatų failą jei toks failas jau "
-"egzistuoja"
+msgstr "Pažymėkite, jei norite perrašyti egzistuojantį rezultatų failą"
 
 msgid "Check the box if you want compressed output files."
-msgstr "Pažymėkite langelį, jei norite suspausti rezultatų failą"
+msgstr "Pažymėkite, jei norite suspausti rezultatų failą"
 
 msgid "PDF version 1.5 or above."
 msgstr "PDF versija 1.5 arba aukštesnė"
@@ -66,7 +64,7 @@ msgid "Set the pdf version of the ouput document."
 msgstr "Nustatykite pdf versiją rezultatų dokumentui"
 
 msgid "Execute pdf merge"
-msgstr "Įvykdyti pdf dokumentų sujungimą"
+msgstr "Sujungti PDF dokumentus"
 
 msgid "Merge/Extract"
 msgstr "Sujungti/Ištraukti"
@@ -81,28 +79,28 @@ msgid "Found a password for input file."
 msgstr "Įkeliamamas failas apsaugotas slaptažodžiu"
 
 msgid "Export as xml"
-msgstr "Eksportuoti xml formatu"
+msgstr "Eksportuoti XML formatu"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Eksportuoti pažymėtą sąrašą XML formatu"
 
 msgid "Unable to save xml file."
-msgstr "Neįmanoma išsaugoti xml failo"
+msgstr "Neįmanoma išsaugoti XML failo"
 
 msgid "File xml saved."
-msgstr "xml failas išsaugotas"
+msgstr "XML failas išsaugotas"
 
 msgid "Error saving xml file, output file is null."
-msgstr "Klaida išsaugant xml failą, rezultato failas yra null"
+msgstr "Klaida išsaugant XML failą, nenurodytas rezultato failas"
 
 msgid "Split options"
 msgstr "Atskyrimo nustatymai"
 
 msgid "Burst (split into single pages)"
-msgstr "Pliūpsnis (skaidyti po vieną puslapį)"
+msgstr "Išrinkti (skaidyti po vieną puslapį)"
 
 msgid "Split every \"n\" pages"
-msgstr "Atskirti kas \"n\" puslapių"
+msgstr "Skaidyti kas \"n\" puslapių"
 
 msgid "Split even pages"
 msgstr "Atskirti lyginius puslapius"
@@ -126,7 +124,7 @@ msgid "Explode the pdf document into single pages"
 msgstr "Išskaidyti pdf dokumentą po vieną puslapį"
 
 msgid "Split the document every \"n\" pages"
-msgstr "Išskaidyti dokumentą kas \"n\" puslapių"
+msgstr "Suskaidyti dokumentą kas \"n\" puslapių"
 
 msgid "Split the document every even page"
 msgstr "Išskaidyti dokumentą atskiriant kas kiekvieną lyginį puslapį"
@@ -138,7 +136,7 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Skaidyti dokumentą po šių puslapių (num1-num2-num3..)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Išskaidyti į nurodyto dydžio failus (apytiksliai)"
+msgstr "Suskaidyti į apytiksliai nurodyto dydžio failus"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "Skaidyti dokumentą pagal nurodyto lygio turinio nuorodas"
@@ -147,13 +145,13 @@ msgid "Destination folder"
 msgstr "Paskirties aplankas"
 
 msgid "Same as source"
-msgstr "Toks pats, kaip ir šaltinio"
+msgstr "Kaip ir šaltinio"
 
 msgid "Choose a folder"
 msgstr "Pasirinkite aplanką"
 
 msgid "Destination output directory"
-msgstr "Rezultato išsaugojimo aplankas"
+msgstr "Katalogas rezultatui"
 
 msgid "Use the same output folder as the input file or choose a folder."
 msgstr ""
@@ -171,8 +169,7 @@ msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
 msgstr ""
-"Pažymėkite langelį, jei Jūs norite perrašyti rezultato failus, jei tokie jau "
-"egziztuoja"
+"Pažymėkite, jei Jūs norite perrašyti egzistuojančius rezultato failus"
 
 msgid "Output options"
 msgstr "Išvedimo nustatytmai"
@@ -210,7 +207,7 @@ msgid "Split selected file"
 msgstr "Išskaidyti pasirinktą failą"
 
 msgid "Split"
-msgstr "Suskaidyti"
+msgstr "Skaidyti"
 
 msgid "Split section loaded."
 msgstr "Skaidymo dalis įkrauta"
@@ -225,16 +222,16 @@ msgid "Fill from document"
 msgstr "Užpildyti iš dokumento"
 
 msgid "Please select a pdf document."
-msgstr "Pasirinkite pdf dokumentą"
+msgstr "Pasirinkite PDF dokumentą"
 
 msgid "Warning"
 msgstr "Įspėjimas"
 
 msgid "Getting bookmarks max depth"
-msgstr "Gaunamas maksimalus žymų gylis"
+msgstr "Skaičiuojamas maksimalus žymelių gylis"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Negalėjau suskaičiuoti maksimalaus žymelių gylio"
 
 msgid "Frontpage pdf file"
 msgstr "Pirmas puslapis"
@@ -371,7 +368,7 @@ msgid "Choose a file"
 msgstr "Pasirinkite failą"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Pasirinktam failui nustatyti metaduomenis"
 
 msgid "Document Info"
 msgstr "Dokumento informacija"
@@ -389,10 +386,10 @@ msgid "Reverse second document"
 msgstr "Reversuoti antrąjį dokumentą"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "Puslapių skaičius, perkeliamas iš pirmo dokumento"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Puslapių skaičius, perkeliamas iš antro dokumento"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -405,11 +402,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Nustatykite puslapių skaičių, perkeliamą iš pirmo dokumento (pagal "
+"nutylėjimą - 1)"
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Nustatykite puslapių skaičių, perkeliamą iš antro dokumento (pagal "
+"nutylėjimą - 1)"
 
 msgid "Execute pdf alternate mix"
 msgstr "Vykdyti pdf alternate mix"
@@ -546,7 +547,7 @@ msgid "Visual document composer"
 msgstr "Vizualus dokumento kūrimas"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "Visual Composer sekcija įkrauta"
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "Pasirinkite pdf dokumentą arba atstatytike ištrintus puslapius"
@@ -590,7 +591,7 @@ msgid "Visual reorder"
 msgstr "Vaizdus pernumeravimas"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "Visual Reorder sekcija įkrauta"
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "Pasirinkite pdf dokumentą arba atstatytikite ištrintus puslapius"
@@ -611,7 +612,7 @@ msgid "Save as"
 msgstr "Išsaugoti kaip"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Išsaugoti paveikslėlį"
 
 msgid "Unable to save image"
 msgstr "Negalima išsaugoti paveikslo"
@@ -620,7 +621,7 @@ msgid "Close"
 msgstr "Užverti"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Užverti panelę"
 
 msgid "Rotate anticlockwise"
 msgstr "Pasukti prieš laikrodžio rodyklę"
@@ -635,10 +636,10 @@ msgid "Zoom out"
 msgstr "Sumažinti"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Nekeisti dydžio"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Dydis nepakeistas"
 
 msgid "Save environment"
 msgstr "Išsaugoti aplinką"
@@ -751,16 +752,16 @@ msgid "Clear"
 msgstr "Išvalyti"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Ištrinti kiekvieną PDF failą, esantį sąraše"
 
 msgid "Document properties"
 msgstr "Dokumento savybės"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Rodyti dokumento savybes"
 
 msgid "Move down"
-msgstr ""
+msgstr "Pastumti žemyn"
 
 msgid "Move down selected pdf file"
 msgstr "Perkelti žemyn pasirinktą failą"
@@ -775,7 +776,7 @@ msgid "Reload"
 msgstr "Įkelti iš naujo"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Iš naujo įkelti dokumentą"
 
 msgid "Remove"
 msgstr "Pašalinti"
@@ -784,10 +785,10 @@ msgid "Remove a pdf from the list"
 msgstr "Pašalinti pdf iš sąrašo"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Išsaugoti kaip"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Išsaugoti šiame kataloge"
 
 msgid "Unable to clean pdf loader"
 msgstr "Nepavyko išvalyti pdf įkrovėjo"
@@ -989,7 +990,7 @@ msgid "File"
 msgstr "Failas"
 
 msgid "Image"
-msgstr ""
+msgstr "Atvaizdis"
 
 msgid "Error creating preview panel."
 msgstr "Klaida kuriant peržiūros panelę"
@@ -1330,19 +1331,19 @@ msgid "Please select two pdf documents."
 msgstr "Pasirinkite du pdf dokumentus"
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Palaukite, kol visi failai bus apdoroti."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Vis dar pridedu failus"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Parinkite failo pavadinimą"
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Parinkite katalogą"
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Nenurodytas failas"
 
 msgid "Selected output file already exists "
 msgstr "Pasirinktas išvedimo failas jau egzistuoja: "

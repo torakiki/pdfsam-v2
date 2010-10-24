@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2009-10-24 23:58+0000\n"
-"Last-Translator: Josep Sànchez <josep.sanchez@ubuntu.cat>\n"
+"PO-Revision-Date: 2010-06-05 11:02+0000\n"
+"Last-Translator: Josep Sànchez <papapep@gmx.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -86,7 +86,7 @@ msgid "Export as xml"
 msgstr "Exporta com a xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Exporta la llista seleccionada en format XML"
 
 msgid "Unable to save xml file."
 msgstr "No s'ha pogut desar el fitxer xml."
@@ -137,10 +137,12 @@ msgid "Split the document every odd page"
 msgstr "Divideix el document en cada pàgina senar"
 
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr "Divideix el document després dels números de pàgina (num1-num2-num3..)"
+msgstr ""
+"Divideix el document després dels números de pàgina (num1-num2-num3..)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr "Separa el document en fitxers d'una mida determinada (aproximadament)"
+msgstr ""
+"Separa el document en fitxers d'una mida determinada (aproximadament)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
@@ -194,7 +196,8 @@ msgstr ""
 "Si conté \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
 "\"[BOOKMARK_NAME]\" realitza una substitució de variables."
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_FileName_005.pdf."
 
 msgid ""
@@ -235,7 +238,7 @@ msgid "Getting bookmarks max depth"
 msgstr "Màxima profunditat dels marcadors"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "No s'ha pogut recuperar el màxim abast de les adreces d'interès"
 
 msgid "Frontpage pdf file"
 msgstr "Fitxer pdf per la portada"
@@ -311,8 +314,8 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"Ex. [BASENAME]_prefix_[TIMESTAMP] genera FileName_prefix_20070517_113423471."
-"pdf."
+"Ex. [BASENAME]_prefix_[TIMESTAMP] genera "
+"FileName_prefix_20070517_113423471.pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -341,7 +344,7 @@ msgid "Decrypt section loaded."
 msgstr "Desxifra la secció carregada."
 
 msgid "Document metadata"
-msgstr ""
+msgstr "Metadades del document"
 
 msgid "Title"
 msgstr "Títol"
@@ -356,25 +359,25 @@ msgid "Keywords"
 msgstr "Paraules clau"
 
 msgid "Set the document title."
-msgstr ""
+msgstr "Definiu el títol del document"
 
 msgid "Set the document author."
-msgstr ""
+msgstr "Definiu l'autor del document"
 
 msgid "Set the document subject."
-msgstr ""
+msgstr "Definiu el tema del document"
 
 msgid "Set the document keywords."
-msgstr ""
+msgstr "Definiu les paraules clau del document"
 
 msgid "Choose a file"
 msgstr "Escolliu un fitxer"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Definiu les metadades del document seleccionat"
 
 msgid "Document Info"
-msgstr ""
+msgstr "Informació del document"
 
 msgid "Rotate section loaded."
 msgstr "Secció de gir carregada"
@@ -390,9 +393,10 @@ msgstr "Inverteix el segon document"
 
 msgid "Number of pages to switch from the first document to the other"
 msgstr ""
+"Nombre de pàgines per intercanviar entre el primer document i l'altre"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Nombre de pàgines per intercanviar entre el segon document i l'altre"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -404,11 +408,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Definiu el nombre de pàgines a intercanviar del primer document a l'altre "
+"(el nombre predeterminat és 1)."
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Definiu el nombre de pàgines a intercanviar del segon document a l'altre (el "
+"nombre predeterminat és 1)."
 
 msgid "Execute pdf alternate mix"
 msgstr "Efectua barreja alterna de pdf"
@@ -546,7 +554,7 @@ msgid "Visual document composer"
 msgstr "Editor visual de documents"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "S'ha carregat la secció de l'editor visual."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "Seleccioneu un document pdf o desfeu la supressió d'algunes pàgines"
@@ -589,7 +597,7 @@ msgid "Visual reorder"
 msgstr "Reordenació visual"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "S'ha carregat la secció de reordenació visual."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "Seleccioneu un document pdf o desfeu la supressió d'algunes pàgines"
@@ -610,7 +618,7 @@ msgid "Save as"
 msgstr "Anomena i desa"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Desa la imatge"
 
 msgid "Unable to save image"
 msgstr "No s'ha pogut desar la imatge"
@@ -619,7 +627,7 @@ msgid "Close"
 msgstr "Tanca"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Tanca el panell"
 
 msgid "Rotate anticlockwise"
 msgstr "Gira en sentit anti-horari"
@@ -634,10 +642,10 @@ msgid "Zoom out"
 msgstr "Allunya"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Sense ampliació"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "No s'ha aplicat ampliació"
 
 msgid "Save environment"
 msgstr "Desa l'entorn"
@@ -724,7 +732,8 @@ msgid "Generating thumbnails using the following library:"
 msgstr "S'està generant les miniatures emprant la següent llibreria:"
 
 msgid "Selection table is full, please remove some pdf document."
-msgstr "La taula de selecció és plena, si us plau, esborreu algun document pdf"
+msgstr ""
+"La taula de selecció és plena, si us plau, esborreu algun document pdf"
 
 msgid "Table full"
 msgstr "Taula plena"
@@ -748,16 +757,16 @@ msgid "Clear"
 msgstr "Buida"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Elimina tots els fitxers PDF de la llista seleccionada"
 
 msgid "Document properties"
 msgstr "Propietats del document"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Mostra les propietats del document"
 
 msgid "Move down"
-msgstr ""
+msgstr "Mou abaix"
 
 msgid "Move down selected pdf file"
 msgstr "Mou cap avall el fitxer pdf seleccionat"
@@ -772,7 +781,7 @@ msgid "Reload"
 msgstr "Recarrega"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Torna a carregar el document seleccionat"
 
 msgid "Remove"
 msgstr "Elimina"
@@ -781,10 +790,10 @@ msgid "Remove a pdf from the list"
 msgstr "Elimina un pdf de la llista"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Definiu el destí"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Definiu el camí del destí"
 
 msgid "Unable to clean pdf loader"
 msgstr "No s'ha pogut buidar el carregador de documents pdf"
@@ -986,7 +995,7 @@ msgid "File"
 msgstr "Fitxer"
 
 msgid "Image"
-msgstr ""
+msgstr "Imatge"
 
 msgid "Error creating preview panel."
 msgstr "S'ha produit un error en crear el panell de visualització prèvia"
@@ -1049,13 +1058,13 @@ msgid "Plugins directory is null."
 msgstr "El directori de connectors és ple."
 
 msgid "Found many plugins in "
-msgstr ""
+msgstr "S'han trobat molts connectors a "
 
 msgid "selected as the most recent plugin"
-msgstr ""
+msgstr "s'ha seleccionat com el connector més nou"
 
 msgid "No plugin found in "
-msgstr ""
+msgstr "No s'han trobat connectors a "
 
 msgid "Exception loading plugins."
 msgstr "S'ha generat una excepció en carregar connectors."
@@ -1067,7 +1076,8 @@ msgid " plugin loaded."
 msgstr " connector carregat."
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr "No s'ha pogut carregar un connector que no és una subclasse de JPanel."
+msgstr ""
+"No s'ha pogut carregar un connector que no és una subclasse de JPanel."
 
 msgid "Error loading class "
 msgstr "Error en carregar una classe "
@@ -1194,6 +1204,8 @@ msgstr "Reprodueix sons d'alerta"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
 msgstr ""
+"Demana confirmació quan la casella de selecció de sobreescriptura estigui "
+"marcada"
 
 msgid "Settings "
 msgstr "Paràmetres "
@@ -1232,12 +1244,13 @@ msgid "Turn on or off alert sounds"
 msgstr "Activa o desactiva els sons d'alerta"
 
 msgid "Ask overwrite confirmation"
-msgstr ""
+msgstr "Demana confirmació per sobreescriure"
 
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
 msgstr ""
+"Mostra un diàleg de confirmació quan s'ha seleccionat \"sobreescriure2"
 
 msgid "Default env."
 msgstr "Entorn predeterminat."
@@ -1252,7 +1265,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Directori de treball predeterminat"
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Seleccioneu un directori on es desin i carreguin els documents de manera "
 "predeterminada"
@@ -1322,19 +1336,19 @@ msgid "Please select two pdf documents."
 msgstr "Si us  plau, seleccioneu dos documents pdf"
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "S'estan processant els fitxers."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "S'estan afegint fitxers"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Trieu un fitxer destí."
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Trieu un directori destí."
 
 msgid "No destination selected"
-msgstr ""
+msgstr "No s'ha seleccionat cap destí"
 
 msgid "Selected output file already exists "
 msgstr "El fitxer destí seleccionat ja existeix "
@@ -1346,12 +1360,14 @@ msgid ""
 "Please note that output files will overwrite existing files of the same name "
 "without warning."
 msgstr ""
+"Tingueu en compte que els fitxers preexistents amb el mateix nom es "
+"sobreescriuran sense previ avís."
 
 msgid "Do you confirm to overwrite?"
-msgstr ""
+msgstr "Voleu sobreescriure el fitxer?"
 
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Confirmeu la sobreescriptura"
 
 msgid "Provided pages selection is not valid"
 msgstr "La selecció de pàgines proporcionada no és vàlida"
@@ -1432,7 +1448,8 @@ msgstr ""
 "S'ha produit un error en inicialitzar l'estat estès de l'interfície d'usuari"
 
 msgid "Error initializing the user interface size"
-msgstr "S'ha produit un error en inicialitzar la mida de l'interfície d'usuari"
+msgstr ""
+"S'ha produit un error en inicialitzar la mida de l'interfície d'usuari"
 
 msgid "Error initializing the user interface horizontal divider size"
 msgstr ""
@@ -1454,30 +1471,8 @@ msgstr "S'està desant la configuració de l'IGU"
 msgid "Unable to save user interface status."
 msgstr "No s'ha pogut desar l'estat de l'interfície d'usuari"
 
-#~ msgid "Error playing sound:"
-#~ msgstr "S'ha produït un error en reproduir àudio:"
-
-#~ msgid "Error: Unable to reload the selected file/s."
-#~ msgstr "Error: No s'ha pogut recarregar els fitxers seleccionats."
-
-#~ msgid "Remove every pdf file from the merge list"
-#~ msgstr "Elimina cada fitxer pdf de la llista de combinació"
-
 #~ msgid "Ok"
 #~ msgstr "D'acord"
-
-#~ msgid "Unable to initialize menu bar."
-#~ msgstr "No s'ha pogut inicialitzar la barra de menú."
-
-#~ msgid "Number of pages to switch document"
-#~ msgstr "Nombre de pàgines per a intercanviar al document"
-
-#~ msgid ""
-#~ "Set the number of pages to switch from a document to the other one "
-#~ "(default is 1)."
-#~ msgstr ""
-#~ "Estableix el nombre de pàgines a intercanviar d'un document a un altre "
-#~ "(per defecte és 1)."
 
 #~ msgid "Error loading "
 #~ msgstr "S'ha produït un error en carregar "
@@ -1495,14 +1490,23 @@ msgstr "No s'ha pogut desar l'estat de l'interfície d'usuari"
 #~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
 #~ "7,12-)"
 #~ msgstr ""
-#~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes "
-#~ "o 5-23 o 2,5-7,12-)"
+#~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes o "
+#~ "5-23 o 2,5-7,12-)"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Elimina cada fitxer pdf de la llista de combinació"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Error: No s'ha pogut recarregar els fitxers seleccionats."
 
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "No s'ha pogut obtenir la informació predeterminada de l'entorn"
 
 #~ msgid "Found zero or many jars in plugin directory "
 #~ msgstr "S'ha trobat molts o cap jar al directori de connectors "
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "No s'ha pogut inicialitzar la barra de menú."
 
 #~ msgid "Check for updates:"
 #~ msgstr "Comprova les actualitzacions:"

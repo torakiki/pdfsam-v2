@@ -8,29 +8,29 @@ msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2009-03-10 13:28+0000\n"
-"Last-Translator: dizzyk <hibaman@hotmail.com>\n"
+"PO-Revision-Date: 2010-07-23 12:07+0000\n"
+"Last-Translator: Μανώλης Σκόνδρας <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
-msgstr ""
+msgstr "Επιλογές Συγχώνευσης"
 
 msgid "PDF documents contain forms"
-msgstr ""
+msgstr "Το αρχείο PDF περιέχει φόρμες"
 
 msgid "Merge type"
-msgstr ""
+msgstr "Τύπος συγχώνευσης"
 
 msgid "Unchecked"
-msgstr ""
+msgstr "Μη επιλεγμένο"
 
 msgid "Use this merge type for standard pdf documents"
-msgstr ""
+msgstr "Να γίνεται χρήση αυτού του τύπου συγχώνευσης για συνήθη αρχεία pdf"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:399
@@ -39,6 +39,8 @@ msgstr "Επιλεγμένο"
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr ""
+"Να γίνεται χρήση αυτού του τύπου συγχώνευσης για αρχεία pdf που περιέχουν "
+"φόρμες"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 # F:\workspace_pdfsam_basic\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:400
@@ -47,6 +49,8 @@ msgstr "Σημείωση"
 
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
+"Με την επιλογή αυτής της ρύθμισης τα αρχεία θα φορτώνονται εξολοκλήρου στην "
+"μνήμη"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:440
 # F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:255
@@ -55,23 +59,23 @@ msgid "Destination output file"
 msgstr "Αρχείο προορισμού εξόδου"
 
 msgid "Browse or enter the full path to the destination output file."
-msgstr ""
+msgstr "Βρείτε ή εισάγετε τον προορισμό για το αρχείο εξόδου."
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
 
 msgid "Check the box if you want compressed output files."
-msgstr ""
+msgstr "Επιλέξτε για συμπίεση αρχείων εξόδου"
 
 msgid "PDF version 1.5 or above."
-msgstr ""
+msgstr "Έκδοση PDF 1.5 ή ανώτερη"
 
 msgid "Set the pdf version of the ouput document."
-msgstr ""
+msgstr "Ρυθμίστε την έκδοση pdf αρχείου εξόδου"
 
 msgid "Execute pdf merge"
-msgstr ""
+msgstr "Εκτέλεση συγχώνευσης αρχείων pdf"
 
 msgid "Merge/Extract"
 msgstr ""
@@ -107,28 +111,30 @@ msgid "Error: "
 msgstr "Σφάλμα: "
 
 msgid "Found a password for input file."
-msgstr ""
+msgstr "Βρέθηκε συνθηματικό στο αρχείο εισόδου"
 
 msgid "Export as xml"
-msgstr ""
+msgstr "Εξαγωγή ως xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Εξαγωγή της λίστας επιλογής σε xml μορφοποίηση"
 
 msgid "Unable to save xml file."
-msgstr ""
+msgstr "Αδυναμία αποθήκευσης του αρχείου xml"
 
 msgid "File xml saved."
-msgstr ""
+msgstr "Το αρχείο xml αποθηκεύτηκε"
 
 msgid "Error saving xml file, output file is null."
 msgstr ""
+"Σφάλμα κατά την αποθήκευση του αρχείου xml, το αρχείο που παράχθηκε είναι "
+"κενό."
 
 msgid "Split options"
 msgstr ""
 
 msgid "Burst (split into single pages)"
-msgstr ""
+msgstr "Burst (μοίρασμα σε απλές σελίδες)"
 
 msgid "Split every \"n\" pages"
 msgstr ""
@@ -173,7 +179,7 @@ msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
 msgid "Destination folder"
-msgstr ""
+msgstr "Φάκελος προορισμού"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:297
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:256
@@ -201,6 +207,8 @@ msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
+"Για να επιλέξετε ένα φάκελο περιηγηθείτε ή εισάγετε το πλήρες μονοπάτι της "
+"τοποθεσίας προορισμού-εξόδου."
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:460
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:348
@@ -213,20 +221,21 @@ msgstr ""
 "Επιλέξτε το κουτί αν θέλετε να διαγραφούν τα αρχεία εξόδου αν προϋπάρχουν."
 
 msgid "Output options"
-msgstr ""
+msgstr "Επιλογές εξόδου"
 
 msgid "Output file names prefix:"
-msgstr ""
+msgstr "Πρόθεμα ονομάτων αρχείων που θα εξαχθούν:"
 
 msgid "Output files prefix"
-msgstr ""
+msgstr "Πρόθεμα ονομάτων αρχείων εξόδου"
 
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
@@ -235,13 +244,13 @@ msgid ""
 msgstr ""
 
 msgid "Available variables"
-msgstr ""
+msgstr "Διαθέσιμες μεταβλητές"
 
 msgid "Split selected file"
 msgstr ""
 
 msgid "Split"
-msgstr ""
+msgstr "Χώρισμα"
 
 msgid "Split section loaded."
 msgstr ""
@@ -256,10 +265,10 @@ msgid "Fill from document"
 msgstr ""
 
 msgid "Please select a pdf document."
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε ένα έγγραφο PDF."
 
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -283,23 +292,23 @@ msgid "Select at least one cover or one footer"
 msgstr ""
 
 msgid "Encrypt options"
-msgstr ""
+msgstr "Επιλογές κρυπτογράφησης"
 
 msgid "Owner password:"
-msgstr ""
+msgstr "Κωδικός ιδιοκτήτη"
 
 msgid "Owner password (Max 32 chars long)"
-msgstr ""
+msgstr "Κωδικός ιδιοκτήτη (Μέγιστο μήκος 32 χαρακτήρες)"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:214
 msgid "User password:"
 msgstr "Κωδικός χρήστη:"
 
 msgid "User password (Max 32 chars long)"
-msgstr ""
+msgstr "Κωδικός χρήστη (Μέγιστο μήκος 32 χαρακτήρες)"
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "Αλγόριθμος κρυπτογράφησης:"
 
 msgid "Allow all"
 msgstr ""
@@ -313,14 +322,14 @@ msgid "Low quality print"
 msgstr "Εκτύπωση χαμηλής ποιότητας"
 
 msgid "Copy or extract"
-msgstr ""
+msgstr "Αντιγραφή ή εξαγωγή"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:238
 msgid "Modify"
 msgstr "Τροποποίηση"
 
 msgid "Add or modify text annotations"
-msgstr ""
+msgstr "Προσθήκη ή τροποποίηση σχολίων κειμένου"
 
 msgid "Fill form fields"
 msgstr ""
@@ -350,7 +359,7 @@ msgid ""
 msgstr ""
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr ""
+msgstr "Διαθέσιμες μεταβλητές: [TIMESTAMP], [BASENAME]."
 
 msgid "Encrypt selected files"
 msgstr ""
@@ -362,10 +371,10 @@ msgid "Encrypt section loaded."
 msgstr ""
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "Αποκρυπτογράφηση των επιλεγμένων αρχείων"
 
 msgid "Decrypt"
-msgstr ""
+msgstr "Αποκρυπτογράφηση"
 
 msgid "Decrypt section loaded."
 msgstr ""
@@ -374,7 +383,7 @@ msgid "Document metadata"
 msgstr ""
 
 msgid "Title"
-msgstr ""
+msgstr "Τίτλος"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JInfoPanel.java:118
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\InfoGUI.java:128
@@ -382,10 +391,10 @@ msgid "Author"
 msgstr "Δημιουργός"
 
 msgid "Subject"
-msgstr ""
+msgstr "Θέμα"
 
 msgid "Keywords"
-msgstr ""
+msgstr "Λέξεις κλειδιά"
 
 msgid "Set the document title."
 msgstr ""
@@ -400,13 +409,13 @@ msgid "Set the document keywords."
 msgstr ""
 
 msgid "Choose a file"
-msgstr ""
+msgstr "Επιλογή αρχείου"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Ορισμός των μεταδεδομένων στο επιλεγμένο αρχείο"
 
 msgid "Document Info"
-msgstr ""
+msgstr "Πληροφορίες εγγράφου"
 
 msgid "Rotate section loaded."
 msgstr ""
@@ -911,7 +920,7 @@ msgid "Cut"
 msgstr ""
 
 msgid "Paste"
-msgstr ""
+msgstr "Επικόλληση"
 
 msgid "Add prefix"
 msgstr ""
@@ -1386,7 +1395,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr ""
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\JSettingsPanel.java:257
@@ -1449,7 +1459,7 @@ msgid "Output location error"
 msgstr ""
 
 msgid "Please select at least one pdf document."
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε τουλάχιστον ένα έγγραφο pdf"
 
 msgid "Please select two pdf documents."
 msgstr ""

@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -180,7 +180,8 @@ msgid ""
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid ""
+"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
@@ -1219,7 +1220,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr ""
 
-msgid "Select a directory where documents will be saved and loaded by default"
+msgid ""
+"Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 msgid "Save"

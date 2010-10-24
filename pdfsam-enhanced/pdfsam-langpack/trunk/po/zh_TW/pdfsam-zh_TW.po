@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-02-20 09:27+0000\n"
-"Last-Translator: Kevin-Wei-2 <kevin_wei3@yahoo.com.tw>\n"
+"POT-Creation-Date: 2010-10-03 18:04+0200\n"
+"PO-Revision-Date: 2010-08-31 14:03+0000\n"
+"Last-Translator: Cheng-Wei Chien <Unknown>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Merge options"
@@ -82,7 +82,7 @@ msgid "Export as xml"
 msgstr "輸出為 xml 格式"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "將所選的清單輸出成xml格式"
 
 msgid "Unable to save xml file."
 msgstr "無法儲存 xml 檔案。"
@@ -224,7 +224,7 @@ msgid "Getting bookmarks max depth"
 msgstr "正在取得書籤最大層級"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "無法取得書籤的最大深度"
 
 msgid "Frontpage pdf file"
 msgstr "頭版 PDF 檔"
@@ -358,7 +358,7 @@ msgid "Choose a file"
 msgstr "選取一個檔案"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "設定所選檔案的詮釋資料 (metadata)"
 
 msgid "Document Info"
 msgstr "文件資訊"
@@ -376,10 +376,10 @@ msgid "Reverse second document"
 msgstr "顛倒第二份文件的順序"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "從第一份文件轉移至第二份文件的頁數"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "從第二份文件轉移至第一份文件的頁數"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -389,12 +389,12 @@ msgstr "若您想顛倒第一或第二個文件（或兩者）的順序請勾選
 msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
-msgstr ""
+msgstr "設定從第一份文件轉移至第二份文件的頁數（預設值為 1）。"
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
-msgstr ""
+msgstr "設定從第二份文件轉移至第一份文件的頁數（預設值為 1）。"
 
 msgid "Execute pdf alternate mix"
 msgstr "執行 PDF 交替合併"
@@ -531,7 +531,7 @@ msgid "Visual document composer"
 msgstr "虛擬文件編輯器"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "已載入虛擬編輯區塊。"
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "請選擇一個PDF檔案或取消刪除部分頁面"
@@ -573,7 +573,7 @@ msgid "Visual reorder"
 msgstr "虛擬記錄器"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "已載入虛擬記錄器區塊。"
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "請選擇一個 PDF 文件或復原（不刪除）某個頁面"
@@ -618,10 +618,10 @@ msgid "Zoom out"
 msgstr "縮小"
 
 msgid "No zoom"
-msgstr ""
+msgstr "不進行縮放"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "目前無縮放"
 
 msgid "Save environment"
 msgstr "儲存環境設定"
@@ -730,16 +730,16 @@ msgid "Clear"
 msgstr "全部清除"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "移除所選清單中的每個pdf檔案"
 
 msgid "Document properties"
 msgstr "文件屬性"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "顯示檔案屬性"
 
 msgid "Move down"
-msgstr ""
+msgstr "下移"
 
 msgid "Move down selected pdf file"
 msgstr "將選取的PDF檔向下移"
@@ -754,7 +754,7 @@ msgid "Reload"
 msgstr "重新載入"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "重新讀取所選的檔案"
 
 msgid "Remove"
 msgstr "移除"
@@ -763,10 +763,10 @@ msgid "Remove a pdf from the list"
 msgstr "自清單中移除PDF檔"
 
 msgid "Set destination"
-msgstr ""
+msgstr "設定輸出位置"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "設定輸出路徑"
 
 msgid "Unable to clean pdf loader"
 msgstr "無法清除 PDF 載入器"
@@ -1292,19 +1292,19 @@ msgid "Please select two pdf documents."
 msgstr "請選擇兩個 PDF 文件。"
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "請等待所有檔案被完成"
 
 msgid "Still adding files"
-msgstr ""
+msgstr "繼續增加檔案"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "請選擇輸出的檔案"
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "請選擇一個輸出的資料夾"
 
 msgid "No destination selected"
-msgstr ""
+msgstr "沒有選擇任何輸出"
 
 msgid "Selected output file already exists "
 msgstr "所選的輸出檔已存在 "

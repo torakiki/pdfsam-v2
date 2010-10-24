@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2009-12-30 03:50+0000\n"
-"Last-Translator: Miro Glavić <glavicmiro@gmail.com>\n"
+"PO-Revision-Date: 2010-08-27 19:00+0000\n"
+"Last-Translator: Nedim Muminović <nedimmuminovic@gmail.com>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
+"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
 "X-Poedit-Language: Bosnian\n"
@@ -85,7 +85,7 @@ msgid "Export as xml"
 msgstr "Eksportuj kao xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Izvezi listu odabira u xml formatu"
 
 msgid "Unable to save xml file."
 msgstr "Nije moguće snimiti xml dokument."
@@ -231,7 +231,7 @@ msgid "Getting bookmarks max depth"
 msgstr "Uzimanje maks. dubine bukmarka"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Ne mogu primiti maksimalnu dubinu oznake"
 
 msgid "Frontpage pdf file"
 msgstr "Pdf dokument prve stranice"
@@ -339,7 +339,7 @@ msgid "Decrypt section loaded."
 msgstr "Dešifrovana sekcija učitana."
 
 msgid "Document metadata"
-msgstr ""
+msgstr "Metapodaci dokumenta"
 
 msgid "Title"
 msgstr "Naslov"
@@ -354,25 +354,25 @@ msgid "Keywords"
 msgstr "Ključne riječi"
 
 msgid "Set the document title."
-msgstr ""
+msgstr "Postavi naslov dokumenta."
 
 msgid "Set the document author."
-msgstr ""
+msgstr "Postavi autora dokumenta."
 
 msgid "Set the document subject."
-msgstr ""
+msgstr "Postavi temu dokumenta"
 
 msgid "Set the document keywords."
-msgstr ""
+msgstr "Postavi ključne riječi dokumenta."
 
 msgid "Choose a file"
 msgstr "Izaberite datoteku"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Postavi metapodatke na odabranu datoteku"
 
 msgid "Document Info"
-msgstr ""
+msgstr "Informacije o dokumentu"
 
 msgid "Rotate section loaded."
 msgstr "Učitana je sekcija za rotaciju."
@@ -387,10 +387,10 @@ msgid "Reverse second document"
 msgstr "Obrni drugi dokument"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "Broj stranica za prebacivanje sa prvog dokumenta na ostale"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Broj stranica za prebacivanje sa drugog dokumenta na ostale"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -610,7 +610,7 @@ msgid "Save as"
 msgstr "Spremi kao"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Spremi sliku"
 
 msgid "Unable to save image"
 msgstr "Nemoguće spremiti sliku"
@@ -619,7 +619,7 @@ msgid "Close"
 msgstr "Zatvori"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Zatvori panel"
 
 msgid "Rotate anticlockwise"
 msgstr "Rotiraj suprotno smjeru kazaljke na satu"
@@ -634,10 +634,10 @@ msgid "Zoom out"
 msgstr "Smanji"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Bez uvećanja"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Bez uvećanja"
 
 msgid "Save environment"
 msgstr "Sačuvaj okruženje"
@@ -747,16 +747,16 @@ msgid "Clear"
 msgstr "Počisti"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Ukloni svaku pdf datoteku iz liste izabranih"
 
 msgid "Document properties"
 msgstr "Karakteristike dokumenta"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Prikaži svojstva dokumenta"
 
 msgid "Move down"
-msgstr ""
+msgstr "Pomjeri naniže"
 
 msgid "Move down selected pdf file"
 msgstr "Pomakni dole selektovani PDF dokument"
@@ -771,7 +771,7 @@ msgid "Reload"
 msgstr "Učitaj ponovo"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Ponovo učitaj odabrani dokument"
 
 msgid "Remove"
 msgstr "Ukloni"
@@ -780,10 +780,10 @@ msgid "Remove a pdf from the list"
 msgstr "Ukloni PDF iz liste"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Postavi odredište"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Postavi odredišnu putanju"
 
 msgid "Unable to clean pdf loader"
 msgstr "Nije moguće očistiti učitavač pdf-a"
@@ -985,7 +985,7 @@ msgid "File"
 msgstr "Dokument"
 
 msgid "Image"
-msgstr ""
+msgstr "Slika"
 
 msgid "Error creating preview panel."
 msgstr "Greška pri kreiranju panela za pregled."
@@ -1048,13 +1048,13 @@ msgid "Plugins directory is null."
 msgstr "Direktorij sa dodacima je null."
 
 msgid "Found many plugins in "
-msgstr ""
+msgstr "Pronađeno više dodataka u "
 
 msgid "selected as the most recent plugin"
-msgstr ""
+msgstr "odabran kao nedavni dodatak"
 
 msgid "No plugin found in "
-msgstr ""
+msgstr "Dodatak nije pronađen u "
 
 msgid "Exception loading plugins."
 msgstr "Iznimka u učitavanju dodataka."
@@ -1324,19 +1324,19 @@ msgid "Please select two pdf documents."
 msgstr "Molimo selektujte dva PDF dokumenta."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Molimo da sačekate dok se ne završi procesiranje datoteka."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Još uvijek dodajem datoteke"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Molimo odaberite odredišnu datoteku"
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Molimo odaberite odredišni direktorij"
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Odredište nije odabrano"
 
 msgid "Selected output file already exists "
 msgstr "Izabrani izlazni dokument već postoji "
@@ -1350,10 +1350,10 @@ msgid ""
 msgstr ""
 
 msgid "Do you confirm to overwrite?"
-msgstr ""
+msgstr "Da li želite prepisati?"
 
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Potvrdi prepisivanje"
 
 msgid "Provided pages selection is not valid"
 msgstr "Napravljena selekcija stranica nije ispravna"
