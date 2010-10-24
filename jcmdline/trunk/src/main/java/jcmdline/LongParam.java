@@ -51,19 +51,19 @@ public class LongParam extends AbstractParameter {
             Strings.get("LongParam.defaultOptionLabel");
 
     /**
-     * the maximum acceptable number - defaults to Integer.MAX_VALUE
+     * the maximum acceptable number - defaults to Long.MAX_VALUE
      */
     protected long max = Long.MAX_VALUE;
 
     /**
-     * the minimum acceptable number - defaults to Integer.MIN_VALUE
+     * the minimum acceptable number - defaults to Long.MIN_VALUE
      */
     protected long min = Long.MIN_VALUE;
 
     /**
      * constructor - creates single-valued, optional, public
      * parameter which will
-     * accept an integer between Integer.MIN_VALUE and Integer.MAX_VALUE.
+     * accept an long between Long.MIN_VALUE and Long.MAX_VALUE.
      *
      * @param tag           a unique identifier for this parameter
      * @param desc          a description of the parameter, suitable for display
@@ -74,13 +74,13 @@ public class LongParam extends AbstractParameter {
      * @see                 AbstractParameter#setDesc(String) setDesc()
      */
     public LongParam(String tag, String desc) {
-        this(tag, desc, Integer.MIN_VALUE, Integer.MAX_VALUE, 
+        this(tag, desc, Long.MIN_VALUE, Long.MAX_VALUE, 
              OPTIONAL, SINGLE_VALUED, PUBLIC);
     }
 
     /**
      * constructor - creates single-valued, public parameter which will
-     * accept an integer between Integer.MIN_VALUE and Integer.MAX_VALUE, and
+     * accept an long between Long.MIN_VALUE and Long.MAX_VALUE, and
      * will be either optional or required, as specified.
      *
      * @param tag           a unique identifier for this parameter
@@ -101,7 +101,7 @@ public class LongParam extends AbstractParameter {
 
     /**
      * constructor - creates a public parameter which will
-     * accept an integer between Long.MIN_VALUE and Long.MAX_VALUE, and
+     * accept an long between Long.MIN_VALUE and Long.MAX_VALUE, and
      * will be either optional or required, and/or multi-valued, as specified.
      *
      * @param tag           a unique identifier for this parameter
@@ -131,7 +131,7 @@ public class LongParam extends AbstractParameter {
 
     /**
      * constructor - creates a parameter which will
-     * accept an integer between Long.MIN_VALUE and Long.MAX_VALUE, and
+     * accept an long between Long.MIN_VALUE and Long.MAX_VALUE, and
      * will be either optional or required, and/or multi-valued, as specified.
      *
      * @param tag           a unique identifier for this parameter
@@ -167,7 +167,7 @@ public class LongParam extends AbstractParameter {
 
     /**
      * constructor - creates a single-valued, optional, public, parameter 
-     * that will accept an integer between the specifed minimum and maximum
+     * that will accept an long between the specifed minimum and maximum
      * values.
      *
      * @param tag           a unique identifier for this parameter
@@ -188,7 +188,7 @@ public class LongParam extends AbstractParameter {
 
     /**
      * constructor - creates a single-valued, public parameter 
-     * that will accept an integer between the specifed minimum and maximum
+     * that will accept an long between the specifed minimum and maximum
      * values, and which is required or optional, as specified.
      *
      * @param tag           a unique identifier for this parameter
@@ -218,7 +218,7 @@ public class LongParam extends AbstractParameter {
 
     /**
      * constructor - creates a public parameter 
-     * that will accept an integer between the specifed minimum and maximum
+     * that will accept an long between the specifed minimum and maximum
      * values, and which is required or optional and/or multi-valued, 
      * as specified.
      *
@@ -256,7 +256,7 @@ public class LongParam extends AbstractParameter {
 
     /**
      * constructor - creates a parameter 
-     * that will accept an integer between the specifed minimum and maximum
+     * that will accept an long between the specifed minimum and maximum
      * values, and for which all other options are specified.
      *
      * @param tag           a unique identifier for this parameter
