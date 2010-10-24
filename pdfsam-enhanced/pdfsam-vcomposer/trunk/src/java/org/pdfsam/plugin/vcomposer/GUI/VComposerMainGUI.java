@@ -69,7 +69,7 @@ import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.i18n.GettextResource;
 import org.pdfsam.plugin.vcomposer.listeners.RunButtonActionListener;
 
-import com.itextpdf.text.pdf.codec.Base64;
+import com.lowagie.text.pdf.codec.Base64;
 
 /**
  * Visual document composer plugin  main panel
