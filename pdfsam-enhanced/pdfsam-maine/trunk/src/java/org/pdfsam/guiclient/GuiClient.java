@@ -17,10 +17,11 @@ package org.pdfsam.guiclient;
 import java.awt.Point;
 import java.io.File;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.Properties;
 
 import org.apache.commons.lang.ArrayUtils;
@@ -99,17 +100,22 @@ public class GuiClient {
 			File currentDir = new File(configSearchPath, "ext");
 			File[] fileList = currentDir.listFiles(new JarFilter(false));
 			if (!ArrayUtils.isEmpty(fileList)) {
-				ArrayList<URL> urlList = new ArrayList<URL>();
+				URLClassLoader urlClassLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
 				for (File currentFile : fileList) {
-					urlList.add(currentFile.toURI().toURL());
+					addJar(currentFile.toURI().toURL(), urlClassLoader);
 				}
-
-				URLClassLoader urlClassLoader = new URLClassLoader((URL[]) urlList.toArray(new URL[urlList.size()]));
 				ThumbnailCreatorsRegisty.reload(urlClassLoader);
 			}
 		} catch (Exception e) {
 			log.error("Unable to load extended libraries.", e);
 		}
+	}
+	
+	private static void addJar(URL jarUrl, URLClassLoader loader) throws SecurityException, NoSuchMethodException,
+			IllegalArgumentException, IllegalAccessException, InvocationTargetException{
+		Method method = URLClassLoader.class.getDeclaredMethod("addURL", new Class[]{URL.class});
+			  method.setAccessible(true);
+			  method.invoke(loader, new Object[]{jarUrl});
 	}
 	
 	/**
