@@ -7,7 +7,6 @@
   <!-- set global properties for this build -->
   	<property name="user.name" value="Andrea Vacondio"/>
   	<property name="icepdfcreator.src.dir" location="src/java"/>
-  	<property name="icepdfcreator.etc.dir" location="etc"/>
   
   	<target name="init">
 	  	<property file="ant/build.properties" />
@@ -36,7 +35,10 @@
     	<fileset dir="${libs.dir}">
     		<include name="**/*.jar"/>
     	</fileset>
-        <pathelement path="${icepdfcreator.build.dir}"/>
+    	<fileset dir="${icepdf.libs.dir}">
+    		<include name="**/*.jar"/>
+    	</fileset>
+    	<pathelement path="${icepdfcreator.build.dir}"/>
     	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
     </path>
 
@@ -51,7 +53,7 @@
     <jar jarfile="${icepdfcreator.dist.dir}/${icepdfcreator.jar.name}.jar" basedir="${icepdfcreator.build.dir}">
     <manifest>
 		<attribute name="Built-By" value="${user.name}"/>
-		<attribute name="Class-Path" value="${icepdfcore.jar.name}.jar ${batik-awt-util.jar.name}.jar ${batik-dom.jar.name.jar.name}.jar ${batik-svg-dom.jar.name}.jar ${batik-svggen.jar.name}.jar ${batik-util.jar.name}.jar ${batik-xml.jar.name}.jar ${bcmail.jar.name}.jar ${bcprov.jar.name}.jar ${pdfsam-langpack.jar.name}.jar "/>
+		<attribute name="Class-Path" value="${icepdfcore.jar.name}.jar ${batik-awt-util.jar.name}.jar ${batik-dom.jar.name}.jar ${batik-svg-dom.jar.name}.jar ${batik-svggen.jar.name}.jar ${batik-util.jar.name}.jar ${batik-xml.jar.name}.jar "/>		
    </manifest>
 		<fileset dir=".">
 			<include name="META-INF/**/*.*" />

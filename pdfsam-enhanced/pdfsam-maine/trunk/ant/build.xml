@@ -45,6 +45,8 @@
 	    <property name="docinfo.dir" value="${workspace.dir}/pdfsam-docinfo"/>
 		<property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
+		<property name="icepdf.dir" value="${workspace.dir}/icepdfcreator"/>
+		<property name="icepdf.libs.dir" value="${workspace.dir}/libraries-ICEpdf"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
 
 		<!-- default values -->
@@ -91,6 +93,7 @@
 		<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="clean" />
 		<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="clean" />
 		<ant antfile="${docinfo.dir}/ant/build.xml" dir="${docinfo.dir}" target="clean" />
+		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="clean" />
 	</target>
 
 	<!-- compile -->
@@ -121,7 +124,7 @@
 			<manifest>
 				<attribute name="Built-By" value="${user.name}"/>
 				<attribute name="Main-Class" value="org.pdfsam.guiclient.GuiClient"/>
-				<attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/${commons-lang.jar.name}.jar lib/jai_imageio.jar lib/jna.jar lib/jbig2.jar lib/jai_codec.jar lib/jai_core.jar lib/isfreetype.jar lib/jPodFonts.jar lib/isrt.jar lib/iscwt.jar lib/jPod.jar lib/jPodRenderer.jar lib/isnativec.jar"/>
+				<attribute name="Class-Path" value="lib/${log4j.jar.name}.jar lib/${dom4j.jar.name}.jar lib/${jaxen.jar.name}.jar lib/${emp4j.jar.name}.jar lib/${itext.jar.name}.jar lib/${jcmdline.jar.name}.jar lib/${looks.jar.name}.jar lib/${pdfsam-console.jar.name}.jar lib/${bcmail.jar.name}.jar lib/${bcprov.jar.name}.jar lib/${pdfsam-langpack.jar.name}.jar lib/${commons-lang.jar.name}.jar lib/jai_imageio.jar lib/jai_codec.jar lib/jai_core.jar"/>
 			</manifest>
 			<fileset dir="${pdfsam.etc.dir}">
 				<include name="*.xml"/>
@@ -197,6 +200,11 @@
 			<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 		
+		<!--icepdf-->
+		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="build-jars">
+			<property name="icepdfcreator.dist.dir" value="${pdfsam.release.jar.dir}"/>
+		</ant>
+		
 		<antcall target="build-jars-enhanced" />
 	</target>
 
@@ -248,6 +256,12 @@
 
 		<copy todir="${pdfsam.release.dist.dir}/lib" overwrite="true">
 			<fileset dir="${libs.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${pdfsam.release.dist.dir}/ext" overwrite="true">
+			<fileset dir="${icepdf.libs.dir}">
 				<include name="*.jar" />
 			</fileset>
 		</copy>
@@ -318,7 +332,8 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-rotate.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/rotate" overwrite="true"/>
-
+		<copy file="${pdfsam.release.jar.dir}/${icepdfcreator.jar.name}.jar" todir="${pdfsam.release.dist.dir}/ext" overwrite="true"/>
+		
 		<antcall target="dist-enhanced" />
 	</target>
 
@@ -406,6 +421,13 @@
 				<include name="libraries-${pdfsam.main.version}/**/*" />
 			</fileset>
 		</zip>
+		
+		<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-libraries-ICEpdf.zip">
+			<fileset dir="..">
+				<include name="libraries-ICEpdf/**/*" />
+			</fileset>
+		</zip>
+		
 		<!--emp4j-->
 		<ant antfile="${emp4j.dir}/ant/build.xml" dir="${emp4j.dir}" target="buildZipSrcPackage">
 			<property name="emp4j.dist.dir" value="${pdfsam.release.src.dir}"/>
@@ -456,6 +478,11 @@
 			<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.src.dir}"/>
 		</ant>
 
+		<!--icepdf-->
+		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="buildZipSrcPackage">
+			<property name="icepdfcreator.dist.dir" value="${pdfsam.release.src.dir}"/>
+		</ant>
+		
 		<antcall target="buildZipSrcPackage-enhanced" />
 
 		<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" >

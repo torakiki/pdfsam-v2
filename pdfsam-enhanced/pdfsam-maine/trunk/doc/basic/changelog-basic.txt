@@ -5,8 +5,9 @@
 -Accepted patch #3046378 run.sh can now be started from any directory
 -Fixed hebrew language that wasn't set correctly 
 -Console: fixed bug #3089116 missing setdocinfo command in the help list
+-Fixed loading of extended jars from the ext subdirectory
 -looks 2.3.1
--JPodRenderer 5.3
+-ICEpdf 4.1.1
 -Jaxen 1.1.3
 -commons-lang 2.5
 

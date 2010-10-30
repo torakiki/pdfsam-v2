@@ -103,6 +103,7 @@ Page custom PageAllUsers PageLeaveAllUsers ;call the user admin stuff
   !insertmacro MUI_LANGUAGE "Polish"
   !insertmacro MUI_LANGUAGE "Portuguese"
   !insertmacro MUI_LANGUAGE "PortugueseBR"
+  !insertmacro MUI_LANGUAGE "Romanian"
   !insertmacro MUI_LANGUAGE "Russian"
   !insertmacro MUI_LANGUAGE "Slovak"
   !insertmacro MUI_LANGUAGE "Swedish"
@@ -258,6 +259,9 @@ Function getLangName ;pretty sure there's a better way to do this...
         ${Break}                
         ${Case} ${LANG_UKRAINIAN}
             Push 'uk' 
+        ${Break}                
+        ${Case} ${LANG_ROMANIAN}
+            Push 'ro' 
         ${Break}                
         ${Default}
             Push 'Default'
@@ -569,6 +573,8 @@ Function .onInit
     Push Hebrew  
     Push ${LANG_ARABIC}
     Push Arabic  
+    Push ${LANG_ROMANIAN}
+    Push Romanian  
     Push A ; A means auto count languages
            ; for the auto count to work the first empty push (Push "") must remain
     LangDLL::LangDialog "Installer Language" "Please select the language of the installer"
