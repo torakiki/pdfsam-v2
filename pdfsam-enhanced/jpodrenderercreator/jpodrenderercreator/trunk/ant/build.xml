@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jpodcreator" default="build-jars" basedir="../">
+    <description>
+       jPodRenderer thumbnails creator
+    </description>
+	
+  <!-- set global properties for this build -->
+  	<property name="user.name" value="Andrea Vacondio"/>
+  	<property name="jpodcreator.src.dir" location="src/java"/>
+  
+  	<target name="init">
+	  	<property file="ant/build.properties" />
+	  		  	  	
+	  	<property name="jpodcreator.build.root" location="${build.dir}/jpodcreator"/>
+	  	<property name="jpodcreator.build.dir" location="${jpodcreator.build.root}/build"/>
+	  	<property name="jpodcreator.dist.dir"  location="${jpodcreator.build.root}/dist"/>
+	  	<property name="jpodcreator.javadoc.dir"  location="${jpodcreator.build.root}/apidocs"/>  
+  	</target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${jpodcreator.build.dir}"/>
+		<mkdir dir="${jpodcreator.dist.dir}"/>
+	    <mkdir dir="${jpodcreator.javadoc.dir}"/>
+	</target>	
+
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${jpodcreator.build.root}"/>
+	</target>
+
+  <target name="compile" depends="make-structure" description="jpodcreator " >
+    <!-- Construct classpath -->
+    <path id="jpodcreator.classpath">
+    	<fileset dir="${libs.dir}">
+    		<include name="**/*.jar"/>
+    	</fileset>
+    	<fileset dir="${jpod.libs.dir}">
+    		<include name="**/*.jar"/>
+    	</fileset>
+    	<pathelement path="${jpodcreator.build.dir}"/>
+    	<pathelement path="${pdfsam.release.jar.dir}/${pdfsam.jar.name}.jar"/>   	
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.6" target="1.6" source="1.6" srcdir="${jpodcreator.src.dir}" destdir="${jpodcreator.build.dir}" debug="true">
+    	<classpath refid="jpodcreator.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${jpodcreator.dist.dir}/${jpodcreator.jar.name}.jar" basedir="${jpodcreator.build.dir}">
+    <manifest>
+		<attribute name="Built-By" value="${user.name}"/>
+		<attribute name="Class-Path" value="${jpodcreator.jar.name}.jar ${iscwt.jar.name}.jar ${isfreetype.jar.name}.jar ${isnativec.jar.name}.jar ${isrt.jar.name}.jar ${jbig2.jar.name}.jar ${jna.jar.name}.jar ${jPod.jar.name}.jar ${jPodFonts.jar.name}.jar ${jPodRenderer.jar.name}.jar "/>		    	
+   </manifest>
+		<fileset dir=".">
+			<include name="META-INF/**/*.*" />
+		</fileset> 	  	  	
+    </jar>
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.guiclient.business.thumbnails.*"
+      sourcepath="${jpodcreator.src.dir}"
+      destdir="${jpodcreator.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam jPodRenderer creator Plugin API"
+      doctitle="pdfsam jPodRenderer creator Plugin API" >
+    <classpath refid="jpodcreator.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${jpodcreator.dist.dir}/${jpodcreator.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="jpodcreator/src/java/**/*"/>
+    		<include name="jpodcreator/ant/**/*.*"/>
+    		<include name="jpodcreator/META-INF/**/*.*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="jpodcreator/apidocs/**/*.*"/>
+    	</fileset> 
+    </zip>
+  </target>
+
+</project>
+
