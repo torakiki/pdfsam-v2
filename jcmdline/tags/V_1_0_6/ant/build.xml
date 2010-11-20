@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jcmdline" default="build-jars" basedir="../">
+    <description>
+    	jcmdline
+    </description>
+  
+  <!-- set global properties for this build -->
+  <property name="user.name" value="Andrea Vacondio"/>
+  <property name="jcmdline.src.dir" location="src/main/java"/>
+
+  <target name="init">
+  	<property file="ant/build.properties" />
+  	
+    <property name="jcmdline.build.root" location="${build.dir}/jcmdline"/>
+    <property name="jcmdline.build.dir" location="${jcmdline.build.root}/build"/>
+    <property name="jcmdline.dist.dir"  location="${jcmdline.build.root}/dist"/>
+    <property name="jcmdline.javadoc.dir"  location="${jcmdline.build.root}/apidocs"/>
+
+  </target>
+	
+	<target name="make-structure" depends="init">  	
+	    <!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${jcmdline.build.dir}"/>
+		<mkdir dir="${jcmdline.dist.dir}"/>
+	    <mkdir dir="${jcmdline.javadoc.dir}"/>
+	</target>
+	
+	<target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the directory trees -->
+	    <delete dir="${jcmdline.build.root}"/>
+  	</target>
+	
+  <target name="compile" depends="make-structure" description="jcmdline " >
+    <!-- Construct classpath -->
+    <path id="jcmdline.classpath">      
+      <pathelement path="${jcmdline.build.dir}"/>
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${jcmdline.src.dir}" destdir="${jcmdline.build.dir}" debug="true">
+    	<classpath refid="jcmdline.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${jcmdline.dist.dir}/${jcmdline.jar.name}.jar" basedir="${jcmdline.build.dir}">
+	    <manifest>
+			<attribute name="Built-By" value="${user.name}"/>
+	    </manifest>	
+		<fileset dir="${jcmdline.src.dir}">
+		    <include name="**/*.properties"/>
+		</fileset>    	
+    </jar>    
+  </target>
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="jcmdline.*"
+      sourcepath="${jcmdline.src.dir}"
+      destdir="${jcmdline.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam-jcmdline"
+      doctitle="pdfsam-jcmdline" >
+    <classpath refid="jcmdline.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${jcmdline.dist.dir}/${jcmdline.jar.name}-build-src.zip">
+		<fileset dir="..">
+	    	<include name="jcmdline/src/main/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="jcmdline/apidocs/**/*.*"/>
+    	</fileset>
+    	<fileset dir="..">
+    		<include name="jcmdline/ant/**/*.*"/>
+    	</fileset>
+    </zip>
+  </target>
+
+</project>
+
