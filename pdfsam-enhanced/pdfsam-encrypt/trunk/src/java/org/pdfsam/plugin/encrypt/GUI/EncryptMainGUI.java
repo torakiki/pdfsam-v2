@@ -136,7 +136,7 @@ public class EncryptMainGUI extends AbstractPlugablePanel {
             CommonComponentsFactory.PDF_VERSION_LABEL);
 
     private final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private final String PLUGIN_VERSION = "0.3.1e";
+    private final String PLUGIN_VERSION = "0.3.2e";
 
     public final static int DPRINT = 0;
     public final static int PRINT = 1;
