@@ -15,13 +15,25 @@ die() {
 }
 
 DIRNAME="`dirname $0`"
-DIRNAME="${DIRNAME%/bin}"
-PDFSAMJAR="$DIRNAME/@PDFSAM_JAR_NAME.jar"
+DIRNAME="${DIRNAME%bin}"
+DIRNAME="${DIRNAME%/}"
+
+# I'm already in the pdfsam dir
+if [ "x$DIRNAME" = "x" ]; then
+	PDFSAMJAR="@PDFSAM_JAR_NAME.jar"
+else	
+	if [ "x$DIRNAME" = "x." ]; then
+		PDFSAMJAR="../@PDFSAM_JAR_NAME.jar"
+	else	
+		PDFSAMJAR="$DIRNAME/@PDFSAM_JAR_NAME.jar"
+	fi
+fi
 
 # Setup the classpath
 if [ ! -f "$PDFSAMJAR" ]; then
     die "Missing required file: $PDFSAMJAR"
 fi
+
 PDFSAM_CLASSPATH="$PDFSAMJAR"
 
 # Setup the JVM
