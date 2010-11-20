@@ -38,7 +38,11 @@ package org.pdfsam.console.business.pdf.bookmarks;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import com.lowagie.text.pdf.SimpleBookmark;
 
@@ -76,22 +80,20 @@ public class BookmarksProcessor {
      * @return
      */
     public List processBookmarks(int startPage, int endPage, int pageOffset) {
-        List retVal = null;
-        if (bookmarks != null) {
-            retVal = new ArrayList(bookmarks.size());
-            retVal.addAll(bookmarks);
+        List books = getCopyBookmarks(bookmarks);
+        if (books != null) {
             if (endPage < numberOfPages) {
-                SimpleBookmark.eliminatePages(retVal, new int[] { endPage + 1, numberOfPages });
+                SimpleBookmark.eliminatePages(books, new int[] { endPage + 1, numberOfPages });
             }
             if (startPage > 1) {
-                SimpleBookmark.eliminatePages(retVal, new int[] { 1, startPage - 1 });
-                SimpleBookmark.shiftPageNumbers(retVal, -(startPage - 1), null);
+                SimpleBookmark.eliminatePages(books, new int[] { 1, startPage - 1 });
+                SimpleBookmark.shiftPageNumbers(books, -(startPage - 1), null);
             }
             if (pageOffset != 0) {
-                SimpleBookmark.shiftPageNumbers(retVal, pageOffset, null);
+                SimpleBookmark.shiftPageNumbers(books, pageOffset, null);
             }
         }
-        return retVal;
+        return books;
     }
 
     /**
@@ -106,5 +108,32 @@ public class BookmarksProcessor {
      */
     public List processBookmarks(int startPage, int endPage) {
         return processBookmarks(startPage, endPage, 0);
+    }
+
+    private List getCopyBookmarks(List inputBook) {
+        List retVal = new ArrayList();
+        for (Iterator it = inputBook.listIterator(); it.hasNext();) {
+            HashMap map = (HashMap) it.next();
+            retVal.add(getCopyMap(map));
+        }
+        return retVal;
+    }
+
+    /**
+     * @param map
+     * @return
+     */
+    private HashMap getCopyMap(HashMap map) {
+        HashMap retVal = new HashMap();
+        Set entries = map.entrySet();
+        for (Iterator it = entries.iterator(); it.hasNext();) {
+            Entry entry = (Entry) it.next();
+            if (entry.getValue() instanceof List) {
+                retVal.put(entry.getKey(), getCopyBookmarks((List) entry.getValue()));
+            } else {
+                retVal.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return retVal;
     }
 }

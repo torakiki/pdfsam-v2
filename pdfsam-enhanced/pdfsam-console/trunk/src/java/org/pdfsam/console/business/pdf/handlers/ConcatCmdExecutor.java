@@ -141,8 +141,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
                     pdfReader.removeUnusedObjects();
                     pdfReader.consolidateNamedDestinations();
                     int pdfNumberOfPages = pdfReader.getNumberOfPages();
-                    BookmarksProcessor bookmarkProcessor = new BookmarksProcessor(
-                            SimpleBookmark.getBookmark(pdfReader), pdfNumberOfPages);
+                    BookmarksProcessor bookmarkProcessor = new BookmarksProcessor(SimpleBookmark.getBookmark(pdfReader), pdfNumberOfPages);
 
                     List boundsList = getBounds(pdfNumberOfPages, selectionGroups);
                     ValidationUtility.assertNotIntersectedBoundsList(boundsList);
