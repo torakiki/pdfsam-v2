@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pdfsam-console" default="build-jars" basedir="../">
+    <description>
+        PDF Split And Merge Console
+    </description>
+  
+  <!-- set global properties for this build -->
+  <property name="user.name" value="Andrea Vacondio"/>
+  <property name="pdfsam-console.src.dir" location="src/java"/>
+  <property name="pdfsam-console.etc.dir" location="etc"/>
+	
+  
+  <target name="init">
+  	<property file="ant/build.properties" />
+  	
+  	<property name="pdfsam-console.build.root" location="${build.dir}/pdfsam-console"/>
+  	<property name="pdfsam-console.build.dir" location="${pdfsam-console.build.root}/build"/>
+  	<property name="pdfsam-console.dist.dir"  location="${pdfsam-console.build.root}/dist"/>
+  	<property name="pdfsam-console.javadoc.dir"  location="${pdfsam-console.build.root}/apidocs"/>
+  </target>
+
+	<target name="make-structure" depends="init">  	
+		<!-- Create the build directory structure used by compile -->
+	    <mkdir dir="${pdfsam-console.build.dir}"/>
+		<mkdir dir="${pdfsam-console.dist.dir}"/>
+	    <mkdir dir="${pdfsam-console.javadoc.dir}"/>
+	</target>
+	
+	  <target name="clean" depends="init" description="clean up" >
+	    <!-- Delete the ${dist} directory trees -->
+	    <delete dir="${pdfsam-console.build.root}"/>
+	  </target>
+	
+  <target name="compile" depends="make-structure" description="pdfsam-console " >
+    <!-- Construct classpath -->
+    <path id="pdfsam-console.classpath">
+      <fileset dir="${libs.dir}">
+        <include name="**/${log4j.jar.name}.jar"/>
+        <include name="**/${dom4j.jar.name}.jar"/>
+        <include name="**/${jaxen.jar.name}.jar"/>
+        <include name="**/${itext.jar.name}.jar"/>
+        <include name="**/${emp4j.jar.name}.jar"/>
+        <include name="**/${jcmdline.jar.name}.jar"/>
+        <include name="**/${commons-lang.jar.name}.jar"/>
+      </fileset>
+      <pathelement path="${pdfsam-console.build.dir}"/>
+    </path>
+
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac compiler="javac1.4" target="1.4" source="1.4" srcdir="${pdfsam-console.src.dir}" destdir="${pdfsam-console.build.dir}" debug="true">
+    	<classpath refid="pdfsam-console.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build-jars" depends="compile" description="generate the distribution" >
+
+    <jar jarfile="${pdfsam-console.dist.dir}/${pdfsam-console.jar.name}.jar" basedir="${pdfsam-console.build.dir}">
+	    <manifest>
+			<attribute name="Built-By" value="${user.name}"/>
+			<attribute name="Main-Class" value="org.pdfsam.console.ConsoleClient"/>
+		    <attribute name="Class-Path" value="${log4j.jar.name}.jar ${dom4j.jar.name}.jar ${jaxen.jar.name}.jar ${emp4j.jar.name}.jar ${itext.jar.name}.jar ${jcmdline.jar.name}.jar ${bcmail.jar.name}.jar ${bcprov.jar.name}.jar ${commons-lang.jar.name}.jar"/>
+	    </manifest>
+		<fileset dir="${pdfsam-console.etc.dir}">
+		    <include name="*.xml"/>
+		</fileset>	
+    </jar>    
+  </target>
+
+
+  <!-- Javadoc -->
+  <target name="javadoc" depends="make-structure">
+    <javadoc
+      packagenames="org.pdfsam.console.*"
+      sourcepath="${pdfsam-console.src.dir}"
+      destdir="${pdfsam-console.javadoc.dir}"
+      author="true"
+      version="true"
+      use="true"
+      windowtitle="pdfsam console API"
+      doctitle="pdfsam console API" >
+    <classpath refid="pdfsam-console.classpath"/>
+    </javadoc>
+  </target>
+
+
+  
+  <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
+    <zip destfile="${pdfsam-console.dist.dir}/${pdfsam-console.jar.name}-build-src.zip">
+    	<fileset dir="..">
+	    	<include name="pdfsam-console/src/java/**/*"/>
+    	</fileset>
+		<fileset dir="${build.dir}">
+	    	<include name="pdfsam-console/apidocs/**/*.*"/>
+    	</fileset>
+    	<fileset dir="..">
+    		<include name="pdfsam-console/ant/**/*.*"/>
+    		<include name="pdfsam-console/etc/**/*.*"/>
+    		<include name="pdfsam-console/bin/**/*.*"/>
+    		<include name="pdfsam-console/xsd/**/*.*"/>
+    	</fileset>    	
+    </zip>
+  </target>
+
+</project>
+
