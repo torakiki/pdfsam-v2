@@ -80,8 +80,9 @@ public class BookmarksProcessor {
      * @return
      */
     public List processBookmarks(int startPage, int endPage, int pageOffset) {
-        List books = getCopyBookmarks(bookmarks);
-        if (books != null) {
+        List books = null;
+        if (bookmarks != null) {
+            books = getCopyBookmarks(bookmarks);
             if (endPage < numberOfPages) {
                 SimpleBookmark.eliminatePages(books, new int[] { endPage + 1, numberOfPages });
             }
@@ -125,13 +126,15 @@ public class BookmarksProcessor {
      */
     private HashMap getCopyMap(HashMap map) {
         HashMap retVal = new HashMap();
-        Set entries = map.entrySet();
-        for (Iterator it = entries.iterator(); it.hasNext();) {
-            Entry entry = (Entry) it.next();
-            if (entry.getValue() instanceof List) {
-                retVal.put(entry.getKey(), getCopyBookmarks((List) entry.getValue()));
-            } else {
-                retVal.put(entry.getKey(), entry.getValue());
+        if(map != null){
+            Set entries = map.entrySet();
+            for (Iterator it = entries.iterator(); it.hasNext();) {
+                Entry entry = (Entry) it.next();
+                if (entry.getValue() instanceof List) {
+                    retVal.put(entry.getKey(), getCopyBookmarks((List) entry.getValue()));
+                } else {
+                    retVal.put(entry.getKey(), entry.getValue());
+                }
             }
         }
         return retVal;
