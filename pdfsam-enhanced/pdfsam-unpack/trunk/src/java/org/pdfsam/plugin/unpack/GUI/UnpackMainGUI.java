@@ -90,7 +90,7 @@ public class UnpackMainGUI extends AbstractPlugablePanel {
     private final EnterDoClickListener browseEnterkeyListener = new EnterDoClickListener(browseButton);
 
     private static final String PLUGIN_AUTHOR = "Andrea Vacondio";
-    private static final String PLUGIN_VERSION = "0.1.0e";
+    private static final String PLUGIN_VERSION = "0.1.1e";
 
     /**
      * Constructor

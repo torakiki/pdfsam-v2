@@ -59,7 +59,7 @@ public class RunButtonActionListener extends AbstractRunButtonActionListener {
             return;
         }
         PdfSelectionTableItem[] items = panel.getSelectionPanel().getTableRows();
-        if (!ArrayUtils.isEmpty(items)) {
+        if (ArrayUtils.isEmpty(items)) {
             DialogUtility.showWarningNoDocsSelected(panel, DialogUtility.AT_LEAST_ONE_DOC);
             return;
         }
