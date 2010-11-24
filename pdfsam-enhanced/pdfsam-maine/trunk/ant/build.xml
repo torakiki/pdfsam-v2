@@ -45,8 +45,8 @@
 	    <property name="docinfo.dir" value="${workspace.dir}/pdfsam-docinfo"/>
 		<property name="launcher.dir" value="${workspace.dir}/pdfsam-launcher"/>
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
-		<property name="icepdf.dir" value="${workspace.dir}/icepdfcreator"/>
-		<property name="icepdf.libs.dir" value="${workspace.dir}/libraries-ICEpdf"/>
+		<property name="jpod.dir" value="${workspace.dir}/jpodrenderercreator"/>
+		<property name="jpod.libs.dir" value="${workspace.dir}/libraries-jPodRenderer"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
 
 		<!-- default values -->
@@ -93,7 +93,7 @@
 		<ant antfile="${unpack.dir}/ant/build.xml" dir="${unpack.dir}" target="clean" />
 		<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="clean" />
 		<ant antfile="${docinfo.dir}/ant/build.xml" dir="${docinfo.dir}" target="clean" />
-		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="clean" />
+		<ant antfile="${jpod.dir}/ant/build.xml" dir="${jpod.dir}" target="clean" />
 	</target>
 
 	<!-- compile -->
@@ -200,9 +200,9 @@
 			<property name="pdfsam-rotate.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 		
-		<!--icepdf-->
-		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="build-jars">
-			<property name="icepdfcreator.dist.dir" value="${pdfsam.release.jar.dir}"/>
+		<!--jpod-->
+		<ant antfile="${jpod.dir}/ant/build.xml" dir="${jpod.dir}" target="build-jars">
+			<property name="jpodcreator.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 		
 		<antcall target="build-jars-enhanced" />
@@ -261,7 +261,7 @@
 		</copy>
 		
 		<copy todir="${pdfsam.release.dist.dir}/ext" overwrite="true">
-			<fileset dir="${icepdf.libs.dir}">
+			<fileset dir="${jpod.libs.dir}">
 				<include name="*.jar" />
 			</fileset>
 		</copy>
@@ -332,7 +332,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vpagereorder.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vpagereorder" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-rotate.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/rotate" overwrite="true"/>
-		<copy file="${pdfsam.release.jar.dir}/${icepdfcreator.jar.name}.jar" todir="${pdfsam.release.dist.dir}/ext" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${jpodcreator.jar.name}.jar" todir="${pdfsam.release.dist.dir}/ext" overwrite="true"/>
 		
 		<antcall target="dist-enhanced" />
 	</target>
@@ -422,9 +422,9 @@
 			</fileset>
 		</zip>
 		
-		<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-libraries-ICEpdf.zip">
+		<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-libraries-jPodRenderer.zip">
 			<fileset dir="..">
-				<include name="libraries-ICEpdf/**/*" />
+				<include name="libraries-jPodRenderer/**/*" />
 			</fileset>
 		</zip>
 		
@@ -478,9 +478,9 @@
 			<property name="pdfsam-vcomposer.dist.dir" value="${pdfsam.release.src.dir}"/>
 		</ant>
 
-		<!--icepdf-->
-		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="buildZipSrcPackage">
-			<property name="icepdfcreator.dist.dir" value="${pdfsam.release.src.dir}"/>
+		<!--jpod-->
+		<ant antfile="${jpod.dir}/ant/build.xml" dir="${jpod.dir}" target="buildZipSrcPackage">
+			<property name="jpodcreator.dist.dir" value="${pdfsam.release.src.dir}"/>
 		</ant>
 		
 		<antcall target="buildZipSrcPackage-enhanced" />
