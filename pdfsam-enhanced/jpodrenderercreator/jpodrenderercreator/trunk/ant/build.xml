@@ -11,7 +11,7 @@
   	<target name="init">
 	  	<property file="ant/build.properties" />
 	  		  	  	
-	  	<property name="jpodcreator.build.root" location="${build.dir}/jpodcreator"/>
+	  	<property name="jpodcreator.build.root" location="${build.dir}/jpodrenderercreator"/>
 	  	<property name="jpodcreator.build.dir" location="${jpodcreator.build.root}/build"/>
 	  	<property name="jpodcreator.dist.dir"  location="${jpodcreator.build.root}/dist"/>
 	  	<property name="jpodcreator.javadoc.dir"  location="${jpodcreator.build.root}/apidocs"/>  
@@ -81,12 +81,12 @@
   <target name="buildZipSrcPackage" depends="javadoc" description="generate build sources zip package" >
     <zip destfile="${jpodcreator.dist.dir}/${jpodcreator.jar.name}-build-src.zip">
 		<fileset dir="..">
-	    	<include name="jpodcreator/src/java/**/*"/>
-    		<include name="jpodcreator/ant/**/*.*"/>
-    		<include name="jpodcreator/META-INF/**/*.*"/>
+	    	<include name="jpodrenderercreator/src/java/**/*"/>
+    		<include name="jpodrenderercreator/ant/**/*.*"/>
+    		<include name="jpodrenderercreator/META-INF/**/*.*"/>
     	</fileset>
 		<fileset dir="${build.dir}">
-	    	<include name="jpodcreator/apidocs/**/*.*"/>
+	    	<include name="jpodrenderercreator/apidocs/**/*.*"/>
     	</fileset> 
     </zip>
   </target>
