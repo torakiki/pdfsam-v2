@@ -18,42 +18,42 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import org.pdfsam.guiclient.business.ApplicationCloser;
+
 /**
  * Listener for the exit action
+ * 
  * @author a.vacondio
  */
-public class ApplicationExitMediator implements ActionListener{
+public class ApplicationExitMediator implements ActionListener {
 
-	public static final String EXIT_COMMAND = "exit";
-	public static final String SAVE_AND_EXIT_COMMAND = "saveAndExit";
-	
-	private ApplicationCloser closer;
-	
-	public ApplicationExitMediator() {
-		closer=null;
-	}
+    public static final String EXIT_COMMAND = "exit";
+    public static final String SAVE_AND_EXIT_COMMAND = "saveAndExit";
 
+    private ApplicationCloser closer;
 
-	/**
-	 * @param closer
-	 */
-	public ApplicationExitMediator(ApplicationCloser closer) {
-		super();
-		this.closer = closer;
-	}
+    public ApplicationExitMediator() {
+        closer = null;
+    }
 
+    /**
+     * @param closer
+     */
+    public ApplicationExitMediator(ApplicationCloser closer) {
+        super();
+        this.closer = closer;
+    }
 
-	public void actionPerformed(ActionEvent arg0) {
-		if(arg0 != null){
-			if(ApplicationExitMediator.EXIT_COMMAND.equals(arg0.getActionCommand())){
-				System.exit(0);
-			}else if(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND.equals(arg0.getActionCommand())){
-				if(closer!=null){
-					closer.saveGuiConfiguration();
-				}
-				System.exit(0);
-			}
-		}
-	}
+    public void actionPerformed(ActionEvent arg0) {
+        if (arg0 != null) {
+            if (ApplicationExitMediator.EXIT_COMMAND.equals(arg0.getActionCommand())) {
+                System.exit(0);
+            } else if (ApplicationExitMediator.SAVE_AND_EXIT_COMMAND.equals(arg0.getActionCommand())) {
+                if (closer != null) {
+                    closer.saveGuiConfiguration();
+                }
+                System.exit(0);
+            }
+        }
+    }
 
 }

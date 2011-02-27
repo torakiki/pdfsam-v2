@@ -16,6 +16,7 @@ package org.pdfsam.guiclient.configuration;
 
 import java.awt.Toolkit;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javax.swing.UIManager;
@@ -37,280 +38,281 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class Configuration {
 
-	private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
+    private static final Logger log = Logger.getLogger(Configuration.class.getPackage().getName());
 
-	public static final int DEFAULT_POOL_SIZE = 3;
+    public static final int DEFAULT_POOL_SIZE = 3;
 
-	private static Configuration configObject;
+    private static Configuration configObject;
 
-	private ConfigurationService configurationService;
+    private ConfigurationService configurationService;
 
-	private int screenResolution = 0;
+    private int screenResolution = 0;
 
-	private Configuration() {
-		initialize();
-	}
+    private Configuration() {
+        initialize();
+    }
 
-	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException("Cannot clone configuration object.");
-	}
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException("Cannot clone configuration object.");
+    }
 
-	public static synchronized Configuration getInstance() {
-		if (configObject == null) {
-			configObject = new Configuration();
-		}
-		return configObject;
-	}
+    public static synchronized Configuration getInstance() {
+        if (configObject == null) {
+            configObject = new Configuration();
+        }
+        return configObject;
+    }
 
-	/**
-	 * Initialization
-	 */
-	private void initialize() {
-		try {
-			configurationService = ConfigurationServiceLocator.getInstance().getConfigurationService();
+    /**
+     * Initialization
+     */
+    private void initialize() {
+        try {
+            configurationService = ConfigurationServiceLocator.LOCATOR.getConfigurationService();
 
-			initializeLookAndFeel();
-			initializeLoggingLevel();
-			screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
-		} catch (Exception e) {
-			log.fatal("Error loading configuration.",e);
-		}
-	}
+            initializeLookAndFeel();
+            initializeLoggingLevel();
+            screenResolution = Toolkit.getDefaultToolkit().getScreenResolution();
+        } catch (Exception e) {
+            log.fatal("Error loading configuration.", e);
+        }
+    }
 
-	/**
-	 * sets the look and feel
-	 * 
-	 * @throws Exception
-	 */
-	private void initializeLookAndFeel() throws Exception {
-		if (ThemeUtility.isPlastic(configurationService.getLookAndFeel())) {
-			ThemeUtility.setTheme(configurationService.getTheme());
-		}
-		UIManager.setLookAndFeel(ThemeUtility.getLAF(configurationService.getLookAndFeel()));
-	}
+    /**
+     * sets the look and feel
+     * 
+     * @throws Exception
+     */
+    private void initializeLookAndFeel() throws Exception {
+        if (ThemeUtility.isPlastic(configurationService.getLookAndFeel())) {
+            ThemeUtility.setTheme(configurationService.getTheme());
+        }
+        UIManager.setLookAndFeel(ThemeUtility.getLAF(configurationService.getLookAndFeel()));
+    }
 
-	/**
-	 * sets the logging threshold for the appender
-	 */
-	private void initializeLoggingLevel() {
-		int logLevel = configurationService.getLoggingLevel();
-		try {
-			TextPaneAppender appender = (TextPaneAppender) Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
-			Level loggingLevel = Level.toLevel(logLevel, Level.DEBUG);
-			log.info(GettextResource.gettext(getI18nResourceBundle(), "Logging level set to ") + loggingLevel);
-			appender.setThreshold(loggingLevel);
-		} catch (Exception e) {
-			log.warn(GettextResource.gettext(getI18nResourceBundle(), "Unable to set logging level."), e);
-		}
-	}
+    /**
+     * sets the logging threshold for the appender
+     */
+    private void initializeLoggingLevel() {
+        int logLevel = configurationService.getLoggingLevel();
+        try {
+            TextPaneAppender appender = (TextPaneAppender) Logger.getLogger("org.pdfsam").getAppender("JLogPanel");
+            Level loggingLevel = Level.toLevel(logLevel, Level.DEBUG);
+            log.info(GettextResource.gettext(getI18nResourceBundle(), "Logging level set to ") + loggingLevel);
+            appender.setThreshold(loggingLevel);
+        } catch (Exception e) {
+            log.warn(GettextResource.gettext(getI18nResourceBundle(), "Unable to set logging level."), e);
+        }
+    }
 
-	/**
-	 * @return the language ResourceBundle
-	 */
-	public ResourceBundle getI18nResourceBundle() {
-		return configurationService.getI18nResourceBundle();
-	}
+    /**
+     * @return the language ResourceBundle
+     */
+    public ResourceBundle getI18nResourceBundle() {
+        return configurationService.getI18nResourceBundle();
+    }
 
-	/**
-	 * @return the default environment
-	 */
-	public String getDefaultEnvironment() {
-		return configurationService.getDefaultEnvironment();
-	}
+    /**
+     * @return the default environment
+     */
+    public String getDefaultEnvironment() {
+        return configurationService.getDefaultEnvironment();
+    }
 
-	/**
-	 * Set the default environment path
-	 * 
-	 * @param environmentPath
-	 */
-	public void setDefaultEnvironment(String environmentPath) {
-		configurationService.setDefaultEnvironment(environmentPath);
-	}
+    /**
+     * Set the default environment path
+     * 
+     * @param environmentPath
+     */
+    public void setDefaultEnvironment(String environmentPath) {
+        configurationService.setDefaultEnvironment(environmentPath);
+    }
 
-	/**
-	 * 
-	 * @return the ConsoleServicesFacade
-	 */
-	public ConsoleServicesFacade getConsoleServicesFacade() {
-		return configurationService.getConsoleServicesFacade();
-	}
+    /**
+     * 
+     * @return the ConsoleServicesFacade
+     */
+    public ConsoleServicesFacade getConsoleServicesFacade() {
+        return configurationService.getConsoleServicesFacade();
+    }
 
-	/**
-	 * @return the loggingLevel
-	 */
-	public int getLoggingLevel() {
-		return configurationService.getLoggingLevel();
-	}
+    /**
+     * @return the loggingLevel
+     */
+    public int getLoggingLevel() {
+        return configurationService.getLoggingLevel();
+    }
 
-	/**
-	 * @return the checkForUpdates
-	 */
-	public boolean isCheckForUpdates() {
-		return configurationService.isCheckForUpdates();
-	}
+    /**
+     * @return the checkForUpdates
+     */
+    public boolean isCheckForUpdates() {
+        return configurationService.isCheckForUpdates();
+    }
 
-	/**
-	 * Set the check for updates
-	 * 
-	 * @param checkForUpdateds
-	 */
-	public void setCheckForUpdates(boolean checkForUpdateds) {
-		configurationService.setCheckForUpdates(checkForUpdateds);
-	}
+    /**
+     * Set the check for updates
+     * 
+     * @param checkForUpdateds
+     */
+    public void setCheckForUpdates(boolean checkForUpdateds) {
+        configurationService.setCheckForUpdates(checkForUpdateds);
+    }
 
-	/**
-	 * @return the defaultWorkingDir
-	 */
-	public String getDefaultWorkingDirectory() {
-		return configurationService.getDefaultWorkingDirectory();
-	}
+    /**
+     * @return the defaultWorkingDir
+     */
+    public String getDefaultWorkingDirectory() {
+        return configurationService.getDefaultWorkingDirectory();
+    }
 
-	/**
-	 * Set the default working directory
-	 * 
-	 * @param defaultDirectory
-	 */
-	public void setDefaultWorkingDirectory(String defaultDirectory) {
-		configurationService.setDefaultWorkingDirectory(defaultDirectory);
-	}
+    /**
+     * Set the default working directory
+     * 
+     * @param defaultDirectory
+     */
+    public void setDefaultWorkingDirectory(String defaultDirectory) {
+        configurationService.setDefaultWorkingDirectory(defaultDirectory);
+    }
 
-	/**
-	 * @return the playSounds
-	 */
-	public boolean isPlaySounds() {
-		return configurationService.isPlaySounds();
-	}
+    /**
+     * @return the playSounds
+     */
+    public boolean isPlaySounds() {
+        return configurationService.isPlaySounds();
+    }
 
-	/**
-	 * @param playSounds
-	 *            the playSounds to set
-	 */
-	public void setPlaySounds(boolean playSounds) {
-		configurationService.setPlaySounds(playSounds);
-	}
+    /**
+     * @param playSounds
+     *            the playSounds to set
+     */
+    public void setPlaySounds(boolean playSounds) {
+        configurationService.setPlaySounds(playSounds);
+    }
 
-	/**
-	 * @return the screenResolution
-	 */
-	public int getScreenResolution() {
-		return screenResolution;
-	}
+    /**
+     * @return the screenResolution
+     */
+    public int getScreenResolution() {
+        return screenResolution;
+    }
 
-	/**
-	 * @return the thumbCreatorPoolSize
-	 */
-	public int getThumbCreatorPoolSize() {
-		return configurationService.getThumbCreatorPoolSize();
-	}
+    /**
+     * @return the thumbCreatorPoolSize
+     */
+    public int getThumbCreatorPoolSize() {
+        return configurationService.getThumbCreatorPoolSize();
+    }
 
-	/**
-	 * @return the thumbnailsCreatorIdentifier
-	 */
-	public String getThumbnailsCreatorIdentifier() {
-		return configurationService.getThumbnailsCreatorIdentifier();
-	}
+    /**
+     * @return the thumbnailsCreatorIdentifier
+     */
+    public String getThumbnailsCreatorIdentifier() {
+        return configurationService.getThumbnailsCreatorIdentifier();
+    }
 
-	/**
-	 * @param thumbnailsCreatorIdentifier
-	 *            the thumbnailsCreatorIdentifier to set
-	 */
-	public void setThumbnailsCreatorIdentifier(String thumbnailsCreatorIdentifier) {
-		configurationService.setThumbnailsCreatorIdentifier(thumbnailsCreatorIdentifier);
-	}
+    /**
+     * @param thumbnailsCreatorIdentifier
+     *            the thumbnailsCreatorIdentifier to set
+     */
+    public void setThumbnailsCreatorIdentifier(String thumbnailsCreatorIdentifier) {
+        configurationService.setThumbnailsCreatorIdentifier(thumbnailsCreatorIdentifier);
+    }
 
-	/**
-	 * @return the selected language String representation
-	 */
-	public String getSelectedLanguage() {
-		return configurationService.getLanguage();
-	}
+    /**
+     * @return the selected language String representation
+     */
+    public String getSelectedLanguage() {
+        return configurationService.getLanguage();
+    }
 
-	/**
-	 * Set the selected language
-	 * 
-	 * @param language
-	 */
-	public void setSelectedLanguage(String language) {
-		configurationService.setLanguage(language);
-	}
+    /**
+     * Set the selected language
+     * 
+     * @param language
+     */
+    public void setSelectedLanguage(String language) {
+        configurationService.setLanguage(language);
+    }
 
-	/**
-	 * @return informations to be displayed
-	 */
-	public String getConfigurationInformations() {
-		return configurationService.getConfigurationInformations();
-	}
+    /**
+     * @return informations to be displayed
+     */
+    public String getConfigurationInformations() {
+        return configurationService.getConfigurationInformations();
+    }
 
-	/**
-	 * @return the plugin absolute path
-	 */
-	public String getPluginAbsolutePath() {
-		return configurationService.getPluginAbsolutePath();
-	}
+    /**
+     * @return the plugin absolute path
+     */
+    public String getPluginAbsolutePath() {
+        return configurationService.getPluginAbsolutePath();
+    }
 
-	/**
-	 * @return the look and feel
-	 */
-	public int getLookAndFeel() {
-		return configurationService.getLookAndFeel();
-	}
+    /**
+     * @return the look and feel
+     */
+    public int getLookAndFeel() {
+        return configurationService.getLookAndFeel();
+    }
 
-	/**
-	 * Set the look and feel
-	 * 
-	 * @param lookAndFeel
-	 */
-	public void setLookAndFeel(int lookAndFeel) {
-		configurationService.setLookAndFeel(lookAndFeel);
-	}
+    /**
+     * Set the look and feel
+     * 
+     * @param lookAndFeel
+     */
+    public void setLookAndFeel(int lookAndFeel) {
+        configurationService.setLookAndFeel(lookAndFeel);
+    }
 
-	/**
-	 * @return the theme
-	 */
-	public int getTheme() {
-		return configurationService.getTheme();
-	}
+    /**
+     * @return the theme
+     */
+    public int getTheme() {
+        return configurationService.getTheme();
+    }
 
-	/**
-	 * Set the theme
-	 * 
-	 * @param theme
-	 */
-	public void setTheme(int theme) {
-		configurationService.setTheme(theme);
-	}
+    /**
+     * Set the theme
+     * 
+     * @param theme
+     */
+    public void setTheme(int theme) {
+        configurationService.setTheme(theme);
+    }
 
-	/**
-	 * Set the logging level
-	 * 
-	 * @param level
-	 */
-	public void setLoggingLevel(int level) {
-		configurationService.setLoggingLevel(level);
-	}
+    /**
+     * Set the logging level
+     * 
+     * @param level
+     */
+    public void setLoggingLevel(int level) {
+        configurationService.setLoggingLevel(level);
+    }
 
-	/**
-	 * @return the ask overwrite confirmation flag
-	 */
-	public boolean isAskOverwriteConfirmation() {
-		return configurationService.isAskOverwriteConfirmation();
-	}
+    /**
+     * @return the ask overwrite confirmation flag
+     */
+    public boolean isAskOverwriteConfirmation() {
+        return configurationService.isAskOverwriteConfirmation();
+    }
 
-	/**
-	 * set the ask overwrite confirmation flag
-	 * @param askOverwriteConfirmation
-	 */
-	public void setAskOverwriteConfirmation(boolean askOverwriteConfirmation) {
-		configurationService.setAskOverwriteConfirmation(askOverwriteConfirmation);
-	}
-	
-	/**
-	 * save the current configuration
-	 * 
-	 * @throws IOException
-	 */
-	public void save() throws IOException {
-		configurationService.save();
-	}
+    /**
+     * set the ask overwrite confirmation flag
+     * 
+     * @param askOverwriteConfirmation
+     */
+    public void setAskOverwriteConfirmation(boolean askOverwriteConfirmation) {
+        configurationService.setAskOverwriteConfirmation(askOverwriteConfirmation);
+    }
+
+    /**
+     * save the current configuration
+     * 
+     * @throws IOException
+     */
+    public void save() throws IOException {
+        configurationService.save();
+    }
 
 }

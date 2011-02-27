@@ -28,76 +28,79 @@ import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Listener to the log actions
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class LogActionListener implements ActionListener {
 
-	private static final Logger log = Logger.getLogger(LogActionListener.class.getPackage().getName());
-	
-	public static final String CLEAR_LOG_ACTION = "clearlog";
-	public static final String SAVE_LOG_ACTION = "savelog";
-	public static final String SELECTALL_LOG_ACTION = "selectalllog";
-	
-	private JTextPane logTextArea;
-	
-	public LogActionListener(JTextPane logTextArea){
-		this.logTextArea = logTextArea;
-		
-	}
-	
-	public LogActionListener(){
-		this(TextPaneAppender.getTextPaneInstance());
-	}
-	
-	public void actionPerformed(ActionEvent arg0) {
-		if(arg0.getActionCommand().equals(LogActionListener.CLEAR_LOG_ACTION)){
-			clearTextPane();
-		}else if(arg0.getActionCommand().equals(LogActionListener.SELECTALL_LOG_ACTION)){
-			selectAllTextPane();
-		}else if(arg0.getActionCommand().equals(LogActionListener.SAVE_LOG_ACTION)){
-			saveLog();
-		}else{
-			log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Unknown action."));
-		}	
-	}
-	
-	/**
-	 * clear the text of the log text pane
-	 */
-	private void clearTextPane(){
-		logTextArea.setText("");
-	}
+    private static final Logger log = Logger.getLogger(LogActionListener.class.getPackage().getName());
 
-	/**
-	 * select the text of the log text pane
-	 */
-	private void selectAllTextPane(){
-		logTextArea.selectAll();
-		logTextArea.requestFocus();
-	}
-	
-	/**
-	 * Save log text to file
-	 */
-	private void saveLog(){
-        JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.TXT_FILE, JFileChooser.FILES_ONLY);
-		if (fileChooser.showSaveDialog(logTextArea) == JFileChooser.APPROVE_OPTION) {
-			File chosenFile = fileChooser.getSelectedFile();
-			if (chosenFile != null) {
-				try {						
-					FileWriter fileWriter = new FileWriter(chosenFile);
-					fileWriter.write(logTextArea.getText());
-					fileWriter.flush();
-					fileWriter.close();
-					log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Log saved."));								
-				} catch (Exception e) {
-					log.error("Error saving log file. ",e);
-				}
-			}
-		}		
-	}
-	
+    public static final String CLEAR_LOG_ACTION = "clearlog";
+    public static final String SAVE_LOG_ACTION = "savelog";
+    public static final String SELECTALL_LOG_ACTION = "selectalllog";
+
+    private JTextPane logTextArea;
+
+    public LogActionListener(JTextPane logTextArea) {
+        this.logTextArea = logTextArea;
+
+    }
+
+    public LogActionListener() {
+        this(TextPaneAppender.getTextPaneInstance());
+    }
+
+    public void actionPerformed(ActionEvent arg0) {
+        if (arg0.getActionCommand().equals(LogActionListener.CLEAR_LOG_ACTION)) {
+            clearTextPane();
+        } else if (arg0.getActionCommand().equals(LogActionListener.SELECTALL_LOG_ACTION)) {
+            selectAllTextPane();
+        } else if (arg0.getActionCommand().equals(LogActionListener.SAVE_LOG_ACTION)) {
+            saveLog();
+        } else {
+            log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Unknown action."));
+        }
+    }
+
+    /**
+     * clear the text of the log text pane
+     */
+    private void clearTextPane() {
+        logTextArea.setText("");
+    }
+
+    /**
+     * select the text of the log text pane
+     */
+    private void selectAllTextPane() {
+        logTextArea.selectAll();
+        logTextArea.requestFocus();
+    }
+
+    /**
+     * Save log text to file
+     */
+    private void saveLog() {
+        JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.TXT_FILE,
+                JFileChooser.FILES_ONLY);
+        if (fileChooser.showSaveDialog(logTextArea) == JFileChooser.APPROVE_OPTION) {
+            File chosenFile = fileChooser.getSelectedFile();
+            if (chosenFile != null) {
+                try {
+                    FileWriter fileWriter = new FileWriter(chosenFile);
+                    fileWriter.write(logTextArea.getText());
+                    fileWriter.flush();
+                    fileWriter.close();
+                    log.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Log saved."));
+                } catch (Exception e) {
+                    log.error("Error saving log file. ", e);
+                }
+            }
+        }
+    }
+
 }

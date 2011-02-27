@@ -16,110 +16,107 @@ package org.pdfsam.guiclient.business.listeners.mediators;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.SwingWorker;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.gui.panels.JStatusPanel;
 import org.pdfsam.guiclient.updates.UpdateManager;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Update checker mediator
+ * 
  * @author Andrea Vacondio
  */
 public class UpdateCheckerMediator implements ActionListener {
 
-	private JStatusPanel statusPanel = null;
-	private final UpdateChecker updateChecker = new UpdateChecker();
-	private Thread t = null;
-	
-	public UpdateCheckerMediator(JStatusPanel statusPanel){
-		this.statusPanel = statusPanel;
-		t = new Thread(updateChecker);
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		checkForUpdates();
-	}
-	
-	/**
-	 * Run the runnable to check if an update is available after a delay
-	 * @param delay 
-	 * @param forceRecheck tells if a complete check have to be done.
-	 */
-	public void checkForUpdates(long delay, boolean forceRecheck){
-		updateChecker.setDelay(delay);
-		updateChecker.setForceRecheck(forceRecheck);
-		if(!t.isAlive()){
-			t = new Thread(updateChecker);
-			t.start();
-		}
-	}
-	
-	/**
-	 * Run the runnable to check if an update is available
-	 */
-	public void checkForUpdates(){
-		checkForUpdates(0, true);
-	}
-	
-	/**
-	 * Runnable that checks for updates
-	 * @author Andrea Vacondio
-	 */
-	private class UpdateChecker implements Runnable{
-		
-		private Logger log = null;
-		private long delay = 0;
-		private boolean forceRecheck = false;
-		private UpdateManager updateManager = null;
-		private final String destinationUrl = "http://www.pdfsam.org/check-version.php"; 
-		
-		
-		/**
-		 * @param delay the delay to set
-		 */
-		public void setDelay(long delay) {
-			this.delay = delay;
-		}		
+    private static final String DESTINATION_URL = "http://www.pdfsam.org/check-version.php";
+    private static final Logger LOG = Logger.getLogger(UpdateChecker.class.getPackage().getName());
 
-		/**
-		 * @param forceRecheck the forceRecheck to set
-		 */
-		public void setForceRecheck(boolean forceRecheck) {
-			this.forceRecheck = forceRecheck;
-		}
+    private JStatusPanel statusPanel = null;
+    private ScheduledExecutorService executor;
 
-		/**
-		 * check for a new version available and, if there is one, updates the status bar.
-		 */
-		public void run() {
-			try{ 
-		 		Thread.sleep(delay);
-		 		URL url = new URL(destinationUrl+"?version="+URLEncoder.encode(GuiClient.getVersionType(),"UTF-8")+"&remoteversion="+URLEncoder.encode(GuiClient.getVersion(),"UTF-8")+"&branch="+URLEncoder.encode(GuiClient.getBranch(),"UTF-8"));
-		 		if(updateManager == null){
-		 			updateManager = new UpdateManager(url);
-		 		}
-		 		updateManager.checkForNewVersion(forceRecheck);
-		 		if(updateManager.isNewVersionAvailable()){
-		 			getLogger().info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"New version available."));
-		 			statusPanel.setNewAvailableVersion(updateManager.getAvailableVersion());
-		 		}else{
-		 			getLogger().info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"No new version available."));
-		 		}
-			}catch(Exception ex){
-				getLogger().error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error: "), ex);
-		    }		      
-		}
-		
-		private Logger getLogger(){
-			if(log == null){
-				log = Logger.getLogger(UpdateChecker.class.getPackage().getName());
-			}
-			return log;
-			
-		}
-	}
+    public UpdateCheckerMediator(JStatusPanel statusPanel) {
+        this.statusPanel = statusPanel;
+        this.executor = Executors.newSingleThreadScheduledExecutor();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        checkForUpdates();
+    }
+
+    /**
+     * Run the runnable to check if an update is available after a delay
+     * 
+     * @param delay
+     * @param forceRecheck
+     *            tells if a complete check have to be done.
+     */
+    public void checkForUpdates(long delay, boolean forceRecheck) {
+        UpdateChecker updateChecker = new UpdateChecker(forceRecheck);
+        executor.schedule(updateChecker, delay, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * Run the runnable to check if an update is available
+     */
+    public void checkForUpdates() {
+        checkForUpdates(0, true);
+    }
+
+    /**
+     * Callable that checks if a new version is available
+     * 
+     * @author Andrea Vacondio
+     */
+    private class UpdateChecker extends SwingWorker<String, Void> {
+
+        private boolean forceRecheck = false;
+        private UpdateManager updateManager = null;
+
+        /**
+         * @param forceRecheck
+         */
+        public UpdateChecker(boolean forceRecheck) {
+            this.forceRecheck = forceRecheck;
+            this.updateManager = new UpdateManager(String.format("%s?version=%s&remoteversion=%s&branch=%s",
+                    DESTINATION_URL, GuiClient.getVersionType(), GuiClient.getVersion(), GuiClient.getBranch()));
+        }
+
+        @Override
+        protected String doInBackground() throws Exception {
+            updateManager.checkForNewVersion(forceRecheck);
+            if (updateManager.isNewVersionAvailable()) {
+                LOG.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "New version available."));
+                return updateManager.getAvailableVersion();
+            } else {
+                LOG.info(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "No new version available."));
+            }
+            return "";
+        }
+
+        @Override
+        protected void done() {
+            String newVersion;
+            try {
+                newVersion = get();
+                if (StringUtils.isNotBlank(newVersion)) {
+                    statusPanel.setNewAvailableVersion(newVersion);
+                }
+            } catch (Exception e) {
+                LOG.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Error: "), e);
+            }
+
+        }
+
+    }
 }

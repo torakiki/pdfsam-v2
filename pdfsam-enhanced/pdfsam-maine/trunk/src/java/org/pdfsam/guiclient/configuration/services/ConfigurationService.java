@@ -15,6 +15,7 @@
 package org.pdfsam.guiclient.configuration.services;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import org.pdfsam.console.business.ConsoleServicesFacade;
@@ -26,151 +27,164 @@ import org.pdfsam.console.business.ConsoleServicesFacade;
  * 
  */
 public interface ConfigurationService {
-	
-	/**
-	 * @return facade for the console services
-	 */
-	ConsoleServicesFacade getConsoleServicesFacade();
 
-	/**
-	 * @return path to the default environment
-	 */
-	String getDefaultEnvironment();
+    /**
+     * @return facade for the console services
+     */
+    ConsoleServicesFacade getConsoleServicesFacade();
 
-	/**
-	 * set the path for the default environment
-	 * @param path
-	 */
-	void setDefaultEnvironment(String path);
+    /**
+     * @return path to the default environment
+     */
+    String getDefaultEnvironment();
 
-	/**
-	 * @return path to te default working directory
-	 */
-	String getDefaultWorkingDirectory();
-	
-	/**
-	 * set the path to the default working directory
-	 * @param path
-	 */
-	void setDefaultWorkingDirectory(String path);
+    /**
+     * set the path for the default environment
+     * 
+     * @param path
+     */
+    void setDefaultEnvironment(String path);
 
-	/**
-	 * @return internationalization resource bundle
-	 */
-	ResourceBundle getI18nResourceBundle();
+    /**
+     * @return path to te default working directory
+     */
+    String getDefaultWorkingDirectory();
 
-	/**
-	 * @return logging level
-	 */
-	int getLoggingLevel();
+    /**
+     * set the path to the default working directory
+     * 
+     * @param path
+     */
+    void setDefaultWorkingDirectory(String path);
 
-	/**
-	 * Set the logging level
-	 * @param level
-	 */
-	void setLoggingLevel(int level);
-	
-	/**
-	 * @return size  of the threadpool used by the thumbnails creator
-	 */
-	int getThumbCreatorPoolSize();
+    /**
+     * @return internationalization resource bundle
+     */
+    ResourceBundle getI18nResourceBundle();
 
-	/**
-	 * set the thumbnails crreator pool size
-	 * @param poolSize
-	 */
-	void setThumbCreatorPoolSize(int poolSize);
+    /**
+     * @return logging level
+     */
+    int getLoggingLevel();
 
-	/**
-	 * @return identifier of the thumbnails creator to use
-	 */
-	String getThumbnailsCreatorIdentifier();
-	
-	/**
-	 * Set the thumbnail creator identifier
-	 * @param identifier
-	 */
-	void setThumbnailsCreatorIdentifier(String identifier);
-	
-	/**
-	 * @return the checkForUpdates
-	 */
-	boolean isCheckForUpdates();
-	
-	/**
-	 * set the checl for updates flag
-	 * @param checkForUpdateds
-	 */
-	void setCheckForUpdates(boolean checkForUpdateds);
-	
-	/**
-	 * @return the playSounds
-	 */
-	boolean isPlaySounds();
-	
-	/**
-	 * Set the play sounds flag
-	 * @param playSounds
-	 */
-	void setPlaySounds(boolean playSounds);
-	
-	/**
-	 * @return information about the configuration service to be displayed 
-	 */
-	String getConfigurationInformations();
-	
-	/**
-	 * @return the look and feel
-	 */
-	int getLookAndFeel();
-	
-	/**
-	 * Set the look and feel
-	 * @param lookAndFeel
-	 */
-	void setLookAndFeel(int lookAndFeel);
-	
-	/**
-	 * @return the theme
-	 */
-	int getTheme();
-	
-	/**
-	 * Set the theme
-	 * @param theme
-	 */
-	void setTheme(int theme);
-	
-	/**
-	 * @return String representation of the language
-	 */
-	String getLanguage();
-	
-	/**
-	 * Set the language
-	 * @param language
-	 */
-	void setLanguage(String language);
-	
-	/**
-	 * @return the plugin absolute path
-	 */
-	String getPluginAbsolutePath();
-	
-	/**
-	 * @return true to ask for confirmation when overwriting check box is selected
-	 */
-	boolean isAskOverwriteConfirmation();
+    /**
+     * Set the logging level
+     * 
+     * @param level
+     */
+    void setLoggingLevel(int level);
 
-	/**
-	 * set the ask for confirmation flag
-	 * @param askConfirmation
-	 */
-	void setAskOverwriteConfirmation(boolean askConfirmation);
-	
-	/**
-	 * save the configuration
-	 * @throws IOException in case of error saving the configuration
-	 */
-	public void save()throws IOException ;
+    /**
+     * @return size of the threadpool used by the thumbnails creator
+     */
+    int getThumbCreatorPoolSize();
+
+    /**
+     * set the thumbnails crreator pool size
+     * 
+     * @param poolSize
+     */
+    void setThumbCreatorPoolSize(int poolSize);
+
+    /**
+     * @return identifier of the thumbnails creator to use
+     */
+    String getThumbnailsCreatorIdentifier();
+
+    /**
+     * Set the thumbnail creator identifier
+     * 
+     * @param identifier
+     */
+    void setThumbnailsCreatorIdentifier(String identifier);
+
+    /**
+     * @return the checkForUpdates
+     */
+    boolean isCheckForUpdates();
+
+    /**
+     * set the checl for updates flag
+     * 
+     * @param checkForUpdateds
+     */
+    void setCheckForUpdates(boolean checkForUpdateds);
+
+    /**
+     * @return the playSounds
+     */
+    boolean isPlaySounds();
+
+    /**
+     * Set the play sounds flag
+     * 
+     * @param playSounds
+     */
+    void setPlaySounds(boolean playSounds);
+
+    /**
+     * @return information about the configuration service to be displayed
+     */
+    String getConfigurationInformations();
+
+    /**
+     * @return the look and feel
+     */
+    int getLookAndFeel();
+
+    /**
+     * Set the look and feel
+     * 
+     * @param lookAndFeel
+     */
+    void setLookAndFeel(int lookAndFeel);
+
+    /**
+     * @return the theme
+     */
+    int getTheme();
+
+    /**
+     * Set the theme
+     * 
+     * @param theme
+     */
+    void setTheme(int theme);
+
+    /**
+     * @return String representation of the language
+     */
+    String getLanguage();
+
+    /**
+     * Set the language
+     * 
+     * @param language
+     */
+    void setLanguage(String language);
+
+    /**
+     * @return the plugin absolute path
+     */
+    String getPluginAbsolutePath();
+
+    /**
+     * @return true to ask for confirmation when overwriting check box is selected
+     */
+    boolean isAskOverwriteConfirmation();
+
+    /**
+     * set the ask for confirmation flag
+     * 
+     * @param askConfirmation
+     */
+    void setAskOverwriteConfirmation(boolean askConfirmation);
+
+    /**
+     * save the configuration
+     * 
+     * @throws IOException
+     *             in case of error saving the configuration
+     */
+    void save() throws IOException;
 }

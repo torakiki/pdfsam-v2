@@ -23,7 +23,7 @@ import org.pdfsam.guiclient.exceptions.CheckForUpdateException;
 public interface UpdateChecker {
 
 	/**
-	 * @return the latest available version. null if no version information is available
+	 * @return the latest available version. Empty string if no version information is available
 	 * @throws CheckForUpdateException if an error occur
 	 */
 	public String getLatestVersion() throws CheckForUpdateException;

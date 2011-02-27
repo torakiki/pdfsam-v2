@@ -25,20 +25,10 @@ import org.pdfsam.guiclient.exceptions.ConfigurationException;
  */
 public class ConfigurationServiceLocator {
 
-	private static ConfigurationServiceLocator locator;
+	public static final ConfigurationServiceLocator LOCATOR = new ConfigurationServiceLocator();
 	
 	private ConfigurationServiceLocator(){
 		
-	}
-	
-	/**
-	 * @return the service locator instance
-	 */
-	public static synchronized ConfigurationServiceLocator getInstance(){
-		if(locator == null){
-			locator = new ConfigurationServiceLocator();
-		}
-		return locator;
 	}
 	
 	/**

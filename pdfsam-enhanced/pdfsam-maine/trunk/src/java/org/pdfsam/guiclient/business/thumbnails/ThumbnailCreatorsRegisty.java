@@ -23,52 +23,53 @@ import org.pdfsam.guiclient.dto.StringItem;
 
 /**
  * Registy of the installed ThumbnailCreators
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class ThumbnailCreatorsRegisty {
 
-	private static ServiceLoader<ThumbnailsCreator> CREATORS = ServiceLoader.load(ThumbnailsCreator.class);
-	
-	/**
-	 * @param identifier
-	 * @return The requested {@link ThumbnailsCreator} or the first available of the requested one is not available. Returns null if no {@link ThumbnailsCreator} is available.
-	 */
-	public static ThumbnailsCreator getCreator(String identifier){
-		ThumbnailsCreator retVal = null;
-		if(CREATORS!=null && identifier!=null && identifier.length()>0){
-			for(ThumbnailsCreator creator: CREATORS){
-				if(identifier.equals(creator.getCreatorIdentifier())){
-					retVal = creator;
-					break;
-				}				
-			}
-		}
-		//set the default one
-		if(retVal == null){
-			for(ThumbnailsCreator creator: CREATORS){
-				retVal = creator;
-				break;
-			}
-		}
-		return retVal;
-	}
+    private static ServiceLoader<ThumbnailsCreator> CREATORS = ServiceLoader.load(ThumbnailsCreator.class);
 
-	/**
-	 * @return a list of the available CREATORS
-	 */
-	public static List<StringItem> getInstalledCreators(){
-		List<StringItem> retVal = new ArrayList<StringItem>();
-		for(ThumbnailsCreator creator: CREATORS){
-			retVal.add(new StringItem(creator.getCreatorIdentifier(), creator.getCreatorName()));
-		}
-		return retVal;
-	}
-	
-	/**
-	 * Creates the services from the given class loader. Useful when new jars/classes are loaded at runtime
-	 */
-	public static void reload(ClassLoader cl) {
-		CREATORS = ServiceLoader.load(ThumbnailsCreator.class, cl);
-	}
+    /**
+     * @param identifier
+     * @return The requested {@link ThumbnailsCreator} or the first available of the requested one is not available. Returns null if no {@link ThumbnailsCreator} is available.
+     */
+    public static ThumbnailsCreator getCreator(String identifier) {
+        ThumbnailsCreator retVal = null;
+        if (CREATORS != null && identifier != null && identifier.length() > 0) {
+            for (ThumbnailsCreator creator : CREATORS) {
+                if (identifier.equals(creator.getCreatorIdentifier())) {
+                    retVal = creator;
+                    break;
+                }
+            }
+        }
+        // set the default one
+        if (retVal == null) {
+            for (ThumbnailsCreator creator : CREATORS) {
+                retVal = creator;
+                break;
+            }
+        }
+        return retVal;
+    }
+
+    /**
+     * @return a list of the available CREATORS
+     */
+    public static List<StringItem> getInstalledCreators() {
+        List<StringItem> retVal = new ArrayList<StringItem>();
+        for (ThumbnailsCreator creator : CREATORS) {
+            retVal.add(new StringItem(creator.getCreatorIdentifier(), creator.getCreatorName()));
+        }
+        return retVal;
+    }
+
+    /**
+     * Creates the services from the given class loader. Useful when new jars/classes are loaded at runtime
+     */
+    public static void reload(ClassLoader cl) {
+        CREATORS = ServiceLoader.load(ThumbnailsCreator.class, cl);
+    }
 }

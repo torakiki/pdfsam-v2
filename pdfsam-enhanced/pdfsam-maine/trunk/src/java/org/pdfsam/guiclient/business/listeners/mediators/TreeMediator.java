@@ -25,37 +25,39 @@ import org.pdfsam.guiclient.gui.frames.JMainFrame;
 import org.pdfsam.guiclient.gui.panels.JStatusPanel;
 import org.pdfsam.guiclient.plugins.interfaces.AbstractPlugablePanel;
 import org.pdfsam.guiclient.plugins.models.PluginDataModel;
+
 /**
- * Mediator among JTree, JStatusPanel, MainPanel and PluginsMap 
+ * Mediator among JTree, JStatusPanel, MainPanel and PluginsMap
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class TreeMediator implements TreeSelectionListener {
 
-	private JMainFrame container;
-	
-	public TreeMediator(JMainFrame container){
-		this.container = container;
-		
-	}
-	
-	public void valueChanged(TreeSelectionEvent e) {
-		JStatusPanel statusPanel = container.getStatusPanel();
-		JPanel plugsPanel = container.getMainPanel();
-		DefaultMutableTreeNode node = container.getTreePanel().getSelectedNode();
-		if (node != null && node.isLeaf()) {
-			Object selectedObject = node.getUserObject();
-			if(selectedObject instanceof PluginDataModel){
-				PluginDataModel selectedPlug = (PluginDataModel)selectedObject;
-				AbstractPlugablePanel panel = container.getPluginsMap().get(selectedPlug);
-				statusPanel.setText(selectedPlug.getName());
-				statusPanel.setIcon(panel.getIcon());
-				CardLayout cl = (CardLayout)(plugsPanel.getLayout());
-				cl.show(plugsPanel, selectedPlug.getName());	   
-				container.setFocusTraversalPolicy(panel.getFocusPolicy());
-				container.setMainPanelPreferredSize(panel.getPreferredSize());
-			}
-		}
-	}
+    private JMainFrame container;
+
+    public TreeMediator(JMainFrame container) {
+        this.container = container;
+
+    }
+
+    public void valueChanged(TreeSelectionEvent e) {
+        JStatusPanel statusPanel = container.getStatusPanel();
+        JPanel plugsPanel = container.getMainPanel();
+        DefaultMutableTreeNode node = container.getTreePanel().getSelectedNode();
+        if (node != null && node.isLeaf()) {
+            Object selectedObject = node.getUserObject();
+            if (selectedObject instanceof PluginDataModel) {
+                PluginDataModel selectedPlug = (PluginDataModel) selectedObject;
+                AbstractPlugablePanel panel = container.getPluginsMap().get(selectedPlug);
+                statusPanel.setText(selectedPlug.getName());
+                statusPanel.setIcon(panel.getIcon());
+                CardLayout cl = (CardLayout) (plugsPanel.getLayout());
+                cl.show(plugsPanel, selectedPlug.getName());
+                container.setFocusTraversalPolicy(panel.getFocusPolicy());
+                container.setMainPanelPreferredSize(panel.getPreferredSize());
+            }
+        }
+    }
 
 }

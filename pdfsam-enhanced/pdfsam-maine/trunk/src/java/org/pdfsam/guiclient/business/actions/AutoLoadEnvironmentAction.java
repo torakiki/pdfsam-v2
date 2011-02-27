@@ -1,5 +1,5 @@
 /*
- * Created on 07-Mar-2010 
+ * Created on 24/feb/2011
  * Copyright (C) 2010 by Andrea Vacondio.
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the 
@@ -26,6 +26,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
+import org.apache.commons.lang.StringUtils;
 import org.pdfsam.guiclient.business.environment.Environment;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
@@ -33,39 +34,33 @@ import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.i18n.GettextResource;
 
 /**
- * Load Environment Action
+ * Action that automatically loads an environment
  * 
  * @author Andrea Vacondio
  * 
  */
-public class LoadEnvironmentAction extends AbstractAction {
+public class AutoLoadEnvironmentAction extends AbstractAction {
 
-	private static final long serialVersionUID = -2827024871975864143L;
+    private static final long serialVersionUID = -3407253335399985764L;
 
-	private Environment environment;
+    private Environment environment;
+    private File recentEnvironment;
 
-	private JFrame parent;
+    public AutoLoadEnvironmentAction(Environment environment, File recentEnvironment) {
+        super(recentEnvironment.getName());
+        this.putValue(Action.SHORT_DESCRIPTION, GettextResource.gettext(Configuration.getInstance()
+                .getI18nResourceBundle(), recentEnvironment.getAbsolutePath()));
+        this.setEnabled(true);
+        this.environment = environment;
+        this.recentEnvironment = recentEnvironment;
+    }
 
-	public LoadEnvironmentAction(Environment environment, JFrame parent) {
-		super(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Load environment"));
-		this.setEnabled(true);
-		this.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.ALT_DOWN_MASK));
-		this.putValue(Action.SHORT_DESCRIPTION, GettextResource.gettext(Configuration.getInstance()
-				.getI18nResourceBundle(), "Load environment"));
-		this.putValue(Action.SMALL_ICON, new ImageIcon(this.getClass().getResource("/images/fileopen.png")));
-		this.environment = environment;
-		this.parent = parent;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		JFileChooser fileChooser = SharedJFileChooser.getInstance(SharedJFileChooserType.XML_FILE,
-				JFileChooser.FILES_ONLY);
-		if (fileChooser.showOpenDialog(parent) == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fileChooser.getSelectedFile();
-			environment.loadJobs(selectedFile);
-		}
-
-	}
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (recentEnvironment != null && StringUtils.endsWithIgnoreCase(recentEnvironment.getName(), ".xml")) {
+            if (recentEnvironment.exists()) {
+                environment.loadJobs(recentEnvironment);
+            }
+        }
+    }
 }

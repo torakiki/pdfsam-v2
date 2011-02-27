@@ -22,13 +22,14 @@ import org.pdfsam.i18n.GettextResource;
 
 /**
  * Worker for the pages actions
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class PagesWorker {
-	
-	private static final Logger log = Logger.getLogger(PagesWorker.class.getPackage().getName());
-    
+
+    private static final Logger log = Logger.getLogger(PagesWorker.class.getPackage().getName());
+
     public static final String MOVE_UP = "moveUp";
     public static final String MOVE_DOWN = "moveDown";
     public static final String REMOVE = "remove";
@@ -36,52 +37,54 @@ public class PagesWorker {
     public static final String ROTATE_CLOCK = "rotateclock";
     public static final String ROTATE_ANTICLOCK = "rotateanticlock";
     public static final String REVERSE = "reverse";
-    
+
     private JVisualSelectionList list;
-    
+
     /**
-	 * @param list
-	 */
-	public PagesWorker(JVisualSelectionList list) {
-		super();
-		this.list = list;
-	}
+     * @param list
+     */
+    public PagesWorker(JVisualSelectionList list) {
+        super();
+        this.list = list;
+    }
 
+    /**
+     * execute the login in response of an action
+     * 
+     * @param action
+     */
+    public void execute(String action) {
+        if (action != null) {
+            int[] selectedIndexes = list.getSelectedIndices();
+            if (selectedIndexes != null && selectedIndexes.length > 0) {
+                if (MOVE_UP.equals(action)) {
+                    ((VisualListModel) list.getModel()).moveUpIndexes(selectedIndexes);
+                    if (selectedIndexes[0] > 0) {
+                        list.setSelectionInterval(selectedIndexes[0] - 1,
+                                selectedIndexes[selectedIndexes.length - 1] - 1);
+                    }
+                } else if (MOVE_DOWN.equals(action)) {
+                    ((VisualListModel) list.getModel()).moveDownIndexes(selectedIndexes);
+                    if (selectedIndexes[selectedIndexes.length - 1] < (((VisualListModel) list.getModel()).getSize() - 1)) {
+                        list.setSelectionInterval(selectedIndexes[0] + 1,
+                                selectedIndexes[selectedIndexes.length - 1] + 1);
+                    }
+                } else if (REMOVE.equals(action)) {
+                    ((VisualListModel) list.getModel()).removeElements(selectedIndexes, !list.isDrawDeletedItems());
+                } else if (UNDELETE.equals(action)) {
+                    ((VisualListModel) list.getModel()).undeleteElements(selectedIndexes);
+                } else if (ROTATE_CLOCK.equals(action)) {
+                    ((VisualListModel) list.getModel()).rotateClockwiseElements(selectedIndexes);
+                } else if (ROTATE_ANTICLOCK.equals(action)) {
+                    ((VisualListModel) list.getModel()).rotateAnticlockwiseElements(selectedIndexes);
+                } else if (REVERSE.equals(action)) {
+                    ((VisualListModel) list.getModel()).reverseElements(selectedIndexes);
+                } else {
 
-	/**
-	 * execute the login in response of an action
-	 * @param action
-	 */
-	public void execute(String action) {
-		if(action!=null){
-			int[] selectedIndexes = list.getSelectedIndices();
-			if(selectedIndexes != null && selectedIndexes.length>0){
-		    	if(MOVE_UP.equals(action)){
-		    		((VisualListModel)list.getModel()).moveUpIndexes(selectedIndexes);
-		    		if (selectedIndexes[0] > 0){
-						list.setSelectionInterval(selectedIndexes[0]-1, selectedIndexes[selectedIndexes.length-1]-1);
-		            }
-		    	}else if(MOVE_DOWN.equals(action)){
-		    		((VisualListModel)list.getModel()).moveDownIndexes(selectedIndexes);
-		    		if (selectedIndexes[selectedIndexes.length-1] < (((VisualListModel) list.getModel()).getSize()-1)){
-		    			list.setSelectionInterval(selectedIndexes[0]+1, selectedIndexes[selectedIndexes.length-1]+1);   
-		           }
-		    	}else if(REMOVE.equals(action)){
-		    		((VisualListModel)list.getModel()).removeElements(selectedIndexes, !list.isDrawDeletedItems());
-		    	}else if(UNDELETE.equals(action)){
-		    		((VisualListModel)list.getModel()).undeleteElements(selectedIndexes);
-		    	}else if (ROTATE_CLOCK.equals(action)){
-                		((VisualListModel)list.getModel()).rotateClockwiseElements(selectedIndexes);
-		    	}else if (ROTATE_ANTICLOCK.equals(action)){
-                		((VisualListModel)list.getModel()).rotateAnticlockwiseElements(selectedIndexes);
-		    	}else if (REVERSE.equals(action)){
-            		((VisualListModel)list.getModel()).reverseElements(selectedIndexes);
-		    	}
-		    	else {
-		    	
-		    		log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unknown Action"));
-		    	}
-			}
-		}
+                    log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                            "Unknown Action"));
+                }
+            }
+        }
     }
 }

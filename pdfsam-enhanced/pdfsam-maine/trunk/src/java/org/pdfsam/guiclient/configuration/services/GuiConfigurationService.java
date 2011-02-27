@@ -17,6 +17,7 @@ package org.pdfsam.guiclient.configuration.services;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * Services related to the GUI configuration
@@ -26,110 +27,123 @@ import java.io.IOException;
  */
 public interface GuiConfigurationService {
 
-	/**
-	 * @see javax.swing.JFrame#getExtendedState()
-	 * 
-	 * @return the extended state
-	 */
-	int getExtendedState();
+    /**
+     * @see javax.swing.JFrame#getExtendedState()
+     * 
+     * @return the extended state
+     */
+    int getExtendedState();
 
-	/**
-	 * set the extended state
-	 * 
-	 * @param state
-	 */
-	void setExtendedState(int state);
+    /**
+     * set the extended state
+     * 
+     * @param state
+     */
+    void setExtendedState(int state);
 
-	/**
-	 * @see javax.swing.JFrame#getSize())
-	 * 
-	 * @return
-	 */
-	Dimension getSize();
+    /**
+     * @see javax.swing.JFrame#getSize())
+     * 
+     * @return
+     */
+    Dimension getSize();
 
-	/**
-	 * set the size
-	 * 
-	 * @param dimension
-	 */
-	void setSize(Dimension dimension);
+    /**
+     * set the size
+     * 
+     * @param dimension
+     */
+    void setSize(Dimension dimension);
 
-	/**
-	 * @see javax.swing.JFrame#getLocationOnScreen())
-	 * 
-	 * @return
-	 */
-	Point getLocationOnScreen();
+    /**
+     * @see javax.swing.JFrame#getLocationOnScreen())
+     * 
+     * @return
+     */
+    Point getLocationOnScreen();
 
-	/**
-	 * set the location on screen
-	 * 
-	 * @param point
-	 */
-	void setLocationOnScreen(Point point);
+    /**
+     * set the location on screen
+     * 
+     * @param point
+     */
+    void setLocationOnScreen(Point point);
 
-	/**
-	 * @return the horizontal divider location
-	 */
-	int getHorizontalDividerLocation();
+    /**
+     * @return the horizontal divider location
+     */
+    int getHorizontalDividerLocation();
 
-	/**
-	 * set the horizontal divider location
-	 * 
-	 * @param location
-	 */
-	void setHorizontalDividerLocation(int location);
+    /**
+     * set the horizontal divider location
+     * 
+     * @param location
+     */
+    void setHorizontalDividerLocation(int location);
 
-	/**
-	 * @return the vertical divider location
-	 */
-	int getVerticalDividerLocation();
+    /**
+     * @return the vertical divider location
+     */
+    int getVerticalDividerLocation();
 
-	/**
-	 * set the vertical divider location
-	 * 
-	 * @param location
-	 */
-	void setVerticalDividerLocation(int location);
+    /**
+     * set the vertical divider location
+     * 
+     * @param location
+     */
+    void setVerticalDividerLocation(int location);
 
-	/**
-	 * @return the horizontal divider dimension
-	 */
-	Dimension getHorizontalDividerDimension();
+    /**
+     * @return the horizontal divider dimension
+     */
+    Dimension getHorizontalDividerDimension();
 
-	/**
-	 * set the horizontal divider dimension
-	 * 
-	 * @param horizontalDividerDimension
-	 */
-	void setHorizontalDividerDimension(Dimension horizontalDividerDimension);
-	
-	/**
-	 * @return the vertical divider dimension
-	 */
-	Dimension getVerticalDividerDimension();
+    /**
+     * set the horizontal divider dimension
+     * 
+     * @param horizontalDividerDimension
+     */
+    void setHorizontalDividerDimension(Dimension horizontalDividerDimension);
 
-	/**
-	 * set the vertical divider dimension
-	 * 
-	 * @param verticalDividerDimension
-	 */
-	void setVerticalDividerDimension(Dimension verticalDividerDimension);
-	
-	/**
-	 * set the selected plugin
-	 * @param selectedPlugin
-	 */
-	void setSelectedPlugin(String selectedPlugin);
-	
-	/**
-	 * @return the selected plugin
-	 */
-	String getSelectedPlugin();
+    /**
+     * @return the vertical divider dimension
+     */
+    Dimension getVerticalDividerDimension();
 
-	/**
-	 * saves the current gui configuration
-	 */
-	void save() throws IOException;
+    /**
+     * set the vertical divider dimension
+     * 
+     * @param verticalDividerDimension
+     */
+    void setVerticalDividerDimension(Dimension verticalDividerDimension);
+
+    /**
+     * set the selected plugin
+     * 
+     * @param selectedPlugin
+     */
+    void setSelectedPlugin(String selectedPlugin);
+
+    /**
+     * @return the selected plugin
+     */
+    String getSelectedPlugin();
+
+    /**
+     * saves the current gui configuration
+     */
+    void save() throws IOException;
+
+    /**
+     * adds the given env ensuring that there are no duplicates, that the new env is at the top of the list and that the list size is at most 8.
+     * 
+     * @param envPath
+     */
+    void addRecentEnvironment(String envPath);
+
+    /**
+     * @return the queue with the recent environments
+     */
+    Collection<String> getRecentEnvironments();
 
 }

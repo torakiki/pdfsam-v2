@@ -16,76 +16,84 @@ package org.pdfsam.guiclient.updates;
 
 import java.net.URL;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.updates.checkers.HttpUpdateChecker;
 import org.pdfsam.guiclient.updates.checkers.UpdateChecker;
 import org.pdfsam.i18n.GettextResource;
+
 /**
- * Manager to check for an available new version
+ * Statefull manager to check for an available new version
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class UpdateManager {
 
-	private static Logger log = Logger.getLogger(UpdateManager.class.getPackage().getName());	
+    private static Logger LOG = Logger.getLogger(UpdateManager.class.getPackage().getName());
 
-	private UpdateChecker checker = null;
-	private boolean checked = false;
-	private String availableVersion = null;
-	private URL httpUrl = null;
-	
-	
-	
-	/**
-	 * @param httpUrl
-	 */
-	public UpdateManager(URL httpUrl) {
-		this.httpUrl = httpUrl;
-	}
+    private UpdateChecker checker = null;
+    private boolean checked = false;
+    private String availableVersion = "";
 
-	/**
-	 * @return true if there is an available version and this version is different from the current version
-	 */
-	public boolean isNewVersionAvailable(){
-		checkForNewVersion(false);
-		return ((availableVersion!=null)&&(!GuiClient.getVersion().equals(availableVersion)));
-	}
+    /**
+     * @param httpUrl
+     */
+    public UpdateManager(String httpUrl) {
+        this.checker = new HttpUpdateChecker(httpUrl);
+    }
 
-	/**
-	 * 
-	 * @return the availableVersion
-	 */
-	public String getAvailableVersion() {
-		checkForNewVersion(false);
-		return availableVersion;
-	}
-	
-	/**
-	 * Check for a new version available if not already checked.
-	 * @param forceRecheck force to recheck for a new version available
-	 */
-	public void checkForNewVersion(boolean forceRecheck){
-		if(forceRecheck || !checked){
-			log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Checking for a new version available."));
-			try{
-				if (checker == null){
-					checker = new HttpUpdateChecker(httpUrl);
-				}
-				availableVersion = checker.getLatestVersion();
-			}catch(Exception e){
-				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Error checking for a new version available."), e);
-			}
-		}
-		checked = true;
-	}
-	
-	/**
-	 * Check for a new version available
-	 */
-	public void checkForNewVersion(){
-		checkForNewVersion(true);
-	}
-		
+    /**
+     * @return true if there is an available version and this version is different from the current version
+     */
+    public boolean isNewVersionAvailable() {
+        return StringUtils.isNotBlank(availableVersion) && StringUtils.equalsIgnoreCase(GuiClient.getVersion(), availableVersion);
+    }
+
+    /**
+     * 
+     * @return the availableVersion
+     */
+    public String getAvailableVersion() {
+        return availableVersion;
+    }
+
+    /**
+     * Check for a new version available if not already checked.
+     * 
+     * @param forceRecheck
+     *            force to recheck for a new version available
+     */
+    public void checkForNewVersion(boolean forceRecheck) {
+        if(forceRecheck){
+            resetStatus();
+        }
+        if (!checked) {
+            LOG.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                    "Checking for a new version available."));
+            try {
+                availableVersion = checker.getLatestVersion();
+            } catch (Exception e) {
+                LOG.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Error checking for a new version available."), e);
+            }finally{
+                checked = true;
+            }
+        }
+    }
+
+    private void resetStatus(){
+        this.checked = false;
+        this.availableVersion = "";
+    }
+    
+    /**
+     * Check for a new version available
+     */
+    public void checkForNewVersion() {
+        checkForNewVersion(true);
+    }
+
 }

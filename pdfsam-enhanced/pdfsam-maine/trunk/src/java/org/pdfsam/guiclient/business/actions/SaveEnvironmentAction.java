@@ -27,7 +27,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import org.pdfsam.guiclient.business.Environment;
+import org.pdfsam.guiclient.business.environment.Environment;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooser;
 import org.pdfsam.guiclient.commons.components.sharedchooser.SharedJFileChooserType;
 import org.pdfsam.guiclient.configuration.Configuration;

@@ -14,6 +14,10 @@
  */
 package org.pdfsam.guiclient.configuration.services.xml.strategy;
 
+import java.util.ArrayDeque;
+import java.util.Collections;
+import java.util.Deque;
+
 import org.dom4j.Document;
 import org.pdfsam.guiclient.utils.XmlUtility;
 
@@ -90,5 +94,12 @@ public class BackwardCompatibilityXmlStrategy extends AbstractXmlConfigStrategy 
 
 	public String getAskOverwriteConfirmation() {
 		return Boolean.toString(true);
+	}
+
+	/**
+	 * Not supported in old configuration
+	 */
+	public Deque<String> getRecentEnvironments() {
+		return new ArrayDeque<String>();
 	}
 }

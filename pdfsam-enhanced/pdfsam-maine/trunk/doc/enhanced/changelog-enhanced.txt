@@ -1,13 +1,20 @@
-2.2.1e (31-Oct-2010) (pdfsam-console 2.3.1e)
+2.3.0e () (pdfsam-console )
 ===================================
+-Added recent environments menu
+
+2.2.1e (21-Nov-2010) (pdfsam-console 2.3.1e)
+===================================
+-Console: fixed bug #3010833 wrong handling of bookmarks
 -Fixed bug #2995149 missing resource directory in source package
 -Fixed bug #3050730 pdfsam-starter for Windows 7
 -Accepted patch #3046378 run.sh can now be started from any directory
 -Fixed hebrew language that wasn't set correctly
 -Encrypt: fixed bug #3080433 passwords are always saved when saving configuration.
+-Unpack: fixed bug #3114339 unable to run unpack on the GUI
 -Console: fixed bug #3089116 missing setdocinfo command in the help list
 -Fixed loading of extended jars from the ext subdirectory
 -looks 2.3.1
+-JPodRenderer 5.3
 -ICEpdf 4.1.1
 -Jaxen 1.1.3
 -commons-lang 2.5

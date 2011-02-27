@@ -14,6 +14,8 @@
  */
 package org.pdfsam.guiclient.configuration.services.xml.strategy;
 
+import java.util.Deque;
+
 /**
  * Strategy to retrieve values from the config xml dom
  * 
@@ -81,7 +83,7 @@ public interface XmlConfigStrategy {
 	 * @return the ask overwrite confirmation value
 	 */
 	String getAskOverwriteConfirmation();
-	
+
 	/**
 	 * close resources if necessary
 	 */

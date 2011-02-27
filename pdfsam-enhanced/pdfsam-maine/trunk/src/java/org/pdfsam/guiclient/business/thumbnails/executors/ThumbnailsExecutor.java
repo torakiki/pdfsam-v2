@@ -26,111 +26,117 @@ import org.pdfsam.i18n.GettextResource;
 
 /**
  * Singleton that executes the thumbnails creations
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class ThumbnailsExecutor {
 
-	private static final Logger log = Logger.getLogger(ThumbnailsExecutor.class.getPackage().getName());
-	private static ThumbnailsExecutor instance = null;
-	
-	private  ExecutorService executor = null;
-	
-	
-	private ThumbnailsExecutor(){	
-		executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
-	}
+    private static final Logger log = Logger.getLogger(ThumbnailsExecutor.class.getPackage().getName());
+    private static ThumbnailsExecutor instance = null;
 
-	public static synchronized ThumbnailsExecutor getInstance() { 
-		if (instance == null){
-			instance = new ThumbnailsExecutor();
-		}
-		return instance;
-	}
-	
-	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException("Cannot clone ThumbnailsExecutor object.");
-	}
-	
-	/**
-	 * submit c to the executor
-	 * @param c
-	 */
-	public synchronized void submit(Callable<?> c){
-		getExecutor().submit(c);
-	}
-	
-	/**
-	 * Executes r
-	 * @param r
-	 */
-	public synchronized void execute(Runnable r){
-		getExecutor().execute(r);
-	}
-	
-	/**
-	 * @return the executor
-	 */
-	private ExecutorService getExecutor(){
-		if(executor == null || executor.isShutdown()){
-			executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
-		}
-		return executor;
-	}	
-	
-	/**
-	 * run all the tasks and than the closeTask
-	 * @param tasks
-	 * @param closeTask
-	 * @param id
-	 */
-    public void invokeAll(Collection<? extends Callable<Boolean>> tasks, Callable<Boolean> closeTask, long id){
-    	Thread t = new Thread(new Invoker(tasks, closeTask, id));
-    	t.start();
-	}
-	
+    private ExecutorService executor = null;
+
+    private ThumbnailsExecutor() {
+        executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
+    }
+
+    public static synchronized ThumbnailsExecutor getInstance() {
+        if (instance == null) {
+            instance = new ThumbnailsExecutor();
+        }
+        return instance;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException("Cannot clone ThumbnailsExecutor object.");
+    }
+
+    /**
+     * submit c to the executor
+     * 
+     * @param c
+     */
+    public synchronized void submit(Callable<?> c) {
+        getExecutor().submit(c);
+    }
+
+    /**
+     * Executes r
+     * 
+     * @param r
+     */
+    public synchronized void execute(Runnable r) {
+        getExecutor().execute(r);
+    }
+
+    /**
+     * @return the executor
+     */
+    private ExecutorService getExecutor() {
+        if (executor == null || executor.isShutdown()) {
+            executor = Executors.newFixedThreadPool(Configuration.getInstance().getThumbCreatorPoolSize());
+        }
+        return executor;
+    }
+
+    /**
+     * run all the tasks and than the closeTask
+     * 
+     * @param tasks
+     * @param closeTask
+     * @param id
+     */
+    public void invokeAll(Collection<? extends Callable<Boolean>> tasks, Callable<Boolean> closeTask, long id) {
+        Thread t = new Thread(new Invoker(tasks, closeTask, id));
+        t.start();
+    }
+
     /**
      * Used to invoke the thumbnails generation
+     * 
      * @author Andrea Vacondio
-     *
+     * 
      */
-	private class Invoker implements Runnable{
+    private class Invoker implements Runnable {
 
-		private Collection<? extends Callable<Boolean>> tasks; 
-		private Callable<Boolean> closeTask;
-		private long id;
-		
-		/**
-		 * @param tasks
-		 * @param closeTask
-		 * @param id
-		 */
-		public Invoker(Collection<? extends Callable<Boolean>> tasks, Callable<Boolean> closeTask, long id) {
-			super();
-			this.tasks = tasks;
-			this.closeTask = closeTask;
-			this.id = id;
-		}
+        private Collection<? extends Callable<Boolean>> tasks;
+        private Callable<Boolean> closeTask;
+        private long id;
 
-		public void run() {
-			try{
-				if(tasks != null && tasks.size()>0){
-					long startTime = System.currentTimeMillis();
-					getExecutor().invokeAll(tasks);
-					//close 
-					if(closeTask != null){
-						getExecutor().submit(closeTask);
-					}
-					if(!IdManager.getInstance().isCancelledExecution(id)){
-						log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Thumbnails generated in "+(System.currentTimeMillis() - startTime)+"ms"));
-					}
-					IdManager.getInstance().removeCancelledExecution(id);
-				}
-			}catch(InterruptedException ie){
-				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),ie);
-			}
-			
-		}
-		
-	}
+        /**
+         * @param tasks
+         * @param closeTask
+         * @param id
+         */
+        public Invoker(Collection<? extends Callable<Boolean>> tasks, Callable<Boolean> closeTask, long id) {
+            super();
+            this.tasks = tasks;
+            this.closeTask = closeTask;
+            this.id = id;
+        }
+
+        public void run() {
+            try {
+                if (tasks != null && tasks.size() > 0) {
+                    long startTime = System.currentTimeMillis();
+                    getExecutor().invokeAll(tasks);
+                    // close
+                    if (closeTask != null) {
+                        getExecutor().submit(closeTask);
+                    }
+                    if (!IdManager.getInstance().isCancelledExecution(id)) {
+                        log.debug(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                                "Thumbnails generated in " + (System.currentTimeMillis() - startTime) + "ms"));
+                    }
+                    IdManager.getInstance().removeCancelledExecution(id);
+                }
+            } catch (InterruptedException ie) {
+                log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Unable to generate thumbnail"), ie);
+            }
+
+        }
+
+    }
 }

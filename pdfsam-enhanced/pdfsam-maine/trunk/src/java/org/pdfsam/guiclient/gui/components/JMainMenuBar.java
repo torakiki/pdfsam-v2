@@ -16,6 +16,7 @@ package org.pdfsam.guiclient.gui.components;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -23,10 +24,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import org.pdfsam.guiclient.business.actions.AutoLoadEnvironmentAction;
 import org.pdfsam.guiclient.business.actions.LoadEnvironmentAction;
 import org.pdfsam.guiclient.business.actions.SaveEnvironmentAction;
+import org.pdfsam.guiclient.business.environment.Environment;
 import org.pdfsam.guiclient.business.listeners.mediators.ApplicationExitMediator;
 import org.pdfsam.guiclient.configuration.Configuration;
+import org.pdfsam.guiclient.configuration.GuiConfiguration;
 import org.pdfsam.i18n.GettextResource;
 
 /**
@@ -37,41 +41,60 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class JMainMenuBar extends JMenuBar {
 
-	private static final long serialVersionUID = -818197133636053691L;
+    private static final long serialVersionUID = -818197133636053691L;
 
-	private ApplicationExitMediator exitMediator;
+    private ApplicationExitMediator exitMediator;
+    private JMenu recentMenu;
 
-	public JMainMenuBar(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction,
-			ApplicationExitMediator exitMediator) {
-		this.exitMediator = exitMediator;
-		init(saveAction, loadAction);
-	}
+    public JMainMenuBar(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction,
+            ApplicationExitMediator exitMediator) {
+        this.exitMediator = exitMediator;
+        init(saveAction, loadAction);
+    }
 
-	/**
-	 * Initialize the bar
-	 */
-	private void init(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction) {
-		JMenu menuFile = new JMenu();
-		menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File"));
-		menuFile.setMnemonic(KeyEvent.VK_F);
+    /**
+     * Initialize the bar
+     */
+    private void init(SaveEnvironmentAction saveAction, LoadEnvironmentAction loadAction) {
+        JMenu menuFile = new JMenu();
+        menuFile.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "File"));
+        menuFile.setMnemonic(KeyEvent.VK_F);
 
-		JMenuItem saveEnvItem = new JMenuItem();
-		saveEnvItem.setAction(saveAction);
+        JMenuItem saveEnvItem = new JMenuItem();
+        saveEnvItem.setAction(saveAction);
 
-		JMenuItem loadEnvItem = new JMenuItem();
-		loadEnvItem.setAction(loadAction);
+        JMenuItem loadEnvItem = new JMenuItem();
+        loadEnvItem.setAction(loadAction);
 
-		JMenuItem exitItem = new JMenuItem();
-		exitItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Exit"));
-		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-		exitItem.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
-		exitItem.setIcon(new ImageIcon(this.getClass().getResource("/images/exit.png")));
-		exitItem.addActionListener(exitMediator);
+        JMenuItem exitItem = new JMenuItem();
+        exitItem.setText(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(), "Exit"));
+        exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+        exitItem.setActionCommand(ApplicationExitMediator.SAVE_AND_EXIT_COMMAND);
+        exitItem.setIcon(new ImageIcon(this.getClass().getResource("/images/exit.png")));
+        exitItem.addActionListener(exitMediator);
 
-		menuFile.add(saveEnvItem);
-		menuFile.add(loadEnvItem);
-		menuFile.addSeparator();
-		menuFile.add(exitItem);
-		add(menuFile);
-	}
+        recentMenu = new JMenu(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                "Recent environments"));
+
+        menuFile.add(saveEnvItem);
+        menuFile.add(loadEnvItem);
+        menuFile.addSeparator();
+        menuFile.add(recentMenu);
+        menuFile.addSeparator();
+        menuFile.add(exitItem);
+        add(menuFile);
+    }
+
+    /**
+     * Rebuild the recent envs menu with the given collection of envs
+     * 
+     * @param environment
+     */
+    public void rebuildRecentEnvironmentSubmenu(Environment environment) {
+        recentMenu.removeAll();
+        for (String recentEnv : GuiConfiguration.getInstance().getRecentEnvironments()) {
+            recentMenu.add(new JMenuItem(new AutoLoadEnvironmentAction(environment, new File(recentEnv))));
+        }
+        recentMenu.repaint();
+    }
 }

@@ -20,75 +20,78 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.exceptions.CheckForUpdateException;
 import org.pdfsam.i18n.GettextResource;
+
 /**
  * Checks for update over a http connection
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class HttpUpdateChecker implements UpdateChecker {
 
-	private URL httpUrl = null;
-	
-	/**
-	 * @param httpUrl
-	 */
-	public HttpUpdateChecker(URL httpUrl) {
-		this.httpUrl = httpUrl;
-	}
+    private String httpUrl = null;
 
-	public String getLatestVersion() throws CheckForUpdateException {
-		String retVal = null;
-		String xmlContent = getXmlContent();
-	    
-	    if(xmlContent != null){
-	    	try{
-		    	SAXReader reader = new SAXReader();
-				Document document = reader.read(new StringReader(xmlContent));
-				Node node = document.selectSingleNode("/pdfsam/latestVersion/@value");
-				if(node != null){
-					retVal = node.getText().trim();
-					retVal = (retVal.length()>0)? retVal: null;
-				}
-			}catch(Exception e){
-				throw new CheckForUpdateException(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to get latest available version"), e);
-			}			
-		}
-	    return retVal;
-	}
+    /**
+     * @param httpUrl
+     */
+    public HttpUpdateChecker(String httpUrl) {
+        this.httpUrl = httpUrl;
+    }
 
-	/**
-	 * @return the String xml content retrieved 
-	 * @throws CheckForUpdateException
-	 */
-	private String getXmlContent() throws CheckForUpdateException {
-		String retVal = "";
-		HttpURLConnection urlConn = null;
-		BufferedReader br = null;
-		try{
-			urlConn = (HttpURLConnection)httpUrl.openConnection();
-			urlConn.setRequestProperty("user agent", "Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1");
-			
-			br = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
-			StringBuffer sb=new StringBuffer();
-			String tmp=null;
-			while((tmp=br.readLine())!=null){
-			     sb.append(tmp);
-			}
-			br.close();
-			retVal = sb.toString();
-		}catch(Exception e){
-			throw new CheckForUpdateException(e);
-		}finally{
-			if(urlConn != null){
-				urlConn.disconnect();
-			}
-		}
-		return retVal;
-	}
+    public String getLatestVersion() throws CheckForUpdateException {
+        String xmlContent = getXmlContent();
+
+        if (xmlContent != null) {
+            try {
+                SAXReader reader = new SAXReader();
+                Document document = reader.read(new StringReader(xmlContent));
+                Node node = document.selectSingleNode("/pdfsam/latestVersion/@value");
+                if (node != null) {
+                    return StringUtils.trimToEmpty(node.getText());
+                }
+            } catch (Exception e) {
+                throw new CheckForUpdateException(GettextResource.gettext(Configuration.getInstance()
+                        .getI18nResourceBundle(), "Unable to get latest available version"), e);
+            }
+        }
+        return "";
+    }
+
+    /**
+     * @return the String xml content retrieved
+     * @throws CheckForUpdateException
+     */
+    private String getXmlContent() throws CheckForUpdateException {
+        String retVal = "";
+        HttpURLConnection urlConn = null;
+        BufferedReader br = null;
+        try {
+            URL url = new URL(httpUrl);
+            urlConn = (HttpURLConnection) url.openConnection();
+            urlConn.setRequestProperty("user agent", "Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1");
+
+            br = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
+            StringBuffer sb = new StringBuffer();
+            String tmp = null;
+            while ((tmp = br.readLine()) != null) {
+                sb.append(tmp);
+            }
+            br.close();
+            retVal = sb.toString();
+        } catch (Exception e) {
+            throw new CheckForUpdateException(e);
+        } finally {
+            if (urlConn != null) {
+                urlConn.disconnect();
+            }
+        }
+        return retVal;
+    }
 }
