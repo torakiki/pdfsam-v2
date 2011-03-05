@@ -1,6 +1,7 @@
 2.3.0e () (pdfsam-console )
 ===================================
 -Added recent environments menu
+-Silent install/uninstall (feature request #2977478)
 
 2.2.1e (21-Nov-2010) (pdfsam-console 2.3.1e)
 ===================================

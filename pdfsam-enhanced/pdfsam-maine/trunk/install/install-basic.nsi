@@ -147,127 +147,139 @@ WriteINIStr "${FILENAME}.url" "InternetShortcut" "IconIndex" "${ICONINDEX}"
 ;function that gets called by the above macro
 Function getLangName ;pretty sure there's a better way to do this...
     ClearErrors
-    Pop $0
-    ${Switch} $0
-        ${Case} ${LANG_ARABIC}
-            Push 'ar' 
-        ${Break}
-        ${Case} ${LANG_ENGLISH}
-            Push 'en_GB' 
-        ${Break}
-        ${Case} ${LANG_ITALIAN}
-            Push 'it' 
-        ${Break}
-        ${Case} ${LANG_BULGARIAN}
-            Push 'bg' 
-        ${Break}
-        ${Case} ${LANG_BOSNIAN}
-            Push 'bs' 
-        ${Break}
-        ${Case} ${LANG_CATALAN}
-            Push 'ca' 
-        ${Break}
-        ${Case} ${LANG_CROATIAN}
-            Push 'hr' 
-        ${Break}
-        ${Case} ${LANG_CZECH}
-            Push 'cs' 
-        ${Break}
-        ${Case} ${LANG_SLOVAK}
-            Push 'sk' 
-        ${Break}
-        ${Case} ${LANG_ESTONIAN}
-            Push 'et' 
-        ${Break}
-        ${Case} ${LANG_ITALIAN}
-            Push 'it' 
-        ${Break}
-        ${Case} ${LANG_HEBREW}
-            Push 'he' 
-        ${Break}
-        ${Case} ${LANG_RUSSIAN}
-            Push 'ru' 
-        ${Break}
-        ${Case} ${LANG_NORWEGIAN}
-            Push 'nb' 
-        ${Break}  
-        ${Case} ${LANG_SWEDISH}
-            Push 'sv' 
-        ${Break} 
-        ${Case} ${LANG_SPANISH}
-            Push 'es' 
-        ${Break}
-        ${Case} ${LANG_PORTUGUESE}
-            Push 'pt_PT' 
-        ${Break}
-        ${Case} ${LANG_DUTCH}
-            Push 'nl' 
-        ${Break}   
-        ${Case} ${LANG_FRENCH}
-            Push 'fr' 
-        ${Break}
-        ${Case} ${LANG_GREEK}
-            Push 'el' 
-        ${Break}
-        ${Case} ${LANG_TURKISH}
-            Push 'tr' 
-        ${Break}
-        ${Case} ${LANG_GERMAN}
-            Push 'de' 
-        ${Break}
-        ${Case} ${LANG_POLISH}
-            Push 'pl' 
-        ${Break}
-        ${Case} ${LANG_FINNISH}
-            Push 'fi' 
-        ${Break}
-        ${Case} ${LANG_SIMPCHINESE}
-            Push 'zh_CN' 
-        ${Break}
-        ${Case} ${LANG_HUNGARIAN}
-            Push 'hu' 
-        ${Break}
-        ${Case} ${LANG_DANISH}
-            Push 'da' 
-        ${Break}
-        ${Case} ${LANG_TRADCHINESE}
-            Push 'zh_TW' 
-        ${Break}
-        ${Case} ${LANG_INDONESIAN}
-            Push 'id' 
-        ${Break}
-        ${Case} ${LANG_FARSI}
-            Push 'fa' 
-        ${Break}
-        ${Case} ${LANG_KOREAN}
-            Push 'ko' 
-        ${Break}                
-        ${Case} ${LANG_THAI}
-            Push 'th' 
-        ${Break}                
-        ${Case} ${LANG_GALICIAN}
-            Push 'gl' 
-        ${Break}                
-        ${Case} ${LANG_JAPANESE}
-            Push 'ja' 
-        ${Break}                
-        ${Case} ${LANG_LATVIAN}
-            Push 'lv' 
-        ${Break}                
-        ${Case} ${LANG_LITHUANIAN}
-            Push 'lt' 
-        ${Break}                
-        ${Case} ${LANG_UKRAINIAN}
-            Push 'uk' 
-        ${Break}                
-        ${Case} ${LANG_ROMANIAN}
-            Push 'ro' 
-        ${Break}                
-        ${Default}
-            Push 'Default'
-        ${Break}
-    ${EndSwitch}
-    Pop $LANG_NAME
+	${If} ${Silent} 
+		${GetParameters} $R0
+		${GetOptions} $R0 "/languageCode=" $R1
+
+		StrCmp $R1 "" default 
+		Push $R1 
+		Goto langDone
+	default:
+		Push 'en_GB' 
+	langDone:
+	${Else}	
+		Pop $0
+		${Switch} $0
+			${Case} ${LANG_ARABIC}
+				Push 'ar' 
+			${Break}
+			${Case} ${LANG_ENGLISH}
+				Push 'en_GB' 
+			${Break}
+			${Case} ${LANG_ITALIAN}
+				Push 'it' 
+			${Break}
+			${Case} ${LANG_BULGARIAN}
+				Push 'bg' 
+			${Break}
+			${Case} ${LANG_BOSNIAN}
+				Push 'bs' 
+			${Break}
+			${Case} ${LANG_CATALAN}
+				Push 'ca' 
+			${Break}
+			${Case} ${LANG_CROATIAN}
+				Push 'hr' 
+			${Break}
+			${Case} ${LANG_CZECH}
+				Push 'cs' 
+			${Break}
+			${Case} ${LANG_SLOVAK}
+				Push 'sk' 
+			${Break}
+			${Case} ${LANG_ESTONIAN}
+				Push 'et' 
+			${Break}
+			${Case} ${LANG_ITALIAN}
+				Push 'it' 
+			${Break}
+			${Case} ${LANG_HEBREW}
+				Push 'he' 
+			${Break}
+			${Case} ${LANG_RUSSIAN}
+				Push 'ru' 
+			${Break}
+			${Case} ${LANG_NORWEGIAN}
+				Push 'nb' 
+			${Break}  
+			${Case} ${LANG_SWEDISH}
+				Push 'sv' 
+			${Break} 
+			${Case} ${LANG_SPANISH}
+				Push 'es' 
+			${Break}
+			${Case} ${LANG_PORTUGUESE}
+				Push 'pt_PT' 
+			${Break}
+			${Case} ${LANG_DUTCH}
+				Push 'nl' 
+			${Break}   
+			${Case} ${LANG_FRENCH}
+				Push 'fr' 
+			${Break}
+			${Case} ${LANG_GREEK}
+				Push 'el' 
+			${Break}
+			${Case} ${LANG_TURKISH}
+				Push 'tr' 
+			${Break}
+			${Case} ${LANG_GERMAN}
+				Push 'de' 
+			${Break}
+			${Case} ${LANG_POLISH}
+				Push 'pl' 
+			${Break}
+			${Case} ${LANG_FINNISH}
+				Push 'fi' 
+			${Break}
+			${Case} ${LANG_SIMPCHINESE}
+				Push 'zh_CN' 
+			${Break}
+			${Case} ${LANG_HUNGARIAN}
+				Push 'hu' 
+			${Break}
+			${Case} ${LANG_DANISH}
+				Push 'da' 
+			${Break}
+			${Case} ${LANG_TRADCHINESE}
+				Push 'zh_TW' 
+			${Break}
+			${Case} ${LANG_INDONESIAN}
+				Push 'id' 
+			${Break}
+			${Case} ${LANG_FARSI}
+				Push 'fa' 
+			${Break}
+			${Case} ${LANG_KOREAN}
+				Push 'ko' 
+			${Break}                
+			${Case} ${LANG_THAI}
+				Push 'th' 
+			${Break}                
+			${Case} ${LANG_GALICIAN}
+				Push 'gl' 
+			${Break}                
+			${Case} ${LANG_JAPANESE}
+				Push 'ja' 
+			${Break}                
+			${Case} ${LANG_LATVIAN}
+				Push 'lv' 
+			${Break}                
+			${Case} ${LANG_LITHUANIAN}
+				Push 'lt' 
+			${Break}                
+			${Case} ${LANG_UKRAINIAN}
+				Push 'uk' 
+			${Break}                
+			${Case} ${LANG_ROMANIAN}
+				Push 'ro' 
+			${Break}                
+			${Default}
+				Push 'en_GB'
+			${Break}
+		${EndSwitch}
+	${EndIf}
+	Pop $LANG_NAME
 FunctionEnd
 
 Function WarnDirExists    
@@ -275,7 +287,7 @@ Function WarnDirExists
     DirExists:
     MessageBox MB_YESNO|MB_ICONQUESTION|MB_DEFBUTTON2 \
         "Installation directory already exists, please uninstall any previous installed version.$\nWould you like to install anyway?" \
-        IDYES DirExistsOK
+        /SD IDYES IDYES DirExistsOK
     Abort
     DirExistsOK:
 FunctionEnd
@@ -358,6 +370,90 @@ Section "Uninstall"
     DeleteRegKey SHCTX "Software\$(^Name)"
 SectionEnd
 
+Function GetLanguage
+	${IfNot} ${Silent} 
+		;Language selection dialog
+		Push ""
+		Push ${LANG_ENGLISH}
+		Push English
+		Push ${LANG_ITALIAN}
+		Push Italian
+		Push ${LANG_RUSSIAN}
+		Push Russian
+		Push ${LANG_BULGARIAN}
+		Push Bulgarian
+		Push ${LANG_SWEDISH}
+		Push Swedish
+		Push ${LANG_SPANISH}
+		Push Spanish
+		Push ${LANG_PORTUGUESE}
+		Push Portuguese
+		Push ${LANG_DUTCH}
+		Push Dutch    
+		Push ${LANG_FRENCH}
+		Push French
+		Push ${LANG_GERMAN}
+		Push German
+		Push ${LANG_GALICIAN}
+		Push Galician
+		Push ${LANG_GREEK}
+		Push Greek
+		Push ${LANG_NORWEGIAN}
+		Push Norwegian
+		Push ${LANG_TURKISH}
+		Push Turkish
+		Push ${LANG_POLISH}
+		Push Polish
+		Push ${LANG_FINNISH}
+		Push Finnish
+		Push ${LANG_SIMPCHINESE}
+		Push SimpChinese
+		Push ${LANG_HUNGARIAN}
+		Push Hungarian
+		Push ${LANG_DANISH}
+		Push Danish
+		Push ${LANG_FARSI}
+		Push Farsi
+		Push ${LANG_KOREAN}
+		Push Korean
+		Push ${LANG_JAPANESE}
+		Push Japanese
+		Push ${LANG_LATVIAN}
+		Push Latvian
+		Push ${LANG_LITHUANIAN}
+		Push Lithuanian
+		Push ${LANG_TRADCHINESE}
+		Push TradChinese
+		Push ${LANG_INDONESIAN}
+		Push Indonesian
+		Push ${LANG_BOSNIAN}
+		Push Bosnian
+		Push ${LANG_CZECH}
+		Push Czech
+		Push ${LANG_SLOVAK}
+		Push Slovak
+		Push ${LANG_ESTONIAN}
+		Push Estonian
+		Push ${LANG_THAI}
+		Push Thai
+		Push ${LANG_CATALAN}
+		Push Catalan
+		Push ${LANG_UKRAINIAN}
+		Push Ukrainian
+		Push ${LANG_CROATIAN}
+		Push Croatian
+		Push ${LANG_HEBREW}
+		Push Hebrew  
+		Push ${LANG_ARABIC}
+		Push Arabic  
+		Push ${LANG_ROMANIAN}
+		Push Romanian  
+		Push A ; A means auto count languages
+			   ; for the auto count to work the first empty push (Push "") must remain
+		LangDLL::LangDialog "Installer Language" "Please select the language of the installer"
+	${EndIf}
+FunctionEnd
+
 ;This part controls installation for the current user / for all users
 Function GetUserInfo
 
@@ -394,6 +490,7 @@ Function ReadAllUsersCommandline
     ${OrIf} $R1 == "=current"
       ${If} $ALL_USERS_FIXED == 1
       ${AndIf} $ALL_USERS == 1
+        IfSilent 0 +1
         MessageBox MB_ICONSTOP "Cannot install for current user only. pdfsam has been previously installed for all users.$\nPlease install this version for all users or uninstall previous version first."
         Abort
       ${EndIf}
@@ -404,6 +501,7 @@ Function ReadAllUsersCommandline
     ${OrIf} $R1 == "=all"
       ${If} $ALL_USERS_FIXED == 1
       ${AndIf} $ALL_USERS == 0
+        IfSilent 0 +1
         MessageBox MB_ICONSTOP "Cannot install for all users. pdfsam has been previously installed for the current user only.$\nPlease install this version for the current user only or uninstall previous version first."
         Abort
       ${EndIf}
@@ -411,6 +509,7 @@ Function ReadAllUsersCommandline
       StrCpy $ALL_USERS_FIXED 1
       SetShellVarContext all
     ${Else}
+      IfSilent 0 +1
       MessageBox MB_ICONSTOP "Invalid option for /user. Has to be either /user=all or /user=current"
       Abort
     ${EndIf}
@@ -496,95 +595,17 @@ Function .onInit
    System::Call 'kernel32::CreateMutexA(i 0, i 0, t "myNSISMutex") i .r1 ?e'
    Pop $R0
    StrCmp $R0 0 +3
-   MessageBox MB_OK|MB_ICONEXCLAMATION "The installer is already running."
+   MessageBox MB_OK|MB_ICONEXCLAMATION "The installer is already running." \
+   /SD IDOK
    Abort 
-    
-    ;Language selection dialog
-    Push ""
-    Push ${LANG_ENGLISH}
-    Push English
-    Push ${LANG_ITALIAN}
-    Push Italian
-    Push ${LANG_RUSSIAN}
-    Push Russian
-    Push ${LANG_BULGARIAN}
-    Push Bulgarian
-    Push ${LANG_SWEDISH}
-    Push Swedish
-    Push ${LANG_SPANISH}
-    Push Spanish
-    Push ${LANG_PORTUGUESE}
-    Push Portuguese
-    Push ${LANG_DUTCH}
-    Push Dutch    
-    Push ${LANG_FRENCH}
-    Push French
-    Push ${LANG_GERMAN}
-    Push German
-    Push ${LANG_GALICIAN}
-    Push Galician
-    Push ${LANG_GREEK}
-    Push Greek
-    Push ${LANG_NORWEGIAN}
-    Push Norwegian
-    Push ${LANG_TURKISH}
-    Push Turkish
-    Push ${LANG_POLISH}
-    Push Polish
-    Push ${LANG_FINNISH}
-    Push Finnish
-    Push ${LANG_SIMPCHINESE}
-    Push SimpChinese
-    Push ${LANG_HUNGARIAN}
-    Push Hungarian
-    Push ${LANG_DANISH}
-    Push Danish
-    Push ${LANG_FARSI}
-    Push Farsi
-    Push ${LANG_KOREAN}
-    Push Korean
-    Push ${LANG_JAPANESE}
-    Push Japanese
-    Push ${LANG_LATVIAN}
-    Push Latvian
-    Push ${LANG_LITHUANIAN}
-    Push Lithuanian
-    Push ${LANG_TRADCHINESE}
-    Push TradChinese
-    Push ${LANG_INDONESIAN}
-    Push Indonesian
-    Push ${LANG_BOSNIAN}
-    Push Bosnian
-    Push ${LANG_CZECH}
-    Push Czech
-    Push ${LANG_SLOVAK}
-    Push Slovak
-    Push ${LANG_ESTONIAN}
-    Push Estonian
-    Push ${LANG_THAI}
-    Push Thai
-    Push ${LANG_CATALAN}
-    Push Catalan
-    Push ${LANG_UKRAINIAN}
-    Push Ukrainian
-    Push ${LANG_CROATIAN}
-    Push Croatian
-    Push ${LANG_HEBREW}
-    Push Hebrew  
-    Push ${LANG_ARABIC}
-    Push Arabic  
-    Push ${LANG_ROMANIAN}
-    Push Romanian  
-    Push A ; A means auto count languages
-           ; for the auto count to work the first empty push (Push "") must remain
-    LangDLL::LangDialog "Installer Language" "Please select the language of the installer"
-    
-    Call GetUserInfo
-    Call ReadAllUsersCommandline
+   
+   Call GetUserInfo
+   Call ReadAllUsersCommandline
 
     ${If} $ALL_USERS == 1
         ${If} $IS_ADMIN == 0    
             ${If} $ALL_USERS_FIXED == 1
+                IfSilent 0 +1            
                 MessageBox MB_ICONSTOP "pdfsam has been previously installed for all users.$\nPlease restart the installer with Administrator privileges."
                 Abort
             ${Else}
@@ -593,6 +614,7 @@ Function .onInit
         ${EndIf}
     ${EndIf} 
 
+    Call GetLanguage
     Pop $LANGUAGE
     StrCmp $LANGUAGE "cancel" 0 +2
         Abort
@@ -609,6 +631,7 @@ Function un.onInit
     
     ${If} $un.REMOVE_ALL_USERS == 1
     ${AndIf} $IS_ADMIN == 0
+    IfSilent 0 +1    
     MessageBox MB_ICONSTOP "$(^Name) has been installed for all users.$\nPlease restart the uninstaller with Administrator privileges to remove it."
     Abort
     ${EndIf}
@@ -617,7 +640,8 @@ Function un.onInit
     !insertmacro MUI_UNGETLANGUAGE
     ;TODO insert language dependent uninstall string below
     ;TODO uninstall prompt should not display location where files are being removed from
-    MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "Are you sure you want to completely remove $(^Name)?" IDYES +2
+    MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "Are you sure you want to completely remove $(^Name)?" \
+    /SD IDYES IDYES +2
     Abort
     
 FunctionEnd
