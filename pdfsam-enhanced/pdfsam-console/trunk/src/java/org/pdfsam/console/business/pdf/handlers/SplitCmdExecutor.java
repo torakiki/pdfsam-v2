@@ -48,6 +48,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.TreeSet;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -402,22 +403,31 @@ public class SplitCmdExecutor extends AbstractCmdExecutor {
                             int blankIndex = attribute.indexOf(' ');
                             if (blankIndex > 0) {
                                 Integer currentNumber = new Integer(attribute.substring(0, blankIndex));
+                                String bookmarkText = currentNode.getText().trim();
                                 // fix #2789963
                                 if (currentNumber.intValue() > 0) {
-                                    // to split just before the given page
-                                    if ((currentNumber.intValue()) > 1) {
-                                        pageSet.add(new Integer(currentNumber.intValue() - 1));
-                                    }
-                                    String bookmarkText = currentNode.getText();
-                                    if (bookmarkText != null && bookmarkText.trim().length() > 0) {
-                                        bookmarksTable.put(currentNumber, bookmarkText.trim());
+                                    // bookmarks regexp matching if any
+                                    if (StringUtils.isBlank(inputCommand.getBookmarkRegexp())
+                                            || bookmarkText.matches(inputCommand.getBookmarkRegexp())) {
+                                        // to split just before the given page
+                                        if ((currentNumber.intValue()) > 1) {
+                                            pageSet.add(new Integer(currentNumber.intValue() - 1));
+                                        }
+                                        if (StringUtils.isNotBlank(bookmarkText)) {
+                                            bookmarksTable.put(currentNumber, bookmarkText.trim());
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                     if (pageSet.size() > 0) {
-                        LOG.debug("Found " + pageSet.size() + " destination pages at level " + bLevel);
+                        if (StringUtils.isBlank(inputCommand.getBookmarkRegexp())) {
+                            LOG.debug("Found " + pageSet.size() + " destination pages at level " + bLevel);
+                        } else {
+                            LOG.debug("Found " + pageSet.size() + " destination pages at level " + bLevel
+                                    + " matching '" + inputCommand.getBookmarkRegexp() + "'");
+                        }
                         inputCommand.setSplitPageNumbers((Integer[]) pageSet.toArray(new Integer[pageSet.size()]));
                     } else {
                         throw new SplitException(SplitException.ERR_BLEVEL_NO_DEST, new String[] { "" + bLevel });

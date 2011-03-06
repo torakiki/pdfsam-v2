@@ -41,32 +41,33 @@ import java.io.File;
 
 import org.pdfsam.console.business.dto.PdfFile;
 
-
 /**
  * Split parsed command dto filled by parsing service and used by worker service
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class SplitParsedCommand extends AbstractParsedCommand {
 
-	private static final long serialVersionUID = -2409191188152350607L;
+    private static final long serialVersionUID = -2409191188152350607L;
 
     public static final String S_BURST = "BURST";
-    public static final String S_SPLIT = "SPLIT";    
-    public static final String S_NSPLIT = "NSPLIT";    
-    public static final String S_EVEN = "EVEN";    
+    public static final String S_SPLIT = "SPLIT";
+    public static final String S_NSPLIT = "NSPLIT";
+    public static final String S_EVEN = "EVEN";
     public static final String S_ODD = "ODD";
     public static final String S_SIZE = "SIZE";
     public static final String S_BLEVEL = "BLEVEL";
-    
-	public static final String F_ARG = "f";
-	public static final String P_ARG = "p";
-	public static final String S_ARG = "s";
-	public static final String N_ARG = "n";
-	public static final String B_ARG = "b";
-	public static final String O_ARG = "o";
-	public static final String BL_ARG = "bl";
-    
+
+    public static final String F_ARG = "f";
+    public static final String P_ARG = "p";
+    public static final String S_ARG = "s";
+    public static final String N_ARG = "n";
+    public static final String B_ARG = "b";
+    public static final String O_ARG = "o";
+    public static final String BL_ARG = "bl";
+    public static final String BREGEXP_ARG = "b_regexp";
+
     private File outputFile;
     private String outputFilesPrefix = "";
     private PdfFile inputFile;
@@ -74,166 +75,194 @@ public class SplitParsedCommand extends AbstractParsedCommand {
     private Integer[] splitPageNumbers = new Integer[0];
     private Long splitSize;
     private Integer bookmarksLevel;
-    
-    public SplitParsedCommand(){
-    	
+    private String bookmarkRegexp = "";
+
+    public SplitParsedCommand() {
+
     }
-    
-	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
-			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel) {
-		super();
-		this.outputFile = outputFile;
-		this.outputFilesPrefix = outputFilesPrefix;
-		this.inputFile = inputFile;
-		this.splitType = splitType;
-		this.splitPageNumbers = splitPageNumbers;
-		this.splitSize = splitSize;
-		this.bookmarksLevel = bookmarksLevel;
-	}
-	/**
-	 * @deprecated use the constructor without the logFile parameter
-	 */
-	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
-			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, boolean overwrite, boolean compress, File logFile, char outputPdfVersion) {
-		super(overwrite, compress, logFile, outputPdfVersion);
-		this.outputFile = outputFile;
-		this.outputFilesPrefix = outputFilesPrefix;
-		this.inputFile = inputFile;
-		this.splitType = splitType;
-		this.splitPageNumbers = splitPageNumbers;
-		this.splitSize = splitSize;
-		this.bookmarksLevel = bookmarksLevel;
-	}
-	
-	public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile,
-			String splitType, Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, boolean overwrite, boolean compress , char outputPdfVersion) {
-		super(overwrite, compress, outputPdfVersion);
-		this.outputFile = outputFile;
-		this.outputFilesPrefix = outputFilesPrefix;
-		this.inputFile = inputFile;
-		this.splitType = splitType;
-		this.splitPageNumbers = splitPageNumbers;
-		this.splitSize = splitSize;
-		this.bookmarksLevel = bookmarksLevel;
-	}
-	
-	/**
-	 * @return the outputFilesPrefix
-	 */
-	public String getOutputFilesPrefix() {
-		return outputFilesPrefix;
-	}
 
-	/**
-	 * @param outputFilesPrefix the outputFilesPrefix to set
-	 */
-	public void setOutputFilesPrefix(String outputFilesPrefix) {
-		this.outputFilesPrefix = outputFilesPrefix;
-	}
+    public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile, String splitType,
+            Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, String bookmarkRegexp) {
+        super();
+        this.outputFile = outputFile;
+        this.outputFilesPrefix = outputFilesPrefix;
+        this.inputFile = inputFile;
+        this.splitType = splitType;
+        this.splitPageNumbers = splitPageNumbers;
+        this.splitSize = splitSize;
+        this.bookmarksLevel = bookmarksLevel;
+        this.bookmarkRegexp = bookmarkRegexp;
+    }
 
-	/**
-	 * @return the inputFile
-	 */
-	public PdfFile getInputFile() {
-		return inputFile;
-	}
+    /**
+     * @deprecated use the constructor without the logFile parameter
+     */
+    public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile, String splitType,
+            Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, boolean overwrite, boolean compress,
+            File logFile, char outputPdfVersion) {
+        super(overwrite, compress, logFile, outputPdfVersion);
+        this.outputFile = outputFile;
+        this.outputFilesPrefix = outputFilesPrefix;
+        this.inputFile = inputFile;
+        this.splitType = splitType;
+        this.splitPageNumbers = splitPageNumbers;
+        this.splitSize = splitSize;
+        this.bookmarksLevel = bookmarksLevel;
+    }
 
-	/**
-	 * @param inputFile the inputFile to set
-	 */
-	public void setInputFile(PdfFile inputFile) {
-		this.inputFile = inputFile;
-	}
+    public SplitParsedCommand(File outputFile, String outputFilesPrefix, PdfFile inputFile, String splitType,
+            Integer[] splitPageNumbers, Long splitSize, Integer bookmarksLevel, String bookmarkRegexp, boolean overwrite, boolean compress,
+            char outputPdfVersion) {
+        super(overwrite, compress, outputPdfVersion);
+        this.outputFile = outputFile;
+        this.outputFilesPrefix = outputFilesPrefix;
+        this.inputFile = inputFile;
+        this.splitType = splitType;
+        this.splitPageNumbers = splitPageNumbers;
+        this.splitSize = splitSize;
+        this.bookmarksLevel = bookmarksLevel;
+        this.bookmarkRegexp = bookmarkRegexp;
+    }
 
-	/**
-	 * @return the splitType
-	 */
-	public String getSplitType() {
-		return splitType;
-	}
+    /**
+     * @return the outputFilesPrefix
+     */
+    public String getOutputFilesPrefix() {
+        return outputFilesPrefix;
+    }
 
-	/**
-	 * @param splitType the splitType to set
-	 */
-	public void setSplitType(String splitType) {
-		this.splitType = splitType;
-	}
+    /**
+     * @param outputFilesPrefix
+     *            the outputFilesPrefix to set
+     */
+    public void setOutputFilesPrefix(String outputFilesPrefix) {
+        this.outputFilesPrefix = outputFilesPrefix;
+    }
 
-	/**
-	 * @return the splitPageNumbers
-	 */
-	public Integer[] getSplitPageNumbers() {
-		return splitPageNumbers;
-	}
+    /**
+     * @return the inputFile
+     */
+    public PdfFile getInputFile() {
+        return inputFile;
+    }
 
-	/**
-	 * @param splitPageNumbers the splitPageNumbers to set
-	 */
-	public void setSplitPageNumbers(Integer[] splitPageNumbers) {
-		this.splitPageNumbers = splitPageNumbers;
-	}
+    /**
+     * @param inputFile
+     *            the inputFile to set
+     */
+    public void setInputFile(PdfFile inputFile) {
+        this.inputFile = inputFile;
+    }
 
-	/**
-	 * @return the outputFile
-	 */
-	public File getOutputFile() {
-		return outputFile;
-	}
+    /**
+     * @return the splitType
+     */
+    public String getSplitType() {
+        return splitType;
+    }
 
-	/**
-	 * @param outputFile the outputFile to set
-	 */
-	public void setOutputFile(File outputFile) {
-		this.outputFile = outputFile;
-	}
+    /**
+     * @param splitType
+     *            the splitType to set
+     */
+    public void setSplitType(String splitType) {
+        this.splitType = splitType;
+    }
 
-	/**
-	 * @return the splitSize
-	 */
-	public Long getSplitSize() {
-		return splitSize;
-	}
+    /**
+     * @return the splitPageNumbers
+     */
+    public Integer[] getSplitPageNumbers() {
+        return splitPageNumbers;
+    }
 
-	/**
-	 * @param splitSize the splitSize to set
-	 */
-	public void setSplitSize(Long splitSize) {
-		this.splitSize = splitSize;
-	}
+    /**
+     * @param splitPageNumbers
+     *            the splitPageNumbers to set
+     */
+    public void setSplitPageNumbers(Integer[] splitPageNumbers) {
+        this.splitPageNumbers = splitPageNumbers;
+    }
 
-	/**
-	 * @return the bookmarksLevel
-	 */
-	public Integer getBookmarksLevel() {
-		return bookmarksLevel;
-	}
+    /**
+     * @return the outputFile
+     */
+    public File getOutputFile() {
+        return outputFile;
+    }
 
-	/**
-	 * @param bookmarksLevel the bookmarksLevel to set
-	 */
-	public void setBookmarksLevel(Integer bookmarksLevel) {
-		this.bookmarksLevel = bookmarksLevel;
-	}
+    /**
+     * @param outputFile
+     *            the outputFile to set
+     */
+    public void setOutputFile(File outputFile) {
+        this.outputFile = outputFile;
+    }
 
-	public String getCommand() {
-		return COMMAND_SPLIT;
-	}
-	
-	public String toString(){
-		StringBuffer retVal = new StringBuffer();
-		retVal.append(super.toString());
-		retVal.append((outputFile== null)?"":"[outputDir="+outputFile.getAbsolutePath()+"]");
-		retVal.append((inputFile== null)?"":"[inputFile="+inputFile+"]");
-		retVal.append("[outputFilesPrefix="+outputFilesPrefix+"]");
-		retVal.append("[splitType="+splitType+"]");
-		retVal.append("[splitSize="+splitSize+"]");
-		retVal.append("[bookmarksLevel="+bookmarksLevel+"]");
-		if(splitPageNumbers != null){
-			for(int i = 0; i<splitPageNumbers.length; i++){
-				retVal.append("[splitPageNumbers["+i+"]="+splitPageNumbers[i]+"]");				
-			}
-		}
-		retVal.append("[command="+getCommand()+"]");
-		return retVal.toString();
-	}
+    /**
+     * @return the splitSize
+     */
+    public Long getSplitSize() {
+        return splitSize;
+    }
+
+    /**
+     * @param splitSize
+     *            the splitSize to set
+     */
+    public void setSplitSize(Long splitSize) {
+        this.splitSize = splitSize;
+    }
+
+    /**
+     * @return the bookmarksLevel
+     */
+    public Integer getBookmarksLevel() {
+        return bookmarksLevel;
+    }
+
+    /**
+     * @param bookmarksLevel
+     *            the bookmarksLevel to set
+     */
+    public void setBookmarksLevel(Integer bookmarksLevel) {
+        this.bookmarksLevel = bookmarksLevel;
+    }
+
+    public String getCommand() {
+        return COMMAND_SPLIT;
+    }
+
+    /**
+     * @return the bookmarkRegexp
+     */
+    public String getBookmarkRegexp() {
+        return bookmarkRegexp;
+    }
+
+    /**
+     * @param bookmarkRegexp the bookmarkRegexp to set
+     */
+    public void setBookmarkRegexp(String bookmarkRegexp) {
+        this.bookmarkRegexp = bookmarkRegexp;
+    }
+
+    public String toString() {
+        StringBuffer retVal = new StringBuffer();
+        retVal.append(super.toString());
+        retVal.append((outputFile == null) ? "" : "[outputDir=" + outputFile.getAbsolutePath() + "]");
+        retVal.append((inputFile == null) ? "" : "[inputFile=" + inputFile + "]");
+        retVal.append("[outputFilesPrefix=" + outputFilesPrefix + "]");
+        retVal.append("[splitType=" + splitType + "]");
+        retVal.append("[splitSize=" + splitSize + "]");
+        retVal.append("[bookmarksLevel=" + bookmarksLevel + "]");
+        retVal.append("[bookmarkRegexp=" + bookmarkRegexp + "]");
+        if (splitPageNumbers != null) {
+            for (int i = 0; i < splitPageNumbers.length; i++) {
+                retVal.append("[splitPageNumbers[" + i + "]=" + splitPageNumbers[i] + "]");
+            }
+        }
+        retVal.append("[command=" + getCommand() + "]");
+        return retVal.toString();
+    }
 }
