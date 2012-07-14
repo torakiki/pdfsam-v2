@@ -172,7 +172,8 @@ public class GuiClient {
             }
 
             Point locationOnScreen = GuiConfiguration.getInstance().getLocationOnScreen();
-            if (locationOnScreen != null && locationOnScreen.x >= 0 && locationOnScreen.y >= 0) {
+            //see http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6189461
+            if (locationOnScreen != null && locationOnScreen.x != -32000 && locationOnScreen.y != -32000) {
                 clientGUI.setLocation(locationOnScreen);
             }
 

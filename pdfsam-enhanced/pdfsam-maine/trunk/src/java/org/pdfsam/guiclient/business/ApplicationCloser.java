@@ -24,41 +24,45 @@ import org.pdfsam.i18n.GettextResource;
 
 /**
  * Contains methods that get called during the application closure
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class ApplicationCloser {
 
-	private static final Logger log = Logger.getLogger(ApplicationCloser.class.getPackage().getName());
+    private static final Logger log = Logger.getLogger(ApplicationCloser.class.getPackage().getName());
 
-	private JMainFrame mainFrame;
-	
-	/**
-	 * @param mainFrame
-	 */
-	public ApplicationCloser(JMainFrame mainFrame) {
-		super();
-		this.mainFrame = mainFrame;
-	}
+    private JMainFrame mainFrame;
 
-	/**
-	 * Saves the user interface configuration
-	 */
-	public void saveGuiConfiguration(){
-		GuiConfiguration.getInstance().setExtendedState(mainFrame.getExtendedState());
-		GuiConfiguration.getInstance().setLocationOnScreen(mainFrame.getLocationOnScreen());
-		GuiConfiguration.getInstance().setSize(mainFrame.getSize());
-		GuiConfiguration.getInstance().setVerticalDividerLocation(mainFrame.getVerticalDividerLocation());
-		GuiConfiguration.getInstance().setVerticalDividerDimension(mainFrame.getVerticalDividerDimension());
-		GuiConfiguration.getInstance().setHorizontalDividerLocation(mainFrame.getHorizontalDividerLocation());
-		GuiConfiguration.getInstance().setHorizontalDividerDimension(mainFrame.getHorizontalDividerDimension());
-		GuiConfiguration.getInstance().setSelectedPlugin(mainFrame.getTreePanel().getSelectedPlugin());
-		
-		try {
-			GuiConfiguration.getInstance().save();
-		} catch (IOException ioe) {
-			log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to save user interface status."), ioe);
-		}
-	}
+    /**
+     * @param mainFrame
+     */
+    public ApplicationCloser(JMainFrame mainFrame) {
+        super();
+        this.mainFrame = mainFrame;
+    }
+
+    /**
+     * Saves the user interface configuration
+     */
+    public void saveGuiConfiguration() {
+        GuiConfiguration.getInstance().setExtendedState(mainFrame.getExtendedState());
+        if (mainFrame.isShowing()) {
+            GuiConfiguration.getInstance().setLocationOnScreen(mainFrame.getLocationOnScreen());
+        }
+        GuiConfiguration.getInstance().setSize(mainFrame.getSize());
+        GuiConfiguration.getInstance().setVerticalDividerLocation(mainFrame.getVerticalDividerLocation());
+        GuiConfiguration.getInstance().setVerticalDividerDimension(mainFrame.getVerticalDividerDimension());
+        GuiConfiguration.getInstance().setHorizontalDividerLocation(mainFrame.getHorizontalDividerLocation());
+        GuiConfiguration.getInstance().setHorizontalDividerDimension(mainFrame.getHorizontalDividerDimension());
+        GuiConfiguration.getInstance().setSelectedPlugin(mainFrame.getTreePanel().getSelectedPlugin());
+
+        try {
+            GuiConfiguration.getInstance().save();
+        } catch (IOException ioe) {
+            log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                    "Unable to save user interface status."), ioe);
+        }
+    }
 
 }

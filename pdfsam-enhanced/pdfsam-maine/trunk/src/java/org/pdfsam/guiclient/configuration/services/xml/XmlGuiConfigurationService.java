@@ -73,7 +73,7 @@ public class XmlGuiConfigurationService implements GuiConfigurationService {
     private int verticalDividerLocation;
     private Dimension verticalDividerDimension;
     private String selectedPlugin;
-    private Deque<String> recentEnvironments;
+    private Deque<String> recentEnvironments = new ArrayDeque<String>();
 
     public XmlGuiConfigurationService() {
         initializeService();
