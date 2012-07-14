@@ -45,6 +45,8 @@ public class GuiClient {
     private static final Logger log = Logger.getLogger(GuiClient.class.getPackage().getName());
     private static final String PROPERTY_FILE = "pdfsam.properties";
 
+    private static final String NO_GUI_RESTORE_ARG = "-skipGui";
+
     public static final String AUTHOR = "Andrea Vacondio";
     public static final String UNIXNAME = "pdfsam";
 
@@ -72,7 +74,7 @@ public class GuiClient {
             loadApplicationProperties();
             loadExtendedLibraries();
             clientGUI = new JMainFrame();
-            initializeUserInterface();
+            initializeUserInterface(args.length > 0 && NO_GUI_RESTORE_ARG.equalsIgnoreCase(args[0]));
             clientGUI.setVisible(true);
             initializeExtendedState();
         } catch (Throwable t) {
@@ -162,42 +164,43 @@ public class GuiClient {
     /**
      * User interface initialization
      */
-    private static void initializeUserInterface() {
+    private static void initializeUserInterface(boolean skipGui) {
 
-        if (GuiConfiguration.getInstance().getSize() != null) {
-            clientGUI.setSize(GuiConfiguration.getInstance().getSize());
-        }
+        if (!skipGui) {
+            if (GuiConfiguration.getInstance().getSize() != null) {
+                clientGUI.setSize(GuiConfiguration.getInstance().getSize());
+            }
 
-        Point locationOnScreen = GuiConfiguration.getInstance().getLocationOnScreen();
-        if (locationOnScreen != null) {
-            clientGUI.setLocation(locationOnScreen);
-        }
+            Point locationOnScreen = GuiConfiguration.getInstance().getLocationOnScreen();
+            if (locationOnScreen != null && locationOnScreen.x >= 0 && locationOnScreen.y >= 0) {
+                clientGUI.setLocation(locationOnScreen);
+            }
 
-        if (GuiConfiguration.getInstance().getHorizontalDividerDimension() != null) {
-            clientGUI.setHorizontalDividerDimension(GuiConfiguration.getInstance().getHorizontalDividerDimension());
-        }
-        if (GuiConfiguration.getInstance().getHorizontalDividerLocation() > 0) {
-            clientGUI.setHorizontalDividerLocation(GuiConfiguration.getInstance().getHorizontalDividerLocation());
-        } else {
-            clientGUI.setHorizontalDividerLocation(155);
-        }
+            if (GuiConfiguration.getInstance().getHorizontalDividerDimension() != null) {
+                clientGUI.setHorizontalDividerDimension(GuiConfiguration.getInstance().getHorizontalDividerDimension());
+            }
+            if (GuiConfiguration.getInstance().getHorizontalDividerLocation() > 0) {
+                clientGUI.setHorizontalDividerLocation(GuiConfiguration.getInstance().getHorizontalDividerLocation());
+            } else {
+                clientGUI.setHorizontalDividerLocation(155);
+            }
 
-        if (GuiConfiguration.getInstance().getVerticalDividerDimension() != null) {
-            clientGUI.setVerticalDividerDimension(GuiConfiguration.getInstance().getVerticalDividerDimension());
-        }
-        if (GuiConfiguration.getInstance().getVerticalDividerLocation() > 0) {
-            clientGUI.setVerticalDividerLocation(GuiConfiguration.getInstance().getVerticalDividerLocation());
-        }
+            if (GuiConfiguration.getInstance().getVerticalDividerDimension() != null) {
+                clientGUI.setVerticalDividerDimension(GuiConfiguration.getInstance().getVerticalDividerDimension());
+            }
+            if (GuiConfiguration.getInstance().getVerticalDividerLocation() > 0) {
+                clientGUI.setVerticalDividerLocation(GuiConfiguration.getInstance().getVerticalDividerLocation());
+            }
 
-        String selectedPlugin = GuiConfiguration.getInstance().getSelectedPlugin();
-        if (selectedPlugin != null && selectedPlugin.length() > 0) {
-            // If a default environment is set, the plugin set on it has precedence
-            String defaultEnv = Configuration.getInstance().getDefaultEnvironment();
-            if (defaultEnv == null || defaultEnv.length() <= 0) {
-                clientGUI.getTreePanel().setSelectedPlugin(selectedPlugin);
+            String selectedPlugin = GuiConfiguration.getInstance().getSelectedPlugin();
+            if (selectedPlugin != null && selectedPlugin.length() > 0) {
+                // If a default environment is set, the plugin set on it has precedence
+                String defaultEnv = Configuration.getInstance().getDefaultEnvironment();
+                if (defaultEnv == null || defaultEnv.length() <= 0) {
+                    clientGUI.getTreePanel().setSelectedPlugin(selectedPlugin);
+                }
             }
         }
-        
         clientGUI.rebuildRecentEnvironmentsMenu();
 
     }
