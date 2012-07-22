@@ -16,7 +16,6 @@ package org.pdfsam.guiclient.configuration;
 
 import java.awt.Toolkit;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javax.swing.UIManager;
@@ -304,6 +303,21 @@ public class Configuration {
      */
     public void setAskOverwriteConfirmation(boolean askOverwriteConfirmation) {
         configurationService.setAskOverwriteConfirmation(askOverwriteConfirmation);
+    }
+
+    /**
+     * @return true if high quality thumbnails
+     */
+    public boolean isHighQualityThumbnails() {
+        return configurationService.isHighQualityThumbnils();
+    }
+
+    /**
+     * @return
+     * @see org.pdfsam.guiclient.configuration.services.ConfigurationService#getThumbnailSize()
+     */
+    public int getThumbnailSize() {
+        return configurationService.getThumbnailSize();
     }
 
     /**

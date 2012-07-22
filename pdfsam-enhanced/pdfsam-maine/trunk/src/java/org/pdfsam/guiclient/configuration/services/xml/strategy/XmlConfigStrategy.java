@@ -85,6 +85,15 @@ public interface XmlConfigStrategy {
 	String getAskOverwriteConfirmation();
 
 	/**
+	 * @return the size of the thumbnails
+	 */
+	String getThumbnailsSize();
+	
+	/**
+	 * @return the quality of the thumbnails
+	 */
+	String getHighQualityThumbnails();
+	/**
 	 * close resources if necessary
 	 */
 	void close();

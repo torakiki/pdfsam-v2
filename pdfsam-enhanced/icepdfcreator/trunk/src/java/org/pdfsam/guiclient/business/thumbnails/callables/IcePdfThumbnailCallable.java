@@ -74,8 +74,9 @@ public class IcePdfThumbnailCallable implements Callable<Boolean> {
                 double recWidth = dimensions.getWidth();
                 float resizePercentage = (float) getResizePercentage(rectHeight, recWidth);
 
-                BufferedImage scaledInstance = (BufferedImage) pdfDocument.getPageImage(pageNumber,
-                        GraphicsRenderingHints.SCREEN, Page.BOUNDARY_CROPBOX, 0, resizePercentage);
+                BufferedImage scaledInstance = (BufferedImage) pdfDocument.getPageImage(pageNumber, (Configuration
+                        .getInstance().isHighQualityThumbnails() ? GraphicsRenderingHints.PRINT
+                        : GraphicsRenderingHints.SCREEN), Page.BOUNDARY_CROPBOX, 0, resizePercentage);
                 pageItem.setPaperFormat(recWidth, rectHeight, IcePdfThumbnailsCreator.ICEPDF_RESOLUTION);
                 int rotation = (int) pdfDocument.getPageTree().getPage(pageNumber, this).getTotalRotation(0);
                 if (rotation != 0) {
@@ -101,10 +102,10 @@ public class IcePdfThumbnailCallable implements Callable<Boolean> {
     private double getResizePercentage(double height, double width) {
         double retVal = 0;
         if (height >= width) {
-            retVal = Math.round((ThumbnailsCreator.DEFAULT_SIZE / height) * 100.0) / 100.0;
+            retVal = Math.round((Configuration.getInstance().getThumbnailSize() / height) * 100.0) / 100.0;
         } else {
-            retVal = Math.round((ThumbnailsCreator.DEFAULT_SIZE / width) * 100.0) / 100.0;
+            retVal = Math.round((Configuration.getInstance().getThumbnailSize() / width) * 100.0) / 100.0;
         }
-        return retVal;
+        return retVal < 1 ? retVal : 1d;
     }
 }

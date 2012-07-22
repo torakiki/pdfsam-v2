@@ -15,7 +15,6 @@
 package org.pdfsam.guiclient.configuration.services;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 import org.pdfsam.console.business.ConsoleServicesFacade;
@@ -80,11 +79,14 @@ public interface ConfigurationService {
     int getThumbCreatorPoolSize();
 
     /**
-     * set the thumbnails crreator pool size
-     * 
-     * @param poolSize
+     * @return true if the thumbnails should be generated in high quality
      */
-    void setThumbCreatorPoolSize(int poolSize);
+    boolean isHighQualityThumbnils();
+
+    /**
+     * @return the size of the thumbnails
+     */
+    int getThumbnailSize();
 
     /**
      * @return identifier of the thumbnails creator to use

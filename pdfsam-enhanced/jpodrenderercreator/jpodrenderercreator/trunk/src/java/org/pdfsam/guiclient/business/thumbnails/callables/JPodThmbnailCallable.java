@@ -38,100 +38,103 @@ import de.intarsys.cwt.awt.environment.CwtAwtGraphicsContext;
 import de.intarsys.cwt.environment.IGraphicsContext;
 import de.intarsys.pdf.content.CSContent;
 import de.intarsys.pdf.pd.PDPage;
+
 /**
  * Callable used to generate thumbnails with JPod
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class JPodThmbnailCallable implements Callable<Boolean> {
-	
-	private static final Logger log = Logger.getLogger(JPodThmbnailCallable.class.getPackage().getName());
-	
-	private PDPage pdPage;
-	private JVisualPdfPageSelectionPanel panel;
-	private VisualPageListItem pageItem;
-	private long id;
-		
-	/**
-	 * @param pdPage
-	 * @param pageItem
-	 * @param panel
-	 */
-	public JPodThmbnailCallable(PDPage pdPage, VisualPageListItem pageItem, JVisualPdfPageSelectionPanel panel, long id) {
-		super();
-		this.pdPage = pdPage;
-		this.pageItem = pageItem;
-		this.panel = panel;
-		this.id = id;
-	}
 
+    private static final Logger log = Logger.getLogger(JPodThmbnailCallable.class.getPackage().getName());
 
-	public Boolean call() {
-		Boolean retVal = Boolean.FALSE;
-		if(!IdManager.getInstance().isCancelledExecution(id)){
-			IGraphicsContext graphics = null;
-			try{
-				Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
-				double rectHeight = rect.getHeight();
-				double recWidth = rect.getWidth();				
-				double resizePercentage = getResizePercentage(rectHeight, recWidth);
-				
-				int height = Math.round(((int) rect.getHeight())*(float)resizePercentage);
-				int width = Math.round(((int) rect.getWidth())*(float)resizePercentage);
-				BufferedImage imageInstance = new BufferedImage((int)recWidth, (int)rectHeight, BufferedImage.TYPE_INT_RGB);
-				Graphics2D g2 = (Graphics2D) imageInstance.getGraphics();
-				graphics = new CwtAwtGraphicsContext(g2);
-				// setup user space
-				AffineTransform imgTransform = graphics.getTransform();
-				imgTransform.scale(1, -1);
-				imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
-				graphics.setTransform(imgTransform);				
-				graphics.setBackgroundColor(Color.WHITE);
-				graphics.fill(rect);
-				CSContent content = pdPage.getContentStream();
-				if (content != null) {
-					JPodRenderer renderer = new JPodRenderer(null,graphics);
-					renderer.process(content, pdPage.getResources());
-				}
-              //	pageItem.setThumbnail(scaledInstance);
-				BufferedImage scaledInstance = ImageUtility.getScaledInstance(imageInstance, width, height);
-              	pageItem.setPaperFormat(recWidth, rectHeight, JPodThumbnailCreator.JPOD_RESOLUTION);
-              	if(pdPage.getRotate()!=0){
-              		pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));
-              	}
-              	if(pageItem.isRotated()){
-              		pageItem.setThumbnail(ImageUtility.rotateImage(scaledInstance, pageItem.getCompleteRotation()));	
-        		}else{
-    				pageItem.setThumbnail(scaledInstance);
+    private PDPage pdPage;
+    private JVisualPdfPageSelectionPanel panel;
+    private VisualPageListItem pageItem;
+    private long id;
 
-        		}
-              	retVal = Boolean.TRUE;
-            }catch (Throwable t) {
-            	pageItem.setThumbnail(ImageUtility.getErrorImage());
-        		log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"Unable to generate thumbnail"),t);
-        	}finally{
-        		if(graphics!=null){
-        			graphics.dispose();
-        		}
-        		pdPage = null;
-        	}
-            ((VisualListModel)panel.getThumbnailList().getModel()).elementChanged(pageItem);
-		}
+    /**
+     * @param pdPage
+     * @param pageItem
+     * @param panel
+     */
+    public JPodThmbnailCallable(PDPage pdPage, VisualPageListItem pageItem, JVisualPdfPageSelectionPanel panel, long id) {
+        super();
+        this.pdPage = pdPage;
+        this.pageItem = pageItem;
+        this.panel = panel;
+        this.id = id;
+    }
+
+    public Boolean call() {
+        Boolean retVal = Boolean.FALSE;
+        if (!IdManager.getInstance().isCancelledExecution(id)) {
+            IGraphicsContext graphics = null;
+            try {
+                Rectangle2D rect = pdPage.getCropBox().toNormalizedRectangle();
+                double rectHeight = rect.getHeight();
+                double recWidth = rect.getWidth();
+                double resizePercentage = getResizePercentage(rectHeight, recWidth);
+
+                int height = Math.round(((int) rect.getHeight()) * (float) resizePercentage);
+                int width = Math.round(((int) rect.getWidth()) * (float) resizePercentage);
+                BufferedImage imageInstance = new BufferedImage((int) recWidth, (int) rectHeight,
+                        BufferedImage.TYPE_INT_RGB);
+                Graphics2D g2 = (Graphics2D) imageInstance.getGraphics();
+                graphics = new CwtAwtGraphicsContext(g2);
+                // setup user space
+                AffineTransform imgTransform = graphics.getTransform();
+                imgTransform.scale(1, -1);
+                imgTransform.translate(-rect.getMinX(), -rect.getMaxY());
+                graphics.setTransform(imgTransform);
+                graphics.setBackgroundColor(Color.WHITE);
+                graphics.fill(rect);
+                CSContent content = pdPage.getContentStream();
+                if (content != null) {
+                    JPodRenderer renderer = new JPodRenderer(null, graphics);
+                    renderer.process(content, pdPage.getResources());
+                }
+                // pageItem.setThumbnail(scaledInstance);
+                BufferedImage scaledInstance = ImageUtility.getScaledInstance(imageInstance, width, height);
+                pageItem.setPaperFormat(recWidth, rectHeight, JPodThumbnailCreator.JPOD_RESOLUTION);
+                if (pdPage.getRotate() != 0) {
+                    pageItem.setOriginalRotation(Rotation.getRotation(pdPage.getRotate()));
+                }
+                if (pageItem.isRotated()) {
+                    pageItem.setThumbnail(ImageUtility.rotateImage(scaledInstance, pageItem.getCompleteRotation()));
+                } else {
+                    pageItem.setThumbnail(scaledInstance);
+
+                }
+                retVal = Boolean.TRUE;
+            } catch (Throwable t) {
+                pageItem.setThumbnail(ImageUtility.getErrorImage());
+                log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Unable to generate thumbnail"), t);
+            } finally {
+                if (graphics != null) {
+                    graphics.dispose();
+                }
+                pdPage = null;
+            }
+            ((VisualListModel) panel.getThumbnailList().getModel()).elementChanged(pageItem);
+        }
         return retVal;
-	}
-	
-	/**
-	 * @param height
-	 * @param width
-	 * @return percentage resize
-	 */
-	private double getResizePercentage(double height, double width){
-		double retVal = 0;
-		if(height>=width){
-			retVal = Math.round(((double)ThumbnailsCreator.DEFAULT_SIZE/height)*100.0)/100.0;
-		}else{
-			retVal = Math.round(((double)ThumbnailsCreator.DEFAULT_SIZE/width)*100.0)/100.0;
-		}
-		return retVal;
-	}
+    }
+
+    /**
+     * @param height
+     * @param width
+     * @return percentage resize
+     */
+    private double getResizePercentage(double height, double width) {
+        double retVal = 0;
+        if (height >= width) {
+            retVal = Math.round((Configuration.getInstance().getThumbnailSize() / height) * 100.0) / 100.0;
+        } else {
+            retVal = Math.round((Configuration.getInstance().getThumbnailSize() / width) * 100.0) / 100.0;
+        }
+        return retVal < 1 ? retVal : 1d;
+    }
 }

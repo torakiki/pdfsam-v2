@@ -58,10 +58,12 @@ public class XmlConfigurationService implements ConfigurationService {
     private boolean checkForUpdates = true;
     private boolean playSounds = true;
     private boolean askOverwriteConfirmation = true;
+    private boolean thumbnailsHighQuality = false;
     private String defaultWorkingDirectory = null;
     private String defaultEnvironment = null;
     private int thumbCreatorPoolSize = DEFAULT_POOL_SIZE;
     private String thumbnailsCreatorIdentifier = "";
+    private int thumbnailsSize = 190;
     private int loggingLevel;
     private int lookAndFeel = 0;
     private int theme = 0;
@@ -105,6 +107,7 @@ public class XmlConfigurationService implements ConfigurationService {
                 initializeLookAndFeel(strategy);
                 initializeLoggingLevel(strategy);
                 initializePoolSize(strategy);
+                initializeThumbnailsSize(strategy);
 
                 defaultWorkingDirectory = strategy.getDefaultWorkingDirectoryValue();
                 defaultEnvironment = strategy.getDefaultEnvironmentValue();
@@ -113,6 +116,8 @@ public class XmlConfigurationService implements ConfigurationService {
                 playSounds = isValidTrueValue(strategy.getPlaySoundsValue());
                 pluginAbsolutePath = strategy.getPluginAbsolutePath();
                 askOverwriteConfirmation = isValidTrueValue(strategy.getAskOverwriteConfirmation());
+                thumbnailsHighQuality = isValidTrueValue(strategy.getHighQualityThumbnails());
+                log.info("Thumbnails high quality " + Boolean.toString(thumbnailsHighQuality));
 
                 consoleServicesFacade = new ConsoleServicesFacade();
                 strategy.close();
@@ -136,6 +141,14 @@ public class XmlConfigurationService implements ConfigurationService {
         if (poolSizeString.length() > 0) {
             thumbCreatorPoolSize = Integer.parseInt(poolSizeString);
         }
+    }
+
+    private void initializeThumbnailsSize(XmlConfigStrategy strategy) {
+        String thumbSize = strategy.getThumbnailsSize();
+        if (thumbSize.length() > 0) {
+            thumbnailsSize = Integer.parseInt(thumbSize);
+        }
+        log.info("Thumbnails size set to " + thumbnailsSize);
     }
 
     /**
@@ -307,10 +320,6 @@ public class XmlConfigurationService implements ConfigurationService {
         return thumbCreatorPoolSize;
     }
 
-    public void setThumbCreatorPoolSize(int thumbCreatorPoolSize) {
-        this.thumbCreatorPoolSize = thumbCreatorPoolSize;
-    }
-
     public String getThumbnailsCreatorIdentifier() {
         return thumbnailsCreatorIdentifier;
     }
@@ -373,6 +382,14 @@ public class XmlConfigurationService implements ConfigurationService {
 
     public void setAskOverwriteConfirmation(boolean askOverwriteConfirmation) {
         this.askOverwriteConfirmation = askOverwriteConfirmation;
+    }
+
+    public int getThumbnailSize() {
+        return thumbnailsSize;
+    }
+
+    public boolean isHighQualityThumbnils() {
+        return thumbnailsHighQuality;
     }
 
     public void save() throws IOException {

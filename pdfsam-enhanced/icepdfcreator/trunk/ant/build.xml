@@ -53,7 +53,7 @@
     <jar jarfile="${icepdfcreator.dist.dir}/${icepdfcreator.jar.name}.jar" basedir="${icepdfcreator.build.dir}">
     <manifest>
 		<attribute name="Built-By" value="${user.name}"/>
-		<attribute name="Class-Path" value="${icepdfcore.jar.name}.jar ${batik-awt-util.jar.name}.jar ${batik-dom.jar.name}.jar ${batik-svg-dom.jar.name}.jar ${batik-svggen.jar.name}.jar ${batik-util.jar.name}.jar ${batik-xml.jar.name}.jar "/>		
+		<attribute name="Class-Path" value="${icepdfcore.jar.name}.jar"/>		
    </manifest>
 		<fileset dir=".">
 			<include name="META-INF/**/*.*" />

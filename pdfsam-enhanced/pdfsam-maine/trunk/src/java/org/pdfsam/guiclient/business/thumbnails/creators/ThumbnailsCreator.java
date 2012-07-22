@@ -23,120 +23,151 @@ import org.pdfsam.guiclient.dto.DocumentPage;
 import org.pdfsam.guiclient.exceptions.ThumbnailCreationException;
 
 /**
- * Interface for thumbnails creators that can be used to fill thumbnails of the {@link JVisualPdfPageSelectionPanel}. 
+ * Interface for thumbnails creators that can be used to fill thumbnails of the {@link JVisualPdfPageSelectionPanel}.
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public interface ThumbnailsCreator {
-	/**
-	 * Default resize percentage 20%
-	 */
-	public static final float DEFAULT_RESIZE_PERCENTAGE = 0.2f;
     /**
-     * Default size in pixel
+     * Default resize percentage 20%
      */
-	public static final int DEFAULT_SIZE = 190;
-	
-	/**
-	 * 
-	 * @param fileName pdf document
-	 * @param password document password or null if no password is needed
-	 * @param page page nmber
-	 * @param resizePercentage resize level
-	 * @return a thumbnail of the given page
-	 * @throws ThumbnailCreationException
-	 */
-	public BufferedImage getThumbnail(String fileName, String password, int page , float resizePercentage) throws ThumbnailCreationException;
-	/**
-	 * 
-	 * @param fileName pdf document
-	 * @param password document password or null if no password is needed
-	 * @param page
-	 * @return an image version of the given page
-	 * @throws ThumbnailCreationException
-	 */
-	public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException;	
-	/**
-	 * 
-	 * @param fileName
-	 * @param password
-	 * @param page
-	 * @param rotation page rotation in degrees
-	 * @return the image
-	 * @throws ThumbnailCreationException
-	 */
-	public BufferedImage getPageImage(String fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
-	
-	/**
-	 * 
-	 * @param inputFile pdf document
-	 * @param password document password or null if no password is needed
-	 * @param page page nmber
-	 * @param resizePercentage resize level
-	 * @return a thumbnail of the given page
-	 * @throws ThumbnailCreationException
-	 */
-	public BufferedImage getThumbnail(File inputFile, String password, int page , float resizePercentage) throws ThumbnailCreationException;
-	/**
-	 * 
-	 * @param inputFile pdf document
-	 * @param password document password or null if no password is needed
-	 * @param page
-	 * @return an image version of the given page
-	 * @throws ThumbnailCreationException
-	 */
-	public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException;
-	/**
-	 * @param fileName
-	 * @param password
-	 * @param page
-	 * @param rotation page rotation in degrees
-	 * @return the image
-	 * @throws ThumbnailCreationException
-	 */
-	public BufferedImage getPageImage(File fileName, String password, int page, int rotation) throws ThumbnailCreationException;	
+    public static final float DEFAULT_RESIZE_PERCENTAGE = 0.2f;
 
-	/**
-	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
-	 * @param inputFile pdf document
-	 * @param password document password or null if no password is needed
-	 * @param panel
-	 * @param id Id for this thumbnails generation
-	 * @param template template for the document pages (order, rotation infos..)
-	 * @throws ThumbnailCreationException
-	 */
-	public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;
-	
-	/**
-	 * Initialize the input panel. Set the document properties on the panel and starts previews generation.
-	 * @param fileName
-	 * @param password document password or null if no password is needed
-	 * @param panel
-	 * @param id Id for this thumbnails generation
-	 * @param template template for the document pages (order, rotation infos..)
-	 * @throws ThumbnailCreationException
-	 */	
-	public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id, List<DocumentPage> template) throws ThumbnailCreationException;
-	
-	/**
-	 * @return resolution of the created thumbnails
-	 */
-	public int getResolution();
-	
-	/**
-	 * clean the thumbnails generation with the given id
-	 * @param id
-	 */
-	public void clean(long id);
-	
-	/**
-	 * @return the Name of the creator
-	 */
-	public String getCreatorName();
-	
-	/**
-	 * @return a unique identifier for the creator.
-	 */
-	public String getCreatorIdentifier();
+    /**
+     * 
+     * @param fileName
+     *            pdf document
+     * @param password
+     *            document password or null if no password is needed
+     * @param page
+     *            page nmber
+     * @param resizePercentage
+     *            resize level
+     * @return a thumbnail of the given page
+     * @throws ThumbnailCreationException
+     */
+    public BufferedImage getThumbnail(String fileName, String password, int page, float resizePercentage)
+            throws ThumbnailCreationException;
+
+    /**
+     * 
+     * @param fileName
+     *            pdf document
+     * @param password
+     *            document password or null if no password is needed
+     * @param page
+     * @return an image version of the given page
+     * @throws ThumbnailCreationException
+     */
+    public BufferedImage getPageImage(String fileName, String password, int page) throws ThumbnailCreationException;
+
+    /**
+     * 
+     * @param fileName
+     * @param password
+     * @param page
+     * @param rotation
+     *            page rotation in degrees
+     * @return the image
+     * @throws ThumbnailCreationException
+     */
+    public BufferedImage getPageImage(String fileName, String password, int page, int rotation)
+            throws ThumbnailCreationException;
+
+    /**
+     * 
+     * @param inputFile
+     *            pdf document
+     * @param password
+     *            document password or null if no password is needed
+     * @param page
+     *            page nmber
+     * @param resizePercentage
+     *            resize level
+     * @return a thumbnail of the given page
+     * @throws ThumbnailCreationException
+     */
+    public BufferedImage getThumbnail(File inputFile, String password, int page, float resizePercentage)
+            throws ThumbnailCreationException;
+
+    /**
+     * 
+     * @param inputFile
+     *            pdf document
+     * @param password
+     *            document password or null if no password is needed
+     * @param page
+     * @return an image version of the given page
+     * @throws ThumbnailCreationException
+     */
+    public BufferedImage getPageImage(File inputFile, String password, int page) throws ThumbnailCreationException;
+
+    /**
+     * @param fileName
+     * @param password
+     * @param page
+     * @param rotation
+     *            page rotation in degrees
+     * @return the image
+     * @throws ThumbnailCreationException
+     */
+    public BufferedImage getPageImage(File fileName, String password, int page, int rotation)
+            throws ThumbnailCreationException;
+
+    /**
+     * Initialize the input panel. Set the document properties on the panel and starts previews generation.
+     * 
+     * @param inputFile
+     *            pdf document
+     * @param password
+     *            document password or null if no password is needed
+     * @param panel
+     * @param id
+     *            Id for this thumbnails generation
+     * @param template
+     *            template for the document pages (order, rotation infos..)
+     * @throws ThumbnailCreationException
+     */
+    public void initThumbnailsPanel(File inputFile, String password, JVisualPdfPageSelectionPanel panel, long id,
+            List<DocumentPage> template) throws ThumbnailCreationException;
+
+    /**
+     * Initialize the input panel. Set the document properties on the panel and starts previews generation.
+     * 
+     * @param fileName
+     * @param password
+     *            document password or null if no password is needed
+     * @param panel
+     * @param id
+     *            Id for this thumbnails generation
+     * @param template
+     *            template for the document pages (order, rotation infos..)
+     * @throws ThumbnailCreationException
+     */
+    public void initThumbnailsPanel(String fileName, String password, JVisualPdfPageSelectionPanel panel, long id,
+            List<DocumentPage> template) throws ThumbnailCreationException;
+
+    /**
+     * @return resolution of the created thumbnails
+     */
+    public int getResolution();
+
+    /**
+     * clean the thumbnails generation with the given id
+     * 
+     * @param id
+     */
+    public void clean(long id);
+
+    /**
+     * @return the Name of the creator
+     */
+    public String getCreatorName();
+
+    /**
+     * @return a unique identifier for the creator.
+     */
+    public String getCreatorIdentifier();
 
 }

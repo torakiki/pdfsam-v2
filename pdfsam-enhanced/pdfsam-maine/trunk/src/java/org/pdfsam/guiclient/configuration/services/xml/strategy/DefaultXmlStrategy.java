@@ -16,8 +16,6 @@ package org.pdfsam.guiclient.configuration.services.xml.strategy;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Deque;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -46,6 +44,8 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
     private static final String POOL_SIZE_XPATH = "/settings/thumbpoolsize/@value";
     private static final String DEFAULT_ENVIRONMENT_XPATH = "/settings/default_environment/@value";
     private static final String PLUGIN_ABSOLUTE_XPATH = "/settings/plugs_absolute_path/@value";
+    private static final String THUMBNAILS_HIGH_QUALITY = "/settings/high_quality_thumbs/@value";
+    private static final String THUMBNAILS_SIZE = "/settings/thumbnails_size/@value";
 
     /**
      * @param document
@@ -102,6 +102,14 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
         return XmlUtility.getXmlValue(getDocument(), ROOT_NODE + ASK_OVERWRITE_XPATH);
     }
 
+    public String getHighQualityThumbnails() {
+        return XmlUtility.getXmlValue(getDocument(), ROOT_NODE + THUMBNAILS_HIGH_QUALITY);
+    }
+
+    public String getThumbnailsSize() {
+        return XmlUtility.getXmlValue(getDocument(), ROOT_NODE + THUMBNAILS_SIZE);
+    }
+
     /**
      * Saves the configuration on the configuration xml file. The configuration file content is replaced.
      * 
@@ -127,6 +135,9 @@ public class DefaultXmlStrategy extends AbstractXmlConfigStrategy {
         XmlUtility.processXPath(root, PLAYSOUNDS_XPATH, Boolean.toString(configuration.isPlaySounds()));
         XmlUtility
                 .processXPath(root, ASK_OVERWRITE_XPATH, Boolean.toString(configuration.isAskOverwriteConfirmation()));
+        XmlUtility
+                .processXPath(root, THUMBNAILS_HIGH_QUALITY, Boolean.toString(configuration.isHighQualityThumbnils()));
+        XmlUtility.processXPath(root, THUMBNAILS_SIZE, Integer.toString(configuration.getThumbnailSize()));
         XmlUtility.writeXmlFile(document, configurationFile);
     }
 
