@@ -18,98 +18,98 @@ import java.util.Vector;
 
 import javax.swing.JList;
 import javax.swing.ListModel;
+
 /**
  * JList with zoom support
+ * 
  * @author Andrea Vacondio
- *
+ * 
  */
 public class JVisualSelectionList extends JList {
-	
-	private static final long serialVersionUID = -491255443741363383L;
-	
-	public static final int HORIZONTAL_ZOOM_STEP = 20;
-	public static final int VERTICAL_ZOOM_STEP = 14;
-	
-	public static final int DEFAULT_ZOOM_LEVEL = -2;
-	public static final int MIN_ZOOM_LEVEL = -4;
-	public static final int MAX_ZOOM_LEVEL = 3;
 
-	private int currentZoomLevel = DEFAULT_ZOOM_LEVEL;
-	private boolean drawDeletedItems = true;
-	
-	public JVisualSelectionList() {
-	}
+    private static final long serialVersionUID = -491255443741363383L;
 
-	/**
-	 * @param dataModel
-	 */
-	public JVisualSelectionList(ListModel dataModel) {
-		super(dataModel);
-	}
+    public static final int DEFAULT_ZOOM_LEVEL = -4;
+    public static final int MIN_ZOOM_LEVEL = -7;
+    public static final int MAX_ZOOM_LEVEL = 0;
 
-	/**
-	 * @param listData
-	 */
-	public JVisualSelectionList(Object[] listData) {
-		super(listData);
-	}
+    private int currentZoomLevel = DEFAULT_ZOOM_LEVEL;
+    private boolean drawDeletedItems = true;
 
-	/**
-	 * @param listData
-	 */
-	public JVisualSelectionList(Vector<?> listData) {
-		super(listData);
-	}
+    public JVisualSelectionList() {
+    }
 
-	public JVisualSelectionList(boolean drawDeletedItems) {		
-		this.drawDeletedItems = drawDeletedItems;
-	}
-	
-	/**
-	 * @return the currentZoomLevel
-	 */
-	public int getCurrentZoomLevel() {
-		return currentZoomLevel;
-	}	
-	
-	/**
-	 * @param currentZoomLevel the currentZoomLevel to set
-	 */
-	public void setCurrentZoomLevel(int currentZoomLevel) {
-		this.currentZoomLevel = currentZoomLevel;		
-	}
-	
-	/**
-	 * increment the zoom level
-	 */
-	public void incZoomLevel(){
-		if(currentZoomLevel<MAX_ZOOM_LEVEL){
-			currentZoomLevel++;
-		}
-	}
-	
-	/**
-	 * deincrement the zoom level
-	 */
-	public void deincZoomLevel(){
-		if(currentZoomLevel>MIN_ZOOM_LEVEL){
-			currentZoomLevel--;
-		}
-	}
+    /**
+     * @param dataModel
+     */
+    public JVisualSelectionList(ListModel dataModel) {
+        super(dataModel);
+    }
 
-	/**
-	 * @return the drawDeletedItems
-	 */
-	public boolean isDrawDeletedItems() {
-		return drawDeletedItems;
-	}
+    /**
+     * @param listData
+     */
+    public JVisualSelectionList(Object[] listData) {
+        super(listData);
+    }
 
-	/**
-	 * @param drawDeletedItems the drawDeletedItems to set
-	 */
-	public void setDrawDeletedItems(boolean drawDeletedItems) {
-		this.drawDeletedItems = drawDeletedItems;
-	}
-	
-	
+    /**
+     * @param listData
+     */
+    public JVisualSelectionList(Vector<?> listData) {
+        super(listData);
+    }
+
+    public JVisualSelectionList(boolean drawDeletedItems) {
+        this.drawDeletedItems = drawDeletedItems;
+    }
+
+    /**
+     * @return the currentZoomLevel
+     */
+    public int getCurrentZoomLevel() {
+        return currentZoomLevel;
+    }
+
+    /**
+     * @param currentZoomLevel
+     *            the currentZoomLevel to set
+     */
+    public void setCurrentZoomLevel(int currentZoomLevel) {
+        this.currentZoomLevel = currentZoomLevel;
+    }
+
+    /**
+     * increment the zoom level
+     */
+    public void incZoomLevel() {
+        if (currentZoomLevel < MAX_ZOOM_LEVEL) {
+            currentZoomLevel++;
+        }
+    }
+
+    /**
+     * deincrement the zoom level
+     */
+    public void deincZoomLevel() {
+        if (currentZoomLevel > MIN_ZOOM_LEVEL) {
+            currentZoomLevel--;
+        }
+    }
+
+    /**
+     * @return the drawDeletedItems
+     */
+    public boolean isDrawDeletedItems() {
+        return drawDeletedItems;
+    }
+
+    /**
+     * @param drawDeletedItems
+     *            the drawDeletedItems to set
+     */
+    public void setDrawDeletedItems(boolean drawDeletedItems) {
+        this.drawDeletedItems = drawDeletedItems;
+    }
+
 }

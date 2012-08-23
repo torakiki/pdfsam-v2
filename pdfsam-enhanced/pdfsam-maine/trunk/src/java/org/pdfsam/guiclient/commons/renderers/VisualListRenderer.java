@@ -14,11 +14,15 @@
  */
 package org.pdfsam.guiclient.commons.renderers;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -44,7 +48,7 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
 
     private int currentZoomLevel = 0;
     private boolean drawRedCross = false;
-    private Image image = null;
+    private BufferedImage image = null;
 
     public VisualListRenderer() {
         setOpaque(true);
@@ -86,13 +90,15 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
      */
     private Dimension getZoomedSize() {
         Dimension retVal = null;
-        int comSize = Configuration.getInstance().getThumbnailSize() + (int) (Configuration.getInstance().getThumbnailSize() * ZOOM_STEP * currentZoomLevel);
+        int comSize = Configuration.getInstance().getThumbnailSize()
+                + (int) (Configuration.getInstance().getThumbnailSize() * ZOOM_STEP * currentZoomLevel);
         retVal = new Dimension(comSize + 2, comSize + 15);
         return retVal;
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
         if (image != null) {
             int imageHeight = 0;
             int imageWidth = 0;
@@ -101,7 +107,7 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
             // get image dimensions
             if (isHorizontal(image)) {
                 imageWidth = getWidth() - 2;
-                imageHeight = Math.round(image.getWidth(null) * ((float) imageWidth / (float) image.getHeight(null)));
+                imageHeight = Math.round(image.getHeight(null) * ((float) imageWidth / (float) image.getWidth(null)));
                 if (imageHeight > getHeight() - 15) {
                     imageHeight = getHeight() - 15;
                 }
@@ -114,12 +120,21 @@ public class VisualListRenderer extends JLabel implements ListCellRenderer {
                 }
                 x = (getWidth() - 2 - imageWidth) / 2;
             }
-            g.drawImage(image, x, y, imageWidth, imageHeight, null);
+            if (Configuration.getInstance().isHighQualityThumbnails()) {
+                g2d.setComposite(AlphaComposite.Src);
+                g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+                g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+                g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+                g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+                g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            }
+            g2d.drawImage(image, x, y, imageWidth, imageHeight, null);
         }
         if (drawRedCross) {
-            g.setColor(Color.red);
-            g.drawLine(0, getHeight(), getWidth(), 0);
-            g.drawLine(getWidth(), getHeight(), 0, 0);
+            g2d.setColor(Color.red);
+            g2d.drawLine(0, getHeight(), getWidth(), 0);
+            g2d.drawLine(getWidth(), getHeight(), 0, 0);
         }
     }
 
