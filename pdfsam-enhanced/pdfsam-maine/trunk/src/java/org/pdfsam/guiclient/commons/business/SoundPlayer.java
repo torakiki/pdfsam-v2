@@ -34,101 +34,96 @@ import org.pdfsam.i18n.GettextResource;
  */
 public class SoundPlayer {
 
-	private static final Logger log = Logger.getLogger(SoundPlayer.class.getPackage().getName());
+    private static final Logger log = Logger.getLogger(SoundPlayer.class.getPackage().getName());
+    private static final String SOUND = "/resources/sounds/ok_sound.wav";
+    private static final String ERROR_SOUND = "/resources/sounds/error_sound.wav";
 
-	private static final String SOUND = "/resources/sounds/ok_sound.wav";
+    private static SoundPlayer player = null;
 
-	private static final String ERROR_SOUND = "/resources/sounds/error_sound.wav";
+    private Clip errorClip;
 
-	private static SoundPlayer player = null;
+    private Clip soundClip;
 
-	private Clip errorClip;
+    private ExecutorService executor;
 
-	private Clip soundClip;
+    private SoundPlayer() {
+        executor = Executors.newSingleThreadExecutor();
+    }
 
-	private ExecutorService executor;
+    public static synchronized SoundPlayer getInstance() {
+        if (player == null) {
+            player = new SoundPlayer();
+        }
+        return player;
+    }
 
-	private SoundPlayer() {
-		executor = Executors.newSingleThreadExecutor();
-	}
+    /**
+     * Plays an error sound
+     */
+    public void playErrorSound() {
+        if (Configuration.getInstance().isPlaySounds()) {
+            try {
+                if (errorClip == null) {
+                    AudioInputStream sound = AudioSystem.getAudioInputStream(this.getClass().getResource(ERROR_SOUND));
+                    DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+                    errorClip = (Clip) AudioSystem.getLine(info);
+                    errorClip.open(sound);
+                }
+                executor.execute(new PlayThread(errorClip));
+            } catch (Exception e) {
+                log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Error playing sound")
+                        + ": " + e.getMessage());
+            }
+        }
+    }
 
-	public static synchronized SoundPlayer getInstance() {
-		if (player == null) {
-			player = new SoundPlayer();
-		}
-		return player;
-	}
+    /**
+     * Plays a sound
+     */
+    public void playSound() {
+        if (Configuration.getInstance().isPlaySounds()) {
+            try {
+                if (soundClip == null) {
+                    AudioInputStream sound = AudioSystem.getAudioInputStream(this.getClass().getResource(SOUND));
+                    DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+                    soundClip = (Clip) AudioSystem.getLine(info);
+                    soundClip.open(sound);
+                }
+                executor.execute(new PlayThread(soundClip));
+            } catch (Exception e) {
+                log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Error playing sound")
+                        + ": " + e.getMessage());
+            }
+        }
+    }
 
-	/**
-	 * Plays an error sound
-	 */
-	public void playErrorSound() {
-		if (Configuration.getInstance().isPlaySounds()) {
-			try {
-				if (errorClip == null) {
-					AudioInputStream sound = AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream(
-							ERROR_SOUND));
-					DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-					errorClip = (Clip) AudioSystem.getLine(info);
-					errorClip.open(sound);
-				}
-				executor.execute(new PlayThread(errorClip));
-			} catch (Exception e) {
-				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-						"Error playing sound")
-						+ ": " + e.getMessage());
-			}
-		}
-	}
+    /**
+     * Plays the sound
+     * 
+     * @author Andrea Vacondio
+     * 
+     */
+    private class PlayThread extends Thread {
+        private Clip clip;
 
-	/**
-	 * Plays a sound
-	 */
-	public void playSound() {
-		if (Configuration.getInstance().isPlaySounds()) {
-			try {
-				if (soundClip == null) {
-					AudioInputStream sound = AudioSystem
-							.getAudioInputStream(this.getClass().getResourceAsStream(SOUND));
-					DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-					soundClip = (Clip) AudioSystem.getLine(info);
-					soundClip.open(sound);
-				}
-				executor.execute(new PlayThread(soundClip));
-			} catch (Exception e) {
-				log.warn(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-						"Error playing sound")
-						+ ": " + e.getMessage());
-			}
-		}
-	}
+        /**
+         * @param clip
+         */
+        public PlayThread(Clip clip) {
+            this.clip = clip;
+        }
 
-	/**
-	 * Plays the sound
-	 * 
-	 * @author Andrea Vacondio
-	 * 
-	 */
-	private class PlayThread extends Thread {
-		private Clip clip;
-
-		/**
-		 * @param clip
-		 */
-		public PlayThread(Clip clip) {
-			super();
-			this.clip = clip;
-		}
-
-		public void run() {
-			try {
-				clip.setFramePosition(0);
-				clip.stop();
-				clip.start();
-			} catch (Exception e) {
-				log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
-						"Error playing sound"), e);
-			}
-		}
-	}
+        public void run() {
+            try {
+                clip.setFramePosition(0);
+                clip.stop();
+                clip.start();
+            } catch (Exception e) {
+                log.error(GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),
+                        "Error playing sound"), e);
+            }
+        }
+    }
 }

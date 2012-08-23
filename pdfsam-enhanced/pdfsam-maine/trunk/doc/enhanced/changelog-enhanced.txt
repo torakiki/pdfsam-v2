@@ -1,9 +1,13 @@
-2.3.0e () (pdfsam-console )
+2.2.2e () (pdfsam-console 2.4.1e)
 ===================================
 -Added recent environments menu
 -Silent install/uninstall (feature request #2977478)
+-Console: regexp matching on the bookmarks name when splitting by bookmark level
+-Added argument -skipGui that can be passed to skip the GUI restore
+-Prevent GUI location restore if the stored location is affected by JVM Bug #6189461
+-Fixed sounds not playing with Java 7
 
-2.2.1e (21-Nov-2010) (pdfsam-console 2.3.1e)
+2.2.1e (21-Nov-2010) (pdfsam-console 2.4.0e)
 ===================================
 -Console: fixed bug #3010833 wrong handling of bookmarks
 -Fixed bug #2995149 missing resource directory in source package
