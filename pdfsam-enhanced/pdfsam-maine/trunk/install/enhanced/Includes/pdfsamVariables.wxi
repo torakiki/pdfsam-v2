@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<!-- Values required to change for a new release: -->
+	<?define ProductMajorVersion="2" ?>
+	<?define ProductMinorVersion="2" ?>
+	<?define ProductMaintenanceVersion="1" ?>
+	<?define ProductCode="{5038AC82-F11E-11E1-AE77-E50D6188709B}" ?>
+
+	<!-- Static configuration options. -->
+	<?define ProductVersion="$(var.ProductMajorVersion).$(var.ProductMinorVersion).$(var.ProductMaintenanceVersion)" ?>
+	<?define ProductLanguage="!(loc.ProductLanguage)" ?>
+	<?define ProductName="PDF Split And Merge Enhanced" ?>
+	<?define ProductNameWithVersion="$(var.ProductName) $(var.ProductVersion)" ?>
+	<?define ProductCodeName="pdfsam" ?>
+	<?define ProductManufacturer="Andrea Vacondio" ?>
+	<?define ProductUpgradeCode="{57DA2010-F11E-11E1-99E3-E60D6188709B}" ?>
+	<?define ProductIcon="Resources\pdfsam_enhanced.ico" ?>
+
+	<?define RTMProductVersion="1.0.0" ?>
+</Include>

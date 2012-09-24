@@ -1,0 +1,1 @@
+msiexec /i pdfsam-x64-v2_2_1e.msi /l* install.log
