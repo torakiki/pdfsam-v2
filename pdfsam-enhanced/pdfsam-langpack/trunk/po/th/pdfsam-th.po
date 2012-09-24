@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-01-27 15:33+0000\n"
 "Last-Translator: SiraNokyoongtong <gumaraa@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Password not provided."
+msgstr ""
+
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
 
 msgid "Merge options"
 msgstr "ตัวเลือกของการรวม"
@@ -52,8 +74,7 @@ msgstr "เลือกหรือป้อนที่เก็บไฟล์
 
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
-msgstr ""
-"เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
+msgstr "เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
 
 msgid "Check the box if you want compressed output files."
 msgstr "เลือกข้อนี้หากคุณต้องการให้ทำการบีบอัดไฟล์ที่ทำเสร็จแล้ว"
@@ -118,6 +139,14 @@ msgstr "แยกไฟล์ตามขนาดไฟล์"
 msgid "Split by bookmarks level"
 msgstr "แยกตามระดับที่คั่นหน้าไว้"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "แตก"
 
@@ -165,8 +194,7 @@ msgstr "ทำการเลือกที่เก็บหรือทำก
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr ""
-"เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
+msgstr "เลือกข้อนี้หากคุณต้องการให้ไฟล์ที่ทำเสร็จแล้วเขียนทับไฟล์ที่มีอยู่แล้ว"
 
 msgid "Output options"
 msgstr "ตัวเลือกของผลลัพธ์"
@@ -182,11 +210,8 @@ msgid ""
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
-"ตัวอย่าง คำนำหน้า_[BASENAME]_[CURRENTPAGE] สร้างเป็น "
-"คำนำหน้า_ชื่อแฟ้ม_005.pdf"
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "ตัวอย่าง คำนำหน้า_[BASENAME]_[CURRENTPAGE] สร้างเป็น คำนำหน้า_ชื่อแฟ้ม_005.pdf"
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
@@ -291,9 +316,7 @@ msgstr "ปรับหน้าหรือเพิ่มที่คั่น
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
-msgstr ""
-"เลือกข้อนี้หากคุณต้องการให้ทำการบีบอัดไฟล์ที่ทำเสร็จแล้ว (pdf รุ่น 1.5 "
-"หรือใหม่กว่า)"
+msgstr "เลือกข้อนี้หากคุณต้องการให้ทำการบีบอัดไฟล์ที่ทำเสร็จแล้ว (pdf รุ่น 1.5 หรือใหม่กว่า)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
 msgstr "ถ้ามันประกอบด้วย \"[TIMESTAMP]\" มันจะทำการแทนที่ตัวแปร"
@@ -647,25 +670,7 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr ""
 
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr ""
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr ""
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -675,8 +680,7 @@ msgid "Environment saved."
 msgstr "บันทึกสภาพแวดล้อมการทำงานแล้ว"
 
 msgid "Error saving environment, output file is null."
-msgstr ""
-"เกิดความผิดพลาดขณะบันทึกสภาพแวดล้อมการทำงาน, ไฟล์ที่บันทึกไม่มีข้อมูล"
+msgstr "เกิดความผิดพลาดขณะบันทึกสภาพแวดล้อมการทำงาน, ไฟล์ที่บันทึกไม่มีข้อมูล"
 
 msgid "Error saving environment."
 msgstr "เกิดความผิดพลาดขณะบันทึกสภาพแวดล้อมการทำงาน"
@@ -1071,6 +1075,9 @@ msgstr "บันทึกปูม"
 msgid "Exit"
 msgstr "ออก"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "เริ่มใน "
 
@@ -1190,8 +1197,7 @@ msgstr "มุมมองและความรู้สึก"
 
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
-msgstr ""
-"ตั้งค่ามุมมองและความรู้สึกและชุดรูปแบบที่ชอบ (ต้องเรียกใช้งานโปรแกรมใหม่)"
+msgstr "ตั้งค่ามุมมองและความรู้สึกและชุดรูปแบบที่ชอบ (ต้องเรียกใช้งานโปรแกรมใหม่)"
 
 msgid "Log level"
 msgstr "ระดับการบันทึก"
@@ -1225,15 +1231,12 @@ msgstr "ค่าปริยายของสภาพแวดล้อมก
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
-msgstr ""
-"เลือกโหลดสภาพแวดล้อมการทำงานที่บันทึกไว้ครั้งก่อน "
-"ซึ่งจะถูกเรียกใช้งานตอนเริ่มโปรแกรม"
+msgstr "เลือกโหลดสภาพแวดล้อมการทำงานที่บันทึกไว้ครั้งก่อน ซึ่งจะถูกเรียกใช้งานตอนเริ่มโปรแกรม"
 
 msgid "Default working directory"
 msgstr "ค่าปริยายของห้องที่ทำงาน"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "เลือกที่เก็บปริยายสำหรับเอาไว้บันทึกและโหลดไฟล์"
 
 msgid "Save"
@@ -1448,10 +1451,9 @@ msgstr ""
 #~ msgstr "ผิดพลาด: ไม่สามารถที่จะโหลดซ้ำไฟล์ที่เลือกได้"
 
 #~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "ดับเบิลคลิกเพื่อตั้งหน้าที่ต้องการจะรวม (ex: 2 or All or 5-23 or 2,5-7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
+#~ msgstr "ดับเบิลคลิกเพื่อตั้งหน้าที่ต้องการจะรวม (ex: 2 or All or 5-23 or 2,5-7,12-)"
 
 #~ msgid "Unable to initialize menu bar."
 #~ msgstr "ไม่สามารถเริ่มการทำงานของแถบเมนู"

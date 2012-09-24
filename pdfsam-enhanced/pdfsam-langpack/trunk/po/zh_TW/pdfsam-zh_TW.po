@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-03 18:04+0200\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-08-31 14:03+0000\n"
 "Last-Translator: Cheng-Wei Chien <Unknown>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "輸入檔不存在或是個資料夾"
+
+msgid "Error opening pdf document"
+msgstr "開啟PDF文件錯誤"
+
+msgid "Password not provided."
+msgstr "密碼未提供"
+
+msgid "Unable to open the document."
+msgstr "無法開啟該文件"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "記憶體不足無法產生縮圖"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "無法產生縮圖"
 
 msgid "Merge options"
 msgstr "合併選項"
@@ -116,6 +138,14 @@ msgstr "依指定的檔案大小分割"
 
 msgid "Split by bookmarks level"
 msgstr "依書籤層級分割"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "細分"
@@ -645,26 +675,8 @@ msgstr "無法為一個空的輸入文件建立縮圖"
 msgid "Unable to open the input document"
 msgstr "無法開啟匯入檔案"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "輸入檔不存在或是個資料夾"
-
-msgid "Error opening pdf document"
-msgstr "開啟PDF文件錯誤"
-
-msgid "Password not provided."
-msgstr "密碼未提供"
-
-msgid "Unable to open the document."
-msgstr "無法開啟該文件"
-
-msgid "Not enough memory to create thumbnails"
-msgstr "記憶體不足無法產生縮圖"
-
 msgid "Thumbnails generated in "
 msgstr "縮圖已產生於 "
-
-msgid "Unable to generate thumbnail"
-msgstr "無法產生縮圖"
 
 msgid " node environment loaded."
 msgstr " 節點環境變數已載入"
@@ -1068,6 +1080,9 @@ msgstr "儲存紀錄"
 msgid "Exit"
 msgstr "結束"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "已啟動於 "
 
@@ -1423,8 +1438,8 @@ msgstr "無法儲存使用者介面狀態"
 #~ msgstr "無法載入 "
 
 #~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
 #~ msgstr "雙擊以設定您想合併的頁面（例如：2 或 All 或 5-23 或 2,5-7,12-）"
 
 #~ msgid "Error: Unable to reload the selected file/s."

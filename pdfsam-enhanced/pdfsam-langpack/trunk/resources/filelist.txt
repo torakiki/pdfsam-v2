@@ -1,3 +1,9 @@
+/media/LACIE/pdfsam/workspace-enhanced/jpodrenderercreator/src/java/org/pdfsam/guiclient/business/thumbnails/creators/JPodThumbnailCreator.java
+/media/LACIE/pdfsam/workspace-enhanced/jpodrenderercreator/src/java/org/pdfsam/guiclient/business/thumbnails/callables/JPodCreatorCloser.java
+/media/LACIE/pdfsam/workspace-enhanced/jpodrenderercreator/src/java/org/pdfsam/guiclient/business/thumbnails/callables/JPodThmbnailCallable.java
+/media/LACIE/pdfsam/workspace-enhanced/icepdfcreator/src/java/org/pdfsam/guiclient/business/thumbnails/creators/IcePdfThumbnailsCreator.java
+/media/LACIE/pdfsam/workspace-enhanced/icepdfcreator/src/java/org/pdfsam/guiclient/business/thumbnails/callables/IcdPdfCreatorCloser.java
+/media/LACIE/pdfsam/workspace-enhanced/icepdfcreator/src/java/org/pdfsam/guiclient/business/thumbnails/callables/IcePdfThumbnailCallable.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/GUI/MergeMainGUI.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/listeners/RunButtonActionListener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-merge/src/java/org/pdfsam/plugin/merge/actions/SaveListAsXmlAction.java
@@ -43,10 +49,9 @@
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/actions/LoadEnvironmentAction.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/ClosableTabbedPanelAdder.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/AbstractThumbnailCreator.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/JPodThumbnailCreator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/creators/ThumbnailsCreator.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/thumbnails/executors/ThumbnailsExecutor.java
-/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/Environment.java
+/media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/environment/Environment.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/PagePreviewOpener.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/business/PagesWorker.java
 /media/LACIE/pdfsam/workspace-enhanced/pdfsam-maine/src/java/org/pdfsam/guiclient/commons/business/SoundPlayer.java

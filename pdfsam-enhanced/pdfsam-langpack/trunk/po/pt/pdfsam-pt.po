@@ -7,17 +7,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-03 18:04+0200\n"
-"PO-Revision-Date: 2010-09-13 12:29+0000\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2011-04-06 11:36+0000\n"
 "Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
 "X-Poedit-Country: Portugal\n"
 "X-Poedit-Language: Portuguese\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "O ficheiro fonte não existe ou é um directório"
+
+msgid "Error opening pdf document"
+msgstr "Erro ao abrir o documento pdf"
+
+msgid "Password not provided."
+msgstr "Palavra-passe não fornecida."
+
+msgid "Unable to open the document."
+msgstr "Não foi possível abrir o documento."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Não tem memória suficiente para criar as miniaturas"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Não foi possível gerar a miniatura"
 
 msgid "Merge options"
 msgstr "Opções de união"
@@ -26,10 +48,10 @@ msgid "PDF documents contain forms"
 msgstr "Documentos PDF contêm formulários"
 
 msgid "Merge type"
-msgstr "Tipo de união"
+msgstr "Opções de concatenação"
 
 msgid "Unchecked"
-msgstr "Desmarcado"
+msgstr "desseleccionado"
 
 msgid "Use this merge type for standard pdf documents"
 msgstr "Usar este tipo de união para documentos padronizados"
@@ -38,7 +60,8 @@ msgid "Checked"
 msgstr "Marcado"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "Usar este tipo de união para documentos que contenham formulários"
+msgstr ""
+"Use este tipo de concatenação para documentos que contenham formulários"
 
 msgid "Note"
 msgstr "Nota"
@@ -67,13 +90,13 @@ msgid "Set the pdf version of the ouput document."
 msgstr "Defina a versão pdf do documento a criar."
 
 msgid "Execute pdf merge"
-msgstr "Executar união de pdf"
+msgstr "Executar concatenação pdf"
 
 msgid "Merge/Extract"
-msgstr "Unir/Extrair"
+msgstr "Concatenar/Extrair"
 
 msgid "Merge section loaded."
-msgstr "Secção de união carregada."
+msgstr "Unir secção carregada."
 
 msgid "Error: "
 msgstr "Erro: "
@@ -119,6 +142,14 @@ msgstr "Dividir a este tamanho"
 
 msgid "Split by bookmarks level"
 msgstr "Separar por nível de marcadores"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Ruptura"
@@ -663,26 +694,8 @@ msgstr "Não é possível criar miniaturas a partir de um documento inválido"
 msgid "Unable to open the input document"
 msgstr "Não foi possível abrir o documento fonte"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "O ficheiro fonte não existe ou é um directório"
-
-msgid "Error opening pdf document"
-msgstr "Erro ao abrir o documento pdf"
-
-msgid "Password not provided."
-msgstr "Palavra-passe não fornecida."
-
-msgid "Unable to open the document."
-msgstr "Não foi possível abrir o documento."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Não tem memória suficiente para criar as miniaturas"
-
 msgid "Thumbnails generated in "
 msgstr "Miniaturas geradas em "
-
-msgid "Unable to generate thumbnail"
-msgstr "Não foi possível gerar a miniatura"
 
 msgid " node environment loaded."
 msgstr " nodo de ambiente carregado."
@@ -793,7 +806,7 @@ msgid "Run"
 msgstr "Executar"
 
 msgid "Browse"
-msgstr "Procurar"
+msgstr "Navegar"
 
 msgid "Compress output file/files"
 msgstr "Comprimir ficheiro(s) de saída"
@@ -866,8 +879,8 @@ msgstr "Versão pdf do documento"
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Duplo clique para definir as páginas que pretende unir (ex: 2 ou 5-23 ou 2,5-"
-"7,12-)"
+"Duplo clique para definir as páginas que pretende unir (ex: 2 ou 5-23 ou "
+"2,5-7,12-)"
 
 msgid "Unable to remove JList text "
 msgstr "Incapaz de remover o texto JList "
@@ -1090,6 +1103,9 @@ msgstr "Gravar registo"
 
 msgid "Exit"
 msgstr "Sair"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "iniciado em "
@@ -1447,3 +1463,33 @@ msgstr "Gravando a configuração da interface"
 
 msgid "Unable to save user interface status."
 msgstr "Incapaz de guardar a interface do utilizador."
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Error loading "
+#~ msgstr "Erro a carregar "
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "O ficheiro seleccionado não é um ficheiro pdf."
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Por favor aguarde enquanto o ficheiro é lido"
+
+#~ msgid "Check for updates:"
+#~ msgstr "Procurar actualizações:"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Erro: Incapaz de recarregar o(s) ficheiro(s) seleccionado(s)."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Numero de páginar para mudar documento"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Remover todos os ficheiros pdf da lista de junção"
+
+#~ msgid "Never"
+#~ msgstr "Nunca"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Não foi possível inicializar a barra de menu"

@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2009-03-10 13:46+0000\n"
 "Last-Translator: egg8383 <egg8383@yahoo.com.hk>\n"
 "Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
+"Language: zh_HK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Password not provided."
+msgstr ""
+
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
 
 msgid "Merge options"
 msgstr ""
@@ -117,6 +139,14 @@ msgstr "分離在這尺吋"
 msgid "Split by bookmarks level"
 msgstr ""
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr ""
 
@@ -180,8 +210,7 @@ msgid ""
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 
 msgid ""
@@ -639,25 +668,7 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr ""
 
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr ""
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr ""
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -1062,6 +1073,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr ""
 
@@ -1220,8 +1234,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr ""
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 
 msgid "Save"

@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-03 18:04+0200\n"
-"PO-Revision-Date: 2010-06-03 11:57+0000\n"
-"Last-Translator: mario2004 <Unknown>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-02-24 16:55+0000\n"
+"Last-Translator: angelescu <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Fișierul de intrare nu există sau este un director"
+
+msgid "Error opening pdf document"
+msgstr "Eroare deschidere document PDF"
+
+msgid "Password not provided."
+msgstr "Parola nu este prevăzută."
+
+msgid "Unable to open the document."
+msgstr "Documentul nu poate fi deschis"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Nu este suficientă memorie pentru creerea miniaturilor"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Incapabil să generez miniatura"
 
 msgid "Merge options"
 msgstr "Optiuni de imbinare"
@@ -44,6 +66,7 @@ msgstr "Notă"
 
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
+"Setând această opțiune documentele vor fi încărcate complect în memorie"
 
 msgid "Destination output file"
 msgstr "Destinatie fisier iesire"
@@ -62,7 +85,7 @@ msgid "PDF version 1.5 or above."
 msgstr "Versiune PDF 1.5 sau superioara."
 
 msgid "Set the pdf version of the ouput document."
-msgstr ""
+msgstr "Setați versiunea pdf a documentului rezultat."
 
 msgid "Execute pdf merge"
 msgstr "Lansati imbinarea pdf"
@@ -116,10 +139,18 @@ msgid "Split at this size"
 msgstr "Extrage la aceasta marime"
 
 msgid "Split by bookmarks level"
+msgstr "Împarte cu nivelul semnelor de carte"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
 msgstr ""
 
 msgid "Burst"
-msgstr ""
+msgstr "Burst"
 
 msgid "Explode the pdf document into single pages"
 msgstr "Expandeaza documentul pdf intr-o singura pagina"
@@ -137,10 +168,12 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "Imparte documentul dupa numarul paginii (num1-num2-num3..)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "Împarte documentul în fișiere de o dimensiune dată (aproximativă)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
+"Împarte documentul la paginile menționate în semnele de carte de o anumită "
+"valoare"
 
 msgid "Destination folder"
 msgstr "Director destinație"
@@ -172,7 +205,7 @@ msgid ""
 msgstr "Bifati daca doriti suprascrierea fisierelor de iesire existente."
 
 msgid "Output options"
-msgstr ""
+msgstr "Opțiuni de ieșire"
 
 msgid "Output file names prefix:"
 msgstr "Prefix nume fisier iesire:"
@@ -184,14 +217,18 @@ msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"Dacă conține \"[PAGINĂCURENTĂ]\", \"[MARCAJTEMPORAL]\", \"[NUMEFIȘIER]\" sau "
+"\"[NUME_SEMNDECARTE]\" se efectuează o înlocuire variabilă."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
+msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generează prefix_FileName_005.pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"Dacă nu conține \"[PAGINĂCURENTĂ]\", \"[MARCAJTEMPORAL]\" sau "
+"\"[NUMĂRFIȘIER]\" va genera vechiul nume al fișierului de ieșire."
 
 msgid "Available variables"
 msgstr "Variabile disponibile"
@@ -203,13 +240,13 @@ msgid "Split"
 msgstr "Împarte"
 
 msgid "Split section loaded."
-msgstr ""
+msgstr "Împarte secțiunea încărcată."
 
 msgid "Invalid split size"
-msgstr ""
+msgstr "Mărime împărțită nevalabilă"
 
 msgid "Invalid unit: "
-msgstr ""
+msgstr "Modul nevalabil: "
 
 msgid "Fill from document"
 msgstr "Completare din document"
@@ -221,19 +258,19 @@ msgid "Warning"
 msgstr "Atenție"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "Se obține profunzimea maximă a semnelor de carte"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Incapabil să obțin profunzimea maximă a semnelor de carte."
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "Prima pagină a fișierului pdf"
 
 msgid "Addendum pdf file"
-msgstr ""
+msgstr "Anexa fișierului pdf"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "Prima pagină și anexa"
 
 msgid "Cover And Footer section loaded."
 msgstr "Sectiunea coperta si subsol a fost incarcata"
@@ -275,16 +312,16 @@ msgid "Modify"
 msgstr "Modifică"
 
 msgid "Add or modify text annotations"
-msgstr ""
+msgstr "Adaugă sau modifică textul adnotărilor"
 
 msgid "Fill form fields"
-msgstr ""
+msgstr "Complectați câmpurile formularului"
 
 msgid "Extract for use by accessibility dev."
-msgstr ""
+msgstr "Extrage pentru folosință cu dispozitivul accesibil."
 
 msgid "Manipulate pages and add bookmarks"
-msgstr ""
+msgstr "Manipulează paginile și adaugă semne de carte"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
@@ -294,17 +331,21 @@ msgstr ""
 "mare)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr ""
+msgstr "Dacă conține \"[MARCAJTEMPORAL]\" se efectuează înlocuirea variabilă."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
+"Ex. [NUMEDEBAZĂ]_prefix_[MARCAJTEMPORAL] va genera "
+"Numefișier_prefix_20070517_113423471.pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr ""
+"Dacă nu conține \"[MARCAJTEMPORAL]\" va genera fișierul de ieșire cu vechiul "
+"nume."
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "Variabile disponibile: [TIMESTAMP], [BASENAME]."
@@ -316,7 +357,7 @@ msgid "Encrypt"
 msgstr "Criptează"
 
 msgid "Encrypt section loaded."
-msgstr ""
+msgstr "S-a incărcat secțiunea criptată."
 
 msgid "Decrypt selected files"
 msgstr "Decripteza fisierele selectata"
@@ -325,10 +366,10 @@ msgid "Decrypt"
 msgstr "Decriptează"
 
 msgid "Decrypt section loaded."
-msgstr ""
+msgstr "S-a incărcat secțiunea decriptată."
 
 msgid "Document metadata"
-msgstr ""
+msgstr "Metadata documentului"
 
 msgid "Title"
 msgstr "Titlu"
@@ -358,52 +399,58 @@ msgid "Choose a file"
 msgstr "Alegeți un fișier"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Setează metadata fișierului selectat"
 
 msgid "Document Info"
 msgstr "Informatii Document"
 
 msgid "Rotate section loaded."
-msgstr ""
+msgstr "Rotește secțiunea încărcată."
 
 msgid "Mix options"
-msgstr ""
+msgstr "Opțiuni de mixare"
 
 msgid "Reverse first document"
-msgstr ""
+msgstr "Inversează primul document"
 
 msgid "Reverse second document"
-msgstr ""
+msgstr "Inversează al doilea document"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "Numărul de pagini de trecut de la primul document la altul"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Numărul de pagini de trecut de la al doilea document la altul"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
+"Bifați casuțele dacă doriți să schimbați primul sau al doilea document (sau "
+"ambele)."
 
 msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Setați numărul de pagini de trecut de la primul document la un altul "
+"(inițial este 1)."
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Setați numărul de pagini de trecut de la al doilea document la un altul "
+"(inițial este 1)."
 
 msgid "Execute pdf alternate mix"
-msgstr ""
+msgstr "Execută mixajul alternetiv pdf"
 
 msgid "Alternate Mix"
-msgstr ""
+msgstr "Mixaj alternativ"
 
 msgid "AlternateMix section loaded."
-msgstr ""
+msgstr "S-a încărcat secțiunea de mixaj alternetiv"
 
 msgid "Found a password for first file."
 msgstr "S-a gasit parola pentru primul fisier."
@@ -418,19 +465,19 @@ msgid "Unpack"
 msgstr "Dezarhiveaza"
 
 msgid "Unpack section loaded."
-msgstr ""
+msgstr "S-a încărcat secțiunea despachetată."
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "Setează opțiunile de vizualizare"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "Ascunde bara de meniu"
 
 msgid "Hide the toolbar"
 msgstr "Ascunde bara de unelte"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "Ascunde elementele interfaței utilizatorului"
 
 msgid "Rezise the window to fit the page size"
 msgstr "Redimensioneaza fereastra pentru incadrare in pagina"
@@ -445,25 +492,25 @@ msgid "Pdf version required:"
 msgstr "Versiunea PDF necesara:"
 
 msgid "No page scaling in print dialog"
-msgstr ""
+msgstr "Nu este nici o pagină scalată în dialogul de tipărire"
 
 msgid "Viewer open mode:"
-msgstr ""
+msgstr "Modul de deschidere al vizualizatorului:"
 
 msgid "Viewer layout:"
-msgstr ""
+msgstr "Aspect vizualizator:"
 
 msgid "Non fullscreen mode:"
-msgstr ""
+msgstr "Fără mod ecran întreg:"
 
 msgid "Direction:"
 msgstr "Direcție:"
 
 msgid "Set options"
-msgstr ""
+msgstr "Setează opțiunile"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "Setează opțiunile de vizualizare pentru fișierele selectate"
 
 msgid "Left to right"
 msgstr "De la stânga la dreapta"
@@ -481,48 +528,50 @@ msgid "Attachments"
 msgstr "Atașamente"
 
 msgid "Optional content group panel"
-msgstr ""
+msgstr "Panou conținut grup opțional"
 
 msgid "Document outline"
-msgstr ""
+msgstr "Contur document"
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Imagini miniatură"
 
 msgid "One page at a time"
-msgstr ""
+msgstr "O pagină odată"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "Pagini într-o coloană"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "Pagini în două coloane (impare la stânga)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "Pagini în două coloane (impare la dreapta)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "Două pagini odată (impare la stânga)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "Două pagini odată (impare la dreapta)"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "Opțiunile vizualizatorului"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "S-a încărcat secțiunea opțiunilor vizualizatorului"
 
 msgid "Move on top"
-msgstr ""
+msgstr "Mută la început"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Mută până jos"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
+"Alegeți un fișier căutat sau introduceți calea întreagă a destinației "
+"fișierului de ieșire."
 
 msgid "Execute pages reorder"
 msgstr "Reordonare pagini"
@@ -531,10 +580,10 @@ msgid "Visual document composer"
 msgstr ""
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "S-a încărcat secțiunea compozitorului vizual."
 
 msgid "Please select a pdf document or undelete some pages"
-msgstr ""
+msgstr "Selectați un document pdf sau anulați ștergerea unor fișiere"
 
 msgid "Rotation"
 msgstr "Rotatie"
@@ -558,43 +607,45 @@ msgid "Set the rotation degrees (clockwise)."
 msgstr "Alegeti unghiul de rotatie (sens orar)"
 
 msgid "Set the pages that will be rotated."
-msgstr ""
+msgstr "Setați paginile care vor fi rotate."
 
 msgid "Rotate selected files"
-msgstr ""
+msgstr "Rotește fișierele selectate"
 
 msgid "Rotate"
 msgstr "Rotește"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
+"Folosește același nume al fișierului de ieșire ca al fișierului de intrare "
+"sau alegeți un fișier."
 
 msgid "Visual reorder"
-msgstr ""
+msgstr "Rearanjare vizuală"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "S-a încărcat secțiunea rearanjării vizuale."
 
 msgid "Please select a pdf document or undelete some page"
-msgstr ""
+msgstr "Selectați un document pdf sau anulați ștergerea unei pagini"
 
 msgid "New version available."
-msgstr ""
+msgstr "Este disponibilă o nouă versiune."
 
 msgid "No new version available."
-msgstr ""
+msgstr "Nu este disponibilă nici o nouă versiune."
 
 msgid "Unknown action."
 msgstr "Acțiune necunoscută."
 
 msgid "Log saved."
-msgstr ""
+msgstr "S-a salvat jurnalul."
 
 msgid "Save as"
 msgstr "Salvează ca"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Salvează imaginea"
 
 msgid "Unable to save image"
 msgstr "Nu pot salva imaginea"
@@ -603,13 +654,13 @@ msgid "Close"
 msgstr "Închidere"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Închide panoul"
 
 msgid "Rotate anticlockwise"
-msgstr ""
+msgstr "Rotește spre stânga"
 
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "Rotește la dreapta"
 
 msgid "Zoom in"
 msgstr "Mărește"
@@ -618,158 +669,142 @@ msgid "Zoom out"
 msgstr "Micșorează"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Fără zoom"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Nu s-a aplicat zoom-ul"
 
 msgid "Save environment"
-msgstr ""
+msgstr "Salvează mediul"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
+"Salvez informațiile parolelor (vor fi citibile deschizând fișierul de "
+"ieșire)?"
 
 msgid "Confirm password saving"
-msgstr ""
+msgstr "Confirmă salvarea parolelor"
 
 msgid "Load environment"
-msgstr ""
+msgstr "Încarc mediul"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "Incapabil să creez o imagine pentru nici un document de intrare"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr ""
+msgstr "Incapabil să creez o miniatură pentru nici un document de intrare"
 
 msgid "Unable to open the input document"
-msgstr ""
-
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr "Eroare deschidere document PDF"
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr "Documentul nu poate fi deschis"
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
+msgstr "Incapabil să deschid documentul de intrare"
 
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "Miniaturile au fost generate în "
 
 msgid " node environment loaded."
-msgstr ""
+msgstr " s-a încărcat nodul mediului."
 
 msgid "Environment saved."
-msgstr ""
+msgstr "S-a salvat mediul."
 
 msgid "Error saving environment, output file is null."
-msgstr ""
+msgstr "Eroare la salvarea mediului, fișierul de ieșire este nul."
 
 msgid "Error saving environment."
-msgstr ""
+msgstr "Eroare la salvarea mediului."
 
 msgid "Environment loaded."
-msgstr ""
+msgstr "S-a încărcat mediul."
 
 msgid "Error loading environment."
-msgstr ""
+msgstr "Eroare la încărcarea mediului."
 
 msgid "Error loading environment from input file. "
-msgstr ""
+msgstr "Eroare la încărcarea mediului din fișierul de intrare. "
 
 msgid "Image viewer"
-msgstr ""
+msgstr "Vizualizator de imagini"
 
 msgid "Unable to initialize the thumbnails creation library."
-msgstr ""
+msgstr "Incapabil să inițializez librăria creatorului de miniaturi."
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "Incapabil să deschid previzualizarea imaginii"
 
 msgid "Unknown Action"
-msgstr ""
+msgstr "Acțiune necunoscută"
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "Eroare la redarea sunetului"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "Se generează miniaturile folosind următoarele librării:"
 
 msgid "Selection table is full, please remove some pdf document."
-msgstr ""
+msgstr "Tabelul de selecție este plin, eliminați câteva documente pdf."
 
 msgid "Table full"
-msgstr ""
+msgstr "Tabel plin"
 
 msgid "Please wait while all files are processed.."
-msgstr ""
+msgstr "Așteptați până ce vor fi procesate toate fișierele.."
 
 msgid "Command validation returned an empty value."
-msgstr ""
+msgstr "Validarea comenzii a întors o valoare goală."
 
 msgid "Command executed."
-msgstr ""
+msgstr "Comandă executată."
 
 msgid "Add"
 msgstr "Adaugă"
 
 msgid "Add a pdf to the list"
-msgstr ""
+msgstr "Adaugați un pdf la listă"
 
 msgid "Clear"
 msgstr "Curăţă"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Eliminați fiecare fișier pdf din lista selecțiilor"
 
 msgid "Document properties"
-msgstr ""
+msgstr "Propietățile documentului"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Arată propietățile documentului"
 
 msgid "Move down"
 msgstr "Mută în jos"
 
 msgid "Move down selected pdf file"
-msgstr ""
+msgstr "Mută în jos fișierul pdf selectat"
 
 msgid "Move Up"
 msgstr "Mută în sus"
 
 msgid "Move up selected pdf file"
-msgstr ""
+msgstr "Mută în sus fișierul pdf selectat"
 
 msgid "Reload"
 msgstr "Reîncărcare"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Reîncarcă documentul selectat"
 
 msgid "Remove"
 msgstr "Elimină"
 
 msgid "Remove a pdf from the list"
-msgstr ""
+msgstr "Elimină un pdf din listă"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Setează destinația"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Setează calea destinației"
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "Incapabil să curăț încărcătorul pdf"
 
 msgid "Run"
 msgstr "Execută"
@@ -778,19 +813,19 @@ msgid "Browse"
 msgstr "Navigare"
 
 msgid "Compress output file/files"
-msgstr ""
+msgstr "Comprimă ieșirea fișierului/fișierelor"
 
 msgid "Overwrite if already exists"
-msgstr ""
+msgstr "Suprascrie dacă există deja"
 
 msgid "Don't preserve file order (fast load)"
-msgstr ""
+msgstr "Nu păstra ordinea fișierului (încărcare rapidă)"
 
 msgid "Output document pdf version:"
-msgstr ""
+msgstr "Versiunea de ieșire a documentului pdf:"
 
 msgid "Same as input document"
-msgstr ""
+msgstr "Același ca documentul de intrare"
 
 msgid "Copy"
 msgstr "Copiază"
@@ -802,18 +837,21 @@ msgid "Paste"
 msgstr "Lipește"
 
 msgid "Add prefix"
-msgstr ""
+msgstr "Adaugă prefix"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
 msgstr ""
+"Tabelul de referință încrucișată conține câteva erori și va fi reconstruit"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
 msgstr ""
+"Documentul nu a fost deschis cu parola propietarului.Trebuie să faceți rost "
+"de parola propietarului în scopul manipulării documentului"
 
 msgid "An error occured while loading the document"
-msgstr ""
+msgstr "A intervenit o eroare în timpul încărcării documentului"
 
 msgid "File name"
 msgstr "Nume fișier"
@@ -834,35 +872,37 @@ msgid "Page Selection"
 msgstr "Selectare pagină"
 
 msgid "Total pages of the document"
-msgstr ""
+msgstr "Totalul paginilor documentului"
 
 msgid "Password to open the document (if needed)"
-msgstr ""
+msgstr "Parola pentru deschiderea documentului (dacă trebuie)"
 
 msgid "Pdf version of the document"
-msgstr ""
+msgstr "Versiunea pdf a documentului"
 
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
+"Dublu clik pentru setarea paginilor pe care doriți să le uniți (ex: 2 sau "
+"5-23 sau 2,5-7,12-)"
 
 msgid "Unable to remove JList text "
-msgstr ""
+msgstr "Incapabil să elimin textul JList "
 
 msgid "File selected: "
-msgstr ""
+msgstr "Fișier selectat: "
 
 msgid "File reloaded: "
-msgstr ""
+msgstr "Fișier reâncărcat: "
 
 msgid "Open"
 msgstr "Deschide"
 
 msgid "Load a pdf document"
-msgstr ""
+msgstr "Încarcă un document pdf"
 
 msgid "Error setting zoom level."
-msgstr ""
+msgstr "Eroare la setarea nivelului de zoom"
 
 msgid "Preview"
 msgstr "Previzualizare"
@@ -874,40 +914,40 @@ msgid "Delete"
 msgstr "Șterge"
 
 msgid "Undelete"
-msgstr ""
+msgstr "Anluează ștergerea"
 
 msgid "Reverse"
 msgstr "Invers"
 
 msgid "Move up selected pages"
-msgstr ""
+msgstr "Mută în sus paginile selectate"
 
 msgid "(Alt+ArrowUp)"
-msgstr ""
+msgstr "(Alt+Săgeată sus)"
 
 msgid "Move down selected pages"
-msgstr ""
+msgstr "Mută în jos paginile selectate"
 
 msgid "(Alt+ArrowDown)"
-msgstr ""
+msgstr "(Alt+Săgeată jos)"
 
 msgid "Delete selected pages"
-msgstr ""
+msgstr "Șterge paginile selectate"
 
 msgid "(Canc)"
-msgstr ""
+msgstr "(Canc)"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "Anulează ștergerea paginilor selectate"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Ctrl+Z)"
 
 msgid "Rotate right"
 msgstr "Rotește la dreapta"
 
 msgid "Rotate clockwise selected pages"
-msgstr ""
+msgstr "Rotește la dreapta paginile selectate"
 
 msgid "(Alt+ArrowRight)"
 msgstr "Alt+SageataCursorDreapta"
@@ -916,7 +956,7 @@ msgid "Rotate left"
 msgstr "Rotire la stînga"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "Rotește la stânga paginile selectate"
 
 msgid "(Alt+ArrowLeft)"
 msgstr "Alt+SageataCursorStânga"
@@ -940,16 +980,16 @@ msgid "Pdf version: "
 msgstr "Versiune PDF "
 
 msgid "Title: "
-msgstr ""
+msgstr "Titlu: "
 
 msgid "Author: "
 msgstr "Autor: "
 
 msgid "Creator: "
-msgstr ""
+msgstr "Autor: "
 
 msgid "Producer: "
-msgstr ""
+msgstr "Producător: "
 
 msgid "Encrypted: "
 msgstr "Criptat: "
@@ -1018,58 +1058,61 @@ msgid "Unable to set logging level."
 msgstr "Nu se poate seta nivelul de acces."
 
 msgid "Error getting plugins directory."
-msgstr ""
+msgstr "Eroare la obținerea directorului modulelor."
 
 msgid "Cannot read plugins directory "
-msgstr ""
+msgstr "Nu pot citi directorul modulelor "
 
 msgid "Plugins directory is null."
-msgstr ""
+msgstr "Directorul modulelor este nul."
 
 msgid "Found many plugins in "
-msgstr ""
+msgstr "S-a găsit multe module în "
 
 msgid "selected as the most recent plugin"
-msgstr ""
+msgstr "selectat ca cel mai recent modul"
 
 msgid "No plugin found in "
-msgstr ""
+msgstr "Nu s-au găsit module în "
 
 msgid "Exception loading plugins."
-msgstr ""
+msgstr "Excepție la încărcarea modulelor."
 
 msgid "Cannot read plugin directory "
-msgstr ""
+msgstr "Nu se poate citi directorul modulelor "
 
 msgid " plugin loaded."
 msgstr " a fost incarcat"
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr ""
+msgstr "Incapabil să încarc un modul care nu este în subclasa JPanel."
 
 msgid "Error loading class "
 msgstr "Eroare incarcare clasa "
 
 msgid "Unable to get latest available version"
-msgstr ""
+msgstr "Incapabil să obțin ultima versiune disponibilă"
 
 msgid "Checking for a new version available."
-msgstr ""
+msgstr "Se verifică după o nouă versiune disponibilă."
 
 msgid "Error checking for a new version available."
-msgstr ""
+msgstr "Eroare la verificarea după o nouă versiune disponibilă."
 
 msgid "Select all"
 msgstr "Selectaţi tot"
 
 msgid "Save log"
-msgstr ""
+msgstr "Salvează jurnalul"
 
 msgid "Exit"
 msgstr "Ieșire"
 
-msgid "started in "
+msgid "Recent environments"
 msgstr ""
+
+msgid "started in "
+msgstr "pornit în "
 
 msgid "Loading plugins.."
 msgstr "Incarca plugin-uri.."
@@ -1090,28 +1133,28 @@ msgid "Loading default environment."
 msgstr "Incarca setari implicite."
 
 msgid "Error starting pdfsam."
-msgstr ""
+msgstr "Eroare la pornirea pdfsam."
 
 msgid "Clear log"
 msgstr "Șterge jurnalul"
 
 msgid "Unable to initialize button bar."
-msgstr ""
+msgstr "Incapabil să inițializez bara butonului."
 
 msgid "Version: "
 msgstr "Versiune: "
 
 msgid "Console version: "
-msgstr ""
+msgstr "Versiune consolă: "
 
 msgid "Developed by: "
-msgstr ""
+msgstr "Dezvoltată de: "
 
 msgid "Build date: "
-msgstr ""
+msgstr "Data construirii: "
 
 msgid "Java home: "
-msgstr ""
+msgstr "Casa java: "
 
 msgid "Java version: "
 msgstr "Versiune Java: "
@@ -1123,7 +1166,7 @@ msgid "Configuration file: "
 msgstr "Fisier configurare: "
 
 msgid "Website: "
-msgstr ""
+msgstr "Website: "
 
 msgid "Name"
 msgstr "Nume"
@@ -1132,19 +1175,19 @@ msgid "About"
 msgstr "Despre"
 
 msgid "Unimplemented method for JInfoPanel"
-msgstr ""
+msgstr "Metodă neimplementată pentru JInfoPanel"
 
 msgid "Contributes: "
 msgstr "Contributii: "
 
 msgid "Log level:"
-msgstr ""
+msgstr "Nivel de jurnalizare:"
 
 msgid "Settings"
 msgstr "Setări"
 
 msgid "Look and feel:"
-msgstr ""
+msgstr "Aspect:"
 
 msgid "Theme:"
 msgstr "Temă:"
@@ -1153,7 +1196,7 @@ msgid "Language:"
 msgstr "Limbă:"
 
 msgid "Thumbnails creator"
-msgstr ""
+msgstr "Creator de miniaturi"
 
 msgid "Load default environment at startup:"
 msgstr "Incarca setari implicite la pornire:"
@@ -1171,7 +1214,7 @@ msgid "Play alert sounds"
 msgstr "Sunet alerta"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
-msgstr ""
+msgstr "Cere confirmarea când este selectat butonul de suprascriere"
 
 msgid "Settings "
 msgstr "Setari: "
@@ -1180,54 +1223,61 @@ msgid "Language"
 msgstr "Limbă"
 
 msgid "Set your preferred language (restart needed)"
-msgstr ""
+msgstr "Setați limba preferată (trebuie repornit)"
 
 msgid "Look and feel"
-msgstr ""
+msgstr "Aspect"
 
 msgid ""
 "Set your preferred look and feel and your preferred theme (restart needed)"
-msgstr ""
+msgstr "Setați aspectul preferat și tema preferată (necesită restart)"
 
 msgid "Log level"
-msgstr ""
+msgstr "Nivel jurnal"
 
 msgid "Set a log detail level (restart needed)"
-msgstr ""
+msgstr "Setează nivelul detaliului jurnalului (necesită repornire)"
 
 msgid "Set the thumbnails creation library"
-msgstr ""
+msgstr "Setează librăria creatorului de miniaturi"
 
 msgid "Check for updates"
 msgstr "Verifică dacă există actualizări"
 
 msgid "Set when new version availability should be checked (restart needed)"
 msgstr ""
+"Setează când trebuie verificat disponibilitatea unei noi versiuni (necesită "
+"repornire)"
 
 msgid "Turn on or off alert sounds"
-msgstr ""
+msgstr "Deschide sau închide sunetele de alarmă"
 
 msgid "Ask overwrite confirmation"
-msgstr ""
+msgstr "Cere confirmarea suprascrierii"
 
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
 msgstr ""
+"Arată o căsuță de dialog cerând utilizatorului să confirme când "
+"\"suprascrierea\" este selectată"
 
 msgid "Default env."
-msgstr ""
+msgstr "Mediu inițial."
 
 msgid ""
 "Select a previously saved env. file that will be automatically loaded at "
 "startup"
 msgstr ""
+"Selectați un fișier mediu salvat anterior care va fi încărcat automat la "
+"pornire"
 
 msgid "Default working directory"
-msgstr ""
+msgstr "Directorul inițial de lucru"
 
 msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
+"Selectați un director inițial unde documentele vor fi salvate și încărcate"
 
 msgid "Save"
 msgstr "Salvează"
@@ -1242,21 +1292,23 @@ msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
 msgstr ""
+"A intervenit o eroare la salvarea configurării,studiați panoul jurnalului ca "
+"să obțineți mai multe informații."
 
 msgid "Unimplemented method for JSettingsPanel"
-msgstr ""
+msgstr "Metodă neimplementată pentru JSetingsPanel"
 
 msgid "New version available: "
 msgstr "O noua versiune disponibila: "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "Incapabil să redau un sunet."
 
 msgid "Plugins"
 msgstr "Extensii"
 
 msgid "Error getting pdf version description."
-msgstr ""
+msgstr "Eroare la obținerea descrierii versiunii pdf."
 
 msgid "Version 1.2 (Acrobat 3)"
 msgstr "Versiune 1.2 (Acrobat 3)"
@@ -1277,37 +1329,37 @@ msgid "Version 1.7 (Acrobat 8)"
 msgstr "Versiune 1.7 (Acrobat 8)"
 
 msgid "Output file location is not correct"
-msgstr ""
+msgstr "Locul de ieșire al fișierului nu este corect"
 
 msgid "Would you like to change it to"
-msgstr ""
+msgstr "V-ar place să-l schimbați la"
 
 msgid "Output location error"
-msgstr ""
+msgstr "Eroare la localizarea ieșirii"
 
 msgid "Please select at least one pdf document."
 msgstr "Selectati cel putin un document PDF."
 
 msgid "Please select two pdf documents."
-msgstr ""
+msgstr "Selectați două documente pdf."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Așteptați până când toate fișierele sunt procesate."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Se mai adaugă fișiere"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Selectați un fișier destinație."
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Selectați un director destinație."
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Nu s-a selectat nici o destinație"
 
 msgid "Selected output file already exists "
-msgstr ""
+msgstr "Fișierul de ieșire selectat există "
 
 msgid "Would you like to overwrite it?"
 msgstr "Doriți să îl suprascrieți?"
@@ -1316,6 +1368,8 @@ msgid ""
 "Please note that output files will overwrite existing files of the same name "
 "without warning."
 msgstr ""
+"Luați notă că fișierele de ieșire vor suprascrie fișierele existente de "
+"același nume fără avertizare."
 
 msgid "Do you confirm to overwrite?"
 msgstr "Confirmati suprascrierea?"
@@ -1324,25 +1378,28 @@ msgid "Confirm overwrite"
 msgstr "Confirm suprascrierea"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "Paginile selectate prevăzute nu sunt valabile"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Limitele trebuie să fie o listă separată de virgulă a \"pagină_număr\" sau "
+"\"pagină_număr-pagină_număr\""
 
 msgid "Limits are not valid"
 msgstr "Limitele nu sunt valide"
 
 msgid "Please provide the password to open the encrypted document"
-msgstr ""
+msgstr "Obțineți parola ca să deschideți documentul codat"
 
 msgid "Password request"
-msgstr ""
+msgstr "Se solicită parola"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
 msgstr ""
+"Lista selecției este plină, doriți golirea ei și încărcarea noului document?"
 
 msgid "List full"
 msgstr "Listă plină"
@@ -1351,58 +1408,119 @@ msgid "The lowest available pdf version is "
 msgstr "Versiunea PDF minima este "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
+msgstr "Ați selectat o versiune pdf mică de ieșire, continuați oricum?"
 
 msgid "Pdf version conflict"
 msgstr "Conflict intre versiunile PDF"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
+msgstr "Eroare la obținerea informațiilor paginii salvate"
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "Incapabil să inițializez suportul trageți și plasați."
 
 msgid "Setting look and feel..."
-msgstr ""
+msgstr "Se setează aspectul..."
 
 msgid "Setting logging level..."
-msgstr ""
+msgstr "Se setează nivelul de jurnalizare..."
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr ""
+"Incapabil să găsesc nivelul jurnalului, se setează la nivelul inițial "
+"(DEBUG)."
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "Se încarcă configurarea interfeței utilizatorului"
 
 msgid "Unable to find configuration file for the user interface"
 msgstr ""
+"Incapabil să găsesc fișierul de configurare al interfeței utilizatorului"
 
 msgid "Error reading the configuration file for the user interface"
 msgstr ""
+"Eroare la citirea fișierului de configurare al interfeței utilizatorului"
 
 msgid "Error initializing the user interface vertical divider location"
 msgstr ""
+"Eroare la inițializarea locului de amplasare al divizorului vertical al "
+"interfeței utilizatorului"
 
 msgid "Error initializing the user interface horizontal divider location"
 msgstr ""
+"Eroare la inițializarea amplasării divizorului orizontal al interfeței "
+"utilizatorului"
 
 msgid "Error initializing the user interface extended state"
-msgstr ""
+msgstr "Eroare la inițializarea stării extinse a interfeței utilizatorului"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "Eroare la inițializarea dimensiunii interfeței utilizatorului"
 
 msgid "Error initializing the user interface horizontal divider size"
 msgstr ""
+"Eroare la inițializarea dimensiunii divizorului orizontal al interfeței "
+"utilizatorului"
 
 msgid "Error initializing the user interface vertical divider size"
 msgstr ""
+"Eroare la inițializarea dimensiunii divizorului vertical al interfeței "
+"utilizatorului"
 
 msgid "Error initializing the user interface location"
-msgstr ""
+msgstr "Eroare la inițializarea amplasării interfeței utilizatorului"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "Se salvează configurația GUI"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "Incapabil să salvez starea interfeței utilizatorului."
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Setați numărul de pagini de schimbat de la un document la un altul "
+#~ "(inițial este 1)."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Numărul de pagini al documentului schimbat"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Elimină fiecare fișier pdf din lista de îmbinare"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Eroare: incapabil să reâncarc fișierul/ele selectate."
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Fișierul selectat nu este un document pdf."
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Așteptați până se citește"
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Incapabil să obțin informațiile mediului inițial."
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam pornește"
+
+#~ msgid "Never"
+#~ msgstr "Niciodată"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Incapabil să inițializez bara de meniu."
+
+#~ msgid "Check for updates:"
+#~ msgstr "Verificare pentru actualizări:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Eroare la încărcarea mediului inițial."
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "S-a găsit zero sau mai multe conflicte în directorul modul "
+
+#~ msgid "Error loading "
+#~ msgstr "Eroare la încărcare "
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

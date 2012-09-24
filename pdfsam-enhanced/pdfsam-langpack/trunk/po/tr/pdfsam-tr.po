@@ -7,16 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2009-03-10 13:45+0000\n"
 "Last-Translator: Sefa Denizoğlu <denizoglu@gmail.com>\n"
 "Language-Team: Turkish <yerellestirme@kde.org.tr>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Turkish\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Password not provided."
+msgstr ""
+
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
 
 msgid "Merge options"
 msgstr ""
@@ -165,6 +187,14 @@ msgid "Split at this size"
 msgstr "Bu boyutta parçalara ayır"
 
 msgid "Split by bookmarks level"
+msgstr ""
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
 msgstr ""
 
 msgid "Burst"
@@ -740,25 +770,7 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr ""
 
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr ""
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr ""
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -1265,6 +1277,9 @@ msgstr "Günlüğü kaydet"
 # F:\workspace_pdfsam_basic\pdfsam-main\it\pdfsam\GUI\MainGUI.java:237
 msgid "Exit"
 msgstr "Çıkış"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr ""

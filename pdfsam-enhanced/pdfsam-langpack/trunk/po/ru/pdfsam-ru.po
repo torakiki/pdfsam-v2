@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-03 18:04+0200\n"
-"PO-Revision-Date: 2010-09-27 13:05+0000\n"
-"Last-Translator: Dr Gregory House <housegregory299@gmail.com>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2011-01-17 11:50+0000\n"
+"Last-Translator: Alexander 'FONTER' Zinin <spore_09@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Входной файл не существует или это каталог"
+
+msgid "Error opening pdf document"
+msgstr "Ошибка при открытии документа PDF"
+
+msgid "Password not provided."
+msgstr "Пароль не установлен"
+
+msgid "Unable to open the document."
+msgstr "Не удается открыть документ."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Недостаточно памяти для создания эскизов."
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Невозможно сгенерировать эскизы"
 
 msgid "Merge options"
 msgstr "Опции объединения"
@@ -156,6 +178,14 @@ msgstr "Разбить на этот размер"
 
 msgid "Split by bookmarks level"
 msgstr "Разбить по уровлю закладок"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Разбивка"
@@ -709,26 +739,8 @@ msgstr "Невозможно создать эскизы для пустого �
 msgid "Unable to open the input document"
 msgstr "Невозможно открыть входящий документ"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Входной файл не существует или это каталог"
-
-msgid "Error opening pdf document"
-msgstr "Ошибка при открытии документа PDF"
-
-msgid "Password not provided."
-msgstr "Пароль не установлен"
-
-msgid "Unable to open the document."
-msgstr "Не удается открыть документ."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Недостаточно памяти для создания эскизов."
-
 msgid "Thumbnails generated in "
 msgstr "Эскизы созданы в "
-
-msgid "Unable to generate thumbnail"
-msgstr "Невозможно сгенерировать эскизы"
 
 msgid " node environment loaded."
 msgstr " узел среды загружен."
@@ -1016,7 +1028,7 @@ msgid "Delete selected pages"
 msgstr "Удалить выбранные страницы"
 
 msgid "(Canc)"
-msgstr ""
+msgstr "(Canc)"
 
 msgid "Undelete selected pages"
 msgstr "Восстановить выделенные страницы"
@@ -1174,7 +1186,7 @@ msgid " plugin loaded."
 msgstr " плагин загружен."
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr ""
+msgstr "Невозможно загрузить плагин не подкласса JPanel."
 
 msgid "Error loading class "
 msgstr "Ошибка при загрузке класса "
@@ -1199,6 +1211,9 @@ msgstr "Сохранить журнал"
 # F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:70
 msgid "Exit"
 msgstr "Выйти"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "Начат в "
@@ -1247,7 +1262,7 @@ msgid "Build date: "
 msgstr "Дата сборки: "
 
 msgid "Java home: "
-msgstr ""
+msgstr "Путь до Java: "
 
 msgid "Java version: "
 msgstr "Версия Java: "
@@ -1482,6 +1497,8 @@ msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Ограничения должны быть разделены запятыми в списке \"PAGE_NUMBER\" или "
+"\"PAGE_NUMBER-PAGE_NUMBER\""
 
 msgid "Limits are not valid"
 msgstr "Ограничения не действительны"
@@ -1582,5 +1599,32 @@ msgstr "Не удалось сохранить состояние пользов
 #~ msgid "Ok"
 #~ msgstr "Оk"
 
+#~ msgid "Error loading "
+#~ msgstr "Ошибка загрузки "
+
 #~ msgid "Selected file is not a pdf document."
 #~ msgstr "Выбранный файл не является pdf документом"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Ошибка получения стандартной рабочей среды."
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Не удается получить данные стандартной рабочей среды."
+
+#~ msgid "Never"
+#~ msgstr "Никогда"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "pdfsam запускается"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Не удалось инициализировать меню."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Количество страниц, для перехода в документе"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Ошибка: Невозможно перезагрузить выбранный файл/ы."
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Пожалуйста подождите, чтение"

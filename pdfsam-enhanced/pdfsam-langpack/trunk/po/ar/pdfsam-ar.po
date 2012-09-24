@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-03-07 21:36+0000\n"
-"Last-Translator: Assioui Mohammed <Unknown>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-02-20 19:45+0000\n"
+"Last-Translator: Ahmed Mohammed <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Password not provided."
+msgstr ""
+
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
 
 msgid "Merge options"
 msgstr "خيارات الدمج"
@@ -84,7 +106,7 @@ msgid "Export as xml"
 msgstr "تصدير كـ xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "تصدير لائحة الاختيار بصيغة xml"
 
 msgid "Unable to save xml file."
 msgstr "لا يمكن الحفظ كملف xml"
@@ -102,21 +124,29 @@ msgid "Burst (split into single pages)"
 msgstr "تفجير (تقسيم إلى صفحات مفردة)"
 
 msgid "Split every \"n\" pages"
-msgstr ""
+msgstr "تقسيم عند كل \"n\" صفحات"
 
 msgid "Split even pages"
-msgstr ""
+msgstr "تقسيم الصحات الزوجية"
 
 msgid "Split odd pages"
-msgstr ""
+msgstr "تقسيم الصفحات الفردية"
 
 msgid "Split after these pages"
-msgstr ""
+msgstr "تقسيم بعد هذه الصفحات"
 
 msgid "Split at this size"
-msgstr ""
+msgstr "تقسيم لهذا الحجم"
 
 msgid "Split by bookmarks level"
+msgstr "تقسيم حسب مُستوى علامات التأشير"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
 msgstr ""
 
 msgid "Burst"
@@ -126,72 +156,76 @@ msgid "Explode the pdf document into single pages"
 msgstr "تفجير الملف إلى صفحات مفردة"
 
 msgid "Split the document every \"n\" pages"
-msgstr ""
+msgstr "تقسيم المستند كل \"n\" صفحة/صفحات"
 
 msgid "Split the document every even page"
-msgstr ""
+msgstr "تقسيم المستند حسب الصفحات الزوجية"
 
 msgid "Split the document every odd page"
-msgstr ""
+msgstr "تقسيم المستند حسب الصفحات الفردية"
 
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr ""
+msgstr "تقسيم المستند بعد الصفحات (...num1-num2-num3)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
+msgstr "تقسيم المستند إلى ملفات بالحجم المذكور (تقريبا)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr ""
+msgstr "قسم المستند عند الصفحات التي تحوي علامات التأشير ذات المُستوى المذكور"
 
 msgid "Destination folder"
-msgstr ""
+msgstr "المجلد الوجهة"
 
 msgid "Same as source"
-msgstr ""
+msgstr "مطابق للمصدر"
 
 msgid "Choose a folder"
 msgstr "اختر مجلد"
 
 msgid "Destination output directory"
-msgstr ""
+msgstr ".مجلد المخرج الهدف"
 
 msgid "Use the same output folder as the input file or choose a folder."
-msgstr ""
+msgstr "استخدم الملف"
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
-msgstr ""
+msgstr "لاختيار مجلد استعرض المجلدات أو أدخل المسار الكامل لدليل وجهة الإخراج."
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr ""
+msgstr "علِم المربع إذا كنت تريد الكتابة فوق الملفات إذا كانت موجودة."
 
 msgid "Output options"
 msgstr "خيارات الإصدار"
 
 msgid "Output file names prefix:"
-msgstr ""
+msgstr "اختصار اسماء ملفات المخرج:"
 
 msgid "Output files prefix"
-msgstr ""
+msgstr "اختصار ملفات المخرج:"
 
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 msgstr ""
+"إذا لم يكن يحتوي على \"[CURRENTPAGE]\"، \"[TIMESTAMP]\" , \"[FILENUMBER]\" "
+"أو \"[BOOKMARK_NAME]\" فإنه يقوم بإستبدال عشوائي."
 
 msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
+msgstr "مثال:بادئة_[BASENAME]_[CURRENTPAGE] يُنشئ بادئة_اسم الملف_005.pdf"
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"إذا لم يكن يحتوي على \"[CURRENTPAGE]\"، \"[TIMESTAMP]\" أو \"[FILENUMBER]\" "
+"فإنه يُنشئ أسماء ملفات ذات نمط قديم."
 
 msgid "Available variables"
-msgstr ""
+msgstr "المتغيرات المُتوفرة."
 
 msgid "Split selected file"
 msgstr "تقسيم الملف المختار"
@@ -200,16 +234,16 @@ msgid "Split"
 msgstr "تقسيم"
 
 msgid "Split section loaded."
-msgstr ""
+msgstr "تم تحميل الجزء المقسم."
 
 msgid "Invalid split size"
-msgstr ""
+msgstr "حجم تقسيم غير صالح"
 
 msgid "Invalid unit: "
-msgstr ""
+msgstr "وحدة قياس غير صالحة: "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "املأ من مستند"
 
 msgid "Please select a pdf document."
 msgstr "اختر ملف PDF"
@@ -218,178 +252,184 @@ msgid "Warning"
 msgstr "تحذير"
 
 msgid "Getting bookmarks max depth"
-msgstr ""
+msgstr "الحصول على الحد الأقصى لعمق المؤشرات"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "غير قادر على استرجاع الحد الأقصى لعمق المؤشرات"
 
 msgid "Frontpage pdf file"
 msgstr ""
 
 msgid "Addendum pdf file"
-msgstr ""
+msgstr "إضافة ملف PDF مُلحق"
 
 msgid "Frontpage and Addendum"
 msgstr ""
 
 msgid "Cover And Footer section loaded."
-msgstr ""
+msgstr "تم تحميل قسم الغلاف و الهامش"
 
 msgid "Select at least one cover or one footer"
-msgstr ""
+msgstr "اختر على الأقل غلافا أو هامشا"
 
 msgid "Encrypt options"
-msgstr ""
+msgstr "خيارات التشفير"
 
 msgid "Owner password:"
-msgstr ""
+msgstr "كلمة سر المالك:"
 
 msgid "Owner password (Max 32 chars long)"
-msgstr ""
+msgstr "كلمة سر المالك (32 حرف كحد أقصى)"
 
 msgid "User password:"
-msgstr ""
+msgstr "كلمة سر المستخدم:"
 
 msgid "User password (Max 32 chars long)"
-msgstr ""
+msgstr "كلمة سر المستخدم (32 حرف كحد أقصى)"
 
 msgid "Encryption algorithm:"
-msgstr ""
+msgstr "خوارزم التشفير:"
 
 msgid "Allow all"
-msgstr ""
+msgstr "اسمح بالكل"
 
 msgid "Print"
 msgstr "اطبع"
 
 msgid "Low quality print"
-msgstr ""
+msgstr "طباعة متدنية الجودة"
 
 msgid "Copy or extract"
-msgstr ""
+msgstr "انسخ أو استخرج"
 
 msgid "Modify"
 msgstr "تعديل"
 
 msgid "Add or modify text annotations"
-msgstr ""
+msgstr "أضف أو غيّر نص الحواشي"
 
 msgid "Fill form fields"
-msgstr ""
+msgstr "املأ من حقول النموذج"
 
 msgid "Extract for use by accessibility dev."
-msgstr ""
+msgstr "مستقطع ليستخدم لتطوير إمكنانية الوصول."
 
 msgid "Manipulate pages and add bookmarks"
-msgstr ""
+msgstr "التعامل مع الصفحات و إضافة علامات التأشير"
 
 msgid ""
 "Check the box if you want compressed output files (Pdf version 1.5 or "
 "higher)."
 msgstr ""
+"ضع علامة في المربع إذا كنت تريد إخراج ملفات مضغوطة (الإصدار 1.5 من PDF فما "
+"بعده)."
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr ""
+msgstr "إذا كان يحتوي على \"[TIMESTAMP]\" فإنه يقوم بإحلال متغير."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
+"مثال:[BASENAME]_بادئة_[TIMESTAMP] تُنشئ اسم الملف_بادئة_20070517_113423471.pdf"
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
 msgstr ""
+"إذا كان لا يحتوي على \"[TIMESTAMP]\" فإنه يقوم بإنشاء أسماء الملفات حسب "
+"النمط القديم."
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
-msgstr ""
+msgstr "المتغيرات المتاحة : [TIMESTAMP] و [BASENAME]."
 
 msgid "Encrypt selected files"
-msgstr ""
+msgstr "تشفير الملفات المحددة"
 
 msgid "Encrypt"
 msgstr "تشفير"
 
 msgid "Encrypt section loaded."
-msgstr ""
+msgstr "تشفير المقطع الذي تم تحميله."
 
 msgid "Decrypt selected files"
-msgstr ""
+msgstr "فك تشفير الملفات المحددة"
 
 msgid "Decrypt"
 msgstr "فك تشفير"
 
 msgid "Decrypt section loaded."
-msgstr ""
+msgstr "فك تشفير المقطع الذي تم تحميله."
 
 msgid "Document metadata"
-msgstr ""
+msgstr "البيانات التوثيقية للمستند"
 
 msgid "Title"
-msgstr ""
+msgstr "العنوان"
 
 msgid "Author"
-msgstr ""
+msgstr "المؤلف"
 
 msgid "Subject"
-msgstr ""
+msgstr "الموضوع"
 
 msgid "Keywords"
-msgstr ""
+msgstr "كلمات مفتاحية"
 
 msgid "Set the document title."
-msgstr ""
+msgstr "ضبط عنوان المستند"
 
 msgid "Set the document author."
-msgstr ""
+msgstr "ضبط مؤلف المستند"
 
 msgid "Set the document subject."
-msgstr ""
+msgstr "ضبط موضوع المستند"
 
 msgid "Set the document keywords."
-msgstr ""
+msgstr "ضبط كلمات المستند المفتاحية"
 
 msgid "Choose a file"
-msgstr ""
+msgstr "اختيار ملف"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "ضبط البيانات التوثيقية للملف المحدد"
 
 msgid "Document Info"
-msgstr ""
+msgstr "معلومات المستند"
 
 msgid "Rotate section loaded."
-msgstr ""
+msgstr "تدوير المقطع الذي تم تحميله"
 
 msgid "Mix options"
-msgstr ""
+msgstr "خيارات مختلفة"
 
 msgid "Reverse first document"
-msgstr ""
+msgstr "قلب المستند الأول"
 
 msgid "Reverse second document"
-msgstr ""
+msgstr "قلب المستند الثاني"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "عدد الصفحات المراد تحويلها من المستند الأول إلى الآخر"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "عدد الصفحات المراد تحويلها من المستند الثاني إلى الآخر"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
-msgstr ""
+msgstr "علِم المربعات إذا كنت ترغب في حجز أول أو ثاني مستند (أو كلاهما)."
 
 msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
-msgstr ""
+msgstr "حدد أرقام الصفحات المحولة من المستند الأول إلى الآخر (الافتراضي هو 1)."
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"حدد أرقام الصفحات المحولة من المستند الثاني إلى الآخر (الافتراضي هو 1)."
 
 msgid "Execute pdf alternate mix"
 msgstr ""
@@ -401,10 +441,10 @@ msgid "AlternateMix section loaded."
 msgstr ""
 
 msgid "Found a password for first file."
-msgstr ""
+msgstr "العثور على كلمة عبور لملف أول."
 
 msgid "Found a password for second file."
-msgstr ""
+msgstr "العثور على كلمة عبور لملف ثان."
 
 msgid "Unpack selected files"
 msgstr ""
@@ -416,25 +456,25 @@ msgid "Unpack section loaded."
 msgstr ""
 
 msgid "Set viewer options"
-msgstr ""
+msgstr "ضبط خيارات المستعرض"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "إخفاء لوح القائمة"
 
 msgid "Hide the toolbar"
-msgstr ""
+msgstr "إخفاء شريط الأدوات"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "إخفاء عناصر واجهة المستخدم"
 
 msgid "Rezise the window to fit the page size"
-msgstr ""
+msgstr "تغيير حجم النافذة لتناسب حجم الصفحة"
 
 msgid "Center of the screen"
-msgstr ""
+msgstr "توسيط الشاشة"
 
 msgid "Display document title as window title"
-msgstr ""
+msgstr "عرض عنوان المستند كعنوان للنافذة"
 
 msgid "Pdf version required:"
 msgstr ""
@@ -452,28 +492,28 @@ msgid "Non fullscreen mode:"
 msgstr ""
 
 msgid "Direction:"
-msgstr ""
+msgstr "الإتجاه:"
 
 msgid "Set options"
-msgstr ""
+msgstr "ضبط الخيارات"
 
 msgid "Set viewer options for selected files"
-msgstr ""
+msgstr "ضبط خيارات المستعرض لملفات مختارة"
 
 msgid "Left to right"
-msgstr ""
+msgstr "يسار إلى يمين"
 
 msgid "Right to left"
-msgstr ""
+msgstr "يمين إلى يسار"
 
 msgid "None"
-msgstr ""
+msgstr "بلا"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "ملئ الشاشة"
 
 msgid "Attachments"
-msgstr ""
+msgstr "المُرفقات"
 
 msgid "Optional content group panel"
 msgstr ""
@@ -488,22 +528,22 @@ msgid "One page at a time"
 msgstr ""
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "صفحات في عمود"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "صفحات في عمودين (فردي إلى اليسار)"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "صفحات في عمودين (فردي إلى اليمين)"
 
 msgid "Two pages at a time (odd on the left)"
-msgstr ""
+msgstr "صفحتين في نفس الوقت (فردي إلى اليسار)"
 
 msgid "Two pages at a time (odd on the right)"
-msgstr ""
+msgstr "صفحتين في نفس الوقت (فردي إلى اليمين)"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "خيارات العارض"
 
 msgid "Viewer options section loaded."
 msgstr ""
@@ -512,7 +552,7 @@ msgid "Move on top"
 msgstr ""
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "نقل للأسفل"
 
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
@@ -532,22 +572,22 @@ msgid "Please select a pdf document or undelete some pages"
 msgstr ""
 
 msgid "Rotation"
-msgstr ""
+msgstr "دوران"
 
 msgid "All"
-msgstr ""
+msgstr "الكل"
 
 msgid "Even"
-msgstr ""
+msgstr "زوجي"
 
 msgid "Odd"
-msgstr ""
+msgstr "فردي"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "دوران مع الساعة (درجات):"
 
 msgid "Pages:"
-msgstr ""
+msgstr "صفحات:"
 
 msgid "Set the rotation degrees (clockwise)."
 msgstr ""
@@ -559,7 +599,7 @@ msgid "Rotate selected files"
 msgstr ""
 
 msgid "Rotate"
-msgstr ""
+msgstr "دوران"
 
 msgid "Use the same output file name as the input file or choose a file."
 msgstr ""
@@ -571,34 +611,34 @@ msgid "Visual Reorder section loaded."
 msgstr ""
 
 msgid "Please select a pdf document or undelete some page"
-msgstr ""
+msgstr "رجاءا اختر مستند pdf أو استعد بعض الصفحات المحذوفة"
 
 msgid "New version available."
-msgstr ""
+msgstr "هناك اصدار جديد ."
 
 msgid "No new version available."
-msgstr ""
+msgstr "لا يوجد اصدار جديد."
 
 msgid "Unknown action."
-msgstr ""
+msgstr "اجراء مجهول."
 
 msgid "Log saved."
 msgstr ""
 
 msgid "Save as"
-msgstr ""
+msgstr "احفظ كـ"
 
 msgid "Save the image"
-msgstr ""
+msgstr "حفظ الصورة"
 
 msgid "Unable to save image"
-msgstr ""
+msgstr "تعذر الحفظ كصورة"
 
 msgid "Close"
-msgstr ""
+msgstr "إغلاق"
 
 msgid "Close panel"
-msgstr ""
+msgstr "إغلاق لوحة"
 
 msgid "Rotate anticlockwise"
 msgstr ""
@@ -607,19 +647,19 @@ msgid "Rotate clockwise"
 msgstr ""
 
 msgid "Zoom in"
-msgstr ""
+msgstr "تقريب"
 
 msgid "Zoom out"
-msgstr ""
+msgstr "تبعيد"
 
 msgid "No zoom"
-msgstr ""
+msgstr "لا تكبير"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "لا تكبير مطبق"
 
 msgid "Save environment"
-msgstr ""
+msgstr "حفظ بيئة"
 
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
@@ -629,7 +669,7 @@ msgid "Confirm password saving"
 msgstr ""
 
 msgid "Load environment"
-msgstr ""
+msgstr "تحميل بيئة"
 
 msgid "Unable to create image for a null input document"
 msgstr ""
@@ -640,25 +680,7 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr ""
 
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr ""
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr ""
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -1063,6 +1085,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr ""
 
@@ -1401,3 +1426,6 @@ msgstr ""
 
 msgid "Unable to save user interface status."
 msgstr ""
+
+#~ msgid "Ok"
+#~ msgstr "موافق"

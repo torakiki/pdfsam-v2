@@ -7,21 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-06-24 19:33+0000\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-07-30 20:35+0000\n"
 "Last-Translator: ejs <Unknown>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Toks failas neegzistuoja arba tai yra katalogas"
+
+msgid "Error opening pdf document"
+msgstr "Klaida atidarant pdf dokumentą"
+
+msgid "Password not provided."
+msgstr "Neįvestas slaptažodis"
+
+msgid "Unable to open the document."
+msgstr "Nepavyko atidaryti dokumento"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Nepakanka atminties paveiksliukų (thumbnails) kūrimui"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Nepavyko sugeneruoti paveiksliukų"
 
 msgid "Merge options"
 msgstr "Sujungimo parametrai"
 
 msgid "PDF documents contain forms"
-msgstr "PDF dokumente yra formos"
+msgstr "PDF dokumentuose yra formos"
 
 msgid "Merge type"
 msgstr "Sujungimo tipas"
@@ -112,10 +134,18 @@ msgid "Split after these pages"
 msgstr "Atskirti po šių puslapių"
 
 msgid "Split at this size"
-msgstr "Atskirti pagal dydį"
+msgstr "Sudalinti po"
 
 msgid "Split by bookmarks level"
 msgstr "Išskaidyti pagal turinio žymas"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Pliūpsnis"
@@ -151,25 +181,22 @@ msgid "Choose a folder"
 msgstr "Pasirinkite aplanką"
 
 msgid "Destination output directory"
-msgstr "Katalogas rezultatui"
+msgstr "Aplankas rezultatui"
 
 msgid "Use the same output folder as the input file or choose a folder."
 msgstr ""
-"Rezultatui naudoti tą patį aplanką kuriame yra šaltinio failas arba "
-"pasirinkite kitą aplanką"
+"Rezultatą talpinti ten pat kur šaltinio failas, arba pasirinkite kitą aplanką"
 
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
-"Naršykite, kad pasirinktumėte aplanką arba įrašykite pilną kelią iki aplanko "
-"kuriame išsaugoti rezultatus"
+"Naršydami pasirinkite  aplanką rezultatams, arba įrašykite pilną kelią iki jo"
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
-msgstr ""
-"Pažymėkite, jei Jūs norite perrašyti egzistuojančius rezultato failus"
+msgstr "Pažymėkite, jei Jūs norite perrašyti egzistuojančius rezultato failus"
 
 msgid "Output options"
 msgstr "Išvedimo nustatytmai"
@@ -187,11 +214,10 @@ msgstr ""
 "Jei yra \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" arba "
 "\"[BOOKMARK_NAME]\" bus įvykdytas kintamųjų pakeitimas"
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
-"Pvz. priešdėlis_[BASENAME]_[CURRENTPAGE] sugeneruoja "
-"priešdėlis_FileName_005.pdf"
+"Pvz. priešdėlis_[BASENAME]_[CURRENTPAGE] sugeneruoja priešdėlis_FileName_005."
+"pdf"
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
@@ -213,7 +239,7 @@ msgid "Split section loaded."
 msgstr "Skaidymo dalis įkrauta"
 
 msgid "Invalid split size"
-msgstr "Blogas skaidymo dydis"
+msgstr "Neteisingas skaidymo dydis"
 
 msgid "Invalid unit: "
 msgstr "Neteisingas matavimo vienetas: "
@@ -234,7 +260,7 @@ msgid "Unable to retrieve bookmarks maximum depth."
 msgstr "Negalėjau suskaičiuoti maksimalaus žymelių gylio"
 
 msgid "Frontpage pdf file"
-msgstr "Pirmas puslapis"
+msgstr "PDF failas pirmam puslapiui"
 
 msgid "Addendum pdf file"
 msgstr "Priedai"
@@ -667,26 +693,8 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr "Nepavyko atidaryti įvadinio dokumento"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Toks failas neegzistuoja arba tai yra katalogas"
-
-msgid "Error opening pdf document"
-msgstr "Klaida atidarant pdf dokumentą"
-
-msgid "Password not provided."
-msgstr "Neįvestas slaptažodis"
-
-msgid "Unable to open the document."
-msgstr "Nepavyko atidaryti dokumento"
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Nepakanka atminties paveiksliukų (thumbnails) kūrimui"
-
 msgid "Thumbnails generated in "
 msgstr "Paveiksliukai sugeneruoti kataloge: "
-
-msgid "Unable to generate thumbnail"
-msgstr "Nepavyko sugeneruoti paveiksliukų"
 
 msgid " node environment loaded."
 msgstr " aplinka įkelta."
@@ -1094,6 +1102,9 @@ msgstr "Išsaugoti žurnalą"
 msgid "Exit"
 msgstr "Išeiti"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "paleista "
 
@@ -1260,8 +1271,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Darbinis aplankas pagal nutylėjimą"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Pasirinkti aplanką, kuriame pagal nutylėjimą bus saugomi ir įkeliami "
 "dokumentai"
@@ -1394,8 +1404,7 @@ msgid "The lowest available pdf version is "
 msgstr "Žemiausia įmanoma pdf versija yra "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-"Rezultato failui Jūs pasirinkote žemesnę pdf versiją. Vis tiek tęsti?"
+msgstr "Rezultato failui Jūs pasirinkote žemesnę pdf versiją. Vis tiek tęsti?"
 
 msgid "Pdf version conflict"
 msgstr "Pdf versijų konfliktas"
@@ -1485,15 +1494,18 @@ msgstr "Nepavyko išsaugoti vartotojo sąsajos būsenos"
 #~ msgid "Error getting default environment."
 #~ msgstr "Klaida gaunant aplinką pagal nutylėjimą."
 
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "Du kartus paspauskite pele norėdami nustatyti kuriuos puslapius norite "
-#~ "sujungti (pvz.: 2 arba \"Visus\" arba 5-23 arba 2,5-7,12-)"
-
 #~ msgid "pdfsam start up"
 #~ msgstr "pdfsam pradžia"
 
 #~ msgid "Never"
 #~ msgstr "Niekada"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Nustatykite, kas kelis puslapius bus kuriamas naujas dokumentas (pagal "
+#~ "nutylėjimą yra 1)"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Puslapių skaičius dokumento pakeitimui"

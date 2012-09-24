@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-06-05 11:02+0000\n"
 "Last-Translator: Josep Sànchez <papapep@gmx.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "No existeix el fitxer orígen o és un directori"
+
+msgid "Error opening pdf document"
+msgstr "S'ha produit un error en obrir el document pdf"
+
+msgid "Password not provided."
+msgstr "No s'ha proporcionat la contrasenya"
+
+msgid "Unable to open the document."
+msgstr "No s'ha pogut obrir el document"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "No hi ha prou memòria per a crear les miniatures"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "No s'ha pogut crear les miniatures"
 
 msgid "Merge options"
 msgstr "Opcions de combinació"
@@ -121,6 +143,14 @@ msgstr "Divideix en aquesta mida"
 msgid "Split by bookmarks level"
 msgstr "Separa per nivell de marcadors"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "Explosió"
 
@@ -137,12 +167,10 @@ msgid "Split the document every odd page"
 msgstr "Divideix el document en cada pàgina senar"
 
 msgid "Split the document after page numbers (num1-num2-num3..)"
-msgstr ""
-"Divideix el document després dels números de pàgina (num1-num2-num3..)"
+msgstr "Divideix el document després dels números de pàgina (num1-num2-num3..)"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr ""
-"Separa el document en fitxers d'una mida determinada (aproximadament)"
+msgstr "Separa el document en fitxers d'una mida determinada (aproximadament)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
@@ -196,8 +224,7 @@ msgstr ""
 "Si conté \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" o "
 "\"[BOOKMARK_NAME]\" realitza una substitució de variables."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] genera prefix_FileName_005.pdf."
 
 msgid ""
@@ -314,8 +341,8 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"Ex. [BASENAME]_prefix_[TIMESTAMP] genera "
-"FileName_prefix_20070517_113423471.pdf."
+"Ex. [BASENAME]_prefix_[TIMESTAMP] genera FileName_prefix_20070517_113423471."
+"pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
@@ -392,8 +419,7 @@ msgid "Reverse second document"
 msgstr "Inverteix el segon document"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
-"Nombre de pàgines per intercanviar entre el primer document i l'altre"
+msgstr "Nombre de pàgines per intercanviar entre el primer document i l'altre"
 
 msgid "Number of pages to switch from the second document to the other"
 msgstr "Nombre de pàgines per intercanviar entre el segon document i l'altre"
@@ -671,26 +697,8 @@ msgstr "No s'ha pogut crear la miniatura d'un document orígen nul"
 msgid "Unable to open the input document"
 msgstr "No s'ha pogut obrir el document orígen"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "No existeix el fitxer orígen o és un directori"
-
-msgid "Error opening pdf document"
-msgstr "S'ha produit un error en obrir el document pdf"
-
-msgid "Password not provided."
-msgstr "No s'ha proporcionat la contrasenya"
-
-msgid "Unable to open the document."
-msgstr "No s'ha pogut obrir el document"
-
-msgid "Not enough memory to create thumbnails"
-msgstr "No hi ha prou memòria per a crear les miniatures"
-
 msgid "Thumbnails generated in "
 msgstr "S'ha generat les miniatures a "
-
-msgid "Unable to generate thumbnail"
-msgstr "No s'ha pogut crear les miniatures"
 
 msgid " node environment loaded."
 msgstr " carregat el node d'entorn"
@@ -732,8 +740,7 @@ msgid "Generating thumbnails using the following library:"
 msgstr "S'està generant les miniatures emprant la següent llibreria:"
 
 msgid "Selection table is full, please remove some pdf document."
-msgstr ""
-"La taula de selecció és plena, si us plau, esborreu algun document pdf"
+msgstr "La taula de selecció és plena, si us plau, esborreu algun document pdf"
 
 msgid "Table full"
 msgstr "Taula plena"
@@ -1076,8 +1083,7 @@ msgid " plugin loaded."
 msgstr " connector carregat."
 
 msgid "Unable to load a plugin that is not JPanel subclass."
-msgstr ""
-"No s'ha pogut carregar un connector que no és una subclasse de JPanel."
+msgstr "No s'ha pogut carregar un connector que no és una subclasse de JPanel."
 
 msgid "Error loading class "
 msgstr "Error en carregar una classe "
@@ -1099,6 +1105,9 @@ msgstr "Desa el registre"
 
 msgid "Exit"
 msgstr "Surt"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "iniciat a "
@@ -1249,8 +1258,7 @@ msgstr "Demana confirmació per sobreescriure"
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
-msgstr ""
-"Mostra un diàleg de confirmació quan s'ha seleccionat \"sobreescriure2"
+msgstr "Mostra un diàleg de confirmació quan s'ha seleccionat \"sobreescriure2"
 
 msgid "Default env."
 msgstr "Entorn predeterminat."
@@ -1265,8 +1273,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Directori de treball predeterminat"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Seleccioneu un directori on es desin i carreguin els documents de manera "
 "predeterminada"
@@ -1448,8 +1455,7 @@ msgstr ""
 "S'ha produit un error en inicialitzar l'estat estès de l'interfície d'usuari"
 
 msgid "Error initializing the user interface size"
-msgstr ""
-"S'ha produit un error en inicialitzar la mida de l'interfície d'usuari"
+msgstr "S'ha produit un error en inicialitzar la mida de l'interfície d'usuari"
 
 msgid "Error initializing the user interface horizontal divider size"
 msgstr ""
@@ -1487,11 +1493,11 @@ msgstr "No s'ha pogut desar l'estat de l'interfície d'usuari"
 #~ msgstr "Mai"
 
 #~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
 #~ msgstr ""
-#~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes o "
-#~ "5-23 o 2,5-7,12-)"
+#~ "Feu doble clic per a marcar les pàgines que voleu combinar (ex: 2 o Totes "
+#~ "o 5-23 o 2,5-7,12-)"
 
 #~ msgid "Remove every pdf file from the merge list"
 #~ msgstr "Elimina cada fitxer pdf de la llista de combinació"

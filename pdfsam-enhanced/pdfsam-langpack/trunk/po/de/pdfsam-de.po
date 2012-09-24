@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-03-21 10:03+0000\n"
 "Last-Translator: jörg stubenrauch <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Quelldatei existiert nicht oder ist ein Verzeichnis"
+
+msgid "Error opening pdf document"
+msgstr "Fehler beim Öffnen des PDF-Dokuments"
+
+msgid "Password not provided."
+msgstr "Passwort fehlt."
+
+msgid "Unable to open the document."
+msgstr "Dokument konnte nicht geöffnet werden."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Nicht genug Speicher zum Erstellen der Miniaturansichten"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Miniaturansicht konnte nicht erstellt werden"
 
 msgid "Merge options"
 msgstr "Optionen"
@@ -122,6 +144,14 @@ msgstr "Bei folgender Größe teilen"
 
 msgid "Split by bookmarks level"
 msgstr "Anhand Lesezeichenebene teilen"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Trennen"
@@ -685,26 +715,8 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr "Quelldokument kann nicht geöffnet werden"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Quelldatei existiert nicht oder ist ein Verzeichnis"
-
-msgid "Error opening pdf document"
-msgstr "Fehler beim Öffnen des PDF-Dokuments"
-
-msgid "Password not provided."
-msgstr "Passwort fehlt."
-
-msgid "Unable to open the document."
-msgstr "Dokument konnte nicht geöffnet werden."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Nicht genug Speicher zum Erstellen der Miniaturansichten"
-
 msgid "Thumbnails generated in "
 msgstr "Miniaturansichten wurden erstellt in "
-
-msgid "Unable to generate thumbnail"
-msgstr "Miniaturansicht konnte nicht erstellt werden"
 
 msgid " node environment loaded."
 msgstr " Umgebung wurde geladen."
@@ -1114,6 +1126,9 @@ msgstr "Protokoll speichern"
 msgid "Exit"
 msgstr "Beenden"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "gestartet in "
 
@@ -1520,8 +1535,8 @@ msgstr "Zustand der Benutzeroberfläche kann nicht gespeichert werden."
 #~ msgstr "PDF-Datei für Rückseite"
 
 #~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
 #~ msgstr ""
 #~ "Doppelklick, um die zu verbindenden Seiten festzulegen (z.B. 2 oder Alle "
 #~ "oder 5-23 oder 2,5-7,12-)"

@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2009-10-03 18:58+0000\n"
 "Last-Translator: Maiko Mõtsar <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr "Viga pdf dokumendi avamisel"
+
+msgid "Password not provided."
+msgstr ""
+
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
 
 msgid "Merge options"
 msgstr "Ühendamise valikud"
@@ -118,6 +140,14 @@ msgstr "Tükelda sel suurusel"
 
 msgid "Split by bookmarks level"
 msgstr "Tükelda järjehoidja taseme järgi"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Killusta"
@@ -659,25 +689,7 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr ""
 
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr "Viga pdf dokumendi avamisel"
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr ""
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -1083,6 +1095,9 @@ msgstr "Salvesta logi"
 
 msgid "Exit"
 msgstr "Välju"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "käivitatud "

@@ -2,18 +2,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-03-21 11:06+0000\n"
-"Last-Translator: Andrea Vacondio <andrea.vacondio@gmail.com>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-08-06 06:11+0000\n"
+"Last-Translator: Gianfranco Frisani <gfrisani@libero.it>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Il file in input non esiste o è una directory"
+
+msgid "Error opening pdf document"
+msgstr "Errore aprendo il documento pdf"
+
+msgid "Password not provided."
+msgstr "Password non fornita."
+
+msgid "Unable to open the document."
+msgstr "Impossibile aprire il documento"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Memora non sufficiente per creare le anteprime"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Impossibile generare l'anteprima"
 
 msgid "Merge options"
 msgstr "Opzioni di unione"
@@ -227,6 +249,14 @@ msgstr "Dividi a questa dimensione"
 
 msgid "Split by bookmarks level"
 msgstr "Dividi per livello di segnalibro"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:223
 # F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:221
@@ -471,12 +501,12 @@ msgstr "Modifica"
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:237
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:241
 msgid "Add or modify text annotations"
-msgstr "Aggiungi o modifica annotazioni"
+msgstr "Aggiunti o modifica annotazioni"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:240
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:244
 msgid "Fill form fields"
-msgstr "Riempi campi form"
+msgstr "Riepi campi form"
 
 # F:\workspace_pdfsame_enanched\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:243
 # F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:247
@@ -592,7 +622,7 @@ msgid "Document Info"
 msgstr "Informazioni sul documento"
 
 msgid "Rotate section loaded."
-msgstr "Ruota la parte selezionata"
+msgstr "Sezione ruota caricata."
 
 msgid "Mix options"
 msgstr "Opzioni miscelazione"
@@ -621,8 +651,8 @@ msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
 msgstr ""
-"Seleziona il box se vuoi invertire il primo o il secondo documento (o "
-"entrambi)."
+"Selezionare la casella per capovolgere il primo o il secondo documento (o "
+"entrambi)"
 
 msgid ""
 "Set the number of pages to switch from the first document to the other one "
@@ -916,26 +946,8 @@ msgstr "Impossibile creare un'anteprima per un documento nullo"
 msgid "Unable to open the input document"
 msgstr "Impossibile aprire il documento in ingresso"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Il file in input non esiste o è una directory"
-
-msgid "Error opening pdf document"
-msgstr "Errore aprendo il documento pdf"
-
-msgid "Password not provided."
-msgstr "Password non fornita."
-
-msgid "Unable to open the document."
-msgstr "Impossibile aprire il documento"
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Memora non sufficiente per creare le anteprime"
-
 msgid "Thumbnails generated in "
 msgstr "Anteprime generate in "
-
-msgid "Unable to generate thumbnail"
-msgstr "Impossibile generare l'anteprima"
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:113
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:64
@@ -1538,6 +1550,9 @@ msgstr "Salva registro"
 msgid "Exit"
 msgstr "Esci"
 
+msgid "Recent environments"
+msgstr ""
+
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\gui\frames\JMainFrame.java:89
 msgid "started in "
 msgstr "avviato in "
@@ -1995,6 +2010,13 @@ msgstr "Impossibile salvare lo stato dell'interfaccia utente"
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Impossibile ottenere informazioni sull'ambiente di default."
 
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Imposta il numero di pagine per passare da un documento all'altro "
+#~ "(default è 1)"
+
 # F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\gui\components\JMainMenuBar.java:90
 #~ msgid "Unable to initialize menu bar."
 #~ msgstr "Impossibile inizializzare la barra del menu."
@@ -2004,3 +2026,52 @@ msgstr "Impossibile salvare lo stato dell'interfaccia utente"
 
 #~ msgid "Never"
 #~ msgstr "Mai"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Numero di pagine a cui cambiare documento"
+
+#~ msgid "Error loading "
+#~ msgstr "Errore durante il caricamento "
+
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\business\listeners\mediators\EnvironmentMediator.java:51
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:250
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:856
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:237
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:782
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:252
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:869
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:245
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:851
+#~ msgid "Please wait while reading"
+#~ msgstr "Attendere durante il caricamento"
+
+# F:\workspace_pdfsame_enanched\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:185
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:187
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "Il file selezionato non è un documento PDF."
+
+# F:\workspace_pdfsame_enanched\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:336
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:342
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:338
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:350
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Errore: impossibile ricaricare i/il file selezionato/i."
+
+# F:\workspace_pdfsame_enanched\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:287
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Rimuove ogni file PDF dalla lista"
+
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\plugins\PlugInsLoader.java:121
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Trovati zero o molti jar nella cartella del plugin "
+
+# F:\pdfsam\workspace-enhanced\pdfsam-maine\src\java\org\pdfsam\guiclient\gui\panels\JSettingsPanel.java:141
+#~ msgid "Error getting default environment."
+#~ msgstr "Errore nell'identificazione della configurazione predefinita."
+
+#~ msgid "pdfsam start up"
+#~ msgstr "Avvio dell'applicazione"

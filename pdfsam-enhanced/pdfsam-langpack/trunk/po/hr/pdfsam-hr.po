@@ -7,21 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2009-12-26 20:56+0000\n"
-"Last-Translator: Edgar Buršić <edgar@monteparadiso.hr>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-03-28 15:35+0000\n"
+"Last-Translator: Mario Dautović <mario.dautovic@yahoo.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Ulazna datoteka ne postoji ili je direktorij"
+
+msgid "Error opening pdf document"
+msgstr "Grečka pri otvaranju pdf dokumenta"
+
+msgid "Password not provided."
+msgstr "Zaporka nije unešena."
+
+msgid "Unable to open the document."
+msgstr "Ne mogu otvoriti dokument."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Nedovoljno memorije za stvaranje minijatura"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Nije moguće napraviti minijature"
 
 msgid "Merge options"
 msgstr "Postavke spajanja"
 
 msgid "PDF documents contain forms"
-msgstr "PDF dokumenti sadrže formulare"
+msgstr "PDF dokumenti sadrže obrasce"
 
 msgid "Merge type"
 msgstr "Tip spajanja"
@@ -36,7 +58,7 @@ msgid "Checked"
 msgstr "Provjereno"
 
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "Korisi ovaj tip spajanja za pdf dokumente koji sadrže formulare"
+msgstr "Koristi ovaj tip spajanja za pdf dokumente koji sadrže obrasce"
 
 msgid "Note"
 msgstr "Bilješka"
@@ -55,7 +77,7 @@ msgstr "Odaberite ili unesite punu putanju do odredišta izlazne datoteke."
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
-"Odaberite ovu opciju ako želite prepisati izlaznu datoteku ako već ista "
+"Odaberite ovu opciju ako želite pisati preko izlazne datoteke ako ista već "
 "postoji."
 
 msgid "Check the box if you want compressed output files."
@@ -86,10 +108,10 @@ msgid "Export as xml"
 msgstr "Izvezi kao xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Izvezi označeni popis u xml obliku"
 
 msgid "Unable to save xml file."
-msgstr "Ne mogu spremiti xml datoteku"
+msgstr "Nije moguće spremiti xml datoteku"
 
 msgid "File xml saved."
 msgstr "XML datoteka je spremljena."
@@ -121,6 +143,14 @@ msgstr "Podijeli kod ove veličine"
 msgid "Split by bookmarks level"
 msgstr "Podijeli prema razinama oznaka"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "Raskidanje"
 
@@ -143,7 +173,7 @@ msgid "Split the document in files of the given size (roughly)"
 msgstr "Podijeli dokument u datoteke dane veličine (ugrubo)"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
-msgstr "Podijeli dokument prema stranicama naznačenim oznakama zadane razine"
+msgstr "Podijeli dokument na stranicama sa oznakama zadane razine"
 
 msgid "Destination folder"
 msgstr "Odredišna mapa"
@@ -164,14 +194,15 @@ msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
 msgstr ""
-"Da bi odabrali mapu pregledajte ili upišite punu putanju do odredišta "
+"Da biste odabrali mapu pregledajte ili upišite punu putanju do odredišta "
 "izlazne mape."
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
 msgstr ""
-"Odaberite opciju ako želite prepisati izlaznu datoteku ako već postoji."
+"Odaberite opciju ako želite pisati preko izlaznih datoteka ako iste već "
+"postoje."
 
 msgid "Output options"
 msgstr "Postavke izlazne datoteke"
@@ -189,8 +220,7 @@ msgstr ""
 "Ukoliko sadržava \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" ili "
 "\"[BOOKMARK_NAME]\" izvršava promjenjivu zamjenu."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Npr. prefix_[BASENAME]_[CURRENTPAGE] generira prefix_ImeDatoteke_005.pdf."
 
@@ -229,16 +259,16 @@ msgid "Warning"
 msgstr "Upozorenje"
 
 msgid "Getting bookmarks max depth"
-msgstr "Pribavljanje maksimalne dubine razine oznaka"
+msgstr "Dohvaćanje najveće razine oznaka"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Nije moguće dohvatiti najveću razinu oznaka"
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "Naslovna stranica pdf datoteke"
 
 msgid "Addendum pdf file"
-msgstr ""
+msgstr "Dodatak pdf datoteke"
 
 msgid "Frontpage and Addendum"
 msgstr "Naslovnica i dodatak"
@@ -286,7 +316,7 @@ msgid "Add or modify text annotations"
 msgstr "Dodaj ili izmijeni napomene"
 
 msgid "Fill form fields"
-msgstr "Popuni iz polja"
+msgstr "Popunite polja na obrascima"
 
 msgid "Extract for use by accessibility dev."
 msgstr "Izdvoji za korištenje pri razvoju dostupnosti."
@@ -302,7 +332,7 @@ msgstr ""
 "veća)"
 
 msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
-msgstr "Ako sadrži \"[TIMESTAMP]\" izvršava se zamjena promjenjive."
+msgstr "Ako sadrži \"[TIMESTAMP]\" izvršava se zamjena varijable."
 
 msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
@@ -370,13 +400,13 @@ msgid "Choose a file"
 msgstr "Izaberite datoteku"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Postavi metapodatke na označenu stranicu"
 
 msgid "Document Info"
 msgstr "Podaci o dokumentu"
 
 msgid "Rotate section loaded."
-msgstr ""
+msgstr "Rotirani odjeljak učitan."
 
 msgid "Mix options"
 msgstr "Mješovite postavke"
@@ -388,10 +418,10 @@ msgid "Reverse second document"
 msgstr "Preokreni drugi dokument"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "Broj stranica za prebacivanje iz prvog u preostali dokument"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Broj stranica za prebacivanje iz drugog u preostali dokument"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -403,11 +433,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Postavi broj stranica za prebacivanje iz prvog u preostali dokument (zadano "
+"je 1)"
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Postavi broj stranica za prebacivanje iz drugog u preostali dokument (zadano "
+"je 1)"
 
 msgid "Execute pdf alternate mix"
 msgstr "Napravi pdf miješani dokument"
@@ -536,15 +570,17 @@ msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
 msgstr ""
+"Da biste odabrali datoteku pregledajte ili upišite punu putanju do odredišta "
+"izlazne datoteke."
 
 msgid "Execute pages reorder"
-msgstr ""
+msgstr "Pokreni preslagivanje stranica"
 
 msgid "Visual document composer"
-msgstr ""
+msgstr "Vizualni uređivač dokumenata"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "Odjeljak vizualnog uređivača je učitan."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr ""
@@ -587,10 +623,10 @@ msgstr ""
 "datoteku."
 
 msgid "Visual reorder"
-msgstr ""
+msgstr "Vizualni preslagivač"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "Odjeljak vizalnog preslagivača je učitan."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr ""
@@ -613,7 +649,7 @@ msgid "Save as"
 msgstr "Spremi kao"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Spremi sliku"
 
 msgid "Unable to save image"
 msgstr "Ne mogu spremiti sliku"
@@ -622,7 +658,7 @@ msgid "Close"
 msgstr "Zatvori"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Zatvori okvir"
 
 msgid "Rotate anticlockwise"
 msgstr "Rotirajte suprotno kazaljkama na satu"
@@ -637,10 +673,10 @@ msgid "Zoom out"
 msgstr "Umanji"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Bez povećanja"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Povećanje nije primjenjeno"
 
 msgid "Save environment"
 msgstr "Spremi okružje"
@@ -648,7 +684,8 @@ msgstr "Spremi okružje"
 msgid ""
 "Save passwords informations (they will be readable opening the output file)?"
 msgstr ""
-"Spremi informacije zaporke (biti će čitljive pri otvaranju izlazne datoteke)?"
+"Spremi informacije o zaporci (bit će čitljive pri otvaranju izlazne "
+"datoteke)?"
 
 msgid "Confirm password saving"
 msgstr "Potvrdi spremanje zaporke"
@@ -657,34 +694,16 @@ msgid "Load environment"
 msgstr "Učitaj okružje"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "Nije moguće stvoriti sliku za nepostojeći ulazni dokument"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr ""
+msgstr "Nije moguće napraviti minijature za nepostojeći ulazni dokument"
 
 msgid "Unable to open the input document"
 msgstr "Ne mogu otvoriti ulazni dokument"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Ulazna datoteka ne postoji ili je direktorij"
-
-msgid "Error opening pdf document"
-msgstr "Grečka pri otvaranju pdf dokumenta"
-
-msgid "Password not provided."
-msgstr "Zaporka nije dana."
-
-msgid "Unable to open the document."
-msgstr "Ne mogu otvoriti dokument."
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "Minijature napravljene u "
 
 msgid " node environment loaded."
 msgstr " učitano okružje čvorova."
@@ -711,19 +730,19 @@ msgid "Image viewer"
 msgstr "Preglednik slika"
 
 msgid "Unable to initialize the thumbnails creation library."
-msgstr ""
+msgstr "Nije moguće inicijalizirati biblioteku za stvaranje minijatura."
 
 msgid "Unable to open image preview"
-msgstr ""
+msgstr "Nije moguće otvoriti predpregled slike"
 
 msgid "Unknown Action"
 msgstr "Nepoznata akcija"
 
 msgid "Error playing sound"
-msgstr ""
+msgstr "Greška kod sviranja zvučnog zapisa"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "Stvaraju se minijature pomoću sljedeće biblioteke:"
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "Tablica odabira je popunjena. Molimo uklonite neke pdf dokumente."
@@ -750,16 +769,16 @@ msgid "Clear"
 msgstr "Obriši"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Uklonite sve pdf dokumente sa popisa"
 
 msgid "Document properties"
 msgstr "Svojstva dokumenta"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Prikaži svojstva dokumenta"
 
 msgid "Move down"
-msgstr ""
+msgstr "Pomakni dolje"
 
 msgid "Move down selected pdf file"
 msgstr "Premjesti pdf datoteku dolje"
@@ -774,7 +793,7 @@ msgid "Reload"
 msgstr "Osvježi"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Ponovo učitaj označeni dokument"
 
 msgid "Remove"
 msgstr "Ukloni"
@@ -783,13 +802,13 @@ msgid "Remove a pdf from the list"
 msgstr "Ukloni pdf sa liste"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Postavi odredište"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Postavi putanju odredišta"
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "Nije moguće počistiti pdf loader"
 
 msgid "Run"
 msgstr "Pokreni"
@@ -825,7 +844,7 @@ msgid "Add prefix"
 msgstr "Dodaj prefiks"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
-msgstr ""
+msgstr "Tablica poveznica je sadržavala  neke greške te je obnovljena"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
@@ -867,8 +886,8 @@ msgstr "Pdf inačica dokumenta"
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Kliknite dva puta da bi označili stranice koje želite spojiti (npr.: 2 ili 5-"
-"23 ili 2,5-7,12-)"
+"Kliknite dva puta da bi označili stranice koje želite spojiti (npr.: 2 ili "
+"5-23 ili 2,5-7,12-)"
 
 msgid "Unable to remove JList text "
 msgstr "Ne mogu ukloniti JList tekst "
@@ -880,7 +899,7 @@ msgid "File reloaded: "
 msgstr "Učitana datoteka: "
 
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 msgid "Load a pdf document"
 msgstr "Učitajte pdf dokument"
@@ -898,7 +917,7 @@ msgid "Delete"
 msgstr "Obriši"
 
 msgid "Undelete"
-msgstr ""
+msgstr "Poništi brisanje"
 
 msgid "Reverse"
 msgstr "Obrni"
@@ -922,10 +941,10 @@ msgid "(Canc)"
 msgstr "(Odustani)"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "Poništi brisanje označenih stranica"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Ctrl+Z)"
 
 msgid "Rotate right"
 msgstr "Rotiraj desno"
@@ -940,10 +959,10 @@ msgid "Rotate left"
 msgstr "Rotiraj lijevo"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
+msgstr "Rotiraj označene stranice suprotno kazaljkama na satu"
 
 msgid "(Alt+ArrowLeft)"
-msgstr ""
+msgstr "(Alt+ArrowLeft)"
 
 msgid "Reverse pages order"
 msgstr "Preokreni redosljed stranica"
@@ -970,7 +989,7 @@ msgid "Author: "
 msgstr "Autor: "
 
 msgid "Creator: "
-msgstr "Stvaraoc: "
+msgstr "Izradio: "
 
 msgid "Producer: "
 msgstr "Producent: "
@@ -988,10 +1007,10 @@ msgid "File"
 msgstr "Datoteka"
 
 msgid "Image"
-msgstr ""
+msgstr "Slika"
 
 msgid "Error creating preview panel."
-msgstr ""
+msgstr "Greška prilikom stvaranja predpreglednog okvira"
 
 msgid "Number of pages"
 msgstr "Broj stranica"
@@ -1015,10 +1034,10 @@ msgid "Producer"
 msgstr "Proizvođač"
 
 msgid "Creator"
-msgstr "Autor"
+msgstr "Izradio"
 
 msgid "Creation date"
-msgstr "Datum stvaranja"
+msgstr "Datum izrade"
 
 msgid "Modification date"
 msgstr "Datum promjene"
@@ -1033,7 +1052,7 @@ msgid "File type not supported."
 msgstr "Nepodržana vrsta datoteke."
 
 msgid "Error during drag and drop."
-msgstr ""
+msgstr "Greška prilikom prevlačenja."
 
 msgid "Logging level set to "
 msgstr "Razina zapisnika je postavljena na "
@@ -1051,13 +1070,13 @@ msgid "Plugins directory is null."
 msgstr "Mapa dodataka ne postoji."
 
 msgid "Found many plugins in "
-msgstr ""
+msgstr "Pronađenu mnogo dodataka u "
 
 msgid "selected as the most recent plugin"
-msgstr ""
+msgstr "označeni kao najnoviji dodatak"
 
 msgid "No plugin found in "
-msgstr ""
+msgstr "Nije pronađen dodatak u "
 
 msgid "Exception loading plugins."
 msgstr "Greška pri učitavanju dodataka."
@@ -1091,6 +1110,9 @@ msgstr "Spremi zapisnik."
 
 msgid "Exit"
 msgstr "Izlaz"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "pokrenut u "
@@ -1177,7 +1199,7 @@ msgid "Language:"
 msgstr "Jezik:"
 
 msgid "Thumbnails creator"
-msgstr ""
+msgstr "Minijature izradio"
 
 msgid "Load default environment at startup:"
 msgstr "Učitaj uobičajeno okružje pri pokretanju:"
@@ -1186,7 +1208,7 @@ msgid "Default working directory:"
 msgstr "Uobičajena mapa za rad:"
 
 msgid "Check for updates at startup"
-msgstr ""
+msgstr "Provjeri nadogradnje prilikom pokretanja"
 
 msgid "Check now"
 msgstr "Provjeri sada"
@@ -1195,7 +1217,7 @@ msgid "Play alert sounds"
 msgstr "Koristi zvukove upozorenja"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
-msgstr ""
+msgstr "Traži potvrdu kada je označena kučica za pisanje preko"
 
 msgid "Settings "
 msgstr "Postavke "
@@ -1220,7 +1242,7 @@ msgid "Set a log detail level (restart needed)"
 msgstr "Postavi razinu detalja zapisnika (potrebno ponovno pokretanje)"
 
 msgid "Set the thumbnails creation library"
-msgstr ""
+msgstr "Postavi biblioteku za stvaranje minijatura"
 
 msgid "Check for updates"
 msgstr "Potraži nadogradnje"
@@ -1234,12 +1256,14 @@ msgid "Turn on or off alert sounds"
 msgstr "Uključi ili isključi zvukove upozorenja"
 
 msgid "Ask overwrite confirmation"
-msgstr ""
+msgstr "Traži potvrdu pisianja preko"
 
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
 msgstr ""
+"Prikaži dijaloški okvir za potvrdu korisnika kada je \"pisati preko\" "
+"označeno"
 
 msgid "Default env."
 msgstr "Uobičajeno okružje"
@@ -1254,8 +1278,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Uobičajena mapa za rad"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Odaberite mapu gdje će dokumenti biti spremljeni i učitani"
 
 msgid "Save"
@@ -1265,12 +1288,14 @@ msgid "Configuration saved."
 msgstr "Konfiguracija spremljena."
 
 msgid "Error saving configuration"
-msgstr ""
+msgstr "Greška prilikom spremanja postavki"
 
 msgid ""
 "An error occured saving the configuration, please look at the log panel to "
 "have more informations."
 msgstr ""
+"Pojavila se greška prilikom spremanja postavki, molimo vas provjerite "
+"dodatne informacije u dnevniku"
 
 msgid "Unimplemented method for JSettingsPanel"
 msgstr "Neimplementirana metoda za JSettingsPanel"
@@ -1279,7 +1304,7 @@ msgid "New version available: "
 msgstr "Dostupna je nova inačica: "
 
 msgid "Unable to play sound."
-msgstr ""
+msgstr "Nije moguće sviranje zvučnog zapisa."
 
 msgid "Plugins"
 msgstr "Moduli"
@@ -1321,60 +1346,65 @@ msgid "Please select two pdf documents."
 msgstr "Molimo odaberite dva pdf dokumenta."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Molimo vas pričekajte dok se ne obrade sve datoteke."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Datoteke se još uvijek dodaju"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Molimo vas odaberite odredišnu datoteku."
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Molimo vas odaberite odredišnu mapu."
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Odredište nije odabrano"
 
 msgid "Selected output file already exists "
 msgstr "Odabrana izlazna datoteka već postoji "
 
 msgid "Would you like to overwrite it?"
-msgstr "Da li ju želite prebrisati?"
+msgstr "Želite li pisati preko?"
 
 msgid ""
 "Please note that output files will overwrite existing files of the same name "
 "without warning."
 msgstr ""
+"Molimo uočite da će se izlazne datoteke bez upozorenja prepisati preko "
+"postojećih koje imaju jednak naziv."
 
 msgid "Do you confirm to overwrite?"
-msgstr ""
+msgstr "Potvrđujete li pisanje preko?"
 
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Potvrdi pisanje preko"
 
 msgid "Provided pages selection is not valid"
-msgstr ""
+msgstr "Trenutni odabir stranica nije valjan"
 
 msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"Intervali se moraju odvojiti zarezima i biti oblika \"broj_stranice\" ili "
+"\"broj_stranice-broj_stranice\""
 
 msgid "Limits are not valid"
 msgstr "Granice nisu valjane"
 
 msgid "Please provide the password to open the encrypted document"
-msgstr ""
+msgstr "Molimo vas unesite zaporku kako biste otvorili kodirani dokument."
 
 msgid "Password request"
-msgstr ""
+msgstr "Zahtjeva se zaporka"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
 msgstr ""
+"Popis za odabir je pun, želite li ga isprazniti i učitati novi dokument"
 
 msgid "List full"
-msgstr ""
+msgstr "Popis pun"
 
 msgid "The lowest available pdf version is "
 msgstr "Najniža dostupna pdf inačica je "
@@ -1386,10 +1416,10 @@ msgid "Pdf version conflict"
 msgstr "Sukob pdf inačice"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
+msgstr "Greška kod preuzimanja spremljenih podataka o stranici"
 
 msgid "Unable to initializate drag and drop support."
-msgstr ""
+msgstr "Nemoguće pokrenuti podršku za prevlačenje (drag and drop)."
 
 msgid "Setting look and feel..."
 msgstr "Postavlja se izgled sučelja..."
@@ -1402,40 +1432,42 @@ msgstr ""
 "Ne mogu pronaći razinu zapisnika, postavlja se uobičajena razina (DEBUG)."
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "Učitavanje postavki korisničkog sučelja"
 
 msgid "Unable to find configuration file for the user interface"
-msgstr ""
+msgstr "Ne može se pronaći datoteka sa postavkama korisničkog sučelja"
 
 msgid "Error reading the configuration file for the user interface"
-msgstr ""
+msgstr "Greška prilikom čitanja datoteke sa postavkama korisničkog sučelja"
 
 msgid "Error initializing the user interface vertical divider location"
-msgstr ""
+msgstr "Greška prilikom postavljanja okomite pregrade na korisničkom sučelju"
 
 msgid "Error initializing the user interface horizontal divider location"
-msgstr ""
+msgstr "Greška prilikom postavljanja vodoravne pregrade na korisničkom sučelju"
 
 msgid "Error initializing the user interface extended state"
-msgstr ""
+msgstr "Greška prilikom postavljanja proširenja korisničkog sučelja"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "Greška prilikom postavljanja veličine korisničkog sučelja"
 
 msgid "Error initializing the user interface horizontal divider size"
 msgstr ""
+"Greška prilikom postavljanja veličine vodoravne pregrade korisničkog sučelja"
 
 msgid "Error initializing the user interface vertical divider size"
 msgstr ""
+"Greška prilikom postavljanja veličine okomite pregrade korisničkog sučelja"
 
 msgid "Error initializing the user interface location"
-msgstr ""
+msgstr "Greška prilikom postavljanja lokacije korisničkog sučelja"
 
 msgid "Saving GUI configuration"
-msgstr ""
+msgstr "Spremanje GUI postavki"
 
 msgid "Unable to save user interface status."
-msgstr ""
+msgstr "Nije moguće spremiti stanje korisničkog sučelja."
 
 #~ msgid "Ok"
 #~ msgstr "U redu"
@@ -1448,13 +1480,6 @@ msgstr ""
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Molimo pričekajte dok se dokument čita"
-
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "Dva puta kliknite na stranice koje želite spojiti (npr. 2 ili Sve ili 5-23 "
-#~ "ili 2,5-7,12-)"
 
 #~ msgid "Remove every pdf file from the merge list"
 #~ msgstr "Ukloni sve pdf datoteke iz liste za spajanje"

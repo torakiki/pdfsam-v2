@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-05-17 16:01+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "O ficheiro de entrada non existe ou é un directorio"
+
+msgid "Error opening pdf document"
+msgstr "Produciuse un erro ao abrir o documento pdf"
+
+msgid "Password not provided."
+msgstr "Non se forneceu un contrasinal."
+
+msgid "Unable to open the document."
+msgstr "Non foi posíbel abrir o documento."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Non hai memoria abondo para crear as miniaturas"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Non foi posíbel xerar as miniaturas"
 
 msgid "Merge options"
 msgstr "Opcións de unión"
@@ -122,6 +144,14 @@ msgstr "División a este tamaño"
 msgid "Split by bookmarks level"
 msgstr "Dividir por nivel de marcador"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "Ráfaga"
 
@@ -195,8 +225,7 @@ msgstr ""
 "Se contén \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" ou "
 "\"[BOOKMARK_NAME]\" realiza unha sustitución de variábeis."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Exemplo: prefixo_[BASENAME]_[CURRENTPAGE] xera prefixo_NomeFicheiro_005.pdf."
 
@@ -674,26 +703,8 @@ msgstr "Non foi posíbel crear miniaturas para un documento de entrada nulo"
 msgid "Unable to open the input document"
 msgstr "Non foi posíbel abrir o documento de entrada"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "O ficheiro de entrada non existe ou é un directorio"
-
-msgid "Error opening pdf document"
-msgstr "Produciuse un erro ao abrir o documento pdf"
-
-msgid "Password not provided."
-msgstr "Non se forneceu un contrasinal."
-
-msgid "Unable to open the document."
-msgstr "Non foi posíbel abrir o documento."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Non hai memoria abondo para crear as miniaturas"
-
 msgid "Thumbnails generated in "
 msgstr "Miniaturas xeradas en "
-
-msgid "Unable to generate thumbnail"
-msgstr "Non foi posíbel xerar as miniaturas"
 
 msgid " node environment loaded."
 msgstr " cargado o nodo do contorno"
@@ -877,8 +888,8 @@ msgstr "Versión do PDF do documento"
 msgid ""
 "Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
 msgstr ""
-"Dobre clic para estabelezer as páxinas que quere unir (ex: 2 ou 5-23 ou 2,5-"
-"7,12-)"
+"Dobre clic para estabelezer as páxinas que quere unir (ex: 2 ou 5-23 ou "
+"2,5-7,12-)"
 
 msgid "Unable to remove JList text "
 msgstr "Foi imposíbel suprimir o texto JList "
@@ -950,8 +961,7 @@ msgid "Rotate left"
 msgstr "Rotar á esquerda"
 
 msgid "Rotate anticlockwise selected pages"
-msgstr ""
-"Xirar as páxinas escollidas no sentido contrario as agullas do reloxo"
+msgstr "Xirar as páxinas escollidas no sentido contrario as agullas do reloxo"
 
 msgid "(Alt+ArrowLeft)"
 msgstr "(Alt+FrechaEsquerda)"
@@ -1102,6 +1112,9 @@ msgstr "Gardar o rexistro"
 
 msgid "Exit"
 msgstr "Saír"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "Comezou en "
@@ -1267,8 +1280,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Directorio de traballo por defecto"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Escoller o directorio onde se gardarán e de onde se cargarán por defecto os "
 "documentos."
@@ -1485,11 +1497,11 @@ msgstr "Non foi posíbel gardar o estado da interface do usuario."
 #~ msgstr "O ficheiro seleccionado non é un documento PDF."
 
 #~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
 #~ msgstr ""
-#~ "Faga dobre clic para escoller as páxinas que desexa unir (exemplo: 2 ou All "
-#~ "ou 5-23 ou 2,5-7,12-)"
+#~ "Faga dobre clic para escoller as páxinas que desexa unir (exemplo: 2 ou "
+#~ "All ou 5-23 ou 2,5-7,12-)"
 
 #~ msgid "Never"
 #~ msgstr "Nunca"

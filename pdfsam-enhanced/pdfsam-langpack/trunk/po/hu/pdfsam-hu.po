@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-03-09 00:45+0000\n"
 "Last-Translator: Gonosz Mikulás <Unknown>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-03-27 08:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "A bemeneti file, vagy könyvtár nem létezik"
+
+msgid "Error opening pdf document"
+msgstr "Hiba a pdf file megnyitásakor"
+
+msgid "Password not provided."
+msgstr "A jelszó nincs beintegrálva."
+
+msgid "Unable to open the document."
+msgstr "Nem sikerült megnyitni a dokumentumot."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Nincs elég memória a miniatűr kép létrehozásához."
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Nem sikerült a miniatűr képek létrehozása."
 
 msgid "Merge options"
 msgstr "Összefésülés beállításai"
@@ -122,6 +144,14 @@ msgstr "Ekkora méretnél daraboljon"
 msgid "Split by bookmarks level"
 msgstr "Könyvjelzők alapján daraboljon"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "Szétválasztás"
 
@@ -192,8 +222,7 @@ msgstr ""
 "Ha tartalmazza a \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" vagy "
 "\"[BOOKMARK_NAME]\" elemek valamelyikét, vátozó-helyettesítést végez."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Például: Előtag_alapnév_jelenlegi oldal a következőt hozza létre: "
 "előtag_fájl neve_005.pdf"
@@ -580,8 +609,7 @@ msgid "Pages:"
 msgstr "Oldalak:"
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
-"Állítsuk be a forgatás fokát (óramutató járásával megegyező irányban)"
+msgstr "Állítsuk be a forgatás fokát (óramutató járásával megegyező irányban)"
 
 msgid "Set the pages that will be rotated."
 msgstr "Állítsa be az oldalakat, merre kell forgatni"
@@ -675,26 +703,8 @@ msgstr "Nem lehet létrehozni a miniatűröket, bemeneti file nélkül"
 msgid "Unable to open the input document"
 msgstr "A bemeneti file nem nyitható meg"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "A bemeneti file, vagy könyvtár nem létezik"
-
-msgid "Error opening pdf document"
-msgstr "Hiba a pdf file megnyitásakor"
-
-msgid "Password not provided."
-msgstr "A jelszó nincs beintegrálva."
-
-msgid "Unable to open the document."
-msgstr "Nem sikerült megnyitni a dokumentumot."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Nincs elég memória a miniatűr kép létrehozásához."
-
 msgid "Thumbnails generated in "
 msgstr "Miniatűr képek létrehozása "
-
-msgid "Unable to generate thumbnail"
-msgstr "Nem sikerült a miniatűr képek létrehozása."
 
 msgid " node environment loaded."
 msgstr " csomópont környezet betöltve."
@@ -1105,6 +1115,9 @@ msgstr "Napló mentése"
 msgid "Exit"
 msgstr "Kilép"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "elindult "
 
@@ -1271,8 +1284,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Alapértelmezett munkakönyvtár"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr "Válasszuk ki az alapértelmezett munka könyvtárat"
 
 msgid "Save"
@@ -1380,8 +1392,8 @@ msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
-"Határértékeket egy vesszővel elválasztott listába kell  megadni  "
-"\"Oldal_szám\" vagy \"oldal_szám-oldal_szám\""
+"Határértékeket egy vesszővel elválasztott listába kell  megadni  \"Oldal_szám"
+"\" vagy \"oldal_szám-oldal_szám\""
 
 msgid "Limits are not valid"
 msgstr "Határértékek érvénytelenek"
@@ -1405,8 +1417,7 @@ msgid "The lowest available pdf version is "
 msgstr "A legalacsonzabb elérhető pdf verzió "
 
 msgid "You selected a lower output pdf version, continue anyway ?"
-msgstr ""
-"Alacsonyabb PDF verziójú kimenetet választott, mindenképpen folytatja?"
+msgstr "Alacsonyabb PDF verziójú kimenetet választott, mindenképpen folytatja?"
 
 msgid "Pdf version conflict"
 msgstr "Pdf verzió-konfliktus"
@@ -1424,15 +1435,13 @@ msgid "Setting logging level..."
 msgstr "Naplózás szintjének beállítása"
 
 msgid "Unable to find log level, setting to default level (DEBUG)."
-msgstr ""
-"Nem találom naplózási szintet, az alapértelmezett szint fog betöltődni"
+msgstr "Nem találom naplózási szintet, az alapértelmezett szint fog betöltődni"
 
 msgid "Loading user interface configuration"
 msgstr "Felhasználói felület beállításának betöltése"
 
 msgid "Unable to find configuration file for the user interface"
-msgstr ""
-"Nem találtam file-t a felhasználói felület beállításának betöltéséhez"
+msgstr "Nem találtam file-t a felhasználói felület beállításának betöltéséhez"
 
 msgid "Error reading the configuration file for the user interface"
 msgstr "Hiba a felhasználói felület konfigurációs file-jának olvasásakor"

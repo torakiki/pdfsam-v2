@@ -6,17 +6,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-03 18:04+0200\n"
-"PO-Revision-Date: 2010-08-27 17:28+0000\n"
-"Last-Translator: Peiqian Li <PeiqianLi@gmail.com>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2011-02-07 19:14+0000\n"
+"Last-Translator: candyboy <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
 "X-Poedit-Country: CHINA\n"
 "X-Poedit-Language: Chinese\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "输入文件不存在或者是一个目录"
+
+msgid "Error opening pdf document"
+msgstr "打开pdf文档错误"
+
+msgid "Password not provided."
+msgstr "没有提供密码。"
+
+msgid "Unable to open the document."
+msgstr "无法打开文档。"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "没有足够的内存来建立缩略图"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "无法生成缩略图"
 
 msgid "Merge options"
 msgstr "合并选项"
@@ -34,7 +56,7 @@ msgid "Use this merge type for standard pdf documents"
 msgstr "这种合并类型用于标准 PDF 文档"
 
 msgid "Checked"
-msgstr "已检查"
+msgstr "已选中"
 
 msgid "Use this merge type for pdf documents containing forms"
 msgstr "这种合并类型用于包含表单的 PDF 文档"
@@ -43,7 +65,7 @@ msgid "Note"
 msgstr "注"
 
 msgid "Setting this option the documents will be completely loaded in memory"
-msgstr "设置此选项，文档就会被完全载入内存"
+msgstr "通过设置此选项，文档会被完全载入内存"
 
 msgid "Destination output file"
 msgstr "目标输出文件"
@@ -59,7 +81,7 @@ msgid "Check the box if you want compressed output files."
 msgstr "如果您想要压缩输出文件，请勾选此框。"
 
 msgid "PDF version 1.5 or above."
-msgstr "PDF 版本1.5或更高。"
+msgstr "PDF 版本 1.5 或 更高版本。"
 
 msgid "Set the pdf version of the ouput document."
 msgstr "设置输出文档的 pdf 版本号。"
@@ -83,7 +105,7 @@ msgid "Export as xml"
 msgstr "导出为 xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "以 xml 格式输出选择清单"
 
 msgid "Unable to save xml file."
 msgstr "无法保存 xml 文件。"
@@ -101,7 +123,7 @@ msgid "Burst (split into single pages)"
 msgstr "爆裂 (拆分为单页文件)"
 
 msgid "Split every \"n\" pages"
-msgstr "每\"n\"页分割一次"
+msgstr "每隔“n”页拆分一次"
 
 msgid "Split even pages"
 msgstr "拆分偶数页"
@@ -118,6 +140,14 @@ msgstr "达到这个大小之后拆分"
 msgid "Split by bookmarks level"
 msgstr "根据书签级别分割"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "分割"
 
@@ -125,7 +155,7 @@ msgid "Explode the pdf document into single pages"
 msgstr "将 PDF 文档分割为单页文件"
 
 msgid "Split the document every \"n\" pages"
-msgstr "每\"n\" 页就拆分一次文档"
+msgstr "每隔“n”页就拆分一次"
 
 msgid "Split the document every even page"
 msgstr "每遇到偶数页就拆分文档"
@@ -137,7 +167,7 @@ msgid "Split the document after page numbers (num1-num2-num3..)"
 msgstr "在页码（num1-num2-num3...）之后拆分文档"
 
 msgid "Split the document in files of the given size (roughly)"
-msgstr "以指定大小分割文档"
+msgstr "已指定大小拆分文档（大致）"
 
 msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr "在给定级别的书签指向的页面处分割文档"
@@ -190,6 +220,8 @@ msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
 "it generates oldstyle output file names."
 msgstr ""
+"如果不包含 \"[CURRENTPAGE]\"， \"[TIMESTAMP]\" 或者 \"[FILENUMBER]\" ，则以旧"
+"有形式生成输出文件名。"
 
 msgid "Available variables"
 msgstr "可用变量"
@@ -210,7 +242,7 @@ msgid "Invalid unit: "
 msgstr "单位错误： "
 
 msgid "Fill from document"
-msgstr ""
+msgstr "按照文档来填写"
 
 msgid "Please select a pdf document."
 msgstr "请选择一个pdf文档"
@@ -222,16 +254,16 @@ msgid "Getting bookmarks max depth"
 msgstr "获取书签最大深度"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "无法获取书签的最大层数"
 
 msgid "Frontpage pdf file"
-msgstr ""
+msgstr "首页 pdf 文件"
 
 msgid "Addendum pdf file"
 msgstr "附录pdf文件"
 
 msgid "Frontpage and Addendum"
-msgstr ""
+msgstr "首页与附录"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:876
 msgid "Cover And Footer section loaded."
@@ -328,7 +360,7 @@ msgid "Decrypt section loaded."
 msgstr "解密部分已经加载"
 
 msgid "Document metadata"
-msgstr ""
+msgstr "文档元数据"
 
 msgid "Title"
 msgstr "标题"
@@ -343,28 +375,28 @@ msgid "Keywords"
 msgstr "关键词"
 
 msgid "Set the document title."
-msgstr ""
+msgstr "设置文档标题。"
 
 msgid "Set the document author."
-msgstr ""
+msgstr "设置文档作者。"
 
 msgid "Set the document subject."
-msgstr ""
+msgstr "设置文档主题。"
 
 msgid "Set the document keywords."
-msgstr ""
+msgstr "设置文档关键词。"
 
 msgid "Choose a file"
 msgstr "选择一个文件"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "设置所选文件的元数据"
 
 msgid "Document Info"
-msgstr ""
+msgstr "文档信息"
 
 msgid "Rotate section loaded."
-msgstr ""
+msgstr "旋转加载的部分"
 
 msgid "Mix options"
 msgstr "混合选项"
@@ -376,25 +408,25 @@ msgid "Reverse second document"
 msgstr "反转第二个文档"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "从第一个文档转到另外一个文档的页数"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "从第二个文档转到另外一个文档的页数"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
 "both)."
-msgstr ""
+msgstr "如果想颠倒第一个或者第二个文档（或者两者均是），请勾取该选框。"
 
 msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
-msgstr ""
+msgstr "设定从第一个文档到另外一个文档所需变换的页数（默认为 1 ）。"
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
-msgstr ""
+msgstr "设定从第二个文档到另外一个文档所需变换的页数（默认为 1 ）。"
 
 msgid "Execute pdf alternate mix"
 msgstr "执行 PDF 交替混合"
@@ -424,13 +456,13 @@ msgid "Set viewer options"
 msgstr "设置文档查看器选项"
 
 msgid "Hide the menubar"
-msgstr ""
+msgstr "隐藏菜单栏"
 
 msgid "Hide the toolbar"
 msgstr "隐藏工具栏"
 
 msgid "Hide user interface elements"
-msgstr ""
+msgstr "隐藏用户界面元素"
 
 msgid "Rezise the window to fit the page size"
 msgstr "根据页面重排窗口"
@@ -481,25 +513,25 @@ msgid "Attachments"
 msgstr "附件"
 
 msgid "Optional content group panel"
-msgstr ""
+msgstr "可选内容集合面板"
 
 msgid "Document outline"
 msgstr "文档概要"
 
 msgid "Thumbnail images"
-msgstr ""
+msgstr "缩略图"
 
 msgid "One page at a time"
 msgstr "每次一页"
 
 msgid "Pages in one column"
-msgstr ""
+msgstr "一列中的页数"
 
 msgid "Pages in two columns (odd on the left)"
-msgstr ""
+msgstr "两列中的页数（奇数在左）"
 
 msgid "Pages in two columns (odd on the right)"
-msgstr ""
+msgstr "两列中的页数（奇数在右）"
 
 msgid "Two pages at a time (odd on the left)"
 msgstr "每次两页（奇数页在左）"
@@ -508,10 +540,10 @@ msgid "Two pages at a time (odd on the right)"
 msgstr "每次两页（奇数页在右）"
 
 msgid "Viewer options"
-msgstr ""
+msgstr "视图选项"
 
 msgid "Viewer options section loaded."
-msgstr ""
+msgstr "视图选项部分已加载"
 
 msgid "Move on top"
 msgstr "移至顶端"
@@ -522,7 +554,7 @@ msgstr "移至底端"
 msgid ""
 "To choose a file browse or enter the full path to the destination output "
 "file."
-msgstr ""
+msgstr "选择文件浏览或者输入目标输出文件的完整路径"
 
 msgid "Execute pages reorder"
 msgstr "页面重新排序"
@@ -531,10 +563,10 @@ msgid "Visual document composer"
 msgstr "可视化文档设计器"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "可视化编辑器部分已加载"
 
 msgid "Please select a pdf document or undelete some pages"
-msgstr ""
+msgstr "请选择一个 pdf 文档或者取消删除一些页面"
 
 msgid "Rotation"
 msgstr "旋转"
@@ -549,16 +581,16 @@ msgid "Odd"
 msgstr "奇数"
 
 msgid "Clockwise rotation (degrees):"
-msgstr ""
+msgstr "顺时针旋转（角度）："
 
 msgid "Pages:"
-msgstr ""
+msgstr "页数："
 
 msgid "Set the rotation degrees (clockwise)."
-msgstr ""
+msgstr "设置旋转角度（顺时针）。"
 
 msgid "Set the pages that will be rotated."
-msgstr ""
+msgstr "选择将要旋转的页面。"
 
 msgid "Rotate selected files"
 msgstr "旋转选定的文件"
@@ -567,16 +599,16 @@ msgid "Rotate"
 msgstr "旋转"
 
 msgid "Use the same output file name as the input file or choose a file."
-msgstr ""
+msgstr "使用与输入文件相同的输出文件名或者选择一个文件。"
 
 msgid "Visual reorder"
-msgstr ""
+msgstr "可视化再整理"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "可视化再整理部分已加载。"
 
 msgid "Please select a pdf document or undelete some page"
-msgstr ""
+msgstr "请选择一个 pdf 文档或者取消删除某些页面"
 
 msgid "New version available."
 msgstr "检查到新版本。"
@@ -594,7 +626,7 @@ msgid "Save as"
 msgstr "另存为"
 
 msgid "Save the image"
-msgstr ""
+msgstr "保存图像"
 
 msgid "Unable to save image"
 msgstr "无法保存图像"
@@ -603,7 +635,7 @@ msgid "Close"
 msgstr "关闭"
 
 msgid "Close panel"
-msgstr ""
+msgstr "关闭面板"
 
 msgid "Rotate anticlockwise"
 msgstr "逆时针旋转"
@@ -618,10 +650,10 @@ msgid "Zoom out"
 msgstr "缩小"
 
 msgid "No zoom"
-msgstr ""
+msgstr "无缩放"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "没有使用缩放"
 
 msgid "Save environment"
 msgstr "保存环境"
@@ -637,34 +669,16 @@ msgid "Load environment"
 msgstr "载入环境"
 
 msgid "Unable to create image for a null input document"
-msgstr ""
+msgstr "无法为一个无效的输入文档建立图像"
 
 msgid "Unable to create thumbnails for a null input document"
-msgstr ""
+msgstr "无法为一个无效的输入文档建立缩略图"
 
 msgid "Unable to open the input document"
 msgstr "无法打开输入文档"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "输入文件不存在或者是一个目录"
-
-msgid "Error opening pdf document"
-msgstr "打开pdf文档错误"
-
-msgid "Password not provided."
-msgstr "没有提供密码。"
-
-msgid "Unable to open the document."
-msgstr "无法打开文档。"
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
-msgstr ""
+msgstr "已生成缩略图在 "
 
 msgid " node environment loaded."
 msgstr " 载入结点环境。"
@@ -691,7 +705,7 @@ msgid "Image viewer"
 msgstr "图像浏览器"
 
 msgid "Unable to initialize the thumbnails creation library."
-msgstr ""
+msgstr "无法初始化缩略图生成库"
 
 msgid "Unable to open image preview"
 msgstr "无法打开图像预览"
@@ -703,7 +717,7 @@ msgid "Error playing sound"
 msgstr "播放声音时发生错误"
 
 msgid "Generating thumbnails using the following library:"
-msgstr ""
+msgstr "使用如下库生成缩略图："
 
 msgid "Selection table is full, please remove some pdf document."
 msgstr "备选表已满，请删除一些 pdf 文档"
@@ -730,16 +744,16 @@ msgid "Clear"
 msgstr "清空"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "从选择清单上清除所有 pdf"
 
 msgid "Document properties"
 msgstr "文档属性"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "显示文档属性"
 
 msgid "Move down"
-msgstr ""
+msgstr "向下移动"
 
 msgid "Move down selected pdf file"
 msgstr "下移选择的 PDF 文件"
@@ -754,7 +768,7 @@ msgid "Reload"
 msgstr "重新载入"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "重新加载所选文档"
 
 msgid "Remove"
 msgstr "移除"
@@ -763,13 +777,13 @@ msgid "Remove a pdf from the list"
 msgstr "从列表中移除 PDF 文件"
 
 msgid "Set destination"
-msgstr ""
+msgstr "设置目标"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "设置目标路径"
 
 msgid "Unable to clean pdf loader"
-msgstr ""
+msgstr "无法清空 pdf 加载器"
 
 msgid "Run"
 msgstr "运行"
@@ -805,12 +819,12 @@ msgid "Add prefix"
 msgstr "添加前缀"
 
 msgid "The cross reference table cantained some error and has been rebuilt"
-msgstr ""
+msgstr "交叉引用表包含一些错误且已经重建"
 
 msgid ""
 "The document has not been opened with the owner password. You must provide "
 "the owner password in order to manipulate the document"
-msgstr ""
+msgstr "文档尚未用所有者密码打开。你必须提供所有者密码以修改文档"
 
 msgid "An error occured while loading the document"
 msgstr "载入文档时有错误发生"
@@ -859,7 +873,7 @@ msgid "Open"
 msgstr "打开"
 
 msgid "Load a pdf document"
-msgstr ""
+msgstr "加载一份 pdf 文档"
 
 msgid "Error setting zoom level."
 msgstr "设置缩放级别出错。"
@@ -898,10 +912,10 @@ msgid "(Canc)"
 msgstr "(取消)"
 
 msgid "Undelete selected pages"
-msgstr ""
+msgstr "取消删除所选页面"
 
 msgid "(Ctrl+Z)"
-msgstr ""
+msgstr "(Ctrl+Z)"
 
 msgid "Rotate right"
 msgstr "向右旋转"
@@ -910,7 +924,7 @@ msgid "Rotate clockwise selected pages"
 msgstr "顺时针旋转选定的页面"
 
 msgid "(Alt+ArrowRight)"
-msgstr ""
+msgstr "(Alt+ArrowRight)"
 
 msgid "Rotate left"
 msgstr "向左旋转"
@@ -919,10 +933,10 @@ msgid "Rotate anticlockwise selected pages"
 msgstr "逆时针旋转选定的页面"
 
 msgid "(Alt+ArrowLeft)"
-msgstr ""
+msgstr "(Alt+ArrowLeft)"
 
 msgid "Reverse pages order"
-msgstr ""
+msgstr "颠倒页面顺序"
 
 msgid "Yes"
 msgstr "是"
@@ -934,7 +948,7 @@ msgid "File: "
 msgstr "文件： "
 
 msgid "Pages: "
-msgstr ""
+msgstr "页面： "
 
 msgid "Pdf version: "
 msgstr "Pdf版本： "
@@ -949,10 +963,10 @@ msgid "Creator: "
 msgstr "创建者： "
 
 msgid "Producer: "
-msgstr ""
+msgstr "制作人： "
 
 msgid "Encrypted: "
-msgstr ""
+msgstr "已加密： "
 
 msgid "Set output file"
 msgstr "设置输出文件"
@@ -964,7 +978,7 @@ msgid "File"
 msgstr "文件"
 
 msgid "Image"
-msgstr ""
+msgstr "图像"
 
 msgid "Error creating preview panel."
 msgstr "创建预览面板错误"
@@ -1027,13 +1041,13 @@ msgid "Plugins directory is null."
 msgstr "插件目录为空。"
 
 msgid "Found many plugins in "
-msgstr ""
+msgstr "找到许多加载项在 "
 
 msgid "selected as the most recent plugin"
-msgstr ""
+msgstr "选择作为最近的加载项"
 
 msgid "No plugin found in "
-msgstr ""
+msgstr "没有发现加载项在 "
 
 msgid "Exception loading plugins."
 msgstr "排除插件载入。"
@@ -1067,6 +1081,9 @@ msgstr "保存日志"
 
 msgid "Exit"
 msgstr "退出"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "开始于 "
@@ -1153,7 +1170,7 @@ msgid "Language:"
 msgstr "语言:"
 
 msgid "Thumbnails creator"
-msgstr ""
+msgstr "缩略图生成器"
 
 msgid "Load default environment at startup:"
 msgstr "启动时载入默认环境："
@@ -1171,7 +1188,7 @@ msgid "Play alert sounds"
 msgstr "播放提示音"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
-msgstr ""
+msgstr "当选中覆写选框时要求确认"
 
 msgid "Settings "
 msgstr "设置 "
@@ -1196,7 +1213,7 @@ msgid "Set a log detail level (restart needed)"
 msgstr "设置日期详细级别（需要重新启动）"
 
 msgid "Set the thumbnails creation library"
-msgstr ""
+msgstr "这是缩略图生成库"
 
 msgid "Check for updates"
 msgstr "检查更新"
@@ -1208,12 +1225,12 @@ msgid "Turn on or off alert sounds"
 msgstr "开启或关闭提示音"
 
 msgid "Ask overwrite confirmation"
-msgstr ""
+msgstr "要求覆写确认"
 
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
-msgstr ""
+msgstr "当“覆写”被选中时，显示对话框要求用户进行确认"
 
 msgid "Default env."
 msgstr "默认环境。"
@@ -1292,19 +1309,19 @@ msgid "Please select two pdf documents."
 msgstr "请选择两个 PDF 文档。"
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "所有文件正在处理，请等待"
 
 msgid "Still adding files"
-msgstr ""
+msgstr "还在添加文件"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "请选择一个目标文件。"
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "请选择一个目标目录。"
 
 msgid "No destination selected"
-msgstr ""
+msgstr "尚未选择目标"
 
 msgid "Selected output file already exists "
 msgstr "所选的输出文件已存在 "
@@ -1315,13 +1332,13 @@ msgstr "您想要覆盖此文件吗？"
 msgid ""
 "Please note that output files will overwrite existing files of the same name "
 "without warning."
-msgstr ""
+msgstr "请注意输出文件将覆写同名的已存在的文件而没有警告。"
 
 msgid "Do you confirm to overwrite?"
-msgstr ""
+msgstr "你确认进行覆写么？"
 
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "确认覆写"
 
 msgid "Provided pages selection is not valid"
 msgstr "页面选择无效"
@@ -1330,15 +1347,17 @@ msgid ""
 "Limits must be a comma separated list of \"page_number\" or \"page_number-"
 "page_number\""
 msgstr ""
+"限制范围必须为以逗号分隔的 \"page_number\" 或者 \"page_number-page_number\" "
+"的清单"
 
 msgid "Limits are not valid"
-msgstr ""
+msgstr "限制范围无效"
 
 msgid "Please provide the password to open the encrypted document"
 msgstr "请输入密码以打开此加密文档"
 
 msgid "Password request"
-msgstr ""
+msgstr "要求密码"
 
 msgid ""
 "Selection list is full, would you like to empty it and load the new document?"
@@ -1357,7 +1376,7 @@ msgid "Pdf version conflict"
 msgstr "PDF 版本冲突"
 
 msgid "Error retrieving page saved informations"
-msgstr ""
+msgstr "获取页面保存信息错误"
 
 msgid "Unable to initializate drag and drop support."
 msgstr "无法初始化拖放支持。"
@@ -1372,31 +1391,31 @@ msgid "Unable to find log level, setting to default level (DEBUG)."
 msgstr "无法获取日志级别，设置为默认级别 (DEBUG)。"
 
 msgid "Loading user interface configuration"
-msgstr ""
+msgstr "加载用于界面配置"
 
 msgid "Unable to find configuration file for the user interface"
-msgstr ""
+msgstr "无法找到用户界面配置文件"
 
 msgid "Error reading the configuration file for the user interface"
-msgstr ""
+msgstr "读取用户界面配置文件错误"
 
 msgid "Error initializing the user interface vertical divider location"
-msgstr ""
+msgstr "初始化用户界面垂直分隔位置错误"
 
 msgid "Error initializing the user interface horizontal divider location"
-msgstr ""
+msgstr "初始化用户界面水平分隔位置错误"
 
 msgid "Error initializing the user interface extended state"
-msgstr ""
+msgstr "初始化用户界面扩展状态错误"
 
 msgid "Error initializing the user interface size"
-msgstr ""
+msgstr "初始化用户界面尺寸错误"
 
 msgid "Error initializing the user interface horizontal divider size"
-msgstr ""
+msgstr "初始化用户界面水平分隔尺寸错误"
 
 msgid "Error initializing the user interface vertical divider size"
-msgstr ""
+msgstr "初始化用户界面垂直分隔尺寸错误"
 
 msgid "Error initializing the user interface location"
 msgstr "初始化用户界面位置错误"
@@ -1435,11 +1454,6 @@ msgstr "无法保存用户界面状态。"
 
 #~ msgid "Never"
 #~ msgstr "从不"
-
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr "双击以设定你需要合并的页面（如：2、全部、5-23、2,5-7,12-）"
 
 #~ msgid "Error loading "
 #~ msgstr "载入环出错 "

@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-03-25 01:28+0000\n"
-"Last-Translator: lucianob <lucianobordon@gmail.com>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-01-08 06:33+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "El archivo de entrada no existe o es un directorio"
+
+msgid "Error opening pdf document"
+msgstr "Error abriendo documento pdf"
+
+msgid "Password not provided."
+msgstr "No se ha introducido la contraseña."
+
+msgid "Unable to open the document."
+msgstr "No se pudo abrir el documento."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "No hay suficiente memoria para crear miniaturas"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "No se puede generar miniatura"
 
 msgid "Merge options"
 msgstr "Opciones de unión"
@@ -40,9 +62,8 @@ msgstr "Seleccionado"
 msgid "Use this merge type for pdf documents containing forms"
 msgstr "Use este tipo de unión para documentos pdf que contengan formularios"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 msgid "Note"
-msgstr "Nota"
+msgstr "Anotación"
 
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr "Seleccionando esta opción los documentos serán cargados en memoria"
@@ -79,11 +100,35 @@ msgstr "Unir/Extraer"
 msgid "Merge section loaded."
 msgstr "Sección de combinación cargada."
 
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:388
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:535
+# G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:811
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:387
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:414
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:441
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:599
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:619
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:649
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:879
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:983
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:616
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:423
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:588
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:608
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:638
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:861
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:977
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:143
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:170
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:237
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:498
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:539
+# F:\workspace_pdfsam_enhanced\pdfsam-maine\it\pdfsam\panels\LogPanel.java:256
 msgid "Error: "
-msgstr "Error "
+msgstr "Error: "
 
 msgid "Found a password for input file."
-msgstr "Encuentra una contraseña para el archivo de salida"
+msgstr "Contraseña encontrada para el archivo de salida."
 
 msgid "Export as xml"
 msgstr "Exportar como xml"
@@ -137,6 +182,14 @@ msgstr "Dividir en esta medida"
 
 msgid "Split by bookmarks level"
 msgstr "Dividir por nivel de marcador"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Ráfaga"
@@ -387,7 +440,7 @@ msgid "Decrypt selected files"
 msgstr "Desencriptar ficheros seleccionados"
 
 msgid "Decrypt"
-msgstr "Desencriptar"
+msgstr "Descifrar"
 
 msgid "Decrypt section loaded."
 msgstr "Descifrar sección cargada."
@@ -727,26 +780,8 @@ msgstr "No se puede crear miniaturas para un documento de entrada vacío"
 msgid "Unable to open the input document"
 msgstr "Imposible abrir el documento de entrada"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "El archivo de entrada no existe o es un directorio"
-
-msgid "Error opening pdf document"
-msgstr "Error abriendo documento pdf"
-
-msgid "Password not provided."
-msgstr "No se ha introducido la contraseña."
-
-msgid "Unable to open the document."
-msgstr "No se pudo abrir el documento."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "No hay suficiente memoria para crear miniaturas"
-
 msgid "Thumbnails generated in "
 msgstr "Miniaturas generadas en "
-
-msgid "Unable to generate thumbnail"
-msgstr "No se puede generar miniatura"
 
 msgid " node environment loaded."
 msgstr " ambiente de nodo cargado."
@@ -1267,6 +1302,9 @@ msgstr "Guardar registro"
 msgid "Exit"
 msgstr "Salir"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "comenzado en "
 
@@ -1659,6 +1697,13 @@ msgstr "Guardando la configuración de la Interfaz Gráfica de Usuario"
 msgid "Unable to save user interface status."
 msgstr "Imposible guardar el estado de la interfaz de usuario."
 
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Seleccione el número de páginas para cambiar de un documento a otro (por "
+#~ "defecto es 1)."
+
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:281
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:295
 #~ msgid "Remove every pdf file from the merge list"
@@ -1672,13 +1717,6 @@ msgstr "Imposible guardar el estado de la interfaz de usuario."
 
 #~ msgid "Selected file is not a pdf document."
 #~ msgstr "Archivo seleccionado no es un documento pdf."
-
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "Haga doble click para marcar las páginas que desea combinar (por ejemplo: "
-#~ "2 o Todas o 5-23 o 2,5-7,12-)"
 
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Incapaz de obtener las informaciones del ambiente predefinido."
@@ -1706,3 +1744,6 @@ msgstr "Imposible guardar el estado de la interfaz de usuario."
 
 #~ msgid "Please wait while reading"
 #~ msgstr "Por favor, espere mientras se lee"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Número de páginas a cambiar de documento"

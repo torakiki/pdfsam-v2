@@ -7,21 +7,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-01-27 14:24+0000\n"
-"Last-Translator: Waldir Leoncio <Unknown>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2010-05-05 02:10+0000\n"
+"Last-Translator: Laubstein <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 08:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Arquivo de entrada não existe ou é um diretório"
+
+msgid "Error opening pdf document"
+msgstr "Erro ao abrir documento pdf"
+
+msgid "Password not provided."
+msgstr "Senha não informada."
+
+msgid "Unable to open the document."
+msgstr "Não foi possível abrir o documento."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Sem memória para criar miniaturas (thumbnails)"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Não foi possível gerar miniatura (thumbnail)"
 
 msgid "Merge options"
 msgstr "Mesclar opções"
 
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:389
 msgid "PDF documents contain forms"
-msgstr "Documentos PDF contém formulários"
+msgstr "Documentos PDF contêm formulários"
 
 # F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:394
 msgid "Merge type"
@@ -30,42 +53,37 @@ msgstr "Tipo de mesclagem"
 msgid "Unchecked"
 msgstr "Não verificado"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:395
 msgid "Use this merge type for standard pdf documents"
-msgstr "Use este tipo de mesclagem para arquivos PDF padrão"
+msgstr "Utilize este tipo de mesclagem para documentos pdf padrão"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
 msgid "Checked"
-msgstr "Verificado"
+msgstr "Selecionado"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:396
 msgid "Use this merge type for pdf documents containing forms"
-msgstr "Use este tipo de mesclagem para documentos PDF que contêm formulários"
+msgstr ""
+"Utilize este tipo de mesclagem para documentos pdf que possuem formulários"
 
 msgid "Note"
 msgstr "Nota"
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:397
 msgid "Setting this option the documents will be completely loaded in memory"
 msgstr ""
-"Definindo esta opção os documentos serão carregados completamente na memória"
+"Selecionando esta opção os documentos serão carregados completamente em "
+"memória"
 
 msgid "Destination output file"
 msgstr "Destino do arquivo de saída"
 
 msgid "Browse or enter the full path to the destination output file."
-msgstr "Procure ou digite o caminho completo para o arquivo de saída."
+msgstr "Navegue ou digite o caminho completo para o arquivo de saída."
 
-# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:442
-# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:257
 msgid ""
 "Check the box if you want to overwrite the output file if it already exists."
 msgstr ""
-"Selecione este campo se deseja sobrescrever o arquivo de saída, caso já "
-"exista."
+"Selecione se quiser sobrescrever o arquivo de saída caso ele já exista."
 
 msgid "Check the box if you want compressed output files."
-msgstr "Selecione este campo se deseja arquivos de saída compactados."
+msgstr "Selecione se quiser arquivos de saída compactados."
 
 msgid "PDF version 1.5 or above."
 msgstr "PDF versão 1.5 ou superior."
@@ -116,7 +134,7 @@ msgid "Export as xml"
 msgstr "Exportar como xml"
 
 msgid "Export the selection list in xml format"
-msgstr ""
+msgstr "Exportar a lista de seleção no formato XML"
 
 msgid "Unable to save xml file."
 msgstr "Incapaz de salvar como xml."
@@ -153,6 +171,14 @@ msgstr "Dividir neste tamanho"
 
 msgid "Split by bookmarks level"
 msgstr "Dividir ao nível dos marcadores"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Burst"
@@ -266,7 +292,7 @@ msgid "Getting bookmarks max depth"
 msgstr "Recuperando nível máximo de marcadores"
 
 msgid "Unable to retrieve bookmarks maximum depth."
-msgstr ""
+msgstr "Não foi possível recuperar o nível máximo dos favoritos."
 
 msgid "Frontpage pdf file"
 msgstr "Arquivo pdf de capa"
@@ -428,7 +454,7 @@ msgid "Choose a file"
 msgstr "Escolha um arquivo"
 
 msgid "Set metadata on the selected file"
-msgstr ""
+msgstr "Definir metadados no arquivo selecionado"
 
 msgid "Document Info"
 msgstr "Informações sobre o Documento"
@@ -446,10 +472,10 @@ msgid "Reverse second document"
 msgstr "Inverter segundo documento"
 
 msgid "Number of pages to switch from the first document to the other"
-msgstr ""
+msgstr "Número de páginas para trocar do primeiro documento para o segundo"
 
 msgid "Number of pages to switch from the second document to the other"
-msgstr ""
+msgstr "Número de páginas para trocar do segundo documento para o primeiro"
 
 msgid ""
 "Tick the boxes if you want to reverse the first or the second document (or "
@@ -461,11 +487,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Define o número de páginas a serem trocadas do primeiro documento para o "
+"segundo (o padrão é 1)."
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Define o número de páginas a serem trocadas do segundo documento para o "
+"primeiro (o padrão é 1)."
 
 msgid "Execute pdf alternate mix"
 msgstr "Executar pdf mix alternado"
@@ -604,7 +634,7 @@ msgid "Visual document composer"
 msgstr "Compositor visual de documento"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "Seção Compositor Visual carregada."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "Por favor, selecione um arquivo pdf ou recupere algumas páginas"
@@ -648,7 +678,7 @@ msgid "Visual reorder"
 msgstr "Reclassificação visual"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "Seção Reclassificação Visual carregada."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "Por favor, selecione um documento pdf ou recupere alguma página"
@@ -673,7 +703,7 @@ msgid "Save as"
 msgstr "Salvar como"
 
 msgid "Save the image"
-msgstr ""
+msgstr "Salvar imagem"
 
 msgid "Unable to save image"
 msgstr "Não foi possível salvar a imagem"
@@ -682,7 +712,7 @@ msgid "Close"
 msgstr "Fechar"
 
 msgid "Close panel"
-msgstr ""
+msgstr "Fechar painel"
 
 msgid "Rotate anticlockwise"
 msgstr "Rotacionar no sentido não-horário"
@@ -697,10 +727,10 @@ msgid "Zoom out"
 msgstr "Menos zoom"
 
 msgid "No zoom"
-msgstr ""
+msgstr "Sem zoom"
 
 msgid "No zoom applied"
-msgstr ""
+msgstr "Sem zoom aplicado"
 
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\ButtonsBar.java:109
 # F:\workspace_pdfsame_enanched\pdfsam-maine\it\pdfsam\panels\MenuPanel.java:58
@@ -734,26 +764,8 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr "Não foi possível abrir o arquivo de entrada"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Arquivo de entrada não existe ou é um diretório"
-
-msgid "Error opening pdf document"
-msgstr "Erro ao abrir documento pdf"
-
-msgid "Password not provided."
-msgstr "Senha não informada."
-
-msgid "Unable to open the document."
-msgstr "Não foi possível abrir o documento."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Sem memória para criar miniaturas (thumbnails)"
-
 msgid "Thumbnails generated in "
 msgstr "Miniaturas (thumbnails) geradas em "
-
-msgid "Unable to generate thumbnail"
-msgstr "Não foi possível gerar miniatura (thumbnail)"
 
 msgid " node environment loaded."
 msgstr " ambiente nó carregado."
@@ -828,16 +840,16 @@ msgid "Clear"
 msgstr "Limpar"
 
 msgid "Remove every pdf file from the selection list"
-msgstr ""
+msgstr "Remove todos arquivos pdf da lista de seleção"
 
 msgid "Document properties"
 msgstr "Propriedades do documento"
 
 msgid "Show document properties"
-msgstr ""
+msgstr "Mostrar propriedades do documento"
 
 msgid "Move down"
-msgstr ""
+msgstr "Para baixo"
 
 msgid "Move down selected pdf file"
 msgstr "Move para baixo o arquivo pdf selecionado"
@@ -852,7 +864,7 @@ msgid "Reload"
 msgstr "Recarregar"
 
 msgid "Reload the selected document"
-msgstr ""
+msgstr "Recarregar documento selecionado"
 
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:252
 # G:\Documents\eclipse_workspace\PDFSAMmerge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:297
@@ -867,16 +879,22 @@ msgid "Remove a pdf from the list"
 msgstr "Remove um arquivo pdf da lista"
 
 msgid "Set destination"
-msgstr ""
+msgstr "Definir destino"
 
 msgid "Set the destination path"
-msgstr ""
+msgstr "Define o caminho de destino"
 
 msgid "Unable to clean pdf loader"
 msgstr "Não foi possível limpar o carregador de pdf"
 
+# G:\Documents\eclipse_workspace\PDFSAMsplit\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:368
+# F:\workspace_pdfsam_enhanced\pdfsam-cover\it\pdfsam\plugin\coverfooter\GUI\CoverFooterMainGUI.java:542
+# F:\workspace_pdfsam_enhanced\pdfsam-encrypt\it\pdfsam\plugin\encrypt\GUI\EncryptMainGUI.java:462
+# F:\workspace_pdfsam_enhanced\pdfsam-merge\it\pdfsam\plugin\merge\GUI\MergeMainGUI.java:526
+# F:\workspace_pdfsam_enhanced\pdfsam-mix\it\pdfsam\plugin\mix\GUI\MixMainGUI.java:320
+# F:\workspace_pdfsam_enhanced\pdfsam-split\it\pdfsam\plugin\split\GUI\SplitMainGUI.java:410
 msgid "Run"
-msgstr "Executa"
+msgstr "Executar"
 
 msgid "Browse"
 msgstr "Navegar"
@@ -1092,7 +1110,7 @@ msgid "File"
 msgstr "Arquivo"
 
 msgid "Image"
-msgstr ""
+msgstr "Imagem"
 
 msgid "Error creating preview panel."
 msgstr "Erro ao criar painel de visualização."
@@ -1199,6 +1217,9 @@ msgstr "Salvar log"
 
 msgid "Exit"
 msgstr "Sair"
+
+msgid "Recent environments"
+msgstr ""
 
 msgid "started in "
 msgstr "iniciado em "
@@ -1453,19 +1474,19 @@ msgid "Please select two pdf documents."
 msgstr "Por favor, selecione dois documentos pdf."
 
 msgid "Please wait while all files are processed."
-msgstr ""
+msgstr "Aguarde enquanto todos arquivos são processados."
 
 msgid "Still adding files"
-msgstr ""
+msgstr "Continuar adicionando arquivos"
 
 msgid "Please select a destination file."
-msgstr ""
+msgstr "Selecione um arquivo de destino."
 
 msgid "Please select a destination directory."
-msgstr ""
+msgstr "Selecione um diretório de destino."
 
 msgid "No destination selected"
-msgstr ""
+msgstr "Nenhum destino selecionado"
 
 msgid "Selected output file already exists "
 msgstr "Arquivo de saída já existente "
@@ -1595,13 +1616,6 @@ msgstr "Não foi possível salvar estado da interface do usuário."
 #~ msgid "Selected file is not a pdf document."
 #~ msgstr "O arquivo selecionado não é um documento pdf."
 
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "Dê um clique duplo para definir as páginas que você deseja mesclar (ex: 2 "
-#~ "ou All ou 5-23 ou 2,5-7,12-)"
-
 #~ msgid "Found zero or many jars in plugin directory "
 #~ msgstr "Encontrado nenhum ou muitos jars no diretório de plugin "
 
@@ -1629,8 +1643,12 @@ msgstr "Não foi possível salvar estado da interface do usuário."
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Incapaz de obter as informações do ambiente padrão."
 
-#~ msgid "Cover pdf file"
-#~ msgstr "Capa do arquivo pdf"
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Número de páginas para trocar de documento"
 
-#~ msgid "Footer pdf file"
-#~ msgstr "rodapé do arquivo pdf"
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Define o número de páginas para trocar de um documento para o outro "
+#~ "(padrão é 1)."

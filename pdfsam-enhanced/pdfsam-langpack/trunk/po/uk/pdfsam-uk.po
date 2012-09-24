@@ -7,18 +7,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2009-03-10 13:45+0000\n"
-"Last-Translator: Сергій Дубик <dubyk@library.lviv.ua>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-07-09 13:44+0000\n"
+"Last-Translator: Max_ym <kontact.cat@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-20 14:00+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr ""
+
+msgid "Error opening pdf document"
+msgstr ""
+
+msgid "Password not provided."
+msgstr ""
+
+msgid "Unable to open the document."
+msgstr ""
+
+msgid "Not enough memory to create thumbnails"
+msgstr ""
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr ""
 
 msgid "Merge options"
-msgstr ""
+msgstr "Параметри об'єднання"
 
 msgid "PDF documents contain forms"
 msgstr "Документ PDF містить форми"
@@ -65,10 +87,10 @@ msgid "Set the pdf version of the ouput document."
 msgstr "Встановити версію PDF в документі, що зберігається."
 
 msgid "Execute pdf merge"
-msgstr ""
+msgstr "Запустити об'єднання pdf"
 
 msgid "Merge/Extract"
-msgstr ""
+msgstr "Об'єднати/Витягти"
 
 msgid "Merge section loaded."
 msgstr ""
@@ -80,22 +102,22 @@ msgid "Found a password for input file."
 msgstr ""
 
 msgid "Export as xml"
-msgstr ""
+msgstr "Експорт в XML"
 
 msgid "Export the selection list in xml format"
 msgstr ""
 
 msgid "Unable to save xml file."
-msgstr ""
+msgstr "Неможливо зберегти XML-файл."
 
 msgid "File xml saved."
-msgstr ""
+msgstr "Xml файл збережено."
 
 msgid "Error saving xml file, output file is null."
 msgstr ""
 
 msgid "Split options"
-msgstr ""
+msgstr "Параметри розбивання"
 
 msgid "Burst (split into single pages)"
 msgstr ""
@@ -110,7 +132,7 @@ msgid "Split odd pages"
 msgstr ""
 
 msgid "Split after these pages"
-msgstr ""
+msgstr "Від'єднати після цих сторінок"
 
 msgid "Split at this size"
 msgstr ""
@@ -118,11 +140,19 @@ msgstr ""
 msgid "Split by bookmarks level"
 msgstr ""
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr ""
 
 msgid "Explode the pdf document into single pages"
-msgstr ""
+msgstr "Розбити pdf документ на одиночні сторінки"
 
 msgid "Split the document every \"n\" pages"
 msgstr ""
@@ -143,13 +173,13 @@ msgid "Split the document at pages referred by bookmarks of the given level"
 msgstr ""
 
 msgid "Destination folder"
-msgstr ""
+msgstr "Цільова тека"
 
 msgid "Same as source"
 msgstr ""
 
 msgid "Choose a folder"
-msgstr ""
+msgstr "Вибрати теку"
 
 msgid "Destination output directory"
 msgstr ""
@@ -160,21 +190,23 @@ msgstr ""
 msgid ""
 "To choose a folder browse or enter the full path to the destination output "
 "directory."
-msgstr ""
+msgstr "Щоб обрати теку, виберіть або введіть повний шлях до вихідної теки."
 
 msgid ""
 "Check the box if you want to overwrite the output files if they already "
 "exist."
 msgstr ""
+"Поставте галочку, якщо ви бажаєте перезаписати вихідні файли (якщо вони "
+"існують)."
 
 msgid "Output options"
-msgstr ""
+msgstr "Параметри виведення"
 
 msgid "Output file names prefix:"
-msgstr ""
+msgstr "Префікс імені вихідного файлу:"
 
 msgid "Output files prefix"
-msgstr ""
+msgstr "Префікс вихідного файлу"
 
 msgid ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
@@ -193,10 +225,10 @@ msgid "Available variables"
 msgstr ""
 
 msgid "Split selected file"
-msgstr ""
+msgstr "Розбити вибраний файл"
 
 msgid "Split"
-msgstr ""
+msgstr "Розбити"
 
 msgid "Split section loaded."
 msgstr ""
@@ -211,10 +243,10 @@ msgid "Fill from document"
 msgstr ""
 
 msgid "Please select a pdf document."
-msgstr ""
+msgstr "Будь ласка, виберіть pdf файл."
 
 msgid "Warning"
-msgstr ""
+msgstr "Попередження"
 
 msgid "Getting bookmarks max depth"
 msgstr ""
@@ -241,34 +273,34 @@ msgid "Encrypt options"
 msgstr ""
 
 msgid "Owner password:"
-msgstr ""
+msgstr "Пароль власника:"
 
 msgid "Owner password (Max 32 chars long)"
-msgstr ""
+msgstr "Пароль власника (Максимально можливо 32 символів)"
 
 msgid "User password:"
-msgstr ""
+msgstr "Пароль користувача:"
 
 msgid "User password (Max 32 chars long)"
-msgstr ""
+msgstr "Пароль користувача (Максимально можливо 32 символи)"
 
 msgid "Encryption algorithm:"
 msgstr ""
 
 msgid "Allow all"
-msgstr ""
+msgstr "Дозволити всім"
 
 msgid "Print"
-msgstr ""
+msgstr "Друкувати"
 
 msgid "Low quality print"
-msgstr ""
+msgstr "Друкування низькою якістю"
 
 msgid "Copy or extract"
 msgstr ""
 
 msgid "Modify"
-msgstr ""
+msgstr "Змінити"
 
 msgid "Add or modify text annotations"
 msgstr ""
@@ -639,25 +671,7 @@ msgstr ""
 msgid "Unable to open the input document"
 msgstr ""
 
-msgid "Input file doesn't exists or is a directory"
-msgstr ""
-
-msgid "Error opening pdf document"
-msgstr ""
-
-msgid "Password not provided."
-msgstr ""
-
-msgid "Unable to open the document."
-msgstr ""
-
-msgid "Not enough memory to create thumbnails"
-msgstr ""
-
 msgid "Thumbnails generated in "
-msgstr ""
-
-msgid "Unable to generate thumbnail"
 msgstr ""
 
 msgid " node environment loaded."
@@ -1062,6 +1076,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr ""
 
@@ -1280,7 +1297,7 @@ msgid "Output location error"
 msgstr ""
 
 msgid "Please select at least one pdf document."
-msgstr ""
+msgstr "Будь ласка, виберіть принаймні один PDF документ."
 
 msgid "Please select two pdf documents."
 msgstr ""

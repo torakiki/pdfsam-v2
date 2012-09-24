@@ -7,15 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2009-12-16 12:42+0000\n"
-"Last-Translator: Dangerous Piper <dangerous_piper@softastur.org>\n"
+"Last-Translator: Mikel González <mikelglez@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
+"Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 11:04+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "El ficheru d'orixe nun esiste o ye un directoriu"
+
+msgid "Error opening pdf document"
+msgstr "Error al abrir el documentu pdf"
+
+msgid "Password not provided."
+msgstr "Falta la contraseña"
+
+msgid "Unable to open the document."
+msgstr "Imposible abrir el documentu"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Memoria insuficiente pa crear les miniatures"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Imposible xenerar les miniatures"
 
 msgid "Merge options"
 msgstr "Parámetros de fusión"
@@ -119,6 +141,14 @@ msgstr "Dividir a esti tamañu"
 
 msgid "Split by bookmarks level"
 msgstr "Dividir por nivel de marcador"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
 
 msgid "Burst"
 msgstr "Frañida"
@@ -667,26 +697,8 @@ msgstr "Creación de miniatures imposible a partir d'un documentu vacíu"
 msgid "Unable to open the input document"
 msgstr "Imposible d'abrir el documentu d'orixe"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "El ficheru d'orixe nun esiste o ye un directoriu"
-
-msgid "Error opening pdf document"
-msgstr "Error al abrir el documentu pdf"
-
-msgid "Password not provided."
-msgstr "Falta la contraseña"
-
-msgid "Unable to open the document."
-msgstr "Imposible abrir el documentu"
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Memoria insuficiente pa crear les miniatures"
-
 msgid "Thumbnails generated in "
 msgstr "Miniatrues xeneraes en "
-
-msgid "Unable to generate thumbnail"
-msgstr "Imposible xenerar les miniatures"
 
 msgid " node environment loaded."
 msgstr " Nuedu d'entornu cargáu"
@@ -1099,6 +1111,9 @@ msgstr "Guardar rexistru"
 msgid "Exit"
 msgstr "Colar"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "entamáu en "
 
@@ -1458,23 +1473,8 @@ msgstr "Atroxando la configuración de la Interfaz Gráfica d'Usuariu"
 msgid "Unable to save user interface status."
 msgstr "Nun se puede atroxar l'estáu de la interfaz d'usuariu."
 
-#~ msgid "Error playing sound:"
-#~ msgstr "Error de reproducción del soníu"
-
-#~ msgid "Error: Unable to reload the selected file/s."
-#~ msgstr "Error: imposible recargar los ficheros seleccionaos"
-
-#~ msgid "Remove every pdf file from the merge list"
-#~ msgstr "Desanicia tolos ficheros pdf de la llista de fusión"
-
 #~ msgid "Ok"
 #~ msgstr "Aceutar"
-
-#~ msgid "Unable to initialize menu bar."
-#~ msgstr "Imposible iniciar la barra de menú"
-
-#~ msgid "Number of pages to switch document"
-#~ msgstr "Númberu de páxines a cambiar de documentu"
 
 #~ msgid ""
 #~ "Set the number of pages to switch from a document to the other one "
@@ -1482,3 +1482,42 @@ msgstr "Nun se puede atroxar l'estáu de la interfaz d'usuariu."
 #~ msgstr ""
 #~ "Determinar el númberu de páxines a tresferir d'un documentu a otru (por "
 #~ "defectu: 1)"
+
+#~ msgid "Error loading "
+#~ msgstr "Error al cargar "
+
+#~ msgid "Selected file is not a pdf document."
+#~ msgstr "El ficheru seleccionáu nun ye un pdf"
+
+#~ msgid "Please wait while reading"
+#~ msgstr "Espera que termine la llectura"
+
+#~ msgid "Error: Unable to reload the selected file/s."
+#~ msgstr "Error: imposible recargar los ficheros seleccionaos"
+
+#~ msgid "Remove every pdf file from the merge list"
+#~ msgstr "Desanicia tolos ficheros pdf de la llista de fusión"
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Númberu de páxines a cambiar de documentu"
+
+#~ msgid "Unable to initialize menu bar."
+#~ msgstr "Imposible iniciar la barra de menú"
+
+#~ msgid "pdfsam start up"
+#~ msgstr "Aniciu de pdfsam"
+
+#~ msgid "Check for updates:"
+#~ msgstr "Guetar anovaciones:"
+
+#~ msgid "Error getting default environment."
+#~ msgstr "Error al obtener l'entornu predetermináu."
+
+#~ msgid "Never"
+#~ msgstr "Enxamás"
+
+#~ msgid "Found zero or many jars in plugin directory "
+#~ msgstr "Alcontráronse dengún o abondos jars nel direutoriu del compementu "
+
+#~ msgid "Unable to get the default environment informations."
+#~ msgstr "Nun puede alcontrase la información d'entornu predetermináu"

@@ -7,17 +7,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
-"PO-Revision-Date: 2010-08-27 19:00+0000\n"
-"Last-Translator: Nedim Muminović <nedimmuminovic@gmail.com>\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2011-10-01 12:29+0000\n"
+"Last-Translator: Amicus <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
+"Language: bs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-24 15:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
 "X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
 "X-Poedit-Language: Bosnian\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Ulazna datoteka ne postoji ili je direktorij"
+
+msgid "Error opening pdf document"
+msgstr "Greška kod otvaranja pdf dokumenta"
+
+msgid "Password not provided."
+msgstr "Šifra nije obezbijeđena"
+
+msgid "Unable to open the document."
+msgstr "Nemoguće otvoriti dokument"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Nema dovoljno memorije za kreiranje umanjenog prikaza"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Nije moguće generisati umanjeni prikaz"
 
 msgid "Merge options"
 msgstr "Opcije spajanja"
@@ -120,6 +142,14 @@ msgstr "Rastavi na ovoj veličini"
 msgid "Split by bookmarks level"
 msgstr "Podijeli po bukmark nivou"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "Stihijski"
 
@@ -188,8 +218,7 @@ msgstr ""
 "Ako sadrži \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" ili "
 "\"[BOOKMARK_NAME]\" izvodi zamjenu varijabli."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 msgstr ""
 "Npr.  prefiks_[BASENAME]_[CURRENTPAGE] generiše prefiks_ImeDokumenta_005.pdf."
 
@@ -307,15 +336,13 @@ msgid ""
 "Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
 "FileName_prefix_20070517_113423471.pdf."
 msgstr ""
-"Npr. "
-"[BASENAME]_prefix_[TIMESTAMP]generišeImeDokumenta_prefix_20070517_113423471.p"
-"df."
+"Npr. [BASENAME]_prefix_[TIMESTAMP]"
+"generišeImeDokumenta_prefix_20070517_113423471.pdf."
 
 msgid ""
 "If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
 "names."
-msgstr ""
-"Ako ne sadrži \"[TIMESTAMP]\" generiše imena dokumenata starog stila."
+msgstr "Ako ne sadrži \"[TIMESTAMP]\" generiše imena dokumenata starog stila."
 
 msgid "Available variables: [TIMESTAMP], [BASENAME]."
 msgstr "Dostupne varijable su  [TIMESTAMP], [BASENAME]."
@@ -403,11 +430,15 @@ msgid ""
 "Set the number of pages to switch from the first document to the other one "
 "(default is 1)."
 msgstr ""
+"Postavite broj stranica za prebacivanje iz prvog dokumenta u preostali "
+"(zadano je 1)."
 
 msgid ""
 "Set the number of pages to switch from the second document to the other one "
 "(default is 1)."
 msgstr ""
+"Postavite broj stranica za prebacivanje iz drugog dokumenta u preostali "
+"(zadano je 1)."
 
 msgid "Execute pdf alternate mix"
 msgstr "Izvrši PDF naizmjenični mix"
@@ -546,7 +577,7 @@ msgid "Visual document composer"
 msgstr "Vizualni kreator dokumenata"
 
 msgid "Visual Composer section loaded."
-msgstr ""
+msgstr "Učitana je sekcija Vizualni Kompozitor."
 
 msgid "Please select a pdf document or undelete some pages"
 msgstr "Molimo selektujte pdf dokument ili vratite neke izbrisane stranice"
@@ -582,14 +613,13 @@ msgid "Rotate"
 msgstr "Rotiraj"
 
 msgid "Use the same output file name as the input file or choose a file."
-msgstr ""
-"Za izlazni dokument koristi isto ime kao ulazni ili izaberi dokument."
+msgstr "Za izlazni dokument koristi isto ime kao ulazni ili izaberi dokument."
 
 msgid "Visual reorder"
 msgstr "Vizualni preraspored"
 
 msgid "Visual Reorder section loaded."
-msgstr ""
+msgstr "Učitana je sekcija Vizualna promjena Redoslijeda."
 
 msgid "Please select a pdf document or undelete some page"
 msgstr "Molimo selektujte pdf dokument ili vratite neku izbrisanu stranicu"
@@ -661,26 +691,8 @@ msgstr "Nije moguće kreirati umanjeni prikaz za nepostojeći ulazni dokument"
 msgid "Unable to open the input document"
 msgstr "Nije moguće otvoriti ulazni dokument"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Ulazna datoteka ne postoji ili je direktorij"
-
-msgid "Error opening pdf document"
-msgstr "Greška kod otvaranja pdf dokumenta"
-
-msgid "Password not provided."
-msgstr "Šifra nije obezbijeđena"
-
-msgid "Unable to open the document."
-msgstr "Nemoguće otvoriti dokument"
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Nema dovoljno memorije za kreiranje umanjenog prikaza"
-
 msgid "Thumbnails generated in "
 msgstr "Umanjeni prikaz je generisan u "
-
-msgid "Unable to generate thumbnail"
-msgstr "Nije moguće generisati umanjeni prikaz"
 
 msgid " node environment loaded."
 msgstr " učitano okruženje čvora."
@@ -1089,6 +1101,9 @@ msgstr "Sačuvaj zapis"
 msgid "Exit"
 msgstr "Izađi"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "startano u "
 
@@ -1192,7 +1207,7 @@ msgid "Play alert sounds"
 msgstr "Koristi zvukove uzbune"
 
 msgid "Ask for confirmation when overwrite checkbox is selected"
-msgstr ""
+msgstr "Selektovana je opcija Traži potvrdu za prepisivanje postojećeg."
 
 msgid "Settings "
 msgstr "Podešenje "
@@ -1233,12 +1248,13 @@ msgid "Turn on or off alert sounds"
 msgstr "Uključi ili isključi zvukve uzbune"
 
 msgid "Ask overwrite confirmation"
-msgstr ""
+msgstr "Traži dozvolu za prepisivanje postojećeg."
 
 msgid ""
 "Show a dialog box asking the user for confirmation when the \"overwrite\" is "
 "selected"
 msgstr ""
+"Prikaži dijalog sa zahtjevom za potvrdu kada je izabrana opcija \"prepiši\""
 
 msgid "Default env."
 msgstr "Default okr."
@@ -1253,8 +1269,7 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Unaprijed podešeni radni direktorij"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
 msgstr ""
 "Izaberite unaprijed podešeni direktorij u kome će dokumenti biti snimani u "
 "učitavani"
@@ -1348,6 +1363,8 @@ msgid ""
 "Please note that output files will overwrite existing files of the same name "
 "without warning."
 msgstr ""
+"Molimo da obratite pažnju na to da će izlazni dokumenti zamijeniti postojeće "
+"sa istim imenom bez upozorenja."
 
 msgid "Do you confirm to overwrite?"
 msgstr "Da li želite prepisati?"
@@ -1414,8 +1431,7 @@ msgid "Unable to find configuration file for the user interface"
 msgstr "Nije moguće pronaći konfiguracijski dokument za korisničko sučelje"
 
 msgid "Error reading the configuration file for the user interface"
-msgstr ""
-"Greška pri čitanju i konfiguracijskog dokumenta za korisničko sučelje"
+msgstr "Greška pri čitanju i konfiguracijskog dokumenta za korisničko sučelje"
 
 msgid "Error initializing the user interface vertical divider location"
 msgstr ""
@@ -1464,13 +1480,6 @@ msgstr "Nije moguće sačuvati status korisničkog sučelja."
 #~ msgid "Selected file is not a pdf document."
 #~ msgstr "Selektovani dokument nije PDF dokument."
 
-#~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
-#~ msgstr ""
-#~ "Dvokliknite da izaberete stranice koje želite da združite (npr: 2 ili Sve "
-#~ "ili 5-23 ili 2,5-7,12-)"
-
 #~ msgid "Remove every pdf file from the merge list"
 #~ msgstr "Ukloni sve PDF dokumente iz liste za sastavljanje"
 
@@ -1497,3 +1506,13 @@ msgstr "Nije moguće sačuvati status korisničkog sučelja."
 
 #~ msgid "Unable to get the default environment informations."
 #~ msgstr "Nije moguće dobiti informacije o unaprijed podešenom okruženju."
+
+#~ msgid "Number of pages to switch document"
+#~ msgstr "Broj stranica da zamijene dokument"
+
+#~ msgid ""
+#~ "Set the number of pages to switch from a document to the other one "
+#~ "(default is 1)."
+#~ msgstr ""
+#~ "Izaberite broj stranica za zamjenu iz dokumenta u drugi (unaprijed "
+#~ "podešeno je 1)."

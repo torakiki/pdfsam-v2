@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pdfsam\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 15:09+0100\n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
 "PO-Revision-Date: 2010-03-01 22:51+0000\n"
 "Last-Translator: Robert Readman <Unknown>\n"
 "Language-Team: <andrea.vacondio@gmail.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,6 +14,27 @@ msgstr ""
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
 "X-Poedit-Language: English\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Input file doesn't exists or is a directory"
+
+msgid "Error opening pdf document"
+msgstr "Error opening pdf document"
+
+msgid "Password not provided."
+msgstr "Password not provided."
+
+msgid "Unable to open the document."
+msgstr "Unable to open the document."
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Not enough memory to create thumbnails"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Unable to generate thumbnail"
 
 msgid "Merge options"
 msgstr "Merge options"
@@ -116,6 +138,14 @@ msgstr "Split at this size"
 msgid "Split by bookmarks level"
 msgstr "Split by bookmarks level"
 
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
 msgid "Burst"
 msgstr "Burst"
 
@@ -184,10 +214,8 @@ msgstr ""
 "If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
 "\"[BOOKMARK_NAME]\" it performs variable substitution."
 
-msgid ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
-msgstr ""
-"Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
 
 msgid ""
 "If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
@@ -660,26 +688,8 @@ msgstr "Unable to create thumbnails for a null input document"
 msgid "Unable to open the input document"
 msgstr "Unable to open the input document"
 
-msgid "Input file doesn't exists or is a directory"
-msgstr "Input file doesn't exists or is a directory"
-
-msgid "Error opening pdf document"
-msgstr "Error opening pdf document"
-
-msgid "Password not provided."
-msgstr "Password not provided."
-
-msgid "Unable to open the document."
-msgstr "Unable to open the document."
-
-msgid "Not enough memory to create thumbnails"
-msgstr "Not enough memory to create thumbnails"
-
 msgid "Thumbnails generated in "
 msgstr "Thumbnails generated in "
-
-msgid "Unable to generate thumbnail"
-msgstr "Unable to generate thumbnail"
 
 msgid " node environment loaded."
 msgstr " node environment loaded."
@@ -1086,6 +1096,9 @@ msgstr "Save log"
 msgid "Exit"
 msgstr "Exit"
 
+msgid "Recent environments"
+msgstr ""
+
 msgid "started in "
 msgstr "started in "
 
@@ -1249,10 +1262,8 @@ msgstr ""
 msgid "Default working directory"
 msgstr "Default working directory"
 
-msgid ""
-"Select a directory where documents will be saved and loaded by default"
-msgstr ""
-"Select a directory where documents will be saved and loaded by default"
+msgid "Select a directory where documents will be saved and loaded by default"
+msgstr "Select a directory where documents will be saved and loaded by default"
 
 msgid "Save"
 msgstr "Save"
@@ -1452,11 +1463,11 @@ msgstr "Unable to save user interface status."
 #~ msgstr "Please wait while reading"
 
 #~ msgid ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
 #~ msgstr ""
-#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or 2,5-"
-#~ "7,12-)"
+#~ "Double click to set pages you want to merge (ex: 2 or All or 5-23 or "
+#~ "2,5-7,12-)"
 
 #~ msgid "Error: Unable to reload the selected file/s."
 #~ msgstr "Error: Unable to reload the selected file/s."
