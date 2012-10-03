@@ -1,0 +1,34 @@
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>pdfsam-2.2.2.jar</jar>
+  <outfile>/media/LACIE/pdfsam/workspace-enhanced/template-basic-2/pdfsam-starter.exe</outfile>
+  <errTitle>Cannot find Java Runtime Environment</errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>/media/LACIE/pdfsam/workspace-enhanced/pdfsam-launcher/launch4j/pdfsam_basic.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+  </jre>
+  <versionInfo>
+    <fileVersion>2.2.2.0</fileVersion>
+    <txtFileVersion>2.2.2</txtFileVersion>
+    <fileDescription>Starter for pdfsam basic</fileDescription>
+    <copyright>Andrea Vacondio 2012</copyright>
+    <productVersion>2.2.2.0</productVersion>
+    <txtProductVersion>2.2.2</txtProductVersion>
+    <productName>PDF Splti and Merge Basic</productName>
+    <companyName></companyName>
+    <internalName>pdfsam-starter</internalName>
+    <originalFilename>pdfsam-starter.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>
