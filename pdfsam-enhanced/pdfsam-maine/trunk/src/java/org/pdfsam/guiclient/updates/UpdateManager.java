@@ -14,16 +14,15 @@
  */
 package org.pdfsam.guiclient.updates;
 
-import java.net.URL;
+import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.pdfsam.guiclient.GuiClient;
 import org.pdfsam.guiclient.configuration.Configuration;
 import org.pdfsam.guiclient.updates.checkers.HttpUpdateChecker;
 import org.pdfsam.guiclient.updates.checkers.UpdateChecker;
 import org.pdfsam.i18n.GettextResource;
-
 /**
  * Statefull manager to check for an available new version
  * 
@@ -49,7 +48,7 @@ public class UpdateManager {
      * @return true if there is an available version and this version is different from the current version
      */
     public boolean isNewVersionAvailable() {
-        return StringUtils.isNotBlank(availableVersion) && StringUtils.equalsIgnoreCase(GuiClient.getVersion(), availableVersion);
+        return isNotBlank(availableVersion) && !equalsIgnoreCase(GuiClient.getVersion(), availableVersion);
     }
 
     /**

@@ -1,11 +1,17 @@
-2.2.2 () (pdfsam-console 2.4.1e)
+2.2.2 (16-Oct-2012) (pdfsam-console 2.4.1e)
 ===================================
 -Added recent environments menu
--Silent install/uninstall (feature request #2977478)
+-New MSI installer suitable for silent and Active Directory installs (feature request #2977478) (bug #3383859)
 -Console: regexp matching on the bookmarks name when splitting by bookmark level
 -Added argument -skipGui that can be passed to skip the GUI restore
--Prevent GUI location restore if the stored location is affected by JVM Bug #6189461
--Fixed sounds not playing with Java 7 
+-Prevent GUI location restore if the stored location is affected by JVM Bug #6189461 (bug #3477550)
+-Fixed sounds not playing with Java 7
+-New pdfsam-starter executable created with Launch4J
+-Console: fixed BASENAME prefix (bug #3571232)
+-ICEpdf 4.3.4
+-JPodRenderer 5.5.1
+-New langpack
+-New config parameters to set thumbnails quality and size
 
 2.2.1 (21-Nov-2010) (pdfsam-console 2.4.0e)
 ===================================

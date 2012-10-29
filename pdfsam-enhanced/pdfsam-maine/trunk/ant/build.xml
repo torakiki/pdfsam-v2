@@ -47,6 +47,8 @@
 		<property name="langpack.dir" value="${workspace.dir}/pdfsam-langpack"/>
 		<property name="icepdf.dir" value="${workspace.dir}/icepdfcreator"/>
 		<property name="icepdf.libs.dir" value="${workspace.dir}/libraries-ICEpdf"/>
+		<property name="jpod.dir" value="${workspace.dir}/jpodrenderercreator"/>
+		<property name="jpod.libs.dir" value="${workspace.dir}/libraries-jPodRenderer"/>
 		<property name="libs.dir" value="${workspace.dir}/libraries-${pdfsam.main.version}" />
 
 		<!-- default values -->
@@ -94,6 +96,7 @@
 		<ant antfile="${setviewer.dir}/ant/build.xml" dir="${setviewer.dir}" target="clean" />
 		<ant antfile="${docinfo.dir}/ant/build.xml" dir="${docinfo.dir}" target="clean" />
 		<ant antfile="${icepdf.dir}/ant/build.xml" dir="${icepdf.dir}" target="clean" />
+		<ant antfile="${jpod.dir}/ant/build.xml" dir="${jpod.dir}" target="clean" />
 	</target>
 
 	<!-- compile -->
@@ -205,6 +208,11 @@
 			<property name="icepdfcreator.dist.dir" value="${pdfsam.release.jar.dir}"/>
 		</ant>
 		
+		<!--jpod-->
+		<ant antfile="${jpod.dir}/ant/build.xml" dir="${jpod.dir}" target="build-jars">
+			<property name="jpodcreator.dist.dir" value="${pdfsam.release.jar.dir}"/>
+		</ant>
+
 		<antcall target="build-jars-enhanced" />
 	</target>
 
@@ -262,6 +270,12 @@
 		
 		<copy todir="${pdfsam.release.dist.dir}/ext" overwrite="true">
 			<fileset dir="${icepdf.libs.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+
+		<copy todir="${pdfsam.release.dist.dir}/ext" overwrite="true">
+			<fileset dir="${jpod.libs.dir}">
 				<include name="*.jar" />
 			</fileset>
 		</copy>
@@ -333,6 +347,7 @@
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-vcomposer.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/vcomposer" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${pdfsam-rotate.jar.name}.jar" todir="${pdfsam.release.dist.dir}/plugins/rotate" overwrite="true"/>
 		<copy file="${pdfsam.release.jar.dir}/${icepdfcreator.jar.name}.jar" todir="${pdfsam.release.dist.dir}/ext" overwrite="true"/>
+		<copy file="${pdfsam.release.jar.dir}/${jpodcreator.jar.name}.jar" todir="${pdfsam.release.dist.dir}/ext" overwrite="true"/>
 		
 		<antcall target="dist-enhanced" />
 	</target>
@@ -427,6 +442,12 @@
 				<include name="libraries-ICEpdf/**/*" />
 			</fileset>
 		</zip>
+
+		<zip destfile="${pdfsam.dist.dir}/${pdfsam.jar.name}-libraries-JPodRenderer.zip">
+			<fileset dir="..">
+				<include name="libraries-jPodRenderer/**/*" />
+			</fileset>
+		</zip>
 		
 		<!--emp4j-->
 		<ant antfile="${emp4j.dir}/ant/build.xml" dir="${emp4j.dir}" target="buildZipSrcPackage">
@@ -483,6 +504,11 @@
 			<property name="icepdfcreator.dist.dir" value="${pdfsam.release.src.dir}"/>
 		</ant>
 		
+		<!--jpod-->
+		<ant antfile="${jpod.dir}/ant/build.xml" dir="${jpod.dir}" target="buildZipSrcPackage">
+			<property name="jpodcreator.dist.dir" value="${pdfsam.release.src.dir}"/>
+		</ant>
+
 		<antcall target="buildZipSrcPackage-enhanced" />
 
 		<zip destfile="${pdfsam.release.src.dir}/launcher-src.zip" >
