@@ -1,0 +1,1465 @@
+# Serbian translation for pdfsam
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the pdfsam package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pdfsam\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-24 17:43+0200\n"
+"PO-Revision-Date: 2012-05-14 17:48+0000\n"
+"Last-Translator: Иван Старчевић <ivanstar61@gmail.com>\n"
+"Language-Team: Serbian <sr@li.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-09-24 15:04+0000\n"
+"X-Generator: Launchpad (build 16008)\n"
+
+msgid "Input file doesn't exists or is a directory"
+msgstr "Улазна датотека не постоји или је фасцикла"
+
+msgid "Error opening pdf document"
+msgstr "Грешка при отварању ПДФ документа"
+
+msgid "Password not provided."
+msgstr "Лозинка није предвиђена."
+
+msgid "Unable to open the document."
+msgstr "Није могуће отворити документ"
+
+msgid "Not enough memory to create thumbnails"
+msgstr "Нема довољно меморије за стварање сличица"
+
+msgid "Unable to close thumbnail creator"
+msgstr ""
+
+msgid "Unable to generate thumbnail"
+msgstr "Није могуће направити сличице"
+
+msgid "Merge options"
+msgstr "Могућности спајања"
+
+msgid "PDF documents contain forms"
+msgstr "ПДФ документи садрже обрасце"
+
+msgid "Merge type"
+msgstr "Врста спајања"
+
+msgid "Unchecked"
+msgstr "Непроверено"
+
+msgid "Use this merge type for standard pdf documents"
+msgstr "Користите овај начин спајања стандардних ПДФ докумената"
+
+msgid "Checked"
+msgstr "Проверено"
+
+msgid "Use this merge type for pdf documents containing forms"
+msgstr "Користите овај тип стапања за пдф документе који садржи обрасце"
+
+msgid "Note"
+msgstr "Белешка"
+
+msgid "Setting this option the documents will be completely loaded in memory"
+msgstr ""
+"Постављањем ове могућности документи ће бити у потпуности учитани у меморију"
+
+msgid "Destination output file"
+msgstr "Одредиште излазне датотеке"
+
+msgid "Browse or enter the full path to the destination output file."
+msgstr "Погледај или унеси пуну путању до  одредишна излазне датотеке."
+
+msgid ""
+"Check the box if you want to overwrite the output file if it already exists."
+msgstr ""
+"Означи поље ако желите да замените излазну датотеку уколико већ постоји"
+
+msgid "Check the box if you want compressed output files."
+msgstr "Означите поље  ако желите сажмете излазне датотеке"
+
+msgid "PDF version 1.5 or above."
+msgstr "ПДФ издање 1.5 или новије"
+
+msgid "Set the pdf version of the ouput document."
+msgstr "Постави пдф издање излазног документа."
+
+msgid "Execute pdf merge"
+msgstr "Изврши пдф спајање"
+
+msgid "Merge/Extract"
+msgstr "Обједини/Издвоји"
+
+msgid "Merge section loaded."
+msgstr "Учитано је за спсјање"
+
+msgid "Error: "
+msgstr "Грешка: "
+
+msgid "Found a password for input file."
+msgstr "Пронађена је лозинка за улазну датотеку"
+
+msgid "Export as xml"
+msgstr "Извези као xml"
+
+msgid "Export the selection list in xml format"
+msgstr "Извези изабрани списак у xml формату"
+
+msgid "Unable to save xml file."
+msgstr "Није могуће сачувати xml датотеку."
+
+msgid "File xml saved."
+msgstr "xml датотека је сачувана."
+
+msgid "Error saving xml file, output file is null."
+msgstr "Грешка при чувању xml датотеке, излазна датотека је неважећа."
+
+msgid "Split options"
+msgstr "Могућности дељења"
+
+msgid "Burst (split into single pages)"
+msgstr "Разбиј (издели на појединачне странице)"
+
+msgid "Split every \"n\" pages"
+msgstr "Одвоји сваку \"n\" страницу"
+
+msgid "Split even pages"
+msgstr "Одвоји парне странице"
+
+msgid "Split odd pages"
+msgstr "Одвоји непарне странице"
+
+msgid "Split after these pages"
+msgstr "Одвоји после ових страница"
+
+msgid "Split at this size"
+msgstr "Издели на овој величини"
+
+msgid "Split by bookmarks level"
+msgstr "Издели по означеним нивоима"
+
+msgid "Matching the regexp:"
+msgstr ""
+
+msgid ""
+"Only bookmarks matching the input regular expression will be taken into "
+"account "
+msgstr ""
+
+msgid "Burst"
+msgstr "Раскид"
+
+msgid "Explode the pdf document into single pages"
+msgstr "Растури пдф документ на појединачне странице"
+
+msgid "Split the document every \"n\" pages"
+msgstr "Издели документ сваких \"n\" страница"
+
+msgid "Split the document every even page"
+msgstr "Раздвој документ сваке парне странице"
+
+msgid "Split the document every odd page"
+msgstr "Раздвој документ сваке непарне странице"
+
+msgid "Split the document after page numbers (num1-num2-num3..)"
+msgstr "Раздвој документ после бројева странице (б1-б2-б3..)"
+
+msgid "Split the document in files of the given size (roughly)"
+msgstr "Раздвој документ у датотеке на дату величину  (приближно)"
+
+msgid "Split the document at pages referred by bookmarks of the given level"
+msgstr "Издели документ на страницама које које су означене на датом нивоу"
+
+msgid "Destination folder"
+msgstr "Одредишна фасцикла"
+
+msgid "Same as source"
+msgstr "Исто као извор"
+
+msgid "Choose a folder"
+msgstr "Одабери фасциклу"
+
+msgid "Destination output directory"
+msgstr "Одредиште излазне фасцикле"
+
+msgid "Use the same output folder as the input file or choose a folder."
+msgstr ""
+"Користите исту фасциклу излазне као и улазне датотеке или изаберите фасциклу"
+
+msgid ""
+"To choose a folder browse or enter the full path to the destination output "
+"directory."
+msgstr ""
+"Да бисте изабрали фасциклу прегледајте или унесите пуну путању до  одредишне "
+"излазне фасцикле"
+
+msgid ""
+"Check the box if you want to overwrite the output files if they already "
+"exist."
+msgstr ""
+"Означите поље  ако желите да замените излазне датотеке, ако већ постоје"
+
+msgid "Output options"
+msgstr "Излазне могућности"
+
+msgid "Output file names prefix:"
+msgstr "Префикс имена излазне датотеке:"
+
+msgid "Output files prefix"
+msgstr "Префикс излазних датотека"
+
+msgid ""
+"If it contains \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" or "
+"\"[BOOKMARK_NAME]\" it performs variable substitution."
+msgstr ""
+"Ако она садржи \"[CURRENTPAGE]\", \"[TIMESTAMP]\", \"[FILENUMBER]\" или "
+"\"[BOOKMARK_NAME]\" врши замену променљиве"
+
+msgid "Ex. prefix_[BASENAME]_[CURRENTPAGE] generates prefix_FileName_005.pdf."
+msgstr ""
+"Нпр. префикс_[BASENAME]_[CURRENTPAGE] остварује префиx_ИмеДатотеке_005.пдф."
+
+msgid ""
+"If it doesn't contain \"[CURRENTPAGE]\", \"[TIMESTAMP]\" or \"[FILENUMBER]\" "
+"it generates oldstyle output file names."
+msgstr ""
+"Ако не садржи \"[CURRENTPAGE]\", \"[TIMESTAMP]\" или \"[FILENUMBER]\" онда "
+"остварује називе излазних датотека према старом стилу."
+
+msgid "Available variables"
+msgstr "Доступне променљиве"
+
+msgid "Split selected file"
+msgstr "Издели изабрану датотеку"
+
+msgid "Split"
+msgstr "Издели"
+
+msgid "Split section loaded."
+msgstr "Учитани раздељени одељак"
+
+msgid "Invalid split size"
+msgstr "Неважећа раздвојена величина"
+
+msgid "Invalid unit: "
+msgstr "Неважећа јединица "
+
+msgid "Fill from document"
+msgstr "Попуни из документа"
+
+msgid "Please select a pdf document."
+msgstr "Изаберите пдф документ"
+
+msgid "Warning"
+msgstr "Упозорење"
+
+msgid "Getting bookmarks max depth"
+msgstr "Добијање ознака највеће дубине"
+
+msgid "Unable to retrieve bookmarks maximum depth."
+msgstr "Није могуће постићи највећи ниво ознака"
+
+msgid "Frontpage pdf file"
+msgstr "Насловна страница пдф датотеке"
+
+msgid "Addendum pdf file"
+msgstr "Додатак пдф датотеке"
+
+msgid "Frontpage and Addendum"
+msgstr "Насловна страница и додатак"
+
+msgid "Cover And Footer section loaded."
+msgstr "Одељак корица и подножја је учитан."
+
+msgid "Select at least one cover or one footer"
+msgstr "Изаберите најмање једне корице или једно подножје"
+
+msgid "Encrypt options"
+msgstr "Могућности шифровања"
+
+msgid "Owner password:"
+msgstr "Власник лозинке:"
+
+msgid "Owner password (Max 32 chars long)"
+msgstr "Власник лозинке (нај. 32 слова дугачак)"
+
+msgid "User password:"
+msgstr "Корисничка лозинка:"
+
+msgid "User password (Max 32 chars long)"
+msgstr "Корисничка лозинке (нај. 32 слова дугачак)"
+
+msgid "Encryption algorithm:"
+msgstr "Алгоритам за шифровање:"
+
+msgid "Allow all"
+msgstr "Дозволи све"
+
+msgid "Print"
+msgstr "Одштампај"
+
+msgid "Low quality print"
+msgstr "Низак квалитет штампе"
+
+msgid "Copy or extract"
+msgstr "Умножи или издвоји"
+
+msgid "Modify"
+msgstr "Измени"
+
+msgid "Add or modify text annotations"
+msgstr "Додај или измени напомене"
+
+msgid "Fill form fields"
+msgstr "Попуните поља на обрасцима"
+
+msgid "Extract for use by accessibility dev."
+msgstr "Издвоји за коришћење при развоју приступачности."
+
+msgid "Manipulate pages and add bookmarks"
+msgstr "Управљај страницама и додај ознаке"
+
+msgid ""
+"Check the box if you want compressed output files (Pdf version 1.5 or "
+"higher)."
+msgstr ""
+"Означите поље  ако желите сажети излазне датотеке (ПДФ издање 1.5 или "
+"новије)."
+
+msgid "If it contains \"[TIMESTAMP]\" it performs variable substitution."
+msgstr "Ако она садржи \"[TIMESTAMP]\" изврши замену променљиве."
+
+msgid ""
+"Ex. [BASENAME]_prefix_[TIMESTAMP] generates "
+"FileName_prefix_20070517_113423471.pdf."
+msgstr ""
+"Нпр. [BASENAME]_prefix_[TIMESTAMP] остварује "
+"FileName_prefix_20070517_113423471.pdf."
+
+msgid ""
+"If it doesn't contain \"[TIMESTAMP]\" it generates oldstyle output file "
+"names."
+msgstr ""
+"Уколико не садржи \"[TIMESTAMP]\" онда остварује називе излазних датотека "
+"према старом стилу."
+
+msgid "Available variables: [TIMESTAMP], [BASENAME]."
+msgstr "Доступне променљиве: [TIMESTAMP], [BASENAME]."
+
+msgid "Encrypt selected files"
+msgstr "Шифровање изабране датотеке"
+
+msgid "Encrypt"
+msgstr "Шифруј"
+
+msgid "Encrypt section loaded."
+msgstr "Учитан је шифровани одељак"
+
+msgid "Decrypt selected files"
+msgstr "Дешифровање изабране датотеке"
+
+msgid "Decrypt"
+msgstr "Дешифровање"
+
+msgid "Decrypt section loaded."
+msgstr "Учитан је дешифровани одељак"
+
+msgid "Document metadata"
+msgstr "Метаподаци документа"
+
+msgid "Title"
+msgstr "Наслов"
+
+msgid "Author"
+msgstr "Аутор"
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "Keywords"
+msgstr "Кључне речи"
+
+msgid "Set the document title."
+msgstr "Поставите наслов документа"
+
+msgid "Set the document author."
+msgstr "Поставите аутора документа."
+
+msgid "Set the document subject."
+msgstr "Постави тему докумената."
+
+msgid "Set the document keywords."
+msgstr "Постави кључне речи докумената."
+
+msgid "Choose a file"
+msgstr "Изабери датотеку"
+
+msgid "Set metadata on the selected file"
+msgstr "Постави метаподатке за изабрану датотеку"
+
+msgid "Document Info"
+msgstr "Информације о документу"
+
+msgid "Rotate section loaded."
+msgstr "Окрени учитани одељак"
+
+msgid "Mix options"
+msgstr "Могућности мешања"
+
+msgid "Reverse first document"
+msgstr "Изокрени први документ"
+
+msgid "Reverse second document"
+msgstr "Изокрени други документ"
+
+msgid "Number of pages to switch from the first document to the other"
+msgstr "Број страница да бисте се пребацили из првог документа на остали"
+
+msgid "Number of pages to switch from the second document to the other"
+msgstr "Број страница да бисте се пребацили са другог документа на остали"
+
+msgid ""
+"Tick the boxes if you want to reverse the first or the second document (or "
+"both)."
+msgstr ""
+"Означите поља ако желите да изокренете први или други документ (или оба)."
+
+msgid ""
+"Set the number of pages to switch from the first document to the other one "
+"(default is 1)."
+msgstr ""
+"Постави број страница да бисте  пребацили из првог документа у преостали "
+"(подразумевано је 1)."
+
+msgid ""
+"Set the number of pages to switch from the second document to the other one "
+"(default is 1)."
+msgstr ""
+"Постави број страница да бисте  пребацили са другог документа у преостали "
+"(подразумевано је 1)."
+
+msgid "Execute pdf alternate mix"
+msgstr "Изведи мешани ПДФ документ"
+
+msgid "Alternate Mix"
+msgstr "Мешани документ"
+
+msgid "AlternateMix section loaded."
+msgstr "Учитани одељак мешаног документа"
+
+msgid "Found a password for first file."
+msgstr "Пронађена је лозинка за прву датотеку."
+
+msgid "Found a password for second file."
+msgstr "Пронађена је лозинка за другу датотеку."
+
+msgid "Unpack selected files"
+msgstr "Отпакиравању изабране датотеке"
+
+msgid "Unpack"
+msgstr "Распакуј"
+
+msgid "Unpack section loaded."
+msgstr "Распакуј учитани одељак."
+
+msgid "Set viewer options"
+msgstr "Подеси могућности посматрања"
+
+msgid "Hide the menubar"
+msgstr "Сакриј траку избора"
+
+msgid "Hide the toolbar"
+msgstr "Сакриј алатну траку"
+
+msgid "Hide user interface elements"
+msgstr "Сакриј елементе корисничког сучеља"
+
+msgid "Rezise the window to fit the page size"
+msgstr "Прилагоди прозор величини странице"
+
+msgid "Center of the screen"
+msgstr "Средина екрана"
+
+msgid "Display document title as window title"
+msgstr "Прикажи наслов документа као наслов прозора"
+
+msgid "Pdf version required:"
+msgstr "Потребно је ПДФ издање:"
+
+msgid "No page scaling in print dialog"
+msgstr "Без промене размере странице у дијалогу за штампање"
+
+msgid "Viewer open mode:"
+msgstr "Режим отварања прегледача:"
+
+msgid "Viewer layout:"
+msgstr "Изглед прегледача:"
+
+msgid "Non fullscreen mode:"
+msgstr "Без приказа целог екрана:"
+
+msgid "Direction:"
+msgstr "Смер:"
+
+msgid "Set options"
+msgstr "Подеси могућности"
+
+msgid "Set viewer options for selected files"
+msgstr "Подешавање могућности прегледача за изабране датотеке"
+
+msgid "Left to right"
+msgstr "С лева на десно"
+
+msgid "Right to left"
+msgstr "С десна на лево"
+
+msgid "None"
+msgstr "Ништа"
+
+msgid "Fullscreen"
+msgstr "Цео екран"
+
+msgid "Attachments"
+msgstr "Прилози"
+
+msgid "Optional content group panel"
+msgstr "Изборни групни садржај"
+
+msgid "Document outline"
+msgstr "Преглед документа"
+
+msgid "Thumbnail images"
+msgstr "Сличице"
+
+msgid "One page at a time"
+msgstr "Страница по страница"
+
+msgid "Pages in one column"
+msgstr "Странице у једној колони"
+
+msgid "Pages in two columns (odd on the left)"
+msgstr "Странице у две колоне (непарне на лево)"
+
+msgid "Pages in two columns (odd on the right)"
+msgstr "Странице у две колоне (непарне на десно)"
+
+msgid "Two pages at a time (odd on the left)"
+msgstr "Две странице одједном (непарне на лево)"
+
+msgid "Two pages at a time (odd on the right)"
+msgstr "Две странице одједном (непарне на лево)"
+
+msgid "Viewer options"
+msgstr "Могућности прегледача"
+
+msgid "Viewer options section loaded."
+msgstr "Учитане су могућности прегледача"
+
+msgid "Move on top"
+msgstr "Премести на врх"
+
+msgid "Move to bottom"
+msgstr "Помери на дно"
+
+msgid ""
+"To choose a file browse or enter the full path to the destination output "
+"file."
+msgstr ""
+"Да бисте одабрали датотеку прегледајте или упишите пуну путању до одредишта "
+"излазне датотеке."
+
+msgid "Execute pages reorder"
+msgstr "Пресложи странице-изврши"
+
+msgid "Visual document composer"
+msgstr "Очигледан уређивач документа"
+
+msgid "Visual Composer section loaded."
+msgstr "Учитан је одељак очигледног уређивача"
+
+msgid "Please select a pdf document or undelete some pages"
+msgstr "Изаберите пдф документ или  вратите избрисане неке странице"
+
+msgid "Rotation"
+msgstr "Окретање"
+
+msgid "All"
+msgstr "Све"
+
+msgid "Even"
+msgstr "Парно"
+
+msgid "Odd"
+msgstr "Непарно"
+
+msgid "Clockwise rotation (degrees):"
+msgstr "Окрени у десно (степени):"
+
+msgid "Pages:"
+msgstr "Странице:"
+
+msgid "Set the rotation degrees (clockwise)."
+msgstr "Одредите степене окретања (у смеру казаљке)."
+
+msgid "Set the pages that will be rotated."
+msgstr "Подешавање страница које ће бити окренуте."
+
+msgid "Rotate selected files"
+msgstr "Окрени изабране датотеке"
+
+msgid "Rotate"
+msgstr "Окрени"
+
+msgid "Use the same output file name as the input file or choose a file."
+msgstr ""
+"Користите исто име излазне датотеке, као улазне датотеке или изаберите "
+"датотеку."
+
+msgid "Visual reorder"
+msgstr "Видно преслагање"
+
+msgid "Visual Reorder section loaded."
+msgstr "Одељак видног одељка је учитан"
+
+msgid "Please select a pdf document or undelete some page"
+msgstr "Изабери пдф документ или да врати избрисане неке странице"
+
+msgid "New version available."
+msgstr "Нова издање је доступно."
+
+msgid "No new version available."
+msgstr "Нема доступног новог издања."
+
+msgid "Unknown action."
+msgstr "Непозната радња."
+
+msgid "Log saved."
+msgstr "Записник је сачуван"
+
+msgid "Save as"
+msgstr "Сачувај као"
+
+msgid "Save the image"
+msgstr "Сачувај слику"
+
+msgid "Unable to save image"
+msgstr "Није могуће сачувати слику"
+
+msgid "Close"
+msgstr "Затвори"
+
+msgid "Close panel"
+msgstr "Затвори површ"
+
+msgid "Rotate anticlockwise"
+msgstr "Окрени у лево"
+
+msgid "Rotate clockwise"
+msgstr "Окрени у смеру казаљке"
+
+msgid "Zoom in"
+msgstr "Увећај"
+
+msgid "Zoom out"
+msgstr "Умањи"
+
+msgid "No zoom"
+msgstr "Без увећања"
+
+msgid "No zoom applied"
+msgstr "Увећање није примењено"
+
+msgid "Save environment"
+msgstr "Сачувај окружење"
+
+msgid ""
+"Save passwords informations (they will be readable opening the output file)?"
+msgstr ""
+"Сачувај податке о лозинки (она ће бити читљива отварање излазне датотеке)?"
+
+msgid "Confirm password saving"
+msgstr "Потврди чување лозинке"
+
+msgid "Load environment"
+msgstr "Учитај окружење"
+
+msgid "Unable to create image for a null input document"
+msgstr "Није могуће направити слику за неважећи улазни документ"
+
+msgid "Unable to create thumbnails for a null input document"
+msgstr "Није могуће направити сличице за неважећи улазни документ"
+
+msgid "Unable to open the input document"
+msgstr "Није могуће отворити улазни документ"
+
+msgid "Thumbnails generated in "
+msgstr "Сличице направљене у "
+
+msgid " node environment loaded."
+msgstr " учитано окружење чворова."
+
+msgid "Environment saved."
+msgstr "Окружење је сачувано"
+
+msgid "Error saving environment, output file is null."
+msgstr "Грешка приликом чувања окружења, излазна датотека је неважећа."
+
+msgid "Error saving environment."
+msgstr "Грешка при чувању окружења."
+
+msgid "Environment loaded."
+msgstr "Учитано је окружење"
+
+msgid "Error loading environment."
+msgstr "Грешка при учитавању окружења"
+
+msgid "Error loading environment from input file. "
+msgstr "Грешка при учитавању окружења из улазне датотеке. "
+
+msgid "Image viewer"
+msgstr "Прегледач слика"
+
+msgid "Unable to initialize the thumbnails creation library."
+msgstr "Није могуће иницирати библиотеку за стварање сличица."
+
+msgid "Unable to open image preview"
+msgstr "Није могуће отворити преглед слике"
+
+msgid "Unknown Action"
+msgstr "Непозната радња"
+
+msgid "Error playing sound"
+msgstr "Грешка при пуштању звука"
+
+msgid "Generating thumbnails using the following library:"
+msgstr "Стварају се сличице помоћу следеће библиотеке:"
+
+msgid "Selection table is full, please remove some pdf document."
+msgstr "Изабрана табела је попуњена, уклоните неке ПДФ документе"
+
+msgid "Table full"
+msgstr "Табела је пуна"
+
+msgid "Please wait while all files are processed.."
+msgstr "Молимо сачекајте, све датотеке се обрађују..."
+
+msgid "Command validation returned an empty value."
+msgstr "Провера команде је вратила празну вредност"
+
+msgid "Command executed."
+msgstr "Команда је извршена"
+
+msgid "Add"
+msgstr "Додај"
+
+msgid "Add a pdf to the list"
+msgstr "Додај ПДФ на списак"
+
+msgid "Clear"
+msgstr "Очисти"
+
+msgid "Remove every pdf file from the selection list"
+msgstr "Уклоните сваку пдф датотеку са изабраног списка"
+
+msgid "Document properties"
+msgstr "Својства документа"
+
+msgid "Show document properties"
+msgstr "Прикажи својства докумената"
+
+msgid "Move down"
+msgstr "Помери надоле"
+
+msgid "Move down selected pdf file"
+msgstr "Премести надоле изабрану пдф датотеку"
+
+msgid "Move Up"
+msgstr "Помери нагоре"
+
+msgid "Move up selected pdf file"
+msgstr "Премести нагоре изабрану пдф датотеку"
+
+msgid "Reload"
+msgstr "Поново учитај"
+
+msgid "Reload the selected document"
+msgstr "Учитај поново изабрани документ"
+
+msgid "Remove"
+msgstr "Уклони"
+
+msgid "Remove a pdf from the list"
+msgstr "Уклони ПДФ са списка"
+
+msgid "Set destination"
+msgstr "Одабери одредиште"
+
+msgid "Set the destination path"
+msgstr "Постави путању до одредишта"
+
+msgid "Unable to clean pdf loader"
+msgstr "Није могуће почистити ПДФ учитавање"
+
+msgid "Run"
+msgstr "Покрени"
+
+msgid "Browse"
+msgstr "Прегледај"
+
+msgid "Compress output file/files"
+msgstr "Сажми излазне датотеке"
+
+msgid "Overwrite if already exists"
+msgstr "Замени ако већ постоји"
+
+msgid "Don't preserve file order (fast load)"
+msgstr "Немојте  очувати редослед датотеке (брзо учитавање)"
+
+msgid "Output document pdf version:"
+msgstr "Издање излазног пдф документа:"
+
+msgid "Same as input document"
+msgstr "Исто као улазни документ"
+
+msgid "Copy"
+msgstr "Умножи"
+
+msgid "Cut"
+msgstr "Исеци"
+
+msgid "Paste"
+msgstr "Налепи"
+
+msgid "Add prefix"
+msgstr "Додај префикс"
+
+msgid "The cross reference table cantained some error and has been rebuilt"
+msgstr "Унакрсна таблица напомена је садржавала неке грешке те је обновљена"
+
+msgid ""
+"The document has not been opened with the owner password. You must provide "
+"the owner password in order to manipulate the document"
+msgstr ""
+"Документ није отворио са власничком лозинком. Морате навести лозинку "
+"власника како би се руковали документом"
+
+msgid "An error occured while loading the document"
+msgstr "Дошло је до грешке приликом учитавања документа"
+
+msgid "File name"
+msgstr "Назив датотеке"
+
+msgid "Path"
+msgstr "Путања"
+
+msgid "Pages"
+msgstr "Странице"
+
+msgid "Password"
+msgstr "Лозинка"
+
+msgid "Version"
+msgstr "Издање"
+
+msgid "Page Selection"
+msgstr "Избор стране"
+
+msgid "Total pages of the document"
+msgstr "Укупно страна документа"
+
+msgid "Password to open the document (if needed)"
+msgstr "Лозинка за отварање документа (ако је потребно)"
+
+msgid "Pdf version of the document"
+msgstr "Издање ПДФ документа"
+
+msgid ""
+"Double click to set pages you want to merge (ex: 2 or 5-23 or 2,5-7,12-)"
+msgstr ""
+"Двапут кликните да бисте подесили странице које желите да обједините (нпр: 2 "
+"или 5-23 или 2,5-7,12 -)"
+
+msgid "Unable to remove JList text "
+msgstr "Није могуће уклонити JList текст "
+
+msgid "File selected: "
+msgstr "Изабрана датотека: "
+
+msgid "File reloaded: "
+msgstr "Поново учитана датотека: "
+
+msgid "Open"
+msgstr "Отвори"
+
+msgid "Load a pdf document"
+msgstr "Учитај ПДФ документ"
+
+msgid "Error setting zoom level."
+msgstr "Грешка подешавање нивоа увећања."
+
+msgid "Preview"
+msgstr "Преглед"
+
+msgid "Move Down"
+msgstr "Помери доле"
+
+msgid "Delete"
+msgstr "Избриши"
+
+msgid "Undelete"
+msgstr "Опозови брисање"
+
+msgid "Reverse"
+msgstr "Обрнуто"
+
+msgid "Move up selected pages"
+msgstr "Премести нагоре изабрану страницу"
+
+msgid "(Alt+ArrowUp)"
+msgstr "(Alt+стрелица навише)"
+
+msgid "Move down selected pages"
+msgstr "Премести надоле изабране странице"
+
+msgid "(Alt+ArrowDown)"
+msgstr "(Alt+стрелица надоле)"
+
+msgid "Delete selected pages"
+msgstr "Избриши изабране странице"
+
+msgid "(Canc)"
+msgstr "(Откажи)"
+
+msgid "Undelete selected pages"
+msgstr "Опозови брисање изабраних страница"
+
+msgid "(Ctrl+Z)"
+msgstr "(Ctrl+Z)"
+
+msgid "Rotate right"
+msgstr "Окрени удесно"
+
+msgid "Rotate clockwise selected pages"
+msgstr "Окрени на десноизабраних страница"
+
+msgid "(Alt+ArrowRight)"
+msgstr "(Alt+десна стрелица)"
+
+msgid "Rotate left"
+msgstr "Окрени у лево"
+
+msgid "Rotate anticlockwise selected pages"
+msgstr "Окрени у лево изабране странице"
+
+msgid "(Alt+ArrowLeft)"
+msgstr "(Alt+лева стрелица)"
+
+msgid "Reverse pages order"
+msgstr "Обрни редослед страница"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Не"
+
+msgid "File: "
+msgstr "Датотека: "
+
+msgid "Pages: "
+msgstr "Странице: "
+
+msgid "Pdf version: "
+msgstr "Pdf издање: "
+
+msgid "Title: "
+msgstr "Наслов: "
+
+msgid "Author: "
+msgstr "Аутор: "
+
+msgid "Creator: "
+msgstr "Творац: "
+
+msgid "Producer: "
+msgstr "Произвођач: "
+
+msgid "Encrypted: "
+msgstr "Шифровано: "
+
+msgid "Set output file"
+msgstr "Постави излазну датотеку"
+
+msgid "Error: Unable to get the file path."
+msgstr "Грешка: Није могуће  приступити путањи датотеке."
+
+msgid "File"
+msgstr "Датотека"
+
+msgid "Image"
+msgstr "Слика"
+
+msgid "Error creating preview panel."
+msgstr "Грешка у прављењу прегледа окна."
+
+msgid "Number of pages"
+msgstr "Број страница"
+
+msgid "File size"
+msgstr "Величина датотеке"
+
+msgid "Pdf version"
+msgstr "ПДФ издање"
+
+msgid "Encryption"
+msgstr "Шифровање"
+
+msgid "Not encrypted"
+msgstr "Није кодиран"
+
+msgid "Permissions"
+msgstr "Дозволе"
+
+msgid "Producer"
+msgstr "Произвођач"
+
+msgid "Creator"
+msgstr "Стваралац"
+
+msgid "Creation date"
+msgstr "Датум стварања"
+
+msgid "Modification date"
+msgstr "Датум измене"
+
+msgid "Error creating properties panel."
+msgstr "Грешка у прављењу својстава окна."
+
+msgid "Please select a single pdf document."
+msgstr "Изаберете један пдф документ."
+
+msgid "File type not supported."
+msgstr "Тип датотеке није подржан."
+
+msgid "Error during drag and drop."
+msgstr "Грешка приликом превуци и пусти."
+
+msgid "Logging level set to "
+msgstr "Режим евидентирања је постављен на "
+
+msgid "Unable to set logging level."
+msgstr "Није могуће поставити ниво евиденције."
+
+msgid "Error getting plugins directory."
+msgstr "Грешка при тражењу фасцикле додатака"
+
+msgid "Cannot read plugins directory "
+msgstr "Није могуће читати фасциклу додатака "
+
+msgid "Plugins directory is null."
+msgstr "Фасцикла додатака је неважећа"
+
+msgid "Found many plugins in "
+msgstr "Пронађено је многи додатака у "
+
+msgid "selected as the most recent plugin"
+msgstr "означен као нов додатак"
+
+msgid "No plugin found in "
+msgstr "Није пронађен додатак у "
+
+msgid "Exception loading plugins."
+msgstr "Искључивање учитавања додатака"
+
+msgid "Cannot read plugin directory "
+msgstr "Не могу да прочитам фасциклу  додатака "
+
+msgid " plugin loaded."
+msgstr " додатак је учитан."
+
+msgid "Unable to load a plugin that is not JPanel subclass."
+msgstr "Није могуће учитати додатак који није JPanel  подкласа."
+
+msgid "Error loading class "
+msgstr "Грешка при учитавању класе "
+
+msgid "Unable to get latest available version"
+msgstr "Није могуће добити најновију доступну верзију"
+
+msgid "Checking for a new version available."
+msgstr "Провера доступности новог издања."
+
+msgid "Error checking for a new version available."
+msgstr "Грешка при провери доступности новог издања."
+
+msgid "Select all"
+msgstr "Изабери све"
+
+msgid "Save log"
+msgstr "Сачувај дневник"
+
+msgid "Exit"
+msgstr "Излаз"
+
+msgid "Recent environments"
+msgstr ""
+
+msgid "started in "
+msgstr "покренут у "
+
+msgid "Loading plugins.."
+msgstr "Учитавам додатке..."
+
+msgid "Building status bar.."
+msgstr "Израда статусне траке.."
+
+msgid "Building tree.."
+msgstr "Израда стабла.."
+
+msgid "Building menus.."
+msgstr "Изградња изборника.."
+
+msgid "Building buttons bar.."
+msgstr "Правим траку тастера.."
+
+msgid "Loading default environment."
+msgstr "Учитавање подразумеваног окружења."
+
+msgid "Error starting pdfsam."
+msgstr "Грешка при покретању pdfsam-а."
+
+msgid "Clear log"
+msgstr "Обриши дневник"
+
+msgid "Unable to initialize button bar."
+msgstr "Није могуће покренути траку дугмића"
+
+msgid "Version: "
+msgstr "Издање: "
+
+msgid "Console version: "
+msgstr "Издање конзоле: "
+
+msgid "Developed by: "
+msgstr "Програмер: "
+
+msgid "Build date: "
+msgstr "Датум изградње: "
+
+msgid "Java home: "
+msgstr "Java - почетна: "
+
+msgid "Java version: "
+msgstr "Java - издање: "
+
+msgid "Max memory: "
+msgstr "Нај. меморија: "
+
+msgid "Configuration file: "
+msgstr "Структура датотеке: "
+
+msgid "Website: "
+msgstr "Веб страница: "
+
+msgid "Name"
+msgstr "Назив:"
+
+msgid "About"
+msgstr "О програму"
+
+msgid "Unimplemented method for JInfoPanel"
+msgstr "Нереачизован метод за JInfoPanel"
+
+msgid "Contributes: "
+msgstr "Сарадници: "
+
+msgid "Log level:"
+msgstr "Ниво евиденције:"
+
+msgid "Settings"
+msgstr "Поставке"
+
+msgid "Look and feel:"
+msgstr "Изглед и осећај:"
+
+msgid "Theme:"
+msgstr "Тема:"
+
+msgid "Language:"
+msgstr "Језик:"
+
+msgid "Thumbnails creator"
+msgstr "Творац сличица"
+
+msgid "Load default environment at startup:"
+msgstr "Учитај подразумевано окружење при покретању :"
+
+msgid "Default working directory:"
+msgstr "Подразумевана радна фасцикла:"
+
+msgid "Check for updates at startup"
+msgstr "Проверите да ли постоје исправке при покретању"
+
+msgid "Check now"
+msgstr "Провери сад"
+
+msgid "Play alert sounds"
+msgstr "Пусти звук упозорења"
+
+msgid "Ask for confirmation when overwrite checkbox is selected"
+msgstr "Питајте за потврду када је означено поље зазамену"
+
+msgid "Settings "
+msgstr "Поставке "
+
+msgid "Language"
+msgstr "Језик"
+
+msgid "Set your preferred language (restart needed)"
+msgstr "Подесите жељени језик (потребно је препокретање)"
+
+msgid "Look and feel"
+msgstr "Изглед и осећај"
+
+msgid ""
+"Set your preferred look and feel and your preferred theme (restart needed)"
+msgstr ""
+"Поставите жељени изглед и осећај и жељену тему  (потребно је препокретање)"
+
+msgid "Log level"
+msgstr "Ниво евиденције"
+
+msgid "Set a log detail level (restart needed)"
+msgstr "Подесите ниво детаља евиденције (потребно је препокретање)"
+
+msgid "Set the thumbnails creation library"
+msgstr "Постави библиотеку за стварање сличица"
+
+msgid "Check for updates"
+msgstr "Провера за ажурирање"
+
+msgid "Set when new version availability should be checked (restart needed)"
+msgstr ""
+"Поставите када би доступност нове верзије требало проверити (потребно је "
+"препокретање)"
+
+msgid "Turn on or off alert sounds"
+msgstr "Укључи или искључи обавештења звукова"
+
+msgid "Ask overwrite confirmation"
+msgstr "Тражи потврду за замену"
+
+msgid ""
+"Show a dialog box asking the user for confirmation when the \"overwrite\" is "
+"selected"
+msgstr ""
+"Прикажи дијалошки оквир за потврду корисника када је \"замени\" изабрано"
+
+msgid "Default env."
+msgstr "Подразумевано окр."
+
+msgid ""
+"Select a previously saved env. file that will be automatically loaded at "
+"startup"
+msgstr ""
+"Изаберите претходно сачувану датотеку  окр.  која ће бити аутоматски учитана "
+"при покретању"
+
+msgid "Default working directory"
+msgstr "Подразумевана радна фасцикла"
+
+msgid "Select a directory where documents will be saved and loaded by default"
+msgstr "Изаберите фасциклу где ће документ бити подразумевано сачуван и учитан"
+
+msgid "Save"
+msgstr "Сачувај"
+
+msgid "Configuration saved."
+msgstr "Структура је сачувана"
+
+msgid "Error saving configuration"
+msgstr "Грешка приликом чувања структуре"
+
+msgid ""
+"An error occured saving the configuration, please look at the log panel to "
+"have more informations."
+msgstr ""
+"Дошло је до грешке при чувању поставки , молимо вас погледајте додатне "
+"податке у дневнику ."
+
+msgid "Unimplemented method for JSettingsPanel"
+msgstr "Не остварен метод за JSettingsPanel"
+
+msgid "New version available: "
+msgstr "Доступно је ново издање: "
+
+msgid "Unable to play sound."
+msgstr "Није могуће пустити звук"
+
+msgid "Plugins"
+msgstr "Додаци"
+
+msgid "Error getting pdf version description."
+msgstr "Грешка при узимању описа ПДФ издања"
+
+msgid "Version 1.2 (Acrobat 3)"
+msgstr "Издање1.2 (Acrobat 3)"
+
+msgid "Version 1.3 (Acrobat 4)"
+msgstr "Издање 1.3 (Acrobat 4)"
+
+msgid "Version 1.4 (Acrobat 5)"
+msgstr "Издање 1.4 (Acrobat 5)"
+
+msgid "Version 1.5 (Acrobat 6)"
+msgstr "Издање 1.5 (Acrobat 6)"
+
+msgid "Version 1.6 (Acrobat 7)"
+msgstr "Издање 1.6 (Acrobat 7)"
+
+msgid "Version 1.7 (Acrobat 8)"
+msgstr "Издање 1.7 (Acrobat 8)"
+
+msgid "Output file location is not correct"
+msgstr "Позиција излазне  датотеке  није тачна"
+
+msgid "Would you like to change it to"
+msgstr "Да ли желите да га промените у"
+
+msgid "Output location error"
+msgstr "Грешка излазне локације"
+
+msgid "Please select at least one pdf document."
+msgstr "Изаберите бар један пдф документ."
+
+msgid "Please select two pdf documents."
+msgstr "Изаберите два ПДФ докумената."
+
+msgid "Please wait while all files are processed."
+msgstr "Молимо сачекајте док се све датотеке не обраде."
+
+msgid "Still adding files"
+msgstr "Још датотека се додају"
+
+msgid "Please select a destination file."
+msgstr "Изаберите одредишну датотеку."
+
+msgid "Please select a destination directory."
+msgstr "Изаберите одредишну фасциклу"
+
+msgid "No destination selected"
+msgstr "Одредиште није изабрано"
+
+msgid "Selected output file already exists "
+msgstr "Изабрана излазна датотека већ постоји "
+
+msgid "Would you like to overwrite it?"
+msgstr "Да ли желите да је замените?"
+
+msgid ""
+"Please note that output files will overwrite existing files of the same name "
+"without warning."
+msgstr ""
+"Напомињемо да ће излазне датотеке заменити постојеће датотеке истог имена "
+"без упозорења."
+
+msgid "Do you confirm to overwrite?"
+msgstr "Да ли потврђујете замену?"
+
+msgid "Confirm overwrite"
+msgstr "Потврди замену"
+
+msgid "Provided pages selection is not valid"
+msgstr "Предвиђена изабрана страница није ваљана"
+
+msgid ""
+"Limits must be a comma separated list of \"page_number\" or \"page_number-"
+"page_number\""
+msgstr ""
+"Границе списка морају бити раздвојене зарезом  \"број_странице\" или "
+"\"број_странице-број_странице\""
+
+msgid "Limits are not valid"
+msgstr "Ограничења не важе"
+
+msgid "Please provide the password to open the encrypted document"
+msgstr "Молимо унесите лозинку да отворите шифровани документ"
+
+msgid "Password request"
+msgstr "Захтев за лозинку"
+
+msgid ""
+"Selection list is full, would you like to empty it and load the new document?"
+msgstr ""
+"Изабрани списак  је пун, да ли желите да га испразните и учитајте нови "
+"документ?"
+
+msgid "List full"
+msgstr "Списак је пун"
+
+msgid "The lowest available pdf version is "
+msgstr "Најнижа расположива ПДФ верзија је "
+
+msgid "You selected a lower output pdf version, continue anyway ?"
+msgstr "Одабрали сте ниже излазно пдф издање, ипак настављате?"
+
+msgid "Pdf version conflict"
+msgstr "Сукоб ПДФ издања"
+
+msgid "Error retrieving page saved informations"
+msgstr "Грешка код преузимања сачуваних података"
+
+msgid "Unable to initializate drag and drop support."
+msgstr "Није могуће покренути подршку за превуци-пусти."
+
+msgid "Setting look and feel..."
+msgstr "Подеси изглед и осећај..."
+
+msgid "Setting logging level..."
+msgstr "Подешавање нивоа евиденције..."
+
+msgid "Unable to find log level, setting to default level (DEBUG)."
+msgstr ""
+"Није могуће пронаћи ниво евиденције, постави на подразумевани ниво (ИСПРАВИ "
+"ГРЕШКУ)."
+
+msgid "Loading user interface configuration"
+msgstr "Учитавање поставки корисничког сучеља"
+
+msgid "Unable to find configuration file for the user interface"
+msgstr "Не може се пронаћи датотека са поставкама корисничког сучеља"
+
+msgid "Error reading the configuration file for the user interface"
+msgstr "Грешка приликом читања датотеке са поставкама корисничког сучеља"
+
+msgid "Error initializing the user interface vertical divider location"
+msgstr "Грешка приликом постављања усправне преграде на корисничком сучељу"
+
+msgid "Error initializing the user interface horizontal divider location"
+msgstr "Грешка приликом постављања водоравне преграде на корисничком сучељу"
+
+msgid "Error initializing the user interface extended state"
+msgstr "Грешка приликом постављања проширења корисничког сучеља"
+
+msgid "Error initializing the user interface size"
+msgstr "Грешка приликом постављања величине корисничког сучеља"
+
+msgid "Error initializing the user interface horizontal divider size"
+msgstr ""
+"Грешка приликом постављања величине водоравне преграде корисничког сучеља"
+
+msgid "Error initializing the user interface vertical divider size"
+msgstr ""
+"Грешка приликом постављања величине усправне преграде корисничког сучеља"
+
+msgid "Error initializing the user interface location"
+msgstr "Грешка приликом постављања локације корисничког сучеља"
+
+msgid "Saving GUI configuration"
+msgstr "Чување GUI поставки"
+
+msgid "Unable to save user interface status."
+msgstr "Није могуће сачувати стање корисничког сучеља."
