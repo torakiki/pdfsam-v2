@@ -1,0 +1,1 @@
+msiexec /i pdfsam-x64-v2_2_2.msi /l*v F:\pdfsam\workspace-enhanced\pdfsam-msi\basic\ReleaseDir\install_x64.log

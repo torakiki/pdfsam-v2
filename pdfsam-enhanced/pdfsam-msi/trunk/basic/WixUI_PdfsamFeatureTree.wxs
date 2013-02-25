@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Fragment>	
+        <UI Id="WixUI_PdfsamFeatureTree">
+		<UIRef Id="WixUI_FeatureTree" />
+		<UIRef Id="WixUI_ErrorProgressText" />
+
+		<DialogRef Id="RequirementsDlg" />
+		<DialogRef Id="VerifyWithLanguageDlg" />
+			
+		<Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="RequirementsDlg" Order="2">LicenseAccepted = "1"</Publish>
+		<Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="RequirementsDlg" Order="3">NOT Installed</Publish>
+		
+		<Publish Dialog="CustomizeDlg" Control="Next" Event="NewDialog" Value="VerifyWithLanguageDlg" Order="2">1</Publish>
+
+		<Publish Dialog="VerifyWithLanguageDlg" Control="Back" Event="NewDialog" Value="CustomizeDlg" Order="1">NOT Installed OR WixUI_InstallMode = "Change"</Publish>
+		<Publish Dialog="VerifyWithLanguageDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed AND NOT PATCH</Publish>
+		<Publish Dialog="VerifyWithLanguageDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="3">Installed AND PATCH</Publish>
+
+		<Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyWithLanguageDlg" Order="2">1</Publish>
+		<Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyWithLanguageDlg" Order="2">1</Publish>
+
+        </UI>
+    </Fragment>
+</Wix>

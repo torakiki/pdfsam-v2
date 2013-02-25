@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<!-- Values required to change for a new release: -->
+	<?define ProductMajorVersion="2" ?>
+	<?define ProductMinorVersion="2" ?>
+	<?define ProductMaintenanceVersion="2" ?>
+	<?define ProductCode="{C91B24F6-1629-11E2-B696-21676188709B}" ?>
+
+	<!-- Static configuration options. -->
+	<?define ProductVersion="$(var.ProductMajorVersion).$(var.ProductMinorVersion).$(var.ProductMaintenanceVersion)" ?>
+	<?define ProductLanguage="!(loc.ProductLanguage)" ?>
+	<?define ProductName="PDF Split And Merge Basic" ?>
+	<?define ProductNameWithVersion="$(var.ProductName) $(var.ProductVersion)" ?>
+	<?define ProductCodeName="pdfsam" ?>
+	<?define ProductManufacturer="Andrea Vacondio" ?>
+	<?define ProductUpgradeCode="{DB40FA48-1629-11E2-9401-2F676188709B}" ?>
+	<?define ProductIcon="Resources\pdfsam_basic.ico" ?>
+
+	<?define RTMProductVersion="1.0.0" ?>
+</Include>

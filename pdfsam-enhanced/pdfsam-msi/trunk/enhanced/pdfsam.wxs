@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <?include $(sys.CURRENTDIR)Includes\pdfsamVariables.wxi ?>
+	<?if $(env.Arch) = x64 ?>
+		<?define Win64 = "yes" ?>
+		<?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+	<?else ?>
+		  <?define Win64 = "no" ?>
+		  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+	<?endif ?>	
+    <Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Language="$(var.ProductLanguage)" Version="$(var.ProductVersion)" Manufacturer="$(var.ProductManufacturer)" UpgradeCode="$(var.ProductUpgradeCode)">
+        <Package Description="!(loc.ProductDescription)" Comments="!(loc.ProductComments)" InstallerVersion="200" InstallPrivileges="elevated" Compressed="yes" Id="*" />
+        <Media Id="1" Cabinet="$(var.ProductCodeName).cab" EmbedCab="yes" />
+        <Property Id="ARPHELPLINK" Value="!(loc.ProductHelpLink)" />
+        <Property Id="ALLUSERS" Value="1" />
+        <Property Id="ARPPRODUCTICON" Value="pdfsam.ico" />
+        <Icon Id="pdfsam.ico" SourceFile="$(var.ProductIcon)" />
+        <Upgrade Id="$(var.ProductUpgradeCode)">
+            <UpgradeVersion OnlyDetect="yes" Minimum="$(var.ProductVersion)" Property="NEWPRODUCTFOUND" IncludeMinimum="no" />
+            <UpgradeVersion Minimum="$(var.RTMProductVersion)" IncludeMinimum="yes" Maximum="$(var.ProductVersion)" Property="UPGRADEFOUND" IncludeMaximum="no" />
+        </Upgrade>
+        <CustomAction Id="PreventDowngrading" Error="!(loc.NewerVersionInstalled)" />
+		<!-- Custom action running on 32bits to prevent installation on 64 bits -->
+		<?if $(env.Arch) = x86 ?>
+			<CustomAction Id="CA_Err32BitMsiOn64BitOS" Error="!(loc.WrongProcessorArchitecture)" />
+		<?endif ?>		
+        <InstallExecuteSequence>
+            <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+			<!-- Only schedule this custom action for the 32-bit MSI.                                    -->
+			<?if $(env.Arch) = x86 ?>
+				<Custom Action="CA_Err32BitMsiOn64BitOS" After="LaunchConditions">
+					<![CDATA[MsiAMD64 OR Intel64]]>
+				</Custom>
+			<?endif ?>			
+            <RemoveExistingProducts After="InstallFinalize" />
+        </InstallExecuteSequence>
+        <!-- Check some requirements ONLY on "install", but not on change or uninstall. -->
+        <Property Id="JRE_CURRENT_VERSION" Secure="yes">
+            <RegistrySearch Id="JRE_CURRENT_VERSION_REGSEARCH" Root="HKLM" Key="SOFTWARE\JavaSoft\Java Runtime Environment" Name="CurrentVersion" Type="raw" Win64="no" />
+        </Property>
+        <Property Id="JRE64_CURRENT_VERSION" Secure="yes">
+            <RegistrySearch Id="JRE64_CURRENT_VERSION_REGSEARCH" Root="HKLM" Key="SOFTWARE\JavaSoft\Java Runtime Environment" Name="CurrentVersion" Type="raw" Win64="yes" />
+        </Property>
+        <!-- Check some requirements ONLY on "install", but not on change or uninstall. -->
+        <Property Id="JDK_CURRENT_VERSION" Secure="yes">
+            <RegistrySearch Id="JDK_CURRENT_VERSION_REGSEARCH" Root="HKLM" Key="SOFTWARE\JavaSoft\Java Development Kit" Name="CurrentVersion" Type="raw" Win64="no" />
+        </Property>
+        <Property Id="JDK64_CURRENT_VERSION" Secure="yes">
+            <RegistrySearch Id="JDK64_CURRENT_VERSION_REGSEARCH" Root="HKLM" Key="SOFTWARE\JavaSoft\Java Development Kit" Name="CurrentVersion" Type="raw" Win64="yes" />
+        </Property>
+        <InstallUISequence>
+            <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+			<!-- Only schedule this custom action for the 32-bit MSI.                                    -->
+			<?if $(env.Arch) = x86 ?>
+				<Custom Action="CA_Err32BitMsiOn64BitOS" After="LaunchConditions">
+					<![CDATA[MsiAMD64 OR Intel64]]>
+				</Custom>
+			<?endif ?>						
+        </InstallUISequence>
+        <!-- RemoveFolderEx requires that we "remember" the path for uninstall. This workaround is only required for the uninstall. -->
+        <Property Id="APPLICATIONFOLDER" Secure="yes">
+            <RegistrySearch Id="APPLICATIONFOLDER_REGSEARCH" Root="HKLM" Key="SOFTWARE\$(var.ProductName)" Name="Path" Type="raw" Win64="$(var.Win64)" />
+        </Property>
+		<!-- NSIS installer for pdfsam writes in the 32bits branch -->
+        <Property Id="PRE_MSI_SETUP_INSTALLLOCATION_ALLUSERS" Secure="yes">
+            <RegistrySearch Id="PRE_MSI_SETUP_INSTALLLOCATION_ALLUSERS_REGSEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pdfsam enhanced" Name="InstallLocation" Type="raw" Win64="no" />
+        </Property>
+		<!-- NSIS installer for pdfsam writes in the 32bits branch -->
+        <Property Id="PRE_MSI_SETUP_INSTALLLOCATION_USER" Secure="yes">
+            <RegistrySearch Id="PRE_MSI_SETUP_INSTALLLOCATION_USER_REGSEARCH" Root="HKCU" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pdfsam enhanced" Name="InstallLocation" Type="raw" Win64="no" />
+        </Property>
+		<Property Id="LOCALE" Value="English (UK)"/> 
+		<Property Id="LOCALE_CODE" Value="en_GB" Secure="yes"/> 
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="$(var.PlatformProgramFilesFolder)" Name="PFiles">
+                <Directory Id="APPLICATIONFOLDER" Name="$(var.ProductName)">
+                    <Component Id="PDFSAM_CURRENT.JAR" DiskId="1" Guid="*">
+                        <File Id="PDFSAM_CURRENT.JAR" Name="pdfsam-2.2.2e.jar" Source="SourceDir\pdfsam-2.2.2e.jar" KeyPath="yes" />
+                        <RegistryValue Root="HKLM" Key="SOFTWARE\$(var.ProductName)" Name="Version" Type="string" Value="$(var.ProductVersion)" />
+                    </Component>
+                    <Component Id="PDFSAM_CONFIG.XML" DiskId="1" Guid="*">
+                        <File Id="PDFSAM_CONFIG.XML" Name="pdfsam-config.xml" Source="SourceDir\pdfsam-config.xml" KeyPath="yes" />
+                        <!-- Implementing all this XML file changes as selectable "feature" is difficult, but this way people are able to customize the values via a transform. -->
+                        <util:XmlFile Id="XMLLafCurrentLafSetValue" Action="setValue" ElementPath="//pdfsam/settings/laf" Name="current-laf" Value="6" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLLafCurrentThemeSetValue" Action="setValue" ElementPath="//pdfsam/settings/laf" Name="current-theme" Value="14" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLThumbpoolsizeSetValue" Action="setValue" ElementPath="//pdfsam/settings/thumbpoolsize" Name="value" Value="3" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLLoglevelSetValue" Action="setValue" ElementPath="//pdfsam/settings/loglevel" Name="value" Value="10000" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLi18nSetValue" Action="setValue" ElementPath="//pdfsam/settings/i18n" Name="value" Value="[LOCALE_CODE]" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLDefaultWorkingPathSetValue" Action="setValue" ElementPath="//pdfsam/settings/default_working_path" Name="value" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLThumbnailsCreatorSetValue" Action="setValue" ElementPath="//pdfsam/settings/thumbnails_creator" Name="class" Value="org.pdfsam.guiclient.business.thumbnails.creators.JPodThumbnailCreator" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLDefaultEnvironmentSetValue" Action="setValue" ElementPath="//pdfsam/settings/default_environment" Name="value" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLPlugsAbsolutePathSetValue" Action="setValue" ElementPath="//pdfsam/settings/plugs_absolute_path" Name="value" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLCheckupdatesSetValue" Action="setValue" ElementPath="//pdfsam/settings/checkupdates" Name="value" Value="true" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                        <util:XmlFile Id="XMLPlaysoundsSetValue" Action="setValue" ElementPath="//pdfsam/settings/playsounds" Name="value" Value="true" File="[#PDFSAM_CONFIG.XML]" SelectionLanguage="XPath" />
+                    </Component>
+                    <Component Id="PDFSAM_STARTER.INI" DiskId="1" Guid="*">
+                        <File Id="PDFSAM_STARTER.INI" Name="pdfsam-starter.l4j.ini" Source="SourceDir\pdfsam-starter.l4j.ini" KeyPath="yes" />
+                    </Component>
+                    <Component Id="PDFSAM_STARTER.EXE" DiskId="1" Guid="*">
+                        <File Id="PDFSAM_STARTER.EXE" Name="pdfsam-starter.exe" Source="SourceDir\pdfsam-starter.exe" KeyPath="yes" />
+                    </Component>
+                    <Directory Id="BIN" Name="bin">
+                        <Component Id="RUN_CONSOLE.BAT" DiskId="1" Guid="*">
+                            <File Id="RUN_CONSOLE.BAT" Name="run-console.bat" Source="SourceDir\bin\run-console.bat" KeyPath="yes" />
+                        </Component>
+                        <Component Id="RUN_CONSOLE.SH" DiskId="1" Guid="*">
+                            <File Id="RUN_CONSOLE.SH" Name="run-console.sh" Source="SourceDir\bin\run-console.sh" KeyPath="yes" />
+                        </Component>
+                        <Component Id="RUN.BAT" DiskId="1" Guid="*">
+                            <File Id="RUN.BAT" Name="run.bat" Source="SourceDir\bin\run.bat" KeyPath="yes" />
+                        </Component>
+                        <Component Id="RUN.SH" DiskId="1" Guid="*">
+                            <File Id="RUN.SH" Name="run.sh" Source="SourceDir\bin\run.sh" KeyPath="yes" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="DOC" Name="doc">
+                        <Component Id="CHANGELOG.TXT" DiskId="1" Guid="*">
+                            <File Id="CHANGELOG.TXT" Name="changelog-enhanced.txt" Source="SourceDir\doc\changelog-enhanced.txt" KeyPath="yes" />
+                        </Component>
+                        <Component Id="PDFSAM_TUTORIAL.PDF" DiskId="1" Guid="*">
+                            <File Id="PDFSAM_TUTORIAL.PDF" Name="pdfsam-1.5.0e-tutorial.pdf" Source="SourceDir\doc\pdfsam-1.5.0e-tutorial.pdf" KeyPath="yes" />
+                        </Component>
+                        <Component Id="README.TXT" DiskId="1" Guid="*">
+                            <File Id="README.TXT" Name="readme.txt" Source="SourceDir\doc\readme.txt" KeyPath="yes" />
+                        </Component>
+                        <Directory Id="EXAMPLES" Name="examples">
+                            <Component Id="LIST.CSV" DiskId="1" Guid="*">
+                                <File Id="LIST.CSV" Name="list.csv" Source="SourceDir\doc\examples\list.csv" KeyPath="yes" />
+                            </Component>
+                            <Component Id="LIST.XML" DiskId="1" Guid="*">
+                                <File Id="LIST.XML" Name="list.xml" Source="SourceDir\doc\examples\list.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="README.TXT_1" DiskId="1" Guid="*">
+                                <File Id="README.TXT_1" Name="readme.txt" Source="SourceDir\doc\examples\readme.txt" KeyPath="yes" />
+                            </Component>
+                            <Component Id="TEST_CSV.PNG" DiskId="1" Guid="*">
+                                <File Id="TEST_CSV.PNG" Name="test_csv.png" Source="SourceDir\doc\examples\test_csv.png" KeyPath="yes" />
+                            </Component>
+                            <Component Id="TEST_XML.PNG" DiskId="1" Guid="*">
+                                <File Id="TEST_XML.PNG" Name="test_xml.png" Source="SourceDir\doc\examples\test_xml.png" KeyPath="yes" />
+                            </Component>
+                            <Component Id="TRANSITIONS.XML" DiskId="1" Guid="*">
+                                <File Id="TRANSITIONS.XML" Name="transitions.xml" Source="SourceDir\doc\examples\transitions.xml" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="ICONS" Name="icons">
+                            <Component Id="PDFSAM_BASIC.ICO" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_BASIC.ICO" Name="pdfsam_basic.ico" Source="SourceDir\doc\icons\pdfsam_basic.ico" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_BASIC.PNG" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_BASIC.PNG" Name="pdfsam_basic.png" Source="SourceDir\doc\icons\pdfsam_basic.png" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_BASIC.SVG" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_BASIC.SVG" Name="pdfsam_basic.svg" Source="SourceDir\doc\icons\pdfsam_basic.svg" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_ENHANCED.ICO" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_ENHANCED.ICO" Name="pdfsam_enhanced.ico" Source="SourceDir\doc\icons\pdfsam_enhanced.ico" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_ENHANCED.PNG" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_ENHANCED.PNG" Name="pdfsam_enhanced.png" Source="SourceDir\doc\icons\pdfsam_enhanced.png" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_ENHANCED.SVG" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_ENHANCED.SVG" Name="pdfsam_enhanced.svg" Source="SourceDir\doc\icons\pdfsam_enhanced.svg" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="LICENSE" Name="license">
+                            <Directory Id="BOUNCYCASTLE" Name="bouncyCastle">
+                                <Component Id="BOUNCY_CASTLE_LICENSE.HTML" DiskId="1" Guid="*">
+                                    <File Id="BOUNCY_CASTLE_LICENSE.HTML" Name="Bouncy_Castle_License.html" Source="SourceDir\doc\license\bouncyCastle\Bouncy_Castle_License.html" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="COMMONS_LANG" Name="commons-lang">
+                                <Component Id="LICENSE.TXT" DiskId="1" Guid="*">
+                                    <File Id="LICENSE.TXT" Name="LICENSE.txt" Source="SourceDir\doc\license\commons-lang\LICENSE.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="DOM4J" Name="dom4j">
+                                <Component Id="LICENSE.TXT_1" DiskId="1" Guid="*">
+                                    <File Id="LICENSE.TXT_1" Name="license.txt" Source="SourceDir\doc\license\dom4j\license.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="EMP4J" Name="emp4j">
+                                <Component Id="GPL.TXT" DiskId="1" Guid="*">
+                                    <File Id="GPL.TXT" Name="gpl.txt" Source="SourceDir\doc\license\emp4j\gpl.txt" KeyPath="yes" />
+                                </Component>
+                                <Component Id="LGPL.TXT" DiskId="1" Guid="*">
+                                    <File Id="LGPL.TXT" Name="lgpl.txt" Source="SourceDir\doc\license\emp4j\lgpl.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="ITEXT" Name="iText">
+                                <Component Id="LGPL.TXT_1" DiskId="1" Guid="*">
+                                    <File Id="LGPL.TXT_1" Name="lgpl.txt" Source="SourceDir\doc\license\iText\lgpl.txt" KeyPath="yes" />
+                                </Component>
+                                <Component Id="MPL_1.1.TXT" DiskId="1" Guid="*">
+                                    <File Id="MPL_1.1.TXT" Name="MPL-1.1.txt" Source="SourceDir\doc\license\iText\MPL-1.1.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="JAXEN" Name="jaxen">
+                                <Component Id="LICENSE.TXT_2" DiskId="1" Guid="*">
+                                    <File Id="LICENSE.TXT_2" Name="license.txt" Source="SourceDir\doc\license\jaxen\license.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="JCMDLINE" Name="jcmdline">
+                                <Component Id="MPL_1.1.TXT_1" DiskId="1" Guid="*">
+                                    <File Id="MPL_1.1.TXT_1" Name="MPL-1.1.txt" Source="SourceDir\doc\license\jcmdline\MPL-1.1.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="JPODRENDERER" Name="JPodRenderer">
+                                <Component Id="GPL_3.0.TXT" DiskId="1" Guid="*">
+                                    <File Id="GPL_3.0.TXT" Name="gpl-3.0.txt" Source="SourceDir\doc\license\JPodRenderer\gpl-3.0.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="LOG4J" Name="log4j">
+                                <Component Id="ASL_1.1.TXT" DiskId="1" Guid="*">
+                                    <File Id="ASL_1.1.TXT" Name="ASL-1.1.txt" Source="SourceDir\doc\license\log4j\ASL-1.1.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="LOOKS" Name="looks">
+                                <Component Id="BSD.TXT" DiskId="1" Guid="*">
+                                    <File Id="BSD.TXT" Name="BSD.txt" Source="SourceDir\doc\license\looks\BSD.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="PDFSAM" Name="pdfsam">
+                                <Component Id="GPL.TXT_1" DiskId="1" Guid="*">
+                                    <File Id="GPL.TXT_1" Name="gpl.txt" Source="SourceDir\doc\license\pdfsam\gpl.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="PDFSAM_CONSOLE" Name="pdfsam-console">
+                                <Component Id="GPL.TXT_2" DiskId="1" Guid="*">
+                                    <File Id="GPL.TXT_2" Name="gpl.txt" Source="SourceDir\doc\license\pdfsam-console\gpl.txt" KeyPath="yes" />
+                                </Component>
+                                <Component Id="LGPL.TXT_2" DiskId="1" Guid="*">
+                                    <File Id="LGPL.TXT_2" Name="lgpl.txt" Source="SourceDir\doc\license\pdfsam-console\lgpl.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="ICEPDF" Name="ICEpdf">
+                                <Component Id="APACHELICENSE_2.0.TXT" DiskId="1" Guid="*">
+                                    <File Id="APACHELICENSE_2.0.TXT" Name="ApacheLICENSE-2.0.txt" Source="SourceDir\doc\license\ICEpdf\ApacheLICENSE-2.0.txt" KeyPath="yes" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="XSD" Name="xsd">
+                            <Component Id="CONCAT_FILE_LIST.XSD" DiskId="1" Guid="*">
+                                <File Id="CONCAT_FILE_LIST.XSD" Name="concat-file-list.xsd" Source="SourceDir\doc\xsd\concat-file-list.xsd" KeyPath="yes" />
+                            </Component>
+                            <Component Id="TRANSITIONS_LIST.XSD" DiskId="1" Guid="*">
+                                <File Id="TRANSITIONS_LIST.XSD" Name="transitions-list.xsd" Source="SourceDir\doc\xsd\transitions-list.xsd" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                    <Directory Id="EXT" Name="ext">
+                        <Component Id="ISCWT.JAR" DiskId="1" Guid="*">
+                            <File Id="ISCWT.JAR" Name="iscwt.jar" Source="SourceDir\ext\iscwt.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="ISFREETYPE.JAR" DiskId="1" Guid="*">
+                            <File Id="ISFREETYPE.JAR" Name="isfreetype.jar" Source="SourceDir\ext\isfreetype.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="ISNATIVEC.JAR" DiskId="1" Guid="*">
+                            <File Id="ISNATIVEC.JAR" Name="isnativec.jar" Source="SourceDir\ext\isnativec.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="ISRT.JAR" DiskId="1" Guid="*">
+                            <File Id="ISRT.JAR" Name="isrt.jar" Source="SourceDir\ext\isrt.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JBIG2.JAR" DiskId="1" Guid="*">
+                            <File Id="JBIG2.JAR" Name="jbig2.jar" Source="SourceDir\ext\jbig2.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JNA.JAR" DiskId="1" Guid="*">
+                            <File Id="JNA.JAR" Name="jna.jar" Source="SourceDir\ext\jna.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JPOD.JAR" DiskId="1" Guid="*">
+                            <File Id="JPOD.JAR" Name="jPod.jar" Source="SourceDir\ext\jPod.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JPODCREATOR.JAR" DiskId="1" Guid="*">
+                            <File Id="JPODCREATOR.JAR" Name="jpodcreator-0.0.3.jar" Source="SourceDir\ext\jpodcreator-0.0.3.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JPODFONTS.JAR" DiskId="1" Guid="*">
+                            <File Id="JPODFONTS.JAR" Name="jPodFonts.jar" Source="SourceDir\ext\jPodFonts.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JPODRENDERER.JAR" DiskId="1" Guid="*">
+                            <File Id="JPODRENDERER.JAR" Name="jPodRenderer.jar" Source="SourceDir\ext\jPodRenderer.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="ICEPDFCREATOR.JAR" DiskId="1" Guid="*">
+                            <File Id="ICEPDFCREATOR.JAR" Name="icepdfcreator-0.0.8.jar" Source="SourceDir\ext\icepdfcreator-0.0.8.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="ICEPDFCORE.JAR" DiskId="1" Guid="*">
+                            <File Id="ICEPDFCORE.JAR" Name="icepdf-core.jar" Source="SourceDir\ext\icepdf-core.jar" KeyPath="yes" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="LIB" Name="lib">
+                        <Component Id="BCMAIL_JDK14_144.JAR" DiskId="1" Guid="*">
+                            <File Id="BCMAIL_JDK14_144.JAR" Name="bcmail-jdk14-144.jar" Source="SourceDir\lib\bcmail-jdk14-144.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="BCPROV_JDK14_144.JAR" DiskId="1" Guid="*">
+                            <File Id="BCPROV_JDK14_144.JAR" Name="bcprov-jdk14-144.jar" Source="SourceDir\lib\bcprov-jdk14-144.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="COMMONS_LANG_2.5.JAR" DiskId="1" Guid="*">
+                            <File Id="COMMONS_LANG_2.5.JAR" Name="commons-lang-2.5.jar" Source="SourceDir\lib\commons-lang-2.5.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="DOM4J_1.6.1.JAR" DiskId="1" Guid="*">
+                            <File Id="DOM4J_1.6.1.JAR" Name="dom4j-1.6.1.jar" Source="SourceDir\lib\dom4j-1.6.1.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="EMP4J_1.0.2.JAR" DiskId="1" Guid="*">
+                            <File Id="EMP4J_1.0.2.JAR" Name="emp4j-1.0.2.jar" Source="SourceDir\lib\emp4j-1.0.2.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="ITEXT_2.1.7.JAR" DiskId="1" Guid="*">
+                            <File Id="ITEXT_2.1.7.JAR" Name="iText-2.1.7.jar" Source="SourceDir\lib\iText-2.1.7.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JAI_CODEC.JAR" DiskId="1" Guid="*">
+                            <File Id="JAI_CODEC.JAR" Name="jai_codec.jar" Source="SourceDir\lib\jai_codec.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JAI_CORE.JAR" DiskId="1" Guid="*">
+                            <File Id="JAI_CORE.JAR" Name="jai_core.jar" Source="SourceDir\lib\jai_core.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JAI_IMAGEIO.JAR" DiskId="1" Guid="*">
+                            <File Id="JAI_IMAGEIO.JAR" Name="jai_imageio.jar" Source="SourceDir\lib\jai_imageio.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="JAXEN_1.1.3.JAR" DiskId="1" Guid="*">
+                            <File Id="JAXEN_1.1.3.JAR" Name="jaxen-1.1.3.jar" Source="SourceDir\lib\jaxen-1.1.3.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="LOG4J_1.2.15.JAR" DiskId="1" Guid="*">
+                            <File Id="LOG4J_1.2.15.JAR" Name="log4j-1.2.15.jar" Source="SourceDir\lib\log4j-1.2.15.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="LOOKS_2.3.1.JAR" DiskId="1" Guid="*">
+                            <File Id="LOOKS_2.3.1.JAR" Name="looks-2.3.1.jar" Source="SourceDir\lib\looks-2.3.1.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="PDFSAM_CONSOLE.JAR" DiskId="1" Guid="*">
+                            <File Id="PDFSAM_CONSOLE.JAR" Name="pdfsam-console-2.4.1e.jar" Source="SourceDir\lib\pdfsam-console-2.4.1e.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="PDFSAM_JCMDLINE_1.0.6.JAR" DiskId="1" Guid="*">
+                            <File Id="PDFSAM_JCMDLINE_1.0.6.JAR" Name="pdfsam-jcmdline-1.0.6.jar" Source="SourceDir\lib\pdfsam-jcmdline-1.0.6.jar" KeyPath="yes" />
+                        </Component>
+                        <Component Id="PDFSAM_LANGPACK.JAR" DiskId="1" Guid="*">
+                            <File Id="PDFSAM_LANGPACK.JAR" Name="pdfsam-langpack.jar" Source="SourceDir\lib\pdfsam-langpack.jar" KeyPath="yes" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="PLUGINS" Name="plugins">
+                        <Directory Id="MERGE" Name="merge">
+                            <Component Id="CONFIG.XML" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML" Name="config.xml" Source="SourceDir\plugins\merge\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_MERGE_0.7.4.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_MERGE_0.7.4.JAR" Name="pdfsam-merge-0.7.4.jar" Source="SourceDir\plugins\merge\pdfsam-merge-0.7.4.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="MIX" Name="mix">
+                            <Component Id="CONFIG.XML_1" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_1" Name="config.xml" Source="SourceDir\plugins\mix\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_MIX_0.2.0.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_MIX_0.2.0.JAR" Name="pdfsam-mix-0.2.0.jar" Source="SourceDir\plugins\mix\pdfsam-mix-0.2.0.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="ROTATE" Name="rotate">
+                            <Component Id="CONFIG.XML_2" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_2" Name="config.xml" Source="SourceDir\plugins\rotate\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_ROTATE_0.0.5.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_ROTATE_0.0.5.JAR" Name="pdfsam-rotate-0.0.5.jar" Source="SourceDir\plugins\rotate\pdfsam-rotate-0.0.5.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="SPLIT" Name="split">
+                            <Component Id="CONFIG.XML_3" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_3" Name="config.xml" Source="SourceDir\plugins\split\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_SPLIT_0.5.7.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_SPLIT_0.5.7.JAR" Name="pdfsam-split-0.5.7.jar" Source="SourceDir\plugins\split\pdfsam-split-0.5.7.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="VCOMPOSER" Name="vcomposer">
+                            <Component Id="CONFIG.XML_4" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_4" Name="config.xml" Source="SourceDir\plugins\vcomposer\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_VCOMPOSER_0.0.8.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_VCOMPOSER_0.0.8.JAR" Name="pdfsam-vcomposer-0.0.8.jar" Source="SourceDir\plugins\vcomposer\pdfsam-vcomposer-0.0.8.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="VPAGEREORDER" Name="vpagereorder">
+                            <Component Id="CONFIG.XML_5" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_5" Name="config.xml" Source="SourceDir\plugins\vpagereorder\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_VPAGEREORDER_0.0.7.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_VPAGEREORDER_0.0.7.JAR" Name="pdfsam-vpagereorder-0.0.7.jar" Source="SourceDir\plugins\vpagereorder\pdfsam-vpagereorder-0.0.7.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="UNPACK" Name="unpack">
+                            <Component Id="CONFIG.XML_6" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_6" Name="config.xml" Source="SourceDir\plugins\unpack\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_UNPACK_0.1.1E.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_UNPACK_0.1.1E.JAR" Name="pdfsam-unpack-0.1.1e.jar" Source="SourceDir\plugins\unpack\pdfsam-unpack-0.1.1e.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="SETVIEWER" Name="setviewer">
+                            <Component Id="CONFIG.XML_7" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_7" Name="config.xml" Source="SourceDir\plugins\setviewer\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_SETVIEWER_0.0.8E.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_SETVIEWER_0.0.8E.JAR" Name="pdfsam-setviewer-0.0.8e.jar" Source="SourceDir\plugins\setviewer\pdfsam-setviewer-0.0.8e.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="DOCINFO" Name="docinfo">
+                            <Component Id="CONFIG.XML_8" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_8" Name="config.xml" Source="SourceDir\plugins\docinfo\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_DOCINFO_0.0.2E.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_DOCINFO_0.0.2E.JAR" Name="pdfsam-docinfo-0.0.2e.jar" Source="SourceDir\plugins\docinfo\pdfsam-docinfo-0.0.2e.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="DECRYPT" Name="decrypt">
+                            <Component Id="CONFIG.XML_9" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_9" Name="config.xml" Source="SourceDir\plugins\decrypt\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_DECRYPT_0.0.7E.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_DECRYPT_0.0.7E.JAR" Name="pdfsam-decrypt-0.0.7e.jar" Source="SourceDir\plugins\decrypt\pdfsam-decrypt-0.0.7e.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="COVER" Name="cover">
+                            <Component Id="CONFIG.XML_10" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_10" Name="config.xml" Source="SourceDir\plugins\cover\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_COVER_0.3.4E.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_COVER_0.3.4E.JAR" Name="pdfsam-cover-0.3.4e.jar" Source="SourceDir\plugins\cover\pdfsam-cover-0.3.4e.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="ENCRYPT" Name="encrypt">
+                            <Component Id="CONFIG.XML_11" DiskId="1" Guid="*">
+                                <File Id="CONFIG.XML_11" Name="config.xml" Source="SourceDir\plugins\encrypt\config.xml" KeyPath="yes" />
+                            </Component>
+                            <Component Id="PDFSAM_ENCRYPT_0.3.2E.JAR" DiskId="1" Guid="*">
+                                <File Id="PDFSAM_ENCRYPT_0.3.2E.JAR" Name="pdfsam-encrypt-0.3.2e.jar" Source="SourceDir\plugins\encrypt\pdfsam-encrypt-0.3.2e.jar" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuDir" Name="!(loc.PDFSplitandMerge)">
+                    <Component Id="StartMenuShortcuts" Guid="*">
+                        <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+                        <RegistryValue Id="MenuDirInstalled" Root="HKCU" Key="Software\$(var.ProductName)" Type="integer" Value="1" Name="MenuDirInstalled" KeyPath="yes" />
+                        <util:InternetShortcut Id="ShortcutPDFSamWiki" Name="!(loc.PDFSamWiki)" Target="!(loc.PDFSamWikiLink)" Type="url" />
+                        <Shortcut Id="ShortcutPDFSam" Name="!(loc.ProductName)" Target="[APPLICATIONFOLDER]pdfsam-starter.exe" WorkingDirectory="APPLICATIONFOLDER" Advertise="no" Icon="pdfsam.ico" IconIndex="0" />
+                        <Shortcut Id="ShortcutTutorial" Name="!(loc.Tutorial)" Target="[APPLICATIONFOLDER]doc\pdfsam-1.5.0e-tutorial.pdf" Advertise="no" />
+                        <Shortcut Id="ShortcutReadme" Name="!(loc.Readme)" Target="[APPLICATIONFOLDER]doc\readme.txt" Advertise="no" />
+                        <Shortcut Id="UninstallProduct" Name="Uninstall" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" Directory="ProgramMenuDir" Description="Uninstalls pdfsam enhanced" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <DirectoryRef Id="APPLICATIONFOLDER">
+            <Component Id="CleanupMainApplicationFolder" Guid="*">
+                <RegistryValue Root="HKLM" Key="SOFTWARE\$(var.ProductName)" Name="Path" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes" />
+                <util:RemoveFolderEx On="uninstall" Property="APPLICATIONFOLDER" />
+            </Component>
+        </DirectoryRef>
+        <Feature Id="MainAppFeature" ConfigurableDirectory="APPLICATIONFOLDER" Title="!(loc.ProductName)" Level="1" Absent="disallow" Display="expand" AllowAdvertise="no" InstallDefault="local" Description="!(loc.ProductNameDescription)">
+            <ComponentRef Id="CleanupMainApplicationFolder" />
+            <ComponentRef Id="PDFSAM_CURRENT.JAR" />
+            <ComponentRef Id="PDFSAM_CONFIG.XML" />
+            <ComponentRef Id="PDFSAM_STARTER.EXE" />
+            <ComponentRef Id="PDFSAM_STARTER.INI" />
+            <ComponentRef Id="RUN_CONSOLE.BAT" />
+            <ComponentRef Id="RUN_CONSOLE.SH" />
+            <ComponentRef Id="RUN.BAT" />
+            <ComponentRef Id="RUN.SH" />
+            <ComponentRef Id="CHANGELOG.TXT" />
+            <ComponentRef Id="README.TXT" />
+            <ComponentRef Id="ISCWT.JAR" />
+            <ComponentRef Id="ISFREETYPE.JAR" />
+            <ComponentRef Id="ISNATIVEC.JAR" />
+            <ComponentRef Id="ISRT.JAR" />
+            <ComponentRef Id="JBIG2.JAR" />
+            <ComponentRef Id="JNA.JAR" />
+            <ComponentRef Id="JPOD.JAR" />
+            <ComponentRef Id="JPODCREATOR.JAR" />
+            <ComponentRef Id="ICEPDFCREATOR.JAR" />
+            <ComponentRef Id="ICEPDFCORE.JAR" />
+            <ComponentRef Id="JPODFONTS.JAR" />
+            <ComponentRef Id="JPODRENDERER.JAR" />
+            <ComponentRef Id="BCMAIL_JDK14_144.JAR" />
+            <ComponentRef Id="BCPROV_JDK14_144.JAR" />
+            <ComponentRef Id="COMMONS_LANG_2.5.JAR" />
+            <ComponentRef Id="DOM4J_1.6.1.JAR" />
+            <ComponentRef Id="EMP4J_1.0.2.JAR" />
+            <ComponentRef Id="ITEXT_2.1.7.JAR" />
+            <ComponentRef Id="JAI_CODEC.JAR" />
+            <ComponentRef Id="JAI_CORE.JAR" />
+            <ComponentRef Id="JAI_IMAGEIO.JAR" />
+            <ComponentRef Id="JAXEN_1.1.3.JAR" />
+            <ComponentRef Id="LOG4J_1.2.15.JAR" />
+            <ComponentRef Id="LOOKS_2.3.1.JAR" />
+            <ComponentRef Id="PDFSAM_CONSOLE.JAR" />
+            <ComponentRef Id="PDFSAM_JCMDLINE_1.0.6.JAR" />
+            <ComponentRef Id="PDFSAM_LANGPACK.JAR" />
+            <ComponentRef Id="CONFIG.XML" />
+            <ComponentRef Id="PDFSAM_MERGE_0.7.4.JAR" />
+            <ComponentRef Id="CONFIG.XML_1" />
+            <ComponentRef Id="PDFSAM_MIX_0.2.0.JAR" />
+            <ComponentRef Id="CONFIG.XML_2" />
+            <ComponentRef Id="PDFSAM_ROTATE_0.0.5.JAR" />
+            <ComponentRef Id="CONFIG.XML_3" />
+            <ComponentRef Id="PDFSAM_SPLIT_0.5.7.JAR" />
+            <ComponentRef Id="CONFIG.XML_4" />
+            <ComponentRef Id="PDFSAM_VCOMPOSER_0.0.8.JAR" />
+            <ComponentRef Id="CONFIG.XML_5" />
+            <ComponentRef Id="PDFSAM_VPAGEREORDER_0.0.7.JAR" />
+            <ComponentRef Id="CONFIG.XML_6" />
+            <ComponentRef Id="PDFSAM_UNPACK_0.1.1E.JAR" />
+            <ComponentRef Id="CONFIG.XML_7" />
+            <ComponentRef Id="PDFSAM_SETVIEWER_0.0.8E.JAR" />
+            <ComponentRef Id="CONFIG.XML_8" />
+            <ComponentRef Id="PDFSAM_DOCINFO_0.0.2E.JAR" />
+            <ComponentRef Id="CONFIG.XML_9" />
+            <ComponentRef Id="PDFSAM_DECRYPT_0.0.7E.JAR" />
+            <ComponentRef Id="CONFIG.XML_10" />
+            <ComponentRef Id="PDFSAM_COVER_0.3.4E.JAR" />
+            <ComponentRef Id="CONFIG.XML_11" />
+            <ComponentRef Id="PDFSAM_ENCRYPT_0.3.2E.JAR" />
+            <Feature Id="StartMenuShortcutsFeature" Title="!(loc.StartMenuShortcuts)" Level="1" Absent="allow" AllowAdvertise="no" InstallDefault="followParent" Description="!(loc.StartMenuShortcutsDesc)">
+                <ComponentRef Id="StartMenuShortcuts" />
+            </Feature>
+            <Feature Id="DocumentationFeature" Title="!(loc.DocsAndExamples)" Level="1" Absent="allow" AllowAdvertise="no" InstallDefault="followParent" Description="!(loc.DocsAndExamplesDesc)">
+                <ComponentRef Id="LIST.CSV" />
+                <ComponentRef Id="LIST.XML" />
+                <ComponentRef Id="README.TXT_1" />
+                <ComponentRef Id="TEST_CSV.PNG" />
+                <ComponentRef Id="TEST_XML.PNG" />
+                <ComponentRef Id="TRANSITIONS.XML" />
+                <ComponentRef Id="PDFSAM_BASIC.ICO" />
+                <ComponentRef Id="PDFSAM_BASIC.PNG" />
+                <ComponentRef Id="PDFSAM_BASIC.SVG" />
+                <ComponentRef Id="PDFSAM_ENHANCED.ICO" />
+                <ComponentRef Id="PDFSAM_ENHANCED.PNG" />
+                <ComponentRef Id="PDFSAM_ENHANCED.SVG" />
+                <ComponentRef Id="BOUNCY_CASTLE_LICENSE.HTML" />
+                <ComponentRef Id="LICENSE.TXT" />
+                <ComponentRef Id="LICENSE.TXT_1" />
+                <ComponentRef Id="GPL.TXT" />
+                <ComponentRef Id="LGPL.TXT" />
+                <ComponentRef Id="LGPL.TXT_1" />
+                <ComponentRef Id="MPL_1.1.TXT" />
+                <ComponentRef Id="LICENSE.TXT_2" />
+                <ComponentRef Id="MPL_1.1.TXT_1" />
+                <ComponentRef Id="GPL_3.0.TXT" />
+                <ComponentRef Id="ASL_1.1.TXT" />
+                <ComponentRef Id="BSD.TXT" />
+                <ComponentRef Id="GPL.TXT_1" />
+                <ComponentRef Id="GPL.TXT_2" />
+                <ComponentRef Id="LGPL.TXT_2" />
+                <ComponentRef Id="CONCAT_FILE_LIST.XSD" />
+                <ComponentRef Id="TRANSITIONS_LIST.XSD" />
+                <ComponentRef Id="PDFSAM_TUTORIAL.PDF" />
+                <ComponentRef Id="APACHELICENSE_2.0.TXT" />				
+            </Feature>
+        </Feature>
+        <WixVariable Id="WixUILicenseRtf" Value="Resources\License.rtf" />
+        <WixVariable Id="WixUIBannerBmp" Value="Resources\BannerBmp_Enhanced.bmp" />
+        <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBmp.bmp" />
+        <UI>
+            <UIRef Id="WixUI_PdfsamFeatureTree" />            
+        </UI>
+    </Product>
+</Wix>
