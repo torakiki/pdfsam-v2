@@ -58,6 +58,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SlideShowException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
 
 import com.lowagie.text.pdf.PdfReader;
@@ -92,7 +93,7 @@ public class SlideShowCmdExecutor extends AbstractCmdExecutor {
 				prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), inputCommand.getInputFile().getFile().getName());				
 				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 				
-				pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()),inputCommand.getInputFile().getPasswordBytes());
+				pdfReader = PdfUtility.readerFor(inputCommand.getInputFile());
 				pdfReader.removeUnusedObjects();
 				pdfReader.consolidateNamedDestinations();
 				

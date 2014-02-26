@@ -50,6 +50,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.PageLabelsException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfCopy;
@@ -79,8 +80,7 @@ public class PageLabelsCmdExecutor extends AbstractCmdExecutor {
             try {
                 File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
                 LOG.debug("Opening " + inputCommand.getInputFile().getFile().getAbsolutePath());
-                pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile()
-                        .getAbsolutePath()), inputCommand.getInputFile().getPasswordBytes());
+                pdfReader = PdfUtility.readerFor(inputCommand.getInputFile());
                 pdfReader.removeUnusedObjects();
                 pdfReader.consolidateNamedDestinations();
                 int n = pdfReader.getNumberOfPages();

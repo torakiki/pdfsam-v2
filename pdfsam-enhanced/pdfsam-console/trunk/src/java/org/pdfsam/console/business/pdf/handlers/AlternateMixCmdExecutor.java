@@ -48,6 +48,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.MixException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.pdf.PdfCopy;
@@ -79,14 +80,12 @@ public class AlternateMixCmdExecutor extends AbstractCmdExecutor {
             try {
                 File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
 
-                pdfReader1 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getFirstInputFile().getFile()
-                        .getAbsolutePath()), inputCommand.getFirstInputFile().getPasswordBytes());
+                pdfReader1 =  PdfUtility.readerFor(inputCommand.getFirstInputFile());
                 pdfReader1.removeUnusedObjects();
                 pdfReader1.consolidateNamedDestinations();
                 limits1[1] = pdfReader1.getNumberOfPages();
 
-                pdfReader2 = new PdfReader(new RandomAccessFileOrArray(inputCommand.getSecondInputFile().getFile()
-                        .getAbsolutePath()), inputCommand.getSecondInputFile().getPasswordBytes());
+                pdfReader2 = PdfUtility.readerFor(inputCommand.getSecondInputFile());
                 pdfReader2.removeUnusedObjects();
                 pdfReader2.consolidateNamedDestinations();
                 limits2[1] = pdfReader2.getNumberOfPages();

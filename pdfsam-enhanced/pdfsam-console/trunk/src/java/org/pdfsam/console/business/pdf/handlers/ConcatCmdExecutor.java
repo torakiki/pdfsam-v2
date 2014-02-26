@@ -68,6 +68,7 @@ import org.pdfsam.console.exceptions.console.ConcatException;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.ValidationException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.ValidationUtility;
 
 import com.lowagie.text.Document;
@@ -136,8 +137,7 @@ public class ConcatCmdExecutor extends AbstractCmdExecutor {
 
                     String[] selectionGroups = StringUtils.split(currentPageSelection, ",");
 
-                    pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),
-                            fileList[i].getPasswordBytes());
+                    pdfReader = PdfUtility.readerFor(fileList[i]);
                     pdfReader.removeUnusedObjects();
                     pdfReader.consolidateNamedDestinations();
                     int pdfNumberOfPages = pdfReader.getNumberOfPages();

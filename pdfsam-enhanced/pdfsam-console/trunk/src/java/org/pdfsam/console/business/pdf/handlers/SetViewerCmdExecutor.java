@@ -51,6 +51,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.SetViewerException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
 
 import com.lowagie.text.pdf.PdfReader;
@@ -85,7 +86,7 @@ public class SetViewerCmdExecutor extends AbstractCmdExecutor {
 					try{
 						prefixParser = new PrefixParser(inputCommand.getOutputFilesPrefix(), fileList[i].getFile().getName());
 						File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						pdfReader = PdfUtility.readerFor(fileList[i]);
 						pdfReader.removeUnusedObjects();
 						pdfReader.consolidateNamedDestinations();
 						

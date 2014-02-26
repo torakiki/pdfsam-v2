@@ -68,7 +68,7 @@
 
 
   <!-- Javadoc -->
-  <target name="javadoc" depends="make-structure">
+  <target name="javadoc" depends="compile">
     <javadoc
       packagenames="org.pdfsam.console.*"
       sourcepath="${pdfsam-console.src.dir}"

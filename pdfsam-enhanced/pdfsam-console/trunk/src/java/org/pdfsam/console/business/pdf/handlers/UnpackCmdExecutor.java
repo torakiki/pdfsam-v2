@@ -55,6 +55,7 @@ import org.pdfsam.console.business.dto.commands.UnpackParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.UnpackException;
+import org.pdfsam.console.utils.PdfUtility;
 
 import com.lowagie.text.pdf.PRStream;
 import com.lowagie.text.pdf.PdfArray;
@@ -88,7 +89,7 @@ public class UnpackCmdExecutor extends AbstractCmdExecutor {
 				for(int i = 0; i<fileList.length; i++){
 					int unpackedFiles = 0;
 					try{
-						pdfReader = new PdfReader(new RandomAccessFileOrArray(fileList[i].getFile().getAbsolutePath()),fileList[i].getPasswordBytes());
+						pdfReader = PdfUtility.readerFor(fileList[i]);
 						pdfReader.removeUnusedObjects();
 						pdfReader.consolidateNamedDestinations();
 						

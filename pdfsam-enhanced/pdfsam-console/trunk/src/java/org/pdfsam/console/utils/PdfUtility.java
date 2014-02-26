@@ -37,10 +37,16 @@
  */
 package org.pdfsam.console.utils;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.dom4j.io.SAXReader;
+import org.pdfsam.console.business.dto.PdfFile;
+
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.RandomAccessFileOrArray;
 
 /**
  * Utility class for pdf documents
@@ -74,5 +80,16 @@ public final class PdfUtility {
 
         }
         return retVal;
+    }
+
+    public static PdfReader readerFor(PdfFile file) throws IOException, NoSuchFieldException, IllegalAccessException {
+        PdfReader reader = new PdfReader(new RandomAccessFileOrArray(file.getFile().getAbsolutePath()), file
+                .getPasswordBytes());
+        if (!reader.isOpenedWithFullPermissions()) {
+            Field field = reader.getClass().getDeclaredField("encrypted");
+            field.setAccessible(true);
+            field.setBoolean(reader, false);
+        }
+        return reader;
     }
 }

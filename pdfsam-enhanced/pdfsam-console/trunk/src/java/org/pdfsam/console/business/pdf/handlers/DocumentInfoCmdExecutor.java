@@ -48,6 +48,7 @@ import org.pdfsam.console.business.dto.commands.DocumentInfoParsedCommand;
 import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 
 import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfReader;
@@ -56,77 +57,78 @@ import com.lowagie.text.pdf.RandomAccessFileOrArray;
 
 /**
  * Executor for the set document info command
+ * 
  * @author Andrea Vacondio
  */
 public class DocumentInfoCmdExecutor extends AbstractCmdExecutor {
 
-	private static final Logger LOG = Logger.getLogger(DocumentInfoCmdExecutor.class.getPackage().getName());
+    private static final Logger LOG = Logger.getLogger(DocumentInfoCmdExecutor.class.getPackage().getName());
 
-	private static final String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
-	private static final String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
-	private static final String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
-	private static final String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
+    private static final String TITLE = PdfName.decodeName(PdfName.TITLE.toString());
+    private static final String AUTHOR = PdfName.decodeName(PdfName.AUTHOR.toString());
+    private static final String SUBJECT = PdfName.decodeName(PdfName.SUBJECT.toString());
+    private static final String KEYWORDS = PdfName.decodeName(PdfName.KEYWORDS.toString());
 
-	private PdfReader pdfReader = null;
-	private PdfStamper pdfStamper = null;
+    private PdfReader pdfReader = null;
+    private PdfStamper pdfStamper = null;
 
-	public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
-		if ((parsedCommand != null) && (parsedCommand instanceof DocumentInfoParsedCommand)) {
-			DocumentInfoParsedCommand inputCommand = (DocumentInfoParsedCommand) parsedCommand;
-			setPercentageOfWorkDone(0);
-			try {
-				File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
-				pdfReader = new PdfReader(new RandomAccessFileOrArray(inputCommand.getInputFile().getFile().getAbsolutePath()), inputCommand
-						.getInputFile().getPasswordBytes());
-				pdfReader.removeUnusedObjects();
-				pdfReader.consolidateNamedDestinations();
+    public void execute(AbstractParsedCommand parsedCommand) throws ConsoleException {
+        if ((parsedCommand != null) && (parsedCommand instanceof DocumentInfoParsedCommand)) {
+            DocumentInfoParsedCommand inputCommand = (DocumentInfoParsedCommand) parsedCommand;
+            setPercentageOfWorkDone(0);
+            try {
+                File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
+                pdfReader = PdfUtility.readerFor(inputCommand.getInputFile());
+                pdfReader.removeUnusedObjects();
+                pdfReader.consolidateNamedDestinations();
 
-				// version
-				LOG.debug("Creating a new document.");
-				Character pdfVersion = inputCommand.getOutputPdfVersion();
-				if (pdfVersion != null) {
-					pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand.getOutputPdfVersion().charValue());
-				} else {
-					pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader.getPdfVersion());
-				}
+                // version
+                LOG.debug("Creating a new document.");
+                Character pdfVersion = inputCommand.getOutputPdfVersion();
+                if (pdfVersion != null) {
+                    pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), inputCommand
+                            .getOutputPdfVersion().charValue());
+                } else {
+                    pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(tmpFile), pdfReader.getPdfVersion());
+                }
 
-				HashMap meta = pdfReader.getInfo();
-				meta.put("Creator", ConsoleServicesFacade.CREATOR);
-				if (inputCommand.getAuthor() != null) {
-					meta.put(AUTHOR, inputCommand.getAuthor());
-				}
-				if (inputCommand.getSubject() != null) {
-					meta.put(SUBJECT, inputCommand.getSubject());
-				}
-				if (inputCommand.getTitle() != null) {
-					meta.put(TITLE, inputCommand.getTitle());
-				}
-				if (inputCommand.getKeywords() != null) {
-					meta.put(KEYWORDS, inputCommand.getKeywords());
-				}
+                HashMap meta = pdfReader.getInfo();
+                meta.put("Creator", ConsoleServicesFacade.CREATOR);
+                if (inputCommand.getAuthor() != null) {
+                    meta.put(AUTHOR, inputCommand.getAuthor());
+                }
+                if (inputCommand.getSubject() != null) {
+                    meta.put(SUBJECT, inputCommand.getSubject());
+                }
+                if (inputCommand.getTitle() != null) {
+                    meta.put(TITLE, inputCommand.getTitle());
+                }
+                if (inputCommand.getKeywords() != null) {
+                    meta.put(KEYWORDS, inputCommand.getKeywords());
+                }
 
-				setCompressionSettingOnStamper(inputCommand, pdfStamper);
+                setCompressionSettingOnStamper(inputCommand, pdfStamper);
 
-				pdfStamper.setMoreInfo(meta);
-				pdfStamper.close();
-				pdfReader.close();
+                pdfStamper.setMoreInfo(meta);
+                pdfStamper.close();
+                pdfReader.close();
 
-				FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
-				LOG.debug("File " + inputCommand.getOutputFile().getCanonicalPath() + " created.");
+                FileUtility.renameTemporaryFile(tmpFile, inputCommand.getOutputFile(), inputCommand.isOverwrite());
+                LOG.debug("File " + inputCommand.getOutputFile().getCanonicalPath() + " created.");
 
-			} catch (Exception e) {
-				throw new ConsoleException(e);
-			} finally {
-				setWorkCompleted();
-			}
-		} else {
-			throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
-		}
+            } catch (Exception e) {
+                throw new ConsoleException(e);
+            } finally {
+                setWorkCompleted();
+            }
+        } else {
+            throw new ConsoleException(ConsoleException.ERR_BAD_COMMAND);
+        }
 
-	}
+    }
 
-	public void clean(){
-		closePdfReader(pdfReader);
-		closePdfStamper(pdfStamper);
-	}
+    public void clean() {
+        closePdfReader(pdfReader);
+        closePdfStamper(pdfStamper);
+    }
 }

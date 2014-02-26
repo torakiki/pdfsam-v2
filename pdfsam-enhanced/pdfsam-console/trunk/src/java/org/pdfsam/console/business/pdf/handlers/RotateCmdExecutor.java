@@ -53,6 +53,7 @@ import org.pdfsam.console.business.pdf.handlers.interfaces.AbstractCmdExecutor;
 import org.pdfsam.console.exceptions.console.ConsoleException;
 import org.pdfsam.console.exceptions.console.EncryptException;
 import org.pdfsam.console.utils.FileUtility;
+import org.pdfsam.console.utils.PdfUtility;
 import org.pdfsam.console.utils.perfix.PrefixParser;
 
 import com.lowagie.text.pdf.PdfDictionary;
@@ -91,8 +92,7 @@ public class RotateCmdExecutor extends AbstractCmdExecutor {
                                 .getName());
                         File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
                         LOG.debug("Opening " + fileList[i].getFile().getAbsolutePath());
-                        pdfReader = new PdfReader(new FileInputStream(fileList[i].getFile().getAbsolutePath()),
-                                fileList[i].getPasswordBytes());
+                        pdfReader = PdfUtility.readerFor(fileList[i]);
                         pdfReader.removeUnusedObjects();
                         pdfReader.consolidateNamedDestinations();
 
