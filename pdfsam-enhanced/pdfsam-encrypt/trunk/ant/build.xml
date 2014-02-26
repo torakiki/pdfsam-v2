@@ -69,7 +69,7 @@
   </target>
 
   <!-- Javadoc -->
-  <target name="javadoc" depends="make-structure">
+  <target name="javadoc" depends="compile">
     <javadoc
       packagenames="org.pdfsam.plugin.encrypt.*"
       sourcepath="${pdfsam-encrypt.src.dir}"

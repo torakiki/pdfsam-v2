@@ -1,4 +1,4 @@
-2.2.2 (16-Oct-2012) (pdfsam-console 2.4.1e)
+2.2.2 (02-Nov-2012) (pdfsam-console 2.4.1e)
 ===================================
 -Added recent environments menu
 -New MSI installer suitable for silent and Active Directory installs (feature request #2977478) (bug #3383859)
@@ -10,7 +10,7 @@
 -Console: fixed BASENAME prefix (bug #3571232)
 -ICEpdf 4.3.4
 -JPodRenderer 5.5.1
--New langpack
+-Updated langpack
 -New config parameters to set thumbnails quality and size
 
 2.2.1 (21-Nov-2010) (pdfsam-console 2.4.0e)

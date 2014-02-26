@@ -61,7 +61,7 @@
   </target>
 
   <!-- Javadoc -->
-  <target name="javadoc" depends="make-structure">
+  <target name="javadoc" depends="compile">
     <javadoc
       packagenames="org.pdfsam.emp4j.*"
       sourcepath="${emp4j.src.dir}"

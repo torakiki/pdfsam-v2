@@ -55,7 +55,7 @@
   </target>
 
   <!-- Javadoc -->
-  <target name="javadoc" depends="make-structure">
+  <target name="javadoc" depends="compile">
     <javadoc
       packagenames="jcmdline.*"
       sourcepath="${jcmdline.src.dir}"

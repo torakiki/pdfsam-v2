@@ -376,7 +376,7 @@
 	</target>
 
 	<!-- Javadoc -->
-	<target name="javadoc" depends="make-structure">
+	<target name="javadoc" depends="compile">
 		<javadoc
 	      packagenames="org.pdfsam.guiclient.*"
 	      sourcepath="${pdfsam.src.dir}"

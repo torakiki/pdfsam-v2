@@ -1,31 +1,31 @@
 <launch4jConfig>
   <dontWrapJar>true</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>pdfsam-2.2.2e.jar</jar>
-  <outfile>/media/LACIE/pdfsam/workspace-enhanced/template-enhanced-2/pdfsam-starter.exe</outfile>
+  <jar>pdfsam-2.2.3e.jar</jar>
+  <outfile>/media/torakiki/LACIE/pdfsam/workspace-enhanced/template-enhanced-2/pdfsam-starter.exe</outfile>
   <errTitle>Cannot find Java Runtime Environment</errTitle>
   <cmdLine></cmdLine>
   <chdir></chdir>
   <priority>normal</priority>
   <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
-  <customProcName>false</customProcName>
   <stayAlive>false</stayAlive>
   <manifest></manifest>
-  <icon>/media/LACIE/pdfsam/workspace-enhanced/pdfsam-launcher/launch4j/pdfsam_enhanced.ico</icon>
+  <icon>/media/torakiki/LACIE/pdfsam/workspace-enhanced/pdfsam-launcher/launch4j/pdfsam_enhanced.ico</icon>
   <jre>
     <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
     <minVersion>1.6.0</minVersion>
     <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
   </jre>
   <versionInfo>
-    <fileVersion>2.2.2.0</fileVersion>
-    <txtFileVersion>2.2.2</txtFileVersion>
+    <fileVersion>2.2.3.0</fileVersion>
+    <txtFileVersion>2.2.3</txtFileVersion>
     <fileDescription>Starter for pdfsam enhanced</fileDescription>
-    <copyright>Andrea Vacondio 2012</copyright>
-    <productVersion>2.2.2.0</productVersion>
-    <txtProductVersion>2.2.2</txtProductVersion>
+    <copyright>Andrea Vacondio 2014</copyright>
+    <productVersion>2.2.3.0</productVersion>
+    <txtProductVersion>2.2.3</txtProductVersion>
     <productName>PDF Splti and Merge Enhanced</productName>
     <companyName></companyName>
     <internalName>pdfsam-starter</internalName>

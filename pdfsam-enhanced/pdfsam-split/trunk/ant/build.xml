@@ -65,7 +65,7 @@
   </target>
 
   <!-- Javadoc -->
-  <target name="javadoc" depends="make-structure">
+  <target name="javadoc" depends="compile">
     <javadoc
       packagenames="org.pdfsam.plugin.split.*"
       sourcepath="${pdfsam-split.src.dir}"
