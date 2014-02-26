@@ -65,7 +65,7 @@
   </target>
 
   <!-- Javadoc -->
-  <target name="javadoc" depends="make-structure">
+  <target name="javadoc" depends="compile">
     <javadoc
       packagenames="org.pdfsam.plugin.unpack.*"
       sourcepath="${pdfsam-unpack.src.dir}"
