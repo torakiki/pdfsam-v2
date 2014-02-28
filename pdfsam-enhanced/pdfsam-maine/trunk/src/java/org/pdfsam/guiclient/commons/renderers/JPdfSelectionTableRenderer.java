@@ -128,7 +128,7 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 		}   
 		
 		//tooltip messages
-		if(syntaxErrors || (fullAccessRequired && !fullPermission) || loadedWithErrors){
+		if(syntaxErrors || loadedWithErrors){
 			String toolTip = "<html><body>";
 			if(syntaxErrors){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The cross reference table cantained some error and has been rebuilt")+".";				
