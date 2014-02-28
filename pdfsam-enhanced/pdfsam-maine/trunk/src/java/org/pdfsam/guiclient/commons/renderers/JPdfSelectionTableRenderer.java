@@ -133,9 +133,6 @@ public class JPdfSelectionTableRenderer extends JLabel implements TableCellRende
 			if(syntaxErrors){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The cross reference table cantained some error and has been rebuilt")+".";				
 			}
-			if((fullAccessRequired && !fullPermission) ){
-				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"The document has not been opened with the owner password. You must provide the owner password in order to manipulate the document")+".";							
-			}
 			if(loadedWithErrors){
 				toolTip += "<b>"+GettextResource.gettext(Configuration.getInstance().getI18nResourceBundle(),"An error occured while loading the document")+".";
 			}
