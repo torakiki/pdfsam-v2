@@ -1,3 +1,9 @@
+2.2.3e (17-Jun-2014) (pdfsam-console 2.4.2e)
+===================================
+-Console: implemented unethical read for docs protected with owner password
+-ICEpdf 4.4.0
+-pdfsam-starter upgrade with Launch4j 3.4
+
 2.2.2 (02-Nov-2012) (pdfsam-console 2.4.1e)
 ===================================
 -Added recent environments menu
