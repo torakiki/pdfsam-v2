@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transitions defaulttype="splitvout" defaulttduration="3" defaultduration="3">
+	<transition type="splithout" tduration="4" duration="4" pagenumber="1" />
+	<transition type="splitvin" tduration="4" duration="4" pagenumber="2" />
+	<transition type="splithin" tduration="4" duration="4" pagenumber="3" />
+	<transition type="blindv" tduration="4" duration="4" pagenumber="4" />
+	<transition type="blindh" tduration="4" duration="4" pagenumber="5" />
+	<transition type="inwardbox" tduration="4" duration="4" pagenumber="6" />
+	<transition type="outwardbox" tduration="4" duration="4" pagenumber="7" />
+	<transition type="wipel2r" tduration="4" duration="4" pagenumber="8" />
+	<transition type="wiper2l" tduration="4" duration="4" pagenumber="9" />
+	<transition type="wipeb2t" tduration="4" duration="4" pagenumber="10" />
+	<transition type="wipet2b" tduration="4" duration="4" pagenumber="11" />
+	<transition type="dissolve" tduration="4" duration="4" pagenumber="12" />
+	<transition type="glitterl2r" tduration="4" duration="4" pagenumber="13" />
+	<transition type="glittert2b" tduration="4" duration="4" pagenumber="14" />
+	<transition type="glitterd" tduration="4" duration="4" pagenumber="15" />
+</transitions>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="de-de" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="ProductLanguage">1031</String>
+	<String Id="ProductName">PDFsam</String>
+	<String Id="ProductDescription">Ein Open Source-Tool zum Aufteilen und Zusammenführen von PDF-Dokumenten</String>
+	<String Id="ProductComments">Paket zum Aufteilen und Zusammenführen von PDF-Dokumenten</String>
+	<String Id="ProductHelpLink">http://www.pdfsam.org/</String>
+	<String Id="i18n">de</String>
+	<String Id="PDFSamWiki">PDFsamWiki</String>
+	<String Id="PDFSamWikiLink">http://www.pdfsam.org/mediawiki/</String>
+	<String Id="Tutorial">Tutorial</String>
+	<String Id="Readme">Liesmich</String>
+	<String Id="PDFSplitandMerge">PDF Split and Merge</String>
+	<String Id="StartMenuShortcuts">Startmenü Verknüpfungen</String>
+	<String Id="JavaRequiredMessage">Die Java Runtime Environment ist nicht installiert oder veraltet. Oracle JRE oder JDK muss in Version 1.6 oder höher installiert werden. Weitere Informationen befinden sich unter http://java.com/download/.</String>
+	<String Id="NewerVersionInstalled">Es ist schon eine neuere Version von PDFsam installiert.</String>
+</WixLocalization>
