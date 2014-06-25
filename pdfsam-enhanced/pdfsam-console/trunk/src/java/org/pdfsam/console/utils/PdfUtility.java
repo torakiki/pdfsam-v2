@@ -37,6 +37,7 @@
  */
 package org.pdfsam.console.utils;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -85,11 +86,22 @@ public final class PdfUtility {
     public static PdfReader readerFor(PdfFile file) throws IOException, NoSuchFieldException, IllegalAccessException {
         PdfReader reader = new PdfReader(new RandomAccessFileOrArray(file.getFile().getAbsolutePath()), file
                 .getPasswordBytes());
+        unethical(reader);
+        return reader;
+    }
+    
+    public static PdfReader fullReaderFor(PdfFile file) throws IOException, NoSuchFieldException, IllegalAccessException {
+        PdfReader reader = new PdfReader(new FileInputStream(file.getFile()), file
+                .getPasswordBytes());
+        unethical(reader);
+        return reader;
+    }
+
+    private static void unethical(PdfReader reader) throws NoSuchFieldException, IllegalAccessException {
         if (!reader.isOpenedWithFullPermissions()) {
             Field field = reader.getClass().getDeclaredField("encrypted");
             field.setAccessible(true);
             field.setBoolean(reader, false);
         }
-        return reader;
     }
 }

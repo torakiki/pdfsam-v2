@@ -1,3 +1,7 @@
+2.2.4e (17-Jun-2014) (pdfsam-console 2.4.3e)
+===================================
+-Fixed bug #100 rotate doesn't perform rotation
+
 2.2.3e (17-Jun-2014) (pdfsam-console 2.4.2e)
 ===================================
 -Console: implemented unethical read for docs protected with owner password

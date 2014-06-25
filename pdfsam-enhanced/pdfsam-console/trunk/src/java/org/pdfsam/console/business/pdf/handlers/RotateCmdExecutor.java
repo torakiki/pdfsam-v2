@@ -92,7 +92,7 @@ public class RotateCmdExecutor extends AbstractCmdExecutor {
                                 .getName());
                         File tmpFile = FileUtility.generateTmpFile(inputCommand.getOutputFile());
                         LOG.debug("Opening " + fileList[i].getFile().getAbsolutePath());
-                        pdfReader = PdfUtility.readerFor(fileList[i]);
+                        pdfReader = PdfUtility.fullReaderFor(fileList[i]);
                         pdfReader.removeUnusedObjects();
                         pdfReader.consolidateNamedDestinations();
 
