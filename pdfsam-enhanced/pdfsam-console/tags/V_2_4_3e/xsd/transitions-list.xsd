@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="transitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="transition"/>
+      </xs:sequence>
+      <xs:attribute name="defaultduration" type="xs:integer" use="required"/>
+      <xs:attribute name="defaulttduration" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="defaulttype" use="required">
+        <xs:simpleType>
+    		<xs:restriction base="xs:string">
+      			<xs:enumeration value="splitvout"/>
+      			<xs:enumeration value="splithout"/>
+      			<xs:enumeration value="splitvin"/>
+      			<xs:enumeration value="splithin"/>
+      			<xs:enumeration value="blindv"/>
+      			<xs:enumeration value="blindh"/>
+      			<xs:enumeration value="inwardbox"/>
+      			<xs:enumeration value="outwardbox"/>
+      			<xs:enumeration value="wipel2r"/>
+      			<xs:enumeration value="wiper2l"/>
+      			<xs:enumeration value="wipeb2t"/>
+      			<xs:enumeration value="wipet2b"/>
+      			<xs:enumeration value="dissolve"/>
+      			<xs:enumeration value="glitterd"/>
+      			<xs:enumeration value="glitterl2r"/>
+      			<xs:enumeration value="glittert2b"/>
+    		</xs:restriction>
+ 		</xs:simpleType>
+	   </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="transition">
+    <xs:complexType>
+      <xs:attribute name="duration" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="pagenumber" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="tduration" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+    		<xs:restriction base="xs:string">
+      			<xs:enumeration value="splitvout"/>
+      			<xs:enumeration value="splithout"/>
+      			<xs:enumeration value="splitvin"/>
+      			<xs:enumeration value="splithin"/>
+      			<xs:enumeration value="blindv"/>
+      			<xs:enumeration value="blindh"/>
+      			<xs:enumeration value="inwardbox"/>
+      			<xs:enumeration value="outwardbox"/>
+      			<xs:enumeration value="wipel2r"/>
+      			<xs:enumeration value="wiper2l"/>
+      			<xs:enumeration value="wipeb2t"/>
+      			<xs:enumeration value="wipet2b"/>
+      			<xs:enumeration value="dissolve"/>
+      			<xs:enumeration value="glitterd"/>
+      			<xs:enumeration value="glitterl2r"/>
+      			<xs:enumeration value="glittert2b"/>
+    		</xs:restriction>
+ 		</xs:simpleType>
+	   </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
