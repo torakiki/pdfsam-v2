@@ -1,0 +1,405 @@
+2.2.4 (17-Jun-2014) (pdfsam-console 2.4.3e)
+===================================
+-Fixed bug #100 rotate doesn't perform rotation
+
+2.2.3 (17-Jun-2014) (pdfsam-console 2.4.2e)
+===================================
+-Console: implemented unethical read for docs protected with owner password
+-ICEpdf 4.4.0
+-pdfsam-starter upgrade with Launch4j 3.4
+
+2.2.2 (02-Nov-2012) (pdfsam-console 2.4.1e)
+===================================
+-Added recent environments menu
+-New MSI installer suitable for silent and Active Directory installs (feature request #2977478) (bug #3383859)
+-Console: regexp matching on the bookmarks name when splitting by bookmark level
+-Added argument -skipGui that can be passed to skip the GUI restore
+-Prevent GUI location restore if the stored location is affected by JVM Bug #6189461 (bug #3477550)
+-Fixed sounds not playing with Java 7
+-New pdfsam-starter executable created with Launch4J
+-Console: fixed BASENAME prefix (bug #3571232)
+-ICEpdf 4.3.4
+-JPodRenderer 5.5.1
+-Updated langpack
+-New config parameters to set thumbnails quality and size
+
+2.2.1 (21-Nov-2010) (pdfsam-console 2.4.0e)
+===================================
+-Console: fixed bug #3010833 wrong handling of bookmarks
+-Fixed bug #2995149 missing resource directory in source package
+-Fixed bug #3050730 pdfsam-starter for Windows 7
+-Accepted patch #3046378 run.sh can now be started from any directory
+-Fixed hebrew language that wasn't set correctly 
+-Console: fixed bug #3089116 missing setdocinfo command in the help list
+-Fixed loading of extended jars from the ext subdirectory
+-looks 2.3.1
+-JPodRenderer 5.3
+-ICEpdf 4.1.1
+-Jaxen 1.1.3
+-commons-lang 2.5
+
+2.2.0 (27-Mar-2010) (pdfsam-console 2.3.0e)
+===================================
+-Fixed bug #2929876 browse of directories when saving the log file
+-ConsoleClient now exits with code 1 in case of error.
+-Fixed bug #2947985 overlapping of the Selection Panel cause disappearing buttons in Rotate plugin
+-Fixed bug #2947979 browsing window in the Settings panel shows multiple "xml files" entries
+-Added support to zoom and rotate functions to the Image Viewer (feature request #2936227)
+-Console: added the -secondstep option to the mix command
+-Mix: added field to set the secondstep option (feature request #2958113)
+-JFileChooser remembers the last opened dir. (feature request #2965087)
+-Split: split by bookmarks level now disable the input field while retrieving max depth
+-Fixed bug #2930136 improved performances of bookmarks handling while splitting
+-Fixed bug #2969880 cleanAll ant target
+-Fixed bug #2949383 Uniformed behavior when destination text field is empty and run button is clicked
+-Fixed bug #2929923 Unable to delete the buffer file when a rotation is set
+-Added key bindings to all the action in the selection table
+
+2.1.0 (20-Dec-2009) (pdfsam-console 2.2.0e)
+===================================
+-Fixed the selection of the thumbnails creator 
+-Saving/loading environment retains the selected plugin (feature request #2857938)
+-Added DnD support for linux platform (feature request #2858074)
+-Saving/loading user interface settings when closing/opening pdfsam (feature request #2857941)
+-Alert message when "Overwrite existing files" is selected. Settings option to disable it.
+-Console: added the 'setdocinfo' command to set metadata on a pdf document
+-Fixed bug #2899253 stack overflow running  the console concat command with huge selection string (-u) 
+-Fixed bug #2899943 console concat command silently ignores double pages in the selection string (-u)
+-Fixed bug #2899713 Visual composer ignores pages if they are double in the selection string generated.
+-Fixed bug #2913620 console gives an error opening encrypted documents. 
+-Fixed bug #2917585 Visual composer input panel reset before loading the saved environment
+-Plugins loader loads the most recent plugin if more than one is in the directory.
+-looks 2.3.0
+-JPodRenderer 5.2
+-bcmail 1.44
+-bcprov 1.44
+
+2.0.0 (27-Aug-2009) (pdfsam-console 2.1.1e)
+===================================
+-Fixed bug #2810982 ([BASENAME] prefix) 
+-Added context menu to add prefixes to the prefix JTextField
+-Fixed bug #2827318 (console concat command ignores 'pdfversion' and 'compressed' parameter if a rotation is set)
+-Console: added the 'rotate' command to rotate multiple documents (feature request #2797066)
+-Console: added the 'pagelabels' command to set page labels on a pdf document
+-Plugins showed in alphabetical order
+-Thumbnails quality slightly improved
+-iText 2.1.7
+
+2.0.0-release candidate 1 (21-Jun-2009) (pdfsam-console 2.0.5e)
+===================================
+-Fixed GUI interactivity when generating thumbnails.
+-New concurrent thumbnails generation model.
+-Console: fixed rotation of even and odd pages in concat command.
+-Console: fixed bug #2789961 (stripped invalid chars when applying bookmark name as output file name)
+-Console: fixed bug #2789961 (Level 2 Bookmark Name not used on first page)
+-VComposer: fixed bug #2793905 (Version combo showing "same as input document")
+-VComposer, VReorder: enlarged buttons to fit translations (feature request #2793954)
+-Console: fixed bug #2794818 (added system properties: pdfsam.log.console.level, pdfsam.log.file.level, pdfsam.log.file.filename)
+-Examples and xsd documents included within the distribution
+-Row tool tip in pdf selection table in case of errors or warnings
+-iText 2.1.6
+-Updated langpack
+
+2.0.0-beta (10-May-2009) (pdfsam-console 2.0.4e)
+===================================
+-Launcher: pdfsam-starter.exe now can take -Xmx parameter as a value (can be set as a Windows shortcut parameter)
+-Esc key now closes the preview panel
+-Console: added the -d option to the setviewer command to set options to all the documents in an input directory
+-Console: added the -d option to the encrypt command to encrypt to all the documents in an input directory
+-Split: fixed bug #2679389 (broken "save environment" function)
+-Console: set compression level to BEST_COMPRESSION when compression is on.
+-Console: called the pdfReader.removeUnusedObjects(); when the reader is opened.
+-Console: -help argument passed if no argument specified (Feature Request #2697689)
+-Console: fixed bug #2715101 (Exception executing split by size)
+-Console: optimized merge algorithm when merging a subset of a document.
+-Added the document properties frame
+-VComposer: added a check on the "overwrite" flag
+-VComposer, VReorder: added 3 zoom levels
+-VComposer: dropping on a populated thumbnail panel will result in a new tab added to the multitabbed panel
+-VPageReorderMainGUI: added focus policy and fixed a label
+-VComposer: added focus policy
+-VComposer, VReorder: fully working save/load environment
+-VComposer, VReorder: no minimum size for the destination panel put inside a scroll panel 
+-JVisualPdfPageSelectionPanel: fixed document info tooltip
+-Shared thread pool for the thumbnails generation among panels. (number of threads now is fixed, configurable and doesn't depend on the number of panels opened).
+-Added the filename in the page viewer status bar
+-Console: added the -step option to the mix command
+-Mix: added field to set the step option
+-Console: added complex prefix [BOOKMARK_NAME]
+-VReorder: added button and context menu to reverse pages order
+-Error sound if an Exception occurs before the execution of a command
+-iText 2.1.5
+-Updated langpack
+
+2.0.0-alpha (01-Feb-2009) (pdfsam-console 2.0.2e)
+===================================
+-Console: added the -d option to the concat command to merge all the documents in an input directory
+-Console: fixed bug #2540496 (unpack -d parameter)
+-Console: added the chance to set a starting value for the [FILENUMBER] prefix (Ex. [FILENUMBER13] or [FILENUMBER###13]) 
+-Added the VisualReorder plugin
+-Added the VisualComposer plugin
+-Optimized PdfLoader
+-Merge, Mix: confirmation dialog if the output file already exists and the overwrite flag is false
+-Java 1.6 required
+
+1.1.1 (25-Jan-2009) (pdfsam-console 2.0.1e)
+===================================
+-Console: fixed bug #2464606 (bookmarks management in split command)
+-Console: added the split by bookmarks level
+-Split: added options to split by bookmarks level
+-Console: added pages rotation option to concat command
+-Updated langpack
+
+1.1.0 (23-Dec-2008) (pdfsam-console 2.0.0e)
+===================================
+-Merge: fixed a JFileChooser call
+-Lazy JFileChooser init when call environment load/save 
+-Lazy JFileChooser init when call log save
+-Fixed memory leak when loading documents into JPdfSelectionPanel
+-Added the AlternateMix plugin from the enhanced version
+-Console: added the "setviewer" command
+-Console: added the "decrypt" command
+-Console: added the "slideshow" command
+-Console: new complex prefix [FILENUMBER]
+-Console: complex prefix [FILENUMBER] and [CURRENTPAGE] can take now the output patter (Ex. [FILENUMBER###]
+-Console: Dual license GPL and LGPL 
+-JFileChoosers now look at the JTextField to find if it's already filled.
+-Fixed FocusPolicy and layout for every plugin 
+-iText 2.1.4
+-looks 2.2.1
+
+1.0.3 stable release (26-Oct-2008)
+===================================
+-Fixed bug #2122945
+-Added Copy/Cut/Paste popup menu to prefix text fields
+-Added sounds to confirm execution or errors
+-Added setting to enable/disable sounds
+-Modified the dialog to ask confirmation to change output directory
+-Merge: Fixed the "set output path" if path ends with File.separator
+-Updated langpack
+
+1.0.2 stable release (21-Sep-2008)
+===================================
+-Added some new translatable string
+-Fixed bug #2098518 (Not giving the pdf extension could lead to block)
+-Added Copy/Cut/Paste popup menu to destination text fields
+-Updated langpack
+
+1.0.1 stable release (24-Aug-2008)
+===================================
+-Fixed some matches found with FindBugs
+-Fixed bug #2034850
+-Console: Fixed bug #2064962 (Split by size)
+-Merge: Fixed reopened bug #1926019 
+-Updated langpack 
+
+1.0.0 stable release (30-Jun-2008)
+===================================
+-Fixed bug  #1972966 (version combo when loading an environment)
+-Fixed some JFileChoosers that didn't check about the default working directory
+-Updated langpack
+
+1.0.0 release candidate 1 (18-May-2008)
+===================================
+-Console: now xml input for the concat command can take relative files path
+-Added row header to show the row number
+-Added .bat and .sh script to run pdfsam
+-Added the default working directory to set a directory as a workspace
+-Added the OFF debug level to switch off log messages
+-Merge: added context menu to export file list as an xml file
+-Suggested output location if the selected one has problems 
+
+1.0.0 beta 3 (12-Apr-2008)
+===================================
+-Added update checker to check for a new version
+-Modified JPdfSelectionPanel to enable or disable clear button, move buttons
+-Modified JPdfSelectionPanel to enable outputPathMenuItem
+-Modified JPdfSelectionPanel password column render to show '******' only when a password is typed
+-Progress bar now shows percentage to give a better feedback to the user
+-Console: split now uses PdfSmartCopy to minimize output files size
+-Updated langpack
+-Fixed bug #1909755 ('+' char in installation dir)
+-Fixed bug #1909815 
+-Fixed bug #1926030 (installer)
+-Fixed bug #1926928 (default env loading)
+
+1.0.0 beta 2 (02-Mar-2008)
+===================================
+-Merge: pdf extension is appended to the output document file name only if it doesn't already ends with ".pdf" (Fix Bug #1881243)
+-Console: fixed exception messages
+-Console: "file" tag xml input now has a "password" attribute to specify the document password
+-Console: added to "unpack" command
+-Selection table menu now have a "Reload" feature to reload documents
+-Split: fixed an error when loading the environment
+-A reset method is called before loading an environment for every plugin
+
+1.0.0 beta 1 (12-Jan-2008)
+===================================
+-PdfVersion combo now have support to enable/disable items 
+-Added WorkExecutor singleton to execute commands
+-documents are now loaded ordered (fix Bug #1858707 and #1858705)
+-Added sort feature to the selection table
+-Added selection table renderer to show red background if there is some error loading a document
+-Added document version in selection table
+ 
+1.0.0 alpha (17-Dec-2007)
+===================================
+-Console: complete refactor
+-Console: added the -pdfversion option to set the output documents pdf version
+-Console: added the SIZE split type to split documents by size
+-Console: now use log4j
+-Console: now use emp4j to have encoded exception messages
+-Console: -u argument of concat command not can take limits without end limit (Ex. -u 3-: ) this will merge the document starting form 
+page number 3 to the end of the document
+-Console: Unified enhanced/basic console
+-Complete refactor
+-Use of JTextPaneAppender and log4j for the logging panel
+-Chance to use the config file ${user.home}/.pdfsam/config.xml 
+-Created commons classes to help plugins
+-Included and modified jcmdline. Added PdfFileParam to manage pdf documents password
+-Split, Merge: now uses JPdfSelectionPanel with documents password for encrypted documents
+-Split, Merge: chance to set pdf version for output documents
+-iText 2.0.7
+-log4j 1.2.15
+-bcmail 138
+-bcprov 138
+
+0.7 stable release 1 (28-Aug-2007)
+===================================
+-Console: fix Bug #1764362
+-Console: fixed merged pages count
+-Split, Merge: fixed focus policy and layouts
+-langpack
+-iText 2.0.2 (untill a user password input field will be added)
+
+0.7 beta 2 (19-Jul-2007)
+===================================
+-Console: added -compressed option to compress output documents
+-Split, Merge: check to use -compressed option
+-Settings: language combo now shows language name 
+-Split: added overwrite checkbox
+-iText 2.0.4
+-looks 2.1.4
+-langpack
+
+0.7 beta 1 (23-Jun-2007)
+===================================
+-Console: added the chance to use complex prefix using variable substitution [CURRENTPAGE], [TIMESTAMP] and [BASENAME]
+-Added configuration singleton
+-Added Settings section
+-XMLParser and XMLConfig rebuilt using dom4j
+-Console: added xml input file -l option for merge
+-Console: rewritten commands handler
+-Console: rewritten helper class TmpFileNameGenerator
+-Console: rewritten PdfSplit to keep file annotations
+-Console: added -overwrite option to the split command
+-Console: new merge type using PdfCopyFields to deal with forms
+-Merge: check to use -copyfields console option 
+-Split, Merge: added JHelpLabel to have help tooltips 
+-Unified basic/enhanced langpack
+-New icons set
+-dom4j 1.6.1
+-jaxen 1.1
+-iText 2.0.2
+-bcmail 135
+-bcprov 135
+
+0.6 stable release 3
+===================================
+-Fix in PlugInsLoader.getPlugInsList
+-Console: fix Bug #1641683
+-Console: fix split page numbers starting from 1 and code cleaning
+-Fixed log panel caret position (by Aniket Dutta)
+-Merge: fix when automatically extension in destination file is set
+-iText 1.4.8
+-looks 2.1.1
+
+0.6 stable release 2
+===================================
+-Merge: added page selection printer style (Ex. 2,6,12-19,5)
+-Added tabbed panels icons
+-Added French language
+-GUI fixes
+-New icon
+-Code cleaning
+-Added Win32 starter
+-iText 1.4.6
+-looks 2.0.4
+
+0.6 stable release
+===================================
+-Console: fixed a bug if no -u option given
+-Added German and Russian languages
+-iText 1.4.4
+
+0.6 beta 1
+===================================
+-Split: output files name now have leading zero(s) for better sorting
+-Split: modified "split at this page" in "split after these pages"
+-Split: now splitting a pdf file has its own thread. A progress bar shows the work done
+-Split&Merge: better format for log messages
+-Split&Merge: now bookmarks list is managed according with the merge action. Bug #1490115
+-Merge: minor fixes
+-Merge: now adding a pdf has its own thread and better user interface shows what pdfsam is doing
+-Merge: now merging pdf files has its own thread. A progress bar shows the work done
+-Merge: fix Bug #1529037 
+-Console: fixes to prevent OutOfMemory exception while creating PdfReader
+-Console: fixes in PdfSplit and PdfConcat constructors. Bug #1521679
+-GUI i18n support using langpack. (Console messages still in english)
+-Added "Clear log" function
+-iText 1.4.2
+
+0.5 beta 3
+===================================
+-Split: JTextField.requestFocus when "split at this page" or "every n pages" is selected
+-Merge: Multiple Drag&Drop change order enabled
+-Merge: Drop Multifile selection from OS enabled
+-Merge: Drop disabled in destination JText
+-Merge: addTableRow method added
+-Merge: Canc key (and not Alt+Canc) now removes items from merge_table
+-Merge: MultiSelection MoveUp, MoveDown, Canc
+-Console: Buffer file in doConcat Bug #1499436
+-Console: -overwrite parameter added
+-Merge: Overwrite checkbox.
+-iText 1.4.1
+
+0.5 beta 2
+===================================
+-jGoodies 2.0.1 and changes in ThemeSelector
+-Console: Fix in creator metadata
+-Console: Fixes in options descriptions
+-Merge: Fix in add button when clicking "cancel" in JFileChooser
+-Split&Merge: New FocusPolicy
+-Added getFocusPolicy() in PlugablePanel
+-Added KeyListener to every button, now "enter" does a click on buttons
+-Tabs Mnemonic
+-Merge: Table header not draggable anymore
+-Split: Fixes in GUI
+-Merge: New function with right click to set output destination file
+
+0.5 beta 1
+===================================
+-Merge: MultiSelectionEnabled(true)
+-Console: Parse fix on ParseConcatCommand -f option
+-Console: Added creator metadata
+-Console: Added -u option
+-Merge: Managed page selection (-u console option)
+-Merge: new TableRender for the page column
+-Merge: Column headers tooltip
+-Minor fixes
+
+0.4 beta
+===================================
+-Console: Added -log option to the console.
+-Console: Parse fix on concat -o value ".pdf"
+-Merge: Added Clear button in merge plugin.
+-pdfsam: Added Exit menu.
+-Merge: Fixed horizontal scroll bar in merge table
+-Merge: Enter key binded to run button
+-Merge: Auto pdf extension for no extension output file
+-Merge: Better JFileChooser management
+-Minor fixes
+
+0.3.3 pre alpha
+====================================
+-First working release.
